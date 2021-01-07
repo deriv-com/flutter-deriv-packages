@@ -1,70 +1,52 @@
 import 'dart:io';
-import 'dart:developer' as dev;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:update_checker/update_info.dart';
 import 'package:update_checker/src/misc.dart';
 import 'package:package_info/package_info.dart';
 
-/// FirebaseUtils class provides [fetchBuildNumbers] method which can be used
-/// to fetch update details from Firebase.
-///
-/// Firebase Database update data looks like the following
-///     build:
-///       android:
-///         optional:
-///           buildnumer: 24
-///           changelog: 'RFAyUCB2ZXJ....' // Base64
-///           url: 'https://alternative.app.link'
-///         mandatory:
-///            buildnumber: 18
-///            changelog: 'RFAyUCB2ZXJ....' // Base64
-///            url: 'https://alternative.app.link'
 class FirebaseUtils {
-  /// Fetch the Update details.
-  Future<UpdateInfo> fetchBuildNumbers() async {
-    try {
-      final String platform = Platform.operatingSystem;
-      final DatabaseReference dbRef =
-          FirebaseDatabase.instance.reference().child('build').child(platform);
+  Future<UpdateInfo> getUpdateInfo() async {
+    final int appBuildNumber = await _getAppBuildNumber();
+    if (appBuildNumber <= 0) return null; // failed to get app build number
 
-      final buildRemoteInfo = (await dbRef.once()).value;
-      final buildNumberOptional = buildRemoteInfo['optional']['buildnumber'];
-      final buildNumberMandatory = buildRemoteInfo['mandatory']['buildnumber'];
+    final rawData = await _fetchData();
+    final int optionalBuildNumber = rawData['optional']['buildnumber'];
+    final int mandatoryBuildNumber = rawData['mandatory']['buildnumber'];
+    final bool isMandatory = appBuildNumber < mandatoryBuildNumber;
+    final bool isOptional = appBuildNumber < optionalBuildNumber;
+    if (!isMandatory && !isOptional) return null; // no update available
 
-      // Get BuildNumber currently running
-      final packageInfo = await PackageInfo.fromPlatform();
-      final buildNumberCurrent = int.tryParse(packageInfo.buildNumber) ?? -1;
+    return _createUpdate(
+      rawData[isOptional ? 'optional' : 'mandatory'],
+      isOptional,
+      isOptional ? optionalBuildNumber : mandatoryBuildNumber,
+    );
+  }
 
-      if (buildNumberCurrent > 0 && buildNumberCurrent < buildNumberMandatory) {
-        // Current build is lower than Minimum Required Build
-        final String buildAppUrl = buildRemoteInfo['mandatory']['url'] ?? null;
-        final String changelog =
-            decodeBase64(buildRemoteInfo['mandatory']['changelog'] ?? '');
+  Future<int> _getAppBuildNumber() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    return int.tryParse(packageInfo.buildNumber) ?? -1;
+  }
 
-        return UpdateInfo(
-          buildNumber: buildNumberMandatory,
-          url: buildAppUrl,
-          changelog: changelog,
-          isOptional: false,
-        );
-      } else if (buildNumberCurrent > 0 &&
-          buildNumberCurrent < buildNumberOptional) {
-        // Optional new build is available
-        final String buildAppUrl = buildRemoteInfo['optional']['url'] ?? null;
-        final String changelog =
-            decodeBase64(buildRemoteInfo['optional']['changelog'] ?? '');
+  Future<dynamic> _fetchData() async {
+    final DatabaseReference dbRef = FirebaseDatabase.instance
+        .reference()
+        .child('build')
+        .child(Platform.operatingSystem);
+    return (await dbRef.once()).value;
+  }
 
-        return UpdateInfo(
-          buildNumber: buildNumberOptional,
-          url: buildAppUrl,
-          changelog: changelog,
-          isOptional: true,
-        );
-      }
-    } catch (err) {
-      // Something went wrong
-      dev.log(err.toString());
-    }
-    return null;
+  UpdateInfo _createUpdate(
+    dynamic rawUpdateInfo,
+    bool isOptional,
+    int buildNumber,
+  ) {
+    return UpdateInfo(
+      buildNumber: buildNumber,
+      url: rawUpdateInfo['url'] ?? null,
+      changelog: decodeBase64(rawUpdateInfo['changelog'] ?? ''),
+      changelogs: rawUpdateInfo['changelogs'] ?? null,
+      isOptional: isOptional,
+    );
   }
 }

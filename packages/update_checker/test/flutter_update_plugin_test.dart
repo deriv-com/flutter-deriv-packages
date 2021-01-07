@@ -32,7 +32,7 @@ void main() {
 
     blocTest('Update not available',
         build: () {
-          when(fbUtils.fetchBuildNumbers()).thenAnswer((_) {
+          when(fbUtils.getUpdateInfo()).thenAnswer((_) {
             return null;
           });
           return UpdateCheckBloc(fbUtils: fbUtils);
@@ -43,7 +43,7 @@ void main() {
 
     blocTest('Update available',
         build: () {
-          when(fbUtils.fetchBuildNumbers()).thenAnswer((_) async {
+          when(fbUtils.getUpdateInfo()).thenAnswer((_) async {
             return updateInfo;
           });
           return UpdateCheckBloc(fbUtils: fbUtils);
@@ -54,7 +54,7 @@ void main() {
     blocTest(
       'Update available ',
       build: () {
-        when(fbUtils.fetchBuildNumbers()).thenAnswer((_) async {
+        when(fbUtils.getUpdateInfo()).thenAnswer((_) async {
           return updateInfo2;
         });
         return UpdateCheckBloc(fbUtils: fbUtils);

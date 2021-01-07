@@ -27,7 +27,7 @@ class UpdateCheckBloc extends Bloc<UpdateCheckEvent, UpdateCheckState> {
       _updateCancelled = false;
       this.add(UpdateCheckInProgress());
     } else if (event is UpdateCheckInProgress) {
-      UpdateInfo info = await firebaseUtils.fetchBuildNumbers();
+      UpdateInfo info = await firebaseUtils.getUpdateInfo();
       if (info != null && !_updateCancelled) {
         yield UpdateAvailable(info);
       } else {
