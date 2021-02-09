@@ -4,7 +4,8 @@ import 'package:deriv_rudderstack/deriv_rudderstack.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'analytics_route_observer.dart';
 
-/// Class that collects and send analytical information to "Firebase" and "Segment"
+/// Class that collects and sends analytical information to "Firebase" and
+/// "RudderStack"
 class Analytics {
   Analytics._internal();
 
@@ -21,7 +22,7 @@ class Analytics {
   AnalyticsRouteObserver observer;
 
   /// Initialises the "Analytics".
-  /// Sets the device-token to "Segment".
+  /// Sets the device-token to "RudderStack".
   /// bool [isEnabled] enables or disables "Analytics".
   void init({@required String deviceToken, @required bool isEnabled}) {
     _firebaseAnalytics = FirebaseAnalytics();
@@ -34,7 +35,7 @@ class Analytics {
     isEnabled ? _derivRudderstack.enable() : _derivRudderstack.disable();
 
     if (deviceToken != null) {
-      _setSegmentDeviceToken(deviceToken);
+      _setRudderStackDeviceToken(deviceToken);
     }
   }
 
@@ -94,8 +95,8 @@ class Analytics {
     _firebaseAnalytics?.logEvent(name: 'logout');
   }
 
-  /// Sets the device-token to "Segment".
-  void _setSegmentDeviceToken(String deviceToken) =>
+  /// Sets the device-token to "RudderStack".
+  void _setRudderStackDeviceToken(String deviceToken) =>
       _derivRudderstack.setContext(token: deviceToken);
 
   /// Sets the user id to "Firebase".
