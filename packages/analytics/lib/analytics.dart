@@ -24,18 +24,21 @@ class Analytics {
   /// Initialises the "Analytics".
   /// Sets the device-token to "RudderStack".
   /// bool [isEnabled] enables or disables "Analytics".
-  void init({@required String deviceToken, @required bool isEnabled}) {
+  Future<void> init(
+      {@required String deviceToken, @required bool isEnabled}) async {
     _firebaseAnalytics = FirebaseAnalytics();
     _derivRudderstack = DerivRudderstack();
 
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
     // Enable or disable the analytics on this device.
-    _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
-    isEnabled ? _derivRudderstack.enable() : _derivRudderstack.disable();
+    await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
+    isEnabled
+        ? await _derivRudderstack.enable()
+        : await _derivRudderstack.disable();
 
     if (deviceToken != null) {
-      _setRudderStackDeviceToken(deviceToken);
+      await _setRudderStackDeviceToken(deviceToken);
     }
   }
 
@@ -96,7 +99,7 @@ class Analytics {
   }
 
   /// Sets the device-token to "RudderStack".
-  void _setRudderStackDeviceToken(String deviceToken) =>
+  Future<void> _setRudderStackDeviceToken(String deviceToken) async =>
       _derivRudderstack.setContext(token: deviceToken);
 
   /// Sets the user id to "Firebase".
