@@ -1,6 +1,7 @@
+import 'package:deriv_rudderstack/deriv_rudderstack.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_segment/flutter_segment.dart';
+
 
 import 'analytics_route_observer.dart';
 
@@ -15,6 +16,7 @@ class Analytics {
   List<String> _ignoredRoutes = <String>[];
 
   FirebaseAnalytics _firebaseAnalytics;
+  DerivRudderstack _derivRudderstack;
 
   /// An instance of custom route observer created for analytics
   AnalyticsRouteObserver observer;
@@ -24,11 +26,13 @@ class Analytics {
   /// bool [isEnabled] enables or disables "Analytics".
   void init({@required String deviceToken, @required bool isEnabled}) {
     _firebaseAnalytics = FirebaseAnalytics();
+    _derivRudderstack = DerivRudderstack();
+
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
     // Enable or disable the analytics on this device.
     _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
-    isEnabled ? Segment.enable() : Segment.disable();
+    isEnabled ? _derivRudderstack.enable() : _derivRudderstack.disable();
 
     if (deviceToken != null) {
       _setSegmentDeviceToken(deviceToken);
@@ -47,17 +51,17 @@ class Analytics {
   void logAppOpened() {
     _firebaseAnalytics?.logAppOpen();
 
-    Segment.track(eventName: 'Application Opened');
+    _derivRudderstack.track(eventName: 'Application Opened');
   }
 
   /// Captures `Application Backgrounded` event when the app goes to background.
   void logAppBackgrounded() {
-    Segment.track(eventName: 'Application Backgrounded');
+    _derivRudderstack.track(eventName: 'Application Backgrounded');
   }
 
   /// Captures `Application Crashed` event when the app is crashed.
   void logAppCrashed() {
-    Segment.track(eventName: 'Application Crashed');
+    _derivRudderstack.track(eventName: 'Application Crashed');
   }
 
   /// Used to capture information about current screen in use.
@@ -70,7 +74,7 @@ class Analytics {
     }
     _firebaseAnalytics?.setCurrentScreen(screenName: screenName);
 
-    Segment.screen(
+    _derivRudderstack.screen(
       screenName: screenName,
       properties: properties,
     );
@@ -81,7 +85,7 @@ class Analytics {
     _setFirebaseUserId(userId.toString());
     _firebaseAnalytics?.logLogin();
 
-    Segment.identify(
+    _derivRudderstack.identify(
       userId: userId.toString(),
     );
   }
@@ -93,9 +97,7 @@ class Analytics {
 
   /// Sets the device-token to "Segment".
   void _setSegmentDeviceToken(String deviceToken) =>
-      Segment.setContext(<String, dynamic>{
-        'device': <String, dynamic>{'token': deviceToken}
-      });
+      _derivRudderstack.setContext(token: deviceToken);
 
   /// Sets the user id to "Firebase".
   Future<void> _setFirebaseUserId(String userId) =>
