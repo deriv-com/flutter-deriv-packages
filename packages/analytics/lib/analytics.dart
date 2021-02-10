@@ -37,7 +37,7 @@ class Analytics {
         ? await _derivRudderstack.enable()
         : await _derivRudderstack.disable();
 
-    if (deviceToken != null) {
+    if (isEnabled && deviceToken != null) {
       await _setRudderStackDeviceToken(deviceToken);
     }
   }
