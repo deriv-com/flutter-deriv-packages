@@ -24,8 +24,7 @@ class Analytics {
   /// Initialises the "Analytics".
   /// Sets the device-token to "RudderStack".
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init(
-      {@required String deviceToken, @required bool isEnabled}) async {
+  Future<void> init({@required bool isEnabled}) async {
     _firebaseAnalytics = FirebaseAnalytics();
     _derivRudderstack = DerivRudderstack();
 
@@ -36,10 +35,6 @@ class Analytics {
     isEnabled
         ? await _derivRudderstack.enable()
         : await _derivRudderstack.disable();
-
-    if (isEnabled && deviceToken != null) {
-      await _setRudderStackDeviceToken(deviceToken);
-    }
   }
 
   /// Captures `screen_view` event on route changes.
@@ -84,13 +79,16 @@ class Analytics {
   }
 
   /// Captures `login` event upon a successful user log in.
-  void logLoginEvent(int userId) {
-    _setFirebaseUserId(userId.toString());
-    _firebaseAnalytics?.logLogin();
+  Future<void> logLoginEvent(
+      {@required String deviceToken, @required int userId}) async {
+    await _setFirebaseUserId(userId.toString());
+    await _firebaseAnalytics?.logLogin();
 
-    _derivRudderstack.identify(
-      userId: userId.toString(),
-    );
+    if (deviceToken != null) {
+      await _setRudderStackDeviceToken(deviceToken);
+    }
+
+    await _derivRudderstack.identify(userId: userId.toString());
   }
 
   /// Captures `logout` event when the user logs out.
