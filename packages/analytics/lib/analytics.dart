@@ -78,7 +78,7 @@ class Analytics {
     );
   }
 
-  /// Captures `login` event upon a successful user log in.
+  /// Captures `login` event upon a successful user log in and sends push token.
   Future<void> logLoginEvent(
       {@required String deviceToken, @required int userId}) async {
     await _setFirebaseUserId(userId.toString());
@@ -89,6 +89,13 @@ class Analytics {
     }
 
     await _derivRudderstack.identify(userId: userId.toString());
+  }
+
+  /// Logs push token.
+  Future<void> logPushToken(String deviceToken) async {
+    if (deviceToken != null) {
+      await _setRudderStackDeviceToken(deviceToken);
+    }
   }
 
   /// Captures `logout` event when the user logs out.
@@ -120,4 +127,8 @@ class Analytics {
       _ignoredRoutes = routes;
     }
   }
+
+  /// Should be called at logout to clear up current rudder stack data.
+  Future<void> reset() async =>
+      _derivRudderstack.reset();
 }
