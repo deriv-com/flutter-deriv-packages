@@ -8,3 +8,4 @@ This repository contains private packages & plugins that are used by the company
 * [deriv_theme](./packages/deriv_theme) - A package that contains the theme used by Deriv products.
 * [deriv_rudderstack](./packages/deriv_rudderstack) - A plugin that add RudderStack SDK support to Flutter.
 * [update_checker](./packages/update_checker) - Check and retrieve update information from the server for the given package.
+* [deriv_technical_analysis](./packages/deriv_technical_analysis) - A Dart package for Technical Analysis.
