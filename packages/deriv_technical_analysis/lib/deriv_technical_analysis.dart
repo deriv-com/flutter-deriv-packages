@@ -14,6 +14,7 @@ export 'src/indicators/calculations/helper_indicators/hlc3_indicator.dart';
 export 'src/indicators/calculations/helper_indicators/hlcc4_indicator.dart';
 export 'src/indicators/calculations/helper_indicators/loss_indicator.dart';
 export 'src/indicators/calculations/helper_indicators/low_value_indicator.dart';
+export 'src/indicators/calculations/helper_indicators/median_inidicator.dart';
 export 'src/indicators/calculations/helper_indicators/ohlc4_indicator.dart';
 export 'src/indicators/calculations/helper_indicators/open_value_indicator.dart';
 export 'src/indicators/calculations/highest_value_indicator.dart';
