@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:deriv_rudderstack/deriv_rudderstack.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:rudder_sdk_flutter/RudderClient.dart';
+import 'package:rudder_sdk_flutter/RudderConfig.dart';
+import 'package:rudder_sdk_flutter/RudderProperty.dart';
 import 'analytics_route_observer.dart';
 
 /// Class that collects and sends analytical information to "Firebase" and
@@ -16,7 +18,6 @@ class Analytics {
   List<String> _ignoredRoutes = <String>[];
 
   FirebaseAnalytics _firebaseAnalytics;
-  DerivRudderstack _derivRudderstack;
 
   /// An instance of custom route observer created for analytics
   AnalyticsRouteObserver observer;
@@ -24,17 +25,22 @@ class Analytics {
   /// Initialises the "Analytics".
   /// Sets the device-token to "RudderStack".
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init({@required bool isEnabled}) async {
+  Future<void> init(
+      {@required bool isEnabled, @required String rudderWriteKey}) async {
     _firebaseAnalytics = FirebaseAnalytics();
-    _derivRudderstack = DerivRudderstack();
 
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
-    isEnabled
-        ? await _derivRudderstack.enable()
-        : await _derivRudderstack.disable();
+
+    _initRudderClient(rudderWriteKey);
+  }
+
+  void _initRudderClient(String writeKey) {
+    final RudderConfigBuilder builder = RudderConfigBuilder()
+      ..withTrackLifecycleEvents(true);
+    RudderClient.getInstance(writeKey, config: builder.build());
   }
 
   /// Captures `screen_view` event on route changes.
@@ -49,17 +55,17 @@ class Analytics {
   void logAppOpened() {
     _firebaseAnalytics?.logAppOpen();
 
-    _derivRudderstack.track(eventName: 'Application Opened');
+    RudderClient.track('Application Opened');
   }
 
   /// Captures `Application Backgrounded` event when the app goes to background.
   void logAppBackgrounded() {
-    _derivRudderstack.track(eventName: 'Application Backgrounded');
+    RudderClient.track('Application Backgrounded');
   }
 
   /// Captures `Application Crashed` event when the app is crashed.
   void logAppCrashed() {
-    _derivRudderstack.track(eventName: 'Application Crashed');
+    RudderClient.track('Application Crashed');
   }
 
   /// Used to capture information about current screen in use.
@@ -72,9 +78,14 @@ class Analytics {
     }
     _firebaseAnalytics?.setCurrentScreen(screenName: screenName);
 
-    _derivRudderstack.screen(
-      screenName: screenName,
-      properties: properties,
+    final RudderProperty screenProperty = RudderProperty();
+    properties.forEach((String key, dynamic value) {
+      screenProperty.put(key, value);
+    });
+
+    RudderClient.screen(
+      screenName,
+      properties: screenProperty,
     );
   }
 
@@ -88,7 +99,7 @@ class Analytics {
       await _setRudderStackDeviceToken(deviceToken);
     }
 
-    await _derivRudderstack.identify(userId: userId.toString());
+    RudderClient.identify(userId.toString());
   }
 
   /// Logs push token.
@@ -105,7 +116,7 @@ class Analytics {
 
   /// Sets the device-token to "RudderStack".
   Future<void> _setRudderStackDeviceToken(String deviceToken) async =>
-      _derivRudderstack.setContext(token: deviceToken);
+      RudderClient.putDeviceToken(deviceToken);
 
   /// Sets the user id to "Firebase".
   Future<void> _setFirebaseUserId(String userId) =>
@@ -129,6 +140,5 @@ class Analytics {
   }
 
   /// Should be called at logout to clear up current rudder stack data.
-  Future<void> reset() async =>
-      _derivRudderstack.reset();
+  Future<void> reset() async => RudderClient.reset();
 }

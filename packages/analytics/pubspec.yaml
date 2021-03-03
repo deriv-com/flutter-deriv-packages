@@ -12,11 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  deriv_rudderstack:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_rudderstack
-      ref: dev
+  rudder_sdk_flutter: ^1.0.0
   firebase_analytics: ^6.1.0
 
 dev_dependencies:

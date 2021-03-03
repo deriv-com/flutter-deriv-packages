@@ -43,15 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0-nullsafety.3"
-  deriv_rudderstack:
-    dependency: "direct main"
-    description:
-      path: "packages/deriv_rudderstack"
-      ref: dev
-      resolved-ref: b90ecebacef264b7bfbd827bd2365d0c9da5e678
-      url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
-    source: git
-    version: "1.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -137,6 +128,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.16.1"
   js:
     dependency: transitive
     description:
@@ -144,6 +142,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.2"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.4"
   matcher:
     dependency: transitive
     description:
@@ -186,6 +191,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
+  rudder_sdk_flutter:
+    dependency: "direct main"
+    description:
+      name: rudder_sdk_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
