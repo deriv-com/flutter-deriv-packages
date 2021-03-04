@@ -10,57 +10,14 @@ analytics:
          path: packages/analytics
          ref: master
 ```
-##### 2. Add Android dependency.
-```xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.deriv.deriv_rudderstack_example">
-    <application>
-        <activity>
-            [...]
-        </activity>
-        <meta-data
-            android:name="com.deriv.rudderstack.WRITE_KEY"
-            android:value="ADD-YOUR-KEY" />
-        <meta-data
-            android:name="com.deriv.rudderstack.TRACK_APPLICATION_LIFECYCLE_EVENTS"
-            android:value="false" />
-        <meta-data
-            android:name="com.deriv.rudderstack.RECORD_SCREEN_VIEWS"
-            android:value="false" />
-        <meta-data android:name="com.deriv.rudderstack.DEBUG" android:value="false" />
-
-
-    </application>
-</manifest>
-```
-
-##### 3. Add IOS dependency.
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	[...]
-    <key>com.deriv.rudderstack.WRITE_KEY</key>
-    <string>ADD-YOUR-KEY</string>
-	<key>com.deriv.rudderstack.TRACK_APPLICATION_LIFECYCLE_EVENTS</key>
-    <false/>
-    <key>com.deriv.rudderstack.RECORD_SCREEN_VIEWS</key>
-    <false/>
-    <key>com.deriv.rudderstack.DEBUG</key>
-    <false/>
-	[...]
-</dict>
-</plist>
-```
 
 ## How to use
 ***
 ##### 1. Enabling analytics.
 ```dart
 Analytics.instance.init(
-    deviceToken: "<FIREBASE_TOKEN_HERE>",
     isEnabled: true, // set value to false for disable 'Analytics'
+    rudderWriteKey: "<RUDDER-WRITE-KEY>",
   );
 ```
 ##### 2. To track PageRoute transitions.
