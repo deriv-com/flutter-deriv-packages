@@ -17,7 +17,6 @@ analytics:
 ```dart
 Analytics.instance.init(
     isEnabled: true, // set value to false for disable 'Analytics'
-    rudderWriteKey: "<RUDDER-WRITE-KEY>",
   );
 ```
 ##### 2. To track PageRoute transitions.
