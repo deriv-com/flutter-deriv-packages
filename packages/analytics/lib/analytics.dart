@@ -1,3 +1,4 @@
+import 'package:analytics/src/platform_data/platform_data.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -22,11 +23,12 @@ class Analytics {
   /// An instance of custom route observer created for analytics
   AnalyticsRouteObserver observer;
 
+  final PlatformData _platformData = PlatformData();
+
   /// Initialises the "Analytics".
   /// Sets the device-token to "RudderStack".
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init(
-      {@required bool isEnabled, @required String rudderWriteKey}) async {
+  Future<void> init({@required bool isEnabled}) async {
     _firebaseAnalytics = FirebaseAnalytics();
 
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
@@ -34,13 +36,15 @@ class Analytics {
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
 
-    _initRudderClient(rudderWriteKey);
+    await _initRudderClient();
   }
 
-  void _initRudderClient(String writeKey) {
+  Future<void> _initRudderClient() async {
+    await _platformData.fetchRudderWriteKey();
+
     final RudderConfigBuilder builder = RudderConfigBuilder()
       ..withTrackLifecycleEvents(true);
-    RudderClient.getInstance(writeKey, config: builder.build());
+    RudderClient.getInstance(_platformData.writeKey, config: builder.build());
   }
 
   /// Captures `screen_view` event on route changes.
