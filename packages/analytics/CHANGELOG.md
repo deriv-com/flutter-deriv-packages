@@ -5,7 +5,6 @@
 ### Breaking changes:
 **Android**:
 - In app's build.gradle, replace segment_access_key with `rudderstack_access_key` and segmentAccessKey with `rudderStackAccessKey`.
-- In app's build.gradle, replace resValue with `buildConfigField` for rudderStackAccessKey in **defaultConfig**.
 
 **iOS**:
 - In Debug.xcconfig and Release.xcconfig, ensure the key's name is `RUDDER_STACK_KEY`.

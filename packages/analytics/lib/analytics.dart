@@ -28,7 +28,7 @@ class Analytics {
   /// Initialises the "Analytics".
   /// Sets the device-token to "RudderStack".
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init({@required bool isEnabled}) async {
+  Future<void> init({bool isEnabled = true}) async {
     _firebaseAnalytics = FirebaseAnalytics();
 
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
