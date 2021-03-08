@@ -10,6 +10,34 @@ analytics:
          path: packages/analytics
          ref: master
 ```
+##### 2. Add Android dependency.
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <application>
+        <activity>
+            [...]
+        </activity>
+        <meta-data
+            android:name="com.deriv.analytics.WRITE_KEY"
+            android:value="@string/rudderstack_access_key" />
+    </application>
+</manifest>
+```
+
+##### 3. Add IOS dependency.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	[...]
+    <key>com.deriv.analytics.WRITE_KEY</key>
+    <string>${RUDDER_STACK_KEY}</string>
+	[...]
+</dict>
+</plist>
+```
 
 ## How to use
 ***
@@ -56,7 +84,7 @@ Analytics.instance.setIgnoredRoutes([
 ```
 ##### 4. Sending information during user login.
 ```dart
-Analytics.instance.logLoginEvent("<USER_ID_HERE");
+Analytics.instance.logLoginEvent(deviceToken: <DEVICE_TOKEN_HERE>, userId: "<USER_ID_HERE>");
 ```
 ##### 7. Sending information during user logout.
 ```dart

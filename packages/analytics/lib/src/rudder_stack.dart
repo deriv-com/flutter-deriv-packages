@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 /// This class create a method channel to retrieve RudderStack write key for
 /// Android and iOS
 class RudderStack {
-  static const MethodChannel _channel = MethodChannel('deriv/rudderKey');
+  static const MethodChannel _channel = MethodChannel('com.deriv.analytics');
 
   String _writeKey;
 
