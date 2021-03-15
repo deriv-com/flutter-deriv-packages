@@ -31,7 +31,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
   Stream<UpdateState> mapEventToState(UpdateEvent event) async* {
     if (event is UpdateFetchEvent && state is! UpdateInProgressState) {
       yield UpdateInProgressState();
-      final UpdateInfo info = await _getUpdateInfo();
+      final UpdateInfo? info = await _getUpdateInfo();
       if (info != null) {
         yield UpdateAvailableState(info);
       } else {
@@ -40,7 +40,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
     }
   }
 
-  Future<UpdateInfo> _getUpdateInfo() async {
+  Future<UpdateInfo?> _getUpdateInfo() async {
     final dynamic rawData = await firebaseDatabaseRepository.fetchUpdateData();
 
     // checks if failed to fetch data from Firebase Database and return
@@ -77,7 +77,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
     bool isOptional,
     int buildNumber,
   ) {
-    final String rawChangelogs = rawUpdateInfo['changelogs']?.toString();
+    final String? rawChangelogs = rawUpdateInfo['changelogs']?.toString();
     final Map<String, dynamic> changelogs = rawChangelogs != null
         ? json.decode(
             rawChangelogs.toString().substring(1, rawChangelogs.length - 1),

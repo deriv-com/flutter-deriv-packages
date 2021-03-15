@@ -16,16 +16,16 @@ class UpdateChecker extends StatelessWidget {
   });
 
   /// The [child] that UpdateChecker widget will wrap.
-  final Widget child;
+  final Widget? child;
 
   /// [onAvailable] will be called when there is an update available.
-  final Function(UpdateInfo) onAvailable;
+  final Function(UpdateInfo)? onAvailable;
 
   /// [onNotAvailable] will be called when there is no update available.
-  final Function onNotAvailable;
+  final Function? onNotAvailable;
 
   /// [onStateChange] will be called when there is a change in the state.
-  final Function(UpdateState) onStateChange;
+  final Function(UpdateState)? onStateChange;
 
   @override
   Widget build(BuildContext context) {

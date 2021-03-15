@@ -14,32 +14,32 @@ void main() {
   group(
     'Update bloc',
     () {
-      MockFirebaseDatabaseRepository mockFirebaseDatabaseRepository;
-      MockPackageInfoRepository mockPackageInfoRepository;
+      MockFirebaseDatabaseRepository? mockFirebaseDatabaseRepository;
+      MockPackageInfoRepository? mockPackageInfoRepository;
 
       setUp(() {
         mockFirebaseDatabaseRepository = MockFirebaseDatabaseRepository();
         mockPackageInfoRepository = MockPackageInfoRepository();
       });
 
-      generateBlocTest(
+      void generateBlocTest(
         String description,
-        Map<String, dynamic> rawData,
+        Map<String, dynamic>? rawData,
         int buildNumber,
         Iterable<UpdateState> expect,
       ) {
         return blocTest<UpdateBloc, UpdateState>(
           description,
           build: () {
-            when(mockFirebaseDatabaseRepository.fetchUpdateData()).thenAnswer(
-              (_) async => rawData,
+            when(mockFirebaseDatabaseRepository!.fetchUpdateData()).thenAnswer(
+              () async => rawData,
             );
-            when(mockPackageInfoRepository.getAppBuildNumber()).thenAnswer(
-              (_) async => buildNumber,
+            when(mockPackageInfoRepository!.getAppBuildNumber()).thenAnswer(
+              () async => buildNumber,
             );
             return UpdateBloc(
-              firebaseDatabaseRepository: mockFirebaseDatabaseRepository,
-              packageInfoRepository: mockPackageInfoRepository,
+              firebaseDatabaseRepository: mockFirebaseDatabaseRepository!,
+              packageInfoRepository: mockPackageInfoRepository!,
             );
           },
           act: (UpdateBloc bloc) => bloc.add(UpdateFetchEvent()),
