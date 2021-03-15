@@ -3,7 +3,7 @@ import 'package:update_checker/update_checker.dart';
 const int optionalBuildNumber = 10;
 const int mandatoryBuildNumber = 5;
 
-final Map<String, dynamic> rawData = {
+final Map<String, dynamic> rawData = <String, dynamic>{
   'optional': {
     'buildnumber': optionalBuildNumber,
     'changelog': 'something new!',
