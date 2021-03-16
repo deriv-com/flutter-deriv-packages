@@ -12,6 +12,7 @@
 **General**:
 - `init()` function does not require a device token anymore.
 - `deviceToken` is sent now with `logLoginEvent()`.
+- Call the events using `Analytics()` instead of the instance `Analytics.instance`
 
 ## [0.0.1]
 

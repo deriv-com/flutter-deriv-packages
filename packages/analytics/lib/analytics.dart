@@ -10,10 +10,12 @@ import 'analytics_route_observer.dart';
 /// Class that collects and sends analytical information to "Firebase" and
 /// "RudderStack"
 class Analytics {
+  /// Initialises
+  factory Analytics() => _instance;
+
   Analytics._internal();
 
-  /// A public instance of the class [Analytics].
-  static final Analytics instance = Analytics._internal();
+  static final Analytics _instance = Analytics._internal();
 
   /// List contains ignored routes/screen names
   List<String> _ignoredRoutes = <String>[];

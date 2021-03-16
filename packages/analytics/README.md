@@ -43,14 +43,14 @@ analytics:
 ***
 ##### 1. Enabling analytics.
 ```dart
-Analytics.instance.init(
+Analytics().init(
     isEnabled: true, // set value to false for disable 'Analytics'
   );
 ```
 ##### 2. To track PageRoute transitions.
 ```dart
 MaterialApp(
-    navigatorObservers: Analytics.instance.observer == null
+    navigatorObservers: Analytics().observer == null
         ? []
         : [Analytics.instance.observer],
   );
@@ -58,24 +58,24 @@ MaterialApp(
 ##### 3. Logging to 'Segment' in different scenarios.
 ###### when app is  opened.
 ```dart
-Analytics.instance.logAppOpened();
+Analytics().logAppOpened();
 ```
 ###### when app is in background.
 ```dart
-Analytics.instance.logAppBackgrounded();
+Analytics().logAppBackgrounded();
 ```
 ###### when app is crashed.
 ```dart
-Analytics.instance.logAppCrashed();
+Analytics().logAppCrashed();
 ```
 
 ##### 4. Sending information about current screen.
 ```dart
-Analytics.instance.setCurrentScreen(screenName: "<CURRENT_SCREEN_NAME_HERE>");
+Analytics().setCurrentScreen(screenName: "<CURRENT_SCREEN_NAME_HERE>");
 ```
 ##### 4. Setting routes/screens which need to be ignored for analytics.
 ```dart
-Analytics.instance.setIgnoredRoutes([
+Analytics().setIgnoredRoutes([
       'IGNORED_SCREEN_NAME_1',
       'IGNORED_SCREEN_NAME_2',
       '.....................',
@@ -84,15 +84,15 @@ Analytics.instance.setIgnoredRoutes([
 ```
 ##### 4. Sending information during user login.
 ```dart
-Analytics.instance.logLoginEvent(deviceToken: <DEVICE_TOKEN_HERE>, userId: "<USER_ID_HERE>");
+Analytics().logLoginEvent(deviceToken: <DEVICE_TOKEN_HERE>, userId: "<USER_ID_HERE>");
 ```
 ##### 7. Sending information during user logout.
 ```dart
-Analytics.instance.logLogoutEvent();
+Analytics().logLogoutEvent();
 ```
 ##### 8. Sending information about important events to "Firebase".
 ```dart
-Analytics.instance.logToFirebase(
+Analytics().logToFirebase(
       name: "<EVENT_NAME_HERE>",
       params: <String, dynamic>{'PARAM_1': 'VALUE_1',
                                 'PARAM_1': 'VALUE_1',

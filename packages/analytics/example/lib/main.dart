@@ -5,6 +5,7 @@ void main() {
   runApp(MyApp());
 }
 
+/// Sample main widget.
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -15,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    Analytics.instance.init(isEnabled: true);
+    Analytics().init();
   }
 
   @override
@@ -49,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             color: Colors.teal[100],
           ),
           onTap: () async {
-            await Analytics.instance.logLoginEvent(
+            await Analytics().logLoginEvent(
                 deviceToken: 'xxx-xxxx-xxxx-xxxxx-xxxx-test', userId: 998);
             _showSnackBar(context, true);
           },
@@ -65,7 +66,7 @@ class _MyAppState extends State<MyApp> {
               color: Colors.blue[100],
             ),
             onTap: () async {
-              Analytics.instance.logAppOpened();
+              Analytics().logAppOpened();
               _showSnackBar(context, true);
             }),
         InkWell(
@@ -79,7 +80,7 @@ class _MyAppState extends State<MyApp> {
               color: Colors.orange[100],
             ),
             onTap: () async {
-              Analytics.instance.setCurrentScreen(
+              Analytics().setCurrentScreen(
                   screenName: 'main',
                   properties: <String, dynamic>{
                     'entry1': 'test1',
@@ -98,7 +99,7 @@ class _MyAppState extends State<MyApp> {
               color: Colors.deepOrange[100],
             ),
             onTap: () async {
-              await Analytics.instance.reset();
+              await Analytics().reset();
               _showSnackBar(context, true);
             }),
       ];
