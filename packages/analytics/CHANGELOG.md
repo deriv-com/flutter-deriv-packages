@@ -1,3 +1,6 @@
+## [0.1.1]
+- Bugs fixes
+
 ## [0.1.0]
 - Segment got replaced with rudder_sdk_flutter plugin.
 - A new event to log push token called `logPushToken()`.
