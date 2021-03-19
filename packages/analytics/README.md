@@ -10,33 +10,62 @@ analytics:
          path: packages/analytics
          ref: master
 ```
-##### 2. Add Android dependency.
-```xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    >
-    <application>
-        <activity>
-            [...]
-        </activity>
-        <meta-data
-            android:name="com.deriv.analytics.WRITE_KEY"
-            android:value="@string/rudderstack_access_key" />
-    </application>
-</manifest>
-```
 
-##### 3. Add IOS dependency.
+##### 2. Add the key to Info.plist in IOS.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	[...]
-    <key>com.deriv.analytics.WRITE_KEY</key>
+    <key>RudderStackKey</key>
     <string>${RUDDER_STACK_KEY}</string>
 	[...]
 </dict>
 </plist>
+```
+
+#### 3. Add method channel for Android
+
+```kotlin
+    companion object {
+        const val CHANNEL = "com.your.package"
+    }
+
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "getWriteKey" -> {
+                    result.success(BuildConfig.rudderStackAccessKey)
+                }
+                else -> {
+                    result.notImplemented()
+                }
+            }
+        }
+```
+
+#### 4. Add method channel for iOS
+
+```swift
+        let buildInfoChannel = FlutterMethodChannel(name: "com.your.package",
+                                                    binaryMessenger: flutterViewController.binaryMessenger)
+
+        buildInfoChannel.setMethodCallHandler({
+            [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+            DispatchQueue.main.async {
+                guard call.method == "getWriteKey" else {
+                    result(FlutterMethodNotImplemented)
+                    return
+                }
+                 if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+                            let nsDictionary: NSDictionary? = NSDictionary(contentsOfFile: path)
+                            result(nsDictionary?["RudderStackKey"] as! String)
+                 }
+            }
+
+        })
+
 ```
 
 ## How to use
