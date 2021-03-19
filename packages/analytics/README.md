@@ -8,7 +8,7 @@ analytics:
        git:
          url: git@github.com:regentmarkets/flutter-deriv-packages.git
          path: packages/analytics
-         ref: master
+         ref: <master/dev>
 ```
 
 ##### 2. Add the key to Info.plist in IOS.
@@ -68,7 +68,8 @@ analytics:
 
 ```
 
-#### 5. Get the write key and pass it to the package in `init()` function.
+#### 5. Get the write key from method channel in the Flutter app.
+- Create the method to retrieve the data from Android's and iOS method channels and pass it to the package in `init()` function.
 
 ## How to use
 ***
