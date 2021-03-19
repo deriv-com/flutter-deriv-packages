@@ -68,6 +68,8 @@ analytics:
 
 ```
 
+#### 5. Get the write key and pass it to the package in `init()` function.
+
 ## How to use
 ***
 ##### 1. Enabling analytics.
