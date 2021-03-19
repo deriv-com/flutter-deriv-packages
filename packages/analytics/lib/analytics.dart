@@ -36,7 +36,7 @@ class Analytics {
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
 
-    await _initRudderClient();
+    _initRudderClient(rudderWriteKey);
   }
 
   void _initRudderClient(String writeKey) {
