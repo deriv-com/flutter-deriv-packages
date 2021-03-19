@@ -19,11 +19,3 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  plugin:
-    platforms:
-      android:
-        package: com.deriv.analytics
-        pluginClass: AnalyticsPlugin
-      ios:
-        pluginClass: AnalyticsPlugin
-
