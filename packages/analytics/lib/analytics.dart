@@ -27,10 +27,8 @@ class Analytics {
   /// Initialises the "Analytics".
   /// Sets the device-token to "RudderStack".
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init({
-    @required bool isEnabled,
-    @required String rudderWriteKey,
-  }) async {
+  Future<void> init(
+      {@required bool isEnabled, @required String rudderWriteKey}) async {
     _firebaseAnalytics = FirebaseAnalytics();
 
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
@@ -38,13 +36,13 @@ class Analytics {
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
 
-    await _initRudderClient(rudderWriteKey);
+    await _initRudderClient();
   }
 
-  Future<void> _initRudderClient(String rudderWriteKey) async {
+  void _initRudderClient(String writeKey) {
     final RudderConfigBuilder builder = RudderConfigBuilder()
       ..withTrackLifecycleEvents(true);
-    RudderClient.getInstance(rudderWriteKey, config: builder.build());
+    RudderClient.getInstance(writeKey, config: builder.build());
   }
 
   /// Captures `screen_view` event on route changes.
