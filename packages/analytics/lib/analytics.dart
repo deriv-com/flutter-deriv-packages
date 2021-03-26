@@ -87,8 +87,9 @@ class Analytics {
   }
 
   /// Captures `logout` event when the user logs out.
-  void logLogoutEvent() {
-    _firebaseAnalytics?.logEvent(name: 'logout');
+  Future<void> logLogoutEvent() async {
+    await _firebaseAnalytics?.logEvent(name: 'logout');
+    await Segment.reset();
   }
 
   /// Sets the device-token to "Segment".
