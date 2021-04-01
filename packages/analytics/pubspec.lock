@@ -194,9 +194,11 @@ packages:
   rudder_sdk_flutter:
     dependency: "direct main"
     description:
-      name: rudder_sdk_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: remove_init_from_application_class
+      resolved-ref: "891cc18ff780264681a20210031d79dd2ffc3783"
+      url: "git@github.com:abed-binary/rudder-sdk-flutter.git"
+    source: git
     version: "1.0.0"
   sky_engine:
     dependency: transitive
