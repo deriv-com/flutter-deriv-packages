@@ -11,7 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  rudder_sdk_flutter: ^1.0.0
+  rudder_sdk_flutter:
+    git:
+      url: git@github.com:abed-binary/rudder-sdk-flutter.git
+      ref: remove_init_from_application_class
+
   firebase_analytics: ^6.1.0
 
 dev_dependencies:
