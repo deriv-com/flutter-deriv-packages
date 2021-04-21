@@ -9,6 +9,7 @@ void main() {
     List<MockOHLC> candles;
     setUpAll(() {
       candles = const <MockOHLC>[
+        MockOHLC(0, 212.61, 212.80, 213.35, 211.52),
         MockOHLC(1, 212.61, 212.80, 213.35, 211.52),
         MockOHLC(2, 213.16, 214.06, 214.22, 213.15),
         MockOHLC(3, 213.77, 213.89, 214.06, 213.02),
