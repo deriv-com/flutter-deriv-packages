@@ -1,20 +1,39 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/close_value_inidicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/high_value_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/low_value_indicator.dart';
+import 'package:deriv_technical_analysis/src/models/data_input.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
 
-/// %K also known as the Fast Stochatic Indicator.
+import '../../cached_indicator.dart';
+import '../../indicator.dart';
+import '../highest_value_indicator.dart';
+import '../lowest_value_indicator.dart';
+
+/// %K also known as the Fast Stochastic Indicator.
 /// A stochastic oscillator is a popular technical indicator for generating overbought and oversold signals.
 class FastStochasticIndicator<T extends IndicatorResult>
     extends CachedIndicator<T> {
-  /// Initiaizes a Fast Stochatic Indicator.
+  /// Initializes a Fast Stochastic Indicator from the given [IndicatorDataInput].
   FastStochasticIndicator(
     IndicatorDataInput input, {
-    CloseValueIndicator<T> indicator,
     int period = 14,
-  })  : _indicator = indicator ?? CloseValueIndicator<T>(input),
+  })  : _indicator = CloseValueIndicator<T>(input),
         _highestValueIndicator =
             HighestValueIndicator<T>(HighValueIndicator<T>(input), period),
         _lowestValueIndicator =
             LowestValueIndicator<T>(LowValueIndicator<T>(input), period),
         super(input);
+
+  /// Initializes a Fast Stochastic Indicator from the given [Indicator].
+  FastStochasticIndicator.fromIndicator(
+    Indicator<T> indicator, {
+    int period = 14,
+  })  : _indicator = indicator,
+        _highestValueIndicator = HighestValueIndicator<T>(
+            HighValueIndicator<T>(indicator.input), period),
+        _lowestValueIndicator = LowestValueIndicator<T>(
+            LowValueIndicator<T>(indicator.input), period),
+        super.fromIndicator(indicator);
 
   final HighestValueIndicator<T> _highestValueIndicator;
   final LowestValueIndicator<T> _lowestValueIndicator;

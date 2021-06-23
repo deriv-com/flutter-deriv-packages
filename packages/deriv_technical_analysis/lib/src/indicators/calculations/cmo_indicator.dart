@@ -32,7 +32,7 @@ class CMOIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     }
     return createResult(
       index: index,
-      quote: ((sumOfGains - sumOfLosses) / (sumOfGains + sumOfLosses)) * 100,
+      quote: ((sumOfGains - sumOfLosses) / (sumOfGains + sumOfLosses))/* * 100*/,
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:deriv_technical_analysis/src/helpers/functions.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/stochastic/fast_stochastic_indicator.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/stochastic/slow_stochastic_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/stochastic/smoothed_fast_stochastic_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/stochastic/smoothed_slow_stochastic_indicator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../mock_models.dart';
@@ -44,7 +46,7 @@ void main() {
 
   group('Stochastic Indicator test.', () {
     test(
-        'Fast Stochastic Indicator should caclulate the correct results from the given ticks.',
+        'Fast Stochastic Indicator should calculate the correct results from the given ticks.',
         () {
       final FastStochasticIndicator<MockResult> fastStochasticIndicator =
           FastStochasticIndicator<MockResult>(MockInput(ticks));
@@ -60,7 +62,34 @@ void main() {
     });
 
     test(
-        'Slow Stochastic Indicator should caclulate the correct results from the given ticks.',
+        'Smoothed Fast Stochastic Indicator should calculate the correct results from the given fast stochastic indicator.',
+        () {
+      final FastStochasticIndicator<MockResult> fastStochasticIndicator =
+          FastStochasticIndicator<MockResult>(MockInput(ticks));
+      final SmoothedFastStochasticIndicator<MockResult>
+          smoothedFastStochasticIndicator =
+          SmoothedFastStochasticIndicator<MockResult>(fastStochasticIndicator);
+
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(21).quote, 2),
+          81.07);
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(22).quote, 2),
+          80.55);
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(23).quote, 2),
+          72.17);
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(24).quote, 2),
+          69.25);
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(25).quote, 2),
+          65.19);
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(26).quote, 2),
+          54.23);
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(27).quote, 2),
+          47.36);
+      expect(roundDouble(smoothedFastStochasticIndicator.getValue(28).quote, 2),
+          49.36);
+    });
+
+    test(
+        'Slow Stochastic Indicator should calculate the correct results from the given ticks.',
         () {
       final SlowStochasticIndicator<MockResult> slowStochasticIndicator =
           SlowStochasticIndicator<MockResult>(
@@ -73,9 +102,33 @@ void main() {
       expect(roundDouble(slowStochasticIndicator.getValue(27).quote, 2), 47.36);
       expect(roundDouble(slowStochasticIndicator.getValue(28).quote, 2), 49.36);
     });
+    test(
+        'Smoothed Slow Stochastic Indicator should calculate the correct results from the given slow stochastic indicator.',
+        () {
+      final SlowStochasticIndicator<MockResult> slowStochasticIndicator =
+          SlowStochasticIndicator<MockResult>(
+        MockInput(ticks),
+      );
+      final SmoothedSlowStochasticIndicator<MockResult>
+          smoothedSlowStochasticIndicator =
+          SmoothedSlowStochasticIndicator<MockResult>(
+        slowStochasticIndicator,
+      );
+
+      expect(roundDouble(smoothedSlowStochasticIndicator.getValue(24).quote, 2),
+          73.99);
+      expect(roundDouble(smoothedSlowStochasticIndicator.getValue(25).quote, 2),
+          68.87);
+      expect(roundDouble(smoothedSlowStochasticIndicator.getValue(26).quote, 2),
+          62.89);
+      expect(roundDouble(smoothedSlowStochasticIndicator.getValue(27).quote, 2),
+          55.6);
+      expect(roundDouble(smoothedSlowStochasticIndicator.getValue(28).quote, 2),
+          50.32);
+    });
 
     test(
-        'Fast Stochastic Indicator copyValuesFrom and refreshValueFor should works fine.',
+        'Fast Stochastic Indicator copyValuesFrom and refreshValueFor should work fine.',
         () {
       // defining 1st indicator
       final FastStochasticIndicator<MockResult> indicator1 =
@@ -103,6 +156,29 @@ void main() {
       // Calculated result for index 28 is different because the last data is changed.
       expect(roundDouble(indicator2.getValue(28).quote, 2), 26.26);
       expect(roundDouble(indicator1.getValue(28).quote, 2), 66.91);
+    });
+
+    test(
+        'Smoothed Fast Stochastic Indicator copyValuesFrom and refreshValueFor should work fine.',
+        () {
+      // defining 1st indicator
+      final FastStochasticIndicator<MockResult> fastStochasticIndicator =
+          FastStochasticIndicator<MockResult>(MockInput(ticks));
+
+      final SmoothedFastStochasticIndicator<MockResult> indicator1 =
+          SmoothedFastStochasticIndicator<MockResult>(fastStochasticIndicator);
+
+      // Checking the values of first indicator
+      expect(roundDouble(indicator1.getValue(28).quote, 2), 49.36);
+
+      // Defining 2nd indicator with the new updated data
+      // Copying values of indicator1 into 2
+      final SmoothedFastStochasticIndicator<MockResult> indicator2 =
+          SmoothedFastStochasticIndicator<MockResult>(fastStochasticIndicator)
+            ..copyValuesFrom(indicator1);
+
+      // Their result in index 27 should be the same since we've copied the result.
+      expect(indicator2.getValue(27).quote, indicator1.getValue(27).quote);
     });
 
     test(
@@ -135,5 +211,26 @@ void main() {
       expect(roundDouble(indicator2.getValue(28).quote, 2), 35.81);
       expect(roundDouble(indicator1.getValue(28).quote, 2), 49.36);
     });
+  });
+  test(
+      'Smoothed Slow Stochastic Indicator copyValuesFrom and refreshValueFor should works fine.',
+      () {
+    // defining 1st indicator
+    final SlowStochasticIndicator<MockResult> slowStochasticIndicator =
+        SlowStochasticIndicator<MockResult>(MockInput(ticks));
+    final SmoothedSlowStochasticIndicator<MockResult> indicator1 =
+        SmoothedSlowStochasticIndicator<MockResult>(slowStochasticIndicator);
+
+    // Checking the values of first indicator
+    expect(roundDouble(indicator1.getValue(28).quote, 2), 50.32);
+
+    // Defining 2nd indicator with the new updated data
+    // Copying values of indicator1 into 2
+    final SmoothedSlowStochasticIndicator<MockResult> indicator2 =
+        SmoothedSlowStochasticIndicator<MockResult>(slowStochasticIndicator)
+          ..copyValuesFrom(indicator1);
+
+    // Their result in index 27 should be the same since we've copied the result.
+    expect(indicator2.getValue(27).quote, indicator1.getValue(27).quote);
   });
 }
