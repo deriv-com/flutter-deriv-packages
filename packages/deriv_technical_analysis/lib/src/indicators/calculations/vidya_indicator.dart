@@ -31,7 +31,8 @@ class VIDYAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
       final double prev = getValue(index - 1).quote;
       final double src = indicator.getValue(index).quote;
 
-      result = src * alpha * cmo + prev * (1 - alpha * cmo);
+      result = 0;
+      result += src * alpha * cmo + prev * (1 - alpha * cmo);
     }
     return createResult(index: index, quote: result);
   }
