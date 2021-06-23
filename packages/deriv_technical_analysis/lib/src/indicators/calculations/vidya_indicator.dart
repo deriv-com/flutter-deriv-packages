@@ -20,6 +20,7 @@ class VIDYAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
   final int period;
 
   // Pricei x F x ABS(CMOi) + VIDYAi-1 x (1 - F x ABS(CMOi))
+  // Test change
   @override
   T calculate(int index) {
     double result;
