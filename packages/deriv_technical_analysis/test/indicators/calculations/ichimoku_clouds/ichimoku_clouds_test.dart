@@ -6,9 +6,9 @@ import '../../mock_models.dart';
 
 void main() {
   group('Ichimoku Cloud Test', () {
-    List<MockTick> ticks;
-    IchimokuConversionLineIndicator<MockResult> conversionLineIndicator;
-    IchimokuBaseLineIndicator<MockResult> baseLineIndicator;
+    late List<MockTick> ticks;
+    late IchimokuConversionLineIndicator<MockResult> conversionLineIndicator;
+    late IchimokuBaseLineIndicator<MockResult> baseLineIndicator;
 
     setUpAll(() {
       ticks = const <MockOHLC>[
@@ -134,7 +134,7 @@ void main() {
               baseLineIndicator: baseLineIndicator);
 
       // define a new input Changing the last data
-      final List<MockOHLC> ticks2 = ticks.toList()
+      final List<MockTick> ticks2 = ticks.toList()
         ..removeLast()
         ..add(const MockOHLC(57, 78.386, 77.3, 78.2, 78.285));
 

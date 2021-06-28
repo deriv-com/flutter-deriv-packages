@@ -5,7 +5,7 @@ import '../../mock_models.dart';
 
 void main() {
   group('Bullish indicator test', () {
-    List<MockOHLC> candles;
+    late List<MockOHLC> candles;
 
     setUpAll(() {
       candles = const <MockOHLC>[

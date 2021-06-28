@@ -5,7 +5,7 @@ import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 import '../../mock_models.dart';
 
 void main() {
-  List<MockTick> ticks;
+  late List<MockTick> ticks;
 
   setUpAll(() {
     ticks = const <MockTick>[

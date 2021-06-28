@@ -5,7 +5,7 @@ import '../../mock_models.dart';
 
 void main() {
   group('Testing OHLC/4 indicators', () {
-    List<MockOHLC> ticks;
+    late List<MockOHLC> ticks;
 
     setUpAll(() {
       ticks = const <MockOHLC>[

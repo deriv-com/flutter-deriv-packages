@@ -9,8 +9,8 @@ class IchimokuSpanAIndicator<T extends IndicatorResult>
   /// Initializes an [IchimokuSpanAIndicator].
   IchimokuSpanAIndicator(
     IndicatorDataInput input, {
-    IchimokuConversionLineIndicator<T> conversionLineIndicator,
-    IchimokuBaseLineIndicator<T> baseLineIndicator,
+    IchimokuConversionLineIndicator<T>? conversionLineIndicator,
+    IchimokuBaseLineIndicator<T>? baseLineIndicator,
   })  : conversionLineIndicator = conversionLineIndicator ??
             IchimokuConversionLineIndicator<T>(input),
         baseLineIndicator =

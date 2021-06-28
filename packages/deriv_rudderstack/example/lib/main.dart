@@ -13,14 +13,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _enabled;
+  bool _enabled = false;
 
   @override
   void initState() {
     super.initState();
 
     DerivRudderstack().disable();
-    _enabled = false;
   }
 
   @override

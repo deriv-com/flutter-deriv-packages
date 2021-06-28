@@ -32,7 +32,8 @@ class VarianceIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     final double average = _sma.getValue(index).quote;
 
     for (int i = startIndex; i <= index; i++) {
-      final double pow = math.pow(indicator.getValue(i).quote - average, 2);
+      final double pow =
+          math.pow(indicator.getValue(i).quote - average, 2) as double;
       variance = variance + pow;
     }
 

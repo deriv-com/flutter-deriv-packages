@@ -6,7 +6,7 @@ import '../mock_models.dart';
 
 void main() {
   group('Fractal Chaos Band Indicator', () {
-    List<MockOHLC> candles;
+    late List<MockOHLC> candles;
     setUpAll(() {
       candles = const <MockOHLC>[
         MockOHLC(0, 212.61, 212.80, 213.35, 211.52),

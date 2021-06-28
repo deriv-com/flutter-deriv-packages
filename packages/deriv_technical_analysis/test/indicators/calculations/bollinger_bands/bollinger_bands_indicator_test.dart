@@ -11,7 +11,7 @@ import '../../mock_models.dart';
 
 void main() {
   group('BollingerBands Indicator', () {
-    List<MockTick> ticks;
+    late List<MockTick> ticks;
     setUpAll(() {
       ticks = const <MockTick>[
         MockTick(epoch: 1, quote: 10),

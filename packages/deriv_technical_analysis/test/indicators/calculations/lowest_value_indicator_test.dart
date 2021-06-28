@@ -6,7 +6,7 @@ import '../mock_models.dart';
 
 void main() {
   group('Lowest value indicator test', () {
-    List<MockTick> ticks;
+    late List<MockTick> ticks;
 
     setUpAll(() {
       ticks = const <MockTick>[

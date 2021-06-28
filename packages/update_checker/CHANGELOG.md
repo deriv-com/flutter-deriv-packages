@@ -1,7 +1,6 @@
-## [0.0.1]
+## [1.1.0]
 
-* Checks for Update details from Firebase
-* Updates can be optional or mandatory
+- Migrated to Null Safety
 
 ## [1.0.0]
 
@@ -10,3 +9,8 @@
 * Improved bloc logic
 * Higher-order widgets
 * Example app
+
+## [0.0.1]
+
+* Checks for Update details from Firebase
+* Updates can be optional or mandatory

@@ -1,3 +1,6 @@
+## [1.0.0]
+- Migrated the package to null safety.
+
 ## [0.1.0]
 - Segment got replaced with deriv_rudderstack plugin.
 - A new event to log push token called `logPushToken()`.
