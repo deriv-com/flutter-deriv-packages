@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/hamed/Documents/deriv_api_key_provider/android/.cxx/cmake/debug/armeabi-v7a",
-  "command": "/Users/hamed/SDK/sdk2019-02-21/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/hamed/SDK/sdk2019-02-21/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/hamed/SDK/sdk2019-02-21/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_app_token_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native_app_token.dir/Users/hamed/Documents/deriv_api_key_provider/ios/Classes/native_app_token.cpp.o -c /Users/hamed/Documents/deriv_api_key_provider/ios/Classes/native_app_token.cpp",
-  "file": "/Users/hamed/Documents/deriv_api_key_provider/ios/Classes/native_app_token.cpp"
-}
-]

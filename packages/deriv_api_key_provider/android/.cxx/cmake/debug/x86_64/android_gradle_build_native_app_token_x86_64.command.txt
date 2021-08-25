@@ -1,7 +1,0 @@
-Executable : /Users/hamed/SDK/sdk2019-02-21/cmake/3.10.2.4988404/bin/ninja
-arguments : 
--C
-/Users/hamed/Documents/deriv_api_key_provider/android/.cxx/cmake/debug/x86_64
-native_app_token
-jvmArgs : 
-
