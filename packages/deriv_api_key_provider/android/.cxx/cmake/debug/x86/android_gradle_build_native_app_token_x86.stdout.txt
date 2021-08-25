@@ -1,0 +1,7 @@
+ninja: Entering directory `/Users/hamed/Documents/deriv_api_key_provider/android/.cxx/cmake/debug/x86'
+[1/2] Building CXX object CMakeFiles/native_app_token.dir/Users/hamed/Documents/deriv_api_key_provider/ios/Classes/native_app_token.cpp.o
+/Users/hamed/Documents/deriv_api_key_provider/ios/Classes/native_app_token.cpp:5:12: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    return "DerivToken01";
+           ^
+1 warning generated.
+[2/2] Linking CXX shared library /Users/hamed/Documents/deriv_api_key_provider/example/build/deriv_api_key_provider/intermediates/cmake/debug/obj/x86/libnative_app_token.so

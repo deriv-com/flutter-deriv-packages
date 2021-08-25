@@ -1,0 +1,3 @@
+# ninja log v5
+0	51	1629873156	CMakeFiles/native_app_token.dir/Users/hamed/Documents/deriv_api_key_provider/ios/Classes/native_app_token.cpp.o	1885527b832c9b
+51	96	1629873156	/Users/hamed/Documents/deriv_api_key_provider/example/build/deriv_api_key_provider/intermediates/cmake/debug/obj/arm64-v8a/libnative_app_token.so	ee6b7dab29596d5a
