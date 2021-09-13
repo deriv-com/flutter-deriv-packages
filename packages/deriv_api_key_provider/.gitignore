@@ -8,3 +8,5 @@ build/
 
 android/.cxx
 android/external/build
+
+.env

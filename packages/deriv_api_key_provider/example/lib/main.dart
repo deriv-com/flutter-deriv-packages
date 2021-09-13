@@ -15,7 +15,27 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
           appBar: AppBar(title: const Text('App token example app')),
-          body: Center(child: Text('app token: $getAppToken')),
+          body: Center(
+            child: FutureBuilder<String>(
+              initialData: 'NO DATA',
+              future: getDerivToken('enc_key'),
+              builder: (
+                BuildContext context,
+                AsyncSnapshot<String> snapshot,
+              ) {
+                if (snapshot.hasData) {
+                  return Text('app token: ${snapshot.data}');
+                } else if (snapshot.hasError) {
+                  return Text(
+                    'error: ${snapshot.error}',
+                    textAlign: TextAlign.center,
+                  );
+                }
+
+                return const CircularProgressIndicator();
+              },
+            ),
+          ),
         ),
       );
 }
