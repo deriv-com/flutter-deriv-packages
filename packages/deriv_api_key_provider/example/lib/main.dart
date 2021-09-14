@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
           appBar: AppBar(title: const Text('App token example app')),
-          body: Center(child: Text('app token: $getAppToken')),
+          body: Center(child: Text('app token: ${getAppToken(isDebug: true)}')),
         ),
       );
 }
