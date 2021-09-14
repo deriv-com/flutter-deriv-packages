@@ -26,12 +26,15 @@ char* get_app_token(int isDebug) {
     Array array;
 
     int counter = 0;
-    char baseToken[] = { 65, 79, 101, 99, 110, 86, 107, 55, 73, 72, 68, 55, 111, 66, 112, 113 };
+
+    char seed[] = {65, 79, 101, 99, 110, 86, 107, 55, 73, 72, 68, 55, 111, 66, 112, 113};
+    int seedLength = sizeof(seed) / sizeof(seed[0]);
 
     init_array(&array);
 
-    while (counter < strlen(baseToken)) {
-        insert_array(&array, get_hash(&(baseToken[counter++])));
+
+    while (counter < seedLength) {
+        insert_array(&array, get_hash(&(seed[counter++])));
     }
 
     counter = 0;
@@ -39,8 +42,7 @@ char* get_app_token(int isDebug) {
     char* result = malloc(254 * sizeof(char));
 
     while (counter < array.size) {
-        unsigned long value = array.element[counter++];
-        strcat(result, convert_to_hex(value));
+        strcat(result, convert_to_hex(array.element[counter++]));
     }
 
     free_array(&array);
@@ -71,7 +73,7 @@ unsigned long get_hash(char* key) {
 }
 
 char* convert_to_hex(unsigned long value) {
-    char* result = malloc(17 * sizeof(unsigned long));
+    char* result = malloc(17 * sizeof(char));
 
     snprintf(result, 17, "%lX", value);
 
