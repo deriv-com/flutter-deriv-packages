@@ -1,0 +1,22 @@
+PODS:
+  - deriv_api_key_provider (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - deriv_api_key_provider (from `.symlinks/plugins/deriv_api_key_provider/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  deriv_api_key_provider:
+    :path: ".symlinks/plugins/deriv_api_key_provider/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  deriv_api_key_provider: a3d1dcffdbe664b8be255b9854cef38c66f410c2
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.1
