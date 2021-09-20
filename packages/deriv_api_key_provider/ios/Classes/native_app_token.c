@@ -1,16 +1,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* gat(int* str, const int l) {
-    char* result = (char*) malloc(sizeof(char) * l);
+#define DEVELOPMENT_APP_TOKEN "DERIV_API_TOKEN"
+#define PRODUCTION_APP_TOKEN_SEED "PRODUCTION_DERIV_API_TOKEN_SEED"
 
-    strcpy(result, "");
+char* gdat();
+char* gpat();
 
-    for (int i = 0; i < l; i++) {
-        char temp[] = {(char)(str[i] % 128), '\0'};
+char* gdat() {
+    return DEVELOPMENT_APP_TOKEN;
+}
 
-        strcat(result, temp);
-    }
-
+char* gpat() {
+    int length = strlen(PRODUCTION_APP_TOKEN_SEED);
+    char* result = (char*) malloc(sizeof(char) * length);
+    
+    strcpy(result, PRODUCTION_APP_TOKEN_SEED);
+    
     return result;
 }
