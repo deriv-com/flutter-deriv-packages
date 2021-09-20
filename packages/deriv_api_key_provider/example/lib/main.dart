@@ -19,21 +19,7 @@ class _MyAppState extends State<MyApp> {
             title: const Text('App Token Example App'),
           ),
           body: Center(
-            child: Column(
-              children: <Widget>[
-                const Spacer(),
-                Text(
-                  'Production App Token\n$productionAppToken',
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 32),
-                Text(
-                  'Development App Token\n$developmentAppToken',
-                  textAlign: TextAlign.center,
-                ),
-                const Spacer(),
-              ],
-            ),
+            child: Text('App Token\n$appToken', textAlign: TextAlign.center),
           ),
         ),
       );
