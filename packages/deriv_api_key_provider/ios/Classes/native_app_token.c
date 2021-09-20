@@ -12,6 +12,5 @@ char* gat(int* str, const int l) {
         strcat(result, temp);
     }
 
-
     return result;
 }
