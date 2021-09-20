@@ -14,8 +14,27 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
-          appBar: AppBar(title: const Text('App token example app')),
-          body: Center(child: Text('app token: ${getAppToken(isDebug: true)}')),
+          appBar: AppBar(
+            elevation: 0,
+            title: const Text('App Token Example App'),
+          ),
+          body: Center(
+            child: Column(
+              children: <Widget>[
+                const Spacer(),
+                Text(
+                  'Production App Token\n$productionAppToken',
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
+                Text(
+                  'Development App Token\n$developmentAppToken',
+                  textAlign: TextAlign.center,
+                ),
+                const Spacer(),
+              ],
+            ),
+          ),
         ),
       );
 }
