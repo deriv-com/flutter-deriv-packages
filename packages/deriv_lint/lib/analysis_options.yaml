@@ -3,6 +3,7 @@ analyzer:
     - lib/basic_api/**
     - lib/generated/**
     - test/**
+    - /**.g.dart
 
   strong-mode:
     implicit-dynamic: false
