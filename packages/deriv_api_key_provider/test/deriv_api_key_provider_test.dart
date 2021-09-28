@@ -5,6 +5,10 @@ import 'package:deriv_api_key_provider/native_app_token.dart';
 void main() {
   test(
     'test production api token getter.',
-    () => expect(appToken, 'PRODUCTION_DERIV_API_TOKEN_SEED'),
+    () async {
+      final String token = await appToken;
+
+      expect(token, 'PRODUCTION_DERIV_API_TOKEN_SEED');
+    },
   );
 }

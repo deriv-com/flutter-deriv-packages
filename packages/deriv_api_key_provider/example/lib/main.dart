@@ -19,7 +19,19 @@ class _MyAppState extends State<MyApp> {
             title: const Text('App Token Example App'),
           ),
           body: Center(
-            child: Text('App Token\n$appToken', textAlign: TextAlign.center),
+            child: FutureBuilder<String>(
+              future: appToken,
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    'App Token\n${snapshot.data}',
+                    textAlign: TextAlign.center,
+                  );
+                }
+
+                return const CircularProgressIndicator();
+              },
+            ),
           ),
         ),
       );
