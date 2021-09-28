@@ -43,10 +43,10 @@ Future<DynamicLibrary> _getAndroidDynamicLibrary(String libraryName) async {
       return DynamicLibrary.open('$nativeLibraryDirectory/$libraryName');
     } catch (_) {
       final Uint8List appIdAsBytes =
-          File('/proc/self/cmdline').readAsBytesSync();
-      final int endOfAppId = math.max(appIdAsBytes.indexOf(0), 0);
-      final String appId =
-          String.fromCharCodes(appIdAsBytes.sublist(0, endOfAppId));
+          await File('/proc/self/cmdline').readAsBytes();
+      final String appId = String.fromCharCodes(
+        appIdAsBytes.sublist(0, math.max(appIdAsBytes.indexOf(0), 0)),
+      );
 
       return DynamicLibrary.open('/data/data/$appId/lib/$libraryName');
     }
