@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_catches_without_on_clauses
+
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:math' as math;
@@ -6,32 +8,40 @@ import 'dart:typed_data';
 import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
 
-const MethodChannel _channel = MethodChannel('deriv_api_key_provider');
+const String _libraryName = 'libnative_app_token.so';
+
+const String _getAppTokenMethodName = 'getAppToken';
+const String _getNativeLibraryDirectoryMethodName = 'getNativeLibraryDirectory';
+
+const MethodChannel _methodChannel = MethodChannel('deriv_api_key_provider');
 
 /// Gets app token.
-Future<String> get appToken async => (await _getAppToken)().toDartString();
+Future<String> get appToken async => (await _getAppToken())().toDartString();
 
 Future<String?> _getNativeLibraryDirectory() async =>
-    _channel.invokeMethod<String>('getNativeLibraryDirectory');
+    _methodChannel.invokeMethod<String>(_getNativeLibraryDirectoryMethodName);
 
-Future<DynamicLibrary> get _nativeAppTokenLibrary async => Platform.isAndroid
-    ? await _getAndroidDynamicLibrary('libnative_app_token.so')
+Future<DynamicLibrary> _getNativeAppTokenLibrary() async => Platform.isAndroid
+    ? await _getAndroidDynamicLibrary(_libraryName)
     : DynamicLibrary.process();
 
-Future<Pointer<Utf8> Function()> get _getAppToken async =>
-    (await _nativeAppTokenLibrary)
-        .lookup<NativeFunction<Pointer<Utf8> Function()>>('gat')
+Future<Pointer<Utf8> Function()> _getAppToken() async =>
+    (await _getNativeAppTokenLibrary())
+        .lookup<NativeFunction<Pointer<Utf8> Function()>>(
+          _getAppTokenMethodName,
+        )
         .asFunction();
 
 Future<DynamicLibrary> _getAndroidDynamicLibrary(String libraryName) async {
   try {
     return DynamicLibrary.open(libraryName);
-  } on Exception catch (_) {
+  } catch (_) {
     try {
-      return DynamicLibrary.open(
-        '${(await _getNativeLibraryDirectory())!}/$libraryName',
-      );
-    } on Exception catch (_) {
+      final String nativeLibraryDirectory =
+          (await _getNativeLibraryDirectory())!;
+
+      return DynamicLibrary.open('$nativeLibraryDirectory/$libraryName');
+    } catch (_) {
       final Uint8List appIdAsBytes =
           File('/proc/self/cmdline').readAsBytesSync();
       final int endOfAppId = math.max(appIdAsBytes.indexOf(0), 0);

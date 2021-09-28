@@ -8,7 +8,7 @@ const int ATS[] =  {57, 15, 38, 11, 99, 55, 53, 121, 5, 60, 104, 124, 78, 54, 11
 unsigned short qtf(const char);
 unsigned short jhf(const char);
 unsigned short shf(const char);
-char* gat();
+char* getAppToken();
 
 unsigned short qtf(const char c) {
     const unsigned short s = 0x0020;
@@ -47,7 +47,7 @@ unsigned short shf(const char c) {
     return r;
 }
 
-char* gat() {
+char* getAppToken() {
     const int bs = 0x0008;
     const int m = 0x0064;
 

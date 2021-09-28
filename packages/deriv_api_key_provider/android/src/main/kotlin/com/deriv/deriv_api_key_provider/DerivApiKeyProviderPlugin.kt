@@ -1,7 +1,7 @@
 package com.deriv.deriv_api_key_provider
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
+import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 
 import androidx.annotation.NonNull
