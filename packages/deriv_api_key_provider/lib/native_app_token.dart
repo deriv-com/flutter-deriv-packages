@@ -37,8 +37,7 @@ Future<DynamicLibrary> _getAndroidDynamicLibrary(String libraryName) async {
     return DynamicLibrary.open(libraryName);
   } catch (_) {
     try {
-      final String nativeLibraryDirectory =
-          (await _getNativeLibraryDirectory())!;
+      final String? nativeLibraryDirectory = await _getNativeLibraryDirectory();
 
       return DynamicLibrary.open('$nativeLibraryDirectory/$libraryName');
     } catch (_) {
