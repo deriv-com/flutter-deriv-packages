@@ -4,15 +4,16 @@ version: 1.0.0
 homepage: https://deriv.com/
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
+
+publish_to: "none"
 
 dependencies:
-  # Change to dev when merged.
   deriv_rudderstack:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_rudderstack
-      ref: 537ab2c4acc2421c29469c16ce278ae467682e48
+      ref: dev
 
   firebase_analytics: ^8.1.2
 
