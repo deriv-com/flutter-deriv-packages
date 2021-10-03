@@ -22,7 +22,6 @@ const UpdateInfo updateInfoOptional = UpdateInfo(
   buildNumber: optionalBuildNumber,
   isOptional: true,
   changelog: 'something new!',
-  changelogs: null,
   url: 'https://app.deriv.com/dl',
 );
 
@@ -30,6 +29,5 @@ const UpdateInfo updateInfoMandatory = UpdateInfo(
   buildNumber: mandatoryBuildNumber,
   isOptional: false,
   changelog: 'something new!',
-  changelogs: null,
   url: 'https://app.deriv.com/dl',
 );
