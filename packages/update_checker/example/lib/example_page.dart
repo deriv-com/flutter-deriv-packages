@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:update_checker/update_checker.dart';
 
 import './update_bloc_page.dart';
 import './update_checker_page.dart';

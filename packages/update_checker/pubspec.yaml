@@ -6,14 +6,14 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  bloc: ^7.0.0
-  equatable: ^2.0.0
-  firebase_database: ^7.0.0
+  bloc: ^7.2.1
+  equatable: ^2.0.3
+  firebase_database: ^8.0.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.0.0
-  mockito: ^5.0.5
-  package_info: ^2.0.0
+  flutter_bloc: ^7.3.0
+  mockito: ^5.0.16
+  package_info: ^2.0.2
 
 dev_dependencies:
   bloc_test: any
