@@ -22,7 +22,7 @@ class WMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     double value = 0;
     if (index - period < 0) {
       for (int i = index + 1; i > 0; i--) {
-        value = value + (i * (indicator.getValue(i - 1).quote));
+        value = value + (i * indicator.getValue(i - 1).quote);
       }
 
       return createResult(
@@ -34,7 +34,7 @@ class WMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     int actualIndex = index;
 
     for (int i = period; i > 0; i--) {
-      value = value + (i * (indicator.getValue(actualIndex).quote));
+      value = value + (i * indicator.getValue(actualIndex).quote);
       actualIndex--;
     }
 

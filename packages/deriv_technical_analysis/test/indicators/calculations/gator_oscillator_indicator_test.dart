@@ -9,7 +9,7 @@ import '../mock_models.dart';
 
 void main() {
   group('Gator Oscillator', () {
-    List<MockTick> ticks;
+    late List<MockTick> ticks;
     setUpAll(() {
       ticks = const <MockTick>[
         MockOHLC(1, 79.537, 79.532, 213.35, 211.52),
@@ -47,9 +47,9 @@ void main() {
           GatorOscillatorIndicatorTopBar<MockResult>(medianPrice);
 
       expect(roundDouble(gatorOscillatorIndicatorTopBar.getValue(20).quote, 4),
-          0.7184);
+          0.5883);
       expect(roundDouble(gatorOscillatorIndicatorTopBar.getValue(21).quote, 4),
-          1.0299);
+          0.5634);
     });
 
     test('Gator Oscillator Bottom bar Indicator calculates the correct result',
@@ -63,10 +63,10 @@ void main() {
 
       expect(
           roundDouble(gatorOscillatorIndicatorBottomBar.getValue(20).quote, 4),
-          -1.1343);
+          -0.3424);
       expect(
           roundDouble(gatorOscillatorIndicatorBottomBar.getValue(21).quote, 4),
-          -0.7144);
+          -0.349);
     });
   });
 }

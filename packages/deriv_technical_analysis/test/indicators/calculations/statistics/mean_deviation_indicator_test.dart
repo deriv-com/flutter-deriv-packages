@@ -6,7 +6,7 @@ import '../../mock_models.dart';
 
 void main() {
   group('Mean Deviation indicator', () {
-    List<MockTick> ticks;
+    late List<MockTick> ticks;
 
     setUp(() {
       ticks = const <MockTick>[

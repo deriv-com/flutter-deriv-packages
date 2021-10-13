@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer' as logger;
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// DerivRudderstack plugin handles initialising and setting up RudderStack
@@ -12,7 +11,7 @@ class DerivRudderstack {
   /// Call `identify` to track the users across the application installation.
   /// It requires [userId] and an optional map of [traits] for extra details.
   Future<bool> identify(
-      {@required String userId, Map<String, dynamic> traits}) async {
+      {required String userId, Map<String, dynamic>? traits}) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('identify', <String, dynamic>{
@@ -31,7 +30,7 @@ class DerivRudderstack {
   /// Call `track` to record the users' activity. It requires the [eventName]
   /// and an optional [properties] map for extra details.
   Future<bool> track(
-      {@required String eventName, Map<String, dynamic> properties}) async {
+      {required String eventName, Map<String, dynamic>? properties}) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('track', <String, dynamic>{
@@ -50,7 +49,7 @@ class DerivRudderstack {
   /// on the mobile device. It requires [screenName] an optional
   /// [properties] map for extra details.
   Future<bool> screen(
-      {@required String screenName, Map<String, dynamic> properties}) async {
+      {required String screenName, Map<String, dynamic>? properties}) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('screen', <String, dynamic>{
@@ -69,7 +68,7 @@ class DerivRudderstack {
   /// The `group` call associates a user to a specific organization. It requires
   /// [groupId] and an optional [traits] map for extra details.
   Future<bool> group(
-      {@required String groupId, Map<String, dynamic> traits}) async {
+      {required String groupId, Map<String, dynamic>? traits}) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('group', <String, dynamic>{
@@ -87,7 +86,7 @@ class DerivRudderstack {
 
   /// The `alias` call associates the user with a new identification. It requires
   /// [alias] value.
-  Future<bool> alias({@required String alias}) async {
+  Future<bool> alias({required String alias}) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('alias', <String, dynamic>{
@@ -140,7 +139,7 @@ class DerivRudderstack {
 
   /// Call `setContext` to support sending push notification to the destinations
   /// that support Push Notification. It requires [token] value.
-  Future<bool> setContext({@required String token}) async {
+  Future<bool> setContext({required String token}) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('setContext', <String, dynamic>{

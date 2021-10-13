@@ -41,8 +41,8 @@ class ZLEMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     return createResult(
       index: index,
       quote: (_k *
-              ((2 * (indicator.getValue(index).quote)) -
-                  (indicator.getValue(index - _lag).quote))) +
+              ((2 * indicator.getValue(index).quote) -
+                  indicator.getValue(index - _lag).quote)) +
           ((1 - _k) * prevZlema),
     );
   }

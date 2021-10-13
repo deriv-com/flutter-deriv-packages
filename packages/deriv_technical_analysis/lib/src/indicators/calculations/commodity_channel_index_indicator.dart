@@ -20,7 +20,7 @@ class CommodityChannelIndexIndicator<T extends IndicatorResult>
     IndicatorDataInput input,
     this.period,
     HLC3Indicator<T> typicalPriceIndicator, {
-    this.factor,
+    required this.factor,
   })  : _typicalPriceIndicator = typicalPriceIndicator,
         _smaIndicator = SMAIndicator<T>(typicalPriceIndicator, period),
         _meanDeviationIndicator =

@@ -11,8 +11,6 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
-  UpdateState state;
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(

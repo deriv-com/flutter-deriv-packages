@@ -40,7 +40,7 @@ class ParabolicSarIndicator<T extends IndicatorResult>
 
   /// `true` if uptrend, `false` if downtrend.
   @protected
-  bool isUptrend;
+  late bool isUptrend;
 
   /// index of start bar of the current trend
   @protected
@@ -51,11 +51,11 @@ class ParabolicSarIndicator<T extends IndicatorResult>
 
   /// the extreme point of the current calculation
   @protected
-  double currentExtremePoint;
+  late double currentExtremePoint;
 
   /// depending on trend the maximum or minimum extreme point value of trend
   @protected
-  double minMaxExtremePoint;
+  late double minMaxExtremePoint;
 
   @override
   T calculate(int index) {

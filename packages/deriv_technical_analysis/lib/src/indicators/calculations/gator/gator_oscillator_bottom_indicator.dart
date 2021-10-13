@@ -44,14 +44,14 @@ class GatorOscillatorIndicatorBottomBar<T extends IndicatorResult>
 
   @override
   T calculate(int index) {
-    final int maxOffset = max(lipsOffset, teethOffset);
+    final int offsetDiff = (lipsOffset - teethOffset).abs();
 
-    if (index < maxOffset) {
+    if (index < offsetDiff) {
       return createResult(index: index, quote: double.nan);
     }
 
-    final T lipsIndicatorValue = lipsIndicator.getValue(index - lipsOffset);
-    final T teethIndicatorValue = teethIndicator.getValue(index - teethOffset);
+    final T lipsIndicatorValue = lipsIndicator.getValue(index);
+    final T teethIndicatorValue = teethIndicator.getValue(index - offsetDiff);
 
     // GatorBottomBar = – (Absolute value of (Teeth – Lips))
     final double quote =

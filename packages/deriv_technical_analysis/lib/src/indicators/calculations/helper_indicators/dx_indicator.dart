@@ -4,21 +4,31 @@ import 'package:deriv_technical_analysis/src/indicators/calculations/adx/positiv
 
 /// Directional movement line Indicator.
 class DXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
-  /// Initializes a Directional movement line Indicator.
+  /// Initializes a Directional movement line Indicator from given [input].
   DXIndicator(
     IndicatorDataInput input, {
     int period = 14,
-  })  : _positiveDIIndicator = PositiveDIIndicator<T>(input, period: period),
-        _negativeDIIndicator = NegativeDIIndicator<T>(input, period: period),
-        super(input);
+  }) : this.fromIndicator(
+          PositiveDIIndicator<T>(input, period: period),
+          NegativeDIIndicator<T>(input, period: period),
+        );
 
-  final PositiveDIIndicator<T> _positiveDIIndicator;
-  final NegativeDIIndicator<T> _negativeDIIndicator;
+  /// Initializes a Directional movement line Indicator from given [PositiveDIIndicator] and [NegativeDIIndicator].
+  DXIndicator.fromIndicator(
+    this.positiveDIIndicator,
+    this.negativeDIIndicator,
+  ) : super.fromIndicator(positiveDIIndicator);
+
+  /// The positive ADX DI indicator to calculate DXIndicator from
+  final PositiveDIIndicator<T> positiveDIIndicator;
+
+  /// The negative ADX DI indicator to calculate DXIndicator from
+  final NegativeDIIndicator<T> negativeDIIndicator;
 
   @override
   T calculate(int index) {
-    final double pdiValue = _positiveDIIndicator.getValue(index).quote;
-    final double ndiValue = _negativeDIIndicator.getValue(index).quote;
+    final double pdiValue = positiveDIIndicator.getValue(index).quote;
+    final double ndiValue = negativeDIIndicator.getValue(index).quote;
     final double sumDI = pdiValue + ndiValue;
     final double diffDI = (pdiValue - ndiValue).abs();
     if (sumDI == 0) {

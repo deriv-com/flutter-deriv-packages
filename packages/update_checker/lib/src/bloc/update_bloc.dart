@@ -31,7 +31,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
   Stream<UpdateState> mapEventToState(UpdateEvent event) async* {
     if (event is UpdateFetchEvent && state is! UpdateInProgressState) {
       yield UpdateInProgressState();
-      final UpdateInfo info = await _getUpdateInfo();
+      final UpdateInfo? info = await _getUpdateInfo();
       if (info != null) {
         yield UpdateAvailableState(info);
       } else {
@@ -40,7 +40,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
     }
   }
 
-  Future<UpdateInfo> _getUpdateInfo() async {
+  Future<UpdateInfo?> _getUpdateInfo() async {
     final dynamic rawData = await firebaseDatabaseRepository.fetchUpdateData();
 
     // checks if failed to fetch data from Firebase Database and return
@@ -49,13 +49,13 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
     }
 
     // checks if failed to get app build number and return
-    final int appBuildNumber = await packageInfoRepository.getAppBuildNumber();
+    final num appBuildNumber = await packageInfoRepository.getAppBuildNumber();
     if (appBuildNumber <= 0) {
       return null;
     }
 
-    final int optionalBuildNumber = rawData['optional']['buildnumber'];
-    final int mandatoryBuildNumber = rawData['mandatory']['buildnumber'];
+    final num optionalBuildNumber = rawData['optional']['buildnumber'];
+    final num mandatoryBuildNumber = rawData['mandatory']['buildnumber'];
     final bool isMandatory = appBuildNumber < mandatoryBuildNumber;
     final bool isOptional = appBuildNumber < optionalBuildNumber &&
         appBuildNumber >= mandatoryBuildNumber;
@@ -75,10 +75,10 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
   UpdateInfo _createUpdate(
     dynamic rawUpdateInfo,
     bool isOptional,
-    int buildNumber,
+    num buildNumber,
   ) {
-    final String rawChangelogs = rawUpdateInfo['changelogs']?.toString();
-    final Map<String, dynamic> changelogs = rawChangelogs != null
+    final String? rawChangelogs = rawUpdateInfo['changelogs']?.toString();
+    final Map<String, dynamic>? changelogs = rawChangelogs != null
         ? json.decode(
             rawChangelogs.toString().substring(1, rawChangelogs.length - 1),
           )

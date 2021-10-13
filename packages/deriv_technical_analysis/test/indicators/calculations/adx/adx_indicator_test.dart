@@ -1,11 +1,14 @@
 import 'package:deriv_technical_analysis/src/helpers/functions.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/adx/adx_histogram_indicator.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 
 import '../../mock_models.dart';
 
 void main() {
-  List<MockTick> ticks;
+  late List<MockTick> ticks;
+  late PositiveDIIndicator<MockResult> positiveDIIndicator;
+  late NegativeDIIndicator<MockResult> negativeDIIndicator;
 
   setUpAll(() {
     ticks = const <MockTick>[
@@ -40,11 +43,13 @@ void main() {
       MockOHLC(28, 45.44, 45.44, 45.71, 45.01),
       MockOHLC(29, 44.76, 44.76, 45.35, 44.46),
     ];
+    positiveDIIndicator = PositiveDIIndicator<MockResult>(MockInput(ticks));
+    negativeDIIndicator = NegativeDIIndicator<MockResult>(MockInput(ticks));
   });
 
   group('adx Indicator tests.', () {
     test(
-        'adx indicator should caluclatethe correct results from the given ticks',
+        'adx indicator should calculate the correct results from the given ticks',
         () {
       final ADXIndicator<MockResult> adxIndicator =
           ADXIndicator<MockResult>(MockInput(ticks))..calculateValues();
@@ -54,25 +59,31 @@ void main() {
     });
 
     test(
-        'Negative DI Indicator shoud calculate the correct resutls from the given ticks',
+        'Negative DI Indicator should calculate the correct results from the given ticks',
         () {
-      final NegativeDIIndicator<MockResult> negativeDIIndicator =
-          NegativeDIIndicator<MockResult>(MockInput(ticks));
-
       expect(roundDouble(negativeDIIndicator.getValue(14).quote, 2), 14.22);
       expect(roundDouble(negativeDIIndicator.getValue(15).quote, 2), 14.46);
       expect(roundDouble(negativeDIIndicator.getValue(29).quote, 2), 29.12);
     });
 
     test(
-        'Positive DI Indicator shoud calculate the correct resutls from the given ticks',
+        'Positive DI Indicator should calculate the correct results from the given ticks',
         () {
-      final PositiveDIIndicator<MockResult> positiveDIIndicator =
-          PositiveDIIndicator<MockResult>(MockInput(ticks));
-
       expect(roundDouble(positiveDIIndicator.getValue(14).quote, 2), 17.03);
       expect(roundDouble(positiveDIIndicator.getValue(15).quote, 2), 15.45);
       expect(roundDouble(positiveDIIndicator.getValue(29).quote, 2), 16.33);
+    });
+
+    test(
+        'ADX Histogram Indicator should calculate the correct results from the given indicators',
+        () {
+      final ADXHistogramIndicator<MockResult> adxHistogramIndicator =
+          ADXHistogramIndicator<MockResult>.fromIndicator(
+              positiveDIIndicator, negativeDIIndicator);
+
+      expect(roundDouble(adxHistogramIndicator.getValue(14).quote, 2), 2.81);
+      expect(roundDouble(adxHistogramIndicator.getValue(15).quote, 2), 0.99);
+      expect(roundDouble(adxHistogramIndicator.getValue(29).quote, 2), -12.79);
     });
   });
 }

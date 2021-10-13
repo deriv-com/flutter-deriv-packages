@@ -1,3 +1,5 @@
-## [1.0.0]
+## [2.0.0]
+- Migrated to null safety
 
-* This is the first version of Deriv theme package
+## [1.0.0]
+- This is the first version of Deriv theme package

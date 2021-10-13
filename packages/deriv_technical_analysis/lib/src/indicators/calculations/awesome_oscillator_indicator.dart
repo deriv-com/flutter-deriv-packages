@@ -1,18 +1,25 @@
+import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 import 'package:deriv_technical_analysis/src/models/models.dart';
 
 import '../cached_indicator.dart';
-import '../indicator.dart';
 import 'sma_indicator.dart';
 
 ///Awesome Oscillator Indicator
 class AwesomeOscillatorIndicator<T extends IndicatorResult>
     extends CachedIndicator<T> {
   /// Initializes
-  AwesomeOscillatorIndicator(Indicator<T> indicator,
-      {int smaPeriodOne = 5, int smaPeriodTwo = 34})
-      : _smaIndicatorOne = SMAIndicator<T>(indicator, smaPeriodOne),
-        _smaIndicatorTwo = SMAIndicator<T>(indicator, smaPeriodTwo),
-        super.fromIndicator(indicator);
+  factory AwesomeOscillatorIndicator(IndicatorDataInput input,
+      {int smaPeriodOne = 5, int smaPeriodTwo = 34}) {
+    final HL2Indicator<T> hl2indicator = HL2Indicator<T>(input);
+    return AwesomeOscillatorIndicator<T>._(
+        input,
+        SMAIndicator<T>(hl2indicator, smaPeriodOne),
+        SMAIndicator<T>(hl2indicator, smaPeriodTwo));
+  }
+
+  AwesomeOscillatorIndicator._(
+      IndicatorDataInput input, this._smaIndicatorOne, this._smaIndicatorTwo)
+      : super(input);
 
   ///34-period simple moving average
   final SMAIndicator<T> _smaIndicatorOne;

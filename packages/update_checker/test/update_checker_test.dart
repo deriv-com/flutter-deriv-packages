@@ -14,21 +14,20 @@ void main() {
   group(
     'Update bloc',
     () {
-      MockFirebaseDatabaseRepository mockFirebaseDatabaseRepository;
-      MockPackageInfoRepository mockPackageInfoRepository;
+      late MockFirebaseDatabaseRepository mockFirebaseDatabaseRepository;
+      late MockPackageInfoRepository mockPackageInfoRepository;
 
       setUp(() {
         mockFirebaseDatabaseRepository = MockFirebaseDatabaseRepository();
         mockPackageInfoRepository = MockPackageInfoRepository();
       });
 
-      generateBlocTest(
+      void generateBlocTest(
         String description,
-        Map<String, dynamic> rawData,
+        Map<String, dynamic>? rawData,
         int buildNumber,
         Iterable<dynamic> expect,
-      ) {
-        return blocTest(
+      ) => blocTest<UpdateBloc, dynamic>(
           description,
           build: () {
             when(mockFirebaseDatabaseRepository.fetchUpdateData()).thenAnswer(
@@ -42,9 +41,8 @@ void main() {
             );
           },
           act: (UpdateBloc bloc) => bloc.add(UpdateFetchEvent()),
-          expect: expect,
+          expect: () => expect,
         );
-      }
 
       test(
         'should emit UpdateInitialState as initial state',
@@ -56,7 +54,7 @@ void main() {
         'there is an error with fetching the update information',
         null,
         1,
-        [
+        <dynamic>[
           UpdateInProgressState(),
           UpdateNotAvailableState(),
         ],
@@ -67,7 +65,7 @@ void main() {
         'there is an error with getting the running app build number',
         mock.rawData,
         -1,
-        [
+        <dynamic>[
           UpdateInProgressState(),
           UpdateNotAvailableState(),
         ],
@@ -78,7 +76,7 @@ void main() {
         'running app build number is equal to update build number',
         mock.rawData,
         mock.optionalBuildNumber,
-        [
+        <dynamic>[
           UpdateInProgressState(),
           UpdateNotAvailableState(),
         ],
@@ -89,7 +87,7 @@ void main() {
         'running app build number is higher than update build number',
         mock.rawData,
         mock.optionalBuildNumber + 1,
-        [
+        <dynamic>[
           UpdateInProgressState(),
           UpdateNotAvailableState(),
         ],
@@ -100,7 +98,7 @@ void main() {
         'running app build number is lower than update build number',
         mock.rawData,
         mock.optionalBuildNumber - 1,
-        [
+        <dynamic>[
           UpdateInProgressState(),
           UpdateAvailableState(mock.updateInfoOptional),
         ],
@@ -112,7 +110,7 @@ void main() {
         'and higher than update mandatory build number',
         mock.rawData,
         mock.optionalBuildNumber - 1,
-        [
+        <dynamic>[
           UpdateInProgressState(),
           UpdateAvailableState(mock.updateInfoOptional),
         ],
@@ -123,7 +121,7 @@ void main() {
         'running app build number is lower than update mandatory build number',
         mock.rawData,
         mock.mandatoryBuildNumber - 1,
-        [
+        <dynamic>[
           UpdateInProgressState(),
           UpdateAvailableState(mock.updateInfoMandatory),
         ],

@@ -1,5 +1,4 @@
 import 'package:deriv_technical_analysis/src/helpers/functions.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/hl2_indicator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:deriv_technical_analysis/src/indicators/calculations/awesome_oscillator_indicator.dart';
@@ -8,7 +7,7 @@ import '../mock_models.dart';
 
 void main() {
   group('Awesome Oscillator Indicator', () {
-    List<MockOHLC> ticks;
+    late List<MockOHLC> ticks;
 
     setUpAll(() {
       ticks = const <MockOHLC>[
@@ -23,8 +22,7 @@ void main() {
     test('AwesomeOscillator calculates the correct result from HL2Indicator.',
         () {
       final AwesomeOscillatorIndicator<MockResult> _aoIndicator =
-          AwesomeOscillatorIndicator<MockResult>(
-              HL2Indicator<MockResult>(MockInput(ticks)));
+          AwesomeOscillatorIndicator<MockResult>(MockInput(ticks));
 
       expect(_aoIndicator.getValue(0).quote, 0.0);
       expect(_aoIndicator.getValue(1).quote, 0.0);
@@ -35,10 +33,8 @@ void main() {
 
     test('Calculating using custom Period for SMA', () {
       final AwesomeOscillatorIndicator<MockResult> _aoIndicator =
-          AwesomeOscillatorIndicator<MockResult>(
-              HL2Indicator<MockResult>(MockInput(ticks)),
-              smaPeriodOne: 2,
-              smaPeriodTwo: 3);
+          AwesomeOscillatorIndicator<MockResult>(MockInput(ticks),
+              smaPeriodOne: 2, smaPeriodTwo: 3);
 
       expect(_aoIndicator.getValue(0).quote, 0.0);
       expect(_aoIndicator.getValue(1).quote, 0.0);
@@ -52,10 +48,8 @@ void main() {
         () {
       // defining 1st indicator
       final AwesomeOscillatorIndicator<MockResult> _aoIndicator1 =
-          AwesomeOscillatorIndicator<MockResult>(
-              HL2Indicator<MockResult>(MockInput(ticks)),
-              smaPeriodOne: 2,
-              smaPeriodTwo: 3);
+          AwesomeOscillatorIndicator<MockResult>(MockInput(ticks),
+              smaPeriodOne: 2, smaPeriodTwo: 3);
 
       // define a new input Changing the last data
       final List<MockOHLC> ticks2 = ticks.toList()
@@ -67,10 +61,8 @@ void main() {
       // Copying values of indicator1 into 2
       // Refreshing last value because its candle is changed
       final AwesomeOscillatorIndicator<MockResult> _aoIndicator2 =
-          AwesomeOscillatorIndicator<MockResult>(
-              HL2Indicator<MockResult>(MockInput(ticks2)),
-              smaPeriodOne: 2,
-              smaPeriodTwo: 3)
+          AwesomeOscillatorIndicator<MockResult>(MockInput(ticks2),
+              smaPeriodOne: 2, smaPeriodTwo: 3)
             ..copyValuesFrom(_aoIndicator1)
             ..refreshValueFor(4);
 

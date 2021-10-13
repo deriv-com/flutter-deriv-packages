@@ -1,17 +1,27 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 
-// TODO(mohammadamir-fs): test macd visually.
-/// Moving Average Convergance Divergence Indicator.
+/// Moving Average Convergence Divergence Indicator.
 class MACDIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
-  /// Creates a  Moving average convergance divergance indicator from a given indicator,
-  /// with short term ema set to `12` periods and long term ema set to `26` periods as default.
+  /// Creates a  Moving average convergence divergence indicator from the given [input]],
+  /// with short term ema set to `12` periods([fastMAPeriod]) and long term ema set to `26` periods([slowMAPeriod]) as default.
+  MACDIndicator(
+    IndicatorDataInput input, {
+    int fastMAPeriod = 12,
+    int slowMAPeriod = 26,
+  }) : this.fromIndicator(
+          CloseValueIndicator<T>(input),
+          fastMAPeriod: fastMAPeriod,
+          slowMAPeriod: slowMAPeriod,
+        );
+
+  /// Creates a  Moving average convergence divergence indicator from a given [indicator],
+  /// with short term ema set to `12` periods([fastMAPeriod]) and long term ema set to `26` periods([slowMAPeriod]) as default.
   MACDIndicator.fromIndicator(
     Indicator<T> indicator, {
-    int shortBarcount = 12,
-    int longBarCount = 26,
-  })  : assert(shortBarcount < longBarCount),
-        _shortTermEma = EMAIndicator<T>(indicator, shortBarcount),
-        _longTermEma = EMAIndicator<T>(indicator, longBarCount),
+    int fastMAPeriod = 12,
+    int slowMAPeriod = 26,
+  })  : _shortTermEma = EMAIndicator<T>(indicator, fastMAPeriod),
+        _longTermEma = EMAIndicator<T>(indicator, slowMAPeriod),
         super.fromIndicator(indicator);
 
   final EMAIndicator<T> _shortTermEma;
