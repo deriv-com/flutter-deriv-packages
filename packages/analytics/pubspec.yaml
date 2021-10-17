@@ -13,7 +13,7 @@ dependencies:
     git:
       url: git@github.com:emad-fs/flutter-deriv-packages.git
       path: packages/deriv_rudderstack
-      ref: dev
+      ref: update_deriv_rudderstack_native_library
 
   firebase_analytics: ^8.1.2
 
