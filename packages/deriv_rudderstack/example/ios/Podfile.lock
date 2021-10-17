@@ -3,7 +3,7 @@ PODS:
     - Flutter
     - Rudder
   - Flutter (1.0.0)
-  - Rudder (1.0.11)
+  - Rudder (1.0.24)
 
 DEPENDENCIES:
   - deriv_rudderstack (from `.symlinks/plugins/deriv_rudderstack/ios`)
@@ -22,9 +22,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   deriv_rudderstack: 44d661275ed9e7dc7bc160651111408814e27bd1
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  Rudder: ef340f877a39653f19e69124dffae12fde3f881b
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Rudder: 941cdf1a5c26fccf1fa92e9aac1b6685ae1d19f9
 
 PODFILE CHECKSUM: 10ad9430ce285540acaeec6d0be04eebce76fafb
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
