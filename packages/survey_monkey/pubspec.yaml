@@ -1,7 +1,6 @@
 name: survey_monkey
 description: SurveyMonkey Flutter plugin.
 version: 0.0.1
-homepage: https://deriv.com/
 author: Deriv
 homepage: https://deriv.com/
 publish_to: "none"
