@@ -47,9 +47,9 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/deriv_rudderstack"
-      ref: "emad/update_specific_package_only"
-      resolved-ref: "2b3ab9ca95c5293cc7659c49081d80af34bb1fef"
-      url: "git@github.com:emad-fs/flutter-deriv-packages.git"
+      ref: dev
+      resolved-ref: fcb0e230fcc30cbb3cf85c5d27661a6931921124
+      url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
     source: git
     version: "1.1.0"
   fake_async:

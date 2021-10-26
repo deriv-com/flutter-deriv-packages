@@ -11,9 +11,9 @@ publish_to: "none"
 dependencies:
   deriv_rudderstack:
     git:
-      url: git@github.com:emad-fs/flutter-deriv-packages.git
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_rudderstack
-      ref: emad/update_specific_package_only
+      ref: dev
 
   firebase_analytics: ^8.1.2
 
