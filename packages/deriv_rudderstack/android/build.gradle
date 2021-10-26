@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.4.21'
-    ext.rudderstack_version = '1.0.21'
+    ext.rudderstack_version = '1.0.10'
     ext.gson_version = '2.8.6'
     repositories {
         google()
