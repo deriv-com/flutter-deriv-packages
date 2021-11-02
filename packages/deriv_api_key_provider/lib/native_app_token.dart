@@ -2,11 +2,10 @@
 
 import 'dart:ffi';
 import 'dart:io';
-import 'dart:math' as math;
-import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
+import 'package:package_info/package_info.dart';
 
 const String _libraryName = 'libnative_app_token.so';
 
@@ -42,13 +41,10 @@ Future<DynamicLibrary> _getAndroidDynamicLibrary(String libraryName) async {
       return DynamicLibrary.open('$nativeLibraryDirectory/$libraryName');
     } catch (_) {
       try {
-        final Uint8List appIdAsBytes =
-            await File('/proc/self/cmdline').readAsBytes();
-        final String appId = String.fromCharCodes(
-          appIdAsBytes.sublist(0, math.max(appIdAsBytes.indexOf(0), 0)),
-        );
+        final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+        final String packageName = packageInfo.packageName;
 
-        return DynamicLibrary.open('/data/data/$appId/lib/$libraryName');
+        return DynamicLibrary.open('/data/data/$packageName/lib/$libraryName');
       } catch (_) {
         rethrow;
       }
