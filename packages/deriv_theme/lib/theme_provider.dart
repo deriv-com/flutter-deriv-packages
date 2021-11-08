@@ -104,6 +104,15 @@ class ThemeProvider {
   Color get base08Color =>
       _isDarkTheme ? DarkThemeColors.base08 : LightThemeColors.base08;
 
+  Color get successColor =>
+      _isDarkTheme ? DarkThemeColors.success : LightThemeColors.success;
+
+  Color get informationColor =>
+      _isDarkTheme ? DarkThemeColors.information : LightThemeColors.information;
+
+  Color get disabledColor =>
+      _isDarkTheme ? DarkThemeColors.disabled : LightThemeColors.disabled;
+
   @visibleForTesting
   TextStyle getStyle({
     required TextStyle textStyle,
