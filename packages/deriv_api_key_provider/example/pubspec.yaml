@@ -1,6 +1,7 @@
 name: deriv_api_key_provider_example
 description: Demonstrates how to use the deriv_api_key_provider plugin.
 
+homepage: https://deriv.com/
 publish_to: "none"
 
 environment:

@@ -40,25 +40,25 @@ class _AppState extends State<App> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('Invoke event SURVEY'),
                   onPressed: () => derivSurvicate.invokeEvent('SURVEY'),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('Enter screen SCREEN'),
                   onPressed: () => derivSurvicate.enterScreen('SCREEN'),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('Leave screen SCREEN'),
                   onPressed: () => derivSurvicate.leaveScreen('SCREEN'),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('Set userId = 1 and first name = USER'),
                   onPressed: () => derivSurvicate.setUserTraits(
                     UserTraitsModel(userId: '1', firstName: 'USER'),
                   ),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('Reset'),
                   onPressed: () {
                     setState(() {
@@ -73,7 +73,7 @@ class _AppState extends State<App> {
                     derivSurvicate.reset();
                   },
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('Register survey activity listeners'),
                   onPressed: () {
                     setState(() {
@@ -113,7 +113,7 @@ class _AppState extends State<App> {
                     });
                   },
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('Unregister survey activity listeners'),
                   onPressed: () {
                     setState(() {

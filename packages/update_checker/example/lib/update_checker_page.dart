@@ -25,7 +25,7 @@ class UpdateCheckerPage extends StatelessWidget {
         ),
       );
 
-  void _showSnackBar(BuildContext context, String message) {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text(message)));
-  }
+  void _showSnackBar(BuildContext context, String message) =>
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
 }

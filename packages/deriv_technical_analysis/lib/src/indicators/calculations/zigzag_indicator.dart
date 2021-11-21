@@ -21,7 +21,8 @@ class ZigZagIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
 
   static int _calculateFirstSwing(List<IndicatorOHLC> ticks) {
     int firstIndex = -1;
-    if (ticks != null && ticks.isNotEmpty) {
+
+    if (ticks.isNotEmpty) {
       for (int index = 1; index < ticks.length; index++) {
         if ((ticks[index - 1].low > ticks[index].low &&
                 ticks[index + 1].low > ticks[index].low) ||
@@ -32,6 +33,7 @@ class ZigZagIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
         }
       }
     }
+
     return firstIndex;
   }
 
@@ -141,6 +143,7 @@ class ZigZagIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
         }
       }
     }
+
     return createResult(index: index, quote: double.nan);
   }
 }

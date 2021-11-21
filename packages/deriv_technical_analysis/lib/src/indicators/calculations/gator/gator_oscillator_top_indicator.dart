@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/mma_indicator.dart';
 import 'package:deriv_technical_analysis/src/indicators/indicator.dart';

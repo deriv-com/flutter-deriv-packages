@@ -27,6 +27,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
   /// Package info repository for fetching the app build number.
   final PackageInfoRepository packageInfoRepository;
 
+  /// Maps event to the corresponding state.
   @override
   Stream<UpdateState> mapEventToState(UpdateEvent event) async* {
     if (event is UpdateFetchEvent && state is! UpdateInProgressState) {

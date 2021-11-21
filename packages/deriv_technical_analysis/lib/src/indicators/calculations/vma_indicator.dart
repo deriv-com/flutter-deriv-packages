@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/cmo_indicator.dart';
 import 'package:deriv_technical_analysis/src/models/models.dart';

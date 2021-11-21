@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'models/answer_model.dart';
 import 'models/user_traits_model.dart';
 
+/// Survey action handler.
 typedef SurveyActionHandler = bool Function(String surveyId);
+
+/// Question action handler.
 typedef QuestionAnsweredHandler = bool Function(
   String surveyId,
   int questionId,

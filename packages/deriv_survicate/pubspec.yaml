@@ -1,7 +1,7 @@
 name: deriv_survicate
 description: A plugin for run survicate surveys on iOS and Android platforms.
 version: 0.0.1
-author: Deriv
+
 homepage: https://deriv.com/
 publish_to: "none"
 

@@ -18,7 +18,7 @@ linter:
     - always_require_non_null_named_parameters
     - always_specify_types
     - annotate_overrides
-    # - avoid_as
+    # - avoid_as # DEPRECATED: This advice is no longer recommended.
     - avoid_bool_literals_in_conditional_expressions
     - avoid_catches_without_on_clauses
     - avoid_empty_else
@@ -50,11 +50,11 @@ linter:
     - cancel_subscriptions
     - cascade_invocations
     - close_sinks
-    - comment_references
+    # - comment_references
     - constant_identifier_names
     - control_flow_in_finally
     - curly_braces_in_flow_control_structures
-    - directives_ordering
+    # - directives_ordering
     - empty_catches
     - empty_constructor_bodies
     - empty_statements

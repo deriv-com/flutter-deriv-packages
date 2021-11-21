@@ -7,7 +7,7 @@ import '../mock_models.dart';
 
 void main() {
   group('Zero-lag Exponential Moving Average', () {
-    List<MockTick> ticks=[];
+    List<MockTick> ticks = <MockTick>[];
 
     setUpAll(() {
       ticks = const <MockTick>[

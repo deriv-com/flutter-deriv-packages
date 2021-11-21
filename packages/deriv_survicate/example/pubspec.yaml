@@ -1,6 +1,7 @@
 name: deriv_survicate_example
 description: Demonstrates how to use the deriv_survicate plugin.
 
+homepage: https://deriv.com/
 publish_to: "none"
 
 environment:

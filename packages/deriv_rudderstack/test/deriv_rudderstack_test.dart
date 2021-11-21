@@ -39,8 +39,10 @@ void main() {
       await DerivRudderstack().identify(userId: userId);
 
       expect(log, <Matcher>[
-        isMethodCall('identify',
-            arguments: {'userId': userId, 'traits': <String, dynamic>{}}),
+        isMethodCall('identify', arguments: <String, dynamic>{
+          'userId': userId,
+          'traits': <String, dynamic>{}
+        }),
       ]);
     });
 
@@ -54,7 +56,8 @@ void main() {
       await DerivRudderstack().setContext(token: token);
 
       expect(log, <Matcher>[
-        isMethodCall('setContext', arguments: {'pushToken': token}),
+        isMethodCall('setContext',
+            arguments: <String, dynamic>{'pushToken': token}),
       ]);
     });
 
@@ -69,7 +72,7 @@ void main() {
       await DerivRudderstack().track(eventName: eventName);
 
       expect(log, <Matcher>[
-        isMethodCall('track', arguments: {
+        isMethodCall('track', arguments: <String, dynamic>{
           'eventName': eventName,
           'properties': <String, dynamic>{}
         }),
@@ -87,7 +90,7 @@ void main() {
       await DerivRudderstack().screen(screenName: screenName);
 
       expect(log, <Matcher>[
-        isMethodCall('screen', arguments: {
+        isMethodCall('screen', arguments: <String, dynamic>{
           'screenName': screenName,
           'properties': <String, dynamic>{}
         }),
@@ -104,8 +107,10 @@ void main() {
       await DerivRudderstack().group(groupId: groupId);
 
       expect(log, <Matcher>[
-        isMethodCall('group',
-            arguments: {'groupId': groupId, 'traits': <String, dynamic>{}}),
+        isMethodCall('group', arguments: <String, dynamic>{
+          'groupId': groupId,
+          'traits': <String, dynamic>{}
+        }),
       ]);
     });
 
@@ -119,7 +124,7 @@ void main() {
       await DerivRudderstack().alias(alias: alias);
 
       expect(log, <Matcher>[
-        isMethodCall('alias', arguments: {'alias': alias}),
+        isMethodCall('alias', arguments: <String, dynamic>{'alias': alias}),
       ]);
     });
 

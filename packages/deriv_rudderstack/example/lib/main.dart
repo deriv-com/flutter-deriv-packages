@@ -173,10 +173,8 @@ class _MyAppState extends State<MyApp> {
         },
       );
 
-  void _showSnackBar(BuildContext context, bool success) {
-    final SnackBar snackBar =
-        SnackBar(content: Text(success ? 'Success' : 'Failure'));
-
-    Scaffold.of(context).showSnackBar(snackBar);
-  }
+  void _showSnackBar(BuildContext context, bool success) =>
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(success ? 'Success' : 'Failure')),
+      );
 }

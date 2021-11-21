@@ -1,7 +1,7 @@
 name: deriv_api_key_provider
 description: deriv api key provider plugin project.
 version: 0.0.1
-author: Deriv
+
 homepage: https://deriv.com/
 publish_to: "none"
 

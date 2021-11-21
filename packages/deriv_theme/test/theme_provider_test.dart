@@ -5,14 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:deriv_theme/text_styles.dart';
 import 'package:deriv_theme/src/colors.dart';
 
-
 ValueKey<String> key = const ValueKey<String>('ok');
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('ThemeProviderTest', () {
-    final ThemeProvider themeProviderTest  = ThemeProvider();
+    final ThemeProvider themeProviderTest = ThemeProvider();
 
     group('getStyleTest()', () {
       test('pass all arguments correctly', () {
@@ -37,7 +36,6 @@ void main() {
 
         expect(style, equals(resultStyle));
       });
-
     });
 
     group('textStyleTest()', () {
@@ -71,10 +69,7 @@ void main() {
       });
 
       test('accepts null color', () {
-        themeProviderTest.textStyle(
-          textStyle: TextStyles.display1,
-          color: null,
-        );
+        themeProviderTest.textStyle(textStyle: TextStyles.display1);
       });
 
       test('accepts color', () {

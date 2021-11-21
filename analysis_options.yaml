@@ -53,11 +53,11 @@ linter:
     - cancel_subscriptions
     - cascade_invocations
     - close_sinks
-    - comment_references
+    # - comment_references
     - constant_identifier_names
     - control_flow_in_finally
     - curly_braces_in_flow_control_structures
-    - directives_ordering
+    # - directives_ordering
     - empty_catches
     - empty_constructor_bodies
     - empty_statements
@@ -114,7 +114,7 @@ linter:
     - recursive_getters
     - slash_for_doc_comments
     - sort_constructors_first
-    - sort_pub_dependencies
+    # - sort_pub_dependencies
     - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally

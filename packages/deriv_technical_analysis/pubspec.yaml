@@ -1,7 +1,7 @@
 name: deriv_technical_analysis
 description: A Dart package for Technical Analysis.
 version: 0.0.1
-author: Deriv
+
 homepage: https://deriv.com/
 publish_to: "none"
 
