@@ -14,7 +14,7 @@ dependencies:
   survey_monkey:
     path: ../
 
-  cupertino_icons: ^1.0.0
+  cupertino_icons: ^1.0.4
 
 dev_dependencies:
   flutter_test:
