@@ -23,6 +23,9 @@ class DarkThemeColors {
   static const Color accentGreen = Color(0xFF00A79E);
   static const Color accentYellow = Color(0xFFFFAD3A);
   static const Color accentRed = Color(0xFFCC2E3D);
+  static const Color green = Color(0xFF71BD0E);
+  static const Color information = Color(0xFF377CFC);
+  static const Color disabled = Color(0xFF3E3E3E);
 }
 
 /// These colors suits the light theme of Deriv
@@ -39,4 +42,7 @@ class LightThemeColors {
   static const Color accentGreen = Color(0xFF00A79E);
   static const Color accentYellow = Color(0xFFFFAD3A);
   static const Color accentRed = Color(0xFFCC2E3D);
+  static const Color green = Color(0xFF71BD0E);
+  static const Color information = Color(0xFF377CFC);
+  static const Color disabled = Color(0xFF3E3E3E);
 }
