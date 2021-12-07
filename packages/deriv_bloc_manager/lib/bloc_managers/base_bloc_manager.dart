@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/event_listener_contracts/base_event_listener.dart';
-import 'package:flutter_deriv_bloc_manager/state_emitters/base_state_emitter.dart';
+import 'package:flutter_deriv_bloc_manager/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
 
 /// Function signature for `BlocManagerListenerHandler`.
 typedef BlocManagerListenerHandler = void Function(Object state);

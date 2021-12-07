@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/event_listener_contracts/base_event_listener.dart';
-import 'package:flutter_deriv_bloc_manager/exceptions/bloc_manager_exception.dart';
-import 'package:flutter_deriv_bloc_manager/state_emitters/base_state_emitter.dart';
+import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart';
+import 'package:flutter_deriv_bloc_manager/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/bloc_manager_exception.dart';
+import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
 
 /// Bloc manager class.
 ///

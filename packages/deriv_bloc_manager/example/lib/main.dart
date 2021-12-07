@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/event_dispatcher.dart';
+import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 import 'package:flutter_deriv_bloc_manager_example/state_emitters/main_cubit_state_emitter.dart';
 import 'package:flutter_deriv_bloc_manager_example/states/dependent_cubit/dependent_cubit.dart';

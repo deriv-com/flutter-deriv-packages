@@ -1,5 +1,4 @@
-import 'package:flutter_deriv_bloc_manager/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/state_emitters/base_state_emitter.dart';
+import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 import 'package:flutter_deriv_bloc_manager_example/event_listener_contracts/main_cubit_listener.dart';
 import 'package:flutter_deriv_bloc_manager_example/states/main_cubit/main_cubit.dart';

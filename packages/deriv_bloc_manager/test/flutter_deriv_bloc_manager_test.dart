@@ -2,8 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/bloc_manager.dart';
+import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 void main() {
   const String blocKey = 'CUBIT_KEY';

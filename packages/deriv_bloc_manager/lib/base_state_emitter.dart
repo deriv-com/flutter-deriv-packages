@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/event_listener_contracts/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart';
 
 /// Base state emitter class.
 abstract class BaseStateEmitter<E extends BaseEventListener,
