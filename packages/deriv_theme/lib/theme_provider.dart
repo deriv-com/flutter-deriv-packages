@@ -119,7 +119,7 @@ class ThemeProvider {
   Color get base08Color =>
       _isDarkTheme ? DarkThemeColors.base08 : LightThemeColors.base08;
 
-  @Deprecated('This color is not in the theme palette, Consider not using it')
+  @Deprecated('Use `colors.green` instead')
   Color get greenColor =>
       _isDarkTheme ? DarkThemeColors.green : LightThemeColors.green;
 

@@ -25,4 +25,7 @@ const Map<String, Color> lightTheme = <String, Color>{
   'success': Color(0xFF4BB4B3),
   'warning': Color(0xFFFFAD3A),
   'danger': Color(0xFFEC3F3F),
+
+  // Random
+  'green': Color(0xFF71BD0E),
 };

@@ -47,5 +47,7 @@ class Colors {
 
   Color get danger => _fetchColor('danger');
 
+  Color get green => _fetchColor('green');
+
   Color _fetchColor(String name) => (isDark ? dark[name] : light[name])!;
 }
