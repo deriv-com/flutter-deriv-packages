@@ -26,6 +26,6 @@ const Map<String, Color> darkTheme = <String, Color>{
   'warning': Color(0xFFFFAD3A),
   'danger': Color(0xFFCC2E3D),
 
-  // Random
+  // Random (colors that are not part of the color palette)
   'green': Color(0xFF71BD0E),
 };
