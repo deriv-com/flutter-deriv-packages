@@ -91,24 +91,23 @@ class ThemeProvider {
   Color get base01Color =>
       _isDarkTheme ? DarkThemeColors.base01 : LightThemeColors.base01;
 
-  @Deprecated('This color is not in the theme palette, '
-      'Maybe you should use `colors.hover` instead')
+  @Deprecated('Use `colors.general` instead')
   Color get base02Color =>
       _isDarkTheme ? DarkThemeColors.base02 : LightThemeColors.base02;
 
-  @Deprecated('Use `colors.general` instead')
+  @Deprecated('Use `colors.lessProminent` instead')
   Color get base03Color =>
       _isDarkTheme ? DarkThemeColors.base03 : LightThemeColors.base03;
 
-  @Deprecated('Use `colors.lessProminent` instead')
+  @Deprecated('Use `colors.disabled` instead')
   Color get base04Color =>
       _isDarkTheme ? DarkThemeColors.base04 : LightThemeColors.base04;
 
-  @Deprecated('Use `colors.disabled` instead')
+  @Deprecated('Use `colors.active` instead')
   Color get base05Color =>
       _isDarkTheme ? DarkThemeColors.base05 : LightThemeColors.base05;
 
-  @Deprecated('Use `colors.active` instead')
+  @Deprecated('Use `colors.hover` instead')
   Color get base06Color =>
       _isDarkTheme ? DarkThemeColors.base06 : LightThemeColors.base06;
 
