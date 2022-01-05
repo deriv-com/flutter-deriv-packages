@@ -57,13 +57,15 @@ class BlocManager implements BaseBlocManager {
 
     /// This future is added to make sure the state emits in the correct order,
     /// and emitting states dose not block widget build.
-    Future<void>.delayed(
-      const Duration(),
-      () =>
-          emitCoreStates<BaseStateEmitter<BaseEventListener, BlocBase<Object>>>(
-        bloc: bloc,
-      ),
-    );
+    if ((bloc as BaseEventListener).emitLastEvent) {
+      Future<void>.delayed(
+        const Duration(),
+        () => emitCoreStates<
+            BaseStateEmitter<BaseEventListener, BlocBase<Object>>>(
+          bloc: bloc,
+        ),
+      );
+    }
   }
 
   @override
