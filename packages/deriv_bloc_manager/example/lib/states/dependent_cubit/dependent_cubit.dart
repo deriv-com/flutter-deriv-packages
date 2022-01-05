@@ -12,4 +12,7 @@ class DependentCubit extends Cubit<DependentCubitState>
 
   @override
   void onLoaded() => emit(DependentCubitLoadedState());
+
+  @override
+  bool get emitLastEvent => false;
 }
