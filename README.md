@@ -5,6 +5,7 @@ This repository contains private packages & plugins that are used by the company
 ## Packages
 
 - [analytics](./packages/analytics) - Used to collect and send analytical information to 'Firebase' and 'Segment'.
+- [deriv_banner](./packages/deriv_banner) - A widget to show banner in apps.
 - [deriv_api_key_provider](./packages/deriv_api_key_provider) - Used to provide deriv api key.
 - [deriv_bloc_manager](./packages/deriv_bloc_manager) - Provides some tools to manage blocs.
 - [survey_monkey](./packages/survey_monkey) - Used to display a survey provided by surveyMonkey and returns completion results.
