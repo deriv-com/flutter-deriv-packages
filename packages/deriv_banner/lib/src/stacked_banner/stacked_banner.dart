@@ -1,11 +1,11 @@
 import 'package:deriv_banner/src/stacked_banner/default_collapse_button.dart';
 import 'package:flutter/material.dart';
 
-/// Add item to trade banner callback.
+/// Add item to stacked banner callback.
 typedef OnAddBannerItem = Function(Widget);
 
 /// Trade banner controller.
-class TradeBannerController {
+class StackedBannerController {
   /// On add item callback.
   OnAddBannerItem? _onAddItem;
 
@@ -15,7 +15,7 @@ class TradeBannerController {
   /// On collapse banner callback.
   VoidCallback? _onCollapseBanner;
 
-  /// Adds an item to the trade banner.
+  /// Adds an item to the stacked banner.
   void addItem(Widget item) => _onAddItem?.call(item);
 
   /// Expands banner.
@@ -25,38 +25,59 @@ class TradeBannerController {
   void collapseBanner() => _onCollapseBanner?.call();
 }
 
-/// The banner that displays recent positions in the trade page.
-class TradeBanner extends StatefulWidget {
+/// A widget that handles items that is passed to it, and can show them in two
+/// collapsed (stacked on top of each other) and expaned mode.
+class StackedBanner extends StatefulWidget {
   /// Initializes the class.
-  const TradeBanner({
+  const StackedBanner({
     required this.controller,
     this.topPadding = 0,
     this.isExpanded,
     this.maxCollapsedItems = 3,
     this.collapseButtonBuilder,
+    this.bannerHeight = 64,
+    this.bannerVerticalPadding = 8,
+    this.bannerHorizontalPadding = 4,
+    this.animationDuration = const Duration(milliseconds: 250),
   });
 
-  /// The top padding for the trade banner.
+  /// The top padding for the stacked banner.
   final double topPadding;
 
   /// The callback triggered when the list of banner items is either expanded or collapsed.
   final Function(bool)? isExpanded;
 
-  /// Trade banner controller.
-  final TradeBannerController controller;
+  /// Stacked banner controller.
+  final StackedBannerController controller;
 
   /// Max number of items to show when the banner is in collapsed mode.
   final int maxCollapsedItems;
 
   /// The builder method to get the widget of the item that is shown at the end
-  /// of trade banner list and clicking on it collapses the list.
+  /// of stacked banner list and clicking on it collapses the list.
   final WidgetBuilder? collapseButtonBuilder;
 
+  /// Banner item's height.
+  ///
+  /// it's more optimized to all banner items have a specific and the same
+  /// height comparing to having different heights and [StackedBanner] widget
+  /// having to calculate it for each item.
+  final double bannerHeight;
+
+  /// Banner vertical padding.
+  final double bannerVerticalPadding;
+
+  /// Banner horizontal padding.
+  final double bannerHorizontalPadding;
+
+  /// The duration for sliding/collapsing/expanding animtions of banner itesm.
+  final Duration animationDuration;
+
   @override
-  _TradeBannerState createState() => _TradeBannerState();
+  _StackedBannerState createState() => _StackedBannerState();
 }
 
-class _TradeBannerState extends State<TradeBanner>
+class _StackedBannerState extends State<StackedBanner>
     with TickerProviderStateMixin {
   int _stackIndex = 0;
 
@@ -65,12 +86,6 @@ class _TradeBannerState extends State<TradeBanner>
   late final AnimationController _dismissAnimationController;
 
   late final Animation<double> _lastCardTopOffsetValue;
-
-  final Duration animationDur = const Duration(milliseconds: 250);
-
-  static const double _bannerHeight = 64;
-  static const double _bannerVerticalPadding = 8;
-  static const double _bannerHorizontalPadding = 4;
 
   final List<Widget> _bannerItems = <Widget>[];
 
@@ -86,17 +101,17 @@ class _TradeBannerState extends State<TradeBanner>
 
     _slidingController = AnimationController(
       vsync: this,
-      duration: animationDur,
+      duration: widget.animationDuration,
     )..addListener(() => setState(() {}));
 
     _listExpansionController = AnimationController(
       vsync: this,
-      duration: animationDur,
+      duration: widget.animationDuration,
     )..addListener(() => setState(() {}));
 
     _dismissAnimationController = AnimationController(
       vsync: this,
-      duration: animationDur,
+      duration: widget.animationDuration,
     )..addListener(() => setState(() {}));
 
     _lastCardTopOffsetValue = Tween<double>(
@@ -180,7 +195,7 @@ class _TradeBannerState extends State<TradeBanner>
 
     return AnimatedPositioned(
       child: child,
-      duration: animationDur,
+      duration: widget.animationDuration,
       top: _getTopOffset(index),
       left: horizontalOffset,
       right: horizontalOffset,
@@ -209,7 +224,7 @@ class _TradeBannerState extends State<TradeBanner>
 
   Future<void> _expandStack() async {
     await _listExpansionController.forward();
-    await Future<void>.delayed(animationDur);
+    await Future<void>.delayed(widget.animationDuration);
 
     setState(() => _stackIndex = 1);
 
@@ -227,7 +242,8 @@ class _TradeBannerState extends State<TradeBanner>
     if (_listExpansionController.isAnimating ||
         _listExpansionController.isCompleted) {
       return widget.topPadding +
-          (_topBannerIndex - index) * (_bannerHeight + _bannerVerticalPadding);
+          (_topBannerIndex - index) *
+              (widget.bannerHeight + widget.bannerVerticalPadding);
     }
 
     final bool itemsExceedsMaxCollapsed =
@@ -245,7 +261,7 @@ class _TradeBannerState extends State<TradeBanner>
         return widget.topPadding;
       } else {
         return widget.topPadding +
-            (_topBannerIndex - virtualIndex) * _bannerVerticalPadding;
+            (_topBannerIndex - virtualIndex) * widget.bannerVerticalPadding;
       }
     }
   }
@@ -256,7 +272,7 @@ class _TradeBannerState extends State<TradeBanner>
         index == _topBannerIndex) {
       return 0;
     } else {
-      return (_bannerItems.length - index) * _bannerHorizontalPadding;
+      return (_bannerItems.length - index) * widget.bannerHorizontalPadding;
     }
   }
 
