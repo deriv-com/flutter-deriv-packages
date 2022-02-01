@@ -27,6 +27,22 @@ class StackedBannerController {
 
 /// A widget that handles items that is passed to it, and can show them in two
 /// collapsed (stacked on top of each other) and expaned mode.
+///
+/// This widget can be added to [Overlay] and once it's added it can be
+/// controllered by the [StackedBannerController] instance that is passed to it.
+/// To add items or expand/collapse. e.g:
+///
+///   Overlay.of(context)!.insert(
+///         OverlayEntry(
+///           builder: (_) => StackedBanner(
+///               controller: bannerController,
+///            ),
+///           ),
+///        );
+///
+/// and for adding banner items to it:
+///   bannerController.addItem(newItem);
+///
 class StackedBanner extends StatefulWidget {
   /// Initializes the class.
   const StackedBanner({
