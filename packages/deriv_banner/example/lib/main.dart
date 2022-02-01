@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:deriv_banner/deriv_banner.dart';
-
 void main() => runApp(const App());
 
 /// Sample app that shows how to use the [DerivBanner] widget.
@@ -21,7 +19,6 @@ class _AppState extends State<App> {
             elevation: 0,
             title: const Text('Plugin example app'),
           ),
-          body: const DerivBanner(),
         ),
       );
 }
