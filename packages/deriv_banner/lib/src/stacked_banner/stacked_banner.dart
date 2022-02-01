@@ -115,6 +115,16 @@ class _StackedBannerState extends State<StackedBanner>
 
     _assignControllerValues();
 
+    _setupAnimationControllers();
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      _collapsedSize =
+          (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
+              .size;
+    });
+  }
+
+  void _setupAnimationControllers() {
     _slidingController = AnimationController(
       vsync: this,
       duration: widget.animationDuration,
@@ -134,12 +144,6 @@ class _StackedBannerState extends State<StackedBanner>
       begin: -100,
       end: widget.topPadding,
     ).animate(_slidingController);
-
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      _collapsedSize =
-          (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
-              .size;
-    });
   }
 
   void _assignControllerValues() {
