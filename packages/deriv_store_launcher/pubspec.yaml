@@ -1,0 +1,34 @@
+name: deriv_store_launcher
+description: A plugin to lunch app stores base on platform and manufacturer.
+
+version: 0.0.1
+
+homepage: https://deriv.com/
+publish_to: "none"
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+  flutter: ">=2.5.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  deriv_lint:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_lint
+      ref: dev
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.deriv.app.deriv_store_launcher
+        pluginClass: DerivStoreLauncherPlugin
+      ios:
+        pluginClass: DerivStoreLauncherPlugin

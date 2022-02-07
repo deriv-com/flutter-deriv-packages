@@ -13,4 +13,5 @@ This repository contains private packages & plugins that are used by the company
 - [deriv_rudderstack](./packages/deriv_rudderstack) - A plugin that add RudderStack SDK support to Flutter.
 - [update_checker](./packages/update_checker) - Check and retrieve update information from the server for the given package.
 - [deriv_technical_analysis](./packages/deriv_technical_analysis) - A Dart package for Technical Analysis.
+- [deriv_store_launcher](./packages/deriv_store_launcher) - A plugin to lunch app stores base on platform and manufacturer.
 - [deriv_lint](./packages/deriv_lint) - A Dart package that provides lint rules for Dart and Flutter.
