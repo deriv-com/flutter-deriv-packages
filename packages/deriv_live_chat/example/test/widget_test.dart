@@ -5,7 +5,7 @@ import 'package:deriv_live_chat_example/main.dart';
 
 void main() {
   testWidgets('Verify Platform version', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const App());
 
     expect(
       find.byWidgetPredicate(

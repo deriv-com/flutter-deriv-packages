@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "432406763452",
+    "firebase_url": "https://p2p-test-c8e14.firebaseio.com",
+    "project_id": "p2p-test-c8e14",
+    "storage_bucket": "p2p-test-c8e14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432406763452:android:49dbd412ac1b8a4b5ffdb9",
+        "android_client_info": {
+          "package_name": "com.deriv.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432406763452-25oqhqf15594r2rvjm2o5qtgj4sgcg72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1sxXR_z_G6zmoCpNpd-BGBwRhDXxOz0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432406763452-25oqhqf15594r2rvjm2o5qtgj4sgcg72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
