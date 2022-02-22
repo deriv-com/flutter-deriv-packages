@@ -1,9 +1,5 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:deriv_live_chat/deriv_live_chat.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,13 +27,6 @@ class Support extends StatefulWidget {
 }
 
 class _SupportState extends State<Support> {
-  final licenseNoTextController = TextEditingController();
-  final groupIdTextController = TextEditingController();
-  final visitorNameTextController = TextEditingController();
-  final visitorEmailTextController = TextEditingController();
-  final organizationTextController = TextEditingController();
-  final positionTextController = TextEditingController();
-
   @override
   void initState() {
     super.initState();
