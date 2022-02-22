@@ -1,0 +1,29 @@
+name: example
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  deriv_ui:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  deriv_lint:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_lint
+      ref: dev
+
+flutter:
+  uses-material-design: true
