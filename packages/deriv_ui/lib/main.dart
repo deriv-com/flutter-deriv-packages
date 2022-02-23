@@ -12,6 +12,7 @@ class App extends StatelessWidget {
         ),
         home: Scaffold(
           appBar: AppBar(title: const Text('Example App')),
+
           body: const Center(child: Text('Hello World')),
         ),
       );
