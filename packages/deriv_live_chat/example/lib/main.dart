@@ -1,9 +1,5 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:deriv_live_chat/deriv_live_chat.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(const App());
 
@@ -15,28 +11,9 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  String _platformVersion = 'Unknown';
-
   @override
   void initState() {
     super.initState();
-
-    initPlatformState();
-  }
-
-  Future<void> initPlatformState() async {
-    String platformVersion;
-
-    try {
-      platformVersion =
-          await DerivLiveChat.platformVersion ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    if (!mounted) return;
-
-    setState(() => _platformVersion = platformVersion);
   }
 
   @override
@@ -48,11 +25,11 @@ class _AppState extends State<App> {
       ),
       child:  TextButton(
           onPressed: () {
-            DerivLiveChat.startChat(
+            DerivLiveChat.startChatView(
                 '13724181',
                 '',
                 'Sneha',
-                'sneha.s@solutelabs.com', <String, String>{
+                '', <String, String>{
                 'userName': 'sneha-solutelabs',
                 'role': 'Flutter developer'
             });
