@@ -4492,44 +4492,54 @@ class S {
   }
 
   /// `Withdrawal`
-  String get semanticWithdrawalIcon => Intl.message(
+  String get semanticWithdrawalIcon {
+    return Intl.message(
       'Withdrawal',
       name: 'semanticWithdrawalIcon',
       desc: '',
       args: [],
     );
+  }
 
   /// `Added to Favourites`
-  String get snackBarContentAddFavorite => Intl.message(
+  String get snackBarContentAddFavorite {
+    return Intl.message(
       'Added to Favourites',
       name: 'snackBarContentAddFavorite',
       desc: '',
       args: [],
     );
+  }
 
   /// `Removed from Favourites`
-  String get snackBarContentRemoveFavorite => Intl.message(
+  String get snackBarContentRemoveFavorite {
+    return Intl.message(
       'Removed from Favourites',
       name: 'snackBarContentRemoveFavorite',
       desc: '',
       args: [],
     );
+  }
 
   /// `Please ensure that this address is the same as in your proof of address.`
-  String get warnAddressIsIdenticalToPOA => Intl.message(
+  String get warnAddressIsIdenticalToPOA {
+    return Intl.message(
       'Please ensure that this address is the same as in your proof of address.',
       name: 'warnAddressIsIdenticalToPOA',
       desc: '',
       args: [],
     );
+  }
 
   /// `Sorry, you can't view this contract because it doesn't belong to this account.`
-  String get warnCannotViewTheContract => Intl.message(
+  String get warnCannotViewTheContract {
+    return Intl.message(
       'Sorry, you can\'t view this contract because it doesn\'t belong to this account.',
       name: 'warnCannotViewTheContract',
       desc: '',
       args: [],
     );
+  }
 
   /// `Unfortunately, Deriv is not available in your country.`
   String get warnCountryNotAvailable {

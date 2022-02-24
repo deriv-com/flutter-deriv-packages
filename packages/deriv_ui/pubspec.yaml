@@ -26,5 +26,11 @@ dev_dependencies:
       path: packages/deriv_lint
       ref: dev
 
+  deriv_theme:
+    git:
+      url: git@github.com:rajeevqss/flutter-deriv-packages.git
+      path: packages/deriv_theme
+      ref: move-common-ui
+
 flutter:
   uses-material-design: true
