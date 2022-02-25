@@ -18,7 +18,20 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  decimal: ^1.2.0
   intl_utils: ^2.0.0
+  webview_flutter: ^2.0.7
+
+  flutter_deriv_api:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-api.git
+      ref: dev
+
+  flutter_deriv_bloc_manager:
+   git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_bloc_manager
+      ref: dev
 
   deriv_lint:
     git:
