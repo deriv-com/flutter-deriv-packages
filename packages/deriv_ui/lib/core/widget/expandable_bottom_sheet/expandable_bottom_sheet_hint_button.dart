@@ -2,11 +2,11 @@ part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetHintButton extends StatelessWidget {
   _ExpandableBottomSheetHintButton(
-      {Key? key, this.padding = 12, this.iconSize = 24, this.iconColor})
+      {Key? key, this.verticalPadding = 12, this.iconSize = 24, this.iconColor})
       : super(key: key);
 
   final GlobalKey _hintKey = GlobalKey();
-  final double padding;
+  final double verticalPadding;
   final double iconSize;
   final Color? iconColor;
 
@@ -19,7 +19,7 @@ class _ExpandableBottomSheetHintButton extends StatelessWidget {
             expandableBottomSheetProvider.hint == null
         ? const SizedBox.shrink()
         : Padding(
-            padding: EdgeInsets.symmetric(vertical: padding),
+            padding: EdgeInsets.symmetric(vertical: verticalPadding),
             child: ClipOval(
               child: Material(
                 color: Colors.transparent,

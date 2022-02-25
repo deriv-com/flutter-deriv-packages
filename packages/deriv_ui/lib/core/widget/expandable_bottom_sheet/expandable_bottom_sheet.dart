@@ -56,6 +56,19 @@ class ExpandableBottomSheet extends StatefulWidget {
     this.topLeftRadius = 16,
     this.topRightRadius = 16,
     this.color,
+    required this.leftPosition,
+    required this.rightPosition,
+    required this.rightPositionForButton,
+    required this.verticalMarginToggle,
+    required this.horizontalMarginToggle,
+    required this.heightToggle,
+    required this.widthToggle,
+    this.colorToggle,
+    required this.borderRadiusToggle,
+    this.styleTitle,
+    required this.iconColorHintButton,
+    required this.iconSizeHintButton,
+    required this.verticalPaddingHintButton,
   }) : super(key: key);
 
   /// Expandable BottomSheet Controller
@@ -154,6 +167,20 @@ class ExpandableBottomSheet extends StatefulWidget {
 
   /// Background color of container
   final Color? color;
+
+  final double leftPosition;
+  final double rightPosition;
+  final double rightPositionForButton;
+  final double verticalMarginToggle;
+  final double horizontalMarginToggle;
+  final double heightToggle;
+  final double widthToggle;
+  final Color? colorToggle;
+  final double borderRadiusToggle;
+  final TextStyle? styleTitle;
+  final Color iconColorHintButton;
+  final double iconSizeHintButton;
+  final double verticalPaddingHintButton;
 
   @override
   _ExpandableBottomSheetState createState() => _ExpandableBottomSheetState();
@@ -256,7 +283,21 @@ class _ExpandableBottomSheetState extends State<ExpandableBottomSheet>
               onVerticalDragEnd: _onVerticalDragEnd,
               child: Column(
                 children: <Widget>[
-                  const _ExpandableBottomSheetTitleBar(),
+                  _ExpandableBottomSheetTitleBar(
+                      heightToggle: widget.heightToggle,
+                      widthToggle: widget.widthToggle,
+                      verticalMarginToggle: widget.verticalMarginToggle,
+                      horizontalMarginToggle: widget.horizontalMarginToggle,
+                      borderRadiusToggle: widget.borderRadiusToggle,
+                      verticalPaddingHintButton:
+                          widget.verticalPaddingHintButton,
+                      colorToggle: widget.colorToggle,
+                      iconSizeHintButton: widget.iconSizeHintButton,
+                      leftPosition: widget.leftPosition,
+                      iconColorHintButton: widget.iconColorHintButton,
+                      styleTitle: widget.styleTitle,
+                      rightPosition: widget.rightPosition,
+                      rightPositionForButton: widget.rightPositionForButton),
                   _ExpandableBottomSheetUpperContent(
                     onHeightCalculated: (double height) =>
                         _upperContentHeight = height,

@@ -1,15 +1,37 @@
 part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetTitleBar extends StatelessWidget {
-  const _ExpandableBottomSheetTitleBar(
-      {Key? key,
-      this.leftPosition = 16,
-      this.rightPosition = 16,
-      this.rightPositionForButton=16})
-      : super(key: key);
+  const _ExpandableBottomSheetTitleBar({
+    required this.iconColorHintButton,
+    required this.iconSizeHintButton,
+    required this.verticalPaddingHintButton,
+    required this.verticalMarginToggle,
+    required this.horizontalMarginToggle,
+    required this.heightToggle,
+    required this.widthToggle,
+    required this.borderRadiusToggle,
+    Key? key,
+    this.leftPosition = 16,
+    this.rightPosition = 16,
+    this.rightPositionForButton = 16,
+    this.colorToggle,
+    this.styleTitle,
+  }) : super(key: key);
+
+  final double verticalMarginToggle;
+  final double horizontalMarginToggle;
+  final double heightToggle;
+  final double widthToggle;
+  final Color? colorToggle;
+  final double borderRadiusToggle;
+
   final double leftPosition;
   final double rightPosition;
   final double rightPositionForButton;
+  final TextStyle? styleTitle;
+  final Color iconColorHintButton;
+  final double iconSizeHintButton;
+  final double verticalPaddingHintButton;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +51,14 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                     heightFactor: 1 - animationController.value,
                     child: Opacity(
                       opacity: 1 - animationController.value,
-                      child: const _ExpandableBottomSheetToggler( ),
+                      child: _ExpandableBottomSheetToggler(
+                        height: heightToggle,
+                        color: colorToggle,
+                        verticalMargin: verticalMarginToggle,
+                        width: widthToggle,
+                        borderRadius: borderRadiusToggle,
+                        horizontalMargin: horizontalMarginToggle,
+                      ),
                     ),
                   ),
                 Align(
@@ -52,7 +81,8 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
               ],
             ),
           )
-        : _buildTitleBar(expandableBottomSheetProvider,leftPosition,rightPosition,rightPositionForButton);
+        : _buildTitleBar(expandableBottomSheetProvider, leftPosition,
+            rightPosition, rightPositionForButton);
   }
 
   Widget _buildTitleBar(
@@ -76,8 +106,15 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
             Column(
               children: <Widget>[
                 if (expandableBottomSheetProvider.showToggler)
-                  const _ExpandableBottomSheetToggler(),
-                const _ExpandableBottomSheetTitle(),
+                  _ExpandableBottomSheetToggler(
+                    height: heightToggle,
+                    color: colorToggle,
+                    verticalMargin: verticalMarginToggle,
+                    width: widthToggle,
+                    borderRadius: borderRadiusToggle,
+                    horizontalMargin: horizontalMarginToggle,
+                  ),
+                _ExpandableBottomSheetTitle(style: styleTitle),
               ],
             ),
             if (_isLeftActionVisible(expandableBottomSheetProvider))
@@ -93,7 +130,10 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                 right: rightPosition,
               ),
             Positioned(
-              child: _ExpandableBottomSheetHintButton(),
+              child: _ExpandableBottomSheetHintButton(
+                  iconColor: iconColorHintButton,
+                  iconSize: iconSizeHintButton,
+                  verticalPadding: verticalPaddingHintButton),
               top: expandableBottomSheetTogglerHeight,
               right: rightPositionForButton,
             ),
