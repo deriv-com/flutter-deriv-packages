@@ -15,6 +15,15 @@ class _DateRangeTextField extends StatefulWidget {
     required this.isEndDateValid,
     required this.onEditingComplete,
     this.dateFormat = 'dd-MM-yyyy',
+    this.width=8,
+    this.cursorColor,
+    this.style,
+    this.hintStyle,
+    this.labelStyle,
+    this.inputBorderValidColor,
+    this.inputBorderNotValidColor,
+    this.outlineBorderValidColor,
+    this.outlineBorderNotValidColor,
     Key? key,
   }) : super(key: key);
 
@@ -35,6 +44,33 @@ class _DateRangeTextField extends StatefulWidget {
 
   /// On editing complete handler.
   final _DateRangeTextFieldHandler? onEditingComplete;
+
+  ///margin
+  final double? width;
+
+  /// TextField Cursor color
+  final Color? cursorColor;
+
+  /// TextField TextStyle
+  final TextStyle? style;
+
+  /// TextField hintStyle
+  final TextStyle? hintStyle;
+
+  /// TextField labelStyle
+  final TextStyle? labelStyle;
+
+  /// TextField input decoration border valid color
+  final Color? inputBorderValidColor;
+
+  /// TextField input decoration border not valid color
+  final Color? inputBorderNotValidColor;
+
+  /// TextField outline decoration border valid color
+  final Color? outlineBorderValidColor;
+
+  /// TextField outline decoration border not valid color
+  final Color? outlineBorderNotValidColor;
 
   @override
   _DateRangeTextFieldState createState() => _DateRangeTextFieldState();
@@ -67,65 +103,75 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
   Widget build(BuildContext context) => Row(
         children: <Widget>[
           _buildDateTextField(
-            hintText: widget.dateFormat.toUpperCase(),
-            labelText: context.localization.labelStartDate,
-            controller: startDateInputController,
-            isValidDate: widget.isStartDateValid,
-          ),
-          const SizedBox(width: ThemeProvider.margin08),
+              hintText: widget.dateFormat.toUpperCase(),
+              labelText: context.localization.labelStartDate,
+              controller: startDateInputController,
+              isValidDate: widget.isStartDateValid,
+              style: widget.style,
+              cursorColor: widget.cursorColor,
+              hintStyle: widget.hintStyle,
+              inputBorderNotValidColor: widget.inputBorderNotValidColor,
+              inputBorderValidColor: widget.inputBorderValidColor,
+              labelStyle: widget.labelStyle,
+              outlineBorderNotValidColor: widget.outlineBorderNotValidColor,
+              outlineBorderValidColor: widget.outlineBorderValidColor),
+          SizedBox(width: widget.width ?? 0),
           _buildDateTextField(
-            hintText: widget.dateFormat.toUpperCase(),
-            labelText: context.localization.labelEndDate,
-            controller: endDateInputController,
-            isValidDate: widget.isEndDateValid,
-          ),
+              hintText: widget.dateFormat.toUpperCase(),
+              labelText: context.localization.labelEndDate,
+              controller: endDateInputController,
+              isValidDate: widget.isEndDateValid,
+              style: widget.style,
+              cursorColor: widget.cursorColor,
+              hintStyle: widget.hintStyle,
+              inputBorderNotValidColor: widget.inputBorderNotValidColor,
+              inputBorderValidColor: widget.inputBorderValidColor,
+              labelStyle: widget.labelStyle,
+              outlineBorderNotValidColor: widget.outlineBorderNotValidColor,
+              outlineBorderValidColor: widget.outlineBorderValidColor),
         ],
       );
 
-  Widget _buildDateTextField({
-    required String hintText,
-    required String labelText,
-    required TextEditingController? controller,
-    required bool isValidDate,
-  }) =>
+  Widget _buildDateTextField(
+          {required String hintText,
+          required String labelText,
+          required TextEditingController? controller,
+          required bool isValidDate,
+          Color? cursorColor,
+          TextStyle? style,
+          TextStyle? hintStyle,
+          TextStyle? labelStyle,
+          Color? inputBorderValidColor,
+          Color? inputBorderNotValidColor,
+          Color? outlineBorderValidColor,
+          Color? outlineBorderNotValidColor}) =>
       Expanded(
         child: TextField(
           inputFormatters: <MaskTextInputFormatter>[maskFormatter],
           controller: controller,
           keyboardType: TextInputType.number,
-          cursorColor: context.theme.brandGreenishColor,
+          cursorColor: cursorColor,
           textInputAction: controller == startDateInputController
               ? TextInputAction.next
               : TextInputAction.done,
-          style: context.theme.textStyle(
-            textStyle: TextStyles.subheading,
-            color: context.theme.base03Color,
-          ),
+          style: style,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: isValidDate
-                    ? context.theme.base06Color
-                    : context.theme.brandCoralColor,
-              ),
+                  color: isValidDate
+                      ? inputBorderValidColor ?? Colors.black
+                      : inputBorderNotValidColor ?? Colors.red),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: isValidDate
-                    ? context.theme.brandGreenishColor
-                    : context.theme.brandCoralColor,
-              ),
+                  color: isValidDate
+                      ? outlineBorderValidColor ?? Colors.black
+                      : outlineBorderNotValidColor ?? Colors.red),
             ),
             hintText: hintText,
-            hintStyle: context.theme.textStyle(
-              textStyle: TextStyles.subheading,
-              color: context.theme.base04Color,
-            ),
+            hintStyle: hintStyle,
             labelText: labelText,
-            labelStyle: context.theme.textStyle(
-              textStyle: TextStyles.subheading,
-              color: context.theme.brandGreenishColor,
-            ),
+            labelStyle: labelStyle,
           ),
           onChanged: (_) => _updateDates(),
         ),

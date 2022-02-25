@@ -1,18 +1,35 @@
 part of 'calendar_date_range.dart';
 
 class _DayHeader extends StatelessWidget {
+  ///initialize constructor
+  const _DayHeader({required this.maxHeight, required this.headerTextStyle,
+    this.horizontalPadding=8,
+    this.monthItemRowHeight=48,
+    this.monthItemSpaceBetweenRows=8});
+
+  ///Max height
+  final double? maxHeight;
+
+  final TextStyle? headerTextStyle;
+  final double horizontalPadding;
+  final double monthItemRowHeight;
+  final double monthItemSpaceBetweenRows;
+
   @override
   Widget build(BuildContext context) => Container(
         constraints: BoxConstraints(
           maxWidth: MediaQuery.of(context).orientation == Orientation.landscape
               ? _maxCalendarWidthLandscape
               : _maxCalendarWidthPortrait,
-          maxHeight: _monthItemRowHeight,
+          maxHeight: maxHeight!,
         ),
         child: GridView.custom(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: _monthItemGridDelegate,
+          gridDelegate: _MonthItemGridDelegate(
+              horizontalPadding: horizontalPadding,
+              monthItemRowHeight: monthItemRowHeight,
+              monthItemSpaceBetweenRows: monthItemSpaceBetweenRows),
           childrenDelegate: SliverChildListDelegate(
             _getHeader(context),
             addRepaintBoundaries: false,
@@ -33,10 +50,7 @@ class _DayHeader extends StatelessWidget {
         Center(
           child: Text(
             weekday,
-            style: context.theme.textStyle(
-              textStyle: TextStyles.body1,
-              color: context.theme.base04Color,
-            ),
+            style: headerTextStyle,
           ),
         ),
       );

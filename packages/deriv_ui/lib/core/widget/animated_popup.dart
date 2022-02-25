@@ -65,7 +65,7 @@ class _AnimatedPopupDialogState extends State<AnimatedPopupDialog>
           child: Container(
             margin: EdgeInsets.symmetric(
               horizontal: _calculateHorizontalPadding(context),
-              vertical: widget.verticalMargin,
+              vertical: widget.verticalMargin??0,
             ),
             child: Card(
               elevation: widget.cardElevation,

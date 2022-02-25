@@ -10,8 +10,22 @@ class _MonthItem extends StatefulWidget {
     required this.lastDate,
     required this.displayedMonth,
     required this.onChanged,
-    Key? key,
+    required this.highLightColor,
+    required this.dayStyle,
+    required this.splashColor,
+    required this.boxCircleColor,
+    required this.selectDayColor,
+    required this.disableDayColor,
+    required this.monthItemHeaderHeight,
+    required this.containerEdgeColor,
     this.dragStartBehavior = DragStartBehavior.start,
+    this.monthItemRowHeight = 48,
+    this.horizontalPadding = 8,
+    this.monthItemSpaceBetweenRows = 8,
+    this.monthItemFooterHeight,
+    this.style,
+    this.gridHeight,
+    Key? key,
   }) : super(key: key);
 
   final DateTime currentDate;
@@ -27,6 +41,21 @@ class _MonthItem extends StatefulWidget {
   final ValueChanged<DateTime> onChanged;
 
   final DragStartBehavior dragStartBehavior;
+
+  final double monthItemRowHeight;
+  final double monthItemSpaceBetweenRows;
+  final double monthItemHeaderHeight;
+  final double horizontalPadding;
+  final double? monthItemFooterHeight;
+  final TextStyle? style;
+  final double? gridHeight;
+  final Color containerEdgeColor;
+  final Color highLightColor;
+  final TextStyle dayStyle;
+  final Color splashColor;
+  final Color boxCircleColor;
+  final Color selectDayColor;
+  final Color disableDayColor;
 
   @override
   _MonthItemState createState() => _MonthItemState();
@@ -75,8 +104,8 @@ class _MonthItemState extends State<_MonthItem> {
     final int dayOffset =
         firstDayOffset(year: year, month: month, localizations: localizations);
     final int weeks = ((daysInMonth + dayOffset) / DateTime.daysPerWeek).ceil();
-    final num gridHeight =
-        weeks * _monthItemRowHeight + (weeks - 1) * _monthItemSpaceBetweenRows;
+    final double gridHeight = weeks * widget.monthItemRowHeight +
+        (weeks - 1) * widget.monthItemSpaceBetweenRows;
     final List<Widget> dayItems = <Widget>[];
 
     for (int i = 0; true; i += 1) {
@@ -90,8 +119,15 @@ class _MonthItemState extends State<_MonthItem> {
         dayItems.add(Container());
       } else {
         final DateTime dayToBuild = DateTime(year, month, day);
-        final Widget dayItem =
-            _buildDayItem(context: context, dayToBuild: dayToBuild);
+        final Widget dayItem = _buildDayItem(
+            context: context,
+            dayToBuild: dayToBuild,
+            highLightColor: widget.highLightColor,
+            style: widget.dayStyle,
+            boxCircleColor: widget.boxCircleColor,
+            disableDayColor: widget.disableDayColor,
+            selectDayColor: widget.selectDayColor,
+            splashColor: widget.splashColor);
 
         dayItems.add(dayItem);
       }
@@ -120,7 +156,10 @@ class _MonthItemState extends State<_MonthItem> {
 
       weekList.insert(
         0,
-        _buildEdgeContainer(context: context, isHighlighted: isLeadingInRange),
+        _buildEdgeContainer(
+            context: context,
+            isHighlighted: isLeadingInRange,
+            color: widget.containerEdgeColor),
       );
 
       if (end < dayItems.length ||
@@ -136,9 +175,9 @@ class _MonthItemState extends State<_MonthItem> {
 
         weekList.add(
           _buildEdgeContainer(
-            context: context,
-            isHighlighted: isTrailingInRange,
-          ),
+              context: context,
+              isHighlighted: isTrailingInRange,
+              color: widget.containerEdgeColor),
         );
       }
 
@@ -151,17 +190,14 @@ class _MonthItemState extends State<_MonthItem> {
       children: <Widget>[
         Container(
           constraints: BoxConstraints(maxWidth: maxWidth),
-          height: _monthItemHeaderHeight,
+          height: widget.monthItemHeaderHeight,
           padding:
-              const EdgeInsets.symmetric(horizontal: ThemeProvider.margin24),
+              EdgeInsets.symmetric(horizontal: widget.horizontalPadding ?? 0),
           alignment: AlignmentDirectional.centerStart,
           child: ExcludeSemantics(
             child: Text(
               localizations.formatMonthYear(widget.displayedMonth),
-              style: context.theme.textStyle(
-                textStyle: TextStyles.body1,
-                color: context.theme.base03Color,
-              ),
+              style: widget.style,
             ),
           ),
         ),
@@ -172,14 +208,17 @@ class _MonthItemState extends State<_MonthItem> {
           ),
           child: GridView.custom(
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: _monthItemGridDelegate,
+            gridDelegate: _MonthItemGridDelegate(
+                horizontalPadding: widget.horizontalPadding,
+                monthItemRowHeight: widget.monthItemRowHeight,
+                monthItemSpaceBetweenRows: widget.monthItemSpaceBetweenRows),
             childrenDelegate: SliverChildListDelegate(
               paddedDayItems,
               addRepaintBoundaries: false,
             ),
           ),
         ),
-        const SizedBox(height: _monthItemFooterHeight),
+        SizedBox(height: widget.monthItemFooterHeight),
       ],
     );
   }
@@ -187,21 +226,24 @@ class _MonthItemState extends State<_MonthItem> {
   Widget _buildDayItem({
     required BuildContext context,
     required DateTime dayToBuild,
+    required Color highLightColor,
+    required TextStyle style,
+    required Color splashColor,
+    required Color boxCircleColor,
+    required Color selectDayColor,
+    required Color disableDayColor,
   }) {
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
 
     final TextDirection textDirection = Directionality.of(context);
-    final Color highlightColor = _highlightColor(context);
+    final Color highlightColor = _highlightColor(context, highLightColor);
     final int day = dayToBuild.day;
 
     final bool isDisabled = dayToBuild.isAfter(widget.lastDate) ||
         dayToBuild.isBefore(widget.firstDate);
 
-    TextStyle itemStyle = context.theme.textStyle(
-      textStyle: TextStyles.body1,
-      color: context.theme.base03Color,
-    );
+    TextStyle itemStyle = style;
 
     BoxDecoration? decoration;
 
@@ -218,11 +260,10 @@ class _MonthItemState extends State<_MonthItem> {
     _HighlightPainter? highlightPainter;
 
     if (isSelectedDayStart || isSelectedDayEnd) {
-      itemStyle = context.theme
-          .textStyle(textStyle: itemStyle, color: context.theme.base01Color);
+      itemStyle = style.copyWith(color: selectDayColor);
 
       decoration = BoxDecoration(
-        color: context.theme.brandCoralColor,
+        color: boxCircleColor,
         shape: BoxShape.circle,
       );
 
@@ -245,21 +286,20 @@ class _MonthItemState extends State<_MonthItem> {
         textDirection: textDirection,
       );
     }
+
     if (isDisabled) {
-      itemStyle = context.theme
-          .textStyle(textStyle: itemStyle, color: context.theme.base04Color);
+      itemStyle = style.copyWith(color: disableDayColor);
     } else if (isSameDay(
         firstDate: widget.currentDate, secondDate: dayToBuild)) {
-      itemStyle = context.theme
-          .textStyle(textStyle: itemStyle, color: context.theme.base01Color);
+      itemStyle = style.copyWith(color: selectDayColor);
 
       decoration = isSelectedDayStart || isSelectedDayEnd
           ? BoxDecoration(
-              color: context.theme.brandCoralColor,
+              color: boxCircleColor,
               shape: BoxShape.circle,
             )
           : BoxDecoration(
-              border: Border.all(color: context.theme.brandCoralColor),
+              border: Border.all(color: boxCircleColor),
               shape: BoxShape.circle,
             );
     }
@@ -302,8 +342,8 @@ class _MonthItemState extends State<_MonthItem> {
       dayWidget = InkResponse(
         focusNode: dayFocusNodes[day - 1],
         onTap: () => widget.onChanged(dayToBuild),
-        radius: _monthItemRowHeight / 2 + 4,
-        splashColor: context.theme.brandCoralColor.withOpacity(
+        radius: widget.monthItemRowHeight / 2 + 4,
+        splashColor: splashColor.withOpacity(
           getOpacity(isEnabled: false),
         ),
         onFocusChange: _dayFocusChanged,
@@ -314,14 +354,14 @@ class _MonthItemState extends State<_MonthItem> {
     return dayWidget;
   }
 
-  Widget _buildEdgeContainer({
-    required BuildContext context,
-    required bool isHighlighted,
-  }) =>
-      Container(color: isHighlighted ? _highlightColor(context) : null);
+  Widget _buildEdgeContainer(
+          {required BuildContext context,
+          required bool isHighlighted,
+          required Color color}) =>
+      Container(color: isHighlighted ? _highlightColor(context, color) : null);
 
-  Color _highlightColor(BuildContext context) =>
-      context.theme.brandCoralColor.withOpacity(getOpacity(isEnabled: false));
+  Color _highlightColor(BuildContext context, Color color) =>
+      color.withOpacity(getOpacity(isEnabled: false));
 
   void _dayFocusChanged(bool focused) {
     if (focused) {

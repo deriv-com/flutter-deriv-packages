@@ -1,9 +1,12 @@
 part of 'calendar_date_range.dart';
 
-const _MonthItemGridDelegate _monthItemGridDelegate = _MonthItemGridDelegate();
+// const _MonthItemGridDelegate _monthItemGridDelegate = _MonthItemGridDelegate(
+//     horizontalPadding: 8, monthItemRowHeight: 48, monthItemSpaceBetweenRows: 8);
 
 class _MonthSliverGridLayout extends SliverGridLayout {
   const _MonthSliverGridLayout({
+    required this.monthItemRowHeight,
+    required this.monthItemSpaceBetweenRows,
     required this.crossAxisCount,
     required this.dayChildWidth,
     required this.edgeChildWidth,
@@ -14,10 +17,12 @@ class _MonthSliverGridLayout extends SliverGridLayout {
   final double dayChildWidth;
   final double edgeChildWidth;
   final bool reverseCrossAxis;
+  final double monthItemRowHeight;
+  final double monthItemSpaceBetweenRows;
 
-  double get _rowHeight => _monthItemRowHeight + _monthItemSpaceBetweenRows;
+  double get _rowHeight => monthItemRowHeight + monthItemSpaceBetweenRows;
 
-  double get _childHeight => _monthItemRowHeight;
+  double get _childHeight => monthItemRowHeight;
 
   @override
   int getMinChildIndexForScrollOffset(double scrollOffset) =>

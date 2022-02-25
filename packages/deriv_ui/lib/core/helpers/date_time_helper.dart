@@ -219,15 +219,15 @@ int stringToWeekDay(String? weekDayShortName) {
 
 /// Returns the minimum available interval for chart widget to be able to
 /// display the ticks with dataFit enabled.
-ChartInterval getMinimumIntervalForDataFitDuration(Duration dataFitDuration) {
-  for (final ChartInterval interval in ChartInterval.values) {
-    if (dataFitDuration.inMilliseconds <= interval.toMilliseconds()) {
-      return interval;
-    }
-  }
-
-  return ChartInterval.oneDay;
-}
+// ChartInterval getMinimumIntervalForDataFitDuration(Duration dataFitDuration) {
+//   for (final ChartInterval interval in ChartInterval.values) {
+//     if (dataFitDuration.inMilliseconds <= interval.toMilliseconds()) {
+//       return interval;
+//     }
+//   }
+//
+//   return ChartInterval.oneDay;
+// }
 
 /// Returns the duration with proper unit
 String getTimeDuration({

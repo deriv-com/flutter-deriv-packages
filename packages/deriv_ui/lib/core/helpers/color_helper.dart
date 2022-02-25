@@ -1,4 +1,3 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 
@@ -9,10 +8,13 @@ double getOpacity({required bool isEnabled}) => isEnabled ? 1.0 : 0.32;
 Color getTextColorByNumberSign({
   required BuildContext context,
   required num value,
+  required Color negativeColor,
+  required Color positiveColor,
+
 }) =>
     value.isNegative
-        ? context.theme.accentRedColor
-        : context.theme.accentGreenColor;
+        ? negativeColor
+        : positiveColor;
 
 /// Linearly interpolate between two colors.
 /// Can be used in the situations where opacity can't be applied.

@@ -9,6 +9,8 @@ class SelectedDateRange extends StatelessWidget {
   /// Initializes selected date range.
   const SelectedDateRange({
     required this.currentDate,
+    required this.style,
+    required this.color,
     this.startDate,
     this.endDate,
     Key? key,
@@ -23,6 +25,12 @@ class SelectedDateRange extends StatelessWidget {
   /// End date.
   final DateTime? endDate;
 
+  /// TextStyle
+  final TextStyle style;
+
+  ///Color
+  final Color color;
+
   @override
   Widget build(BuildContext context) {
     final List<String> formattedDateParts =
@@ -35,18 +43,16 @@ class SelectedDateRange extends StatelessWidget {
           text: startDate == null
               ? context.localization.labelStartDate
               : formattedDateParts.first,
-          style: context.theme.textStyle(
-            textStyle: TextStyles.headlineNormal,
-            color: context.theme.base02Color.withOpacity(
+          style: style.copyWith(
+            color: color.withOpacity(
               getOpacity(isEnabled: startDate != null),
             ),
           ),
           children: <TextSpan>[
             TextSpan(
               text: ' - ',
-              style: context.theme.textStyle(
-                textStyle: TextStyles.headlineNormal,
-                color: context.theme.base02Color.withOpacity(
+              style: style.copyWith(
+                color: color.withOpacity(
                   getOpacity(isEnabled: startDate != null && endDate != null),
                 ),
               ),
@@ -55,9 +61,8 @@ class SelectedDateRange extends StatelessWidget {
               text: endDate == null
                   ? context.localization.labelEndDate
                   : formattedDateParts.last,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.headlineNormal,
-                color: context.theme.base02Color.withOpacity(
+              style:style.copyWith(
+                color: color.withOpacity(
                   getOpacity(isEnabled: endDate != null),
                 ),
               ),

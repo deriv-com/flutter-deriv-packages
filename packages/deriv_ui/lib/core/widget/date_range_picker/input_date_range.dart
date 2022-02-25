@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:deriv_ui/core/widget/date_range_picker/selected_date_range.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +18,25 @@ class InputDateRange extends StatefulWidget {
   /// Initializes date range input widget.
   const InputDateRange({
     required this.currentDate,
+    required this.selectedDateRangeTextStyle,
+    required this.selectedDateRangeColor,
     this.minAllowedDate,
     this.maxAllowedDate,
     this.initialStartDate,
     this.initialEndDate,
+    this.backgroundColor,
+    this.titleColor,
+    this.titlePadding,
+    this.titleStyle,
+    this.verticalPadding,
+    this.dateInputPadding,
+    this.calenderButtonColor,
+    this.cancelButtonStyle,
+    this.okButtonStyle,
+    this.okButtonValidColor,
+    this.okButtonNotValidColor,
     Key? key,
+
   }) : super(key: key);
 
   /// The [DateTime] representing today.
@@ -37,6 +53,45 @@ class InputDateRange extends StatefulWidget {
 
   /// The [DateTime] that represents the end of the initial date range selection.
   final DateTime? initialEndDate;
+
+  ///Background Color
+  final Color? backgroundColor;
+
+  /// Title color
+  final Color? titleColor;
+
+  /// Title padding
+  final EdgeInsetsGeometry? titlePadding;
+
+  /// Title Style
+  final TextStyle? titleStyle;
+
+  /// Title vertical padding
+  final double? verticalPadding;
+
+  /// Date Input padding
+  final EdgeInsetsGeometry? dateInputPadding;
+
+  /// Calender button Color
+  final Color? calenderButtonColor;
+
+  /// Cancel Button Style
+  final TextStyle? cancelButtonStyle;
+
+  /// Ok Button Style
+  final TextStyle? okButtonStyle;
+
+  /// Ok Button valid Color
+  final Color? okButtonValidColor;
+
+  /// Ok Button not valid color
+  final Color? okButtonNotValidColor;
+
+  ///
+ final TextStyle selectedDateRangeTextStyle;
+
+ ///
+ final  Color selectedDateRangeColor;
 
   @override
   _InputDateRangeState createState() => _InputDateRangeState();
@@ -64,13 +119,24 @@ class _InputDateRangeState extends State<InputDateRange> {
   Widget build(BuildContext context) => WillPopScope(
         child: GestureDetector(
           child: Container(
-            color: context.theme.base08Color,
+            color: widget.backgroundColor ?? Colors.white,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                _buildTitle(),
-                _buildDateInput(),
-                _buildActions(),
+                _buildTitle(
+                    color: widget.titleColor,
+                    style: widget.titleStyle,
+                    verticalPadding: widget.verticalPadding,
+                    titlePadding: widget.titlePadding,
+                  selectedDateRangeColor:widget.selectedDateRangeColor ,
+                  selectedDateRangeTextStyle:  widget.selectedDateRangeTextStyle
+                ),
+                _buildDateInput(dateInputPadding: widget.dateInputPadding),
+                _buildActions(
+                    cancelButtonStyle: widget.cancelButtonStyle,
+                    okButtonNotValidColor: widget.okButtonNotValidColor,
+                    okButtonStyle: widget.okButtonStyle,
+                    okButtonValidColor: widget.okButtonValidColor),
               ],
             ),
           ),
@@ -83,27 +149,27 @@ class _InputDateRangeState extends State<InputDateRange> {
         },
       );
 
-  Widget _buildTitle() => Container(
-        color: context.theme.base07Color,
-        padding: const EdgeInsets.only(
-          top: ThemeProvider.margin16,
-          left: ThemeProvider.margin24,
-          right: ThemeProvider.margin16,
-          bottom: ThemeProvider.margin16,
-        ),
+  Widget _buildTitle({
+    required TextStyle selectedDateRangeTextStyle,
+    required Color selectedDateRangeColor,
+    Color? color,
+    EdgeInsetsGeometry? titlePadding,
+    TextStyle? style,
+    double? verticalPadding,
+  }) =>
+      Container(
+        color: color,
+        padding: titlePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: ThemeProvider.margin08,
+              padding: EdgeInsets.symmetric(
+                vertical: verticalPadding ?? 0,
               ),
               child: Text(
                 context.localization.labelSelectedRange,
-                style: context.theme.textStyle(
-                  textStyle: TextStyles.overline,
-                  color: context.theme.base03Color,
-                ),
+                style: style,
               ),
             ),
             Row(
@@ -113,20 +179,19 @@ class _InputDateRangeState extends State<InputDateRange> {
                   currentDate: widget.currentDate,
                   startDate: isStartDateValid ? startDate : null,
                   endDate: isEndDateValid ? endDate : null,
+                  style: selectedDateRangeTextStyle,
+                  color: selectedDateRangeColor,
                 ),
-                _buildCalendarButton(),
+                _buildCalendarButton(color: widget.calenderButtonColor),
               ],
             ),
           ],
         ),
       );
 
-  Widget _buildDateInput() => Padding(
-        padding: const EdgeInsets.only(
-          left: ThemeProvider.margin24,
-          top: ThemeProvider.margin16,
-          right: ThemeProvider.margin24,
-        ),
+  Widget _buildDateInput({required EdgeInsetsGeometry? dateInputPadding}) =>
+      Padding(
+        padding: dateInputPadding ?? const EdgeInsets.all(0),
         child: _DateRangeTextField(
           initialStartDate: startDate,
           initialEndDate: endDate,
@@ -136,14 +201,14 @@ class _InputDateRangeState extends State<InputDateRange> {
         ),
       );
 
-  Widget _buildCalendarButton() => ClipOval(
+  Widget _buildCalendarButton({Color? color}) => ClipOval(
         child: Material(
           color: Colors.transparent,
           child: IconButton(
             icon: Icon(
               Icons.date_range,
               semanticLabel: context.localization.semanticCalendarIcon,
-              color: context.theme.base02Color.withOpacity(
+              color: color?.withOpacity(
                 getOpacity(
                   isEnabled: _isDateValidForCalendar(),
                 ),
@@ -159,27 +224,27 @@ class _InputDateRangeState extends State<InputDateRange> {
         ),
       );
 
-  Widget _buildActions() => ButtonBar(
+  Widget _buildActions(
+          {TextStyle? cancelButtonStyle,
+          TextStyle? okButtonStyle,
+          Color? okButtonValidColor,
+          Color? okButtonNotValidColor}) =>
+      ButtonBar(
         children: <Widget>[
           TextButton(
             child: Text(
               context.localization.actionCancel,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.button,
-                color: context.theme.brandCoralColor,
-              ),
+              style: cancelButtonStyle,
             ),
             onPressed: _onCancelTap,
           ),
           TextButton(
             child: Text(
               context.localization.actionOK,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.button,
-                color: _isDateValidForApply()
-                    ? context.theme.brandCoralColor
-                    : context.theme.base05Color,
-              ),
+              style: okButtonStyle?.copyWith(
+                  color: _isDateValidForApply()
+                      ? okButtonValidColor
+                      : okButtonNotValidColor),
             ),
             onPressed: () {
               if (_isDateValidForApply()) {
