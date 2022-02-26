@@ -5,6 +5,7 @@ import 'package:deriv_ui/core/widget/date_range_picker/selected_date_range.dart'
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../util/color.dart';
 import '../../helpers/color_helper.dart';
 import '../../helpers/date_time_helper.dart';
 import '../../helpers/mask_text_input_formatter.dart';
@@ -18,8 +19,8 @@ class InputDateRange extends StatefulWidget {
   /// Initializes date range input widget.
   const InputDateRange({
     required this.currentDate,
-    required this.selectedDateRangeTextStyle,
-    required this.selectedDateRangeColor,
+    this.selectedDateRangeTextStyle=const TextStyle(),
+    this.selectedDateRangeColor=LightThemeColors.base02,
     this.minAllowedDate,
     this.maxAllowedDate,
     this.initialStartDate,
@@ -36,7 +37,6 @@ class InputDateRange extends StatefulWidget {
     this.okButtonValidColor,
     this.okButtonNotValidColor,
     Key? key,
-
   }) : super(key: key);
 
   /// The [DateTime] representing today.
@@ -88,10 +88,10 @@ class InputDateRange extends StatefulWidget {
   final Color? okButtonNotValidColor;
 
   ///
- final TextStyle selectedDateRangeTextStyle;
+  final TextStyle selectedDateRangeTextStyle;
 
- ///
- final  Color selectedDateRangeColor;
+  ///
+  final Color selectedDateRangeColor;
 
   @override
   _InputDateRangeState createState() => _InputDateRangeState();
@@ -128,9 +128,9 @@ class _InputDateRangeState extends State<InputDateRange> {
                     style: widget.titleStyle,
                     verticalPadding: widget.verticalPadding,
                     titlePadding: widget.titlePadding,
-                  selectedDateRangeColor:widget.selectedDateRangeColor ,
-                  selectedDateRangeTextStyle:  widget.selectedDateRangeTextStyle
-                ),
+                    selectedDateRangeColor: widget.selectedDateRangeColor,
+                    selectedDateRangeTextStyle:
+                        widget.selectedDateRangeTextStyle),
                 _buildDateInput(dateInputPadding: widget.dateInputPadding),
                 _buildActions(
                     cancelButtonStyle: widget.cancelButtonStyle,

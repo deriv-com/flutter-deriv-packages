@@ -3,6 +3,7 @@ import 'package:deriv_ui/core/widget/date_range_picker/range_picker_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import '../../../util/color.dart';
 import '../../helpers/color_helper.dart';
 import '../animated_popup.dart';
 import 'calendar_date_range.dart';
@@ -18,22 +19,21 @@ class DateRangePicker extends StatefulWidget {
     required this.currentDate,
     required this.minAllowedDate,
     required this.maxAllowedDate,
-    required this.selectedDateRangeColor,
-    required this.selectedDateRangeTextStyle,
-    required this.monthItemRowHeight,
-    required this.monthItemSpaceBetweenRows,
-    required this.monthItemHeaderHeight,
-    required this.horizontalPadding,
-    required this.monthItemFooterHeight,
-    required this.style,
-    required this.gridHeight,
-    required this.containerEdgeColor,
-    required this.highLightColor,
-    required this.dayStyle,
-    required this.splashColor,
-    required this.boxCircleColor,
-    required this.selectDayColor,
-    required this.disableDayColor,
+    this.selectedDateRangeTextStyle=const TextStyle(),
+    this.monthItemHeaderHeight = 48,
+    this.monthItemRowHeight = 48,
+    this.horizontalPadding = 8,
+    this.monthItemSpaceBetweenRows = 8,
+    this.monthItemFooterHeight = 16,
+    this.style=const TextStyle(),
+    this.containerEdgeColor = BrandColors.coral,
+    this.highLightColor = BrandColors.coral,
+    this.dayStyle=const TextStyle(),
+    this.splashColor = BrandColors.coral,
+    this.boxCircleColor = BrandColors.coral,
+    this.selectDayColor = LightThemeColors.base04,
+    this.disableDayColor = LightThemeColors.base01,
+    this.selectedDateRangeColor=LightThemeColors.base02,
     this.initialStartDate,
     this.initialEndDate,
     this.mode = DateRangPickerMode.calendar,
@@ -112,7 +112,6 @@ class DateRangePicker extends StatefulWidget {
   final double horizontalPadding;
   final double monthItemFooterHeight;
   final TextStyle style;
-  final double gridHeight;
   final Color containerEdgeColor;
   final Color highLightColor;
   final TextStyle dayStyle;
@@ -207,8 +206,8 @@ class _DateRangePickerState extends State<DateRangePicker> {
       );
 
   Widget _buildCalendar({
-    required Color selectedDateRangeColor,
-    required TextStyle selectedDateRangeTextStyle,
+    Color? selectedDateRangeColor,
+    TextStyle? selectedDateRangeTextStyle,
     Color? color,
     double? leftPadding,
     double? bottomPadding,
@@ -263,7 +262,6 @@ class _DateRangePickerState extends State<DateRangePicker> {
               onEndDateChanged: (DateTime? date) =>
                   setState(() => selectedEndDate = date),
               horizontalPadding: widget.horizontalPadding,
-              gridHeight: widget.gridHeight,
               style: widget.style,
               splashColor: widget.splashColor,
               selectDayColor: widget.selectDayColor,

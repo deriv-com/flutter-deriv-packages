@@ -2,9 +2,9 @@ part of 'calendar_date_range.dart';
 
 class _MonthItemGridDelegate extends SliverGridDelegate {
   const _MonthItemGridDelegate(
-      {required this.monthItemRowHeight,
-      required this.monthItemSpaceBetweenRows,
-      required this.horizontalPadding});
+      { this.monthItemRowHeight=48,
+       this.monthItemSpaceBetweenRows=8,
+       this.horizontalPadding=8});
 
   final double horizontalPadding;
   final double monthItemRowHeight;

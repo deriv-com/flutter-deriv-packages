@@ -10,21 +10,20 @@ class _MonthItem extends StatefulWidget {
     required this.lastDate,
     required this.displayedMonth,
     required this.onChanged,
-    required this.highLightColor,
-    required this.dayStyle,
-    required this.splashColor,
-    required this.boxCircleColor,
-    required this.selectDayColor,
-    required this.disableDayColor,
-    required this.monthItemHeaderHeight,
-    required this.containerEdgeColor,
+    this.containerEdgeColor = BrandColors.coral,
+    this.highLightColor = BrandColors.coral,
+    this.dayStyle=const TextStyle(),
+    this.splashColor = BrandColors.coral,
+    this.boxCircleColor = BrandColors.coral,
+    this.selectDayColor = LightThemeColors.base04,
+    this.disableDayColor = LightThemeColors.base01,
     this.dragStartBehavior = DragStartBehavior.start,
+    this.monthItemHeaderHeight = 48,
     this.monthItemRowHeight = 48,
     this.horizontalPadding = 8,
     this.monthItemSpaceBetweenRows = 8,
-    this.monthItemFooterHeight,
+    this.monthItemFooterHeight = 16,
     this.style,
-    this.gridHeight,
     Key? key,
   }) : super(key: key);
 
@@ -48,14 +47,14 @@ class _MonthItem extends StatefulWidget {
   final double horizontalPadding;
   final double? monthItemFooterHeight;
   final TextStyle? style;
-  final double? gridHeight;
+
   final Color containerEdgeColor;
   final Color highLightColor;
   final TextStyle dayStyle;
-  final Color splashColor;
+  final Color? splashColor;
   final Color boxCircleColor;
-  final Color selectDayColor;
-  final Color disableDayColor;
+  final Color? selectDayColor;
+  final Color? disableDayColor;
 
   @override
   _MonthItemState createState() => _MonthItemState();
@@ -192,7 +191,7 @@ class _MonthItemState extends State<_MonthItem> {
           constraints: BoxConstraints(maxWidth: maxWidth),
           height: widget.monthItemHeaderHeight,
           padding:
-              EdgeInsets.symmetric(horizontal: widget.horizontalPadding ?? 0),
+              EdgeInsets.symmetric(horizontal: widget.horizontalPadding),
           alignment: AlignmentDirectional.centerStart,
           child: ExcludeSemantics(
             child: Text(
@@ -228,10 +227,10 @@ class _MonthItemState extends State<_MonthItem> {
     required DateTime dayToBuild,
     required Color highLightColor,
     required TextStyle style,
-    required Color splashColor,
+    required Color? splashColor,
     required Color boxCircleColor,
-    required Color selectDayColor,
-    required Color disableDayColor,
+    required Color? selectDayColor,
+    required Color? disableDayColor,
   }) {
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
@@ -343,7 +342,7 @@ class _MonthItemState extends State<_MonthItem> {
         focusNode: dayFocusNodes[day - 1],
         onTap: () => widget.onChanged(dayToBuild),
         radius: widget.monthItemRowHeight / 2 + 4,
-        splashColor: splashColor.withOpacity(
+        splashColor: splashColor?.withOpacity(
           getOpacity(isEnabled: false),
         ),
         onFocusChange: _dayFocusChanged,

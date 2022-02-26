@@ -1,4 +1,5 @@
 import 'package:deriv_ui/core/extensions/context_extension.dart';
+import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -9,8 +10,8 @@ class SelectedDateRange extends StatelessWidget {
   /// Initializes selected date range.
   const SelectedDateRange({
     required this.currentDate,
-    required this.style,
-    required this.color,
+     this.style,
+     this.color=LightThemeColors.base02,
     this.startDate,
     this.endDate,
     Key? key,
@@ -26,10 +27,10 @@ class SelectedDateRange extends StatelessWidget {
   final DateTime? endDate;
 
   /// TextStyle
-  final TextStyle style;
+  final TextStyle? style;
 
   ///Color
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +44,16 @@ class SelectedDateRange extends StatelessWidget {
           text: startDate == null
               ? context.localization.labelStartDate
               : formattedDateParts.first,
-          style: style.copyWith(
-            color: color.withOpacity(
+          style: style?.copyWith(
+            color: color?.withOpacity(
               getOpacity(isEnabled: startDate != null),
             ),
           ),
           children: <TextSpan>[
             TextSpan(
               text: ' - ',
-              style: style.copyWith(
-                color: color.withOpacity(
+              style: style?.copyWith(
+                color: color?.withOpacity(
                   getOpacity(isEnabled: startDate != null && endDate != null),
                 ),
               ),
@@ -61,8 +62,8 @@ class SelectedDateRange extends StatelessWidget {
               text: endDate == null
                   ? context.localization.labelEndDate
                   : formattedDateParts.last,
-              style:style.copyWith(
-                color: color.withOpacity(
+              style:style?.copyWith(
+                color: color?.withOpacity(
                   getOpacity(isEnabled: endDate != null),
                 ),
               ),

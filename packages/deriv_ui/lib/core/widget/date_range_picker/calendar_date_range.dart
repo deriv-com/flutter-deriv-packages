@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
+import '../../../util/color.dart';
 import '../../helpers/color_helper.dart';
 import '../../helpers/date_time_helper.dart';
 
@@ -36,21 +37,20 @@ class CalendarDateRange extends StatefulWidget {
     required DateTime lastDate,
     required this.onStartDateChanged,
     required this.onEndDateChanged,
-    required this.containerEdgeColor,
-    required this.highLightColor,
-    required this.dayStyle,
-    required this.splashColor,
-    required this.boxCircleColor,
-    required this.selectDayColor,
-    required this.disableDayColor,
-    required this.monthItemRowHeight,
-    required this.monthItemSpaceBetweenRows,
-    required this.monthItemHeaderHeight,
-    required this.horizontalPadding,
-    required this.monthItemFooterHeight,
-    required this.style,
-    required this.gridHeight,
-    this.headerHeight=48,
+    this.containerEdgeColor = BrandColors.coral,
+    this.highLightColor = BrandColors.coral,
+    this.dayStyle=const TextStyle(),
+    this.splashColor = BrandColors.coral,
+    this.boxCircleColor = BrandColors.coral,
+    this.selectDayColor = LightThemeColors.base04,
+    this.disableDayColor = LightThemeColors.base01,
+    this.monthItemHeaderHeight = 48,
+    this.monthItemRowHeight = 48,
+    this.horizontalPadding = 8,
+    this.monthItemSpaceBetweenRows = 8,
+    this.monthItemFooterHeight = 16,
+    this.style=const TextStyle(),
+    this.headerHeight = 48,
     this.headerStyle,
     Key? key,
     DateTime? initialStartDate,
@@ -98,7 +98,6 @@ class CalendarDateRange extends StatefulWidget {
   final double horizontalPadding;
   final double monthItemFooterHeight;
   final TextStyle style;
-  final double gridHeight;
   final Color containerEdgeColor;
   final Color highLightColor;
   final TextStyle dayStyle;
@@ -184,7 +183,6 @@ class _CalendarDateRangeState extends State<CalendarDateRange> {
                       selectDayColor: widget.selectDayColor,
                       splashColor: widget.splashColor,
                       style: widget.style,
-                      gridHeight: widget.gridHeight,
                       horizontalPadding: widget.horizontalPadding,
                       monthItemFooterHeight: widget.monthItemFooterHeight,
                     ),
@@ -209,7 +207,6 @@ class _CalendarDateRangeState extends State<CalendarDateRange> {
                       selectDayColor: widget.selectDayColor,
                       splashColor: widget.splashColor,
                       style: widget.style,
-                      gridHeight: widget.gridHeight,
                       horizontalPadding: widget.horizontalPadding,
                       monthItemFooterHeight: widget.monthItemFooterHeight,
                     ),
@@ -224,23 +221,23 @@ class _CalendarDateRangeState extends State<CalendarDateRange> {
     );
   }
 
-  Widget _buildMonthItem(
-      {required int index,
-      required bool beforeInitialMonth,
-      required double monthItemRowHeight,
-      required double monthItemSpaceBetweenRows,
-      required Color highLightColor,
-      required TextStyle dayStyle,
-      required Color splashColor,
-      required Color boxCircleColor,
-      required Color selectDayColor,
-      required Color disableDayColor,
-      required double monthItemHeaderHeight,
-      required Color containerEdgeColor,
-      required double horizontalPadding,
-      required double monthItemFooterHeight,
-      required TextStyle style,
-      required double gridHeight}) {
+  Widget _buildMonthItem({
+    required int index,
+    required bool beforeInitialMonth,
+    required double monthItemRowHeight,
+    required double monthItemSpaceBetweenRows,
+    required Color highLightColor,
+    required TextStyle dayStyle,
+    required Color splashColor,
+    required Color boxCircleColor,
+    required Color selectDayColor,
+    required Color disableDayColor,
+    required double monthItemHeaderHeight,
+    required Color containerEdgeColor,
+    required double horizontalPadding,
+    required double monthItemFooterHeight,
+    required TextStyle? style,
+  }) {
     final int monthIndex = beforeInitialMonth
         ? initialMonthIndex - index - 1
         : initialMonthIndex + index;
@@ -269,7 +266,6 @@ class _CalendarDateRangeState extends State<CalendarDateRange> {
       selectDayColor: selectDayColor,
       splashColor: splashColor,
       style: style,
-      gridHeight: gridHeight,
       horizontalPadding: horizontalPadding,
       monthItemFooterHeight: monthItemFooterHeight,
     );
