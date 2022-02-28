@@ -23,6 +23,7 @@ class DerivLiveChat {
         });
 
 
-  static Stream<dynamic>? get onMessageRecive =>
+  /// receive message
+  static Stream<dynamic>? get onMessageReceive =>
       _eventChannel.receiveBroadcastStream();
 }

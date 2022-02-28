@@ -14,19 +14,21 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   StreamSubscription? subscription;
-
+  int _counter = 1;
 
   @override
   void initState() {
     super.initState();
-    subscription = DerivLiveChat.onMessageRecive?.listen((event) {
-
+    subscription = DerivLiveChat.onMessageReceive?.listen((event) {
+      _setCounter(++_counter);
     });
   }
 
-  @override
-
-
+  void _setCounter(int counter) {
+    setState(() {
+      _counter = counter;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Widget _chatButton() => Center(
@@ -38,17 +40,19 @@ class _AppState extends State<App> {
         child:  TextButton(
             onPressed: () async{
                await  DerivLiveChat.startChatView(
-                  '13724181',
-                  '',
-                  'Sneha',
-                  'sneha.s@solutelabs.com', <String, String>{
-                  'userName': 'sneha-solutelabs',
-                  'role': 'Flutter developer'
-              });
+                  '13694064',
+                   '',
+                   'Demo User', //
+                   'DemoUser@gmail.com',
+                   <String, String>{
+                     //email
+                     'userName': 'Demo', //optional name
+                     'role': 'User' //optional role
+                   });
                // print("message :" + message);
             },
             child: const Text(
-              'start chat',
+              'Open chat',
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 16,
@@ -60,25 +64,49 @@ class _AppState extends State<App> {
       ),
     );
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('LiveChat'),
+          title: const Text('Deriv Live Chat'),
           actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.notifications,
-                color: Colors.white,
-              ),
-              onPressed: () {
+            Stack(
+                children: <Widget>[
+                  IconButton(
+                    icon: const Icon(
+                      Icons.notifications ,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      _setCounter(1);
+                      DerivLiveChat.startChatView(
+                          '13694064',
+                          '',
+                          'Demo User', //
+                          'DemoUser@gmail.com',
+                          <String, String>{
+                            //email
+                            'userName': 'Demo', //optional name
+                            'role': 'User'
+                          });
+                    },
+                  ),
+                  _counter > 1 ? const Positioned(  // draw a red marble
+                    top: 10,
+                    right: 14,
+                    child: Icon(Icons.brightness_1, size: 8.0,
+                        color: Colors.redAccent),
+                  ): Container()
+                ]
+            ),
 
-              },
-            )
           ],
         ),
         body: Column(
           children: [
-            _chatButton(),
+            Padding(padding: const EdgeInsets.fromLTRB(0, 36, 0, 0),
+              child: _chatButton(),
+            )
           ],
         ),
       ),
