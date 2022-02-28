@@ -81,7 +81,7 @@ class Badge extends StatelessWidget {
       alignment: alignment,
       children: <Widget>[
         Padding(
-          child: child ?? const SizedBox(),
+          child: child ?? const SizedBox.shrink(),
           padding: EdgeInsets.all(childWidgetPadding),
         ),
         Visibility(
@@ -93,7 +93,7 @@ class Badge extends StatelessWidget {
                     color: notificationBadgeBackgroundColor,
                     border: Border.all(width: notificationBadgeBorderWidth),
                   )
-                : const BoxDecoration(),
+                : null,
             constraints: BoxConstraints(
               minWidth:
                   showDot ? showDotMinWidth : noShowDotMinWidth,

@@ -155,11 +155,20 @@ class _BaseTextFieldState extends State<BaseTextField> {
 
   @override
   void initState() {
-    widget.focusNode?.addListener(() => setState(() {}));
+    widget.focusNode?.addListener(() => _handleFocusChange);
     _formFieldKey = widget.formFieldKey ??
         (widget.validator == null ? null : GlobalKey<FormFieldState<String>>());
-
     super.initState();
+  }
+
+  void _handleFocusChange() {
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode?.removeListener(_handleFocusChange);
+    super.dispose();
   }
 
   @override

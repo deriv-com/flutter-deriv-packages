@@ -6,7 +6,6 @@ class TextHyperlink extends StatelessWidget {
   const TextHyperlink({
     required this.label,
     required this.url,
-    required this.commonTextStyle,
     required this.containerMargin,
     required this.openWebPage,
     this.style,
@@ -22,9 +21,6 @@ class TextHyperlink extends StatelessWidget {
   /// Style of the [TextHyperlink].
   final TextStyle? style;
 
-  /// Common App Theme Style for the [TextHyperlink].
-  final TextStyle commonTextStyle;
-
   /// Margin for parent container [TextHyperlink].
   final double containerMargin;
 
@@ -37,7 +33,7 @@ class TextHyperlink extends StatelessWidget {
           padding: EdgeInsets.all(containerMargin),
           child: Text(
             label,
-            style: style ?? commonTextStyle,
+            style: style,
           ),
         ),
         onTap: () => openWebPage(context, url),

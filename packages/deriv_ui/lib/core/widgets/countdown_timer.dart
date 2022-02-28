@@ -52,7 +52,7 @@ class CountdownTimer extends StatefulWidget {
   /// Timer container widget builder.
   final Widget Function(Duration value, String formattedValue) widgetBuilder;
 
-  ///
+  /// Formats a duration to time function
   final String Function(Duration value)? formatDuration;
 
   /// On countdown finished callback.

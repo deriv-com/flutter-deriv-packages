@@ -82,7 +82,7 @@ class CustomChip extends StatelessWidget {
             vertical: chipVerticalPadding,
           ),
           decoration: BoxDecoration(
-            color: _backgroundColor(context),
+            color: _backgroundColor(),
             borderRadius: BorderRadius.circular(chipBorderRadius),
           ),
           child: Row(
@@ -91,7 +91,7 @@ class CustomChip extends StatelessWidget {
                 labelBuilder?.call(value, title) ??
                     "${title ?? ''}${title != null ? ': ' : ''}$value",
                 style: textStyle ?? commonTextStyle.copyWith(
-                  color: _textColor(context),
+                  color: _textColor(),
                 )
               ),
             ],
@@ -99,9 +99,9 @@ class CustomChip extends StatelessWidget {
         ),
       );
 
-  Color _backgroundColor(BuildContext context) =>
+  Color _backgroundColor() =>
       isEnabled ? enabledBackgroundColor : disabledBackgroundColor;
 
-  Color _textColor(BuildContext context) =>
+  Color _textColor() =>
       isEnabled ? enabledTextColor : disabledTextColor;
 }

@@ -22,5 +22,7 @@ dev_dependencies:
       path: packages/deriv_lint
       ref: dev
 
+  intl_utils: ^2.0.0
+
 flutter:
   uses-material-design: true
