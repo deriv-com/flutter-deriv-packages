@@ -1,32 +1,33 @@
 import Flutter
 import UIKit
 import LiveChat
-import UserNotifications
 
 
-public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin,LiveChatDelegate {
+/** DerivLiveChatPlugin */
+public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate, FlutterStreamHandler {
 
+     private var lifecycleSink: FlutterEventSink?
+ 
+     public static func register(with registrar: FlutterPluginRegistrar) {
+     // Register Channel
+        let channel = FlutterMethodChannel(name: "derivLiveChat", binaryMessenger: registrar.messenger())
+        let instance = SwiftDerivLiveChatPlugin()
+        registrar.addMethodCallDelegate(instance, channel: channel)
+        
+     // Register Event
+       let eventChannel = FlutterEventChannel(name: "derivLiveChatStream", binaryMessenger: registrar.messenger())
+        eventChannel.setStreamHandler(instance.self)
 
-  public static func register(with registrar: FlutterPluginRegistrar) {
-      let channel = FlutterMethodChannel(name: "deriv_live_chat", binaryMessenger: registrar.messenger())
-    let instance = SwiftDerivLiveChatPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
-  
-  }
+    }
  
 
   
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
    
-    
      switch call.method {
-       case "messageReceived":
-            result("messageReceived")
        
-        case "beginChat":
-
+        case "DerivLiveChatView":
             let arguments = call.arguments as! [String:Any]
-
             let licenseNo = (arguments["licenseNo"] as? String)
             let groupId = (arguments["groupId"] as? String)
             let visitorName = (arguments["visitorName"] as? String)
@@ -45,20 +46,31 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin,LiveChatDelegate 
                 LiveChat.name = visitorName // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey:
                 LiveChat.email = visitorEmail // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey:
                 for (key, value) in customParams{
-                  LiveChat.setVariable(withKey:key, value:value)
-                      }
+                  LiveChat.setVariable(withKey:key, value:value)}
                  LiveChat.delegate = self
-                LiveChat.presentChat()
-                result(nil)
+                LiveChat.customPresentationStyleEnabled = false
+                 LiveChat.presentChat()
+                 result(nil)
             }
-        default:
+            default:
             result(FlutterMethodNotImplemented)
-    }
-  }
-  //ios live chat delegate method to call Message received event
-  public func received(message: LiveChatMessage) {
-		NSLog("Received message: /message")
-
+       }
+       }
+    
+    //iOS Live Chat delegate method to call Message received event
+    public func received(message: LiveChatMessage) {
+    lifecycleSink?(message.text)
 	}
+    
+    public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+       lifecycleSink = events
+       return nil
+    }
+    
+    public func onCancel(withArguments arguments: Any?) -> FlutterError? {
+       lifecycleSink = nil
+       return nil 
+    }
+
 }
   
