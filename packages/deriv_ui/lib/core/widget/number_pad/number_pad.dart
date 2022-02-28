@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:deriv_ui/core/extensions/context_extension.dart';
+import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -103,8 +104,8 @@ class NumberPad extends StatefulWidget {
     this.onOpen,
     this.onClose,
     this.currentFocus = NumberPadInputFocus.firstInputField,
-    this.numberPadSingleTextFieldModel,
-    this.numberPadDoubleTextFieldModel,
+    this.numberPadSingleTextFieldModel=const NumberPadSingleTextFieldModel(),
+    this.numberPadDoubleTextFieldModel=const NumberPadDoubleTextFieldModel(),
     this.backgroundColor,
     this.backgroundColorSecond,
     this.topLeft = 0,
@@ -113,7 +114,7 @@ class NumberPad extends StatefulWidget {
     this.iconPadding = const EdgeInsets.all(0),
     this.topLeftSecond = 0,
     this.topRightSecond = 0,
-    this.numberPadMessageModel,
+    this.numberPadMessageModel=const NumberPadMessageModel(),
   });
 
   /// Sets the currency of the number pad

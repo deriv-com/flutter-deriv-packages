@@ -6,7 +6,7 @@ class _NumberPadTextField extends StatefulWidget {
     this.controller,
     this.focusNode,
     this.label = '',
-    this.numberPadFieldModel,
+    this.numberPadFieldModel = const NumberPadFieldModel(),
   });
 
   final TextEditingController? controller;
@@ -44,7 +44,8 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: widget.numberPadFieldModel?.borderSideColor??Colors.black,
+                    color: widget.numberPadFieldModel?.borderSideColor ??
+                        Colors.black,
                   ),
                 ),
                 labelText: widget.label,

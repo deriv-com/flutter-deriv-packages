@@ -2,7 +2,7 @@ part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetHintButton extends StatelessWidget {
   _ExpandableBottomSheetHintButton(
-      {Key? key, this.verticalPadding = 12, this.iconSize = 24, this.iconColor})
+      {Key? key, this.verticalPadding = 12, this.iconSize = 24, this.iconColor=LightThemeColors.base04})
       : super(key: key);
 
   final GlobalKey _hintKey = GlobalKey();

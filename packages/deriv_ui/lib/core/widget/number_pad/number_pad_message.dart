@@ -3,9 +3,13 @@ part of 'number_pad.dart';
 class _NumberPadMessage extends StatelessWidget {
   const _NumberPadMessage(
       {required this.message,
-       this.validTextStyle,
-       this.inValidTextStyle,
-      this.padding});
+      this.validTextStyle = const TextStyle(color: LightThemeColors.base04),
+      this.inValidTextStyle = const TextStyle(color: BrandColors.coral),
+      this.padding = const EdgeInsets.only(
+        bottom: 8,
+        left: 16,
+        right: 16,
+      )});
 
   final String message;
   final EdgeInsetsGeometry? padding;

@@ -6,7 +6,7 @@ class _NumberPadSingleTextField extends StatelessWidget {
       required this.style,
       this.margin = 24,
       this.label = '',
-      this.numberPadFieldModel,
+      this.numberPadFieldModel= const NumberPadFieldModel(),
       this.currencyLabelStyle});
 
   final String title;

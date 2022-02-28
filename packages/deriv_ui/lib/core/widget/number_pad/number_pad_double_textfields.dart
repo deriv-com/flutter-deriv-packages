@@ -7,8 +7,8 @@ class _NumberPadDoubleTextFields extends StatelessWidget {
     this.paddingFirstTitle = const EdgeInsets.all(0),
     this.paddingSecondTitle = const EdgeInsets.all(0),
     this.currencyTextStyle,
-    this.numberPadFieldModelFirst,
-    this.numberPadFieldModelSecond,
+    this.numberPadFieldModelFirst=const NumberPadFieldModel(),
+    this.numberPadFieldModelSecond=const NumberPadFieldModel(),
   });
 
   final String firstTitleValue;

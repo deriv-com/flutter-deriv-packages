@@ -2,19 +2,19 @@ part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetTitleBar extends StatelessWidget {
   const _ExpandableBottomSheetTitleBar({
-    required this.iconColorHintButton,
-    required this.iconSizeHintButton,
-    required this.verticalPaddingHintButton,
-    required this.verticalMarginToggle,
-    required this.horizontalMarginToggle,
-    required this.heightToggle,
-    required this.widthToggle,
-    required this.borderRadiusToggle,
+     this.iconColorHintButton=LightThemeColors.base04,
+     this.iconSizeHintButton=24,
+    this.verticalPaddingHintButton=12,
+    this.verticalMarginToggle=8,
+    this.horizontalMarginToggle=32,
+    this.heightToggle=4,
+    this.widthToggle=80,
+    this.borderRadiusToggle=4,
+    this.colorToggle=LightThemeColors.base05,
     Key? key,
     this.leftPosition = 16,
     this.rightPosition = 16,
     this.rightPositionForButton = 16,
-    this.colorToggle,
     this.styleTitle,
   }) : super(key: key);
 

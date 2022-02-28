@@ -6,10 +6,10 @@ class _NumberPadKey extends StatelessWidget {
     required this.ignoring,
     required this.index,
      this.borderSideColor=Colors.black,
-    this.backSpaceIconColor,
+    this.backSpaceIconColor=LightThemeColors.base01,
     this.textStyle,
-    this.pressTextButtonColor,
-    this.withoutPressTextButtonColor,
+    this.pressTextButtonColor=BrandColors.coral,
+    this.withoutPressTextButtonColor=LightThemeColors.base04,
   });
 
   final Function(BuildContext, TextEditingController, String) onPressed;

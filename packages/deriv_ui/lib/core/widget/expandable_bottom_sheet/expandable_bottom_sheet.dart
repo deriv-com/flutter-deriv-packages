@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:deriv_ui/core/extensions/context_extension.dart';
+import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -56,19 +57,19 @@ class ExpandableBottomSheet extends StatefulWidget {
     this.topLeftRadius = 16,
     this.topRightRadius = 16,
     this.color,
-    required this.leftPosition,
-    required this.rightPosition,
-    required this.rightPositionForButton,
-    required this.verticalMarginToggle,
-    required this.horizontalMarginToggle,
-    required this.heightToggle,
-    required this.widthToggle,
-    this.colorToggle,
-    required this.borderRadiusToggle,
     this.styleTitle,
-    required this.iconColorHintButton,
-    required this.iconSizeHintButton,
-    required this.verticalPaddingHintButton,
+    this.leftPosition = 16,
+    this.rightPosition = 16,
+    this.rightPositionForButton = 16,
+    this.verticalMarginToggle = 8,
+    this.horizontalMarginToggle = 32,
+    this.heightToggle = 4,
+    this.widthToggle = 80,
+    this.colorToggle = LightThemeColors.base05,
+    this.borderRadiusToggle = 4,
+    this.iconColorHintButton = LightThemeColors.base04,
+    this.iconSizeHintButton = 24,
+    this.verticalPaddingHintButton = 12,
   }) : super(key: key);
 
   /// Expandable BottomSheet Controller

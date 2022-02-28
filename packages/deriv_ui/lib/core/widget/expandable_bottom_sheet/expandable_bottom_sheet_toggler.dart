@@ -7,7 +7,7 @@ class _ExpandableBottomSheetToggler extends StatelessWidget {
       this.horizontalMargin=32,
       this.height=4,
       this.width=40,
-      this.color,
+      this.color=LightThemeColors.base05,
       this.borderRadius=4})
       : super(key: key);
 

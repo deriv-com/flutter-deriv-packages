@@ -1,24 +1,25 @@
 import 'dart:ui';
 
+import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 
 /// Number pad field property
 class NumberPadFieldModel {
   /// Constructor initialize
-  NumberPadFieldModel(
-      {required this.textStyle,
+const  NumberPadFieldModel(
+      { this.textStyle,
       this.labelStyle,
-      this.borderSideColor = Colors.black,
-      this.labelColor,
-      this.focusColor,
-      this.withoutFocusColor,
+      this.borderSideColor = BrandColors.coral,
+      this.labelColor=LightThemeColors.base04,
+      this.focusColor=BrandColors.greenish,
+      this.withoutFocusColor=LightThemeColors.base04,
       this.textAlign = TextAlign.start});
 
   /// Show Label Style
   final TextStyle? labelStyle;
 
   /// Input Text Style
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   /// Border side color
   final Color borderSideColor;
@@ -39,11 +40,11 @@ class NumberPadFieldModel {
 ///
 class NumberPadDoubleTextFieldModel {
   ///
-  NumberPadDoubleTextFieldModel(
-      {this.numberPadFieldModelFirst,
-      this.numberPadFieldModelSecond,
-      this.firstTitleValue,
-      this.secondTitleValue,
+  const NumberPadDoubleTextFieldModel(
+      {this.numberPadFieldModelFirst=const NumberPadFieldModel(),
+      this.numberPadFieldModelSecond=const NumberPadFieldModel(),
+      this.firstTitleValue='',
+      this.secondTitleValue='',
       this.currencyTextStyle,
       this.paddingFirstTitle,
       this.paddingSecondTitle});
@@ -64,7 +65,7 @@ class NumberPadDoubleTextFieldModel {
 ///
 class NumberPadSingleTextFieldModel {
   ///
-  NumberPadSingleTextFieldModel(
+  const NumberPadSingleTextFieldModel(
       {
       this.style,
       this.numberPadFieldModel,
@@ -83,8 +84,14 @@ class NumberPadSingleTextFieldModel {
 class NumberPadMessageModel {
 
   /// Constructor initialize
-  NumberPadMessageModel(
-      {this.inValidTextStyle, this.validTextStyle, this.padding});
+  const NumberPadMessageModel(
+      {this.validTextStyle = const TextStyle(color: LightThemeColors.base04),
+        this.inValidTextStyle = const TextStyle(color: BrandColors.coral),
+        this.padding = const EdgeInsets.only(
+          bottom: 8,
+          left: 16,
+          right: 16,
+        )});
 
   /// TextStyle for inValid message
   final TextStyle? inValidTextStyle;
