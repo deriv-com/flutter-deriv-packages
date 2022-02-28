@@ -1,14 +1,16 @@
 import 'dart:ui';
 
+import '../../../../util/color.dart';
+
 ///
 class AnimatedPopupDialogCardModel{
 
   /// Constructor initializing.
-  AnimatedPopupDialogCardModel({this.verticalMargin,
-    this.cardElevation,
-    this.cardColor,
-    this.cardBorderRadius,
-    this.cardPadding});
+  const AnimatedPopupDialogCardModel({ this.cardPadding=2,
+    this.cardBorderRadius=4,
+    this.cardElevation=4,
+    this.cardColor=LightThemeColors.base08,
+    this.verticalMargin=8});
 
   ///Container vertical margin
   final double? verticalMargin;

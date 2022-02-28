@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../util/color.dart';
+
 
 /// Animated popup dialog, to be used as the container of the popup dialogs with animation.
 class AnimatedPopupDialog extends StatefulWidget {
@@ -7,11 +9,11 @@ class AnimatedPopupDialog extends StatefulWidget {
   const AnimatedPopupDialog({
     required this.child,
     this.animationDuration = const Duration(milliseconds: 150),
-    this.cardPadding,
-    this.cardBorderRadius,
-    this.cardElevation,
-    this.cardColor,
-    this.verticalMargin,
+    this.cardPadding=2,
+    this.cardBorderRadius=4,
+    this.cardElevation=4,
+    this.cardColor=LightThemeColors.base08,
+    this.verticalMargin=8,
     Key? key,
   }) : super(key: key);
 
@@ -65,20 +67,20 @@ class _AnimatedPopupDialogState extends State<AnimatedPopupDialog>
           child: Container(
             margin: EdgeInsets.symmetric(
               horizontal: _calculateHorizontalPadding(context),
-              vertical: widget.verticalMargin??0,
+              vertical: widget.verticalMargin??8,
             ),
             child: Card(
-              elevation: widget.cardElevation,
-              color: widget.cardColor,
+              elevation: widget.cardElevation??4,
+              color: widget.cardColor??LightThemeColors.base08,
               child: Container(
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.circular(widget.cardBorderRadius??0),
+                        BorderRadius.circular(widget.cardBorderRadius??4),
                   ),
                 ),
                 child: Padding(
-                  padding:  EdgeInsets.all(widget.cardPadding??0),
+                  padding:  EdgeInsets.all(widget.cardPadding??2),
                   child: widget.child,
                 ),
               ),
