@@ -1,3 +1,4 @@
+import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 
 /// A Material Design alerts banner.
@@ -25,7 +26,7 @@ class AlertBanner extends StatelessWidget {
     required this.onPositiveActionPressed,
     this.negativeButtonLabel,
     this.onNegativeActionPressed,
-    this.backgroundColor,
+    this.backgroundColor=LightThemeColors.base06,
     this.textStyle,
     this.negativeButtonTextStyle,
     this.positiveButtonTextStyle,

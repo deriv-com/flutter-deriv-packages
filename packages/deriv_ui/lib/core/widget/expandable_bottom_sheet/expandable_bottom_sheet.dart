@@ -169,18 +169,43 @@ class ExpandableBottomSheet extends StatefulWidget {
   /// Background color of container
   final Color? color;
 
+  /// left position value
   final double leftPosition;
+
+  /// right position value
   final double rightPosition;
+
+  /// right position value of button
   final double rightPositionForButton;
+
+  ///  Vertical margin of toggle
   final double verticalMarginToggle;
+
+  /// horizontal margin of toggle
   final double horizontalMarginToggle;
+
+  /// height of toggle
   final double heightToggle;
+
+  /// width of toggle
   final double widthToggle;
+
+  /// Color of toggle
   final Color? colorToggle;
+
+  /// Border radius of toggle
   final double borderRadiusToggle;
+
+  /// Title style
   final TextStyle? styleTitle;
+
+  /// Hint button icon color
   final Color iconColorHintButton;
+
+  ///  Hint button icon size
   final double iconSizeHintButton;
+
+ /// Hint button vertical padding
   final double verticalPaddingHintButton;
 
   @override

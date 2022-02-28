@@ -198,17 +198,37 @@ class NumberPad extends StatefulWidget {
   /// By default, should be the first input field.
   final NumberPadInputFocus currentFocus;
 
+  ///
   final NumberPadSingleTextFieldModel? numberPadSingleTextFieldModel;
+
+  ///
   final NumberPadDoubleTextFieldModel? numberPadDoubleTextFieldModel;
 
+  /// Background Color
   final Color? backgroundColor;
+
+  ///
   final Color? backgroundColorSecond;
+
+  /// TopLeft Radius
   final double topLeft;
+
+  /// TopRight Radius
   final double topRight;
+
+  /// Padding
   final EdgeInsetsGeometry? paddingSecond;
+
+  /// Icon padding
   final EdgeInsetsGeometry iconPadding;
+
+  /// TopLeft Radius
   final double topLeftSecond;
+
+  /// TopRight Radius
   final double topRightSecond;
+
+  /// NumberPad Message Model  property value
   final NumberPadMessageModel? numberPadMessageModel;
 
   @override

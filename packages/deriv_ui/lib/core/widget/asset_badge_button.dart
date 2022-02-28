@@ -30,7 +30,10 @@ class AssetBadgeButton extends StatelessWidget {
   /// On pressed handler.
   final VoidCallback? onPressed;
 
+  /// right position value
   final double right;
+
+  /// left position value
   final double top;
 
   @override

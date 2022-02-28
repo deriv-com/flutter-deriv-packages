@@ -49,16 +49,25 @@ class NumberPadDoubleTextFieldModel {
       this.paddingFirstTitle,
       this.paddingSecondTitle});
 
-  ///
+  ///  First text filed property
   final NumberPadFieldModel? numberPadFieldModelFirst;
 
-  ///
+  /// Second text filed property
   final NumberPadFieldModel? numberPadFieldModelSecond;
 
+  /// First title value
   final String? firstTitleValue;
+
+  /// Second title value
   final String? secondTitleValue;
+
+  /// Currency Text style
   final TextStyle? currencyTextStyle;
+
+  /// Padding of first title
   final EdgeInsetsGeometry? paddingFirstTitle;
+
+  /// PAdding of second title
   final EdgeInsetsGeometry? paddingSecondTitle;
 }
 
@@ -73,10 +82,19 @@ class NumberPadSingleTextFieldModel {
       this.margin,
       this.currencyLabelStyle});
 
+  /// Text Style
   final TextStyle? style;
+
+  /// Single text field property
   final NumberPadFieldModel? numberPadFieldModel;
+
+  /// Label value
   final String? label;
+
+  /// Margin value
   final double? margin;
+
+  /// Currency label text style
   final TextStyle? currencyLabelStyle;
 }
 

@@ -38,15 +38,34 @@ class Badge extends StatelessWidget {
   /// Default is [Alignment.topRight].
   final Alignment alignment;
 
+  /// PAdding
   final double padding;
+
+  /// Badge Text Style
   final TextStyle? badgeTextStyle;
+
+  /// Border width
   final double borderWidth;
+
+  /// Box Color
   final Color boxColor;
+
+  /// Box width
   final double boxWidth;
+
+  /// Box height
   final double boxHeight;
+
+  /// Min width show dot
   final double minWidthISCountNull;
+
+  /// Min width not show dot
   final double minWidthISCountNotNull;
+
+  /// Min height show dot
   final double minHeightISCountNull;
+
+  /// Min height not show dot
   final double minHeightISCountNotNull;
 
   @override
