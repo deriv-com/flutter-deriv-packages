@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/material.dart';
@@ -16,15 +15,13 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   StreamSubscription? subscription;
 
+
   @override
   void initState() {
     super.initState();
+    subscription = DerivLiveChat.onMessageRecive?.listen((event) {
 
-    subscription = DerivLiveChat.stream?.listen((event) {
-      log('event is called : $event');
-      print('$event');
     });
-
   }
 
   @override
@@ -32,42 +29,56 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    Widget _chatButton() => Container(
-      decoration: BoxDecoration(
-        color: Colors.blue[500],
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child:  TextButton(
-          onPressed: () async{
-             await  DerivLiveChat.startChatView(
-                '13724181',
-                '',
-                'Sneha',
-                'sneha.s@solutelabs.com', <String, String>{
-                'userName': 'sneha-solutelabs',
-                'role': 'Flutter developer'
-            });
-             // print("message :" + message);
-          },
-          child: const Text(
-            'start chat',
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w800,
-              color: Color(0xFFFFFFFF),
-            ),
-          )
+    Widget _chatButton() => Center(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[500],
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child:  TextButton(
+            onPressed: () async{
+               await  DerivLiveChat.startChatView(
+                  '13724181',
+                  '',
+                  'Sneha',
+                  'sneha.s@solutelabs.com', <String, String>{
+                  'userName': 'sneha-solutelabs',
+                  'role': 'Flutter developer'
+              });
+               // print("message :" + message);
+            },
+            child: const Text(
+              'start chat',
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+                color: Color(0xFFFFFFFF),
+              ),
+            )
+        ),
       ),
     );
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('LiveChat')),
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('LiveChat'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.notifications,
+                color: Colors.white,
+              ),
+              onPressed: () {
+
+              },
+            )
+          ],
+        ),
         body: Column(
           children: [
-            Center(
-                child: _chatButton()
-            ),
+            _chatButton(),
           ],
         ),
       ),

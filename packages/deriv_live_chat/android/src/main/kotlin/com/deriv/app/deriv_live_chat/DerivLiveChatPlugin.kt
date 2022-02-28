@@ -3,7 +3,6 @@ package com.deriv.app.deriv_live_chat
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import androidx.annotation.NonNull
 import com.livechatinc.inappchat.ChatWindowConfiguration
 import com.livechatinc.inappchat.ChatWindowErrorType
@@ -40,36 +39,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
-     if (call.method.equals("liveChat_activity")) {
-      val licenseNo = call.argument<String>("licenseNo")
-      val customParams = call.argument<HashMap<String, String>>("customParams")!!
-      val groupId = call.argument<String>("groupId")
-      val visitorName = call.argument<String>("visitorName")
-      val visitorEmail = call.argument<String>("visitorEmail")
-      if (licenseNo?.trim { it <= ' ' }.equals("", ignoreCase = true)) {
-        result.error("LICENSE NUMBER EMPTY", null, null)
-      } else if (visitorName!!.trim { it <= ' ' }.equals("", ignoreCase = true)) {
-        result.error("VISITOR NAME EMPTY", null, null)
-      } else if (visitorEmail!!.trim { it <= ' ' }.equals("", ignoreCase = true)) {
-        result.error("VISITOR EMAIL EMPTY", null, null)
-      }else{
-        val intent =
-          Intent(activity, com.livechatinc.inappchat.ChatWindowActivity::class.java)
-        val config: Bundle = ChatWindowConfiguration.Builder()
-          .setLicenceNumber(licenseNo)
-          .setGroupId(groupId)
-          .setVisitorName(visitorName)
-          .setVisitorEmail(visitorEmail)
-          .setCustomParams(customParams)
-          .build()
-          .asBundle()
-
-        intent.putExtras(config)
-        activity?.startActivity(intent)
-
-        result.success(null)
-      }
-    }else if(call.method.equals("livechat_view")){
+    if(call.method.equals("livechat_view")){
       val licenseNo = call.argument<String>("licenseNo")
       val customParams = call.argument<HashMap<String, String>>("customParams")!!
       val groupId = call.argument<String>("groupId")
@@ -90,7 +60,6 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
         override fun onChatWindowVisibilityChanged(visible: Boolean) {
 
         }
-
         override fun onNewMessage(message: NewMessageModel?, windowVisible: Boolean) {
           lifecycleSink?.success(message?.text)
         }
@@ -114,7 +83,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
 
       chatWindowView.initialize()
       chatWindowView.showChatWindow()
-       result.success(null)
+      result.success(null)
     }else {
       result.notImplemented()
     }
@@ -128,26 +97,20 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    TODO("Not yet implemented")
+
   }
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    TODO("Not yet implemented")
   }
 
   override fun onDetachedFromActivity() {
   }
 
-  override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+  override fun onListen(arguments: Any?, events: EventSink?) {
     lifecycleSink = events
   }
 
   override fun onCancel(arguments: Any?) {
     lifecycleSink = null
-  }
-
-  fun onMessageReceived(message: String, channelUrl: String?, sender: String,
-                                 events: EventSink?, messageType: Int) {
-    events?.success(message)
   }
 }
