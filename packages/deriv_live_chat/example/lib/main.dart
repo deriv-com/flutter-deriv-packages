@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +14,21 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  StreamSubscription? subscription;
+
   @override
   void initState() {
     super.initState();
+
+    subscription = DerivLiveChat.stream?.listen((event) {
+      log('event is called : $event');
+      print('$event');
+    });
+
   }
+
+  @override
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +38,16 @@ class _AppState extends State<App> {
         borderRadius: BorderRadius.circular(4),
       ),
       child:  TextButton(
-          onPressed: () {
-            DerivLiveChat.startChatView(
+          onPressed: () async{
+             await  DerivLiveChat.startChatView(
                 '13724181',
                 '',
                 'Sneha',
-                '', <String, String>{
+                'sneha.s@solutelabs.com', <String, String>{
                 'userName': 'sneha-solutelabs',
                 'role': 'Flutter developer'
             });
+             // print("message :" + message);
           },
           child: const Text(
             'start chat',

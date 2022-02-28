@@ -1,7 +1,6 @@
 package com.deriv.app.deriv_live_chat
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,10 +9,11 @@ import com.livechatinc.inappchat.ChatWindowConfiguration
 import com.livechatinc.inappchat.ChatWindowErrorType
 import com.livechatinc.inappchat.ChatWindowView
 import com.livechatinc.inappchat.models.NewMessageModel
-import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.plugin.common.EventChannel
+import io.flutter.plugin.common.EventChannel.EventSink
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -21,13 +21,22 @@ import io.flutter.plugin.common.MethodChannel.Result
 import java.util.*
 
 /** DerivLiveChatPlugin */
-class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,  ActivityAware{
+class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, EventChannel.StreamHandler{
   private lateinit var channel : MethodChannel
   var activity: Activity? = null
+  var lifecycleSink: EventSink? = null
+
+  companion object {
+    const val CHANNEL = "derivLiveChat"
+    const val STREAM = "derivLiveChatStream"
+  }
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "deriv_live_chat")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, CHANNEL)
     channel.setMethodCallHandler(this)
+
+    EventChannel(flutterPluginBinding.binaryMessenger, STREAM)
+      .setStreamHandler(this)
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
@@ -66,7 +75,6 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,  ActivityAware{
       val groupId = call.argument<String>("groupId")
       val visitorName = call.argument<String>("visitorName")
       val visitorEmail = call.argument<String>("visitorEmail")
-
       val chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
 
       val configuration =  ChatWindowConfiguration.Builder()
@@ -84,7 +92,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,  ActivityAware{
         }
 
         override fun onNewMessage(message: NewMessageModel?, windowVisible: Boolean) {
-
+          lifecycleSink?.success(message?.text)
         }
 
         override fun onStartFilePickerActivity(intent: Intent?, requestCode: Int) {
@@ -102,12 +110,11 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,  ActivityAware{
         override fun handleUri(uri: Uri?): Boolean {
           return true
         }
-
       })
+
       chatWindowView.initialize()
       chatWindowView.showChatWindow()
-
-
+       result.success(null)
     }else {
       result.notImplemented()
     }
@@ -129,6 +136,18 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,  ActivityAware{
   }
 
   override fun onDetachedFromActivity() {
-    TODO("Not yet implemented")
+  }
+
+  override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+    lifecycleSink = events
+  }
+
+  override fun onCancel(arguments: Any?) {
+    lifecycleSink = null
+  }
+
+  fun onMessageReceived(message: String, channelUrl: String?, sender: String,
+                                 events: EventSink?, messageType: Int) {
+    events?.success(message)
   }
 }
