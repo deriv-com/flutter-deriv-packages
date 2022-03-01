@@ -20,7 +20,7 @@ void main() {
     });
   });
 
-  test('Start chat with plugin without customParams', () async {
+  test('Start chat with Deriv Live Chat plugin without customParams', () async {
     await DerivLiveChat.startChatView(
       'licenseNo',
       'groupId',

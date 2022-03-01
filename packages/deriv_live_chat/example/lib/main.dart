@@ -37,8 +37,8 @@ class _AppState extends State<App> {
         'DemoUser@gmail.com',
         <String, String>{
           //email
-          'userName': 'Demo', //optional name
-          'role': 'User' //optional role
+          'Appid': 'Demo', //optional name
+          'udid': 'User' //optional role
         });
   }
 

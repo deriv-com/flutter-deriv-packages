@@ -48,7 +48,7 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
                 for (key, value) in customParams{
                   LiveChat.setVariable(withKey:key, value:value)}
                  LiveChat.delegate = self
-                LiveChat.customPresentationStyleEnabled = false
+                 LiveChat.customPresentationStyleEnabled = false
                  LiveChat.presentChat()
                  result(nil)
             }
