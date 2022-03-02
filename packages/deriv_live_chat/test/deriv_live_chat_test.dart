@@ -12,7 +12,7 @@ void main() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
       log.add(methodCall);
       switch (methodCall.method) {
-        case 'DerivLiveChatView':
+        case 'derivLiveChatView':
           return true;
         default:
           return null;
@@ -29,7 +29,7 @@ void main() {
     );
     expect(log, <Matcher>[
       isMethodCall(
-        'DerivLiveChatView',
+        'derivLiveChatView',
         arguments: <String, dynamic>{
           'licenseNo': 'licenseNo',
           'groupId': 'groupId',

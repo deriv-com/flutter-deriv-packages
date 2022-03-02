@@ -39,7 +39,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
 
-    if(call.method.equals("DerivLiveChatView")){
+    if(call.method.equals("derivLiveChatView")){
 
       val licenseNo = call.argument<String>("licenseNo")
       val customParams = call.argument<HashMap<String, String>>("customParams")!!
