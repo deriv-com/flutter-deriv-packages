@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Deriv branding colors, these colors should not be changed. It can be called
+/// branding colors, these colors should not be changed. It can be called
 /// as [BrandColors.coral]
 class BrandColors {
   static const Color coral = Color(0xFFFF444F);
@@ -8,7 +8,7 @@ class BrandColors {
   static const Color orange = Color(0xFFFF6444);
 }
 
-/// These colors suits the dark theme of Deriv
+/// These colors suits the dark theme
 class DarkThemeColors {
   static const Color base01 = Color(0xFFFFFFFF);
   static const Color base02 = Color(0xFFEAECED);
@@ -25,7 +25,7 @@ class DarkThemeColors {
   static const Color accentLightBlue = Color(0xFF77A6FD);
 }
 
-/// These colors suits the light theme of Deriv
+/// These colors suits the light theme
 //todo: replace values based on light theme when available
 class LightThemeColors {
   static const Color base01 = Color(0xFFFFFFFF);

@@ -104,7 +104,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
         children: <Widget>[
           _buildDateTextField(
               hintText: widget.dateFormat.toUpperCase(),
-              labelText: context.localization.labelStartDate,
+              labelText: labelStartDate,
               controller: startDateInputController,
               isValidDate: widget.isStartDateValid,
               style: widget.style,
@@ -118,7 +118,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
           SizedBox(width: widget.width ?? 0),
           _buildDateTextField(
               hintText: widget.dateFormat.toUpperCase(),
-              labelText: context.localization.labelEndDate,
+              labelText: labelEndDate,
               controller: endDateInputController,
               isValidDate: widget.isEndDateValid,
               style: widget.style,

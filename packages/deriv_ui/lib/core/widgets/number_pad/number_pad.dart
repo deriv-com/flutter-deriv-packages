@@ -1,16 +1,16 @@
 import 'dart:ui' as ui;
 
-import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
+import '../../../util/strings_const.dart';
 import '../../assets.dart';
 import '../../enums.dart';
 import '../../helpers/number_helper.dart';
 import '../../helpers/website_status_helper.dart';
-import '../custom_tooltip.dart';
+import '../../widgets/custom_tooltip.dart';
 import 'model/number_pad_data.dart';
 import 'model/number_pad_field_model.dart';
 
@@ -326,8 +326,7 @@ class _NumberPadState extends State<NumberPad> {
                                 handleIcon,
                                 width: 40,
                                 height: 4,
-                                semanticsLabel: context.localization
-                                    .semanticNumberPadBottomSheetHandle,
+                                semanticsLabel: semanticNumberPadBottomSheetHandle,
                               ),
                             ),
                             onTap: () => Navigator.pop(context),
@@ -466,13 +465,13 @@ class _NumberPadState extends State<NumberPad> {
           lowerLimit: widget.firstInputMinimumValue ?? 0);
 
       if (!isFirstMoreThanMin) {
-        return message = context.localization.warnValueCantBeLessThan(
+        return message = warnValueCantBeLessThan(
           widget.firstInputTitle,
           widget.firstInputMinimumValue ?? 0,
           getStringWithMappedCurrencyName(_currency),
         );
       } else if (!isFirstLessThanMax) {
-        return message = context.localization.warnValueCantBeGreaterThan(
+        return message = warnValueCantBeGreaterThan(
           widget.firstInputTitle,
           widget.firstInputMaximumValue,
           getStringWithMappedCurrencyName(_currency),
@@ -490,15 +489,13 @@ class _NumberPadState extends State<NumberPad> {
             lowerLimit: widget.secondInputMinimumValue);
 
         if (!isSecondMoreThanMin) {
-          return message =
-              context.localization.warnDoubleInputValueCantBeLessThan(
+          return message = warnDoubleInputValueCantBeLessThan(
             widget.secondInputTitle,
             widget.secondInputMinimumValue,
             getStringWithMappedCurrencyName(_currency),
           );
         } else if (!isSecondLessThanMax) {
-          return message =
-              context.localization.warnDoubleInputValueCantBeGreaterThan(
+          return message = warnDoubleInputValueCantBeGreaterThan(
             widget.secondInputTitle,
             widget.secondInputMaximumValue!,
             getStringWithMappedCurrencyName(_currency),
@@ -507,7 +504,7 @@ class _NumberPadState extends State<NumberPad> {
       }
     } else if (widget.firstInputMinimumValue != null &&
         widget.firstInputMaximumValue != double.maxFinite) {
-      return message = context.localization.warnValueShouldBeInRange(
+      return message = warnValueShouldBeInRange(
         widget.firstInputTitle,
         widget.firstInputMinimumValue ?? 0,
         getStringWithMappedCurrencyName(_currency),

@@ -74,7 +74,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                         },
                         icon: const Icon(Icons.expand_more),
                       ),
-                      title: Text(context.localization.labelContractDetails),
+                      title: Text(labelContractDetails),
                     ),
                   ),
                 ),

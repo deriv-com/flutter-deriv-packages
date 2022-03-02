@@ -1,8 +1,8 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../util/strings_const.dart';
 import '../../helpers/color_helper.dart';
 
 /// Selected date range to show selected start and end date.
@@ -42,7 +42,7 @@ class SelectedDateRange extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         text: TextSpan(
           text: startDate == null
-              ? context.localization.labelStartDate
+              ? labelStartDate
               : formattedDateParts.first,
           style: style?.copyWith(
             color: color?.withOpacity(
@@ -60,7 +60,7 @@ class SelectedDateRange extends StatelessWidget {
             ),
             TextSpan(
               text: endDate == null
-                  ? context.localization.labelEndDate
+                  ? labelEndDate
                   : formattedDateParts.last,
               style:style?.copyWith(
                 color: color?.withOpacity(

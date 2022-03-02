@@ -6,7 +6,6 @@ double getOpacity({required bool isEnabled}) => isEnabled ? 1.0 : 0.32;
 
 /// Gets text color based on value sign.
 Color getTextColorByNumberSign({
-  required BuildContext context,
   required num value,
   required Color negativeColor,
   required Color positiveColor,

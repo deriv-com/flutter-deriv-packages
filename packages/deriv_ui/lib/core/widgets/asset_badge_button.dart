@@ -1,6 +1,7 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../util/strings_const.dart';
 
 /// A class to represent an [IconButton] with an asset badge.
 class AssetBadgeButton extends StatelessWidget {
@@ -54,7 +55,7 @@ class AssetBadgeButton extends StatelessWidget {
                 child: SvgPicture.asset(
                   badgeAssetName!,
                   semanticsLabel:
-                      context.localization.semanticBadgeIndicatorIcon,
+                      semanticBadgeIndicatorIcon,
                 ),
               ),
             )

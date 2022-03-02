@@ -1,5 +1,6 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../../util/strings_const.dart';
 
 /// This widget displays a widget with the possibility of showing a badge icon
 /// with a count value on the widget
@@ -77,7 +78,7 @@ class Badge extends StatelessWidget {
       alignment: alignment,
       children: <Widget>[
         Padding(
-          child: child ?? const SizedBox(),
+          child: child ?? const SizedBox.shrink(),
           padding: EdgeInsets.all(padding),
         ),
         Visibility(
@@ -103,9 +104,9 @@ class Badge extends StatelessWidget {
                       child: Text(
                         '$count',
                         semanticsLabel:
-                            _getSemanticLabel(context: context, count: count!),
+                            _getSemanticLabel(count: count!),
                         textAlign: TextAlign.center,
-                        style: badgeTextStyle,
+                        // style: badgeTextStyle,
                       ),
                     ),
                   )
@@ -117,10 +118,9 @@ class Badge extends StatelessWidget {
   }
 
   String _getSemanticLabel({
-    required BuildContext context,
     required int count,
   }) =>
       count == 1
-          ? context.localization.semanticNotificationCountIcon
-          : context.localization.semanticNotificationsCountIcon(count);
+          ? semanticNotificationCountIcon
+          :semanticNotificationsCountIcon(count);
 }

@@ -46,7 +46,7 @@ class _NumberPadSingleTextField extends StatelessWidget {
         title.isEmpty
             ? const SizedBox.shrink()
             : _NumberPadSingleTextTitle(
-                hint: context.localization.informTradeAmountHint,
+                hint: informTradeAmountHint,
                 title: title,
               ),
         Row(

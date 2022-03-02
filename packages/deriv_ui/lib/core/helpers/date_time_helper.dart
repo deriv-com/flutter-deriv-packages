@@ -1,13 +1,12 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../widget/date_range_picker/models/input_date_model.dart';
+import '../../util/strings_const.dart';
+import '../widgets/date_range_picker/models/input_date_model.dart';
 
 
 /// Formats a duration to time
 String formatDuration({
-  required BuildContext context,
   required Duration duration,
   bool showTimePartLabels = false,
   bool showDay = false,
@@ -25,32 +24,32 @@ String formatDuration({
   final String daysFormatted = showDay
       ? getTimePartLabel(
           timePart: days,
-          zeroLabel: context.localization.labelDay,
-          singularLabel: context.localization.labelDay,
-          pluralLabel: context.localization.labelDays,
+          zeroLabel: labelDay,
+          singularLabel: labelDay,
+          pluralLabel: labelDays,
           formatter: dayFormatter,
         )
       : '';
 
   final String hoursFormatted = showHour
       ? showTimePartLabels
-          ? '${getTimePartLabel(timePart: hours, singularLabel: context.localization.labelHour, zeroLabel: context.localization.labelHour, pluralLabel: context.localization.labelHour, formatter: timePartFormatter)} '
+          ? '${getTimePartLabel(timePart: hours, singularLabel: labelHour, zeroLabel:labelHour, pluralLabel: labelHour, formatter: timePartFormatter)} '
           : '${timePartFormatter.format(hours)}:'
       : '';
 
   final String minutesFormatted = showTimePartLabels
       ? getTimePartLabel(
           timePart: minutes,
-          zeroLabel: context.localization.labelMinute,
-          singularLabel: context.localization.labelMinute,
-          pluralLabel: context.localization.labelMinute,
+          zeroLabel: labelMinute,
+          singularLabel: labelMinute,
+          pluralLabel: labelMinute,
           formatter: timePartFormatter,
         )
       : timePartFormatter.format(minutes);
 
   final String secondsFormatted = showSecond
       ? showTimePartLabels
-          ? ' ${getTimePartLabel(timePart: seconds, singularLabel: context.localization.labelSecond, zeroLabel: context.localization.labelSecond, pluralLabel: context.localization.labelSecond, formatter: timePartFormatter)}'
+          ? ' ${getTimePartLabel(timePart: seconds, singularLabel: labelSecond, zeroLabel: labelSecond, pluralLabel: labelSecond, formatter: timePartFormatter)}'
           : ':${timePartFormatter.format(seconds)}'
       : '';
 
@@ -231,16 +230,15 @@ int stringToWeekDay(String? weekDayShortName) {
 
 /// Returns the duration with proper unit
 String getTimeDuration({
-  required BuildContext context,
   required int? duration,
   String? durationUnit,
 }) {
   if (durationUnit == 'm') {
-    return context.localization.labelMinutes(duration!);
+    return labelMinutes(duration!);
   } else if (durationUnit == 'h') {
-    return context.localization.labelHoursValue(duration!);
+    return labelHoursValue(duration!);
   } else if (durationUnit == 'd') {
-    return context.localization.labelDaysValue(duration!);
+    return labelDaysValue(duration!);
   }
   return '$duration';
 }

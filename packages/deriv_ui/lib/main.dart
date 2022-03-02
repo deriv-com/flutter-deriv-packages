@@ -1,17 +1,14 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
-import 'package:deriv_ui/core/widget/date_range_picker/date_range_picker.dart';
-import 'package:deriv_ui/generated/l10n.dart';
+import 'package:deriv_ui/core/widgets/date_range_picker/date_range_picker.dart';
 import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'core/enums.dart';
 import 'core/helpers/number_helper.dart';
-import 'core/widget/date_range_picker/models/date_range_model.dart';
-import 'core/widget/expandable_bottom_sheet/expandable_bottom_sheet.dart';
-import 'core/widget/number_pad/model/number_pad_data.dart';
-import 'core/widget/number_pad/number_pad.dart';
-import 'core/widget/shimmer/shimmer.dart';
+import 'core/widgets/date_range_picker/models/date_range_model.dart';
+import 'core/widgets/number_pad/model/number_pad_data.dart';
+import 'core/widgets/number_pad/number_pad.dart';
+import 'core/widgets/shimmer/shimmer.dart';
 
 void main() => runApp(App());
 
@@ -42,10 +39,10 @@ class _AppState extends State<App> {
   }
   @override
   Widget build(BuildContext context) => MaterialApp(
-          localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-            S.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
+          // localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+          //   S.delegate,
+          // ],
+          // supportedLocales: S.delegate.supportedLocales,
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:deriv_ui/core/widget/web_view_page/states/web_view_page_cubit.dart';
+import 'package:deriv_ui/core/widgets/web_view_page/states/web_view_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_api/helpers/helpers.dart';

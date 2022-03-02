@@ -1,8 +1,5 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
-import 'package:deriv_ui/core/widget/date_range_picker/date_range_picker.dart';
-import 'package:deriv_ui/core/widget/date_range_picker/models/date_range_model.dart';
-import 'package:deriv_ui/core/widget/expandable_bottom_sheet/expandable_bottom_sheet.dart';
-import 'package:deriv_ui/generated/l10n.dart';
+import 'package:deriv_ui/core/widgets/date_range_picker/date_range_picker.dart';
+import 'package:deriv_ui/core/widgets/date_range_picker/models/date_range_model.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(App());
@@ -14,10 +11,10 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  var selectedDate = '';
+  String selectedDate = '';
   final GlobalKey _key = GlobalKey();
   final ValueNotifier<double> _height = ValueNotifier<double>(-1);
-  final countries = ['india', 'USA', 'China', 'Ukrain'];
+  final List<String> countries = ['india', 'USA', 'China', 'Ukrain'];
 
   @override
   void initState() {
@@ -34,10 +31,10 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-          localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-            S.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
+          // localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+          //   S.delegate,
+          // ],
+          // supportedLocales: S.delegate.supportedLocales,
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,

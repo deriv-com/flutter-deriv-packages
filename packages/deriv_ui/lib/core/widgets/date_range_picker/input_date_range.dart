@@ -1,11 +1,11 @@
 import 'dart:ui';
 
-import 'package:deriv_ui/core/extensions/context_extension.dart';
-import 'package:deriv_ui/core/widget/date_range_picker/selected_date_range.dart';
+import 'package:deriv_ui/core/widgets/date_range_picker/selected_date_range.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../util/color.dart';
+import '../../../util/strings_const.dart';
 import '../../helpers/color_helper.dart';
 import '../../helpers/date_time_helper.dart';
 import '../../helpers/mask_text_input_formatter.dart';
@@ -177,7 +177,7 @@ class _InputDateRangeState extends State<InputDateRange> {
                 vertical: verticalPadding ?? 0,
               ),
               child: Text(
-                context.localization.labelSelectedRange,
+                labelSelectedRange,
                 style: style,
               ),
             ),
@@ -216,14 +216,14 @@ class _InputDateRangeState extends State<InputDateRange> {
           child: IconButton(
             icon: Icon(
               Icons.date_range,
-              semanticLabel: context.localization.semanticCalendarIcon,
+              semanticLabel: semanticCalendarIcon,
               color: color?.withOpacity(
                 getOpacity(
                   isEnabled: _isDateValidForCalendar(),
                 ),
               ),
             ),
-            tooltip: context.localization.labelCalendar,
+            tooltip: labelCalendar,
             onPressed: () {
               if (_isDateValidForCalendar()) {
                 _onConfirmTap(true);
@@ -242,14 +242,14 @@ class _InputDateRangeState extends State<InputDateRange> {
         children: <Widget>[
           TextButton(
             child: Text(
-              context.localization.actionCancel,
+              actionCancel,
               style: cancelButtonStyle,
             ),
             onPressed: _onCancelTap,
           ),
           TextButton(
             child: Text(
-              context.localization.actionOK,
+              actionOK,
               style: okButtonStyle?.copyWith(
                   color: _isDateValidForApply()
                       ? okButtonValidColor

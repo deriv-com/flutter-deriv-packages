@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:deriv_ui/core/extensions/context_extension.dart';
 import 'package:deriv_ui/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../../util/device_info.dart';
-import '../custom_tooltip.dart';
+import '../../../util/strings_const.dart';
+import '../../widgets/custom_tooltip.dart';
 
 part 'expandable_bottom_sheet_controller.dart';
 

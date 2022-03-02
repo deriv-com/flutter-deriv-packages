@@ -1,9 +1,9 @@
-import 'package:deriv_ui/core/extensions/context_extension.dart';
-import 'package:deriv_ui/core/widget/date_range_picker/range_picker_mode.dart';
+import 'package:deriv_ui/core/widgets/date_range_picker/range_picker_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../../util/color.dart';
+import '../../../util/strings_const.dart';
 import '../../helpers/color_helper.dart';
 import '../animated_popup.dart';
 import 'calendar_date_range.dart';
@@ -179,10 +179,10 @@ class _DateRangePickerState extends State<DateRangePicker> {
         leading: IconButton(
           icon: Icon(
             Icons.close,
-            semanticLabel: context.localization.semanticCloseIcon,
+            semanticLabel: semanticCloseIcon,
             color: iconColor,
           ),
-          tooltip: context.localization.labelClose,
+          tooltip: labelClose,
           onPressed: () => Navigator.pop(context),
         ),
         actions: <Widget>[
@@ -191,14 +191,14 @@ class _DateRangePickerState extends State<DateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.check,
-                semanticLabel: context.localization.semanticConfirmIcon,
+                semanticLabel: semanticConfirmIcon,
                 color: iconButtonColor != null
                     ? iconButtonColor.withOpacity(
                         getOpacity(isEnabled: _isSaveEnabled()),
                       )
                     : iconButtonColor,
               ),
-              tooltip: context.localization.labelConfirm,
+              tooltip: labelConfirm,
               onPressed: _isSaveEnabled() ? _setSelectedDate : null,
             ),
           ),
@@ -229,8 +229,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
                   padding: EdgeInsets.symmetric(
                     vertical: verticalPadding ?? 0,
                   ),
-                  child: Text(
-                    context.localization.labelSelectedRange,
+                  child: Text(labelSelectedRange,
                     style: style,
                   ),
                 ),
@@ -292,10 +291,10 @@ class _DateRangePickerState extends State<DateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.edit,
-                semanticLabel: context.localization.semanticEditIcon,
+                semanticLabel:semanticEditIcon,
                 color: iconColor,
               ),
-              tooltip: context.localization.labelEdit,
+              tooltip: labelEdit,
               onPressed: showDateRangeInputDialog,
             ),
           ),

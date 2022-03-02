@@ -82,7 +82,7 @@ class _NumberPadKey extends StatelessWidget {
                       )
                     : Text(
                         text == applyValuesInput
-                            ? context.localization.actionOK
+                            ? actionOK
                             : text,
                         style: textStyle,
                       ),
