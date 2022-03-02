@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 /// Deriv live chat plugin.
 class DerivLiveChat {
+
   static const MethodChannel _channel = MethodChannel('derivLiveChat');
   static const EventChannel _eventChannel = EventChannel('derivLiveChatStream');
 

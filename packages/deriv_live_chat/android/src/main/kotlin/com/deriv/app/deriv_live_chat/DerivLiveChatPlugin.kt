@@ -1,5 +1,4 @@
 package com.deriv.app.deriv_live_chat
-
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -39,7 +38,9 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
+
     if(call.method.equals("DerivLiveChatView")){
+
       val licenseNo = call.argument<String>("licenseNo")
       val customParams = call.argument<HashMap<String, String>>("customParams")!!
       val groupId = call.argument<String>("groupId")
@@ -113,4 +114,3 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   override fun onCancel(arguments: Any?) {
     lifecycleSink = null
   }
-}

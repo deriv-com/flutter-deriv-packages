@@ -18,6 +18,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
+
     subscription = DerivLiveChat.onMessageRecieved?.listen((event) {
       _setCounter(++_counter);
     });
@@ -27,6 +28,7 @@ class _AppState extends State<App> {
     setState(() {
       _counter = counter;
     });
+
   }
 
   Future<void> openChatView() async {
@@ -40,11 +42,12 @@ class _AppState extends State<App> {
           'Appid': 'Demo', //optional name
           'udid': 'User' //optional role
         });
-  }
 
+  }
   @override
   Widget build(BuildContext context) {
     Widget _chatButton() => Center(
+
           child: Container(
             decoration: BoxDecoration(
               color: Colors.blue[500],
@@ -65,6 +68,7 @@ class _AppState extends State<App> {
                 )),
           ),
         );
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -72,34 +76,47 @@ class _AppState extends State<App> {
           centerTitle: true,
           title: const Text('Deriv Live Chat'),
           actions: <Widget>[
-            Stack(children: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.notifications,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  _setCounter(1);
-                  openChatView();
-                },
-              ),
-              _counter > 1
-                  ? const Positioned(
-                      // draw a red marble
-                      top: 10,
-                      right: 14,
-                      child: Icon(Icons.brightness_1,
-                          size: 8.0, color: Colors.redAccent),
-                    )
-                  : Container()
-            ]),
+
+            Stack(
+                children: <Widget>[
+                  IconButton(
+                    icon: const Icon(
+                      Icons.notifications ,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      _setCounter(1);
+                      DerivLiveChat.startChatView(
+                          '13694064',
+                          '',
+                          'Demo User', //
+                          'DemoUser@gmail.com',
+                          <String, String>{
+                            //email
+                            'userName': 'Demo', //optional name
+                            'role': 'User'
+                          });
+                    },
+                  ),
+                  _counter > 1 ? const Positioned(  // draw a red marble
+                    top: 10,
+                    right: 14,
+                    child: Icon(Icons.brightness_1, size: 8.0,
+                        color: Colors.redAccent),
+                  ): Container()
+                ]
+            ),
+
           ],
         ),
-        body: Center(
-            child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 36, 0, 0),
-          child: _chatButton(),
-        )),
+        body: Column(
+          children: [
+            Padding(padding: const EdgeInsets.fromLTRB(0, 36, 0, 0),
+              child: _chatButton(),
+            )
+          ],
+        ),
+
       ),
     );
   }
