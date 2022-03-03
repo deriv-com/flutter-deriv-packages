@@ -20,7 +20,8 @@ class CountdownTimer extends StatefulWidget {
     this.showHour = false,
     this.showSecond = true,
     this.showTimePartLabels = false,
-    this.onCountdownFinished, this.formatDuration,
+    this.onCountdownFinished,
+    this.formatDuration,
   }) : super(key: key);
 
   /// Start time.

@@ -19,11 +19,10 @@ class CustomChip extends StatelessWidget {
     required this.enabledTextColor,
     required this.disabledBackgroundColor,
     required this.enabledBackgroundColor,
-    required this.commonTextStyle,
+    required this.textStyle,
     this.labelBuilder,
     this.title,
     this.isEnabled = false,
-    this.textStyle,
     this.onTap,
     Key? key,
   }) : super(key: key);
@@ -44,7 +43,7 @@ class CustomChip extends StatelessWidget {
   final OnTapCustomChip? onTap;
 
   /// TextStyle of the chip title.
-  final TextStyle? textStyle;
+  final TextStyle textStyle;
 
   /// Height of custom Chip
   final double containerHeight;
@@ -69,9 +68,6 @@ class CustomChip extends StatelessWidget {
   /// Disabled Text color for Chip
   final Color disabledTextColor;
 
-  /// TextStyle for Chip Text
-  final TextStyle commonTextStyle;
-
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => onTap?.call(value, title),
@@ -90,9 +86,7 @@ class CustomChip extends StatelessWidget {
               Text(
                 labelBuilder?.call(value, title) ??
                     "${title ?? ''}${title != null ? ': ' : ''}$value",
-                style: textStyle ?? commonTextStyle.copyWith(
-                  color: _textColor(),
-                )
+                style: textStyle.copyWith(color: _textColor())
               ),
             ],
           ),
