@@ -75,4 +75,10 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
           : widget.numberPadFieldModel?.withoutFocusColor);
     }
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.focusNode?.removeListener(_onFocusChanged);
+  }
 }

@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import 'package:deriv_ui/core/widgets/web_view_page/states/web_view_page_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_api/helpers/helpers.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -20,8 +18,8 @@ class WebViewPage extends StatefulWidget {
     this.appId,
     this.onClosed,
     this.backgroundColor,
-    this.heightProgressBar=1,
-    this.valueColorProgressBar=Colors.redAccent,
+    this.heightProgressBar = 1,
+    this.valueColorProgressBar = Colors.redAccent,
   }) : super(key: key);
 
   /// Web view route name.
@@ -62,14 +60,13 @@ class WebViewPage extends StatefulWidget {
   /// ProgressBar value color
   final Color valueColorProgressBar;
 
-
   @override
   _WebViewPageState createState() => _WebViewPageState();
 }
 
 class _WebViewPageState extends State<WebViewPage> {
   WebViewController? _webViewController;
-  final WebViewPageCubit _webViewPageCubit = WebViewPageCubit();
+  double progressValue = 0;
 
   @override
   void initState() {
@@ -88,7 +85,9 @@ class _WebViewPageState extends State<WebViewPage> {
           backgroundColor: widget.backgroundColor,
           title: Text(widget.title ?? ''),
           bottom: widget.showProgressIndicator
-              ? _buildAppBarProgressBar(valueColor: widget.valueColorProgressBar,height: widget.heightProgressBar)
+              ? _buildAppBarProgressBar(
+                  valueColor: widget.valueColorProgressBar,
+                  height: widget.heightProgressBar)
               : null,
         ),
         resizeToAvoidBottomInset: false,
@@ -110,21 +109,19 @@ class _WebViewPageState extends State<WebViewPage> {
                         onProgress: _onProgress,
                       ),
                     )
-                  : const SizedBox(),
+                  : const SizedBox.shrink(child: Text('wiat')),
         ),
       );
 
-  PreferredSize _buildAppBarProgressBar({required Color valueColor, double height = 1,}) => PreferredSize(
+  PreferredSize _buildAppBarProgressBar({
+    required Color valueColor,
+    double height = 1,
+  }) => PreferredSize(
         preferredSize: Size(double.infinity, height),
-        child: BlocBuilder<WebViewPageCubit, WebViewPageState>(
-          bloc: _webViewPageCubit,
-          builder: (BuildContext context, WebViewPageState state) =>
-              LinearProgressIndicator(
-            value: state.progress,
-            backgroundColor: Colors.transparent,
-            valueColor:
-                AlwaysStoppedAnimation<Color>(valueColor),
-          ),
+        child: LinearProgressIndicator(
+          value: progressValue,
+          backgroundColor: Colors.transparent,
+          valueColor: AlwaysStoppedAnimation<Color>(valueColor),
         ),
       );
 
@@ -145,11 +142,13 @@ class _WebViewPageState extends State<WebViewPage> {
 
   void _onProgress(int progress) {
     if (widget.showProgressIndicator) {
-      _webViewPageCubit.updateProgressState(progress / 100);
+      progressValue = progress / 100;
 
       if (progress == 100) {
-        _webViewPageCubit.updateProgressState(0);
+        progressValue = 0;
       }
+
+      setState(() {});
     }
   }
 
