@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../../util/color.dart';
+
 import '../../../util/strings_const.dart';
 import '../../helpers/color_helper.dart';
 import '../animated_popup.dart';
@@ -10,6 +11,7 @@ import 'calendar_date_range.dart';
 import 'input_date_range.dart';
 import 'models/animated_popup_dialog_card_model.dart';
 import 'models/date_range_model.dart';
+import 'models/input_date_model.dart';
 import 'selected_date_range.dart';
 
 /// Calendar date range picker widget.
@@ -19,17 +21,17 @@ class DateRangePicker extends StatefulWidget {
     required this.currentDate,
     required this.minAllowedDate,
     required this.maxAllowedDate,
-    this.selectedDateRangeTextStyle=const TextStyle(color: Colors.black),
-    this.selectedDateRangeColor=LightThemeColors.base08,
+    this.selectedDateRangeTextStyle = const TextStyle(color: Colors.black),
+    this.selectedDateRangeColor = LightThemeColors.base08,
     this.monthItemHeaderHeight = 48,
     this.monthItemRowHeight = 48,
     this.horizontalPadding = 8,
     this.monthItemSpaceBetweenRows = 8,
     this.monthItemFooterHeight = 16,
-    this.style=const TextStyle(),
+    this.style = const TextStyle(),
     this.containerEdgeColor = BrandColors.coral,
     this.highLightColor = BrandColors.coral,
-    this.dayStyle=const TextStyle(),
+    this.dayStyle = const TextStyle(),
     this.splashColor = BrandColors.coral,
     this.boxCircleColor = BrandColors.coral,
     this.selectDayColor = LightThemeColors.base04,
@@ -39,17 +41,29 @@ class DateRangePicker extends StatefulWidget {
     this.mode = DateRangPickerMode.calendar,
     this.backgroundColor,
     this.appBarPadding = const EdgeInsets.all(0),
-    this.iconColor,
     this.iconButtonColor,
     this.calendarColor,
     this.bottomPadding,
     this.leftPadding,
     this.verticalPadding,
     this.calendarStyle,
-    this.animatedPopupDialogCardModel=const AnimatedPopupDialogCardModel(),
-    this.headerHeight=48,
+    this.animatedPopupDialogCardModel = const AnimatedPopupDialogCardModel(),
+    this.headerHeight = 48,
     this.headerStyle,
+    this.checkIconButtonTooltip,
+    this.checkIconButtonLabel,
+    this.closeIconColor,
+    this.closeIconLabel,
+    this.closeIconTooltip,
+    this.calenderTitle,
+    this.editButtonRightPadding,
+    this.editIconColor,
+    this.editLabel,
+    this.editTooltip,
+    this.labelTextSelectedStartDate,
+    this.labelTextSelectedEndDate,
     Key? key,
+    this.inputDateRangeModel,
   }) : super(key: key);
 
   /// The [DateTime] representing today. It will be highlighted in the day grid.
@@ -79,7 +93,7 @@ class DateRangePicker extends StatefulWidget {
   final Color? backgroundColor;
 
   ///AppBar Icon color
-  final Color? iconColor;
+  final Color? closeIconColor;
 
   /// Icon Button Color
   final Color? iconButtonColor;
@@ -102,22 +116,49 @@ class DateRangePicker extends StatefulWidget {
   ///Animated Popup dialog Card values
   final AnimatedPopupDialogCardModel? animatedPopupDialogCardModel;
 
+  /// select date range color
   final Color selectedDateRangeColor;
 
+  /// select date range [TextStyle]
   final TextStyle selectedDateRangeTextStyle;
 
+  /// Month item row height
   final double monthItemRowHeight;
+
+  ///  Month Item Space between row
   final double monthItemSpaceBetweenRows;
+
+  /// Month item header height
   final double monthItemHeaderHeight;
+
+  /// horizontal  padding
   final double horizontalPadding;
+
+  /// Month item footer height
   final double monthItemFooterHeight;
+
+  /// text style
   final TextStyle style;
+
+  /// Container edge color
   final Color containerEdgeColor;
+
+  /// High Light color
   final Color highLightColor;
+
+  /// day [TextStyle]
   final TextStyle dayStyle;
+
+  /// Splash color
   final Color splashColor;
+
+  /// Box circle color
   final Color boxCircleColor;
+
+  /// select day color
   final Color selectDayColor;
+
+  /// Disable day color
   final Color disableDayColor;
 
   /// Header height
@@ -125,6 +166,42 @@ class DateRangePicker extends StatefulWidget {
 
   /// Header style
   final TextStyle? headerStyle;
+
+  /// Icon Label
+  final String? closeIconLabel;
+
+  /// Icon Tooltip
+  final String? closeIconTooltip;
+
+  /// Icon Button Label
+  final String? checkIconButtonLabel;
+
+  /// Icon Button Tooltip
+  final String? checkIconButtonTooltip;
+
+  /// Title of Calender
+  final String? calenderTitle;
+
+  /// Edit Button right padding
+  final double? editButtonRightPadding;
+
+  /// Edit Icon color;
+  final Color? editIconColor;
+
+  /// Edit label
+  final String? editLabel;
+
+  /// Edit tooltip
+  final String? editTooltip;
+
+  /// Start date Label Text
+  final String? labelTextSelectedStartDate;
+
+  /// End date Label Text
+  final String? labelTextSelectedEndDate;
+
+  /// Input date range
+  final InputDateRangeModel? inputDateRangeModel;
 
   @override
   _DateRangePickerState createState() => _DateRangePickerState();
@@ -157,32 +234,48 @@ class _DateRangePickerState extends State<DateRangePicker> {
           backgroundColor: widget.backgroundColor,
           appBar: _buildAppBar(context,
               appBarPadding: widget.appBarPadding,
-              iconButtonColor: widget.iconButtonColor,
-              iconColor: widget.iconColor),
+              closeIconColor: widget.closeIconColor,
+              closeIconLabel: widget.closeIconLabel,
+              closeIconTooltip: widget.closeIconTooltip,
+              checkIconButtonColor: widget.iconButtonColor,
+              checkIconButtonLabel: widget.checkIconButtonLabel,
+              checkIconButtonTooltip: widget.checkIconButtonTooltip),
           body: _buildCalendar(
+              currentDate: widget.currentDate,
               selectedDateRangeColor: widget.selectedDateRangeColor,
               selectedDateRangeTextStyle: widget.selectedDateRangeTextStyle,
               bottomPadding: widget.bottomPadding,
               color: widget.calendarColor,
               leftPadding: widget.leftPadding,
               style: widget.calendarStyle,
-              verticalPadding: widget.verticalPadding),
+              verticalPadding: widget.verticalPadding,
+              calenderTitle: widget.calenderTitle,
+              editTooltip: widget.editTooltip,
+              editButtonRightPadding: widget.editButtonRightPadding,
+              editLabel: widget.editLabel,
+              editIconColor: widget.editIconColor,
+              labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
+              labelTextSelectedStartDate: widget.labelTextSelectedStartDate),
         ),
       );
 
   AppBar _buildAppBar(BuildContext context,
           {EdgeInsetsGeometry appBarPadding = const EdgeInsets.all(0),
-          Color? iconColor,
-          Color? iconButtonColor}) =>
+          Color? closeIconColor,
+          Color? checkIconButtonColor,
+          String? checkIconButtonLabel,
+          String? checkIconButtonTooltip,
+          String? closeIconLabel,
+          String? closeIconTooltip}) =>
       AppBar(
         elevation: 0,
         leading: IconButton(
           icon: Icon(
             Icons.close,
-            semanticLabel: semanticCloseIcon,
-            color: iconColor,
+            semanticLabel: closeIconLabel ?? semanticCloseIcon,
+            color: closeIconColor,
           ),
-          tooltip: labelClose,
+          tooltip: closeIconTooltip ?? labelClose,
           onPressed: () => Navigator.pop(context),
         ),
         actions: <Widget>[
@@ -191,14 +284,14 @@ class _DateRangePickerState extends State<DateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.check,
-                semanticLabel: semanticConfirmIcon,
-                color: iconButtonColor != null
-                    ? iconButtonColor.withOpacity(
+                semanticLabel: checkIconButtonLabel ?? semanticConfirmIcon,
+                color: checkIconButtonColor != null
+                    ? checkIconButtonColor.withOpacity(
                         getOpacity(isEnabled: _isSaveEnabled()),
                       )
-                    : iconButtonColor,
+                    : checkIconButtonColor,
               ),
-              tooltip: labelConfirm,
+              tooltip: checkIconButtonTooltip ?? labelConfirm,
               onPressed: _isSaveEnabled() ? _setSelectedDate : null,
             ),
           ),
@@ -206,6 +299,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
       );
 
   Widget _buildCalendar({
+    required DateTime currentDate,
     Color? selectedDateRangeColor,
     TextStyle? selectedDateRangeTextStyle,
     Color? color,
@@ -213,6 +307,13 @@ class _DateRangePickerState extends State<DateRangePicker> {
     double? bottomPadding,
     double? verticalPadding,
     TextStyle? style,
+    String? calenderTitle,
+    double? editButtonRightPadding,
+    Color? editIconColor,
+    String? editLabel,
+    String? editTooltip,
+    String? labelTextSelectedStartDate,
+    String? labelTextSelectedEndDate,
   }) =>
       Column(
         children: <Widget>[
@@ -229,7 +330,8 @@ class _DateRangePickerState extends State<DateRangePicker> {
                   padding: EdgeInsets.symmetric(
                     vertical: verticalPadding ?? 0,
                   ),
-                  child: Text(labelSelectedRange,
+                  child: Text(
+                    calenderTitle ?? labelSelectedRange,
                     style: style,
                   ),
                 ),
@@ -237,13 +339,19 @@ class _DateRangePickerState extends State<DateRangePicker> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     SelectedDateRange(
-                      currentDate: widget.currentDate,
+                      currentDate: currentDate,
                       startDate: selectedStartDate,
                       endDate: selectedEndDate,
                       color: selectedDateRangeColor,
                       style: selectedDateRangeTextStyle,
+                      labelTextEndDate: labelTextSelectedStartDate,
+                      labelTextStartDate: labelTextSelectedEndDate,
                     ),
-                    _buildEditButton(),
+                    _buildEditButton(
+                        editButtonRightPadding: editButtonRightPadding,
+                        editIconColor: editIconColor,
+                        editLabel: editLabel,
+                        editTooltip: editTooltip),
                   ],
                 ),
               ],
@@ -280,10 +388,14 @@ class _DateRangePickerState extends State<DateRangePicker> {
         ],
       );
 
-  Widget _buildEditButton({double? buttonRightPadding, Color? iconColor}) =>
+  Widget _buildEditButton(
+          {double? editButtonRightPadding,
+          Color? editIconColor,
+          String? editLabel,
+          String? editTooltip}) =>
       Container(
         padding: EdgeInsets.only(
-          right: buttonRightPadding ?? 0,
+          right: editButtonRightPadding ?? 0,
         ),
         child: ClipOval(
           child: Material(
@@ -291,10 +403,10 @@ class _DateRangePickerState extends State<DateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.edit,
-                semanticLabel:semanticEditIcon,
-                color: iconColor,
+                semanticLabel: editLabel ?? semanticEditIcon,
+                color: editIconColor,
               ),
-              tooltip: labelEdit,
+              tooltip: editTooltip ?? labelEdit,
               onPressed: showDateRangeInputDialog,
             ),
           ),
@@ -315,6 +427,26 @@ class _DateRangePickerState extends State<DateRangePicker> {
           initialEndDate: selectedEndDate,
           selectedDateRangeTextStyle: widget.selectedDateRangeTextStyle,
           selectedDateRangeColor: widget.selectedDateRangeColor,
+          labelTextSelectedStartDate: widget.labelTextSelectedStartDate,
+          labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
+          backgroundColor: widget.inputDateRangeModel?.backgroundColor,
+          cancelButtonStyle: widget.inputDateRangeModel?.cancelButtonStyle,
+          cancelButtonText: widget.inputDateRangeModel?.cancelButtonText,
+          dateInputPadding: widget.inputDateRangeModel?.dateInputPadding,
+          dateRangeIconColor: widget.inputDateRangeModel?.dateRangeIconColor,
+          dateRangeLabel: widget.inputDateRangeModel?.dateRangeLabel,
+          dateRangeTooltip: widget.inputDateRangeModel?.dateRangeTooltip,
+          labelTextSelectedRange:
+              widget.inputDateRangeModel?.labelTextSelectedRange,
+          okButtonNotValidColor:
+              widget.inputDateRangeModel?.okButtonNotValidColor,
+          okButtonStyle: widget.inputDateRangeModel?.okButtonStyle,
+          okButtonText: widget.inputDateRangeModel?.okButtonText,
+          okButtonValidColor: widget.inputDateRangeModel?.okButtonValidColor,
+          titleColor: widget.inputDateRangeModel?.titleColor,
+          titlePadding: widget.inputDateRangeModel?.titlePadding,
+          titleStyle: widget.inputDateRangeModel?.titleStyle,
+          verticalPadding: widget.inputDateRangeModel?.verticalPadding,
         ),
         cardBorderRadius: widget.animatedPopupDialogCardModel?.cardBorderRadius,
         cardColor: widget.animatedPopupDialogCardModel?.cardColor,

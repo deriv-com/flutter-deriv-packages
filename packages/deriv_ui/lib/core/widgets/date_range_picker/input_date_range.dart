@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../util/color.dart';
+
 import '../../../util/strings_const.dart';
 import '../../helpers/color_helper.dart';
 import '../../helpers/date_time_helper.dart';
@@ -19,33 +20,40 @@ class InputDateRange extends StatefulWidget {
   /// Initializes date range input widget.
   const InputDateRange({
     required this.currentDate,
-    this.selectedDateRangeTextStyle=const TextStyle(),
-    this.selectedDateRangeColor=LightThemeColors.base02,
     this.minAllowedDate,
     this.maxAllowedDate,
     this.initialStartDate,
     this.initialEndDate,
-    this.backgroundColor=LightThemeColors.base02,
-    this.titleColor=LightThemeColors.base02,
-    this.titlePadding=const EdgeInsets.only(
+    this.selectedDateRangeColor = LightThemeColors.base02,
+    this.selectedDateRangeTextStyle = const TextStyle(),
+    this.backgroundColor = LightThemeColors.base02,
+    this.titleColor = LightThemeColors.base02,
+    this.titlePadding = const EdgeInsets.only(
       top: 16,
       left: 24,
       right: 16,
       bottom: 16,
     ),
-    this.titleStyle=const TextStyle(color: Colors.black),
-    this.verticalPadding=8,
-    this.dateInputPadding=const EdgeInsets.only(
+    this.titleStyle = const TextStyle(color: Colors.black),
+    this.verticalPadding = 8,
+    this.dateInputPadding = const EdgeInsets.only(
       left: 24,
-      top:16,
-      right:24,
+      top: 16,
+      right: 24,
     ),
-    this.calenderButtonColor=LightThemeColors.base08,
+    this.dateRangeIconColor = LightThemeColors.base08,
     this.cancelButtonStyle,
     this.okButtonStyle,
-    this.okButtonValidColor= BrandColors.coral,
-    this.okButtonNotValidColor=LightThemeColors.base05,
+    this.okButtonValidColor = BrandColors.coral,
+    this.okButtonNotValidColor = LightThemeColors.base05,
     Key? key,
+    this.labelTextSelectedRange,
+    this.dateRangeLabel,
+    this.dateRangeTooltip,
+    this.cancelButtonText,
+    this.okButtonText,
+    this.labelTextSelectedStartDate,
+    this.labelTextSelectedEndDate,
   }) : super(key: key);
 
   /// The [DateTime] representing today.
@@ -82,7 +90,7 @@ class InputDateRange extends StatefulWidget {
   final EdgeInsetsGeometry? dateInputPadding;
 
   /// Calender button Color
-  final Color? calenderButtonColor;
+  final Color? dateRangeIconColor;
 
   /// Cancel Button Style
   final TextStyle? cancelButtonStyle;
@@ -101,6 +109,27 @@ class InputDateRange extends StatefulWidget {
 
   ///
   final Color selectedDateRangeColor;
+
+  ///  Select date range label text
+  final String? labelTextSelectedRange;
+
+  /// Select date range label
+  final String? dateRangeLabel;
+
+  /// Select date range tooltip
+  final String? dateRangeTooltip;
+
+  /// Cancel button text
+  final String? cancelButtonText;
+
+  /// Cancel button text
+  final String? okButtonText;
+
+  /// Start date Label Text
+  final String? labelTextSelectedStartDate;
+
+  /// End date Label Text
+  final String? labelTextSelectedEndDate;
 
   @override
   _InputDateRangeState createState() => _InputDateRangeState();
@@ -139,13 +168,23 @@ class _InputDateRangeState extends State<InputDateRange> {
                     titlePadding: widget.titlePadding,
                     selectedDateRangeColor: widget.selectedDateRangeColor,
                     selectedDateRangeTextStyle:
-                        widget.selectedDateRangeTextStyle),
+                        widget.selectedDateRangeTextStyle,
+                    dateRangeTooltip: widget.dateRangeTooltip,
+                    dateRangeLabel: widget.dateRangeLabel,
+                    currentDate: widget.currentDate,
+                    dateRangeIconColor: widget.dateRangeIconColor,
+                    labelTextSelectedRange: widget.labelTextSelectedRange,
+                    labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
+                    labelTextSelectedStartDate:
+                        widget.labelTextSelectedStartDate),
                 _buildDateInput(dateInputPadding: widget.dateInputPadding),
                 _buildActions(
                     cancelButtonStyle: widget.cancelButtonStyle,
                     okButtonNotValidColor: widget.okButtonNotValidColor,
                     okButtonStyle: widget.okButtonStyle,
-                    okButtonValidColor: widget.okButtonValidColor),
+                    okButtonValidColor: widget.okButtonValidColor,
+                    cancelButtonText: widget.cancelButtonText,
+                    okButtonText: widget.okButtonText),
               ],
             ),
           ),
@@ -161,10 +200,17 @@ class _InputDateRangeState extends State<InputDateRange> {
   Widget _buildTitle({
     required TextStyle selectedDateRangeTextStyle,
     required Color selectedDateRangeColor,
+    required DateTime currentDate,
     Color? color,
     EdgeInsetsGeometry? titlePadding,
     TextStyle? style,
     double? verticalPadding,
+    Color? dateRangeIconColor,
+    String? labelTextSelectedRange,
+    String? dateRangeLabel,
+    String? dateRangeTooltip,
+    String? labelTextSelectedStartDate,
+    String? labelTextSelectedEndDate,
   }) =>
       Container(
         color: color,
@@ -177,7 +223,7 @@ class _InputDateRangeState extends State<InputDateRange> {
                 vertical: verticalPadding ?? 0,
               ),
               child: Text(
-                labelSelectedRange,
+                labelTextSelectedRange ?? labelSelectedRange,
                 style: style,
               ),
             ),
@@ -185,13 +231,18 @@ class _InputDateRangeState extends State<InputDateRange> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SelectedDateRange(
-                  currentDate: widget.currentDate,
+                  currentDate: currentDate,
                   startDate: isStartDateValid ? startDate : null,
                   endDate: isEndDateValid ? endDate : null,
                   style: selectedDateRangeTextStyle,
                   color: selectedDateRangeColor,
+                  labelTextStartDate: labelTextSelectedStartDate,
+                  labelTextEndDate: labelTextSelectedEndDate,
                 ),
-                _buildCalendarButton(color: widget.calenderButtonColor),
+                _buildCalendarButton(
+                    dateRangeIconColor: dateRangeIconColor,
+                    dateRangeLabel: dateRangeLabel,
+                    dateRangeTooltip: dateRangeTooltip),
               ],
             ),
           ],
@@ -210,20 +261,24 @@ class _InputDateRangeState extends State<InputDateRange> {
         ),
       );
 
-  Widget _buildCalendarButton({Color? color}) => ClipOval(
+  Widget _buildCalendarButton(
+          {Color? dateRangeIconColor,
+          String? dateRangeLabel,
+          String? dateRangeTooltip}) =>
+      ClipOval(
         child: Material(
           color: Colors.transparent,
           child: IconButton(
             icon: Icon(
               Icons.date_range,
-              semanticLabel: semanticCalendarIcon,
-              color: color?.withOpacity(
+              semanticLabel: dateRangeLabel ?? semanticCalendarIcon,
+              color: dateRangeIconColor?.withOpacity(
                 getOpacity(
                   isEnabled: _isDateValidForCalendar(),
                 ),
               ),
             ),
-            tooltip: labelCalendar,
+            tooltip: dateRangeTooltip ?? labelCalendar,
             onPressed: () {
               if (_isDateValidForCalendar()) {
                 _onConfirmTap(true);
@@ -233,23 +288,26 @@ class _InputDateRangeState extends State<InputDateRange> {
         ),
       );
 
-  Widget _buildActions(
-          {TextStyle? cancelButtonStyle,
-          TextStyle? okButtonStyle,
-          Color? okButtonValidColor,
-          Color? okButtonNotValidColor}) =>
+  Widget _buildActions({
+    TextStyle? cancelButtonStyle,
+    TextStyle? okButtonStyle,
+    Color? okButtonValidColor,
+    Color? okButtonNotValidColor,
+    String? cancelButtonText,
+    String? okButtonText,
+  }) =>
       ButtonBar(
         children: <Widget>[
           TextButton(
             child: Text(
-              actionCancel,
+              cancelButtonText ?? actionCancel,
               style: cancelButtonStyle,
             ),
             onPressed: _onCancelTap,
           ),
           TextButton(
             child: Text(
-              actionOK,
+              okButtonText ?? actionOK,
               style: okButtonStyle?.copyWith(
                   color: _isDateValidForApply()
                       ? okButtonValidColor

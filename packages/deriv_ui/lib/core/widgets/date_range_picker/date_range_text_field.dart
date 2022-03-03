@@ -24,6 +24,8 @@ class _DateRangeTextField extends StatefulWidget {
     this.inputBorderNotValidColor,
     this.outlineBorderValidColor,
     this.outlineBorderNotValidColor,
+    this.labelTextStartDate,
+    this.labelTextEndDate,
     Key? key,
   }) : super(key: key);
 
@@ -72,6 +74,12 @@ class _DateRangeTextField extends StatefulWidget {
   /// TextField outline decoration border not valid color
   final Color? outlineBorderNotValidColor;
 
+  /// Label text of start date
+  final String? labelTextStartDate;
+
+  /// Label text of end date
+  final String? labelTextEndDate;
+
   @override
   _DateRangeTextFieldState createState() => _DateRangeTextFieldState();
 }
@@ -104,7 +112,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
         children: <Widget>[
           _buildDateTextField(
               hintText: widget.dateFormat.toUpperCase(),
-              labelText: labelStartDate,
+              labelText: widget.labelTextStartDate??labelStartDate,
               controller: startDateInputController,
               isValidDate: widget.isStartDateValid,
               style: widget.style,
@@ -118,7 +126,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
           SizedBox(width: widget.width ?? 0),
           _buildDateTextField(
               hintText: widget.dateFormat.toUpperCase(),
-              labelText: labelEndDate,
+              labelText:widget.labelTextEndDate?? labelEndDate,
               controller: endDateInputController,
               isValidDate: widget.isEndDateValid,
               style: widget.style,

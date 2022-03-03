@@ -15,8 +15,9 @@ class AssetBadgeButton extends StatelessWidget {
     required this.semanticLabel,
     Key? key,
     this.onPressed,
-    this.right=4,
-    this.top=4,
+    this.right = 4,
+    this.top = 4,
+    this.semanticBadgeIndicatorIconMessage,
   }) : super(key: key);
 
   /// Badge path.
@@ -37,6 +38,9 @@ class AssetBadgeButton extends StatelessWidget {
   /// left position value
   final double top;
 
+  /// semantic Badge Indicator Icon Message
+  final String? semanticBadgeIndicatorIconMessage;
+
   @override
   Widget build(BuildContext context) => Stack(
         children: <Widget>[
@@ -54,7 +58,7 @@ class AssetBadgeButton extends StatelessWidget {
               child: ClipOval(
                 child: SvgPicture.asset(
                   badgeAssetName!,
-                  semanticsLabel:
+                  semanticsLabel: semanticBadgeIndicatorIconMessage ??
                       semanticBadgeIndicatorIcon,
                 ),
               ),

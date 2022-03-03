@@ -10,11 +10,13 @@ class SelectedDateRange extends StatelessWidget {
   /// Initializes selected date range.
   const SelectedDateRange({
     required this.currentDate,
-     this.style=const TextStyle(color: Colors.black),
-     this.color=LightThemeColors.base08,
+    this.style = const TextStyle(color: Colors.black),
+    this.color = LightThemeColors.base08,
     this.startDate,
     this.endDate,
     Key? key,
+    this.labelTextStartDate,
+    this.labelTextEndDate,
   }) : super(key: key);
 
   /// Current date.
@@ -32,6 +34,12 @@ class SelectedDateRange extends StatelessWidget {
   ///Color
   final Color? color;
 
+  /// Start date Label Text
+  final String? labelTextStartDate;
+
+  /// End date Label Text
+  final String? labelTextEndDate;
+
   @override
   Widget build(BuildContext context) {
     final List<String> formattedDateParts =
@@ -42,7 +50,7 @@ class SelectedDateRange extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         text: TextSpan(
           text: startDate == null
-              ? labelStartDate
+              ? labelTextStartDate ?? labelStartDate
               : formattedDateParts.first,
           style: style?.copyWith(
             color: color?.withOpacity(
@@ -60,9 +68,9 @@ class SelectedDateRange extends StatelessWidget {
             ),
             TextSpan(
               text: endDate == null
-                  ? labelEndDate
+                  ? labelTextEndDate ?? labelEndDate
                   : formattedDateParts.last,
-              style:style?.copyWith(
+              style: style?.copyWith(
                 color: color?.withOpacity(
                   getOpacity(isEnabled: endDate != null),
                 ),

@@ -21,6 +21,8 @@ class Badge extends StatelessWidget {
     this.minWidthISCountNotNull = 12,
     this.minHeightISCountNull = 16,
     this.minHeightISCountNotNull = 12,
+    this.semanticNotificationCountIconMessage,
+    this.semanticNotificationsCountIconMessage,
   });
 
   /// The widget that is going to be displayed.
@@ -69,6 +71,12 @@ class Badge extends StatelessWidget {
   /// Min height not show dot
   final double minHeightISCountNotNull;
 
+  /// Semantic Notification Count Icon Message
+  final String? semanticNotificationCountIconMessage;
+
+  /// Semantic Notifications Count Icon Message
+  final String? semanticNotificationsCountIconMessage;
+
   @override
   Widget build(BuildContext context) {
     final bool showDot = count == null;
@@ -103,8 +111,12 @@ class Badge extends StatelessWidget {
                     child: Center(
                       child: Text(
                         '$count',
-                        semanticsLabel:
-                            _getSemanticLabel(count: count!),
+                        semanticsLabel: _getSemanticLabel(
+                            count: count!,
+                            semanticNotificationCountIconMessage:
+                                semanticNotificationCountIconMessage,
+                            semanticNotificationsCountIconMessage:
+                                semanticNotificationsCountIconMessage),
                         textAlign: TextAlign.center,
                         // style: badgeTextStyle,
                       ),
@@ -117,10 +129,13 @@ class Badge extends StatelessWidget {
     );
   }
 
-  String _getSemanticLabel({
-    required int count,
-  }) =>
+  String _getSemanticLabel(
+          {required int count,
+          required String? semanticNotificationCountIconMessage,
+          required String? semanticNotificationsCountIconMessage}) =>
       count == 1
-          ? semanticNotificationCountIcon
-          :semanticNotificationsCountIcon(count);
+          ? semanticNotificationCountIconMessage ??
+              semanticNotificationCountIcon
+          : semanticNotificationsCountIconMessage ??
+              semanticNotificationsCountIcon(count);
 }

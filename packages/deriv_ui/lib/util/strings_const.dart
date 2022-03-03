@@ -65,7 +65,7 @@ String labelDaysValue(Object value) => Intl.message(
   );
 
 /// `1 Notification`
-String get semanticNotificationCountIcon => Intl.message(
+ String get semanticNotificationCountIcon => Intl.message(
     '1 Notification',
     name: 'semanticNotificationCountIcon',
     desc: '',

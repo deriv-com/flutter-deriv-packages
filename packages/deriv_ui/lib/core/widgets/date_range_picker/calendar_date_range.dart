@@ -92,19 +92,45 @@ class CalendarDateRange extends StatefulWidget {
   /// Header style
   final TextStyle? headerStyle;
 
+  /// Month item row height
   final double monthItemRowHeight;
+
+  ///  Month Item Space between row
   final double monthItemSpaceBetweenRows;
+
+  /// Month item header height
   final double monthItemHeaderHeight;
+
+  /// horizontal  padding
   final double horizontalPadding;
+
+  /// Month item footer height
   final double monthItemFooterHeight;
+
+  /// text style
   final TextStyle style;
+
+  /// Container edge color
   final Color containerEdgeColor;
+
+  /// High Light color
   final Color highLightColor;
+
+  /// day [TextStyle]
   final TextStyle dayStyle;
+
+  /// Splash color
   final Color splashColor;
+
+  /// Box circle color
   final Color boxCircleColor;
+
+  /// select day color
   final Color selectDayColor;
+
+  /// Disable day color
   final Color disableDayColor;
+
 
   @override
   _CalendarDateRangeState createState() => _CalendarDateRangeState();

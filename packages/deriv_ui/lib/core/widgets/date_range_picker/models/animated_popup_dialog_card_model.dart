@@ -28,5 +28,4 @@ class AnimatedPopupDialogCardModel{
   final double? cardPadding;
 
 
-
 }
