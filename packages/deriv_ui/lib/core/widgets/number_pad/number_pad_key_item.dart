@@ -10,6 +10,7 @@ class _NumberPadKey extends StatelessWidget {
     this.textStyle,
     this.pressTextButtonColor=BrandColors.coral,
     this.withoutPressTextButtonColor=LightThemeColors.base04,
+    this.okButtonTitle
   });
 
   final Function(BuildContext, TextEditingController, String) onPressed;
@@ -20,6 +21,7 @@ class _NumberPadKey extends StatelessWidget {
   final Color borderSideColor;
   final Color? backSpaceIconColor;
   final TextStyle? textStyle;
+  final String? okButtonTitle;
 
   /// when keyboard ok button press change color
   final Color? pressTextButtonColor;
@@ -82,7 +84,7 @@ class _NumberPadKey extends StatelessWidget {
                       )
                     : Text(
                         text == applyValuesInput
-                            ? actionOK
+                            ? okButtonTitle??actionOK
                             : text,
                         style: textStyle,
                       ),

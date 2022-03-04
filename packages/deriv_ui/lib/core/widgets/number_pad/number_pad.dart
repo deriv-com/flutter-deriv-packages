@@ -88,34 +88,48 @@ class NumberPad extends StatefulWidget {
   /// initial value is null it returns null as the result in [NumberPadData].
   ///
   /// This widget is dismissible by click OK button or by touching anywhere outside number pad
-  const NumberPad({
-    required this.formatter,
-    required this.numberPadType,
-    this.currency,
-    this.firstInputTitle = '',
-    this.secondInputTitle = '',
-    this.maxInputLength = 11,
-    this.firstInputInitialValue,
-    this.secondInputInitialValue,
-    this.firstInputMinimumValue = 0,
-    this.firstInputMaximumValue = double.maxFinite,
-    this.secondInputMinimumValue = 0,
-    this.secondInputMaximumValue = double.maxFinite,
-    this.onOpen,
-    this.onClose,
-    this.currentFocus = NumberPadInputFocus.firstInputField,
-    this.numberPadSingleTextFieldModel=const NumberPadSingleTextFieldModel(),
-    this.numberPadDoubleTextFieldModel=const NumberPadDoubleTextFieldModel(),
-    this.backgroundColor,
-    this.backgroundColorSecond,
-    this.topLeft = 0,
-    this.topRight = 0,
-    this.paddingSecond,
-    this.iconPadding = const EdgeInsets.all(0),
-    this.topLeftSecond = 0,
-    this.topRightSecond = 0,
-    this.numberPadMessageModel=const NumberPadMessageModel(),
-  });
+  const NumberPad(
+      {required this.formatter,
+      required this.numberPadType,
+      this.currency,
+      this.firstInputTitle = '',
+      this.secondInputTitle = '',
+      this.maxInputLength = 11,
+      this.firstInputInitialValue,
+      this.secondInputInitialValue,
+      this.firstInputMinimumValue = 0,
+      this.firstInputMaximumValue = double.maxFinite,
+      this.secondInputMinimumValue = 0,
+      this.secondInputMaximumValue = double.maxFinite,
+      this.onOpen,
+      this.onClose,
+      this.currentFocus = NumberPadInputFocus.firstInputField,
+      this.numberPadSingleTextFieldModel =
+          const NumberPadSingleTextFieldModel(),
+      this.numberPadDoubleTextFieldModel =
+          const NumberPadDoubleTextFieldModel(),
+      this.backgroundColor,
+      this.backgroundColorSecond,
+      this.topLeft = 0,
+      this.topRight = 0,
+      this.paddingSecond,
+      this.iconPadding = const EdgeInsets.all(0),
+      this.topLeftSecond = 0,
+      this.topRightSecond = 0,
+      this.numberPadMessageModel = const NumberPadMessageModel(),
+      this.borderSideColor = Colors.black,
+      this.backSpaceIconColor = LightThemeColors.base01,
+      this.textStyle,
+      this.pressTextButtonColor = BrandColors.coral,
+      this.withoutPressTextButtonColor = LightThemeColors.base04,
+      this.okButtonTitle,
+      this.ignoring,
+      this.handleIconLabel,
+      this.warningMessageValueCantBeLessThan,
+      this.warningMessageValueCantBeGreaterThan,
+      this.warningMessageDoubleInputValueCantBeGreaterThan,
+      this.warningMessageDoubleInputValueCantBeLessThan,
+      this.warningMessageValueShouldBeInRange});
 
   /// Sets the currency of the number pad
   ///
@@ -231,6 +245,45 @@ class NumberPad extends StatefulWidget {
   /// NumberPad Message Model  property value
   final NumberPadMessageModel? numberPadMessageModel;
 
+  /// callback for number pad keypad
+  final VoidCallback? ignoring;
+
+  /// border side color for number keypad
+  final Color borderSideColor;
+
+  /// Back space icon color for number keypad
+  final Color? backSpaceIconColor;
+
+  /// Text style for number keypad
+  final TextStyle? textStyle;
+
+  /// Ok button title
+  final String? okButtonTitle;
+
+  /// when keyboard ok button press change color
+  final Color? pressTextButtonColor;
+
+  /// when keyboard ok button not press change color
+  final Color? withoutPressTextButtonColor;
+
+  /// Handle Icon label
+  final String? handleIconLabel;
+
+  /// Warning message  less than for single text field
+  final String? warningMessageValueCantBeLessThan;
+
+  /// Warning message  greater than for single text field
+  final String? warningMessageValueCantBeGreaterThan;
+
+  /// Warning message  greater than for Double input text field
+  final String? warningMessageDoubleInputValueCantBeGreaterThan;
+
+  /// Warning message  less than for Double input text field
+  final String? warningMessageDoubleInputValueCantBeLessThan;
+
+  /// Warning message  in range for Double input text field
+  final String? warningMessageValueShouldBeInRange;
+
   @override
   State<StatefulWidget> createState() => _NumberPadState();
 }
@@ -326,7 +379,8 @@ class _NumberPadState extends State<NumberPad> {
                                 handleIcon,
                                 width: 40,
                                 height: 4,
-                                semanticsLabel: semanticNumberPadBottomSheetHandle,
+                                semanticsLabel: widget.handleIconLabel ??
+                                    semanticNumberPadBottomSheetHandle,
                               ),
                             ),
                             onTap: () => Navigator.pop(context),
@@ -351,6 +405,7 @@ class _NumberPadState extends State<NumberPad> {
                               currencyLabelStyle: widget
                                   .numberPadSingleTextFieldModel
                                   ?.currencyLabelStyle,
+                              numberPadSingleTextHint: '',
                             )
                           : _NumberPadDoubleTextFields(
                               firstTitleValue: widget.firstInputTitle,
@@ -381,6 +436,14 @@ class _NumberPadState extends State<NumberPad> {
                       ),
                       _NumberPadKeypadWidget(
                         onKeyPressed: _onKeyboardButtonPressed,
+                        ignoring: widget.ignoring,
+                        okButtonTitle: widget.okButtonTitle,
+                        backSpaceIconColor: widget.backSpaceIconColor,
+                        borderSideColor: widget.borderSideColor,
+                        pressTextButtonColor: widget.pressTextButtonColor,
+                        textStyle: widget.textStyle,
+                        withoutPressTextButtonColor:
+                            widget.withoutPressTextButtonColor,
                       )
                     ],
                   )),
@@ -465,17 +528,19 @@ class _NumberPadState extends State<NumberPad> {
           lowerLimit: widget.firstInputMinimumValue ?? 0);
 
       if (!isFirstMoreThanMin) {
-        return message = warnValueCantBeLessThan(
-          widget.firstInputTitle,
-          widget.firstInputMinimumValue ?? 0,
-          getStringWithMappedCurrencyName(_currency),
-        );
+        return message = widget.warningMessageValueCantBeLessThan ??
+            warnValueCantBeLessThan(
+              widget.firstInputTitle,
+              widget.firstInputMinimumValue ?? 0,
+              getStringWithMappedCurrencyName(_currency),
+            );
       } else if (!isFirstLessThanMax) {
-        return message = warnValueCantBeGreaterThan(
-          widget.firstInputTitle,
-          widget.firstInputMaximumValue,
-          getStringWithMappedCurrencyName(_currency),
-        );
+        return message = widget.warningMessageValueCantBeGreaterThan ??
+            warnValueCantBeGreaterThan(
+              widget.firstInputTitle,
+              widget.firstInputMaximumValue,
+              getStringWithMappedCurrencyName(_currency),
+            );
       }
     }
     if (widget.numberPadType == NumberPadWidgetType.doubleInput) {
@@ -489,27 +554,32 @@ class _NumberPadState extends State<NumberPad> {
             lowerLimit: widget.secondInputMinimumValue);
 
         if (!isSecondMoreThanMin) {
-          return message = warnDoubleInputValueCantBeLessThan(
-            widget.secondInputTitle,
-            widget.secondInputMinimumValue,
-            getStringWithMappedCurrencyName(_currency),
-          );
+          return message =
+              widget.warningMessageDoubleInputValueCantBeLessThan ??
+                  warnDoubleInputValueCantBeLessThan(
+                    widget.secondInputTitle,
+                    widget.secondInputMinimumValue,
+                    getStringWithMappedCurrencyName(_currency),
+                  );
         } else if (!isSecondLessThanMax) {
-          return message = warnDoubleInputValueCantBeGreaterThan(
-            widget.secondInputTitle,
-            widget.secondInputMaximumValue!,
-            getStringWithMappedCurrencyName(_currency),
-          );
+          return message =
+              widget.warningMessageDoubleInputValueCantBeGreaterThan ??
+                  warnDoubleInputValueCantBeGreaterThan(
+                    widget.secondInputTitle,
+                    widget.secondInputMaximumValue!,
+                    getStringWithMappedCurrencyName(_currency),
+                  );
         }
       }
     } else if (widget.firstInputMinimumValue != null &&
         widget.firstInputMaximumValue != double.maxFinite) {
-      return message = warnValueShouldBeInRange(
-        widget.firstInputTitle,
-        widget.firstInputMinimumValue ?? 0,
-        getStringWithMappedCurrencyName(_currency),
-        widget.firstInputMaximumValue,
-      );
+      return message = widget.warningMessageValueShouldBeInRange ??
+          warnValueShouldBeInRange(
+            widget.firstInputTitle,
+            widget.firstInputMinimumValue ?? 0,
+            getStringWithMappedCurrencyName(_currency),
+            widget.firstInputMaximumValue,
+          );
     }
     return message;
   }

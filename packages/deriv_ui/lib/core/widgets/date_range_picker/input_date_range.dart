@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:deriv_ui/core/widgets/date_range_picker/selected_date_range.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,7 @@ import '../../helpers/color_helper.dart';
 import '../../helpers/date_time_helper.dart';
 import '../../helpers/mask_text_input_formatter.dart';
 import 'models/date_range_model.dart';
+import 'models/date_range_textfield.dart';
 import 'models/input_date_model.dart';
 
 part 'date_range_text_field.dart';
@@ -54,6 +54,7 @@ class InputDateRange extends StatefulWidget {
     this.okButtonText,
     this.labelTextSelectedStartDate,
     this.labelTextSelectedEndDate,
+    this.dateRangeTextFieldModel,
   }) : super(key: key);
 
   /// The [DateTime] representing today.
@@ -131,6 +132,9 @@ class InputDateRange extends StatefulWidget {
   /// End date Label Text
   final String? labelTextSelectedEndDate;
 
+  ///  Date range [TextField] property
+  final DateRangeTextFieldModel? dateRangeTextFieldModel;
+
   @override
   _InputDateRangeState createState() => _InputDateRangeState();
 }
@@ -177,7 +181,9 @@ class _InputDateRangeState extends State<InputDateRange> {
                     labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
                     labelTextSelectedStartDate:
                         widget.labelTextSelectedStartDate),
-                _buildDateInput(dateInputPadding: widget.dateInputPadding),
+                _buildDateInput(
+                    dateInputPadding: widget.dateInputPadding,
+                    dateRangeTextFieldModel: widget.dateRangeTextFieldModel),
                 _buildActions(
                     cancelButtonStyle: widget.cancelButtonStyle,
                     okButtonNotValidColor: widget.okButtonNotValidColor,
@@ -249,7 +255,9 @@ class _InputDateRangeState extends State<InputDateRange> {
         ),
       );
 
-  Widget _buildDateInput({required EdgeInsetsGeometry? dateInputPadding}) =>
+  Widget _buildDateInput(
+          {required EdgeInsetsGeometry? dateInputPadding,
+          DateRangeTextFieldModel? dateRangeTextFieldModel}) =>
       Padding(
         padding: dateInputPadding ?? const EdgeInsets.all(0),
         child: _DateRangeTextField(
@@ -258,6 +266,21 @@ class _InputDateRangeState extends State<InputDateRange> {
           isStartDateValid: isStartDateValid,
           isEndDateValid: isEndDateValid,
           onEditingComplete: _onEditingComplete,
+          labelTextEndDate: dateRangeTextFieldModel?.labelTextEndDate,
+          labelTextStartDate: dateRangeTextFieldModel?.labelTextStartDate,
+          cursorColor: dateRangeTextFieldModel?.cursorColor,
+          dateFormat: dateRangeTextFieldModel?.dateFormat,
+          hintStyle: dateRangeTextFieldModel?.hintStyle,
+          inputBorderNotValidColor:
+              dateRangeTextFieldModel?.inputBorderNotValidColor,
+          inputBorderValidColor: dateRangeTextFieldModel?.inputBorderValidColor,
+          labelStyle: dateRangeTextFieldModel?.labelStyle,
+          outlineBorderNotValidColor:
+              dateRangeTextFieldModel?.outlineBorderNotValidColor,
+          outlineBorderValidColor:
+              dateRangeTextFieldModel?.outlineBorderValidColor,
+          style: dateRangeTextFieldModel?.style,
+          width: dateRangeTextFieldModel?.width,
         ),
       );
 

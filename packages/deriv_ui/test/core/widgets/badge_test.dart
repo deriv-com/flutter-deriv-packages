@@ -11,9 +11,6 @@ void main() {
   const int badgeCountValue = 2;
 
   group('Badge widget tests', () {
-    // late S localization;
-    //
-    // setUpAll(() => localization = S());
 
     testWidgets(
         'Badge widget should contain a text when badgeCount is not null',

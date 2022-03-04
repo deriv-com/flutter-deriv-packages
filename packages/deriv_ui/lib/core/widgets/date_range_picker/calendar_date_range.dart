@@ -39,7 +39,7 @@ class CalendarDateRange extends StatefulWidget {
     required this.onEndDateChanged,
     this.containerEdgeColor = BrandColors.coral,
     this.highLightColor = BrandColors.coral,
-    this.dayStyle=const TextStyle(),
+    this.dayStyle = const TextStyle(),
     this.splashColor = BrandColors.coral,
     this.boxCircleColor = BrandColors.coral,
     this.selectDayColor = LightThemeColors.base04,
@@ -49,7 +49,7 @@ class CalendarDateRange extends StatefulWidget {
     this.horizontalPadding = 8,
     this.monthItemSpaceBetweenRows = 8,
     this.monthItemFooterHeight = 16,
-    this.style=const TextStyle(),
+    this.style = const TextStyle(),
     this.headerHeight = 48,
     this.headerStyle,
     Key? key,
@@ -131,7 +131,6 @@ class CalendarDateRange extends StatefulWidget {
   /// Disable day color
   final Color disableDayColor;
 
-
   @override
   _CalendarDateRangeState createState() => _CalendarDateRangeState();
 }
@@ -178,8 +177,12 @@ class _CalendarDateRangeState extends State<CalendarDateRange> {
     return Column(
       children: <Widget>[
         _DayHeader(
-            maxHeight: widget.headerHeight,
-            headerTextStyle: widget.headerStyle),
+          maxHeight: widget.headerHeight,
+          headerTextStyle: widget.headerStyle,
+          horizontalPadding: widget.horizontalPadding,
+          monthItemRowHeight: widget.monthItemRowHeight,
+          monthItemSpaceBetweenRows: widget.monthItemSpaceBetweenRows,
+        ),
         if (showWeekBottomDivider) const Divider(height: 0),
         Expanded(
           child: _CalendarKeyboardNavigator(

@@ -8,8 +8,8 @@ class _NumberPadSingleTextTitle extends StatelessWidget {
       this.verticalMargin=16,
       this.style,
       this.padding=16,
-      this.iconSize,
-      this.iconColor});
+      this.iconSize=24,
+      this.iconColor=LightThemeColors.base04});
 
   final String title;
 

@@ -1,13 +1,21 @@
 part of 'number_pad.dart';
 
 class _NumberPadSingleTextField extends StatelessWidget {
-  const _NumberPadSingleTextField(
-      {required this.title,
+  const _NumberPadSingleTextField({
+    required this.title,
       required this.style,
       this.margin = 24,
       this.label = '',
-      this.numberPadFieldModel= const NumberPadFieldModel(),
-      this.currencyLabelStyle});
+      this.numberPadSingleTextHint,
+      this.numberPadFieldModel = const NumberPadFieldModel(),
+      this.currencyLabelStyle,
+      this.hint,
+      this.backgroundColor,
+      this.verticalMargin = 16,
+      this.singleTextTitleStyle,
+      this.padding = 16,
+      this.iconSize = 24,
+      this.iconColor = LightThemeColors.base04});
 
   final String title;
   final double margin;
@@ -15,7 +23,15 @@ class _NumberPadSingleTextField extends StatelessWidget {
 
   final NumberPadFieldModel? numberPadFieldModel;
   final String label;
+  final String? numberPadSingleTextHint;
   final TextStyle? currencyLabelStyle;
+  final String? hint;
+  final Color? backgroundColor;
+  final double verticalMargin;
+  final TextStyle? singleTextTitleStyle;
+  final double padding;
+  final double iconSize;
+  final Color? iconColor;
 
   Size getTextSize(
     String text,
@@ -46,8 +62,14 @@ class _NumberPadSingleTextField extends StatelessWidget {
         title.isEmpty
             ? const SizedBox.shrink()
             : _NumberPadSingleTextTitle(
-                hint: informTradeAmountHint,
+                hint: numberPadSingleTextHint ?? informTradeAmountHint,
                 title: title,
+                style: singleTextTitleStyle,
+                backgroundColor: backgroundColor,
+                iconColor: iconColor,
+                iconSize: iconSize,
+                padding: padding,
+                verticalMargin: verticalMargin,
               ),
         Row(
           children: <Widget>[

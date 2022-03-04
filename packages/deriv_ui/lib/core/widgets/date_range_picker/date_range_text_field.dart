@@ -16,7 +16,7 @@ class _DateRangeTextField extends StatefulWidget {
     required this.onEditingComplete,
     this.dateFormat = 'dd-MM-yyyy',
     this.width=8,
-    this.cursorColor,
+    this.cursorColor=BrandColors.greenish,
     this.style,
     this.hintStyle,
     this.labelStyle,
@@ -36,7 +36,7 @@ class _DateRangeTextField extends StatefulWidget {
   final DateTime? initialEndDate;
 
   /// The accepted Date format for the TextField
-  final String dateFormat;
+  final String? dateFormat;
 
   /// `true` if the selected start-date is valid
   final bool isStartDateValid;
@@ -111,7 +111,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
   Widget build(BuildContext context) => Row(
         children: <Widget>[
           _buildDateTextField(
-              hintText: widget.dateFormat.toUpperCase(),
+              hintText: widget.dateFormat?.toUpperCase(),
               labelText: widget.labelTextStartDate??labelStartDate,
               controller: startDateInputController,
               isValidDate: widget.isStartDateValid,
@@ -125,7 +125,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
               outlineBorderValidColor: widget.outlineBorderValidColor),
           SizedBox(width: widget.width ?? 0),
           _buildDateTextField(
-              hintText: widget.dateFormat.toUpperCase(),
+              hintText: widget.dateFormat?.toUpperCase(),
               labelText:widget.labelTextEndDate?? labelEndDate,
               controller: endDateInputController,
               isValidDate: widget.isEndDateValid,
@@ -141,7 +141,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
       );
 
   Widget _buildDateTextField(
-          {required String hintText,
+          {required String? hintText,
           required String labelText,
           required TextEditingController? controller,
           required bool isValidDate,

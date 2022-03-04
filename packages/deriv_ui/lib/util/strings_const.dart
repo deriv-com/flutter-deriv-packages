@@ -260,3 +260,34 @@ String get informTradeAmountHint => Intl.message(
     desc: '',
     args: [],
   );
+
+/// `Badge`
+String get semanticBadgeIcon => Intl.message(
+    'Badge',
+    name: 'semanticBadgeIcon',
+    desc: '',
+    args: [],
+  );
+
+/// `Trade amount`
+String get labelTradeAmount => Intl.message(
+    'Trade amount',
+    name: 'labelTradeAmount',
+    desc: '',
+    args: [],
+  );
+
+/// `Take profit`
+String get labelTakeProfit => Intl.message(
+    'Take profit',
+    name: 'labelTakeProfit',
+    desc: '',
+    args: [],
+  );
+/// `Stop loss`
+String get labelStopLoss => Intl.message(
+    'Stop loss',
+    name: 'labelStopLoss',
+    desc: '',
+    args: [],
+  );

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../../util/device_info.dart';
+
 import '../../../util/strings_const.dart';
 import '../../widgets/custom_tooltip.dart';
 
@@ -70,6 +71,7 @@ class ExpandableBottomSheet extends StatefulWidget {
     this.iconColorHintButton = LightThemeColors.base04,
     this.iconSizeHintButton = 24,
     this.verticalPaddingHintButton = 12,
+    this.sheetTitle,
   }) : super(key: key);
 
   /// Expandable BottomSheet Controller
@@ -205,8 +207,11 @@ class ExpandableBottomSheet extends StatefulWidget {
   ///  Hint button icon size
   final double iconSizeHintButton;
 
- /// Hint button vertical padding
+  /// Hint button vertical padding
   final double verticalPaddingHintButton;
+
+  /// Expandable bottom sheet title
+  final String? sheetTitle;
 
   @override
   _ExpandableBottomSheetState createState() => _ExpandableBottomSheetState();
@@ -323,7 +328,8 @@ class _ExpandableBottomSheetState extends State<ExpandableBottomSheet>
                       iconColorHintButton: widget.iconColorHintButton,
                       styleTitle: widget.styleTitle,
                       rightPosition: widget.rightPosition,
-                      rightPositionForButton: widget.rightPositionForButton),
+                      rightPositionForButton: widget.rightPositionForButton,
+                      sheetTitle: widget.sheetTitle),
                   _ExpandableBottomSheetUpperContent(
                     onHeightCalculated: (double height) =>
                         _upperContentHeight = height,

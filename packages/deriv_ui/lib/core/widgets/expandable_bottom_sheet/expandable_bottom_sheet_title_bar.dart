@@ -11,11 +11,12 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
     this.widthToggle=80,
     this.borderRadiusToggle=4,
     this.colorToggle=LightThemeColors.base05,
-    Key? key,
     this.leftPosition = 16,
     this.rightPosition = 16,
     this.rightPositionForButton = 16,
     this.styleTitle,
+    this.sheetTitle,
+    Key? key,
   }) : super(key: key);
 
   final double verticalMarginToggle;
@@ -32,6 +33,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
   final Color iconColorHintButton;
   final double iconSizeHintButton;
   final double verticalPaddingHintButton;
+  final String? sheetTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                         },
                         icon: const Icon(Icons.expand_more),
                       ),
-                      title: Text(labelContractDetails),
+                      title: Text(sheetTitle??labelContractDetails),
                     ),
                   ),
                 ),

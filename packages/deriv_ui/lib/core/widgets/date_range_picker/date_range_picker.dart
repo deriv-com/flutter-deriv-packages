@@ -11,6 +11,7 @@ import 'calendar_date_range.dart';
 import 'input_date_range.dart';
 import 'models/animated_popup_dialog_card_model.dart';
 import 'models/date_range_model.dart';
+import 'models/date_range_textfield.dart';
 import 'models/input_date_model.dart';
 import 'selected_date_range.dart';
 
@@ -62,8 +63,9 @@ class DateRangePicker extends StatefulWidget {
     this.editTooltip,
     this.labelTextSelectedStartDate,
     this.labelTextSelectedEndDate,
-    Key? key,
     this.inputDateRangeModel,
+    this.dateRangeTextFieldModel,
+    Key? key,
   }) : super(key: key);
 
   /// The [DateTime] representing today. It will be highlighted in the day grid.
@@ -202,6 +204,9 @@ class DateRangePicker extends StatefulWidget {
 
   /// Input date range
   final InputDateRangeModel? inputDateRangeModel;
+
+  ///  Date range [TextField] property
+  final DateRangeTextFieldModel? dateRangeTextFieldModel;
 
   @override
   _DateRangePickerState createState() => _DateRangePickerState();
@@ -447,6 +452,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
           titlePadding: widget.inputDateRangeModel?.titlePadding,
           titleStyle: widget.inputDateRangeModel?.titleStyle,
           verticalPadding: widget.inputDateRangeModel?.verticalPadding,
+          dateRangeTextFieldModel: widget.dateRangeTextFieldModel,
         ),
         cardBorderRadius: widget.animatedPopupDialogCardModel?.cardBorderRadius,
         cardColor: widget.animatedPopupDialogCardModel?.cardColor,

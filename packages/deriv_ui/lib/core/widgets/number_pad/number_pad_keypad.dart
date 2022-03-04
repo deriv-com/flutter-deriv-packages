@@ -4,11 +4,29 @@ class _NumberPadKeypadWidget extends StatefulWidget {
   const _NumberPadKeypadWidget({
     required this.onKeyPressed,
     this.ignoring,
+    this.borderSideColor=Colors.black,
+    this.backSpaceIconColor=LightThemeColors.base01,
+    this.textStyle,
+    this.pressTextButtonColor=BrandColors.coral,
+    this.withoutPressTextButtonColor=LightThemeColors.base04,
+    this.okButtonTitle
   });
 
+  ///
   final NumberPadKeyPressedCallback onKeyPressed;
 
+  ///
   final VoidCallback? ignoring;
+  final Color borderSideColor;
+  final Color? backSpaceIconColor;
+  final TextStyle? textStyle;
+  final String? okButtonTitle;
+
+  /// when keyboard ok button press change color
+  final Color? pressTextButtonColor;
+
+  /// when keyboard ok button not press change color
+  final Color? withoutPressTextButtonColor;
 
   @override
   _NumberPadKeypadWidgetState createState() => _NumberPadKeypadWidgetState();
@@ -52,6 +70,12 @@ class _NumberPadKeypadWidgetState extends State<_NumberPadKeypadWidget> {
               index: index,
               ignoring: _NumberPadProvider.of(context)!.isAllInputsValid(),
               onPressed: widget.onKeyPressed,
+              okButtonTitle: widget.okButtonTitle,
+              backSpaceIconColor: widget.backSpaceIconColor,
+              borderSideColor: widget.borderSideColor,
+              pressTextButtonColor: widget.pressTextButtonColor,
+              textStyle:widget.textStyle ,
+              withoutPressTextButtonColor: widget.withoutPressTextButtonColor,
             );
           }),
         ),
