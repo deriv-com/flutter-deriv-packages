@@ -124,68 +124,68 @@ void main() {
       expect(find.byType(ElevatedButton), findsOneWidget);
     });
 
-    // testWidgets(
-    //     'Badge widget child should have a badge with `one notification` label',
-    //     (WidgetTester tester) async {
-    //   const int badgeCount = 1;
-    //   const Badge badge = Badge(
-    //     child: Text('Badge Label'),
-    //     count: badgeCount,
-    //     childWidgetPadding: childWidgetPadding,
-    //     countLabelContainerHeight: countLabelContainerHeight,
-    //     countLabelContainerWidth: countLabelContainerWidth,
-    //     countLabelTextStyle: countLabelTextStyle,
-    //     noShowDotMinHeight: noShowDotMinHeight,
-    //     noShowDotMinWidth: noShowDotMinWidth,
-    //     notificationBadgeBackgroundColor: notificationBadgeBackgroundColor,
-    //     notificationBadgeBorderWidth: notificationBadgeBorderWidth,
-    //     semanticLabel: semanticLabel,
-    //     showDotMinHeight: showDotMinHeight,
-    //     showDotMinWidth: showDotMinWidth,
-    //   );
-    //
-    //   await tester.pumpWidget(const _TestApp(badge));
-    //
-    //   await tester.idle();
-    //   await tester.pumpAndSettle();
-    //
-    //   final Finder badgeIconFinder = find.bySemanticsLabel(
-    //     localization.semanticNotificationCountIcon,
-    //   );
-    //
-    //   expect(badgeIconFinder, findsOneWidget);
-    // });
+    testWidgets(
+        'Badge widget child should have a badge with `one notification` label',
+        (WidgetTester tester) async {
+      const int badgeCount = 1;
+      const Badge badge = Badge(
+        child: Text('Badge Label'),
+        count: badgeCount,
+        childWidgetPadding: childWidgetPadding,
+        countLabelContainerHeight: countLabelContainerHeight,
+        countLabelContainerWidth: countLabelContainerWidth,
+        countLabelTextStyle: countLabelTextStyle,
+        noShowDotMinHeight: noShowDotMinHeight,
+        noShowDotMinWidth: noShowDotMinWidth,
+        notificationBadgeBackgroundColor: notificationBadgeBackgroundColor,
+        notificationBadgeBorderWidth: notificationBadgeBorderWidth,
+        semanticLabel: semanticLabel,
+        showDotMinHeight: showDotMinHeight,
+        showDotMinWidth: showDotMinWidth,
+      );
 
-    // testWidgets('Badge widget child should have a badge with badgeCount label',
-    //     (WidgetTester tester) async {
-    //   const int badgeCount = 3;
-    //   const Badge badge = Badge(
-    //     child: Text('Badge Label'),
-    //     count: badgeCount,
-    //     childWidgetPadding: childWidgetPadding,
-    //     countLabelContainerHeight: countLabelContainerHeight,
-    //     countLabelContainerWidth: countLabelContainerWidth,
-    //     countLabelTextStyle: countLabelTextStyle,
-    //     noShowDotMinHeight: noShowDotMinHeight,
-    //     noShowDotMinWidth: noShowDotMinWidth,
-    //     notificationBadgeBackgroundColor: notificationBadgeBackgroundColor,
-    //     notificationBadgeBorderWidth: notificationBadgeBorderWidth,
-    //     semanticLabel: semanticLabel,
-    //     showDotMinHeight: showDotMinHeight,
-    //     showDotMinWidth: showDotMinWidth,
-    //   );
-    //
-    //   await tester.pumpWidget(const _TestApp(badge));
-    //
-    //   await tester.idle();
-    //   await tester.pumpAndSettle();
-    //
-    //   final Finder badgeIconFinder = find.bySemanticsLabel(
-    //     localization.semanticNotificationsCountIcon(badgeCount),
-    //   );
-    //
-    //   expect(badgeIconFinder, findsOneWidget);
-    // });
+      await tester.pumpWidget(const _TestApp(badge));
+
+      await tester.idle();
+      await tester.pumpAndSettle();
+
+      final Finder badgeIconFinder = find.bySemanticsLabel(
+        'Badge Label',
+      );
+
+      expect(badgeIconFinder, findsOneWidget);
+    });
+
+    testWidgets('Badge widget child should have a badge with badgeCount label',
+        (WidgetTester tester) async {
+      const int badgeCount = 3;
+      const Badge badge = Badge(
+        child: Text('Badge Label'),
+        count: badgeCount,
+        childWidgetPadding: childWidgetPadding,
+        countLabelContainerHeight: countLabelContainerHeight,
+        countLabelContainerWidth: countLabelContainerWidth,
+        countLabelTextStyle: countLabelTextStyle,
+        noShowDotMinHeight: noShowDotMinHeight,
+        noShowDotMinWidth: noShowDotMinWidth,
+        notificationBadgeBackgroundColor: notificationBadgeBackgroundColor,
+        notificationBadgeBorderWidth: notificationBadgeBorderWidth,
+        semanticLabel: semanticLabel,
+        showDotMinHeight: showDotMinHeight,
+        showDotMinWidth: showDotMinWidth,
+      );
+
+      await tester.pumpWidget(const _TestApp(badge));
+
+      await tester.idle();
+      await tester.pumpAndSettle();
+
+      final Finder badgeIconFinder = find.text(
+        '3',
+      );
+
+      expect(badgeIconFinder, findsOneWidget);
+    });
   });
 }
 
