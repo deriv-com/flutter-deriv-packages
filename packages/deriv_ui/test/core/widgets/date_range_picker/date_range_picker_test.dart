@@ -1,7 +1,6 @@
 import 'package:deriv_ui/core/widgets/date_range_picker/date_range_picker.dart';
 import 'package:deriv_ui/util/strings_const.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -252,13 +251,7 @@ class _TestApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-          // S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        // supportedLocales: S.delegate.supportedLocales,
+
         home: dateRangePicker,
       );
 }

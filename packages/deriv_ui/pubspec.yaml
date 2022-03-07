@@ -11,8 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
+
   flutter_svg: ^0.23.0+1
 
 dev_dependencies:
@@ -30,23 +29,12 @@ dev_dependencies:
       url: git@github.com:regentmarkets/flutter-deriv-api.git
       ref: dev
 
-  flutter_deriv_bloc_manager:
-   git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_bloc_manager
-      ref: dev
 
   deriv_lint:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_lint
       ref: dev
-
-#  deriv_theme:
-#    git:
-#      url: git@github.com:rajeevqss/flutter-deriv-packages.git
-#      path: packages/deriv_theme
-#      ref: move-common-ui
 
 flutter:
   uses-material-design: true
