@@ -158,7 +158,7 @@ class _StackedBannerState extends State<StackedBanner>
     };
 
     widget.controller._onRemoveItem = (Widget item) {
-      _bannerItems.remove(item);
+      setState(() => _bannerItems.remove(item));
     };
 
     widget.controller._onExpandBanner = _expandStack;
