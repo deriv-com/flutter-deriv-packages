@@ -2,12 +2,14 @@ import 'package:deriv_banner/src/stacked_banner/default_collapse_button.dart';
 import 'package:flutter/material.dart';
 
 /// Add item to stacked banner callback.
-typedef OnAddBannerItem = Function(Widget);
+typedef OnAddRemoveBannerItem = Function(Widget);
 
 /// Trade banner controller.
 class StackedBannerController {
   /// On add item callback.
-  OnAddBannerItem? _onAddItem;
+  OnAddRemoveBannerItem? _onAddItem;
+
+  OnAddRemoveBannerItem? _onRemoveItem;
 
   /// On expand banner callback.
   VoidCallback? _onExpandBanner;
@@ -17,6 +19,9 @@ class StackedBannerController {
 
   /// Adds an item to the stacked banner.
   void addItem(Widget item) => _onAddItem?.call(item);
+
+  /// Removes an item to the stacked banner.
+  void removeItem(Widget item) => _onRemoveItem?.call(item);
 
   /// Expands banner.
   void expandBanner() => _onExpandBanner?.call();
@@ -150,6 +155,10 @@ class _StackedBannerState extends State<StackedBanner>
     widget.controller._onAddItem = (Widget item) {
       _bannerItems.add(item);
       newItemAnimation();
+    };
+
+    widget.controller._onRemoveItem = (Widget item) {
+      _bannerItems.remove(item);
     };
 
     widget.controller._onExpandBanner = _expandStack;
