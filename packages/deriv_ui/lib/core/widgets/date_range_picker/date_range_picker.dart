@@ -40,10 +40,10 @@ class DateRangePicker extends StatefulWidget {
     this.initialStartDate,
     this.initialEndDate,
     this.mode = DateRangPickerMode.calendar,
-    this.backgroundColor,
+    this.backgroundColor=LightThemeColors.base08,
     this.appBarPadding = const EdgeInsets.all(0),
-    this.iconButtonColor,
-    this.calendarColor,
+    this.checkIconButtonColor,
+    this.backgroundColorSelectedDateRange=LightThemeColors.base07,
     this.bottomPadding,
     this.leftPadding,
     this.verticalPadding,
@@ -88,124 +88,124 @@ class DateRangePicker extends StatefulWidget {
   /// Default value is [DateRangPickerMode.calendar].
   final DateRangPickerMode mode;
 
-  ///Padding for AppBar
+  /// Padding for AppBar in Date Picker.
   final EdgeInsetsGeometry appBarPadding;
 
-  ///Background color
+  /// Background color of Date Picker.
   final Color? backgroundColor;
 
-  ///AppBar Icon color
+  /// Set color of close icon in AppBar of Date Picker.
   final Color? closeIconColor;
 
-  /// Icon Button Color
-  final Color? iconButtonColor;
+  /// Set color of check right icon in AppBar of Date Picker.
+  final Color? checkIconButtonColor;
 
-  /// Calendar color
-  final Color? calendarColor;
+  /// Background color of selected date range in Date Picker.
+  final Color? backgroundColorSelectedDateRange;
 
-  /// Calendar bottom padding
+  /// Bottom padding of selected date range in Date Picker.
   final double? bottomPadding;
 
-  /// Calendar left padding
+  /// Left padding of selected date range in Date Picker.
   final double? leftPadding;
 
-  /// Calendar vertical padding
+  /// Vertical padding of selected date range in Date Picker.
   final double? verticalPadding;
 
-  /// Calendar Text style
+  /// Text style of selected date range title in Date Picker.
   final TextStyle? calendarStyle;
 
-  ///Animated Popup dialog Card values
+  /// Properties of the dialog editing the selected date in Date Picker.
   final AnimatedPopupDialogCardModel? animatedPopupDialogCardModel;
 
-  /// select date range color
+  /// Set the color of selected date in Date Picker.
   final Color selectedDateRangeColor;
 
-  /// select date range [TextStyle]
+  /// Set the [TextStyle] of selected date in Date Picker.
   final TextStyle selectedDateRangeTextStyle;
 
-  /// Month item row height
+  /// Month item row height in scrollable Calendar
   final double monthItemRowHeight;
 
-  ///  Month Item Space between row
+  ///  Month Item Space between row in scrollable Calendar
   final double monthItemSpaceBetweenRows;
 
-  /// Month item header height
+  /// Month item header height in scrollable Calendar
   final double monthItemHeaderHeight;
 
-  /// horizontal  padding
+  /// horizontal  padding in scrollable Calendar
   final double horizontalPadding;
 
-  /// Month item footer height
+  /// margin of bottom in scrollable Calendar
   final double monthItemFooterHeight;
 
-  /// text style
+  /// Display month name [TextStyle] in scrollable Calendar
   final TextStyle style;
 
-  /// Container edge color
+  /// Container edge color in scrollable Calendar
   final Color containerEdgeColor;
 
-  /// High Light color
+  /// High Light color of selected date range in scrollable Calendar
   final Color highLightColor;
 
-  /// day [TextStyle]
+  /// day [TextStyle] of TextStyle in scrollable Calendar
   final TextStyle dayStyle;
 
-  /// Splash color
+  /// Splash color of color in scrollable Calendar
   final Color splashColor;
 
-  /// Box circle color
+  /// Box circle color of color in scrollable Calendar
   final Color boxCircleColor;
 
-  /// select day color
+  /// select day color of color in scrollable Calendar
   final Color selectDayColor;
 
-  /// Disable day color
+  /// Unselected day of color in scrollable Calendar
   final Color disableDayColor;
 
-  /// Header height
+  /// This is represents header height for day header.
   final double? headerHeight;
 
-  /// Header style
+  /// This is represents header style for day header.
   final TextStyle? headerStyle;
 
-  /// Icon Label
+  /// Set label of close icon in AppBar of Date Picker.
   final String? closeIconLabel;
 
-  /// Icon Tooltip
+  /// Set tooltip of close icon in AppBar of Date Picker.
   final String? closeIconTooltip;
 
-  /// Icon Button Label
+  /// Set label of check right icon in AppBar of Date Picker.
   final String? checkIconButtonLabel;
 
-  /// Icon Button Tooltip
+  /// Set tooltip of check right icon in AppBar of Date Picker.
   final String? checkIconButtonTooltip;
 
-  /// Title of Calender
+  /// Set title of selected date range header in Date Picker.
   final String? calenderTitle;
 
-  /// Edit Button right padding
+  /// Set right padding of edit button of selected date in Date Picker.
   final double? editButtonRightPadding;
 
-  /// Edit Icon color;
+  /// Set Color of edit button of selected date in Date Picker.
   final Color? editIconColor;
 
-  /// Edit label
+  /// Set label of edit button of selected date in Date Picker.
   final String? editLabel;
 
-  /// Edit tooltip
+  /// Set tooltip of edit button of selected date in Date Picker.
   final String? editTooltip;
 
-  /// Start date Label Text
+  /// Start date Label Text of selected date range in Date Picker.
   final String? labelTextSelectedStartDate;
 
-  /// End date Label Text
+  /// End date Label Text of selected date range in Date Picker.
   final String? labelTextSelectedEndDate;
 
-  /// Input date range
+  /// Properties of the  selected date range edit dialog.
   final InputDateRangeModel? inputDateRangeModel;
 
-  ///  Date range [TextField] property
+  ///  Properties of the TextField in selected date range edit dialog.
   final DateRangeTextFieldModel? dateRangeTextFieldModel;
 
   @override
@@ -242,7 +242,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
               closeIconColor: widget.closeIconColor,
               closeIconLabel: widget.closeIconLabel,
               closeIconTooltip: widget.closeIconTooltip,
-              checkIconButtonColor: widget.iconButtonColor,
+              checkIconButtonColor: widget.checkIconButtonColor,
               checkIconButtonLabel: widget.checkIconButtonLabel,
               checkIconButtonTooltip: widget.checkIconButtonTooltip),
           body: _buildCalendar(
@@ -250,7 +250,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
               selectedDateRangeColor: widget.selectedDateRangeColor,
               selectedDateRangeTextStyle: widget.selectedDateRangeTextStyle,
               bottomPadding: widget.bottomPadding,
-              color: widget.calendarColor,
+              color: widget.backgroundColorSelectedDateRange,
               leftPadding: widget.leftPadding,
               style: widget.calendarStyle,
               verticalPadding: widget.verticalPadding,
@@ -430,8 +430,8 @@ class _DateRangePickerState extends State<DateRangePicker> {
           maxAllowedDate: widget.maxAllowedDate,
           initialStartDate: selectedStartDate,
           initialEndDate: selectedEndDate,
-          selectedDateRangeTextStyle: widget.selectedDateRangeTextStyle,
-          selectedDateRangeColor: widget.selectedDateRangeColor,
+          selectedDateRangeTextStyle: widget.inputDateRangeModel?.selectedDateRangeTextStyle,
+          selectedDateRangeColor: widget.inputDateRangeModel?.selectedDateRangeColor,
           labelTextSelectedStartDate: widget.labelTextSelectedStartDate,
           labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
           backgroundColor: widget.inputDateRangeModel?.backgroundColor,

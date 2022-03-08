@@ -41,40 +41,40 @@ class Badge extends StatelessWidget {
   /// Default is [Alignment.topRight].
   final Alignment alignment;
 
-  /// PAdding
+  /// Padding of badge
   final double padding;
 
   /// Badge Text Style
   final TextStyle? badgeTextStyle;
 
-  /// Border width
+  /// Border width of badge.
   final double borderWidth;
 
-  /// Box Color
+  /// Box Color of badge.
   final Color boxColor;
 
-  /// Box width
+  /// Box width of badge.
   final double boxWidth;
 
-  /// Box height
+  /// Box height of badge.
   final double boxHeight;
 
-  /// Min width show dot
+  /// Min width show dot  in badge.
   final double minWidthISCountNull;
 
-  /// Min width not show dot
+  /// Min width not show dot in badge.
   final double minWidthISCountNotNull;
 
-  /// Min height show dot
+  /// Min height show dot in badge.
   final double minHeightISCountNull;
 
-  /// Min height not show dot
+  /// Min height not show dot in badge.
   final double minHeightISCountNotNull;
 
-  /// Semantic Notification Count Icon Message
+  /// Semantic Notification Count Icon Message in badge.
   final String? semanticNotificationCountIconMessage;
 
-  /// Semantic Notifications Count Icon Message
+  /// Semantic Notifications Count Icon Message in badge.
   final String? semanticNotificationsCountIconMessage;
 
   @override

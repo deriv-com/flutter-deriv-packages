@@ -6,7 +6,7 @@ import '../../../../util/color.dart';
 
 /// Date Range TextField
 class DateRangeTextFieldModel {
-  /// Construct initialize
+  /// Constructor initialize
   DateRangeTextFieldModel(
       {this.dateFormat,
       this.width,
@@ -24,7 +24,7 @@ class DateRangeTextFieldModel {
   /// The accepted Date format for the TextField
   final String? dateFormat;
 
-  ///margin
+  /// Margin for TextField
   final double? width;
 
   /// TextField Cursor color
@@ -51,9 +51,9 @@ class DateRangeTextFieldModel {
   /// TextField outline decoration border not valid color
   final Color? outlineBorderNotValidColor;
 
-  /// Label text of start date
+  /// Label text of start date for TextField
   final String? labelTextStartDate;
 
-  /// Label text of end date
+  /// Label text of end date for TextField
   final String? labelTextEndDate;
 }

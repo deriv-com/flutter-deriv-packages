@@ -12,20 +12,18 @@ class _NumberPadKeypadWidget extends StatefulWidget {
     this.okButtonTitle
   });
 
-  ///
   final NumberPadKeyPressedCallback onKeyPressed;
 
-  ///
   final VoidCallback? ignoring;
   final Color borderSideColor;
   final Color? backSpaceIconColor;
   final TextStyle? textStyle;
   final String? okButtonTitle;
 
-  /// when keyboard ok button press change color
+  /// Set color when press ok button in keyboard
   final Color? pressTextButtonColor;
 
-  /// when keyboard ok button not press change color
+  /// Set color when not press ok button in keyboard
   final Color? withoutPressTextButtonColor;
 
   @override

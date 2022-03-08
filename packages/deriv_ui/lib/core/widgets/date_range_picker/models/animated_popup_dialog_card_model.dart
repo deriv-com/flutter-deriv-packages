@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import '../../../../util/color.dart';
 
-///
+/// Selected date range edita animate popup dialog card model.
 class AnimatedPopupDialogCardModel{
 
   /// Constructor initializing.
@@ -12,19 +12,19 @@ class AnimatedPopupDialogCardModel{
     this.cardColor=LightThemeColors.base08,
     this.verticalMargin=8});
 
-  ///Container vertical margin
+  /// Vertical margin Container in edit dialog.
   final double? verticalMargin;
 
-  ///Card Elevation value
+  /// Card Elevation value in edit dialog.
   final double? cardElevation;
 
-  ///Card color
+  /// Card color in edit dialog.
   final Color? cardColor;
 
-  ///Card border radius
+  /// Card border radius in edit dialog.
   final double? cardBorderRadius;
 
-  ///Card padding
+  /// Card padding in edit dialog.
   final double? cardPadding;
 
 

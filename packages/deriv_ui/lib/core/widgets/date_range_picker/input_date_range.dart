@@ -106,10 +106,10 @@ class InputDateRange extends StatefulWidget {
   final Color? okButtonNotValidColor;
 
   ///
-  final TextStyle selectedDateRangeTextStyle;
+  final TextStyle? selectedDateRangeTextStyle;
 
   ///
-  final Color selectedDateRangeColor;
+  final Color? selectedDateRangeColor;
 
   ///  Select date range label text
   final String? labelTextSelectedRange;
@@ -204,8 +204,8 @@ class _InputDateRangeState extends State<InputDateRange> {
       );
 
   Widget _buildTitle({
-    required TextStyle selectedDateRangeTextStyle,
-    required Color selectedDateRangeColor,
+    required TextStyle? selectedDateRangeTextStyle,
+    required Color? selectedDateRangeColor,
     required DateTime currentDate,
     Color? color,
     EdgeInsetsGeometry? titlePadding,

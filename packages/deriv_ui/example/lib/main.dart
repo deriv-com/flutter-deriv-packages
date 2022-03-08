@@ -31,10 +31,6 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-          // localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-          //   S.delegate,
-          // ],
-          // supportedLocales: S.delegate.supportedLocales,
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,

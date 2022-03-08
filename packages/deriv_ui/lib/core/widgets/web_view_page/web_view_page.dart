@@ -51,13 +51,13 @@ class WebViewPage extends StatefulWidget {
   /// Callback when web view is closed.
   final Function? onClosed;
 
-  ///Background color
+  /// Background color of web view.
   final Color? backgroundColor;
 
-  /// ProgressBar Height
+  /// ProgressBar Height in web view.
   final double heightProgressBar;
 
-  /// ProgressBar value color
+  /// ProgressBar value color in web view.
   final Color valueColorProgressBar;
 
   @override

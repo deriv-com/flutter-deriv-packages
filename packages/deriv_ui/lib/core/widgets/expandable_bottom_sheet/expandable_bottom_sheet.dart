@@ -162,22 +162,22 @@ class ExpandableBottomSheet extends StatefulWidget {
   /// Default value for animation duration of bottom sheet in milliseconds.
   static const int _defaultChangeStateDuration = 350;
 
-  /// Top Left radius of BoxDecoration
+  /// Top Left radius of BoxDecoration in expandable bottom sheet.
   final double topLeftRadius;
 
-  /// Top Left radius of BoxDecoration
+  /// Top Left radius of BoxDecoration in expandable bottom sheet.
   final double topRightRadius;
 
-  /// Background color of container
+  /// Background color of container in expandable bottom sheet.
   final Color? color;
 
-  /// left position value
+  /// left position value of expandable bottom sheet title bar.
   final double leftPosition;
 
-  /// right position value
+  /// right position value of expandable bottom sheet title bar.
   final double rightPosition;
 
-  /// right position value of button
+  /// right position value of button in expandable bottom sheet title bar.
   final double rightPositionForButton;
 
   ///  Vertical margin of toggle
@@ -198,7 +198,7 @@ class ExpandableBottomSheet extends StatefulWidget {
   /// Border radius of toggle
   final double borderRadiusToggle;
 
-  /// Title style
+  ///  TextStyle of expandable bottom sheet title.
   final TextStyle? styleTitle;
 
   /// Hint button icon color

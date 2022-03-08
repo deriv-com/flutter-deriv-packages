@@ -28,10 +28,10 @@ class SelectedDateRange extends StatelessWidget {
   /// End date.
   final DateTime? endDate;
 
-  /// TextStyle
+  /// Selected date(start and end) TextStyle
   final TextStyle? style;
 
-  ///Color
+  /// Selected date(start and end)  text Color
   final Color? color;
 
   /// Start date Label Text

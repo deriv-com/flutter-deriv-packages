@@ -20,22 +20,22 @@ class AnimatedPopupDialog extends StatefulWidget {
   /// Content of this dialog.
   final Widget child;
 
-  /// Animation Duration.
+  /// Animation Duration of this dialog.
   final Duration animationDuration;
 
-  ///Container vertical margin
+  /// Container vertical margin of this dialog.
   final double? verticalMargin;
 
-  ///Card Elevation value
+  /// Card Elevation value of this dialog.
   final double? cardElevation;
 
-  ///Card color
+  /// Card color of this dialog.
   final Color? cardColor;
 
-  ///Card border radius
+  /// Card border radius of this dialog.
   final double? cardBorderRadius;
 
-  ///Card padding
+  /// Card padding of this dialog
   final double? cardPadding;
 
   @override

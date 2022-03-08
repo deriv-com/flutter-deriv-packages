@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 /// Number pad field property
 class NumberPadFieldModel {
   /// Constructor initialize
-const  NumberPadFieldModel(
-      { this.textStyle,
+  const NumberPadFieldModel(
+      {this.textStyle,
       this.labelStyle,
       this.borderSideColor = BrandColors.coral,
-      this.labelColor=LightThemeColors.base04,
-      this.focusColor=BrandColors.greenish,
-      this.withoutFocusColor=LightThemeColors.base04,
+      this.labelColor = LightThemeColors.base04,
+      this.focusColor = BrandColors.greenish,
+      this.withoutFocusColor = LightThemeColors.base04,
       this.textAlign = TextAlign.start});
 
   /// Show Label Style
@@ -37,14 +37,15 @@ const  NumberPadFieldModel(
   final TextAlign textAlign;
 }
 
-///
+/// Number pad double TextFiled  model
 class NumberPadDoubleTextFieldModel {
-  ///
+
+  /// Initialize constructor
   const NumberPadDoubleTextFieldModel(
-      {this.numberPadFieldModelFirst=const NumberPadFieldModel(),
-      this.numberPadFieldModelSecond=const NumberPadFieldModel(),
-      this.firstTitleValue='',
-      this.secondTitleValue='',
+      {this.numberPadFieldModelFirst = const NumberPadFieldModel(),
+      this.numberPadFieldModelSecond = const NumberPadFieldModel(),
+      this.firstTitleValue = '',
+      this.secondTitleValue = '',
       this.currencyTextStyle,
       this.paddingFirstTitle,
       this.paddingSecondTitle});
@@ -67,31 +68,34 @@ class NumberPadDoubleTextFieldModel {
   /// Padding of first title
   final EdgeInsetsGeometry? paddingFirstTitle;
 
-  /// PAdding of second title
+  /// Padding of second title
   final EdgeInsetsGeometry? paddingSecondTitle;
 }
 
-///
+/// Number pad single TextField model
 class NumberPadSingleTextFieldModel {
-  ///
-  const NumberPadSingleTextFieldModel(
-      {
-      this.style,
+
+  /// Initialize constructor
+  const NumberPadSingleTextFieldModel({this.style,
       this.numberPadFieldModel,
       this.label,
       this.margin,
+      this.numberPadSingleTextHint,
       this.currencyLabelStyle});
 
-  /// Text Style
+  /// Text Style of TextField.
   final TextStyle? style;
 
-  /// Single text field property
+  /// Single text field property.
   final NumberPadFieldModel? numberPadFieldModel;
 
-  /// Label value
+  /// Label value of TextFiled.
   final String? label;
 
-  /// Margin value
+  /// Hint of single TextField of NumberPad.
+  final String? numberPadSingleTextHint;
+
+  /// Margin value of TextField.
   final double? margin;
 
   /// Currency label text style
@@ -100,16 +104,15 @@ class NumberPadSingleTextFieldModel {
 
 ///Number message model
 class NumberPadMessageModel {
-
   /// Constructor initialize
   const NumberPadMessageModel(
       {this.validTextStyle = const TextStyle(color: LightThemeColors.base04),
-        this.inValidTextStyle = const TextStyle(color: BrandColors.coral),
-        this.padding = const EdgeInsets.only(
-          bottom: 8,
-          left: 16,
-          right: 16,
-        )});
+      this.inValidTextStyle = const TextStyle(color: BrandColors.coral),
+      this.padding = const EdgeInsets.only(
+        bottom: 8,
+        left: 16,
+        right: 16,
+      )});
 
   /// TextStyle for inValid message
   final TextStyle? inValidTextStyle;
@@ -117,6 +120,6 @@ class NumberPadMessageModel {
   /// TextStyle for valid message
   final TextStyle? validTextStyle;
 
-  ///Padding
+  /// Padding of Number pad
   final EdgeInsetsGeometry? padding;
 }

@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../../util/color.dart';
 
@@ -22,10 +19,10 @@ class InputDateModel {
   DateTime? dateTime;
 }
 
-/// Input date range model
+/// Properties of the  selected date range edit dialog.
 class InputDateRangeModel{
 
-  /// initialize construct
+  /// initialize constructor
   InputDateRangeModel({
     this.selectedDateRangeColor = LightThemeColors.base02,
     this.selectedDateRangeTextStyle = const TextStyle(),
@@ -58,64 +55,64 @@ class InputDateRangeModel{
     this.labelTextSelectedStartDate,
     this.labelTextSelectedEndDate});
 
-  ///Background Color
+  /// Background Color edit dialog.
   final Color? backgroundColor;
 
-  /// Title color
+  /// Title color of edit dialog.
   final Color? titleColor;
 
-  /// Title padding
+  /// Title padding of edit dialog.
   final EdgeInsetsGeometry? titlePadding;
 
-  /// Title Style
+  /// Title Style of edit dialog.
   final TextStyle? titleStyle;
 
-  /// Title vertical padding
+  /// Title vertical padding of edit dialog.
   final double? verticalPadding;
 
-  /// Date Input padding
+  /// Date Input padding of edit dialog.
   final EdgeInsetsGeometry? dateInputPadding;
 
-  /// Calender button Color
+  /// Calender icon Color of edit dialog.
   final Color? dateRangeIconColor;
 
-  /// Cancel Button Style
+  /// Cancel Button Style of edit dialog.
   final TextStyle? cancelButtonStyle;
 
-  /// Ok Button Style
+  /// Ok Button Style of edit dialog.
   final TextStyle? okButtonStyle;
 
-  /// Ok Button valid Color
+  /// Ok Button valid Color of edit dialog.
   final Color? okButtonValidColor;
 
-  /// Ok Button not valid color
+  /// Ok Button not valid color of edit dialog.
   final Color? okButtonNotValidColor;
 
-  ///
+  /// Selected date range text of [TextStyle] in edit dialog.
   final TextStyle selectedDateRangeTextStyle;
 
-  ///
+  /// Selected date range text of [Color] in edit dialog.
   final Color selectedDateRangeColor;
 
-  ///  Select date range label text
+  ///  Select date range label text of edit dialog.
   final String? labelTextSelectedRange;
 
-  /// Select date range label
+  /// Select date range label of edit dialog.
   final String? dateRangeLabel;
 
-  /// Select date range tooltip
+  /// Select date range tooltip of edit dialog.
   final String? dateRangeTooltip;
 
-  /// Cancel button text
+  /// Cancel button text of edit dialog.
   final String? cancelButtonText;
 
-  /// Cancel button text
+  /// Ok button text of edit dialog.
   final String? okButtonText;
 
-  /// Start date Label Text
+  /// Start date Label Text of edit dialog.
   final String? labelTextSelectedStartDate;
 
-  /// End date Label Text
+  /// End date Label Text of edit dialog.
   final String? labelTextSelectedEndDate;
 
 

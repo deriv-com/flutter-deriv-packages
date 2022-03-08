@@ -1,7 +1,4 @@
 import 'package:intl/intl.dart';
-// import 'package:flutter_deriv_api/helpers/helpers.dart';
-// import 'package:flutter_deriv_api/helpers/number_helper.dart';
-
 
 /// Creates NumberFormat.
 NumberFormat getValueFormatter({
@@ -21,26 +18,6 @@ NumberFormat getValueFormatter({
 
   return formatter;
 }
-//
-// /// Returns formatted value based on [currency] and [decimalDigits].
-// ///
-// /// [showSymbol]: if true, displays currency symbol.
-// /// [showCurrency] if true, displays currency name.
-// String? getFormattedValue({
-//   double? value,
-//   int? decimalDigits,
-//   String? currency,
-//   bool showSymbol = true,
-//   bool showCurrency = false,
-// }) =>
-//     value == null
-//         ? null
-//         : '${getValueFormatter(
-//             decimalDigits: decimalDigits ?? getDecimalDigits('$value'),
-//             currency: currency,
-//             showSymbol: showSymbol,
-//           ).format(value)} ${showCurrency ? currency : ''}';
-//
 
 /// Map currency names for some currency exceptions in [value] parameter.
 String getStringWithMappedCurrencyName(String value) =>

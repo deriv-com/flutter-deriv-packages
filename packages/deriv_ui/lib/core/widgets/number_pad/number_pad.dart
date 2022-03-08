@@ -212,76 +212,76 @@ class NumberPad extends StatefulWidget {
   /// By default, should be the first input field.
   final NumberPadInputFocus currentFocus;
 
-  ///
+  /// Properties of single TextField in NumberPad.
   final NumberPadSingleTextFieldModel? numberPadSingleTextFieldModel;
 
-  ///
+  /// Properties of double TextField in NumberPad.
   final NumberPadDoubleTextFieldModel? numberPadDoubleTextFieldModel;
 
-  /// Background Color
+  /// Set top container of background Color of NumberPad.
   final Color? backgroundColor;
 
-  ///
+  /// Set mid container of background Color of NumberPad.
   final Color? backgroundColorSecond;
 
-  /// TopLeft Radius
+  /// Set top container of TopLeft Radius of NumberPad.
   final double topLeft;
 
-  /// TopRight Radius
+  /// Set top container of TopRight Radius of NumberPad.
   final double topRight;
 
-  /// Padding
+  /// Set mid container of Padding of NumberPad.
   final EdgeInsetsGeometry? paddingSecond;
 
-  /// Icon padding
+  /// Handle Icon padding in number pad.
   final EdgeInsetsGeometry iconPadding;
 
-  /// TopLeft Radius
+  /// Set mid container of TopLeft Radius in NumberPad.
   final double topLeftSecond;
 
-  /// TopRight Radius
+  /// Set mid container of TopRight Radius in NumberPad.
   final double topRightSecond;
 
-  /// NumberPad Message Model  property value
+  /// NumberPad Message Model  property value.
   final NumberPadMessageModel? numberPadMessageModel;
 
-  /// callback for number pad keypad
+  /// callback for number pad keypad.
   final VoidCallback? ignoring;
 
-  /// border side color for number keypad
+  /// border side color for number keypad.
   final Color borderSideColor;
 
-  /// Back space icon color for number keypad
+  /// Back space icon color for number keypad.
   final Color? backSpaceIconColor;
 
-  /// Text style for number keypad
+  /// Text style for number keypad.
   final TextStyle? textStyle;
 
-  /// Ok button title
+  /// Ok button title in number keypad.
   final String? okButtonTitle;
 
-  /// when keyboard ok button press change color
+  /// set color when keyboard ok button press in number pad.
   final Color? pressTextButtonColor;
 
-  /// when keyboard ok button not press change color
+  /// set color when keyboard ok button not press in number pad.
   final Color? withoutPressTextButtonColor;
 
-  /// Handle Icon label
+  /// Handle Icon label in number pad.
   final String? handleIconLabel;
 
-  /// Warning message  less than for single text field
+  /// Warning message  less than for single text field.
   final String? warningMessageValueCantBeLessThan;
 
-  /// Warning message  greater than for single text field
+  /// Warning message  greater than for single text field.
   final String? warningMessageValueCantBeGreaterThan;
 
-  /// Warning message  greater than for Double input text field
+  /// Warning message  greater than for Double input text field.
   final String? warningMessageDoubleInputValueCantBeGreaterThan;
 
-  /// Warning message  less than for Double input text field
+  /// Warning message  less than for Double input text field.
   final String? warningMessageDoubleInputValueCantBeLessThan;
 
-  /// Warning message  in range for Double input text field
+  /// Warning message  in range for Double input text field.
   final String? warningMessageValueShouldBeInRange;
 
   @override
@@ -405,7 +405,9 @@ class _NumberPadState extends State<NumberPad> {
                               currencyLabelStyle: widget
                                   .numberPadSingleTextFieldModel
                                   ?.currencyLabelStyle,
-                              numberPadSingleTextHint: '',
+                              numberPadSingleTextHint: widget
+                                  .numberPadSingleTextFieldModel
+                                  ?.numberPadSingleTextHint,
                             )
                           : _NumberPadDoubleTextFields(
                               firstTitleValue: widget.firstInputTitle,

@@ -35,7 +35,7 @@ class AssetBadgeButton extends StatelessWidget {
   /// right position value
   final double right;
 
-  /// left position value
+  /// top position value
   final double top;
 
   /// semantic Badge Indicator Icon Message

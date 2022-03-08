@@ -54,16 +54,16 @@ class AlertBanner extends StatelessWidget {
   /// on the screen and was tapped.
   final VoidCallback? onNegativeActionPressed;
 
-  /// Background color
+  /// Background color of alert banner.
   final Color? backgroundColor;
 
-  /// TextStyle
+  /// TextStyle of content in alert banner.
   final TextStyle? textStyle;
 
-  /// Negative button TextStyle[negativeButtonTextStyle]
+  /// Negative button TextStyle[negativeButtonTextStyle] in alert banner.
   final TextStyle? negativeButtonTextStyle;
 
-  /// Negative button TextStyle[positiveButtonTextStyle]
+  /// Negative button TextStyle[positiveButtonTextStyle] in alert banner.
   final TextStyle? positiveButtonTextStyle;
 
   @override

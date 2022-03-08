@@ -86,19 +86,19 @@ class CalendarDateRange extends StatefulWidget {
   /// The [DateTime] that represents the end of the initial date range selection.
   final DateTime? initialEndDate;
 
-  /// Header height
+  /// This is represents header height for day header.
   final double? headerHeight;
 
-  /// Header style
+  /// This is represents header style for day header.
   final TextStyle? headerStyle;
 
-  /// Month item row height
+  /// This is represents  Month item row height.
   final double monthItemRowHeight;
 
-  ///  Month Item Space between row
+  ///  This is represents Month Item Space between row.
   final double monthItemSpaceBetweenRows;
 
-  /// Month item header height
+  /// This is represents Month item header height.
   final double monthItemHeaderHeight;
 
   /// horizontal  padding
@@ -107,7 +107,7 @@ class CalendarDateRange extends StatefulWidget {
   /// Month item footer height
   final double monthItemFooterHeight;
 
-  /// text style
+  /// Text style
   final TextStyle style;
 
   /// Container edge color

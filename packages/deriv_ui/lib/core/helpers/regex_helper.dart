@@ -30,7 +30,7 @@ String getNumFromString(String string) {
       .toString();
 }
 
-/// Returns current account broker
+/// Returns the account's broker code from the passed [loginId].
 String? getAccountBrokerCode(String loginId) {
   final RegExp regex = RegExp('[A-Za-z]+|\\d+');
   final RegExpMatch? match = regex.firstMatch(loginId);
