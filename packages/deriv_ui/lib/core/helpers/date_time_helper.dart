@@ -4,21 +4,6 @@ import 'package:intl/intl.dart';
 import '../widgets/date_range_picker/models/input_date_model.dart';
 
 
-/// Gets time part label.
-String getTimePartLabel({
-  required int timePart,
-  required String zeroLabel,
-  required String singularLabel,
-  required String pluralLabel,
-  required NumberFormat formatter,
-}) =>
-    Intl.plural(
-      timePart,
-      zero: '${formatter.format(timePart)} $zeroLabel',
-      one: '${formatter.format(timePart)} $singularLabel',
-      other: '${formatter.format(timePart)} $pluralLabel',
-    );
-
 
 /// Returns a [DateTime] with just the date of the original, but no time set.
 DateTime getDateFromDateTime(DateTime date) =>
