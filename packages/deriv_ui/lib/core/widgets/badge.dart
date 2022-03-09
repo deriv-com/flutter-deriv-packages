@@ -118,7 +118,6 @@ class Badge extends StatelessWidget {
                             semanticNotificationsCountIconMessage:
                                 semanticNotificationsCountIconMessage),
                         textAlign: TextAlign.center,
-                        // style: badgeTextStyle,
                       ),
                     ),
                   )
