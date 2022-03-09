@@ -198,7 +198,7 @@ class ExpandableBottomSheet extends StatefulWidget {
   /// Border radius of toggle
   final double borderRadiusToggle;
 
-  ///  TextStyle of expandable bottom sheet title.
+  /// TextStyle of expandable bottom sheet title.
   final TextStyle? styleTitle;
 
   /// Hint button icon color

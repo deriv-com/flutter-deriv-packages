@@ -7,9 +7,7 @@ class _DayHeader extends StatelessWidget {
     this.monthItemRowHeight=48,
     this.monthItemSpaceBetweenRows=8});
 
-  ///Max height
   final double? maxHeight;
-
   final TextStyle? headerTextStyle;
   final double horizontalPadding;
   final double monthItemRowHeight;

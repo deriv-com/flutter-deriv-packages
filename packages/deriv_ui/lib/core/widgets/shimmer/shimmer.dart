@@ -60,7 +60,7 @@ class Shimmer extends StatefulWidget {
 
 class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
   /// Animation controller.
-  late AnimationController _controller;
+  late final AnimationController _controller;
 
   /// The number of cycles that the animation has been repeated.
   int _count = 0;
@@ -90,9 +90,9 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
     }
   }
 
-  /// Handles if the animation should continue or not.
   @override
   void didUpdateWidget(Shimmer oldWidget) {
+  /// Handles if the animation should continue or not.
     if (widget.enabled) {
       _controller.forward();
     } else {

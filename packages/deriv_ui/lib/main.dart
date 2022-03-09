@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:deriv_ui/core/widgets/date_range_picker/date_range_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -18,22 +17,27 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final _navigator = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _navigator = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: <String, WidgetBuilder>{'/web': (BuildContext context) => Web(),
-        '/home':(context) => HomePage()},
-      navigatorKey: _navigator,
-      initialRoute: '/home',
-     );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routes: <String, WidgetBuilder>{
+          '/web': (BuildContext context) => const Web(),
+          '/home': (BuildContext context) => const HomePage()
+        },
+        navigatorKey: _navigator,
+        initialRoute: '/home',
+      );
 }
 
+/// Home Page
 class HomePage extends StatefulWidget {
+
+  /// Initialize constructor
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -41,15 +45,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var selectedDate = '';
-  final countries = ['india', 'USA', 'China', 'Ukrain'];
+  String selectedDate = '';
+  final List<String> countries = <String>['india', 'USA', 'China', 'Ukrain'];
 
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(title: const Text('Example App')),
         body: SingleChildScrollView(
           child: Column(
-            children: [
+            children: <Widget>[
               Text('Select Date: $selectedDate'),
               ElevatedButton(
                 onPressed: () async {
@@ -71,9 +75,9 @@ class _HomePageState extends State<HomePage> {
                 child: const Text('Click Date Picker'),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: NumberPad(
-                  currency: "R",
+                  currency: 'R',
                   formatter: NumberFormat(
                     '0.'.padRight(
                       2 + getCurrencyFractionalDigits(11),
@@ -98,7 +102,10 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                 onPressed: () async {
                   await Navigator.push(
-                      context, MaterialPageRoute<Void>(builder: (_) => Web()));
+                    context,
+                    MaterialPageRoute<BuildContext>(
+                        builder: (BuildContext context) => const Web()),
+                  );
                 },
                 child: const Text('Open web'),
               )
@@ -108,15 +115,16 @@ class _HomePageState extends State<HomePage> {
       );
 }
 
+/// Show web page
 class Web extends StatelessWidget {
-  Web({Key? key}) : super(key: key);
+  /// initialize constructor
+  const Web({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => const WebViewPage(
         appId: '1',
         title: 'webpage',
         heightProgressBar: 20,
-        showProgressIndicator: true,
         valueColorProgressBar: Colors.pink,
         url: 'https://www.google.com',
       );

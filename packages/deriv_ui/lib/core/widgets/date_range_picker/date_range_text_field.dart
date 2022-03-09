@@ -47,7 +47,7 @@ class _DateRangeTextField extends StatefulWidget {
   /// On editing complete handler.
   final _DateRangeTextFieldHandler? onEditingComplete;
 
-  ///margin
+  /// TextField Width
   final double? width;
 
   /// TextField Cursor color
@@ -74,10 +74,10 @@ class _DateRangeTextField extends StatefulWidget {
   /// TextField outline decoration border not valid color
   final Color? outlineBorderNotValidColor;
 
-  /// Label text of start date
+  /// Label text of start date TextField
   final String? labelTextStartDate;
 
-  /// Label text of end date
+  /// Label text of end date TextField.
   final String? labelTextEndDate;
 
   @override

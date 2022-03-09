@@ -92,43 +92,43 @@ class CalendarDateRange extends StatefulWidget {
   /// This is represents header style for day header.
   final TextStyle? headerStyle;
 
-  /// This is represents  Month item row height.
+  /// Month item row height in scrollable Calendar
   final double monthItemRowHeight;
 
-  ///  This is represents Month Item Space between row.
+  ///  Month Item Space between row in scrollable Calendar
   final double monthItemSpaceBetweenRows;
 
-  /// This is represents Month item header height.
+  /// Month item header height in scrollable Calendar
   final double monthItemHeaderHeight;
 
-  /// horizontal  padding
+  /// horizontal  padding in scrollable Calendar
   final double horizontalPadding;
 
-  /// Month item footer height
+  /// margin of bottom in scrollable Calendar
   final double monthItemFooterHeight;
 
-  /// Text style
+  /// Display month name [TextStyle] in scrollable Calendar
   final TextStyle style;
 
-  /// Container edge color
+  /// Container edge color in scrollable Calendar
   final Color containerEdgeColor;
 
-  /// High Light color
+  /// High Light color of selected date range in scrollable Calendar
   final Color highLightColor;
 
-  /// day [TextStyle]
+  /// day [TextStyle] of TextStyle in scrollable Calendar
   final TextStyle dayStyle;
 
-  /// Splash color
+  /// color  of Splash  in scrollable Calendar
   final Color splashColor;
 
-  /// Box circle color
+  /// color of Box circle  in scrollable Calendar
   final Color boxCircleColor;
 
-  /// select day color
+  /// color of select day  in scrollable Calendar
   final Color selectDayColor;
 
-  /// Disable day color
+  /// color of Unselected day  in scrollable Calendar
   final Color disableDayColor;
 
   @override

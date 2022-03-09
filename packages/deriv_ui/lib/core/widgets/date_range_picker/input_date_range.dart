@@ -72,7 +72,7 @@ class InputDateRange extends StatefulWidget {
   /// The [DateTime] that represents the end of the initial date range selection.
   final DateTime? initialEndDate;
 
-  ///Background Color
+  /// Background Color
   final Color? backgroundColor;
 
   /// Title color
@@ -105,10 +105,11 @@ class InputDateRange extends StatefulWidget {
   /// Ok Button not valid color
   final Color? okButtonNotValidColor;
 
-  ///
+
+  /// Selected date range text of [TextStyle] in edit dialog.
   final TextStyle? selectedDateRangeTextStyle;
 
-  ///
+  /// Selected date range text of [Color] in edit dialog.
   final Color? selectedDateRangeColor;
 
   ///  Select date range label text

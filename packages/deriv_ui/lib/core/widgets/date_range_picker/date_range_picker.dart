@@ -77,13 +77,16 @@ class DateRangePicker extends StatefulWidget {
   /// The latest allowed [DateTime] that the user can select.
   final DateTime maxAllowedDate;
 
-  /// The [DateTime] that represents the start of the initial date range selection.
+  /// The [DateTime] that represents the start of the initial date range
+  /// selection.
   final DateTime? initialStartDate;
 
-  /// The [DateTime] that represents the end of the initial date range selection.
+  /// The [DateTime] that represents the end of the initial date range
+  /// selection.
   final DateTime? initialEndDate;
 
-  /// Date range Picker mode determine range picker starts in calendar or input mode.
+  /// Date range Picker mode determine range picker starts in calendar or
+  /// input mode.
   ///
   /// Default value is [DateRangPickerMode.calendar].
   final DateRangPickerMode mode;
@@ -151,16 +154,16 @@ class DateRangePicker extends StatefulWidget {
   /// day [TextStyle] of TextStyle in scrollable Calendar
   final TextStyle dayStyle;
 
-  /// Splash color of color in scrollable Calendar
+  /// color  of Splash  in scrollable Calendar
   final Color splashColor;
 
-  /// Box circle color of color in scrollable Calendar
+  /// color of Box circle  in scrollable Calendar
   final Color boxCircleColor;
 
-  /// select day color of color in scrollable Calendar
+  /// color of select day  in scrollable Calendar
   final Color selectDayColor;
 
-  /// Unselected day of color in scrollable Calendar
+  /// color of Unselected day  in scrollable Calendar
   final Color disableDayColor;
 
   /// This is represents header height for day header.
@@ -430,8 +433,10 @@ class _DateRangePickerState extends State<DateRangePicker> {
           maxAllowedDate: widget.maxAllowedDate,
           initialStartDate: selectedStartDate,
           initialEndDate: selectedEndDate,
-          selectedDateRangeTextStyle: widget.inputDateRangeModel?.selectedDateRangeTextStyle,
-          selectedDateRangeColor: widget.inputDateRangeModel?.selectedDateRangeColor,
+          selectedDateRangeTextStyle:
+          widget.inputDateRangeModel?.selectedDateRangeTextStyle,
+          selectedDateRangeColor:
+          widget.inputDateRangeModel?.selectedDateRangeColor,
           labelTextSelectedStartDate: widget.labelTextSelectedStartDate,
           labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
           backgroundColor: widget.inputDateRangeModel?.backgroundColor,

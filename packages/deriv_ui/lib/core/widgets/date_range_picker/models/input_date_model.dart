@@ -55,7 +55,7 @@ class InputDateRangeModel{
     this.labelTextSelectedStartDate,
     this.labelTextSelectedEndDate});
 
-  /// Background Color edit dialog.
+  /// Background Color of edit dialog.
   final Color? backgroundColor;
 
   /// Title color of edit dialog.

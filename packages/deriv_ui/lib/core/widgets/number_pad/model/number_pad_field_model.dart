@@ -15,16 +15,16 @@ class NumberPadFieldModel {
       this.withoutFocusColor = LightThemeColors.base04,
       this.textAlign = TextAlign.start});
 
-  /// Show Label Style
+  /// Show Label Style of input field
   final TextStyle? labelStyle;
 
-  /// Input Text Style
+  /// Input Text Style of input field
   final TextStyle? textStyle;
 
-  /// Border side color
+  /// Border side color of input field
   final Color borderSideColor;
 
-  ///Label color
+  /// Label color of input field
   final Color? labelColor;
 
   /// Focus color on input field
@@ -33,7 +33,7 @@ class NumberPadFieldModel {
   /// Without focus color on input field
   final Color? withoutFocusColor;
 
-  /// Text Align
+  /// Text Align of input field
   final TextAlign textAlign;
 }
 
@@ -50,25 +50,25 @@ class NumberPadDoubleTextFieldModel {
       this.paddingFirstTitle,
       this.paddingSecondTitle});
 
-  ///  First text filed property
+  ///  First text field property
   final NumberPadFieldModel? numberPadFieldModelFirst;
 
-  /// Second text filed property
+  /// Second text field property
   final NumberPadFieldModel? numberPadFieldModelSecond;
 
-  /// First title value
+  /// First title value of first TextField.
   final String? firstTitleValue;
 
-  /// Second title value
+  /// Second title value of second TextField.
   final String? secondTitleValue;
 
   /// Currency Text style
   final TextStyle? currencyTextStyle;
 
-  /// Padding of first title
+  /// Padding of first title TextField.
   final EdgeInsetsGeometry? paddingFirstTitle;
 
-  /// Padding of second title
+  /// Padding of second title TextField.
   final EdgeInsetsGeometry? paddingSecondTitle;
 }
 
@@ -102,7 +102,7 @@ class NumberPadSingleTextFieldModel {
   final TextStyle? currencyLabelStyle;
 }
 
-///Number message model
+/// Number message model
 class NumberPadMessageModel {
   /// Constructor initialize
   const NumberPadMessageModel(
