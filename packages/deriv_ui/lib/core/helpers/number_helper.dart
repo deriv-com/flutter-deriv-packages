@@ -1,5 +1,3 @@
-import 'package:decimal/decimal.dart';
-
 /// Checks if the string value is an actual number value.
 ///
 /// Returns a bool value as the result.
