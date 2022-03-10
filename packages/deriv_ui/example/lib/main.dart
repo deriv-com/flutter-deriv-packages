@@ -25,42 +25,45 @@ class _AppState extends State<App> {
           _key.currentContext!.findRenderObject()! as RenderBox;
       final Offset position = box.localToGlobal(Offset.zero);
 
-      _height.value = 2 * box.size.height - position.dy - 0;
+      _height.value = 2 * box.size.height - position.dy;
     });
+  }
+
+  void showDatePicker() async {
+    final DateRangeModel? selectedDateRange = await showDialog<DateRangeModel>(
+        context: context,
+        builder: (_) => DateRangePicker(
+              currentDate: DateTime.now(),
+              minAllowedDate: DateTime(1999),
+              maxAllowedDate: DateTime.now(),
+            ));
+    if (selectedDateRange?.startDate != null ||
+        selectedDateRange?.endDate != null) {
+      selectedDate =
+          '${selectedDateRange?.startDate.toString()} - '
+              '${selectedDateRange?.endDate.toString()}';
+      setState(() {});
+    }
   }
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: Scaffold(
-            appBar: AppBar(title: const Text('Example App')),
-            body: Column(
-              children: [
-                Text('Select Date: $selectedDate'),
-                ElevatedButton(
-                  onPressed: () async {
-                    final DateRangeModel? selectedDateRange =
-                        await showDialog<DateRangeModel>(
-                            context: context,
-                            builder: (_) => DateRangePicker(
-                                  currentDate: DateTime.now(),
-                                  minAllowedDate: DateTime(1999),
-                                  maxAllowedDate: DateTime.now(),
-                                ));
-                    if (selectedDateRange?.startDate != null ||
-                        selectedDateRange?.endDate != null) {
-                      selectedDate =
-                          '${selectedDateRange?.startDate.toString()} - ${selectedDateRange?.endDate.toString()}';
-                      setState(() {});
-                    }
-                  },
-                  child: const Text('Click Date Picker'),
-                ),
-
-              ],
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Example App')),
+        body: Column(
+          children: [
+            Text('Select Date: $selectedDate'),
+            ElevatedButton(
+              onPressed: () async {
+                showDatePicker();
+              },
+              child: const Text('Click Date Picker'),
             ),
-          ));
+          ],
+        ),
+      ));
 }

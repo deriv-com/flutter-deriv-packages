@@ -123,7 +123,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
               labelStyle: widget.labelStyle,
               outlineBorderNotValidColor: widget.outlineBorderNotValidColor,
               outlineBorderValidColor: widget.outlineBorderValidColor),
-          SizedBox(width: widget.width ?? 0),
+          SizedBox(width: widget.width),
           _buildDateTextField(
               hintText: widget.dateFormat?.toUpperCase(),
               labelText:widget.labelTextEndDate?? labelEndDate,

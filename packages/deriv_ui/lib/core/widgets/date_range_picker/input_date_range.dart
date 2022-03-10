@@ -26,24 +26,24 @@ class InputDateRange extends StatefulWidget {
     this.initialEndDate,
     this.selectedDateRangeColor = LightThemeColors.base02,
     this.selectedDateRangeTextStyle = const TextStyle(),
-    this.backgroundColor = LightThemeColors.base02,
-    this.titleColor = LightThemeColors.base02,
+    this.backgroundColor = LightThemeColors.base08,
+    this.titleColor = LightThemeColors.base07,
     this.titlePadding = const EdgeInsets.only(
       top: 16,
       left: 24,
       right: 16,
       bottom: 16,
     ),
-    this.titleStyle = const TextStyle(color: Colors.black),
+    this.titleStyle = const TextStyle(color: LightThemeColors.base03),
     this.verticalPadding = 8,
     this.dateInputPadding = const EdgeInsets.only(
       left: 24,
       top: 16,
       right: 24,
     ),
-    this.dateRangeIconColor = LightThemeColors.base08,
-    this.cancelButtonStyle,
-    this.okButtonStyle,
+    this.dateRangeIconColor = LightThemeColors.base02,
+    this.cancelButtonStyle=const TextStyle(color: BrandColors.coral),
+    this.okButtonStyle=const TextStyle(color: BrandColors.coral),
     this.okButtonValidColor = BrandColors.coral,
     this.okButtonNotValidColor = LightThemeColors.base05,
     Key? key,
@@ -162,7 +162,7 @@ class _InputDateRangeState extends State<InputDateRange> {
   Widget build(BuildContext context) => WillPopScope(
         child: GestureDetector(
           child: Container(
-            color: widget.backgroundColor ?? Colors.white,
+            color: widget.backgroundColor,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -211,7 +211,7 @@ class _InputDateRangeState extends State<InputDateRange> {
     Color? color,
     EdgeInsetsGeometry? titlePadding,
     TextStyle? style,
-    double? verticalPadding,
+    double? verticalPadding=8,
     Color? dateRangeIconColor,
     String? labelTextSelectedRange,
     String? dateRangeLabel,
@@ -227,7 +227,7 @@ class _InputDateRangeState extends State<InputDateRange> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.symmetric(
-                vertical: verticalPadding ?? 0,
+                vertical: verticalPadding??8,
               ),
               child: Text(
                 labelTextSelectedRange ?? labelSelectedRange,

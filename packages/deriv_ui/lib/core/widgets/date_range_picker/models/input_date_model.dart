@@ -23,27 +23,27 @@ class InputDateModel {
 class InputDateRangeModel{
 
   /// initialize constructor
-  InputDateRangeModel({
+  const InputDateRangeModel({
     this.selectedDateRangeColor = LightThemeColors.base02,
     this.selectedDateRangeTextStyle = const TextStyle(),
-    this.backgroundColor = LightThemeColors.base02,
-    this.titleColor = LightThemeColors.base02,
+    this.backgroundColor = LightThemeColors.base08,
+    this.titleColor = LightThemeColors.base07,
     this.titlePadding = const EdgeInsets.only(
       top: 16,
       left: 24,
       right: 16,
       bottom: 16,
     ),
-    this.titleStyle = const TextStyle(color: Colors.black),
+    this.titleStyle = const TextStyle(color: LightThemeColors.base03),
     this.verticalPadding = 8,
     this.dateInputPadding = const EdgeInsets.only(
       left: 24,
       top: 16,
       right: 24,
     ),
-    this.dateRangeIconColor = LightThemeColors.base08,
-    this.cancelButtonStyle,
-    this.okButtonStyle,
+    this.dateRangeIconColor = LightThemeColors.base02,
+    this.cancelButtonStyle=const TextStyle(color: BrandColors.coral),
+    this.okButtonStyle=const TextStyle(color: BrandColors.coral),
     this.okButtonValidColor = BrandColors.coral,
     this.okButtonNotValidColor = LightThemeColors.base05,
 

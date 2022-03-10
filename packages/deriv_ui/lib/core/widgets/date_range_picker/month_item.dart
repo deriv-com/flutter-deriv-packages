@@ -23,7 +23,7 @@ class _MonthItem extends StatefulWidget {
     this.horizontalPadding = 8,
     this.monthItemSpaceBetweenRows = 8,
     this.monthItemFooterHeight = 16,
-    this.style,
+    this.style=const TextStyle(color: LightThemeColors.base03),
     Key? key,
   }) : super(key: key);
 
@@ -242,7 +242,7 @@ class _MonthItemState extends State<_MonthItem> {
     final bool isDisabled = dayToBuild.isAfter(widget.lastDate) ||
         dayToBuild.isBefore(widget.firstDate);
 
-    TextStyle itemStyle = style;
+    TextStyle itemStyle = style.copyWith(color: LightThemeColors.base03);
 
     BoxDecoration? decoration;
 

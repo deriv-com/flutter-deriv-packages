@@ -4,12 +4,12 @@ import 'package:intl/intl.dart';
 import '../widgets/date_range_picker/models/input_date_model.dart';
 
 
-
 /// Returns a [DateTime] with just the date of the original, but no time set.
 DateTime getDateFromDateTime(DateTime date) =>
     DateTime(date.year, date.month, date.day);
 
-/// Returns true if the two [DateTime] objects have the same day, month, and year, or are both null.
+/// Returns true if the two [DateTime] objects have the same day, month,
+/// and year, or are both null.
 bool isSameDay({
   required DateTime? firstDate,
   required DateTime? secondDate,
@@ -18,7 +18,8 @@ bool isSameDay({
     firstDate?.month == secondDate?.month &&
     firstDate?.day == secondDate?.day;
 
-/// Returns true if the two [DateTime] objects have the same month, and year, or are both null.
+/// Returns true if the two [DateTime] objects have the same month, and year,
+/// or are both null.
 bool isSameMonth({
   required DateTime? firstDate,
   required DateTime? secondDate,
@@ -33,7 +34,8 @@ int monthDelta({
 }) =>
     (endDate.year - startDate.year) * 12 + endDate.month - startDate.month;
 
-/// Returns a [DateTime] with the added number of months and truncates any day and time information.
+/// Returns a [DateTime] with the added number of months and truncates any day
+/// and time information.
 DateTime addMonthsToMonthDate({
   required DateTime monthDate,
   required int monthsToAdd,
@@ -47,7 +49,8 @@ DateTime addDaysToDate({
 }) =>
     DateTime(date.year, date.month, date.day + days);
 
-/// Computes the offset from the first day of the week that the first day of the [month] falls on.
+/// Computes the offset from the first day of the week that the first
+/// day of the [month] falls on.
 int firstDayOffset({
   required int year,
   required int month,
@@ -59,7 +62,8 @@ int firstDayOffset({
   return (weekdayFromMonday - firstDayOfWeekIndex) % 7;
 }
 
-/// Returns the number of days in a month, according to the proleptic Gregorian calendar.
+/// Returns the number of days in a month, according to the proleptic
+/// Gregorian calendar.
 int getDaysInMonth({
   required int year,
   required int month,

@@ -7,17 +7,17 @@ import '../../../../util/color.dart';
 /// Date Range TextField
 class DateRangeTextFieldModel {
   /// Constructor initialize
-  DateRangeTextFieldModel(
-      {this.dateFormat,
-      this.width,
+  const DateRangeTextFieldModel(
+      {this.dateFormat='dd-MM-yyyy',
+      this.width=8,
       this.cursorColor=BrandColors.greenish,
-      this.style,
-      this.hintStyle,
-      this.labelStyle,
-      this.inputBorderValidColor,
-      this.inputBorderNotValidColor,
-      this.outlineBorderValidColor,
-      this.outlineBorderNotValidColor,
+      this.style=const TextStyle(color: LightThemeColors.base03),
+      this.hintStyle=const TextStyle(color: LightThemeColors.base04),
+      this.labelStyle=const TextStyle(color: BrandColors.greenish),
+      this.inputBorderValidColor=LightThemeColors.base06,
+      this.inputBorderNotValidColor=BrandColors.coral,
+      this.outlineBorderValidColor=BrandColors.greenish,
+      this.outlineBorderNotValidColor=BrandColors.coral,
       this.labelTextStartDate,
       this.labelTextEndDate});
 

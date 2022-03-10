@@ -10,13 +10,13 @@ class SelectedDateRange extends StatelessWidget {
   /// Initializes selected date range.
   const SelectedDateRange({
     required this.currentDate,
-    this.style = const TextStyle(color: Colors.black),
-    this.color = LightThemeColors.base08,
+    this.style = const TextStyle(),
+    this.color = LightThemeColors.base02,
     this.startDate,
     this.endDate,
-    Key? key,
     this.labelTextStartDate,
     this.labelTextEndDate,
+    Key? key,
   }) : super(key: key);
 
   /// Current date.

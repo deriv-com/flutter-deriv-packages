@@ -68,7 +68,8 @@ class _HomePageState extends State<HomePage> {
                   if (selectedDateRange?.startDate != null ||
                       selectedDateRange?.endDate != null) {
                     selectedDate =
-                        '${selectedDateRange?.startDate.toString()} - ${selectedDateRange?.endDate.toString()}';
+                        '${selectedDateRange?.startDate} - '
+                            '${selectedDateRange?.endDate}';
                     setState(() {});
                   }
                 },
@@ -86,7 +87,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   numberPadType: NumberPadWidgetType.singleInput,
                   firstInputTitle: 'context.localization.labelTradeAmount',
-                  // firstInputInitialValue: selectedStakeValue,
                   onClose: (
                     NumberPadWidgetType type,
                     NumberPadCloseType closeType,
