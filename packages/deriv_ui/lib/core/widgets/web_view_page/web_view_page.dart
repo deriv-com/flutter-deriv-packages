@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_deriv_api/helpers/helpers.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 /// Web view widget to launch urls in an in-app web page.
@@ -171,4 +172,30 @@ class _WebViewPageState extends State<WebViewPage> {
           })();
         ''',
       );
+
+  /// Generates device specific user agent.
+  Future<String> getUserAgent() async {
+    String userAgent = '';
+
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+
+    if (Platform.isAndroid) {
+      final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+
+      userAgent =
+          'Mozilla/5.0 (Linux; U; Android ${androidInfo.version.release}; ${androidInfo.model} '
+          'Build/${androidInfo.id}) '
+          '${packageInfo.appName}/${packageInfo.version}+${packageInfo.buildNumber}';
+    } else if (Platform.isIOS) {
+      final IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+
+      userAgent = 'Mozilla/5.0 (${iosInfo.utsname.machine} '
+          '${iosInfo.systemName}/${iosInfo.systemVersion} '
+          'Darwin/${iosInfo.utsname.release}) '
+          '${packageInfo.appName}/${packageInfo.version}+${packageInfo.buildNumber}';
+    }
+
+    return userAgent;
+  }
 }
