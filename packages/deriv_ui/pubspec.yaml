@@ -13,15 +13,13 @@ dependencies:
     sdk: flutter
 
   flutter_svg: ^0.23.0+1
+  intl_utils: ^2.0.0
+  webview_flutter: ^2.0.7
+  decimal: ^1.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner:
-  mockito: ^5.0.8
-  decimal: ^1.2.0
-  intl_utils: ^2.0.0
-  webview_flutter: ^2.0.7
 
   flutter_deriv_api:
     git:
