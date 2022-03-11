@@ -1,17 +1,16 @@
 part of 'number_pad.dart';
 
 class _NumberPadKey extends StatelessWidget {
-  const _NumberPadKey({
-    required this.onPressed,
-    required this.ignoring,
-    required this.index,
-     this.borderSideColor=Colors.black,
-    this.backSpaceIconColor=LightThemeColors.base01,
-    this.textStyle,
-    this.pressTextButtonColor=BrandColors.coral,
-    this.withoutPressTextButtonColor=LightThemeColors.base04,
-    this.okButtonTitle
-  });
+  const _NumberPadKey(
+      {required this.onPressed,
+      required this.ignoring,
+      required this.index,
+      this.borderSideColor = LightThemeColors.base08,
+      this.backSpaceIconColor = LightThemeColors.base01,
+      this.textStyle,
+      this.pressTextButtonColor = BrandColors.coral,
+      this.withoutPressTextButtonColor = LightThemeColors.base07,
+      this.okButtonTitle});
 
   final Function(BuildContext, TextEditingController, String) onPressed;
 
@@ -84,7 +83,7 @@ class _NumberPadKey extends StatelessWidget {
                       )
                     : Text(
                         text == applyValuesInput
-                            ? okButtonTitle??actionOK
+                            ? okButtonTitle ?? actionOK
                             : text,
                         style: textStyle,
                       ),

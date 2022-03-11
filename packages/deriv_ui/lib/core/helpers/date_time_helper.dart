@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 
 import '../widgets/date_range_picker/models/input_date_model.dart';
 
-
 /// Returns a [DateTime] with just the date of the original, but no time set.
 DateTime getDateFromDateTime(DateTime date) =>
     DateTime(date.year, date.month, date.day);

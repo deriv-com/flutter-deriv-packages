@@ -1,16 +1,15 @@
 part of 'number_pad.dart';
 
 class _NumberPadKeypadWidget extends StatefulWidget {
-  const _NumberPadKeypadWidget({
-    required this.onKeyPressed,
-    this.ignoring,
-    this.borderSideColor=Colors.black,
-    this.backSpaceIconColor=LightThemeColors.base01,
-    this.textStyle,
-    this.pressTextButtonColor=BrandColors.coral,
-    this.withoutPressTextButtonColor=LightThemeColors.base04,
-    this.okButtonTitle
-  });
+  const _NumberPadKeypadWidget(
+      {required this.onKeyPressed,
+      this.ignoring,
+      this.borderSideColor = Colors.black,
+      this.backSpaceIconColor = LightThemeColors.base01,
+      this.textStyle,
+      this.pressTextButtonColor = BrandColors.coral,
+      this.withoutPressTextButtonColor = LightThemeColors.base07,
+      this.okButtonTitle});
 
   final NumberPadKeyPressedCallback onKeyPressed;
 
@@ -72,7 +71,7 @@ class _NumberPadKeypadWidgetState extends State<_NumberPadKeypadWidget> {
               backSpaceIconColor: widget.backSpaceIconColor,
               borderSideColor: widget.borderSideColor,
               pressTextButtonColor: widget.pressTextButtonColor,
-              textStyle:widget.textStyle ,
+              textStyle: widget.textStyle,
               withoutPressTextButtonColor: widget.withoutPressTextButtonColor,
             );
           }),

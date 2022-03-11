@@ -23,7 +23,8 @@ class ExpandableBottomSheetProvider extends InheritedWidget {
 
   /// Expandable BottomSheet Controller
   ///
-  /// A controller can be passed to the bottom sheet to get control of its functionalities (for example: closing or opening bottom sheet).
+  /// A controller can be passed to the bottom sheet to get control of its
+  /// functionalities (for example: closing or opening bottom sheet).
   final ExpandableBottomSheetController? controller;
 
   /// Upper content widget
@@ -57,11 +58,13 @@ class ExpandableBottomSheetProvider extends InheritedWidget {
 
   /// Sets toggler visibility
   ///
-  /// If value sets to `false`, `dragging` and `toggle` actions will be disabled.
+  /// If value sets to `false`, `dragging` and `toggle` actions will be
+  /// disabled.
   /// Default value is `true`
   final bool showToggler;
 
-  /// Defines whether the bottom sheet would be in full-screen mode when its open.
+  /// Defines whether the bottom sheet would be in full-screen mode when its
+  /// open.
   ///
   /// Default value is `false`.
   final bool? fullScreenMode;

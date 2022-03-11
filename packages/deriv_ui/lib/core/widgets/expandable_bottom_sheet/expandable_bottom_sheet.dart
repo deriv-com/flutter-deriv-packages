@@ -28,12 +28,15 @@ part 'expandable_bottom_sheet_upper_content.dart';
 
 /// Expandable bottom sheet widget
 class ExpandableBottomSheet extends StatefulWidget {
-  /// This widget helps showing an expandable bottom sheet with [title], [upperContent] and [lowerContent] parts.
+  /// This widget helps showing an expandable bottom sheet with [title],
+  /// [upperContent] and [lowerContent] parts.
   ///
   /// All properties are optional.
-  /// You can set [openMaximized] to true, if you want to open bottom sheet in full size.
+  /// You can set [openMaximized] to true, if you want to open bottom sheet in
+  /// full size.
   /// By default height in minimize state is calculated by [upperContent],
-  /// but if you set [maxHeight] and [lowerContent], that value will be overridden.
+  /// but if you set [maxHeight] and [lowerContent], that value will be
+  /// overridden.
   const ExpandableBottomSheet({
     required this.upperContent,
     this.title,
@@ -54,29 +57,30 @@ class ExpandableBottomSheet extends StatefulWidget {
     this.onClose,
     this.onToggle,
     this.onDismiss,
-    Key? key,
     this.topLeftRadius = 16,
     this.topRightRadius = 16,
-    this.color,
-    this.styleTitle,
+    this.color = LightThemeColors.base07,
+    this.styleTitle = const TextStyle(color: LightThemeColors.base01),
     this.leftPosition = 16,
     this.rightPosition = 16,
     this.rightPositionForButton = 16,
     this.verticalMarginToggle = 8,
     this.horizontalMarginToggle = 32,
     this.heightToggle = 4,
-    this.widthToggle = 80,
+    this.widthToggle = 40,
     this.colorToggle = LightThemeColors.base05,
     this.borderRadiusToggle = 4,
     this.iconColorHintButton = LightThemeColors.base04,
     this.iconSizeHintButton = 24,
+    Key? key,
     this.verticalPaddingHintButton = 12,
     this.sheetTitle,
   }) : super(key: key);
 
   /// Expandable BottomSheet Controller
   ///
-  /// A controller can be passed to the bottom sheet to get control of its functionalities (for example: closing or opening bottom sheet).
+  /// A controller can be passed to the bottom sheet to get control of its
+  /// functionalities (for example: closing or opening bottom sheet).
   final ExpandableBottomSheetController? controller;
 
   /// Upper content widget
@@ -110,7 +114,8 @@ class ExpandableBottomSheet extends StatefulWidget {
 
   /// Sets toggler visibility
   ///
-  /// If value sets to `false`, `dragging` and `toggle` actions will be disabled.
+  /// If value sets to `false`, `dragging` and `toggle` actions will be
+  /// disabled.
   /// Default value is `true`
   final bool showToggler;
 
@@ -124,12 +129,14 @@ class ExpandableBottomSheet extends StatefulWidget {
   /// Default value is `false`
   final bool openMaximized;
 
-  /// Defines whether the bottom sheet should get closed when user swipes it down.
+  /// Defines whether the bottom sheet should get closed when user swipes it
+  /// down.
   ///
   /// Default value is `true`.
   final bool dismissible;
 
-  /// Defines whether the bottom sheet would be in full-screen mode when its open.
+  /// Defines whether the bottom sheet would be in full-screen mode when its
+  /// open.
   ///
   /// Default value is `false`.
   final bool fullScreenMode;
@@ -163,51 +170,83 @@ class ExpandableBottomSheet extends StatefulWidget {
   static const int _defaultChangeStateDuration = 350;
 
   /// Top Left radius of BoxDecoration in expandable bottom sheet.
+  ///
+  /// Default value is '16'
   final double topLeftRadius;
 
   /// Top Left radius of BoxDecoration in expandable bottom sheet.
+  ///
+  /// Default value is '16'
   final double topRightRadius;
 
   /// Background color of container in expandable bottom sheet.
+  ///
+  /// Default value is [LightThemeColors.base07]
   final Color? color;
 
   /// left position value of expandable bottom sheet title bar.
+  ///
+  /// Default value is '16'
   final double leftPosition;
 
   /// right position value of expandable bottom sheet title bar.
+  ///
+  /// Default value is '16'
   final double rightPosition;
 
   /// right position value of button in expandable bottom sheet title bar.
+  ///
+  /// Default value is '16'
   final double rightPositionForButton;
 
   ///  Vertical margin of toggle
+  ///
+  /// Default value is '8'
   final double verticalMarginToggle;
 
   /// horizontal margin of toggle
+  ///
+  /// Default value is '32'
   final double horizontalMarginToggle;
 
   /// height of toggle
+  ///
+  /// Default value is '4'
   final double heightToggle;
 
   /// width of toggle
+  ///
+  /// Default value is '40'
   final double widthToggle;
 
   /// Color of toggle
+  ///
+  ///  Default value is [LightThemeColors.base05]
   final Color? colorToggle;
 
   /// Border radius of toggle
+  ///
+  /// Default value is '4'
   final double borderRadiusToggle;
 
   /// TextStyle of expandable bottom sheet title.
+  ///
+  /// Default value is [const TextStyle(color: LightThemeColors.base01)]
   final TextStyle? styleTitle;
 
   /// Hint button icon color
+  ///
+  /// Default value is [LightThemeColors.base04]
   final Color iconColorHintButton;
 
   ///  Hint button icon size
+  ///
+  /// Default value is '24'
   final double iconSizeHintButton;
 
   /// Hint button vertical padding
+  ///
+  /// Default value is '12'
   final double verticalPaddingHintButton;
 
   /// Expandable bottom sheet title

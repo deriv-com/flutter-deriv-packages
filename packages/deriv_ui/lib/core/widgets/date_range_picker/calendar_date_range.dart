@@ -28,7 +28,8 @@ const Duration _monthScrollDuration = Duration(milliseconds: 200);
 const double _maxCalendarWidthLandscape = 384;
 const double _maxCalendarWidthPortrait = 480;
 
-/// Displays a scrollable calendar grid that allows a user to select a range of dates.
+/// Displays a scrollable calendar grid that allows a user to select a range of
+/// dates.
 class CalendarDateRange extends StatefulWidget {
   /// Creates a scrollable calendar grid for picking date ranges.
   CalendarDateRange({
@@ -80,10 +81,12 @@ class CalendarDateRange extends StatefulWidget {
   /// The [DateTime] representing today. It will be highlighted in the day grid.
   final DateTime currentDate;
 
-  /// The [DateTime] that represents the start of the initial date range selection.
+  /// The [DateTime] that represents the start of the initial date range
+  /// selection.
   final DateTime? initialStartDate;
 
-  /// The [DateTime] that represents the end of the initial date range selection.
+  /// The [DateTime] that represents the end of the initial date range
+  /// selection.
   final DateTime? initialEndDate;
 
   /// This is represents header height for day header.

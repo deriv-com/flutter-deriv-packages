@@ -5,46 +5,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(App());
 
 /// This Widget is the main application widget.
-class App extends StatefulWidget {
-  @override
-  State<App> createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  String selectedDate = '';
-  final GlobalKey _key = GlobalKey();
-  final ValueNotifier<double> _height = ValueNotifier<double>(-1);
-  final List<String> countries = ['india', 'USA', 'China', 'Ukrain'];
-
-  @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      final RenderBox box =
-          _key.currentContext!.findRenderObject()! as RenderBox;
-      final Offset position = box.localToGlobal(Offset.zero);
-
-      _height.value = 2 * box.size.height - position.dy;
-    });
-  }
-
-  void showDatePicker() async {
-    final DateRangeModel? selectedDateRange = await showDialog<DateRangeModel>(
-        context: context,
-        builder: (_) => DateRangePicker(
-              currentDate: DateTime.now(),
-              minAllowedDate: DateTime(1999),
-              maxAllowedDate: DateTime.now(),
-            ));
-    if (selectedDateRange?.startDate != null ||
-        selectedDateRange?.endDate != null) {
-      selectedDate =
-          '${selectedDateRange?.startDate.toString()} - '
-              '${selectedDateRange?.endDate.toString()}';
-      setState(() {});
-    }
-  }
+class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -52,18 +13,55 @@ class _AppState extends State<App> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Example App')),
-        body: Column(
-          children: [
-            Text('Select Date: $selectedDate'),
-            ElevatedButton(
-              onPressed: () async {
-                showDatePicker();
-              },
-              child: const Text('Click Date Picker'),
-            ),
-          ],
-        ),
-      ));
+      home:const HomePage());
+
+}
+
+/// Home Page
+class HomePage extends StatefulWidget {
+  /// Initialize constructor
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String selectedDate = '';
+
+  Future<void> showDatePicker() async {
+    final DateRangeModel? selectedDateRange = await showDialog<DateRangeModel>(
+        context: context,
+        builder: (_) => DateRangePicker(
+          currentDate: DateTime.now(),
+          minAllowedDate: DateTime(1999),
+          maxAllowedDate: DateTime.now(),
+        ));
+    if (selectedDateRange?.startDate != null ||
+        selectedDateRange?.endDate != null) {
+
+      setState(() {
+        selectedDate =
+        '${selectedDateRange?.startDate} - '
+            '${selectedDateRange?.endDate}';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+      appBar: AppBar(title: const Text('Example App')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Center(child: Text('Select Date: $selectedDate')),
+          ElevatedButton(
+            onPressed: ()  {
+              showDatePicker();
+            },
+            child: const Text('Click Date Picker'),
+          ),
+        ],
+      ),
+    );
 }

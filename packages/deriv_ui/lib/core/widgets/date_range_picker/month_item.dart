@@ -12,7 +12,7 @@ class _MonthItem extends StatefulWidget {
     required this.onChanged,
     this.containerEdgeColor = BrandColors.coral,
     this.highLightColor = BrandColors.coral,
-    this.dayStyle=const TextStyle(),
+    this.dayStyle = const TextStyle(),
     this.splashColor = BrandColors.coral,
     this.boxCircleColor = BrandColors.coral,
     this.selectDayColor = LightThemeColors.base04,
@@ -23,7 +23,7 @@ class _MonthItem extends StatefulWidget {
     this.horizontalPadding = 8,
     this.monthItemSpaceBetweenRows = 8,
     this.monthItemFooterHeight = 16,
-    this.style=const TextStyle(color: LightThemeColors.base03),
+    this.style = const TextStyle(color: LightThemeColors.base03),
     Key? key,
   }) : super(key: key);
 
@@ -190,8 +190,7 @@ class _MonthItemState extends State<_MonthItem> {
         Container(
           constraints: BoxConstraints(maxWidth: maxWidth),
           height: widget.monthItemHeaderHeight,
-          padding:
-              EdgeInsets.symmetric(horizontal: widget.horizontalPadding),
+          padding: EdgeInsets.symmetric(horizontal: widget.horizontalPadding),
           alignment: AlignmentDirectional.centerStart,
           child: ExcludeSemantics(
             child: Text(
@@ -303,8 +302,8 @@ class _MonthItemState extends State<_MonthItem> {
             );
     }
 
-    String semanticLabel =
-        '${localizations.formatDecimal(day)}, ${localizations.formatFullDate(dayToBuild)}';
+    String semanticLabel = '${localizations.formatDecimal(day)},'
+        ' ${localizations.formatFullDate(dayToBuild)}';
 
     if (isSelectedDayStart) {
       semanticLabel =

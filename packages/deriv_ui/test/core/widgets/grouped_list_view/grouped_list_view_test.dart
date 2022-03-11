@@ -96,8 +96,8 @@ void main() {
     });
 
     testWidgets(
-        'list should show load more indicator if `showLoadMoreIndicator` set to true.',
-        (WidgetTester tester) async {
+        'list should show load more indicator if `showLoadMoreIndicator` '
+        'set to true.', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: GroupedListView<dynamic, String>(
@@ -115,8 +115,8 @@ void main() {
     });
 
     testWidgets(
-        'list should not show load more indicator if `showLoadMoreIndicator` set to false.',
-        (WidgetTester tester) async {
+        'list should not show load more indicator if `showLoadMoreIndicator` '
+        'set to false.', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: GroupedListView<dynamic, String>(

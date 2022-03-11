@@ -22,6 +22,23 @@ class DateRangePicker extends StatefulWidget {
     required this.currentDate,
     required this.minAllowedDate,
     required this.maxAllowedDate,
+    this.initialStartDate,
+    this.initialEndDate,
+    this.mode = DateRangPickerMode.calendar,
+    this.backgroundColor = LightThemeColors.base08,
+    this.appBarPadding = const EdgeInsets.all(8),
+    this.headerHeight = 48,
+    this.headerStyle = const TextStyle(color: LightThemeColors.base04),
+    this.checkIconButtonColor = LightThemeColors.base02,
+    this.checkIconButtonTooltip,
+    this.checkIconButtonLabel,
+    this.closeIconColor = LightThemeColors.base02,
+    this.closeIconLabel,
+    this.closeIconTooltip,
+    this.editButtonRightPadding = 8,
+    this.editIconColor = LightThemeColors.base02,
+    this.editLabel,
+    this.editTooltip,
     this.selectedDateRangeTextStyle = const TextStyle(),
     this.selectedDateRangeColor = LightThemeColors.base02,
     this.monthItemHeaderHeight = 48,
@@ -37,34 +54,17 @@ class DateRangePicker extends StatefulWidget {
     this.boxCircleColor = BrandColors.coral,
     this.selectDayColor = LightThemeColors.base01,
     this.disableDayColor = LightThemeColors.base04,
-    this.initialStartDate,
-    this.initialEndDate,
-    this.mode = DateRangPickerMode.calendar,
-    this.backgroundColor=LightThemeColors.base08,
-    this.appBarPadding = const EdgeInsets.all(8),
-    this.backgroundColorSelectedDateRange=LightThemeColors.base07,
-    this.bottomPadding=16,
-    this.leftPadding=72,
-    this.verticalPadding=8,
-    this.calendarStyle=const TextStyle(color: LightThemeColors.base03),
+    this.backgroundColorSelectedDateRange = LightThemeColors.base07,
+    this.bottomPadding = 16,
+    this.leftPadding = 72,
+    this.verticalPadding = 8,
+    this.calendarStyle = const TextStyle(color: LightThemeColors.base03),
     this.animatedPopupDialogCardModel = const AnimatedPopupDialogCardModel(),
-    this.headerHeight = 48,
-    this.headerStyle=const TextStyle(color: LightThemeColors.base04),
-    this.checkIconButtonColor=LightThemeColors.base02,
-    this.checkIconButtonTooltip,
-    this.checkIconButtonLabel,
-    this.closeIconColor=LightThemeColors.base02,
-    this.closeIconLabel,
-    this.closeIconTooltip,
     this.calenderTitle,
-    this.editButtonRightPadding=8,
-    this.editIconColor=LightThemeColors.base02,
-    this.editLabel,
-    this.editTooltip,
     this.labelTextSelectedStartDate,
     this.labelTextSelectedEndDate,
-    this.inputDateRangeModel=const InputDateRangeModel(),
-    this.dateRangeTextFieldModel= const DateRangeTextFieldModel(),
+    this.inputDateRangeModel = const InputDateRangeModel(),
+    this.dateRangeTextFieldModel = const DateRangeTextFieldModel(),
     Key? key,
   }) : super(key: key);
 
@@ -293,44 +293,44 @@ class _DateRangePickerState extends State<DateRangePicker> {
 
   @override
   Widget build(BuildContext context) => Visibility(
-    visible: showCalendar,
-    child: Scaffold(
-      backgroundColor: widget.backgroundColor,
-      appBar: _buildAppBar(context,
-          appBarPadding: widget.appBarPadding,
-          closeIconColor: widget.closeIconColor,
-          closeIconLabel: widget.closeIconLabel,
-          closeIconTooltip: widget.closeIconTooltip,
-          checkIconButtonColor: widget.checkIconButtonColor,
-          checkIconButtonLabel: widget.checkIconButtonLabel,
-          checkIconButtonTooltip: widget.checkIconButtonTooltip),
-      body: _buildCalendar(
-          currentDate: widget.currentDate,
-          selectedDateRangeColor: widget.selectedDateRangeColor,
-          selectedDateRangeTextStyle: widget.selectedDateRangeTextStyle,
-          bottomPadding: widget.bottomPadding,
-          color: widget.backgroundColorSelectedDateRange,
-          leftPadding: widget.leftPadding,
-          style: widget.calendarStyle,
-          verticalPadding: widget.verticalPadding,
-          calenderTitle: widget.calenderTitle,
-          editTooltip: widget.editTooltip,
-          editButtonRightPadding: widget.editButtonRightPadding,
-          editLabel: widget.editLabel,
-          editIconColor: widget.editIconColor,
-          labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
-          labelTextSelectedStartDate: widget.labelTextSelectedStartDate),
-    ),
-  );
+        visible: showCalendar,
+        child: Scaffold(
+          backgroundColor: widget.backgroundColor,
+          appBar: _buildAppBar(context,
+              appBarPadding: widget.appBarPadding,
+              closeIconColor: widget.closeIconColor,
+              closeIconLabel: widget.closeIconLabel,
+              closeIconTooltip: widget.closeIconTooltip,
+              checkIconButtonColor: widget.checkIconButtonColor,
+              checkIconButtonLabel: widget.checkIconButtonLabel,
+              checkIconButtonTooltip: widget.checkIconButtonTooltip),
+          body: _buildCalendar(
+              currentDate: widget.currentDate,
+              selectedDateRangeColor: widget.selectedDateRangeColor,
+              selectedDateRangeTextStyle: widget.selectedDateRangeTextStyle,
+              bottomPadding: widget.bottomPadding,
+              color: widget.backgroundColorSelectedDateRange,
+              leftPadding: widget.leftPadding,
+              style: widget.calendarStyle,
+              verticalPadding: widget.verticalPadding,
+              calenderTitle: widget.calenderTitle,
+              editTooltip: widget.editTooltip,
+              editButtonRightPadding: widget.editButtonRightPadding,
+              editLabel: widget.editLabel,
+              editIconColor: widget.editIconColor,
+              labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
+              labelTextSelectedStartDate: widget.labelTextSelectedStartDate),
+        ),
+      );
 
   AppBar _buildAppBar(BuildContext context,
-      {EdgeInsetsGeometry appBarPadding = const EdgeInsets.all(0),
-        Color? closeIconColor,
-        Color? checkIconButtonColor,
-        String? checkIconButtonLabel,
-        String? checkIconButtonTooltip,
-        String? closeIconLabel,
-        String? closeIconTooltip}) =>
+          {EdgeInsetsGeometry appBarPadding = const EdgeInsets.all(0),
+          Color? closeIconColor,
+          Color? checkIconButtonColor,
+          String? checkIconButtonLabel,
+          String? checkIconButtonTooltip,
+          String? closeIconLabel,
+          String? closeIconTooltip}) =>
       AppBar(
         elevation: 0,
         leading: IconButton(
@@ -351,8 +351,8 @@ class _DateRangePickerState extends State<DateRangePicker> {
                 semanticLabel: checkIconButtonLabel ?? semanticConfirmIcon,
                 color: checkIconButtonColor != null
                     ? checkIconButtonColor.withOpacity(
-                  getOpacity(isEnabled: _isSaveEnabled()),
-                )
+                        getOpacity(isEnabled: _isSaveEnabled()),
+                      )
                     : checkIconButtonColor,
               ),
               tooltip: checkIconButtonTooltip ?? labelConfirm,
@@ -453,10 +453,10 @@ class _DateRangePickerState extends State<DateRangePicker> {
       );
 
   Widget _buildEditButton(
-      {double? editButtonRightPadding,
-        Color? editIconColor,
-        String? editLabel,
-        String? editTooltip}) =>
+          {double? editButtonRightPadding,
+          Color? editIconColor,
+          String? editLabel,
+          String? editTooltip}) =>
       Container(
         padding: EdgeInsets.only(
           right: editButtonRightPadding ?? 8,
@@ -490,9 +490,9 @@ class _DateRangePickerState extends State<DateRangePicker> {
           initialStartDate: selectedStartDate,
           initialEndDate: selectedEndDate,
           selectedDateRangeTextStyle:
-          widget.inputDateRangeModel?.selectedDateRangeTextStyle,
+              widget.inputDateRangeModel?.selectedDateRangeTextStyle,
           selectedDateRangeColor:
-          widget.inputDateRangeModel?.selectedDateRangeColor,
+              widget.inputDateRangeModel?.selectedDateRangeColor,
           labelTextSelectedStartDate: widget.labelTextSelectedStartDate,
           labelTextSelectedEndDate: widget.labelTextSelectedEndDate,
           backgroundColor: widget.inputDateRangeModel?.backgroundColor,
@@ -503,9 +503,9 @@ class _DateRangePickerState extends State<DateRangePicker> {
           dateRangeLabel: widget.inputDateRangeModel?.dateRangeLabel,
           dateRangeTooltip: widget.inputDateRangeModel?.dateRangeTooltip,
           labelTextSelectedRange:
-          widget.inputDateRangeModel?.labelTextSelectedRange,
+              widget.inputDateRangeModel?.labelTextSelectedRange,
           okButtonNotValidColor:
-          widget.inputDateRangeModel?.okButtonNotValidColor,
+              widget.inputDateRangeModel?.okButtonNotValidColor,
           okButtonStyle: widget.inputDateRangeModel?.okButtonStyle,
           okButtonText: widget.inputDateRangeModel?.okButtonText,
           okButtonValidColor: widget.inputDateRangeModel?.okButtonValidColor,
@@ -540,14 +540,14 @@ class _DateRangePickerState extends State<DateRangePicker> {
   }
 
   void _setSelectedDate() => Navigator.pop(
-    context,
-    selectedStartDate == null && selectedEndDate == null
-        ? null
-        : DateRangeModel(
-      startDate: selectedStartDate,
-      endDate: selectedEndDate,
-    ),
-  );
+        context,
+        selectedStartDate == null && selectedEndDate == null
+            ? null
+            : DateRangeModel(
+                startDate: selectedStartDate,
+                endDate: selectedEndDate,
+              ),
+      );
 
   bool _isSaveEnabled() => selectedStartDate != null || selectedEndDate != null;
 }

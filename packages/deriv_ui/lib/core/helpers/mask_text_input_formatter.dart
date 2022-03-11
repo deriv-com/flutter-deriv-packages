@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 /// Class that creates the mask formatter for TextField
 class MaskTextInputFormatter implements TextInputFormatter {
   ///
-  /// The keys of the [filter] assign which character in the mask should be replaced and the values validate the entered character
+  /// The keys of the [filter] assign which character in the mask should be
+  /// replaced and the values validate the entered character
   /// By default `#` match to the number and `A` to the letter
   MaskTextInputFormatter({
     String? mask,
@@ -81,7 +82,8 @@ class MaskTextInputFormatter implements TextInputFormatter {
   bool isFill() => _resultTextArray.length == _maskLength;
 
   /// Clear masked text of the formatter
-  /// Note: you need to call this method if you clear the text of the TextField because it doesn't call the formatter when it has empty text
+  /// Note: you need to call this method if you clear the text of the TextField
+  /// because it doesn't call the formatter when it has empty text
   void clear() {
     _resultTextMasked = '';
     _resultTextArray.clear();

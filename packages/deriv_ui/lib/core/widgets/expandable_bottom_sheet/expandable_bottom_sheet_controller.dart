@@ -8,7 +8,8 @@ class ExpandableBottomSheetController {
   /// Expandable bottomSheet animation controller.
   AnimationController? animationController;
 
-  /// Used for enabling/disabling touch events for lower part of [ExpandableBottomSheet].
+  /// Used for enabling/disabling touch events for lower part of
+  /// [ExpandableBottomSheet].
   bool isLowerContentGestureEnabled = true;
 
   final StreamController<bool> _hintStateStreamController =
@@ -56,7 +57,8 @@ class ExpandableBottomSheetController {
   /// Gets lower bound of bottom sheet. (bottom sheet offset)
   double get lowerBound => _lowerBound;
 
-  /// Initialize tasks for [ExpandableBottomSheetController] properties. should get called after [animationController] get initialized.
+  /// Initialize tasks for [ExpandableBottomSheetController] properties. should
+  /// get called after [animationController] get initialized.
   void init() {
     animationController?.addListener(() {
       final bool _isOpen = animationController!.value > 0;

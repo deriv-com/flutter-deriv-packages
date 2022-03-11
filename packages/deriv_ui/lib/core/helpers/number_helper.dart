@@ -40,7 +40,6 @@ bool isMoreOrEqualLimit({
   return numberValue != null && numberValue >= lowerLimit;
 }
 
-
 /// Checks if the number has correct number of [validDecimalNumber].
 bool hasValidPrecision({
   required String stringValue,
@@ -53,12 +52,10 @@ bool hasValidPrecision({
   return splitValue.length == 1;
 }
 
-
 /// Checks the text value to be empty or equal (-)
 bool hasNoValue(String? text) => text == '-' || text == null || text.isEmpty;
 
-
-
-/// Returns `2` as currency fractional digit if the fractional digit is null or zero.
+/// Returns `2` as currency fractional digit if the fractional digit is null or
+/// zero.
 int getCurrencyFractionalDigits(int? fractionalDigits) =>
     (fractionalDigits == null || fractionalDigits == 0) ? 2 : fractionalDigits;

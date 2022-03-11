@@ -4,12 +4,12 @@ class _NumberPadSingleTextTitle extends StatelessWidget {
   _NumberPadSingleTextTitle(
       {required this.title,
       this.hint,
-      this.backgroundColor,
-      this.verticalMargin=16,
+      this.backgroundColor = LightThemeColors.base07,
+      this.verticalPadding = 16,
       this.style,
-      this.padding=16,
-      this.iconSize=24,
-      this.iconColor=LightThemeColors.base04});
+      this.rightPadding = 16,
+      this.iconSize = 24,
+      this.iconColor = LightThemeColors.base04});
 
   final String title;
 
@@ -19,16 +19,16 @@ class _NumberPadSingleTextTitle extends StatelessWidget {
   /// Message of the [CustomTooltip] Widget.
   final String? hint;
   final Color? backgroundColor;
-  final double verticalMargin;
+  final double? verticalPadding;
   final TextStyle? style;
-  final double padding;
+  final double? rightPadding;
   final double? iconSize;
   final Color? iconColor;
 
   @override
   Widget build(BuildContext context) => Container(
         color: backgroundColor,
-        padding: EdgeInsets.symmetric(vertical: verticalMargin),
+        padding: EdgeInsets.symmetric(vertical: verticalPadding ?? 16),
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
@@ -38,7 +38,7 @@ class _NumberPadSingleTextTitle extends StatelessWidget {
             ),
             hint != null
                 ? Padding(
-                    padding: EdgeInsets.only(right: padding),
+                    padding: EdgeInsets.only(right: rightPadding ?? 16),
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: CustomTooltip(

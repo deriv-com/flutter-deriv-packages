@@ -6,7 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Asset Badge Button Test =>', () {
-
     testWidgets('asset badge button should have a badge with an icon.',
         (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -24,8 +23,7 @@ void main() {
       await tester.idle();
       await tester.pumpAndSettle();
 
-      final Finder badgeIconFinder =
-          find.bySemanticsLabel(semanticBadgeIcon);
+      final Finder badgeIconFinder = find.bySemanticsLabel(semanticBadgeIcon);
 
       final Finder badgeIndicatorIconFinder =
           find.bySemanticsLabel(semanticBadgeIndicatorIcon);
@@ -52,8 +50,7 @@ void main() {
       await tester.idle();
       await tester.pumpAndSettle();
 
-      final Finder badgeIconFinder =
-          find.bySemanticsLabel(semanticBadgeIcon);
+      final Finder badgeIconFinder = find.bySemanticsLabel(semanticBadgeIcon);
 
       final Finder badgeIndicatorIconFinder =
           find.bySemanticsLabel(semanticBadgeIndicatorIcon);
@@ -82,8 +79,7 @@ void main() {
       await tester.idle();
       await tester.pumpAndSettle();
 
-      final Finder badgeIconFinder =
-          find.bySemanticsLabel(semanticBadgeIcon);
+      final Finder badgeIconFinder = find.bySemanticsLabel(semanticBadgeIcon);
 
       final Finder badgeIndicatorIconFinder =
           find.bySemanticsLabel(semanticBadgeIndicatorIcon);

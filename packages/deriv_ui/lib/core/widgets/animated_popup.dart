@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../../util/color.dart';
 
-
-/// Animated popup dialog, to be used as the container of the popup dialogs with animation.
+/// Animated popup dialog, to be used as the container of the popup dialogs with
+/// animation.
 class AnimatedPopupDialog extends StatefulWidget {
   /// Initializes animated popup dialog
   const AnimatedPopupDialog({
     required this.child,
     this.animationDuration = const Duration(milliseconds: 150),
-    this.cardPadding=2,
-    this.cardBorderRadius=4,
-    this.cardElevation=4,
-    this.cardColor=LightThemeColors.base08,
-    this.verticalMargin=8,
+    this.cardPadding = 2,
+    this.cardBorderRadius = 4,
+    this.cardElevation = 4,
+    this.cardColor = LightThemeColors.base08,
+    this.verticalMargin = 8,
     Key? key,
   }) : super(key: key);
 
@@ -67,20 +67,20 @@ class _AnimatedPopupDialogState extends State<AnimatedPopupDialog>
           child: Container(
             margin: EdgeInsets.symmetric(
               horizontal: _calculateHorizontalPadding(context),
-              vertical: widget.verticalMargin??8,
+              vertical: widget.verticalMargin ?? 8,
             ),
             child: Card(
-              elevation: widget.cardElevation??4,
-              color: widget.cardColor??LightThemeColors.base08,
+              elevation: widget.cardElevation ?? 4,
+              color: widget.cardColor ?? LightThemeColors.base08,
               child: Container(
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.circular(widget.cardBorderRadius??4),
+                        BorderRadius.circular(widget.cardBorderRadius ?? 4),
                   ),
                 ),
                 child: Padding(
-                  padding:  EdgeInsets.all(widget.cardPadding??2),
+                  padding: EdgeInsets.all(widget.cardPadding ?? 2),
                   child: widget.child,
                 ),
               ),

@@ -15,8 +15,8 @@ class _DateRangeTextField extends StatefulWidget {
     required this.isEndDateValid,
     required this.onEditingComplete,
     this.dateFormat = 'dd-MM-yyyy',
-    this.width=8,
-    this.cursorColor=BrandColors.greenish,
+    this.width = 8,
+    this.cursorColor = BrandColors.greenish,
     this.style,
     this.hintStyle,
     this.labelStyle,
@@ -112,7 +112,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
         children: <Widget>[
           _buildDateTextField(
               hintText: widget.dateFormat?.toUpperCase(),
-              labelText: widget.labelTextStartDate??labelStartDate,
+              labelText: widget.labelTextStartDate ?? labelStartDate,
               controller: startDateInputController,
               isValidDate: widget.isStartDateValid,
               style: widget.style,
@@ -126,7 +126,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
           SizedBox(width: widget.width),
           _buildDateTextField(
               hintText: widget.dateFormat?.toUpperCase(),
-              labelText:widget.labelTextEndDate?? labelEndDate,
+              labelText: widget.labelTextEndDate ?? labelEndDate,
               controller: endDateInputController,
               isValidDate: widget.isEndDateValid,
               style: widget.style,

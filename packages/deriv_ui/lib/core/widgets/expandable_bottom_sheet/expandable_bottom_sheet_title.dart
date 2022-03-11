@@ -5,6 +5,7 @@ class _ExpandableBottomSheetTitle extends StatelessWidget {
 
   /// TextStyle
   final TextStyle? style;
+
   @override
   Widget build(BuildContext context) {
     final ExpandableBottomSheetProvider expandableBottomSheetProvider =

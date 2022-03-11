@@ -92,7 +92,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
 
   @override
   void didUpdateWidget(Shimmer oldWidget) {
-  /// Handles if the animation should continue or not.
+    /// Handles if the animation should continue or not.
     if (widget.enabled) {
       _controller.forward();
     } else {

@@ -34,7 +34,8 @@ part 'number_pad_text_field.dart';
 
 /// A function that is called when the user pressed any button from the keypad.
 ///
-/// This callback provides [BuildContext], current focused [TextEditingController]
+/// This callback provides [BuildContext], current focused
+/// [TextEditingController]
 /// and the most recent input as a [String] parameter.
 typedef NumberPadKeyPressedCallback = Function(
     BuildContext, TextEditingController, String);
@@ -44,11 +45,14 @@ typedef NumberPadKeyPressedCallback = Function(
 ///
 /// This callback provides two parameters:
 ///
-/// [NumberPadWidgetType] which indicates that there is one input field or two input fields.
+/// [NumberPadWidgetType] which indicates that there is one input field or two
+/// input fields.
 ///
-/// [NumberPadData] which contains two double values, one for each of the input values.
+/// [NumberPadData] which contains two double values, one for each of the input
+/// values.
 /// [closeType] specifies the way that the used have closed the [NumberPad]
-/// If the input value equals [noInput] (-) for any of the input the corresponding
+/// If the input value equals [noInput] (-) for any of the input the
+/// corresponding
 /// [NumberPadData] value will be null.
 typedef NumberPadCloseCallback = Function(NumberPadWidgetType type,
     NumberPadCloseType closeType, NumberPadData result);
@@ -59,35 +63,44 @@ const String applyValuesInput = 'OK';
 /// Input value when the user press backspace button to remove input.
 const String backspaceInput = '<-';
 
-/// Default input value when there is no initial value or all characters removed.
+/// Default input value when there is no initial value or all characters
+/// removed.
 const String noInput = '';
 
 /// Input value to add decimals as input
 const String point = '.';
 
-/// Data value which is returned when there is no input in [TextField]s and also for
-/// second input data when [NumberPadWidgetType] is [NumberPadWidgetType.singleInput]
+/// Data value which is returned when there is no input in [TextField]s and
+/// also for
+/// second input data when [NumberPadWidgetType] is
+/// [NumberPadWidgetType.singleInput]
 const String? returnedValueForEmpty = null;
 
 /// NumberPad widget
 class NumberPad extends StatefulWidget {
-  /// This widget helps to display single or double input fields with customizable
-  /// title, initial value and also to set minimum and maximum for each input separately
+  /// This widget helps to display single or double input fields with
+  /// customizable
+  /// title, initial value and also to set minimum and maximum for each input
+  /// separately
   ///
   /// [onOpen] event is called when the NumberPad widget has opened.
   ///
-  /// [onClose] event is called when the user clicks apply button or clicks outside the
+  /// [onClose] event is called when the user clicks apply button or clicks
+  /// outside the
   /// bottom sheet. [onClose] event returns two parameters:
   ///
-  /// [NumberPadWidgetType] which indicates that there is one input field or two input fields.
+  /// [NumberPadWidgetType] which indicates that there is one input field or
+  /// two input fields.
   ///
   /// [formatter] and [NumberPadWidgetType] are required parameters
   /// and other parameters are optional.
   ///
-  /// If any of [TextField]s has [noInput] (-) value it returns the initial value and of the
+  /// If any of [TextField]s has [noInput] (-) value it returns the initial
+  /// value and of the
   /// initial value is null it returns null as the result in [NumberPadData].
   ///
-  /// This widget is dismissible by click OK button or by touching anywhere outside number pad
+  /// This widget is dismissible by click OK button or by touching anywhere
+  /// outside number pad
   const NumberPad(
       {required this.formatter,
       required this.numberPadType,
@@ -108,20 +121,25 @@ class NumberPad extends StatefulWidget {
           const NumberPadSingleTextFieldModel(),
       this.numberPadDoubleTextFieldModel =
           const NumberPadDoubleTextFieldModel(),
-      this.backgroundColor,
-      this.backgroundColorSecond,
-      this.topLeft = 0,
-      this.topRight = 0,
-      this.paddingSecond,
-      this.iconPadding = const EdgeInsets.all(0),
-      this.topLeftSecond = 0,
-      this.topRightSecond = 0,
+      this.backgroundColor = LightThemeColors.base08,
+      this.backgroundColorSecond = LightThemeColors.base07,
+      this.topLeft = 16,
+      this.topRight = 16,
+      this.paddingSecond = const EdgeInsets.fromLTRB(
+        16,
+        0,
+        16,
+        0,
+      ),
+      this.iconPadding = const EdgeInsets.all(8),
+      this.topLeftSecond = 16,
+      this.topRightSecond = 16,
       this.numberPadMessageModel = const NumberPadMessageModel(),
-      this.borderSideColor = Colors.black,
+      this.borderSideColor = LightThemeColors.base08,
       this.backSpaceIconColor = LightThemeColors.base01,
       this.textStyle,
       this.pressTextButtonColor = BrandColors.coral,
-      this.withoutPressTextButtonColor = LightThemeColors.base04,
+      this.withoutPressTextButtonColor = LightThemeColors.base07,
       this.okButtonTitle,
       this.ignoring,
       this.handleIconLabel,
@@ -133,17 +151,20 @@ class NumberPad extends StatefulWidget {
 
   /// Sets the currency of the number pad
   ///
-  /// The currency code that will be shown on the right side of the number pad text input area.
+  /// The currency code that will be shown on the right side of the number pad
+  /// text input area.
   final String? currency;
 
   /// Sets the format of input text
   ///
-  /// This length applies to all available [TextField]s exist in the [BottomSheet]
+  /// This length applies to all available [TextField]s exist in the
+  /// [BottomSheet]
   final NumberFormat formatter;
 
   /// Maximum possible input characters for input values.
   ///
-  /// This length is applied to all available [TextField]s exist in the [BottomSheet].
+  /// This length is applied to all available [TextField]s exist in the
+  /// [BottomSheet].
   final int maxInputLength;
 
   /// Sets the number  of the [TextField]s in [BottomSheet].
@@ -155,16 +176,19 @@ class NumberPad extends StatefulWidget {
 
   /// The Title which is displayed at the top of the first Input value.
   ///
-  /// When using [NumberPadWidgetType.singleInput], this is the title of main [TextField].
+  /// When using [NumberPadWidgetType.singleInput], this is the title of main
+  /// [TextField].
   ///
-  /// When using [NumberPadWidgetType.doubleInput], this title is displayed at top of the left side [TextField].
+  /// When using [NumberPadWidgetType.doubleInput], this title is displayed at
+  /// top of the left side [TextField].
   ///
   /// The default value is null.
   final String firstInputTitle;
 
   /// The title to be displayed at the top of the second [TextField].
   ///
-  /// It will be only displayed when [numberPadType] is [NumberPadWidgetType.doubleInput].
+  /// It will be only displayed when [numberPadType] is
+  /// [NumberPadWidgetType.doubleInput].
   final String secondInputTitle;
 
   /// The initial value of first [TextField].
@@ -180,10 +204,12 @@ class NumberPad extends StatefulWidget {
   /// by setting [numberPadType] to [NumberPadWidgetType.doubleInput].
   final double? secondInputInitialValue;
 
-  /// The callback that is called when the [NumberPad] BottomSheet has been opened.
+  /// The callback that is called when the [NumberPad] BottomSheet has been
+  /// opened.
   final VoidCallback? onOpen;
 
-  /// The callback that is called when the user taps outside of the [BottomSheet] or
+  /// The callback that is called when the user taps outside of the
+  /// [BottomSheet] or
   /// when the user submits the changes.
   final NumberPadCloseCallback? onClose;
 
@@ -219,27 +245,43 @@ class NumberPad extends StatefulWidget {
   final NumberPadDoubleTextFieldModel? numberPadDoubleTextFieldModel;
 
   /// Set top container of background Color of NumberPad.
+  ///
+  /// Default value is [LightThemeColors.base08]
   final Color? backgroundColor;
 
   /// Set mid container of background Color of NumberPad.
+  ///
+  /// Default value is [LightThemeColors.base07]
   final Color? backgroundColorSecond;
 
   /// Set top container of TopLeft Radius of NumberPad.
+  ///
+  /// Default value is 16
   final double topLeft;
 
   /// Set top container of TopRight Radius of NumberPad.
+  ///
+  /// Default value is 16
   final double topRight;
 
   /// Set mid container of Padding of NumberPad.
+  ///
+  /// Default value is [ const EdgeInsets.fromLTRB(16,0,16, 0,)]
   final EdgeInsetsGeometry? paddingSecond;
 
   /// Handle Icon padding in number pad.
+  ///
+  /// Default value is [const EdgeInsets.all(8)]
   final EdgeInsetsGeometry iconPadding;
 
   /// Set mid container of TopLeft Radius in NumberPad.
+  ///
+  /// Default value is 16
   final double topLeftSecond;
 
   /// Set mid container of TopRight Radius in NumberPad.
+  ///
+  /// Default value is 16
   final double topRightSecond;
 
   /// NumberPad Message Model  property value.
@@ -249,9 +291,13 @@ class NumberPad extends StatefulWidget {
   final VoidCallback? ignoring;
 
   /// border side color for number keypad.
+  ///
+  /// Default value is [LightThemeColors.base08]
   final Color borderSideColor;
 
   /// Back space icon color for number keypad.
+  ///
+  ///  Default value is [LightThemeColors.base01]
   final Color? backSpaceIconColor;
 
   /// Text style for number keypad.
@@ -408,6 +454,22 @@ class _NumberPadState extends State<NumberPad> {
                               numberPadSingleTextHint: widget
                                   .numberPadSingleTextFieldModel
                                   ?.numberPadSingleTextHint,
+                              rightPadding: widget
+                                  .numberPadSingleTextFieldModel?.rightPadding,
+                              verticalPadding: widget
+                                  .numberPadSingleTextFieldModel
+                                  ?.verticalPadding,
+                              iconSize: widget
+                                  .numberPadSingleTextFieldModel?.iconSize,
+                              iconColor: widget
+                                  .numberPadSingleTextFieldModel?.iconColor,
+                              backgroundColor: widget
+                                  .numberPadSingleTextFieldModel
+                                  ?.backgroundColor,
+                              hint: widget.numberPadSingleTextFieldModel?.hint,
+                              singleTextTitleStyle: widget
+                                  .numberPadSingleTextFieldModel
+                                  ?.singleTextTitleStyle,
                             )
                           : _NumberPadDoubleTextFields(
                               firstTitleValue: widget.firstInputTitle,
@@ -427,6 +489,9 @@ class _NumberPadState extends State<NumberPad> {
                               paddingSecondTitle: widget
                                   .numberPadDoubleTextFieldModel
                                   ?.paddingSecondTitle,
+                              rightPaddingCurrency: widget
+                                  .numberPadDoubleTextFieldModel
+                                  ?.rightPaddingCurrency,
                             ),
                       _NumberPadMessage(
                         message: _validateMessage(),
@@ -558,7 +623,7 @@ class _NumberPadState extends State<NumberPad> {
         if (!isSecondMoreThanMin) {
           return message =
               widget.warningMessageDoubleInputValueCantBeLessThan ??
-                  warnDoubleInputValueCantBeLessThan(
+                  warnDoubleInputValueCantBeGreaterThan(
                     widget.secondInputTitle,
                     widget.secondInputMinimumValue,
                     getStringWithMappedCurrencyName(_currency),

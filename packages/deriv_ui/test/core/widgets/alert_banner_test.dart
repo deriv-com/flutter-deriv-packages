@@ -11,7 +11,9 @@ void main() {
 
   setUpAll(() {
     testContent =
-        'Your account has been blocked. You may only view the chart or close open positions. To enable trading and deposits, please contact our Customer Support team.';
+        'Your account has been blocked. You may only view the chart or close '
+        'open positions. To enable trading and deposits, please contact '
+        'our Customer Support team.';
     firstActionLabel = 'dismiss';
     secondActionLabel = 'contact support';
   });

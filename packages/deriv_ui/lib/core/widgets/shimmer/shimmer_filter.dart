@@ -2,7 +2,8 @@
 
 part of 'shimmer.dart';
 
-/// Shimmer Filter render object this render object will mimic the previous object with new values as the animation proceeds.
+/// Shimmer Filter render object this render object will mimic the previous
+/// object with new values as the animation proceeds.
 class _ShimmerFilter extends RenderProxyBox {
   _ShimmerFilter(this._percent, this._direction, this._gradient);
 
@@ -99,7 +100,8 @@ class _ShimmerFilter extends RenderProxyBox {
     context.pushLayer(layer!, super.paint, offset);
   }
 
-  /// Computes the offset of the effect based on the size of the widget and the animation state.
+  /// Computes the offset of the effect based on the size of the widget and the
+  /// animation state.
   double _offset(double start, double end, double percent) =>
       start + (end - start) * percent;
 }

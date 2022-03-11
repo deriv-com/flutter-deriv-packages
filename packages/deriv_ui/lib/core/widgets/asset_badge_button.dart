@@ -8,7 +8,8 @@ class AssetBadgeButton extends StatelessWidget {
   /// Initializes [AssetBadgeButton]
   ///
   /// [iconAssetName] and [semanticLabel] are required.
-  /// [badgeAssetName] default value is `null`, if [badgeAssetName] sets to `null` badge will be invisible.
+  /// [badgeAssetName] default value is `null`, if [badgeAssetName] sets to
+  /// `null` badge will be invisible.
   const AssetBadgeButton({
     required this.iconAssetName,
     required this.badgeAssetName,

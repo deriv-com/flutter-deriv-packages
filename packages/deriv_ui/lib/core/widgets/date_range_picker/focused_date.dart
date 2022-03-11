@@ -1,6 +1,7 @@
 part of 'calendar_date_range.dart';
 
-/// InheritedWidget indicating what the current focused date is for its children.
+/// InheritedWidget indicating what the current focused date is for its
+/// children.
 class _FocusedDate extends InheritedWidget {
   const _FocusedDate({
     required Widget child,

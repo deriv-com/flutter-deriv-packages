@@ -1,4 +1,3 @@
-
 import 'package:deriv_ui/core/widgets/date_range_picker/selected_date_range.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -42,8 +41,8 @@ class InputDateRange extends StatefulWidget {
       right: 24,
     ),
     this.dateRangeIconColor = LightThemeColors.base02,
-    this.cancelButtonStyle=const TextStyle(color: BrandColors.coral),
-    this.okButtonStyle=const TextStyle(color: BrandColors.coral),
+    this.cancelButtonStyle = const TextStyle(color: BrandColors.coral),
+    this.okButtonStyle = const TextStyle(color: BrandColors.coral),
     this.okButtonValidColor = BrandColors.coral,
     this.okButtonNotValidColor = LightThemeColors.base05,
     Key? key,
@@ -66,10 +65,12 @@ class InputDateRange extends StatefulWidget {
   /// The latest allowed [DateTime] that the user can select.
   final DateTime? maxAllowedDate;
 
-  /// The [DateTime] that represents the start of the initial date range selection.
+  /// The [DateTime] that represents the start of the initial date range
+  /// selection.
   final DateTime? initialStartDate;
 
-  /// The [DateTime] that represents the end of the initial date range selection.
+  /// The [DateTime] that represents the end of the initial date range
+  /// selection.
   final DateTime? initialEndDate;
 
   /// Background Color
@@ -104,7 +105,6 @@ class InputDateRange extends StatefulWidget {
 
   /// Ok Button not valid color
   final Color? okButtonNotValidColor;
-
 
   /// Selected date range text of [TextStyle] in edit dialog.
   final TextStyle? selectedDateRangeTextStyle;
@@ -211,7 +211,7 @@ class _InputDateRangeState extends State<InputDateRange> {
     Color? color,
     EdgeInsetsGeometry? titlePadding,
     TextStyle? style,
-    double? verticalPadding=8,
+    double? verticalPadding = 8,
     Color? dateRangeIconColor,
     String? labelTextSelectedRange,
     String? dateRangeLabel,
@@ -227,7 +227,7 @@ class _InputDateRangeState extends State<InputDateRange> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.symmetric(
-                vertical: verticalPadding??8,
+                vertical: verticalPadding ?? 8,
               ),
               child: Text(
                 labelTextSelectedRange ?? labelSelectedRange,

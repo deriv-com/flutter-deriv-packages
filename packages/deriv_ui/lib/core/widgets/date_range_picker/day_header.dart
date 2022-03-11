@@ -2,10 +2,12 @@ part of 'calendar_date_range.dart';
 
 class _DayHeader extends StatelessWidget {
   ///initialize constructor
-  const _DayHeader({required this.maxHeight, required this.headerTextStyle,
-    this.horizontalPadding=8,
-    this.monthItemRowHeight=48,
-    this.monthItemSpaceBetweenRows=8});
+  const _DayHeader(
+      {required this.maxHeight,
+      required this.headerTextStyle,
+      this.horizontalPadding = 8,
+      this.monthItemRowHeight = 48,
+      this.monthItemSpaceBetweenRows = 8});
 
   final double? maxHeight;
   final TextStyle? headerTextStyle;

@@ -3,14 +3,12 @@ import 'package:deriv_ui/util/strings_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const int badgeCountValue = 2;
 
   group('Badge widget tests', () {
-
     testWidgets(
         'Badge widget should contain a text when badgeCount is not null',
         (WidgetTester tester) async {

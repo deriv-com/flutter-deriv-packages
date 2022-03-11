@@ -4,11 +4,19 @@ class _NumberPadDoubleTextFields extends StatelessWidget {
   const _NumberPadDoubleTextFields({
     required this.firstTitleValue,
     required this.secondTitleValue,
-    this.paddingFirstTitle = const EdgeInsets.all(0),
-    this.paddingSecondTitle = const EdgeInsets.all(0),
+    this.paddingFirstTitle = const EdgeInsets.only(
+      left: 24,
+      top: 24,
+      bottom: 24,
+    ),
+    this.paddingSecondTitle = const EdgeInsets.symmetric(
+      vertical: 24,
+      horizontal: 8,
+    ),
     this.currencyTextStyle,
-    this.numberPadFieldModelFirst=const NumberPadFieldModel(),
-    this.numberPadFieldModelSecond=const NumberPadFieldModel(),
+    this.numberPadFieldModelFirst = const NumberPadFieldModel(),
+    this.numberPadFieldModelSecond = const NumberPadFieldModel(),
+    this.rightPaddingCurrency = 24,
   });
 
   final String firstTitleValue;
@@ -20,6 +28,7 @@ class _NumberPadDoubleTextFields extends StatelessWidget {
   final NumberPadFieldModel? numberPadFieldModelSecond;
 
   final TextStyle? currencyTextStyle;
+  final double? rightPaddingCurrency;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,12 @@ class _NumberPadDoubleTextFields extends StatelessWidget {
         Expanded(
           child: Center(
             child: Padding(
-              padding: paddingFirstTitle??const EdgeInsets.all(0),
+              padding: paddingFirstTitle ??
+                  const EdgeInsets.only(
+                    left: 24,
+                    top: 24,
+                    bottom: 24,
+                  ),
               child: _NumberPadTextField(
                 controller: numPadProvider!.firstInputController,
                 focusNode: numPadProvider.firstInputFocusNode,
@@ -44,7 +58,11 @@ class _NumberPadDoubleTextFields extends StatelessWidget {
         Expanded(
           child: Center(
             child: Padding(
-              padding: paddingSecondTitle??const EdgeInsets.all(0),
+              padding: paddingSecondTitle ??
+                  const EdgeInsets.symmetric(
+                    vertical: 24,
+                    horizontal: 8,
+                  ),
               child: _NumberPadTextField(
                   controller: numPadProvider.secondInputController,
                   focusNode: numPadProvider.secondInputFocusNode,
@@ -56,12 +74,13 @@ class _NumberPadDoubleTextFields extends StatelessWidget {
         ),
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(
-              right: 24,
+            padding: EdgeInsets.only(
+              right: rightPaddingCurrency ?? 24,
             ),
             child: Text(
               getStringWithMappedCurrencyName(numPadProvider.currency),
-              style: currencyTextStyle,
+              style:
+                  currencyTextStyle?.copyWith(color: LightThemeColors.base04),
             ),
           ),
         ),

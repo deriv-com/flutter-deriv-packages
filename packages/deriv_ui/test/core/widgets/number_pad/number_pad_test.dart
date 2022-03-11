@@ -8,10 +8,9 @@ import 'package:intl/intl.dart';
 
 void main() {
   group('NumberPad widget test', () {
-
     testWidgets(
-        'Appearance of the necessary titles and inputs and keys of single input',
-        (WidgetTester tester) async {
+        'Appearance of the necessary titles and inputs and keys of'
+        ' single input', (WidgetTester tester) async {
       final NumberFormat formatter = NumberFormat('#.00', 'en_US');
       const String currency = 'USDT';
       const double minValue = 10;
@@ -48,8 +47,8 @@ void main() {
     });
 
     testWidgets(
-        'Appearance of the necessary titles and inputs and keys of double input',
-        (WidgetTester tester) async {
+        'Appearance of the necessary titles and inputs and keys of '
+        'double input', (WidgetTester tester) async {
       final NumberFormat formatter = NumberFormat('#.00', 'en_US');
       const String currency = 'USDT';
 
@@ -76,8 +75,8 @@ void main() {
     });
 
     testWidgets(
-        'The initial values should be visible in the UI with correct formatting',
-        (WidgetTester tester) async {
+        'The initial values should be visible in the UI with correct '
+        'formatting', (WidgetTester tester) async {
       const double firstInitialValue = 10;
       const double secondInitialValue = 20;
       final NumberFormat formatter = NumberFormat('#.00', 'en_US');
@@ -124,8 +123,8 @@ void main() {
       await tester.idle();
       await tester.pumpAndSettle();
 
-      final String message = warnValueCantBeLessThan(
-          firstTitle, firstMinValue, currency);
+      final String message =
+          warnValueCantBeLessThan(firstTitle, firstMinValue, currency);
       expect(find.text(message), findsOneWidget);
     });
 

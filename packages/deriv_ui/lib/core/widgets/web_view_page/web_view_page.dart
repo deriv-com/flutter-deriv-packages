@@ -31,7 +31,8 @@ class WebViewPage extends StatefulWidget {
   /// Label for title in App Bar.
   final String? title;
 
-  /// If `true`, show a progress indicator while the web view is loading. Default to `true`.
+  /// If `true`, show a progress indicator while the web view is loading.
+  /// Default to `true`.
   final bool showProgressIndicator;
 
   /// If true, and an [appBar] is specified, then the height of the [body] is
@@ -109,14 +110,15 @@ class _WebViewPageState extends State<WebViewPage> {
                         onProgress: _onProgress,
                       ),
                     )
-                  : const SizedBox.shrink(child: Text('wiat')),
+                  : const SizedBox.shrink(),
         ),
       );
 
   PreferredSize _buildAppBarProgressBar({
     required Color valueColor,
     double height = 1,
-  }) => PreferredSize(
+  }) =>
+      PreferredSize(
         preferredSize: Size(double.infinity, height),
         child: LinearProgressIndicator(
           value: progressValue,

@@ -1,8 +1,8 @@
 part of 'number_pad.dart';
 
 class _NumberPadSingleTextField extends StatelessWidget {
-  const _NumberPadSingleTextField({
-    required this.title,
+  const _NumberPadSingleTextField(
+      {required this.title,
       required this.style,
       this.margin = 24,
       this.label = '',
@@ -10,10 +10,10 @@ class _NumberPadSingleTextField extends StatelessWidget {
       this.numberPadFieldModel = const NumberPadFieldModel(),
       this.currencyLabelStyle,
       this.hint,
-      this.backgroundColor,
-      this.verticalMargin = 16,
+      this.backgroundColor = LightThemeColors.base07,
+      this.verticalPadding = 16,
       this.singleTextTitleStyle,
-      this.padding = 16,
+      this.rightPadding = 16,
       this.iconSize = 24,
       this.iconColor = LightThemeColors.base04});
 
@@ -27,10 +27,10 @@ class _NumberPadSingleTextField extends StatelessWidget {
   final TextStyle? currencyLabelStyle;
   final String? hint;
   final Color? backgroundColor;
-  final double verticalMargin;
+  final double? verticalPadding;
   final TextStyle? singleTextTitleStyle;
-  final double padding;
-  final double iconSize;
+  final double? rightPadding;
+  final double? iconSize;
   final Color? iconColor;
 
   Size getTextSize(
@@ -68,8 +68,8 @@ class _NumberPadSingleTextField extends StatelessWidget {
                 backgroundColor: backgroundColor,
                 iconColor: iconColor,
                 iconSize: iconSize,
-                padding: padding,
-                verticalMargin: verticalMargin,
+                verticalPadding: verticalPadding,
+                rightPadding: rightPadding,
               ),
         Row(
           children: <Widget>[

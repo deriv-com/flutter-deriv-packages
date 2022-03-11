@@ -8,8 +8,8 @@ void main() {
 
   group('Calendar Date Range Picker =>', () {
     testWidgets(
-        'date range picker should show start and end label if initial start date and initial end date is not set.',
-        (WidgetTester tester) async {
+        'date range picker should show start and end label if initial start '
+        'date and initial end date is not set.', (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpWidget(_TestApp(DateRangePicker(
@@ -36,7 +36,8 @@ void main() {
     });
 
     testWidgets(
-        'date range picker should show start and end date if initial start date and initial end date is set in same year.',
+        'date range picker should show start and end date if initial start date'
+        ' and initial end date is set in same year.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -67,180 +68,183 @@ void main() {
       );
     });
 
-      testWidgets(
-          'date range picker should show start and end date if initial start date and initial end date is set in different years.',
-          (WidgetTester tester) async {
-        final DateTime currentTime = DateTime.now();
+    testWidgets(
+        'date range picker should show start and end date if initial start'
+        ' date and initial end date is set in different years.',
+        (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
 
-        await tester.pumpWidget(
-          _TestApp( DateRangePicker(
-                currentDate: currentTime,
-                minAllowedDate: DateTime(currentTime.year - 1, 11),
-                maxAllowedDate: DateTime(currentTime.year, 11, 25),
-                initialStartDate: DateTime(currentTime.year - 1, 11, 10),
-                initialEndDate: DateTime(currentTime.year, 11, 19),
-              ),
-          )
-        );
+      await tester.pumpWidget(_TestApp(
+        DateRangePicker(
+          currentDate: currentTime,
+          minAllowedDate: DateTime(currentTime.year - 1, 11),
+          maxAllowedDate: DateTime(currentTime.year, 11, 25),
+          initialStartDate: DateTime(currentTime.year - 1, 11, 10),
+          initialEndDate: DateTime(currentTime.year, 11, 19),
+        ),
+      ));
 
-        await tester.idle();
-        await tester.pumpAndSettle();
+      await tester.idle();
+      await tester.pumpAndSettle();
 
-        expect(find.byType(IconButton), findsNWidgets(3));
-        expect(find.byType(DateRangePicker), findsOneWidget);
+      expect(find.byType(IconButton), findsNWidgets(3));
+      expect(find.byType(DateRangePicker), findsOneWidget);
 
-        expect(find.text(labelSelectedRange), findsOneWidget);
+      expect(find.text(labelSelectedRange), findsOneWidget);
 
-        expect(
-          find.byWidgetPredicate(
-            (Widget widget) =>
-                widget is RichText &&
-                widget.text.toPlainText() ==
-                    'Nov 10, ${currentTime.year - 1} - Nov 19, ${currentTime.year}',
+      expect(
+        find.byWidgetPredicate(
+          (Widget widget) =>
+              widget is RichText &&
+              widget.text.toPlainText() ==
+                  'Nov 10, ${currentTime.year - 1} - Nov 19, '
+                      '${currentTime.year}',
+        ),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets(
+        'date range picker should show start if initial start date is set '
+        'and initial end date is not set. also, year is not equal to '
+        'current date year.', (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
+
+      await tester.pumpWidget(
+        _TestApp(
+          DateRangePicker(
+            currentDate: currentTime,
+            minAllowedDate: DateTime(currentTime.year - 1, 11),
+            maxAllowedDate: DateTime(currentTime.year, 11, 25),
+            initialStartDate: DateTime(currentTime.year - 1, 11, 10),
           ),
-          findsOneWidget,
-        );
-      });
+        ),
+      );
 
-      testWidgets(
-          'date range picker should show start if initial start date is set and initial end date is not set. also, year is not equal to current date year.',
-          (WidgetTester tester) async {
-        final DateTime currentTime = DateTime.now();
+      await tester.idle();
+      await tester.pumpAndSettle();
 
-        await tester.pumpWidget(
-          _TestApp(DateRangePicker(
-                currentDate: currentTime,
-                minAllowedDate: DateTime(currentTime.year - 1, 11),
-                maxAllowedDate: DateTime(currentTime.year, 11, 25),
-                initialStartDate: DateTime(currentTime.year - 1, 11, 10),
-              ),
-            ),
+      expect(find.byType(IconButton), findsNWidgets(3));
+      expect(find.byType(DateRangePicker), findsOneWidget);
 
-        );
+      expect(find.text(labelSelectedRange), findsOneWidget);
 
-        await tester.idle();
-        await tester.pumpAndSettle();
+      expect(
+        find.byWidgetPredicate(
+          (Widget widget) =>
+              widget is RichText &&
+              widget.text.toPlainText() ==
+                  'Nov 10, ${currentTime.year - 1} - $labelEndDate',
+        ),
+        findsOneWidget,
+      );
+    });
 
-        expect(find.byType(IconButton), findsNWidgets(3));
-        expect(find.byType(DateRangePicker), findsOneWidget);
+    testWidgets(
+        'date range picker should show start if initial start date is set'
+        ' and initial end date is not set. also, year is equal to '
+        'current date year.', (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
 
-        expect(find.text(labelSelectedRange), findsOneWidget);
-
-        expect(
-          find.byWidgetPredicate(
-            (Widget widget) =>
-                widget is RichText &&
-                widget.text.toPlainText() ==
-                    'Nov 10, ${currentTime.year - 1} - $labelEndDate',
+      await tester.pumpWidget(
+        _TestApp(
+          DateRangePicker(
+            currentDate: currentTime,
+            minAllowedDate: DateTime(currentTime.year - 1, 11),
+            maxAllowedDate: DateTime(currentTime.year + 1, 11, 25),
+            initialStartDate: DateTime(currentTime.year, 11, 10),
           ),
-          findsOneWidget,
-        );
-      });
+        ),
+      );
 
-      testWidgets(
-          'date range picker should show start if initial start date is set and initial end date is not set. also, year is equal to current date year.',
-          (WidgetTester tester) async {
-        final DateTime currentTime = DateTime.now();
+      await tester.idle();
+      await tester.pumpAndSettle();
 
-        await tester.pumpWidget(
-          _TestApp( DateRangePicker(
-                currentDate: currentTime,
-                minAllowedDate: DateTime(currentTime.year - 1, 11),
-                maxAllowedDate: DateTime(currentTime.year + 1, 11, 25),
-                initialStartDate: DateTime(currentTime.year, 11, 10),
-              ),
-            ),
+      expect(find.byType(IconButton), findsNWidgets(3));
+      expect(find.byType(DateRangePicker), findsOneWidget);
 
-        );
+      expect(find.text(labelSelectedRange), findsOneWidget);
 
-        await tester.idle();
-        await tester.pumpAndSettle();
-
-        expect(find.byType(IconButton), findsNWidgets(3));
-        expect(find.byType(DateRangePicker), findsOneWidget);
-
-        expect(find.text(labelSelectedRange), findsOneWidget);
-
-        expect(
-          find.byWidgetPredicate(
-            (Widget widget) =>
-                widget is RichText &&
-                widget.text.toPlainText() ==
-                    'Nov 10 - $labelEndDate',
-          ),
-          findsOneWidget,
-        );
-      });
+      expect(
+        find.byWidgetPredicate(
+          (Widget widget) =>
+              widget is RichText &&
+              widget.text.toPlainText() == 'Nov 10 - $labelEndDate',
+        ),
+        findsOneWidget,
+      );
+    });
     //
-      testWidgets(
-          'date range picker should show end if initial end date is set and initial start date is not set. also, year is not equal to current date year.',
-          (WidgetTester tester) async {
-        final DateTime currentTime = DateTime.now();
+    testWidgets(
+        'date range picker should show end if initial end date is set and '
+        'initial start date is not set. also, year is not equal to '
+        'current date year.', (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
 
-        await tester.pumpWidget(
-         _TestApp( DateRangePicker(
-                currentDate: currentTime,
-                minAllowedDate: DateTime(currentTime.year - 1, 11),
-                maxAllowedDate: DateTime(currentTime.year, 11, 25),
-                initialEndDate: DateTime(currentTime.year - 1, 11, 10),
-              ),
-            ),
-
-        );
-
-        await tester.idle();
-        await tester.pumpAndSettle();
-
-        expect(find.byType(IconButton), findsNWidgets(3));
-        expect(find.byType(DateRangePicker), findsOneWidget);
-
-        expect(find.text(labelSelectedRange), findsOneWidget);
-
-        expect(
-          find.byWidgetPredicate(
-            (Widget widget) =>
-                widget is RichText &&
-                widget.text.toPlainText() ==
-                    '$labelStartDate - Nov 10, ${currentTime.year - 1}',
+      await tester.pumpWidget(
+        _TestApp(
+          DateRangePicker(
+            currentDate: currentTime,
+            minAllowedDate: DateTime(currentTime.year - 1, 11),
+            maxAllowedDate: DateTime(currentTime.year, 11, 25),
+            initialEndDate: DateTime(currentTime.year - 1, 11, 10),
           ),
-          findsOneWidget,
-        );
-      });
+        ),
+      );
 
-      testWidgets(
-          'date range picker should show end if initial end date is set and initial start date is not set. also, year is equal to current date year.',
-          (WidgetTester tester) async {
-        final DateTime currentTime = DateTime.now();
+      await tester.idle();
+      await tester.pumpAndSettle();
 
-        await tester.pumpWidget(
-          _TestApp( DateRangePicker(
-                currentDate: currentTime,
-                minAllowedDate: DateTime(currentTime.year - 1, 11),
-                maxAllowedDate: DateTime(currentTime.year, 11, 25),
-                initialEndDate: DateTime(currentTime.year, 11, 10),
-              ),
-            ),
+      expect(find.byType(IconButton), findsNWidgets(3));
+      expect(find.byType(DateRangePicker), findsOneWidget);
 
-        );
+      expect(find.text(labelSelectedRange), findsOneWidget);
 
-        await tester.idle();
-        await tester.pumpAndSettle();
+      expect(
+        find.byWidgetPredicate(
+          (Widget widget) =>
+              widget is RichText &&
+              widget.text.toPlainText() ==
+                  '$labelStartDate - Nov 10, ${currentTime.year - 1}',
+        ),
+        findsOneWidget,
+      );
+    });
 
-        expect(find.byType(IconButton), findsNWidgets(3));
-        expect(find.byType(DateRangePicker), findsOneWidget);
+    testWidgets(
+        'date range picker should show end if initial end date is set and '
+        'initial start date is not set. also, year is equal to current'
+        ' date year.', (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
 
-        expect(find.text(labelSelectedRange), findsOneWidget);
-
-        expect(
-          find.byWidgetPredicate(
-            (Widget widget) =>
-                widget is RichText &&
-                widget.text.toPlainText() ==
-                    '$labelStartDate - Nov 10',
+      await tester.pumpWidget(
+        _TestApp(
+          DateRangePicker(
+            currentDate: currentTime,
+            minAllowedDate: DateTime(currentTime.year - 1, 11),
+            maxAllowedDate: DateTime(currentTime.year, 11, 25),
+            initialEndDate: DateTime(currentTime.year, 11, 10),
           ),
-          findsOneWidget,
-        );
-      });
+        ),
+      );
+
+      await tester.idle();
+      await tester.pumpAndSettle();
+
+      expect(find.byType(IconButton), findsNWidgets(3));
+      expect(find.byType(DateRangePicker), findsOneWidget);
+
+      expect(find.text(labelSelectedRange), findsOneWidget);
+
+      expect(
+        find.byWidgetPredicate(
+          (Widget widget) =>
+              widget is RichText &&
+              widget.text.toPlainText() == '$labelStartDate - Nov 10',
+        ),
+        findsOneWidget,
+      );
+    });
   });
 }
 
@@ -251,7 +255,6 @@ class _TestApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-
         home: dateRangePicker,
       );
 }

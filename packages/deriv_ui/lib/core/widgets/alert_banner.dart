@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 ///
 /// Banners should be displayed at the top of the screen, below the top app bar.
 class AlertBanner extends StatelessWidget {
-  /// Creates an alert banner that takes place below the top app bar of the page.
+  /// Creates an alert banner that takes place below the top app bar of the
+  /// page.
   ///
   /// [positiveButtonLabel] is the label of the action button at the most right
   /// of the banner. [onPositiveActionPressed] is called when this button is
@@ -26,7 +27,7 @@ class AlertBanner extends StatelessWidget {
     required this.onPositiveActionPressed,
     this.negativeButtonLabel,
     this.onNegativeActionPressed,
-    this.backgroundColor=LightThemeColors.base06,
+    this.backgroundColor = LightThemeColors.base06,
     this.textStyle,
     this.negativeButtonTextStyle,
     this.positiveButtonTextStyle,

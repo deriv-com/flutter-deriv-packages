@@ -17,9 +17,11 @@ typedef RefreshHandler = Future<void> Function();
 class GroupedListView<E, G extends Comparable<Object>> extends StatefulWidget {
   /// Grouped list view
   ///
-  /// If you set [groupBy] and [groupBuilder] properties, the list items will be grouped by the provided grouping information.
+  /// If you set [groupBy] and [groupBuilder] properties, the list items will be
+  /// grouped by the provided grouping information.
   /// [hasStickyHeader] will keep your header in top of the list
-  /// Also pull to refresh is applicable by setting [hasRefreshIndicator] to `true`
+  /// Also pull to refresh is applicable by setting [hasRefreshIndicator] to
+  /// `true`
   /// and providing [onRefresh] handler.
   const GroupedListView({
     required this.itemBuilder,
@@ -130,14 +132,16 @@ class GroupedListView<E, G extends Comparable<Object>> extends StatefulWidget {
   /// The amount of space by which to inset the children
   final EdgeInsetsGeometry? padding;
 
-  /// Whether the extent of the scroll view in the [scrollDirection] should be determined by the contents being viewed
+  /// Whether the extent of the scroll view in the [scrollDirection] should be
+  /// determined by the contents being viewed
   ///
   /// This defaults to `false`
   final bool shrinkWrap;
 
   /// Whether to wrap each child in an [AutomaticKeepAlive]
   ///
-  /// [AutomaticKeepAlive] allows subtrees to request to be kept alive in lazy lists.
+  /// [AutomaticKeepAlive] allows subtrees to request to be kept alive in lazy
+  /// lists.
   /// This defaults to `true`
   final bool addAutomaticKeepAlives;
 
@@ -341,9 +345,11 @@ class _GroupedListViewState<E, G extends Comparable<Object>>
         .toList();
   }
 
-  // First, we should get each item group height by calling _getGroupHeights() method,
-  // Then by checking list view controller offset we can indicate the current list group
-  // and set currentGroupIndex for showing corresponding sticky header.
+  /// First, we should get each item group height by calling _getGroupHeights()
+  /// method,
+  /// Then by checking list view controller offset we can indicate the current
+  /// list group
+  /// and set currentGroupIndex for showing corresponding sticky header.
   void _scrollControllerListener() {
     final List<double> groupHeights = _getGroupHeights();
     final double controllerOffset = _scrollController!.offset + _groupHeight!;

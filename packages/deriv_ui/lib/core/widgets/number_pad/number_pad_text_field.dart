@@ -44,16 +44,15 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: widget.numberPadFieldModel?.borderSideColor ??
-                        Colors.black,
-                  ),
+                      color: widget.numberPadFieldModel?.borderSideColor ??
+                          BrandColors.greenish),
                 ),
                 labelText: widget.label,
                 labelStyle: widget.numberPadFieldModel?.textStyle?.copyWith(
                   color: _labelColor,
                 ),
               ),
-        textAlign: widget.numberPadFieldModel?.textAlign ?? TextAlign.start,
+        textAlign: widget.numberPadFieldModel?.textAlign ?? TextAlign.center,
         readOnly: true,
         showCursor: true,
         enableInteractiveSelection: false,
