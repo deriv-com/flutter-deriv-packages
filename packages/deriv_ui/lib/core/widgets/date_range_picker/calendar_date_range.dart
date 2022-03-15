@@ -52,7 +52,7 @@ class CalendarDateRange extends StatefulWidget {
     this.monthItemFooterHeight = 16,
     this.style = const TextStyle(color: LightThemeColors.base03),
     this.headerHeight = 48,
-    this.headerStyle,
+    this.headerStyle=const TextStyle(color: LightThemeColors.base04),
     Key? key,
     DateTime? initialStartDate,
     DateTime? initialEndDate,

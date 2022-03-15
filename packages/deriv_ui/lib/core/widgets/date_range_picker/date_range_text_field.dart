@@ -8,7 +8,7 @@ typedef _DateRangeTextFieldHandler = void Function(
 /// Date range text field widget.
 class _DateRangeTextField extends StatefulWidget {
   /// Initializes date range text field.
-  const _DateRangeTextField({
+   _DateRangeTextField({
     required this.initialStartDate,
     required this.initialEndDate,
     required this.isStartDateValid,
@@ -27,7 +27,15 @@ class _DateRangeTextField extends StatefulWidget {
     this.labelTextStartDate,
     this.labelTextEndDate,
     Key? key,
-  }) : super(key: key);
+  })  : assert(initialStartDate != null),
+        assert(initialEndDate != null),
+        assert(onEditingComplete != null),
+        assert(
+          !initialEndDate!.isBefore(initialStartDate!),
+          'endDate $initialEndDate must be on or after startDate'
+          ' $initialStartDate.',
+        ),
+        super(key: key);
 
   /// Initial start date.
   final DateTime? initialStartDate;
@@ -99,6 +107,14 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
   @override
   void initState() {
     super.initState();
+    assert(widget.initialStartDate != null);
+    assert(widget.initialEndDate != null);
+    assert(widget.onEditingComplete != null);
+    assert(
+      !widget.initialEndDate!.isBefore(widget.initialStartDate!),
+      'endDate ${widget.initialEndDate} must be on or after startDate'
+      ' ${widget.initialStartDate}.',
+    );
 
     dateFormatter = DateFormat(widget.dateFormat);
     startDate = widget.initialStartDate;
