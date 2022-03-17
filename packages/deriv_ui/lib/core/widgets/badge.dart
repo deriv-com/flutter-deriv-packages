@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 
-import '../../util/strings_const.dart';
-
 /// This widget displays a widget with the possibility of showing a badge icon
 /// with a count value on the widget
 class Badge extends StatelessWidget {
   /// Initializes the widget.
   const Badge({
+    required this.showDotMinWidth,
+    required this.showDotMinHeight,
+    required this.semanticLabel,
+    required this.notificationBadgeBorderWidth,
+    required this.notificationBadgeBackgroundColor,
+    required this.noShowDotMinWidth,
+    required this.countLabelTextStyle,
+    required this.noShowDotMinHeight,
+    required this.countLabelContainerWidth,
+    required this.countLabelContainerHeight,
+    required this.childWidgetPadding,
     this.child,
     this.count,
     this.enabled = true,
     this.alignment = Alignment.topRight,
-    this.padding = 4,
-    this.badgeTextStyle,
-    this.borderWidth = 2,
-    this.boxColor = Colors.redAccent,
-    this.boxHeight = 16,
-    this.boxWidth = 16,
-    this.minWidthISCountNull = 16,
-    this.minWidthISCountNotNull = 12,
-    this.minHeightISCountNull = 16,
-    this.minHeightISCountNotNull = 12,
-    this.semanticNotificationCountIconMessage,
-    this.semanticNotificationsCountIconMessage,
   });
 
   /// The widget that is going to be displayed.
@@ -41,41 +38,39 @@ class Badge extends StatelessWidget {
   /// Default is [Alignment.topRight].
   final Alignment alignment;
 
-  /// Padding of badge
-  final double padding;
+  /// Padding for the child widget that is going to be displayed
+  final double childWidgetPadding;
 
-  /// Badge Text Style
-  final TextStyle? badgeTextStyle;
 
-  /// Border width of badge.
-  final double borderWidth;
+  /// Semantic Notification Count Icon label
+  final String semanticLabel;
 
-  /// Box Color of badge.
-  final Color boxColor;
+  /// Notification badge background color
+  final Color notificationBadgeBackgroundColor;
 
-  /// Box width of badge.
-  final double boxWidth;
+  /// Notification badge border radius
+  final double notificationBadgeBorderWidth;
 
-  /// Box height of badge.
-  final double boxHeight;
+  /// Text style of count label shown on badge
+  final TextStyle countLabelTextStyle;
 
-  /// Min width show dot  in badge.
-  final double minWidthISCountNull;
+  /// Text container width of count label shown on badge
+  final double countLabelContainerWidth;
 
-  /// Min width not show dot in badge.
-  final double minWidthISCountNotNull;
+  /// Text container height of count label shown on badge
+  final double countLabelContainerHeight;
 
-  /// Min height show dot in badge.
-  final double minHeightISCountNull;
+  /// Min width of the dot container when visibility is true
+  final double showDotMinWidth;
 
-  /// Min height not show dot in badge.
-  final double minHeightISCountNotNull;
+  /// Min width of the dot container when visibility is false
+  final double noShowDotMinWidth;
 
-  /// Semantic Notification Count Icon Message in badge.
-  final String? semanticNotificationCountIconMessage;
+  /// Min height of the dot container when visibility is true
+  final double showDotMinHeight;
 
-  /// Semantic Notifications Count Icon Message in badge.
-  final String? semanticNotificationsCountIconMessage;
+  /// Min height of the dot container when visibility is false
+  final double noShowDotMinHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +82,7 @@ class Badge extends StatelessWidget {
       children: <Widget>[
         Padding(
           child: child ?? const SizedBox.shrink(),
-          padding: EdgeInsets.all(padding),
+          padding: EdgeInsets.all(childWidgetPadding),
         ),
         Visibility(
           visible: enabled,
@@ -95,29 +90,26 @@ class Badge extends StatelessWidget {
             decoration: showDot || hasCount
                 ? BoxDecoration(
                     shape: BoxShape.circle,
-                    color: boxColor,
-                    border: Border.all(width: borderWidth),
+                    color: notificationBadgeBackgroundColor,
+                    border: Border.all(width: notificationBadgeBorderWidth),
                   )
-                : const BoxDecoration(),
+                : null,
             constraints: BoxConstraints(
-              minWidth: showDot ? minWidthISCountNull : minWidthISCountNotNull,
+              minWidth:
+                  showDot ? showDotMinWidth : noShowDotMinWidth,
               minHeight:
-                  showDot ? minHeightISCountNull : minHeightISCountNotNull,
+                  showDot ? showDotMinHeight : noShowDotMinHeight,
             ),
             child: hasCount
                 ? SizedBox(
-                    width: boxWidth,
-                    height: boxHeight,
+                    width: countLabelContainerWidth,
+                    height: countLabelContainerHeight,
                     child: Center(
                       child: Text(
                         '$count',
-                        semanticsLabel: _getSemanticLabel(
-                            count: count!,
-                            semanticNotificationCountIconMessage:
-                                semanticNotificationCountIconMessage,
-                            semanticNotificationsCountIconMessage:
-                                semanticNotificationsCountIconMessage),
+                        semanticsLabel: semanticLabel,
                         textAlign: TextAlign.center,
+                        style: countLabelTextStyle,
                       ),
                     ),
                   )
@@ -127,14 +119,4 @@ class Badge extends StatelessWidget {
       ],
     );
   }
-
-  String _getSemanticLabel(
-          {required int count,
-          required String? semanticNotificationCountIconMessage,
-          required String? semanticNotificationsCountIconMessage}) =>
-      count == 1
-          ? semanticNotificationCountIconMessage ??
-              semanticNotificationCountIcon
-          : semanticNotificationsCountIconMessage ??
-              semanticNotificationsCountIcon(count);
 }
