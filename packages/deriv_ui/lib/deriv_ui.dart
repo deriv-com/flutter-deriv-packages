@@ -1,5 +1,6 @@
 library deriv_ui;
 
+export './core/widgets/date_range_picker/models/input_date_model.dart';
 export './core/widgets/date_range_picker/date_range_picker.dart';
 export './core/widgets/alert_banner.dart';
 export './core/widgets/animated_popup.dart';
