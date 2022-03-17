@@ -114,3 +114,4 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   override fun onCancel(arguments: Any?) {
     lifecycleSink = null
   }
+}

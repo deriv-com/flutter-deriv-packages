@@ -11,7 +11,7 @@ class DerivLiveChat {
   static Future<void> startChatView(String licenseNo, String groupId,
           String visitorName, String visitorEmail,
           [Map<String, String>? customParams]) async =>
-      _channel.invokeMethod<dynamic>('DerivLiveChatView', <String, dynamic>{
+      _channel.invokeMethod<dynamic>('derivLiveChatView', <String, dynamic>{
         'licenseNo': licenseNo,
         'groupId': groupId,
         'visitorName': visitorName,
