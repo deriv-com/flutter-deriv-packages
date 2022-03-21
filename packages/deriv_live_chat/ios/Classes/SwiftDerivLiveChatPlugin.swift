@@ -26,7 +26,7 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
    
      switch call.method {
        
-        case "DerivLiveChatView":
+        case "derivLiveChatView":
             let arguments = call.arguments as! [String:Any]
             let licenseNo = (arguments["licenseNo"] as? String)
             let groupId = (arguments["groupId"] as? String)
