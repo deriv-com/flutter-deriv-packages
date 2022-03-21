@@ -39,6 +39,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
+
     if (call.method.equals(MethodCallType.OPEN_DRIVE_LIVE_CHAT_VIEW.value)) {
       val licenseNo = call.argument<String>("licenseNo")
       val customParams = call.argument<HashMap<String, String>>("customParams")!!
@@ -115,3 +116,4 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
     lifecycleSink = null
   }
 }
+
