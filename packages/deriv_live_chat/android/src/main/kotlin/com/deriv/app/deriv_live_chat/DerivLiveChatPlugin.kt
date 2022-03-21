@@ -16,11 +16,12 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import java.lang.invoke.MethodType
 import java.util.*
 
 /** DerivLiveChatPlugin */
-class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, EventChannel.StreamHandler{
-  private lateinit var channel : MethodChannel
+class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, EventChannel.StreamHandler {
+  private lateinit var channel: MethodChannel
   var activity: Activity? = null
   var lifecycleSink: EventSink? = null
 
@@ -39,8 +40,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
 
-    if(call.method.equals("derivLiveChatView")){
-
+    if (call.method.equals(MethodCallType.OPEN_DRIVE_LIVE_CHAT_VIEW.value)) {
       val licenseNo = call.argument<String>("licenseNo")
       val customParams = call.argument<HashMap<String, String>>("customParams")!!
       val groupId = call.argument<String>("groupId")
@@ -48,7 +48,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
       val visitorEmail = call.argument<String>("visitorEmail")
       val chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
 
-      val configuration =  ChatWindowConfiguration.Builder()
+      val configuration = ChatWindowConfiguration.Builder()
         .setLicenceNumber(licenseNo)
         .setGroupId(groupId)
         .setVisitorName(visitorName)
@@ -57,10 +57,11 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
         .build()
 
       chatWindowView.setUpWindow(configuration)
-      chatWindowView.setUpListener(object : ChatWindowView.ChatWindowEventsListener{
+      chatWindowView.setUpListener(object : ChatWindowView.ChatWindowEventsListener {
         override fun onChatWindowVisibilityChanged(visible: Boolean) {
 
         }
+
         override fun onNewMessage(message: NewMessageModel?, windowVisible: Boolean) {
           lifecycleSink?.success(message?.text)
         }
@@ -85,7 +86,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
       chatWindowView.initialize()
       chatWindowView.showChatWindow()
       result.success(null)
-    }else {
+    } else {
       result.notImplemented()
     }
 
@@ -115,3 +116,4 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
     lifecycleSink = null
   }
 }
+
