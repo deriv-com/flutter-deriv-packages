@@ -20,7 +20,6 @@ class _AppState extends State<App> {
     super.initState();
 
     subscription = DerivLiveChat.onEventRecieved?.listen((event) {
-      print("event");
       print(event);
       if (event != "chatOpen" && event != "chatClose") {
         _setCounter(++_counter);
