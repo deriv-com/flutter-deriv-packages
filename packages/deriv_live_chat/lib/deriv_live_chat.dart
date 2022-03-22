@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 /// Deriv live chat plugin.
 class DerivLiveChat {
-
   static const MethodChannel _channel = MethodChannel('derivLiveChat');
   static const EventChannel _eventChannel = EventChannel('derivLiveChatStream');
 
@@ -19,7 +18,10 @@ class DerivLiveChat {
         'customParams': customParams,
       });
 
-  /// Here receving message stream
-  static Stream<dynamic>? get onMessageRecieved =>
-      _eventChannel.receiveBroadcastStream();
+  /// Here receving stream
+  static Stream<dynamic>? get onEventRecieved {
+    _eventChannel.receiveBroadcastStream().listen((data) {
+      print(data);
+    });
+  }
 }

@@ -7,7 +7,6 @@ import LiveChat
 public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate, FlutterStreamHandler {
 
      private var lifecycleSink: FlutterEventSink?
- 
      public static func register(with registrar: FlutterPluginRegistrar) {
      // Register Channel
         let channel = FlutterMethodChannel(name: "derivLiveChat", binaryMessenger: registrar.messenger())
@@ -61,6 +60,14 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
     public func received(message: LiveChatMessage) {
     lifecycleSink?(message.text)
 	}
+    // Handle chat presented here
+    public func chatPresented() {
+     lifecycleSink?("chatOpen")
+    }
+    // Handle chat dismissed here
+    public func chatDismissed() {
+     lifecycleSink?("chatClose")
+    } 
     
     public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
        lifecycleSink = events
@@ -73,4 +80,3 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
     }
 
 }
-  
