@@ -2,6 +2,7 @@ package com.deriv.app.deriv_live_chat
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.annotation.NonNull
 import com.livechatinc.inappchat.ChatWindowConfiguration
 import com.livechatinc.inappchat.ChatWindowErrorType
@@ -20,7 +21,7 @@ import java.lang.invoke.MethodType
 import java.util.*
 
 /** DerivLiveChatPlugin */
-class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, EventChannel.StreamHandler {
+class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, EventChannel.StreamHandler{
   private lateinit var channel: MethodChannel
   var activity: Activity? = null
   var lifecycleSink: EventSink? = null
@@ -59,7 +60,11 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
       chatWindowView.setUpWindow(configuration)
       chatWindowView.setUpListener(object : ChatWindowView.ChatWindowEventsListener {
         override fun onChatWindowVisibilityChanged(visible: Boolean) {
-
+          if(visible){
+            lifecycleSink?.success("chatOpen")
+          }else{
+            lifecycleSink?.success("chatClose")
+          }
         }
 
         override fun onNewMessage(message: NewMessageModel?, windowVisible: Boolean) {
