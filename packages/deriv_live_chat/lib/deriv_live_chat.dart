@@ -19,9 +19,6 @@ class DerivLiveChat {
       });
 
   /// Here receving stream
-  static Stream<dynamic>? get onEventRecieved {
-    _eventChannel.receiveBroadcastStream().listen((data) {
-      print(data);
-    });
-  }
+  static Stream<dynamic>? get onEventRecieved =>
+      _eventChannel.receiveBroadcastStream();
 }
