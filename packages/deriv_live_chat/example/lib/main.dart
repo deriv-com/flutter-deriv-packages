@@ -1,17 +1,21 @@
+// ignore_for_file: always_specify_types
+
 import 'dart:async';
 import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const App());
 
+/// Deriv Live Chat App
 class App extends StatefulWidget {
+  ///
   const App({Key? key}) : super(key: key);
-
   @override
   State<App> createState() => _AppState();
 }
 
 class _AppState extends State<App> {
+  /// Stream Subscription for in app notification event listner
   StreamSubscription? subscription;
   int _counter = 1;
 
@@ -20,11 +24,16 @@ class _AppState extends State<App> {
     super.initState();
 
     subscription = DerivLiveChat.onEventRecieved?.listen((event) {
-      print("chatListner $event");
-      if (event != "chatOpen" && event != "chatClose") {
+      if (event != 'chatOpen' && event != 'chatClose') {
         _setCounter(++_counter);
       }
     });
+  }
+
+  @override
+  void dispose() {
+    subscription?.cancel();
+    super.dispose();
   }
 
   void _setCounter(int counter) {
@@ -35,14 +44,13 @@ class _AppState extends State<App> {
 
   Future<void> openChatView() async {
     await DerivLiveChat.startChatView(
-        '13827195', // Licence ID
-        '', // group id in any
-        'Demo User', //
-        'DemoUser@gmail.com',
+        '12345678', //Set your licence number (get from Live chat App dashboard)
+        '', //Group ID Optionally, You can route your customers groupid
+        'Demo User', // You can provide customer name so a customer will not need to fill out the pre-chat survey
+        'DemoUser@gmail.com', // You can provide customer email so a customer will not need to fill out the pre-chat survey:
         <String, String>{
-          //email
-          'Appid': 'Demo', //optional name
-          'udid': 'User' //optional role
+          'Appid': 'Demo', //optional
+          'udid': 'User' //optional
         });
   }
 
@@ -85,16 +93,7 @@ class _AppState extends State<App> {
                 ),
                 onPressed: () {
                   _setCounter(1);
-                  DerivLiveChat.startChatView(
-                      '13694064',
-                      '',
-                      'Demo User', //
-                      'DemoUser@gmail.com',
-                      <String, String>{
-                        //email
-                        'userName': 'Demo', //optional name
-                        'role': 'User'
-                      });
+                  openChatView();
                 },
               ),
               _counter > 1
@@ -103,14 +102,14 @@ class _AppState extends State<App> {
                       top: 10,
                       right: 14,
                       child: Icon(Icons.brightness_1,
-                          size: 8.0, color: Colors.redAccent),
+                          size: 8, color: Colors.redAccent),
                     )
                   : Container()
             ]),
           ],
         ),
         body: Column(
-          children: [
+          children: <Widget>[
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 36, 0, 0),
               child: _chatButton(),
