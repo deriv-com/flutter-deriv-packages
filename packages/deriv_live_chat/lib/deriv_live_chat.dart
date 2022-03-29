@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 class DerivLiveChat {
   static const MethodChannel _channel = MethodChannel('derivLiveChat');
   static const EventChannel _eventChannelListner =
-      EventChannel('derivLiveChatListner');
+      EventChannel('derivLiveChatListener');
 
   /// Start chat by invoking method channel.
   static Future<void> startChatView(String licenseNo, String groupId,
