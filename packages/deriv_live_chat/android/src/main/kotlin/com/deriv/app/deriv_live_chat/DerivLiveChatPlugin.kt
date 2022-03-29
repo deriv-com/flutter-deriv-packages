@@ -1,10 +1,7 @@
 package com.deriv.app.deriv_live_chat
-import MethodCallType
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
-import android.view.View
 import androidx.annotation.NonNull
 import com.livechatinc.inappchat.ChatWindowConfiguration
 import com.livechatinc.inappchat.ChatWindowErrorType
@@ -19,19 +16,18 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import java.util.*
 
 /** DerivLiveChatPlugin */
 class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, EventChannel.StreamHandler{
   private lateinit var channel: MethodChannel
-  var activity: Activity? = null
+  private var activity: Activity? = null
 
   var lifecycleSink: EventSink? = null
-  var chatWindowView : ChatWindowView ?= null
+  private var chatWindowView : ChatWindowView ?= null
 
   companion object {
     const val CHANNEL = "derivLiveChat"
-    const val STREAM = "derivLiveChatStream"
+    const val STREAM = "derivLiveChatListener"
   }
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -43,8 +39,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
-
-    if (call.method.equals(MethodCallType.OPEN_DRIVE_LIVE_CHAT_VIEW.value)) {
+    if (call.method.equals("derivLiveChatView")) {
       val licenseNo = call.argument<String>("licenseNo")
       val customParams = call.argument<HashMap<String, String>>("customParams")!!
       val groupId = call.argument<String>("groupId")
@@ -80,7 +75,6 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
     }
 
     override fun onNewMessage(message: NewMessageModel?, windowVisible: Boolean) {
-      Log.d("chatListner", message?.text.toString())
       lifecycleSink?.success(message?.text)
     }
 
