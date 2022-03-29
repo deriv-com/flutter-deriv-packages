@@ -252,6 +252,10 @@ class _StackedBannerState extends State<StackedBanner>
   }
 
   Future<void> _expandStack() async {
+    if (_bannerItems.length <= 1) {
+      return;
+    }
+
     await _listExpansionController.forward();
     await Future<void>.delayed(widget.animationDuration);
 
