@@ -2,20 +2,19 @@ import Flutter
 import LiveChat
 import UIKit
 
-/** DerivLiveChatPlugin */
 public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate, FlutterStreamHandler {
     private var lifecycleSink: FlutterEventSink?
     public static func register(with registrar: FlutterPluginRegistrar) {
-        /// Register Channel
+        /// Register Channel.
         let channel = FlutterMethodChannel(name: "derivLiveChat", binaryMessenger: registrar.messenger())
         let instance = SwiftDerivLiveChatPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
 
-        /// Register Event
-        let eventChannel = FlutterEventChannel(name: "derivLiveChatStream", binaryMessenger: registrar.messenger())
+        /// Register Event.
+        let eventChannel = FlutterEventChannel(name: "derivLiveChatListner", binaryMessenger: registrar.messenger())
         eventChannel.setStreamHandler(instance.self)
     }
-    
+
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "derivLiveChatView":
@@ -33,10 +32,10 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
             } else if visitorEmail == "" {
                 result(FlutterError(code: "", message: "VISITOR EMAIL EMPTY", details: nil))
             } else {
-                LiveChat.licenseId = licenseNo // Here Set your licence number here
-                LiveChat.groupId = groupId     // Optionally, You can route your customers to specific group of agents by providing groupId
-                LiveChat.name = visitorName    // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey:
-                LiveChat.email = visitorEmail  // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey:
+                LiveChat.licenseId = licenseNo // Here Set your licence number here.
+                LiveChat.groupId = groupId // Optionally, You can route your customers to specific group of agents by providing groupId.
+                LiveChat.name = visitorName // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey.
+                LiveChat.email = visitorEmail // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey.
                 for (key, value) in customParams {
                     LiveChat.setVariable(withKey: key, value: value)
                 }
@@ -50,17 +49,17 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
         }
     }
 
-    /// iOS Live Chat delegate method to call Message received event (Method provided by Livechat plugin)
+    /// iOS Live Chat delegate method to call Message received event (Method provided by Livechat plugin).
     public func received(message: LiveChatMessage) {
         lifecycleSink?(message.text)
     }
 
-    /// Handle chat presented here (Method provided by Livechat plugin)
+    /// Handle chat presented here (Method provided by Livechat plugin).
     public func chatPresented() {
         lifecycleSink?("chatOpen")
     }
 
-    /// Handle chat dismissed here (Method provided by Livechat plugin)
+    /// Handle chat dismissed here (Method provided by Livechat plugin).
     public func chatDismissed() {
         lifecycleSink?("chatClose")
     }
