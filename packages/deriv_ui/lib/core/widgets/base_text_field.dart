@@ -111,49 +111,49 @@ class BaseTextField extends StatefulWidget {
   /// onTap callback function.
   final VoidCallback? onTap;
 
-  /// TextStyle for Input text field
+  /// TextStyle for Input text field.
   final TextStyle inputFiledTextStyle;
 
-  /// TextStyle for Input text field label
+  /// TextStyle for Input text field label.
   final TextStyle labelTextStyle;
 
-  /// Enabled  Input text field color
+  /// Enabled  Input text field color.
   final Color enabledTextColor;
 
-  /// Disabled Input text field color
+  /// Disabled Input text field color.
   final Color disabledTextColor;
 
-  /// Common app color for border
+  /// Common app color for border.
   final Color commonOutlineBorderColor;
 
-  /// Common app color for focused border
+  /// Common app color for focused border.
   final Color commonFocusedOutlineBorderColor;
 
-  /// Common app color for focused error border
+  /// Common app color for focused error border.
   final Color focusedErrorBorderColor;
 
-  /// Common app color for error border
+  /// Common app color for error border.
   final Color errorBorderColor;
 
-  /// Label default app focus color for the text filed
+  /// Default focus color for the label at the top of the text field.
   final Color labelDefaultFocusColor;
 
-  /// Label default app error color for the text filed
+  /// Default error color for the label at the top of the text field.
   final Color labelDefaultErrorColor;
 
-  /// Label default app color for the text filed
+  /// Default color for the label at the top of the text field.
   final Color labelDefaultColor;
 
-  /// Border radius for enabled text filed
+  /// Border radius for enabled text filed.
   final double enabledBorderRadius;
 
-  /// Border radius for focused text filed
+  /// Border radius for focused text filed.
   final double focusedBorderRadius;
 
-  /// Border radius for error text filed
+  /// Border radius for error text filed.
   final double errorBorderRadius;
 
-  /// Border radius for focused error text filed
+  /// Border radius for focused error text filed.
   final double focusedErrorBorderRadius;
 
   @override
