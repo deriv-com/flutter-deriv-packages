@@ -138,7 +138,7 @@ class _SlidableListItemState extends State<SlidableListItem>
   @override
   void dispose() {
     _animationController.dispose();
-
+    _autoCLoseTimer?.cancel();
     super.dispose();
   }
 }
