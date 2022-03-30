@@ -2,17 +2,18 @@ import Flutter
 import LiveChat
 import UIKit
 
+/** DerivLiveChatPlugin */
 public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate, FlutterStreamHandler {
     private var lifecycleSink: FlutterEventSink?
     public static func register(with registrar: FlutterPluginRegistrar) {
         /// Register Channel.
-        let channel = FlutterMethodChannel(name: "derivLiveChat", binaryMessenger: registrar.messenger())
+        let _liveChatMethodChannel = FlutterMethodChannel(name: "deriv_live_chat", binaryMessenger: registrar.messenger())
         let instance = SwiftDerivLiveChatPlugin()
-        registrar.addMethodCallDelegate(instance, channel: channel)
+        registrar.addMethodCallDelegate(instance, channel: _liveChatMethodChannel)
 
         /// Register Event.
-        let eventChannel = FlutterEventChannel(name: "derivLiveChatListener", binaryMessenger: registrar.messenger())
-        eventChannel.setStreamHandler(instance.self)
+        let _liveChatEventChannel = FlutterEventChannel(name: "deriv_live_chat_event_listener", binaryMessenger: registrar.messenger())
+        _liveChatEventChannel.setStreamHandler(instance.self)
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

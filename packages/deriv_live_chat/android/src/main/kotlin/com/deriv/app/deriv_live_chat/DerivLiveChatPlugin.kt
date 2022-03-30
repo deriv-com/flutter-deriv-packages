@@ -26,15 +26,15 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   private var chatWindowView : ChatWindowView ?= null
 
   companion object {
-    const val CHANNEL = "derivLiveChat"
-    const val STREAM = "derivLiveChatListener"
+    const val _liveChatMethodChannel = "deriv_live_chat"
+    const val _liveChatEventChannel = "deriv_live_chat_event_listener"
   }
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, CHANNEL)
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, _liveChatMethodChannel)
     channel.setMethodCallHandler(this)
 
-    EventChannel(flutterPluginBinding.binaryMessenger, STREAM)
+    EventChannel(flutterPluginBinding.binaryMessenger, _liveChatEventChannel)
       .setStreamHandler(this)
   }
 

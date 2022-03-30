@@ -15,7 +15,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  /// Stream Subscription for in app notification event listner
+  /// Stream Subscription for in app notification event listner.
   StreamSubscription? subscription;
   int _counter = 1;
 
