@@ -19,6 +19,9 @@ class BaseTextField extends StatefulWidget {
     required this.focusedBorderRadius,
     required this.focusedErrorBorderRadius,
     required this.labelTextStyle,
+    required this.labelDefaultFocusColor,
+    required this.labelDefaultErrorColor,
+    required this.labelDefaultColor,
     this.labelColor,
     this.initialValue,
     this.borderColor,
@@ -132,6 +135,15 @@ class BaseTextField extends StatefulWidget {
   /// Common app color for error border
   final Color errorBorderColor;
 
+  /// Label default app focus color for the text filed
+  final Color labelDefaultFocusColor;
+
+  /// Label default app error color for the text filed
+  final Color labelDefaultErrorColor;
+
+  /// Label default app color for the text filed
+  final Color labelDefaultColor;
+
   /// Border radius for enabled text filed
   final double enabledBorderRadius;
 
@@ -143,7 +155,6 @@ class BaseTextField extends StatefulWidget {
 
   /// Border radius for focused error text filed
   final double focusedErrorBorderRadius;
-
 
   @override
   _BaseTextFieldState createState() => _BaseTextFieldState();
@@ -197,8 +208,8 @@ class _BaseTextFieldState extends State<BaseTextField> {
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color:
-                  widget.focusedBorderColor ?? widget.commonFocusedOutlineBorderColor,
+              color: widget.focusedBorderColor ??
+                  widget.commonFocusedOutlineBorderColor,
             ),
             borderRadius: BorderRadius.circular(widget.focusedBorderRadius),
           ),
@@ -208,9 +219,16 @@ class _BaseTextFieldState extends State<BaseTextField> {
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: widget.focusedErrorBorderColor),
-            borderRadius: BorderRadius.circular(widget.focusedErrorBorderRadius),
+            borderRadius:
+                BorderRadius.circular(widget.focusedErrorBorderRadius),
           ),
-          labelStyle: widget.labelTextStyle,
+          labelStyle: widget.labelTextStyle.copyWith(
+            color: _hasError
+                ? widget.labelDefaultErrorColor
+                : (widget.focusNode?.hasFocus ?? false)
+                    ? widget.focusedLabelColor ?? widget.labelDefaultFocusColor
+                    : widget.labelColor ?? widget.labelDefaultColor,
+          ),
           errorMaxLines: widget.errorMaxLines,
           counterText: '',
         ).copyWith(suffixIcon: widget.suffixIcon),
