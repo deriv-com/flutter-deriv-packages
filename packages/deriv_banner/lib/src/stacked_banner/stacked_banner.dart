@@ -6,28 +6,25 @@ typedef OnAddRemoveBannerItem = Function(Widget);
 
 /// Trade banner controller.
 class StackedBannerController {
-  /// On add item callback.
-  OnAddRemoveBannerItem? _onAddItem;
-
-  OnAddRemoveBannerItem? _onRemoveItem;
-
-  /// On expand banner callback.
-  VoidCallback? _onExpandBanner;
-
-  /// On collapse banner callback.
-  VoidCallback? _onCollapseBanner;
-
   /// Adds an item to the stacked banner.
   void addItem(Widget item) => _onAddItem?.call(item);
+  OnAddRemoveBannerItem? _onAddItem;
 
   /// Removes an item to the stacked banner.
   void removeItem(Widget item) => _onRemoveItem?.call(item);
+  OnAddRemoveBannerItem? _onRemoveItem;
+
+  /// Collapse banner.
+  void removeAllBanners() => _onRemoveAllBanners?.call();
+  VoidCallback? _onRemoveAllBanners;
 
   /// Expands banner.
   void expandBanner() => _onExpandBanner?.call();
+  VoidCallback? _onExpandBanner;
 
   /// Collapse banner.
   void collapseBanner() => _onCollapseBanner?.call();
+  VoidCallback? _onCollapseBanner;
 }
 
 /// A widget that handles items that is passed to it, and can show them in two
@@ -159,6 +156,10 @@ class _StackedBannerState extends State<StackedBanner>
 
     widget.controller._onRemoveItem = (Widget item) {
       setState(() => _bannerItems.remove(item));
+    };
+
+    widget.controller._onRemoveAllBanners = () {
+      setState(() => _bannerItems.clear());
     };
 
     widget.controller._onExpandBanner = _expandStack;
