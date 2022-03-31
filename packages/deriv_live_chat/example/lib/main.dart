@@ -36,11 +36,7 @@ class _AppState extends State<App> {
     super.dispose();
   }
 
-  void _setCounter(int counter) {
-    setState(() {
-      _counter = counter;
-    });
-  }
+  void _setCounter(int counter) => setState(() => _counter = counter);
 
   Future<void> openChatView() async {
     await DerivLiveChat.startChatView(
