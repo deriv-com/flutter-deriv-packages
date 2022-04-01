@@ -1,5 +1,3 @@
-// ignore_for_file: always_specify_types
-
 import 'dart:async';
 import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +14,8 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   /// Stream Subscription for in app notification event listner.
-  StreamSubscription? subscription;
-  int _counter = 1;
+  late final StreamSubscription? subscription;
+  int _unreadNotificationCounter = 1;
 
   @override
   void initState() {
@@ -25,7 +23,7 @@ class _AppState extends State<App> {
 
     subscription = DerivLiveChat.onEventRecieved?.listen((event) {
       if (event != 'chatOpen' && event != 'chatClose') {
-        _setCounter(++_counter);
+        _setCounter(++_unreadNotificationCounter);
       }
     });
   }
@@ -36,7 +34,7 @@ class _AppState extends State<App> {
     super.dispose();
   }
 
-  void _setCounter(int counter) => setState(() => _counter = counter);
+  void _setCounter(int counter) => setState(() => _unreadNotificationCounter = counter);
 
   Future<void> openChatView() async {
     await DerivLiveChat.startChatView(
@@ -92,7 +90,7 @@ class _AppState extends State<App> {
                   openChatView();
                 },
               ),
-              _counter > 1
+              _unreadNotificationCounter > 1
                   ? const Positioned(
                       // draw a red marble
                       top: 10,
