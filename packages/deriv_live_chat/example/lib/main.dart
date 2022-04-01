@@ -1,13 +1,13 @@
 import 'dart:async';
+
 import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const App());
+void main() => runApp(App());
 
-/// Deriv Live Chat App
+/// Deriv Live Chat App.
 class App extends StatefulWidget {
-  ///
-  const App({Key? key}) : super(key: key);
+
   @override
   State<App> createState() => _AppState();
 }
@@ -45,32 +45,34 @@ class _AppState extends State<App> {
         <String, String>{
           'Appid': 'Demo', //optional
           'udid': 'User' //optional
-        });
+        }
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     Widget _chatButton() => Center(
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.blue[500],
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: TextButton(
-                onPressed: () {
-                  openChatView();
-                },
-                child: const Text(
-                  'Open Chat',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFFFFFFFF),
-                  ),
-                )),
-          ),
-        );
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[500],
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: TextButton(
+            onPressed: () {
+              openChatView();
+            },
+            child: const Text(
+              'Open Chat',
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+                color: Color(0xFFFFFFFF),
+              ),
+            )
+        ),
+      ),
+    );
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -92,12 +94,12 @@ class _AppState extends State<App> {
               ),
               _unreadNotificationCounter > 1
                   ? const Positioned(
-                      // draw a red marble
-                      top: 10,
-                      right: 14,
-                      child: Icon(Icons.brightness_1,
-                          size: 8, color: Colors.redAccent),
-                    )
+                // draw a red marble
+                top: 10,
+                right: 14,
+                child: Icon(Icons.brightness_1,
+                    size: 8, color: Colors.redAccent),
+              )
                   : Container()
             ]),
           ],
