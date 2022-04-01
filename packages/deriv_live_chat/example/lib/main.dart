@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/material.dart';
 
