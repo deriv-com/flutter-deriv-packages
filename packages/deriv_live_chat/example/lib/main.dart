@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +6,6 @@ void main() => runApp(App());
 
 /// Deriv Live Chat App.
 class App extends StatefulWidget {
-
   @override
   State<App> createState() => _AppState();
 }
@@ -16,11 +14,9 @@ class _AppState extends State<App> {
   /// Stream Subscription for in app notification event listner.
   late final StreamSubscription? subscription;
   int _unreadNotificationCounter = 1;
-
   @override
   void initState() {
     super.initState();
-
     subscription = DerivLiveChat.onEventRecieved?.listen((event) {
       if (event != 'chatOpen' && event != 'chatClose') {
         _setCounter(++_unreadNotificationCounter);
