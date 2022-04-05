@@ -6,9 +6,9 @@ on:
   push:
     branches:
     - dev
-    
-# on: push    # Default will running for every branch.
-    
+  pull_request_target:
+    types: [opened]
+
 jobs:
   build:
     # This job will run on ubuntu virtual machine
@@ -25,12 +25,10 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: 'stable'
-        # flutter-version: '2.8.1'
+        flutter-version: '2.8.1'
     
     # Get flutter dependencies.
     - run: flutter pub get
-    
-    # Check for any formatting issues in the code.
+
     - run: find packages/ -type d -exec bash -c 'cd "$0" && flutter test' {} \;
     
-    # Statically analyze the Dart code
