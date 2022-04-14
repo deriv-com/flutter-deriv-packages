@@ -20,6 +20,8 @@ class CustomChip extends StatelessWidget {
     required this.disabledBackgroundColor,
     required this.enabledBackgroundColor,
     required this.textStyle,
+    this.borderRadius,
+    this.activeBackgroundColor,
     this.labelBuilder,
     this.title,
     this.isEnabled = false,
@@ -53,6 +55,7 @@ class CustomChip extends StatelessWidget {
 
   /// Vertical padding for Chip
   final double chipVerticalPadding;
+
   /// Border radius for Chip
   final double chipBorderRadius;
 
@@ -68,6 +71,14 @@ class CustomChip extends StatelessWidget {
   /// Disabled Text color for Chip
   final Color disabledTextColor;
 
+  /// The border radius of chips container.
+  final double? borderRadius;
+
+  /// Container background color when [isEnabled] is true.
+  ///
+  /// If null then [base6] apply as container background.
+  final Color? activeBackgroundColor;
+
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => onTap?.call(value, title),
@@ -79,23 +90,23 @@ class CustomChip extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: _backgroundColor(),
-            borderRadius: BorderRadius.circular(chipBorderRadius),
+            borderRadius:
+                BorderRadius.circular(borderRadius ?? chipBorderRadius),
           ),
           child: Row(
             children: <Widget>[
               Text(
-                labelBuilder?.call(value, title) ??
-                    "${title ?? ''}${title != null ? ': ' : ''}$value",
-                style: textStyle.copyWith(color: _textColor())
-              ),
+                  labelBuilder?.call(value, title) ??
+                      "${title ?? ''}${title != null ? ': ' : ''}$value",
+                  style: textStyle.copyWith(color: _textColor())),
             ],
           ),
         ),
       );
 
-  Color _backgroundColor() =>
-      isEnabled ? enabledBackgroundColor : disabledBackgroundColor;
+  Color _backgroundColor() => isEnabled
+      ? activeBackgroundColor ?? enabledBackgroundColor
+      : disabledBackgroundColor;
 
-  Color _textColor() =>
-      isEnabled ? enabledTextColor : disabledTextColor;
+  Color _textColor() => isEnabled ? enabledTextColor : disabledTextColor;
 }
