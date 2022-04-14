@@ -37,7 +37,7 @@ class _SlidableListItemState extends State<SlidableListItem>
   late final AnimationController _animationController;
   late final Animation<Offset> _animation;
 
-  Timer? _autoCLoseTimer;
+  Timer? _autoCloseTimer;
 
   @override
   void initState() {
@@ -101,12 +101,12 @@ class _SlidableListItemState extends State<SlidableListItem>
         (AnimationStatus status) {
           if (status == AnimationStatus.completed) {
             if (_isItemOpen) {
-              _autoCLoseTimer = Timer(
+              _autoCloseTimer = Timer(
                 duration,
                 () => _animationController.animateTo(0),
               );
             } else {
-              _autoCLoseTimer?.cancel();
+              _autoCloseTimer?.cancel();
             }
           }
         },
@@ -138,7 +138,7 @@ class _SlidableListItemState extends State<SlidableListItem>
   @override
   void dispose() {
     _animationController.dispose();
-
+    _autoCloseTimer?.cancel();
     super.dispose();
   }
 }

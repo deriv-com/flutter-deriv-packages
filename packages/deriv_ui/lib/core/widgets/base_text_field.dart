@@ -19,6 +19,9 @@ class BaseTextField extends StatefulWidget {
     required this.focusedBorderRadius,
     required this.focusedErrorBorderRadius,
     required this.labelTextStyle,
+    required this.labelDefaultFocusColor,
+    required this.labelDefaultErrorColor,
+    required this.labelDefaultColor,
     this.labelColor,
     this.initialValue,
     this.borderColor,
@@ -108,42 +111,50 @@ class BaseTextField extends StatefulWidget {
   /// onTap callback function.
   final VoidCallback? onTap;
 
-  /// TextStyle for Input text field
+  /// TextStyle for Input text field.
   final TextStyle inputFiledTextStyle;
 
-  /// TextStyle for Input text field label
+  /// TextStyle for Input text field label.
   final TextStyle labelTextStyle;
 
-  /// Enabled  Input text field color
+  /// Enabled  Input text field color.
   final Color enabledTextColor;
 
-  /// Disabled Input text field color
+  /// Disabled Input text field color.
   final Color disabledTextColor;
 
-  /// Common app color for border
+  /// Common app color for border.
   final Color commonOutlineBorderColor;
 
-  /// Common app color for focused border
+  /// Common app color for focused border.
   final Color commonFocusedOutlineBorderColor;
 
-  /// Common app color for focused error border
+  /// Common app color for focused error border.
   final Color focusedErrorBorderColor;
 
-  /// Common app color for error border
+  /// Common app color for error border.
   final Color errorBorderColor;
 
-  /// Border radius for enabled text filed
+  /// Default focus color for the label at the top of the text field.
+  final Color labelDefaultFocusColor;
+
+  /// Default error color for the label at the top of the text field.
+  final Color labelDefaultErrorColor;
+
+  /// Default color for the label at the top of the text field.
+  final Color labelDefaultColor;
+
+  /// Border radius for enabled text filed.
   final double enabledBorderRadius;
 
-  /// Border radius for focused text filed
+  /// Border radius for focused text filed.
   final double focusedBorderRadius;
 
-  /// Border radius for error text filed
+  /// Border radius for error text filed.
   final double errorBorderRadius;
 
-  /// Border radius for focused error text filed
+  /// Border radius for focused error text filed.
   final double focusedErrorBorderRadius;
-
 
   @override
   _BaseTextFieldState createState() => _BaseTextFieldState();
@@ -197,8 +208,8 @@ class _BaseTextFieldState extends State<BaseTextField> {
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color:
-                  widget.focusedBorderColor ?? widget.commonFocusedOutlineBorderColor,
+              color: widget.focusedBorderColor ??
+                  widget.commonFocusedOutlineBorderColor,
             ),
             borderRadius: BorderRadius.circular(widget.focusedBorderRadius),
           ),
@@ -208,9 +219,16 @@ class _BaseTextFieldState extends State<BaseTextField> {
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: widget.focusedErrorBorderColor),
-            borderRadius: BorderRadius.circular(widget.focusedErrorBorderRadius),
+            borderRadius:
+                BorderRadius.circular(widget.focusedErrorBorderRadius),
           ),
-          labelStyle: widget.labelTextStyle,
+          labelStyle: widget.labelTextStyle.copyWith(
+            color: _hasError
+                ? widget.labelDefaultErrorColor
+                : (widget.focusNode?.hasFocus ?? false)
+                    ? widget.focusedLabelColor ?? widget.labelDefaultFocusColor
+                    : widget.labelColor ?? widget.labelDefaultColor,
+          ),
           errorMaxLines: widget.errorMaxLines,
           counterText: '',
         ).copyWith(suffixIcon: widget.suffixIcon),

@@ -55,7 +55,6 @@ class CustomChip extends StatelessWidget {
 
   /// Vertical padding for Chip
   final double chipVerticalPadding;
-
   /// Border radius for Chip
   final double chipBorderRadius;
 
@@ -96,9 +95,10 @@ class CustomChip extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Text(
-                  labelBuilder?.call(value, title) ??
-                      "${title ?? ''}${title != null ? ': ' : ''}$value",
-                  style: textStyle.copyWith(color: _textColor())),
+                labelBuilder?.call(value, title) ??
+                    "${title ?? ''}${title != null ? ': ' : ''}$value",
+                style: textStyle.copyWith(color: _textColor())
+              ),
             ],
           ),
         ),
