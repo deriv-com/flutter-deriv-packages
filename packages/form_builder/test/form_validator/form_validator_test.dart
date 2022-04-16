@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:form_builder/form_builder.dart';
 
 import 'rules/equal_rule_test.dart';
