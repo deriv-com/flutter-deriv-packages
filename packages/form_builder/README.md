@@ -75,7 +75,7 @@ class FormCheckboxField extends StatelessWidget {
 
 ## FormValidator
 
-This class contains a bunch of validation functions that can be chained together to create a validator for form fields, Form filed will be validated in order of given validation chain.
+This class contains a bunch of validation functions that can be chained together to create a validator for form fields, Form field will be validated in order of given validation chain.
 
 In order to add a new rule, you can simply create an extension on `FormValidator`.
 
