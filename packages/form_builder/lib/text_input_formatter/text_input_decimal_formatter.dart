@@ -1,4 +1,4 @@
-import 'package:flutter/services.dart';
+part of './text_input_formatter.dart';
 
 /// This class will format the text field value and only allow the user to input
 /// a decimal number with the give number of decimal places.
