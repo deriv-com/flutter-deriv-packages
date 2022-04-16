@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.example">
+    package="com.example.form_builder_example">
    <application
-        android:label="example"
+        android:label="FormBuilder Example"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
