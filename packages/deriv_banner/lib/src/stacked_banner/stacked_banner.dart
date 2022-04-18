@@ -168,35 +168,33 @@ class _StackedBannerState extends State<StackedBanner>
   }
 
   @override
-  Widget build(BuildContext context) => FractionalTranslation(
-        translation: Offset(0, -_dismissAnimationController.value),
-        child: SafeArea(
-          child: IndexedStack(
-            index: _stackIndex,
-            children: <Widget>[
-              GestureDetector(
-                onTap: _expandStack,
-                // onVerticalDragStart: _onDismissBanner,
-                onVerticalDragUpdate: _updateBannerDismissHeight,
-                onVerticalDragEnd: _dismissOrFlingBack,
-                child: Container(
-                  key: _collapsedItemsKey,
-                  child: _buildStackedView(),
-                ),
+  Widget build(BuildContext context) => SafeArea(
+        child: IndexedStack(
+          index: _stackIndex,
+          children: <Widget>[
+            GestureDetector(
+              onTap: _expandStack,
+              // onVerticalDragStart: _onDismissBanner,
+              onVerticalDragUpdate: _updateBannerDismissHeight,
+              onVerticalDragEnd: _dismissOrFlingBack,
+              child: Container(
+                key: _collapsedItemsKey,
+                child: _buildStackedView(MediaQuery.of(context).size),
               ),
-              _buildExpandedView(),
-            ],
-          ),
+            ),
+            _buildExpandedView(),
+          ],
         ),
       );
 
-  Widget _buildStackedView() => Stack(
+  Widget _buildStackedView(Size screenSize) => Stack(
         children: <Widget>[
           ...List<Widget>.generate(
             _bannerItems.length,
             (int index) => _buildStackItem(
               _bannerItems[index],
               index,
+              screenSize,
             ),
           ),
         ],
@@ -220,13 +218,14 @@ class _StackedBannerState extends State<StackedBanner>
         itemCount: _bannerItems.length + 1,
       );
 
-  Widget _buildStackItem(Widget child, int index) {
+  Widget _buildStackItem(Widget child, int index, Size screenSize) {
     final double horizontalOffset = _getHorizontalOffset(index);
 
     return AnimatedPositioned(
       child: child,
       duration: widget.animationDuration,
-      top: _getTopOffset(index),
+      top: _getTopOffset(index) -
+          (_dismissAnimationController.value * screenSize.height),
       left: horizontalOffset,
       right: horizontalOffset,
     );
@@ -243,8 +242,8 @@ class _StackedBannerState extends State<StackedBanner>
       await _dismissAnimationController.forward(
         from: _dismissAnimationController.value,
       );
-      _bannerItems.clear();
-      await _dismissAnimationController.reverse(from: 1);
+      // _bannerItems.clear();
+      // await _dismissAnimationController.reverse(from: 1);
     } else {
       await _dismissAnimationController.reverse(
         from: _dismissAnimationController.value,
