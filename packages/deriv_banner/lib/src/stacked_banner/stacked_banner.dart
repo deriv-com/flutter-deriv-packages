@@ -150,7 +150,8 @@ class _StackedBannerState extends State<StackedBanner>
 
   void _assignControllerValues() {
     widget.controller._onAddItem = (Widget item) {
-      if (_bannerItems.isEmpty || _dismissAnimationController.value < 0.2) {
+      if (_dismissAnimationController.value < 0.1) {
+        // When stacked banner is not dismissed yet. normal newItemAnimation
         _bannerItems.add(item);
         newItemAnimation();
       } else {
