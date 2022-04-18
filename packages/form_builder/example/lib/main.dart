@@ -48,7 +48,7 @@ class _Example extends StatelessWidget {
                           child: const Text('Submit'),
                         ),
                         ElevatedButton(
-                          onPressed: () => _controller.reset(),
+                          onPressed: _controller.reset,
                           child: const Text('Reset'),
                         ),
                       ],

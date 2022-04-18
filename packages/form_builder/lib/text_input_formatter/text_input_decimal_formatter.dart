@@ -30,16 +30,16 @@ class TextInputDecimalFormatter extends TextInputFormatter {
     final String text = withSign
         ? newValue.text
         : newValue.text.replaceAll(RegExp(r'[+-]'), '');
-    final List<String> input = text.split('.');
+    final List<String> inputs = text.split('.');
 
     // The field contains more than one dot, So we return the old value as only
     // one dot is allowed.
-    if (input.length > 2) {
+    if (inputs.length > 2) {
       return oldValue;
     }
 
-    String left = input[0];
-    final String? right = input.length > 1 ? input[1] : null;
+    String left = inputs.first;
+    final String? right = inputs.length > 1 ? inputs[1] : null;
     final bool hasRight = right != null && right.isNotEmpty;
 
     // The field value is positive or negative sign, So we return the new value

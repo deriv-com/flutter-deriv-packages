@@ -7,13 +7,12 @@ extension MaxRuleExtensions on FormValidator {
         (dynamic fieldValue) {
           bool _hasError = false;
 
+          bool _hasLength() =>
+              fieldValue is String || fieldValue is List || fieldValue is Map;
+
           if (fieldValue is num && fieldValue > value) {
             _hasError = true;
-          } else if (fieldValue is String && fieldValue.length > value) {
-            _hasError = true;
-          } else if (fieldValue is List && fieldValue.length > value) {
-            _hasError = true;
-          } else if (fieldValue is Map && fieldValue.length > value) {
+          } else if (_hasLength() && fieldValue.length > value) {
             _hasError = true;
           }
 

@@ -42,6 +42,18 @@ class FormBuilder extends StatefulWidget {
 
 /// State associated with the [FormBuilder] widget.
 class FormBuilderState extends State<FormBuilder> {
+  @override
+  Widget build(BuildContext context) => Form(
+        key: controller._formKey,
+        autovalidateMode: widget.autoValidateMode,
+        onWillPop: widget.onWillPop,
+        onChanged: widget.onChanged,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: widget.children ?? <Widget>[],
+        ),
+      );
+
   /// Returns the [FormBuilderController] associated with the [FormBuilder].
   FormBuilderController get controller => widget.controller;
 
@@ -80,18 +92,6 @@ class FormBuilderState extends State<FormBuilder> {
 
     controller._values.remove(name);
   }
-
-  @override
-  Widget build(BuildContext context) => Form(
-        key: controller._formKey,
-        autovalidateMode: widget.autoValidateMode,
-        onWillPop: widget.onWillPop,
-        onChanged: widget.onChanged,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: widget.children ?? <Widget>[],
-        ),
-      );
 
   @override
   void dispose() {
