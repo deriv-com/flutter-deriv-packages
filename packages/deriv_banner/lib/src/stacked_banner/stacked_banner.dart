@@ -150,8 +150,13 @@ class _StackedBannerState extends State<StackedBanner>
 
   void _assignControllerValues() {
     widget.controller._onAddItem = (Widget item) {
-      _bannerItems.add(item);
-      newItemAnimation();
+      if (_bannerItems.isEmpty || _dismissAnimationController.value < 0.2) {
+        _bannerItems.add(item);
+        newItemAnimation();
+      } else {
+        _bannerItems.add(item);
+        _dismissAnimationController.reverse(from: 1);
+      }
     };
 
     widget.controller._onRemoveItem = (Widget item) {
