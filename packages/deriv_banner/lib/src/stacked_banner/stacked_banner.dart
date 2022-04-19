@@ -145,7 +145,9 @@ class _StackedBannerState extends State<StackedBanner>
     _lastCardTopOffsetValue = Tween<double>(
       begin: -100,
       end: widget.topPadding,
-    ).animate(_slidingController);
+    ).animate(
+      CurvedAnimation(parent: _slidingController, curve: Curves.easeIn),
+    );
   }
 
   void _assignControllerValues() {
