@@ -152,7 +152,7 @@ class _StackedBannerState extends State<StackedBanner>
 
   void _assignControllerValues() {
     widget.controller._onAddItem = (Widget item) {
-      if (_dismissAnimationController.value < 0.1) {
+      if (_dismissAnimationController.status == AnimationStatus.dismissed) {
         // When stacked banner is not dismissed yet. normal newItemAnimation
         _bannerItems.add(item);
         newItemAnimation();
@@ -250,8 +250,6 @@ class _StackedBannerState extends State<StackedBanner>
       await _dismissAnimationController.forward(
         from: _dismissAnimationController.value,
       );
-      // _bannerItems.clear();
-      // await _dismissAnimationController.reverse(from: 1);
     } else {
       await _dismissAnimationController.reverse(
         from: _dismissAnimationController.value,
