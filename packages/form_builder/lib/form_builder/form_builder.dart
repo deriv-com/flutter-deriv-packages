@@ -8,7 +8,7 @@ class FormBuilder extends StatefulWidget {
   /// Constructs a new [FormBuilder] with the given [FormBuilderController].
   const FormBuilder({
     required this.controller,
-    this.children,
+    required this.children,
     this.autoValidateMode = AutovalidateMode.disabled,
     this.onChanged,
     this.onWillPop,
@@ -20,7 +20,7 @@ class FormBuilder extends StatefulWidget {
   final FormBuilderController controller;
 
   /// Children of the form. Typically a list of [FormBuilderField] widgets.
-  final List<Widget>? children;
+  final List<Widget> children;
 
   /// Sets the form auto validation mode for the form.
   final AutovalidateMode autoValidateMode;
@@ -50,7 +50,7 @@ class FormBuilderState extends State<FormBuilder> {
         onChanged: widget.onChanged,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: widget.children ?? <Widget>[],
+          children: widget.children,
         ),
       );
 
