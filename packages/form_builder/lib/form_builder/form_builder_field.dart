@@ -102,6 +102,9 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
   @override
   bool validate() => super.validate() && !hasError;
 
+  /// Requests the primary focus for this field.
+  void focus() => focusNode.requestFocus();
+
   void _updateState() => setState(() {});
 
   /// Returns the initial value of the field.
@@ -110,9 +113,8 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
       return widget.initialValue;
     }
 
-    final dynamic _value = _formBuilderState?.controller.initialValueOf(
-      widget.name,
-    );
+    final dynamic _value =
+        _formBuilderState?.controller.initialValueOf<dynamic>(widget.name);
 
     if (_value is T) {
       return _value;

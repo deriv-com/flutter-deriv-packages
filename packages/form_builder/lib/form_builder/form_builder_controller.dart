@@ -7,12 +7,12 @@ class FormBuilderController extends ChangeNotifier {
     this.initialValues = const <String, dynamic>{},
   });
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   /// Initial values of the form, Pair of field name and field value.
   final Map<String, dynamic> initialValues;
 
   final Map<String, dynamic> _values = <String, dynamic>{};
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final Map<String, dynamic> _fields = <String, dynamic>{};
 
@@ -33,7 +33,14 @@ class FormBuilderController extends ChangeNotifier {
   Map<String, dynamic> get fields => _fields;
 
   /// Returns the initial value of the given key.
-  dynamic initialValueOf(String name) => initialValues[name];
+  T? initialValueOf<T>(String name) => initialValues[name];
+
+  /// Returns the value of the given key.
+  T? value<T>(String name) => values[name];
+
+  /// Returns the field of the given key.
+  FormBuilderFieldState<FormBuilderField<T>, T>? field<T>(String name) =>
+      fields[name];
 
   /// Calls onSaved method on every [FormBuilderField] in children of this form.
   void save() => _formKey.currentState?.save();
