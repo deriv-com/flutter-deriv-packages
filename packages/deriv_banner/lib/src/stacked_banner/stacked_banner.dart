@@ -58,7 +58,7 @@ class StackedBanner extends StatefulWidget {
     this.bannerHorizontalPadding = 4,
     this.onDismissed,
     this.animationDuration = const Duration(milliseconds: 250),
-    this.maxBannersCount = 3,
+    this.maxBannersCount = 5,
   })  : assert(maxBannersCount > 0),
         assert(maxBannersCount >= maxCollapsedItems);
 
