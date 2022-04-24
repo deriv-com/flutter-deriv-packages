@@ -182,7 +182,6 @@ class _StackedBannerState extends State<StackedBanner>
           children: <Widget>[
             GestureDetector(
               onTap: _expandStack,
-              // onVerticalDragStart: _onDismissBanner,
               onVerticalDragUpdate: _updateBannerDismissHeight,
               onVerticalDragEnd: _dismissOrFlingBack,
               child: Container(
@@ -246,7 +245,7 @@ class _StackedBannerState extends State<StackedBanner>
   }
 
   Future<void> _dismissOrFlingBack(DragEndDetails details) async {
-    if (_dismissAnimationController.value > 0.1) {
+    if (_dismissAnimationController.value > 0.05) {
       await _dismissAnimationController.forward(
         from: _dismissAnimationController.value,
       );
