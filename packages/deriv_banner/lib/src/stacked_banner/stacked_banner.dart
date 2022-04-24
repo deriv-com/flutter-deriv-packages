@@ -58,8 +58,9 @@ class StackedBanner extends StatefulWidget {
     this.bannerHorizontalPadding = 4,
     this.onDismissed,
     this.animationDuration = const Duration(milliseconds: 250),
-    this.maxBannersCount = 5,
-  }) : assert(maxBannersCount > 0);
+    this.maxBannersCount = 3,
+  })  : assert(maxBannersCount > 0),
+        assert(maxBannersCount >= maxCollapsedItems);
 
   /// The top padding for the stacked banner.
   final double topPadding;
@@ -164,9 +165,6 @@ class _StackedBannerState extends State<StackedBanner>
   void _assignControllerValues() {
     widget.controller._onAddItem = (Widget item) async {
       _bannerItems.add(item);
-      if (_bannerItems.length > widget.maxBannersCount) {
-        _bannerItems.removeAt(0);
-      }
 
       if (_dismissAnimationController.status == AnimationStatus.dismissed) {
         // When stacked banner is not dismissed yet. normal newItemAnimation
@@ -273,6 +271,8 @@ class _StackedBannerState extends State<StackedBanner>
   }
 
   Future<void> _expandStack() async {
+    _removeExtraBanners();
+
     if (_bannerItems.length <= 1) {
       return;
     }
@@ -283,6 +283,12 @@ class _StackedBannerState extends State<StackedBanner>
     setState(() => _stackIndex = 1);
 
     widget.isExpanded?.call(true);
+  }
+
+  void _removeExtraBanners() {
+    if (_bannerItems.length > widget.maxBannersCount) {
+      _bannerItems.removeRange(0, _bannerItems.length - widget.maxBannersCount);
+    }
   }
 
   void _collapseList() {
@@ -333,10 +339,9 @@ class _StackedBannerState extends State<StackedBanner>
   Future<void> newItemAnimation() async {
     if (_slidingController.isCompleted) {
       _slidingController.reset();
-      await _slidingController.forward();
-    } else {
-      await _slidingController.forward();
     }
+
+    await _slidingController.forward();
   }
 
   int get _topBannerIndex => _bannerItems.length - 1;
