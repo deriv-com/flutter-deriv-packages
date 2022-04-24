@@ -56,6 +56,7 @@ class StackedBanner extends StatefulWidget {
     this.bannerHeight = 64,
     this.bannerVerticalPadding = 8,
     this.bannerHorizontalPadding = 4,
+    this.onDismissed,
     this.animationDuration = const Duration(milliseconds: 250),
   });
 
@@ -64,6 +65,9 @@ class StackedBanner extends StatefulWidget {
 
   /// The callback triggered when the list of banner items is either expanded or collapsed.
   final Function(bool)? isExpanded;
+
+  /// Will be called when banners are dismissed.
+  final VoidCallback? onDismissed;
 
   /// Stacked banner controller.
   final StackedBannerController controller;
@@ -249,6 +253,8 @@ class _StackedBannerState extends State<StackedBanner>
       await _dismissAnimationController.forward(
         from: _dismissAnimationController.value,
       );
+
+      widget.onDismissed?.call();
     } else {
       await _dismissAnimationController.reverse(
         from: _dismissAnimationController.value,
