@@ -291,10 +291,10 @@ class _StackedBannerState extends State<StackedBanner>
     }
   }
 
-  void _collapseList() {
+  Future<void> _collapseList() async {
     _stackIndex = 0;
 
-    _listExpansionController.reverse();
+    await _listExpansionController.reverse();
     widget.isExpanded?.call(false);
   }
 
