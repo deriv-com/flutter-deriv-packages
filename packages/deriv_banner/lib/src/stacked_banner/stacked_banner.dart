@@ -58,7 +58,8 @@ class StackedBanner extends StatefulWidget {
     this.bannerHorizontalPadding = 4,
     this.onDismissed,
     this.animationDuration = const Duration(milliseconds: 250),
-  });
+    this.maxBannersCount = 5,
+  }) : assert(maxBannersCount > 0);
 
   /// The top padding for the stacked banner.
   final double topPadding;
@@ -74,6 +75,12 @@ class StackedBanner extends StatefulWidget {
 
   /// Max number of items to show when the banner is in collapsed mode.
   final int maxCollapsedItems;
+
+  /// Maximum number of banners.
+  ///
+  /// Default is 5. means that if there are 5 banners, and a new banner is added
+  /// the oldest one will be removed.
+  final int maxBannersCount;
 
   /// The builder method to get the widget of the item that is shown at the end
   /// of stacked banner list and clicking on it collapses the list.
@@ -155,14 +162,17 @@ class _StackedBannerState extends State<StackedBanner>
   }
 
   void _assignControllerValues() {
-    widget.controller._onAddItem = (Widget item) {
+    widget.controller._onAddItem = (Widget item) async {
+      _bannerItems.add(item);
+      if (_bannerItems.length > widget.maxBannersCount) {
+        _bannerItems.removeAt(0);
+      }
+
       if (_dismissAnimationController.status == AnimationStatus.dismissed) {
         // When stacked banner is not dismissed yet. normal newItemAnimation
-        _bannerItems.add(item);
-        newItemAnimation();
+        await newItemAnimation();
       } else {
-        _bannerItems.add(item);
-        _dismissAnimationController.reverse(from: 1);
+        await _dismissAnimationController.reverse(from: 1);
       }
     };
 
@@ -320,13 +330,12 @@ class _StackedBannerState extends State<StackedBanner>
     }
   }
 
-  void newItemAnimation() {
+  Future<void> newItemAnimation() async {
     if (_slidingController.isCompleted) {
-      _slidingController
-        ..reset()
-        ..forward();
+      _slidingController.reset();
+      await _slidingController.forward();
     } else {
-      _slidingController.forward();
+      await _slidingController.forward();
     }
   }
 
