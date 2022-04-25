@@ -5,18 +5,18 @@ extension MaxRuleExtensions on FormValidator {
   /// The field should be maximum as the given value.
   FormValidator max(num value, {String? error}) => add(
         (dynamic fieldValue) {
-          bool _hasError = false;
+          bool hasError = false;
 
           bool _hasLength() =>
               fieldValue is String || fieldValue is List || fieldValue is Map;
 
           if (fieldValue is num && fieldValue > value) {
-            _hasError = true;
+            hasError = true;
           } else if (_hasLength() && fieldValue.length > value) {
-            _hasError = true;
+            hasError = true;
           }
 
-          if (_hasError) {
+          if (hasError) {
             return error ?? 'Should be maximum of $value.';
           }
 
