@@ -61,6 +61,9 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
       }
       chatWindowView?.showChatWindow()
       result.success(null)
+    } else if(call.method.equals("closeChatView")){
+      chatWindowView?.onBackPressed()
+      result.success(null)
     } else {
       result.notImplemented()
     }

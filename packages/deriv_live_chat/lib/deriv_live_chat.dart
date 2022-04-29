@@ -25,4 +25,9 @@ class DerivLiveChat {
   /// Here we are receving events stream.
   static Stream<dynamic>? get onEventRecieved =>
       _liveChatEventChannel.receiveBroadcastStream();
+
+      /// Start chat by invoking method channel.
+  static Future<void> closeChatView() async =>
+      _liveChatMethodChannel
+          .invokeMethod<dynamic>('closeChatView');
 }
