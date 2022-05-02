@@ -24,8 +24,8 @@ class DerivLiveChat {
           'licenseNo': licenseNo,
           'visitorName': username,
           'visitorEmail': email,
-          if (groupId != null) 'groupId': groupId,
-          if (customParameters != null) 'customParams': customParameters,
+          'groupId': groupId,
+          'customParams': customParameters,
         },
       );
 

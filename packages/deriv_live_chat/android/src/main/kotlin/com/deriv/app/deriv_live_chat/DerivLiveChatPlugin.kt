@@ -2,11 +2,13 @@ package com.deriv.app.deriv_live_chat
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+
 import androidx.annotation.NonNull
 import com.livechatinc.inappchat.ChatWindowConfiguration
 import com.livechatinc.inappchat.ChatWindowErrorType
 import com.livechatinc.inappchat.ChatWindowView
 import com.livechatinc.inappchat.models.NewMessageModel
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -41,17 +43,19 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
     if (call.method.equals("derivLiveChatView")) {
       val licenseNo = call.argument<String>("licenseNo")
-      val customParams = call.argument<HashMap<String, String>>("customParams")!!
-      val groupId = call.argument<String>("groupId")
       val visitorName = call.argument<String>("visitorName")
       val visitorEmail = call.argument<String>("visitorEmail")
+      val groupId = call.argument<String>("groupId")
+      val customParams = call.argument<HashMap<String, String>>("customParams")!!
+
       if(chatWindowView == null ){
         chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
+
         val configuration = ChatWindowConfiguration.Builder()
           .setLicenceNumber(licenseNo)
-          .setGroupId(groupId)
           .setVisitorName(visitorName)
           .setVisitorEmail(visitorEmail)
+          .setGroupId(groupId)
           .setCustomParams(customParams)
           .build()
 
@@ -59,10 +63,13 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
         chatWindowView?.setUpListener(chatListener)
         chatWindowView?.initialize()
       }
+
       chatWindowView?.showChatWindow()
+
       result.success(null)
     } else if(call.method.equals("closeChatView")){
       chatWindowView?.onBackPressed()
+
       result.success(null)
     } else {
       result.notImplemented()
@@ -70,9 +77,9 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
 
   private val chatListener = object : ChatWindowView.ChatWindowEventsListener {
     override fun onChatWindowVisibilityChanged(visible: Boolean) {
-      if(visible){
+      if (visible) {
         lifecycleSink?.success("chatOpen")
-      }else{
+      } else {
         lifecycleSink?.success("chatClose")
       }
     }
@@ -97,6 +104,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
       return true
     }
   }
+
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
   }
@@ -123,4 +131,3 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
     lifecycleSink = null
   }
 }
-

@@ -34,9 +34,9 @@ void main() {
         'derivLiveChatView',
         arguments: <String, dynamic>{
           'licenseNo': 'licenseNo',
-          'groupId': 'groupId',
           'visitorName': 'visitorName',
           'visitorEmail': 'visitorEmail',
+          'groupId': 'groupId',
           'customParams': null,
         },
       ),
