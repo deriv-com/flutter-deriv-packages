@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 part 'form_builder_controller.dart';
 part 'form_builder_field.dart';
+part 'form_state_builder.dart';
 
 /// This widget wraps the [Form] widget and extends it's functionality.
 class FormBuilder extends StatefulWidget {
@@ -47,7 +48,10 @@ class FormBuilderState extends State<FormBuilder> {
         key: controller._formKey,
         autovalidateMode: widget.autoValidateMode,
         onWillPop: widget.onWillPop,
-        onChanged: widget.onChanged,
+        onChanged: () {
+          controller.didChange();
+          widget.onChanged?.call();
+        },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: widget.children,

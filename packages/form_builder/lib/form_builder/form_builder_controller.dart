@@ -42,6 +42,9 @@ class FormBuilderController extends ChangeNotifier {
   FormBuilderFieldState<FormBuilderField<T>, T>? field<T>(String name) =>
       fields[name];
 
+  /// Notifies the listeners that there has been a change in the form.
+  void didChange() => notifyListeners();
+
   /// Calls onSaved method on every [FormBuilderField] in children of this form.
   void save() => _formKey.currentState?.save();
 

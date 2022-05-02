@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:form_builder/form_builder.dart';
 
+import 'form_checkbox_field.dart';
+import 'form_submit_button.dart';
+import 'form_text_field.dart';
+
 void main() => runApp(_Example());
 
 class _Example extends StatelessWidget {
@@ -20,6 +24,7 @@ class _Example extends StatelessWidget {
               child: Center(
                 child: FormBuilder(
                   controller: _controller,
+                  autoValidateMode: AutovalidateMode.onUserInteraction,
                   children: <Widget>[
                     FormTextField(
                       name: 'email',
@@ -31,57 +36,17 @@ class _Example extends StatelessWidget {
                       label: 'Password',
                       validator: FormValidator().required().min(6).validate(),
                     ),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_controller.saveAndValidate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('${_controller.values}'),
-                                ),
-                              );
-                            }
-                          },
-                          child: const Text('Submit'),
-                        ),
-                        ElevatedButton(
-                          onPressed: _controller.reset,
-                          child: const Text('Reset'),
-                        ),
-                      ],
+                    const FormCheckboxField(
+                      name: 'remember_me',
+                      label: 'Remember me',
                     ),
+                    const SizedBox(height: 18),
+                    const FormSubmitButton(),
                   ],
                 ),
               ),
             ),
           ),
-        ),
-      );
-}
-
-class FormTextField extends StatelessWidget {
-  const FormTextField({
-    required this.name,
-    this.label,
-    this.validator,
-  });
-
-  final String name;
-
-  final String? label;
-
-  final FormFieldValidator<String>? validator;
-
-  @override
-  Widget build(BuildContext context) => FormBuilderField<String>(
-        name: name,
-        validator: validator,
-        builder: (FormBuilderFieldBuilderState<String> field) => TextFormField(
-          decoration: field.decoration.copyWith(labelText: label),
-          onChanged: field.didChange,
         ),
       );
 }
