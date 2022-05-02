@@ -23,12 +23,11 @@ In order to use the plugin, add the following to `pubspec.yaml` file. Refer to t
 
 ```yaml
 deriv_live_chat:
-       git:
-         url: git@github.com:regentmarkets/flutter-deriv-packages.git
-         path: packages/deriv_live_chat
-         ref: master
+  git:
+    url: git@github.com:regentmarkets/flutter-deriv-packages.git
+    path: packages/deriv_live_chat
+    ref: master
 ```
-
 
 ```dart
 import 'package:deriv_live_chat/deriv_live_chat.dart';
@@ -40,30 +39,31 @@ The plugin can be used by simply making a call to as follows:
 
 ```dart
  DerivLiveChat.startChatView(
-        '12345678', //Set your licence number (get from Live chat App dashboard)
-        '****', //Group ID Optionally, You can route your customers groupid
-        'Username', // You can provide customer name so a customer will not need to fill out the pre-chat survey
-        'User email', // You can provide customer email so a customer will not need to fill out the pre-chat survey:
-        <String, String>{
-          'Appid': 'Demo', //optional
-          'udid': 'User'   //optional
-        }
-    );
+    licenseNo: '12345678', // set your licence number (get from Live chat App dashboard).
+    name: 'Username', // you can provide customer name so a customer will not need to fill out the pre-chat survey.
+    email: 'User email', // you can provide customer email so a customer will not need to fill out the pre-chat survey.
+    groupId: '****', // group ID Optionally, You can route your customers group id.
+    customParameters: <String, String>{ // optional parameters.
+      'Appid': 'Demo',
+      'udid': 'User'
+    }
+);
 ```
 
 Receive InApp Notification Count when chat minimized.
 
 ```dart
 final StreamSubscription? subscription;
+
 int _unreadNotificationCounter = 0;
 
- subscription = DerivLiveChat.onEventRecieved?.listen((event) {
-      if (event != 'chatOpen' && event != 'chatClose') {
-        _setCounter(++_unreadNotificationCounter);
-      }
-    });
-
+subscription = DerivLiveChat.onEventReceived?.listen((event) {
+  if (event != 'chatOpen' && event != 'chatClose') {
+    _setCounter(_unreadNotificationCounter++);
+  }
+});
 ```
+
 ## Compatibility
 
 - Android: the plugin requires a minimum API level of 21 and Kotlin 1.4.0.

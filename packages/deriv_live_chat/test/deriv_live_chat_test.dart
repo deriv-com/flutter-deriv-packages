@@ -1,13 +1,15 @@
-import 'package:deriv_live_chat/deriv_live_chat.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:deriv_live_chat/deriv_live_chat.dart';
+
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   const MethodChannel channel = MethodChannel('derivLiveChat');
 
-  TestWidgetsFlutterBinding.ensureInitialized();
   final List<MethodCall> log = <MethodCall>[];
-  TestWidgetsFlutterBinding.ensureInitialized();
+
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
       log.add(methodCall);
@@ -22,10 +24,10 @@ void main() {
 
   test('Start chat with Deriv Live Chat plugin without customParams', () async {
     await DerivLiveChat.startChatView(
-      'licenseNo',
-      'groupId',
-      'visitorName',
-      'visitorEmail',
+      licenseNo: 'licenseNo',
+      username: 'visitorName',
+      email: 'visitorEmail',
+      groupId: 'groupId',
     );
     expect(log, <Matcher>[
       isMethodCall(

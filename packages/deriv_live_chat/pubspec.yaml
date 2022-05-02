@@ -15,6 +15,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   deriv_lint:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
