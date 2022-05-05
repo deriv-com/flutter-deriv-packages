@@ -1,0 +1,106 @@
+version: 2.1     
+jobs:
+
+  Flutter-Workflow:
+    docker:
+      - image: cirrusci/flutter:2.10.5
+    working_directory: ~/flutter-deriv-packages
+
+    steps:
+      - checkout
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/analytics
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: analytics analysis
+      #    access issue and depend on ruuderstack
+
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_api_key_provider
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_api_key_provider analysis
+      #    testfailing test production api token getter.
+
+      - run: 
+         working_directory: ~/flutter-deriv-packages/packages/deriv_lint
+         command: flutter pub get && flutter test && flutter analyze
+         name: deriv_lint analysis
+
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_banner
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_banner analysis
+      # access issue
+
+      - run: 
+         working_directory: ~/flutter-deriv-packages/packages/deriv_bloc_manager
+         command: flutter pub get && flutter test && flutter analyze
+         name: deriv_bloc_manager analysis
+      # test not found
+
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_live_chat
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_live_chat analysis
+      #  test failed
+
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_rudderstack
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_rudderstack test
+      #  This app is using a deprecated version of the Android embedding.
+
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_survicate
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_survicate test
+      #  This app is using a deprecated version of the Android embedding.
+
+      - run: 
+         working_directory: ~/flutter-deriv-packages/packages/deriv_signup_login
+         command: flutter pub get && flutter analyze
+         name: deriv_signup_login analysis
+
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_store_launcher 
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_store_launcher test
+      #    Please make sure you have the correct access rights and the repository exists
+
+      - run: 
+         working_directory: ~/flutter-deriv-packages/packages/deriv_technical_analysis
+         command: flutter pub get && flutter test && flutter analyze
+         name: deriv_technical_analysis analysis
+
+      - run: 
+         working_directory: ~/flutter-deriv-packages/packages/deriv_theme
+         command: flutter pub get && flutter test && flutter analyze
+         name: deriv_theme analysis
+
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/survey_monkey
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: survey_monkey test
+      # This app is using a deprecated version of the Android embedding.
+      
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/update_checker
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: update_checker test
+      #    This app is using a deprecated version of the Android embedding.
+
+      # - run: 
+      #     working_directory: ~/flutter-deriv-packages/packages/deriv_ui
+      #     command: flutter pub get && flutter test && flutter analyze
+      #     name: deriv_ui analysis
+      #     # access issues
+
+      - run: 
+          working_directory: ~/flutter-deriv-packages/packages/form_builder
+          command: flutter pub get && flutter test && flutter analyze
+          name: form_builder analysis
+
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - Flutter-Workflow
