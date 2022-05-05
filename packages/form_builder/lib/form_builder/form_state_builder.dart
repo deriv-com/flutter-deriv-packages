@@ -14,8 +14,7 @@ class FormStateBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FormBuilderController? controller =
-        FormBuilder.of(context)?.controller;
+    final FormBuilderController? controller = FormBuilderController.of(context);
 
     if (controller == null) {
       assert(() {

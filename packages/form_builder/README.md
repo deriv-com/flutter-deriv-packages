@@ -35,12 +35,14 @@ class LoginForm extends StatelessWidget {
 
 You can use the `FormBuilderController` to access the form.
 
-Note that the `value` field will only be updated when you `save` the form.
+Note that the `values` field will only be updated when you `save` the form.
 
 ```dart
-void submit() {
-  if (_controller.saveAndValidate()) {
-      print(_controller.value);
+void submit(BuildContext context) {
+  final FormBuilderController controller = FormBuilderController.of(context)!;
+
+  if (controller.saveAndValidate()) {
+      print(controller.values);
       // {"email": "user@example.com", "password": "123456"}
   }
 }
