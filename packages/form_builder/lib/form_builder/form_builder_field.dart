@@ -131,6 +131,7 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
         return true;
       }());
     }
+    return null;
   }
 
   @override
