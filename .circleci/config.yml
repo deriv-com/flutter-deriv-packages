@@ -22,7 +22,7 @@ jobs:
 
       - run: 
          working_directory: ~/flutter-deriv-packages/packages/deriv_lint
-         command: flutter pub get && flutter test && flutter analyze
+         command: flutter pub get && flutter analyze
          name: deriv_lint analysis
 
       # - run: 
