@@ -1,8 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/models/models.dart';
-
-import '../cached_indicator.dart';
-import 'sma_indicator.dart';
 
 ///Awesome Oscillator Indicator
 class AwesomeOscillatorIndicator<T extends IndicatorResult>

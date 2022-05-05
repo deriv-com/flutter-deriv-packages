@@ -1,7 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/atr_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/positive_dm_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/mma_indicator.dart';
 
 /// Positive Directional indicator. Part of the Directional Movement System.
 class PositiveDIIndicator<T extends IndicatorResult>

@@ -1,7 +1,4 @@
-import 'package:deriv_technical_analysis/src/models/models.dart';
-
 import '../../../deriv_technical_analysis.dart';
-import '../cached_indicator.dart';
 
 /// The ZigZag Indicator that shows if value changes enough
 class ZigZagIndicator<T extends IndicatorResult> extends CachedIndicator<T> {

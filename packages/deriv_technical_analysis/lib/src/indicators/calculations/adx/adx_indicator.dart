@@ -1,6 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/dx_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/mma_indicator.dart';
 
 /// Average Directional Movement. Part of the Directional Movement System.
 class ADXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
