@@ -27,6 +27,7 @@ class FormBuilderField<T> extends FormField<T> {
     this.onChanged,
     this.onReset,
     this.focusNode,
+    this.onFocusChanged,
   }) : super(
           key: key,
           initialValue: initialValue,
@@ -52,6 +53,9 @@ class FormBuilderField<T> extends FormField<T> {
 
   /// The [FocusNode] to override the default one for this field.
   final FocusNode? focusNode;
+
+  /// Called when the field focus is changed.
+  final ValueChanged<bool>? onFocusChanged;
 
   @override
   FormBuilderFieldState<FormBuilderField<T>, T> createState() =>
@@ -105,7 +109,10 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
   /// Requests the primary focus for this field.
   void focus() => focusNode.requestFocus();
 
-  void _updateState() => setState(() {});
+  void _updateState() {
+    widget.onFocusChanged?.call(focusNode.hasFocus);
+    setState(() {});
+  }
 
   /// Returns the initial value of the field.
   T? get initialValue {
@@ -149,7 +156,7 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
   bool get enabled =>
       widget.enabled && (_formBuilderState?.controller.enabled ?? true);
 
-  /// Returns true if the field is not empty
+  /// Returns true if the field is not empty.
   bool get isNotEmpty {
     if (value is String) {
       return value != null && (value as String).isNotEmpty;
@@ -158,7 +165,7 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
     return value != null;
   }
 
-  /// Returns true if the field is empty
+  /// Returns true if the field is empty.
   bool get isEmpty => !isNotEmpty;
 
   /// Returns the [InputDecoration] for this field and overrides the error
