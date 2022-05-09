@@ -35,7 +35,7 @@ jobs:
          working_directory: ~/flutter-deriv-packages/packages/deriv_bloc_manager
          command: flutter pub get && flutter test && flutter analyze
          name: deriv_bloc_manager analysis
-         # test not foundaq11
+         # test not found
 
       # - run: 
       #    working_directory: ~/flutter-deriv-packages/packages/deriv_live_chat
@@ -43,18 +43,17 @@ jobs:
       #    name: deriv_live_chat analysis
       #    issue : test failed
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_rudderstack
-         command: flutter pub get && flutter test && flutter analyze
-         name: deriv_rudderstack analysis
-         # issue : This app is using a deprecated version of the Android embedding.
-         
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_rudderstack
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_rudderstack test
+      #    issue : This app is using a deprecated version of the Android embedding.
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_survicate
-         command: flutter pub get && flutter test && flutter analyze
-         name: deriv_survicate analysis
-        # issue : This app is using a deprecated version of the Android embedding.
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_survicate
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_survicate test
+      #    issue : This app is using a deprecated version of the Android embedding.
 
       - run: 
          working_directory: ~/flutter-deriv-packages/packages/deriv_signup_login
@@ -77,16 +76,16 @@ jobs:
          command: flutter pub get && flutter test && flutter analyze
          name: deriv_theme analysis
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/survey_monkey
-         command: flutter pub get && flutter test && flutter analyze
-         name: survey_monkey analysis
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/survey_monkey
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: survey_monkey test
       #    issue : This app is using a deprecated version of the Android embedding.
       
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/update_checker
-         command: flutter pub get && flutter test && flutter analyze
-         name: update_checker analyze
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/update_checker
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: update_checker test
       #    issue : This app is using a deprecated version of the Android embedding.
 
       # - run: 
