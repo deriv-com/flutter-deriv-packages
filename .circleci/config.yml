@@ -85,10 +85,10 @@ jobs:
          command: flutter pub get && flutter test && flutter analyze
          name: deriv_theme analysis
 
-      # - run: 
-      #    working_directory: ~/flutter-deriv-packages/packages/survey_monkey
-      #    command: flutter pub get && flutter test && flutter analyze
-      #    name: survey_monkey test
+      - run: 
+         working_directory: ~/flutter-deriv-packages/packages/survey_monkey
+         command: flutter pub get && flutter test && flutter analyze
+         name: survey_monkey analysis
       #    issue : This app is using a deprecated version of the Android embedding.
       
       # - run: 
