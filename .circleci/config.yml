@@ -58,10 +58,10 @@ jobs:
       #    name: deriv_rudderstack test
       #    issue : This app is using a deprecated version of the Android embedding.
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_survicate
-         command: flutter pub get && flutter test && flutter analyze
-         name: deriv_survicate analysis
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_survicate
+      #    command: flutter pub get && flutter test && flutter analyze
+      #    name: deriv_survicate analysis
       #    issue : This app is using a deprecated version of the Android embedding.
 
       - run: 
