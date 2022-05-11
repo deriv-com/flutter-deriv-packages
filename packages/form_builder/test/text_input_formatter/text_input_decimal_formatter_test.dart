@@ -101,5 +101,12 @@ void main() {
       expected: '+4.20',
       shouldReplace: true,
     );
+
+    _test(
+      description: 'should not accept + or - signs after dot',
+      inputs: <String>['+', '+.', '+.-', '+.0-', '+2.02'],
+      expected: '+2.02',
+      shouldReplace: true,
+    );
   });
 }

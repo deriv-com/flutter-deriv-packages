@@ -44,7 +44,7 @@ class TextInputDecimalFormatter extends TextInputFormatter {
 
     // The field value is positive or negative sign, So we return the new value
     // without any calculations.
-    if (left == '-' || left == '+' && !hasRight) {
+    if ((left == '-' || left == '+') && !hasRight) {
       return newValue;
     }
 
