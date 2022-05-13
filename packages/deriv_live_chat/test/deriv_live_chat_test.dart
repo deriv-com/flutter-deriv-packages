@@ -6,7 +6,7 @@ import 'package:deriv_live_chat/deriv_live_chat.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const MethodChannel channel = MethodChannel('derivLiveChat');
+  const MethodChannel channel = MethodChannel('deriv_live_chat');
 
   final List<MethodCall> log = <MethodCall>[];
 
