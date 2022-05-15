@@ -65,8 +65,7 @@ class FormBuilderField<T> extends FormField<T> {
 /// State associated with the [FormBuilderField] widget.
 class FormBuilderFieldState<F extends FormBuilderField<T>, T>
     extends FormFieldState<T> {
-  late FormBuilderState _formBuilderState;
-
+  late final FormBuilderState _formBuilderState;
   late final FocusNode _focusNode;
 
   @override
