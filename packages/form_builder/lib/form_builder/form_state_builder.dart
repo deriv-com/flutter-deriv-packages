@@ -14,20 +14,7 @@ class FormStateBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FormBuilderController? controller = FormBuilderController.of(context);
-
-    if (controller == null) {
-      assert(() {
-        debugPrint(
-          'FormBuilder: FormBuilderController is not found. Make sure you have '
-          'a FormBuilder widget as a parent of your FormBuilderState.',
-        );
-
-        return true;
-      }());
-
-      return const SizedBox.shrink();
-    }
+    final FormBuilderController controller = FormBuilderController.of(context);
 
     return AnimatedBuilder(
       animation: controller,
