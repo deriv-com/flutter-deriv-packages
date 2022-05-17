@@ -51,7 +51,7 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
                     LiveChat.presentChat()
                     //Change colour of top and bottom notch for dark theme
                     let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-                    let colorComponent = 37 / 255
+                    let colorComponent = 37.0 / 255.0
                     
                     window?.rootViewController?.view.backgroundColor = UIColor.init(red: colorComponent, green: colorComponent, blue: colorComponent, alpha: 1)
                     result(nil)
