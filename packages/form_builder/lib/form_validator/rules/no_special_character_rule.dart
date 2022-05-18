@@ -3,7 +3,7 @@ part of '../form_validator.dart';
 /// Adds noSpecialCharacter validation rule on [FormValidator].
 extension NoSpecialCharacterRuleExtensions on FormValidator {
   static final RegExp _regex = RegExp(
-    r"[^\p{L}\p{Nd}\s'.,:;()@#/+-]",
+    r"[^\p{L}\p{Nd}\s'.,:;()@#+-]",
     unicode: true,
     multiLine: true,
     caseSensitive: false,
