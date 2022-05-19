@@ -24,7 +24,7 @@ void main() {
 
   test('Start chat with Deriv Live Chat plugin without customParams', () async {
     await DerivLiveChat.startChatView(
-      licenseNo: 'licenseNo',
+      licenseId: 'licenseId',
       username: 'visitorName',
       email: 'visitorEmail',
       groupId: 'groupId',
@@ -33,7 +33,7 @@ void main() {
       isMethodCall(
         'derivLiveChatView',
         arguments: <String, dynamic>{
-          'licenseNo': 'licenseNo',
+          'licenseId': 'licenseId',
           'visitorName': 'visitorName',
           'visitorEmail': 'visitorEmail',
           'groupId': 'groupId',

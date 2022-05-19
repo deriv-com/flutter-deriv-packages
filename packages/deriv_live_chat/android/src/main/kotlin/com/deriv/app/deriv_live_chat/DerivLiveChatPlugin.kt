@@ -46,7 +46,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
     if (call.method.equals("derivLiveChatView")) {
-      val licenseNo = call.argument<String>("licenseNo")
+      val licenseId = call.argument<String>("licenseId")
       val visitorName = call.argument<String>("visitorName")
       val visitorEmail = call.argument<String>("visitorEmail")
       val groupId = call.argument<String>("groupId")
@@ -56,7 +56,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
         chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
 
         val configuration = ChatWindowConfiguration.Builder()
-          .setLicenceNumber(licenseNo)
+          .setLicenceNumber(licenseId)
           .setVisitorName(visitorName)
           .setVisitorEmail(visitorEmail)
           .setGroupId(groupId)
