@@ -87,7 +87,9 @@ class FormBuilderState extends State<FormBuilder> {
     if (controller.fields.containsKey(name)) {
       unregisterField(name, field);
 
-      /// Not throwing an Error as this can be called when there are dynamic forms with each set of fields having the same key
+      // It is safe to replace the new field with the old one that has the same key,
+      // In such case [FormBuilder] will only care about the last one and ignore the
+      // old one.
       debugPrint(
         'FormBuilder: A field with the "$name" name already exists. '
         'Replacing the old field with the new one.',
