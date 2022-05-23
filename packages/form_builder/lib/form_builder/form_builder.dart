@@ -85,9 +85,12 @@ class FormBuilderState extends State<FormBuilder> {
   /// Registers the form field with the given unique name in the form fields.
   void registerField(String name, dynamic field) {
     if (controller.fields.containsKey(name)) {
-      throw FlutterError(
+      unregisterField(name, field);
+
+      /// Not throwing an Error as this can be called when there are dynamic forms with each set of fields having the same key
+      debugPrint(
         'FormBuilder: A field with the "$name" name already exists. '
-        'Please use a unique name for each field.',
+        'Replacing the old field with the new one.',
       );
     }
 
