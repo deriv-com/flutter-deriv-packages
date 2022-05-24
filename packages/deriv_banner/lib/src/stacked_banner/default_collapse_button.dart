@@ -20,10 +20,10 @@ class DefaultCollapseButton extends StatelessWidget {
           ),
           alignment: Alignment.center,
           height: 32,
-          child: Text(
-              'SHOW LESS',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
+          child: const Text(
+            'SHOW LESS',
+            style: TextStyle(fontWeight: FontWeight.w500),
+          ),
         ),
       );
 }
