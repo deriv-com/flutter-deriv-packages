@@ -15,7 +15,7 @@ A new Flutter plugin to wrap RudderStack SDK.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'Rudder'
+  s.dependency 'Rudder', '~> 1.0'
   s.platform = :ios, '12.0'
   s.preserve_paths = 'Rudder.framework'
   s.xcconfig = { 'OTHER_LDFLAGS' => '-framework Rudder' }
