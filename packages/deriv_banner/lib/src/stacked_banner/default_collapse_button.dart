@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// The default collapse buttonn which is shown in the bottom of stacked banner
+/// The default collapse button which is shown in the bottom of stacked banner
 /// list when it's expanded.
 class DefaultCollapseButton extends StatelessWidget {
   /// Initializes [DefaultCollapseButton].
@@ -20,12 +20,10 @@ class DefaultCollapseButton extends StatelessWidget {
           ),
           alignment: Alignment.center,
           height: 32,
-          child: const Material(
-            child: Text(
-              'Show less',
+          child: Text(
+              'SHOW LESS',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
-          ),
         ),
       );
 }
