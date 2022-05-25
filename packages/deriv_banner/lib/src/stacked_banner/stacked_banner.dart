@@ -123,6 +123,15 @@ class _StackedBannerState extends State<StackedBanner>
 
   Size? _collapsedSize;
 
+  // This method should get called everytime the banners list is updated.
+  void _onBannerListUpdated() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if (_bannerItems.length < 2) {
+        _collapseList();
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -172,14 +181,17 @@ class _StackedBannerState extends State<StackedBanner>
       } else {
         await _dismissAnimationController.reverse(from: 1);
       }
+      _onBannerListUpdated();
     };
 
     widget.controller._onRemoveItem = (Widget item) {
       setState(() => _bannerItems.remove(item));
+      _onBannerListUpdated();
     };
 
     widget.controller._onRemoveAllBanners = () {
       setState(() => _bannerItems.clear());
+      _onBannerListUpdated();
     };
 
     widget.controller._onExpandBanner = _expandStack;
@@ -225,12 +237,16 @@ class _StackedBannerState extends State<StackedBanner>
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
-            return GestureDetector(
-              onTap: _collapseList,
-              child: widget.collapseButtonBuilder?.call(context) ??
-                  const DefaultCollapseButton(),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: GestureDetector(
+                onTap: _collapseList,
+                child: widget.collapseButtonBuilder?.call(context) ??
+                    const DefaultCollapseButton(),
+              ),
             );
           }
+
           return _bannerItems[index - 1];
         },
         separatorBuilder: (_, __) => const SizedBox(height: 8),

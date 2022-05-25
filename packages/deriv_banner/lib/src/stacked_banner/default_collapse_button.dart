@@ -1,3 +1,4 @@
+import 'package:deriv_banner/deriv_banner.dart';
 import 'package:flutter/material.dart';
 
 /// The default collapse button which is shown in the bottom of stacked banner
@@ -16,14 +17,14 @@ class DefaultCollapseButton extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            color: const Color.fromRGBO(255, 255, 255, 0.08),
+            color: kBannerButtonColor,
           ),
           alignment: Alignment.center,
           height: 32,
-          child: Text(
-              'SHOW LESS',
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
+          child: const Text(
+            'SHOW LESS',
+            style: TextStyle(fontWeight: FontWeight.w500),
+          ),
         ),
       );
 }
