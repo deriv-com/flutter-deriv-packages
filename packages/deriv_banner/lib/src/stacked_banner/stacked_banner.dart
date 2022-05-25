@@ -123,10 +123,8 @@ class _StackedBannerState extends State<StackedBanner>
 
   Size? _collapsedSize;
 
-  late final ValueNotifier<int> _bannersCountNotifier;
-
+  // This method should get called everytime the banners list is updated.
   void _onBannerListUpdated() {
-    _bannersCountNotifier.value = _bannerItems.length;
     if (_bannerItems.length < 2) {
       _collapseList();
     }
@@ -135,7 +133,7 @@ class _StackedBannerState extends State<StackedBanner>
   @override
   void initState() {
     super.initState();
-    _bannersCountNotifier = ValueNotifier<int>(0);
+
     _assignControllerValues();
 
     _setupAnimationControllers();
@@ -237,23 +235,16 @@ class _StackedBannerState extends State<StackedBanner>
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
-            return ValueListenableBuilder<int>(
-              valueListenable: _bannersCountNotifier,
-              builder: (BuildContext context, int count, _) {
-                if (count > 1) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: GestureDetector(
-                      onTap: _collapseList,
-                      child: widget.collapseButtonBuilder?.call(context) ??
-                          const DefaultCollapseButton(),
-                    ),
-                  );
-                }
-                return const SizedBox.shrink();
-              },
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: GestureDetector(
+                onTap: _collapseList,
+                child: widget.collapseButtonBuilder?.call(context) ??
+                    const DefaultCollapseButton(),
+              ),
             );
           }
+
           return _bannerItems[index - 1];
         },
         separatorBuilder: (_, __) => const SizedBox(height: 8),
@@ -374,7 +365,6 @@ class _StackedBannerState extends State<StackedBanner>
     _slidingController.dispose();
     _listExpansionController.dispose();
     _dismissAnimationController.dispose();
-    _bannersCountNotifier.dispose();
 
     super.dispose();
   }
