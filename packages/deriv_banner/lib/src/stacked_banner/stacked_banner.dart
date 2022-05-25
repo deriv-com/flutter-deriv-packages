@@ -144,9 +144,6 @@ class _StackedBannerState extends State<StackedBanner>
       _collapsedSize =
           (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
               .size;
-      if (_bannerItems.length < 2) {
-        _collapseList();
-      }
     });
   }
 
