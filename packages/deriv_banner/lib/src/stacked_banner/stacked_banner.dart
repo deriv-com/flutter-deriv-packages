@@ -123,10 +123,15 @@ class _StackedBannerState extends State<StackedBanner>
 
   Size? _collapsedSize;
 
+  /// Minimum number of visible banner items when the banner is expanded.
+  ///
+  /// When there are less items than this, the banner should be collapsed.
+  static const int _minExpandedItems = 2;
+
   // This method should get called everytime the banners list is updated.
   void _onBannerListUpdated() {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      if (_bannerItems.length < 2) {
+      if (_bannerItems.length < _minExpandedItems) {
         _collapseList();
       }
     });
@@ -289,7 +294,7 @@ class _StackedBannerState extends State<StackedBanner>
   Future<void> _expandStack() async {
     _removeExtraBanners();
 
-    if (_bannerItems.length <= 1) {
+    if (_bannerItems.length < _minExpandedItems) {
       return;
     }
 
