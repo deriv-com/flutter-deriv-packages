@@ -46,10 +46,10 @@ jobs:
          name: deriv_bloc_manager analysis
          # test not found
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_live_chat
-         command: flutter pub get && flutter analyze && flutter test
-         name: deriv_live_chat analysis
+      # - run: 
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_live_chat
+      #    command: flutter pub get && flutter analyze && flutter test
+      #    name: deriv_live_chat analysis
          # issue : access issues
 
       # - run: 
