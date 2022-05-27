@@ -50,6 +50,7 @@ jobs:
          working_directory: ~/flutter-deriv-packages/packages/deriv_live_chat
          command: flutter pub get && flutter analyze && flutter test
          name: deriv_live_chat analysis
+         # issue : access issues
 
       # - run: 
       #    working_directory: ~/flutter-deriv-packages/packages/deriv_rudderstack
