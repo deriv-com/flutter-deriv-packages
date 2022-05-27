@@ -12,7 +12,7 @@ class DerivLiveChat {
 
   /// Start chat by invoking method channel.
   static Future<void> startChatView({
-    required String licenseNo,
+    required String licenseId,
     required String username,
     required String email,
     String? groupId,
@@ -21,7 +21,7 @@ class DerivLiveChat {
       _liveChatMethodChannel.invokeMethod<dynamic>(
         'derivLiveChatView',
         <String, dynamic>{
-          'licenseNo': licenseNo,
+          'licenseId': licenseId,
           'visitorName': username,
           'visitorEmail': email,
           'groupId': groupId,

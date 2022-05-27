@@ -1,6 +1,6 @@
 # FormBuilder
 
-This widget helps to create, validate and submit a form in a simpler and cleaner way.
+This widget helps to create, validate and submit a form more simply and cleanly.
 
 ---
 
@@ -35,12 +35,14 @@ class LoginForm extends StatelessWidget {
 
 You can use the `FormBuilderController` to access the form.
 
-Note that the `value` field will only be updated when you `save` the form.
+Note that the `values` field will only be updated when you `save` the form.
 
 ```dart
-void submit() {
-  if (_controller.saveAndValidate()) {
-      print(_controller.value);
+void submit(BuildContext context) {
+  final FormBuilderController controller = FormBuilderController.of(context);
+
+  if (controller.saveAndValidate()) {
+      print(controller.values);
       // {"email": "user@example.com", "password": "123456"}
   }
 }
@@ -50,7 +52,7 @@ void submit() {
 
 ## FormBuilderField
 
-`FormBuilderField` handles the shared logic for all kinds of fields internally, It allows you to render your own custom UI using the `builder` method.
+`FormBuilderField` handles the shared logic for all kinds of fields internally, It allows you to render your custom UI using the `builder` method.
 
 Example of a simple checkbox field:
 
@@ -75,9 +77,9 @@ class FormCheckboxField extends StatelessWidget {
 
 ## FormValidator
 
-This class contains a bunch of validation functions that can be chained together to create a validator for form fields, Form field will be validated in order of given validation chain.
+This class contains a bunch of validation functions that can be chained together to create a validator for form fields, form fields will be validated in order of given validation chain.
 
-In order to add a new rule, you can simply create an extension on `FormValidator`.
+To add a new rule, you can simply create an extension on `FormValidator`.
 
 Note that you need to call `validate()` method at the end of the chain to build the validator.
 

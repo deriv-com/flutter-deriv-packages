@@ -23,20 +23,20 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
         switch call.method {
             case "derivLiveChatView":
                 let arguments = call.arguments as! [String: Any]
-                let licenseNo = (arguments["licenseNo"] as? String)
+                let licenseId = (arguments["licenseId"] as? String)
                 let visitorName = (arguments["visitorName"] as? String)
                 let visitorEmail = (arguments["visitorEmail"] as? String)
                 let groupId = (arguments["groupId"] as? String)
                 let customParams = (arguments["customParams"] as! [String: String])
 
-                if licenseNo == "" {
+                if licenseId == "" {
                     result(FlutterError(code: "", message: "LICENSE NUMBER EMPTY", details: nil))
                 } else if visitorName == "" {
                     result(FlutterError(code: "", message: "VISITOR NAME EMPTY", details: nil))
                 } else if visitorEmail == "" {
                     result(FlutterError(code: "", message: "VISITOR EMAIL EMPTY", details: nil))
                 } else {
-                    LiveChat.licenseId = licenseNo // Here Set your licence number here.
+                    LiveChat.licenseId = licenseId // Here Set your licence number here.
                     LiveChat.name = visitorName // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey.
                     LiveChat.email = visitorEmail // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey.
                     LiveChat.groupId = groupId // Optionally, You can route your customers to specific group of agents by providing groupId.
@@ -49,7 +49,11 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
                     LiveChat.customPresentationStyleEnabled = false
                     
                     LiveChat.presentChat()
-
+                    //Change colour of top and bottom notch for dark theme
+                    let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+                    let colorComponent = 37.0 / 255.0
+                    
+                    window?.rootViewController?.view.backgroundColor = UIColor.init(red: colorComponent, green: colorComponent, blue: colorComponent, alpha: 1)
                     result(nil)
                 }
             default:

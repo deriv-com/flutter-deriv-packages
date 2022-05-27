@@ -18,12 +18,16 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import io.flutter.plugin.common.PluginRegistry
 
 /** DerivLiveChatPlugin */
-class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, EventChannel.StreamHandler{
+class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
+  ActivityAware,
+  EventChannel.StreamHandler,
+  PluginRegistry.ActivityResultListener {
+
   private lateinit var channel: MethodChannel
   private var activity: Activity? = null
-
   var lifecycleSink: EventSink? = null
   private var chatWindowView : ChatWindowView ?= null
 
@@ -42,7 +46,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
     if (call.method.equals("derivLiveChatView")) {
-      val licenseNo = call.argument<String>("licenseNo")
+      val licenseId = call.argument<String>("licenseId")
       val visitorName = call.argument<String>("visitorName")
       val visitorEmail = call.argument<String>("visitorEmail")
       val groupId = call.argument<String>("groupId")
@@ -52,7 +56,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
         chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
 
         val configuration = ChatWindowConfiguration.Builder()
-          .setLicenceNumber(licenseNo)
+          .setLicenceNumber(licenseId)
           .setVisitorName(visitorName)
           .setVisitorEmail(visitorEmail)
           .setGroupId(groupId)
@@ -89,7 +93,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
     }
 
     override fun onStartFilePickerActivity(intent: Intent?, requestCode: Int) {
-
+      activity?.startActivityForResult(intent, requestCode)
     }
 
     override fun onError(
@@ -101,7 +105,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
     }
 
     override fun handleUri(uri: Uri?): Boolean {
-      return true
+      return false
     }
   }
 
@@ -111,6 +115,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     activity = binding.activity
+    binding.addActivityResultListener(this)
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
@@ -129,5 +134,10 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler , ActivityAware, Eve
 
   override fun onCancel(arguments: Any?) {
     lifecycleSink = null
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?):Boolean{
+    if (chatWindowView != null) chatWindowView?.onActivityResult(requestCode, resultCode, data)
+    return true
   }
 }

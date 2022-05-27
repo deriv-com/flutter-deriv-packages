@@ -30,7 +30,7 @@ class _AppState extends State<App> {
           break;
 
         default:
-          _setCounter(_unreadNotificationCounter++);
+          _setCounter(++_unreadNotificationCounter);
       }
     });
   }
@@ -52,7 +52,7 @@ class _AppState extends State<App> {
 
   Future<void> openChatView() async {
     await DerivLiveChat.startChatView(
-      licenseNo: '12345678',
+      licenseId: '12345678',
       username: 'Demo User',
       email: 'DemoUser@gmail.com',
       groupId: '',

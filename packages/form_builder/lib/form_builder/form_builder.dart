@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 part 'form_builder_controller.dart';
 part 'form_builder_field.dart';
+part 'form_state_builder.dart';
 
 /// This widget wraps the [Form] widget and extends it's functionality.
 class FormBuilder extends StatefulWidget {
@@ -33,8 +34,19 @@ class FormBuilder extends StatefulWidget {
   final WillPopCallback? onWillPop;
 
   /// Finds the closest [FormBuilderState] in the [BuildContext] and returns it.
-  static FormBuilderState? of(BuildContext context) =>
-      context.findAncestorStateOfType<FormBuilderState>();
+  static FormBuilderState of(BuildContext context) {
+    final FormBuilderState? result =
+        context.findAncestorStateOfType<FormBuilderState>();
+
+    if (result == null) {
+      throw FlutterError(
+        'FormBuilder: FormBuilderState is not found. Make sure you have '
+        'a FormBuilder widget as a parent of your widget.',
+      );
+    }
+
+    return result;
+  }
 
   @override
   FormBuilderState createState() => FormBuilderState();
@@ -47,7 +59,10 @@ class FormBuilderState extends State<FormBuilder> {
         key: controller._formKey,
         autovalidateMode: widget.autoValidateMode,
         onWillPop: widget.onWillPop,
-        onChanged: widget.onChanged,
+        onChanged: () {
+          controller.didChange();
+          widget.onChanged?.call();
+        },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: widget.children,
@@ -69,16 +84,12 @@ class FormBuilderState extends State<FormBuilder> {
 
   /// Registers the form field with the given unique name in the form fields.
   void registerField(String name, dynamic field) {
-    assert(() {
-      if (controller.fields.containsKey(name)) {
-        debugPrint(
-          'FormBuilder: A field with the "$name" name already exists. '
-          'Replacing the old field with the new one.',
-        );
-      }
-
-      return true;
-    }());
+    if (controller.fields.containsKey(name)) {
+      throw FlutterError(
+        'FormBuilder: A field with the "$name" name already exists. '
+        'Please use a unique name for each field.',
+      );
+    }
 
     controller.fields[name] = field;
   }

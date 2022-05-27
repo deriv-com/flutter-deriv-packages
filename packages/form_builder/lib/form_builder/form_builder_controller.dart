@@ -7,6 +7,11 @@ class FormBuilderController extends ChangeNotifier {
     this.initialValues = const <String, dynamic>{},
   });
 
+  /// Finds the closest [FormBuilderController] in the [BuildContext] and
+  /// returns it.
+  static FormBuilderController of(BuildContext context) =>
+      FormBuilder.of(context).controller;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   /// Initial values of the form, Pair of field name and field value.
@@ -41,6 +46,9 @@ class FormBuilderController extends ChangeNotifier {
   /// Returns the field of the given key.
   FormBuilderFieldState<FormBuilderField<T>, T>? field<T>(String name) =>
       fields[name];
+
+  /// Notifies the listeners that there has been a change in the form.
+  void didChange() => notifyListeners();
 
   /// Calls onSaved method on every [FormBuilderField] in children of this form.
   void save() => _formKey.currentState?.save();
