@@ -1,6 +1,7 @@
 package com.deriv.app.deriv_live_chat
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 
 import androidx.annotation.NonNull
