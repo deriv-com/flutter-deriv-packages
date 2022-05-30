@@ -65,6 +65,8 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
 
         chatWindowView?.setUpWindow(configuration)
         chatWindowView?.setUpListener(chatListener)
+        chatWindowView?.setBackgroundColor(Color.parseColor("#323738"))
+        chatWindowView?.fitsSystemWindows = true
         chatWindowView?.initialize()
       }
 
