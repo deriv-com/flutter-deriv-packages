@@ -36,7 +36,7 @@ Steps to add new package in config.yml
 
 - run: 
          working_directory: ~/flutter-deriv-packages/packages/[new_package_name]
-         command: flutter pub get && flutter test && flutter analyze
+         command: flutter pub get && flutter analyze && flutter test
          name: [new_package_name] analysis
 
 4. Edit Commands as per new package requirements.
