@@ -17,7 +17,7 @@ class DefaultCollapseButton extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            color: kBannerButtonColor,
+            color: bannerButtonColor,
           ),
           alignment: Alignment.center,
           height: 32,
