@@ -37,7 +37,6 @@ class InterchangeableListController extends ChangeNotifier {
     this.duration = duration;
     this.waitDuration = waitDuration;
     this.postAnimationCallback = postAnimationCallback;
-
     notifyListeners();
   }
 }
@@ -45,16 +44,22 @@ class InterchangeableListController extends ChangeNotifier {
 /// Class with two animated lists that perform a transition animation.
 class InterchangeableList extends StatefulWidget {
   /// Constructor.
-  const InterchangeableList({
+  InterchangeableList({
     required this.listOneItemBuilder,
     required this.listTwoItemBuilder,
     required this.listOneInitialCount,
     required this.listTwoInitialCount,
+    required this.listTwoItemHeight,
     required this.controller,
+    GlobalKey<AnimatedListState>? listOneKey,
+    GlobalKey<AnimatedListState>? listTwoKey,
     this.header1,
     this.header2,
-    Key? key,
-  }) : super(key: key);
+    this.header2Height,
+  }) {
+    this.listOneKey = listOneKey ?? GlobalKey<AnimatedListState>();
+    this.listTwoKey = listTwoKey ?? GlobalKey<AnimatedListState>();
+  }
 
   /// Initial count for list one.
   final int listOneInitialCount;
@@ -76,18 +81,27 @@ class InterchangeableList extends StatefulWidget {
   /// Optional header for list two.
   final Widget? header2;
 
+  /// Height of item used in list two.
+  // Assuming all items have same height.
+  final double listTwoItemHeight;
+
+  /// Height for second header.
+  final double? header2Height;
+
   /// Controller to manually call animate method.
   final InterchangeableListController controller;
+
+  /// [GlobalKey<AnimatedListState>] for list two.
+  late final GlobalKey<AnimatedListState> listOneKey;
+
+  /// [GlobalKey<AnimatedListState>] for list two.
+  late final GlobalKey<AnimatedListState> listTwoKey;
 
   @override
   State<InterchangeableList> createState() => _InterchangeableListState();
 }
 
 class _InterchangeableListState extends State<InterchangeableList> {
-  final GlobalKey<AnimatedListState> _startingListKey =
-      GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _endingListKey =
-      GlobalKey<AnimatedListState>();
   int? _currentlyAnimatingIndex;
   Widget? _transitionOverlay;
 
@@ -100,6 +114,8 @@ class _InterchangeableListState extends State<InterchangeableList> {
         transitionOverlay: widget.controller.transitionOverlay,
         duration: widget.controller.duration,
         waitDuration: widget.controller.waitDuration,
+        list2ItemHeight: widget.listTwoItemHeight,
+        header2Height: widget.header2Height,
         postAnimationCallback: widget.controller.postAnimationCallback,
       );
     });
@@ -134,7 +150,7 @@ class _InterchangeableListState extends State<InterchangeableList> {
                 );
               }
             },
-            key: _startingListKey,
+            key: widget.listOneKey,
           ),
           const SizedBox(height: 20),
           _buildListHeader(
@@ -144,7 +160,7 @@ class _InterchangeableListState extends State<InterchangeableList> {
           _buildAnimatedList(
             initialItemCount: widget.listTwoInitialCount,
             builder: widget.listTwoItemBuilder,
-            key: _endingListKey,
+            key: widget.listTwoKey,
           ),
         ],
       );
@@ -173,7 +189,9 @@ class _InterchangeableListState extends State<InterchangeableList> {
     required Widget transitionOverlay,
     required Duration duration,
     required Duration waitDuration,
+    required double list2ItemHeight,
     Function? postAnimationCallback,
+    double? header2Height,
   }) {
     _currentlyAnimatingIndex = fromIndex;
     _transitionOverlay = transitionOverlay;
@@ -186,11 +204,13 @@ class _InterchangeableListState extends State<InterchangeableList> {
       context: context,
       transitionOverlay: transitionOverlay,
       startItemIndex: fromIndex,
-      endItemIndexIndex: toIndex,
-      startingListKey: _startingListKey,
-      endingListKey: _endingListKey,
+      endItemIndex: toIndex,
+      startingListKey: widget.listOneKey,
+      endingListKey: widget.listTwoKey,
       duration: duration,
       waitDuration: waitDuration,
+      list2ItemHeight: list2ItemHeight,
+      header2Height: header2Height,
       postAnimationCallback: () => postAnimationCallback?.call(),
     );
   }

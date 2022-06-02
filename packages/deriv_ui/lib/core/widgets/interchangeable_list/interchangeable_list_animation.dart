@@ -6,11 +6,13 @@ class _InterchangeableItemAnimation {
     required BuildContext context,
     required Widget transitionOverlay,
     required int startItemIndex,
-    required int endItemIndexIndex,
+    required int endItemIndex,
     required GlobalKey<AnimatedListState> startingListKey,
     required GlobalKey<AnimatedListState> endingListKey,
     required Duration waitDuration,
     required Duration duration,
+    required double list2ItemHeight,
+    double? header2Height = 0,
     Function? postAnimationCallback,
   }) async {
     // Declarations:
@@ -56,8 +58,10 @@ class _InterchangeableItemAnimation {
       // end of the destination list.
       final RenderBox box2 =
           endingListKey.currentContext!.findRenderObject() as RenderBox;
+
       final double box2height =
-          box1.size.height * (endItemIndexIndex + _flyingCount - 1);
+          ((endItemIndex - _flyingCount) * list2ItemHeight) +
+              (header2Height ?? 0);
       final Offset pos2 = box2.localToGlobal(Offset(0, box2height));
       // Insert an overlay to "fly over" the item between two lists.
       final OverlayEntry entry = OverlayEntry(
@@ -78,7 +82,7 @@ class _InterchangeableItemAnimation {
       entry.remove();
 
       // Finally, add the item to next list after animation is done.
-      endingListKey.currentState!.insertItem(endItemIndexIndex);
+      endingListKey.currentState!.insertItem(endItemIndex);
       _flyingCount--;
 
       postAnimationCallback?.call();
