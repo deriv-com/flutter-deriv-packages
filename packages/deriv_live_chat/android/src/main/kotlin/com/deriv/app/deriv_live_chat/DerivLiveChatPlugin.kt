@@ -105,7 +105,7 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
     }
 
     override fun handleUri(uri: Uri?): Boolean {
-      return true
+      return false
     }
   }
 

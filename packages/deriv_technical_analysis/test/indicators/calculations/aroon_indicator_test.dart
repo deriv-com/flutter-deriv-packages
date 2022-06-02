@@ -1,10 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/aroon/aroon_down_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/aroon/aroon_oscillator_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/aroon/aroon_up_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/close_value_inidicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/high_value_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/low_value_indicator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../mock_models.dart';

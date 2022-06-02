@@ -1,11 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/helpers/functions.dart';
-import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/close_value_inidicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/ma_env/ma_env_lower_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/ma_env/ma_env_shift_types.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/ma_env/ma_env_upper_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../mock_models.dart';

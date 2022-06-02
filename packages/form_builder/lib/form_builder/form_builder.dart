@@ -34,12 +34,12 @@ class FormBuilder extends StatefulWidget {
   final WillPopCallback? onWillPop;
 
   /// Finds the closest [FormBuilderState] in the [BuildContext] and returns it.
-  static FormBuilderState of(BuildContext context) {
+  static FormBuilderState? of(BuildContext context) {
     final FormBuilderState? result =
         context.findAncestorStateOfType<FormBuilderState>();
 
     if (result == null) {
-      throw FlutterError(
+      debugPrint(
         'FormBuilder: FormBuilderState is not found. Make sure you have '
         'a FormBuilder widget as a parent of your widget.',
       );
@@ -85,9 +85,12 @@ class FormBuilderState extends State<FormBuilder> {
   /// Registers the form field with the given unique name in the form fields.
   void registerField(String name, dynamic field) {
     if (controller.fields.containsKey(name)) {
-      throw FlutterError(
+      // It is safe to replace the new field with the old one that has the same key,
+      // In such case [FormBuilder] will only care about the last one and ignore the
+      // old one.
+      debugPrint(
         'FormBuilder: A field with the "$name" name already exists. '
-        'Please use a unique name for each field.',
+        'Replacing the old field with the new one.',
       );
     }
 

@@ -1,7 +1,4 @@
-import 'package:deriv_technical_analysis/src/indicators/calculations/aroon/aroon_down_indicator.dart';
-
 import '../../../../deriv_technical_analysis.dart';
-import 'aroon_up_indicator.dart';
 
 /// Calculates the value for Aroon Oscillator Indicator.
 class AroonOscillatorIndicator<T extends IndicatorResult>

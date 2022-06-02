@@ -1,6 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/tr_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/mma_indicator.dart';
 
 /// Average true range indicator.
 class ATRIndicator<T extends IndicatorResult> extends CachedIndicator<T> {

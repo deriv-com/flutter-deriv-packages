@@ -1,8 +1,5 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 
-import 'ichimoku_base_line_indicator.dart';
-import 'ichimoku_conversion_line_indicator.dart';
-
 /// An `indicator` to calculate average of the given [conversionLineIndicator] and [baseLineIndicator].
 class IchimokuSpanAIndicator<T extends IndicatorResult>
     extends CachedIndicator<T> {

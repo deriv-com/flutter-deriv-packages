@@ -1,9 +1,5 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/cmo_indicator.dart';
-import 'package:deriv_technical_analysis/src/models/models.dart';
-
-import '../cached_indicator.dart';
-import '../indicator.dart';
 
 /// Variable Moving Average Indicator
 class VMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {

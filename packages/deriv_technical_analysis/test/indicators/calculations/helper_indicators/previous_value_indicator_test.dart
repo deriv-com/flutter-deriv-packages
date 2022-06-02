@@ -1,5 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/previous_value_indicator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../mock_models.dart';
