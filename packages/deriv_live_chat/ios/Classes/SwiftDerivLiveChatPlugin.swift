@@ -8,15 +8,15 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         /// Register Channel.
-        let _liveChatMethodChannel = FlutterMethodChannel(name: "deriv_live_chat", binaryMessenger: registrar.messenger())
+        let liveChatMethodChannel = FlutterMethodChannel(name: "deriv_live_chat", binaryMessenger: registrar.messenger())
         let instance = SwiftDerivLiveChatPlugin()
 
-        registrar.addMethodCallDelegate(instance, channel: _liveChatMethodChannel)
+        registrar.addMethodCallDelegate(instance, channel: liveChatMethodChannel)
 
         /// Register Event.
-        let _liveChatEventChannel = FlutterEventChannel(name: "deriv_live_chat_event_listener", binaryMessenger: registrar.messenger())
+        let liveChatEventChannel = FlutterEventChannel(name: "deriv_live_chat_event_listener", binaryMessenger: registrar.messenger())
 
-        _liveChatEventChannel.setStreamHandler(instance.self)
+        liveChatEventChannel.setStreamHandler(instance.self)
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
