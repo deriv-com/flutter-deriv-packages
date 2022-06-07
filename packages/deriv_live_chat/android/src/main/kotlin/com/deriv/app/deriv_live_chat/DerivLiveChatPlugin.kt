@@ -1,6 +1,7 @@
 package com.deriv.app.deriv_live_chat
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 
 import androidx.annotation.NonNull
@@ -65,6 +66,8 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
 
         chatWindowView?.setUpWindow(configuration)
         chatWindowView?.setUpListener(chatListener)
+        chatWindowView?.setBackgroundColor(Color.parseColor("#323738"))
+        chatWindowView?.fitsSystemWindows = true
         chatWindowView?.initialize()
       }
 
