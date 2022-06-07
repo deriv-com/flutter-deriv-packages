@@ -127,5 +127,32 @@ void noSpecialCharacterGroup() {
       },
       expected: isNotNull,
     );
+
+    _test(
+      description:
+          'should not be valid if is not allowed to contain special characters '
+          'the input is an invalid string but with the character /',
+      validator: (FormValidator validator) => validator.noSpecialCharacter(),
+      input: 'this string // should not be allowed // ',
+      expected: isNotNull,
+    );
+
+    _test(
+      description:
+          'should not be valid if is not allowed to contain special characters '
+          'the input is an invalid string but with the characters () and \$',
+      validator: (FormValidator validator) => validator.noSpecialCharacter(),
+      input: '\$150 (200)',
+      expected: isNotNull,
+    );
+
+    _test(
+      description:
+          'should not be valid if is not allowed to contain special characters '
+          'the input is an valid string with list of all allowed special characters',
+      validator: (FormValidator validator) => validator.noSpecialCharacter(),
+      input: "'.,:;()@#+-",
+      expected: isNull,
+    );
   });
 }

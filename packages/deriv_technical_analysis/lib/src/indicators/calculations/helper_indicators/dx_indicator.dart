@@ -1,6 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/adx/negative_di_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/adx/positive_di_indicator.dart';
 
 /// Directional movement line Indicator.
 class DXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {

@@ -9,8 +9,8 @@ class FormBuilderController extends ChangeNotifier {
 
   /// Finds the closest [FormBuilderController] in the [BuildContext] and
   /// returns it.
-  static FormBuilderController of(BuildContext context) =>
-      FormBuilder.of(context).controller;
+  static FormBuilderController? of(BuildContext context) =>
+      FormBuilder.of(context)?.controller;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

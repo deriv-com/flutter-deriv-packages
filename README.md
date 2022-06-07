@@ -22,3 +22,21 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_ui](./packages/deriv_ui)                                 | A package to put all common deriv flutter widgets and themes.                     |
 | [survey_monkey](./packages/survey_monkey)                       | Used to display a survey provided by surveyMonkey and returns completion results. |
 | [update_checker](./packages/update_checker)                     | Check and retrieve update information from the server for the given package.      |
+
+
+# Add New Package in CI Configuration(config.yml)
+
+This repository contains packages with CI configuration to run basic flutter commands, if we add new package under flutter-deriv-packages/packages we have to add package in .circleci/config.yml file.
+
+Steps to add new package in config.yml 
+
+1. Open root of the package flutter-deriv-packages
+2. Go to circleci/config.yml
+3. Go to Steps and add
+
+- run: 
+         working_directory: ~/flutter-deriv-packages/packages/[new_package_name]
+         command: flutter pub get && flutter analyze && flutter test
+         name: [new_package_name] analysis
+
+4. Edit Commands as per new package requirements.

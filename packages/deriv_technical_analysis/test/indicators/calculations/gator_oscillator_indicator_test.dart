@@ -1,8 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/helpers/functions.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/gator/gator_oscillator_bottom_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/gator/gator_oscillator_top_indicator.dart';
-import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../mock_models.dart';

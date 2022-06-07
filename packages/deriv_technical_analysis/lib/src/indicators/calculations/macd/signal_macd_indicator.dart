@@ -1,5 +1,4 @@
 import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
-import 'package:deriv_technical_analysis/src/indicators/calculations/macd/macd_indicator.dart';
 
 ///Signal of Moving Average Convergence Divergence Indicator.
 ///Normally a 9-day period EMA of MACD.

@@ -49,8 +49,8 @@ void main() {
       final ATRIndicator<MockResult> atrIndicator =
           ATRIndicator<MockResult>(MockInput(ticks));
 
-      expect(roundDouble(atrIndicator.getValue(28).quote, 2), 1.38);
-      expect(roundDouble(atrIndicator.getValue(29).quote, 2), 1.35);
+      expect(roundDouble(atrIndicator.getValue(28).quote, 2), 25.32);
+      expect(roundDouble(atrIndicator.getValue(29).quote, 2), 23.59);
     });
   });
 }

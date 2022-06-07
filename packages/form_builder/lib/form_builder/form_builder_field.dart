@@ -65,7 +65,7 @@ class FormBuilderField<T> extends FormField<T> {
 /// State associated with the [FormBuilderField] widget.
 class FormBuilderFieldState<F extends FormBuilderField<T>, T>
     extends FormFieldState<T> {
-  late final FormBuilderState _formBuilderState;
+  late final FormBuilderState? _formBuilderState;
   late final FocusNode _focusNode;
 
   @override
@@ -77,8 +77,8 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
     super.initState();
     _focusNode = widget.focusNode ?? FocusNode();
     _formBuilderState = FormBuilder.of(context);
-    _formBuilderState.registerField(widget.name, this);
-    _formBuilderState.controller.addListener(_updateState);
+    _formBuilderState?.registerField(widget.name, this);
+    _formBuilderState?.controller.addListener(_updateState);
     focusNode.addListener(_updateState);
     setValue(initialValue);
   }
@@ -86,7 +86,7 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
   @override
   void save() {
     super.save();
-    _formBuilderState.setFieldValue(widget.name, value);
+    _formBuilderState?.setFieldValue(widget.name, value);
   }
 
   @override
@@ -120,7 +120,7 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
     }
 
     final dynamic _value =
-        _formBuilderState.controller.initialValueOf<dynamic>(widget.name);
+        _formBuilderState?.controller.initialValueOf<dynamic>(widget.name);
 
     if (_value is T) {
       return _value;
@@ -137,6 +137,7 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
         return true;
       }());
     }
+    return null;
   }
 
   @override
@@ -152,7 +153,8 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
   bool get hasFocus => focusNode.hasFocus;
 
   /// Returns true if the field is enabled.
-  bool get enabled => widget.enabled && _formBuilderState.controller.enabled;
+  bool get enabled =>
+      widget.enabled && (_formBuilderState?.controller.enabled ?? true);
 
   /// Returns true if the field is not empty.
   bool get isNotEmpty {
@@ -175,8 +177,8 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
   @override
   void dispose() {
     focusNode.removeListener(_updateState);
-    _formBuilderState.controller.removeListener(_updateState);
-    _formBuilderState.unregisterField(widget.name, this);
+    _formBuilderState?.controller.removeListener(_updateState);
+    _formBuilderState?.unregisterField(widget.name, this);
     super.dispose();
   }
 }

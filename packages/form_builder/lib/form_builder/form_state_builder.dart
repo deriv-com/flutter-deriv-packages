@@ -14,7 +14,15 @@ class FormStateBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FormBuilderController controller = FormBuilderController.of(context);
+    final FormBuilderController? controller = FormBuilderController.of(context);
+
+    if (controller == null) {
+      throw FlutterError(
+        'FormBuilder: FormBuilderController is not found. Make sure you have '
+        'a FormBuilder widget as a parent of your widget and has been provided'
+        'with a valid FormBuilderController.',
+      );
+    }
 
     return AnimatedBuilder(
       animation: controller,
