@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'helper.dart';
+import 'package:flutter_deriv_api/helpers/helpers.dart';
+
 import 'states/web_view_page_cubit.dart';
 
 /// Web view widget to launch urls in an in-app web page.
