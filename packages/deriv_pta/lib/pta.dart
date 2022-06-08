@@ -61,7 +61,7 @@ Future<void> openLoggedInWebPage({
   required String appId,
   required String? refreshToken,
   required String? defaultAccount,
-  required Future<void> Function(BuildContext context) loadingDialog,
+  required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   String? action,
   String? code,
@@ -129,11 +129,11 @@ Future<String?> _fetchOneTimeToken({
   required String appId,
   required String? refreshToken,
   required String? defaultAccount,
-  required Future<void> Function(BuildContext context) loadingDialog,
+  required void Function(BuildContext context) loadingDialog,
   String? action,
   String? code,
 }) async {
-  unawaited(loadingDialog(context));
+  loadingDialog(context);
 
   final String? oneTimeToken = await _getOneTimeToken(
     redirectPath: redirectPath,
@@ -187,7 +187,7 @@ Future<String?> _validateCredentials({
   required String appId,
   required String? refreshToken,
   required String? defaultAccount,
-  required Future<void> Function(BuildContext context) loadingDialog,
+  required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   String? action,
   String? code,
