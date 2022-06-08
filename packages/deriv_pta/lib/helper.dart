@@ -25,7 +25,7 @@ Future<String?> performPassThroughAuthentication({
   String? action,
   String? code,
 }) async {
-  final String jwtToken = await _getJwtToken(endpoint: endpoint, appId: appId);
+  final String jwtToken = await getJwtToken(endpoint: endpoint, appId: appId);
 
   final Map<String, dynamic> request = PtaLoginRequestModel(
     refreshToken: refreshToken ?? '',
@@ -56,7 +56,7 @@ Future<String?> performPassThroughAuthentication({
 }
 
 /// Gets Jwt token for authorizing the application.
-Future<String> _getJwtToken({
+Future<String> getJwtToken({
   required String endpoint,
   required String appId,
 }) async {
