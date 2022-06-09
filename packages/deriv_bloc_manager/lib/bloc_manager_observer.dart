@@ -13,7 +13,9 @@ class BlocManagerObserver extends BlocObserver {
 
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    logger.log('${bloc.runtimeType}: $change');
+    logger.log(
+      '${bloc.runtimeType}: ${change.currentState} changed to ${change.nextState}',
+    );
 
     super.onChange(bloc, change);
   }
