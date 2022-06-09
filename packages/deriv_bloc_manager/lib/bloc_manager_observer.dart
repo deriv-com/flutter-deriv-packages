@@ -10,6 +10,7 @@ class BlocManagerObserver extends BlocObserver {
     this.enableOnChangeLogs = false,
     this.enableOnCloseLogs = true,
     this.enableOnErrorLogs = true,
+    this.verboseChangeStateLog = false,
   });
 
   /// Enables on create logs.
@@ -24,6 +25,9 @@ class BlocManagerObserver extends BlocObserver {
   /// Enables on error logs.
   final bool enableOnErrorLogs;
 
+  /// Enables verbose change state logs.
+  final bool verboseChangeStateLog;
+
   @override
   void onCreate(BlocBase<dynamic> bloc) {
     super.onCreate(bloc);
@@ -37,7 +41,9 @@ class BlocManagerObserver extends BlocObserver {
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     if (enableOnChangeLogs) {
       logger.log(
-        '${bloc.runtimeType} state changed from ${change.currentState.runtimeType} to ${change.nextState.runtimeType}',
+        verboseChangeStateLog
+            ? 'Bloc state: ${bloc.runtimeType} state changed from ${change.currentState} to ${change.nextState}'
+            : 'Bloc state: ${bloc.runtimeType} state changed from ${change.currentState.runtimeType} to ${change.nextState.runtimeType}',
       );
     }
 
