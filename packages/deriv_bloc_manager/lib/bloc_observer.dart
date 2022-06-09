@@ -5,9 +5,31 @@ import 'package:bloc/bloc.dart';
 /// An observer for blocs and cubits state change
 class CubitObserver extends BlocObserver {
   @override
-  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    logger.log('${bloc.runtimeType} $change');
+  void onCreate(BlocBase<dynamic> bloc) {
+    super.onCreate(bloc);
 
-    super.onChange(bloc, change);
+    logger.log('Bloc created: ${bloc.runtimeType}');
+  }
+
+  // Uncomment the following line to see the bloc change logs in the console.
+  // @override
+  // void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
+  //   logger.log('${bloc.runtimeType} $change');
+
+  //   super.onChange(bloc, change);
+  // }
+
+  @override
+  void onClose(BlocBase<dynamic> bloc) {
+    super.onClose(bloc);
+
+    logger.log('Bloc closed: ${bloc.runtimeType}');
+  }
+
+  @override
+  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
+    logger.log('Bloc error: ${bloc.runtimeType}\n$error\n$stackTrace');
+
+    super.onError(bloc, error, stackTrace);
   }
 }
