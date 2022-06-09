@@ -4,6 +4,12 @@ import 'package:bloc/bloc.dart';
 
 /// An observer for blocs and cubits state change
 class CubitObserver extends BlocObserver {
+  /// Initializes cubit observer.
+  CubitObserver({required this.enableChangeLog});
+
+  /// Enable or disable the change logs.
+  final bool enableChangeLog;
+
   @override
   void onCreate(BlocBase<dynamic> bloc) {
     super.onCreate(bloc);
@@ -11,13 +17,14 @@ class CubitObserver extends BlocObserver {
     logger.log('Bloc created: ${bloc.runtimeType}');
   }
 
-  // Uncomment the following line to see the bloc change logs in the console.
-  // @override
-  // void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-  //   logger.log('${bloc.runtimeType} $change');
+  @override
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
+    if (enableChangeLog) {
+      logger.log('${bloc.runtimeType}: $change');
+    }
 
-  //   super.onChange(bloc, change);
-  // }
+    super.onChange(bloc, change);
+  }
 
   @override
   void onClose(BlocBase<dynamic> bloc) {
