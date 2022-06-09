@@ -4,18 +4,42 @@ import 'package:bloc/bloc.dart';
 
 /// An observer for blocs and cubits state change.
 class BlocManagerObserver extends BlocObserver {
+  /// Initializes a new instance of the [BlocManagerObserver] class.
+  BlocManagerObserver({
+    this.enableOnCreateLogs = true,
+    this.enableOnChangeLogs = false,
+    this.enableOnCloseLogs = true,
+    this.enableOnErrorLogs = true,
+  });
+
+  /// Enables on create logs.
+  final bool enableOnCreateLogs;
+
+  /// Enables on change logs.
+  final bool enableOnChangeLogs;
+
+  /// Enables on close logs.
+  final bool enableOnCloseLogs;
+
+  /// Enables on error logs.
+  final bool enableOnErrorLogs;
+
   @override
   void onCreate(BlocBase<dynamic> bloc) {
     super.onCreate(bloc);
 
-    logger.log('Bloc created: ${bloc.runtimeType}');
+    if (enableOnCreateLogs) {
+      logger.log('Bloc created: ${bloc.runtimeType}');
+    }
   }
 
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    logger.log(
-      '${bloc.runtimeType} state changed from ${change.currentState.runtimeType} to ${change.nextState.runtimeType}',
-    );
+    if (enableOnChangeLogs) {
+      logger.log(
+        '${bloc.runtimeType} state changed from ${change.currentState.runtimeType} to ${change.nextState.runtimeType}',
+      );
+    }
 
     super.onChange(bloc, change);
   }
@@ -24,12 +48,16 @@ class BlocManagerObserver extends BlocObserver {
   void onClose(BlocBase<dynamic> bloc) {
     super.onClose(bloc);
 
-    logger.log('Bloc closed: ${bloc.runtimeType}');
+    if (enableOnCloseLogs) {
+      logger.log('Bloc closed: ${bloc.runtimeType}');
+    }
   }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    logger.log('Bloc error: ${bloc.runtimeType}\n$error\n$stackTrace');
+    if (enableOnErrorLogs) {
+      logger.log('Bloc error: ${bloc.runtimeType}\n$error\n$stackTrace');
+    }
 
     super.onError(bloc, error, stackTrace);
   }
