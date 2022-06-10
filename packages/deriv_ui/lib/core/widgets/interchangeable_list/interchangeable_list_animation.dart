@@ -59,8 +59,9 @@ class _InterchangeableItemAnimation {
       final RenderBox box2 =
           endingListKey.currentContext!.findRenderObject() as RenderBox;
 
-      final double box2height =
-          ((endItemIndex - _flyingCount) * list2ItemHeight) +
+      final double box2height = endItemIndex == 0
+          ? ((header2Height ?? 0) - (list2ItemHeight * (_flyingCount + 1)))
+          : ((endItemIndex - _flyingCount) * list2ItemHeight) +
               (header2Height ?? 0);
       final Offset pos2 = box2.localToGlobal(Offset(0, box2height));
       // Insert an overlay to "fly over" the item between two lists.
