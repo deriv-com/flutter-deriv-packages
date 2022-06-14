@@ -140,7 +140,7 @@ class _WebViewPageState extends State<WebViewPage> {
     }
   }
 
-  void _setUpEndpoint() => _webViewController?.runJavascript(
+  void _setUpEndpoint() => _webViewController?.evaluateJavascript(
         '''
           (() => {
             try {

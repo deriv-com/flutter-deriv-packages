@@ -1,5 +1,5 @@
 name: deriv_web_view
-description: Deriv Web View package project.
+description: Deriv Web View package.
 
 version: 0.0.1
 
@@ -7,7 +7,7 @@ homepage: https://deriv.com/
 publish_to: "none"
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.13.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -25,12 +25,12 @@ dependencies:
       path: packages/deriv_api_key_provider
       ref: dev
 
-  crypto: ^3.0.2
+  crypto: ^3.0.1
   equatable: ^2.0.3
   flutter_bloc: ^7.0.0
-  url_launcher: ^6.1.3
-  webview_flutter: ^3.0.4
-  flutter_inappwebview: ^5.4.3+7
+  url_launcher: ^6.0.10
+  webview_flutter: ^2.0.13
+  flutter_inappwebview: ^5.3.2
 
 dev_dependencies:
   flutter_test:

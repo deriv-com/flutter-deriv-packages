@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer' as dev;
 
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:deriv_web_view/helper.dart';
 import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
@@ -11,12 +11,11 @@ import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
 Future<void> openWebPage({
   required BuildContext context,
   required String url,
-  LaunchMode launchMode = LaunchMode.externalApplication,
 }) async {
-  final bool? isLaunchable = await canLaunchUrlString(url);
+  final bool? isLaunchable = await canLaunch(url);
 
   if (isLaunchable ?? false) {
-    await launchUrlString(url, mode: launchMode);
+    await launch(url);
   } else {
     await Navigator.push(
       context,
