@@ -189,3 +189,52 @@ wallets: '/dashboard/wallets'
 - `validateCredentialsOnClosed` if true, the credentials will be validated when the browser is closed, default is false.
 - `onClosed` callback to handle closing of the browser.
 - `inAppBrowser` if true, the browser will be opened in an in-app browser, default is true.
+
+## Example
+
+Here is a example for `Account Deactivation`:
+
+```dart
+openLoggedInWebPage(
+  context: context,
+  redirectPath: 'deactivate_account',
+  endpoint: endpoint,
+  appId: appId,
+  refreshToken: refreshToken,
+  defaultAccount: defaultAccount,
+  loadingDialog: showSimpleLoadingDialog,
+  tokenExpiredDialog: showTokenExpiredDialog,
+  validateCredentialsOnClosed: true,
+);
+
+Future<void> showSimpleLoadingDialog(BuildContext context) =>
+    Future<void>.delayed(
+      Duration.zero,
+      () async {
+        await showDialog<LoadingIndicator>(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) => Center(
+            child: Container(
+              height: 72,
+              width: 72,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Center(child: LoadingIndicator()),
+            ),
+          ),
+        );
+      },
+    );
+
+Future<void> showTokenExpiredDialog(BuildContext context) => showAlertDialog(
+  context: context,
+  title: 'Logged Out',
+  content: Text('Session Expired'),
+  positiveActionLabel: 'Log In',
+  dismissible: false,
+  onPositiveActionPressed: () { ... }, // Redirect to login page.
+);
+```
