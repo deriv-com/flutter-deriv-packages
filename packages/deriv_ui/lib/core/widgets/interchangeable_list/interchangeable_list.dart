@@ -104,6 +104,7 @@ class InterchangeableList extends StatefulWidget {
 class _InterchangeableListState extends State<InterchangeableList> {
   int? _currentlyAnimatingIndex;
   Widget? _transitionOverlay;
+  // final Map<int, Widget> _transitioningItem = <int, Widget>{};
 
   @override
   void initState() {
@@ -139,6 +140,8 @@ class _InterchangeableListState extends State<InterchangeableList> {
             initialItemCount: widget.listOneInitialCount,
             builder:
                 (BuildContext context, int index, Animation<double> animation) {
+              //if (_transitioningItem.containsKey(index)) {
+              // return _transitioningItem[index]!;
               if (_currentlyAnimatingIndex == index &&
                   _transitionOverlay != null) {
                 return _transitionOverlay!;
@@ -193,9 +196,11 @@ class _InterchangeableListState extends State<InterchangeableList> {
     Function? postAnimationCallback,
     double? header2Height,
   }) {
+    // _transitioningItem.putIfAbsent(fromIndex, () => transitionOverlay);
     _currentlyAnimatingIndex = fromIndex;
     _transitionOverlay = transitionOverlay;
     Future<void>.delayed(waitDuration, () {
+      // _transitioningItem.remove(fromIndex);
       _currentlyAnimatingIndex = null;
       _transitionOverlay = null;
     });
