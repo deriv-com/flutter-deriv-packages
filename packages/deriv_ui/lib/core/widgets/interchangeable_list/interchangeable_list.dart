@@ -180,6 +180,7 @@ class _InterchangeableListState extends State<InterchangeableList> {
     required GlobalKey<AnimatedListState> key,
   }) =>
       AnimatedList(
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         key: key,
         initialItemCount: initialItemCount,
