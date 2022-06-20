@@ -14,6 +14,7 @@ class _InterchangeableItemAnimation {
     required double list2ItemHeight,
     double? header2Height = 0,
     Function? postAnimationCallback,
+    bool shouldInsertLastElement = true,
   }) async {
     // Declarations:
     int _flyingCount = 0;
@@ -83,7 +84,9 @@ class _InterchangeableItemAnimation {
       entry.remove();
 
       // Finally, add the item to next list after animation is done.
-      endingListKey.currentState!.insertItem(endItemIndex);
+      if (shouldInsertLastElement) {
+        endingListKey.currentState!.insertItem(endItemIndex);
+      }
       _flyingCount--;
 
       postAnimationCallback?.call();

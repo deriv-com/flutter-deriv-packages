@@ -22,6 +22,9 @@ class InterchangeableListController extends ChangeNotifier {
   /// Callback for when the animation finishes.
   late Function? postAnimationCallback;
 
+  /// [bool] to see if the list should insert last element.
+  late bool? shouldInsertLastElement;
+
   /// Change Notifier tp call Animate function.
   void animateItems({
     required int fromIndex,
@@ -30,6 +33,7 @@ class InterchangeableListController extends ChangeNotifier {
     Duration duration = const Duration(seconds: 1),
     Duration waitDuration = const Duration(seconds: 1),
     Function? postAnimationCallback,
+    bool? shouldInsertLastElement,
   }) {
     this.fromIndex = fromIndex;
     this.toIndex = toIndex;
@@ -37,6 +41,7 @@ class InterchangeableListController extends ChangeNotifier {
     this.duration = duration;
     this.waitDuration = waitDuration;
     this.postAnimationCallback = postAnimationCallback;
+    this.shouldInsertLastElement = shouldInsertLastElement;
     notifyListeners();
   }
 }
@@ -118,6 +123,7 @@ class _InterchangeableListState extends State<InterchangeableList> {
         list2ItemHeight: widget.listTwoItemHeight,
         header2Height: widget.header2Height,
         postAnimationCallback: widget.controller.postAnimationCallback,
+        shouldInsertLastElement: widget.controller.shouldInsertLastElement,
       );
     });
     super.initState();
@@ -196,6 +202,7 @@ class _InterchangeableListState extends State<InterchangeableList> {
     required double list2ItemHeight,
     Function? postAnimationCallback,
     double? header2Height,
+    bool? shouldInsertLastElement,
   }) {
     // _transitioningItem.putIfAbsent(fromIndex, () => transitionOverlay);
     _currentlyAnimatingIndex = fromIndex;
@@ -218,6 +225,7 @@ class _InterchangeableListState extends State<InterchangeableList> {
       list2ItemHeight: list2ItemHeight,
       header2Height: header2Height,
       postAnimationCallback: () => postAnimationCallback?.call(),
+      shouldInsertLastElement: shouldInsertLastElement ?? true,
     );
   }
 }
