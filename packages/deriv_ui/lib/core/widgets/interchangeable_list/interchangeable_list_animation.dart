@@ -23,7 +23,8 @@ class _InterchangeableItemAnimation {
     // Remove actual item from the initial list:
     startingListKey.currentState!.removeItem(
       startItemIndex,
-      (BuildContext context, Animation<double> animation) => Container(),
+      (BuildContext context, Animation<double> animation) =>
+          const SizedBox.shrink(),
     );
 
     // Insert an overlay item in the initial list to show it temporarily:
@@ -43,7 +44,7 @@ class _InterchangeableItemAnimation {
           child: transitionOverlay,
         ),
       ),
-      duration: duration,
+      //duration: duration,
     );
 
     _flyingCount++;
