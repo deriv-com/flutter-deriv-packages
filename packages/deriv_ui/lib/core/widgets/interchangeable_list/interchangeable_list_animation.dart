@@ -44,7 +44,6 @@ class _InterchangeableItemAnimation {
           child: transitionOverlay,
         ),
       ),
-      //duration: duration,
     );
 
     _flyingCount++;
