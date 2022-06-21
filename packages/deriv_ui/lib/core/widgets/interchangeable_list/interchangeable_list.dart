@@ -109,6 +109,7 @@ class InterchangeableList extends StatefulWidget {
 class _InterchangeableListState extends State<InterchangeableList> {
   int? _currentlyAnimatingIndex;
   Widget? _transitionOverlay;
+  // TODO(huned-deriv): use this _transitioningItem map to insert list of animations and manage them.
   // final Map<int, Widget> _transitioningItem = <int, Widget>{};
 
   @override
