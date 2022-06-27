@@ -73,12 +73,10 @@ class InterchangeableList extends StatefulWidget {
   final int listTwoInitialCount;
 
   /// Builder for list one.
-  final Widget Function(BuildContext, int, Animation<double>)
-      listOneItemBuilder;
+  final AnimatedListItemBuilder listOneItemBuilder;
 
   /// Builder for list two.
-  final Widget Function(BuildContext, int, Animation<double>)
-      listTwoItemBuilder;
+  final AnimatedListItemBuilder listTwoItemBuilder;
 
   /// Optional header for list one.
   final Widget? header1;
@@ -114,6 +112,8 @@ class _InterchangeableListState extends State<InterchangeableList> {
 
   @override
   void initState() {
+    super.initState();
+
     widget.controller.addListener(() {
       _animateObject(
         fromIndex: widget.controller.fromIndex,
@@ -127,7 +127,6 @@ class _InterchangeableListState extends State<InterchangeableList> {
         shouldInsertLastElement: widget.controller.shouldInsertLastElement,
       );
     });
-    super.initState();
   }
 
   @override
