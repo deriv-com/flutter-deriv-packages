@@ -21,7 +21,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
 
 /** DerivLiveChatPlugin */
-class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
+class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler,
   ActivityAware,
   EventChannel.StreamHandler,
   PluginRegistry.ActivityResultListener {
@@ -46,30 +46,32 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler ,
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
     if (call.method.equals("derivLiveChatView")) {
-      val licenseId = call.argument<String>("licenseId")
-      val visitorName = call.argument<String>("visitorName")
-      val visitorEmail = call.argument<String>("visitorEmail")
-      val groupId = call.argument<String>("groupId")
-      val customParams = call.argument<HashMap<String, String>>("customParams")!!
+      if(chatWindowView == null) {
+        val licenseId = call.argument<String>("licenseId")
+        val visitorName = call.argument<String>("visitorName")
+        val visitorEmail = call.argument<String>("visitorEmail")
+        val groupId = call.argument<String>("groupId")
+        val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
-      chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
+        chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
 
-      val configuration = ChatWindowConfiguration.Builder()
-        .setLicenceNumber(licenseId)
-        .setVisitorName(visitorName)
-        .setVisitorEmail(visitorEmail)
-        .setGroupId(groupId)
-        .setCustomParams(customParams)
-        .build()
+        val configuration = ChatWindowConfiguration.Builder()
+          .setLicenceNumber(licenseId)
+          .setVisitorName(visitorName)
+          .setVisitorEmail(visitorEmail)
+          .setGroupId(groupId)
+          .setCustomParams(customParams)
+          .build()
 
-      chatWindowView?.setUpWindow(configuration)
-      chatWindowView?.setUpListener(chatListener)
-      chatWindowView?.initialize()
+        chatWindowView?.setUpWindow(configuration)
+        chatWindowView?.setUpListener(chatListener)
+        chatWindowView?.initialize()
+      }
 
       chatWindowView?.showChatWindow()
 
       result.success(null)
-    } else if(call.method.equals("closeChatView")){
+    } else if(call.method.equals("closeChatView")) {
       chatWindowView?.onBackPressed()
 
       result.success(null)
