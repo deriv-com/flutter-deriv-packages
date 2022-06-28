@@ -45,39 +45,43 @@ class DerivLiveChatPlugin: FlutterPlugin, MethodCallHandler,
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
-    if (call.method.equals("derivLiveChatView")) {
-      if(chatWindowView == null) {
-        val licenseId = call.argument<String>("licenseId")
-        val visitorName = call.argument<String>("visitorName")
-        val visitorEmail = call.argument<String>("visitorEmail")
-        val groupId = call.argument<String>("groupId")
-        val customParams = call.argument<HashMap<String, String>>("customParams")!!
+          when {
+              call.method.equals("derivLiveChatView") -> {
+                if(chatWindowView == null) {
+                  val licenseId = call.argument<String>("licenseId")
+                  val visitorName = call.argument<String>("visitorName")
+                  val visitorEmail = call.argument<String>("visitorEmail")
+                  val groupId = call.argument<String>("groupId")
+                  val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
-        chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
+                  chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
 
-        val configuration = ChatWindowConfiguration.Builder()
-          .setLicenceNumber(licenseId)
-          .setVisitorName(visitorName)
-          .setVisitorEmail(visitorEmail)
-          .setGroupId(groupId)
-          .setCustomParams(customParams)
-          .build()
+                  val configuration = ChatWindowConfiguration.Builder()
+                          .setLicenceNumber(licenseId)
+                          .setVisitorName(visitorName)
+                          .setVisitorEmail(visitorEmail)
+                          .setGroupId(groupId)
+                          .setCustomParams(customParams)
+                          .build()
 
-        chatWindowView?.setUpWindow(configuration)
-        chatWindowView?.setUpListener(chatListener)
-        chatWindowView?.initialize()
-      }
+                  chatWindowView?.setUpWindow(configuration)
+                  chatWindowView?.setUpListener(chatListener)
+                  chatWindowView?.initialize()
+                }
 
-      chatWindowView?.showChatWindow()
+                chatWindowView?.showChatWindow()
 
-      result.success(null)
-    } else if(call.method.equals("closeChatView")) {
-      chatWindowView?.onBackPressed()
+                result.success(null)
+              }
+              call.method.equals("closeChatView") -> {
+                chatWindowView?.onBackPressed()
 
-      result.success(null)
-    } else {
-      result.notImplemented()
-    }
+                result.success(null)
+              }
+              else -> {
+                result.notImplemented()
+              }
+          }
 
   private val chatListener = object : ChatWindowView.ChatWindowEventsListener {
     override fun onChatWindowVisibilityChanged(visible: Boolean) {
