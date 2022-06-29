@@ -1,13 +1,14 @@
 package com.deriv.app.deriv_live_chat
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.content.Context
+import android.webkit.WebStorage
 import android.os.Build
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
-import android.webkit.WebStorage
+
 
 import androidx.annotation.NonNull
 import com.livechatinc.inappchat.ChatWindowConfiguration
@@ -23,6 +24,7 @@ import io.flutter.plugin.common.EventChannel.EventSink
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
+import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
 
 /** DerivLiveChatPlugin */
@@ -147,7 +149,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
         return true
     }
 
-    fun clearSession(context: Context?) {
+    private fun clearSession(context: Context?) {
         WebStorage.getInstance().deleteAllData()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
