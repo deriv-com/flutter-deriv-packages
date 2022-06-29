@@ -17,8 +17,8 @@ dependencies:
   flutter_deriv_api:
     git:
       git:
-      url: git@github.com:mohammadt-fs/flutter-deriv-api.git
-      ref: mohammadt/change-parser
+      url: git@github.com:deriv-com/flutter-deriv-api.git
+      ref: f0e2e88d209b3f07e0209d778b8e9a3b054dfa08
 
   deriv_api_key_provider:
     git:
