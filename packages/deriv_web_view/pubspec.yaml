@@ -7,7 +7,7 @@ homepage: https://deriv.com/
 publish_to: "none"
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.16.1 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -16,8 +16,9 @@ dependencies:
 
   flutter_deriv_api:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-api.git
-      ref: dev
+      git:
+      url: git@github.com:deriv-com/flutter-deriv-api.git
+      ref: new-deriv-api
 
   deriv_api_key_provider:
     git:
