@@ -59,21 +59,20 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             val groupId = call.argument<String>("groupId")
             val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
-            if (chatWindowView == null) {
-                chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
+            chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
 
-                val configuration = ChatWindowConfiguration.Builder()
-                    .setLicenceNumber(licenseId)
-                    .setVisitorName(visitorName)
-                    .setVisitorEmail(visitorEmail)
-                    .setGroupId(groupId)
-                    .setCustomParams(customParams)
-                    .build()
+            val configuration = ChatWindowConfiguration.Builder()
+                .setLicenceNumber(licenseId)
+                .setVisitorName(visitorName)
+                .setVisitorEmail(visitorEmail)
+                .setGroupId(groupId)
+                .setCustomParams(customParams)
+                .build()
 
-                chatWindowView?.setUpWindow(configuration)
-                chatWindowView?.setUpListener(chatListener)
-                chatWindowView?.initialize()
-            }
+            chatWindowView?.setUpWindow(configuration)
+            chatWindowView?.setUpListener(chatListener)
+            chatWindowView?.initialize()
+
 
             chatWindowView?.showChatWindow()
 
