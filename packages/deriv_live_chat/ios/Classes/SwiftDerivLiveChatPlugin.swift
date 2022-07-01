@@ -31,15 +31,11 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
 
                 if licenseId == "" {
                     result(FlutterError(code: "", message: "LICENSE NUMBER EMPTY", details: nil))
-                } else if visitorName == "" {
-                    result(FlutterError(code: "", message: "VISITOR NAME EMPTY", details: nil))
-                } else if visitorEmail == "" {
-                    result(FlutterError(code: "", message: "VISITOR EMAIL EMPTY", details: nil))
                 } else {
-                    LiveChat.licenseId = licenseId // Here Set your licence number here.
-                    LiveChat.name = visitorName // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey.
-                    LiveChat.email = visitorEmail // You can provide customer name or email if they are known, so a customer will not need to fill out the pre-chat survey.
-                    LiveChat.groupId = groupId // Optionally, You can route your customers to specific group of agents by providing groupId.
+                    LiveChat.licenseId = licenseId
+                    LiveChat.name = visitorName
+                    LiveChat.email = visitorEmail
+                    LiveChat.groupId = groupId
 
                     for (key, value) in customParams {
                         LiveChat.setVariable(withKey: key, value: value)
@@ -55,8 +51,13 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
                     let colorComponent = 37.0 / 255.0
                     
                     window?.rootViewController?.view.backgroundColor = UIColor.init(red: colorComponent, green: colorComponent, blue: colorComponent, alpha: 1)
+                    
                     result(nil)
                 }
+            case "closeChatView":
+                LiveChat.clearSession()
+                result(nil)
+
             default:
                 result(FlutterMethodNotImplemented)
         }
