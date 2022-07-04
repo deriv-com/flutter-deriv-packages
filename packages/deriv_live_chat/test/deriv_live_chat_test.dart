@@ -14,7 +14,7 @@ void main() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
       log.add(methodCall);
       switch (methodCall.method) {
-        case 'derivLiveChatView':
+        case 'open_live_chat_view':
           return true;
         default:
           return null;
@@ -23,7 +23,7 @@ void main() {
   });
 
   test('Start chat with Deriv Live Chat plugin without customParams', () async {
-    await DerivLiveChat.startChatView(
+    await DerivLiveChat.openChatView(
       licenseId: 'licenseId',
       username: 'visitorName',
       email: 'visitorEmail',
@@ -31,7 +31,7 @@ void main() {
     );
     expect(log, <Matcher>[
       isMethodCall(
-        'derivLiveChatView',
+        'open_live_chat_view',
         arguments: <String, dynamic>{
           'licenseId': 'licenseId',
           'visitorName': 'visitorName',
