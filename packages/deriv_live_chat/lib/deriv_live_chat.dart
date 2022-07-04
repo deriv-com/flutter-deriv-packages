@@ -11,7 +11,7 @@ class DerivLiveChat {
       EventChannel('deriv_live_chat_event_listener');
 
   /// Start chat by invoking method channel.
-  static Future<void> startChatView({
+  static Future<void> openChatView({
     required String licenseId,
     required String username,
     required String email,
@@ -19,7 +19,7 @@ class DerivLiveChat {
     Map<String, String>? customParameters,
   }) async =>
       _liveChatMethodChannel.invokeMethod<dynamic>(
-        'derivLiveChatView',
+        'open_live_chat_view',
         <String, dynamic>{
           'licenseId': licenseId,
           'visitorName': username,
@@ -29,11 +29,11 @@ class DerivLiveChat {
         },
       );
 
+  /// Start chat by invoking method channel.
+  static Future<void> closeChatView() async =>
+      _liveChatMethodChannel.invokeMethod<dynamic>('close_live_chat_view');
+
   /// Here we are receiving events stream.
   static Stream<dynamic>? get onEventReceived =>
       _liveChatEventChannel.receiveBroadcastStream();
-
-  /// Start chat by invoking method channel.
-  static Future<void> closeChatView() async =>
-      _liveChatMethodChannel.invokeMethod<dynamic>('closeChatView');
 }

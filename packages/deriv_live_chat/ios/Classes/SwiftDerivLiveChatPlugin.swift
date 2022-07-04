@@ -21,7 +21,7 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
-            case "derivLiveChatView":
+            case "open_live_chat_view":
                 let arguments = call.arguments as! [String: Any]
                 let licenseId = (arguments["licenseId"] as? String)
                 let visitorName = (arguments["visitorName"] as? String)
@@ -46,7 +46,7 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
                     
                     LiveChat.presentChat()
 
-                    //Change colour of top and bottom notch for dark theme
+                    //Change colour of top and bottom notch for dark theme.
                     let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
                     let colorComponent = 37.0 / 255.0
                     
@@ -54,7 +54,7 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
                     
                     result(nil)
                 }
-            case "closeChatView":
+            case "close_live_chat_view":
                 LiveChat.clearSession()
                 result(nil)
 
@@ -75,18 +75,17 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
 
     /// Handle chat dismissed here (Method provided by Livechat plugin).
     public func chatDismissed() {
-        LiveChat.clearSession()
         lifecycleSink?("chatClose")
     }
 
-    /// on Listen Events
+    /// On listen event.
     public func onListen(withArguments _: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
         lifecycleSink = events
 
         return nil
     }
 
-    /// on cancel Events
+    /// On cancel event.
     public func onCancel(withArguments _: Any?) -> FlutterError? {
         lifecycleSink = nil
 

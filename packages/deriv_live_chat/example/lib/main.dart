@@ -51,7 +51,7 @@ class _AppState extends State<App> {
       setState(() => _unreadNotificationCounter = counter);
 
   Future<void> openChatView() async {
-    await DerivLiveChat.startChatView(
+    await DerivLiveChat.openChatView(
       licenseId: '12345678',
       username: 'Demo User',
       email: 'DemoUser@gmail.com',

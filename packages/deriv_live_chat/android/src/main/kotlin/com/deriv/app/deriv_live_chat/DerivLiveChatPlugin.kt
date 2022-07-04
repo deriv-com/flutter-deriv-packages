@@ -52,7 +52,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
-        if (call.method.equals("derivLiveChatView")) {
+        if (call.method.equals("open_live_chat_view")) {
             val licenseId = call.argument<String>("licenseId")
             val visitorName = call.argument<String>("visitorName")
             val visitorEmail = call.argument<String>("visitorEmail")
@@ -77,7 +77,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             chatWindowView?.showChatWindow()
 
             result.success(null)
-        } else if (call.method.equals("closeChatView")) {
+        } else if (call.method.equals("close_live_chat_view")) {
             clearSession(chatWindowView?.context)
             chatWindowView?.onBackPressed()
 
