@@ -17,7 +17,7 @@ dependencies:
   flutter_deriv_api:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-api.git
-      ref: f4f1eb229dbada71c07bec93affad425f1a61188
+      ref: 62291665db58a56b014ee3539b69b7129963c302
 
   deriv_api_key_provider:
     git:
