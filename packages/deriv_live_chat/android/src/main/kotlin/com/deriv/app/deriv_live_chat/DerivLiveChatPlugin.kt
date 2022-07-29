@@ -175,7 +175,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
     private fun createCustomAndAttachChatWindowInstance(activity: Activity): ChatWindowView {
         val contentView =
             activity.window.decorView.findViewById<View>(android.R.id.content) as ViewGroup
-        contentView.fitsSystemWindows = false
+        contentView.fitsSystemWindows = true
         val chatWindowView = LayoutInflater.from(activity)
             .inflate(
                 com.livechatinc.inappchat.R.layout.view_chat_window,
@@ -185,7 +185,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
         contentView.addView(
             chatWindowView,
             WindowManager.LayoutParams.MATCH_PARENT,
-            400
+            WindowManager.LayoutParams.MATCH_PARENT,
         )
         return chatWindowView
     }
