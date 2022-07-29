@@ -185,7 +185,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
         contentView.addView(
             chatWindowView,
             WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.MATCH_PARENT
+            400
         )
         return chatWindowView
     }
