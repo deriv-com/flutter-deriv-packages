@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
 import android.webkit.WebStorage
+import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.core.view.ViewCompat
 import com.livechatinc.inappchat.ChatWindowConfiguration
@@ -177,9 +178,12 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
         val contentView =
             activity.window.decorView.findViewById<View>(android.R.id.content) as ViewGroup
         contentView.fitsSystemWindows = true
-        contentView.setPadding(0,100,0,0)
-       /* val statusBarHeight = activity.resources.getIdentifier("status_bar_height", "dimen", "android")
-        ViewCompat.setOnApplyWindowInsetsListener(contentView) { view, insets ->
+        var statusBarHeight = 100;
+        val statusBarID = activity.resources.getIdentifier("status_bar_height", "dimen", "android")
+        statusBarHeight = activity.resources.getDimensionPixelSize(statusBarID)
+        Toast.makeText(activity, statusBarHeight.toString(), Toast.LENGTH_SHORT).show()
+        contentView.setPadding(0,statusBarHeight,0,0)
+        /*ViewCompat.setOnApplyWindowInsetsListener(contentView) { view, insets ->
             view.setPadding(0, 100, 0, 0)
             insets
         }*/
