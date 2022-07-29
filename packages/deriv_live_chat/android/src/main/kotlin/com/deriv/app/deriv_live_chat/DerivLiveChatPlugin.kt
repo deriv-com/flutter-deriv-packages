@@ -177,23 +177,17 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
     private fun createCustomAndAttachChatWindowInstance(activity: Activity): ChatWindowView {
         val contentView =
             activity.window.decorView.findViewById<View>(android.R.id.content) as ViewGroup
-        contentView.fitsSystemWindows = true
+
         var statusBarHeight = 100;
         val statusBarID = activity.resources.getIdentifier("status_bar_height", "dimen", "android")
         statusBarHeight = activity.resources.getDimensionPixelSize(statusBarID)
-        Toast.makeText(activity, statusBarHeight.toString(), Toast.LENGTH_SHORT).show()
-        contentView.setPadding(0,statusBarHeight,0,0)
-        /*ViewCompat.setOnApplyWindowInsetsListener(contentView) { view, insets ->
-            view.setPadding(0, 100, 0, 0)
-            insets
-        }*/
         val chatWindowView = LayoutInflater.from(activity)
             .inflate(
                 com.livechatinc.inappchat.R.layout.view_chat_window,
                 contentView,
                 false
             ) as ChatWindowView
-
+        chatWindowView.setPadding(0,statusBarHeight,0,0)
         contentView.addView(
             chatWindowView,
             WindowManager.LayoutParams.MATCH_PARENT,
