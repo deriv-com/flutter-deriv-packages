@@ -1,21 +1,23 @@
 package com.deriv.app.deriv_live_chat
 
+
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.content.Context
-import android.webkit.WebStorage
 import android.os.Build
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
-
-
+import android.webkit.WebStorage
 import androidx.annotation.NonNull
 import com.livechatinc.inappchat.ChatWindowConfiguration
 import com.livechatinc.inappchat.ChatWindowErrorType
 import com.livechatinc.inappchat.ChatWindowView
 import com.livechatinc.inappchat.models.NewMessageModel
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -59,7 +61,9 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             val groupId = call.argument<String>("groupId")
             val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
-            chatWindowView = ChatWindowView.createAndAttachChatWindowInstance(activity!!)
+            chatWindowView = createCustomAndAttachChatWindowInstance(activity!!)
+
+
 
             val configuration = ChatWindowConfiguration.Builder()
                 .setLicenceNumber(licenseId)
@@ -166,5 +170,23 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             cookieSyncManager.stopSync()
             cookieSyncManager.sync()
         }
+    }
+
+    private fun createCustomAndAttachChatWindowInstance(activity: Activity): ChatWindowView {
+        val contentView =
+            activity.window.decorView.findViewById<View>(android.R.id.content) as ViewGroup
+        contentView.fitsSystemWindows = false
+        val chatWindowView = LayoutInflater.from(activity)
+            .inflate(
+                com.livechatinc.inappchat.R.layout.view_chat_window,
+                contentView,
+                false
+            ) as ChatWindowView
+        contentView.addView(
+            chatWindowView,
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.MATCH_PARENT
+        )
+        return chatWindowView
     }
 }
