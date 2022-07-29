@@ -13,9 +13,7 @@ import android.view.WindowManager
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
 import android.webkit.WebStorage
-import android.widget.Toast
 import androidx.annotation.NonNull
-import androidx.core.view.ViewCompat
 import com.livechatinc.inappchat.ChatWindowConfiguration
 import com.livechatinc.inappchat.ChatWindowErrorType
 import com.livechatinc.inappchat.ChatWindowView
@@ -64,7 +62,6 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
             chatWindowView = createCustomAndAttachChatWindowInstance(activity!!)
-
 
 
             val configuration = ChatWindowConfiguration.Builder()
@@ -177,7 +174,6 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
     private fun createCustomAndAttachChatWindowInstance(activity: Activity): ChatWindowView {
         val contentView =
             activity.window.decorView.findViewById<View>(android.R.id.content) as ViewGroup
-
         var statusBarHeight = 100;
         val statusBarID = activity.resources.getIdentifier("status_bar_height", "dimen", "android")
         statusBarHeight = activity.resources.getDimensionPixelSize(statusBarID)
@@ -187,7 +183,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
                 contentView,
                 false
             ) as ChatWindowView
-        chatWindowView.setPadding(0,statusBarHeight,0,0)
+        chatWindowView.setPadding(0, statusBarHeight, 0, 0)
         contentView.addView(
             chatWindowView,
             WindowManager.LayoutParams.MATCH_PARENT,
