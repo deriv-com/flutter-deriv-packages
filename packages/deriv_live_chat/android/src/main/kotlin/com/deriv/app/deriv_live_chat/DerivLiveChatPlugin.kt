@@ -1,6 +1,5 @@
 package com.deriv.app.deriv_live_chat
 
-
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -26,7 +25,6 @@ import io.flutter.plugin.common.EventChannel.EventSink
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
 
 /** DerivLiveChatPlugin */
@@ -62,7 +60,6 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
             chatWindowView = createCustomAndAttachChatWindowInstance(activity!!)
-
 
             val configuration = ChatWindowConfiguration.Builder()
                 .setLicenceNumber(licenseId)
@@ -177,6 +174,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
         var statusBarHeight = 100;
         val statusBarID = activity.resources.getIdentifier("status_bar_height", "dimen", "android")
         statusBarHeight = activity.resources.getDimensionPixelSize(statusBarID)
+
         val chatWindowView = LayoutInflater.from(activity)
             .inflate(
                 com.livechatinc.inappchat.R.layout.view_chat_window,
@@ -184,11 +182,13 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
                 false
             ) as ChatWindowView
         chatWindowView.setPadding(0, statusBarHeight, 0, 0)
+
         contentView.addView(
             chatWindowView,
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
         )
+
         return chatWindowView
     }
 }
