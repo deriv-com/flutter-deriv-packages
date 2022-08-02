@@ -1,5 +1,6 @@
 analyzer:
   exclude:
+    - example/**
     - lib/basic_api/**
     - lib/generated/**
     - /**.g.dart

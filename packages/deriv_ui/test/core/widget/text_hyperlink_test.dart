@@ -24,22 +24,3 @@ void main() {
     });
   });
 }
-
-class _TestApp extends StatelessWidget {
-  const _TestApp(this.label, this.url, this.containerMargin, this.openWebPage);
-
-  final String label;
-  final String url;
-  final double containerMargin;
-  final Function(BuildContext, String) openWebPage;
-
-  @override
-  Widget build(BuildContext context) => MaterialApp(
-        home: TextHyperlink(
-          label: label,
-          containerMargin: containerMargin,
-          url: url,
-          openWebPage: (BuildContext context, String url) {},
-        ),
-      );
-}
