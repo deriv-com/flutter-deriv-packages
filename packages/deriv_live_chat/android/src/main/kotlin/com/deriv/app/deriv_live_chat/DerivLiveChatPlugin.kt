@@ -51,7 +51,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             .setStreamHandler(this)
     }
 
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) =
+    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) =
         if (call.method.equals("open_live_chat_view")) {
             val licenseId = call.argument<String>("licenseId")
             val visitorName = call.argument<String>("visitorName")
