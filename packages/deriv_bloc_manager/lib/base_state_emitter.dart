@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/base_state_listener.dart';
 import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart';
 
 /// Base state emitter class.
-abstract class BaseStateEmitter<E extends BaseEventListener,
+abstract class BaseStateEmitter<L extends BaseStateListener,
     B extends BlocBase<Object>> {
   /// Initializes base state emitter.
   BaseStateEmitter(this.blocManager) {
@@ -14,14 +14,14 @@ abstract class BaseStateEmitter<E extends BaseEventListener,
   /// Bloc manager instance.
   final BaseBlocManager blocManager;
 
-  /// Handles states for event listener [E].
-  void handleStates({required E eventListener, required Object state});
+  /// Handles states for state listener [L].
+  void handleStates({required L stateListener, required Object state});
 
   /// Emits state to corresponding listener.
-  void call({required BaseEventListener eventListener, Object? state}) {
-    if (eventListener is E) {
+  void call({required BaseStateListener stateListener, Object? state}) {
+    if (stateListener is L) {
       handleStates(
-        eventListener: eventListener,
+        stateListener: stateListener,
         state: state ?? blocManager.fetch<B>().state,
       );
     }

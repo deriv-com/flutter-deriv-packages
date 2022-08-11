@@ -19,12 +19,12 @@ void initializeBlocs() {
   BlocManager.instance.register(DependentCubit());
 
   // Register State Emitters.
-  EventDispatcher(BlocManager.instance)
+  StateDispatcher(BlocManager.instance)
       .register<MainCubit, MainCubitStateEmitter>(
     (BaseBlocManager blocManager) => MainCubitStateEmitter(blocManager),
   );
 
-  // Call a function in the [MainCubit] to emit an event.
+  // Call a function in the [MainCubit] to emit an state.
   BlocManager.instance.fetch<MainCubit>().doCalculation();
 }
 
@@ -41,6 +41,7 @@ class _AppState extends State<App> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: const Text('Deriv bloc manager example app'),
         ),
         body: Center(

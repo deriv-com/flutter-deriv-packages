@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/base_state_listener.dart';
 import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
 
 /// Function signature for `BlocManagerListenerHandler`.
@@ -72,12 +72,12 @@ abstract class BaseBlocManager {
 
   /// Adds a [BaseStateEmitter] to bloc manager.
   void registerStateEmitter(
-    BaseStateEmitter<BaseEventListener, BlocBase<Object>> stateEmitter,
+    BaseStateEmitter<BaseStateListener, BlocBase<Object>> stateEmitter,
   );
 
   /// Emits core blocs states.
   void emitCoreStates<
-      E extends BaseStateEmitter<BaseEventListener, BlocBase<Object>>>({
+      E extends BaseStateEmitter<BaseStateListener, BlocBase<Object>>>({
     required BlocBase<Object> bloc,
     Object? state,
   });

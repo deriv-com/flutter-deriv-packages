@@ -1,29 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/base_state_listener.dart';
 import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
 import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart';
 
 /// Function signature for `StateEmitterBuilder`.
 typedef StateEmitterBuilder = void Function(BaseBlocManager blocManager);
 
-/// Event dispatcher for dispatching core events.
-class EventDispatcher {
-  /// Initializes event dispatcher.
-  EventDispatcher(
+/// State dispatcher for dispatching core states.
+class StateDispatcher {
+  /// Initializes state dispatcher.
+  StateDispatcher(
     this.blocManager, {
-    this.listenerKey = 'CORE_EVENT_LISTENER_KEY',
+    this.listenerKey = 'CORE_STATE_LISTENER_KEY',
   });
 
   /// State manager instance.
   final BaseBlocManager blocManager;
 
-  /// Event listeners key.
+  /// State listeners key.
   final String listenerKey;
 
-  /// Initialises event dispatcher by adding listeners to the shared blocs.
+  /// Initialises state dispatcher by adding listeners to the shared blocs.
   void register<B extends BlocBase<Object>,
-      E extends BaseStateEmitter<BaseEventListener, B>>(
+      E extends BaseStateEmitter<BaseStateListener, B>>(
     StateEmitterBuilder stateEmitterBuilder,
   ) {
     stateEmitterBuilder(blocManager);
@@ -37,7 +37,7 @@ class EventDispatcher {
   }
 
   void _dispatcher<
-          E extends BaseStateEmitter<BaseEventListener, BlocBase<Object>>>(
+          E extends BaseStateEmitter<BaseStateListener, BlocBase<Object>>>(
       Object state) {
     for (int index = 0; index < blocManager.repository.length; index++) {
       blocManager.emitCoreStates<E>(

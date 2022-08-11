@@ -1,6 +1,6 @@
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
-abstract class MainCubitEventListener extends BaseEventListener {
+abstract class MainCubitStateListener extends BaseStateListener {
   void onLoading();
   void onLoaded();
 }

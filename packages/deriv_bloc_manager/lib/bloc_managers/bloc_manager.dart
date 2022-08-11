@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 
 import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/base_event_listener.dart';
+import 'package:flutter_deriv_bloc_manager/base_state_listener.dart';
 import 'package:flutter_deriv_bloc_manager/bloc_manager_exception.dart';
 import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
 
@@ -25,9 +25,9 @@ class BlocManager implements BaseBlocManager {
   final Map<String, StreamSubscription<Object>> _subscriptions =
       <String, StreamSubscription<Object>>{};
 
-  final List<BaseStateEmitter<BaseEventListener, BlocBase<Object>>>
+  final List<BaseStateEmitter<BaseStateListener, BlocBase<Object>>>
       _stateEmitters =
-      <BaseStateEmitter<BaseEventListener, BlocBase<Object>>>[];
+      <BaseStateEmitter<BaseStateListener, BlocBase<Object>>>[];
 
   @override
   Map<String, BlocBase<Object>> get repository => _repository;
@@ -60,7 +60,7 @@ class BlocManager implements BaseBlocManager {
     Future<void>.delayed(
       const Duration(),
       () =>
-          emitCoreStates<BaseStateEmitter<BaseEventListener, BlocBase<Object>>>(
+          emitCoreStates<BaseStateEmitter<BaseStateListener, BlocBase<Object>>>(
         bloc: bloc,
       ),
     );
@@ -120,22 +120,22 @@ class BlocManager implements BaseBlocManager {
 
   @override
   void registerStateEmitter(
-    BaseStateEmitter<BaseEventListener, BlocBase<Object>> stateEmitter,
+    BaseStateEmitter<BaseStateListener, BlocBase<Object>> stateEmitter,
   ) =>
       _stateEmitters.add(stateEmitter);
 
   @override
   void emitCoreStates<
-      E extends BaseStateEmitter<BaseEventListener, BlocBase<Object>>>({
+      E extends BaseStateEmitter<BaseStateListener, BlocBase<Object>>>({
     required BlocBase<Object> bloc,
     Object? state,
   }) {
-    if (bloc is BaseEventListener) {
+    if (bloc is BaseStateListener) {
       final List<E> stateEmitters = _stateEmitters.whereType<E>().toList();
 
-      for (final BaseStateEmitter<BaseEventListener,
+      for (final BaseStateEmitter<BaseStateListener,
           BlocBase<Object>> stateEmitter in stateEmitters) {
-        stateEmitter(eventListener: bloc as BaseEventListener, state: state);
+        stateEmitter(stateListener: bloc as BaseStateListener, state: state);
       }
     }
   }

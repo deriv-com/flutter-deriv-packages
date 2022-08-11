@@ -28,9 +28,9 @@ The solution is to;
 
 - Separate global app state(s) from the app features and have the data provided to the feature when needed making it flexible and easier to test.
 - Create a bloc manager in a single place that is responsible for handling bloc registration, fetching or disposing a registered bloc, and adding or removing state change listeners from a specific bloc.
-- Use the bloc manager to listen to state changes in global/shared blocs and pass them to an event dispatcher.
-- To have a single event dispatcher that is in charge of broadcasting events sent from the bloc manager to the active bloc expecting these events.
-- Create a common/shared events interface that is used in different parts of the app, so they can be reused instead of code duplication.
+- Use the bloc manager to listen to state changes in global/shared blocs and pass them to an state dispatcher.
+- To have a single state dispatcher that is in charge of broadcasting states sent from the bloc manager to the active bloc expecting these states.
+- Create a common/shared states interface that is used in different parts of the app, so they can be reused instead of code duplication.
 
 The following diagrams show how the app is structured;
 
@@ -42,25 +42,25 @@ The following diagrams show how the app is structured;
 
 This section shows how to create a new bloc/cubit following the proposed architecture and use the bloc manager to coordinate and manage the blocs/cubits. In this example we will be using cubit;
 
-1- Create a base events class which contains the events that are common in which a cubit class or other base events interfaces can implement. For example;
+1- Create a base states class which contains the states that are common in which a cubit class or other base states interfaces can implement. For example;
 
 ```dart
-abstract class BaseEventListener {}
+abstract class BaseStateListener {}
 
-abstract class AuthEventListener implements BaseEventListener {
+abstract class AuthStateListener implements BaseStateListener {
   void onLogin(Authorize authorizedAccount);
 
   void onLogout();
 }
 
-abstract class ConnectivityEventListener implements BaseEventListener {
+abstract class ConnectivityStateListener implements BaseStateListener {
   void onDisconnect(DisconnectSource source);
 
   void onConnect();
 }
 ```
 
-2- Create a cubit for a feature, let’s call it `FeatureCubit`. The cubit class will implement both `AuthEventListener` and `ConnectivityEventListener` so it can expose the 4 methods in addition to any other feature-specific events. The type of the state `FeatureCubit` is managing in this example, is **Status** with initial value as `initial`;
+2- Create a cubit for a feature, let’s call it `FeatureCubit`. The cubit class will implement both `AuthStateListener` and `ConnectivityStateListener` so it can expose the 4 methods in addition to any other feature-specific states. The type of the state `FeatureCubit` is managing in this example, is **Status** with initial value as `initial`;
 
 ```dart
 enum Status {
@@ -78,7 +78,7 @@ The `FeatureCubit` will expose the common/share `onConnect`, `onDisconnect`, `on
 ```dart
 import 'package:bloc/bloc.dart';
 
-class FeatureCubit extends Cubit<Status> implements ConnectivityEventListener, AuthEventListener {
+class FeatureCubit extends Cubit<Status> implements ConnectivityStateListener, AuthStateListener {
   FeatureCubit() : super(Status.initial);
 
   void loading() => emit(Status.loading);
@@ -114,8 +114,8 @@ void _registerBlocs() {
   ...
 }
 
-void _registerEventDispatchers() {
-  EventDispatcher(BlocManager.instance)
+void _registerStateDispatchers() {
+  StateDispatcher(BlocManager.instance)
     ..register<ConnectivityCubit, ConnectionStateEmitter>(
       (BaseBlocManager blocManager) => ConnectivityStateEmitter(blocManager),
     )
@@ -126,12 +126,12 @@ void _registerEventDispatchers() {
 }
 ```
 
-As the snippet shows, we use ` BlocManager.instance.register()` to register a new cubit. In order to dispose of that cubit, `BlocManager.instance.dispose()` could be called. So what does `EventDispatcher(BlocManager.instance)` do?
+As the snippet shows, we use ` BlocManager.instance.register()` to register a new cubit. In order to dispose of that cubit, `BlocManager.instance.dispose()` could be called. So what does `StateDispatcher(BlocManager.instance)` do?
 
-As we mentioned earlier, bloc manager will handle listening to state changes in shared blocs in order to notify or broadcast the events to interested cubits that expect an update. And that’s exactly what `EventDispatcher(BlocManager.instance)` do, it adds listeners to get state changes update and then will dispatch events to cubits, for example, to `FeatureCubit` as shown below;
+As we mentioned earlier, bloc manager will handle listening to state changes in shared blocs in order to notify or broadcast the states to interested cubits that expect an update. And that’s exactly what `StateDispatcher(BlocManager.instance)` do, it adds listeners to get state changes update and then will dispatch states to cubits, for example, to `FeatureCubit` as shown below;
 
 ```dart
-abstract class BaseStateEmitter<E extends BaseEventListener, B extends BlocBase<Object>> {
+abstract class BaseStateEmitter<L extends BaseStateListener, B extends BlocBase<Object>> {
   /// Initializes base state emitter.
   BaseStateEmitter(this.blocManager) {
     blocManager.registerStateEmitter(this);
@@ -140,14 +140,14 @@ abstract class BaseStateEmitter<E extends BaseEventListener, B extends BlocBase<
   /// Bloc manager instance.
   final BaseBlocManager blocManager;
 
-  /// Handles states for event listener [E].
-  void handleStates({required E eventListener, required Object state});
+  /// Handles states for state listener [L].
+  void handleStates({required L stateListener, required Object state});
 
   /// Emits state to the listener.
-  void call({required BaseEventListener eventListener, Object? state}) {
-    if (eventListener is E) {
+  void call({required BaseStateListener stateListener, Object? state}) {
+    if (stateListener is L) {
       handleStates(
-        eventListener: eventListener,
+        stateListener: stateListener,
         state: state ?? blocManager.fetch<B>().state,
       );
     }
@@ -156,21 +156,21 @@ abstract class BaseStateEmitter<E extends BaseEventListener, B extends BlocBase<
 ```
 
 ```dart
-class ConnectionStateEmitter extends BaseStateEmitter<ConnectionEventListener, ConnectionCubit> {
+class ConnectionStateEmitter extends BaseStateEmitter<ConnectionStateListener, ConnectionCubit> {
   /// Initializes connection state emitter.
   ConnectionStateEmitter(BaseBlocManager blocManager) : super(blocManager);
 
   @override
   void handleStates({
-    required ConnectionEventListener eventListener,
+    required ConnectionStateListener stateListener,
     required Object state,
   }) {
     if (state is ConnectionConnectedState) {
-      eventListener.onConnected();
+      stateListener.onConnected();
     } else if (state is ConnectionDisconnectedState) {
-      eventListener.onDisconnect();
+      stateListener.onDisconnect();
     } else if (state is ConnectionErrorState) {
-      eventListener.onConnectionError(state.error);
+      stateListener.onConnectionError(state.error);
     }
   }
 }
@@ -178,7 +178,7 @@ class ConnectionStateEmitter extends BaseStateEmitter<ConnectionEventListener, C
 ```
 
 ```dart
-void register<B extends BlocBase<Object>, E extends BaseStateEmitter<BaseEventListener, B>>(
+void register<B extends BlocBase<Object>, E extends BaseStateEmitter<BaseStateListener, B>>(
   StateEmitterBuilder stateEmitterBuilder,
 ) {
   stateEmitterBuilder(blocManager);
@@ -192,10 +192,10 @@ void register<B extends BlocBase<Object>, E extends BaseStateEmitter<BaseEventLi
 }
 ```
 
-The example shows a state is active or not coming from the global `AccountCubit`, then the `EventDispatcher` will broadcast login or logout events. `_dispatcher` function looks for all registered blocs and sends the events to blocs implementing the `BaseCubit` class.
+The example shows a state is active or not coming from the global `AccountCubit`, then the `StateDispatcher` will broadcast login or logout states. `_dispatcher` function looks for all registered blocs and sends the states to blocs implementing the `BaseCubit` class.
 
 ```dart
-void _dispatcher<E extends BaseStateEmitter<BaseEventListener, BlocBase<Object>>>(
+void _dispatcher<E extends BaseStateEmitter<BaseStateListener, BlocBase<Object>>>(
   Object state,
 ) =>
     blocManager.repository.forEach(

@@ -1,5 +1,5 @@
 name: flutter_deriv_bloc_manager
-description: A new flutter plugin project.
+description: A package based on observer pattern and Service Locator pattern, for managing blocs in Flutter.
 version: 0.0.1
 
 homepage: https://deriv.com/

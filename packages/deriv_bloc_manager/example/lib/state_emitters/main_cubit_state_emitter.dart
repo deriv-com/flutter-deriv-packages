@@ -1,23 +1,23 @@
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
-import 'package:flutter_deriv_bloc_manager_example/event_listener_contracts/main_cubit_listener.dart';
+import 'package:flutter_deriv_bloc_manager_example/state_listener_contracts/main_cubit_listener.dart';
 import 'package:flutter_deriv_bloc_manager_example/states/main_cubit/main_cubit.dart';
 
 /// Account settings state emitter.
 class MainCubitStateEmitter
-    extends BaseStateEmitter<MainCubitEventListener, MainCubit> {
+    extends BaseStateEmitter<MainCubitStateListener, MainCubit> {
   /// Initializes account settings state emitter.
   MainCubitStateEmitter(BaseBlocManager blocManager) : super(blocManager);
 
   @override
   void handleStates({
-    required MainCubitEventListener eventListener,
+    required MainCubitStateListener stateListener,
     required Object state,
   }) {
     if (state is MainCubitLoadingState) {
-      eventListener.onLoading();
+      stateListener.onLoading();
     } else if (state is MainCubitLoadedState) {
-      eventListener.onLoaded();
+      stateListener.onLoaded();
     }
   }
 }
