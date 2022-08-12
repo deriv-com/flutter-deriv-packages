@@ -18,11 +18,6 @@ void initializeBlocs() {
   BlocManager.instance.register(MainCubit());
   BlocManager.instance.register(DependentCubit());
 
-  // Register State Emitters.
-  StateDispatcher(BlocManager.instance)
-      .register<MainCubit, MainCubitStateEmitter>(
-    (BaseBlocManager blocManager) => MainCubitStateEmitter(blocManager),
-  );
 
   // Call a function in the [MainCubit] to emit an state.
   BlocManager.instance.fetch<MainCubit>().doCalculation();

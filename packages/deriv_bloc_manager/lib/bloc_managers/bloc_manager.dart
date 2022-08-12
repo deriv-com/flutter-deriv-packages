@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 
 import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/base_state_listener.dart';
 import 'package:flutter_deriv_bloc_manager/bloc_manager_exception.dart';
-import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
 
 /// Bloc manager class.
 ///
@@ -24,10 +22,6 @@ class BlocManager implements BaseBlocManager {
 
   final Map<String, StreamSubscription<Object>> _subscriptions =
       <String, StreamSubscription<Object>>{};
-
-  final List<BaseStateEmitter<BaseStateListener, BlocBase<Object>>>
-      _stateEmitters =
-      <BaseStateEmitter<BaseStateListener, BlocBase<Object>>>[];
 
   @override
   Map<String, BlocBase<Object>> get repository => _repository;
@@ -55,15 +49,7 @@ class BlocManager implements BaseBlocManager {
 
     _repository[_getKey<B>(key)] = bloc;
 
-    /// This future is added to make sure the state emits in the correct order,
-    /// and emitting states dose not block widget build.
-    Future<void>.delayed(
-      const Duration(),
-      () =>
-          emitCoreStates<BaseStateEmitter<BaseStateListener, BlocBase<Object>>>(
-        bloc: bloc,
-      ),
-    );
+    // TODO(mohammad): do we need any extra action after registration
   }
 
   @override
@@ -83,32 +69,24 @@ class BlocManager implements BaseBlocManager {
   @override
   void addListener<B extends BlocBase<Object>>({
     required String listenerKey,
-    required BlocManagerListenerHandler handler,
+    required BlocManagerListenerHandler<Object> handler,
     String key = BaseBlocManager.defaultKey,
   }) {
-    if (hasListener(listenerKey)) {
+    if (hasListener<B>(listenerKey)) {
       return;
     }
 
-    final B? bloc = fetch<B>(key);
-
-    if (bloc == null) {
-      throw _getCouldNotFindBlocException<B>(key);
-    }
+    final B bloc = fetch<B>(key);
 
     _subscriptions[_getKey<B>(listenerKey)] =
         bloc.stream.listen((Object state) => handler(state));
   }
 
   @override
-  Future<void> removeListener<B extends BlocBase<Object>>({
-    String key = BaseBlocManager.defaultKey,
-  }) async {
-    final String listenerKey = _getKey<B>(key);
-
+  Future<void> removeListeners(String key) async {
     final List<String> subscriptionKeys = _subscriptions.keys
         .where(
-          (final String itemKey) => itemKey.contains(listenerKey),
+          (final String itemKey) => itemKey.contains(key),
         )
         .toList();
 
@@ -119,25 +97,12 @@ class BlocManager implements BaseBlocManager {
   }
 
   @override
-  void registerStateEmitter(
-    BaseStateEmitter<BaseStateListener, BlocBase<Object>> stateEmitter,
-  ) =>
-      _stateEmitters.add(stateEmitter);
+  Future<void> removeListenersForType<B extends BlocBase<Object>>({
+    String key = BaseBlocManager.defaultKey,
+  }) async {
+    final String listenerKey = _getKey<B>(key);
 
-  @override
-  void emitCoreStates<
-      E extends BaseStateEmitter<BaseStateListener, BlocBase<Object>>>({
-    required BlocBase<Object> bloc,
-    Object? state,
-  }) {
-    if (bloc is BaseStateListener) {
-      final List<E> stateEmitters = _stateEmitters.whereType<E>().toList();
-
-      for (final BaseStateEmitter<BaseStateListener,
-          BlocBase<Object>> stateEmitter in stateEmitters) {
-        stateEmitter(stateListener: bloc as BaseStateListener, state: state);
-      }
-    }
+    await removeListeners(listenerKey);
   }
 
   @override
@@ -181,7 +146,7 @@ class BlocManager implements BaseBlocManager {
       await _repository[blocKey]?.close();
       _repository.remove(blocKey);
 
-      await removeListener<B>(key: key);
+      await removeListenersForType<B>(key: key);
     }
   }
 }

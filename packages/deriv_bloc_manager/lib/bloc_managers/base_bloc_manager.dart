@@ -2,11 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 
-import 'package:flutter_deriv_bloc_manager/base_state_listener.dart';
-import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
-
 /// Function signature for `BlocManagerListenerHandler`.
-typedef BlocManagerListenerHandler = void Function(Object state);
+typedef BlocManagerListenerHandler<T> = void Function(T state);
 
 /// Bloc manager interface.
 ///
@@ -53,15 +50,19 @@ abstract class BaseBlocManager {
   /// [key] is used to identify bloc, this field is optional and defaults to [defaultKey].
   void addListener<B extends BlocBase<Object>>({
     required String listenerKey,
-    required BlocManagerListenerHandler handler,
+    required BlocManagerListenerHandler<Object> handler,
     String key = defaultKey,
   });
 
   /// Removes listener from bloc manager.
   ///
   /// [key] is registered listener identifier.
+  Future<void> removeListeners(String key);
+
+  /// Same as [removeListeners] but it only removes listeners of [B] type.
+  ///
   /// NOTE: if you need to check listener for specific bloc type leave it `empty`.
-  Future<void> removeListener<B extends BlocBase<Object>>({
+  Future<void> removeListenersForType<B extends BlocBase<Object>>({
     String key = defaultKey,
   });
 
@@ -69,18 +70,6 @@ abstract class BaseBlocManager {
   ///
   /// [key] is registered listener identifier, or bloc identifier if you need to check listener for specific bloc.
   bool hasListener<B extends BlocBase<Object>>(String key);
-
-  /// Adds a [BaseStateEmitter] to bloc manager.
-  void registerStateEmitter(
-    BaseStateEmitter<BaseStateListener, BlocBase<Object>> stateEmitter,
-  );
-
-  /// Emits core blocs states.
-  void emitCoreStates<
-      E extends BaseStateEmitter<BaseStateListener, BlocBase<Object>>>({
-    required BlocBase<Object> bloc,
-    Object? state,
-  });
 
   /// Disposes the bloc of type [B].
   Future<void> dispose<B extends BlocBase<Object>>([String key = defaultKey]);
