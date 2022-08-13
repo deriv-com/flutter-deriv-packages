@@ -14,7 +14,7 @@ void main() {
       'ListenerCubit should receive EmitterCubit current state + new state',
       setUp: () async => blocManager.register(EmitterCubit1()),
       build: () {
-        blocManager.register(ListenerExample1(blocManager));
+        blocManager.register(ListenerExample1());
         return blocManager.fetch<ListenerExample1>();
       },
       act: (ListenerExample1 listenerCubit) async {
@@ -38,12 +38,12 @@ void main() {
       ..register(EmitterCubit1())
       ..register(EmitterCubit2())
       ..register(
-        ListenerExample2(blocManager,
+        ListenerExample2(
             listener: (int state) => listener1ReceivedState = state),
         key: 'Listener1',
       )
       ..register(
-        ListenerExample2(blocManager,
+        ListenerExample2(
             listener: (int state) => listener2ReceivedState = state),
         key: 'Listener2',
       );
@@ -79,7 +79,7 @@ class EmitterCubit2 extends Cubit<int> {
 }
 
 class ListenerExample1 extends ListenerCubit<int> {
-  ListenerExample1(BlocManager blocManager) : super(0, blocManager) {
+  ListenerExample1() : super(0) {
     listen<EmitterCubit1, int>(listener: onEmitterCubitState);
   }
 
@@ -90,8 +90,7 @@ class ListenerExample2 extends ListenerCubit<int> {
   final BlocManagerListenerHandler<int> listener;
 
   // ignore: sort_constructors_first
-  ListenerExample2(BlocManager blocManager, {required this.listener})
-      : super(0, blocManager) {
+  ListenerExample2({required this.listener}) : super(0) {
     listen<EmitterCubit1, int>(
       listener: listener,
       shouldAlsoReceiveCurrentState: false,

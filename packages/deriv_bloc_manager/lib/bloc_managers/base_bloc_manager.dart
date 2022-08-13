@@ -48,7 +48,7 @@ abstract class BaseBlocManager {
   /// [listenerKey] is an identifier for listener, this field is required.
   /// [handler] is a callback that will be executed when listener is called, this field is required.
   /// [key] is used to identify bloc, this field is optional and defaults to [defaultKey].
-  void addListener<B extends BlocBase<Object>>({
+  void addListenerFor<B extends BlocBase<Object>>({
     required String listenerKey,
     required BlocManagerListenerHandler<Object> handler,
     String key = defaultKey,

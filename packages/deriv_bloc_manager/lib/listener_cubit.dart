@@ -1,13 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
-/// Advantages:
-/// 1. No listener/emitter class => less Boilerplate code + easer API for developer
-/// 2. No need to implement all states of a emitter cubit in the listener cubit. we can only listen to a specific state.
-/// 3. An Error would be thrown if emitter cubit has not been registered before listener cubit.
-
 abstract class ListenerCubit<State> extends Cubit<State> {
-  ListenerCubit(State initialState, this.blocManager) : super(initialState);
+  ListenerCubit(
+    State initialState, {
+    BlocManager? blocManager,
+  })  : blocManager = BlocManager.instance,
+        super(initialState);
 
   final BlocManager blocManager;
 
@@ -23,7 +22,7 @@ abstract class ListenerCubit<State> extends Cubit<State> {
         listener(currentState as StateToWatch);
       }
     }
-    BlocManager.instance.addListener<CubitToWatch>(
+    BlocManager.instance.addListenerFor<CubitToWatch>(
       listenerKey: _getListenerKey(),
       handler: (Object state) {
         if (state is StateToWatch) {

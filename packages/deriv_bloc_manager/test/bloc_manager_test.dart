@@ -29,7 +29,7 @@ void main() {
     blocTest<_TestCubit, bool>(
       'emits trueState() and register a listener for bloc manager.',
       build: () {
-        blocManager.addListener<_TestCubit>(
+        blocManager.addListenerFor<_TestCubit>(
           listenerKey: 'TestCubitListener',
           handler: (Object state) => expect(state, isTrue),
         );
@@ -46,12 +46,12 @@ void main() {
       blocManager
         ..register(_TestCubit())
         ..register(_TestCubit(), key: blocKey)
-        ..addListener<_TestCubit>(
+        ..addListenerFor<_TestCubit>(
           listenerKey: firstListenerKey,
           handler: (Object state) => expect(state, isTrue),
           key: blocKey,
         )
-        ..addListener<_TestCubit>(
+        ..addListenerFor<_TestCubit>(
           listenerKey: secondListenerKey,
           handler: (Object state) => expect(state, isTrue),
         );
@@ -75,12 +75,12 @@ void main() {
         () async {
       blocManager
         ..register(_TestCubit(), key: blocKey)
-        ..addListener<_TestCubit>(
+        ..addListenerFor<_TestCubit>(
           listenerKey: firstListenerKey,
           handler: (Object state) => expect(state, isTrue),
           key: blocKey,
         )
-        ..addListener<_TestCubit>(
+        ..addListenerFor<_TestCubit>(
           listenerKey: secondListenerKey,
           handler: (Object state) => expect(state, isTrue),
           key: blocKey,
@@ -100,12 +100,12 @@ void main() {
       blocManager
         ..register(_TestCubit(), key: blocKey)
         ..register(_AnotherTestCubit(), key: blocKey)
-        ..addListener<_TestCubit>(
+        ..addListenerFor<_TestCubit>(
           listenerKey: firstListenerKey,
           handler: (Object state) => expect(state, isTrue),
           key: blocKey,
         )
-        ..addListener<_AnotherTestCubit>(
+        ..addListenerFor<_AnotherTestCubit>(
           listenerKey: firstListenerKey,
           handler: (Object state) => expect(state, isTrue),
           key: blocKey,
