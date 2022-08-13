@@ -7,7 +7,9 @@ import 'package:flutter_deriv_bloc_manager/manager.dart';
 /// 3. An Error would be thrown if emitter cubit has not been registered before listener cubit.
 
 abstract class ListenerCubit<State> extends Cubit<State> {
-  ListenerCubit(State initialState) : super(initialState);
+  ListenerCubit(State initialState, this.blocManager) : super(initialState);
+
+  final BlocManager blocManager;
 
   void listen<CubitToWatch extends BlocBase<Object>, StateToWatch>({
     required BlocManagerListenerHandler<StateToWatch> listener,
@@ -15,7 +17,7 @@ abstract class ListenerCubit<State> extends Cubit<State> {
     String cubitKey = BaseBlocManager.defaultKey,
   }) {
     if (shouldAlsoReceiveCurrentState) {
-      final Object currentState = _blocManager.fetch<CubitToWatch>().state;
+      final Object currentState = blocManager.fetch<CubitToWatch>().state;
 
       if (currentState is StateToWatch) {
         listener(currentState as StateToWatch);
@@ -34,11 +36,10 @@ abstract class ListenerCubit<State> extends Cubit<State> {
 
   @override
   Future<void> close() {
-    _blocManager.removeListeners(_getListenerKey());
+    blocManager.removeListeners(_getListenerKey());
 
     return super.close();
   }
 
   String _getListenerKey() => hashCode.toString();
-  BlocManager get _blocManager => BlocManager.instance;
 }
