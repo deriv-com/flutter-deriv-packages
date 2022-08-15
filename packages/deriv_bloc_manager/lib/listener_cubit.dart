@@ -2,9 +2,11 @@ import 'package:bloc/bloc.dart';
 
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
-/// Listener cubit, which is a [Cubit] that listens to broadcaster cubit states.
+/// Listener cubit, which is a [Cubit] that listens to `broadcaster cubit` states.
 abstract class ListenerCubit<State> extends Cubit<State> {
-  /// Initializes [ListenerCubit] with [broadcasterCubit] and [broadcasterCubitState].
+  /// Initializes [ListenerCubit] with [initialState].
+  ///
+  /// [BaseBlocManager] is optional, if not provided, `BlocManager.instance` will be used.
   ListenerCubit(State initialState, {BaseBlocManager? blocManager})
       : blocManager = blocManager ?? BlocManager.instance,
         super(initialState);
