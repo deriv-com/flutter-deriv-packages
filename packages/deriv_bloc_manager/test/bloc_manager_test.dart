@@ -1,6 +1,6 @@
+import 'package:bloc/bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
@@ -56,11 +56,17 @@ void main() {
           handler: (Object state) => expect(state, isTrue),
         );
 
-      await blocManager.removeListener<_TestCubit>(key: firstListenerKey);
+      await blocManager.removeListenersForType<_TestCubit>(
+          key: firstListenerKey);
 
       expect(
         blocManager.hasListener<_TestCubit>(firstListenerKey),
         isFalse,
+      );
+
+      expect(
+        blocManager.hasListener<_TestCubit>(secondListenerKey),
+        isTrue,
       );
     });
 
@@ -80,10 +86,39 @@ void main() {
           key: blocKey,
         );
 
-      await blocManager.removeListener<_TestCubit>();
+      await blocManager.removeListenersForType<_TestCubit>();
 
       expect(
         blocManager.hasListener<_TestCubit>(blocKey),
+        isFalse,
+      );
+    });
+
+    test(
+        'should remove all listeners from bloc manager for a specific listener key.',
+        () async {
+      blocManager
+        ..register(_TestCubit(), key: blocKey)
+        ..register(_AnotherTestCubit(), key: blocKey)
+        ..addListener<_TestCubit>(
+          listenerKey: firstListenerKey,
+          handler: (Object state) => expect(state, isTrue),
+          key: blocKey,
+        )
+        ..addListener<_AnotherTestCubit>(
+          listenerKey: firstListenerKey,
+          handler: (Object state) => expect(state, isTrue),
+          key: blocKey,
+        );
+
+      await blocManager.removeListeners(firstListenerKey);
+
+      expect(
+        blocManager.hasListener<_TestCubit>(blocKey),
+        isFalse,
+      );
+      expect(
+        blocManager.hasListener<_AnotherTestCubit>(blocKey),
         isFalse,
       );
     });
@@ -92,6 +127,14 @@ void main() {
 
 class _TestCubit extends Cubit<bool> {
   _TestCubit() : super(false);
+
+  void trueState() => emit(true);
+
+  void falseState() => emit(false);
+}
+
+class _AnotherTestCubit extends Cubit<bool> {
+  _AnotherTestCubit() : super(false);
 
   void trueState() => emit(true);
 
