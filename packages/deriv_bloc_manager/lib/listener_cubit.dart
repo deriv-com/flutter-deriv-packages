@@ -1,28 +1,32 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
+/// Listener cubit, which is a [Cubit] that listens to broadcaster cubit states.
 abstract class ListenerCubit<State> extends Cubit<State> {
-  ListenerCubit(
-    State initialState, {
-    BlocManager? blocManager,
-  })  : blocManager = BlocManager.instance,
+  /// Initializes [ListenerCubit] with [broadcasterCubit] and [broadcasterCubitState].
+  ListenerCubit(State initialState, {BaseBlocManager? blocManager})
+      : blocManager = blocManager ?? BlocManager.instance,
         super(initialState);
 
-  final BlocManager blocManager;
+  /// Bloc manager instance.
+  final BaseBlocManager? blocManager;
 
+  /// Adds [listener] to broadcaster cubit.
   void listen<CubitToWatch extends BlocBase<Object>, StateToWatch>({
     required BlocManagerListenerHandler<StateToWatch> listener,
     bool shouldAlsoReceiveCurrentState = true,
     String cubitKey = BaseBlocManager.defaultKey,
   }) {
     if (shouldAlsoReceiveCurrentState) {
-      final Object currentState = blocManager.fetch<CubitToWatch>().state;
+      final Object? currentState = blocManager?.fetch<CubitToWatch>().state;
 
       if (currentState is StateToWatch) {
-        listener(currentState as StateToWatch);
+        listener(currentState);
       }
     }
-    BlocManager.instance.addListenerFor<CubitToWatch>(
+
+    BlocManager.instance.addListener<CubitToWatch>(
       listenerKey: _getListenerKey(),
       handler: (Object state) {
         if (state is StateToWatch) {
@@ -35,7 +39,7 @@ abstract class ListenerCubit<State> extends Cubit<State> {
 
   @override
   Future<void> close() {
-    blocManager.removeListeners(_getListenerKey());
+    blocManager?.removeListeners(_getListenerKey());
 
     return super.close();
   }

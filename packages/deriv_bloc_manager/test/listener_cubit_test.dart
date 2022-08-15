@@ -10,59 +10,61 @@ void main() {
 
   setUpAll(() => blocManager = BlocManager.instance);
 
-  blocTest<ListenerExample1, int>(
-      'ListenerCubit should receive EmitterCubit current state + new state',
-      setUp: () async => blocManager.register(EmitterCubit1()),
-      build: () {
-        blocManager.register(ListenerExample1());
-        return blocManager.fetch<ListenerExample1>();
-      },
-      act: (ListenerExample1 listenerCubit) async {
-        expect(listenerCubit.state, 1);
+  group('listener bloc test =>', () {
+    blocTest<ListenerExample1, int>(
+        'listener cubit should receive emitter cubit current state + new state.',
+        setUp: () async => blocManager.register(EmitterCubit1()),
+        build: () {
+          blocManager.register(ListenerExample1());
+          return blocManager.fetch<ListenerExample1>();
+        },
+        act: (ListenerExample1 listenerCubit) async {
+          expect(listenerCubit.state, 1);
 
-        blocManager.fetch<EmitterCubit1>().changeState(10);
-      },
-      expect: () => <int>[10],
-      tearDown: () {
-        blocManager
-          ..dispose<ListenerExample1>()
-          ..dispose<EmitterCubit1>();
-      });
+          blocManager.fetch<EmitterCubit1>().changeState(10);
+        },
+        expect: () => <int>[10],
+        tearDown: () {
+          blocManager
+            ..dispose<ListenerExample1>()
+            ..dispose<EmitterCubit1>();
+        });
 
-  test('All listeners should get disposed when ListenerCubit get disposed',
-      () async {
-    int listener1ReceivedState = 0;
-    int listener2ReceivedState = 0;
+    test('all listeners should get disposed when listener cubit get disposed.',
+        () async {
+      int listener1ReceivedState = 0;
+      int listener2ReceivedState = 0;
 
-    blocManager
-      ..register(EmitterCubit1())
-      ..register(EmitterCubit2())
-      ..register(
-        ListenerExample2(
-            listener: (int state) => listener1ReceivedState = state),
-        key: 'Listener1',
-      )
-      ..register(
-        ListenerExample2(
-            listener: (int state) => listener2ReceivedState = state),
-        key: 'Listener2',
-      );
+      blocManager
+        ..register(EmitterCubit1())
+        ..register(EmitterCubit2())
+        ..register(
+          ListenerExample2(
+              listener: (int state) => listener1ReceivedState = state),
+          key: 'Listener1',
+        )
+        ..register(
+          ListenerExample2(
+              listener: (int state) => listener2ReceivedState = state),
+          key: 'Listener2',
+        );
 
-    blocManager.fetch<EmitterCubit1>().changeState(5);
-    await Future<void>.delayed(Duration.zero);
-    expect(listener1ReceivedState, 5);
-    expect(listener2ReceivedState, 5);
+      blocManager.fetch<EmitterCubit1>().changeState(5);
+      await Future<void>.delayed(Duration.zero);
+      expect(listener1ReceivedState, 5);
+      expect(listener2ReceivedState, 5);
 
-    await blocManager.dispose<ListenerExample2>('Listener1');
+      await blocManager.dispose<ListenerExample2>('Listener1');
 
-    blocManager.fetch<EmitterCubit1>().changeState(0);
-    expect(listener1ReceivedState, 5);
+      blocManager.fetch<EmitterCubit1>().changeState(0);
+      expect(listener1ReceivedState, 5);
 
-    blocManager.fetch<EmitterCubit2>().changeState(0);
-    expect(listener1ReceivedState, 5);
+      blocManager.fetch<EmitterCubit2>().changeState(0);
+      expect(listener1ReceivedState, 5);
 
-    await Future<void>.delayed(Duration.zero);
-    expect(listener2ReceivedState, 0);
+      await Future<void>.delayed(Duration.zero);
+      expect(listener2ReceivedState, 0);
+    });
   });
 }
 

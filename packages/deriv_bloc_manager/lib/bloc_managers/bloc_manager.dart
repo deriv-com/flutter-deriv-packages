@@ -67,7 +67,7 @@ class BlocManager implements BaseBlocManager {
               : throw _getCouldNotFindBlocException<B>(key);
 
   @override
-  void addListenerFor<B extends BlocBase<Object>>({
+  void addListener<B extends BlocBase<Object>>({
     required String listenerKey,
     required BlocManagerListenerHandler<Object> handler,
     String key = BaseBlocManager.defaultKey,
