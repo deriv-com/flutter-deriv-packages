@@ -1,15 +1,22 @@
-import 'package:bloc/bloc.dart';
-
-import 'package:flutter_deriv_bloc_manager_example/state_listener_contracts/main_cubit_listener.dart';
+import 'package:flutter_deriv_bloc_manager/listener_cubit.dart';
+import 'package:flutter_deriv_bloc_manager_example/states/main_cubit/main_cubit.dart';
 
 part 'dependent_cubit_state.dart';
 
-class DependentCubit extends Cubit<DependentCubitState>
-    implements MainCubitStateListener {
-  DependentCubit() : super(DependentCubitInitialState());
-  @override
+class DependentCubit extends ListenerCubit<DependentCubitState> {
+  DependentCubit() : super(DependentCubitInitialState()) {
+    listenCubit<MainCubit, MainCubitState>(listener: onMainCubitState);
+  }
+
+  void onMainCubitState(MainCubitState mainCubitState) {
+    if (mainCubitState is MainCubitLoadingState) {
+      onLoading();
+    } else if (mainCubitState is MainCubitLoadedState) {
+      onLoaded();
+    }
+  }
+
   void onLoading() => emit(DependentCubitLoadingState());
 
-  @override
   void onLoaded() => emit(DependentCubitLoadedState());
 }

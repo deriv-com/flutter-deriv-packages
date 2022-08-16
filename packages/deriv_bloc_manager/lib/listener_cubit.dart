@@ -10,7 +10,7 @@ abstract class ListenerCubit<State> extends Cubit<State> {
 
   final BlocManager blocManager;
 
-  void listen<CubitToWatch extends BlocBase<Object>, StateToWatch>({
+  void listenCubit<CubitToWatch extends BlocBase<Object>, StateToWatch>({
     required BlocManagerListenerHandler<StateToWatch> listener,
     bool shouldAlsoReceiveCurrentState = true,
     String cubitKey = BaseBlocManager.defaultKey,

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
-import 'package:flutter_deriv_bloc_manager_example/state_emitters/main_cubit_state_emitter.dart';
 import 'package:flutter_deriv_bloc_manager_example/states/dependent_cubit/dependent_cubit.dart';
 import 'package:flutter_deriv_bloc_manager_example/states/main_cubit/main_cubit.dart';
 
@@ -17,7 +16,6 @@ void initializeBlocs() {
   // Register Blocs.
   BlocManager.instance.register(MainCubit());
   BlocManager.instance.register(DependentCubit());
-
 
   // Call a function in the [MainCubit] to emit an state.
   BlocManager.instance.fetch<MainCubit>().doCalculation();
@@ -49,9 +47,11 @@ class _AppState extends State<App> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Main Cubit State: '),
-                    Text(
-                      '$state',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    Expanded(
+                      child: Text(
+                        '$state',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
@@ -63,9 +63,14 @@ class _AppState extends State<App> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Dependent Cubit State: '),
-                    Text(
-                      '$state',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          '$state',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ],
                 ),

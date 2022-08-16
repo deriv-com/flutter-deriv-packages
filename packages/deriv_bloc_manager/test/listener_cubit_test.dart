@@ -80,7 +80,7 @@ class EmitterCubit2 extends Cubit<int> {
 
 class ListenerExample1 extends ListenerCubit<int> {
   ListenerExample1() : super(0) {
-    listen<EmitterCubit1, int>(listener: onEmitterCubitState);
+    listenCubit<EmitterCubit1, int>(listener: onEmitterCubitState);
   }
 
   void onEmitterCubitState(int newState) => emit(newState);
@@ -91,11 +91,11 @@ class ListenerExample2 extends ListenerCubit<int> {
 
   // ignore: sort_constructors_first
   ListenerExample2({required this.listener}) : super(0) {
-    listen<EmitterCubit1, int>(
+    listenCubit<EmitterCubit1, int>(
       listener: listener,
       shouldAlsoReceiveCurrentState: false,
     );
-    listen<EmitterCubit2, int>(
+    listenCubit<EmitterCubit2, int>(
       listener: listener,
       shouldAlsoReceiveCurrentState: false,
     );
