@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter_deriv_bloc_manager/listener_cubit.dart';
+import 'package:test/test.dart';
+
+import 'package:flutter_deriv_bloc_manager/listener_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
-import 'package:test/expect.dart';
-import 'package:test/scaffolding.dart';
 
 void main() {
   late final BlocManager blocManager;
@@ -80,24 +80,24 @@ class EmitterCubit2 extends Cubit<int> {
   void changeState(int newState) => emit(newState);
 }
 
-class ListenerExample1 extends ListenerCubit<int> {
+class ListenerExample1 extends ListenerBloc<int> {
   ListenerExample1() : super(0) {
-    listen<EmitterCubit1, int>(listener: onEmitterCubitState);
+    addListener<EmitterCubit1, int>(listener: onEmitterCubitState);
   }
 
   void onEmitterCubitState(int newState) => emit(newState);
 }
 
-class ListenerExample2 extends ListenerCubit<int> {
+class ListenerExample2 extends ListenerBloc<int> {
   final BlocManagerListenerHandler<int> listener;
 
   // ignore: sort_constructors_first
   ListenerExample2({required this.listener}) : super(0) {
-    listen<EmitterCubit1, int>(
+    addListener<EmitterCubit1, int>(
       listener: listener,
       shouldAlsoReceiveCurrentState: false,
     );
-    listen<EmitterCubit2, int>(
+    addListener<EmitterCubit2, int>(
       listener: listener,
       shouldAlsoReceiveCurrentState: false,
     );
