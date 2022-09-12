@@ -16,8 +16,8 @@ dependencies:
 
   flutter_deriv_api:
     git:
-      url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: dev
+      url: git@github.com:hamed-deriv/flutter-deriv-api.git
+      ref: hamed/add_subgroup_to_active_symbols
 
   deriv_api_key_provider:
     git:
