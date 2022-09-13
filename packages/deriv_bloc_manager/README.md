@@ -34,9 +34,13 @@ The solution is to;
 
 The following diagrams show how the app is structured;
 
-| ![Proposed BLoC pattern implementation](/bloc_uml_diagram.png) |
-| :------------------------------------------------------------: |
-|             _Proposed BLoC pattern implementation_             |
+| ![Proposed BLoC pattern structure](/bloc_manager_structure_uml.png) |
+| :-----------------------------------------------------------------: |
+|                  _Proposed BLoC pattern structure_                  |
+
+| ![Proposed BLoC pattern implementation](/bloc_manager_implementation_uml.png) |
+| :---------------------------------------------------------------------------: |
+|                    _Proposed BLoC pattern implementation_                     |
 
 ### Usage
 

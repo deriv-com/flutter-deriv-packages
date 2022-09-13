@@ -1,0 +1,62 @@
+@startuml
+set namespaceSeparator ::
+
+"bloc::src::bloc.dart::Cubit" <|-- "states::dependent_cubit::dependent_cubit.dart::DependentCubit"
+"state_listener_contracts::main_cubit_listener.dart::MainCubitStateListener" <|-- "states::dependent_cubit::dependent_cubit.dart::DependentCubit"
+
+abstract class "states::dependent_cubit::dependent_cubit.dart::DependentCubitState" {
+}
+
+class "states::dependent_cubit::dependent_cubit.dart::DependentCubitInitialState" {
+}
+
+"states::dependent_cubit::dependent_cubit.dart::DependentCubitState" <|-- "states::dependent_cubit::dependent_cubit.dart::DependentCubitInitialState"
+
+class "states::dependent_cubit::dependent_cubit.dart::DependentCubitLoadingState" {
+}
+
+"states::dependent_cubit::dependent_cubit.dart::DependentCubitState" <|-- "states::dependent_cubit::dependent_cubit.dart::DependentCubitLoadingState"
+
+class "states::dependent_cubit::dependent_cubit.dart::DependentCubitLoadedState" {
+}
+
+"states::dependent_cubit::dependent_cubit.dart::DependentCubitState" <|-- "states::dependent_cubit::dependent_cubit.dart::DependentCubitLoadedState"
+
+class "states::main_cubit::main_cubit.dart::MainCubit" {
+  +Future<void> doCalculation()
+}
+
+"bloc::src::bloc.dart::Cubit" <|-- "states::main_cubit::main_cubit.dart::MainCubit"
+
+abstract class "states::main_cubit::main_cubit.dart::MainCubitState" {
+}
+
+class "states::main_cubit::main_cubit.dart::MainCubitInitialState" {
+}
+
+"states::main_cubit::main_cubit.dart::MainCubitState" <|-- "states::main_cubit::main_cubit.dart::MainCubitInitialState"
+
+class "states::main_cubit::main_cubit.dart::MainCubitLoadingState" {
+}
+
+"states::main_cubit::main_cubit.dart::MainCubitState" <|-- "states::main_cubit::main_cubit.dart::MainCubitLoadingState"
+
+class "states::main_cubit::main_cubit.dart::MainCubitLoadedState" {
+}
+
+"states::main_cubit::main_cubit.dart::MainCubitState" <|-- "states::main_cubit::main_cubit.dart::MainCubitLoadedState"
+
+abstract class "state_listener_contracts::main_cubit_listener.dart::MainCubitStateListener" {
+  +void onLoading()
+  +void onLoaded()
+}
+
+"flutter_deriv_bloc_manager::base_state_listener.dart::BaseStateListener" <|-- "state_listener_contracts::main_cubit_listener.dart::MainCubitStateListener"
+
+class "state_emitters::main_cubit_state_emitter.dart::MainCubitStateEmitter" {
+  +void handleStates()
+}
+
+"flutter_deriv_bloc_manager::base_state_emitter.dart::BaseStateEmitter" <|-- "state_emitters::main_cubit_state_emitter.dart::MainCubitStateEmitter"
+
+@enduml

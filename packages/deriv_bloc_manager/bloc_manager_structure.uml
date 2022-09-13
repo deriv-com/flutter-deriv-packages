@@ -1,0 +1,88 @@
+@startuml
+set namespaceSeparator ::
+
+class "bloc_manager_observer.dart::BlocManagerObserver" {
+  +bool enableOnCreateLogs
+  +bool enableOnChangeLogs
+  +bool enableOnCloseLogs
+  +bool enableOnErrorLogs
+  +bool verboseChangeStateLogs
+  +void onCreate()
+  +void onChange()
+  +void onClose()
+  +void onError()
+}
+
+"bloc::src::bloc_observer.dart::BlocObserver" <|-- "bloc_manager_observer.dart::BlocManagerObserver"
+
+abstract class "bloc_managers::base_bloc_manager.dart::BaseBlocManager" {
+  {static} +String defaultKey
+  +Map<String, BlocBase<Object>> repository
+  +void lazyRegister()
+  +void register()
+  +bool isBlocRegistered()
+  +B fetch()
+  +void addListener()
+  +Future<void> removeListener()
+  +bool hasListener()
+  +void registerStateEmitter()
+  +void emitCoreStates()
+  +Future<void> dispose()
+}
+
+class "bloc_managers::bloc_manager.dart::BlocManager" {
+  {static} -BlocManager _instance
+  -Map<String, Function> _factories
+  -Map<String, BlocBase<Object>> _repository
+  -Map<String, StreamSubscription<Object>> _subscriptions
+  -List<BaseStateEmitter<BaseStateListener, BlocBase<Object>>> _stateEmitters
+  {static} +BlocManager instance
+  +Map<String, BlocBase<Object>> repository
+  +void lazyRegister()
+  +void register()
+  +bool isBlocRegistered()
+  +B fetch()
+  +void addListener()
+  +Future<void> removeListener()
+  +void registerStateEmitter()
+  +void emitCoreStates()
+  +bool hasListener()
+  -BlocBase<Object>? _invoke()
+  {static} -String _getKey()
+  -bool _hasFactory()
+  -bool _hasRepository()
+  -Exception _getCouldNotFindBlocException()
+  +Future<void> dispose()
+}
+
+"bloc_managers::bloc_manager.dart::BlocManager" o-- "bloc_managers::bloc_manager.dart::BlocManager"
+"bloc_managers::base_bloc_manager.dart::BaseBlocManager" <|-- "bloc_managers::bloc_manager.dart::BlocManager"
+
+class "bloc_manager_exception.dart::BlocManagerException" {
+  +String message
+  +String toString()
+}
+
+"dart::core::Exception" <|-- "bloc_manager_exception.dart::BlocManagerException"
+
+class "state_dispatcher.dart::StateDispatcher" {
+  +BaseBlocManager blocManager
+  +String listenerKey
+  +void register()
+  -void _dispatcher()
+}
+
+"state_dispatcher.dart::StateDispatcher" o-- "bloc_managers::base_bloc_manager.dart::BaseBlocManager"
+
+abstract class "base_state_listener.dart::BaseStateListener" {
+}
+
+abstract class "base_state_emitter.dart::BaseStateEmitter" {
+  +BaseBlocManager blocManager
+  +void handleStates()
+  +void call()
+}
+
+"base_state_emitter.dart::BaseStateEmitter" o-- "bloc_managers::base_bloc_manager.dart::BaseBlocManager"
+
+@enduml
