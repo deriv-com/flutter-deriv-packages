@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_deriv_bloc_manager/state_emitter/base_state_emitter.dart';
 import 'package:flutter_deriv_bloc_manager/state_emitter/base_state_listener.dart';
-import 'package:flutter_deriv_bloc_manager/bloc_managers/base_bloc_manager.dart';
+import 'package:flutter_deriv_bloc_manager/bloc_manager/base_bloc_manager.dart';
 
 /// Function signature for `StateEmitterBuilder`.
 typedef StateEmitterBuilder = void Function(BaseBlocManager blocManager);
