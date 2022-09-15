@@ -1,8 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:flutter_deriv_bloc_manager/state_emitter/base_state_emitter.dart';
-import 'package:flutter_deriv_bloc_manager/state_emitter/base_state_listener.dart';
 import 'package:flutter_deriv_bloc_manager/bloc_manager/base_bloc_manager.dart';
+import 'package:flutter_deriv_bloc_manager/types.dart';
 
 /// Function signature for `StateEmitterBuilder`.
 typedef StateEmitterBuilder = void Function(BaseBlocManager blocManager);
@@ -22,8 +19,7 @@ class StateDispatcher {
   final String listenerKey;
 
   /// Initialises state dispatcher by adding listeners to the shared blocs.
-  void register<B extends BlocBase<Object>,
-      E extends BaseStateEmitter<BaseStateListener, B>>(
+  void register<B extends GenericBloc, E extends GenericStateEmitter>(
     StateEmitterBuilder stateEmitterBuilder,
   ) {
     stateEmitterBuilder(blocManager);
@@ -36,9 +32,7 @@ class StateDispatcher {
     }
   }
 
-  void _dispatcher<
-          E extends BaseStateEmitter<BaseStateListener, BlocBase<Object>>>(
-      Object state) {
+  void _dispatcher<E extends GenericStateEmitter>(Object state) {
     for (int index = 0; index < blocManager.repository.length; index++) {
       blocManager.emitCoreStates<E>(
         bloc: blocManager.repository.entries.elementAt(index).value,
