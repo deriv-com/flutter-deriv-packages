@@ -1,6 +1,4 @@
-import 'package:flutter_deriv_bloc_manager/bloc_manager/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/state_emitter/base_state_listener.dart';
-import 'package:flutter_deriv_bloc_manager/types.dart';
+import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Base state emitter class.
 abstract class BaseStateEmitter<L extends BaseStateListener,

@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_deriv_bloc_manager/state_emitter/base_state_emitter.dart';
-import 'package:flutter_deriv_bloc_manager/types.dart';
+import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Function signature for `BlocManagerListenerHandler`.
 typedef BlocManagerListenerHandler = void Function(Object state);

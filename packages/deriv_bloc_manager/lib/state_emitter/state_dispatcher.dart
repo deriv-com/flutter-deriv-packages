@@ -1,5 +1,4 @@
-import 'package:flutter_deriv_bloc_manager/bloc_manager/base_bloc_manager.dart';
-import 'package:flutter_deriv_bloc_manager/types.dart';
+import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Function signature for `StateEmitterBuilder`.
 typedef StateEmitterBuilder = void Function(BaseBlocManager blocManager);
