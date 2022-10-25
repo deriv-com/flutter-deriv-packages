@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/src/core/constants/error_codes.dart';
-import 'package:deriv_auth/src/repo/i_auth_repo.dart';
 
 import '../core/api_client/base_client.dart';
 import '../core/api_client/exceptions/http_exceptions.dart';
@@ -11,12 +10,12 @@ import '../models/login/login_request.dart';
 import '../models/login/login_response.dart';
 import 'auth_state.dart';
 
-class AuthCubit extends Cubit<AuthState> {
+class LoginCubit extends Cubit<AuthState> {
   final BaseHttpClient client;
-  final IBasicAuthRepo repo;
 
-  AuthCubit({required this.client, required this.repo})
-      : super(AuthInitialState());
+  LoginCubit({
+    required this.client,
+  }) : super(AuthInitialState());
 
   void getAppToken({required String appToken}) {
     /// get jwt token from repo
@@ -33,10 +32,10 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoadingState());
 
     try {
-      final LoginResponseModel response = await repo.loginWithEmailAndPassword(
-        request: request,
+      final LoginResponseModel response = await _login(
         endpoint: endpoint,
         jwtToken: jwtToken,
+        loginRequestModel: request,
       );
 
       final List<AccountModel> accounts = response.tokens!
@@ -67,7 +66,7 @@ class AuthCubit extends Cubit<AuthState> {
         ),
       );
 
-      log('$AuthCubit initializeLogin() error: $e');
+      log('$LoginCubit initializeLogin() error: $e');
     }
     return;
   }
