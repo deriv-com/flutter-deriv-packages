@@ -16,8 +16,6 @@ class AppAuthCubit extends Cubit<AppAuthState> {
   final BaseHttpClient client;
   AppAuthCubit({required this.client}) : super(AppAuthInitialState());
 
-  /// Function to emit State with JwtToken
-  ///
   Future<void> getAppAuthToken({
     required String appId,
     required String endpoint,
