@@ -1,29 +1,86 @@
-// abstract class AuthLoadingState {}
+part of 'auth_cubit.dart';
 
-// class AuthInitialLoading extends AuthState implements AuthLoadingState {}
-// class  extends AuthState implements AuthLoadingState {}
-
-abstract class AuthState {
+/// Authentication states
+abstract class AuthState extends Equatable {
+  /// Initializes Authentication states
   const AuthState();
+
+  @override
+  List<Object?> get props => <Object?>[];
 }
 
-class AuthAppAuthorizedState extends AuthState {
-  final String jwtToken;
-
-  const AuthAppAuthorizedState({required this.jwtToken});
+/// Initial state
+class AuthInitialState extends AuthState {
+  /// Initializes Initial state
+  const AuthInitialState();
 }
 
-class AuthInitialState extends AuthState {}
+/// LoggedIn state
+///
+/// Emits when the user login to the app or whenever the user changes
+/// his account.
+class AuthLoggedInState extends AuthState {
+  /// Initializes LoggedIn state
+  const AuthLoggedInState({this.authorizedAccount});
 
-class AuthLoadingState extends AuthState {}
-
-class AuthSuccessState extends AuthAppAuthorizedState {
-  AuthSuccessState({required super.jwtToken});
+  /// Default user account.
+  final Authorize? authorizedAccount;
 }
 
-class AuthFailureState extends AuthState {
-  final String? errorCode;
-  final String errorMessage;
+/// LoggedOut state
+class AuthLoggedOutState extends AuthState {
+  /// Initializes LoggedOut state
+  const AuthLoggedOutState({this.reason});
 
-  const AuthFailureState({this.errorCode, required this.errorMessage});
+  /// Reason for logout, usually needed when logout is forced
+  final String? reason;
+
+  @override
+  List<Object?> get props => <Object?>[reason];
+
+  @override
+  String toString() => 'AuthLoggedOutState(reason: $reason)';
+}
+
+/// Logging out in progress state
+class AuthLoggingOutState extends AuthState {
+  /// Initializes Logging out state
+  const AuthLoggingOutState();
+}
+
+/// Authentication Error state
+class AuthErrorState extends AuthState {
+  /// Initializes Authentication Error state
+  const AuthErrorState({
+    this.errorMessage,
+    this.authError,
+  });
+
+  /// Error message
+  final String? errorMessage;
+
+  /// Error type
+  final AuthErrorType? authError;
+
+  @override
+  List<Object?> get props => <Object?>[errorMessage, authError];
+
+  @override
+  String toString() =>
+      'AuthErrorState(errorMessage: $errorMessage, authError: $authError)';
+}
+
+/// Connectivity status state
+class AuthConnectivityState extends AuthState {
+  /// Initializes Connectivity status state
+  const AuthConnectivityState({required this.isConnected});
+
+  /// Status of connectivity
+  final bool isConnected;
+
+  @override
+  List<Object?> get props => <Object?>[isConnected];
+
+  @override
+  String toString() => 'AuthConnectivityState(isConnected: $isConnected)';
 }
