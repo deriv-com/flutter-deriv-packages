@@ -14,6 +14,7 @@ import '../models/app_auth_challenge_request.dart';
 import '../models/login/enums.dart';
 import '../models/login/login_request.dart';
 import '../models/login/login_response.dart';
+import '../auth/auth_cubit.dart';
 
 // import 'package:deriv_web_view/web_view.dart';
 
@@ -45,12 +46,14 @@ class LoginCubit extends Cubit<LoginState>
   final String appToken;
   final String endpoint;
   final String appId;
+  final AuthCubit authCubit;
 
   /// Initializes the cubit with an initial state of [LoginInitialState].
   LoginCubit({
     required this.appToken,
     required this.endpoint,
     required this.appId,
+    required this.authCubit,
   }) : super(const LoginInitialState());
 
   /// Error occurs if 2FA is not passed in the login request.
@@ -140,6 +143,13 @@ class LoginCubit extends Cubit<LoginState>
 
       onAccountFetched?.call(accounts);
 
+      await authCubit.login(
+          accounts: accounts,
+          storedAccounts: accounts,
+          defaultAccount: accounts.first.accountId.toString());
+
+      emit(const LoginAuthorizedState());
+
       //?TODO please check this also
       // await BlocManager.instance.fetch<AuthCubit>().login(
       //       accounts: accounts,
@@ -193,16 +203,16 @@ class LoginCubit extends Cubit<LoginState>
   //   bool hasConnection = true,
   //   AuthErrorModel? authErrorModel,
   // }) async {
-  //   if (authorizedAccount != null && hasConnection) {
-  //     emit(const LoginAuthorizedState());
-  //   } else if (authErrorModel != null) {
-  //     emit(
-  //       LoginUnauthorizedState(
-  //         authErrorType: authErrorModel.authError,
-  //         errorMessage: authErrorModel.errorMessage,
-  //       ),
-  //     );
-  //   }
+  // if (authorizedAccount != null && hasConnection) {
+  //   emit(const LoginAuthorizedState());
+  // } else if (authErrorModel != null) {
+  //   emit(
+  //     LoginUnauthorizedState(
+  //       authErrorType: authErrorModel.authError,
+  //       errorMessage: authErrorModel.errorMessage,
+  //     ),
+  //   );
+  // }
   // }
 
   // @override

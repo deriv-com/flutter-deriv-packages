@@ -24,7 +24,7 @@ class AuthLoggedInState extends AuthState {
   const AuthLoggedInState({this.authorizedAccount});
 
   /// Default user account.
-  final Authorize? authorizedAccount;
+  final AuthorizeEntity? authorizedAccount;
 }
 
 /// LoggedOut state

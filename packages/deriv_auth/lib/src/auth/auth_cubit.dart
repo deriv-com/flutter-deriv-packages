@@ -1,5 +1,5 @@
 import 'dart:developer' as logger;
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
@@ -31,7 +31,7 @@ class AuthCubit extends Cubit<AuthState>
   // late final PersistentConfigurationHelper _persistentConfigurationHelper;
 
   /// Gets the authorized account.
-  Authorize? get authorizedAccount => state is AuthLoggedInState
+  AuthorizeEntity? get authorizedAccount => state is AuthLoggedInState
       ? (state as AuthLoggedInState).authorizedAccount
       : null;
 
@@ -68,12 +68,12 @@ class AuthCubit extends Cubit<AuthState>
     String? signupProvider,
     required List<AccountModel> storedAccounts,
     required String defaultAccount,
-    VoidCallback? analyticsCallback,
-    VoidCallback? onLogin,
-    VoidCallback? onRefreshToken,
-    VoidCallback? setFeedbackReminderFlag,
-    VoidCallback? onReloadAccounts,
-    VoidCallback? onSendSignupEvent,
+    Function? analyticsCallback,
+    Function? onLogin,
+    Function? onRefreshToken,
+    Function? setFeedbackReminderFlag,
+    Function? onReloadAccounts,
+    Function? onSendSignupEvent,
   }) async {
     // final List<AccountModel> storedAccounts = await _secureStorage.userAccounts;
 
@@ -109,7 +109,7 @@ class AuthCubit extends Cubit<AuthState>
   Future<void> logout({
     String? logoutReason,
     bool isForcedLogout = false,
-    VoidCallback? onLogout,
+    Function? onLogout,
   }) async {
     emit(const AuthLoggingOutState());
 
@@ -140,14 +140,14 @@ class AuthCubit extends Cubit<AuthState>
   Future<void> authorizeNewAccount({
     String? token,
     required List<AccountModel> userAccounts,
-    VoidCallback? onAuthorizeNewAccount,
+    Function? onAuthorizeNewAccount,
   }) async {
     try {
       emit(const AuthInitialState());
 
       await _performAuthorization(
         token: token,
-        onSuccess: (Authorize authorize) async {
+        onSuccess: (AuthorizeEntity authorize) async {
           final List<AccountModel> supportedAccounts = userAccounts;
 
           final int index = supportedAccounts.indexWhere(
@@ -203,7 +203,7 @@ class AuthCubit extends Cubit<AuthState>
   Future<void> _fetchStoredAccounts({
     required List<AccountModel> storedAccounts,
     required String? defaultAccount,
-    VoidCallback? onLogin,
+    Function? onLogin,
   }) async {
     try {
       // Get the account token of the default account from the list of stored
@@ -215,7 +215,7 @@ class AuthCubit extends Cubit<AuthState>
       // Authorize the fetch user token retrieved from secure storage
       await _performAuthorization(
         token: account.token,
-        onSuccess: (Authorize authorize) async {
+        onSuccess: (AuthorizeEntity authorize) async {
           final int? userId = authorize.userId;
 
           onLogin?.call();
@@ -250,12 +250,12 @@ class AuthCubit extends Cubit<AuthState>
     required String? refreshToken,
     bool reloadAccounts = false,
     String? signupProvider,
-    VoidCallback? analyticsCallback,
-    VoidCallback? onLogin,
-    VoidCallback? onRefreshToken,
-    VoidCallback? setFeedbackReminderFlag,
-    VoidCallback? onReloadAccounts,
-    VoidCallback? onSendSignupEvent,
+    Function? analyticsCallback,
+    Function? onLogin,
+    Function? onRefreshToken,
+    Function? setFeedbackReminderFlag,
+    Function? onReloadAccounts,
+    Function? onSendSignupEvent,
   }) async {
     emit(const AuthInitialState());
 
@@ -265,15 +265,17 @@ class AuthCubit extends Cubit<AuthState>
 
     if (supportedAccounts.isNotEmpty) {
       // Choose the default account.
-      final AccountModel defaultUserAccount = _setDefaultAccount(
-        supportedAccounts: supportedAccounts,
-        index: reloadAccounts ? supportedAccounts.length - 1 : null,
-      );
+      final AccountModel defaultUserAccount = accounts.first;
+      // final AccountModel defaultUserAccount = _setDefaultAccount(
+      //   supportedAccounts: supportedAccounts,
+      //   index: reloadAccounts ? supportedAccounts.length - 1 : null,
+      // );
 
       await _performAuthorization(
           token: defaultUserAccount.token,
-          onSuccess: (Authorize authorize) async {
+          onSuccess: (AuthorizeEntity authorize) async {
             // Successful login.
+
             final String? userEmail = authorize.email;
             final String? fullName = authorize.fullname;
             final int? userId = authorize.userId;
@@ -338,6 +340,7 @@ class AuthCubit extends Cubit<AuthState>
               /// TODO callbacks
               // await _secureStorage.setRefreshToken(refreshToken);
             }
+
             setFeedbackReminderFlag?.call();
             // await _setFeedbackReminderFlag();
 
@@ -361,6 +364,7 @@ class AuthCubit extends Cubit<AuthState>
               //       'loginid': vrAccount!.accountId
               //     });
             }
+
             emit(AuthLoggedInState(authorizedAccount: authorize));
           },
           onError: () => emit(const AuthLoggedOutState()));
@@ -378,11 +382,11 @@ class AuthCubit extends Cubit<AuthState>
 
   Future<void> _performAuthorization({
     required String? token,
-    Function(Authorize)? onSuccess,
+    Function(AuthorizeEntity)? onSuccess,
     Function()? onError,
   }) async {
     try {
-      final AuthorizeResponse? authorize = await _authorizeAccount(token);
+      final AuthorizeResponseEntity? authorize = await _authorizeAccount(token);
 
       if (authorize == null) {
         emit(
@@ -422,7 +426,7 @@ class AuthCubit extends Cubit<AuthState>
     }
   }
 
-  Future<AuthorizeResponse?> _authorizeAccount(String? token) async =>
+  Future<AuthorizeResponseEntity?> _authorizeAccount(String? token) async =>
       await repo.authorize(token);
 
   // AuthorizeResponse.authorizeMethod(AuthorizeRequest(authorize: token));
@@ -497,7 +501,7 @@ bool _isAccountModelValid(AccountListItem account) =>
 bool _canSendSignupDoneEvent(List<AccountModel>? accounts) =>
     accounts != null && accounts.isNotEmpty && hasVRAccount(accounts);
 
-bool _isSvgAccount(Authorize authorize) {
+bool _isSvgAccount(AuthorizeEntity authorize) {
   const String svgLandingCompanyName = 'svg';
 
   final bool isLandingCompanySvg =
@@ -517,7 +521,7 @@ bool _isSvgAccount(Authorize authorize) {
 }
 
 int _compareAccountCurrencyDisplayOrder({
-  required Authorize authorize,
+  required AuthorizeEntity authorize,
   required AccountModel account,
   required AccountModel other,
 }) {

@@ -7,32 +7,33 @@ import '../../core/helpers/date_time_helper.dart';
 import '../../core/helpers/number_helper.dart';
 
 /// Authorize response model class.
-abstract class AuthorizeResponseModel {
+abstract class AuthorizeResponseEntityModel {
   /// Initializes Authorize response model class .
-  const AuthorizeResponseModel({
+  const AuthorizeResponseEntityModel({
     this.authorize,
   });
 
   /// Account information for the holder of the token.
-  final Authorize? authorize;
+  final AuthorizeEntity? authorize;
 }
 
 /// Authorize response class.
-class AuthorizeResponse extends AuthorizeResponseModel {
+class AuthorizeResponseEntity extends AuthorizeResponseEntityModel {
   /// Initializes Authorize response class.
-  const AuthorizeResponse({
-    Authorize? authorize,
+  const AuthorizeResponseEntity({
+    AuthorizeEntity? authorize,
   }) : super(
           authorize: authorize,
         );
 
   /// Creates an instance from JSON.
-  factory AuthorizeResponse.fromJson(
+  factory AuthorizeResponseEntity.fromJson(
     dynamic authorizeJson,
   ) =>
-      AuthorizeResponse(
-        authorize:
-            authorizeJson == null ? null : Authorize.fromJson(authorizeJson),
+      AuthorizeResponseEntity(
+        authorize: authorizeJson == null
+            ? null
+            : AuthorizeEntity.fromJson(authorizeJson),
       );
 
   /// Converts an instance to JSON.
@@ -52,7 +53,7 @@ class AuthorizeResponse extends AuthorizeResponseModel {
   ///
   /// For parameters information refer to [AuthorizeRequest].
   /// Throws an [AuthorizeException] if API response contains an error
-  // static Future<AuthorizeResponse> authorizeMethod(
+  // static Future<AuthorizeResponseEntity> authorizeMethod(
   //     AuthorizeRequest request) async {
   //   final AuthorizeReceive response = await _api.call(
   //     request: request,
@@ -64,14 +65,14 @@ class AuthorizeResponse extends AuthorizeResponseModel {
   //         AuthorizeException(baseExceptionModel: baseExceptionModel),
   //   );
 
-  //   return AuthorizeResponse.fromJson(response.authorize);
+  //   return AuthorizeResponseEntity.fromJson(response.authorize);
   // }
 
   /// Creates a copy of instance with given parameters.
-  AuthorizeResponse copyWith({
-    Authorize? authorize,
+  AuthorizeResponseEntity copyWith({
+    AuthorizeEntity? authorize,
   }) =>
-      AuthorizeResponse(
+      AuthorizeResponseEntity(
         authorize: authorize ?? this.authorize,
       );
 }
@@ -162,7 +163,7 @@ abstract class AuthorizeModel {
   final String? landingCompanyName;
 
   /// Currencies in client's residence country
-  final Map<String, LocalCurrenciesProperty>? localCurrencies;
+  final Map<String, LocalCurrenciesPropertyEntity>? localCurrencies;
 
   /// The account ID that the token was issued for.
   final String? loginid;
@@ -187,9 +188,9 @@ abstract class AuthorizeModel {
 }
 
 /// Authorize class.
-class Authorize extends AuthorizeModel {
+class AuthorizeEntity extends AuthorizeModel {
   /// Initializes Authorize class.
-  const Authorize({
+  const AuthorizeEntity({
     List<AccountListItem>? accountList,
     double? balance,
     String? country,
@@ -199,7 +200,7 @@ class Authorize extends AuthorizeModel {
     bool? isVirtual,
     String? landingCompanyFullname,
     String? landingCompanyName,
-    Map<String, LocalCurrenciesProperty>? localCurrencies,
+    Map<String, LocalCurrenciesPropertyEntity>? localCurrencies,
     String? loginid,
     String? preferredLanguage,
     List<String>? scopes,
@@ -228,7 +229,8 @@ class Authorize extends AuthorizeModel {
         );
 
   /// Creates an instance from JSON.
-  factory Authorize.fromJson(Map<String, dynamic> json) => Authorize(
+  factory AuthorizeEntity.fromJson(Map<String, dynamic> json) =>
+      AuthorizeEntity(
         accountList: json['account_list'] == null
             ? null
             : List<AccountListItem>.from(
@@ -244,15 +246,17 @@ class Authorize extends AuthorizeModel {
         isVirtual: getBool(json['is_virtual']),
         landingCompanyFullname: json['landing_company_fullname'],
         landingCompanyName: json['landing_company_name'],
-        localCurrencies: json['local_currencies'] == null
+        localCurrencies: json['local_currencies'] != null
             ? null
-            : Map<String, LocalCurrenciesProperty>.fromEntries(json[
-                    'local_currencies']
-                .entries
-                .map<MapEntry<String, LocalCurrenciesProperty>>(
-                    (MapEntry<String, dynamic> entry) =>
-                        MapEntry<String, LocalCurrenciesProperty>(entry.key,
-                            LocalCurrenciesProperty.fromJson(entry.value)))),
+            : Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
+                json['local_currencies']
+                    .entries
+                    .map<MapEntry<String, LocalCurrenciesPropertyEntity>>(
+                        (MapEntry<String, dynamic> entry) =>
+                            MapEntry<String, LocalCurrenciesPropertyEntity>(
+                                entry.key,
+                                LocalCurrenciesPropertyEntity.fromJson(
+                                    entry.value)))),
         loginid: json['loginid'],
         preferredLanguage: json['preferred_language'],
         scopes: json['scopes'] == null
@@ -327,7 +331,7 @@ class Authorize extends AuthorizeModel {
   }
 
   /// Creates a copy of instance with given parameters.
-  Authorize copyWith({
+  AuthorizeEntity copyWith({
     List<AccountListItem>? accountList,
     double? balance,
     String? country,
@@ -337,7 +341,7 @@ class Authorize extends AuthorizeModel {
     bool? isVirtual,
     String? landingCompanyFullname,
     String? landingCompanyName,
-    Map<String, LocalCurrenciesProperty>? localCurrencies,
+    Map<String, LocalCurrenciesPropertyEntity>? localCurrencies,
     String? loginid,
     String? preferredLanguage,
     List<String>? scopes,
@@ -346,7 +350,7 @@ class Authorize extends AuthorizeModel {
     int? userId,
     AuthorizeWallet? wallet,
   }) =>
-      Authorize(
+      AuthorizeEntity(
         accountList: accountList ?? this.accountList,
         balance: balance ?? this.balance,
         country: country ?? this.country,
@@ -827,17 +831,17 @@ abstract class LocalCurrenciesPropertyModel {
 }
 
 /// Local currencies property class.
-class LocalCurrenciesProperty extends LocalCurrenciesPropertyModel {
+class LocalCurrenciesPropertyEntity extends LocalCurrenciesPropertyModel {
   /// Initializes Local currencies property class.
-  const LocalCurrenciesProperty({
+  const LocalCurrenciesPropertyEntity({
     required int fractionalDigits,
   }) : super(
           fractionalDigits: fractionalDigits,
         );
 
   /// Creates an instance from JSON.
-  factory LocalCurrenciesProperty.fromJson(Map<String, dynamic> json) =>
-      LocalCurrenciesProperty(
+  factory LocalCurrenciesPropertyEntity.fromJson(Map<String, dynamic> json) =>
+      LocalCurrenciesPropertyEntity(
         fractionalDigits: json['fractional_digits'],
       );
 
@@ -851,10 +855,10 @@ class LocalCurrenciesProperty extends LocalCurrenciesPropertyModel {
   }
 
   /// Creates a copy of instance with given parameters.
-  LocalCurrenciesProperty copyWith({
+  LocalCurrenciesPropertyEntity copyWith({
     int? fractionalDigits,
   }) =>
-      LocalCurrenciesProperty(
+      LocalCurrenciesPropertyEntity(
         fractionalDigits: fractionalDigits ?? this.fractionalDigits,
       );
 }
