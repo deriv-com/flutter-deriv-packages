@@ -37,15 +37,13 @@ class BlocManager implements BaseBlocManager {
   }
 
   @override
-  void register<B extends GenericBloc>(
+  B register<B extends GenericBloc>(
     B bloc, {
     String key = BaseBlocManager.defaultKey,
   }) {
     if (_hasRepository<B>(key)) {
-      return;
+      return fetch<B>(key);
     }
-
-    _repository[_getKey<B>(key)] = bloc;
 
     /// This future is added to make sure the state emits in the correct order,
     /// and emitting states dose not block widget build.
@@ -53,6 +51,8 @@ class BlocManager implements BaseBlocManager {
       Duration.zero,
       () => emitCoreStates<GenericStateEmitter>(bloc: bloc),
     );
+
+    return _repository[_getKey<B>(key)] = bloc;
   }
 
   @override

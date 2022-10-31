@@ -32,7 +32,7 @@ abstract class BaseBlocManager {
   ///
   /// [key] is registered bloc identifier,
   /// you can omit this parameter if you need only one bloc instance of type [B] in the repository.
-  void register<B extends GenericBloc>(B bloc, {String key = defaultKey});
+  B register<B extends GenericBloc>(B bloc, {String key = defaultKey});
 
   /// Indicates that bloc of type [B] is registered or not.
   bool isBlocRegistered<B extends GenericBloc>(String key);
