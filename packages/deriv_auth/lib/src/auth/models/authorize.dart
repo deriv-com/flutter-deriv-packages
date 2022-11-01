@@ -246,7 +246,7 @@ class AuthorizeEntity extends AuthorizeModel {
         isVirtual: getBool(json['is_virtual']),
         landingCompanyFullname: json['landing_company_fullname'],
         landingCompanyName: json['landing_company_name'],
-        localCurrencies: json['local_currencies'] != null
+        localCurrencies: json['local_currencies'] == null
             ? null
             : Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
                 json['local_currencies']

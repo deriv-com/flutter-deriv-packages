@@ -284,7 +284,7 @@ class AuthCubit extends Cubit<AuthState>
 
             /// TODO call from callbacks
             // await _initAnalyticsAndRegisterFCMToken(userId);
-            repo.initAnalyticsAndRegisterFCMToken(userId);
+            await repo.initAnalyticsAndRegisterFCMToken(userId);
 
             // Add user email and full name to account data before saving it.
             for (final AccountModel account in supportedAccounts) {
