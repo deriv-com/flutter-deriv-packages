@@ -6,3 +6,4 @@ export 'src/auth/models/authorize.dart';
 export 'src/repo/auth_repo/i_auth_repo.dart.dart';
 export 'src/models/logout/logout_response.dart';
 export 'src/models/login/login_request.dart';
+export 'src/repo/base_storage.dart';
