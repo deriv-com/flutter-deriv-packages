@@ -246,17 +246,18 @@ class AuthorizeEntity extends AuthorizeModel {
         isVirtual: getBool(json['is_virtual']),
         landingCompanyFullname: json['landing_company_fullname'],
         landingCompanyName: json['landing_company_name'],
-        localCurrencies: json['local_currencies'] == null
-            ? null
-            : Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
-                json['local_currencies']
-                    .entries
-                    .map<MapEntry<String, LocalCurrenciesPropertyEntity>>(
-                        (MapEntry<String, dynamic> entry) =>
-                            MapEntry<String, LocalCurrenciesPropertyEntity>(
-                                entry.key,
-                                LocalCurrenciesPropertyEntity.fromJson(
-                                    entry.value)))),
+        // TODOAuth(): fromjson(.tojson) wont work for localCurrencies .
+        // localCurrencies: json['local_currencies'] == null
+        //     ? null
+        //     : Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
+        //         json['local_currencies']
+        //             .entries
+        //             .map<MapEntry<String, LocalCurrenciesPropertyEntity>>(
+        //                 (MapEntry<String, dynamic> entry) =>
+        //                     MapEntry<String, LocalCurrenciesPropertyEntity>(
+        //                         entry.key,
+        //                         LocalCurrenciesPropertyEntity.fromJson(
+        //                             entry.value)))),
         loginid: json['loginid'],
         preferredLanguage: json['preferred_language'],
         scopes: json['scopes'] == null
