@@ -3,6 +3,7 @@ import 'dart:developer' as dev;
 
 import 'package:bloc/bloc.dart';
 import 'package:crypto/crypto.dart';
+import 'package:deriv_auth/src/auth/auth_error.dart';
 import 'package:deriv_auth/src/models/account/account.dart';
 
 import '../core/api_client/exceptions/http_exceptions.dart';

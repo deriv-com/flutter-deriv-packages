@@ -1,26 +1,5 @@
 part of 'login_cubit.dart';
 
-/// Authentication error types.
-enum AuthErrorType {
-  /// Expired token/account error type.
-  expiredAccount,
-
-  /// Authorization failure error type.
-  failedAuthorization,
-
-  /// Connection error type.
-  connectionError,
-
-  /// Unsupported account error type.
-  unsupportedCountry,
-
-  /// Switching account error type.
-  switchAccountError,
-
-  /// Disabled client error type.
-  disabledClient
-}
-
 /// Login feature states.
 abstract class LoginState {
   /// Initializes splash states.
