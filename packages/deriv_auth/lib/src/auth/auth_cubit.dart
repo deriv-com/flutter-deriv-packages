@@ -4,6 +4,7 @@ import 'dart:developer' as logger;
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:deriv_auth/src/repo/auth_repo/i_auth_repo.dart.dart';
+import 'package:deriv_auth/src/repo/base_storage.dart';
 import 'package:equatable/equatable.dart';
 
 import '../core/constants/constants.dart';
@@ -20,13 +21,18 @@ class AuthCubit extends Cubit<AuthState>
 {
   /// Initializes the cubit with an initial state of `AuthInitial`.
   /// TODO get callBack from app to save into storage
-  AuthCubit({
-    required this.repo,
-  }) : super(const AuthInitialState());
+  AuthCubit(
+      {required this.secureStorage,
+      required this.repo,
+      required this.onReloadAccounts,
+      required})
+      : super(const AuthInitialState());
   final IAuthRepo repo;
 
   /// Secure storage for retrieving/storing secure data.
-  // static late final BaseSecureStorage _secureStorage;
+  final BaseSecureStorage secureStorage;
+
+  final Function onReloadAccounts;
 
   // late final PersistentConfigurationHelper _persistentConfigurationHelper;
 
@@ -72,15 +78,14 @@ class AuthCubit extends Cubit<AuthState>
     Function? onLogin,
     Function? onRefreshToken,
     Function? setFeedbackReminderFlag,
-    Function? onReloadAccounts,
     Function? onSendSignupEvent,
   }) async {
-    // final List<AccountModel> storedAccounts = await _secureStorage.userAccounts;
+    final List<AccountModel> storedAccounts = await secureStorage.userAccounts;
 
     if (storedAccounts.isEmpty && accounts == null && refreshToken == null) {
       emit(const AuthLoggedOutState());
     } else if (accounts == null) {
-      // final String? defaultAccount = await _secureStorage.defaultAccount;
+      final String? defaultAccount = await secureStorage.defaultAccount;
 
       await _fetchStoredAccounts(
         storedAccounts: storedAccounts,
@@ -96,7 +101,6 @@ class AuthCubit extends Cubit<AuthState>
         onLogin: onLogin,
         onRefreshToken: onRefreshToken,
         setFeedbackReminderFlag: setFeedbackReminderFlag,
-        onReloadAccounts: onReloadAccounts,
         onSendSignupEvent: onSendSignupEvent,
       );
     }
@@ -123,8 +127,8 @@ class AuthCubit extends Cubit<AuthState>
       /// TODO call from callbacks
       // await _cleanupUserData();
 
-      /// TODO add onLogout to implement analytics
-      // Analytics().logLogoutEvent();
+      await secureStorage.clearAllData();
+
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       logger.log('$AuthCubit logout() error: $e');
@@ -176,9 +180,9 @@ class AuthCubit extends Cubit<AuthState>
           onAuthorizeNewAccount?.call();
 
           /// TODO onLogin callback should be called here
-          // await _secureStorage.addAccounts(supportedAccounts);
-          // await _secureStorage.setDefaultAccount(defaultUserAccount.accountId);
-          // await _secureStorage.setDefaultUserId(userId: '${authorize.userId}');
+          await secureStorage.addAccounts(supportedAccounts);
+          await secureStorage.setDefaultAccount(defaultUserAccount.accountId);
+          await secureStorage.setDefaultUserId(userId: '${authorize.userId}');
 
           emit(AuthLoggedInState(authorizedAccount: authorize));
         },
@@ -220,8 +224,7 @@ class AuthCubit extends Cubit<AuthState>
 
           onLogin?.call();
 
-          /// TODO set default user Id from SS
-          // await _secureStorage.setDefaultUserId(userId: '$userId');
+          await secureStorage.setDefaultUserId(userId: '$userId');
 
           emit(AuthLoggedInState(authorizedAccount: authorize));
         },
@@ -254,7 +257,6 @@ class AuthCubit extends Cubit<AuthState>
     Function? onLogin,
     Function? onRefreshToken,
     Function? setFeedbackReminderFlag,
-    Function? onReloadAccounts,
     Function? onSendSignupEvent,
   }) async {
     emit(const AuthInitialState());
@@ -265,11 +267,10 @@ class AuthCubit extends Cubit<AuthState>
 
     if (supportedAccounts.isNotEmpty) {
       // Choose the default account.
-      final AccountModel defaultUserAccount = accounts.first;
-      // final AccountModel defaultUserAccount = _setDefaultAccount(
-      //   supportedAccounts: supportedAccounts,
-      //   index: reloadAccounts ? supportedAccounts.length - 1 : null,
-      // );
+      final AccountModel defaultUserAccount = _setDefaultAccount(
+        supportedAccounts: supportedAccounts,
+        index: reloadAccounts ? supportedAccounts.length - 1 : null,
+      );
 
       await _performAuthorization(
           token: defaultUserAccount.token,
@@ -327,14 +328,14 @@ class AuthCubit extends Cubit<AuthState>
             onLogin?.call();
 
             /// TODO LOGIN !!!!!! callbacks
-            // await _secureStorage.addAccounts(supportedAccounts);
-            // await _secureStorage.setDefaultUser(userEmail);
-            // await _secureStorage.setDefaultAccount(
-            //   defaultUserAccount.accountId,
-            // );
-            // await _secureStorage.setDefaultUserId(
-            //   userId: '${authorize.userId}',
-            // );
+            await secureStorage.addAccounts(supportedAccounts);
+            await secureStorage.setDefaultUser(userEmail);
+            await secureStorage.setDefaultAccount(
+              defaultUserAccount.accountId,
+            );
+            await secureStorage.setDefaultUserId(
+              userId: '${authorize.userId}',
+            );
 
             repo.addAccountsToSecureStorage(supportedAccounts);
             repo.setDefaultUserEmail(userEmail);
@@ -343,15 +344,14 @@ class AuthCubit extends Cubit<AuthState>
             if (refreshToken != null) {
               onRefreshToken?.call();
 
-              /// TODO callbacks
-              // await _secureStorage.setRefreshToken(refreshToken);
+              await secureStorage.setRefreshToken(refreshToken);
             }
 
             setFeedbackReminderFlag?.call();
             // await _setFeedbackReminderFlag();
 
             if (reloadAccounts) {
-              onReloadAccounts?.call();
+              onReloadAccounts.call();
 
               ///TODO callbacks
               // await BlocManager.instance
@@ -418,7 +418,7 @@ class AuthCubit extends Cubit<AuthState>
       // handling the situation when user clicked on an account that is recently disabled.
       // each time we switch to an account the state of all accounts get updated from the Authorize response.
       // if (error.code == 'AccountDisabled') {
-      //   await logout(isForcedLogout: true);
+      await logout(isForcedLogout: true);
       // } else {
       //   emit(
       //     AuthErrorState(
@@ -450,6 +450,17 @@ class AuthCubit extends Cubit<AuthState>
     return supportedAccounts.first;
   }
 
+  // Future<void> _cleanupUserData() async {
+// final NotificationsCubit notificationCubit =
+//     await _initializeAndGetNotificationsCubit();
+
+// await removeFCMToken();
+// await notificationCubit.resetNotificationDatabase();
+// Analytics().logLogoutEvent();
+
+//await clearOnLogoutPreferences();
+  // }
+
   /// TODO callbacks
   // Future<NotificationsCubit> _initializeAndGetNotificationsCubit() async {
   // BlocManager.instance.register<NotificationsCubit>(NotificationsCubit());
@@ -459,18 +470,6 @@ class AuthCubit extends Cubit<AuthState>
 
   // return notificationCubit;
 }
-
-// Future<void> _cleanupUserData() async {
-// final NotificationsCubit notificationCubit =
-//     await _initializeAndGetNotificationsCubit();
-
-// await removeFCMToken();
-// await notificationCubit.resetNotificationDatabase();
-
-// await _secureStorage.clearAllData();
-
-// await clearOnLogoutPreferences();
-// }
 
 // Segment recommends that you make an Identify call once when the user’s first creates an account.
 // Future<void> _initAnalyticsAndRegisterFCMToken(int? userId) async {
