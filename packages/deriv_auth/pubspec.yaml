@@ -14,7 +14,7 @@ dev_dependencies:
   test: ^1.16.0
 dependencies:
   bloc: ^7.1.0
-  collection: ^1.16.0
+  collection: ^1.15.0
   crypto: ^3.0.2
   equatable: ^2.0.5
   http: ^0.13.5
