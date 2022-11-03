@@ -1,0 +1,37 @@
+// ignore_for_file: prefer_single_quotes, unnecessary_import, unused_import
+
+import 'package:equatable/equatable.dart';
+
+/// Logout response class.p
+class LogoutResponseEntity {
+  /// Initializes Logout response class.
+  const LogoutResponseEntity({
+    required this.logout,
+  });
+  final int logout;
+
+  /// Creates an instance from JSON.
+  factory LogoutResponseEntity.fromJson(
+    dynamic logoutJson,
+  ) =>
+      LogoutResponseEntity(
+        logout: logoutJson,
+      );
+
+  /// Converts an instance to JSON.
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> resultMap = <String, dynamic>{};
+
+    resultMap['logout'] = logout;
+
+    return resultMap;
+  }
+
+  /// Creates a copy of instance with given parameters.
+  LogoutResponseEntity copyWith({
+    int? logout,
+  }) =>
+      LogoutResponseEntity(
+        logout: logout ?? this.logout,
+      );
+}
