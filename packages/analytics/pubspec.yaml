@@ -13,13 +13,13 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_rudderstack
-      ref: 26899d35f190fd5be8884bdbd1ff1f11c65197c8
+      ref: 6c90badd71f6b7f5f71dcc4ec307c22f6fe1d861
 
   deriv_api_key_provider:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_api_key_provider
-      ref: 26899d35f190fd5be8884bdbd1ff1f11c65197c8
+      ref: 6c90badd71f6b7f5f71dcc4ec307c22f6fe1d861
 
   firebase_analytics: ^8.1.2
 
