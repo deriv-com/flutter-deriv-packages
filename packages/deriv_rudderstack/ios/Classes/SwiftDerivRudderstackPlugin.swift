@@ -30,7 +30,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     
-    private static func configureAndBuildRSClient(writeKey: String) throws {
+    private func configureAndBuildRSClient(writeKey: String) throws {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
@@ -42,6 +42,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
             
             // LogLevel 0 is NONE and 4 is DEBUG.
             var logLevel = 0
+
             if let debug = nsDictionary?["com.deriv.rudderstack.DEBUG"] {
                 if(debug) as! Bool{
                     logLevel = 4
