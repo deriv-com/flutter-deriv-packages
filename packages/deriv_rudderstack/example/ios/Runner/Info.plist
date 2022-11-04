@@ -47,7 +47,5 @@
     <false/>
     <key>com.deriv.rudderstack.DEBUG</key>
     <false/>
-    <key>com.deriv.rudderstack.WRITE_KEY</key>
-    <string>ADD-YOUR-KEY</string>
 </dict>
 </plist>

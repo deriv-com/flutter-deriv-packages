@@ -8,10 +8,28 @@ import 'package:flutter/services.dart';
 class DerivRudderstack {
   static const MethodChannel _channel = MethodChannel('deriv_rudderstack');
 
+  /// Initializes rudder stack, [writeKey] is required.
+  Future<bool> initialize(String writeKey) async {
+    try {
+      final bool response = await _channel.invokeMethod<dynamic>(
+        'initialize',
+        <String, dynamic>{'writeKey': writeKey},
+      );
+
+      return response;
+    } on PlatformException catch (e) {
+      logger.log('${(DerivRudderstack).toString()}: ${e.message}');
+    }
+
+    return false;
+  }
+
   /// Call `identify` to track the users across the application installation.
   /// It requires [userId] and an optional map of [traits] for extra details.
-  Future<bool> identify(
-      {required String userId, Map<String, dynamic>? traits}) async {
+  Future<bool> identify({
+    required String userId,
+    Map<String, dynamic>? traits,
+  }) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('identify', <String, dynamic>{
@@ -29,8 +47,10 @@ class DerivRudderstack {
 
   /// Call `track` to record the users' activity. It requires the [eventName]
   /// and an optional [properties] map for extra details.
-  Future<bool> track(
-      {required String eventName, Map<String, dynamic>? properties}) async {
+  Future<bool> track({
+    required String eventName,
+    Map<String, dynamic>? properties,
+  }) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('track', <String, dynamic>{
@@ -48,8 +68,10 @@ class DerivRudderstack {
   /// You can use the `screen` call to record whenever the user sees a screen
   /// on the mobile device. It requires [screenName] an optional
   /// [properties] map for extra details.
-  Future<bool> screen(
-      {required String screenName, Map<String, dynamic>? properties}) async {
+  Future<bool> screen({
+    required String screenName,
+    Map<String, dynamic>? properties,
+  }) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('screen', <String, dynamic>{
@@ -67,8 +89,10 @@ class DerivRudderstack {
 
   /// The `group` call associates a user to a specific organization. It requires
   /// [groupId] and an optional [traits] map for extra details.
-  Future<bool> group(
-      {required String groupId, Map<String, dynamic>? traits}) async {
+  Future<bool> group({
+    required String groupId,
+    Map<String, dynamic>? traits,
+  }) async {
     try {
       final bool response =
           await _channel.invokeMethod<dynamic>('group', <String, dynamic>{

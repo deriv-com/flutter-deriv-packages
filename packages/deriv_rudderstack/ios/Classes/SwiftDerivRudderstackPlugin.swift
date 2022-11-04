@@ -11,7 +11,8 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     
     let TURNED_OFF = "TURNED_OFF"
     
-    // Method names
+    // Method names.
+    let INITIALIZE = "initialize"
     let IDENTIFY = "identify"
     let TRACK = "track"
     let SCREEN = "screen"
@@ -25,26 +26,16 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "deriv_rudderstack", binaryMessenger: registrar.messenger())
         let instance = SwiftDerivRudderstackPlugin()
+
         registrar.addMethodCallDelegate(instance, channel: channel)
-        
-        do {
-            try configureAndBuildRSClient()
-        } catch {
-            print(error)
-        }
     }
     
-    private static func configureAndBuildRSClient() throws {
+    private static func configureAndBuildRSClient(writeKey: String) throws {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
             nsDictionary = NSDictionary(contentsOfFile: path)
-            
-            // Avoid passing null
-            guard let writeKey = nsDictionary?["com.deriv.rudderstack.WRITE_KEY"] as? String else {
-                fatalError("WriteKey must not be null")
-            }
             
             let trackApplicationLifecycleEvents = nsDictionary?["com.deriv.rudderstack.TRACK_APPLICATION_LIFECYCLE_EVENTS"] as? Bool ?? false
             let recordScreenViews = nsDictionary?["com.deriv.rudderstack.RECORD_SCREEN_VIEWS"] as? Bool ?? false
@@ -68,6 +59,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch checkMethod(method: call.method) {
+        case INITIALIZE:
+            self.initialize(call, result)
+
         case IDENTIFY:
             self.identify(call, result)
             
@@ -120,6 +114,20 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         }
     }
     
+    // Initializes rudder stack.
+    private func initialize(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        
+        if let myArgs = call.arguments as? [String: Any?],
+           let writeKey : String = myArgs["writeKey"] as? String {
+            
+            configureAndBuildRSClient(writeKey)
+            
+            result(true)
+        } else {
+            result(false)
+        }
+    }
+
     // To track the users across the application installation.
     private func identify(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
@@ -133,7 +141,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         } else {
             result(false)
         }
-        
     }
     
     // To record the users' activity.
@@ -149,7 +156,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         } else {
             result(false)
         }
-        
     }
     
     // You can use the screen call to record whenever the user sees a screen on the mobile device.
@@ -165,7 +171,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         } else {
             result(false)
         }
-        
     }
     
     // The group call associates a user to a specific organization.
@@ -181,7 +186,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         } else {
             result(false)
         }
-        
     }
     
     // The alias call associates the user with a new identification.
@@ -196,7 +200,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         } else {
             result(false)
         }
-        
     }
     
     // Use the reset method to clear the persisted traits for the identify call. This is required for Logout operations.
@@ -220,7 +223,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         } else {
             result(false)
         }
-        
     }
     
     // To enable sending rudder stack events.

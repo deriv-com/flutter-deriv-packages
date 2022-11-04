@@ -19,7 +19,6 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
     companion object {
         const val TAG = "DerivRudderstackPlugin"
         private const val PACKAGE = "com.deriv.rudderstack"
-        const val WRITE_KEY = "$PACKAGE.WRITE_KEY"
         const val TRACK_APPLICATION_LIFECYCLE_EVENTS = "$PACKAGE.TRACK_APPLICATION_LIFECYCLE_EVENTS"
         const val RECORD_SCREEN_VIEWS = "$PACKAGE.RECORD_SCREEN_VIEWS"
         const val DEBUG = "$PACKAGE.DEBUG"
@@ -27,6 +26,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
         const val TURNED_OFF = "TURNED_OFF"
 
         // Method names
+        const val INITIALIZE = "initialize"
         const val IDENTIFY = "identify"
         const val TRACK = "track"
         const val SCREEN = "screen"
@@ -48,12 +48,9 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(this)
 
         context = flutterPluginBinding.applicationContext
-
-        configureAndBuildRSClient()
-
     }
 
-    private fun configureAndBuildRSClient() {
+    private fun configureAndBuildRSClient(writeKey: String?) {
 
         // Gets the values specified by the user at AndroidManifest.xml
         val applicationInfo: ApplicationInfo = context.packageManager
@@ -61,7 +58,6 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
 
         val bundle = applicationInfo.metaData
 
-        val writeKey = bundle.getString(WRITE_KEY)
         writeKey?.apply {
             val trackApplicationLifecycleEvents = bundle.getBoolean(TRACK_APPLICATION_LIFECYCLE_EVENTS)
             val recordScreenViews = bundle.getBoolean(RECORD_SCREEN_VIEWS)
@@ -84,6 +80,9 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (checkMethod(call.method)) {
+            INITIALIZE -> {
+                initialize(call, result)
+            }
             IDENTIFY -> {
                 identify(call, result)
             }
@@ -122,11 +121,31 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     private fun checkMethod(method: String): String {
+
         return if (method == ENABLE || method == DISABLE) method
         else checkEnabled(method)
     }
 
     private fun checkEnabled(method: String): String = if (enabled) method else TURNED_OFF
+
+    // Initializes rudder stack.
+    private fun initialize(call: MethodCall, result: Result) {
+
+        try {
+            val writeKey: String? = call.argument("writeKey")
+
+            writeKey?.let {
+                configureAndBuildRSClient(writeKey)
+            } ?: run {
+                result.error(TAG, "writeKey cannot be null", null)
+            }
+
+            result.success(true)
+
+        } catch (e: Exception) {
+            result.error(TAG, e.localizedMessage, null)
+        }
+    }
 
     // To track the users across the application installation.
     private fun identify(call: MethodCall, result: Result) {
@@ -153,11 +172,11 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
         } catch (e: Exception) {
             result.error(TAG, e.localizedMessage, null)
         }
-
     }
 
     // To record the users' activity.
     private fun track(call: MethodCall, result: Result) {
+
         try {
             val eventName: String? = call.argument("eventName")
             val propertiesData: HashMap<String, Any>? = call.argument("properties")
@@ -181,7 +200,6 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
         } catch (e: Exception) {
             result.error(TAG, e.localizedMessage, null)
         }
-
     }
 
     // You can use the screen call to record whenever the user sees a screen on the mobile device.
@@ -210,8 +228,6 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
         } catch (e: Exception) {
             result.error(TAG, e.localizedMessage, null)
         }
-
-
     }
 
     // The group call associates a user to a specific organization.
@@ -240,8 +256,6 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
         } catch (e: Exception) {
             result.error(TAG, e.localizedMessage, null)
         }
-
-
     }
 
     // The alias call associates the user with a new identification.
