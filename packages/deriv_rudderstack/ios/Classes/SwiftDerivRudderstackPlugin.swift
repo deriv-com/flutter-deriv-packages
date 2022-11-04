@@ -117,10 +117,10 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     // Initializes rudder stack.
     private func initialize(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
-        if let myArgs = call.arguments as? [String: Any?],
-           let writeKey : String = myArgs["writeKey"] as? String {
+        if let args = call.arguments as? [String: Any?],
+           let writeKey : String = args["writeKey"] as? String {
             
-            configureAndBuildRSClient(writeKey)
+            configureAndBuildRSClient(writeKey: writeKey)
             
             result(true)
         } else {
@@ -131,9 +131,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     // To track the users across the application installation.
     private func identify(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
-        if let myArgs = call.arguments as? [String: Any?],
-           let userId : String = myArgs["userId"] as? String,
-           let traits: [String: Any]? = myArgs["traits"] as? [String: Any]? {
+        if let args = call.arguments as? [String: Any?],
+           let userId : String = args["userId"] as? String,
+           let traits: [String: Any]? = args["traits"] as? [String: Any]? {
             
             RSClient.sharedInstance()?.identify(userId, traits: traits!)
             
@@ -146,9 +146,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     // To record the users' activity.
     private func track(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
-        if let myArgs = call.arguments as? [String: Any?],
-           let eventName : String = myArgs["eventName"] as? String,
-           let properties: [String: Any]? = myArgs["properties"] as? [String: Any]? {
+        if let args = call.arguments as? [String: Any?],
+           let eventName : String = args["eventName"] as? String,
+           let properties: [String: Any]? = args["properties"] as? [String: Any]? {
             
             RSClient.sharedInstance()?.track(eventName, properties: properties!)
             
@@ -161,9 +161,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     // You can use the screen call to record whenever the user sees a screen on the mobile device.
     private func screen(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
-        if let myArgs = call.arguments as? [String: Any?],
-           let screenName : String = myArgs["screenName"] as? String,
-           let properties: [String: Any]? = myArgs["properties"] as? [String: Any]? {
+        if let args = call.arguments as? [String: Any?],
+           let screenName : String = args["screenName"] as? String,
+           let properties: [String: Any]? = args["properties"] as? [String: Any]? {
             
             RSClient.sharedInstance()?.screen(screenName, properties: properties!)
             
@@ -176,9 +176,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     // The group call associates a user to a specific organization.
     private func group(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
-        if let myArgs = call.arguments as? [String: Any?],
-           let groupId : String = myArgs["groupId"] as? String,
-           let traits: [String: Any]? = myArgs["traits"] as? [String: Any]? {
+        if let args = call.arguments as? [String: Any?],
+           let groupId : String = args["groupId"] as? String,
+           let traits: [String: Any]? = args["traits"] as? [String: Any]? {
             
             RSClient.sharedInstance()?.group(groupId, traits: traits!)
             
@@ -191,8 +191,8 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     // The alias call associates the user with a new identification.
     private func alias(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
-        if let myArgs = call.arguments as? [String: Any?],
-           let alias : String = myArgs["alias"] as? String {
+        if let args = call.arguments as? [String: Any?],
+           let alias : String = args["alias"] as? String {
             
             RSClient.sharedInstance()?.alias(alias)
             
@@ -212,8 +212,8 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     // To send push notification to the destinations that support Push Notification. It is set under context.device.token.
     private func setContext(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
         
-        if let myArgs = call.arguments as? [String: Any?],
-           let pushToken : String = myArgs["pushToken"] as? String {
+        if let args = call.arguments as? [String: Any?],
+           let pushToken : String = args["pushToken"] as? String {
             
             let rudderstack = Rudderstack()
             rudderstack.pushToken = pushToken
