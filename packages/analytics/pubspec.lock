@@ -43,12 +43,21 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  deriv_api_key_provider:
+    dependency: "direct main"
+    description:
+      path: "packages/deriv_api_key_provider"
+      ref: "26899d35f190fd5be8884bdbd1ff1f11c65197c8"
+      resolved-ref: "26899d35f190fd5be8884bdbd1ff1f11c65197c8"
+      url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
+    source: git
+    version: "0.0.1"
   deriv_rudderstack:
     dependency: "direct main"
     description:
       path: "packages/deriv_rudderstack"
-      ref: "31236c598da4df62d273de53ea1e0d650ed8b8ca"
-      resolved-ref: "31236c598da4df62d273de53ea1e0d650ed8b8ca"
+      ref: "26899d35f190fd5be8884bdbd1ff1f11c65197c8"
+      resolved-ref: "26899d35f190fd5be8884bdbd1ff1f11c65197c8"
       url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
     source: git
     version: "1.1.0"
@@ -59,6 +68,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
+  ffi:
+    dependency: transitive
+    description:
+      name: ffi
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.1"
   firebase:
     dependency: transitive
     description:
@@ -165,6 +181,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  package_info:
+    dependency: transitive
+    description:
+      name: package_info
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
   path:
     dependency: transitive
     description:
@@ -249,4 +272,4 @@ packages:
     version: "2.1.2"
 sdks:
   dart: ">=2.17.0-0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.5"
+  flutter: ">=1.20.0"

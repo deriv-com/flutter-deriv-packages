@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+
+import 'package:deriv_api_key_provider/native_app_token.dart';
 
 import 'package:deriv_rudderstack/deriv_rudderstack.dart';
 
@@ -29,7 +33,7 @@ class Analytics {
   /// Initialises the `Analytics`.
   /// Sets the device-token to `RudderStack`.
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init({required String writeKey, required bool isEnabled}) async {
+  Future<void> init({required bool isEnabled}) async {
     _firebaseAnalytics = FirebaseAnalytics();
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
@@ -39,7 +43,8 @@ class Analytics {
     if (!_initialized) {
       _initialized = true;
 
-      await DerivRudderstack().initialize(writeKey);
+      await DerivRudderstack()
+          .initialize(await (Platform.isAndroid ? appRSKA : appRSKI));
     }
 
     isEnabled
@@ -114,7 +119,7 @@ class Analytics {
 
   /// Logs push token.
   Future<void> logPushToken(String deviceToken) async =>
-      await _setRudderStackDeviceToken(deviceToken);
+      _setRudderStackDeviceToken(deviceToken);
 
   /// Should be called at logout to clear up current `RudderStack` data.
   Future<void> reset() async => DerivRudderstack().reset();
