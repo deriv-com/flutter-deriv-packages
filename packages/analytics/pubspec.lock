@@ -47,8 +47,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/deriv_api_key_provider"
-      ref: b72f77bc8c65636b3f41942cc9a1770b37d48658
-      resolved-ref: b72f77bc8c65636b3f41942cc9a1770b37d48658
+      ref: "127b68f23971a62c0fd4a91457f51c1c33571907"
+      resolved-ref: "127b68f23971a62c0fd4a91457f51c1c33571907"
       url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
     source: git
     version: "0.0.1"
@@ -56,8 +56,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/deriv_rudderstack"
-      ref: "213b244a36b81bfe3c6d85ba131a70227c5aa2c9"
-      resolved-ref: "213b244a36b81bfe3c6d85ba131a70227c5aa2c9"
+      ref: "127b68f23971a62c0fd4a91457f51c1c33571907"
+      resolved-ref: "127b68f23971a62c0fd4a91457f51c1c33571907"
       url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
     source: git
     version: "1.1.0"
