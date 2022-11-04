@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import androidx.annotation.NonNull
+
 import com.rudderstack.android.sdk.core.*
+
 import io.flutter.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
@@ -75,10 +77,10 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
                             .build()
             )
         } ?: Log.e(TAG, "writeKey must not be null")
-
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+
         when (checkMethod(call.method)) {
             INITIALIZE -> {
                 initialize(call, result)
@@ -137,7 +139,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
             writeKey?.let {
                 configureAndBuildRSClient(writeKey)
             } ?: run {
-                result.error(TAG, "writeKey cannot be null", null)
+                result.error(TAG, "writeKey cannot be null.", null)
             }
 
             result.success(true)
@@ -164,7 +166,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
             userId?.let {
                 rudderClient.identify(userId, traits, null)
             } ?: run {
-                result.error(TAG, "userId cannot be null", null)
+                result.error(TAG, "userId cannot be null.", null)
             }
 
             result.success(true)
@@ -192,7 +194,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
             eventName?.let {
                 rudderClient.track(eventName, property, null)
             } ?: run {
-                result.error(TAG, "eventName cannot be null", null)
+                result.error(TAG, "eventName cannot be null.", null)
             }
 
             result.success(true)
@@ -220,7 +222,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
             screenName?.let {
                 rudderClient.screen(screenName, property, null)
             } ?: run {
-                result.error(TAG, "screenName cannot be null", null)
+                result.error(TAG, "screenName cannot be null.", null)
             }
 
             result.success(true)
@@ -248,7 +250,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
             groupId?.let {
                 rudderClient.group(groupId, traits, null)
             } ?: run {
-                result.error(TAG, "groupId cannot be null", null)
+                result.error(TAG, "groupId cannot be null.", null)
             }
 
             result.success(true)
@@ -267,7 +269,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
             alias?.let {
                 rudderClient.alias(alias)
             } ?: run {
-                result.error(TAG, "options cannot be null", null)
+                result.error(TAG, "options cannot be null.", null)
             }
 
             result.success(true)

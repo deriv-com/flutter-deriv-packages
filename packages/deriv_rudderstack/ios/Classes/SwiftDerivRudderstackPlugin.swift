@@ -6,7 +6,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     
     /**
      Determines if the user has enabled or disabled the plugin which means; no events will be sent if [enabled] is false.
-     */
+    */
     private var enabled = true
     
     let TURNED_OFF = "TURNED_OFF"
@@ -30,7 +30,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     
-    private func configureAndBuildRSClient(writeKey: String) throws {
+    private func configureAndBuildRSClient(writeKey: String) {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
@@ -60,42 +60,42 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch checkMethod(method: call.method) {
-        case INITIALIZE:
-            self.initialize(call, result)
+            case INITIALIZE:
+                self.initialize(call, result)
 
-        case IDENTIFY:
-            self.identify(call, result)
-            
-        case TRACK:
-            self.track(call, result)
-            
-        case SCREEN:
-            self.screen(call, result)
-            
-        case GROUP:
-            self.group(call, result)
-            
-        case ALIAS:
-            self.alias(call, result)
-            
-        case RESET:
-            self.reset(result)
-            
-        case SET_CONTEXT:
-            self.setContext(call, result)
-            
-        case ENABLE:
-            self.enable(call, result)
-            
-        case DISABLE:
-            self.disable(call, result)
-            
-        case TURNED_OFF:
-            result(false)
-            print("Rudderstack analytics was turned off")
-            
-        default:
-            result(false)
+            case IDENTIFY:
+                self.identify(call, result)
+                
+            case TRACK:
+                self.track(call, result)
+                
+            case SCREEN:
+                self.screen(call, result)
+                
+            case GROUP:
+                self.group(call, result)
+                
+            case ALIAS:
+                self.alias(call, result)
+                
+            case RESET:
+                self.reset(result)
+                
+            case SET_CONTEXT:
+                self.setContext(call, result)
+                
+            case ENABLE:
+                self.enable(call, result)
+                
+            case DISABLE:
+                self.disable(call, result)
+                
+            case TURNED_OFF:
+                result(false)
+                print("Rudderstack analytics was turned off")
+                
+            default:
+                result(false)
         }
     }
     
