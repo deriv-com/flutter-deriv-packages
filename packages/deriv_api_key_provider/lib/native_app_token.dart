@@ -10,7 +10,8 @@ import 'package:package_info/package_info.dart';
 const String _libraryName = 'libnative_app_token.so';
 
 const String _getAppTokenMethodName = 'getAppToken';
-const String _getRSKMethodName = 'getRSK';
+const String _getRSKAMethodName = 'getRSKA';
+const String _getRSKIMethodName = 'getRSKI';
 const String _getNativeLibraryDirectoryMethodName = 'getNativeLibraryDirectory';
 
 const MethodChannel _methodChannel = MethodChannel('deriv_api_key_provider');
@@ -18,8 +19,11 @@ const MethodChannel _methodChannel = MethodChannel('deriv_api_key_provider');
 /// Gets app token.
 Future<String> get appToken async => (await _getAppToken())().toDartString();
 
-/// Gets RSK.
-Future<String> get appRSK async => (await _getRSK())().toDartString();
+/// Gets RSKA.
+Future<String> get appRSKA async => (await _getRSKA())().toDartString();
+
+/// Gets RSKI.
+Future<String> get appRSKI async => (await _getRSKI())().toDartString();
 
 Future<String?> _getNativeLibraryDirectory() async =>
     _methodChannel.invokeMethod<String>(_getNativeLibraryDirectoryMethodName);
@@ -35,9 +39,14 @@ Future<Pointer<Utf8> Function()> _getAppToken() async =>
         )
         .asFunction();
 
-Future<Pointer<Utf8> Function()> _getRSK() async =>
+Future<Pointer<Utf8> Function()> _getRSKA() async =>
     (await _getNativeAppTokenLibrary())
-        .lookup<NativeFunction<Pointer<Utf8> Function()>>(_getRSKMethodName)
+        .lookup<NativeFunction<Pointer<Utf8> Function()>>(_getRSKAMethodName)
+        .asFunction();
+
+Future<Pointer<Utf8> Function()> _getRSKI() async =>
+    (await _getNativeAppTokenLibrary())
+        .lookup<NativeFunction<Pointer<Utf8> Function()>>(_getRSKIMethodName)
         .asFunction();
 
 Future<DynamicLibrary> _getAndroidDynamicLibrary(String libraryName) async {

@@ -13,11 +13,20 @@ void main() {
   );
 
   test(
-    'test rsk getter.',
+    'test rska getter.',
     () async {
-      final String token = await appRSK;
+      final String token = await appRSKA;
 
-      expect(token, 'PRODUCTION_RSK');
+      expect(token, 'PRODUCTION_RSKA');
+    },
+  );
+
+  test(
+    'test rski getter.',
+    () async {
+      final String token = await appRSKI;
+
+      expect(token, 'PRODUCTION_RSKI');
     },
   );
 }
