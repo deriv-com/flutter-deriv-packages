@@ -24,15 +24,23 @@ class Analytics {
   /// An instance of custom route observer created for analytics.
   late AnalyticsRouteObserver observer;
 
+  static bool _initialized = false;
+
   /// Initialises the `Analytics`.
   /// Sets the device-token to `RudderStack`.
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init({required bool isEnabled}) async {
+  Future<void> init({required String writeKey, required bool isEnabled}) async {
     _firebaseAnalytics = FirebaseAnalytics();
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
+
+    if (!_initialized) {
+      _initialized = true;
+
+      await DerivRudderstack().initialize(writeKey);
+    }
 
     isEnabled
         ? await DerivRudderstack().enable()
@@ -43,7 +51,6 @@ class Analytics {
   void _newRouteHandler(PageRoute<dynamic> route) {
     setCurrentScreen(
       screenName: route.settings.name ?? '',
-      // ignore: avoid_as
       properties: route.settings.arguments as Map<String, dynamic>? ??
           <String, dynamic>{},
     );
@@ -57,14 +64,12 @@ class Analytics {
   }
 
   /// Captures `Application Backgrounded` event when the app goes to background.
-  void logAppBackgrounded() {
-    DerivRudderstack().track(eventName: 'Application Backgrounded');
-  }
+  void logAppBackgrounded() =>
+      DerivRudderstack().track(eventName: 'Application Backgrounded');
 
   /// Captures `Application Crashed` event when the app is crashed.
-  void logAppCrashed() {
-    DerivRudderstack().track(eventName: 'Application Crashed');
-  }
+  void logAppCrashed() =>
+      DerivRudderstack().track(eventName: 'Application Crashed');
 
   /// Captures information about current screen in use.
   void setCurrentScreen({
@@ -74,6 +79,7 @@ class Analytics {
     if (ignoredRoutes.contains(screenName)) {
       return;
     }
+
     _firebaseAnalytics.setCurrentScreen(screenName: screenName);
 
     DerivRudderstack().screen(
@@ -83,8 +89,10 @@ class Analytics {
   }
 
   /// Captures `login` event upon a successful user log in.
-  Future<void> logLoginEvent(
-      {required String deviceToken, required int userId}) async {
+  Future<void> logLoginEvent({
+    required String deviceToken,
+    required int userId,
+  }) async {
     await _setFirebaseUserId(userId.toString());
     await _firebaseAnalytics.logLogin();
 
@@ -94,9 +102,7 @@ class Analytics {
   }
 
   /// Captures `logout` event when the user logs out.
-  void logLogoutEvent() {
-    _firebaseAnalytics.logEvent(name: 'logout');
-  }
+  void logLogoutEvent() => _firebaseAnalytics.logEvent(name: 'logout');
 
   /// Sets the device-token to `RudderStack`.
   Future<void> _setRudderStackDeviceToken(String deviceToken) =>
@@ -107,9 +113,8 @@ class Analytics {
       _firebaseAnalytics.setUserId(userId);
 
   /// Logs push token.
-  Future<void> logPushToken(String deviceToken) async {
-    await _setRudderStackDeviceToken(deviceToken);
-  }
+  Future<void> logPushToken(String deviceToken) async =>
+      await _setRudderStackDeviceToken(deviceToken);
 
   /// Should be called at logout to clear up current `RudderStack` data.
   Future<void> reset() async => DerivRudderstack().reset();
@@ -119,8 +124,5 @@ class Analytics {
     required String name,
     Map<String, dynamic>? params,
   }) =>
-      _firebaseAnalytics.logEvent(
-        name: name,
-        parameters: params,
-      );
+      _firebaseAnalytics.logEvent(name: name, parameters: params);
 }
