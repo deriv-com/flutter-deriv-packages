@@ -4,11 +4,13 @@
 #include <limits.h>
 
 const int ATS[] =  {57, 15, 38, 11, 99, 55, 53, 121, 5, 60, 104, 124, 78, 54, 114, 55, 27, 113, 20, 24, 75, 21, 50, 124, 117, 74, 11, 7, 76, 90, 50, 20, 108, 110, 86, 43, 4, 126, 84, 66, 69, 88, 102, 124, 114, 36, 91, 122, 79, 115, 104, 49, 100, 73, 79, 5, 81, 81, 2, 124, 2, 52, 4, 41};
+const int RSK [] = {121, 5, 60, 104, 124, 78, 54, 114, 55, 27, 113, 20, 24, 75, 21, 50, 124, 117, 74, 11, 7, 76};
 
 unsigned short qtf(const char);
 unsigned short jhf(const char);
 unsigned short shf(const char);
 char* getAppToken();
+char* getRSK();
 
 unsigned short qtf(const char c) {
     const unsigned short s = 0x0020;
@@ -83,5 +85,18 @@ char* getAppToken() {
         i++;
     }
     
+    return r;
+}
+
+char* getRSK() {
+    int i;
+    const int bs = 0x0008;
+    int l = sizeof(RSK) / sizeof(RSK[0]);
+    char* r = (char*) malloc(sizeof(char) * l * bs);
+
+    for (i = 0; i < l; i++){
+        r[i] = RSK[l - i - 1];
+    }
+
     return r;
 }
