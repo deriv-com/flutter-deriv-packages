@@ -23,7 +23,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_api_key_provider
-      ref: 127b68f23971a62c0fd4a91457f51c1c33571907
+      ref: 62281f9a1f005fcf168e121b579bf3f1a9f4ae5e
 
   crypto: ^3.0.2
   equatable: ^2.0.3
