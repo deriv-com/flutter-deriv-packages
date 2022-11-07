@@ -72,8 +72,6 @@ class AuthCubit extends Cubit<AuthState>
     String? refreshToken,
     bool reloadAccounts = false,
     String? signupProvider,
-    required List<AccountModel> storedAccounts,
-    required String defaultAccount,
     Function? analyticsCallback,
     Function? onLogin,
     Function? onRefreshToken,

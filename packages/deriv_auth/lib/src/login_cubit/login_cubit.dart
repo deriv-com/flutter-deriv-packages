@@ -145,9 +145,8 @@ class LoginCubit extends Cubit<LoginState>
       onAccountFetched?.call(accounts);
 
       await authCubit.login(
-          accounts: accounts,
-          storedAccounts: accounts,
-          defaultAccount: accounts.first.accountId.toString());
+        accounts: accounts,
+      );
 
       emit(const LoginAuthorizedState());
 
