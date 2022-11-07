@@ -9,10 +9,9 @@ import 'package:deriv_rudderstack/deriv_rudderstack.dart';
 
 import 'analytics_route_observer.dart';
 
-/// Class that collects and send analytical information to `Firebase` and
-/// `RudderStack`.
+/// Class that collects and send analytical information to `Firebase` and `RudderStack`.
 class Analytics {
-  /// Initialises
+  /// Initializes [Analytics].
   factory Analytics() => _instance;
 
   Analytics._internal();
@@ -23,16 +22,19 @@ class Analytics {
   /// Contains ignored routes/screen names.
   List<String> ignoredRoutes = <String>[];
 
-  late FirebaseAnalytics _firebaseAnalytics;
-
   /// An instance of custom route observer created for analytics.
   late AnalyticsRouteObserver observer;
 
+  late FirebaseAnalytics _firebaseAnalytics;
+
+  final DerivRudderstack _rudderstack = DerivRudderstack();
+
   static bool _initialized = false;
 
-  /// Initialises the `Analytics`.
-  /// Sets the device-token to `RudderStack`.
-  /// bool [isEnabled] enables or disables "Analytics".
+  /// Initializes the [Analytics].
+  /// Sets the device-token to [DerivRudderstack].
+  ///
+  /// bool [isEnabled] enables or disables [Analytics].
   Future<void> init({required bool isEnabled}) async {
     _firebaseAnalytics = FirebaseAnalytics();
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
@@ -41,15 +43,17 @@ class Analytics {
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
 
     if (!_initialized) {
-      _initialized = true;
-
-      await DerivRudderstack()
+      _initialized = await _rudderstack
           .initialize(await (Platform.isAndroid ? appRSKA : appRSKI));
+
+      if (!_initialized) {
+        throw Exception(
+          '$runtimeType Exception: Unable to initialize [DerivRudderstack] package.',
+        );
+      }
     }
 
-    isEnabled
-        ? await DerivRudderstack().enable()
-        : await DerivRudderstack().disable();
+    isEnabled ? await _rudderstack.enable() : await _rudderstack.disable();
   }
 
   /// Captures `screen_view` event on route changes.
@@ -65,16 +69,15 @@ class Analytics {
   void logAppOpened() {
     _firebaseAnalytics.logAppOpen();
 
-    DerivRudderstack().track(eventName: 'Application Opened');
+    _rudderstack.track(eventName: 'Application Opened');
   }
 
   /// Captures `Application Backgrounded` event when the app goes to background.
   void logAppBackgrounded() =>
-      DerivRudderstack().track(eventName: 'Application Backgrounded');
+      _rudderstack.track(eventName: 'Application Backgrounded');
 
   /// Captures `Application Crashed` event when the app is crashed.
-  void logAppCrashed() =>
-      DerivRudderstack().track(eventName: 'Application Crashed');
+  void logAppCrashed() => _rudderstack.track(eventName: 'Application Crashed');
 
   /// Captures information about current screen in use.
   void setCurrentScreen({
@@ -87,10 +90,7 @@ class Analytics {
 
     _firebaseAnalytics.setCurrentScreen(screenName: screenName);
 
-    DerivRudderstack().screen(
-      screenName: screenName,
-      properties: properties,
-    );
+    _rudderstack.screen(screenName: screenName, properties: properties);
   }
 
   /// Captures `login` event upon a successful user log in.
@@ -103,7 +103,7 @@ class Analytics {
 
     await _setRudderStackDeviceToken(deviceToken);
 
-    await DerivRudderstack().identify(userId: userId.toString());
+    await _rudderstack.identify(userId: userId.toString());
   }
 
   /// Captures `logout` event when the user logs out.
@@ -111,7 +111,7 @@ class Analytics {
 
   /// Sets the device-token to `RudderStack`.
   Future<void> _setRudderStackDeviceToken(String deviceToken) =>
-      DerivRudderstack().setContext(token: deviceToken);
+      _rudderstack.setContext(token: deviceToken);
 
   /// Sets the user id to `Firebase`.
   Future<void> _setFirebaseUserId(String userId) =>
@@ -122,7 +122,7 @@ class Analytics {
       _setRudderStackDeviceToken(deviceToken);
 
   /// Should be called at logout to clear up current `RudderStack` data.
-  Future<void> reset() async => DerivRudderstack().reset();
+  Future<void> reset() async => _rudderstack.reset();
 
   /// Logs custom events to `Firebase`.
   Future<void> logToFirebase({
