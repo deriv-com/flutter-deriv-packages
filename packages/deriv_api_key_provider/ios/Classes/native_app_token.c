@@ -3,9 +3,14 @@
 #include <string.h>
 #include <limits.h>
 
-const int ATS[] =  {57, 15, 38, 11, 99, 55, 53, 121, 5, 60, 104, 124, 78, 54, 114, 55, 27, 113, 20, 24, 75, 21, 50, 124, 117, 74, 11, 7, 76, 90, 50, 20, 108, 110, 86, 43, 4, 126, 84, 66, 69, 88, 102, 124, 114, 36, 91, 122, 79, 115, 104, 49, 100, 73, 79, 5, 81, 81, 2, 124, 2, 52, 4, 41};
-const int RSKA [] = {121, 5, 60, 104, 124, 78};
-const int RSKI [] = {121, 5, 60, 104, 124, 78};
+const int ATS[] =  {
+    57, 15, 38, 11, 99, 55, 53, 121, 5, 60, 104, 124, 78, 54, 114, 55, 27, 113, 20, 24, 75,
+    21, 50, 124, 117, 74, 11, 7, 76, 90, 50, 20, 108, 110, 86, 43, 4, 126, 84, 66, 69, 88,
+    102, 124, 114, 36, 91, 122, 79, 115, 104, 49, 100, 73, 79, 5, 81, 81, 2, 124, 2, 52, 4, 41
+};
+
+const int RSKA [] = {57, 15, 38, 11, 99, 55, 53, 121, 5, 60, 104, 124, 78, 54, 114, 55, 27, 113, 20, 24, 75, 21, 50};
+const int RSKI [] = {57, 15, 38, 11, 99, 55, 53, 121, 5, 60, 104, 124, 78, 54, 114, 55, 27, 113, 20, 24, 75, 21, 50};
 
 unsigned short qtf(const char);
 unsigned short jhf(const char);
@@ -91,26 +96,26 @@ char* getAppToken() {
 }
 
 char* getRSKA() {
-    int i;
     const int bs = 0x0008;
     int l = sizeof(RSKA) / sizeof(RSKA[0]);
     char* r = (char*) malloc(sizeof(char) * l * bs);
 
-    for (i = 0; i < l; i++){
-        r[i] = RSKA[l - i - 1];
+    for (int i = 0; i < l; i++) {
+        int t = i ^ RSKA[l - i - 1];
+        r[i] = i ^ t;
     }
 
     return r;
 }
 
 char* getRSKI() {
-    int i;
     const int bs = 0x0008;
     int l = sizeof(RSKI) / sizeof(RSKI[0]);
     char* r = (char*) malloc(sizeof(char) * l * bs);
 
-    for (i = 0; i < l; i++){
-        r[i] = RSKI[l - i - 1];
+    for (int i = 0; i < l; i++) {
+        int t = i ^ RSKI[l - i - 1];
+        r[i] = i ^ t;
     }
 
     return r;
