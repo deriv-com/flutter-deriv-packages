@@ -146,6 +146,7 @@ class LoginCubit extends Cubit<LoginState>
 
       await authCubit.login(
         accounts: accounts,
+        refreshToken: response.refreshToken,
       );
 
       emit(const LoginAuthorizedState());
