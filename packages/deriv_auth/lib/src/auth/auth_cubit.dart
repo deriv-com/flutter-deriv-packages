@@ -20,7 +20,6 @@ class AuthCubit extends Cubit<AuthState>
 // implements ConnectionStateListener {
 {
   /// Initializes the cubit with an initial state of `AuthInitial`.
-  /// TODO get callBack from app to save into storage
   AuthCubit(
       {required this.secureStorage,
       required this.repo,
@@ -34,6 +33,7 @@ class AuthCubit extends Cubit<AuthState>
 
   final Function onReloadAccounts;
 
+  // TODO delete PersistentConfigurationHelper as it's not needed
   // late final PersistentConfigurationHelper _persistentConfigurationHelper;
 
   /// Gets the authorized account.
@@ -95,10 +95,8 @@ class AuthCubit extends Cubit<AuthState>
         reloadAccounts: reloadAccounts,
         refreshToken: refreshToken,
         signupProvider: signupProvider,
-        analyticsCallback: analyticsCallback,
         onLogin: onLogin,
         onRefreshToken: onRefreshToken,
-        setFeedbackReminderFlag: setFeedbackReminderFlag,
         onSendSignupEvent: onSendSignupEvent,
       );
     }
@@ -111,7 +109,6 @@ class AuthCubit extends Cubit<AuthState>
   Future<void> logout({
     String? logoutReason,
     bool isForcedLogout = false,
-    Function? onLogout,
   }) async {
     emit(const AuthLoggingOutState());
 
@@ -120,10 +117,11 @@ class AuthCubit extends Cubit<AuthState>
     }
 
     try {
-      onLogout?.call();
-
-      /// TODO call from callbacks
-      // await _cleanupUserData();
+      /// function to initialize And Get Notifications Cubit
+      /// remove FCM token
+      /// Reset notifications DB
+      /// log logout onto Analytics
+      await repo.cleanUpUserData();
 
       await secureStorage.clearAllData();
 
@@ -139,6 +137,7 @@ class AuthCubit extends Cubit<AuthState>
   ///
   /// Emits [AuthLoggedInState] if the authorize request is successful
   /// and emits [AuthErrorState] in case any error takes place in the process.
+  /// TODO please check this function as it's not being used anywhere so far
   Future<void> authorizeNewAccount({
     String? token,
     required List<AccountModel> userAccounts,
@@ -177,7 +176,6 @@ class AuthCubit extends Cubit<AuthState>
 
           onAuthorizeNewAccount?.call();
 
-          /// TODO onLogin callback should be called here
           await secureStorage.addAccounts(supportedAccounts);
           await secureStorage.setDefaultAccount(defaultUserAccount.accountId);
           await secureStorage.setDefaultUserId(userId: '${authorize.userId}');
@@ -235,26 +233,13 @@ class AuthCubit extends Cubit<AuthState>
     }
   }
 
-  // /// TODO implement adding PCH
-  // Future<void> _setFeedbackReminderFlag() async {
-  //   // final bool shouldShowFeedbackReminder =
-  //   //     await _persistentConfigurationHelper.getShouldShowFeedbackReminder() ??
-  //   //         true;
-
-  //   // await _persistentConfigurationHelper.storeShouldShowFeedbackReminder(
-  //   //   value: shouldShowFeedbackReminder,
-  //   // );
-  // }
-
   Future<void> _parseAndAuthorizeAccount({
     required List<AccountModel> accounts,
     required String? refreshToken,
     bool reloadAccounts = false,
     String? signupProvider,
-    Function? analyticsCallback,
     Function? onLogin,
     Function? onRefreshToken,
-    Function? setFeedbackReminderFlag,
     Function? onSendSignupEvent,
   }) async {
     emit(const AuthInitialState());
@@ -279,10 +264,6 @@ class AuthCubit extends Cubit<AuthState>
             final String? fullName = authorize.fullname;
             final int? userId = authorize.userId;
 
-            analyticsCallback?.call();
-
-            /// TODO call from callbacks
-            // await _initAnalyticsAndRegisterFCMToken(userId);
             await repo.initAnalyticsAndRegisterFCMToken(userId);
 
             // Add user email and full name to account data before saving it.
@@ -325,7 +306,6 @@ class AuthCubit extends Cubit<AuthState>
             // user id, and set a default account for the user.
             onLogin?.call();
 
-            /// TODO LOGIN !!!!!! callbacks
             await secureStorage.addAccounts(supportedAccounts);
             await secureStorage.setDefaultUser(userEmail);
             await secureStorage.setDefaultAccount(
@@ -335,38 +315,24 @@ class AuthCubit extends Cubit<AuthState>
               userId: '${authorize.userId}',
             );
 
-            repo.addAccountsToSecureStorage(supportedAccounts);
-            repo.setDefaultUserEmail(userEmail);
-            repo.setDefaultUserId(userId);
-            repo.setDefaultAccount(defaultUserAccount.accountId);
+            await repo.addAccountsToSecureStorage(supportedAccounts);
+            await repo.setDefaultUserEmail(userEmail);
+            await repo.setDefaultUserId(userId);
+            await repo.setDefaultAccount(defaultUserAccount.accountId);
+
             if (refreshToken != null) {
               onRefreshToken?.call();
 
               await secureStorage.setRefreshToken(refreshToken);
             }
 
-            setFeedbackReminderFlag?.call();
-            // await _setFeedbackReminderFlag();
+            await repo.setFeedbackReminderFlag();
 
             if (reloadAccounts) {
               onReloadAccounts.call();
-
-              ///TODO callbacks
-              // await BlocManager.instance
-              //     .fetch<AccountsCubit>()
-              //     .fetchAccountsAndSubscribeToDefault();
             }
             if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
               onSendSignupEvent?.call();
-
-              /// TODO callbacks
-              // final AccountModel? vrAccount = getVRAccount(accounts);
-              // trackAdjustEvent(adjustEventVirtualSignupDone,
-              //     callbackParameters: <String, String>{
-              //       'signup_provider': signupProvider,
-              //       'binary_user_id': '${authorize.userId ?? " "}',
-              //       'loginid': vrAccount!.accountId
-              //     });
             }
 
             emit(AuthLoggedInState(authorizedAccount: authorize));
@@ -412,20 +378,23 @@ class AuthCubit extends Cubit<AuthState>
         onSuccess?.call(authorize.authorize!);
       }
     } on Exception {
-      /// TODO check the exceotion
+      /// TODO - this is supposed to throw AuthorizeExceotion which comes
+      /// from deriv-api package
+      ///
+      ///
       // handling the situation when user clicked on an account that is recently disabled.
       // each time we switch to an account the state of all accounts get updated from the Authorize response.
       // if (error.code == 'AccountDisabled') {
       await logout(isForcedLogout: true);
       // } else {
-      //   emit(
-      //     AuthErrorState(
-      //       errorMessage: '$error',
-      //       authError: error.code == 'InvalidToken'
-      //           ? AuthErrorType.expiredAccount
-      //           : AuthErrorType.failedAuthorization,
-      //     ),
-      //   );
+      // emit(
+      //   AuthErrorState(
+      //     errorMessage: '$error',
+      //     authError: error.code == 'InvalidToken'
+      //         ? AuthErrorType.expiredAccount
+      //         : AuthErrorType.failedAuthorization,
+      //   ),
+      // );
       // }
     }
   }
@@ -448,147 +417,76 @@ class AuthCubit extends Cubit<AuthState>
     return supportedAccounts.first;
   }
 
-  // Future<void> _cleanupUserData() async {
-// final NotificationsCubit notificationCubit =
-//     await _initializeAndGetNotificationsCubit();
+  bool _isAccountValid(AccountModel account) =>
+      account.accountId.toUpperCase().contains('CR') ||
+      account.accountId.toUpperCase().contains('VRTC');
 
-// await removeFCMToken();
-// await notificationCubit.resetNotificationDatabase();
-// Analytics().logLogoutEvent();
+  bool _isAccountModelValid(AccountListItem account) =>
+      account.loginid!.toUpperCase().contains('CR') ||
+      account.loginid!.toUpperCase().contains('VRTC');
 
-//await clearOnLogoutPreferences();
-  // }
+  bool _canSendSignupDoneEvent(List<AccountModel>? accounts) =>
+      accounts != null && accounts.isNotEmpty && hasVRAccount(accounts);
 
-  /// TODO callbacks
-  // Future<NotificationsCubit> _initializeAndGetNotificationsCubit() async {
-  // BlocManager.instance.register<NotificationsCubit>(NotificationsCubit());
-  // final NotificationsCubit notificationCubit =
-  //     BlocManager.instance.fetch<NotificationsCubit>();
-  // await notificationCubit.fetchNotifications();
+  bool _isSvgAccount(AuthorizeEntity authorize) {
+    const String svgLandingCompanyName = 'svg';
 
-  // return notificationCubit;
-}
+    final bool isLandingCompanySvg =
+        authorize.landingCompanyName == svgLandingCompanyName;
+    final bool isUpgradeableLandingCompanySvg =
+        authorize.upgradeableLandingCompanies?.any((dynamic landingCompany) =>
+                landingCompany == svgLandingCompanyName) ??
+            false;
+    final bool hasSvgCompanies = authorize.accountList?.any(
+            (AccountListItem? account) =>
+                account?.landingCompanyName == svgLandingCompanyName) ??
+        false;
 
-// Segment recommends that you make an Identify call once when the user’s first creates an account.
-// Future<void> _initAnalyticsAndRegisterFCMToken(int? userId) async {
-// try {
-//   if (userId == null) {
-//     return;
-//   }
-
-//   final String? token = await getFirebaseToken();
-
-//   if (token == null) {
-//     return;
-//   }
-
-//   logger.log('token: $token');
-
-//   await Analytics().init(isEnabled: true);
-//   await Analytics().logLoginEvent(deviceToken: token, userId: userId);
-
-//   Analytics().logAppOpened();
-// } on Exception catch (error) {
-//   logger.log('$AuthCubit initAnalyticsAndRegisterFCMToken() error: $error');
-// }
-// }
-
-bool _isAccountValid(AccountModel account) =>
-    account.accountId.toUpperCase().contains('CR') ||
-    account.accountId.toUpperCase().contains('VRTC');
-
-bool _isAccountModelValid(AccountListItem account) =>
-    account.loginid!.toUpperCase().contains('CR') ||
-    account.loginid!.toUpperCase().contains('VRTC');
-
-bool _canSendSignupDoneEvent(List<AccountModel>? accounts) =>
-    accounts != null && accounts.isNotEmpty && hasVRAccount(accounts);
-
-bool _isSvgAccount(AuthorizeEntity authorize) {
-  const String svgLandingCompanyName = 'svg';
-
-  final bool isLandingCompanySvg =
-      authorize.landingCompanyName == svgLandingCompanyName;
-  final bool isUpgradeableLandingCompanySvg =
-      authorize.upgradeableLandingCompanies?.any((dynamic landingCompany) =>
-              landingCompany == svgLandingCompanyName) ??
-          false;
-  final bool hasSvgCompanies = authorize.accountList?.any(
-          (AccountListItem? account) =>
-              account?.landingCompanyName == svgLandingCompanyName) ??
-      false;
-
-  return isLandingCompanySvg ||
-      isUpgradeableLandingCompanySvg ||
-      hasSvgCompanies;
-}
-
-int _compareAccountCurrencyDisplayOrder({
-  required AuthorizeEntity authorize,
-  required AccountModel account,
-  required AccountModel other,
-}) {
-  // put demo account at the end of the list.
-  if (isVRAccount(account)) {
-    return 1;
+    return isLandingCompanySvg ||
+        isUpgradeableLandingCompanySvg ||
+        hasSvgCompanies;
   }
 
-  if (isVRAccount(other)) {
-    return -1;
+  int _compareAccountCurrencyDisplayOrder({
+    required AuthorizeEntity authorize,
+    required AccountModel account,
+    required AccountModel other,
+  }) {
+    // put demo account at the end of the list.
+    if (isVRAccount(account)) {
+      return 1;
+    }
+
+    if (isVRAccount(other)) {
+      return -1;
+    }
+
+    final AccountListItem? firstAccount =
+        authorize.accountList!.firstWhereOrNull(
+      (AccountListItem? element) => element!.loginid == account.accountId,
+    );
+
+    final AccountListItem? otherAccount =
+        authorize.accountList!.firstWhereOrNull(
+      (AccountListItem? element) => element!.loginid == other.accountId,
+    );
+
+    if (firstAccount == null || otherAccount == null) {
+      return 0;
+    }
+
+    return currenciesDisplayOrder.indexOf(firstAccount.currency!) -
+        currenciesDisplayOrder.indexOf(otherAccount.currency!);
   }
 
-  final AccountListItem? firstAccount = authorize.accountList!.firstWhereOrNull(
-    (AccountListItem? element) => element!.loginid == account.accountId,
-  );
+  String? _getAccountCurrencyFromAuthorize({
+    required String loginId,
+    required List<AccountListItem?> accounts,
+  }) {
+    final AccountListItem? selected = accounts.firstWhereOrNull(
+      (AccountListItem? element) => element!.loginid == loginId,
+    );
 
-  final AccountListItem? otherAccount = authorize.accountList!.firstWhereOrNull(
-    (AccountListItem? element) => element!.loginid == other.accountId,
-  );
-
-  if (firstAccount == null || otherAccount == null) {
-    return 0;
+    return selected?.currency;
   }
-
-  return currenciesDisplayOrder.indexOf(firstAccount.currency!) -
-      currenciesDisplayOrder.indexOf(otherAccount.currency!);
 }
-
-String? _getAccountCurrencyFromAuthorize({
-  required String loginId,
-  required List<AccountListItem?> accounts,
-}) {
-  final AccountListItem? selected = accounts.firstWhereOrNull(
-    (AccountListItem? element) => element!.loginid == loginId,
-  );
-
-  return selected?.currency;
-}
-
-
-  /// TODO connectivity refactoring
-  // @override
-  // void onConnected() {
-  //   // In case if connection was disabled and the current state is AuthInitial,
-  //   // we need to call login when connection is available.
-  //   if (state is AuthInitialState || state is AuthConnectivityState) {
-  //     login();
-  //   }
-
-  //   emit(const AuthConnectivityState(isConnected: true));
-  // }
-
-  // @override
-  // void onDisconnect() => emit(const AuthConnectivityState(isConnected: false));
-
-  // @override
-  // void onConnectionError(String error) {
-  //   logger.log('$AuthCubit onConnectionError: $error');
-
-  //   emit(
-  //     AuthErrorState(
-  //       errorMessage: error,
-  //       authError: AuthErrorType.connectionError,
-  //     ),
-  //   );
-  // }
-
