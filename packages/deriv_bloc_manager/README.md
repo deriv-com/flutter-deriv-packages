@@ -267,6 +267,6 @@ class FeatureView extends StatelessWidget {
 }
 ```
 
-### Example project
+### Example
 
-To see a sample app of this implementation, please refer to this [link](https://github.com/hamed-fs/flutter_sample_bloc_manager).
+To see a sample app of this implementation, please refer to this [Example](https://github.com/regentmarkets/flutter-deriv-packages/tree/dev/packages/deriv_bloc_manager/example).
