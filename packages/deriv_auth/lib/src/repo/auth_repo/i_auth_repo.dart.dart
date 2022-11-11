@@ -13,4 +13,5 @@ abstract class IAuthRepo {
   Future<void> setDefaultUserEmail(String? userEmail);
   Future<void> setDefaultUserId(int? userId);
   Future<void> setDefaultAccount(String accountId);
+  Future<void> onSendSignupEvent();
 }

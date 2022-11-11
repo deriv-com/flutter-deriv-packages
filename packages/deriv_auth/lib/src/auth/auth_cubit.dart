@@ -1,5 +1,4 @@
 import 'dart:developer' as logger;
-// import 'dart:html';
 
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
@@ -16,9 +15,7 @@ import 'models/authorize.dart';
 part 'auth_state.dart';
 
 /// This class handles the business logic related to Authenticating a user.
-class AuthCubit extends Cubit<AuthState>
-// implements ConnectionStateListener {
-{
+class AuthCubit extends Cubit<AuthState> {
   /// Initializes the cubit with an initial state of `AuthInitial`.
   AuthCubit(
       {required this.secureStorage,
@@ -32,9 +29,6 @@ class AuthCubit extends Cubit<AuthState>
   final BaseSecureStorage secureStorage;
 
   final Function onReloadAccounts;
-
-  // TODO delete PersistentConfigurationHelper as it's not needed
-  // late final PersistentConfigurationHelper _persistentConfigurationHelper;
 
   /// Gets the authorized account.
   AuthorizeEntity? get authorizedAccount => state is AuthLoggedInState
@@ -137,7 +131,6 @@ class AuthCubit extends Cubit<AuthState>
   ///
   /// Emits [AuthLoggedInState] if the authorize request is successful
   /// and emits [AuthErrorState] in case any error takes place in the process.
-  /// TODO please check this function as it's not being used anywhere so far
   Future<void> authorizeNewAccount({
     String? token,
     required List<AccountModel> userAccounts,
@@ -315,11 +308,6 @@ class AuthCubit extends Cubit<AuthState>
               userId: '${authorize.userId}',
             );
 
-            await repo.addAccountsToSecureStorage(supportedAccounts);
-            await repo.setDefaultUserEmail(userEmail);
-            await repo.setDefaultUserId(userId);
-            await repo.setDefaultAccount(defaultUserAccount.accountId);
-
             if (refreshToken != null) {
               onRefreshToken?.call();
 
@@ -332,7 +320,7 @@ class AuthCubit extends Cubit<AuthState>
               onReloadAccounts.call();
             }
             if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
-              onSendSignupEvent?.call();
+              repo.onSendSignupEvent();
             }
 
             emit(AuthLoggedInState(authorizedAccount: authorize));
@@ -377,25 +365,25 @@ class AuthCubit extends Cubit<AuthState>
       } else {
         onSuccess?.call(authorize.authorize!);
       }
-    } on Exception {
-      /// TODO - this is supposed to throw AuthorizeExceotion which comes
-      /// from deriv-api package
-      ///
+    } on Exception catch (error) {
       ///
       // handling the situation when user clicked on an account that is recently disabled.
       // each time we switch to an account the state of all accounts get updated from the Authorize response.
-      // if (error.code == 'AccountDisabled') {
-      await logout(isForcedLogout: true);
-      // } else {
-      // emit(
-      //   AuthErrorState(
-      //     errorMessage: '$error',
-      //     authError: error.code == 'InvalidToken'
-      //         ? AuthErrorType.expiredAccount
-      //         : AuthErrorType.failedAuthorization,
-      //   ),
-      // );
-      // }
+
+      final errorMessage = error.toString();
+
+      if (errorMessage.contains('AccountDisabled')) {
+        await logout(isForcedLogout: true);
+      } else {
+        emit(
+          AuthErrorState(
+            errorMessage: '$error',
+            authError: errorMessage.contains('InvalidToken')
+                ? AuthErrorType.expiredAccount
+                : AuthErrorType.failedAuthorization,
+          ),
+        );
+      }
     }
   }
 
