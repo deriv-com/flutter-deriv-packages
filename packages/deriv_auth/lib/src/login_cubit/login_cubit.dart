@@ -283,7 +283,10 @@ class LoginCubit extends Cubit<LoginState>
       ).toJson(),
     );
 
-    return AppAuthorizationChallengeResponseModel.fromJson(jsonResponse);
+    return AppAuthorizationChallengeResponseModel.fromJson(
+      jsonResponse,
+      appToken: appToken,
+    );
   }
 
   /// This function solves login challenge sent by server.

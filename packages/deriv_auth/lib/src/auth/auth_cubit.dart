@@ -265,113 +265,115 @@ class AuthCubit extends Cubit<AuthState>
 
     if (supportedAccounts.isNotEmpty) {
       // Choose the default account.
+      
       final AccountModel defaultUserAccount = _setDefaultAccount(
         supportedAccounts: supportedAccounts,
         index: reloadAccounts ? supportedAccounts.length - 1 : null,
       );
 
       await _performAuthorization(
-          token: defaultUserAccount.token,
-          onSuccess: (AuthorizeEntity authorize) async {
-            // Successful login.
+        token: defaultUserAccount.token,
+        onSuccess: (AuthorizeEntity authorize) async {
+          // Successful login.
 
-            final String? userEmail = authorize.email;
-            final String? fullName = authorize.fullname;
-            final int? userId = authorize.userId;
+          final String? userEmail = authorize.email;
+          final String? fullName = authorize.fullname;
+          final int? userId = authorize.userId;
 
-            analyticsCallback?.call();
+          analyticsCallback?.call();
 
-            /// TODO call from callbacks
-            // await _initAnalyticsAndRegisterFCMToken(userId);
-            await repo.initAnalyticsAndRegisterFCMToken(userId);
+          /// TODO call from callbacks
+          // await _initAnalyticsAndRegisterFCMToken(userId);
+          await repo.initAnalyticsAndRegisterFCMToken(userId);
 
-            // Add user email and full name to account data before saving it.
-            for (final AccountModel account in supportedAccounts) {
-              account
-                ..email = userEmail
-                ..fullName = fullName
-                ..userId = userId
-                ..currency = _getAccountCurrencyFromAuthorize(
-                  loginId: account.accountId,
-                  accounts: authorize.accountList!,
-                );
+          // Add user email and full name to account data before saving it.
+          for (final AccountModel account in supportedAccounts) {
+            account
+              ..email = userEmail
+              ..fullName = fullName
+              ..userId = userId
+              ..currency = _getAccountCurrencyFromAuthorize(
+                loginId: account.accountId,
+                accounts: authorize.accountList!,
+              );
+          }
+
+          // adding disabled accounts to the list.
+          for (final AccountListItem accountModel in authorize.accountList!) {
+            if (accountModel.isDisabled! &&
+                _isAccountModelValid(accountModel)) {
+              supportedAccounts.add(
+                AccountModel(
+                  accountId: accountModel.loginid!,
+                  currency: accountModel.currency,
+                  isDisabled: true,
+                ),
+              );
             }
+          }
 
-            // adding disabled accounts to the list.
-            for (final AccountListItem accountModel in authorize.accountList!) {
-              if (accountModel.isDisabled! &&
-                  _isAccountModelValid(accountModel)) {
-                supportedAccounts.add(
-                  AccountModel(
-                    accountId: accountModel.loginid!,
-                    currency: accountModel.currency,
-                    isDisabled: true,
-                  ),
-                );
-              }
-            }
+          // Sort accounts based on the [currenciesDisplayOrder].
+          supportedAccounts.sort(
+            (AccountModel account, AccountModel other) =>
+                _compareAccountCurrencyDisplayOrder(
+              authorize: authorize,
+              account: account,
+              other: other,
+            ),
+          );
 
-            // Sort accounts based on the [currenciesDisplayOrder].
-            supportedAccounts.sort(
-              (AccountModel account, AccountModel other) =>
-                  _compareAccountCurrencyDisplayOrder(
-                authorize: authorize,
-                account: account,
-                other: other,
-              ),
-            );
+          // Store supported accounts, set a default user by email and a default
+          // user id, and set a default account for the user.
+          onLogin?.call();
 
-            // Store supported accounts, set a default user by email and a default
-            // user id, and set a default account for the user.
-            onLogin?.call();
+          /// TODO LOGIN !!!!!! callbacks
+          await secureStorage.addAccounts(supportedAccounts);
+          await secureStorage.setDefaultUser(userEmail);
+          await secureStorage.setDefaultAccount(
+            defaultUserAccount.accountId,
+          );
+          await secureStorage.setDefaultUserId(
+            userId: '${authorize.userId}',
+          );
 
-            /// TODO LOGIN !!!!!! callbacks
-            await secureStorage.addAccounts(supportedAccounts);
-            await secureStorage.setDefaultUser(userEmail);
-            await secureStorage.setDefaultAccount(
-              defaultUserAccount.accountId,
-            );
-            await secureStorage.setDefaultUserId(
-              userId: '${authorize.userId}',
-            );
+          repo.addAccountsToSecureStorage(supportedAccounts);
+          repo.setDefaultUserEmail(userEmail);
+          repo.setDefaultUserId(userId);
+          repo.setDefaultAccount(defaultUserAccount.accountId);
+          if (refreshToken != null) {
+            onRefreshToken?.call();
 
-            repo.addAccountsToSecureStorage(supportedAccounts);
-            repo.setDefaultUserEmail(userEmail);
-            repo.setDefaultUserId(userId);
-            repo.setDefaultAccount(defaultUserAccount.accountId);
-            if (refreshToken != null) {
-              onRefreshToken?.call();
+            await secureStorage.setRefreshToken(refreshToken);
+          }
 
-              await secureStorage.setRefreshToken(refreshToken);
-            }
+          setFeedbackReminderFlag?.call();
+          // await _setFeedbackReminderFlag();
 
-            setFeedbackReminderFlag?.call();
-            // await _setFeedbackReminderFlag();
+          if (reloadAccounts) {
+            onReloadAccounts.call();
 
-            if (reloadAccounts) {
-              onReloadAccounts.call();
+            ///TODO callbacks
+            // await BlocManager.instance
+            //     .fetch<AccountsCubit>()
+            //     .fetchAccountsAndSubscribeToDefault();
+          }
+          if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
+            onSendSignupEvent?.call();
 
-              ///TODO callbacks
-              // await BlocManager.instance
-              //     .fetch<AccountsCubit>()
-              //     .fetchAccountsAndSubscribeToDefault();
-            }
-            if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
-              onSendSignupEvent?.call();
+            /// TODO callbacks
+            // final AccountModel? vrAccount = getVRAccount(accounts);
+            // trackAdjustEvent(adjustEventVirtualSignupDone,
+            //     callbackParameters: <String, String>{
+            //       'signup_provider': signupProvider,
+            //       'binary_user_id': '${authorize.userId ?? " "}',
+            //       'loginid': vrAccount!.accountId
+            //     });
+          }
 
-              /// TODO callbacks
-              // final AccountModel? vrAccount = getVRAccount(accounts);
-              // trackAdjustEvent(adjustEventVirtualSignupDone,
-              //     callbackParameters: <String, String>{
-              //       'signup_provider': signupProvider,
-              //       'binary_user_id': '${authorize.userId ?? " "}',
-              //       'loginid': vrAccount!.accountId
-              //     });
-            }
-
-            emit(AuthLoggedInState(authorizedAccount: authorize));
-          },
-          onError: () => emit(const AuthLoggedOutState()));
+          emit(AuthLoggedInState(authorizedAccount: authorize));
+        },
+        onError: () => emit(const AuthLoggedOutState()),
+      );
     } else {
       logger.log('$AuthCubit: The account is not supported.');
 

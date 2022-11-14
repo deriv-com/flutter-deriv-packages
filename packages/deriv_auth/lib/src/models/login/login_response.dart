@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:deriv_auth/src/models/account/account.dart';
 
 import 'enums.dart';
 
@@ -30,6 +31,16 @@ class LoginResponseModel {
 
   /// Social type to be `login`, `signup` or `null`.
   final SocialType? socialType;
+
+  List<AccountModel> get accounts =>
+      tokens
+          ?.whereNotNull()
+          .map<AccountModel>(
+            (Token token) =>
+                AccountModel(accountId: token.loginid, token: token.token),
+          )
+          .toList() ??
+      [];
 }
 
 /// Token Model
