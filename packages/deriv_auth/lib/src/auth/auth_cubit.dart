@@ -320,9 +320,13 @@ class AuthCubit extends Cubit<AuthState> {
               onReloadAccounts.call();
             }
             if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
-              repo.onSendSignupEvent();
+              final vrAccount = getVRAccount(accounts);
+              await repo.onSendSignupEvent(
+                signUpProvider: signupProvider,
+                binaryUserId: '${authorize.userId ?? " "}',
+                loginId: vrAccount!.accountId,
+              );
             }
-
             emit(AuthLoggedInState(authorizedAccount: authorize));
           },
           onError: () => emit(const AuthLoggedOutState()));
