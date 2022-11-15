@@ -7,9 +7,15 @@ abstract class IAuthRepo {
   Future<LogoutResponseEntity> logout();
   Future<AuthorizeResponseEntity?> authorize(String? token);
   Future<void> initAnalyticsAndRegisterFCMToken(int? userId);
-  // TODO(mohammad): Below functions are not needed as we have access to BaseSecureStorage in our cubit.
+  Future<void> cleanUpUserData();
+  Future<void> setFeedbackReminderFlag();
   Future<void> addAccountsToSecureStorage(List<AccountModel> accountsList);
   Future<void> setDefaultUserEmail(String? userEmail);
   Future<void> setDefaultUserId(int? userId);
   Future<void> setDefaultAccount(String accountId);
+  Future<void> onSendSignupEvent({
+    required String signUpProvider,
+    required String binaryUserId,
+    required String loginId,
+  });
 }

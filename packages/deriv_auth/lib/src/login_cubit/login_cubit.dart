@@ -40,10 +40,7 @@ import '../auth/auth_cubit.dart';
 part 'login_state.dart';
 
 /// This class handles the business logic related to performing login.
-class LoginCubit extends Cubit<LoginState>
-//TODO check this
-// implements AuthStateListener, ConnectionStateListener {
-{
+class LoginCubit extends Cubit<LoginState> {
   final String appToken;
   final String endpoint;
   final String appId;
@@ -150,16 +147,6 @@ class LoginCubit extends Cubit<LoginState>
       );
 
       emit(const LoginAuthorizedState());
-
-      //?TODO please check this also
-      // await BlocManager.instance.fetch<AuthCubit>().login(
-      //       accounts: accounts,
-      //       refreshToken: response.refreshToken,
-      //       signupProvider: response.socialType != null &&
-      //               response.socialType == SocialType.signup
-      //           ? signupProvider
-      //           : null,
-      //     );
     } on HTTPClientException catch (e) {
       if (e.errorCode == invalidTokenError) {
         await _initializeLogin(clearJwtToken: true);
@@ -318,16 +305,4 @@ class LoginCubit extends Cubit<LoginState>
   /// Gets path through authentication authorization url.
   String _getPtaAuthorizeUrl(String host) =>
       '${_getOAuthUrl(host: host, path: 'authorize')}';
-
-  @override
-  void onConnected() =>
-      emit(const LoginHasConnectionState(hasConnection: true));
-
-  @override
-  void onDisconnect() =>
-      emit(const LoginHasConnectionState(hasConnection: false));
-
-  @override
-  void onConnectionError(String error) =>
-      emit(const LoginHasConnectionState(hasConnection: false));
 }
