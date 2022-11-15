@@ -271,6 +271,19 @@ class AuthCubit extends Cubit<AuthState> {
                   accounts: authorize.accountList!,
                 );
             }
+            // adding disabled accounts to the list.
+            for (final AccountListItem accountModel in authorize.accountList!) {
+              if (accountModel.isDisabled! &&
+                  _isAccountModelValid(accountModel)) {
+                supportedAccounts.add(
+                  AccountModel(
+                    accountId: accountModel.loginid!,
+                    currency: accountModel.currency,
+                    isDisabled: true,
+                  ),
+                );
+              }
+            }
 
             // Sort accounts based on the [currenciesDisplayOrder].
             supportedAccounts.sort(
