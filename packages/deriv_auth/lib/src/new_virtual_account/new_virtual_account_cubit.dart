@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 
 import 'package:deriv_auth/src/new_virtual_account/new_virtual_account_model.dart';
 import 'package:deriv_auth/src/new_virtual_account/new_virtual_account_repository.dart';
+import 'package:deriv_auth/src/new_virtual_account/new_virtual_account_request_model.dart';
 
 part 'new_virtual_account_state.dart';
 
@@ -15,18 +16,12 @@ class NewVirtualAccountCubit extends Cubit<NewVirtualAccountState> {
 
   /// Submit request for new virtual account.
   void submitRequest({
-    required String verificationCode,
-    required String clientPassword,
-    required String residence,
+    required NewVirtualAccountRequestModel request,
   }) {
     emit(const NewVirtualAccountProgressState());
 
     repository
-        .openNewVirtualAccount(
-          verificationCode: verificationCode,
-          clientPassword: clientPassword,
-          residence: residence,
-        )
+        .openNewVirtualAccount(request)
         .then((response) => emit(NewVirtualAccountDoneState(response)))
         .onError(
           (error, stackTrace) =>
