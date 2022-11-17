@@ -11,3 +11,4 @@ export 'src/models/reset_password/reset_password.dart';
 export 'src/models/verify_email/verify_email.dart';
 export 'src/signup_cubit/signup_cubit.dart';
 export 'src/reset_password_cubit/reset_password_cubit.dart';
+export 'src/new_virtual_account/new_virtual_account.dart';
