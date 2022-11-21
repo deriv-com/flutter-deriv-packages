@@ -8,7 +8,7 @@ import 'package:deriv_auth/src/models/login/enums.dart';
 import 'package:deriv_auth/src/models/login/login_response.dart';
 import 'package:collection/collection.dart';
 
-abstract class AuthService {
+abstract class BaseAuthService {
   Future<List<AccountModel>> fetchAccounts({
     required LoginRequestModel request,
   });
@@ -18,9 +18,11 @@ abstract class AuthService {
   });
 
   List<AccountModel> filterSupportedAccounts(List<AccountModel> accounts);
+
+  Future<void> onLogin(AuthorizeEntity authorizeEntity);
 }
 
-class DerivAuthService extends AuthService {
+class DerivAuthService extends BaseAuthService {
   DerivAuthService({
     required this.client,
     required this.jwtService,
@@ -29,8 +31,8 @@ class DerivAuthService extends AuthService {
     required this.repository,
   });
 
-  final AuthRepository repository;
-  final JwtService jwtService;
+  final BaseAuthRepository repository;
+  final BaseJwtService jwtService;
   final BaseHttpClient client;
   final String endpoint;
   final String appId;
@@ -117,6 +119,73 @@ class DerivAuthService extends AuthService {
               : AuthErrorType.failedAuthorization,
         );
       }
+    }
+  }
+
+  @override
+  Future<void> onLogin(AuthorizeEntity authorizeEntity) async {
+    // Add user email and full name to account data before saving it.
+    for (final AccountModel account in supportedAccounts) {
+      account
+        ..email = userEmail
+        ..fullName = fullName
+        ..userId = userId
+        ..currency = _getAccountCurrencyFromAuthorize(
+          loginId: account.accountId,
+          accounts: authorize.accountList!,
+        );
+    }
+
+// adding disabled accounts to the list.
+    for (final AccountListItem accountModel in authorize.accountList!) {
+      if (accountModel.isDisabled! && _isAccountModelValid(accountModel)) {
+        supportedAccounts.add(
+          AccountModel(
+            accountId: accountModel.loginid!,
+            currency: accountModel.currency,
+            isDisabled: true,
+          ),
+        );
+      }
+    }
+
+    // Sort accounts based on the [currenciesDisplayOrder].
+    supportedAccounts.sort(
+      (AccountModel account, AccountModel other) =>
+          _compareAccountCurrencyDisplayOrder(
+        authorize: authorize,
+        account: account,
+        other: other,
+      ),
+    );
+
+    await secureStorage.addAccounts(supportedAccounts);
+    await secureStorage.setDefaultUser(userEmail);
+    await secureStorage.setDefaultAccount(
+      defaultUserAccount.accountId,
+    );
+    await secureStorage.setDefaultUserId(
+      userId: '${authorize.userId}',
+    );
+
+    if (refreshToken != null) {
+      onRefreshToken?.call();
+
+      await secureStorage.setRefreshToken(refreshToken);
+    }
+
+    await repo.setFeedbackReminderFlag();
+
+    if (reloadAccounts) {
+      onReloadAccounts.call();
+    }
+    if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
+      final vrAccount = getVRAccount(accounts);
+      await repo.onSendSignupEvent(
+        signUpProvider: signupProvider,
+        binaryUserId: '${authorize.userId ?? " "}',
+        loginId: vrAccount!.accountId,
+      );
     }
   }
 

@@ -4,7 +4,7 @@ import 'package:deriv_auth/src/models/app_auth/app_authorization_reuest.dart';
 import 'package:deriv_auth/src/models/app_auth_challenge/app_auth_challenge_response.dart';
 import 'package:deriv_auth/src/models/app_auth_challenge_request.dart';
 
-abstract class JwtRepository {
+abstract class BaseJwtRepository {
   Future<AppAuthorizationChallengeResponseModel> getAppAuthorizationChallenge();
 
   Future<String> authorizeApp({
@@ -13,7 +13,7 @@ abstract class JwtRepository {
   });
 }
 
-class DerivJwtRepository implements JwtRepository {
+class DerivJwtRepository implements BaseJwtRepository {
   final BaseHttpClient client;
   final String appId;
   final String endpoint;

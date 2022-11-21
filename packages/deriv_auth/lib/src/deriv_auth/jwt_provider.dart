@@ -4,16 +4,16 @@ import 'package:crypto/crypto.dart';
 import 'package:deriv_auth/src/deriv_auth/jwt_repository.dart';
 import 'package:deriv_auth/src/models/app_auth_challenge/app_auth_challenge_response.dart';
 
-abstract class JwtService {
+abstract class BaseJwtService {
   Future<String> getJwtToken();
   void clearJwtToken();
 }
 
-class DerivJwtService implements JwtService {
+class DerivJwtService implements BaseJwtService {
   DerivJwtService({
     required this.repository,
   });
-  final JwtRepository repository;
+  final BaseJwtRepository repository;
 
   String? jwtToken;
 

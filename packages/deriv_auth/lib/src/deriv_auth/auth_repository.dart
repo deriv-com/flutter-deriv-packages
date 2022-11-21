@@ -4,19 +4,19 @@ import 'package:deriv_auth/src/models/login/login_request.dart';
 import 'package:deriv_auth/src/models/login/login_response.dart';
 import 'package:deriv_auth/src/models/logout/logout_response.dart';
 
-abstract class FetchAccountsRepository {
+abstract class BaseFetchAccountsRepository {
   Future<LoginResponseModel> fetchAccounts({
     required LoginRequestModel request,
     required String jwtToken,
   });
 }
 
-abstract class AuthRepository implements FetchAccountsRepository {
+abstract class BaseAuthRepository implements BaseFetchAccountsRepository {
   Future<LogoutResponseEntity> logout();
   Future<AuthorizeResponseEntity> authorize(String? token);
 }
 
-class DerivFetchAccountRepository implements FetchAccountsRepository {
+class DerivFetchAccountRepository implements BaseFetchAccountsRepository {
   final BaseHttpClient client;
   final String appId;
   final String endpoint;
