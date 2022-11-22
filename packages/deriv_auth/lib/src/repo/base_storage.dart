@@ -1,7 +1,7 @@
 import 'package:deriv_auth/src/models/account/account.dart';
 
 
-  // TODO(mohammad): We don't need this, as we can use our repository for read/write storage.
+  // TODO(mohammad): We should move this back to multiplier.
 
 abstract class BaseSecureStorage {
   /// Default account key.

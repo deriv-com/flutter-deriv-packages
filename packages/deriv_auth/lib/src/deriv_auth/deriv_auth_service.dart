@@ -1,9 +1,12 @@
-import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth/src/auth/auth_error.dart';
+import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/core/api_client/base_client.dart';
 import 'package:deriv_auth/src/core/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/src/deriv_auth/auth_repository.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
 import 'package:deriv_auth/src/deriv_auth/jwt_provider.dart';
+import 'package:deriv_auth/src/models/account/account.dart';
+import 'package:deriv_auth/src/models/login/login_request.dart';
 import 'package:deriv_auth/src/models/login/login_response.dart';
 
 abstract class BaseAuthService {
@@ -60,7 +63,7 @@ class DerivAuthService extends BaseAuthService {
       final LoginResponseModel response =
           await repository.fetchAccounts(request: request, jwtToken: jwtToken);
 
-      // TODO(mohammad): Save Refresh Token
+      // TODO(mohammad): Save Refresh Token/ i think its better to return LoginResponseModel from this function, in order to save `refresh token` and `social type` in storage in cubit.
 
       final List<AccountModel> accounts = response.accounts;
 
