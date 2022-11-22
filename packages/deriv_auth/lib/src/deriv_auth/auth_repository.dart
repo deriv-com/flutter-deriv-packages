@@ -1,5 +1,6 @@
 import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/core/api_client/base_client.dart';
+import 'package:deriv_auth/src/models/account/account.dart';
 import 'package:deriv_auth/src/models/login/login_request.dart';
 import 'package:deriv_auth/src/models/login/login_response.dart';
 import 'package:deriv_auth/src/models/logout/logout_response.dart';
@@ -12,8 +13,10 @@ abstract class BaseFetchAccountsRepository {
 }
 
 abstract class BaseAuthRepository implements BaseFetchAccountsRepository {
-  Future<LogoutResponseEntity> logout();
+  Future<void> logout();
+  Future<void> onLogout();
   Future<AuthorizeResponseEntity> authorize(String? token);
+  Future<AccountModel?> getDefaultAccount();
 }
 
 class DerivFetchAccountRepository implements BaseFetchAccountsRepository {

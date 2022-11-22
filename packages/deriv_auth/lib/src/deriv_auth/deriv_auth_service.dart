@@ -4,22 +4,24 @@ import 'package:deriv_auth/src/core/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/src/deriv_auth/auth_repository.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
 import 'package:deriv_auth/src/deriv_auth/jwt_provider.dart';
-import 'package:deriv_auth/src/models/login/enums.dart';
 import 'package:deriv_auth/src/models/login/login_response.dart';
-import 'package:collection/collection.dart';
 
 abstract class BaseAuthService {
+  Future<AuthorizeEntity> login({
+    required AccountModel account,
+  });
+  Future<void> logout();
+
+  Future<void> onLogin(AuthorizeEntity authorizeEntity);
+  Future<void> onLogout();
+
   Future<List<AccountModel>> fetchAccounts({
     required LoginRequestModel request,
   });
 
-  Future<AuthorizeEntity> authorizeSingleAccount({
-    required AccountModel account,
-  });
+  Future<AccountModel?> getDefaultAccount();
 
   List<AccountModel> filterSupportedAccounts(List<AccountModel> accounts);
-
-  Future<void> onLogin(AuthorizeEntity authorizeEntity);
 }
 
 class DerivAuthService extends BaseAuthService {
@@ -76,7 +78,7 @@ class DerivAuthService extends BaseAuthService {
   }
 
   @override
-  Future<AuthorizeEntity> authorizeSingleAccount({
+  Future<AuthorizeEntity> login({
     required AccountModel account,
   }) async {
     try {
@@ -188,6 +190,15 @@ class DerivAuthService extends BaseAuthService {
       );
     }
   }
+
+  @override
+  Future<AccountModel?> getDefaultAccount() => repository.getDefaultAccount();
+
+  @override
+  Future<void> logout() => repository.logout();
+
+  @override
+  Future<void> onLogout() => repository.onLogout();
 
   bool _isSvgAccount(AuthorizeEntity authorize) {
     const String svgLandingCompanyName = 'svg';

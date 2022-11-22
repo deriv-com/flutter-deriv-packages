@@ -10,10 +10,13 @@ import 'package:deriv_auth/src/models/account/account.dart';
 import 'package:deriv_auth/src/models/login/enums.dart';
 import 'package:deriv_auth/src/models/login/login_request.dart';
 
-
 class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   //TODO(mohammad): loading state at initial?
   DerivAuthCubit({required this.authService}) : super(DerivAuthLoadingState());
+
+  //TODO(mohammad): localization
+  static const _notAvailableCountryMessage =
+      'This service is not available in your country.';
 
   final BaseAuthService authService;
 
@@ -28,16 +31,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       password: password,
     );
 
-    try {
-      final List<AccountModel> accounts =
-          await authService.fetchAccounts(request: request);
-
-      if (accounts.isNotEmpty) {
-        authorize(accounts: accounts);
-      } //TODO(mohammad): emit error on else?
-    } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message));
-    }
+    await _doLogin(request);
   }
 
   @override
@@ -45,52 +39,43 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     required String email,
     required String password,
     required String otp,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final LoginRequestModel request = LoginRequestModel(
+      type: LoginType.system,
+      email: email,
+      password: password,
+      otp: otp,
+    );
+
+    await _doLogin(request);
   }
 
   @override
-  Future<void> socialLogin({required String oneAllConnectionToken}) {
-    throw UnimplementedError();
+  Future<void> socialLogin({required String oneAllConnectionToken}) async {
+    final LoginRequestModel request = LoginRequestModel(
+      type: LoginType.social,
+      oneAllConnectionToken: oneAllConnectionToken,
+    );
+
+    await _doLogin(request);
   }
 
   @override
-  Future<void> authorize({required List<AccountModel> accounts}) async {
-    final List<AccountModel> supportedAccounts =
-        authService.filterSupportedAccounts(accounts);
+  Future<void> authorizeDefaultAccount() async {
+    final AccountModel? savedDefaultAccount =
+        await authService.getDefaultAccount();
 
-    if (supportedAccounts.isNotEmpty) {
-      AccountModel defaultAccount = supportedAccounts.first;
-      //TODO(mohammad): If user default account is in this list, we should select that, otherwise first item.
-      final AccountModel? savedDefaultAccount =
-          await authService.getDefaultAccount();
-
-      if (savedDefaultAccount != null) {
-        defaultAccount = savedDefaultAccount;
-      }
-
-      try {
-        final AuthorizeEntity response =
-            await authService.authorizeSingleAccount(account: defaultAccount);
-
-        await authService.onLogin(response);
-
-        emit(DerivAuthLoggedInState(response));
-      } on DerivAuthException catch (error) {
-        emit(DerivAuthErrorState(message: error.message));
-      }
-    } else {
-      emit(
-        DerivAuthErrorState(
-          message: 'This service is not available in your country.',
-        ),
-      );
+    if (savedDefaultAccount == null) {
+      emit(DerivAuthLoggedOutState());
+      return;
     }
-  }
 
-  @override
-  Future<void> authorizeDefaultAccount() {
-    throw UnimplementedError();
+    final AuthorizeEntity response =
+        await authService.login(account: savedDefaultAccount);
+
+    await authService.onLogin(response);
+
+    emit(DerivAuthLoggedInState(response));
   }
 
   @override
@@ -103,6 +88,38 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       emit(DerivAuthLoggedOutState());
     } catch (e) {
       logger.log('$DerivAuthCubit logout() error: $e');
+    }
+  }
+
+  Future<void> _doLogin(LoginRequestModel request) async {
+    try {
+      final List<AccountModel> accounts =
+          await authService.fetchAccounts(request: request);
+
+      final List<AccountModel> supportedAccounts =
+          authService.filterSupportedAccounts(accounts);
+
+      if (supportedAccounts.isEmpty) {
+        emit(
+          DerivAuthErrorState(message: _notAvailableCountryMessage),
+        );
+        return;
+      }
+
+      final AccountModel? savedDefaultAccount =
+          await authService.getDefaultAccount();
+
+      final AccountModel defaultAccount =
+          savedDefaultAccount ?? supportedAccounts.first;
+
+      final AuthorizeEntity response =
+          await authService.login(account: defaultAccount);
+
+      await authService.onLogin(response);
+
+      emit(DerivAuthLoggedInState(response));
+    } on DerivAuthException catch (error) {
+      emit(DerivAuthErrorState(message: error.message));
     }
   }
 

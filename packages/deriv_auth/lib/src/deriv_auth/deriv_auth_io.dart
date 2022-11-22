@@ -20,7 +20,5 @@ abstract class DerivAuthIO {
 
   Future<void> authorizeDefaultAccount();
 
-  Future<void> authorize({required List<AccountModel> accounts});
-
   Stream<DerivAuthState> get output;
 }
