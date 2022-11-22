@@ -10,7 +10,6 @@ import 'package:deriv_auth/src/models/account/account.dart';
 import 'package:deriv_auth/src/models/login/enums.dart';
 import 'package:deriv_auth/src/models/login/login_request.dart';
 
-
 class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   //TODO(mohammad): loading state at initial?
   DerivAuthCubit({required this.authService}) : super(DerivAuthLoadingState());
@@ -73,7 +72,13 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         final AuthorizeEntity response =
             await authService.authorizeSingleAccount(account: defaultAccount);
 
-        await authService.onLogin(response);
+        await authService.onLogin(
+          authorizeEntity: response,
+          supportedAccounts: supportedAccounts,
+          accounts: accounts,
+
+          /// TODO (Naif) - check when and how we will pass other params
+        );
 
         emit(DerivAuthLoggedInState(response));
       } on DerivAuthException catch (error) {

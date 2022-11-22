@@ -1,0 +1,20 @@
+/// The order of the currencies to be shown.
+const List<String> currenciesDisplayOrder = <String>[
+  'USD',
+  'EUR',
+  'GBP',
+  'AUD',
+  'BTC',
+  'ETH',
+  'LTC',
+  'USDC',
+  'UST',
+  'eUSDT',
+  'BUSD',
+  'DAI',
+  'EURS',
+  'IDK',
+  'PAX',
+  'TUSD',
+  'USDK',
+];
