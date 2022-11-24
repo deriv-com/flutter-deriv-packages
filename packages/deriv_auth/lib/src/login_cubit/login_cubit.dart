@@ -41,9 +41,9 @@ part 'login_state.dart';
 
 /// This class handles the business logic related to performing login.
 class LoginCubit extends Cubit<LoginState> {
-  final String appToken;
-  final String endpoint;
-  final String appId;
+  final String Function() appToken;
+  final String Function() endpoint;
+  final String Function() appId;
   final AuthCubit authCubit;
 
   /// Initializes the cubit with an initial state of [LoginInitialState].
@@ -124,9 +124,9 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       if (_jwtToken == null || clearJwtToken) {
         _jwtToken = await getJwtToken(
-          endpoint: endpoint,
-          appId: appId,
-          appToken: appToken,
+          endpoint: endpoint(),
+          appId: appId(),
+          appToken: appToken(),
         );
       }
 
@@ -172,7 +172,7 @@ class LoginCubit extends Cubit<LoginState> {
 
     final Map<String, dynamic> jsonResponse = await HttpClient().post(
       url: _getUrl(path),
-      jsonBody: _loginRequestModel.copyWith(appId: int.parse(appId)).toJson(),
+      jsonBody: _loginRequestModel.copyWith(appId: int.parse(appId())).toJson(),
       headers: <String, String>{'Authorization': 'Bearer $jwtToken'},
     );
 
