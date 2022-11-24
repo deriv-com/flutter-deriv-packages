@@ -179,7 +179,7 @@ class LoginCubit extends Cubit<LoginState> {
     return LoginResponseModel.fromJson(jsonResponse);
   }
 
-  String _getUrl(String path) => 'https://$endpoint/oauth2/api/v1/$path';
+  String _getUrl(String path) => 'https://${endpoint()}/oauth2/api/v1/$path';
 
   /// Try to connect to web socket.
   // void reconnection() =>
