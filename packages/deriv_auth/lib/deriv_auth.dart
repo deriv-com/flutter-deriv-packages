@@ -14,6 +14,8 @@ export 'src/deriv_auth/deriv_auth_io.dart';
 export 'src/deriv_auth/deriv_auth_service.dart';
 export 'src/deriv_auth/deriv_auth_state.dart';
 export 'src/deriv_auth/auth_error_model.dart';
+export 'src/deriv_auth/jwt_repository.dart';
+export 'src/deriv_auth/jwt_service.dart';
 
 // export 'src/auth/auth_cubit.dart';
 // export 'src/auth/auth_error.dart';
