@@ -43,7 +43,7 @@ class DerivFetchAccountRepository implements BaseFetchAccountsRepository {
     return LoginResponseModel.fromJson(jsonResponse);
   }
 
-  String _loginUrl() => '$_baseUrl()/login';
+  String _loginUrl() => '${_baseUrl()}/login';
 
   String _baseUrl() => 'https://${connectionInfo.endpoint}/oauth2/api/v1';
 }
