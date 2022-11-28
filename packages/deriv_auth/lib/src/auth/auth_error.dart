@@ -16,5 +16,17 @@ enum AuthErrorType {
   switchAccountError,
 
   /// Disabled client error type.
-  disabledClient
+  disabledClient,
+
+  invalidToken,
+
+  missingOtp,
+
+  invalid2faCode,
+
+  invalidCredential,
+
+  selfClosed,
+
+  accountUnavailable,
 }

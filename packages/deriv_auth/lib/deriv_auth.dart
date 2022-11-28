@@ -6,14 +6,13 @@ export 'src/reset_password_cubit/reset_password_cubit.dart';
 export 'src/new_virtual_account/new_virtual_account.dart';
 export 'src/models/account/account.dart';
 export 'src/auth/models/authorize.dart';
+export 'src/auth/auth_error.dart';
 
 export 'src/deriv_auth/auth_repository.dart';
 export 'src/deriv_auth/deriv_auth_cubit.dart';
 export 'src/deriv_auth/deriv_auth_io.dart';
 export 'src/deriv_auth/deriv_auth_service.dart';
 export 'src/deriv_auth/deriv_auth_state.dart';
-
-
 
 // export 'src/auth/auth_cubit.dart';
 // export 'src/auth/auth_error.dart';

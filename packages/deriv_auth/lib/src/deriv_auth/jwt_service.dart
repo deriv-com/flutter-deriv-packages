@@ -10,9 +10,7 @@ abstract class BaseJwtService {
 }
 
 class DerivJwtService implements BaseJwtService {
-  DerivJwtService({
-    required this.repository,
-  });
+  DerivJwtService(this.repository);
   final BaseJwtRepository repository;
 
   String? jwtToken;

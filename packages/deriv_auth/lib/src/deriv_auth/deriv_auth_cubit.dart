@@ -1,6 +1,5 @@
-import 'dart:developer' as logger;
-
 import 'package:bloc/bloc.dart';
+import 'package:deriv_auth/src/auth/auth_error.dart';
 import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_io.dart';
@@ -25,13 +24,15 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     required String email,
     required String password,
   }) async {
+    emit(DerivAuthLoadingState());
+
     final LoginRequestModel request = LoginRequestModel(
       type: LoginType.system,
       email: email,
       password: password,
     );
 
-    await _doLogin(request);
+    await _onLoginRequest(request);
   }
 
   @override
@@ -40,6 +41,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     required String password,
     required String otp,
   }) async {
+    emit(DerivAuthLoadingState());
+
     final LoginRequestModel request = LoginRequestModel(
       type: LoginType.system,
       email: email,
@@ -47,51 +50,69 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       otp: otp,
     );
 
-    await _doLogin(request);
+    await _onLoginRequest(request);
   }
 
   @override
   Future<void> socialLogin({required String oneAllConnectionToken}) async {
+    emit(DerivAuthLoadingState());
+
     final LoginRequestModel request = LoginRequestModel(
       type: LoginType.social,
       oneAllConnectionToken: oneAllConnectionToken,
     );
 
-    await _doLogin(request);
+    await _onLoginRequest(request);
   }
 
   @override
-  Future<void> authorizeDefaultAccount() async {
-    final AccountModel? savedDefaultAccount =
-        await authService.getDefaultAccount();
+  Future<void> tokenLogin(String token) async {
+    emit(DerivAuthLoadingState());
 
-    if (savedDefaultAccount == null) {
+    await _login(token);
+  }
+
+  Future<void> _login(String token) async {
+    try {
+      final AuthorizeEntity response = await authService.login(token);
+
+      await authService.onLogin(response);
+
+      emit(DerivAuthLoggedInState(response));
+    } on DerivAuthException catch (error) {
+      emit(DerivAuthErrorState(message: error.message, type: error.type));
+    }
+  }
+
+  //TODO(mohammad): maybe its better to only expose `tokenLogin` and let multiplier get default account.
+  @override
+  Future<void> authorizeDefaultAccount() async {
+    emit(DerivAuthLoadingState());
+
+    final String? defaultAccountToken =
+        (await authService.getDefaultAccount())?.token;
+
+    if (defaultAccountToken == null) {
       emit(DerivAuthLoggedOutState());
       return;
     }
 
-    final AuthorizeEntity response =
-        await authService.login(account: savedDefaultAccount);
-
-    await authService.onLogin(response);
-
-    emit(DerivAuthLoggedInState(response));
+    await _login(defaultAccountToken);
   }
 
   @override
   Future<void> logout() async {
+    emit(DerivAuthLoadingState());
     try {
       await authService.logout();
 
       await authService.onLogout();
-
+    } on Exception catch (_) {
       emit(DerivAuthLoggedOutState());
-    } catch (e) {
-      logger.log('$DerivAuthCubit logout() error: $e');
     }
   }
 
-  Future<void> _doLogin(LoginRequestModel request) async {
+  Future<void> _onLoginRequest(LoginRequestModel request) async {
     try {
       final List<AccountModel> accounts =
           await authService.fetchAccounts(request: request);
@@ -101,7 +122,10 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
       if (supportedAccounts.isEmpty) {
         emit(
-          DerivAuthErrorState(message: _notAvailableCountryMessage),
+          DerivAuthErrorState(
+            message: _notAvailableCountryMessage,
+            type: AuthErrorType.unsupportedCountry,
+          ),
         );
         return;
       }
@@ -109,17 +133,14 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       final AccountModel? savedDefaultAccount =
           await authService.getDefaultAccount();
 
-      final AccountModel defaultAccount =
-          savedDefaultAccount ?? supportedAccounts.first;
+      final String? defaultAccountToken =
+          savedDefaultAccount?.token ?? supportedAccounts.first.token;
 
-      final AuthorizeEntity response =
-          await authService.login(account: defaultAccount);
-
-      await authService.onLogin(response);
-
-      emit(DerivAuthLoggedInState(response));
+      if (defaultAccountToken != null) {
+        await _login(defaultAccountToken);
+      }
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message));
+      emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
   }
 
