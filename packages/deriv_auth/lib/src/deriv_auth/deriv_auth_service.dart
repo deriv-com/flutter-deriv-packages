@@ -2,11 +2,9 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/src/core/api_client/base_client.dart';
 import 'package:deriv_auth/src/core/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/src/deriv_auth/auth_repository.dart';
-import 'package:deriv_auth/src/deriv_auth/core/extensions.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
 import 'package:deriv_auth/src/deriv_auth/jwt_provider.dart';
 import 'package:deriv_auth/src/models/login/login_response.dart';
-import 'package:collection/collection.dart';
 
 abstract class BaseAuthService {
   Future<AuthorizeEntity> login({
@@ -14,10 +12,7 @@ abstract class BaseAuthService {
   });
   Future<void> logout();
 
-  Future<void> onLogin(
-    AuthorizeEntity authorizeEntity, {
-    String? signupProvider,
-  });
+  Future<void> onLogin(AuthorizeEntity authorizeEntity);
   Future<void> onLogout();
 
   Future<List<AccountModel>> fetchAccounts({
@@ -130,23 +125,8 @@ class DerivAuthService extends BaseAuthService {
   }
 
   @override
-  Future<void> onLogin(
-    AuthorizeEntity authorizeEntity, {
-    String? signupProvider,
-  }) async {
-    await repository.onLogin(authorizeEntity);
-
-    final List<AccountModel> accounts = authorizeEntity.getAccounts();
-
-    if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
-      final vrAccount = getVRAccount(accounts);
-      await repository.onSendSignupEvent(
-        signupProvider: signupProvider,
-        binaryUserId: '${authorizeEntity.userId ?? " "}',
-        loginId: vrAccount!.accountId,
-      );
-    }
-  }
+  Future<void> onLogin(AuthorizeEntity authorizeEntity) async =>
+      await repository.onLogin(authorizeEntity);
 
   @override
   Future<AccountModel?> getDefaultAccount() => repository.getDefaultAccount();
@@ -156,23 +136,6 @@ class DerivAuthService extends BaseAuthService {
 
   @override
   Future<void> onLogout() => repository.onLogout();
-
-  bool _canSendSignupDoneEvent(List<AccountModel>? accounts) =>
-      accounts != null && accounts.isNotEmpty && hasVRAccount(accounts);
-
-  /// If [accounts] contains a VR account return true
-  /// otherwise returns false.
-  bool hasVRAccount(List<AccountModel> accounts) =>
-      accounts.any((AccountModel account) => isVRAccount(account));
-
-  /// Returns true if the [account] is a VR account, otherwise returns false.
-  bool isVRAccount(AccountModel account) =>
-      account.accountId.toUpperCase().contains('VR');
-
-  /// If [accounts] contains a VR account return the [AccountModel] object
-  /// otherwise returns [null].
-  AccountModel? getVRAccount(List<AccountModel> accounts) =>
-      accounts.firstWhereOrNull((AccountModel account) => isVRAccount(account));
 
   bool _isSvgAccount(AuthorizeEntity authorize) {
     const String svgLandingCompanyName = 'svg';

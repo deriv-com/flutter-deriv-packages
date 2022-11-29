@@ -10,6 +10,7 @@ class LoginRequestModel {
     this.appId,
     this.otp,
     this.oneAllConnectionToken,
+    this.signupProvider,
   });
 
   /// Type of login, it can either be `system` or `social`.
@@ -30,6 +31,9 @@ class LoginRequestModel {
   /// One-All connection token.
   final String? oneAllConnectionToken;
 
+  /// Signup Provider for Social Login
+  final String? signupProvider;
+
   /// Converts a instance of this class to json.
   Map<String, dynamic> toJson() => <String, dynamic>{
         'type': type?.name,
@@ -48,6 +52,7 @@ class LoginRequestModel {
     int? appId,
     String? otp,
     String? oneAllConnectionToken,
+    String? signupProvider,
   }) =>
       LoginRequestModel(
         type: type ?? this.type,
@@ -57,5 +62,6 @@ class LoginRequestModel {
         otp: otp ?? this.otp,
         oneAllConnectionToken:
             oneAllConnectionToken ?? this.oneAllConnectionToken,
+        signupProvider: signupProvider ?? this.signupProvider,
       );
 }

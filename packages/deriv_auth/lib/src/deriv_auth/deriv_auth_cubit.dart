@@ -58,11 +58,11 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     final LoginRequestModel request = LoginRequestModel(
       type: LoginType.social,
       oneAllConnectionToken: oneAllConnectionToken,
+      signupProvider: signupProvider,
     );
 
     await _doLogin(
       request,
-      signupProvider: signupProvider,
     );
   }
 
@@ -101,9 +101,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   ///
   ///
   Future<void> _doLogin(
-    LoginRequestModel request, {
-    String? signupProvider,
-  }) async {
+    LoginRequestModel request,
+  ) async {
     try {
       final List<AccountModel> accounts =
           await authService.fetchAccounts(request: request);
@@ -116,8 +115,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           DerivAuthErrorState(message: _notAvailableCountryMessage),
         );
         return;
-      } else {
-        // authService.formatSupportedAccounts(supportedAccounts);
       }
 
       final AccountModel? savedDefaultAccount =
@@ -129,10 +126,13 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       final AuthorizeEntity response =
           await authService.login(account: defaultAccount);
 
+      response.copyWith(
+        signupProvider: request.signupProvider,
+      );
+
       /// signupProvider is
       await authService.onLogin(
         response,
-        signupProvider: signupProvider,
       );
 
       emit(DerivAuthLoggedInState(response));

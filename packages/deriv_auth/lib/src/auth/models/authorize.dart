@@ -133,6 +133,7 @@ abstract class AuthorizeModel {
     this.upgradeableLandingCompanies,
     this.userId,
     this.wallet,
+    this.signupProvider,
   });
 
   /// List of accounts for current user.
@@ -185,6 +186,9 @@ abstract class AuthorizeModel {
 
   /// Details of the Wallet account.
   final AuthorizeWallet? wallet;
+
+  /// Signup Provider for Social Login
+  final String? signupProvider;
 }
 
 /// Authorize class.
@@ -208,6 +212,7 @@ class AuthorizeEntity extends AuthorizeModel {
     List<dynamic>? upgradeableLandingCompanies,
     int? userId,
     AuthorizeWallet? wallet,
+    String? signupProvider,
   }) : super(
           accountList: accountList,
           balance: balance,
@@ -226,6 +231,7 @@ class AuthorizeEntity extends AuthorizeModel {
           upgradeableLandingCompanies: upgradeableLandingCompanies,
           userId: userId,
           wallet: wallet,
+          signupProvider: signupProvider,
         );
 
   /// Creates an instance from JSON.
@@ -350,6 +356,7 @@ class AuthorizeEntity extends AuthorizeModel {
     List<dynamic>? upgradeableLandingCompanies,
     int? userId,
     AuthorizeWallet? wallet,
+    String? signupProvider,
   }) =>
       AuthorizeEntity(
         accountList: accountList ?? this.accountList,
@@ -371,6 +378,7 @@ class AuthorizeEntity extends AuthorizeModel {
             upgradeableLandingCompanies ?? this.upgradeableLandingCompanies,
         userId: userId ?? this.userId,
         wallet: wallet ?? this.wallet,
+        signupProvider: signupProvider ?? this.signupProvider,
       );
 }
 

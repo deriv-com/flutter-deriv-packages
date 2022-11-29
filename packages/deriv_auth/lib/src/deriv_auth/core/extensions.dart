@@ -2,11 +2,11 @@ import '../../../deriv_auth.dart';
 
 extension AccountListItemFormatter on AuthorizeEntity {
   List<AccountModel> getAccounts() => accountList!
-      .map((e) => AccountModel(
-            accountId: e.loginid!,
-            email: email!,
+      .map((AccountListItem accoutItem) => AccountModel(
+            accountId: accoutItem.loginid ?? " ",
+            email: email,
             fullName: fullname,
-            currency: e.currency,
+            currency: accoutItem.currency,
             userId: userId,
           ))
       .toList();
