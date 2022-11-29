@@ -14,7 +14,11 @@ class DerivAuthLoggedInState extends DerivAuthState {
 class DerivAuthLoggedOutState extends DerivAuthState {}
 
 class DerivAuthErrorState extends DerivAuthState {
-  DerivAuthErrorState({required this.message});
-  
+  DerivAuthErrorState({
+    required this.message,
+    required this.type,
+  });
+
   final String message;
+  final AuthErrorType type;
 }

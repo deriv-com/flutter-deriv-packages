@@ -1,23 +1,27 @@
-import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/src/core/api_client/base_client.dart';
+import 'package:deriv_auth/src/auth/auth_error.dart';
+import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/core/api_client/exceptions/http_exceptions.dart';
+import 'package:deriv_auth/src/core/constants/constants.dart';
+import 'package:deriv_auth/src/deriv_auth/auth_extensions.dart';
 import 'package:deriv_auth/src/deriv_auth/auth_repository.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
-import 'package:deriv_auth/src/deriv_auth/jwt_provider.dart';
+import 'package:deriv_auth/src/deriv_auth/jwt_service.dart';
+import 'package:deriv_auth/src/models/account/account.dart';
+import 'package:deriv_auth/src/models/login/login_request.dart';
 import 'package:deriv_auth/src/models/login/login_response.dart';
 
 abstract class BaseAuthService {
-  Future<AuthorizeEntity> login({
-    required AccountModel account,
-  });
+  Future<AuthorizeEntity> login(String token);
   Future<void> logout();
 
   Future<void> onLogin(AuthorizeEntity authorizeEntity);
-  Future<void> onLogout();
+  Future<void> onLoggedOut();
 
-  Future<List<AccountModel>> fetchAccounts({
+  Future<LoginResponseModel> fetchAccounts({
     required LoginRequestModel request,
   });
+
+  Future<void> onAccountsFetched(LoginResponseModel response);
 
   Future<AccountModel?> getDefaultAccount();
 
@@ -26,32 +30,19 @@ abstract class BaseAuthService {
 
 class DerivAuthService extends BaseAuthService {
   DerivAuthService({
-    required this.client,
     required this.jwtService,
-    required this.appId,
-    required this.endpoint,
     required this.repository,
   });
 
   final BaseAuthRepository repository;
   final BaseJwtService jwtService;
-  final BaseHttpClient client;
-  final String endpoint;
-  final String appId;
-
-  /// Error occurs if expired/invalid jwt-token is passed in the login request.
-  static const String invalidTokenError = 'INVALID_TOKEN';
 
   @override
   List<AccountModel> filterSupportedAccounts(List<AccountModel> accounts) =>
-      accounts
-          .where((AccountModel account) =>
-              account.accountId.toUpperCase().contains('CR') ||
-              account.accountId.toUpperCase().contains('VRTC'))
-          .toList();
+      accounts.where((AccountModel account) => account.isSupported).toList();
 
   @override
-  Future<List<AccountModel>> fetchAccounts({
+  Future<LoginResponseModel> fetchAccounts({
     required LoginRequestModel request,
   }) async {
     final String jwtToken = await jwtService.getJwtToken();
@@ -60,30 +51,53 @@ class DerivAuthService extends BaseAuthService {
       final LoginResponseModel response =
           await repository.fetchAccounts(request: request, jwtToken: jwtToken);
 
-      // TODO(mohammad): Save Refresh Token
-
-      final List<AccountModel> accounts = response.accounts;
-
-      return accounts;
+      return response;
     } on HTTPClientException catch (error) {
-      if (error.errorCode == invalidTokenError) {
-        jwtService.clearJwtToken();
-        return fetchAccounts(request: request);
+      switch (error.errorCode) {
+        case invalidTokenError:
+          jwtService.clearJwtToken();
+          return fetchAccounts(request: request);
+
+        case missingOtpError:
+          throw DerivAuthException(
+            type: AuthErrorType.missingOtp,
+            message: error.message,
+          );
+        case invalidAuthCodeError:
+          throw DerivAuthException(
+            type: AuthErrorType.invalid2faCode,
+            message: error.message,
+          );
+        case invalidCredentialError:
+          throw DerivAuthException(
+            type: AuthErrorType.invalidCredential,
+            message: error.message,
+          );
+        case selfClosedError:
+          throw DerivAuthException(
+            type: AuthErrorType.selfClosed,
+            message: error.message,
+          );
+        case accountUnavailableError:
+          throw DerivAuthException(
+            type: AuthErrorType.accountUnavailable,
+            message: error.message,
+          );
+
+        default:
+          throw DerivAuthException(
+            type: AuthErrorType.failedAuthorization,
+            message: error.message,
+          );
       }
-      throw DerivAuthException(
-        type: AuthErrorType.failedAuthorization,
-        message: error.message,
-      );
     }
   }
 
   @override
-  Future<AuthorizeEntity> login({
-    required AccountModel account,
-  }) async {
+  Future<AuthorizeEntity> login(String token) async {
     try {
-      final AuthorizeResponseEntity authorize =
-          await repository.authorize(account.token);
+      final AuthorizeEntity? authorize =
+          (await repository.authorize(token)).authorize;
 
       if (authorize == null) {
         throw DerivAuthException(
@@ -91,7 +105,8 @@ class DerivAuthService extends BaseAuthService {
           type: AuthErrorType.expiredAccount,
         );
       }
-      if (!_isSvgAccount(authorize.authorize!)) {
+
+      if (!authorize.isSvgAccount) {
         // TODO(do logout in cubit catch)
         // await logout(logoutReason: 'Unsupported Country');
 
@@ -100,11 +115,11 @@ class DerivAuthService extends BaseAuthService {
           type: AuthErrorType.unsupportedCountry,
         );
       }
-      return authorize.authorize!;
+      return authorize;
     } on Exception catch (error) {
       // handling the situation when user clicked on an account that is recently disabled.
       // each time we switch to an account the state of all accounts get updated from the Authorize response.
-      final errorMessage = error.toString();
+      final String errorMessage = error.toString();
 
       if (errorMessage.contains('AccountDisabled')) {
         throw DerivAuthException(
@@ -135,24 +150,9 @@ class DerivAuthService extends BaseAuthService {
   Future<void> logout() => repository.logout();
 
   @override
-  Future<void> onLogout() => repository.onLogout();
+  Future<void> onLoggedOut() => repository.onLoggedOut();
 
-  bool _isSvgAccount(AuthorizeEntity authorize) {
-    const String svgLandingCompanyName = 'svg';
-
-    final bool isLandingCompanySvg =
-        authorize.landingCompanyName == svgLandingCompanyName;
-    final bool isUpgradeableLandingCompanySvg =
-        authorize.upgradeableLandingCompanies?.any((dynamic landingCompany) =>
-                landingCompany == svgLandingCompanyName) ??
-            false;
-    final bool hasSvgCompanies = authorize.accountList?.any(
-            (AccountListItem? account) =>
-                account?.landingCompanyName == svgLandingCompanyName) ??
-        false;
-
-    return isLandingCompanySvg ||
-        isUpgradeableLandingCompanySvg ||
-        hasSvgCompanies;
-  }
+  @override
+  Future<void> onAccountsFetched(LoginResponseModel response) =>
+      repository.onAccountsFetched(response);
 }

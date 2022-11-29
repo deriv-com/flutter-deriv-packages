@@ -16,6 +16,8 @@ abstract class DerivAuthIO {
     required String otp,
   });
 
+  Future<void> tokenLogin(String token);
+
   Future<void> logout();
 
   Future<void> authorizeDefaultAccount();

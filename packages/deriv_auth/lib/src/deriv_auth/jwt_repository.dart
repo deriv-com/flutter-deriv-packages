@@ -1,4 +1,5 @@
 import 'package:deriv_auth/src/core/api_client/base_client.dart';
+import 'package:deriv_auth/src/deriv_auth/connection_info.dart';
 import 'package:deriv_auth/src/models/app_auth/app_authorization_response.dart';
 import 'package:deriv_auth/src/models/app_auth/app_authorization_reuest.dart';
 import 'package:deriv_auth/src/models/app_auth_challenge/app_auth_challenge_response.dart';
@@ -15,14 +16,12 @@ abstract class BaseJwtRepository {
 
 class DerivJwtRepository implements BaseJwtRepository {
   final BaseHttpClient client;
-  final String appId;
-  final String endpoint;
+  final AuthConnectionInfo connectionInfo;
   final String appToken;
 
   DerivJwtRepository({
     required this.client,
-    required this.appId,
-    required this.endpoint,
+    required this.connectionInfo,
     required this.appToken,
   });
 
@@ -32,9 +31,9 @@ class DerivJwtRepository implements BaseJwtRepository {
     required int expire,
   }) async {
     final Map<String, dynamic> jsonResponse = await client.post(
-      url: _getAuthorizeAppUrl(endpoint),
+      url: _getAuthorizeAppUrl(connectionInfo.endpoint),
       jsonBody: AppAuthorizationRequestModel(
-        appId: int.parse(appId),
+        appId: int.parse(connectionInfo.appId),
         solution: solution,
         expire: expire,
       ).toJson(),
@@ -47,9 +46,9 @@ class DerivJwtRepository implements BaseJwtRepository {
   Future<AppAuthorizationChallengeResponseModel>
       getAppAuthorizationChallenge() async {
     final Map<String, dynamic> jsonResponse = await client.post(
-      url: _getChallengeUrl(endpoint),
+      url: _getChallengeUrl(connectionInfo.endpoint),
       jsonBody: AppAuthorizationChallengeRequestModel(
-        appId: int.parse(appId),
+        appId: int.parse(connectionInfo.appId),
       ).toJson(),
     );
 

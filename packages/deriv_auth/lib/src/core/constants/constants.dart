@@ -1,3 +1,26 @@
+/// Error occurs if expired/invalid jwt-token is passed in the login request.
+const String invalidTokenError = 'INVALID_TOKEN';
+
+/// Error occurs if 2FA is not passed in the login request.
+const String missingOtpError = 'MISSING_ONE_TIME_PASSWORD';
+
+/// Error occurs if invalid 2FA code is passed in the login request.
+const String invalidAuthCodeError = 'TFA_FAILURE';
+
+/// Error occurs if invalid credential is passed in `system` login.
+const String invalidCredentialError = 'INVALID_CREDENTIALS';
+
+/// Error occurs if account has been flagged as `self_closed`.
+const String selfClosedError = 'SELF_CLOSED';
+
+/// Error occurs if tries to login on deactivated account.
+const String accountUnavailableError = 'AccountUnavailable';
+
+//TODO(mohammad): localization
+/// Error message when user's country is not accepted.
+const String notAvailableCountryMessage =
+    'This service is not available in your country.';
+
 /// Live Chat licence id.
 const String liveChatLicenseId = '12049137';
 
