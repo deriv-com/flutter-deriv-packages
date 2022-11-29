@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/src/auth/auth_error.dart';
 import 'package:deriv_auth/src/auth/models/authorize.dart';
+import 'package:deriv_auth/src/core/constants/constants.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_io.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_service.dart';
@@ -8,14 +9,10 @@ import 'package:deriv_auth/src/deriv_auth/deriv_auth_state.dart';
 import 'package:deriv_auth/src/models/account/account.dart';
 import 'package:deriv_auth/src/models/login/enums.dart';
 import 'package:deriv_auth/src/models/login/login_request.dart';
+import 'package:deriv_auth/src/models/login/login_response.dart';
 
 class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
-  //TODO(mohammad): loading state at initial?
   DerivAuthCubit({required this.authService}) : super(DerivAuthLoadingState());
-
-  //TODO(mohammad): localization
-  static const _notAvailableCountryMessage =
-      'This service is not available in your country.';
 
   final BaseAuthService authService;
 
@@ -76,7 +73,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     try {
       final AuthorizeEntity response = await authService.login(token);
 
-      await authService.onLogin(response);
+      await authService.onLoggedIn(response);
 
       emit(DerivAuthLoggedInState(response));
     } on DerivAuthException catch (error) {
@@ -84,7 +81,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     }
   }
 
-  //TODO(mohammad): maybe its better to only expose `tokenLogin` and let multiplier get default account.
   @override
   Future<void> authorizeDefaultAccount() async {
     emit(DerivAuthLoadingState());
@@ -106,7 +102,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     try {
       await authService.logout();
 
-      await authService.onLogout();
+      await authService.onLoggedOut();
     } on Exception catch (_) {
       emit(DerivAuthLoggedOutState());
     }
@@ -114,8 +110,12 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   Future<void> _onLoginRequest(LoginRequestModel request) async {
     try {
-      final List<AccountModel> accounts =
+      final LoginResponseModel response =
           await authService.fetchAccounts(request: request);
+
+      await authService.onAccountsFetched(response);
+
+      final List<AccountModel> accounts = response.accounts;
 
       final List<AccountModel> supportedAccounts =
           authService.filterSupportedAccounts(accounts);
@@ -123,7 +123,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       if (supportedAccounts.isEmpty) {
         emit(
           DerivAuthErrorState(
-            message: _notAvailableCountryMessage,
+            message: notAvailableCountryMessage,
             type: AuthErrorType.unsupportedCountry,
           ),
         );

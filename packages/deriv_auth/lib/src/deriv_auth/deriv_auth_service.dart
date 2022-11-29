@@ -14,12 +14,14 @@ abstract class BaseAuthService {
   Future<AuthorizeEntity> login(String token);
   Future<void> logout();
 
-  Future<void> onLogin(AuthorizeEntity authorizeEntity);
-  Future<void> onLogout();
+  Future<void> onLoggedIn(AuthorizeEntity authorizeEntity);
+  Future<void> onLoggedOut();
 
-  Future<List<AccountModel>> fetchAccounts({
+  Future<LoginResponseModel> fetchAccounts({
     required LoginRequestModel request,
   });
+
+  Future<void> onAccountsFetched(LoginResponseModel response);
 
   Future<AccountModel?> getDefaultAccount();
 
@@ -40,7 +42,7 @@ class DerivAuthService extends BaseAuthService {
       accounts.where((AccountModel account) => account.isSupported).toList();
 
   @override
-  Future<List<AccountModel>> fetchAccounts({
+  Future<LoginResponseModel> fetchAccounts({
     required LoginRequestModel request,
   }) async {
     final String jwtToken = await jwtService.getJwtToken();
@@ -49,11 +51,7 @@ class DerivAuthService extends BaseAuthService {
       final LoginResponseModel response =
           await repository.fetchAccounts(request: request, jwtToken: jwtToken);
 
-      // TODO(mohammad): Save Refresh Token/ i think its better to return LoginResponseModel from this function, in order to save `refresh token` and `social type` in storage in cubit.
-
-      final List<AccountModel> accounts = response.accounts;
-
-      return accounts;
+      return response;
     } on HTTPClientException catch (error) {
       switch (error.errorCode) {
         case invalidTokenError:
@@ -142,7 +140,7 @@ class DerivAuthService extends BaseAuthService {
   }
 
   @override
-  Future<void> onLogin(AuthorizeEntity authorizeEntity) async {
+  Future<void> onLoggedIn(AuthorizeEntity authorizeEntity) async {
     // Add user email and full name to account data before saving it.
     for (final AccountModel account in supportedAccounts) {
       account
@@ -215,5 +213,9 @@ class DerivAuthService extends BaseAuthService {
   Future<void> logout() => repository.logout();
 
   @override
-  Future<void> onLogout() => repository.onLogout();
+  Future<void> onLoggedOut() => repository.onLoggedOut();
+
+  @override
+  Future<void> onAccountsFetched(LoginResponseModel response) =>
+      repository.onAccountsFetched();
 }
