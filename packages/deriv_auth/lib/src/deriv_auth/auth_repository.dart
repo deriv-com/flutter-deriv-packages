@@ -15,7 +15,7 @@ abstract class BaseFetchAccountsRepository {
 abstract class BaseAuthRepository implements BaseFetchAccountsRepository {
   Future<void> logout();
   Future<void> onLoggedOut();
-  Future<void> onAccountsFetched();
+  Future<void> onAccountsFetched(LoginResponseModel response);
   Future<AuthorizeResponseEntity> authorize(String? token);
   Future<AccountModel?> getDefaultAccount();
 }

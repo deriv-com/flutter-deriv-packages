@@ -217,5 +217,5 @@ class DerivAuthService extends BaseAuthService {
 
   @override
   Future<void> onAccountsFetched(LoginResponseModel response) =>
-      repository.onAccountsFetched();
+      repository.onAccountsFetched(response);
 }
