@@ -146,7 +146,21 @@ class LoginCubit extends Cubit<LoginState> {
         refreshToken: response.refreshToken,
       );
 
-      emit(const LoginAuthorizedState());
+      final AuthState authState = authCubit.state;
+
+      if (authState is AuthErrorState) {
+        emit(
+          LoginUnauthorizedState(
+            authErrorType: authState.authError,
+            errorMessage: authState.errorMessage,
+          ),
+        );
+        return;
+      }
+
+      if (authState is AuthLoggedInState) {
+        emit(const LoginAuthorizedState());
+      }
     } on HTTPClientException catch (e) {
       if (e.errorCode == invalidTokenError) {
         await _initializeLogin(clearJwtToken: true);
