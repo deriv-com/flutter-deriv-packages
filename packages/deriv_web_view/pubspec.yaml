@@ -17,7 +17,7 @@ dependencies:
   flutter_deriv_api:
     git:
       url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: 0824da388ed0bc1f1c6bfdcb5ea7ff94d8a110b3
+      ref: dad2569425feb8c0ea0008aeeeafe1195625b025
 
   deriv_api_key_provider:
     git:
