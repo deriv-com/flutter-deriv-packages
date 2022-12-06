@@ -15,15 +15,14 @@ abstract class BaseJwtRepository {
 }
 
 class DerivJwtRepository implements BaseJwtRepository {
-  final BaseHttpClient client;
-  final AuthConnectionInfo connectionInfo;
-  final String appToken;
-
   DerivJwtRepository({
     required this.client,
     required this.connectionInfo,
     required this.appToken,
   });
+  final BaseHttpClient client;
+  final AuthConnectionInfo connectionInfo;
+  final String appToken;
 
   @override
   Future<String> authorizeApp({
