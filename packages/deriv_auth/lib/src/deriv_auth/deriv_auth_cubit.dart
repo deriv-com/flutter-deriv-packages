@@ -68,18 +68,36 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   Future<void> tokenLogin(String token) async {
     emit(DerivAuthLoadingState());
 
-    await _login(token);
+    final List<AccountModel> accountsList =
+        await authService.getLatestAccounts();
+
+    await _login(
+      token,
+      accountsList: accountsList,
+    );
   }
 
-  Future<void> _login(String token, {String? signupProvider}) async {
+  Future<void> _login(
+    String token, {
+    String? signupProvider,
+    required List<AccountModel> accountsList,
+  }) async {
     try {
       final AuthorizeEntity response = await authService.login(token);
 
-      response.copyWith(
+      final AuthorizeEntity newResponse = response.copyWith(
         signupProvider: signupProvider,
+        accountList: response.accountList
+            ?.map((AccountListItem accountListItem) => accountListItem.copyWith(
+                token: accountsList
+                    .where((AccountModel element) =>
+                        element.accountId == accountListItem.loginid)
+                    .first
+                    .token))
+            .toList(),
       );
 
-      await authService.onLogin(response);
+      await authService.onLogin(newResponse);
 
       emit(DerivAuthLoggedInState(response));
     } on DerivAuthException catch (error) {
@@ -93,13 +111,15 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
     final String? defaultAccountToken =
         (await authService.getDefaultAccount())?.token;
+    final List<AccountModel> accountsList =
+        await authService.getLatestAccounts();
 
     if (defaultAccountToken == null) {
       emit(DerivAuthLoggedOutState());
       return;
     }
 
-    await _login(defaultAccountToken);
+    await _login(defaultAccountToken, accountsList: accountsList);
   }
 
   @override
@@ -146,6 +166,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         await _login(
           defaultAccountToken,
           signupProvider: request.signupProvider,
+          accountsList: supportedAccounts,
         );
       }
     } on DerivAuthException catch (error) {

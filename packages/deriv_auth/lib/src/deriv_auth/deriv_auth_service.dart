@@ -24,6 +24,7 @@ abstract class BaseAuthService {
   Future<void> onAccountsFetched(LoginResponseModel response);
 
   Future<AccountModel?> getDefaultAccount();
+  Future<List<AccountModel>> getLatestAccounts();
 
   List<AccountModel> filterSupportedAccounts(List<AccountModel> accounts);
 }
@@ -141,10 +142,13 @@ class DerivAuthService extends BaseAuthService {
 
   @override
   Future<void> onLogin(AuthorizeEntity authorizeEntity) async =>
-      await repository.onLogin(authorizeEntity);
+      repository.onLogin(authorizeEntity);
 
   @override
   Future<AccountModel?> getDefaultAccount() => repository.getDefaultAccount();
+  @override
+  Future<List<AccountModel>> getLatestAccounts() =>
+      repository.getLatestAccounts();
 
   @override
   Future<void> logout() => repository.logout();

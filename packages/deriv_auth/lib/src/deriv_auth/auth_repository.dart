@@ -19,6 +19,7 @@ abstract class BaseAuthRepository implements BaseFetchAccountsRepository {
   Future<void> onAccountsFetched(LoginResponseModel response);
   Future<AuthorizeResponseEntity> authorize(String? token);
   Future<AccountModel?> getDefaultAccount();
+  Future<List<AccountModel>> getLatestAccounts();
 }
 
 class DerivFetchAccountRepository implements BaseFetchAccountsRepository {

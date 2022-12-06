@@ -396,6 +396,7 @@ abstract class AccountListItemModel {
     this.loginid,
     this.trading,
     this.wallet,
+    this.token,
   });
 
   /// Account type.
@@ -427,6 +428,9 @@ abstract class AccountListItemModel {
 
   /// Details of the Wallet account.
   final Wallet? wallet;
+
+  /// Saved account token.
+  final String? token;
 }
 
 /// Account list item class.
@@ -443,6 +447,7 @@ class AccountListItem extends AccountListItemModel {
     String? loginid,
     Trading? trading,
     Wallet? wallet,
+    String? token,
   }) : super(
           accountType: accountType,
           createdAt: createdAt,
@@ -454,6 +459,7 @@ class AccountListItem extends AccountListItemModel {
           loginid: loginid,
           trading: trading,
           wallet: wallet,
+          token: token,
         );
 
   /// Creates an instance from JSON.
@@ -511,6 +517,7 @@ class AccountListItem extends AccountListItemModel {
     String? loginid,
     Trading? trading,
     Wallet? wallet,
+    String? token,
   }) =>
       AccountListItem(
         accountType: accountType ?? this.accountType,
@@ -523,6 +530,7 @@ class AccountListItem extends AccountListItemModel {
         loginid: loginid ?? this.loginid,
         trading: trading ?? this.trading,
         wallet: wallet ?? this.wallet,
+        token: token ?? this.token,
       );
 }
 
