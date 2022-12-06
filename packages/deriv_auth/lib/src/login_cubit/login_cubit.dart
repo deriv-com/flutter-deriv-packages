@@ -52,7 +52,22 @@ class LoginCubit extends Cubit<LoginState> {
     required this.endpoint,
     required this.appId,
     required this.authCubit,
-  }) : super(const LoginInitialState());
+  }) : super(const LoginInitialState()) {
+    authCubit.stream.listen((authState) {
+      if (authState is AuthErrorState) {
+        emit(
+          LoginUnauthorizedState(
+            authErrorType: authState.authError,
+            errorMessage: authState.errorMessage,
+          ),
+        );
+      }
+
+      if (authState is AuthLoggedInState) {
+        emit(const LoginAuthorizedState());
+      }
+    });
+  }
 
   /// Error occurs if 2FA is not passed in the login request.
   static const String missingOtpError = 'MISSING_ONE_TIME_PASSWORD';
@@ -145,22 +160,6 @@ class LoginCubit extends Cubit<LoginState> {
         accounts: accounts,
         refreshToken: response.refreshToken,
       );
-
-      final AuthState authState = authCubit.state;
-
-      if (authState is AuthErrorState) {
-        emit(
-          LoginUnauthorizedState(
-            authErrorType: authState.authError,
-            errorMessage: authState.errorMessage,
-          ),
-        );
-        return;
-      }
-
-      if (authState is AuthLoggedInState) {
-        emit(const LoginAuthorizedState());
-      }
     } on HTTPClientException catch (e) {
       if (e.errorCode == invalidTokenError) {
         await _initializeLogin(clearJwtToken: true);
