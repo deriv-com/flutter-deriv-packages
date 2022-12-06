@@ -1,12 +1,27 @@
-import 'package:deriv_auth/src/auth/models/authorize.dart';
-import 'package:deriv_auth/src/models/account/account.dart';
+import '../../../deriv_auth.dart';
 
+///
+extension AccountListItemFormatter on AuthorizeEntity {
+  List<AccountModel> getAccounts() => accountList!
+      .map((AccountListItem accountItem) => AccountModel(
+            accountId: accountItem.loginid ?? ' ',
+            email: email,
+            fullName: fullname,
+            currency: accountItem.currency,
+            userId: userId,
+            token: accountItem.token,
+          ))
+      .toList();
+}
+
+///
 extension AccountModelExtension on AccountModel {
   bool get isSupported =>
       accountId.toUpperCase().contains('CR') ||
       accountId.toUpperCase().contains('VRTC');
 }
 
+///
 extension AuthorizeEntityExtension on AuthorizeEntity {
   bool get isSvgAccount {
     const String svgLandingCompanyName = 'svg';

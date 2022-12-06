@@ -15,19 +15,20 @@ abstract class BaseFetchAccountsRepository {
 abstract class BaseAuthRepository implements BaseFetchAccountsRepository {
   Future<void> logout();
   Future<void> onLoggedOut();
+  Future<void> onLogin(AuthorizeEntity authorizeEntity);
   Future<void> onAccountsFetched(LoginResponseModel response);
   Future<AuthorizeResponseEntity> authorize(String? token);
   Future<AccountModel?> getDefaultAccount();
+  Future<List<AccountModel>> getLatestAccounts();
 }
 
 class DerivFetchAccountRepository implements BaseFetchAccountsRepository {
-  final BaseHttpClient client;
-  final AuthConnectionInfo connectionInfo;
-
   DerivFetchAccountRepository({
     required this.client,
     required this.connectionInfo,
   });
+  final BaseHttpClient client;
+  final AuthConnectionInfo connectionInfo;
 
   @override
   Future<LoginResponseModel> fetchAccounts({

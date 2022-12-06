@@ -133,6 +133,7 @@ abstract class AuthorizeModel {
     this.upgradeableLandingCompanies,
     this.userId,
     this.wallet,
+    this.signupProvider,
   });
 
   /// List of accounts for current user.
@@ -185,6 +186,9 @@ abstract class AuthorizeModel {
 
   /// Details of the Wallet account.
   final AuthorizeWallet? wallet;
+
+  /// Signup Provider for Social Login
+  final String? signupProvider;
 }
 
 /// Authorize class.
@@ -208,6 +212,7 @@ class AuthorizeEntity extends AuthorizeModel {
     List<dynamic>? upgradeableLandingCompanies,
     int? userId,
     AuthorizeWallet? wallet,
+    String? signupProvider,
   }) : super(
           accountList: accountList,
           balance: balance,
@@ -226,6 +231,7 @@ class AuthorizeEntity extends AuthorizeModel {
           upgradeableLandingCompanies: upgradeableLandingCompanies,
           userId: userId,
           wallet: wallet,
+          signupProvider: signupProvider,
         );
 
   /// Creates an instance from JSON.
@@ -350,6 +356,7 @@ class AuthorizeEntity extends AuthorizeModel {
     List<dynamic>? upgradeableLandingCompanies,
     int? userId,
     AuthorizeWallet? wallet,
+    String? signupProvider,
   }) =>
       AuthorizeEntity(
         accountList: accountList ?? this.accountList,
@@ -371,6 +378,7 @@ class AuthorizeEntity extends AuthorizeModel {
             upgradeableLandingCompanies ?? this.upgradeableLandingCompanies,
         userId: userId ?? this.userId,
         wallet: wallet ?? this.wallet,
+        signupProvider: signupProvider ?? this.signupProvider,
       );
 }
 
@@ -388,6 +396,7 @@ abstract class AccountListItemModel {
     this.loginid,
     this.trading,
     this.wallet,
+    this.token,
   });
 
   /// Account type.
@@ -419,6 +428,9 @@ abstract class AccountListItemModel {
 
   /// Details of the Wallet account.
   final Wallet? wallet;
+
+  /// Saved account token.
+  final String? token;
 }
 
 /// Account list item class.
@@ -435,6 +447,7 @@ class AccountListItem extends AccountListItemModel {
     String? loginid,
     Trading? trading,
     Wallet? wallet,
+    String? token,
   }) : super(
           accountType: accountType,
           createdAt: createdAt,
@@ -446,6 +459,7 @@ class AccountListItem extends AccountListItemModel {
           loginid: loginid,
           trading: trading,
           wallet: wallet,
+          token: token,
         );
 
   /// Creates an instance from JSON.
@@ -503,6 +517,7 @@ class AccountListItem extends AccountListItemModel {
     String? loginid,
     Trading? trading,
     Wallet? wallet,
+    String? token,
   }) =>
       AccountListItem(
         accountType: accountType ?? this.accountType,
@@ -515,6 +530,7 @@ class AccountListItem extends AccountListItemModel {
         loginid: loginid ?? this.loginid,
         trading: trading ?? this.trading,
         wallet: wallet ?? this.wallet,
+        token: token ?? this.token,
       );
 }
 

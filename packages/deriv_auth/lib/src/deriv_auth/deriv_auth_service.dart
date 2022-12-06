@@ -2,8 +2,8 @@ import 'package:deriv_auth/src/auth/auth_error.dart';
 import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/core/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/src/core/constants/constants.dart';
-import 'package:deriv_auth/src/deriv_auth/auth_extensions.dart';
 import 'package:deriv_auth/src/deriv_auth/auth_repository.dart';
+import 'package:deriv_auth/src/deriv_auth/core/extensions.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
 import 'package:deriv_auth/src/deriv_auth/jwt_service.dart';
 import 'package:deriv_auth/src/models/account/account.dart';
@@ -14,7 +14,7 @@ abstract class BaseAuthService {
   Future<AuthorizeEntity> login(String token);
   Future<void> logout();
 
-  Future<void> onLoggedIn(AuthorizeEntity authorizeEntity);
+  Future<void> onLogin(AuthorizeEntity authorizeEntity);
   Future<void> onLoggedOut();
 
   Future<LoginResponseModel> fetchAccounts({
@@ -24,6 +24,7 @@ abstract class BaseAuthService {
   Future<void> onAccountsFetched(LoginResponseModel response);
 
   Future<AccountModel?> getDefaultAccount();
+  Future<List<AccountModel>> getLatestAccounts();
 
   List<AccountModel> filterSupportedAccounts(List<AccountModel> accounts);
 }
@@ -121,7 +122,7 @@ class DerivAuthService extends BaseAuthService {
     } on Exception catch (error) {
       // handling the situation when user clicked on an account that is recently disabled.
       // each time we switch to an account the state of all accounts get updated from the Authorize response.
-      final errorMessage = error.toString();
+      final String errorMessage = error.toString();
 
       if (errorMessage.contains('AccountDisabled')) {
         throw DerivAuthException(
@@ -142,74 +143,14 @@ class DerivAuthService extends BaseAuthService {
   }
 
   @override
-  Future<void> onLoggedIn(AuthorizeEntity authorizeEntity) async {
-    // Add user email and full name to account data before saving it.
-    for (final AccountModel account in supportedAccounts) {
-      account
-        ..email = userEmail
-        ..fullName = fullName
-        ..userId = userId
-        ..currency = _getAccountCurrencyFromAuthorize(
-          loginId: account.accountId,
-          accounts: authorize.accountList!,
-        );
-    }
-
-// adding disabled accounts to the list.
-    for (final AccountListItem accountModel in authorize.accountList!) {
-      if (accountModel.isDisabled! && _isAccountModelValid(accountModel)) {
-        supportedAccounts.add(
-          AccountModel(
-            accountId: accountModel.loginid!,
-            currency: accountModel.currency,
-            isDisabled: true,
-          ),
-        );
-      }
-    }
-
-    // Sort accounts based on the [currenciesDisplayOrder].
-    supportedAccounts.sort(
-      (AccountModel account, AccountModel other) =>
-          _compareAccountCurrencyDisplayOrder(
-        authorize: authorize,
-        account: account,
-        other: other,
-      ),
-    );
-
-    await secureStorage.addAccounts(supportedAccounts);
-    await secureStorage.setDefaultUser(userEmail);
-    await secureStorage.setDefaultAccount(
-      defaultUserAccount.accountId,
-    );
-    await secureStorage.setDefaultUserId(
-      userId: '${authorize.userId}',
-    );
-
-    if (refreshToken != null) {
-      onRefreshToken?.call();
-
-      await secureStorage.setRefreshToken(refreshToken);
-    }
-
-    await repo.setFeedbackReminderFlag();
-
-    if (reloadAccounts) {
-      onReloadAccounts.call();
-    }
-    if (signupProvider != null && _canSendSignupDoneEvent(accounts)) {
-      final vrAccount = getVRAccount(accounts);
-      await repo.onSendSignupEvent(
-        signUpProvider: signupProvider,
-        binaryUserId: '${authorize.userId ?? " "}',
-        loginId: vrAccount!.accountId,
-      );
-    }
-  }
+  Future<void> onLogin(AuthorizeEntity authorizeEntity) async =>
+      repository.onLogin(authorizeEntity);
 
   @override
   Future<AccountModel?> getDefaultAccount() => repository.getDefaultAccount();
+  @override
+  Future<List<AccountModel>> getLatestAccounts() =>
+      repository.getLatestAccounts();
 
   @override
   Future<void> logout() => repository.logout();

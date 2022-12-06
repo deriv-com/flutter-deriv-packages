@@ -3,9 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
-import '../models/reset_password/reset_password.dart';
-import '../models/verify_email/verify_email.dart';
-
 part 'reset_password_state.dart';
 
 /// This class handles the business logic related to resetting user password.
