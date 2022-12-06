@@ -116,6 +116,8 @@ class DerivAuthService extends BaseAuthService {
         );
       }
       return authorize;
+    } on DerivAuthException {
+      rethrow;
     } on Exception catch (error) {
       // handling the situation when user clicked on an account that is recently disabled.
       // each time we switch to an account the state of all accounts get updated from the Authorize response.
