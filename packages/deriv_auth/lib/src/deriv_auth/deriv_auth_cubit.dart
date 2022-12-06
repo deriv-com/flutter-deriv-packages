@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 import 'package:deriv_auth/src/auth/auth_error.dart';
 import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/core/constants/constants.dart';
@@ -66,8 +67,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Future<void> tokenLogin(String token) async {
-    emit(DerivAuthLoadingState());
-
     final List<AccountModel> accountsList =
         await authService.getLatestAccounts();
 
@@ -85,21 +84,28 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     try {
       final AuthorizeEntity response = await authService.login(token);
 
+      //TODO(mohammad): copywith refresh token
       final AuthorizeEntity newResponse = response.copyWith(
         signupProvider: signupProvider,
         accountList: response.accountList
-            ?.map((AccountListItem accountListItem) => accountListItem.copyWith(
+            ?.map(
+              (AccountListItem accountListItem) => accountListItem.copyWith(
                 token: accountsList
-                    .where((AccountModel element) =>
-                        element.accountId == accountListItem.loginid)
-                    .first
-                    .token))
+                        .where(
+                          (AccountModel element) =>
+                              element.accountId == accountListItem.loginid,
+                        )
+                        .firstOrNull
+                        ?.token ??
+                    token,
+              ),
+            )
             .toList(),
       );
 
       await authService.onLogin(newResponse);
 
-      emit(DerivAuthLoggedInState(response));
+      emit(DerivAuthLoggedInState(newResponse));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
@@ -129,6 +135,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       await authService.logout();
 
       await authService.onLoggedOut();
+
+      emit(DerivAuthLoggedOutState());
     } on Exception catch (_) {
       emit(DerivAuthLoggedOutState());
     }
