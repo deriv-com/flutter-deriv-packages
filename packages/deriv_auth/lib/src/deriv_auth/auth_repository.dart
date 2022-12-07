@@ -20,6 +20,24 @@ abstract class BaseAuthRepository implements BaseFetchAccountsRepository {
   Future<AuthorizeResponseEntity> authorize(String? token);
   Future<AccountModel?> getDefaultAccount();
   Future<List<AccountModel>> getLatestAccounts();
+
+  /// Reset password functions
+  ///
+  /// Send Email Verifcation
+  ///
+  Future<bool> sendEmailVerification(String email);
+
+  /// Reset user password
+  ///
+  Future<bool> resetPassword({
+    required String verificationCode,
+    required String newPassword,
+  });
+
+  /// Decode url and extract verification code
+  /// from email redirection
+  ///
+  Future<String> getVerificationToken(String url);
 }
 
 class DerivFetchAccountRepository implements BaseFetchAccountsRepository {

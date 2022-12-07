@@ -27,6 +27,24 @@ abstract class BaseAuthService {
   Future<List<AccountModel>> getLatestAccounts();
 
   List<AccountModel> filterSupportedAccounts(List<AccountModel> accounts);
+
+  /// Reset Password
+  ///
+  /// Sends email verification for resetting password.
+  ///
+  Future<bool> sendEmailVerification(String email);
+
+  /// Change user password using provided token
+  ///
+  Future<bool> resetPassword({
+    required String verificationCode,
+    required String newPassword,
+  });
+
+  /// Verifies the email if it's valid
+  /// for password reset
+  ///
+  Future<String> getVerificationToken(String url);
 }
 
 class DerivAuthService extends BaseAuthService {
@@ -161,4 +179,20 @@ class DerivAuthService extends BaseAuthService {
   @override
   Future<void> onAccountsFetched(LoginResponseModel response) =>
       repository.onAccountsFetched(response);
+
+  @override
+  Future<bool> sendEmailVerification(String email) =>
+      repository.sendEmailVerification(email);
+
+  @override
+  Future<bool> resetPassword(
+          {required String verificationCode, required String newPassword}) =>
+      repository.resetPassword(
+        verificationCode: verificationCode,
+        newPassword: newPassword,
+      );
+
+  @override
+  Future<String> getVerificationToken(String url) =>
+      repository.getVerificationToken(url);
 }
