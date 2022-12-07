@@ -1,14 +1,8 @@
-import 'package:deriv_auth/src/auth/auth_error.dart';
-import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/core/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/src/core/constants/constants.dart';
-import 'package:deriv_auth/src/deriv_auth/auth_repository.dart';
-import 'package:deriv_auth/src/deriv_auth/core/extensions.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
-import 'package:deriv_auth/src/deriv_auth/jwt_service.dart';
-import 'package:deriv_auth/src/models/account/account.dart';
-import 'package:deriv_auth/src/models/login/login_request.dart';
-import 'package:deriv_auth/src/models/login/login_response.dart';
+
+import '../../deriv_auth.dart';
 
 abstract class BaseAuthService {
   Future<AuthorizeEntity> login(String token);
@@ -44,7 +38,19 @@ abstract class BaseAuthService {
   /// Verifies the email if it's valid
   /// for password reset
   ///
-  Future<String> getVerificationToken(String url);
+  String? getVerificationToken(String url);
+
+  /// Sign up
+  ///
+  /// Send verification email to user
+  ///
+  Future<void> sendSignupEmail(String email);
+
+  /// Creatiing new virtual account
+  ///
+  Future<AccountModel> submitNewVirtualAccountRequest({
+    required NewVirtualAccountRequestModel newVirtualAccountModel,
+  });
 }
 
 class DerivAuthService extends BaseAuthService {
@@ -193,6 +199,18 @@ class DerivAuthService extends BaseAuthService {
       );
 
   @override
-  Future<String> getVerificationToken(String url) =>
+  String? getVerificationToken(String url) =>
       repository.getVerificationToken(url);
+
+  @override
+  Future<void> sendSignupEmail(String email) =>
+      repository.sendSignupEmail(email);
+
+  @override
+  Future<AccountModel> submitNewVirtualAccountRequest({
+    required NewVirtualAccountRequestModel newVirtualAccountModel,
+  }) =>
+      repository.submitNewVirtualAccountRequest(
+        newVirtualAccountModel: newVirtualAccountModel,
+      );
 }

@@ -1,9 +1,6 @@
-import 'package:deriv_auth/src/auth/models/authorize.dart';
 import 'package:deriv_auth/src/core/api_client/base_client.dart';
-import 'package:deriv_auth/src/deriv_auth/connection_info.dart';
-import 'package:deriv_auth/src/models/account/account.dart';
-import 'package:deriv_auth/src/models/login/login_request.dart';
-import 'package:deriv_auth/src/models/login/login_response.dart';
+
+import '../../deriv_auth.dart';
 
 abstract class BaseFetchAccountsRepository {
   Future<LoginResponseModel> fetchAccounts({
@@ -37,7 +34,19 @@ abstract class BaseAuthRepository implements BaseFetchAccountsRepository {
   /// Decode url and extract verification code
   /// from email redirection
   ///
-  Future<String> getVerificationToken(String url);
+  String? getVerificationToken(String url);
+
+  /// Sign up
+  ///
+  /// Send sign up email to user
+  ///
+  Future<void> sendSignupEmail(String email);
+
+  /// Creatiing new virtual account
+  ///
+  Future<AccountModel> submitNewVirtualAccountRequest({
+    required NewVirtualAccountRequestModel newVirtualAccountModel,
+  });
 }
 
 class DerivFetchAccountRepository implements BaseFetchAccountsRepository {

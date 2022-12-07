@@ -36,8 +36,7 @@ class ResetPassCubit extends Cubit<ResetPassState> {
   /// Verify password reset email
   ///
   Future<void> onEmailVerified(String url) async {
-    final String? verificationToken =
-        await authService.getVerificationToken(url);
+    final String? verificationToken = authService.getVerificationToken(url);
 
     if (verificationToken != null) {
       ResetPassEmailVerifiedState(token: verificationToken);
