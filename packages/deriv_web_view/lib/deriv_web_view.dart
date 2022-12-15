@@ -11,6 +11,7 @@ import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
 Future<void> openWebPage({
   required BuildContext context,
   required String url,
+  bool rootNavigator = false,
   LaunchMode launchMode = LaunchMode.externalApplication,
 }) async {
   final bool? isLaunchable = await canLaunchUrlString(url);
@@ -18,8 +19,7 @@ Future<void> openWebPage({
   if (isLaunchable ?? false) {
     await launchUrlString(url, mode: launchMode);
   } else {
-    await Navigator.push(
-      context,
+    await Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => WebViewPage(url: url),
       ),
@@ -34,12 +34,12 @@ Future<void> openInAppWebView({
   String? title,
   bool extendBodyBehindAppBar = false,
   bool setEndpoint = false,
+  bool rootNavigator = false,
   String? endpoint,
   String? appId,
   VoidCallback? onClosed,
 }) async =>
-    Navigator.push(
-      context,
+    Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => WebViewPage(
           url: url,
