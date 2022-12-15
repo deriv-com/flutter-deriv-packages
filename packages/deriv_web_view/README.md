@@ -59,6 +59,7 @@ Future<void> openInAppWebView({
   String? title,
   bool extendBodyBehindAppBar = false,
   bool setEndpoint = false,
+  bool rootNavigator = false,
   String? endpoint,
   String? appId,
   VoidCallback? onClosed,

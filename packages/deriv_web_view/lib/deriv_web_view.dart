@@ -70,6 +70,7 @@ Future<void> openLoggedInWebPage({
   bool validateCredentialsOnClosed = false,
   VoidCallback? onClosed,
   bool inAppBrowser = true,
+  bool rootNavigator = false,
 }) async {
   final String? oneTimeToken = await _validateCredentials(
     context: context,
@@ -98,12 +99,17 @@ Future<void> openLoggedInWebPage({
       url: ptaLoginUrl,
       title: title,
       setEndpoint: true,
+      rootNavigator: rootNavigator,
       endpoint: endpoint,
       appId: appId,
       onClosed: onClosed,
     );
   } else {
-    await openWebPage(context: context, url: ptaLoginUrl);
+    await openWebPage(
+      context: context,
+      url: ptaLoginUrl,
+      rootNavigator: rootNavigator,
+    );
   }
 
   if (validateCredentialsOnClosed) {
