@@ -1,18 +1,17 @@
 import 'dart:convert';
-
 import 'package:crypto/crypto.dart';
-import 'package:deriv_auth/src/deriv_auth/jwt_repository.dart';
-import 'package:deriv_auth/src/models/app_auth_challenge/app_auth_challenge_response.dart';
 
-abstract class BaseJwtService {
-  Future<String> getJwtToken();
-  void clearJwtToken();
-}
+import '../../../../deriv_auth.dart';
 
+/// Implementation of JWT Interface.
 class DerivJwtService implements BaseJwtService {
-  DerivJwtService(this.repository);
-  final BaseJwtRepository repository;
+  /// Initialize a [DerivJwtService].
+  DerivJwtService({required this.jwtRepository});
 
+  /// JWT repository,
+  final BaseJwtRepository jwtRepository;
+
+  @override
   String? jwtToken;
 
   @override
@@ -22,14 +21,14 @@ class DerivJwtService implements BaseJwtService {
     }
 
     final AppAuthorizationChallengeResponseModel challenge =
-        await repository.getAppAuthorizationChallenge();
+        await jwtRepository.getAppAuthorizationChallenge();
 
     final String solution = _solveLoginChallenge(
       appToken: challenge.appToken,
       challenge: challenge.challenge,
     );
 
-    final String token = await repository.authorizeApp(
+    final String token = await jwtRepository.authorizeApp(
       solution: solution,
       expire: challenge.expire,
     );

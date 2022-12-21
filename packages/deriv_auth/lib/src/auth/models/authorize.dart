@@ -134,6 +134,7 @@ abstract class AuthorizeModel {
     this.userId,
     this.wallet,
     this.signupProvider,
+    this.refreshToken,
   });
 
   /// List of accounts for current user.
@@ -189,6 +190,9 @@ abstract class AuthorizeModel {
 
   /// Signup Provider for Social Login
   final String? signupProvider;
+
+  /// Refresh token from login response.
+  final String? refreshToken;
 }
 
 /// Authorize class.
@@ -213,6 +217,7 @@ class AuthorizeEntity extends AuthorizeModel {
     int? userId,
     AuthorizeWallet? wallet,
     String? signupProvider,
+    String? refreshToken,
   }) : super(
           accountList: accountList,
           balance: balance,
@@ -232,6 +237,7 @@ class AuthorizeEntity extends AuthorizeModel {
           userId: userId,
           wallet: wallet,
           signupProvider: signupProvider,
+          refreshToken: refreshToken,
         );
 
   /// Creates an instance from JSON.
@@ -357,6 +363,7 @@ class AuthorizeEntity extends AuthorizeModel {
     int? userId,
     AuthorizeWallet? wallet,
     String? signupProvider,
+    String? refreshToken,
   }) =>
       AuthorizeEntity(
         accountList: accountList ?? this.accountList,
@@ -379,6 +386,7 @@ class AuthorizeEntity extends AuthorizeModel {
         userId: userId ?? this.userId,
         wallet: wallet ?? this.wallet,
         signupProvider: signupProvider ?? this.signupProvider,
+        refreshToken: refreshToken ?? this.refreshToken,
       );
 }
 

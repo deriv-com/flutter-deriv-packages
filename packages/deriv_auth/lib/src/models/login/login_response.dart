@@ -32,6 +32,7 @@ class LoginResponseModel {
   /// Social type to be `login`, `signup` or `null`.
   final SocialType? socialType;
 
+  /// List of accounts that belong to this user.
   List<AccountModel> get accounts =>
       tokens
           ?.whereNotNull()

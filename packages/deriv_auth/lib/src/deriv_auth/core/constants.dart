@@ -18,3 +18,12 @@ const List<String> currenciesDisplayOrder = <String>[
   'TUSD',
   'USDK',
 ];
+
+/// Used when resetting password.
+const String resetPasswordEmailType = 'reset_password';
+
+/// Used when opening new account.
+const String accountOpeningEmailType = 'account_opening';
+
+/// Supported date format when signing up.
+const String dateFormat = 'yyyy-MM-dd';

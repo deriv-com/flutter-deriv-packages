@@ -1,34 +1,36 @@
 import 'package:bloc/bloc.dart';
+import 'package:deriv_auth/src/deriv_auth/IO/new_virtual_account_io.dart';
 
 import '../../../../deriv_auth.dart';
 
 part 'new_virtual_account_state.dart';
 
-/// Cubit to handle new virtual account signup process.
-///
-class NewVirtualAccountCubit extends Cubit<NewVirtualAccountState> {
-  /// Initializes the cubit with an initial state of `NewVirtualAccountInitialState`.
-  ///
+/// Class to handle creating a new virtual account.
+class NewVirtualAccountCubit extends Cubit<NewVirtualAccountState>
+    implements NewVirtualAccountIO {
+  /// Initializes [NewVirtualAccountCubit] with initial state.
   NewVirtualAccountCubit({
-    required this.authService,
+    required this.service,
   }) : super(const NewVirtualAccountInitialState());
 
   /// Authentication Service
-  ///
-  final BaseAuthService authService;
+  final BaseNewVirtualAccountService service;
 
   /// Submit request for new virtual account.
-  ///
-  Future<void> submitRequest({
+  @override
+  Future<void> openNewVirtualAccount({
     required NewVirtualAccountRequestModel newVirtualAccountModel,
   }) async {
     try {
       emit(const NewVirtualAccountProgressState());
 
-      final AccountModel newAccount =
-          await authService.submitNewVirtualAccountRequest(
+      await service.onBeforeNewVirtualAccountOpened();
+
+      final AccountModel newAccount = await service.openNewVirtualAccount(
         newVirtualAccountModel: newVirtualAccountModel,
       );
+
+      await service.onVirtualAccountOpened(newAccount: newAccount);
 
       emit(NewVirtualAccountDoneState(newAccount));
     } on Exception catch (e) {

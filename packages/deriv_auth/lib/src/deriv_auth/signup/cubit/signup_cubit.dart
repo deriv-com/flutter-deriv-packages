@@ -1,30 +1,50 @@
 import 'package:bloc/bloc.dart';
-import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth/src/deriv_auth/IO/signup_io.dart';
+import 'package:deriv_auth/src/deriv_auth/core/constants.dart';
+import 'package:intl/intl.dart';
+
+import '../../../../deriv_auth.dart';
 
 part 'signup_state.dart';
 
-/// Sign up cubit
-///
-class SignupCubit extends Cubit<SignupState> {
-  /// Initializes the cubit with an initial state of [SignupInitialState].
-  ///
+/// Cubit to manage Sign up.
+class SignupCubit extends Cubit<SignupState> implements SignupIO {
+  /// Initializes the cubit with [SignupInitialState].
   SignupCubit({
-    required this.authService,
+    required this.service,
   }) : super(const SignupInitialState());
 
   /// Authentication Service
-  ///
-  final BaseAuthService authService;
+  final BaseSignupService service;
 
-  /// Submits verify email request.
-  ///
-  Future<void> submitVerifyEmail(String email) async {
+  @override
+  Future<void> sendVerificationEmail(String email) async {
     try {
       emit(const SignupProgressState());
 
-      await authService.sendSignupEmail(email);
+      await service.onBeforeSignupEmailSent();
 
-      emit(const SignupDoneState());
+      final DateTime currentServerTime = await service.getClientServerTime();
+
+      final Map<String, String> urlParameters = <String, String>{
+        'signup_device': 'mobile',
+        'utm_source': 'deriv_direct',
+        'date_first_contact': DateFormat(dateFormat).format(currentServerTime),
+      };
+
+      final VerifyEmailResponseModel emailResponse =
+          await service.sendVerificationEmail(
+        VerifyEmailRequestEntity(
+          type: accountOpeningEmailType,
+          verifyEmail: email,
+          urlParameters: urlParameters,
+        ),
+      );
+
+      if (emailResponse.verifyEmail ?? false) {
+        await service.onSignupEmailSent();
+        emit(const SignupDoneState());
+      }
     } on Exception catch (e) {
       emit(SignupErrorState(e.toString()));
     }

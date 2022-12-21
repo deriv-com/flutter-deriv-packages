@@ -1,3 +1,4 @@
+/// Constant Error Codes.
 class ErrorCodes {
   /// Error occurs if 2FA is not passed in the login request.
   static const String missingOtpError = 'MISSING_ONE_TIME_PASSWORD';

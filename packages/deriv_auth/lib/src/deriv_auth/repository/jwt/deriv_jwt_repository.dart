@@ -1,27 +1,21 @@
-import 'package:deriv_auth/src/core/api_client/base_client.dart';
-import 'package:deriv_auth/src/deriv_auth/connection_info.dart';
-import 'package:deriv_auth/src/models/app_auth/app_authorization_response.dart';
-import 'package:deriv_auth/src/models/app_auth/app_authorization_reuest.dart';
-import 'package:deriv_auth/src/models/app_auth_challenge/app_auth_challenge_response.dart';
-import 'package:deriv_auth/src/models/app_auth_challenge_request.dart';
+import '../../../../deriv_auth.dart';
 
-abstract class BaseJwtRepository {
-  Future<AppAuthorizationChallengeResponseModel> getAppAuthorizationChallenge();
-
-  Future<String> authorizeApp({
-    required String solution,
-    required int expire,
-  });
-}
-
+/// Implementation of JWT interface.
 class DerivJwtRepository implements BaseJwtRepository {
+  /// Inititalize [BaseJwtRepository].
   DerivJwtRepository({
     required this.client,
     required this.connectionInfo,
     required this.appToken,
   });
+
+  /// Http client.
   final BaseHttpClient client;
+
+  /// Client connection info.
   final AuthConnectionInfo connectionInfo;
+
+  /// Private client app token.
   final String appToken;
 
   @override
