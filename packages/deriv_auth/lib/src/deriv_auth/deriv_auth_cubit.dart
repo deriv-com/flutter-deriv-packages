@@ -164,11 +164,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         return;
       }
 
-      final AccountModel? savedDefaultAccount =
-          await authService.getDefaultAccount();
-
-      final String? defaultAccountToken =
-          savedDefaultAccount?.token ?? supportedAccounts.first.token;
+      final String? defaultAccountToken = supportedAccounts.first.token;
 
       if (defaultAccountToken != null) {
         await _login(
