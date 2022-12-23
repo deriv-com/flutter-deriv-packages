@@ -8,7 +8,6 @@ class LogoutResponseEntity {
   const LogoutResponseEntity({
     required this.logout,
   });
-  final int logout;
 
   /// Creates an instance from JSON.
   factory LogoutResponseEntity.fromJson(
@@ -17,6 +16,9 @@ class LogoutResponseEntity {
       LogoutResponseEntity(
         logout: logoutJson,
       );
+
+  /// Logout response.
+  final int logout;
 
   /// Converts an instance to JSON.
   Map<String, dynamic> toJson() {

@@ -13,15 +13,13 @@ class ResetPassCubit extends Cubit<ResetPassState> implements ResetPasswordIO {
     required this.service,
   }) : super(const ResetPassInitialState());
 
-  /// Authentication Service.
+  /// Reset Password Service.
   final BaseResetPasswordService service;
 
   /// Sends email verification for resetting password.
   @override
   Future<void> sendVerificationEmail(String email) async {
     try {
-      await service.onBeforeResetPasswordEmailSent();
-
       /// send the verification email
       final VerifyEmailResponseEntity response =
           await service.sendVerificationEmail(
@@ -32,7 +30,6 @@ class ResetPassCubit extends Cubit<ResetPassState> implements ResetPasswordIO {
       );
 
       if (response.verifyEmail ?? false) {
-        await service.onResetPasswordEmailSent();
         emit(const ResetPassEmailSentState());
       }
     } on Exception catch (e) {
@@ -47,8 +44,6 @@ class ResetPassCubit extends Cubit<ResetPassState> implements ResetPasswordIO {
     required String newPassword,
   }) async {
     try {
-      await service.onResetPasswordEmailVerified();
-
       /// Reset password request
       final bool isPasswordReset = await service.resetPassword(
         verificationCode: token,
@@ -57,7 +52,6 @@ class ResetPassCubit extends Cubit<ResetPassState> implements ResetPasswordIO {
 
       /// Check if password is reset
       if (isPasswordReset) {
-        await service.onPasswordReset(newPassword: newPassword);
         emit(const ResetPassPasswordChangedState());
       }
     } on Exception catch (e) {

@@ -41,7 +41,7 @@ class LoginResponseModel {
                 AccountModel(accountId: token.loginid, token: token.token),
           )
           .toList() ??
-      [];
+      <AccountModel>[];
 }
 
 /// Token Model

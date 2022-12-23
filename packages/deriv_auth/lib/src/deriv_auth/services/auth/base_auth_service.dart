@@ -3,7 +3,7 @@ import '../../../../deriv_auth.dart';
 /// Interface to define all authentication-related functionality.
 abstract class BaseAuthService {
   /// Function before logging user in.
-  Future<AuthorizeEntity> onBeforeLogin(LoginRequestModel request);
+  Future<AuthorizeEntity> onLoginRequest(LoginRequestModel request);
 
   /// Log in a user with [token].
   Future<AuthorizeEntity> login(
@@ -12,12 +12,6 @@ abstract class BaseAuthService {
     String? signupProvider,
     String? refreshToken,
   });
-
-  /// Function after login.
-  Future<void> onLogin(AuthorizeEntity authorizeEntity);
-
-  /// Function before logging user out.
-  Future<void> onBeforeLogout();
 
   /// Log user out.
   Future<void> logout();

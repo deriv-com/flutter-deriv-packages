@@ -12,13 +12,6 @@ class DerivSignupService extends BaseSignupService {
   Future<DateTime> getClientServerTime() => repository.getClientServerTime();
 
   @override
-  Future<void> onBeforeSignupEmailSent() =>
-      repository.onBeforeSignupEmailSent();
-
-  @override
-  Future<void> onSignupEmailSent() => repository.onSignupEmailSent();
-
-  @override
   Future<VerifyEmailResponseEntity> sendVerificationEmail(
           VerifyEmailRequestEntity request) =>
       repository.sendVerificationEmail(request);

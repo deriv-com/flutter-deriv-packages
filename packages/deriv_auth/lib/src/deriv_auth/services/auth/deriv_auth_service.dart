@@ -6,7 +6,7 @@ import '../../../../deriv_auth.dart';
 import '../../../core/api_client/exceptions/http_exceptions.dart';
 import '../../../core/constants/constants.dart';
 
-/// Class to implement auth service for Deriv Go.
+/// [DerivGO] implementtation of [BaseAuthService].
 class DerivAuthService extends BaseAuthService {
   /// Initialzes a [DerivAuthService] class.
   DerivAuthService({
@@ -25,52 +25,28 @@ class DerivAuthService extends BaseAuthService {
   final BaseAuthRepository authRepository;
 
   @override
-  Future<AuthorizeEntity> onBeforeLogin(LoginRequestModel request) async {
+  Future<AuthorizeEntity> onLoginRequest(LoginRequestModel request) async {
     try {
-      /// JWT.
-      final String jwtToken = await jwtService.getJwtToken();
+      final String _jwtToken = await jwtService.getJwtToken();
 
-      /// Get response from [request].
-      final LoginResponseModel response =
+      final LoginResponseModel _response =
           await RestAPIHelpers().getLoginResponse(
         request,
-        jwtToken: jwtToken,
+        jwtToken: _jwtToken,
         connectionInfo: connectionInfo,
       );
 
-      /// Fetch accounts.
-      final List<AccountModel> accounts = response.accounts;
+      final List<AccountModel> _supportedAccounts =
+          _filterSupportedAccounts(_response.accounts);
 
-      /// Filter by supported.
-      final List<AccountModel> supportedAccounts = accounts
-          .where((AccountModel account) => account.isSupported)
-          .toList();
+      final String? _defaultAccountToken = _supportedAccounts.first.token;
 
-      /// Throw error if none is supported.
-      if (supportedAccounts.isEmpty) {
-        throw DerivAuthException(
-          message: notAvailableCountryMessage,
-          type: AuthErrorType.unsupportedCountry,
-        );
-      }
-
-      /// Get default user account.
-      final AccountModel? savedDefaultAccount =
-          await authRepository.getDefaultAccount();
-
-      /// Get account token.
-      final String? defaultAccountToken =
-          savedDefaultAccount?.token ?? supportedAccounts.first.token;
-
-      /// Client functionality before login.
-      await authRepository.onBeforeLogin();
-
-      if (defaultAccountToken != null) {
+      if (_defaultAccountToken != null) {
         return login(
-          defaultAccountToken,
+          _defaultAccountToken,
           signupProvider: request.signupProvider,
-          refreshToken: response.refreshToken,
-          accountsList: supportedAccounts,
+          refreshToken: _response.refreshToken,
+          accountsList: _supportedAccounts,
         );
       } else {
         throw DerivAuthException(
@@ -79,42 +55,12 @@ class DerivAuthService extends BaseAuthService {
         );
       }
     } on HTTPClientException catch (error) {
-      switch (error.errorCode) {
-        case invalidTokenError:
-          jwtService.clearJwtToken();
-          return onBeforeLogin(request);
+      if (error.errorCode == invalidTokenError) {
+        jwtService.clearJwtToken();
 
-        case missingOtpError:
-          throw DerivAuthException(
-            type: AuthErrorType.missingOtp,
-            message: error.message,
-          );
-        case invalidAuthCodeError:
-          throw DerivAuthException(
-            type: AuthErrorType.invalid2faCode,
-            message: error.message,
-          );
-        case invalidCredentialError:
-          throw DerivAuthException(
-            type: AuthErrorType.invalidCredential,
-            message: error.message,
-          );
-        case selfClosedError:
-          throw DerivAuthException(
-            type: AuthErrorType.selfClosed,
-            message: error.message,
-          );
-        case accountUnavailableError:
-          throw DerivAuthException(
-            type: AuthErrorType.accountUnavailable,
-            message: error.message,
-          );
-
-        default:
-          throw DerivAuthException(
-            type: AuthErrorType.failedAuthorization,
-            message: error.message,
-          );
+        return onLoginRequest(request);
+      } else {
+        throw _mapHttpErrorToDerivAuthError(error);
       }
     }
   }
@@ -127,31 +73,15 @@ class DerivAuthService extends BaseAuthService {
     String? refreshToken,
   }) async {
     try {
-      /// Authorize [token]. Return Authorize Entity.
-      final AuthorizeEntity? authorize =
+      final AuthorizeEntity? _authorize =
           (await authRepository.authorize(token)).authorize;
 
-      /// Throw error if authorize entity is null.
-      if (authorize == null) {
-        throw DerivAuthException(
-          message: 'Token is expired',
-          type: AuthErrorType.expiredAccount,
-        );
-      }
+      _checkAuthorizeValidity(_authorize);
 
-      /// Throw error if account country is not supported
-      else if (!authorize.isSvgAccount) {
-        throw DerivAuthException(
-          message: 'This service is not available in your country.',
-          type: AuthErrorType.unsupportedCountry,
-        );
-      }
-
-      /// Add [accountsList] and [signupProvider] to authorize entity.
-      final AuthorizeEntity enhancedAuthorizeEntity = authorize.copyWith(
+      final AuthorizeEntity _enhancedAuthorizeEntity = _authorize!.copyWith(
         signupProvider: signupProvider,
         refreshToken: refreshToken,
-        accountList: authorize.accountList
+        accountList: _authorize.accountList
             ?.map(
               (AccountListItem accountListItem) => accountListItem.copyWith(
                 token: accountsList
@@ -167,10 +97,9 @@ class DerivAuthService extends BaseAuthService {
             .toList(),
       );
 
-      /// Client functionality on login.
-      await onLogin(enhancedAuthorizeEntity);
+      await authRepository.onLogin(_enhancedAuthorizeEntity);
 
-      return enhancedAuthorizeEntity;
+      return _enhancedAuthorizeEntity;
     } on Exception catch (error) {
       /// Handling the situation when user clicked on an account that is recently disabled.
       /// Each time we switch to an account the state of all accounts get updated from the Authorize response.
@@ -181,8 +110,6 @@ class DerivAuthService extends BaseAuthService {
           message: 'Account is disabled',
           type: AuthErrorType.disabledClient,
         );
-        // TODO(do logout in cubit catch)
-        // await logout(isForcedLogout: true);
       } else {
         throw DerivAuthException(
           message: '$error',
@@ -195,10 +122,6 @@ class DerivAuthService extends BaseAuthService {
   }
 
   @override
-  Future<void> onLogin(AuthorizeEntity authorizeEntity) =>
-      authRepository.onLogin(authorizeEntity);
-
-  @override
   Future<AccountModel?> getDefaultAccount() =>
       authRepository.getDefaultAccount();
 
@@ -207,11 +130,78 @@ class DerivAuthService extends BaseAuthService {
       authRepository.getLatestAccounts();
 
   @override
-  Future<void> onBeforeLogout() => authRepository.onBeforeLogout();
-
-  @override
   Future<void> logout() => authRepository.logout();
 
   @override
   Future<void> onLoggedOut() => authRepository.onLoggedOut();
+
+  List<AccountModel> _filterSupportedAccounts(List<AccountModel> accounts) {
+    final List<AccountModel> supportedAccounts =
+        accounts.where((AccountModel account) => account.isSupported).toList();
+
+    if (supportedAccounts.isEmpty) {
+      throw DerivAuthException(
+        message: notAvailableCountryMessage,
+        type: AuthErrorType.unsupportedCountry,
+      );
+    }
+
+    return supportedAccounts;
+  }
+
+  DerivAuthException _mapHttpErrorToDerivAuthError(
+    HTTPClientException exception,
+  ) {
+    switch (exception.errorCode) {
+      case missingOtpError:
+        return DerivAuthException(
+          type: AuthErrorType.missingOtp,
+          message: exception.message,
+        );
+
+      case invalidAuthCodeError:
+        return DerivAuthException(
+          type: AuthErrorType.invalid2faCode,
+          message: exception.message,
+        );
+
+      case invalidCredentialError:
+        return DerivAuthException(
+          type: AuthErrorType.invalidCredential,
+          message: exception.message,
+        );
+
+      case selfClosedError:
+        return DerivAuthException(
+          type: AuthErrorType.selfClosed,
+          message: exception.message,
+        );
+
+      case accountUnavailableError:
+        return DerivAuthException(
+          type: AuthErrorType.accountUnavailable,
+          message: exception.message,
+        );
+
+      default:
+        return DerivAuthException(
+          type: AuthErrorType.failedAuthorization,
+          message: exception.message,
+        );
+    }
+  }
+
+  void _checkAuthorizeValidity(AuthorizeEntity? authorizeEntity) {
+    if (authorizeEntity == null) {
+      throw DerivAuthException(
+        message: 'Token is expired',
+        type: AuthErrorType.expiredAccount,
+      );
+    } else if (!authorizeEntity.isSvgAccount) {
+      throw DerivAuthException(
+        message: 'This service is not available in your country.',
+        type: AuthErrorType.unsupportedCountry,
+      );
+    }
+  }
 }

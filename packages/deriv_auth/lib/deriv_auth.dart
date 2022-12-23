@@ -4,7 +4,6 @@ export 'src/models/login/login_response.dart';
 export 'src/models/account/account.dart';
 export 'src/models/app_auth_challenge/app_auth_challenge_response.dart';
 export 'src/models/verify_email/verify_email.dart';
-export 'src/models/reset_password/reset_password.dart';
 export 'src/models/app_auth_challenge/app_auth_challenge_request.dart';
 export 'src/models/new_virtial_account/new_virtual_account_request_model.dart';
 export 'src/models/app_auth/app_authorization_reuest.dart';

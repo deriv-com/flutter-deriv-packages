@@ -24,13 +24,9 @@ class NewVirtualAccountCubit extends Cubit<NewVirtualAccountState>
     try {
       emit(const NewVirtualAccountProgressState());
 
-      await service.onBeforeNewVirtualAccountOpened();
-
       final AccountModel newAccount = await service.openNewVirtualAccount(
         newVirtualAccountModel: newVirtualAccountModel,
       );
-
-      await service.onVirtualAccountOpened(newAccount: newAccount);
 
       emit(NewVirtualAccountDoneState(newAccount));
     } on Exception catch (e) {

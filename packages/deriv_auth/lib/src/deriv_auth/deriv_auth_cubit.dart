@@ -3,9 +3,13 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/src/deriv_auth/deriv_auth_exception.dart';
 import 'package:deriv_auth/src/models/login/enums.dart';
 
+/// This Cubit is the single source of truth for user login status, and
+/// it is responsible for all login functionality.
 class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
+  /// Initialize a [DerivAuthCubit].
   DerivAuthCubit({required this.authService}) : super(DerivAuthLoadingState());
 
+  /// [BaseAuthService] handles all login logic of cubit.
   final BaseAuthService authService;
 
   @override
@@ -74,6 +78,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     try {
       final AuthorizeEntity authorize =
           await authService.login(token, accountsList: accountsList);
+
       emit(DerivAuthLoggedInState(authorize));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));
@@ -83,48 +88,13 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   Future<void> _loginRequest(LoginRequestModel request) async {
     try {
       final AuthorizeEntity authorize =
-          await authService.onBeforeLogin(request);
+          await authService.onLoginRequest(request);
 
       emit(DerivAuthLoggedInState(authorize));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
   }
-
-  // Future<void> _login(
-  //   String token, {
-  //   String? signupProvider,
-  //   required List<AccountModel> accountsList,
-  // }) async {
-  //   try {
-  //     final AuthorizeEntity response = await authService.login(token);
-
-  //     //TODO(mohammad): copywith refresh token
-  //     final AuthorizeEntity newResponse = response.copyWith(
-  //       signupProvider: signupProvider,
-  //       accountList: response.accountList
-  //           ?.map(
-  //             (AccountListItem accountListItem) => accountListItem.copyWith(
-  //               token: accountsList
-  //                       .where(
-  //                         (AccountModel element) =>
-  //                             element.accountId == accountListItem.loginid,
-  //                       )
-  //                       .firstOrNull
-  //                       ?.token ??
-  //                   token,
-  //             ),
-  //           )
-  //           .toList(),
-  //     );
-
-  //     await authService.onLogin(newResponse);
-
-  //     emit(DerivAuthLoggedInState(newResponse));
-  //   } on DerivAuthException catch (error) {
-  //     emit(DerivAuthErrorState(message: error.message, type: error.type));
-  //   }
-  // }
 
   @override
   Future<void> authorizeDefaultAccount() async {
@@ -159,48 +129,4 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       emit(DerivAuthLoggedOutState());
     }
   }
-
-  // Future<void> _onLoginRequest(LoginRequestModel request) async {
-  //   try {
-  //     final LoginResponseModel response =
-  //         await authService.fetchAccounts(request: request);
-
-  //     await authService.onAccountsFetched(response);
-
-  //     final List<AccountModel> accounts = response.accounts;
-
-  //     final List<AccountModel> supportedAccounts = accounts
-  //         .where((AccountModel account) => account.isSupported)
-  //         .toList();
-
-  //     if (supportedAccounts.isEmpty) {
-  //       emit(
-  //         DerivAuthErrorState(
-  //           message: notAvailableCountryMessage,
-  //           type: AuthErrorType.unsupportedCountry,
-  //         ),
-  //       );
-  //       return;
-  //     }
-
-  //     final AccountModel? savedDefaultAccount =
-  //         await authService.getDefaultAccount();
-
-  //     final String? defaultAccountToken =
-  //         savedDefaultAccount?.token ?? supportedAccounts.first.token;
-
-  //     if (defaultAccountToken != null) {
-  //       await _login(
-  //         defaultAccountToken,
-  //         signupProvider: request.signupProvider,
-  //         accountsList: supportedAccounts,
-  //       );
-  //     }
-  //   } on DerivAuthException catch (error) {
-  //     emit(DerivAuthErrorState(message: error.message, type: error.type));
-  //   }
-  // }
-
-  @override
-  Stream<DerivAuthState> get output => stream;
 }

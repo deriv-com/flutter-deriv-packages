@@ -1,18 +1,12 @@
 import '../../core/helpers/bool_helper.dart';
 
-/// Generated automatically from flutter_deriv_api|lib/basic_api/generated/verify_email_send.json.
-
-// ignore_for_file: always_put_required_named_parameters_first
-
 /// Verify email request class.
 class VerifyEmailRequestEntity {
-  /// Initialize VerifyEmailRequestEntity.
-  const VerifyEmailRequestEntity({
+  /// Initialize [VerifyEmailRequestEntity].
+  VerifyEmailRequestEntity({
     required this.type,
-    this.urlParameters,
     required this.verifyEmail,
-    // Map<String, dynamic>? passthrough,
-    // int? reqId,
+    this.urlParameters,
     this.passthrough,
     this.reqId,
   });
@@ -36,13 +30,16 @@ class VerifyEmailRequestEntity {
   /// Email address to be verified.
   final String? verifyEmail;
 
-  ///! These are inherited from Request class from API package
-  ///!
+  /// These are inherited from Request class from API package.
+  ///
+  /// Message Type.
   final String msgType = 'verify_email';
-  final Map<String, dynamic>? passthrough;
-  final int? reqId;
 
-  ///!
+  /// Passthrough extra data.
+  final Map<String, dynamic>? passthrough;
+
+  /// Request ID.
+  final int? reqId;
 
   /// Converts this instance to JSON
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -54,7 +51,6 @@ class VerifyEmailRequestEntity {
       };
 
   /// Creates a copy of instance with given parameters
-  @override
   VerifyEmailRequestEntity copyWith({
     String? type,
     Map<String, dynamic>? urlParameters,
@@ -71,15 +67,8 @@ class VerifyEmailRequestEntity {
       );
 
   /// Override equatable class.
-  @override
   List<Object?> get props => <Object?>[];
 }
-
-///
-///
-///
-///
-///
 
 /// Verify email response model class.
 abstract class VerifyEmailResponseModel {

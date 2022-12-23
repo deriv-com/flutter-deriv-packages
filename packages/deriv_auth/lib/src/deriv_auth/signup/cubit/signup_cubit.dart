@@ -22,8 +22,6 @@ class SignupCubit extends Cubit<SignupState> implements SignupIO {
     try {
       emit(const SignupProgressState());
 
-      await service.onBeforeSignupEmailSent();
-
       final DateTime currentServerTime = await service.getClientServerTime();
 
       final Map<String, String> urlParameters = <String, String>{
@@ -42,7 +40,6 @@ class SignupCubit extends Cubit<SignupState> implements SignupIO {
       );
 
       if (emailResponse.verifyEmail ?? false) {
-        await service.onSignupEmailSent();
         emit(const SignupDoneState());
       }
     } on Exception catch (e) {

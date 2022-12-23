@@ -24,6 +24,6 @@ class AppAuthorizationChallengeResponseModel {
   /// Challenge hash.
   final String challenge;
 
-  // App token.
+  /// App token.
   final String appToken;
 }
