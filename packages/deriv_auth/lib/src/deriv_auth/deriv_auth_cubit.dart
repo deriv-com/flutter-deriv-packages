@@ -129,47 +129,4 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       emit(DerivAuthLoggedOutState());
     }
   }
-
-  Future<void> _onLoginRequest(LoginRequestModel request) async {
-    try {
-      final LoginResponseModel response =
-          await authService.fetchAccounts(request: request);
-
-      await authService.onAccountsFetched(response);
-
-      final List<AccountModel> accounts = response.accounts;
-
-      final List<AccountModel> supportedAccounts =
-          authService.filterSupportedAccounts(accounts);
-
-      if (supportedAccounts.isEmpty) {
-        emit(
-          DerivAuthErrorState(
-            message: notAvailableCountryMessage,
-            type: AuthErrorType.unsupportedCountry,
-          ),
-        );
-        return;
-      }
-
-      final AccountModel? savedDefaultAccount =
-          await authService.getDefaultAccount();
-
-      final String? defaultAccountToken =
-          savedDefaultAccount?.token ?? supportedAccounts.first.token;
-
-      if (defaultAccountToken != null) {
-        await _login(
-          defaultAccountToken,
-          signupProvider: request.signupProvider,
-          accountsList: supportedAccounts,
-        );
-      }
-    } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
-    }
-  }
-
-  @override
-  Stream<DerivAuthState> get output => stream;
 }
