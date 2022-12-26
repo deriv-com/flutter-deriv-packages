@@ -10,7 +10,7 @@ class DerivNewVirtualAccountService extends BaseNewVirtualAccountService {
 
   @override
   Future<AccountModel> openNewVirtualAccount(
-          {required NewVirtualAccountRequestModel newVirtualAccountModel}) =>
+          {required NewVirtualAccountRequestModel newVirtualAccountModel,}) =>
       repository.openNewVirtualAccount(
         newVirtualAccountModel: newVirtualAccountModel,
       );
