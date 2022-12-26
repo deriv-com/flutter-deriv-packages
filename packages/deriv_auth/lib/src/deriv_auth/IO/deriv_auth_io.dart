@@ -16,7 +16,9 @@ abstract class DerivAuthIO {
     required String otp,
   });
 
-  /// Log user in with [token] after reset password or sign up.
+  /// Log user in with deriv [token].
+  ///
+  /// Usually used in `sign up` and `switch account`.
   Future<void> tokenLogin(String token);
 
   /// Log user out.
