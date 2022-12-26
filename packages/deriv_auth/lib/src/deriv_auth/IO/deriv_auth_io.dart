@@ -1,4 +1,4 @@
-/// Functionality that DerivAuthCubit provides.
+/// Functionality that DerivAuth provides.
 abstract class DerivAuthIO {
   /// Login with [email] and [password].
   Future<void> systemLogin({
