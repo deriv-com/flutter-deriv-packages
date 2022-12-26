@@ -7,7 +7,7 @@ abstract class DerivAuthIO {
   });
 
   /// Social login with [oneAllConnectionToken].
-  Future<void> socialLogin({required String oneAllConnectionToken});
+  Future<void> socialLogin({required String oneAllConnectionToken,});
 
   /// Two-Factor Authentication login with [email], [password] and [otp].
   Future<void> otpLogin({
