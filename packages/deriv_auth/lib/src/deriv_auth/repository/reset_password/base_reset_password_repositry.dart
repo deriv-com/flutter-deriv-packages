@@ -10,5 +10,5 @@ abstract class BaseResetPasswordRepository {
 
   /// Send Verification email when signing up and resetting password.
   Future<VerifyEmailResponseEntity> sendVerificationEmail(
-      VerifyEmailRequestEntity request);
+      VerifyEmailRequestEntity request,);
 }
