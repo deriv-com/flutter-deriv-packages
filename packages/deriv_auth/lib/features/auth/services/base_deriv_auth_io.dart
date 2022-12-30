@@ -1,5 +1,5 @@
 /// Functionality that DerivAuthCubit provides.
-abstract class DerivAuthIO {
+abstract class BaseDerivAuthIO {
   /// Login with [email] and [password].
   Future<void> systemLogin({
     required String email,

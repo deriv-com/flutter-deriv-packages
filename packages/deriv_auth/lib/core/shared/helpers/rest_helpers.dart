@@ -16,12 +16,12 @@ class RestAPIHelpers {
     required AuthConnectionInfo connectionInfo,
   }) async {
     /// Extract login url from connection info.
-    final String _baseUrl = 'https://${connectionInfo.endpoint}/oauth2/api/v1';
-    final String _loginUrl = '$_baseUrl/login';
+    final String baseUrl = 'https://${connectionInfo.endpoint}/oauth2/api/v1';
+    final String loginUrl = '$baseUrl/login';
 
     /// Call API.
     final Map<String, dynamic> jsonResponse = await _client.post(
-      url: _loginUrl,
+      url: loginUrl,
       jsonBody:
           request.copyWith(appId: int.parse(connectionInfo.appId)).toJson(),
       headers: <String, String>{'Authorization': 'Bearer $jwtToken'},

@@ -2,13 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/core/models/veryify_email/verify_email.dart';
 import 'package:deriv_auth/core/shared/constants/constants.dart';
 import 'package:deriv_auth/features/reset_password/services/base_reset_password_service.dart';
-import 'package:deriv_auth/features/reset_password/services/reset_password_io.dart';
+import 'package:deriv_auth/features/reset_password/services/base_reset_password_io.dart';
 
 part 'reset_password_state.dart';
 
 /// Reset Password cubit
 class DerivResetPassCubit extends Cubit<DerivResetPassState>
-    implements ResetPasswordIO {
+    implements BaseResetPasswordIO {
   /// Initialize a DerivResetPassCubit with [ResetPassInitialState].
   DerivResetPassCubit({
     required this.service,

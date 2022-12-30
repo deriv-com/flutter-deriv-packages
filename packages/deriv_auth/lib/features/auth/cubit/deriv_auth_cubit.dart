@@ -6,13 +6,13 @@ import 'package:deriv_auth/core/shared/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/features/auth/models/login/enums.dart';
 import 'package:deriv_auth/features/auth/models/login/login_request.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
-import 'package:deriv_auth/features/auth/services/deriv_auth_io.dart';
+import 'package:deriv_auth/features/auth/services/base_deriv_auth_io.dart';
 
 part 'deriv_auth_state.dart';
 
 /// This Cubit is the single source of truth for user login status, and
 /// it is responsible for all login functionality.
-class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
+class DerivAuthCubit extends Cubit<DerivAuthState> implements BaseDerivAuthIO {
   /// Initialize a [DerivAuthCubit].
   DerivAuthCubit({required this.authService}) : super(DerivAuthLoadingState());
 

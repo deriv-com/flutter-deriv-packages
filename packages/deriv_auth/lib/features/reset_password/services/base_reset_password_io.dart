@@ -1,5 +1,5 @@
 /// Required functionality for resetting password.
-abstract class ResetPasswordIO {
+abstract class BaseResetPasswordIO {
   /// Sends email verification for resetting password.
   Future<void> sendVerificationEmail(String email);
 
