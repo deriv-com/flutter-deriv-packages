@@ -82,6 +82,7 @@ Future<void> openLoggedInWebPage({
     defaultAccount: defaultAccount,
     loadingDialog: loadingDialog,
     tokenExpiredDialog: tokenExpiredDialog,
+    rootNavigator: rootNavigator,
     action: action,
     code: code,
   );
@@ -123,6 +124,7 @@ Future<void> openLoggedInWebPage({
       defaultAccount: defaultAccount,
       loadingDialog: loadingDialog,
       tokenExpiredDialog: tokenExpiredDialog,
+      rootNavigator: rootNavigator,
       action: action,
       code: code,
     );
@@ -140,6 +142,7 @@ Future<String?> _fetchOneTimeToken({
   required String? refreshToken,
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
+  required bool rootNavigator,
   String? action,
   String? code,
 }) async {
@@ -156,7 +159,7 @@ Future<String?> _fetchOneTimeToken({
     code: code,
   );
 
-  Navigator.pop(context);
+  Navigator.of(context, rootNavigator: rootNavigator).pop();
 
   return oneTimeToken;
 }
@@ -202,6 +205,7 @@ Future<String?> _validateCredentials({
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
+  required bool rootNavigator,
   String? action,
   String? code,
 }) async {
@@ -214,6 +218,7 @@ Future<String?> _validateCredentials({
     refreshToken: refreshToken,
     defaultAccount: defaultAccount,
     loadingDialog: loadingDialog,
+    rootNavigator: rootNavigator,
     action: action,
     code: code,
   );
