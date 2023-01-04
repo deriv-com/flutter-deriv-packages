@@ -30,7 +30,7 @@ void main() {
       final SurveyMonkeyResponse response =
           await SurveyMonkey.loadSurveyMonkey(surveyHash: surveyHash);
 
-      expect(response.status, 'completed');
+      expect(response.status, SurveyCompletionStatus.completed);
       expect(response.respondentId, '12278655271');
     });
 

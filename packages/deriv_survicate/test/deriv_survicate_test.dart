@@ -299,7 +299,7 @@ void main() {
         );
 
         expect(
-          await channel.invokeMethod<bool>('onSurveyDisplayed', null),
+          await channel.invokeMethod<bool>('onSurveyDisplayed'),
           false,
         );
       });
@@ -388,7 +388,7 @@ void main() {
         );
 
         expect(
-          await channel.invokeMethod<bool>('onQuestionAnswered', null),
+          await channel.invokeMethod<bool>('onQuestionAnswered'),
           false,
         );
       });
@@ -476,7 +476,7 @@ void main() {
           true,
         );
 
-        expect(await channel.invokeMethod<bool>('onSurveyClosed', null), false);
+        expect(await channel.invokeMethod<bool>('onSurveyClosed'), false);
       });
 
       test('Return false if the expected arguments are not passed', () async {
@@ -556,7 +556,7 @@ void main() {
         );
 
         expect(
-          await channel.invokeMethod<bool>('onSurveyCompleted', null),
+          await channel.invokeMethod<bool>('onSurveyCompleted'),
           false,
         );
       });

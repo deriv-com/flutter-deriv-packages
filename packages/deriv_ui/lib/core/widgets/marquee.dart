@@ -49,7 +49,7 @@ class _MarqueeState extends State<Marquee> {
     _scrollController = ScrollController();
 
     if (widget.enabled) {
-      WidgetsBinding.instance?.addPostFrameCallback((_) => _scrollContent());
+      WidgetsBinding.instance.addPostFrameCallback((_) => _scrollContent());
     }
   }
 
