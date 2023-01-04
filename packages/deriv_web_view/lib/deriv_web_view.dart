@@ -63,6 +63,7 @@ Future<void> openLoggedInWebPage({
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
+  required bool rootNavigator,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -70,7 +71,6 @@ Future<void> openLoggedInWebPage({
   bool validateCredentialsOnClosed = false,
   VoidCallback? onClosed,
   bool inAppBrowser = true,
-  bool rootNavigator = false,
 }) async {
   final String? oneTimeToken = await _validateCredentials(
     context: context,
