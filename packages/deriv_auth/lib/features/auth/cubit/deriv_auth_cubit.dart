@@ -58,6 +58,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     required String oneAllConnectionToken,
     final String? signupProvider,
   }) async {
+    emit(DerivAuthLoadingState());
+
     final LoginRequestModel request = LoginRequestModel(
       type: LoginType.social,
       oneAllConnectionToken: oneAllConnectionToken,
