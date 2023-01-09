@@ -145,11 +145,9 @@ class _StackedBannerState extends State<StackedBanner>
 
     _setupAnimationControllers();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) =>
-      _collapsedSize =
-          (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
-              .size;
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) => _collapsedSize =
+        (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
+            .size);
   }
 
   void _setupAnimationControllers() {
