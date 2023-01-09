@@ -1,5 +1,7 @@
+import 'package:deriv_auth/features/reset_password/cubit/reset_password_cubit.dart';
+
 /// Required functionality for resetting password.
-abstract class BaseResetPasswordIO {
+abstract class DerivResetPasswordIO {
   /// Sends email verification for resetting password.
   Future<void> sendVerificationEmail(String email);
 
@@ -8,4 +10,7 @@ abstract class BaseResetPasswordIO {
     required String token,
     required String newPassword,
   });
+
+  /// Deriv reset pass output.
+  Stream<DerivResetPassState> get output;
 }

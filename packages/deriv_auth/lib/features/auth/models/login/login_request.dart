@@ -1,4 +1,4 @@
-import 'enums.dart';
+import 'package:deriv_auth/features/auth/models/enums/enums.dart';
 
 /// Login request model.
 class LoginRequestModel {

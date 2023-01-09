@@ -1,5 +1,5 @@
-import 'package:deriv_auth/core/models/account/account.dart';
-import 'package:deriv_auth/core/models/authorize/authorize.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/authorize_model.dart';
 
 /// Interface of all authentication functions required from client.
 abstract class BaseAuthRepository {

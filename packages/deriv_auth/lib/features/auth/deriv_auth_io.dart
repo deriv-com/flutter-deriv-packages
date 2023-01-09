@@ -1,5 +1,7 @@
+import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
+
 /// Functionality that DerivAuthCubit provides.
-abstract class BaseDerivAuthIO {
+abstract class DerivAuthIO {
   /// Login with [email] and [password].
   Future<void> systemLogin({
     required String email,
@@ -24,4 +26,7 @@ abstract class BaseDerivAuthIO {
 
   /// Log default user in.
   Future<void> authorizeDefaultAccount();
+
+  /// Deriv auth output.
+  Stream<DerivAuthState> get output;
 }

@@ -1,8 +1,8 @@
 import 'package:collection/collection.dart';
 import 'package:deriv_auth/core/connection_info.dart';
 import 'package:deriv_auth/core/extensions.dart';
-import 'package:deriv_auth/core/models/account/account.dart';
-import 'package:deriv_auth/core/models/authorize/authorize.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/authorize_model.dart';
 import 'package:deriv_auth/core/shared/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/core/shared/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/shared/constants/constants.dart';

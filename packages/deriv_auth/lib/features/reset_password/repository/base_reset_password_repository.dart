@@ -1,4 +1,4 @@
-import 'package:deriv_auth/core/models/veryify_email/verify_email.dart';
+import 'package:deriv_auth/core/models/verify_email_model.dart';
 
 /// Client Interface to implement [ResetPassword] functions.
 abstract class BaseResetPasswordRepository {

@@ -1,16 +1,17 @@
 import 'package:bloc/bloc.dart';
-import 'package:deriv_auth/core/models/account/account.dart';
-import 'package:deriv_auth/core/models/veryify_email/verify_email.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/verify_email_model.dart';
 import 'package:deriv_auth/core/shared/constants/constants.dart';
-import 'package:deriv_auth/features/signup/models/new_virtial_account/new_virtual_account_request_model.dart';
-import 'package:deriv_auth/features/signup/services/base_signup_io.dart';
+import 'package:deriv_auth/features/signup/models/new_virtual_account_request_model.dart';
+import 'package:deriv_auth/features/signup/base_signup_io.dart';
 import 'package:deriv_auth/features/signup/services/base_signup_service.dart';
 import 'package:intl/intl.dart';
 
 part 'signup_state.dart';
 
 /// Cubit to manage Sign up.
-class DerivSignupCubit extends Cubit<DerivSignupState> implements BaseSignupIO {
+class DerivSignupCubit extends Cubit<DerivSignupState>
+    implements DerivSignupIO {
   /// Initializes the cubit with [SignupInitialState].
   DerivSignupCubit({
     required this.service,
@@ -65,4 +66,7 @@ class DerivSignupCubit extends Cubit<DerivSignupState> implements BaseSignupIO {
       emit(DerivSignupErrorState(e.toString()));
     }
   }
+
+  @override
+  Stream<DerivSignupState> get output => stream;
 }

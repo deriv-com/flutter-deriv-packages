@@ -2,31 +2,31 @@ part of 'signup_cubit.dart';
 
 /// Sign up state
 abstract class DerivSignupState {
-  /// Initialise DerivSignup state
+  /// Initialize DerivSignup state
   const DerivSignupState();
 }
 
 /// Initial state.
 class DerivSignupInitialState extends DerivSignupState {
-  /// Initialises initial state.
+  /// Initialize initial state.
   const DerivSignupInitialState();
 }
 
 /// Sign up in progress state.
 class DerivSignupProgressState extends DerivSignupState {
-  /// Initialises progress state.
+  /// Initialize progress state.
   const DerivSignupProgressState();
 }
 
 /// Sign up done state.
 class DerivSignupEmailSentState extends DerivSignupState {
-  /// Initialises done state.
+  /// Initialize done state.
   const DerivSignupEmailSentState();
 }
 
 /// Sign up done state.
 class DerivSignupDoneState extends DerivSignupState {
-  /// Initialises done state.
+  /// Initialize done state.
   const DerivSignupDoneState({required this.account});
 
   /// Details of new virtual account created.
@@ -35,7 +35,7 @@ class DerivSignupDoneState extends DerivSignupState {
 
 /// Sign up error state.
 class DerivSignupErrorState extends DerivSignupState {
-  /// Initialises error state.
+  /// Initialize error state.
   const DerivSignupErrorState(this.errorMessage);
 
   /// Error message

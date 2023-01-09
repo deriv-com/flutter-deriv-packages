@@ -1,6 +1,6 @@
-import 'package:deriv_auth/core/models/account/account.dart';
-import 'package:deriv_auth/core/models/veryify_email/verify_email.dart';
-import 'package:deriv_auth/features/signup/models/new_virtial_account/new_virtual_account_request_model.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/verify_email_model.dart';
+import 'package:deriv_auth/features/signup/models/new_virtual_account_request_model.dart';
 
 /// Client Interface to implement [Signup] functions.
 abstract class BaseSignupRepository {
@@ -11,7 +11,7 @@ abstract class BaseSignupRepository {
   Future<VerifyEmailResponseEntity> sendVerificationEmail(
       VerifyEmailRequestEntity request);
 
-  /// Creatiing new virtual account.
+  /// Creating new virtual account.
   Future<AccountModel> openNewVirtualAccount({
     required NewVirtualAccountRequestModel newVirtualAccountModel,
   });

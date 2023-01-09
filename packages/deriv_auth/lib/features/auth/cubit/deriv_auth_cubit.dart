@@ -1,18 +1,18 @@
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/core/shared/auth_error/auth_error.dart';
-import 'package:deriv_auth/core/models/account/account.dart';
-import 'package:deriv_auth/core/models/authorize/authorize.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/authorize_model.dart';
 import 'package:deriv_auth/core/shared/exceptions/deriv_auth_exception.dart';
-import 'package:deriv_auth/features/auth/models/login/enums.dart';
+import 'package:deriv_auth/features/auth/models/enums/enums.dart';
 import 'package:deriv_auth/features/auth/models/login/login_request.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
-import 'package:deriv_auth/features/auth/services/base_deriv_auth_io.dart';
+import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 
 part 'deriv_auth_state.dart';
 
 /// This Cubit is the single source of truth for user login status, and
 /// it is responsible for all login functionality.
-class DerivAuthCubit extends Cubit<DerivAuthState> implements BaseDerivAuthIO {
+class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   /// Initialize a [DerivAuthCubit].
   DerivAuthCubit({required this.authService}) : super(DerivAuthLoadingState());
 
@@ -78,31 +78,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements BaseDerivAuthIO {
     );
   }
 
-  Future<void> _tokenLoginRequest(
-    String token, {
-    required List<AccountModel> accountsList,
-  }) async {
-    try {
-      final AuthorizeEntity authorize =
-          await authService.login(token, accountsList: accountsList);
-
-      emit(DerivAuthLoggedInState(authorize));
-    } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
-    }
-  }
-
-  Future<void> _loginRequest(LoginRequestModel request) async {
-    try {
-      final AuthorizeEntity authorize =
-          await authService.onLoginRequest(request);
-
-      emit(DerivAuthLoggedInState(authorize));
-    } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
-    }
-  }
-
   @override
   Future<void> authorizeDefaultAccount() async {
     emit(DerivAuthLoadingState());
@@ -134,6 +109,34 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements BaseDerivAuthIO {
       emit(DerivAuthLoggedOutState());
     } on Exception catch (_) {
       emit(DerivAuthLoggedOutState());
+    }
+  }
+
+  @override
+  Stream<DerivAuthState> get output => stream;
+
+  Future<void> _tokenLoginRequest(
+    String token, {
+    required List<AccountModel> accountsList,
+  }) async {
+    try {
+      final AuthorizeEntity authorize =
+          await authService.login(token, accountsList: accountsList);
+
+      emit(DerivAuthLoggedInState(authorize));
+    } on DerivAuthException catch (error) {
+      emit(DerivAuthErrorState(message: error.message, type: error.type));
+    }
+  }
+
+  Future<void> _loginRequest(LoginRequestModel request) async {
+    try {
+      final AuthorizeEntity authorize =
+          await authService.onLoginRequest(request);
+
+      emit(DerivAuthLoggedInState(authorize));
+    } on DerivAuthException catch (error) {
+      emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
   }
 }

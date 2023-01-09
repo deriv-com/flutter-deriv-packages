@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
-import 'package:deriv_auth/core/models/account/account.dart';
-
-import 'enums.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/features/auth/models/enums/enums.dart';
 
 /// Login response model.
 class LoginResponseModel {

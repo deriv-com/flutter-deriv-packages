@@ -1,15 +1,15 @@
-import 'package:deriv_auth/core/models/account/account.dart';
-import 'package:deriv_auth/core/models/veryify_email/verify_email.dart';
-import 'package:deriv_auth/features/signup/models/new_virtial_account/new_virtual_account_request_model.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/verify_email_model.dart';
+import 'package:deriv_auth/features/signup/models/new_virtual_account_request_model.dart';
 import 'package:deriv_auth/features/signup/repository/base_signup_repository.dart';
 import 'package:deriv_auth/features/signup/services/base_signup_service.dart';
 
-/// [DerivGo] implementation of [BaseSignupService].
+/// `DerivGo` implementation of [BaseSignupService].
 class DerivSignupService extends BaseSignupService {
   /// Initialize [DerivSignupService].
   DerivSignupService({required this.repository});
 
-  /// Client implementation of repository fucntions.
+  /// Client implementation of repository functionalities.
   final BaseSignupRepository repository;
 
   @override

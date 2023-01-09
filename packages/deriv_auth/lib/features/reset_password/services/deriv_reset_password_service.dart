@@ -1,5 +1,5 @@
-import 'package:deriv_auth/core/models/veryify_email/verify_email.dart';
-import 'package:deriv_auth/features/reset_password/repository/base_reset_password_repositry.dart';
+import 'package:deriv_auth/core/models/verify_email_model.dart';
+import 'package:deriv_auth/features/reset_password/repository/base_reset_password_repository.dart';
 import 'base_reset_password_service.dart';
 
 /// [DerivGo] implementation of [BaseResetPasswordService] functions.
@@ -7,7 +7,7 @@ class DerivResetPasswordService extends BaseResetPasswordService {
   /// Initialize [DerivNewVirtualAccountService].
   DerivResetPasswordService({required this.repository});
 
-  /// Client implemenntation of repository functions.
+  /// Client implementation of repository functions.
   final BaseResetPasswordRepository repository;
 
   @override

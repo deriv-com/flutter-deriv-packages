@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-import '../../models/account/account.dart';
+import '../../models/account_model.dart';
 
 /// If [accounts] contains a VR account return the [AccountModel] object
 /// otherwise returns [null].
