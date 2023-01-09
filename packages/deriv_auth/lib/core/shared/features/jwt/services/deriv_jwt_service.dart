@@ -37,7 +37,7 @@ class DerivJwtService implements BaseJwtService {
 
     jwtToken = token;
 
-    return jwtToken!;
+    return token;
   }
 
   @override

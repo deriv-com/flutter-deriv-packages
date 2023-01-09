@@ -162,7 +162,7 @@ class DerivAuthService extends BaseAuthService {
     HTTPClientException exception,
   ) {
     switch (exception.errorCode) {
-      case missingOtpError:
+      case missingOTPError:
         return DerivAuthException(
           type: AuthErrorType.missingOtp,
           message: exception.message,

@@ -2,7 +2,7 @@
 const String invalidTokenError = 'INVALID_TOKEN';
 
 /// Error occurs if 2FA is not passed in the login request.
-const String missingOtpError = 'MISSING_ONE_TIME_PASSWORD';
+const String missingOTPError = 'MISSING_ONE_TIME_PASSWORD';
 
 /// Error occurs if invalid 2FA code is passed in the login request.
 const String invalidAuthCodeError = 'TFA_FAILURE';
