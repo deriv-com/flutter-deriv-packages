@@ -5,7 +5,7 @@ import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
 
 /// Deriv Implementation of a [BaseTokenService].
-class TokenService implements BaseTokenService {
+class DerivTokenService implements BaseTokenService {
   @override
   Future<GetTokensResponseModel> getUserTokens({
     required GetTokensRequestModel request,
