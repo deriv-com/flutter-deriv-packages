@@ -11,7 +11,6 @@ import 'package:test/test.dart';
 import 'package:deriv_auth/core/constants/constants.dart';
 
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/auth/services/deriv_auth_service.dart';
 
 import '../mocked_data/mocked_auth_models.dart';
 

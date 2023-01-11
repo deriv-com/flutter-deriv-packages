@@ -111,7 +111,7 @@ enum PlatformEnum {
 }
 
 /// Authorize model class.
-abstract class AuthorizeModel with EquatableMixin{
+abstract class AuthorizeModel {
   /// Initializes Authorize model class .
   const AuthorizeModel({
     this.accountList,
@@ -386,9 +386,6 @@ class AuthorizeEntity extends AuthorizeModel {
         signupProvider: signupProvider ?? this.signupProvider,
         refreshToken: refreshToken ?? this.refreshToken,
       );
-
-  @override
-  List<Object?> get props => [];
 }
 
 /// Account list item model class.
