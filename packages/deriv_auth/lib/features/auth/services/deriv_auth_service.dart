@@ -1,27 +1,30 @@
 import 'package:collection/collection.dart';
-import 'package:deriv_auth/core/connection_info.dart';
-import 'package:deriv_auth/core/extensions.dart';
-import 'package:deriv_auth/core/models/account_model.dart';
-import 'package:deriv_auth/core/models/authorize_model.dart';
-import 'package:deriv_auth/core/shared/api_client/exceptions/http_exceptions.dart';
-import 'package:deriv_auth/core/shared/auth_error/auth_error.dart';
-import 'package:deriv_auth/core/shared/constants/constants.dart';
-import 'package:deriv_auth/core/shared/exceptions/deriv_auth_exception.dart';
-import 'package:deriv_auth/core/shared/features/jwt/services/base_jwt_service.dart';
-import 'package:deriv_auth/core/shared/helpers/rest_helpers.dart';
 
-import 'package:deriv_auth/features/auth/models/login/login_request.dart';
-import 'package:deriv_auth/features/auth/models/login/login_response.dart';
+import 'package:deriv_auth/core/connection_info.dart';
+import 'package:deriv_auth/core/constants/constants.dart';
+import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
+import 'package:deriv_auth/core/helpers/extensions.dart';
+import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
+import 'package:deriv_auth/core/models/authorize_model.dart';
+import 'package:deriv_auth/core/services/api_client/exceptions/http_exceptions.dart';
+import 'package:deriv_auth/core/services/api_client/http_client.dart';
+import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
+import 'package:deriv_auth/core/services/token/models/login_request.dart';
+import 'package:deriv_auth/core/services/token/models/login_response.dart';
+import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
+
 import 'package:deriv_auth/features/auth/repository/base_auth_repository.dart';
 import 'base_auth_service.dart';
 
-/// [DerivGO] implementtation of [BaseAuthService].
+/// `DerivGO` implementation of [BaseAuthService].
 class DerivAuthService extends BaseAuthService {
-  /// Initialzes a [DerivAuthService] class.
+  /// Initializes a [DerivAuthService] class.
   DerivAuthService({
     required this.authRepository,
     required this.jwtService,
     required this.connectionInfo,
+    required this.tokenService,
   });
 
   /// Client connection info.
@@ -33,15 +36,19 @@ class DerivAuthService extends BaseAuthService {
   /// Interface of all client related functions.
   final BaseAuthRepository authRepository;
 
-  @override
-  Future<AuthorizeEntity> onLoginRequest(LoginRequestModel request) async {
-    try {
-      final String _jwtToken = await jwtService.getJwtToken();
+  /// Token service.
+  final BaseTokenService tokenService;
 
-      final LoginResponseModel _response =
-          await RestAPIHelpers().getLoginResponse(
-        request,
-        jwtToken: _jwtToken,
+  @override
+  Future<AuthorizeEntity> onLoginRequest(GetTokensRequestModel request,
+      [Function? onInvalidJwtToken]) async {
+    try {
+      final String jwtToken = await jwtService.getJwtToken();
+
+      final GetTokensResponseModel _response = await tokenService.getUserTokens(
+        request: request,
+        client: HttpClient(),
+        jwtToken: jwtToken,
         connectionInfo: connectionInfo,
       );
 
@@ -64,7 +71,9 @@ class DerivAuthService extends BaseAuthService {
         );
       }
     } on HTTPClientException catch (error) {
-      if (error.errorCode == invalidTokenError) {
+      if (error.errorCode == invalidJwtTokenError) {
+        onInvalidJwtToken?.call();
+
         jwtService.clearJwtToken();
 
         return onLoginRequest(request);
@@ -82,15 +91,16 @@ class DerivAuthService extends BaseAuthService {
     String? refreshToken,
   }) async {
     try {
-      final AuthorizeEntity? _authorize =
+      final AuthorizeEntity? responseAuthorizeEntity =
           (await authRepository.authorize(token)).authorize;
 
-      _checkAuthorizeValidity(_authorize);
+      _checkAuthorizeValidity(responseAuthorizeEntity);
 
-      final AuthorizeEntity _enhancedAuthorizeEntity = _authorize!.copyWith(
+      final AuthorizeEntity _enhancedAuthorizeEntity =
+          responseAuthorizeEntity!.copyWith(
         signupProvider: signupProvider,
         refreshToken: refreshToken,
-        accountList: _authorize.accountList
+        accountList: responseAuthorizeEntity.accountList
             ?.map(
               (AccountListItem accountListItem) => accountListItem.copyWith(
                 token: accountsList

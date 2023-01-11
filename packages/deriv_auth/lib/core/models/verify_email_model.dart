@@ -1,4 +1,4 @@
-import 'package:deriv_auth/core/shared/helpers/bool_helper.dart';
+import 'package:deriv_auth/core/helpers/bool_helper.dart';
 
 /// Verify email request class.
 class VerifyEmailRequestEntity {

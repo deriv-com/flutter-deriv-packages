@@ -1,4 +1,6 @@
-import 'package:deriv_auth/core/shared/features/jwt/models/app_auth_challenge/app_auth_challenge_response.dart';
+
+
+import 'package:deriv_auth/core/services/jwt/models/app_auth_challenge/app_auth_challenge_response.dart';
 
 /// Interface for client side JWT token functionality.
 abstract class BaseJwtRepository {

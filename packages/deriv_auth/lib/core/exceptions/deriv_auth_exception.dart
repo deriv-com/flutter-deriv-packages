@@ -1,4 +1,5 @@
-import 'package:deriv_auth/core/shared/auth_error/auth_error.dart';
+
+import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 
 /// Authentication Exception.
 class DerivAuthException implements Exception {

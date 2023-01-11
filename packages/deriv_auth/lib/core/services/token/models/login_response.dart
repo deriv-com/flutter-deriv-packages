@@ -1,19 +1,19 @@
 import 'package:collection/collection.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
-import 'package:deriv_auth/features/auth/models/enums/enums.dart';
+import 'package:deriv_auth/core/services/token/models/enums.dart';
 
-/// Login response model.
-class LoginResponseModel {
-  /// Initializes login response model.
-  LoginResponseModel({
+/// Get tokens response model.
+class GetTokensResponseModel {
+  /// Initializes get tokens response model.
+  GetTokensResponseModel({
     required this.tokens,
     required this.refreshToken,
     required this.socialType,
   });
 
   /// Converts the provided json to instance of this class.
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
-      LoginResponseModel(
+  factory GetTokensResponseModel.fromJson(Map<String, dynamic> json) =>
+      GetTokensResponseModel(
         tokens: getListFromMap<Token>(
           json['tokens'],
           itemToTypeCallback: (dynamic item) => Token.fromJson(item),

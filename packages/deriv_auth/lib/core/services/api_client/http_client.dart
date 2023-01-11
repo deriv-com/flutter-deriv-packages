@@ -1,6 +1,6 @@
 import 'dart:convert' as convert;
 
-import 'package:deriv_auth/core/shared/api_client/base_client.dart';
+import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:http/http.dart' as http;
 
 import 'exceptions/http_exceptions.dart';

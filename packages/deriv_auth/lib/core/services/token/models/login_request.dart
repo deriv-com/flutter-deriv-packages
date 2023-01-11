@@ -1,9 +1,10 @@
-import 'package:deriv_auth/features/auth/models/enums/enums.dart';
+import 'package:deriv_auth/core/services/token/models/enums.dart';
+import 'package:equatable/equatable.dart';
 
-/// Login request model.
-class LoginRequestModel {
-  ///Initializes Login request model.
-  LoginRequestModel({
+/// Get tokens request model.
+class GetTokensRequestModel with EquatableMixin {
+  ///Initializes get tokens request model.
+  GetTokensRequestModel({
     this.type,
     this.email,
     this.password,
@@ -45,7 +46,7 @@ class LoginRequestModel {
       };
 
   /// Generates a copy of instance with given parameters.
-  LoginRequestModel copyWith({
+  GetTokensRequestModel copyWith({
     LoginType? type,
     String? email,
     String? password,
@@ -54,7 +55,7 @@ class LoginRequestModel {
     String? oneAllConnectionToken,
     String? signupProvider,
   }) =>
-      LoginRequestModel(
+      GetTokensRequestModel(
         type: type ?? this.type,
         email: email ?? this.email,
         password: password ?? this.password,
@@ -64,4 +65,15 @@ class LoginRequestModel {
             oneAllConnectionToken ?? this.oneAllConnectionToken,
         signupProvider: signupProvider ?? this.signupProvider,
       );
+
+  @override
+  List<Object?> get props => <Object?>[
+        type,
+        email,
+        password,
+        appId,
+        otp,
+        oneAllConnectionToken,
+        signupProvider,
+      ];
 }

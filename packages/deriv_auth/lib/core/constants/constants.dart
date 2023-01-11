@@ -1,5 +1,5 @@
 /// Error occurs if expired/invalid jwt-token is passed in the login request.
-const String invalidTokenError = 'INVALID_TOKEN';
+const String invalidJwtTokenError = 'INVALID_TOKEN';
 
 /// Error occurs if 2FA is not passed in the login request.
 const String missingOTPError = 'MISSING_ONE_TIME_PASSWORD';

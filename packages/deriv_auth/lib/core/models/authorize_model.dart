@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes, unnecessary_import, unused_import
-import 'package:deriv_auth/core/shared/helpers/bool_helper.dart';
-import 'package:deriv_auth/core/shared/helpers/date_time_helper.dart';
-import 'package:deriv_auth/core/shared/helpers/number_helper.dart';
+import 'package:deriv_auth/core/helpers/bool_helper.dart';
+import 'package:deriv_auth/core/helpers/date_time_helper.dart';
+import 'package:deriv_auth/core/helpers/number_helper.dart';
 import 'package:equatable/equatable.dart';
 
 /// Authorize response model class.
@@ -111,7 +111,7 @@ enum PlatformEnum {
 }
 
 /// Authorize model class.
-abstract class AuthorizeModel {
+abstract class AuthorizeModel with EquatableMixin{
   /// Initializes Authorize model class .
   const AuthorizeModel({
     this.accountList,
@@ -386,6 +386,9 @@ class AuthorizeEntity extends AuthorizeModel {
         signupProvider: signupProvider ?? this.signupProvider,
         refreshToken: refreshToken ?? this.refreshToken,
       );
+
+  @override
+  List<Object?> get props => [];
 }
 
 /// Account list item model class.

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
-import 'package:deriv_auth/core/shared/features/jwt/models/app_auth_challenge/app_auth_challenge_response.dart';
-import 'package:deriv_auth/core/shared/features/jwt/repository/base_jwt_repository.dart';
+import 'package:deriv_auth/core/services/jwt/models/app_auth_challenge/app_auth_challenge_response.dart';
+import 'package:deriv_auth/core/services/jwt/repository/base_jwt_repository.dart';
 
 import 'base_jwt_service.dart';
 

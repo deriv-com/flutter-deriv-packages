@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:deriv_auth/core/shared/auth_error/auth_error.dart';
+import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
+import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
-import 'package:deriv_auth/core/shared/exceptions/deriv_auth_exception.dart';
-import 'package:deriv_auth/features/auth/models/enums/enums.dart';
-import 'package:deriv_auth/features/auth/models/login/login_request.dart';
+import 'package:deriv_auth/core/services/token/models/enums.dart';
+import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 
@@ -26,7 +26,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   }) async {
     emit(DerivAuthLoadingState());
 
-    final LoginRequestModel request = LoginRequestModel(
+    final GetTokensRequestModel request = GetTokensRequestModel(
       type: LoginType.system,
       email: email,
       password: password,
@@ -43,7 +43,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   }) async {
     emit(DerivAuthLoadingState());
 
-    final LoginRequestModel request = LoginRequestModel(
+    final GetTokensRequestModel request = GetTokensRequestModel(
       type: LoginType.system,
       email: email,
       password: password,
@@ -60,7 +60,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   }) async {
     emit(DerivAuthLoadingState());
 
-    final LoginRequestModel request = LoginRequestModel(
+    final GetTokensRequestModel request = GetTokensRequestModel(
       type: LoginType.social,
       oneAllConnectionToken: oneAllConnectionToken,
       signupProvider: signupProvider,
@@ -86,13 +86,14 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
     final String? defaultAccountToken =
         (await authService.getDefaultAccount())?.token;
-    final List<AccountModel> accountsList =
-        await authService.getLatestAccounts();
 
     if (defaultAccountToken == null) {
       emit(DerivAuthLoggedOutState());
       return;
     }
+
+    final List<AccountModel> accountsList =
+        await authService.getLatestAccounts();
 
     await _tokenLoginRequest(
       defaultAccountToken,
@@ -131,7 +132,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     }
   }
 
-  Future<void> _loginRequest(LoginRequestModel request) async {
+  Future<void> _loginRequest(GetTokensRequestModel request) async {
     try {
       final AuthorizeEntity authorize =
           await authService.onLoginRequest(request);
