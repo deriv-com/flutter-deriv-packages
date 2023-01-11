@@ -8,7 +8,6 @@ import 'package:deriv_auth/core/services/token/services/base_token_service.dart'
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-
 import 'package:deriv_auth/core/constants/constants.dart';
 
 import 'package:deriv_auth/deriv_auth.dart';
@@ -150,6 +149,8 @@ void main() {
       });
       test('should auto fetch new jwt token if current one is expired ',
           () async {
+        reset(jwtService);
+
         when(() => jwtService.getJwtToken()).thenAnswer(
           (_) => Future<String>.value(invalidJwtToken),
         );
