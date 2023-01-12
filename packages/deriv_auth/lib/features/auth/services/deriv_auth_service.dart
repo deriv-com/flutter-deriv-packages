@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:deriv_auth/core/connection_info.dart';
 import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
-import 'package:deriv_auth/core/helpers/extensions.dart';
+import 'package:deriv_auth/core/extensions/extensions.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';

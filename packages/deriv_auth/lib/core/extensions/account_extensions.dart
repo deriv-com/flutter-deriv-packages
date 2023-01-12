@@ -38,11 +38,3 @@ extension AccountExtension on AuthorizeEntity {
         hasSvgCompanies;
   }
 }
-
-/// Extensions on [AccountModel].
-extension AccountModelExtension on AccountModel {
-  /// Check if [AccountModel] is supported or not.
-  bool get isSupported =>
-      accountId.toUpperCase().contains('CR') ||
-      accountId.toUpperCase().contains('VRTC');
-}

@@ -6,7 +6,7 @@ export 'core//models/auth_error/auth_error.dart';
 export 'core/models/auth_error/auth_error_model.dart';
 export 'core/exceptions/deriv_auth_exception.dart';
 export 'core/connection_info.dart';
-export 'core/helpers/extensions.dart';
+export 'core/extensions/extensions.dart';
 export 'core/services/jwt/repository/deriv_jwt_repository.dart';
 export 'core/services/jwt/services/deriv_jwt_service.dart';
 export 'core/services/token/services/deriv_token_service.dart';
