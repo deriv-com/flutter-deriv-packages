@@ -18,17 +18,6 @@ class DerivResetPassEmailSentState extends DerivResetPassState {
   const DerivResetPassEmailSentState();
 }
 
-/// Reset pass email verified State.
-class DerivResetPassEmailVerifiedState extends DerivResetPassState {
-  /// Initializes Reset pass email verified State.
-  const DerivResetPassEmailVerifiedState({
-    required this.token,
-  });
-
-  /// Email verification token.
-  final String token;
-}
-
 /// Reset pass password changed State.
 class DerivResetPassPasswordChangedState extends DerivResetPassState {
   /// Initializes Reset pass password changed State.
