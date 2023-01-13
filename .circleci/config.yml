@@ -1,6 +1,5 @@
-version: 2.1     
+version: 2.1
 jobs:
-
   Flutter-Workflow:
     docker:
       - image: cirrusci/flutter:2.10.5
@@ -16,97 +15,102 @@ jobs:
       - run:
           name: Run Flutter doctor
           command: flutter doctor
-          
-      # - run: 
+
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/analytics
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: analytics analysis
       #    issue : access issue and depend on ruuderstack
 
-      # - run: 
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/deriv_api_key_provider
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: deriv_api_key_provider analysis
       #    issue : testfailing test production api token getter.
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_lint
-         command: flutter pub get && flutter analyze
-         name: deriv_lint analysis
+      - run:
+          working_directory: ~/flutter-deriv-packages/packages/deriv_lint
+          command: flutter pub get && flutter analyze
+          name: deriv_lint analysis
 
-      # - run: 
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/deriv_banner
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: deriv_banner analysis
       #    issue : access issue
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_bloc_manager
-         command: flutter pub get && flutter analyze && flutter test
-         name: deriv_bloc_manager analysis
-         # test not found
+      - run:
+          working_directory: ~/flutter-deriv-packages/packages/deriv_bloc_manager
+          command: flutter pub get && flutter analyze && flutter test
+          name: deriv_bloc_manager analysis
+          # test not found
 
-      # - run: 
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/deriv_live_chat
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: deriv_live_chat analysis
-         # issue : access issues
+      # issue : access issues
 
-      # - run: 
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/deriv_rudderstack
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: deriv_rudderstack test
       #    issue : This app is using a deprecated version of the Android embedding.
 
-      # - run: 
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/deriv_survicate
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: deriv_survicate analysis
       #    issue : This app is using a deprecated version of the Android embedding.
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_signup_login
-         command: flutter pub get && flutter analyze
-         name: deriv_signup_login analysis
+      - run:
+          working_directory: ~/flutter-deriv-packages/packages/deriv_signup_login
+          command: flutter pub get && flutter analyze
+          name: deriv_signup_login analysis
 
-      # - run: 
-      #    working_directory: ~/flutter-deriv-packages/packages/deriv_store_launcher 
+      # - run:
+      #    working_directory: ~/flutter-deriv-packages/packages/deriv_store_launcher
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: deriv_store_launcher test
       #    issue : Please make sure you have the correct access rights and the repository exists
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_technical_analysis
-         command: flutter pub get && flutter analyze && flutter test
-         name: deriv_technical_analysis analysis
+      - run:
+          working_directory: ~/flutter-deriv-packages/packages/deriv_technical_analysis
+          command: flutter pub get && flutter analyze && flutter test
+          name: deriv_technical_analysis analysis
 
-      - run: 
-         working_directory: ~/flutter-deriv-packages/packages/deriv_theme
-         command: flutter pub get && flutter analyze && flutter test
-         name: deriv_theme analysis
+      - run:
+          working_directory: ~/flutter-deriv-packages/packages/deriv_theme
+          command: flutter pub get && flutter analyze && flutter test
+          name: deriv_theme analysis
 
-      # - run: 
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/survey_monkey
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: survey_monkey test
       #    issue : This app is using a deprecated version of the Android embedding.
-      
-      # - run: 
+
+      # - run:
       #    working_directory: ~/flutter-deriv-packages/packages/update_checker
       #    command: flutter pub get && flutter analyze && flutter test
       #    name: update_checker test
       #    issue : This app is using a deprecated version of the Android embedding.
 
-      # - run: 
+      # - run:
       #     working_directory: ~/flutter-deriv-packages/packages/deriv_ui
       #     command: flutter pub get && flutter analyze && flutter test
       #     name: deriv_ui analysis
       #     issue : access issues
 
-      - run: 
+      - run:
           working_directory: ~/flutter-deriv-packages/packages/form_builder
           command: flutter pub get && flutter analyze && flutter test
           name: form_builder analysis
+
+      - run:
+          working_directory: ~/flutter-deriv-packages/packages/deriv_auth
+          command: flutter pub get && flutter analyze && flutter test
+          name: deriv_auth analysis
 
 workflows:
   version: 2
