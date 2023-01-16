@@ -49,7 +49,7 @@ class _InterchangeableItemAnimation {
     _flyingCount++;
 
     // Do some magic math:
-    WidgetsBinding.instance!.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
       // Find the starting position of the moving item, which is exactly the
       // gap its leaving behind, in the original list.
       final RenderBox box1 =

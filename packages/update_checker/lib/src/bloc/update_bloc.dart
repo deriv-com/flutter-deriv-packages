@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import '../models/models.dart';
 import '../repositories/repositories.dart';
@@ -41,6 +42,19 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
     }
   }
 
+  num _extractBuildNumber(Object? data) {
+    final Map<String, dynamic> dataMap = jsonDecode(jsonEncode(data));
+    return dataMap['buildnumber'];
+  }
+
+  DataSnapshot _getDataSnapshot({
+    required DatabaseEvent event,
+    required String key,
+  }) =>
+      event.snapshot.children
+          .where((DataSnapshot dataSnapshot) => dataSnapshot.key == key)
+          .first;
+
   Future<UpdateInfo?> _getUpdateInfo() async {
     final dynamic rawData = await firebaseDatabaseRepository.fetchUpdateData();
 
@@ -55,8 +69,12 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
       return null;
     }
 
-    final num optionalBuildNumber = rawData['optional']['buildnumber'];
-    final num mandatoryBuildNumber = rawData['mandatory']['buildnumber'];
+    final num optionalBuildNumber = _extractBuildNumber(
+      _getDataSnapshot(event: rawData as DatabaseEvent, key: 'optional').value,
+    );
+    final num mandatoryBuildNumber = _extractBuildNumber(
+      _getDataSnapshot(event: rawData, key: 'mandatory').value,
+    );
     final bool isMandatory = appBuildNumber < mandatoryBuildNumber;
     final bool isOptional = appBuildNumber < optionalBuildNumber &&
         appBuildNumber >= mandatoryBuildNumber;
@@ -67,7 +85,12 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
     }
 
     return _createUpdate(
-      rawData[isOptional ? 'optional' : 'mandatory'],
+      _extractBuildNumber(
+        _getDataSnapshot(
+          event: rawData,
+          key: isOptional ? 'optional' : 'mandatory',
+        ),
+      ),
       isOptional,
       isOptional ? optionalBuildNumber : mandatoryBuildNumber,
     );

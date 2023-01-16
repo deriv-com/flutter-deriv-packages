@@ -28,7 +28,7 @@ class _AppState extends State<App> {
           body: Center(
             child: TextButton(
               style: TextButton.styleFrom(
-                primary: Colors.white,
+                foregroundColor: Colors.white,
                 backgroundColor: isAndroid ? Colors.blue : Colors.green,
               ),
               child:
