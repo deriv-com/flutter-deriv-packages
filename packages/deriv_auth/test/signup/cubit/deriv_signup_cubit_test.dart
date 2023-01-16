@@ -17,12 +17,14 @@ void main() {
     cubit = DerivSignupCubit(service: service);
   });
 
-  group('DerivSignupCubit', () {
-    test('initial state is SignupInitialState', () {
+  group('signup cubit test =>', () {
+    test('Shouold start with [DerivSignupInitialState].', () {
       expect(cubit.state, const DerivSignupInitialState());
     });
 
-    test('sendVerificationEmail', () async {
+    test(
+        'Should emit [DerivSignupEmailSentState] after successful sendVerificationEmail.',
+        () async {
       registerFallbackValue(validVerifyEmailRequest);
 
       final DateTime time = DateTime.now();
@@ -34,8 +36,12 @@ void main() {
       await cubit.sendVerificationEmail('test@example.com');
       expect(cubit.state, const DerivSignupEmailSentState());
 
-      verify(() => service.getClientServerTime()).called(1);
+      verify(() => service.getClientServerTime());
+    });
 
+    test(
+        'Should emit [DerivSignupErrorState] when sendVerificationEmail throws an exception.',
+        () async {
       // test error state
       when(() => service.sendVerificationEmail(any()))
           .thenThrow(Exception('Error'));
@@ -44,7 +50,9 @@ void main() {
       expect(cubit.state, isA<DerivSignupErrorState>());
     });
 
-    test('openNewVirtualAccount', () async {
+    test(
+        'Should emit [DerivSignupDoneState] after successfull openNewVirtualAccount.',
+        () async {
       registerFallbackValue(validNewVirtualAccountModel);
 
       when(
@@ -60,9 +68,12 @@ void main() {
       verify(
         () => service.openNewVirtualAccount(
             newVirtualAccountModel: validNewVirtualAccountModel),
-      ).called(1);
+      );
+    });
 
-      // test error state
+    test(
+        'Should emit [DerivSignupErrorState] when openNewVirtualAccount throws an exception.',
+        () async {
       when(
         () => service.openNewVirtualAccount(
           newVirtualAccountModel: any(

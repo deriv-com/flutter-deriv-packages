@@ -19,11 +19,13 @@ void main() {
   });
 
   group('reset password cubit tests => ', () {
-    test('initial state is DerivResetPassInitialState', () {
+    test('Should start with [DerivResetPassInitialState]', () {
       expect(resetPassCubit.state, const DerivResetPassInitialState());
     });
 
-    test('sendVerificationEmail', () async {
+    test(
+        'Should emit [DerivResetPassEmailSentState] after successful sendVerificationEmail.',
+        () async {
       registerFallbackValue(validVerifyEmailRequest);
 
       when(() => service.sendVerificationEmail(any())).thenAnswer(
@@ -39,8 +41,11 @@ void main() {
       expect(resetPassCubit.state, const DerivResetPassEmailSentState());
 
       verify(() => service.sendVerificationEmail(validVerifyEmailRequest));
+    });
 
-      // test error state
+    test(
+        'Should emit [DerivResetPassErrorState] if sendVerificationEmail throws an exception.',
+        () async {
       when(() => service.sendVerificationEmail(invalidVerifyEmailRequest))
           .thenThrow(Exception('Error'));
 
@@ -50,7 +55,9 @@ void main() {
       expect(resetPassCubit.state, isA<DerivResetPassErrorState>());
     });
 
-    test('changePassword', () async {
+    test(
+        'Should emit [DerivResetPassPasswordChangedState] after successful changePassword.',
+        () async {
       when(() => service.resetPassword(
               verificationCode: any(named: 'verificationCode'),
               newPassword: any(named: 'newPassword')))
@@ -62,16 +69,18 @@ void main() {
 
       verify(() => service.resetPassword(
           verificationCode: '123', newPassword: 'newpassword'));
-
-      // test error state
-      when(() => service.resetPassword(
-              verificationCode: any(named: 'verificationCode'),
-              newPassword: any(named: 'newPassword')))
-          .thenThrow(Exception('Error'));
-
-      await resetPassCubit.changePassword(
-          token: '123', newPassword: 'newpassword');
-      expect(resetPassCubit.state, isA<DerivResetPassErrorState>());
     });
+  });
+
+  test(
+      'Should emit [DerivResetPassErrorState] if chagePassword throws an exception.',
+      () async {
+    when(() => service.resetPassword(
+        verificationCode: any(named: 'verificationCode'),
+        newPassword: any(named: 'newPassword'))).thenThrow(Exception('Error'));
+
+    await resetPassCubit.changePassword(
+        token: '123', newPassword: 'newpassword');
+    expect(resetPassCubit.state, isA<DerivResetPassErrorState>());
   });
 }

@@ -69,7 +69,9 @@ class VerifyEmailRequestEntity with EquatableMixin {
 
   /// Override equatable class.
   @override
-  List<Object?> get props => <Object?>[];
+  List<Object?> get props => <Object?>[
+        verifyEmail,
+      ];
 }
 
 /// Verify email response model class.
