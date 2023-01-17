@@ -3,8 +3,8 @@ import 'package:deriv_auth/core/models/authorize_model.dart';
 
 /// Extensions on [AuthorizeEntity].
 extension AccountExtension on AuthorizeEntity {
-  /// Return list of [AccountModel] from AuthorizeEntity.
-  List<AccountModel> getAccounts() =>
+  /// Returns list of [AccountModel].
+  List<AccountModel> get accounts =>
       accountList
           ?.map((AccountListItem accountItem) => AccountModel(
                 accountId: accountItem.loginid ?? ' ',
