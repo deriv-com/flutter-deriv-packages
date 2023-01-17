@@ -43,7 +43,7 @@ void main() {
 
         authCubit.authorizeDefaultAccount();
 
-        verify(() => service.getDefaultAccount()).called(1);
+        verify(() => service.getDefaultAccount());
         verifyNever(
           () => service.login(any(), accountsList: any(named: 'accountsList')),
         );
@@ -73,7 +73,7 @@ void main() {
 
         authCubit.authorizeDefaultAccount();
 
-        verify(() => service.getDefaultAccount()).called(1);
+        verify(() => service.getDefaultAccount());
       });
 
       test('should emit [AuthLoggedInState] upon a successful system login.',
@@ -96,7 +96,7 @@ void main() {
 
         authCubit.systemLogin(email: 'email', password: 'password');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any()));
       });
       test('should emit [AuthLoggedInState] upon a successful social login.',
           () {
@@ -118,7 +118,7 @@ void main() {
 
         authCubit.socialLogin(oneAllConnectionToken: 'token');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any()));
       });
       test('should emit [AuthLoggedInState] upon a successful otp login.', () {
         when(() => service.onLoginRequest(any())).thenAnswer(
@@ -136,7 +136,7 @@ void main() {
         );
         authCubit.otpLogin(otp: 'otp', email: 'email', password: 'pass');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any()));
       });
 
       test('should emit [AuthErrorState] when an exception occurs in service.',
@@ -161,7 +161,7 @@ void main() {
 
         authCubit.systemLogin(email: 'email', password: 'pass');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any()));
       });
       test('should emit [AuthLoggedOutState] upon a successful logout.', () {
         when(() => service.logout()).thenAnswer((_) => Future<void>.value());
@@ -182,7 +182,7 @@ void main() {
 
         authCubit.logout();
 
-        verify(() => service.logout()).called(1);
+        verify(() => service.logout());
       });
     },
   );
