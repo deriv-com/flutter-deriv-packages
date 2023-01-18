@@ -2,7 +2,7 @@ export 'core/models/account_model.dart';
 export 'core/models/authorize_model.dart';
 export 'core/models/verify_email_model.dart';
 export 'core/services/api_client/http_client.dart';
-export 'core//models/auth_error/auth_error.dart';
+export 'core/models/auth_error/auth_error.dart';
 export 'core/models/auth_error/auth_error_model.dart';
 export 'core/exceptions/deriv_auth_exception.dart';
 export 'core/connection_info.dart';
