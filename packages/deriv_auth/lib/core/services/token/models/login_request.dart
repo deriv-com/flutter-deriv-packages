@@ -15,7 +15,7 @@ class GetTokensRequestModel with EquatableMixin {
   });
 
   /// Type of login, it can either be `system` or `social`.
-  final LoginType? type;
+  final AuthType? type;
 
   /// Email address
   final String? email;
@@ -47,7 +47,7 @@ class GetTokensRequestModel with EquatableMixin {
 
   /// Generates a copy of instance with given parameters.
   GetTokensRequestModel copyWith({
-    LoginType? type,
+    AuthType? type,
     String? email,
     String? password,
     int? appId,

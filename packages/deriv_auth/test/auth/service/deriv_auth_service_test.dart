@@ -129,7 +129,7 @@ void main() {
 
         final AuthorizeEntity response = await authService.onLoginRequest(
           GetTokensRequestModel(
-            type: LoginType.system,
+            type: AuthType.system,
             email: 'email',
             password: 'pass',
             signupProvider: 'signupProvider',
@@ -156,7 +156,7 @@ void main() {
 
         final AuthorizeEntity response = await authService.onLoginRequest(
             GetTokensRequestModel(
-              type: LoginType.system,
+              type: AuthType.system,
               email: 'email',
               password: 'pass',
               signupProvider: 'signupProvider',

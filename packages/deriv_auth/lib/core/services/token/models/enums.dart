@@ -1,6 +1,6 @@
 /// The selected parameter that should be highlighted when opening the
 /// Social login or signup
-enum SocialType {
+enum SocialAuthType {
   /// Login social type.
   login,
 
@@ -8,8 +8,8 @@ enum SocialType {
   signup
 }
 
-/// Login type.
-enum LoginType {
+/// Auth type.
+enum AuthType {
   /// Login using email and password.
   system,
 
@@ -17,8 +17,8 @@ enum LoginType {
   social
 }
 
-/// Social Login type.
-enum SocialAuthType {
+/// Social auth provider.
+enum SocialAuthProvider {
   /// Google.
   google,
 

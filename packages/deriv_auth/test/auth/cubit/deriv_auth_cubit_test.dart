@@ -78,7 +78,7 @@ void main() {
 
       test('should emit [AuthLoggedInState] upon a successful system login.',
           () {
-        registerFallbackValue(GetTokensRequestModel(type: LoginType.system));
+        registerFallbackValue(GetTokensRequestModel(type: AuthType.system));
 
         when(() => service.onLoginRequest(any())).thenAnswer(
             (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
@@ -100,7 +100,7 @@ void main() {
       });
       test('should emit [AuthLoggedInState] upon a successful social login.',
           () {
-        registerFallbackValue(GetTokensRequestModel(type: LoginType.social));
+        registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
 
         when(() => service.onLoginRequest(any())).thenAnswer(
             (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
@@ -141,7 +141,7 @@ void main() {
 
       test('should emit [AuthErrorState] when an exception occurs in service.',
           () {
-        registerFallbackValue(GetTokensRequestModel(type: LoginType.system));
+        registerFallbackValue(GetTokensRequestModel(type: AuthType.system));
 
         when(() => service.onLoginRequest(any())).thenThrow(DerivAuthException(
           message: 'message',
