@@ -17,7 +17,7 @@ abstract class BaseAuthService {
     String? refreshToken,
   });
 
-  /// Log user out.
+  /// Logout user.
   Future<void> logout();
 
   /// Functionality after user logs out.

@@ -27,7 +27,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     emit(DerivAuthLoadingState());
 
     final GetTokensRequestModel request = GetTokensRequestModel(
-      type: LoginType.system,
+      type: AuthType.system,
       email: email,
       password: password,
     );
@@ -44,7 +44,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     emit(DerivAuthLoadingState());
 
     final GetTokensRequestModel request = GetTokensRequestModel(
-      type: LoginType.system,
+      type: AuthType.system,
       email: email,
       password: password,
       otp: otp,
@@ -61,7 +61,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     emit(DerivAuthLoadingState());
 
     final GetTokensRequestModel request = GetTokensRequestModel(
-      type: LoginType.social,
+      type: AuthType.social,
       oneAllConnectionToken: oneAllConnectionToken,
       signupProvider: signupProvider,
     );

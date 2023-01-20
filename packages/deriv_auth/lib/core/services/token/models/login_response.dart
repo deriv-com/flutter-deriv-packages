@@ -29,7 +29,7 @@ class GetTokensResponseModel {
   final String refreshToken;
 
   /// Social type to be `login`, `signup` or `null`.
-  final SocialType? socialType;
+  final SocialAuthType? socialType;
 
   /// List of accounts that belong to this user.
   List<AccountModel> get accounts =>
@@ -82,6 +82,6 @@ T? getItemFromMap<T>(
 }) =>
     map == null ? null : itemToTypeCallback!(map);
 
-/// Returns [SocialType] from string
-SocialType? getSocialTypeByName(String? socialType) => SocialType.values
-    .firstWhereOrNull((SocialType element) => socialType == element.name);
+/// Returns [SocialAuthType] from string
+SocialAuthType? getSocialTypeByName(String? socialType) => SocialAuthType.values
+    .firstWhereOrNull((SocialAuthType element) => socialType == element.name);
