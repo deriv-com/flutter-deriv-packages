@@ -51,9 +51,9 @@ class DerivSignupCubit extends Cubit<DerivSignupState>
   }
 
   @override
-  Future<void> openNewVirtualAccount({
-    required NewVirtualAccountRequestModel newVirtualAccountModel,
-  }) async {
+  Future<void> openNewVirtualAccount(
+    NewVirtualAccountRequestModel newVirtualAccountModel,
+  ) async {
     try {
       emit(const DerivSignupProgressState());
 

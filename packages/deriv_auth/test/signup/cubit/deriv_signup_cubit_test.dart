@@ -61,8 +61,7 @@ void main() {
         ),
       ).thenAnswer((_) => Future<AccountModel>.value(accountResponse));
 
-      await cubit.openNewVirtualAccount(
-          newVirtualAccountModel: validNewVirtualAccountModel);
+      await cubit.openNewVirtualAccount(validNewVirtualAccountModel);
       expect(cubit.state, isA<DerivSignupDoneState>());
 
       verify(
@@ -82,8 +81,7 @@ void main() {
         ),
       ).thenThrow(Exception('Error'));
 
-      await cubit.openNewVirtualAccount(
-          newVirtualAccountModel: validNewVirtualAccountModel);
+      await cubit.openNewVirtualAccount(validNewVirtualAccountModel);
       expect(cubit.state, isA<DerivSignupErrorState>());
     });
   });
