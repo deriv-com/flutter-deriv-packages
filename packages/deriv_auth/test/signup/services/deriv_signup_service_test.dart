@@ -31,12 +31,16 @@ void main() {
     test('getClientServerTime', () async {
       final DateTime result = await service.getClientServerTime();
       expect(result, time);
+
+      verify(() => repository.getClientServerTime()).called(1);
     });
 
     test('sendVerificationEmail', () async {
       final VerifyEmailResponseEntity result =
           await service.sendVerificationEmail(validVerifyEmailRequest);
       expect(result, validVerifyEmailResponse);
+      verify(() => repository.sendVerificationEmail(validVerifyEmailRequest))
+          .called(1);
     });
 
     test('openNewVirtualAccount', () async {
@@ -44,6 +48,8 @@ void main() {
         newVirtualAccountModel: validNewVirtualAccountModel,
       );
       expect(result, accountResponse);
+      verify(() => repository.openNewVirtualAccount(
+          newVirtualAccountModel: validNewVirtualAccountModel)).called(1);
     });
   });
 }

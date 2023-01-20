@@ -42,6 +42,9 @@ void main() {
         );
 
         expect(response, equals(true));
+        verify(() => repository.resetPassword(
+            verificationCode: validVerificationCode,
+            newPassword: 'RandomNewPassword1234')).called(1);
       });
       test('returns FALSE if verification code is invalid.', () async {
         final bool response = await service.resetPassword(
@@ -50,6 +53,10 @@ void main() {
         );
 
         expect(response, equals(false));
+
+        verify(() => repository.resetPassword(
+            verificationCode: invalidVerificationCode,
+            newPassword: 'RandomNewPassword1234')).called(1);
       });
     },
   );

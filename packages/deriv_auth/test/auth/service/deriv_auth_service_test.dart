@@ -118,7 +118,7 @@ void main() {
                 ?.every((AccountListItem account) => account.token != null),
             true);
 
-        verify(() => repository.onLogin(any()));
+        verify(() => repository.onLogin(any())).called(1);
       });
       test(
           'should return valid authorize model when calling loginRequest with valid jwt',
@@ -144,7 +144,7 @@ void main() {
                 ?.every((AccountListItem account) => account.token != null),
             true);
 
-        verify(() => repository.onLogin(any()));
+        verify(() => repository.onLogin(any())).called(1);
       });
       test('should auto fetch new jwt token if current one is expired ',
           () async {

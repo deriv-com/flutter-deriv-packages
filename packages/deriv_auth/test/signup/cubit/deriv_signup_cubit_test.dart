@@ -36,7 +36,7 @@ void main() {
       await cubit.sendVerificationEmail('test@example.com');
       expect(cubit.state, const DerivSignupEmailSentState());
 
-      verify(() => service.getClientServerTime());
+      verify(() => service.getClientServerTime()).called(1);
     });
 
     test(
@@ -68,7 +68,7 @@ void main() {
       verify(
         () => service.openNewVirtualAccount(
             newVirtualAccountModel: validNewVirtualAccountModel),
-      );
+      ).called(1);
     });
 
     test(

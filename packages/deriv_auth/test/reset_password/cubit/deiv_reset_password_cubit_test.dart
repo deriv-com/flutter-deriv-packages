@@ -40,7 +40,8 @@ void main() {
           .sendVerificationEmail(validVerifyEmailRequest.verifyEmail!);
       expect(resetPassCubit.state, const DerivResetPassEmailSentState());
 
-      verify(() => service.sendVerificationEmail(validVerifyEmailRequest));
+      verify(() => service.sendVerificationEmail(validVerifyEmailRequest))
+          .called(1);
     });
 
     test(
@@ -68,7 +69,7 @@ void main() {
       expect(resetPassCubit.state, const DerivResetPassPasswordChangedState());
 
       verify(() => service.resetPassword(
-          verificationCode: '123', newPassword: 'newpassword'));
+          verificationCode: '123', newPassword: 'newpassword')).called(1);
     });
   });
 
