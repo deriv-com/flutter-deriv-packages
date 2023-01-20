@@ -97,6 +97,69 @@ DerivAuthCubit(
    ));
 ```
 
+Some usage examples:
+
+- First, start by getting the `DerivAuthCubit` instance.
+
+  ```dart
+  /// Get the [DerivAuthCubit] instance.
+  final DerivAuthCubit _cubit = BlocManager.instance().fetch<DerivAuthCubit>();
+  ```
+
+- `systemLogin`: login with `email` and `password`:
+
+  ```dart
+  /// Call the [systemLogin] method.
+  _cubit.systemLogin(
+    email: userEmail,
+    password: userPassword,
+  );
+  ```
+
+- `otpLogin`: login with `email`, `password` and `otp`:
+
+  ```dart
+  /// Call the [otpLogin] method.
+  _cubit.otpLogin(
+    email: userEmail,
+    password: userPassword,
+    otp: userOtp,
+  );
+  ```
+
+- `socialLogin`: login with `oneAllConnectionToken` and `signupProvider`:
+
+  ```dart
+  /// Call the [socialLogin] method.
+  _cubit.socialLogin(
+    oneAllConnectionToken: userEmail,
+    signupProvider: userPassword,
+  );
+  ```
+
+- `tokenLogin`: login with `token`:
+
+  ```dart
+  /// Call the [tokenLogin] method.
+  _cubit.tokenLogin(
+    userToken,
+  );
+  ```
+
+- `authorizeDefaultAccount`: login between user sessions:
+
+  ```dart
+  /// Call the [authorizeDefaultAccount] method.
+  _cubit.authorizeDefaultAccount();
+  ```
+
+- `logout`: log user out:
+
+  ```dart
+  /// Call the [logout] method.
+  _cubit.logout();
+  ```
+
 </br>
 
 ### **_DerivSignupCubit:_**
@@ -137,6 +200,31 @@ DerivSignupCubit(
     ));
 ```
 
+Some usage examples:
+
+- First, start by getting the instance of `DerivSignupCubit`:
+
+  ```dart
+  /// Get the [DerivSignupCubit] instance.
+  final DerivSignupCubit _cubit = BlocManager.instance().fetch<DerivSignupCubit>();
+  ```
+
+- `sendVerificationEmail`: send verification email to user:
+
+  ```dart
+  /// Call the [sendVerificationEmail] method.
+  _cubit.sendVerificationEmail(userEmail);
+  ```
+
+- `openNewVirtualAccount`: creates a new virtual account from a `NewVirtualAccountRequestModel`:
+
+  ```dart
+  /// Call the [sendVerificationEmail] method.
+  _cubit.openNewVirtualAccount(
+    userNewVirtualAccountModel,
+  );
+  ```
+
 </br>
 
 ### **_DerivResetPasswordCubit:_**
@@ -172,3 +260,29 @@ DerivResetPassCubit(
       ),
     );
 ```
+
+Some usage examples:
+
+- First, start by getting the instance of `DerivResetPasswordCubit`:
+
+  ```dart
+  /// Get the [DerivResetPasswordCubit] instance.
+  final DerivResetPasswordCubit _cubit = BlocManager.instance().fetch<DerivResetPasswordCubit>();
+  ```
+
+- `sendVerificationEmail`: send verification email to user:
+
+  ```dart
+  /// Call the [sendVerificationEmail] method.
+  _cubit.sendVerificationEmail(userEmail);
+  ```
+
+- `changePassword`: reset the password with `token` from the email and `newPassword` which user has set:
+
+  ```dart
+  /// Call the [sendVerificationEmail] method.
+  _cubit.changePassword(
+    token: token,
+    newPassword: newPassword,
+  );
+  ```
