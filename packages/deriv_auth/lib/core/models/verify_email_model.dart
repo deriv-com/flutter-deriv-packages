@@ -1,7 +1,8 @@
 import 'package:deriv_auth/core/helpers/bool_helper.dart';
+import 'package:equatable/equatable.dart';
 
 /// Verify email request class.
-class VerifyEmailRequestEntity {
+class VerifyEmailRequestEntity with EquatableMixin {
   /// Initialize [VerifyEmailRequestEntity].
   VerifyEmailRequestEntity({
     required this.type,
@@ -67,7 +68,10 @@ class VerifyEmailRequestEntity {
       );
 
   /// Override equatable class.
-  List<Object?> get props => <Object?>[];
+  @override
+  List<Object?> get props => <Object?>[
+        verifyEmail,
+      ];
 }
 
 /// Verify email response model class.

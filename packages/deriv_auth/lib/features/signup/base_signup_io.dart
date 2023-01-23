@@ -7,9 +7,9 @@ abstract class DerivSignupIO {
   Future<void> sendVerificationEmail(String email);
 
   /// Submit request for new virtual account.
-  Future<void> openNewVirtualAccount({
-    required NewVirtualAccountRequestModel newVirtualAccountModel,
-  });
+  Future<void> openNewVirtualAccount(
+    NewVirtualAccountRequestModel newVirtualAccountModel,
+  );
 
   /// Deriv signup output.
   Stream<DerivSignupState> get output;
