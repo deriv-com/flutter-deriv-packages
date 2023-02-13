@@ -19,7 +19,7 @@ class BlocManager implements BaseBlocManager {
   final Map<String, StreamSubscription<Object>> _subscriptions =
       <String, StreamSubscription<Object>>{};
 
-  final List<GenericStateEmitter> _stateEmitters = <GenericStateEmitter>[];
+  final Set<GenericStateEmitter> _stateEmitters = <GenericStateEmitter>{};
 
   @override
   Map<String, GenericBloc> get repository => _repository;
@@ -98,8 +98,15 @@ class BlocManager implements BaseBlocManager {
         .toList();
 
     for (final String key in subscriptionKeys) {
-      await _subscriptions[key]?.cancel();
-      _subscriptions.remove(key);
+      try {
+        await _subscriptions[key]?.cancel();
+      } on Exception catch (exception) {
+        BlocManagerException(
+          message: '<$B::$key> remove listener exception: $exception',
+        );
+      } finally {
+        _subscriptions.remove(key);
+      }
     }
   }
 
