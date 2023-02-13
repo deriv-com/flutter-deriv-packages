@@ -32,7 +32,7 @@ class BlocManagerBuilder<B extends GenericBloc> extends StatefulWidget {
   /// Build condition.
   ///
   /// This condition is called when the bloc state changes.
-  final bool Function(Object previous, Object current)? buildWhen;
+  final bool Function(Object previousState, Object currentState)? buildWhen;
 
   @override
   State<BlocManagerBuilder<B>> createState() => _BlocManagerBuilderState<B>();

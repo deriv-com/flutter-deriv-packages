@@ -33,7 +33,7 @@ class BlocManagerListener<B extends GenericBloc> extends StatefulWidget {
   /// Listen condition.
   ///
   /// This condition is called when the bloc state changes.
-  final bool Function(Object previous, Object current)? listenWhen;
+  final bool Function(Object previousState, Object currentState)? listenWhen;
 
   /// The widget which will be rendered as a descendant of the [BlocListenerBase].
   final Widget? child;

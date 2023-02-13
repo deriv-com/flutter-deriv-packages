@@ -34,7 +34,7 @@ class BlocManagerConsumer<B extends GenericBloc> extends StatefulWidget {
   /// Listen condition.
   ///
   /// This condition is called when the bloc state changes.
-  final bool Function(Object previous, Object current)? listenWhen;
+  final bool Function(Object previousState, Object currentState)? listenWhen;
 
   /// Widget builder.
   ///
@@ -44,7 +44,7 @@ class BlocManagerConsumer<B extends GenericBloc> extends StatefulWidget {
   /// Build condition.
   ///
   /// This condition is called when the bloc state changes.
-  final bool Function(Object previous, Object current)? buildWhen;
+  final bool Function(Object previousState, Object currentState)? buildWhen;
 
   @override
   State<BlocManagerConsumer<B>> createState() => _BlocManagerConsumerState<B>();
