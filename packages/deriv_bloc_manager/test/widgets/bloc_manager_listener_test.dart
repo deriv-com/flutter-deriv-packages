@@ -8,7 +8,7 @@ void main() {
   const String blocKey = 'CUBIT_KEY';
 
   group('bloc manager listener test =>', () {
-    setUp(() => BlocManager.instance.register(MockCube(0), key: blocKey));
+    setUp(() => BlocManager.instance.register(MockCube(), key: blocKey));
 
     testWidgets('should render the bloc listener.',
         (WidgetTester tester) async {
@@ -49,7 +49,7 @@ void main() {
 
       expect(currentState, -1);
 
-      BlocManager.instance.fetch<MockCube>(blocKey).add(1);
+      BlocManager.instance.fetch<MockCube>(blocKey).update(1);
       await tester.pump();
 
       expect(currentState, 1);
@@ -58,7 +58,7 @@ void main() {
 }
 
 class MockCube extends Cubit<int> {
-  MockCube(int initialState) : super(initialState);
+  MockCube() : super(0);
 
-  void add(int value) => emit(value);
+  void update(int value) => emit(value);
 }
