@@ -26,10 +26,10 @@ class BlocManagerConsumer<B extends GenericBloc> extends StatefulWidget {
   /// Defaults to `false`.
   final bool disposeBloc;
 
-  /// Widget listener.
+  /// Widget listener callback.
   ///
   /// This listener is called when the bloc state changes.
-  final Widget Function(BuildContext context, Object state) listener;
+  final void Function(BuildContext context, Object state) listener;
 
   /// Listen condition.
   ///

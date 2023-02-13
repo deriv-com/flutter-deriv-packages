@@ -7,45 +7,52 @@ import 'package:flutter_deriv_bloc_manager/manager.dart';
 void main() {
   const String blocKey = 'CUBIT_KEY';
 
-  group('bloc manager builder test =>', () {
+  group('bloc manager listener test =>', () {
     setUp(() => BlocManager.instance.register(MockCube(0), key: blocKey));
 
-    testWidgets('should render the bloc builder.', (WidgetTester tester) async {
+    testWidgets('should render the bloc listener.',
+        (WidgetTester tester) async {
+      int currentState = -1;
+
       await tester.pumpWidget(
         MaterialApp(
-          home: BlocManagerBuilder<MockCube>(
+          home: BlocManagerListener<MockCube>(
             blocKey: blocKey,
             disposeBloc: true,
-            builder: (BuildContext context, Object state) =>
-                Text('state: $state'),
+            listener: (BuildContext context, Object state) =>
+                currentState = state as int,
+            child: const SizedBox.shrink(),
           ),
         ),
       );
 
-      expect(find.text('state: 0'), findsOneWidget);
+      expect(currentState, -1);
     });
 
-    testWidgets('should call build when if provided.',
+    testWidgets('should call listen when if provided.',
         (WidgetTester tester) async {
+      int currentState = -1;
+
       await tester.pumpWidget(
         MaterialApp(
-          home: BlocManagerBuilder<MockCube>(
+          home: BlocManagerListener<MockCube>(
             blocKey: blocKey,
             disposeBloc: true,
-            buildWhen: (Object previousState, Object currentState) =>
+            listenWhen: (Object previousState, Object currentState) =>
                 previousState != currentState,
-            builder: (BuildContext context, Object state) =>
-                Text('state: $state'),
+            listener: (BuildContext context, Object state) =>
+                currentState = state as int,
+            child: const SizedBox.shrink(),
           ),
         ),
       );
 
-      expect(find.text('state: 0'), findsOneWidget);
+      expect(currentState, -1);
 
       BlocManager.instance.fetch<MockCube>(blocKey).add(1);
       await tester.pump();
 
-      expect(find.text('state: 1'), findsOneWidget);
+      expect(currentState, 1);
     });
   });
 }

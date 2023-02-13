@@ -8,8 +8,8 @@ class BlocManagerListener<B extends GenericBloc> extends StatefulWidget {
   /// Initializes [BlocManagerListener].
   const BlocManagerListener({
     required this.listener,
+    required this.child,
     this.listenWhen,
-    this.child,
     this.blocKey = BaseBlocManager.defaultKey,
     this.disposeBloc = false,
     Key? key,
@@ -25,10 +25,10 @@ class BlocManagerListener<B extends GenericBloc> extends StatefulWidget {
   /// Defaults to `false`.
   final bool disposeBloc;
 
-  /// Widget listener.
+  /// Widget listener callback.
   ///
   /// This listener is called when the bloc state changes.
-  final Widget Function(BuildContext context, Object state) listener;
+  final void Function(BuildContext context, Object state) listener;
 
   /// Listen condition.
   ///
@@ -36,7 +36,7 @@ class BlocManagerListener<B extends GenericBloc> extends StatefulWidget {
   final bool Function(Object previousState, Object currentState)? listenWhen;
 
   /// The widget which will be rendered as a descendant of the [BlocListenerBase].
-  final Widget? child;
+  final Widget child;
 
   @override
   State<BlocManagerListener<B>> createState() => _BlocManagerListenerState<B>();
