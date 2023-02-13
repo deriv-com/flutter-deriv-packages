@@ -13,11 +13,10 @@ void main() {
     testWidgets('should render the bloc builder.', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: BlocManagerBuilder<MockCube>(
+          home: BlocManagerBuilder<MockCube, int>(
             blocKey: blocKey,
             disposeBloc: true,
-            builder: (BuildContext context, Object state) =>
-                Text('state: $state'),
+            builder: (BuildContext context, int state) => Text('state: $state'),
           ),
         ),
       );
@@ -29,13 +28,12 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: BlocManagerBuilder<MockCube>(
+          home: BlocManagerBuilder<MockCube, int>(
             blocKey: blocKey,
             disposeBloc: true,
-            buildWhen: (Object previousState, Object currentState) =>
+            buildWhen: (int previousState, int currentState) =>
                 previousState != currentState,
-            builder: (BuildContext context, Object state) =>
-                Text('state: $state'),
+            builder: (BuildContext context, int state) => Text('state: $state'),
           ),
         ),
       );

@@ -16,11 +16,10 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          home: BlocManagerListener<MockCube>(
+          home: BlocManagerListener<MockCube, int>(
             blocKey: blocKey,
             disposeBloc: true,
-            listener: (BuildContext context, Object state) =>
-                currentState = state as int,
+            listener: (BuildContext context, int state) => currentState = state,
             child: const SizedBox.shrink(),
           ),
         ),
@@ -35,13 +34,12 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          home: BlocManagerListener<MockCube>(
+          home: BlocManagerListener<MockCube, int>(
             blocKey: blocKey,
             disposeBloc: true,
-            listenWhen: (Object previousState, Object currentState) =>
+            listenWhen: (int previousState, int currentState) =>
                 previousState != currentState,
-            listener: (BuildContext context, Object state) =>
-                currentState = state as int,
+            listener: (BuildContext context, int state) => currentState = state,
             child: const SizedBox.shrink(),
           ),
         ),

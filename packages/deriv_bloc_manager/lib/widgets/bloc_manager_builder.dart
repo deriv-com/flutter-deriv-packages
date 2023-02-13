@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Bloc manager builder widget.
-class BlocManagerBuilder<B extends GenericBloc> extends StatefulWidget {
+class BlocManagerBuilder<B extends GenericBloc, S> extends StatefulWidget {
   /// Initializes [BlocManagerBuilder].
   const BlocManagerBuilder({
     required this.builder,
@@ -24,28 +24,32 @@ class BlocManagerBuilder<B extends GenericBloc> extends StatefulWidget {
   /// Defaults to `false`.
   final bool disposeBloc;
 
-  /// Widget builder.
-  ///
-  /// This builder is called when the bloc state changes.
-  final Widget Function(BuildContext context, Object state) builder;
-
   /// Build condition.
   ///
   /// This condition is called when the bloc state changes.
-  final bool Function(Object previousState, Object currentState)? buildWhen;
+  final bool Function(S previousState, S currentState)? buildWhen;
+
+  /// Widget builder.
+  ///
+  /// This builder is called when the bloc state changes.
+  final Widget Function(BuildContext context, S state) builder;
 
   @override
-  State<BlocManagerBuilder<B>> createState() => _BlocManagerBuilderState<B>();
+  State<BlocManagerBuilder<B, S>> createState() =>
+      _BlocManagerBuilderState<B, S>();
 }
 
-class _BlocManagerBuilderState<B extends GenericBloc>
-    extends State<BlocManagerBuilder<B>> {
+class _BlocManagerBuilderState<B extends GenericBloc, S>
+    extends State<BlocManagerBuilder<B, S>> {
   @override
   Widget build(BuildContext context) => BlocBuilder<B, Object>(
         key: widget.key,
         bloc: BlocManager.instance.fetch<B>(widget.blocKey),
-        buildWhen: widget.buildWhen,
-        builder: widget.builder,
+        buildWhen: (Object previousState, Object currentState) =>
+            widget.buildWhen?.call(previousState as S, currentState as S) ??
+            true,
+        builder: (BuildContext context, Object state) =>
+            widget.builder(context, state as S),
       );
 
   @override

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Bloc manager listener widget.
-class BlocManagerConsumer<B extends GenericBloc> extends StatefulWidget {
+class BlocManagerConsumer<B extends GenericBloc, S> extends StatefulWidget {
   /// Initializes [BlocManagerConsumer].
   const BlocManagerConsumer({
     required this.listener,
@@ -26,40 +26,47 @@ class BlocManagerConsumer<B extends GenericBloc> extends StatefulWidget {
   /// Defaults to `false`.
   final bool disposeBloc;
 
-  /// Widget listener callback.
-  ///
-  /// This listener is called when the bloc state changes.
-  final void Function(BuildContext context, Object state) listener;
-
   /// Listen condition.
   ///
   /// This condition is called when the bloc state changes.
-  final bool Function(Object previousState, Object currentState)? listenWhen;
+  final bool Function(S previousState, S currentState)? listenWhen;
 
-  /// Widget builder.
+  /// Widget listener callback.
   ///
-  /// This builder is called when the bloc state changes.
-  final Widget Function(BuildContext context, Object state) builder;
+  /// This listener is called when the bloc state changes.
+  final void Function(BuildContext context, S state) listener;
 
   /// Build condition.
   ///
   /// This condition is called when the bloc state changes.
-  final bool Function(Object previousState, Object currentState)? buildWhen;
+  final bool Function(S previousState, S currentState)? buildWhen;
+
+  /// Widget builder.
+  ///
+  /// This builder is called when the bloc state changes.
+  final Widget Function(BuildContext context, S state) builder;
 
   @override
-  State<BlocManagerConsumer<B>> createState() => _BlocManagerConsumerState<B>();
+  State<BlocManagerConsumer<B, S>> createState() =>
+      _BlocManagerConsumerState<B, S>();
 }
 
-class _BlocManagerConsumerState<B extends GenericBloc>
-    extends State<BlocManagerConsumer<B>> {
+class _BlocManagerConsumerState<B extends GenericBloc, S>
+    extends State<BlocManagerConsumer<B, S>> {
   @override
   Widget build(BuildContext context) => BlocConsumer<B, Object>(
         key: widget.key,
         bloc: BlocManager.instance.fetch<B>(widget.blocKey),
-        listener: widget.listener,
-        listenWhen: widget.listenWhen,
-        builder: widget.builder,
-        buildWhen: widget.buildWhen,
+        listenWhen: (Object previousState, Object currentState) =>
+            widget.listenWhen?.call(previousState as S, currentState as S) ??
+            true,
+        listener: (BuildContext context, Object state) =>
+            widget.listener(context, state as S),
+        buildWhen: (Object previousState, Object currentState) =>
+            widget.buildWhen?.call(previousState as S, currentState as S) ??
+            true,
+        builder: (BuildContext context, Object state) =>
+            widget.builder(context, state as S),
       );
 
   @override
