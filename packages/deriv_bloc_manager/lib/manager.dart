@@ -6,3 +6,6 @@ export './bloc_manager_types.dart';
 export './state_emitter/base_state_emitter.dart';
 export './state_emitter/base_state_listener.dart';
 export './state_emitter/state_dispatcher.dart';
+export './widgets/bloc_manager_builder.dart';
+export './widgets/bloc_manager_consumer.dart';
+export './widgets/bloc_manager_listener.dart';
