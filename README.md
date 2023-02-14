@@ -15,13 +15,11 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_rudderstack](./packages/deriv_rudderstack)               | A plugin that add RudderStack SDK support to Flutter.                             |
 | [deriv_signup_login](./packages/deriv_signup_login)             | A package for handling in app signup and login.                                   |
 | [deriv_store_launcher](./packages/deriv_store_launcher)         | A plugin to lunch app stores base on platform and manufacturer.                   |
-| [deriv_survicate](./packages/deriv_survicate)                   | A plugin for survicate SDK support to dart.                                       |
 | [deriv_technical_analysis](./packages/deriv_technical_analysis) | A Dart package for Technical Analysis.                                            |
 | [deriv_theme](./packages/deriv_theme)                           | A package that contains the theme used by Deriv products.                         |
 | [deriv_ui](./packages/deriv_ui)                                 | A package to put all common deriv flutter widgets and themes.                     |
 | [deriv_web_view](./packages/deriv_web_view)                     | Deriv web view package.                                                           |
 | [form_builder](./packages/form_builder)                         | A simpler and cleaner way to create, validate and submit forms.                   |
-| [survey_monkey](./packages/survey_monkey)                       | Used to display a survey provided by surveyMonkey and returns completion results. |
 | [update_checker](./packages/update_checker)                     | Check and retrieve update information from the server for the given package.      |
 
 # Add New Package in CI Configuration(config.yml)
