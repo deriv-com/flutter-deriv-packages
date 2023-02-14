@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
 import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
-import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
+import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 
 part 'deriv_auth_state.dart';
 

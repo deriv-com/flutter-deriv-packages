@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/services/token/models/enums.dart';
 

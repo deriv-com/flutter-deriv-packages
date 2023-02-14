@@ -1,15 +1,13 @@
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
-import 'package:deriv_auth/core/services/api_client/exceptions/http_exceptions.dart';
-import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
-import 'package:deriv_auth/core/services/token/models/enums.dart';
-import 'package:deriv_auth/core/services/token/models/login_request.dart';
-import 'package:deriv_auth/core/services/token/models/login_response.dart';
-import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 import 'package:deriv_auth/core/constants/constants.dart';
-
+import 'package:deriv_auth/core/services/api_client/base_client.dart';
+import 'package:deriv_auth/core/services/api_client/exceptions/http_exceptions.dart';
+import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
+import 'package:deriv_auth/core/services/token/models/login_request.dart';
+import 'package:deriv_auth/core/services/token/models/login_response.dart';
+import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
 import '../mocked_data/mocked_auth_models.dart';

@@ -1,5 +1,6 @@
-import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:equatable/equatable.dart';
+
+import 'package:deriv_auth/core/services/token/models/enums.dart';
 
 /// Get tokens request model.
 class GetTokensRequestModel with EquatableMixin {

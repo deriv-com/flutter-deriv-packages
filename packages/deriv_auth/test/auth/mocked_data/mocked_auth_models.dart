@@ -13,7 +13,6 @@ const AuthorizeEntity mockedValidAuthorizeEntity = AuthorizeEntity(
   userId: 1,
   landingCompanyName: 'svg',
   upgradeableLandingCompanies: <String>['svg'],
-  
 );
 
 final AccountModel mockedAccountModel =

@@ -1,8 +1,4 @@
-// ignore_for_file: prefer_single_quotes, unnecessary_import, unused_import
-
-import 'package:equatable/equatable.dart';
-
-/// Logout response class.p
+/// Logout response class.
 class LogoutResponseEntity {
   /// Initializes Logout response class.
   const LogoutResponseEntity({

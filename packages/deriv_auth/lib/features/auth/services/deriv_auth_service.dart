@@ -13,8 +13,8 @@ import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
-
 import 'package:deriv_auth/features/auth/repository/base_auth_repository.dart';
+
 import 'base_auth_service.dart';
 
 /// `DerivGO` implementation of [BaseAuthService].

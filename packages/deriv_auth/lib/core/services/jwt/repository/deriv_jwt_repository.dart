@@ -1,4 +1,3 @@
-
 import 'package:deriv_auth/core/connection_info.dart';
 import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/jwt/models/app_auth/app_authorization_request.dart';

@@ -1,5 +1,6 @@
-import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:intl/intl.dart';
+
+import 'package:deriv_auth/core/constants/constants.dart';
 
 /// Fetches the device time.
 int getCurrentLocalEpoch() =>
@@ -34,7 +35,6 @@ int? getSecondsSinceEpochDateTime(DateTime? dateTime) => dateTime == null
 /// Default pattern is `yyyy-MM-dd`.
 String? getStringFromDateTime(
   DateTime? dateTime, {
-    
   String pattern = dateFormat,
 }) =>
     dateTime == null ? null : DateFormat(pattern).format(dateTime);

@@ -1,8 +1,9 @@
-import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/signup/services/base_signup_service.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
+
+import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth/features/signup/services/base_signup_service.dart';
 
 import '../mock/signup_mock_data.dart';
 

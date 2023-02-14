@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:deriv_auth/core/models/verify_email_model.dart';
-import 'package:deriv_auth/features/reset_password/services/base_reset_password_service.dart';
 import 'package:deriv_auth/features/reset_password/deriv_reset_password_io.dart';
+import 'package:deriv_auth/features/reset_password/services/base_reset_password_service.dart';
 
 part 'reset_password_state.dart';
 

@@ -1,11 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:intl/intl.dart';
+
 import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/verify_email_model.dart';
-import 'package:deriv_auth/features/signup/models/new_virtual_account_request_model.dart';
 import 'package:deriv_auth/features/signup/base_signup_io.dart';
+import 'package:deriv_auth/features/signup/models/new_virtual_account_request_model.dart';
 import 'package:deriv_auth/features/signup/services/base_signup_service.dart';
-import 'package:intl/intl.dart';
 
 part 'signup_state.dart';
 

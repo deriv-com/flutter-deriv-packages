@@ -1,5 +1,4 @@
-/// The selected parameter that should be highlighted when opening the
-/// Social login or signup
+/// The selected parameter that should be highlighted when opening the Social login or signup
 enum SocialAuthType {
   /// Login social type.
   login,

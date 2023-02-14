@@ -1,5 +1,6 @@
-import 'package:deriv_auth/core/helpers/bool_helper.dart';
 import 'package:equatable/equatable.dart';
+
+import 'package:deriv_auth/core/helpers/bool_helper.dart';
 
 /// Verify email request class.
 class VerifyEmailRequestEntity with EquatableMixin {

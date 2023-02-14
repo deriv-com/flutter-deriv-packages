@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_single_quotes, unnecessary_import, unused_import
 import 'package:deriv_auth/core/helpers/bool_helper.dart';
 import 'package:deriv_auth/core/helpers/date_time_helper.dart';
 import 'package:deriv_auth/core/helpers/number_helper.dart';
-import 'package:equatable/equatable.dart';
 
 /// Authorize response model class.
 abstract class AuthorizeResponseEntityModel {
@@ -78,8 +76,8 @@ class AuthorizeResponseEntity extends AuthorizeResponseEntityModel {
 /// AccountTypeEnum mapper.
 final Map<String, AccountTypeEnum> accountTypeEnumMapper =
     <String, AccountTypeEnum>{
-  "trading": AccountTypeEnum.trading,
-  "wallet": AccountTypeEnum.wallet,
+  'trading': AccountTypeEnum.trading,
+  'wallet': AccountTypeEnum.wallet,
 };
 
 /// AccountType Enum.
@@ -93,9 +91,9 @@ enum AccountTypeEnum {
 
 /// PlatformEnum mapper.
 final Map<String, PlatformEnum> platformEnumMapper = <String, PlatformEnum>{
-  "deriv": PlatformEnum.deriv,
-  "dxtrade": PlatformEnum.dxtrade,
-  "mt5": PlatformEnum.mt5,
+  'deriv': PlatformEnum.deriv,
+  'dxtrade': PlatformEnum.dxtrade,
+  'mt5': PlatformEnum.mt5,
 };
 
 /// Platform Enum.

@@ -1,4 +1,3 @@
-
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 
 /// Authentication Exception.

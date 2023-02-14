@@ -1,7 +1,8 @@
-import 'package:deriv_auth/deriv_auth.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
+
+import 'package:deriv_auth/deriv_auth.dart';
 
 class MockResetPasswordRepository extends Mock
     implements BaseResetPasswordRepository {}
