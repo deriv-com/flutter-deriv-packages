@@ -11,6 +11,7 @@ import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
 Future<void> openWebPage({
   required BuildContext context,
   required String url,
+  bool rootNavigator = false,
   LaunchMode launchMode = LaunchMode.externalApplication,
 }) async {
   final bool? isLaunchable = await canLaunchUrlString(url);
@@ -18,8 +19,7 @@ Future<void> openWebPage({
   if (isLaunchable ?? false) {
     await launchUrlString(url, mode: launchMode);
   } else {
-    await Navigator.push(
-      context,
+    await Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => WebViewPage(url: url),
       ),
@@ -34,12 +34,12 @@ Future<void> openInAppWebView({
   String? title,
   bool extendBodyBehindAppBar = false,
   bool setEndpoint = false,
+  bool rootNavigator = false,
   String? endpoint,
   String? appId,
   VoidCallback? onClosed,
 }) async =>
-    Navigator.push(
-      context,
+    Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => WebViewPage(
           url: url,
@@ -63,6 +63,7 @@ Future<void> openLoggedInWebPage({
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
+  required bool rootNavigator,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -81,6 +82,7 @@ Future<void> openLoggedInWebPage({
     defaultAccount: defaultAccount,
     loadingDialog: loadingDialog,
     tokenExpiredDialog: tokenExpiredDialog,
+    rootNavigator: rootNavigator,
     action: action,
     code: code,
   );
@@ -98,12 +100,17 @@ Future<void> openLoggedInWebPage({
       url: ptaLoginUrl,
       title: title,
       setEndpoint: true,
+      rootNavigator: rootNavigator,
       endpoint: endpoint,
       appId: appId,
       onClosed: onClosed,
     );
   } else {
-    await openWebPage(context: context, url: ptaLoginUrl);
+    await openWebPage(
+      context: context,
+      url: ptaLoginUrl,
+      rootNavigator: rootNavigator,
+    );
   }
 
   if (validateCredentialsOnClosed) {
@@ -117,6 +124,7 @@ Future<void> openLoggedInWebPage({
       defaultAccount: defaultAccount,
       loadingDialog: loadingDialog,
       tokenExpiredDialog: tokenExpiredDialog,
+      rootNavigator: rootNavigator,
       action: action,
       code: code,
     );
@@ -134,6 +142,7 @@ Future<String?> _fetchOneTimeToken({
   required String? refreshToken,
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
+  required bool rootNavigator,
   String? action,
   String? code,
 }) async {
@@ -150,7 +159,7 @@ Future<String?> _fetchOneTimeToken({
     code: code,
   );
 
-  Navigator.pop(context);
+  Navigator.of(context, rootNavigator: rootNavigator).pop();
 
   return oneTimeToken;
 }
@@ -196,6 +205,7 @@ Future<String?> _validateCredentials({
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
+  required bool rootNavigator,
   String? action,
   String? code,
 }) async {
@@ -208,6 +218,7 @@ Future<String?> _validateCredentials({
     refreshToken: refreshToken,
     defaultAccount: defaultAccount,
     loadingDialog: loadingDialog,
+    rootNavigator: rootNavigator,
     action: action,
     code: code,
   );
