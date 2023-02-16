@@ -28,7 +28,9 @@ class BlocManagerConsumer<B extends GenericBloc, S> extends StatefulWidget {
 
   /// Listen condition.
   ///
-  /// This condition is called when the bloc state changes.
+  /// Determines whether we should call [listener] or not.
+  ///
+  /// Passing `null` will cause the listener to be called every time the bloc state changes.
   final bool Function(S previousState, S currentState)? listenWhen;
 
   /// Widget listener callback.
@@ -38,7 +40,9 @@ class BlocManagerConsumer<B extends GenericBloc, S> extends StatefulWidget {
 
   /// Build condition.
   ///
-  /// This condition is called when the bloc state changes.
+  /// Determines whether the widget should be rebuilt.
+  ///
+  /// Passing `null` will cause the widget to be rebuilt every time the bloc state changes.
   final bool Function(S previousState, S currentState)? buildWhen;
 
   /// Widget builder.

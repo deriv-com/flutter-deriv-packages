@@ -19,7 +19,7 @@ class BlocManager implements BaseBlocManager {
   final Map<String, StreamSubscription<Object>> _subscriptions =
       <String, StreamSubscription<Object>>{};
 
-  final Set<GenericStateEmitter> _stateEmitters = <GenericStateEmitter>{};
+  final List<GenericStateEmitter> _stateEmitters = <GenericStateEmitter>[];
 
   @override
   Map<String, GenericBloc> get repository => _repository;

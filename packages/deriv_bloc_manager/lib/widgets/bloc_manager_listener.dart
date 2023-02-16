@@ -27,7 +27,9 @@ class BlocManagerListener<B extends GenericBloc, S> extends StatefulWidget {
 
   /// Listen condition.
   ///
-  /// This condition is called when the bloc state changes.
+  /// Determines whether we should call [listener] or not.
+  ///
+  /// Passing `null` will cause the listener to be called every time the bloc state changes.
   final bool Function(S previousState, S currentState)? listenWhen;
 
   /// Widget listener callback.
