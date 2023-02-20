@@ -18,7 +18,6 @@ void main() {
         MaterialApp(
           home: BlocManagerListener<MockCube, int>(
             blocKey: blocKey,
-            disposeBloc: true,
             listener: (BuildContext context, int state) => currentState = state,
             child: const SizedBox.shrink(),
           ),
@@ -36,7 +35,6 @@ void main() {
         MaterialApp(
           home: BlocManagerListener<MockCube, int>(
             blocKey: blocKey,
-            disposeBloc: true,
             listenWhen: (int previousState, int currentState) =>
                 previousState != currentState,
             listener: (BuildContext context, int state) => currentState = state,

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Bloc manager listener widget.
-class BlocManagerConsumer<B extends GenericBloc, S> extends StatefulWidget {
+class BlocManagerConsumer<B extends GenericBloc, S> extends StatelessWidget {
   /// Initializes [BlocManagerConsumer].
   const BlocManagerConsumer({
     required this.listener,
@@ -12,7 +12,6 @@ class BlocManagerConsumer<B extends GenericBloc, S> extends StatefulWidget {
     this.listenWhen,
     this.buildWhen,
     this.blocKey = BaseBlocManager.defaultKey,
-    this.disposeBloc = false,
     Key? key,
   }) : super(key: key);
 
@@ -20,11 +19,6 @@ class BlocManagerConsumer<B extends GenericBloc, S> extends StatefulWidget {
   ///
   /// defaults to [BaseBlocManager.defaultKey].
   final String blocKey;
-
-  /// Indicates that bloc should be disposed or not.
-  ///
-  /// Defaults to `false`.
-  final bool disposeBloc;
 
   /// Listen condition.
   ///
@@ -51,34 +45,16 @@ class BlocManagerConsumer<B extends GenericBloc, S> extends StatefulWidget {
   final Widget Function(BuildContext context, S state) builder;
 
   @override
-  State<BlocManagerConsumer<B, S>> createState() =>
-      _BlocManagerConsumerState<B, S>();
-}
-
-class _BlocManagerConsumerState<B extends GenericBloc, S>
-    extends State<BlocManagerConsumer<B, S>> {
-  @override
   Widget build(BuildContext context) => BlocConsumer<B, Object>(
-        key: widget.key,
-        bloc: BlocManager.instance.fetch<B>(widget.blocKey),
+        key: key,
+        bloc: BlocManager.instance.fetch<B>(blocKey),
         listenWhen: (Object previousState, Object currentState) =>
-            widget.listenWhen?.call(previousState as S, currentState as S) ??
-            true,
+            listenWhen?.call(previousState as S, currentState as S) ?? true,
         listener: (BuildContext context, Object state) =>
-            widget.listener(context, state as S),
+            listener(context, state as S),
         buildWhen: (Object previousState, Object currentState) =>
-            widget.buildWhen?.call(previousState as S, currentState as S) ??
-            true,
+            buildWhen?.call(previousState as S, currentState as S) ?? true,
         builder: (BuildContext context, Object state) =>
-            widget.builder(context, state as S),
+            builder(context, state as S),
       );
-
-  @override
-  void dispose() {
-    if (widget.disposeBloc) {
-      BlocManager.instance.dispose<B>(widget.blocKey);
-    }
-
-    super.dispose();
-  }
 }

@@ -15,7 +15,6 @@ void main() {
         MaterialApp(
           home: BlocManagerBuilder<MockCube, int>(
             blocKey: blocKey,
-            disposeBloc: true,
             builder: (BuildContext context, int state) => Text('state: $state'),
           ),
         ),
@@ -30,7 +29,6 @@ void main() {
         MaterialApp(
           home: BlocManagerBuilder<MockCube, int>(
             blocKey: blocKey,
-            disposeBloc: true,
             buildWhen: (int previousState, int currentState) =>
                 previousState != currentState,
             builder: (BuildContext context, int state) => Text('state: $state'),

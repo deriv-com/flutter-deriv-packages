@@ -4,13 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Bloc manager builder widget.
-class BlocManagerBuilder<B extends GenericBloc, S> extends StatefulWidget {
+class BlocManagerBuilder<B extends GenericBloc, S> extends StatelessWidget {
   /// Initializes [BlocManagerBuilder].
   const BlocManagerBuilder({
     required this.builder,
     this.buildWhen,
     this.blocKey = BaseBlocManager.defaultKey,
-    this.disposeBloc = false,
     Key? key,
   }) : super(key: key);
 
@@ -18,11 +17,6 @@ class BlocManagerBuilder<B extends GenericBloc, S> extends StatefulWidget {
   ///
   /// defaults to [BaseBlocManager.defaultKey].
   final String blocKey;
-
-  /// Indicates that bloc should be disposed or not.
-  ///
-  /// Defaults to `false`.
-  final bool disposeBloc;
 
   /// Build condition.
   ///
@@ -37,29 +31,12 @@ class BlocManagerBuilder<B extends GenericBloc, S> extends StatefulWidget {
   final Widget Function(BuildContext context, S state) builder;
 
   @override
-  State<BlocManagerBuilder<B, S>> createState() =>
-      _BlocManagerBuilderState<B, S>();
-}
-
-class _BlocManagerBuilderState<B extends GenericBloc, S>
-    extends State<BlocManagerBuilder<B, S>> {
-  @override
   Widget build(BuildContext context) => BlocBuilder<B, Object>(
-        key: widget.key,
-        bloc: BlocManager.instance.fetch<B>(widget.blocKey),
+        key: key,
+        bloc: BlocManager.instance.fetch<B>(blocKey),
         buildWhen: (Object previousState, Object currentState) =>
-            widget.buildWhen?.call(previousState as S, currentState as S) ??
-            true,
+            buildWhen?.call(previousState as S, currentState as S) ?? true,
         builder: (BuildContext context, Object state) =>
-            widget.builder(context, state as S),
+            builder(context, state as S),
       );
-
-  @override
-  void dispose() {
-    if (widget.disposeBloc) {
-      BlocManager.instance.dispose<B>(widget.blocKey);
-    }
-
-    super.dispose();
-  }
 }

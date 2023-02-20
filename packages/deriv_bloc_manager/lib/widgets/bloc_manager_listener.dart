@@ -4,14 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Bloc manager listener widget.
-class BlocManagerListener<B extends GenericBloc, S> extends StatefulWidget {
+class BlocManagerListener<B extends GenericBloc, S> extends StatelessWidget {
   /// Initializes [BlocManagerListener].
   const BlocManagerListener({
     required this.listener,
     required this.child,
     this.listenWhen,
     this.blocKey = BaseBlocManager.defaultKey,
-    this.disposeBloc = false,
     Key? key,
   }) : super(key: key);
 
@@ -19,11 +18,6 @@ class BlocManagerListener<B extends GenericBloc, S> extends StatefulWidget {
   ///
   /// defaults to [BaseBlocManager.defaultKey].
   final String blocKey;
-
-  /// Indicates that bloc should be disposed or not.
-  ///
-  /// Defaults to `false`.
-  final bool disposeBloc;
 
   /// Listen condition.
   ///
@@ -41,33 +35,16 @@ class BlocManagerListener<B extends GenericBloc, S> extends StatefulWidget {
   final Widget child;
 
   @override
-  State<BlocManagerListener<B, S>> createState() =>
-      _BlocManagerListenerState<B, S>();
-}
-
-class _BlocManagerListenerState<B extends GenericBloc, S>
-    extends State<BlocManagerListener<B, S>> {
-  @override
   Widget build(BuildContext context) => BlocListener<B, Object>(
-        key: widget.key,
-        bloc: BlocManager.instance.fetch<B>(widget.blocKey),
+        key: key,
+        bloc: BlocManager.instance.fetch<B>(blocKey),
         listenWhen: (Object previousState, Object currentState) =>
-            widget.listenWhen?.call(previousState as S, currentState as S) ??
-            true,
+            listenWhen?.call(previousState as S, currentState as S) ?? true,
         listener: (BuildContext context, Object state) {
           if (state is S) {
-            widget.listener(context, state as S);
+            listener(context, state as S);
           }
         },
-        child: widget.child,
+        child: child,
       );
-
-  @override
-  void dispose() {
-    if (widget.disposeBloc) {
-      BlocManager.instance.dispose<B>(widget.blocKey);
-    }
-
-    super.dispose();
-  }
 }
