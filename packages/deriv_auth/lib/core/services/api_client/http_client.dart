@@ -16,7 +16,19 @@ class HttpClient extends BaseHttpClient {
 
   /// Http get request.
   @override
-  Future<http.Response> get(String url) async => http.get(Uri.parse(url));
+  Future<http.Response> get(
+    String url, {
+    String? basicAuthToken,
+  }) {
+    final Map<String, String> headers = <String, String>{
+      if (basicAuthToken != null) 'authorization': 'Basic $basicAuthToken'
+    };
+
+    return http.get(
+      Uri.parse(url),
+      headers: headers,
+    );
+  }
 
   ///  Http post request.
   @override

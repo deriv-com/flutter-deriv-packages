@@ -20,5 +20,6 @@ export 'features/reset_password/repository/base_reset_password_repository.dart';
 export 'features/reset_password/services/deriv_reset_password_service.dart';
 export 'features/signup/cubit/signup_cubit.dart';
 export 'features/signup/models/new_virtual_account_request_model.dart';
+export 'features/signup/models/signup_error_type.dart';
 export 'features/signup/repository/base_signup_repository.dart';
 export 'features/signup/services/deriv_signup_service.dart';
