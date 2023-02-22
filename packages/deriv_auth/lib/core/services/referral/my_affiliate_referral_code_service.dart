@@ -2,21 +2,13 @@ import 'package:deriv_auth/core/exceptions/referral_code_exception.dart';
 import 'package:deriv_auth/core/extensions/extensions.dart';
 import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/referral/base_referral_code_service.dart';
+import 'package:deriv_auth/core/services/referral/models/my_affiliate_referral_code_request_model.dart';
 import 'package:http/http.dart';
 
-/// Deriv Implementation of [BaseReferralCodeService].
-class DerivReferralCodeService implements BaseReferralCodeService {
-  /// Initializes [DerivReferralCodeService].
-  DerivReferralCodeService(this.client);
-
-  static const String _envVariableKey = 'MY_AFFILIATE_AUTH_TOKEN';
-
-  static const String _brandId = '2';
-  static const String _feedId = '15';
-
-  static const String _schema = 'https';
-  static const String _host = 'admin.binary.com';
-  static const String _path = '/feeds.php';
+/// `My Affiliate` Implementation of [BaseReferralCodeService].
+class MyAffiliateReferralCodeService implements BaseReferralCodeService {
+  /// Initializes [MyAffiliateReferralCodeService].
+  MyAffiliateReferralCodeService(this.client, this.request);
 
   static const String _tokenTag = 'TOKEN';
   static const String _errorTag = 'ERROR';
@@ -28,25 +20,26 @@ class DerivReferralCodeService implements BaseReferralCodeService {
   /// Http client.
   final BaseHttpClient client;
 
+  /// Request model.
+  final MyAffiliateReferralCodeRequestModel request;
+
   @override
   Future<String> getReferralToken(String referralCode) async {
     final Map<String, String> queryParameters = <String, String>{
-      'FEED_ID': _feedId,
-      'BRAND_ID': _brandId,
+      'FEED_ID': '',
+      'BRAND_ID': request.brandId,
       'CODE': referralCode,
     };
 
     final Uri uri = Uri(
-      scheme: _schema,
-      host: _host,
-      path: _path,
+      scheme: 'https',
+      host: request.host,
+      path: '/feeds.php',
       queryParameters: queryParameters,
     );
 
-    const String authToken = String.fromEnvironment(_envVariableKey);
-
     final Response response =
-        await client.get(uri.toString(), basicAuthToken: authToken);
+        await client.get(uri.toString(), basicAuthToken: request.authToken);
 
     final String result = response.body;
 

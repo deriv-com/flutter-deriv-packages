@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:deriv_auth/core/exceptions/referral_code_exception.dart';
 import 'package:intl/intl.dart';
 
+import 'package:deriv_auth/core/services/referral/models/my_affiliate_referral_code_request_model.dart';
+import 'package:deriv_auth/core/exceptions/referral_code_exception.dart';
 import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/verify_email_model.dart';
@@ -9,7 +10,7 @@ import 'package:deriv_auth/features/signup/base_signup_io.dart';
 import 'package:deriv_auth/features/signup/models/new_virtual_account_request_model.dart';
 import 'package:deriv_auth/core/services/api_client/http_client.dart';
 import 'package:deriv_auth/core/services/referral/base_referral_code_service.dart';
-import 'package:deriv_auth/core/services/referral/deriv_referral_code_service.dart';
+import 'package:deriv_auth/core/services/referral/my_affiliate_referral_code_service.dart';
 import 'package:deriv_auth/features/signup/models/signup_error_type.dart';
 import 'package:deriv_auth/features/signup/services/base_signup_service.dart';
 
@@ -18,11 +19,21 @@ part 'signup_state.dart';
 /// Cubit to manage Sign up.
 class DerivSignupCubit extends Cubit<DerivSignupState>
     implements DerivSignupIO {
-  /// Initializes the cubit with [SignupInitialState].
-  DerivSignupCubit({
+  /// Initializes the cubit with [DerivSignupInitialState].
+  DerivSignupCubit._({
     required this.service,
-  })  : referralService = DerivReferralCodeService(HttpClient()),
-        super(const DerivSignupInitialState());
+    required this.referralService,
+  }) : super(const DerivSignupInitialState());
+
+  /// Initializes cubit for using `my affiliate` api.
+  factory DerivSignupCubit.initWithMyAffiliate({
+    required BaseSignupService service,
+    required MyAffiliateReferralCodeRequestModel requestModel,
+  }) =>
+      DerivSignupCubit._(
+        service: service,
+        referralService: MyAffiliateReferralCodeService(HttpClient(), requestModel),
+      );
 
   /// Sign up service
   final BaseSignupService service;
