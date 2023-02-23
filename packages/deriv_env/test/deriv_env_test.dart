@@ -30,11 +30,5 @@ void main() {
       expect(Env().get<double>('DOUBLE_VAR'), equals(3.14));
       expect(Env().get<bool>('BOOL_VAR'), equals(true));
     });
-
-    test('set() should add a new key-value pair to _env.', () {
-      Env().set<String>('STRING_VAR', 'value1');
-
-      expect(Env().get<String>('STRING_VAR'), equals('value1'));
-    });
   });
 }

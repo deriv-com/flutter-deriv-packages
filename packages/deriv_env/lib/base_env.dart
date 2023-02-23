@@ -5,7 +5,4 @@ abstract class BaseEnv {
 
   /// Retrieves an environment variable value by key.
   T? get<T>(String key, {T? defaultValue});
-
-  /// Sets an environment variable value.
-  void set<T>(String key, T value);
 }

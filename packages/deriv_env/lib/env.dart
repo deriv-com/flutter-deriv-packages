@@ -21,8 +21,8 @@ class Env extends BaseEnv {
 
     final List<String> fileEntries = await _getEntriesFromFile(filename);
 
-    for (final String entrie in fileEntries) {
-      final List<String> item = entrie.split('=');
+    for (final String entry in fileEntries) {
+      final List<String> item = entry.split('=');
 
       if (item.length == 2) {
         _env[item.first.trim()] = item.last.trim();
@@ -39,8 +39,6 @@ class Env extends BaseEnv {
     final String value = _env[key];
 
     switch (T) {
-      case String:
-        return value as T;
       case int:
         return int.tryParse(value) as T;
       case double:
@@ -49,22 +47,19 @@ class Env extends BaseEnv {
         return (value.toLowerCase() == 'true') as T;
 
       default:
-        throw Exception('Invalid type: $T.');
+        return value as T;
     }
   }
 
-  @override
-  void set<T>(String key, T value) => _env[key] = value;
-
   Future<List<String>> _getEntriesFromFile(String filename) async {
-    final String envFileContetnt = await rootBundle.loadString(filename);
+    final String envFileContent = await rootBundle.loadString(filename);
 
-    if (envFileContetnt.isEmpty) {
+    if (envFileContent.isEmpty) {
       throw Exception('Env file is empty.');
     }
 
     final List<String> entries = <String>[];
-    final List<String> content = envFileContetnt.split('\n');
+    final List<String> content = envFileContent.split('\n');
 
     for (final String line in content) {
       if (line.isEmpty || line.startsWith('#')) {
