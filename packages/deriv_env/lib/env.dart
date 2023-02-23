@@ -1,5 +1,3 @@
-library deriv_env;
-
 import 'package:flutter/services.dart';
 
 import 'base_env.dart';
@@ -13,11 +11,25 @@ class Env extends BaseEnv {
 
   static final Env _instance = Env._();
 
-  final Map<String, dynamic> _env = <String, dynamic>{};
+  bool _isInitialized = false;
+
+  final Map<String, dynamic> _entries = <String, dynamic>{};
+
+  @override
+  bool get isInitialized => _isInitialized;
+
+  @override
+  Map<String, dynamic> get entries {
+    if (!_isInitialized) {
+      throw Exception('Env class is not initialized, Call `load()` first.');
+    }
+
+    return _entries;
+  }
 
   @override
   Future<void> load([String filename = '.env']) async {
-    _env.clear();
+    _entries.clear();
 
     final List<String> fileEntries = await _getEntriesFromFile(filename);
 
@@ -25,18 +37,24 @@ class Env extends BaseEnv {
       final List<String> item = entry.split('=');
 
       if (item.length == 2) {
-        _env[item.first.trim()] = item.last.trim();
+        _entries[item.first.trim()] = item.last.trim();
       }
     }
+
+    _isInitialized = true;
   }
 
   @override
   T? get<T>(String key, {T? defaultValue}) {
-    if (!_env.containsKey(key)) {
+    if (!_isInitialized) {
+      throw Exception('Env class is not initialized, Call `load()` first.');
+    }
+
+    if (!_entries.containsKey(key)) {
       return defaultValue;
     }
 
-    final String value = _env[key];
+    final String value = _entries[key];
 
     switch (T) {
       case int:
