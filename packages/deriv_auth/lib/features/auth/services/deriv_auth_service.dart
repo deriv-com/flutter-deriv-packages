@@ -119,6 +119,8 @@ class DerivAuthService extends BaseAuthService {
       await authRepository.onLogin(_enhancedAuthorizeEntity);
 
       return _enhancedAuthorizeEntity;
+    } on DerivAuthException {
+      rethrow;
     } on Exception catch (error) {
       /// Handling the situation when user clicked on an account that is recently disabled.
       /// Each time we switch to an account the state of all accounts get updated from the Authorize response.

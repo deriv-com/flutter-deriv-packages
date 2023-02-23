@@ -13,4 +13,7 @@ class DerivAuthException implements Exception {
 
   /// Exception type.
   AuthErrorType type;
+
+  @override
+  String toString() => message;
 }
