@@ -8,7 +8,7 @@ import 'package:http/http.dart';
 /// `My Affiliate` Implementation of [BaseReferralCodeService].
 class MyAffiliateReferralCodeService implements BaseReferralCodeService {
   /// Initializes [MyAffiliateReferralCodeService].
-  MyAffiliateReferralCodeService(this.client, this.request);
+  MyAffiliateReferralCodeService({required this.client, required this.request});
 
   static const String _tokenTag = 'TOKEN';
   static const String _errorTag = 'ERROR';
@@ -26,7 +26,7 @@ class MyAffiliateReferralCodeService implements BaseReferralCodeService {
   @override
   Future<String> getReferralToken(String referralCode) async {
     final Map<String, String> queryParameters = <String, String>{
-      'FEED_ID': '',
+      'FEED_ID': request.feedId,
       'BRAND_ID': request.brandId,
       'CODE': referralCode,
     };

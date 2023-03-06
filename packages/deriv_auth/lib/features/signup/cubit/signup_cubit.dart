@@ -32,7 +32,10 @@ class DerivSignupCubit extends Cubit<DerivSignupState>
   }) =>
       DerivSignupCubit._(
         service: service,
-        referralService: MyAffiliateReferralCodeService(HttpClient(), requestModel),
+        referralService: MyAffiliateReferralCodeService(
+          client: HttpClient(),
+          request: requestModel,
+        ),
       );
 
   /// Sign up service
