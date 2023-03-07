@@ -123,7 +123,7 @@ class DerivAuthService extends BaseAuthService {
       rethrow;
     } on Exception catch (error) {
       throw DerivAuthException(
-        message: error.toString(),
+        message: '$error',
         type: AuthErrorType.failedAuthorization,
       );
     }
