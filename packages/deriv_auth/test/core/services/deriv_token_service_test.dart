@@ -5,8 +5,8 @@ import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
-import 'mock/get_tokens_request_mock.dart';
-import 'mock/get_tokens_response_mock.dart';
+import 'mock/request_mock.dart';
+import 'mock/response_mock.dart';
 
 class MockHttpClient extends Mock implements BaseHttpClient {}
 
