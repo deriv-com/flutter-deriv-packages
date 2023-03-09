@@ -19,36 +19,42 @@ class MockConnectionInfo implements AuthConnectionInfo {
 }
 
 void main() {
-  late final MockHttpClient client;
-  late final DerivTokenService tokenService;
-  late final String jwtToken;
-  late final MockConnectionInfo connectionInfo;
+  late final MockHttpClient _client;
+  late final DerivTokenService _tokenService;
+  late final String _jwtToken;
+  late final MockConnectionInfo _connectionInfo;
 
   setUpAll(() {
-    client = MockHttpClient();
-    tokenService = DerivTokenService();
-    jwtToken = 'jwtToken';
-    connectionInfo = MockConnectionInfo();
+    _client = MockHttpClient();
+    _tokenService = DerivTokenService();
+    _jwtToken = 'jwtToken';
+    _connectionInfo = MockConnectionInfo();
 
-    when(() => client.post(
+    when(() => _client.post(
           url: any(named: 'url'),
           jsonBody: any(named: 'jsonBody'),
           headers: any(named: 'headers'),
         )).thenAnswer((_) async => mockGetTokenResponse);
   });
+
   group('DerivTokenService', () {
     test('getUserTokens', () async {
-      final GetTokensResponseModel response = await tokenService.getUserTokens(
-          request: GetTokensRequestModel(),
-          client: client,
-          jwtToken: jwtToken,
-          connectionInfo: connectionInfo);
+      final GetTokensResponseModel response = await _tokenService.getUserTokens(
+        request: GetTokensRequestModel(),
+        client: _client,
+        jwtToken: _jwtToken,
+        connectionInfo: _connectionInfo,
+      );
+
       expect(response, isA<GetTokensResponseModel>());
-      verify(() => client.post(
-            url: any(named: 'url'),
-            jsonBody: any(named: 'jsonBody'),
-            headers: any(named: 'headers'),
-          )).called(1);
+
+      verify(
+        () => _client.post(
+          url: any(named: 'url'),
+          jsonBody: any(named: 'jsonBody'),
+          headers: any(named: 'headers'),
+        ),
+      ).called(1);
     });
   });
 }

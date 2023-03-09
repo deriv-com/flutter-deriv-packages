@@ -8,29 +8,33 @@ import '../mock/mock_auth_challenge_response.dart';
 class MockJwtRepository extends Mock implements BaseJwtRepository {}
 
 void main() {
-  const String jwtToken = 'jwtToken';
-  late final MockJwtRepository jwtRepository;
-  late final DerivJwtService jwtService;
+  const String _jwtToken = 'jwtToken';
+
+  late final MockJwtRepository _jwtRepository;
+  late final DerivJwtService _jwtService;
 
   setUpAll(() {
-    jwtRepository = MockJwtRepository();
-    jwtService = DerivJwtService(repository: jwtRepository);
+    _jwtRepository = MockJwtRepository();
+    _jwtService = DerivJwtService(repository: _jwtRepository);
 
-    when(() => jwtRepository.getAppAuthorizationChallenge())
+    when(() => _jwtRepository.getAppAuthorizationChallenge())
         .thenAnswer((_) async => mockAuthChallengeModel);
 
     // Mock the authorizeApp method to return `jwtToken`.
-    when(() => jwtRepository.authorizeApp(
-        solution: any(named: 'solution'),
-        expire: any(named: 'expire'))).thenAnswer((_) async => jwtToken);
+    when(() => _jwtRepository.authorizeApp(
+          solution: any(named: 'solution'),
+          expire: any(named: 'expire'),
+        )).thenAnswer((_) async => _jwtToken);
   });
 
   group('DerivJwtService', () {
     test('getJwtToken', () async {
-      final String token = await jwtService.getJwtToken();
-      expect(token, jwtToken);
-      verify(() => jwtRepository.getAppAuthorizationChallenge()).called(1);
-      verify(() => jwtRepository.authorizeApp(
+      final String token = await _jwtService.getJwtToken();
+
+      expect(token, _jwtToken);
+
+      verify(() => _jwtRepository.getAppAuthorizationChallenge()).called(1);
+      verify(() => _jwtRepository.authorizeApp(
           solution: any(named: 'solution'),
           expire: any(named: 'expire'))).called(1);
     });
