@@ -9,7 +9,7 @@ class MockJwtRepository extends Mock implements BaseJwtRepository {}
 
 void main() {
   const String jwtToken = 'jwtToken';
-  late final BaseJwtRepository jwtRepository;
+  late final MockJwtRepository jwtRepository;
   late final DerivJwtService jwtService;
 
   setUpAll(() {
@@ -19,7 +19,7 @@ void main() {
     when(() => jwtRepository.getAppAuthorizationChallenge())
         .thenAnswer((_) async => mockAuthChallengeModel);
 
-    // mock the authorizeApp method to return `jwtToken`
+    // Mock the authorizeApp method to return `jwtToken`.
     when(() => jwtRepository.authorizeApp(
         solution: any(named: 'solution'),
         expire: any(named: 'expire'))).thenAnswer((_) async => jwtToken);
@@ -29,6 +29,10 @@ void main() {
     test('getJwtToken', () async {
       final String token = await jwtService.getJwtToken();
       expect(token, jwtToken);
+      verify(() => jwtRepository.getAppAuthorizationChallenge()).called(1);
+      verify(() => jwtRepository.authorizeApp(
+          solution: any(named: 'solution'),
+          expire: any(named: 'expire'))).called(1);
     });
   });
 }

@@ -19,10 +19,10 @@ class MockConnectionInfo implements AuthConnectionInfo {
 }
 
 void main() {
-  late final BaseHttpClient client;
+  late final MockHttpClient client;
   late final DerivTokenService tokenService;
   late final String jwtToken;
-  late final AuthConnectionInfo connectionInfo;
+  late final MockConnectionInfo connectionInfo;
 
   setUpAll(() {
     client = MockHttpClient();
@@ -44,6 +44,11 @@ void main() {
           jwtToken: jwtToken,
           connectionInfo: connectionInfo);
       expect(response, isA<GetTokensResponseModel>());
+      verify(() => client.post(
+            url: any(named: 'url'),
+            jsonBody: any(named: 'jsonBody'),
+            headers: any(named: 'headers'),
+          )).called(1);
     });
   });
 }
