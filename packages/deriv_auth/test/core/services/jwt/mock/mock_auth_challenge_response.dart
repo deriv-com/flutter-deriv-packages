@@ -2,4 +2,7 @@ import 'package:deriv_auth/core/services/jwt/models/app_auth_challenge/app_auth_
 
 AppAuthorizationChallengeResponseModel mockAuthChallengeModel =
     AppAuthorizationChallengeResponseModel(
-        challenge: 'challenge', expire: 2023, appToken: 'appToken');
+  challenge: 'challenge',
+  expire: 2023,
+  appToken: 'appToken',
+);
