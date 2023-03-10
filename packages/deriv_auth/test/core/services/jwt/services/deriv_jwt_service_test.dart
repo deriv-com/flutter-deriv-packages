@@ -28,15 +28,42 @@ void main() {
   });
 
   group('DerivJwtService', () {
-    test('getJwtToken', () async {
-      final String token = await _jwtService.getJwtToken();
+    group('.getJwtToken', () {
+      test('should return jwt token received from authorize app', () async {
+        final String token = await _jwtService.getJwtToken();
 
-      expect(token, _jwtToken);
+        expect(token, _jwtToken);
 
-      verify(() => _jwtRepository.getAppAuthorizationChallenge()).called(1);
-      verify(() => _jwtRepository.authorizeApp(
-          solution: any(named: 'solution'),
-          expire: any(named: 'expire'))).called(1);
+        verify(() => _jwtRepository.getAppAuthorizationChallenge()).called(1);
+        verify(() => _jwtRepository.authorizeApp(
+            solution: any(named: 'solution'),
+            expire: any(named: 'expire'))).called(1);
+      });
+
+      test(
+          'should return jwt token without authorizing app if jwt token is already available',
+          () async {
+        _jwtService.jwtToken = _jwtToken;
+
+        final String token = await _jwtService.getJwtToken();
+
+        expect(token, _jwtToken);
+
+        verifyNever(() => _jwtRepository.getAppAuthorizationChallenge());
+        verifyNever(() => _jwtRepository.authorizeApp(
+            solution: any(named: 'solution'),
+            expire: any(named: 'expire'))).called(0);
+      });
+    });
+
+    group('.clearJwtToken', () {
+      test('should clear jwt token', () async {
+        _jwtService
+          ..jwtToken = _jwtToken
+          ..clearJwtToken();
+
+        expect(_jwtService.jwtToken, null);
+      });
     });
   });
 }
