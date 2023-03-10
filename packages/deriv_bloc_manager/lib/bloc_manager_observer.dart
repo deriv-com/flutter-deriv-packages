@@ -11,6 +11,10 @@ class BlocManagerObserver extends BlocObserver {
     this.enableOnCloseLogs = true,
     this.enableOnErrorLogs = true,
     this.verboseChangeStateLogs = false,
+    this.onCreateCallback,
+    this.onChangeCallback,
+    this.onCloseCallback,
+    this.onErrorCallback,
   });
 
   /// Enables on create logs.
@@ -28,9 +32,30 @@ class BlocManagerObserver extends BlocObserver {
   /// Enables verbose change state logs.
   final bool verboseChangeStateLogs;
 
+  /// Called whenever a [Bloc] is created.
+  final void Function(BlocBase<dynamic> bloc)? onCreateCallback;
+
+  /// Called whenever a [Bloc] state changes.
+  final void Function({
+    required BlocBase<dynamic> bloc,
+    required Change<dynamic> change,
+  })? onChangeCallback;
+
+  /// Called whenever a [Bloc] is closed.
+  final void Function(BlocBase<dynamic> bloc)? onCloseCallback;
+
+  /// Called whenever a [Bloc] throws an error.
+  final void Function({
+    required BlocBase<dynamic> bloc,
+    required Object error,
+    required StackTrace stackTrace,
+  })? onErrorCallback;
+
   @override
   void onCreate(BlocBase<dynamic> bloc) {
     super.onCreate(bloc);
+
+    onCreateCallback?.call(bloc);
 
     if (enableOnCreateLogs) {
       logger.log('Bloc created: ${bloc.runtimeType}');
@@ -39,6 +64,10 @@ class BlocManagerObserver extends BlocObserver {
 
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
+    super.onChange(bloc, change);
+
+    onChangeCallback?.call(bloc: bloc, change: change);
+
     if (enableOnChangeLogs) {
       logger.log(
         verboseChangeStateLogs
@@ -46,13 +75,13 @@ class BlocManagerObserver extends BlocObserver {
             : 'Bloc state: ${bloc.runtimeType} state changed from ${change.currentState.runtimeType} to ${change.nextState.runtimeType}',
       );
     }
-
-    super.onChange(bloc, change);
   }
 
   @override
   void onClose(BlocBase<dynamic> bloc) {
     super.onClose(bloc);
+
+    onCloseCallback?.call(bloc);
 
     if (enableOnCloseLogs) {
       logger.log('Bloc closed: ${bloc.runtimeType}');
@@ -61,10 +90,12 @@ class BlocManagerObserver extends BlocObserver {
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
+    super.onError(bloc, error, stackTrace);
+
+    onErrorCallback?.call(bloc: bloc, error: error, stackTrace: stackTrace);
+
     if (enableOnErrorLogs) {
       logger.log('Bloc error: ${bloc.runtimeType}\n$error\n$stackTrace');
     }
-
-    super.onError(bloc, error, stackTrace);
   }
 }
