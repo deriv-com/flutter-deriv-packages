@@ -1,6 +1,3 @@
-import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
-
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
@@ -9,6 +6,8 @@ import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 import '../mocked_data/mocked_auth_models.dart';
 
@@ -26,6 +25,10 @@ void main() {
   group(
     'auth cubit tests =>',
     () {
+      test('.output returns stream of [DerivAuthState]', () {
+        expect(authCubit.output, isA<Stream<DerivAuthState>>());
+      });
+
       test('should emit [AuthLoggedOutState] for the first app start.', () {
         when(() => service.getDefaultAccount())
             .thenAnswer((_) => Future<AccountModel?>.value());
@@ -183,6 +186,66 @@ void main() {
         authCubit.logout();
 
         verify(() => service.logout()).called(1);
+      });
+
+      test('emits [AuthLoggedInState] upon successful token login', () {
+        const String _token = 'token';
+
+        when(() => service.getLatestAccounts()).thenAnswer((_) =>
+            Future<List<AccountModel>>.value(
+                <AccountModel>[mockedAccountModel]));
+
+        when(() =>
+                service.login(any(), accountsList: any(named: 'accountsList')))
+            .thenAnswer((_) =>
+                Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+
+        final List<TypeMatcher<DerivAuthState>> expectedResponse =
+            <TypeMatcher<DerivAuthState>>[
+          isA<DerivAuthLoggedInState>(),
+        ];
+
+        expectLater(
+          authCubit.stream,
+          emitsInOrder(expectedResponse),
+        );
+
+        authCubit.tokenLogin(_token);
+
+        verify(
+          () => service.login(any(), accountsList: any(named: 'accountsList')),
+        ).called(1);
+      });
+
+      test('emits [AuthErrorState] when an exception occurs in service', () {
+        const String _token = 'token';
+
+        when(() => service.getLatestAccounts()).thenAnswer((_) =>
+            Future<List<AccountModel>>.value(
+                <AccountModel>[mockedAccountModel]));
+
+        when(() =>
+                service.login(any(), accountsList: any(named: 'accountsList')))
+            .thenThrow(DerivAuthException(
+          message: 'message',
+          type: AuthErrorType.invalidToken,
+        ));
+
+        final List<TypeMatcher<DerivAuthState>> expectedResponse =
+            <TypeMatcher<DerivAuthState>>[
+          isA<DerivAuthErrorState>(),
+        ];
+
+        expectLater(
+          authCubit.stream,
+          emitsInOrder(expectedResponse),
+        );
+
+        authCubit.tokenLogin(_token);
+
+        verify(
+          () => service.login(any(), accountsList: any(named: 'accountsList')),
+        ).called(1);
       });
     },
   );

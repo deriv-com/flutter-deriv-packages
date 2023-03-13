@@ -1,9 +1,8 @@
+import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth/features/reset_password/services/base_reset_password_service.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
-
-import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/reset_password/services/base_reset_password_service.dart';
 
 import '../mock/verify_email_request_mock.dart';
 
@@ -22,6 +21,10 @@ void main() {
   group('reset password cubit tests => ', () {
     test('Should start with [DerivResetPassInitialState]', () {
       expect(resetPassCubit.state, const DerivResetPassInitialState());
+    });
+
+    test('should return stream of [DerivResetPassState]', () {
+      expect(resetPassCubit.output, isA<Stream<DerivResetPassState>>());
     });
 
     test(
