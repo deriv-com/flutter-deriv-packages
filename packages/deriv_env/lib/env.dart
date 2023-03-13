@@ -36,10 +36,6 @@ class Env extends BaseEnv {
 
       if (item.length == 2) {
         _entries[item.first.trim()] = item.last.trim();
-      } else {
-        throw Exception(
-          '$runtimeType: $filename has an invalid entry: $entry.',
-        );
       }
     }
 
