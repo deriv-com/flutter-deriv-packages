@@ -20,9 +20,7 @@ class Env extends BaseEnv {
 
   @override
   Map<String, dynamic> get entries {
-    if (!_isInitialized) {
-      throw Exception('Env class is not initialized, Call `load()` first.');
-    }
+    _checkInitialization();
 
     return _entries;
   }
@@ -38,6 +36,10 @@ class Env extends BaseEnv {
 
       if (item.length == 2) {
         _entries[item.first.trim()] = item.last.trim();
+      } else {
+        throw Exception(
+          '$runtimeType: $filename has an invalid entry: $entry.',
+        );
       }
     }
 
@@ -45,12 +47,14 @@ class Env extends BaseEnv {
   }
 
   @override
-  T? get<T>(String key, {T? defaultValue}) {
-    if (!_isInitialized) {
-      throw Exception('Env class is not initialized, Call `load()` first.');
-    }
+  T get<T>(String key, {T? defaultValue}) {
+    _checkInitialization();
 
     if (!_entries.containsKey(key)) {
+      if (defaultValue == null) {
+        throw Exception('$runtimeType does not contain a value for key: $key.');
+      }
+
       return defaultValue;
     }
 
@@ -73,7 +77,7 @@ class Env extends BaseEnv {
     final String envFileContent = await rootBundle.loadString(filename);
 
     if (envFileContent.isEmpty) {
-      throw Exception('Env file is empty.');
+      throw Exception('$runtimeType: $filename is empty.');
     }
 
     final List<String> entries = <String>[];
@@ -88,5 +92,15 @@ class Env extends BaseEnv {
     }
 
     return entries;
+  }
+
+  void _checkInitialization() {
+    if (_isInitialized) {
+      return;
+    }
+
+    throw Exception(
+      '$runtimeType is not initialized, call load() method first.',
+    );
   }
 }
