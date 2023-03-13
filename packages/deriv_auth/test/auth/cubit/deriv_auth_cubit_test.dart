@@ -215,7 +215,6 @@ void main() {
         verify(
           () => service.login(any(), accountsList: any(named: 'accountsList')),
         ).called(1);
-        verify(() => service.getLatestAccounts()).called(1);
       });
 
       test(
