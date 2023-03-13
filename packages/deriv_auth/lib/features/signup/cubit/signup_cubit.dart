@@ -20,29 +20,31 @@ part 'signup_state.dart';
 class DerivSignupCubit extends Cubit<DerivSignupState>
     implements DerivSignupIO {
   /// Initializes the cubit with [DerivSignupInitialState].
-  DerivSignupCubit._({
+  DerivSignupCubit({
     required this.service,
-    required this.referralService,
+    this.referralService,
   }) : super(const DerivSignupInitialState());
 
   /// Initializes cubit for using `my affiliate` api.
   factory DerivSignupCubit.initWithMyAffiliate({
     required BaseSignupService service,
-    required MyAffiliateReferralCodeRequestModel requestModel,
+    MyAffiliateReferralCodeRequestModel? requestModel,
   }) =>
-      DerivSignupCubit._(
+      DerivSignupCubit(
         service: service,
-        referralService: MyAffiliateReferralCodeService(
-          client: HttpClient(),
-          request: requestModel,
-        ),
+        referralService: requestModel == null
+            ? null
+            : MyAffiliateReferralCodeService(
+                client: HttpClient(),
+                request: requestModel,
+              ),
       );
 
   /// Sign up service
   final BaseSignupService service;
 
   /// Referral service.
-  final BaseReferralCodeService referralService;
+  final BaseReferralCodeService? referralService;
 
   @override
   Future<void> sendVerificationEmail(
@@ -54,8 +56,8 @@ class DerivSignupCubit extends Cubit<DerivSignupState>
 
       String? referralToken;
 
-      if (referralCode != null) {
-        referralToken = await referralService.getReferralToken(referralCode);
+      if (referralService != null && referralCode != null) {
+        referralToken = await referralService?.getReferralToken(referralCode);
       }
 
       final DateTime currentServerTime = await service.getClientServerTime();
