@@ -97,7 +97,7 @@ void main() {
     'auth service tests =>',
     () {
       test(
-          'should return valid authorize model when calling login with valid token',
+          'should return valid authorize model when calling login with valid token.',
           () async {
         final AuthorizeEntity response = await authService.login(
           validToken,
@@ -118,8 +118,9 @@ void main() {
 
         verify(() => repository.onLogin(any())).called(1);
       });
+
       test(
-          'should return valid authorize model when calling loginRequest with valid jwt',
+          'should return valid authorize model when calling loginRequest with valid jwt.',
           () async {
         when(() => jwtService.getJwtToken()).thenAnswer(
           (_) => Future<String>.value(validJwtToken),
@@ -144,7 +145,8 @@ void main() {
 
         verify(() => repository.onLogin(any())).called(1);
       });
-      test('should auto fetch new jwt token if current one is expired ',
+
+      test('should auto fetch new jwt token if current one is expired.',
           () async {
         reset(jwtService);
 
@@ -173,6 +175,286 @@ void main() {
             response.accountList
                 ?.every((AccountListItem account) => account.token != null),
             true);
+      });
+
+      test(
+          'should throw [DerivAuthException] of type [invalidCredentials] on login with invalid credentials.',
+          () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        when(() => tokenService.getUserTokens(
+              request: any(named: 'request'),
+              client: any(named: 'client'),
+              jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
+              connectionInfo: any(named: 'connectionInfo'),
+            )).thenThrow(
+          HTTPClientException(
+            message: 'invalid credentials',
+            errorCode: invalidCredentialError,
+            statusCode: 400,
+          ),
+        );
+
+        expect(
+            authService.onLoginRequest(
+              GetTokensRequestModel(
+                type: AuthType.system,
+                email: 'email',
+                password: 'pass',
+                signupProvider: 'signupProvider',
+              ),
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                  (DerivAuthException exception) => exception.type,
+                  'exception type',
+                  AuthErrorType.invalidCredential),
+            ));
+      });
+
+      test(
+          'should throw [DerivAuthException] of type [invalid2faCode] on login with invalid 2fa code.',
+          () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        when(() => tokenService.getUserTokens(
+              request: any(named: 'request'),
+              client: any(named: 'client'),
+              jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
+              connectionInfo: any(named: 'connectionInfo'),
+            )).thenThrow(
+          HTTPClientException(
+            message: 'invalid 2fa code',
+            errorCode: invalidAuthCodeError,
+            statusCode: 400,
+          ),
+        );
+
+        expect(
+            authService.onLoginRequest(
+              GetTokensRequestModel(
+                type: AuthType.system,
+                email: 'email',
+                password: 'pass',
+                signupProvider: 'signupProvider',
+              ),
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                  (DerivAuthException exception) => exception.type,
+                  'exception type',
+                  AuthErrorType.invalid2faCode),
+            ));
+      });
+
+      test(
+          'should throw [DerivAuthException] of type [missingOTPError] on login with no otp.',
+          () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        when(() => tokenService.getUserTokens(
+              request: any(named: 'request'),
+              client: any(named: 'client'),
+              jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
+              connectionInfo: any(named: 'connectionInfo'),
+            )).thenThrow(
+          HTTPClientException(
+            message: 'missing otp',
+            errorCode: missingOTPError,
+            statusCode: 400,
+          ),
+        );
+
+        expect(
+            authService.onLoginRequest(
+              GetTokensRequestModel(
+                type: AuthType.system,
+                email: 'email',
+                password: 'pass',
+                signupProvider: 'signupProvider',
+              ),
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                  (DerivAuthException exception) => exception.type,
+                  'exception type',
+                  AuthErrorType.missingOtp),
+            ));
+      });
+
+      test(
+          'should throw [DerivAuthException] of type [disabledClient] on login when account is disabled.',
+          () async {
+        when(() => repository.onLogin(any()))
+            .thenThrow(Exception('AccountDisabled'));
+
+        expect(
+            authService.login(
+              validToken,
+              accountsList: <AccountModel>[
+                AccountModel(accountId: '0', token: validToken)
+              ],
+              refreshToken: 'refreshToken',
+              signupProvider: 'signupProvider',
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'exception type',
+                AuthErrorType.disabledClient,
+              ),
+            ));
+      });
+      test(
+          'should throw [DerivAuthException] of type [failedAuthorization] on login exception.',
+          () async {
+        when(() => repository.onLogin(any()))
+            .thenThrow(Exception('FailedAuthorization'));
+
+        expect(
+            authService.login(
+              validToken,
+              accountsList: <AccountModel>[
+                AccountModel(accountId: '0', token: validToken)
+              ],
+              refreshToken: 'refreshToken',
+              signupProvider: 'signupProvider',
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'exception type',
+                AuthErrorType.failedAuthorization,
+              ),
+            ));
+      });
+
+      test(
+          'should throw [DerivAuthException] of type [expiredAccount] on login when token is expired.',
+          () async {
+        when(() => repository.authorize(validToken))
+            .thenAnswer((_) => Future<AuthorizeResponseEntity>.value(
+                  const AuthorizeResponseEntity(),
+                ));
+
+        expect(
+            authService.login(
+              validToken,
+              accountsList: <AccountModel>[
+                AccountModel(accountId: '0', token: validToken)
+              ],
+              refreshToken: 'refreshToken',
+              signupProvider: 'signupProvider',
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'exception type',
+                AuthErrorType.expiredAccount,
+              ),
+            ));
+      });
+
+      test(
+          'should throw [DerivAuthException] of type [expiredAccount] on login with invalid token.',
+          () async {
+        when(() => repository.onLogin(any()))
+            .thenThrow(Exception('InvalidToken'));
+
+        expect(
+            authService.login(
+              validToken,
+              accountsList: <AccountModel>[
+                AccountModel(accountId: '0', token: validToken)
+              ],
+              refreshToken: 'refreshToken',
+              signupProvider: 'signupProvider',
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'exception type',
+                AuthErrorType.expiredAccount,
+              ),
+            ));
+      });
+
+      test(
+          'should throw [DerivAuthException] of type [unsupportedCountry] on login when country not supported.',
+          () async {
+        when(() => repository.authorize(validToken))
+            .thenAnswer((_) => Future<AuthorizeResponseEntity>.value(
+                  const AuthorizeResponseEntity(
+                    authorize: mockedUnsupportedAuthorizeEntity,
+                  ),
+                ));
+
+        expect(
+            authService.login(
+              validToken,
+              accountsList: <AccountModel>[
+                AccountModel(accountId: '0', token: validToken)
+              ],
+              refreshToken: 'refreshToken',
+              signupProvider: 'signupProvider',
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'exception type',
+                AuthErrorType.unsupportedCountry,
+              ),
+            ));
+      });
+
+      test('should return latest accounts.', () async {
+        when(() => repository.getLatestAccounts())
+            .thenAnswer((_) => Future<List<AccountModel>>.value(
+                  <AccountModel>[
+                    mockedAccountModel,
+                  ],
+                ));
+
+        final List<AccountModel> accounts =
+            await authService.getLatestAccounts();
+
+        expect(accounts, <AccountModel>[mockedAccountModel]);
+
+        verify(() => repository.getLatestAccounts()).called(1);
+      });
+
+      test('should return default account.', () async {
+        when(() => repository.getDefaultAccount())
+            .thenAnswer((_) => Future<AccountModel>.value(mockedAccountModel));
+
+        final AccountModel? account = await authService.getDefaultAccount();
+
+        expect(account, mockedAccountModel);
+
+        verify(() => repository.getDefaultAccount()).called(1);
+      });
+
+      test('should logout the user.', () async {
+        when(() => repository.logout()).thenAnswer((_) => Future<void>.value());
+
+        await authService.logout();
+
+        verify(() => repository.logout()).called(1);
+      });
+
+      test('should call the [onLoggedOut] method.', () async {
+        when(() => repository.onLoggedOut())
+            .thenAnswer((_) => Future<void>.value());
+
+        await authService.onLoggedOut();
+
+        verify(() => repository.onLoggedOut()).called(1);
       });
     },
   );
