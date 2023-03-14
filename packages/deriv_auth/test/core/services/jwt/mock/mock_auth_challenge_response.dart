@@ -6,3 +6,7 @@ AppAuthorizationChallengeResponseModel mockAuthChallengeModel =
   expire: 2023,
   appToken: 'appToken',
 );
+Map<String, dynamic> mockAuthChallengeData = <String, dynamic>{
+  'challenge': 'challenge',
+  'expire': 2023,
+};
