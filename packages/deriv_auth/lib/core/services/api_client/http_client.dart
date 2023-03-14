@@ -14,7 +14,7 @@ class HttpClient extends BaseHttpClient {
   /// Initializes a [HttpClient] class.
   HttpClient([http.Client? client]) : _client = client ?? http.Client();
 
-  late final http.Client _client;
+  final http.Client _client;
 
   /// Http get request.
   @override
