@@ -14,3 +14,13 @@ const AuthorizeEntity mockAuthorizeEntity = AuthorizeEntity(
   landingCompanyName: 'svg',
   upgradeableLandingCompanies: <String>['svg'],
 );
+const AuthorizeEntity mockEmptyAccountAuthorizeEntity = AuthorizeEntity(
+  balance: 12,
+  country: 'za',
+  currency: 'USD',
+  email: 'example@deriv.com',
+  isVirtual: false,
+  userId: 1,
+  landingCompanyName: 'svg',
+  upgradeableLandingCompanies: <String>['svg'],
+);

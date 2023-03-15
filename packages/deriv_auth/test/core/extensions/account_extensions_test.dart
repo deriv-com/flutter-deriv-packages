@@ -13,6 +13,10 @@ void main() {
         mockAuthorizeEntity.accounts.first.accountId,
         loginIdFromAccountListModel,
       );
+      expect(
+        mockEmptyAccountAuthorizeEntity.accounts,
+        isEmpty,
+      );
     });
   });
 }
