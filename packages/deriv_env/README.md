@@ -41,6 +41,23 @@ await Env().load();
 
 The load method expects the file to contain key-value pairs separated by an equals sign (`=`) and each pair separated by a newline character (`\n`). Blank lines and comments (lines starting with a `#`) are ignored.
 
+#### Sample `.env` file
+
+```env
+# This is a sample .env file.
+# It contains environment variables used by the app.
+
+# Basic environment variables.
+STRING_VAR = hello world
+INT_VAR = 123
+DOUBLE_VAR = 3.14
+BOOL_VAR = true
+
+# Other environment variables.
+API_KEY = 1234567890
+API_URL = https://api.deriv.com
+```
+
 ### Getting all environment variables
 
 You can get all the loaded environment variables using the `entries` getter.
