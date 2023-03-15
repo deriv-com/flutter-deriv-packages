@@ -24,7 +24,7 @@ void main() {
   group('HttpClient', () {
     group('.post', () {
       test(
-          'returns response of type [Map<String, dynamic>] on status code 200 or 201',
+          'returns response of type [Map<String, dynamic>] on status code 200 or 201.',
           () async {
         when(
           () => _mockClient.post(
@@ -54,15 +54,17 @@ void main() {
         ).called(1);
       });
 
-      test('throws [HttpClientException] on status code other than 200 or 201',
+      test(
+          'throws [HttpClientException] with server message on status code other than 200 or 201.',
           () async {
+        const String errorResponse = '{"message": "This is a mock error."}';
         when(
           () => _mockClient.post(
             any(),
             body: any(named: 'body'),
             headers: any(named: 'headers'),
           ),
-        ).thenAnswer((_) async => http.Response(mockResponse, 400));
+        ).thenAnswer((_) async => http.Response(errorResponse, 400));
 
         expect(
           _httpClient.post(
@@ -70,13 +72,43 @@ void main() {
             jsonBody: <String, dynamic>{'body': 'test'},
             headers: <String, String>{'Content-Type': 'application/json'},
           ),
-          throwsA(isA<HTTPClientException>()),
+          throwsA(isA<HTTPClientException>().having(
+            (HTTPClientException exception) => exception.message,
+            'message',
+            'This is a mock error.',
+          )),
+        );
+      });
+
+      test(
+          'throws [HttpClientException] with `Server Error` message on status code other than 200 or 201 and server not having any message.',
+          () async {
+        const String errorResponse = '{}';
+        when(
+          () => _mockClient.post(
+            any(),
+            body: any(named: 'body'),
+            headers: any(named: 'headers'),
+          ),
+        ).thenAnswer((_) async => http.Response(errorResponse, 400));
+
+        expect(
+          _httpClient.post(
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            jsonBody: <String, dynamic>{'body': 'test'},
+            headers: <String, String>{'Content-Type': 'application/json'},
+          ),
+          throwsA(isA<HTTPClientException>().having(
+            (HTTPClientException exception) => exception.message,
+            'message',
+            'Server Error',
+          )),
         );
       });
     });
 
     group('.get', () {
-      test('returns Response', () {
+      test('returns Response.', () {
         when(
           () => _mockClient.get(
             any(),
@@ -95,6 +127,28 @@ void main() {
           () => _mockClient.get(
             any(),
             headers: any(named: 'headers'),
+          ),
+        ).called(1);
+      });
+
+      test('makes get request with provided auth token.', () {
+        const String authToken = 'authToken';
+        when(
+          () => _mockClient.get(
+            any(),
+            headers: any(named: 'headers'),
+          ),
+        ).thenAnswer((_) async => http.Response(mockResponse, 200));
+
+        _httpClient.get(
+          'https://jsonplaceholder.typicode.com/posts',
+          basicAuthToken: authToken,
+        );
+
+        verify(
+          () => _mockClient.get(
+            any(),
+            headers: <String, String>{'authorization': 'Basic $authToken'},
           ),
         ).called(1);
       });

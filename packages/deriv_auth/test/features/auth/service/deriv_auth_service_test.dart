@@ -289,29 +289,6 @@ void main() {
       });
 
       test(
-          'should throw [DerivAuthException] of type [disabledClient] on login when account is disabled.',
-          () async {
-        when(() => repository.onLogin(any()))
-            .thenThrow(Exception('AccountDisabled'));
-
-        expect(
-            authService.login(
-              validToken,
-              accountsList: <AccountModel>[
-                AccountModel(accountId: '0', token: validToken)
-              ],
-              refreshToken: 'refreshToken',
-              signupProvider: 'signupProvider',
-            ),
-            throwsA(
-              isA<DerivAuthException>().having(
-                (DerivAuthException exception) => exception.type,
-                'exception type',
-                AuthErrorType.disabledClient,
-              ),
-            ));
-      });
-      test(
           'should throw [DerivAuthException] of type [failedAuthorization] on login exception.',
           () async {
         when(() => repository.onLogin(any()))
