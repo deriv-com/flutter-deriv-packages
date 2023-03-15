@@ -54,7 +54,7 @@ Map<String, dynamic> allVariables = Env().entries;
 You can retrieve an environment variable using the `get` method. The method takes a key and an optional default value. If the key is not found in the loaded environment variables, the default value will be returned.
 
 ```dart
-String? apiKey = Env().get<String>('API_KEY', defaultValue: null);
+String apiKey = Env().get<String>('API_KEY', defaultValue: 'API_KEY_VALUE');
 ```
 
-The `get` method returns a nullable value of the type specified in the type parameter. Supported types are `String`, `int`, `double` and `bool`.
+The `get` method returns a value of the type specified in the type parameter. Supported types are `String`, `int`, `double` and `bool`.
