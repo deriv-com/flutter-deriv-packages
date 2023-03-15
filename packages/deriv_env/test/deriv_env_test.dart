@@ -52,6 +52,14 @@ void main() {
       expect(Env().get<bool>('BOOL_VAR'), true);
     });
 
+    test('check handling variables with special characters like `#` and `=`.',
+        () async {
+      await Env().load('test/.env.test');
+
+      expect(Env().entries['VAR_WITH_EQUALS'], 'hello=world');
+      expect(Env().entries['VAR_WITH_HASH'], 'hello#world');
+    });
+
     test('throws an exception if file is empty.', () async {
       expect(() => Env().load('test/.env.empty.test'), throwsException);
     });

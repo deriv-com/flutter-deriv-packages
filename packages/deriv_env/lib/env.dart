@@ -32,10 +32,10 @@ class Env extends BaseEnv {
     final List<String> fileEntries = await _getEntriesFromFile(filename);
 
     for (final String entry in fileEntries) {
-      final List<String> item = entry.split('=');
+      final List<String> items = entry.split('=');
 
-      if (item.length == 2) {
-        _entries[item.first.trim()] = item.last.trim();
+      if (items.length > 1) {
+        _entries[items.first.trim()] = items.sublist(1).join('=').trim();
       }
     }
 
