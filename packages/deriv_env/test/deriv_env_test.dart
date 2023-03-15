@@ -12,16 +12,20 @@ void main() {
     });
 
     test('load() method should populate env map.', () async {
-      expect(Env().isInitialized, false);
+      expect(Env().isInitialized, isFalse);
 
       await Env().load('test/.env.test');
 
-      expect(Env().isInitialized, true);
+      expect(Env().isInitialized, isTrue);
+
+      expect(Env().entries.length, 6);
 
       expect(Env().entries['STRING_VAR'], 'hello world');
       expect(Env().entries['INT_VAR'], '123');
       expect(Env().entries['DOUBLE_VAR'], '3.14');
       expect(Env().entries['BOOL_VAR'], 'true');
+      expect(Env().entries['VAR_WITH_EQUALS'], 'hello=world');
+      expect(Env().entries['VAR_WITH_HASH'], 'hello#world');
     });
 
     test('get() method should return default value if key is not found.',
@@ -49,7 +53,7 @@ void main() {
     test('get() method should parse value as bool.', () async {
       await Env().load('test/.env.test');
 
-      expect(Env().get<bool>('BOOL_VAR'), true);
+      expect(Env().get<bool>('BOOL_VAR'), isTrue);
     });
 
     test('check handling variables with special characters like `#` and `=`.',
