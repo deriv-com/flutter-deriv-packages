@@ -15,5 +15,12 @@ void main() {
       expect(const LogoutResponseEntity(logout: 0).toJson(),
           <String, dynamic>{'logout': 0});
     });
+
+    test('supports copyWith.', () {
+      expect(
+        const LogoutResponseEntity(logout: 0).copyWith(logout: 1).logout,
+        1,
+      );
+    });
   });
 }
