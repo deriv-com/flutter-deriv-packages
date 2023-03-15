@@ -1,6 +1,6 @@
 # Deriv Env
 
-`deriv_env` is a Flutter package that provides a way to store, retrieve and manage environment variables. It is built on top of the `base_env.dart` inteface, which provides an interface for interacting with the environment.
+`deriv_env` is a Flutter package that provides a way to retrieve and manage environment variables. It is built on top of the `base_env.dart` inteface, which provides an interface for interacting with the environment.
 
 ## Installation
 
@@ -41,6 +41,23 @@ await Env().load();
 
 The load method expects the file to contain key-value pairs separated by an equals sign (`=`) and each pair separated by a newline character (`\n`). Blank lines and comments (lines starting with a `#`) are ignored.
 
+#### Sample `.env` file
+
+```env
+# This is a sample .env file.
+# It contains environment variables used by the app.
+
+# Basic environment variables.
+STRING_VAR = hello world
+INT_VAR = 123
+DOUBLE_VAR = 3.14
+BOOL_VAR = true
+
+# Other environment variables.
+API_KEY = 1234567890
+API_URL = https://api.deriv.com
+```
+
 ### Getting all environment variables
 
 You can get all the loaded environment variables using the `entries` getter.
@@ -54,7 +71,7 @@ Map<String, dynamic> allVariables = Env().entries;
 You can retrieve an environment variable using the `get` method. The method takes a key and an optional default value. If the key is not found in the loaded environment variables, the default value will be returned.
 
 ```dart
-String? apiKey = Env().get<String>('API_KEY', defaultValue: null);
+String apiKey = Env().get<String>('API_KEY', defaultValue: 'API_KEY_VALUE');
 ```
 
-The `get` method returns a nullable value of the type specified in the type parameter. Supported types are `String`, `int`, `double` and `bool`.
+The `get` method returns a value of the type specified in the type parameter. Supported types are `String`, `int`, `double` and `bool`.

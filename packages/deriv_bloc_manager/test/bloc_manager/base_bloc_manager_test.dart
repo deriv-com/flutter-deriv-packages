@@ -87,6 +87,36 @@ void main() {
         isFalse,
       );
     });
+
+    group('bloc manager exceptions test =>', () {
+      test(
+        'fetch throws BlocManagerException when bloc is not registered.',
+        () => expect(
+          () => blocManager.fetch<GenericBloc>(),
+          throwsA(isA<BlocManagerException>()),
+        ),
+      );
+
+      test('fetch throws BlocManagerException when bloc key is invalid.', () {
+        blocManager.register<GenericBloc>(_TestCubit(), key: 'test_key');
+
+        expect(
+          () => blocManager.fetch<GenericBloc>('invalid_key'),
+          throwsA(isA<BlocManagerException>()),
+        );
+      });
+
+      test(
+        'addListener throws BlocManagerException when bloc is not registered.',
+        () => expect(
+          () => blocManager.addListener<GenericBloc>(
+            listenerKey: 'test_listener',
+            handler: (_) {},
+          ),
+          throwsA(isA<BlocManagerException>()),
+        ),
+      );
+    });
   });
 }
 

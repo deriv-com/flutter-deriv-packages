@@ -15,7 +15,14 @@ void main() {
 
   setUpAll(() {
     service = MockSignupService();
-    cubit = DerivSignupCubit(service: service);
+    cubit = DerivSignupCubit.initWithMyAffiliate(
+        service: service,
+        requestModel: const MyAffiliateReferralCodeRequestModel(
+          authToken: '',
+          brandId: '',
+          feedId: '',
+          host: '',
+        ));
   });
 
   group('signup cubit test =>', () {

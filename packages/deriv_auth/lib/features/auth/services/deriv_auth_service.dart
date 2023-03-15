@@ -122,23 +122,10 @@ class DerivAuthService extends BaseAuthService {
     } on DerivAuthException {
       rethrow;
     } on Exception catch (error) {
-      /// Handling the situation when user clicked on an account that is recently disabled.
-      /// Each time we switch to an account the state of all accounts get updated from the Authorize response.
-      final String errorMessage = error.toString();
-
-      if (errorMessage.contains('AccountDisabled')) {
-        throw DerivAuthException(
-          message: 'Account is disabled',
-          type: AuthErrorType.disabledClient,
-        );
-      } else {
-        throw DerivAuthException(
-          message: '$error',
-          type: errorMessage.contains('InvalidToken')
-              ? AuthErrorType.expiredAccount
-              : AuthErrorType.failedAuthorization,
-        );
-      }
+      throw DerivAuthException(
+        message: '$error',
+        type: AuthErrorType.failedAuthorization,
+      );
     }
   }
 

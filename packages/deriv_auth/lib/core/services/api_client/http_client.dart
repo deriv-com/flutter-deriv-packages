@@ -1,24 +1,38 @@
 import 'dart:convert' as convert;
 
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:http/http.dart' as http;
 
-import 'exceptions/http_exceptions.dart';
+import 'package:deriv_auth/core/services/api_client/exceptions/http_exceptions.dart';
+import 'package:deriv_auth/core/services/api_client/base_client.dart';
 
-/// Singleton class for http requests.
+/// A concrete implementation of [BaseHttpClient].
+/// Uses [http.Client] to make http requests.
+///
+/// [client] is an optional parameter that can be used to inject a custom http client.
+/// If not provided, a new instance of [http.Client] will be created.
 class HttpClient extends BaseHttpClient {
-  /// Initializes http client.
-  factory HttpClient() => _instance;
+  /// Initializes a [HttpClient] class.
+  HttpClient([http.Client? client]) : _client = client ?? http.Client();
 
-  HttpClient._internal();
-
-  static final HttpClient _instance = HttpClient._internal();
+  final http.Client _client;
 
   /// Http get request.
   @override
-  Future<http.Response> get(String url) async => http.get(Uri.parse(url));
+  Future<http.Response> get(
+    String url, {
+    String? basicAuthToken,
+  }) {
+    final Map<String, String> headers = <String, String>{
+      if (basicAuthToken != null) 'authorization': 'Basic $basicAuthToken'
+    };
 
-  ///  Http post request.
+    return _client.get(
+      Uri.parse(url),
+      headers: headers,
+    );
+  }
+
+  /// Http post request.
   @override
   Future<Map<String, dynamic>> post({
     required String url,
@@ -28,7 +42,7 @@ class HttpClient extends BaseHttpClient {
     final String jsonString = convert.jsonEncode(jsonBody);
 
     final http.Response response =
-        await http.post(Uri.parse(url), body: jsonString, headers: headers);
+        await _client.post(Uri.parse(url), body: jsonString, headers: headers);
 
     final Map<String, dynamic> jsonResponse = convert.jsonDecode(response.body);
 

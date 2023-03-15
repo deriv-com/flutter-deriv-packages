@@ -36,8 +36,11 @@ class DerivSignupDoneState extends DerivSignupState {
 /// Sign up error state.
 class DerivSignupErrorState extends DerivSignupState {
   /// Initialize error state.
-  const DerivSignupErrorState(this.errorMessage);
+  const DerivSignupErrorState(this.errorMessage, {this.type});
 
-  /// Error message
+  /// Error message.
   final String errorMessage;
+
+  /// Error type.
+  final SignupErrorType? type;
 }

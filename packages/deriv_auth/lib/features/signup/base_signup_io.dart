@@ -4,7 +4,7 @@ import 'package:deriv_auth/features/signup/models/new_virtual_account_request_mo
 /// Required functionalities for signing up.
 abstract class DerivSignupIO {
   /// Submits verify email request.
-  Future<void> sendVerificationEmail(String email);
+  Future<void> sendVerificationEmail(String email, {String? referralCode});
 
   /// Submit request for new virtual account.
   Future<void> openNewVirtualAccount(

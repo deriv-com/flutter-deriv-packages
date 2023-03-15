@@ -5,56 +5,81 @@ import 'package:deriv_env/env.dart';
 void main() {
   setUpAll(() => TestWidgetsFlutterBinding.ensureInitialized());
 
-  group('Env class test =>', () {
+  group('env class test =>', () {
     test('get() method should throw exception if env is not initialized.',
         () async {
-      final Env env = Env();
-
-      expect(() => env.get<String>('STRING_VAR'), throwsA(isA<Exception>()));
+      expect(() => Env().get<String>('STRING_VAR'), throwsException);
     });
 
     test('load() method should populate env map.', () async {
-      final Env env = Env();
+      expect(Env().isInitialized, false);
 
-      expect(env.isInitialized, false);
+      await Env().load('test/.env.test');
 
-      await env.load('test/.env.test');
+      expect(Env().isInitialized, true);
 
-      expect(env.isInitialized, true);
-
-      expect(env.entries['STRING_VAR'], 'hello world');
-      expect(env.entries['INT_VAR'], '123');
-      expect(env.entries['DOUBLE_VAR'], '3.14');
-      expect(env.entries['BOOL_VAR'], 'true');
+      expect(Env().entries['STRING_VAR'], 'hello world');
+      expect(Env().entries['INT_VAR'], '123');
+      expect(Env().entries['DOUBLE_VAR'], '3.14');
+      expect(Env().entries['BOOL_VAR'], 'true');
     });
 
     test('get() method should return default value if key is not found.',
         () async {
-      final Env env = Env();
-      await env.load('test/.env.test');
+      await Env().load('test/.env.test');
 
-      expect(env.get<String>('NOT_EXISTS', defaultValue: 'default'), 'default');
+      expect(
+        Env().get<String>('INVALID_KEY', defaultValue: 'default'),
+        'default',
+      );
     });
 
     test('get() method should parse value as int.', () async {
-      final Env env = Env();
-      await env.load('test/.env.test');
+      await Env().load('test/.env.test');
 
-      expect(env.get<int>('INT_VAR'), 123);
+      expect(Env().get<int>('INT_VAR'), 123);
     });
 
     test('get() method should parse value as double.', () async {
-      final Env env = Env();
-      await env.load('test/.env.test');
+      await Env().load('test/.env.test');
 
-      expect(env.get<double>('DOUBLE_VAR'), 3.14);
+      expect(Env().get<double>('DOUBLE_VAR'), 3.14);
     });
 
     test('get() method should parse value as bool.', () async {
-      final Env env = Env();
-      await env.load('test/.env.test');
+      await Env().load('test/.env.test');
 
-      expect(env.get<bool>('BOOL_VAR'), true);
+      expect(Env().get<bool>('BOOL_VAR'), true);
+    });
+
+    test('check handling variables with special characters like `#` and `=`.',
+        () async {
+      await Env().load('test/.env.test');
+
+      expect(Env().entries['VAR_WITH_EQUALS'], 'hello=world');
+      expect(Env().entries['VAR_WITH_HASH'], 'hello#world');
+    });
+
+    test('throws an exception if file is empty.', () async {
+      expect(() => Env().load('test/.env.empty.test'), throwsException);
+    });
+
+    test('throws an exception if env is not initialized.', () async {
+      expect(() => Env().get<String>('valid_key'), throwsException);
+    });
+
+    test('throws an exception if key is not found.', () async {
+      await Env().load('test/.env.test');
+
+      expect(() => Env().get<String>('INVALID_KEY'), throwsException);
+    });
+
+    test(
+        'does not throw an exception if key is not found and a default value is provided.',
+        () async {
+      await Env().load('test/.env.test');
+
+      expect(() => Env().get('INVALID_KEY', defaultValue: 42), returnsNormally);
     });
   });
 }
