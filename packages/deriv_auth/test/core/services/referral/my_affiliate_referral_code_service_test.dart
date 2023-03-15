@@ -29,7 +29,7 @@ void main() {
   });
 
   group('My affiliate referral service tests =>', () {
-    test('should return refferal token', () {
+    test('should return refferal token.', () {
       when(() => _client.get(
                 any(),
                 basicAuthToken: requestModel.authToken,
