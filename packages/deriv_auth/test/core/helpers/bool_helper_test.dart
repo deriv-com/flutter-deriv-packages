@@ -3,8 +3,6 @@ import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 void main() {
-  setUpAll(() => print('setUpAll'));
-
   group('Bool Helper functions', () {
     test('getBool should return bool from dynamic value', () {
       expect(getBool(1), true);
@@ -15,7 +13,7 @@ void main() {
     });
   });
 
-  test('getUnt should return integer from boolean input', () {
+  test('getInt should return integer from boolean input', () {
     expect(getInt(value: true), 1);
     expect(getInt(value: false), 0);
     expect(getInt(), null);
