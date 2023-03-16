@@ -2,7 +2,7 @@ import 'package:deriv_auth/core/helpers/helpers.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:test/test.dart';
 
-import 'mock_account_models.dart';
+import 'mocks/mock_account_models.dart';
 
 void main() {
   group('Test account helper functions.', () {

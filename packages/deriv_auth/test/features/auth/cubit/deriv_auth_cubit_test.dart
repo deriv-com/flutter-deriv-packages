@@ -202,7 +202,10 @@ void main() {
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
-          isA<DerivAuthLoggedInState>(),
+          isA<DerivAuthLoggedInState>().having(
+              (DerivAuthLoggedInState state) => state.authorizeEntity,
+              'authorized entity',
+              mockedValidAuthorizeEntity),
         ];
 
         expectLater(
