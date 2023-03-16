@@ -17,9 +17,15 @@ void main() {
     });
 
     test('supports copyWith.', () {
+      const LogoutResponseEntity logoutResponseEntity =
+          LogoutResponseEntity(logout: 0);
       expect(
-        const LogoutResponseEntity(logout: 0).copyWith(logout: 1).logout,
+        logoutResponseEntity.copyWith(logout: 1).logout,
         1,
+      );
+      expect(
+        logoutResponseEntity.copyWith().logout,
+        0,
       );
     });
   });
