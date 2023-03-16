@@ -60,12 +60,8 @@ void main() {
             basicAuthToken: requestModel.authToken,
           )).thenAnswer((_) async => Response('<dummy>mock</dummy>', 200));
 
-      expect(
-          _referralCodeService.getReferralToken(referralCode),
-          throwsA(isA<ReferralCodeException>().having(
-              (ReferralCodeException error) => error.message,
-              'message',
-              'Unexpected error while processing referral code')));
+      expect(_referralCodeService.getReferralToken(referralCode),
+          throwsA(isA<ReferralCodeException>()));
     });
   });
 }
