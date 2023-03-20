@@ -2,7 +2,7 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('AuthorizeEntity', () {
+  group('AuthorizeResponseEntity tests.', () {
     test('AuthorizeResponseEntity constructor should return correct Object.',
         () {
       const AuthorizeEntity entity = AuthorizeEntity();
@@ -14,7 +14,7 @@ void main() {
       expect(responseEntity, isA<AuthorizeResponseEntity>());
       expect(responseEntity, isA<AuthorizeResponseEntityModel>());
     });
-    test('toJson should return a map of AuthorizeEntity.', () {
+    test('toJson should return a map of AuthorizeResponseEntity.', () {
       const AuthorizeEntity entity = AuthorizeEntity(
         balance: 500,
         country: 'US',
@@ -30,30 +30,34 @@ void main() {
         userId: 6789,
       );
 
-      final Map<String, dynamic> map = entity.toJson();
+      const AuthorizeResponseEntity responseEntity =
+          AuthorizeResponseEntity(authorize: entity);
+
+      final Map<String, dynamic> map = responseEntity.toJson();
 
       expect(map, isA<Map<String, dynamic>>());
-      expect(map['account_list'], isNull);
-      expect(map['balance'], equals(500.0));
-      expect(map['country'], equals('US'));
-      expect(map['currency'], equals('USD'));
-      expect(map['email'], equals('johndoe@gmail.com'));
-      expect(map['fullname'], equals('John Doe'));
-      expect(map['is_virtual'], equals(false));
-      expect(map['landing_company_fullname'], equals('John Doe Company'));
-      expect(map['landing_company_name'], equals('JD Company'));
-      expect(map['local_currencies'], isNull);
-      expect(map['loginid'], equals('12345'));
-      expect(map['preferred_language'], equals('en'));
-      expect(map['scopes'], equals(['a', 'b', 'c']));
-      expect(map['trading'], isNull);
-      expect(map['upgradeable_landing_companies'], isNull);
-      expect(map['user_id'], equals(6789));
-      expect(map['wallet'], isNull);
-      expect(map['refresh_token'], isNull);
+      expect(map['authorize']['account_list'], isNull);
+      expect(map['authorize']['balance'], equals(500.0));
+      expect(map['authorize']['country'], equals('US'));
+      expect(map['authorize']['currency'], equals('USD'));
+      expect(map['authorize']['email'], equals('johndoe@gmail.com'));
+      expect(map['authorize']['fullname'], equals('John Doe'));
+      expect(map['authorize']['is_virtual'], equals(false));
+      expect(map['authorize']['landing_company_fullname'],
+          equals('John Doe Company'));
+      expect(map['authorize']['landing_company_name'], equals('JD Company'));
+      expect(map['authorize']['local_currencies'], isNull);
+      expect(map['authorize']['loginid'], equals('12345'));
+      expect(map['authorize']['preferred_language'], equals('en'));
+      expect(map['authorize']['scopes'], equals(['a', 'b', 'c']));
+      expect(map['authorize']['trading'], isNull);
+      expect(map['authorize']['upgradeable_landing_companies'], isNull);
+      expect(map['authorize']['user_id'], equals(6789));
+      expect(map['authorize']['wallet'], isNull);
+      expect(map['authorize']['refresh_token'], isNull);
     });
 
-    test('fromJson should return an AuthorizeEntity object.', () {
+    test('fromJson should return an AuthorizeResponseEntity object.', () {
       final Map<String, dynamic> json = <String, dynamic>{
         'account_list': null,
         'balance': 500.0,
@@ -98,6 +102,50 @@ void main() {
       expect(entity.authorize!.userId, equals(6789));
       expect(entity.authorize!.wallet, isNull);
       expect(entity.authorize!.refreshToken, isNull);
+    });
+
+    test('copyWith method return correct object.', () {
+      const AuthorizeEntity entity = AuthorizeEntity(
+        balance: 500,
+        country: 'US',
+        userId: 6789,
+      );
+      const AuthorizeEntity newEntity = AuthorizeEntity(
+        balance: 10000,
+        country: 'US',
+        userId: 1234,
+      );
+
+      const AuthorizeResponseEntity responseEntity =
+          AuthorizeResponseEntity(authorize: entity);
+
+      final AuthorizeResponseEntity newResponseEntity = responseEntity.copyWith(
+        authorize: newEntity,
+      );
+
+      expect(newResponseEntity, isA<AuthorizeResponseEntity>());
+      expect(newResponseEntity.authorize!.balance, equals(10000.0));
+      expect(newResponseEntity.authorize!.country, equals('US'));
+      expect(newResponseEntity.authorize!.userId, equals(1234));
+    });
+
+    test('copyWith null returns the same instance.', () {
+      const AuthorizeEntity entity = AuthorizeEntity(
+        balance: 500,
+        country: 'US',
+        userId: 6789,
+      );
+
+      const AuthorizeResponseEntity responseEntity =
+          AuthorizeResponseEntity(authorize: entity);
+
+      final AuthorizeResponseEntity newResponseEntity =
+          responseEntity.copyWith();
+
+      expect(newResponseEntity, isA<AuthorizeResponseEntity>());
+      expect(newResponseEntity.authorize!.balance, equals(500.0));
+      expect(newResponseEntity.authorize!.country, equals('US'));
+      expect(newResponseEntity.authorize!.userId, equals(6789));
     });
   });
 }

@@ -10,5 +10,11 @@ void main() {
       expect(accountTypeEnumMapper['wallet'], AccountTypeEnum.wallet);
       expect(accountTypeEnumMapper['trading'], AccountTypeEnum.trading);
     });
+
+    test('test platformEnumMapper from string', () {
+      expect(platformEnumMapper['deriv'], PlatformEnum.deriv);
+      expect(platformEnumMapper['dxtrade'], PlatformEnum.dxtrade);
+      expect(platformEnumMapper['mt5'], PlatformEnum.mt5);
+    });
   });
 }
