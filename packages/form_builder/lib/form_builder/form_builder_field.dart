@@ -28,6 +28,8 @@ class FormBuilderField<T> extends FormField<T> {
     this.onReset,
     this.focusNode,
     this.onFocusChanged,
+    this.isRequired = false,
+    this.optionalText,
   }) : super(
           key: key,
           initialValue: initialValue,
@@ -56,6 +58,12 @@ class FormBuilderField<T> extends FormField<T> {
 
   /// Called when the field focus is changed.
   final ValueChanged<bool>? onFocusChanged;
+
+  ///TODO(Muhsin) add documentation here
+  final bool isRequired;
+
+  ///TODO(Muhsin) add documentation here
+  final String? optionalText;
 
   @override
   FormBuilderFieldState<FormBuilderField<T>, T> createState() =>
@@ -170,8 +178,13 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
 
   /// Returns the [InputDecoration] for this field and overrides the error
   /// message with the one provided in the input decoration.
+  /// Appends the labelText with "(Optional)" if the [optionalText] is not empty
   InputDecoration get decoration => widget.decoration.copyWith(
         errorText: widget.decoration.errorText ?? errorText,
+        labelText:
+            (!widget.isRequired && widget.optionalText?.isNotEmpty == true)
+                ? '${widget.decoration.labelText} ${widget.optionalText}'
+                : widget.decoration.labelText,
       );
 
   @override
