@@ -6,9 +6,6 @@ void main() {
     test('test accountTypeEnumMapper from string', () {
       expect(accountTypeEnumMapper['trading'], AccountTypeEnum.trading);
       expect(accountTypeEnumMapper['wallet'], AccountTypeEnum.wallet);
-      expect(accountTypeEnumMapper['trading'], AccountTypeEnum.trading);
-      expect(accountTypeEnumMapper['wallet'], AccountTypeEnum.wallet);
-      expect(accountTypeEnumMapper['trading'], AccountTypeEnum.trading);
     });
 
     test('test platformEnumMapper from string', () {
