@@ -30,6 +30,10 @@ void main() {
       expect(cubit.state, const DerivSignupInitialState());
     });
 
+    test('should return stream of [DerivSignupInitialState]', () {
+      expect(cubit.output, isA<Stream<DerivSignupState>>());
+    });
+
     test(
         'Should emit [DerivSignupEmailSentState] after successful sendVerificationEmail.',
         () async {

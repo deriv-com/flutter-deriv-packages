@@ -23,7 +23,7 @@ void main() {
       expect(account, isA<AccountModel>());
     });
 
-    test('Create AccountModel instance from JSON.', () {
+    test('Create AccountModel instance from Map.', () {
       final Map<String, dynamic> json = <String, dynamic>{
         'acct': 'CR1234',
         'token': 'abcd1234',
@@ -35,6 +35,27 @@ void main() {
       };
 
       final AccountModel account = AccountModel.fromMap(json);
+
+      expect(account.accountId, 'CR1234');
+      expect(account.token, 'abcd1234');
+      expect(account.currency, 'USD');
+      expect(account.email, 'test@test.com');
+      expect(account.fullName, 'John Doe');
+      expect(account.userId, 123);
+      expect(account.isDisabled, false);
+    });
+    test('Create AccountModel instance from JSON.', () {
+      final Map<String, dynamic> json = <String, dynamic>{
+        'acct': 'CR1234',
+        'token': 'abcd1234',
+        'cur': 'USD',
+        'email': 'test@test.com',
+        'fullName': 'John Doe',
+        'userId': 123,
+        'isDisabled': false,
+      };
+
+      final AccountModel account = AccountModel.fromJson(json);
 
       expect(account.accountId, 'CR1234');
       expect(account.token, 'abcd1234');

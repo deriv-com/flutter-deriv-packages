@@ -362,6 +362,115 @@ void main() {
             ));
       });
 
+      test('should throw [DerivAuthException] of type [selfClosed].', () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        when(() => tokenService.getUserTokens(
+              request: any(named: 'request'),
+              client: any(named: 'client'),
+              jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
+              connectionInfo: any(named: 'connectionInfo'),
+            )).thenThrow(
+          HTTPClientException(
+            message: 'self closed',
+            errorCode: selfClosedError,
+            statusCode: 400,
+          ),
+        );
+
+        expect(
+            authService.onLoginRequest(
+              GetTokensRequestModel(
+                type: AuthType.system,
+                email: 'email',
+                password: 'pass',
+                signupProvider: 'signupProvider',
+              ),
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'self closed',
+                AuthErrorType.selfClosed,
+              ),
+            ));
+      });
+      test(
+          'should throw [DerivAuthException] of type [accountUnavailableError] on login with an unanvailable account.',
+          () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        when(() => tokenService.getUserTokens(
+              request: any(named: 'request'),
+              client: any(named: 'client'),
+              jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
+              connectionInfo: any(named: 'connectionInfo'),
+            )).thenThrow(
+          HTTPClientException(
+            message: 'account unavailable',
+            errorCode: accountUnavailableError,
+            statusCode: 400,
+          ),
+        );
+
+        expect(
+            authService.onLoginRequest(
+              GetTokensRequestModel(
+                type: AuthType.system,
+                email: 'email',
+                password: 'pass',
+                signupProvider: 'signupProvider',
+              ),
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'account unavailable',
+                AuthErrorType.accountUnavailable,
+              ),
+            ));
+      });
+      test(
+          'should throw [DerivAuthException] of type [failedAuthorization] on login and an unknown error occurs.',
+          () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        when(() => tokenService.getUserTokens(
+              request: any(named: 'request'),
+              client: any(named: 'client'),
+              jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
+              connectionInfo: any(named: 'connectionInfo'),
+            )).thenThrow(
+          HTTPClientException(
+            message: 'unknown error',
+            errorCode: 'unknown error',
+            statusCode: 400,
+          ),
+        );
+
+        expect(
+            authService.onLoginRequest(
+              GetTokensRequestModel(
+                type: AuthType.system,
+                email: 'email',
+                password: 'pass',
+                signupProvider: 'signupProvider',
+              ),
+            ),
+            throwsA(
+              isA<DerivAuthException>().having(
+                (DerivAuthException exception) => exception.type,
+                'unknown error',
+                AuthErrorType.failedAuthorization,
+              ),
+            ));
+      });
       test(
           'should throw [DerivAuthException] of type [unsupportedCountry] on login when country not supported.',
           () async {

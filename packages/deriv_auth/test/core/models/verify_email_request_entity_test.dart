@@ -63,5 +63,41 @@ void main() {
         '0',
       );
     });
+
+    const VerifyEmailResponseEntity mockVerifyEmailResponseEntity =
+        VerifyEmailResponseEntity(
+      verifyEmail: false,
+    );
+
+    group('VerifyEmailResponsEntity', () {
+      test('supports fromJson', () {
+        final VerifyEmailResponseEntity verifyEmailResponseEntity =
+            VerifyEmailResponseEntity.fromJson(<String, dynamic>{
+          'verify_email': false,
+        });
+
+        expect(verifyEmailResponseEntity.verifyEmail, false);
+        expect(verifyEmailResponseEntity, isA<VerifyEmailResponseEntity>());
+      });
+
+      test(
+        'supports toJson',
+        () => expect(
+          mockVerifyEmailResponseEntity.toJson(),
+          <String, dynamic>{
+            'verify_email': false,
+          },
+        ),
+      );
+
+      test('has a valid copyWith', () {
+        final VerifyEmailResponseEntity copyVerifyEmailResponseEntity =
+            mockVerifyEmailResponseEntity.copyWith(verifyEmail: true);
+        final VerifyEmailResponseEntity secondCopyVerifyEmailResponseEntity =
+            mockVerifyEmailResponseEntity.copyWith();
+        expect(copyVerifyEmailResponseEntity.verifyEmail, true);
+        expect(secondCopyVerifyEmailResponseEntity.verifyEmail, false);
+      });
+    });
   });
 }
