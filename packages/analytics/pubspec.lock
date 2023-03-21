@@ -47,8 +47,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/deriv_rudderstack"
-      ref: "654eeff97955ee4c290556e23b7cf5100d5b988f"
-      resolved-ref: "654eeff97955ee4c290556e23b7cf5100d5b988f"
+      ref: "2ffe071cfec49afe9ae9a796b88e3936ab0a0218"
+      resolved-ref: "2ffe071cfec49afe9ae9a796b88e3936ab0a0218"
       url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
     source: git
     version: "1.1.0"
