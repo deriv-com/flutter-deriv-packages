@@ -36,8 +36,11 @@ void main() {
       'supports fromJson',
       () {
         expect(
-          AuthorizeTrading.fromJson(mockAuthorizeTradingJson).linkedTo,
-          isA<List<TradingLinkedToItem>>(),
+          AuthorizeTrading.fromJson(mockAuthorizeTradingJson)
+              .linkedTo
+              ?.first
+              .accountId,
+          accountId,
         );
       },
     );
