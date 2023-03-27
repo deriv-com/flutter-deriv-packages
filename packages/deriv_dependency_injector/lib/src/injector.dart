@@ -34,7 +34,7 @@ class Injector {
 
     if (_factories.containsKey(objectKey)) {
       throw InjectorException(
-        message: "mapping already present for type '$objectKey'",
+        message: "mapping already present for type '$objectKey'.",
       );
     }
 
@@ -54,7 +54,7 @@ class Injector {
 
     if (_factories.containsKey(objectKey)) {
       throw InjectorException(
-        message: "mapping already present for type '$objectKey'",
+        message: "mapping already present for type '$objectKey'.",
       );
     }
 
@@ -74,7 +74,7 @@ class Injector {
 
     if (objectFactory == null) {
       throw InjectorException(
-        message: "cannot find object factory for '$objectKey'",
+        message: "cannot find object factory for '$objectKey'.",
       );
     }
 
