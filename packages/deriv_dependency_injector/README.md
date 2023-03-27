@@ -36,7 +36,7 @@ This is the constructor for the Injector class. It takes an optional name parame
 
 `void register<T>({required ObjectFactoryFunction<T> factoryFunction, String key = _defaultKey, bool isSingleton = false})`
 
-This method is used to register a class with the injector. It takes a generic type T as its first parameter, a factory function that creates an instance of the class, and an optional key and isSingleton parameter. If isSingleton is set to true, the instance will be created only once and reused. If it is set to false, the instance will be created every time it is requested.
+This method is used to register a class with the injector. It takes a generic type [T] as its first parameter, a factory function that creates an instance of the class, and an optional key and isSingleton parameter. If isSingleton is set to true, the instance will be created only once and reused. If it is set to false, the instance will be created every time it is requested.
 
 `void registerWithParams<T>({required ObjectFactoryWithParametersFunction<T> factoryFunction, String key = _defaultKey})`
 
@@ -46,7 +46,7 @@ This method is similar to the register method, but it allows for additional para
 `T? resolve<T>({String key = _defaultKey, Map<String, dynamic>? additionalParameters})`
 `T? call<T>({String key = _defaultKey, Map<String, dynamic>? additionalParameters})`
 
-This method is used to retrieve an instance of a registered class from the injector. It takes a generic type T as its first parameter and an optional key and additionalParameters parameter. If the class is not registered, an InjectorException will be thrown.
+This method is used to retrieve an instance of a registered class from the injector. It takes a generic type [T] as its first parameter and an optional key and additionalParameters parameter. If the class is not registered, an InjectorException will be thrown.
 
 `Iterable<T?> getAll<T>({Map<String, dynamic>? additionalParameters})`
 

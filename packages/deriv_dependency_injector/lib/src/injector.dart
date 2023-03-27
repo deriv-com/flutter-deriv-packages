@@ -65,7 +65,7 @@ class Injector {
   }
 
   /// Resolves the given type [T] and [key] to an instance.
-  T? resolve<T>({
+  T resolve<T>({
     String key = _defaultKey,
     Map<String, dynamic>? additionalParameters,
   }) {
@@ -82,7 +82,7 @@ class Injector {
   }
 
   /// Shortcut for [resolve] method.
-  T? call<T>({
+  T call<T>({
     String key = _defaultKey,
     Map<String, dynamic>? additionalParameters,
   }) =>

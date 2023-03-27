@@ -50,7 +50,7 @@ void main() {
       expect(
         injector<Dependent>(additionalParameters: <String, dynamic>{
           'dependency': dependency,
-        })?.dependency,
+        }).dependency,
         equals(dependency),
       );
     });
