@@ -30,7 +30,7 @@ void main() {
       expect(cubit.state, const DerivSignupInitialState());
     });
 
-    test('should return stream of [DerivSignupInitialState]', () {
+    test('should return stream of [DerivSignupState]', () {
       expect(cubit.output, isA<Stream<DerivSignupState>>());
     });
 
