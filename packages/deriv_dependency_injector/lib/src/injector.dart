@@ -20,12 +20,12 @@ class Injector {
   /// The name of this injector instance.
   final String? name;
 
-  /// Maps the given type to the given factory function and key.
+  /// Registers the given type to the given factory function and [key].
   ///
   /// If [isSingleton] is true, the instance will be created only once and reused.
   ///
   /// If [isSingleton] is false, the instance will be created every time it is requested.
-  void map<T>({
+  void register<T>({
     required ObjectFactoryFunction<T> factoryFunction,
     String key = _defaultKey,
     bool isSingleton = false,
@@ -34,7 +34,7 @@ class Injector {
 
     if (_factories.containsKey(objectKey)) {
       throw InjectorException(
-        message: "mapping already present for type '$objectKey'.",
+        message: '$T is already registered with key $key.',
       );
     }
 
@@ -45,8 +45,8 @@ class Injector {
     );
   }
 
-  /// Gets mapped instances of the given type and additional parameters.
-  void mapWithParams<T>({
+  /// Registers the given type to the given factory function and [key].
+  void registerWithParams<T>({
     required ObjectFactoryWithParametersFunction<T> factoryFunction,
     String key = _defaultKey,
   }) {
@@ -54,7 +54,7 @@ class Injector {
 
     if (_factories.containsKey(objectKey)) {
       throw InjectorException(
-        message: "mapping already present for type '$objectKey'.",
+        message: '$T is already registered with key $key.',
       );
     }
 
@@ -64,8 +64,8 @@ class Injector {
     );
   }
 
-  /// Gets mapped instances of the given type and additional parameters.
-  T? get<T>({
+  /// Resolves the given type [T] and [key] to an instance.
+  T? resolve<T>({
     String key = _defaultKey,
     Map<String, dynamic>? additionalParameters,
   }) {
@@ -74,15 +74,22 @@ class Injector {
 
     if (objectFactory == null) {
       throw InjectorException(
-        message: "cannot find object factory for '$objectKey'.",
+        message: 'No factory registered for $T with key $key.',
       );
     }
 
     return objectFactory.get(this, additionalParameters);
   }
 
-  /// Gets all the mapped instances of the given type and additional parameters.
-  Iterable<T?> getAll<T>({Map<String, dynamic>? additionalParameters}) {
+  /// Shortcut for [resolve] method.
+  T? call<T>({
+    String key = _defaultKey,
+    Map<String, dynamic>? additionalParameters,
+  }) =>
+      resolve<T>(key: key, additionalParameters: additionalParameters);
+
+  /// Resolves all instances of the given type [T].
+  Iterable<T?> resolveAll<T>({Map<String, dynamic>? additionalParameters}) {
     final List<T?> instances = <T?>[];
     final String keyForType =
         _generateKey(type: T).replaceFirst(_defaultKey, '');

@@ -4,33 +4,33 @@ import 'package:deriv_dependency_injector/dependency_injector.dart';
 
 void main() {
   final Injector injector = Injector()
-    ..map<SampleClass>(
+    ..register<SampleClass>(
       factoryFunction: (_) => SampleClass(),
       isSingleton: true,
     )
-    ..map<SampleClass>(
+    ..register<SampleClass>(
       factoryFunction: (_) => SampleClass(),
       key: 'custom',
     )
-    ..mapWithParams<SampleClassWithParams>(
+    ..registerWithParams<SampleClassWithParams>(
       factoryFunction: (Injector injector, Map<String, dynamic>? params) =>
           SampleClassWithParams(params!['param']),
     );
 
-  final SampleClass? sampleClass = injector.get<SampleClass>();
+  final SampleClass? sampleClass = injector<SampleClass>();
   sampleClass?.doSomething();
 
-  final SampleClass? myCustomClass = injector.get<SampleClass>(key: 'custom');
+  final SampleClass? myCustomClass = injector<SampleClass>(key: 'custom');
   myCustomClass?.doSomething();
 
   final SampleClassWithParams? sampleClassWithParams =
-      injector.get<SampleClassWithParams>(
+      injector<SampleClassWithParams>(
     additionalParameters: <String, dynamic>{'param': 'hello'},
   );
   sampleClassWithParams?.doSomethingWithParams();
 
   final Iterable<SampleClass?> allSampleClasses =
-      injector.getAll<SampleClass>();
+      injector.resolveAll<SampleClass>();
   for (final SampleClass? sampleClass in allSampleClasses) {
     sampleClass?.doSomething();
   }

@@ -16,12 +16,12 @@ Then, you can create an instance of the Injector class and use it to register an
 final Injector injector = Injector();
 
 // Register a class
-injector.map<MyClass>(
+injector.register<MyClass>(
   factoryFunction: (injector) => MyClass(),
 );
 
 // Retrieve an instance of the class
-final instance = injector.get<MyClass>();
+final instance = injector<MyClass>();
 ```
 
 ## API
@@ -34,15 +34,17 @@ The Injector class is the main class provided by the package. It has the followi
 
 This is the constructor for the Injector class. It takes an optional name parameter which is used to create named injectors. If no name is provided, the default injector will be created.
 
-`void map<T>({required ObjectFactoryFunction<T> factoryFunction, String key = _defaultKey, bool isSingleton = false})`
+`void register<T>({required ObjectFactoryFunction<T> factoryFunction, String key = _defaultKey, bool isSingleton = false})`
 
 This method is used to register a class with the injector. It takes a generic type T as its first parameter, a factory function that creates an instance of the class, and an optional key and isSingleton parameter. If isSingleton is set to true, the instance will be created only once and reused. If it is set to false, the instance will be created every time it is requested.
 
-`void mapWithParams<T>({required ObjectFactoryWithParametersFunction<T> factoryFunction, String key = _defaultKey})`
+`void registerWithParams<T>({required ObjectFactoryWithParametersFunction<T> factoryFunction, String key = _defaultKey})`
 
-This method is similar to the map method, but it allows for additional parameters to be passed to the factory function when creating an instance of the class.
+This method is similar to the register method, but it allows for additional parameters to be passed to the factory function when creating an instance of the class.
 
-`T? get<T>({String key = _defaultKey, Map<String, dynamic>? additionalParameters})`
+`T? <T>({String key = _defaultKey, Map<String, dynamic>? additionalParameters})`
+`T? resolve<T>({String key = _defaultKey, Map<String, dynamic>? additionalParameters})`
+`T? call<T>({String key = _defaultKey, Map<String, dynamic>? additionalParameters})`
 
 This method is used to retrieve an instance of a registered class from the injector. It takes a generic type T as its first parameter and an optional key and additionalParameters parameter. If the class is not registered, an InjectorException will be thrown.
 

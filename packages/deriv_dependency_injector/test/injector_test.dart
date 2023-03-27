@@ -26,53 +26,57 @@ void main() {
       expect(injector3, equals(Injector()));
     });
 
-    test('maps a type to a factory function', () {
+    test('register a type to a factory function.', () {
       final Injector injector = Injector();
       final Dependency dependency = Dependency();
 
-      injector.map<Dependency>(factoryFunction: (_) => dependency);
+      injector.register<Dependency>(factoryFunction: (_) => dependency);
 
-      expect(injector.get<Dependency>(), equals(dependency));
+      expect(injector<Dependency>(), equals(dependency));
     });
 
-    test('maps a type to a factory function with additional parameters.', () {
+    test('registers a type to a factory function with additional parameters.',
+        () {
       final Injector injector = Injector();
       final Dependency dependency = Dependency();
       injector
-        ..mapWithParams<Dependent>(
+        ..registerWithParams<Dependent>(
           factoryFunction:
               (Injector injector, Map<String, dynamic>? parameters) =>
                   Dependent(parameters!['dependency']),
         )
-        ..map<Dependency>(factoryFunction: (_) => dependency);
+        ..register<Dependency>(factoryFunction: (_) => dependency);
 
       expect(
-        injector.get<Dependent>(additionalParameters: <String, dynamic>{
+        injector<Dependent>(additionalParameters: <String, dynamic>{
           'dependency': dependency,
         })?.dependency,
         equals(dependency),
       );
     });
 
-    test('gets the mapped instance of a type.', () {
+    test('gets the registerd instance of a type.', () {
       final Injector injector = Injector();
       final Dependency dependency = Dependency();
 
-      injector.map<Dependency>(factoryFunction: (_) => dependency);
+      injector.register<Dependency>(factoryFunction: (_) => dependency);
 
-      expect(injector.get<Dependency>(), equals(dependency));
+      expect(injector<Dependency>(), equals(dependency));
     });
 
-    test('gets all the mapped instances of a type', () {
+    test('gets all the registered instances of a type.', () {
       final Injector injector = Injector();
       final Dependency dependency1 = Dependency();
       final Dependency dependency2 = Dependency();
       injector
-        ..map<Dependency>(factoryFunction: (_) => dependency1, key: 'key1')
-        ..map<Dependency>(factoryFunction: (_) => dependency2, key: 'key2');
+        ..register<Dependency>(factoryFunction: (_) => dependency1, key: 'key1')
+        ..register<Dependency>(
+            factoryFunction: (_) => dependency2, key: 'key2');
 
-      expect(injector.getAll<Dependency>(),
-          equals(<Object?>[dependency1, dependency2]));
+      expect(
+        injector.resolveAll<Dependency>(),
+        equals(<Object?>[dependency1, dependency2]),
+      );
     });
 
     test(
@@ -82,33 +86,35 @@ void main() {
       final Dependency dependency = Dependency();
 
       injector
-        ..map<Dependency>(factoryFunction: (_) => dependency)
+        ..register<Dependency>(factoryFunction: (_) => dependency)
         ..dispose();
 
       expect(
-        () => injector.get<Dependency>(),
+        () => injector<Dependency>(),
         throwsA(isA<InjectorException>()),
       );
     });
 
-    test('map() throws exception when mapping already exists.', () {
-      Injector().map<String>(factoryFunction: (Injector injector) => 'value');
+    test('register() throws exception when instance already exists.', () {
+      Injector()
+          .register<String>(factoryFunction: (Injector injector) => 'value');
 
       expect(
-        () => Injector()
-            .map<String>(factoryFunction: (Injector injector) => 'new value'),
+        () => Injector().register<String>(
+            factoryFunction: (Injector injector) => 'new value'),
         throwsA(const TypeMatcher<InjectorException>()),
       );
     });
 
-    test('mapWithParams() throws exception when mapping already exists.', () {
-      Injector().mapWithParams<String>(
+    test('registerWithParams() throws exception when instance already exists.',
+        () {
+      Injector().registerWithParams<String>(
         factoryFunction:
             (Injector injector, Map<String, dynamic>? parameters) => 'value',
       );
 
       expect(
-        () => Injector().mapWithParams<String>(
+        () => Injector().registerWithParams<String>(
           factoryFunction:
               (Injector injector, Map<String, dynamic>? parameters) =>
                   'new value',
@@ -117,9 +123,9 @@ void main() {
       );
     });
 
-    test('get() throws exception when mapping does not exist.', () {
+    test('get() throws exception when instance does not exist.', () {
       expect(
-        () => Injector().get<String>(),
+        () => Injector()<String>(),
         throwsA(const TypeMatcher<InjectorException>()),
       );
     });
