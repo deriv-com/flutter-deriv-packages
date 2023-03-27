@@ -34,7 +34,7 @@ class Injector {
 
     if (_factories.containsKey(objectKey)) {
       throw InjectorException(
-        message: '$T is already registered with key $key.',
+        message: '$T is already registered with key $objectKey.',
       );
     }
 
@@ -54,7 +54,7 @@ class Injector {
 
     if (_factories.containsKey(objectKey)) {
       throw InjectorException(
-        message: '$T is already registered with key $key.',
+        message: '$T is already registered with key $objectKey.',
       );
     }
 
@@ -74,7 +74,7 @@ class Injector {
 
     if (objectFactory == null) {
       throw InjectorException(
-        message: 'No factory registered for $T with key $key.',
+        message: 'No factory registered for $T with key $objectKey.',
       );
     }
 
