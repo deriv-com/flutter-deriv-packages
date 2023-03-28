@@ -24,23 +24,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   Future<void> systemLogin({
     required String email,
     required String password,
-  }) async {
-    emit(DerivAuthLoadingState());
-
-    final GetTokensRequestModel request = GetTokensRequestModel(
-      type: AuthType.system,
-      email: email,
-      password: password,
-    );
-
-    await _loginRequest(request);
-  }
-
-  @override
-  Future<void> otpLogin({
-    required String email,
-    required String password,
-    required String otp,
+    String? otp,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -72,6 +56,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Future<void> tokenLogin(String token) async {
+    emit(DerivAuthLoadingState());
+
     final List<AccountModel> accountsList =
         await authService.getLatestAccounts();
 
@@ -79,6 +65,31 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       token,
       accountsList: accountsList,
     );
+  }
+
+  Future<void> _loginRequest(GetTokensRequestModel request) async {
+    try {
+      final AuthorizeEntity authorize =
+          await authService.onLoginRequest(request);
+
+      emit(DerivAuthLoggedInState(authorize));
+    } on DerivAuthException catch (error) {
+      emit(DerivAuthErrorState(message: error.message, type: error.type));
+    }
+  }
+
+  Future<void> _tokenLoginRequest(
+    String token, {
+    required List<AccountModel> accountsList,
+  }) async {
+    try {
+      final AuthorizeEntity authorize =
+          await authService.login(token, accountsList: accountsList);
+
+      emit(DerivAuthLoggedInState(authorize));
+    } on DerivAuthException catch (error) {
+      emit(DerivAuthErrorState(message: error.message, type: error.type));
+    }
   }
 
   @override
@@ -107,7 +118,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     emit(DerivAuthLoadingState());
     try {
       await authService.logout();
-
       await authService.onLoggedOut();
 
       emit(DerivAuthLoggedOutState());
@@ -118,29 +128,4 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Stream<DerivAuthState> get output => stream;
-
-  Future<void> _tokenLoginRequest(
-    String token, {
-    required List<AccountModel> accountsList,
-  }) async {
-    try {
-      final AuthorizeEntity authorize =
-          await authService.login(token, accountsList: accountsList);
-
-      emit(DerivAuthLoggedInState(authorize));
-    } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
-    }
-  }
-
-  Future<void> _loginRequest(GetTokensRequestModel request) async {
-    try {
-      final AuthorizeEntity authorize =
-          await authService.onLoginRequest(request);
-
-      emit(DerivAuthLoggedInState(authorize));
-    } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
-    }
-  }
 }

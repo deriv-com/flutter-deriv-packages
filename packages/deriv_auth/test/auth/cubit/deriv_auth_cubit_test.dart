@@ -134,7 +134,7 @@ void main() {
           authCubit.stream,
           emitsInOrder(expectedResponse),
         );
-        authCubit.otpLogin(otp: 'otp', email: 'email', password: 'pass');
+        authCubit.systemLogin(email: 'email', password: 'pass', otp: 'otp');
 
         verify(() => service.onLoginRequest(any())).called(1);
       });
