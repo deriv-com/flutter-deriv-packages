@@ -49,7 +49,7 @@ void main() {
       expect(map['authorize']['local_currencies'], isNull);
       expect(map['authorize']['loginid'], equals('12345'));
       expect(map['authorize']['preferred_language'], equals('en'));
-      expect(map['authorize']['scopes'], equals(['a', 'b', 'c']));
+      expect(map['authorize']['scopes'], equals(<String>['a', 'b', 'c']));
       expect(map['authorize']['trading'], isNull);
       expect(map['authorize']['upgradeable_landing_companies'], isNull);
       expect(map['authorize']['user_id'], equals(6789));
@@ -71,7 +71,7 @@ void main() {
         'local_currencies': null,
         'loginid': '12345',
         'preferred_language': 'en',
-        'scopes': ['a', 'b', 'c'],
+        'scopes': <String>['a', 'b', 'c'],
         'trading': null,
         'upgradeable_landing_companies': null,
         'user_id': 6789,
@@ -96,7 +96,7 @@ void main() {
       expect(entity.authorize!.localCurrencies, isNull);
       expect(entity.authorize!.loginid, equals('12345'));
       expect(entity.authorize!.preferredLanguage, equals('en'));
-      expect(entity.authorize!.scopes, equals(['a', 'b', 'c']));
+      expect(entity.authorize!.scopes, equals(<String>['a', 'b', 'c']));
       expect(entity.authorize!.trading, isNull);
       expect(entity.authorize!.upgradeableLandingCompanies, isNull);
       expect(entity.authorize!.userId, equals(6789));

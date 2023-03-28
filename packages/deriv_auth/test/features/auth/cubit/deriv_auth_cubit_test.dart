@@ -196,8 +196,7 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() =>
-                service.login(any(), accountsList: any(named: 'accountsList')))
+        when(() => service.login(any(), accounts: any(named: 'accounts')))
             .thenAnswer((_) =>
                 Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
@@ -217,7 +216,7 @@ void main() {
         authCubit.tokenLogin(_token);
 
         verify(
-          () => service.login(any(), accountsList: any(named: 'accountsList')),
+          () => service.login(any(), accounts: any(named: 'accounts')),
         ).called(1);
       });
 
@@ -230,8 +229,7 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() =>
-                service.login(any(), accountsList: any(named: 'accountsList')))
+        when(() => service.login(any(), accounts: any(named: 'accounts')))
             .thenThrow(DerivAuthException(
           message: 'message',
           type: AuthErrorType.invalidToken,
@@ -250,7 +248,7 @@ void main() {
         authCubit.tokenLogin(_token);
 
         verify(
-          () => service.login(any(), accountsList: any(named: 'accountsList')),
+          () => service.login(any(), accounts: any(named: 'accounts')),
         ).called(1);
       });
     },
