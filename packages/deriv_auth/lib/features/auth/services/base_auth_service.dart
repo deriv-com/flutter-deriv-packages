@@ -12,7 +12,7 @@ abstract class BaseAuthService {
   /// Log in a user with [token].
   Future<AuthorizeEntity> login(
     String token, {
-    required List<AccountModel> accountsList,
+    required List<AccountModel> accounts,
     String? signupProvider,
     String? refreshToken,
   });

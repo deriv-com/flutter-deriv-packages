@@ -62,7 +62,7 @@ class DerivAuthService extends BaseAuthService {
       if (_defaultAccountToken != null) {
         return login(
           _defaultAccountToken,
-          accountsList: _supportedAccounts,
+          accounts: _supportedAccounts,
           signupProvider: request.signupProvider,
           refreshToken: _response.refreshToken,
         );
@@ -88,7 +88,7 @@ class DerivAuthService extends BaseAuthService {
   @override
   Future<AuthorizeEntity> login(
     String token, {
-    required List<AccountModel> accountsList,
+    required List<AccountModel> accounts,
     String? signupProvider,
     String? refreshToken,
   }) async {
@@ -105,7 +105,7 @@ class DerivAuthService extends BaseAuthService {
         accountList: responseAuthorizeEntity.accountList
             ?.map(
               (AccountListItem accountListItem) => accountListItem.copyWith(
-                token: accountsList
+                token: accounts
                         .where(
                           (AccountModel element) =>
                               element.accountId == accountListItem.loginid,

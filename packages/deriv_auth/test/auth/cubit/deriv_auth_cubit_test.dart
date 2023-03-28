@@ -45,18 +45,19 @@ void main() {
 
         verify(() => service.getDefaultAccount()).called(1);
         verifyNever(
-          () => service.login(any(), accountsList: any(named: 'accountsList')),
+          () => service.login(any(), accounts: any(named: 'accounts')),
         );
       });
 
-      test('should emit [AuthLoggedInState] if there is default account', () {
+      test('should emit [AuthLoggedInState] if there is default account.', () {
         when(() => service.getDefaultAccount())
             .thenAnswer((_) => Future<AccountModel?>.value(mockedAccountModel));
+
         when(() => service.getLatestAccounts()).thenAnswer((_) =>
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
-        when(() =>
-                service.login(any(), accountsList: any(named: 'accountsList')))
+
+        when(() => service.login(any(), accounts: any(named: 'accounts')))
             .thenAnswer((_) =>
                 Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 

@@ -101,7 +101,7 @@ void main() {
           () async {
         final AuthorizeEntity response = await authService.login(
           validToken,
-          accountsList: <AccountModel>[
+          accounts: <AccountModel>[
             AccountModel(accountId: '0', token: validToken)
           ],
           refreshToken: 'refreshToken',
