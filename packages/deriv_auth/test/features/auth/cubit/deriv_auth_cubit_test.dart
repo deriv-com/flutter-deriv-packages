@@ -202,6 +202,7 @@ void main() {
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
+          isA<DerivAuthLoadingState>(),
           isA<DerivAuthLoggedInState>().having(
               (DerivAuthLoggedInState state) => state.authorizeEntity,
               'authorized entity',
@@ -237,6 +238,7 @@ void main() {
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
+          isA<DerivAuthLoadingState>(),
           isA<DerivAuthErrorState>(),
         ];
 
