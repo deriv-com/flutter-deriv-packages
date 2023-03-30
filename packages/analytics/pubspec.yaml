@@ -15,7 +15,8 @@ dependencies:
       path: packages/deriv_rudderstack
       ref: dev
 
-  firebase_analytics: ^8.1.2
+  firebase_analytics: ^10.1.6
+  firebase_core: ^2.7.2
 
   flutter:
     sdk: flutter
