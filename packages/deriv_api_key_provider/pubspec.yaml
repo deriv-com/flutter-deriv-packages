@@ -13,8 +13,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  ffi: ^1.1.2
-  package_info: ^2.0.2
+  ffi: ^2.0.1
+  package_info_plus: ^3.0.3
 
 dev_dependencies:
   flutter_test:
