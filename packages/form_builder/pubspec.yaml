@@ -12,4 +12,4 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  test: any
+  test: ^1.24.1

@@ -19,7 +19,12 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
   UpdateBloc({
     this.firebaseDatabaseRepository = const FirebaseDatabaseRepository(),
     this.packageInfoRepository = const PackageInfoRepository(),
-  }) : super(UpdateInitialState());
+  }) : super(UpdateInitialState()) {
+    on<UpdateFetchEvent>(
+      (UpdateFetchEvent event, Emitter<UpdateState> emit) async =>
+          _handleUpdateFetchEvent(event, emit),
+    );
+  }
 
   /// Firebase database repository for fetching the update information.
   final FirebaseDatabaseRepository firebaseDatabaseRepository;
@@ -27,16 +32,15 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
   /// Package info repository for fetching the app build number.
   final PackageInfoRepository packageInfoRepository;
 
-  /// Maps event to the corresponding state.
-  @override
-  Stream<UpdateState> mapEventToState(UpdateEvent event) async* {
-    if (event is UpdateFetchEvent && state is! UpdateInProgressState) {
-      yield UpdateInProgressState();
+  Future<void> _handleUpdateFetchEvent(
+      UpdateFetchEvent event, Emitter<UpdateState> emit) async {
+    if (state is! UpdateInProgressState) {
+      emit(UpdateInProgressState());
       final UpdateInfo? info = await _getUpdateInfo();
       if (info != null) {
-        yield UpdateAvailableState(info);
+        emit(UpdateAvailableState(info));
       } else {
-        yield UpdateNotAvailableState();
+        emit(UpdateNotAvailableState());
       }
     }
   }
