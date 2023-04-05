@@ -14,12 +14,12 @@ void main() {
   testWidgets('Verify Platform version', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp());
+    final regex = RegExp('^App Token [a-zA-Z0-9]+');
 
     // Verify that platform version is retrieved.
     expect(
       find.byWidgetPredicate(
-        (Widget widget) => widget is Text &&
-                           widget.data!.startsWith('Running on:'),
+        (Widget widget) => widget is Text && regex.hasMatch(widget.data!),
       ),
       findsOneWidget,
     );
