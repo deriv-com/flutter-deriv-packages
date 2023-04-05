@@ -16,21 +16,21 @@ dependencies:
 
   flutter_deriv_api:
     git:
-      url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: dev
+      url: git@github.com:sahani-deriv/flutter-deriv-api.git
+      ref: flutter-version-3
 
   deriv_api_key_provider:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:naif-deriv/flutter-deriv-packages.git
       path: packages/deriv_api_key_provider
-      ref: dev
+      ref: flutter-version-3
 
   crypto: ^3.0.2
   equatable: ^2.0.3
-  flutter_bloc: ^7.0.0
-  url_launcher: ^6.1.3
-  webview_flutter: ^3.0.4
-  flutter_inappwebview: ^5.4.3+7
+  bloc: ^8.1.1
+  url_launcher: ^6.1.10
+  webview_flutter: ^4.0.0
+  flutter_inappwebview: ^5.7.2+3
 
 dev_dependencies:
   flutter_test:
