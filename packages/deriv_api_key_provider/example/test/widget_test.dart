@@ -14,6 +14,8 @@ void main() {
   testWidgets('Verify Platform version', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp());
+
+    // Regex to match the text "App Token <app token>".
     final regex = RegExp('^App Token [a-zA-Z0-9]+');
 
     // Verify that platform version is retrieved.
