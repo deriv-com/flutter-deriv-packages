@@ -57,7 +57,7 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPageState extends State<WebViewPage> {
-  late WebViewController _webViewController;
+  late final WebViewController _webViewController;
   final WebViewPageCubit _webViewPageCubit = WebViewPageCubit();
 
   @override
