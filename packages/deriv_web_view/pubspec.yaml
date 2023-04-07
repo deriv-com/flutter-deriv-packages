@@ -16,14 +16,14 @@ dependencies:
 
   flutter_deriv_api:
     git:
-      url: git@github.com:sahani-deriv/flutter-deriv-api.git
-      ref: flutter-version-3
+      url: git@github.com:deriv-com/flutter-deriv-api.git
+      ref: d8ebbd047fe77a4993a037320a9499d2900a65a3
 
   deriv_api_key_provider:
     git:
-      url: git@github.com:naif-deriv/flutter-deriv-packages.git
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_api_key_provider
-      ref: flutter-version-3
+      ref: 9fd9ebcc4126a9239db2773e33d6e1fdc400c39f
 
   crypto: ^3.0.2
   equatable: ^2.0.3
