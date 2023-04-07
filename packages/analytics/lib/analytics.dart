@@ -106,7 +106,7 @@ class Analytics {
   Future<void> _setRudderStackDeviceToken(String deviceToken) =>
       DerivRudderstack().setContext(token: deviceToken);
 
-  /// Sets the user id to `Firebase`.
+  /// Sets the user id for `Firebase`.
   Future<void> _setFirebaseUserId(String userId) =>
       _firebaseAnalytics.setUserId(id: userId);
 
