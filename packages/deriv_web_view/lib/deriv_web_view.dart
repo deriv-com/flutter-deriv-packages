@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:developer' as dev;
 
+import 'package:deriv_web_view/widgets/in_app_browser/chrome_safari_browser.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:deriv_web_view/helper.dart';
@@ -38,17 +41,26 @@ Future<void> openInAppWebView({
   String? endpoint,
   String? appId,
   VoidCallback? onClosed,
-}) async =>
-    Navigator.of(context, rootNavigator: rootNavigator).push(
-      MaterialPageRoute<Widget>(
-        builder: (BuildContext context) => WebViewPage(
-          url: url,
-          title: title,
-          extendBodyBehindAppBar: extendBodyBehindAppBar,
-          setEndpoint: setEndpoint,
-          endpoint: endpoint,
-          appId: appId,
-          onClosed: onClosed,
+}) async {
+  try {
+    await _openInAppBrowser(url);
+  } on PlatformException catch (_) {
+    await InAppBrowser().openUrlRequest(
+      urlRequest: URLRequest(url: Uri.parse(url)),
+    );
+  }
+}
+
+Future<void> _openInAppBrowser(String url) async => AppChromeSafariBrowser().open(
+      url: Uri.parse(url),
+      options: ChromeSafariBrowserClassOptions(
+        android: AndroidChromeCustomTabsOptions(
+          shareState: CustomTabsShareState.SHARE_STATE_OFF,
+        ),
+        ios: IOSSafariOptions(
+          dismissButtonStyle: IOSSafariDismissButtonStyle.CLOSE,
+          presentationStyle: IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
+          transitionStyle: IOSUIModalTransitionStyle.CROSS_DISSOLVE,
         ),
       ),
     );

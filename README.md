@@ -16,7 +16,6 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_lint](./packages/deriv_lint)                               | A Dart package that provides lint rules for Dart and Flutter.                |
 | [deriv_live_chat](./packages/deriv_live_chat)                     | A plugin for live chat SDK support to dart.                                  |
 | [deriv_rudderstack](./packages/deriv_rudderstack)                 | A plugin that add RudderStack SDK support to Flutter.                        |
-| [deriv_signup_login](./packages/deriv_signup_login)               | A package for handling in app signup and login.                              |
 | [deriv_store_launcher](./packages/deriv_store_launcher)           | A plugin to lunch app stores base on platform and manufacturer.              |
 | [deriv_technical_analysis](./packages/deriv_technical_analysis)   | A Dart package for Technical Analysis.                                       |
 | [deriv_theme](./packages/deriv_theme)                             | A package that contains the theme used by Deriv products.                    |
