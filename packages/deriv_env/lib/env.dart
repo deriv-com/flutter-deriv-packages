@@ -66,7 +66,7 @@ class Env extends BaseEnv {
     }
 
     final String value = encrypted
-        ? Cipher.decrypt(_entries[key], decryptionKey)
+        ? Cipher.decrypt(message: _entries[key], key: decryptionKey)
         : _entries[key];
 
     if (paserFactory != null) {

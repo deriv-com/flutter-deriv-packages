@@ -8,8 +8,8 @@ void main() {
       const String input = 'secret message';
       const String key = 'secret key';
 
-      final String encrypted = Cipher.encrypt(input, key);
-      final String decrypted = Cipher.decrypt(encrypted, key);
+      final String encrypted = Cipher.encrypt(message: input, key: key);
+      final String decrypted = Cipher.decrypt(message: encrypted, key: key);
 
       expect(decrypted, equals(input));
     });
@@ -18,8 +18,8 @@ void main() {
       const String input = '';
       const String key = 'secret key';
 
-      final String encrypted = Cipher.encrypt(input, key);
-      final String decrypted = Cipher.decrypt(encrypted, key);
+      final String encrypted = Cipher.encrypt(message: input, key: key);
+      final String decrypted = Cipher.decrypt(message: encrypted, key: key);
 
       expect(decrypted, equals(input));
     });
@@ -31,13 +31,13 @@ void main() {
       const String key1 = 'secret key 1';
       const String key2 = 'secret key 2';
 
-      final String encrypted1 = Cipher.encrypt(input, key1);
-      final String encrypted2 = Cipher.encrypt(input, key2);
+      final String encrypted1 = Cipher.encrypt(message: input, key: key1);
+      final String encrypted2 = Cipher.encrypt(message: input, key: key2);
 
       expect(encrypted1, isNot(equals(encrypted2)));
 
-      final String decrypted1 = Cipher.decrypt(encrypted1, key1);
-      final String decrypted2 = Cipher.decrypt(encrypted2, key2);
+      final String decrypted1 = Cipher.decrypt(message: encrypted1, key: key1);
+      final String decrypted2 = Cipher.decrypt(message: encrypted2, key: key2);
 
       expect(decrypted1, equals(input));
       expect(decrypted2, equals(input));
