@@ -13,9 +13,6 @@ class AppPerformance {
   /// A public instance of the class [AppPerformance].
   static final AppPerformance _instance = AppPerformance._internal();
 
-  /// Contains ignored routes/screen names.
-  List<String> ignoredRoutes = <String>[];
-
   late FirebasePerformance _firebasePerformance;
 
   /// Initializes the `AppPerformance`.
