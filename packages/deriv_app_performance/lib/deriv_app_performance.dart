@@ -5,15 +5,15 @@ import 'package:firebase_performance/firebase_performance.dart';
 /// Class that collects and send app performance data  to `Firebase`.
 class AppPerformance {
   /// Initializes AppPerformance instance.
-  factory AppPerformance() => _instance;
+  factory AppPerformance() => _instance ??= AppPerformance._internal();
 
   AppPerformance._internal();
 
+  /// A public instance of the class [AppPerformance].
+  static AppPerformance? _instance;
+
   /// Create an empty map.
   final Map<String, Trace> _traceMap = <String, Trace>{};
-
-  /// A public instance of the class [AppPerformance].
-  static final AppPerformance _instance = AppPerformance._internal();
 
   late FirebasePerformance _firebasePerformance;
 
