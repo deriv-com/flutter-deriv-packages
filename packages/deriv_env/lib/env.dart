@@ -1,3 +1,4 @@
+import 'package:deriv_env/cipher.dart';
 import 'package:flutter/services.dart';
 
 import 'base_env.dart';
@@ -43,7 +44,17 @@ class Env extends BaseEnv {
   }
 
   @override
-  T get<T>(String key, {T? defaultValue}) {
+  T get<T>(
+    String key, {
+    T? defaultValue,
+    T Function(String value)? paserFactory,
+    bool encrypted = false,
+    String decryptionKey = '',
+  }) {
+    if (encrypted && decryptionKey.isEmpty) {
+      throw Exception('$runtimeType encrypted key is required.');
+    }
+
     _checkInitialization();
 
     if (!_entries.containsKey(key)) {
@@ -54,7 +65,13 @@ class Env extends BaseEnv {
       return defaultValue;
     }
 
-    final String value = _entries[key];
+    final String value = encrypted
+        ? Cipher.decrypt(_entries[key], decryptionKey)
+        : _entries[key];
+
+    if (paserFactory != null) {
+      return paserFactory(value);
+    }
 
     switch (T) {
       case int:
