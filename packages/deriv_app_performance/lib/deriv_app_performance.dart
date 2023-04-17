@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_performance/firebase_performance.dart';
 
 /// Class that collects and send app performance data  to `Firebase`.
@@ -33,15 +35,23 @@ class AppPerformance {
     if (_traceMap.containsKey(traceName)) {
       await stopTracing(traceName: traceName);
     }
-    final Trace trace = await _createTrace(traceName: traceName);
-    _traceMap[traceName] = trace;
-    await trace.start();
+
+    try {
+      final Trace trace = await _createTrace(traceName: traceName);
+      _traceMap[traceName] = trace;
+      await trace.start();
+    } catch (e) {
+      log(e.toString());
+    }
   }
 
   /// Stops tracing the App Performance.
   Future<void> stopTracing({required String traceName}) async {
-    final Trace? retrievedTrace = _traceMap[traceName];
-
-    return retrievedTrace?.stop();
+    try {
+      final Trace? retrievedTrace = _traceMap[traceName];
+      retrievedTrace?.stop();
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }
