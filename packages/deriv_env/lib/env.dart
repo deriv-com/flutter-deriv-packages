@@ -1,7 +1,7 @@
-import 'package:deriv_env/cipher.dart';
 import 'package:flutter/services.dart';
 
 import 'base_env.dart';
+import 'cipher.dart';
 
 /// Provides a way to store, and retrieve environment variables.
 class Env extends BaseEnv {
