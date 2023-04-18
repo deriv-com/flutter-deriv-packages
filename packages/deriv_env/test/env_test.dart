@@ -28,7 +28,7 @@ void main() {
       expect(Env().entries['VAR_WITH_HASH'], 'hello#world');
       expect(
         Env().entries['ENCRYPTED_VAR'],
-        'ksBYGk15pXBqJ6t1eHLBP1K3IY/I2Hpb4jyAPYHB+Lc=:iWtwcoF4inlm0pFlg4N5l2U=',
+        'dVyH3QjdHYcjcS2TQ1XenmDVvf5ViN8ZpSVEcjfFhsk=',
       );
     });
 
@@ -113,7 +113,7 @@ void main() {
         Env().get<String>(
           'ENCRYPTED_VAR',
           encrypted: true,
-          decryptionKey: 'SECRET_KEY',
+          decryptionKey: 'TbKjMndW1L8vczgGQfPo2IyUxh6XAEay',
         ),
         'ecnrypted message',
       );
