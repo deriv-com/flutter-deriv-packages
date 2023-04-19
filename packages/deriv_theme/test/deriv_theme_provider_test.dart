@@ -32,7 +32,7 @@ void main() {
         child: Builder(
           builder: (BuildContext context) => GestureDetector(
             onTap: () =>
-                DerivThemeProvider.changeTheme(context, ThemeMode.dark),
+                DerivThemeProvider.changeThemeMode(context, ThemeMode.dark),
             child: Container(
               height: 100,
               width: 100,

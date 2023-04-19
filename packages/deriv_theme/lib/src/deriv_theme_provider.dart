@@ -7,7 +7,7 @@ import 'deriv_theme.dart';
 
 /// Provides a [DerivTheme] to its descendants which can be accessed using [DerivThemeProvider.getTheme].
 ///
-/// It also provides a [changeTheme] method to change the theme mode.
+/// It also provides a [changeThemeMode] method to change the theme mode.
 /// You can pass optional [initialTheme] parameter to set the initial theme mode.
 class DerivThemeProvider extends StatefulWidget {
   /// Creates a [DerivThemeProvider] instance.
@@ -16,6 +16,8 @@ class DerivThemeProvider extends StatefulWidget {
     this.initialTheme,
   });
 
+  static const DerivTheme _defaultDerivTheme = DerivTheme(Brightness.dark);
+
   /// The widget below this widget in the tree.
   final Widget child;
 
@@ -23,13 +25,14 @@ class DerivThemeProvider extends StatefulWidget {
   final ThemeMode? initialTheme;
 
   /// Changes the theme mode.
-  static void changeTheme(BuildContext context, ThemeMode themeMode) => context
+  static void changeThemeMode(BuildContext context, ThemeMode mode) => context
       .findAncestorStateOfType<_DerivThemeProviderState>()
-      ?.changeThemeMode(themeMode);
+      ?.changeThemeMode(mode);
 
   /// Returns the [DerivTheme] of the closest ancestor [ThemeProvider].
   static DerivTheme getTheme(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<ThemeProvider>()!.theme;
+      context.dependOnInheritedWidgetOfExactType<ThemeProvider>()?.theme ??
+      _defaultDerivTheme;
 
   @override
   State<DerivThemeProvider> createState() => _DerivThemeProviderState();
