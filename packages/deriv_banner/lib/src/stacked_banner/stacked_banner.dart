@@ -130,7 +130,7 @@ class _StackedBannerState extends State<StackedBanner>
 
   // This method should get called everytime the banners list is updated.
   void _onBannerListUpdated() {
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_bannerItems.length < _minExpandedItems) {
         _collapseList();
       }
@@ -145,7 +145,7 @@ class _StackedBannerState extends State<StackedBanner>
 
     _setupAnimationControllers();
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _collapsedSize =
           (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
               .size;

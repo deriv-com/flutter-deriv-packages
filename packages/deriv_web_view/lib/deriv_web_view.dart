@@ -17,9 +17,9 @@ Future<void> openWebPage({
   bool rootNavigator = false,
   LaunchMode launchMode = LaunchMode.externalApplication,
 }) async {
-  final bool? isLaunchable = await canLaunchUrlString(url);
+  final bool isLaunchable = await canLaunchUrlString(url);
 
-  if (isLaunchable ?? false) {
+  if (isLaunchable) {
     await launchUrlString(url, mode: launchMode);
   } else {
     await Navigator.of(context, rootNavigator: rootNavigator).push(

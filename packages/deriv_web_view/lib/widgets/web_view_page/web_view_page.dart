@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:flutter_deriv_api/helpers/helpers.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'states/web_view_page_cubit.dart';
 
@@ -57,16 +57,26 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPageState extends State<WebViewPage> {
-  WebViewController? _webViewController;
+  late final WebViewController _webViewController;
   final WebViewPageCubit _webViewPageCubit = WebViewPageCubit();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final userAgent = await getUserAgent();
 
-    if (Platform.isAndroid) {
-      WebView.platform = SurfaceAndroidWebView();
-    }
+      _webViewController = WebViewController()
+        ..setUserAgent(userAgent)
+        ..setNavigationDelegate(
+          NavigationDelegate(
+            onPageStarted: (_) => _onPageStarted(),
+            onProgress: _onProgress,
+          ),
+        )
+        ..loadRequest(Uri.parse(widget.url ?? 'https://deriv.com'))
+        ..setJavaScriptMode(JavaScriptMode.unrestricted);
+    });
   }
 
   @override
@@ -87,15 +97,8 @@ class _WebViewPageState extends State<WebViewPage> {
               snapshot.connectionState == ConnectionState.done
                   ? WillPopScope(
                       onWillPop: _onWillPop,
-                      child: WebView(
-                        initialUrl: widget.url,
-                        userAgent: snapshot.data,
-                        javascriptMode: JavascriptMode.unrestricted,
-                        onWebViewCreated:
-                            (WebViewController webViewController) =>
-                                _webViewController = webViewController,
-                        onPageStarted: (_) => _onPageStarted(),
-                        onProgress: _onProgress,
+                      child: WebViewWidget(
+                        controller: _webViewController,
                       ),
                     )
                   : const SizedBox(),
@@ -116,8 +119,8 @@ class _WebViewPageState extends State<WebViewPage> {
       );
 
   Future<bool> _onWillPop() async {
-    await _webViewController?.clearCache();
-    await CookieManager().clearCookies();
+    await _webViewController.clearCache();
+    await WebViewCookieManager().clearCookies();
 
     widget.onClosed?.call();
 
@@ -140,7 +143,7 @@ class _WebViewPageState extends State<WebViewPage> {
     }
   }
 
-  void _setUpEndpoint() => _webViewController?.runJavascript(
+  void _setUpEndpoint() => _webViewController.runJavaScript(
         '''
           (() => {
             try {

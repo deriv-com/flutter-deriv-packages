@@ -5,7 +5,7 @@ import 'dart:io';
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/services.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 const String _libraryName = 'libnative_app_token.so';
 

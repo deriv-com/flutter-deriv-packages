@@ -6,21 +6,21 @@ homepage: https://deriv.com/
 publish_to: "none"
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
-  flutter: ">=1.20.0"
+  sdk: ">=2.19.5 <3.0.0"
+  flutter: "3.7.8"
 
 dependencies:
   flutter:
     sdk: flutter
 
   equatable: ^2.0.5
-  flutter_bloc: ^7.0.0
+  flutter_bloc: ^8.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  bloc_test: ^8.0.0
+  bloc_test: ^9.1.1
   flutter_lints: ^1.0.0
 
 flutter:
