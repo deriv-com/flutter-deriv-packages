@@ -47,7 +47,7 @@ class Env extends BaseEnv {
   T get<T>(
     String key, {
     T? defaultValue,
-    T Function(String value)? paserFactory,
+    T Function(String value)? parser,
     bool encrypted = false,
     String decryptionKey = '',
   }) {
@@ -69,8 +69,8 @@ class Env extends BaseEnv {
         ? Cipher().decrypt(message: _entries[key], key: decryptionKey)
         : _entries[key];
 
-    if (paserFactory != null) {
-      return paserFactory(value);
+    if (parser != null) {
+      return parser(value);
     }
 
     switch (T) {

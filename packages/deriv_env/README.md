@@ -78,7 +78,7 @@ The `get` method returns a value of the type specified in the type parameter. Su
 
 ### Getting environment variables with custom type
 
-Tou can also provide a `paserFactory` function to parse the value to a custom type.
+Tou can also provide a `parser` function to parse the value to a custom type.
 
 ```dart
 String apiKey = Env().get<String>('API_KEY', parserFactory: (String value) => value.toUpperCase());

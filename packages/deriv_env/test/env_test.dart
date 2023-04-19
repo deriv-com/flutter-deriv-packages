@@ -68,7 +68,7 @@ void main() {
       expect(
         Env().get<String>(
           'STRING_VAR',
-          paserFactory: (String value) => value.toUpperCase(),
+          parser: (String value) => value.toUpperCase(),
         ),
         'HELLO WORLD',
       );
@@ -76,7 +76,7 @@ void main() {
       expect(
         Env().get<int>(
           'INT_VAR',
-          paserFactory: (String value) => int.parse(value) * 2,
+          parser: (String value) => int.parse(value) * 2,
         ),
         246,
       );
@@ -84,7 +84,7 @@ void main() {
       expect(
         Env().get<double>(
           'DOUBLE_VAR',
-          paserFactory: (String value) => double.parse(value) * 2,
+          parser: (String value) => double.parse(value) * 2,
         ),
         6.28,
       );
@@ -92,7 +92,7 @@ void main() {
       expect(
         Env().get<bool>(
           'DOUBLE_VAR',
-          paserFactory: (String value) => double.parse(value) > 3.14,
+          parser: (String value) => double.parse(value) > 3.14,
         ),
         false,
       );
