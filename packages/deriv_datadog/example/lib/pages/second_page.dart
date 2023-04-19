@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class SecondPage extends StatefulWidget {
 
 
-  SecondPage({Key? key}) : super(key: key);
+  const SecondPage({Key? key}) : super(key: key);
 
   @override
   State<SecondPage> createState() => _SecondPageState();
@@ -27,7 +27,7 @@ class _SecondPageState extends State<SecondPage> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: Center(
           child: Column(
@@ -39,17 +39,17 @@ class _SecondPageState extends State<SecondPage> {
                   "https://datadog-docs.imgix.net/img/dd_logo_n_70x75.png",
                 ),
               ),
-              Text("DataDog Test App 2"),
+              const Text("DataDog Test App 2"),
               if(count > 0 && count < 5)
-                Text("This button doesn't do anything."),
+                const Text("This button doesn't do anything."),
               if(count >= 5 && count < 10)
-                Text("STOP CLICKING THE BUTTON IT DOESN'T DO ANYTHING!"),
+                const Text("STOP CLICKING THE BUTTON IT DOESN'T DO ANYTHING!"),
               if(count >= 10)
-                Text("There is an error! Happy now?!", style: TextStyle(color: Colors.red),),
+                const Text("There is an error! Happy now?!", style: TextStyle(color: Colors.red),),
               TextButton(
                 onPressed: (){
 
-                  DatadogSdkWrapper().tapEvent("Test Button 2",);
+                  DerivDatadogSDK().tapEvent("Test Button 2",);
 
 
                   setState(() {
@@ -59,13 +59,13 @@ class _SecondPageState extends State<SecondPage> {
 
                   if(count >= 10){
 
-                    DatadogSdkWrapper().sourceError(
+                    DerivDatadogSDK().sourceError(
                         "Error because QA wants to find one!"
                     );
 
                   }
                 },
-                child: Text("Test Button 2"),
+                child: const Text("Test Button 2"),
               ),
             ],
           ),

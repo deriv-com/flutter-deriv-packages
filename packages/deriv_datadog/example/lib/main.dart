@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:datadog_flutter_plugin/datadog_flutter_plugin.dart';
 import 'package:deriv_datadog/datadog.dart';
 import 'package:example/pages/first_page.dart';
 import 'package:example/pages/second_page.dart';
@@ -8,21 +5,21 @@ import 'package:example/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
-  final configuration = DatadogSdkConfig(
+  const configuration = DatadogSdkConfig(
     clientToken: 'pub40512f28ffce322f0c2f4a7b4dda3b88',
     trackingConsent: MyTrackingConsent.granted,
     applicationId: '9665e0a3-4500-4ca2-b1db-34400682cf58',
   );
 
-  DatadogSdkWrapper().runApp(configuration,() {
-    runApp(MyApp());
+  DerivDatadogSDK().runApp(configuration,() {
+    runApp(const MyApp());
   },
   
   );
 }
 
 class MyApp extends StatefulWidget {
-   MyApp({super.key});
+   const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -57,16 +54,14 @@ class _MyAppState extends State<MyApp> {
 
 
       navigatorObservers: [
-        DatadogSdkWrapper().navigationObserver
+        DerivDatadogSDK().navigationObserver
       ],
 
       initialRoute: '/splash_screen',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/splash_screen': (context) =>  SplashScreen(),
-        '/': (context) =>  FirstPage(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/second': (context) =>  SecondPage(),
+        '/splash_screen': (context) =>  const SplashScreen(),
+        '/': (context) =>  const FirstPage(),
+        '/second': (context) =>  const SecondPage(),
       },
     );
   }
