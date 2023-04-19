@@ -1,93 +1,92 @@
-import 'package:deriv_theme/theme_provider.dart';
-import 'package:flutter/material.dart';
+import 'dart:async';
+
+import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_theme/src/theme_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:deriv_theme/text_styles.dart';
-import 'package:deriv_theme/src/colors.dart';
-
-ValueKey<String> key = const ValueKey<String>('ok');
+import 'package:flutter/material.dart';
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
+  late final StreamController<Brightness> brightnessController;
 
-  group('ThemeProviderTest', () {
-    final ThemeProvider themeProviderTest = ThemeProvider();
+  setUpAll(() {
+    brightnessController = StreamController<Brightness>();
+  });
 
-    group('getStyleTest()', () {
-      test('pass all arguments correctly', () {
-        themeProviderTest.getStyle(
-          textStyle: TextStyles.captionBold,
-          color: DarkThemeColors.base08,
-        );
-      });
+  tearDownAll(() {
+    brightnessController.close();
+  });
 
-      test('getStyle() returns a TextStyle', () {
-        const TextStyle resultStyle = TextStyle(
-            color: Color(0xFFFFFFFF),
-            fontFamily: 'IBMPlexSans',
-            fontSize: 34,
-            fontWeight: FontWeight.w400,
-            height: 1.5);
+  testWidgets('ThemeProvider provides correct theme for light brightness',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ThemeProvider(
+        brightness: Brightness.light,
+        child: Builder(
+          builder: (BuildContext context) => Container(
+            height: 100,
+            width: 100,
+            color: ThemeProvider.of(context).prominent,
+          ),
+        ),
+      ),
+    );
 
-        final TextStyle style = themeProviderTest.getStyle(
-          textStyle: TextStyles.display1,
-          color: DarkThemeColors.base01,
-        );
+    final Container container =
+        tester.widget<Container>(find.byType(Container).first);
 
-        expect(style, equals(resultStyle));
-      });
-    });
+    expect(container.color, DerivLightColors.prominent);
+  });
 
-    group('textStyleTest()', () {
-      test('pass arguments correctly', () {
-        themeProviderTest.getStyle(
-          textStyle: TextStyles.display1,
-          color: DarkThemeColors.base02,
-        );
-      });
+  testWidgets('ThemeProvider provides correct theme for dark brightness',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ThemeProvider(
+        brightness: Brightness.dark,
+        child: Builder(
+          builder: (BuildContext context) => Container(
+            height: 100,
+            width: 100,
+            color: ThemeProvider.of(context).prominent,
+          ),
+        ),
+      ),
+    );
 
-      test('textStyle() returns a TextStyle', () {
-        const TextStyle resultStyle = TextStyle(
-            color: Color(0xFFEAECED),
-            fontFamily: 'IBMPlexSans',
-            fontSize: 34,
-            fontWeight: FontWeight.w400,
-            height: 1.5);
+    final Container container =
+        tester.widget<Container>(find.byType(Container).first);
 
-        final TextStyle style = themeProviderTest.getStyle(
-          textStyle: TextStyles.display1,
-          color: DarkThemeColors.base02,
-        );
+    expect(container.color, DerivDarkColors.prominent);
+  });
 
-        expect(style, equals(resultStyle));
-      });
+  testWidgets('ThemeProvider updates theme when brightness changes',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      StreamBuilder<Brightness>(
+        stream: brightnessController.stream,
+        builder: (BuildContext context, AsyncSnapshot<Brightness> snapshot) =>
+            ThemeProvider(
+          brightness: snapshot.data ?? Brightness.light,
+          child: Builder(
+            builder: (BuildContext context) => Container(
+              height: 100,
+              width: 100,
+              color: ThemeProvider.of(context).prominent,
+            ),
+          ),
+        ),
+      ),
+    );
 
-      test('accepts no color', () {
-        themeProviderTest.textStyle(
-          textStyle: TextStyles.display1,
-        );
-      });
+    Container container =
+        tester.widget<Container>(find.byType(Container).first);
 
-      test('accepts null color', () {
-        themeProviderTest.textStyle(textStyle: TextStyles.display1);
-      });
+    expect(container.color, DerivLightColors.prominent);
 
-      test('accepts color', () {
-        themeProviderTest.getStyle(
-          textStyle: TextStyles.display1,
-          color: DarkThemeColors.base01,
-        );
-      });
-    });
+    brightnessController.add(Brightness.dark);
+    await tester.pumpAndSettle();
 
-    group('updateThemeTest()', () {
-      test('_isDarkTheme changes based on brightness value', () {
-        themeProviderTest.updateTheme(brightness: Brightness.dark);
-        expect(themeProviderTest.isDarkTheme, isTrue);
+    container = tester.widget<Container>(find.byType(Container).first);
 
-        themeProviderTest.updateTheme(brightness: Brightness.light);
-        expect(themeProviderTest.isDarkTheme, isFalse);
-      });
-    });
+    expect(container.color, DerivDarkColors.prominent);
   });
 }

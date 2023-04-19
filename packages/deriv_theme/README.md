@@ -1,4 +1,4 @@
-# flutter_deriv_theme
+# Deriv Theme
 
 A flutter package that contains the theme used by Deriv products.
 
@@ -20,46 +20,33 @@ deriv_theme:
 
 run `flutter pub get` from the command line. And import it;
 
+## Usage
+
 ```dart
-import 'package:deriv_theme/theme_provider.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 ```
-
-## Example
-
-Add a style for a text. You can choose any style type provided, for the full list, see `text_styles.dart`
+Then, wrap your MaterialApp or CupertinoApp with DerivThemeProvider:
 
 ```dart
-import 'package:deriv_theme/theme_provider.dart';
-import 'package:flutter_deriv_theme/text_styles.dart';
-
-Text(
-   'Text',
-   style: AppThemeProvider.of(context).textStyle(textStyle: TextStyles.display1),
-)
+void main() {
+  runApp(
+    DerivThemeProvider(
+      child: MaterialApp(
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
+        home: MyHomePage(),
+      ),
+    ),
+  );
+}
 ```
-
-Add a style for a text and specify a color. For the full list of colors, see `colors.dart`
+To access the current theme, use the static DerivThemeProvider.getTheme method:
 
 ```dart
-import 'package:deriv_theme/theme_provider.dart';
-import 'package:flutter_deriv_theme/text_styles.dart';
-
-Text(
-   'Text',
-   style: AppThemeProvider.of(context).textStyle(
-     textStyle: TextStyles.body2,
-     color: _themeProvider.base05Color,
-   ),
-)
+final theme = DerivThemeProvider.getTheme(context);
 ```
+To change the theme, call the DerivThemeProvider.changeTheme method:
 
-Theme provider package allows accessing dimensions values such as margins and border radius in different variations, for example;
 ```dart
-
-// possible values: margin04, margin08, margin12, margin16, margin24, margin32, etc. See 'dimens.dart` for the full list.
-margin: const EdgeInsets.symmetric(horizontal: ThemeProvider.margin08),
-
-// possible values: borderRadius04, borderRadius08, borderRadius16
-borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08)
-
+DerivThemeProvider.changeTheme(context, ThemeMode.dark);
 ```

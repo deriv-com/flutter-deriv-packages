@@ -1,3 +1,6 @@
+## [2.5.0]
+- Refactor based on both deriv go and p2p requierments
+
 ## [2.0.0]
 - Migrated to null safety
 
