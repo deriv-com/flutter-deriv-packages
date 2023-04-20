@@ -25,7 +25,7 @@ void main() {
           builder: (BuildContext context) => Container(
             height: 100,
             width: 100,
-            color: ThemeProvider.of(context).prominent,
+            color: ThemeProvider.of(context).colors.prominent,
           ),
         ),
       ),
@@ -46,7 +46,7 @@ void main() {
           builder: (BuildContext context) => Container(
             height: 100,
             width: 100,
-            color: ThemeProvider.of(context).prominent,
+            color: ThemeProvider.of(context).colors.prominent,
           ),
         ),
       ),
@@ -70,7 +70,7 @@ void main() {
             builder: (BuildContext context) => Container(
               height: 100,
               width: 100,
-              color: ThemeProvider.of(context).prominent,
+              color: ThemeProvider.of(context).colors.prominent,
             ),
           ),
         ),

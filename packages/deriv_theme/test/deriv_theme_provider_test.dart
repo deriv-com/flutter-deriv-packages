@@ -12,7 +12,7 @@ void main() {
           builder: (BuildContext context) => Container(
             height: 100,
             width: 100,
-            color: DerivThemeProvider.getTheme(context).prominent,
+            color: DerivThemeProvider.getTheme(context).colors.prominent,
           ),
         ),
       ),
@@ -36,7 +36,7 @@ void main() {
             child: Container(
               height: 100,
               width: 100,
-              color: DerivThemeProvider.getTheme(context).prominent,
+              color: DerivThemeProvider.getTheme(context).colors.prominent,
             ),
           ),
         ),
@@ -64,7 +64,7 @@ void main() {
           builder: (BuildContext context) => Container(
             height: 100,
             width: 100,
-            color: DerivThemeProvider.getTheme(context).prominent,
+            color: DerivThemeProvider.getTheme(context).colors.prominent,
           ),
         ),
       ),

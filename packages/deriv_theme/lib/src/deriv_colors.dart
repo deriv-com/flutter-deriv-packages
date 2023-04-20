@@ -2,6 +2,61 @@
 
 import 'package:flutter/material.dart';
 
+/// Holds deriv design system colors, based on passed [brightness].
+class DerivColors {
+  const DerivColors(this.brightness);
+
+  final Brightness brightness;
+
+  bool get isDarkTheme => brightness == Brightness.dark;
+
+  Color get brandCoralColor => DerivBrandColors.coral;
+
+  Color get primaryLightColor => DerivBrandColors.coral.withOpacity(0.16);
+
+  Color get brandGreenishColor => DerivBrandColors.blue;
+
+  Color get brandOrangeColor => DerivBrandColors.orange;
+
+  Color get danger =>
+      isDarkTheme ? DerivDarkColors.danger : DerivLightColors.danger;
+
+  Color get success =>
+      isDarkTheme ? DerivDarkColors.success : DerivLightColors.success;
+
+  Color get warning =>
+      isDarkTheme ? DerivDarkColors.warning : DerivLightColors.warning;
+
+  Color get information =>
+      isDarkTheme ? DerivDarkColors.information : DerivLightColors.information;
+  Color get hover =>
+      isDarkTheme ? DerivDarkColors.hover : DerivLightColors.hover;
+
+  Color get prominent =>
+      isDarkTheme ? DerivDarkColors.prominent : DerivLightColors.prominent;
+
+  Color get general =>
+      isDarkTheme ? DerivDarkColors.general : DerivLightColors.general;
+
+  Color get lessProminent => isDarkTheme
+      ? DerivDarkColors.lessProminent
+      : DerivLightColors.lessProminent;
+
+  Color get disabled =>
+      isDarkTheme ? DerivDarkColors.disabled : DerivLightColors.disabled;
+
+  Color get active =>
+      isDarkTheme ? DerivDarkColors.active : DerivLightColors.active;
+
+  Color get secondaryBackground => isDarkTheme
+      ? DerivDarkColors.secondaryBackground
+      : DerivLightColors.secondaryBackground;
+
+  Color get primaryBackground => isDarkTheme
+      ? DerivDarkColors.primaryBackground
+      : DerivLightColors.primaryBackground;
+}
+
 /// Deriv branding colors, these colors should not be changed. It can be called
 /// as [DerivBrandColors.coral]
 class DerivBrandColors {
