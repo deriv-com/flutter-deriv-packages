@@ -8,15 +8,15 @@ import 'package:example/pages/splash_screen.dart';
 
 Future<void> main() async {
   const configuration = DerivDatadogConfiguration(
-    clientToken: 'pub94b3b84bd1d14eb99088ea90fc461406',
+    applicationId: 'APPLICAION_ID',
+    clientToken: 'CLIENT_TOKEN',
     env: 'example',
     site: DatadogSite.us1,
     trackingConsent: TrackingConsent.granted,
-    applicationId: '4a49b761-1bf2-40c2-94d4-9c044503f0fd',
     nativeCrashReportEnabled: true,
     sessionSamplingRate: 10,
     tracingSamplingRate: 1,
-    serviceName: 'deriv.com',
+    serviceName: 'example',
   );
 
   DerivDatadog().runApp(configuration, () => runApp(const App()));

@@ -4,10 +4,10 @@ import 'package:deriv_datadog/deriv_datadog.dart';
 class DerivDatadogConfiguration {
   /// Creates a new [DerivDatadogConfiguration] instance with the given options.
   const DerivDatadogConfiguration({
-    required this.clientToken,
     required this.applicationId,
-    required this.trackingConsent,
+    required this.clientToken,
     required this.env,
+    required this.trackingConsent,
     this.site = DatadogSite.us1,
     this.nativeCrashReportEnabled = true,
     this.sessionSamplingRate = 10,
@@ -15,14 +15,14 @@ class DerivDatadogConfiguration {
     this.serviceName,
   });
 
-  /// The client token used to authenticate with the `Datadog API`.
-  final String clientToken;
-
   /// The application id used to identify the app in the `Datadog` dashboard.
   final String applicationId;
 
+  /// The client token used to authenticate with the `Datadog API`.
+  final String clientToken;
+
   /// The environment in which the SDK is running.
-  final String? env;
+  final String env;
 
   /// The `Datadog` site to use.
   final DatadogSite? site;

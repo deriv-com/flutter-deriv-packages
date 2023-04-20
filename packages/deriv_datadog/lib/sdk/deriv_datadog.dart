@@ -101,7 +101,7 @@ class DerivDatadog implements BaseDerivDatadog {
     final datadog.DdSdkConfiguration datadogConfiguration =
         datadog.DdSdkConfiguration(
       clientToken: configuration.clientToken,
-      env: configuration.env ?? 'production',
+      env: configuration.env,
       serviceName: configuration.serviceName ?? 'deriv.com',
       site: configuration.site?.site ?? DatadogSite.us1.site,
       trackingConsent: configuration.trackingConsent.consent,
