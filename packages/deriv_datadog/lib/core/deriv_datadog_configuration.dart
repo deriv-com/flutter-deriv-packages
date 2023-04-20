@@ -10,8 +10,8 @@ class DerivDatadogConfiguration {
     required this.trackingConsent,
     this.site = DatadogSite.us1,
     this.nativeCrashReportEnabled = true,
-    this.sessionSamplingRate = 10,
-    this.tracingSamplingRate = 1,
+    this.sessionSamplingRate = 100,
+    this.tracingSamplingRate = 100,
     this.serviceName,
   });
 

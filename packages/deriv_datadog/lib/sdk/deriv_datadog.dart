@@ -94,15 +94,15 @@ class DerivDatadog implements BaseDerivDatadog {
   ) async {
     final datadog.RumConfiguration rumConfiguration = datadog.RumConfiguration(
       applicationId: configuration.applicationId,
-      sessionSamplingRate: configuration.sessionSamplingRate ?? 10,
-      tracingSamplingRate: configuration.tracingSamplingRate ?? 1,
+      sessionSamplingRate: configuration.sessionSamplingRate ?? 100,
+      tracingSamplingRate: configuration.tracingSamplingRate ?? 100,
     );
 
     final datadog.DdSdkConfiguration datadogConfiguration =
         datadog.DdSdkConfiguration(
       clientToken: configuration.clientToken,
       env: configuration.env,
-      serviceName: configuration.serviceName ?? 'deriv.com',
+      serviceName: configuration.serviceName,
       site: configuration.site?.site ?? DatadogSite.us1.site,
       trackingConsent: configuration.trackingConsent.consent,
       nativeCrashReportEnabled: configuration.nativeCrashReportEnabled ?? true,

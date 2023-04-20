@@ -14,8 +14,8 @@ Future<void> main() async {
     site: DatadogSite.us1,
     trackingConsent: TrackingConsent.granted,
     nativeCrashReportEnabled: true,
-    sessionSamplingRate: 10,
-    tracingSamplingRate: 1,
+    sessionSamplingRate: 100,
+    tracingSamplingRate: 100,
     serviceName: 'example',
   );
 
