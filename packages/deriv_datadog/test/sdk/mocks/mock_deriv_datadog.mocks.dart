@@ -1,7 +1,7 @@
 import 'package:datadog_flutter_plugin/datadog_flutter_plugin.dart';
 import 'package:deriv_datadog/core/deriv_datadog_configuration.dart';
 import 'package:deriv_datadog/sdk/deriv_datadog.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'mock_datadog_navigation_observer.mocks.dart';
 

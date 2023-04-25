@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:datadog_flutter_plugin/datadog_flutter_plugin.dart' as datadog;
 import 'package:deriv_datadog/deriv_datadog.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-@GenerateNiceMocks(<MockSpec<dynamic>>[MockSpec<DerivDatadog>()])
 import 'mocks/mock_deriv_datadog.mocks.dart';
-@GenerateNiceMocks(<MockSpec<dynamic>>[MockSpec<DerivDatadogConfiguration>()])
 import 'mocks/mock_deriv_datadog_configuration.mocks.dart';
 
 void main() {
@@ -38,7 +35,7 @@ void main() {
     test('setUserInfo', () {
       mockDerivDatadog.setUserInfo(id: '123', name: 'John Doe', email: 'john.doe@example.com', extraInfo: <String, Object>{});
 
-      verify<void>(mockDerivDatadog.setUserInfo(id: '123', name: 'John Doe', email: 'john.doe@example.com', extraInfo: <String, Object>{})).called(1);
+      verify<void>(() => mockDerivDatadog.setUserInfo(id: '123', name: 'John Doe', email: 'john.doe@example.com', extraInfo: <String, Object>{})).called(1);
     });
 
     test('onTapEvent', () {
@@ -48,31 +45,31 @@ void main() {
 
       mockDerivDatadog.onTapEvent(name, attributes);
 
-      verify<void>(mockDerivDatadog.onTapEvent(name, attributes)).called(1);
+      verify<void>(() => mockDerivDatadog.onTapEvent(name, attributes)).called(1);
     });
 
     test('onScrollEvent', () {
       mockDerivDatadog.onScrollEvent('test event', <String, Object?>{'attribute': 'value'});
 
-      verify<void>(mockDerivDatadog.onScrollEvent( 'test event', <String, Object?>{'attribute': 'value'})).called(1);
+      verify<void>(() => mockDerivDatadog.onScrollEvent( 'test event', <String, Object?>{'attribute': 'value'})).called(1);
     });
 
     test('onSwipeEvent', () {
       mockDerivDatadog.onSwipeEvent('test event', <String, Object?>{'attribute': 'value'});
 
-      verify<void>(mockDerivDatadog.onSwipeEvent('test event', <String, Object?>{'attribute': 'value'})).called(1);
+      verify<void>(() => mockDerivDatadog.onSwipeEvent('test event', <String, Object?>{'attribute': 'value'})).called(1);
     });
 
     test('onCustomEvent', () {
       mockDerivDatadog.onCustomEvent('test event', <String, Object?>{'attribute': 'value'});
 
-      verify<void>(mockDerivDatadog.onCustomEvent('test event', <String, Object?>{'attribute': 'value'})).called(1);
+      verify<void>(() => mockDerivDatadog.onCustomEvent('test event', <String, Object?>{'attribute': 'value'})).called(1);
     });
 
     test('onSourceError', () {
       mockDerivDatadog.onSourceError('test error', <String, Object?>{'attribute': 'value'});
 
-      verify<void>(mockDerivDatadog.onSourceError('test error', <String, Object?>{'attribute': 'value'})).called(1);
+      verify<void>(() => mockDerivDatadog.onSourceError('test error', <String, Object?>{'attribute': 'value'})).called(1);
     });
 
     test('runApp', () async {
@@ -80,7 +77,7 @@ void main() {
       
       await mockDerivDatadog.runApp(mockDerivDatadogConfiguration,callback);
 
-      verify(mockDerivDatadog.runApp(mockDerivDatadogConfiguration,callback)).called(1);
+      verify(() => mockDerivDatadog.runApp(mockDerivDatadogConfiguration,callback)).called(1);
     });
 
   });
