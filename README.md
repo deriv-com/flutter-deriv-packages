@@ -11,6 +11,7 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_auth](./packages/deriv_auth)                               | A Dart package that provides Authentication logic for Deriv applications.    |
 | [deriv_banner](./packages/deriv_banner)                           | A widget to show banner in apps.                                             |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)               | Provides some tools to manage blocs.                                         |
+| [deriv_datadog](./packages/deriv_datadog)                         | A package that helps you monitor the performance and user interactions of your Flutter app by sending data to Datadog.                                         |
 | [deriv_dependency_injector](./packages/deriv_dependency_injector) | A package for handling dependency injection in Dart.                         |
 | [deriv_env](./packages/deriv_env)                                 | A package to load and store environment variables.                           |
 | [deriv_lint](./packages/deriv_lint)                               | A Dart package that provides lint rules for Dart and Flutter.                |
