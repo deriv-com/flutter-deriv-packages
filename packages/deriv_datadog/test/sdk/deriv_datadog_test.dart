@@ -52,9 +52,9 @@ void main() {
     });
 
     test('onScrollEvent', () {
-      mockDerivDatadog.onSscrollEvent('test event', <String, Object?>{'attribute': 'value'});
+      mockDerivDatadog.onScrollEvent('test event', <String, Object?>{'attribute': 'value'});
 
-      verify<void>(mockDerivDatadog.onSscrollEvent( 'test event', <String, Object?>{'attribute': 'value'})).called(1);
+      verify<void>(mockDerivDatadog.onScrollEvent( 'test event', <String, Object?>{'attribute': 'value'})).called(1);
     });
 
     test('onSwipeEvent', () {

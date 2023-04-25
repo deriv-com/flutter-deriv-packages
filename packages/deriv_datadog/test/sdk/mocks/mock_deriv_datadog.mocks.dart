@@ -22,8 +22,8 @@ class MockDerivDatadog extends Mock implements DerivDatadog {
   }
 
   @override
-  void onSscrollEvent(String name, [Map<String, Object?> attributes = const <String, Object?>{},]) {
-    super.noSuchMethod(Invocation.method(#onSscrollEvent, <Object?>[name, attributes]));
+  void onScrollEvent(String name, [Map<String, Object?> attributes = const <String, Object?>{},]) {
+    super.noSuchMethod(Invocation.method(#onScrollEvent, <Object?>[name, attributes]));
   }
 
   @override

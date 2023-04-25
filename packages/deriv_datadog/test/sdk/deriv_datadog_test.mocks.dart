@@ -83,13 +83,13 @@ class MockDerivDatadog extends _i1.Mock implements _i3.DerivDatadog {
         returnValueForMissingStub: null,
       );
   @override
-  void onSscrollEvent(
+  void onScrollEvent(
     String? name, [
     Map<String, Object?>? attributes = const {},
   ]) =>
       super.noSuchMethod(
         Invocation.method(
-          #onSscrollEvent,
+          #onScrollEvent,
           [
             name,
             attributes,
