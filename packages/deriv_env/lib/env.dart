@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'base_env.dart';
 import 'cipher.dart';
 
-/// Provides a way to store, and retrieve environment variables.
+/// [Env] class is a singleton class that provides access to environment variables.
 class Env extends BaseEnv {
   /// Returns the singleton instance of [Env].
   factory Env() => _instance;
