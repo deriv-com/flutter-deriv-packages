@@ -20,14 +20,14 @@ part 'expandable_bottom_sheet_toggler.dart';
 part 'expandable_bottom_sheet_upper_content.dart';
 
 /// Expandable bottom sheet widget
-class ExpandableBottomSheet extends StatefulWidget {
+class DerivExpandableBottomSheet extends StatefulWidget {
   /// This widget helps showing an expandable bottom sheet with [title], [upperContent] and [lowerContent] parts.
   ///
   /// All properties are optional.
   /// You can set [openMaximized] to true, if you want to open bottom sheet in full size.
   /// By default height in minimize state is calculated by [upperContent],
   /// but if you set [maxHeight] and [lowerContent], that value will be overridden.
-  const ExpandableBottomSheet({
+  const DerivExpandableBottomSheet({
     required this.themeProvider,
     required this.labelContractDetails,
     required this.upperContent,
@@ -150,7 +150,7 @@ class ExpandableBottomSheet extends StatefulWidget {
   _ExpandableBottomSheetState createState() => _ExpandableBottomSheetState();
 }
 
-class _ExpandableBottomSheetState extends State<ExpandableBottomSheet>
+class _ExpandableBottomSheetState extends State<DerivExpandableBottomSheet>
     with TickerProviderStateMixin {
   static const double _velocityThreshold = 100;
 
@@ -166,7 +166,7 @@ class _ExpandableBottomSheetState extends State<ExpandableBottomSheet>
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-          milliseconds: ExpandableBottomSheet._defaultChangeStateDuration),
+          milliseconds: DerivExpandableBottomSheet._defaultChangeStateDuration),
       value: 0,
     );
 

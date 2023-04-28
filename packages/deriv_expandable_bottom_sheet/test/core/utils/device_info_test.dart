@@ -8,10 +8,10 @@ void main() {
       expect(DeviceInfo.hasTopNotch, false);
     });
 
-    testWidgets('init should initialize devicePadding and hasTopNotch', (tester) async {
+    testWidgets('init should initialize devicePadding and hasTopNotch', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Builder(
-          builder: (context) {
+          builder: (BuildContext context) {
             DeviceInfo.init(context);
             return Container();
           },

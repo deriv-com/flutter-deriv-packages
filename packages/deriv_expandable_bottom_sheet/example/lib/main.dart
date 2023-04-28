@@ -1,45 +1,28 @@
-import 'package:deriv_expandable_bottom_sheet/deriv_expandable_bottom_sheet.dart';
-import 'package:deriv_theme/theme_provider.dart';
+import 'package:example/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 /// Example application that shows how to use Expandable Bottom Sheet.
 class MyApp extends StatelessWidget {
+
+  /// This is a const constructor that takes a key.
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) =>
     MaterialApp(
       title: 'Expandable Bottom Sheet Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Expandable Bottom Sheet Demo'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            child: const Text('Show Expandable Bottom Sheet'),
-            onPressed: () => _showExpandableBottomSheet(context),
-          ),
-        ),
+      theme: ThemeData(
+        bottomSheetTheme: BottomSheetThemeData(
+                // Needed for bottom sheet, otherwise,
+                // sharp edges and different background color will appear at the top of the sheet.
+                backgroundColor: Colors.black.withOpacity(0),
+              ),
       ),
+      home: const Home()
     );
   
-
-  Future<void> _showExpandableBottomSheet(BuildContext context) =>
-      showModalBottomSheet<void>(
-        context: context,
-        isScrollControlled: true,
-        builder: (BuildContext context) => ExpandableBottomSheet(
-          labelContractDetails: 'Test Label Contract Details', 
-          themeProvider: const ThemeProvider(Brightness.dark), 
-          upperContent: Container(
-            height: 200,
-            child: const Text(
-              'Example Upper Content',
-              style: TextStyle(fontSize: 24),
-            ),
-          ),
-        ),
-      );
 }
