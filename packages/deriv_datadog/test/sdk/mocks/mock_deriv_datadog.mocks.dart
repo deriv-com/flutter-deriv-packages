@@ -6,34 +6,54 @@ import 'package:mocktail/mocktail.dart';
 import 'mock_datadog_navigation_observer.mocks.dart';
 
 class MockDerivDatadog extends Mock implements DerivDatadog {
-
+  @override
+  DatadogNavigationObserver get navigationObserver =>
+      MockDatadogNavigationObserver();
 
   @override
-  DatadogNavigationObserver get navigationObserver => MockDatadogNavigationObserver();
-
-  @override
-  void setUserInfo({String? id, String? name, String? email, Map<String, Object?>? extraInfo}) {
-    super.noSuchMethod(Invocation.method(#setUserInfo, <Object?>[id, name, email, extraInfo]));
+  void setUserInfo(
+      {String? id,
+      String? name,
+      String? email,
+      Map<String, Object?>? extraInfo}) {
+    super.noSuchMethod(
+        Invocation.method(#setUserInfo, <Object?>[id, name, email, extraInfo]));
   }
 
   @override
-  void onTapEvent(String name, [Map<String, Object?> attributes = const <String, Object?>{},]) {
-    super.noSuchMethod(Invocation.method(#onTapEvent, <Object?>[name, attributes]));
+  void onTapEvent(
+    String name, [
+    Map<String, Object?> attributes = const <String, Object?>{},
+  ]) {
+    super.noSuchMethod(
+        Invocation.method(#onTapEvent, <Object?>[name, attributes]));
   }
 
   @override
-  void onScrollEvent(String name, [Map<String, Object?> attributes = const <String, Object?>{},]) {
-    super.noSuchMethod(Invocation.method(#onScrollEvent, <Object?>[name, attributes]));
+  void onScrollEvent(
+    String name, [
+    Map<String, Object?> attributes = const <String, Object?>{},
+  ]) {
+    super.noSuchMethod(
+        Invocation.method(#onScrollEvent, <Object?>[name, attributes]));
   }
 
   @override
-  void onCustomEvent(String name, [Map<String, Object?> attributes = const <String, Object?>{},]) {
-    super.noSuchMethod(Invocation.method(#onCustomEvent, <Object?>[name, attributes]));
+  void onCustomEvent(
+    String name, [
+    Map<String, Object?> attributes = const <String, Object?>{},
+  ]) {
+    super.noSuchMethod(
+        Invocation.method(#onCustomEvent, <Object?>[name, attributes]));
   }
 
   @override
-  void onSourceError(String name, [Map<String, Object?> attributes = const <String, Object?>{},]) {
-    super.noSuchMethod(Invocation.method(#onCustomError, <Object?>[name, attributes]));
+  void onSourceError(
+    String name, [
+    Map<String, Object?> attributes = const <String, Object?>{},
+  ]) {
+    super.noSuchMethod(
+        Invocation.method(#onCustomError, <Object?>[name, attributes]));
   }
 
   @override
@@ -41,10 +61,7 @@ class MockDerivDatadog extends Mock implements DerivDatadog {
     DerivDatadogConfiguration configuration,
     void Function() runner,
   ) async {
-    super.noSuchMethod(Invocation.method(#runApp, <Object?>[configuration, runner]));
+    super.noSuchMethod(
+        Invocation.method(#runApp, <Object?>[configuration, runner]));
   }
-  
-
-  
-
 }
