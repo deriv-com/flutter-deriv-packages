@@ -1,9 +1,7 @@
 part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetTitle extends StatelessWidget {
-  const _ExpandableBottomSheetTitle({required this.themeProvider, Key? key}) : super(key: key);
-
-  final ThemeProvider themeProvider;
+  const _ExpandableBottomSheetTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +19,9 @@ class _ExpandableBottomSheetTitle extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 14),
               child: Text(
                 expandableBottomSheetProvider.title!,
-                style: themeProvider.textStyle(
+                style: context.theme.textStyle(
                   textStyle: TextStyles.subheading,
-                  color: themeProvider.colors.prominent,
+                  color: context.theme.colors.prominent,
                 ),
               ),
             ),

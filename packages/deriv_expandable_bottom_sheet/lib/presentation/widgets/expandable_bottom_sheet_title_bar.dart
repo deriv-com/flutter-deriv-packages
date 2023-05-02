@@ -3,13 +3,11 @@ part of 'expandable_bottom_sheet.dart';
 class _ExpandableBottomSheetTitleBar extends StatelessWidget {
 
   const _ExpandableBottomSheetTitleBar({
-    required this.labelContractDetails, 
-    required this.themeProvider, 
+    required this.labelContractDetails,
     Key? key
     }) : super(key: key);
 
   final String labelContractDetails;
-  final ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                     heightFactor: 1 - animationController.value,
                     child: Opacity(
                       opacity: 1 - animationController.value,
-                      child: _ExpandableBottomSheetToggler(themeProvider: themeProvider,),
+                      child: _ExpandableBottomSheetToggler(),
                     ),
                   ),
                 Align(
@@ -73,8 +71,8 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
             Column(
               children: <Widget>[
                 if (expandableBottomSheetProvider.showToggler)
-                  _ExpandableBottomSheetToggler(themeProvider: themeProvider,),
-                _ExpandableBottomSheetTitle(themeProvider: themeProvider,),
+                  _ExpandableBottomSheetToggler(),
+                _ExpandableBottomSheetTitle(),
               ],
             ),
             if (_isLeftActionVisible(expandableBottomSheetProvider))
@@ -90,7 +88,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                 right: ThemeProvider.margin16,
               ),
             Positioned(
-              child: _ExpandableBottomSheetHintButton(themeProvider: themeProvider,),
+              child: _ExpandableBottomSheetHintButton(),
               top: expandableBottomSheetTogglerHeight,
               right: ThemeProvider.margin16,
             ),

@@ -1,13 +1,11 @@
 
-import 'package:deriv_theme/text_styles.dart';
-import 'package:deriv_theme/theme_provider.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Custom Tooltip class.
 class CustomTooltip extends StatefulWidget {
   /// Initializes the custom tooltip class.
   const CustomTooltip({
-    required this.themeProvider,
     required this.message,
     required this.child,
     required this.tooltipKey,
@@ -18,9 +16,6 @@ class CustomTooltip extends StatefulWidget {
     this.textStyle,
     this.preferBelow = true,
   });
-
-  ///Instance of [ThemeProvider].
-  final ThemeProvider themeProvider;
 
   /// Message to be displayed in tooltip.
   final String message;
@@ -81,7 +76,7 @@ class _CustomTooltipState extends State<CustomTooltip> {
           vertical: widget.paddingVertical ?? ThemeProvider.margin08,
         ),
         decoration: BoxDecoration(
-          color: widget.backgroundColor ?? widget.themeProvider.colors.hover,
+          color: widget.backgroundColor ?? context.theme.colors.hover,
           borderRadius: BorderRadius.circular(
             widget.borderRadius ?? ThemeProvider.borderRadius08,
           ),

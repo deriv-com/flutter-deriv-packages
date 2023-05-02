@@ -1,6 +1,5 @@
 /// This imports the required packages.
 import 'package:deriv_expandable_bottom_sheet/deriv_expandable_bottom_sheet.dart';
-import 'package:deriv_theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 /// This is a home screen widget that displays a button to show the expandable bottom sheet.
@@ -14,9 +13,9 @@ class Home extends StatelessWidget {
       showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
+        useSafeArea: true,
         builder: (BuildContext context) => DerivExpandableBottomSheet(
           labelContractDetails: 'Test Label Contract Details',
-          themeProvider: const ThemeProvider(Brightness.light),
           upperContent: Container(
             height: 200,
             child: const Text(

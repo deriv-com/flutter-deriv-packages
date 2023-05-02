@@ -1,9 +1,7 @@
 part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetToggler extends StatelessWidget {
-  const _ExpandableBottomSheetToggler({required this.themeProvider, Key? key}) : super(key: key);
-
-  final ThemeProvider themeProvider;
+  const _ExpandableBottomSheetToggler({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class _ExpandableBottomSheetToggler extends StatelessWidget {
           height: ThemeProvider.margin04,
           width: ThemeProvider.margin40,
           decoration: BoxDecoration(
-            color: themeProvider.colors.active,
+            color: context.theme.colors.active,
             borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
           ),
         ),

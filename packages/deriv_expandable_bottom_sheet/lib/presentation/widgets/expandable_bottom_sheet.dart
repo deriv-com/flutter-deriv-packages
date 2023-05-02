@@ -5,10 +5,9 @@ import 'dart:math';
 
 import 'package:deriv_expandable_bottom_sheet/core/utils/device_info.dart';
 import 'package:deriv_expandable_bottom_sheet/presentation/widgets/custom_tooltip.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:deriv_theme/text_styles.dart';
-import 'package:deriv_theme/theme_provider.dart';
 
 part '../../core/utils/expandable_bottom_sheet_controller.dart';
 part 'expandable_bottom_sheet_hint_button.dart';
@@ -28,7 +27,6 @@ class DerivExpandableBottomSheet extends StatefulWidget {
   /// By default height in minimize state is calculated by [upperContent],
   /// but if you set [maxHeight] and [lowerContent], that value will be overridden.
   const DerivExpandableBottomSheet({
-    required this.themeProvider,
     required this.labelContractDetails,
     required this.upperContent,
     this.title,
@@ -51,9 +49,6 @@ class DerivExpandableBottomSheet extends StatefulWidget {
     this.onDismiss,
     Key? key,
   }) : super(key: key);
-
-  ///Instance of [ThemeProvider].
-  final ThemeProvider themeProvider;
 
   /// Label for the contract details
   final String labelContractDetails;
@@ -235,7 +230,7 @@ class _ExpandableBottomSheetState extends State<DerivExpandableBottomSheet>
             topLeft: Radius.circular(ThemeProvider.borderRadius16),
             topRight: Radius.circular(ThemeProvider.borderRadius16),
           ),
-          color: widget.themeProvider.colors.secondary,
+          color: context.theme.colors.secondary,
         ),
         child: ListView(
           shrinkWrap: true,
@@ -248,7 +243,6 @@ class _ExpandableBottomSheetState extends State<DerivExpandableBottomSheet>
               child: Column(
                 children: <Widget>[
                   _ExpandableBottomSheetTitleBar(
-                    themeProvider: widget.themeProvider,
                     labelContractDetails: widget.labelContractDetails,
                   ),
                   _ExpandableBottomSheetUpperContent(

@@ -2,9 +2,7 @@ part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetHintButton extends StatelessWidget {
 
-  _ExpandableBottomSheetHintButton({required this.themeProvider, Key? key}) : super(key: key);
-
-  final ThemeProvider themeProvider;
+  _ExpandableBottomSheetHintButton({Key? key}) : super(key: key);
 
   final GlobalKey _hintKey = GlobalKey();
 
@@ -23,14 +21,13 @@ class _ExpandableBottomSheetHintButton extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: CustomTooltip(
-                  themeProvider: themeProvider,
                   message: expandableBottomSheetProvider.hint ?? '',
                   tooltipKey: _hintKey,
                   preferBelow: false,
                   child: Icon(
                     Icons.info_outline,
                     size: ThemeProvider.iconSize24,
-                    color: themeProvider.colors.disabled,
+                    color: context.theme.colors.disabled,
                   ),
                 ),
               ),

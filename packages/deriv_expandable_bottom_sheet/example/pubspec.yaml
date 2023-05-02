@@ -34,13 +34,6 @@ dependencies:
   deriv_expandable_bottom_sheet:
     path: ../
 
-  deriv_theme:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_theme
-      ref: fca982b892a8321b14e8da334d207c566c7cafbe
-
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

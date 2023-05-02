@@ -21,7 +21,6 @@ void main() {
         onOpen: () => isOpen = true,
         onClose: () => isOpen = false,
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       final Finder togglerFinder = find.text(title);
@@ -49,7 +48,6 @@ void main() {
         lowerContent: Container(),
         onOpen: () => isOpen = true,
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -70,7 +68,6 @@ void main() {
         lowerContent: Container(),
         onClose: () => isOpen = false,
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -91,7 +88,6 @@ void main() {
         upperContent: Container(),
         lowerContent: Container(),
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -108,7 +104,6 @@ void main() {
         upperContent: Container(),
         lowerContent: Container(),
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -132,7 +127,6 @@ void main() {
           onPressed: () => isExecuted = true,
         ),
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -156,7 +150,6 @@ void main() {
           onPressed: () => isExecuted = true,
         ),
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -179,7 +172,6 @@ void main() {
           onPressed: () {},
         ),
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -197,7 +189,6 @@ void main() {
         lowerContent: Container(),
         onOpen: () => timesExecuted++,
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       final Finder togglerFinder = find.text(title);
@@ -227,7 +218,6 @@ void main() {
         lowerContent: Container(),
         onClose: () => timesExecuted++,
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       final Finder togglerFinder = find.text(title);
@@ -259,7 +249,6 @@ void main() {
         upperContent: Container(),
         onDismiss: () => isDismissed = true, 
         labelContractDetails: '', 
-        themeProvider: const ThemeProvider(Brightness.light),
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
