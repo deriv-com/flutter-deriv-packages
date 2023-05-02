@@ -14,7 +14,7 @@ class Home extends StatelessWidget {
         context: context,
         isScrollControlled: true,
         useSafeArea: true,
-        builder: (BuildContext context) => DerivExpandableBottomSheet(
+        builder: (BuildContext context) => ExpandableBottomSheet(
           labelContractDetails: 'Test Label Contract Details',
           upperContent: Container(
             height: 200,

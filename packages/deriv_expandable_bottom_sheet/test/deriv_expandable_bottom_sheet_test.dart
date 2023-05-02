@@ -14,7 +14,7 @@ void main() {
         (WidgetTester tester) async {
       late bool isOpen;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -42,7 +42,7 @@ void main() {
         (WidgetTester tester) async {
       late bool isOpen;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -62,7 +62,7 @@ void main() {
         (WidgetTester tester) async {
       bool isOpen = true;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -83,7 +83,7 @@ void main() {
     testWidgets('should set title when `title` has value.', (
       WidgetTester tester,
     ) async {
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -98,7 +98,7 @@ void main() {
     testWidgets('should set and open hint when `hint` has value.', (
       WidgetTester tester,
     ) async {
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         hint: hint,
         upperContent: Container(),
@@ -118,7 +118,7 @@ void main() {
         (WidgetTester tester) async {
       bool isExecuted = false;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -141,7 +141,7 @@ void main() {
         (WidgetTester tester) async {
       bool isExecuted = false;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -162,7 +162,7 @@ void main() {
 
     testWidgets('hint should override [rightAction] widget.',
         (WidgetTester tester) async {
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         hint: hint,
         upperContent: Container(),
@@ -183,7 +183,7 @@ void main() {
         (WidgetTester tester) async {
       int timesExecuted = 0;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -212,7 +212,7 @@ void main() {
         (WidgetTester tester) async {
       int timesExecuted = 0;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
@@ -244,7 +244,7 @@ void main() {
         (WidgetTester tester) async {
       bool isDismissed = false;
 
-      final DerivExpandableBottomSheet bottomSheet = DerivExpandableBottomSheet(
+      final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
         onDismiss: () => isDismissed = true, 
@@ -264,7 +264,7 @@ void main() {
 class _TestApp extends StatelessWidget {
   const _TestApp(this.bottomSheet);
 
-  final DerivExpandableBottomSheet bottomSheet;
+  final ExpandableBottomSheet bottomSheet;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
