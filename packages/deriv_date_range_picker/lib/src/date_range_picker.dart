@@ -34,9 +34,22 @@ class DerivDateRangePicker extends StatefulWidget {
     required this.currentDate,
     required this.minAllowedDate,
     required this.maxAllowedDate,
+    this.labelSelectedDateRange,
+    this.cancelText,
+    this.confirmText,
+    this.semanticLabelEditIcon,
+    this.semanticLabelClose,
     this.initialStartDate,
     this.initialEndDate,
-    this.mode = DateRangPickerMode.calendar,
+    this.mode = DateRangePickerMode.calendar,
+    this.toolTipEdit,
+    this.toolTipClose,
+    this.semanticLabelConfirm,
+    this.toolTipConfirm,
+    this.fieldStartLabelText,
+    this.fieldEndLabelText,
+    this.semanticLabelCalender,
+    this.toolTipCalender,
     Key? key,
   }) : super(key: key);
 
@@ -57,8 +70,47 @@ class DerivDateRangePicker extends StatefulWidget {
 
   /// Date range Picker mode determine range picker starts in calendar or input mode.
   ///
-  /// Default value is [DateRangPickerMode.calendar].
-  final DateRangPickerMode mode;
+  /// Default value is [DateRangePickerMode.calendar].
+  final DateRangePickerMode mode;
+
+  /// Label for start date text field.
+  final String? fieldStartLabelText;
+
+  /// Label for end date text field.
+  final String? fieldEndLabelText;
+
+  /// Label for selected date range.
+  final String? labelSelectedDateRange;
+
+  /// Label for cancel button in [DateRangePickerMode.input].
+  final String? cancelText;
+
+  /// Label for confirm button in [DateRangePickerMode.input].
+  final String? confirmText;
+
+  /// Semantic label for edit icon.
+  final String? semanticLabelEditIcon;
+
+  /// Text that describes the action that will occur when the edit button is long pressed.
+  final String? toolTipEdit;
+
+  /// Semantic label for close icon.
+  final String? semanticLabelClose;
+
+  /// Text that describes the action that will occur when the close button is long pressed.
+  final String? toolTipClose;
+
+  // Semantic label for confirm icon.
+  final String? semanticLabelConfirm;
+
+  /// Text that describes the action that will occur when the confirm button is long pressed.
+  final String? toolTipConfirm;
+
+  // Semantic label for calender icon.
+  final String? semanticLabelCalender;
+
+  /// Text that describes the action that will occur when the calender icon is long pressed.
+  final String? toolTipCalender;
 
   @override
   DerivDateRangePickerState createState() => DerivDateRangePickerState();
@@ -77,7 +129,7 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
     selectedEndDate = widget.initialEndDate;
 
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      if (widget.mode == DateRangPickerMode.input) {
+      if (widget.mode == DateRangePickerMode.input) {
         showDateRangeInputDialog();
       }
     });
@@ -98,11 +150,10 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
         leading: IconButton(
           icon: Icon(
             Icons.close,
-            // semanticLabel: context.localization.semanticCloseIcon,
-            semanticLabel: 'semanticCloseIcon',
+            semanticLabel: widget.semanticLabelClose,
             color: context.theme.colors.general,
           ),
-          tooltip: 'labelClose',
+          tooltip: widget.toolTipClose,
           onPressed: () => Navigator.pop(context),
         ),
         actions: <Widget>[
@@ -111,12 +162,12 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.check,
-                semanticLabel: 'semanticConfirmIcon',
+                semanticLabel: widget.semanticLabelConfirm,
                 color: context.theme.colors.general.withOpacity(
                   getOpacity(isEnabled: _isSaveEnabled()),
                 ),
               ),
-              tooltip: 'labelConfirm',
+              tooltip: widget.toolTipConfirm,
               onPressed: _isSaveEnabled() ? _setSelectedDate : null,
             ),
           ),
@@ -139,7 +190,8 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
                     vertical: ThemeProvider.margin08,
                   ),
                   child: Text(
-                    'labelSelectedRange',
+                    widget.labelSelectedDateRange ??
+                        context.localization.unspecifiedDateRange,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.overline,
                       color: context.theme.colors.lessProminent,
@@ -150,6 +202,10 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     SelectedDateRange(
+                      fieldStartLabelText: widget.fieldStartLabelText ??
+                          context.localization.dateRangeStartLabel,
+                      fieldEndLabelText: widget.fieldEndLabelText ??
+                          context.localization.dateRangeEndLabel,
                       currentDate: widget.currentDate,
                       startDate: selectedStartDate,
                       endDate: selectedEndDate,
@@ -186,10 +242,10 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.edit,
-                semanticLabel: 'semanticEditIcon',
+                semanticLabel: widget.semanticLabelEditIcon,
                 color: context.theme.colors.general,
               ),
-              tooltip: 'labelEdit',
+              tooltip: widget.toolTipEdit,
               onPressed: showDateRangeInputDialog,
             ),
           ),
@@ -203,6 +259,14 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
       context: context,
       builder: (BuildContext context) => AnimatedPopupDialog(
         child: InputDateRange(
+          fieldStartLabelText: widget.fieldStartLabelText,
+          fieldEndLabelText: widget.fieldEndLabelText,
+          cancelText:
+              widget.cancelText ?? context.localization.cancelButtonLabel,
+          confirmText: widget.confirmText ?? context.localization.okButtonLabel,
+          labelSelectedDateRange: widget.labelSelectedDateRange,
+          semanticCalenderLabel: widget.semanticLabelCalender,
+          toolTipCalender: widget.toolTipCalender,
           currentDate: widget.currentDate,
           minAllowedDate: widget.minAllowedDate,
           maxAllowedDate: widget.maxAllowedDate,

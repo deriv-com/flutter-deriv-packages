@@ -14,7 +14,15 @@ class SelectedDateRange extends StatelessWidget {
     this.startDate,
     this.endDate,
     Key? key,
+    required this.fieldStartLabelText,
+    required this.fieldEndLabelText,
   }) : super(key: key);
+
+  /// Label text for the start date field.
+  final String fieldStartLabelText;
+
+  /// Label text for the end date field.
+  final String fieldEndLabelText;
 
   /// Current date.
   final DateTime currentDate;
@@ -35,7 +43,7 @@ class SelectedDateRange extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         text: TextSpan(
           text: startDate == null
-              ? 'context.localization.labelStartDate'
+              ? fieldStartLabelText
               : formattedDateParts.first,
           style: context.theme.textStyle(
             textStyle: TextStyles.headlineNormal,
@@ -54,9 +62,8 @@ class SelectedDateRange extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: endDate == null
-                  ? 'context.localization.labelEndDate'
-                  : formattedDateParts.last,
+              text:
+                  endDate == null ? fieldEndLabelText : formattedDateParts.last,
               style: context.theme.textStyle(
                 textStyle: TextStyles.headlineNormal,
                 color: context.theme.colors.general.withOpacity(

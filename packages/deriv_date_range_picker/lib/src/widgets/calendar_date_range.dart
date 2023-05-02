@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 
 import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
-import 'package:deriv_theme/deriv_theme_provider.dart';
 import 'package:deriv_theme/text_styles.dart';
 import 'package:deriv_theme/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -70,10 +69,10 @@ class CalendarDateRange extends StatefulWidget {
   final DateTime? initialEndDate;
 
   @override
-  _CalendarDateRangeState createState() => _CalendarDateRangeState();
+  CalendarDateRangeState createState() => CalendarDateRangeState();
 }
 
-class _CalendarDateRangeState extends State<CalendarDateRange> {
+class CalendarDateRangeState extends State<CalendarDateRange> {
   final GlobalKey scrollViewKey = GlobalKey();
 
   DateTime? startDate;

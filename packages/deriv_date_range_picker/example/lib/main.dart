@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       maxAllowedDate: DateTime(2021, 12, 31),
                       initialStartDate: date.startDate,
                       initialEndDate: date.endDate,
-                      mode: DateRangPickerMode.input,
+                      mode: DateRangePickerMode.calendar,
                     ));
             setState(() {
               date = dateChosen ?? date;

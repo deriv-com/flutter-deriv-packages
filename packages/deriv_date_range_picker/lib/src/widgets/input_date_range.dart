@@ -1,5 +1,4 @@
 import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
-import 'package:deriv_date_range_picker/src/core/date_input_formatter.dart';
 import 'package:deriv_theme/text_styles.dart';
 import 'package:deriv_theme/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +16,36 @@ class InputDateRange extends StatefulWidget {
     this.maxAllowedDate,
     this.initialStartDate,
     this.initialEndDate,
+    this.fieldStartLabelText,
+    this.fieldEndLabelText,
+    this.semanticCalenderLabel,
+    this.toolTipCalender,
+    this.cancelText,
+    this.confirmText,
+    this.labelSelectedDateRange,
     Key? key,
   }) : super(key: key);
+
+  /// Label text for the start date field.
+  final String? fieldStartLabelText;
+
+  /// Label text for the end date field.
+  final String? fieldEndLabelText;
+
+  /// Semantic label for the calendar icon.
+  final String? semanticCalenderLabel;
+
+  /// Text that appears when the user long-presses the calendar icon.
+  final String? toolTipCalender;
+
+  /// Text for the cancel button.
+  final String? cancelText;
+
+  /// Text for the confirm button.
+  final String? confirmText;
+
+  /// Label for selected date range.
+  final String? labelSelectedDateRange;
 
   /// The [DateTime] representing today.
   final DateTime currentDate;
@@ -36,10 +63,10 @@ class InputDateRange extends StatefulWidget {
   final DateTime? initialEndDate;
 
   @override
-  _InputDateRangeState createState() => _InputDateRangeState();
+  InputDateRangeState createState() => InputDateRangeState();
 }
 
-class _InputDateRangeState extends State<InputDateRange> {
+class InputDateRangeState extends State<InputDateRange> {
   late DateTime? startDate;
   late DateTime? endDate;
   late bool isStartDateValid;
@@ -94,7 +121,8 @@ class _InputDateRangeState extends State<InputDateRange> {
                 vertical: ThemeProvider.margin08,
               ),
               child: Text(
-                ' context.localization.labelSelectedRange',
+                widget.labelSelectedDateRange ??
+                    context.localization.unspecifiedDateRange,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.overline,
                   color: context.theme.colors.lessProminent,
@@ -105,6 +133,10 @@ class _InputDateRangeState extends State<InputDateRange> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SelectedDateRange(
+                  fieldStartLabelText: widget.fieldStartLabelText ??
+                      context.localization.dateRangeStartLabel,
+                  fieldEndLabelText: widget.fieldEndLabelText ??
+                      context.localization.dateRangeEndLabel,
                   currentDate: widget.currentDate,
                   startDate: isStartDateValid ? startDate : null,
                   endDate: isEndDateValid ? endDate : null,
@@ -123,6 +155,10 @@ class _InputDateRangeState extends State<InputDateRange> {
           right: ThemeProvider.margin24,
         ),
         child: _DateRangeTextField(
+          fieldStartLabelText: widget.fieldStartLabelText ??
+              context.localization.dateRangeStartLabel,
+          fieldEndLabelText: widget.fieldEndLabelText ??
+              context.localization.dateRangeEndLabel,
           dateFormat: 'dd-MM-yyyy',
           initialStartDate: startDate,
           initialEndDate: endDate,
@@ -138,14 +174,14 @@ class _InputDateRangeState extends State<InputDateRange> {
           child: IconButton(
             icon: Icon(
               Icons.date_range,
-              semanticLabel: 'context.localization.semanticCalendarIcon',
+              semanticLabel: widget.semanticCalenderLabel,
               color: context.theme.colors.general.withOpacity(
                 getOpacity(
                   isEnabled: _isDateValidForCalendar(),
                 ),
               ),
             ),
-            tooltip: 'context.localization.labelCalendar',
+            tooltip: widget.toolTipCalender,
             onPressed: () {
               if (_isDateValidForCalendar()) {
                 _onConfirmTap(true);
@@ -160,7 +196,7 @@ class _InputDateRangeState extends State<InputDateRange> {
           TextButton(
             onPressed: _onCancelTap,
             child: Text(
-              'context.localization.actionCancel',
+              widget.cancelText ?? context.localization.cancelButtonLabel,
               style: context.theme.textStyle(
                 textStyle: TextStyles.button,
                 color: context.theme.colors.coral,
@@ -169,7 +205,7 @@ class _InputDateRangeState extends State<InputDateRange> {
           ),
           TextButton(
             child: Text(
-              'context.localization.actionOK',
+              widget.confirmText ?? context.localization.okButtonLabel,
               style: context.theme.textStyle(
                 textStyle: TextStyles.button,
                 color: _isDateValidForApply()

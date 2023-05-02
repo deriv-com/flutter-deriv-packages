@@ -1,5 +1,5 @@
 /// Date range Picker mode determine range picker starts in calendar or input mode.
-enum DateRangPickerMode {
+enum DateRangePickerMode {
   /// Calendar mode.
   calendar,
 

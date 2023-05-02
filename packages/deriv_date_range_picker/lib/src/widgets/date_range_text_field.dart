@@ -16,7 +16,15 @@ class _DateRangeTextField extends StatefulWidget {
     required this.onEditingComplete,
     Key? key,
     required this.dateFormat,
+    required this.fieldStartLabelText,
+    required this.fieldEndLabelText,
   }) : super(key: key);
+
+  /// Label for start date text field.
+  final String fieldStartLabelText;
+
+  /// Label for end date text field.
+  final String fieldEndLabelText;
 
   /// Initial start date.
   final DateTime? initialStartDate;
@@ -65,14 +73,14 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
         children: <Widget>[
           _buildDateTextField(
             hintText: widget.dateFormat.toUpperCase(),
-            labelText: 'labelStartDate',
+            labelText: widget.fieldStartLabelText,
             controller: startDateInputController,
             isValidDate: widget.isStartDateValid,
           ),
           const SizedBox(width: ThemeProvider.margin08),
           _buildDateTextField(
             hintText: widget.dateFormat.toUpperCase(),
-            labelText: 'labelEndDate',
+            labelText: widget.fieldEndLabelText,
             controller: endDateInputController,
             isValidDate: widget.isEndDateValid,
           ),

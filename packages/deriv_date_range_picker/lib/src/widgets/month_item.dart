@@ -215,12 +215,11 @@ class _MonthItemState extends State<_MonthItem> {
     _HighlightPainter? highlightPainter;
 
     if (isSelectedDayStart || isSelectedDayEnd) {
-      itemStyle = DerivThemeProvider.getTheme(context).textStyle(
-          textStyle: itemStyle,
-          color: DerivThemeProvider.getTheme(context).base01Color);
+      itemStyle = context.theme.textStyle(
+          textStyle: itemStyle, color: context.theme.colors.prominent);
 
       decoration = BoxDecoration(
-        color: DerivThemeProvider.getTheme(context).brandCoralColor,
+        color: context.theme.colors.coral,
         shape: BoxShape.circle,
       );
 
@@ -244,23 +243,20 @@ class _MonthItemState extends State<_MonthItem> {
       );
     }
     if (isDisabled) {
-      itemStyle = DerivThemeProvider.getTheme(context).textStyle(
-          textStyle: itemStyle,
-          color: DerivThemeProvider.getTheme(context).base04Color);
+      itemStyle = context.theme.textStyle(
+          textStyle: itemStyle, color: context.theme.colors.disabled);
     } else if (isSameDay(
         firstDate: widget.currentDate, secondDate: dayToBuild)) {
-      itemStyle = DerivThemeProvider.getTheme(context).textStyle(
-          textStyle: itemStyle,
-          color: DerivThemeProvider.getTheme(context).base01Color);
+      itemStyle = context.theme.textStyle(
+          textStyle: itemStyle, color: context.theme.colors.prominent);
 
       decoration = isSelectedDayStart || isSelectedDayEnd
           ? BoxDecoration(
-              color: DerivThemeProvider.getTheme(context).brandCoralColor,
+              color: context.theme.colors.coral,
               shape: BoxShape.circle,
             )
           : BoxDecoration(
-              border: Border.all(
-                  color: DerivThemeProvider.getTheme(context).brandCoralColor),
+              border: Border.all(color: context.theme.colors.coral),
               shape: BoxShape.circle,
             );
     }
@@ -304,10 +300,9 @@ class _MonthItemState extends State<_MonthItem> {
         focusNode: dayFocusNodes[day - 1],
         onTap: () => widget.onChanged(dayToBuild),
         radius: _monthItemRowHeight / 2 + 4,
-        splashColor:
-            DerivThemeProvider.getTheme(context).brandCoralColor.withOpacity(
-                  getOpacity(isEnabled: false),
-                ),
+        splashColor: context.theme.colors.coral.withOpacity(
+          getOpacity(isEnabled: false),
+        ),
         onFocusChange: _dayFocusChanged,
         child: dayWidget,
       );
@@ -323,9 +318,7 @@ class _MonthItemState extends State<_MonthItem> {
       Container(color: isHighlighted ? _highlightColor(context) : null);
 
   Color _highlightColor(BuildContext context) =>
-      DerivThemeProvider.getTheme(context)
-          .brandCoralColor
-          .withOpacity(getOpacity(isEnabled: false));
+      context.theme.colors.coral.withOpacity(getOpacity(isEnabled: false));
 
   void _dayFocusChanged(bool focused) {
     if (focused) {
