@@ -30,8 +30,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  DateRangeModel? date =
-      DateRangeModel(startDate: DateTime.now(), endDate: DateTime.now());
+  DateRangeModel date = DateRangeModel(
+      startDate: DateTime(2021, 1, 1), endDate: DateTime(2021, 1, 26));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +47,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       currentDate: DateTime.now(),
                       minAllowedDate: DateTime(2021, 1, 1),
                       maxAllowedDate: DateTime(2021, 12, 31),
-                      initialStartDate: DateTime(2021, 1, 1),
-                      initialEndDate: DateTime(2021, 1, 28),
-                      mode: DateRangPickerMode.calendar,
+                      initialStartDate: date.startDate,
+                      initialEndDate: date.endDate,
+                      mode: DateRangPickerMode.input,
                     ));
             setState(() {
-              date = dateChosen;
+              date = dateChosen ?? date;
             });
           },
-          child: Text('${date?.startDate} - ${date?.endDate}'),
+          child: Text('${date.startDate} - ${date.endDate}'),
         ),
       ),
     );

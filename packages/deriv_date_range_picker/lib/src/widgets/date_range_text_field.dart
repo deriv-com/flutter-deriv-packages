@@ -49,9 +49,6 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
       TextEditingController();
   final TextEditingController endDateInputController = TextEditingController();
 
-  final MaskTextInputFormatter maskFormatter =
-      MaskTextInputFormatter(mask: '##-##-####');
-
   @override
   void initState() {
     super.initState();
@@ -75,7 +72,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
           const SizedBox(width: ThemeProvider.margin08),
           _buildDateTextField(
             hintText: widget.dateFormat.toUpperCase(),
-            labelText: ' labelEndDate',
+            labelText: 'labelEndDate',
             controller: endDateInputController,
             isValidDate: widget.isEndDateValid,
           ),
@@ -90,7 +87,10 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
   }) =>
       Expanded(
         child: TextField(
-          inputFormatters: <MaskTextInputFormatter>[maskFormatter],
+          inputFormatters: [
+            DateInputFormatter(),
+            LengthLimitingTextInputFormatter(10)
+          ],
           controller: controller,
           keyboardType: TextInputType.number,
           cursorColor: context.theme.colors.blue,
