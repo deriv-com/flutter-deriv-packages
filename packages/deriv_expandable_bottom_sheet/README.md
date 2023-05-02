@@ -1,6 +1,6 @@
 # Deriv Expandable Bottom Sheet Widget
 ## Overview
-The `DerivExpandableBottomSheet` widget helps to display an expandable bottom sheet with `title`, `upperContent`, and `lowerContent` parts. All properties are optional. It calculates the height in the minimized state based on `upperContent`, but if `maxHeight` and `lowerContent` are set, the value will be overridden. It can also open the bottom sheet in full size if `openMaximized` is set to `true`.
+The `ExpandableBottomSheet` widget helps to display an expandable bottom sheet with `title`, `upperContent`, and `lowerContent` parts. All properties are optional. It calculates the height in the minimized state based on `upperContent`, but if `maxHeight` and `lowerContent` are set, the value will be overridden. It can also open the bottom sheet in full size if `openMaximized` is set to `true`.
 
 ## Installation
 Add the following to your `pubspec.yaml`:
@@ -65,7 +65,7 @@ ExpandableBottomSheet(
 - `onDismiss`: a `VoidCallback` that is called on the expandable bottom sheet dismiss.
 
 ## Example App
-Here's an example app demonstrating the usage of the `DerivExpandableBottomSheet` package:
+Here's an example app demonstrating the usage of the `ExpandableBottomSheet` package:
 ```
 /// This imports the required packages.
 import 'package:deriv_expandable_bottom_sheet/deriv_expandable_bottom_sheet.dart';
@@ -83,7 +83,7 @@ class Home extends StatelessWidget {
       showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
-        builder: (BuildContext context) => DerivExpandableBottomSheet(
+        builder: (BuildContext context) => ExpandableBottomSheet(
           labelContractDetails: 'Test Label Contract Details',
           themeProvider: const ThemeProvider(Brightness.light),
           upperContent: Container(
