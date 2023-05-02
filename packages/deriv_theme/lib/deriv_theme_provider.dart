@@ -48,7 +48,7 @@ class _DerivThemeProviderState extends State<DerivThemeProvider>
   void initState() {
     WidgetsBinding.instance?.addObserver(this);
     _systemBrightness =
-        WidgetsBinding.instance?.window.platformBrightness ?? Brightness.light;
+        WidgetsBinding.instance?.window.platformBrightness ?? Brightness.dark;
 
     _themeMode = widget.initialTheme ?? _defaultTheme;
 
