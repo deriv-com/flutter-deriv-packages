@@ -1,11 +1,7 @@
-import 'package:deriv_theme/deriv_theme_provider.dart';
-import 'package:deriv_theme/theme_provider.dart';
+import 'package:deriv_date_range_picker/l10n/generated/date_range_localizations.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
-  /// Get theme.
-  ThemeProvider get theme => DerivThemeProvider.getTheme(this);
-
   /// Get localization.
-  MaterialLocalizations get localization => MaterialLocalizations.of(this);
+  DateRangeLocalizations? get localization => DateRangeLocalizations.of(this);
 }

@@ -122,7 +122,7 @@ class InputDateRangeState extends State<InputDateRange> {
               ),
               child: Text(
                 widget.labelSelectedDateRange ??
-                    context.localization.unspecifiedDateRange,
+                    context.localization!.labelSelectedDateRange,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.overline,
                   color: context.theme.colors.lessProminent,
@@ -134,9 +134,9 @@ class InputDateRangeState extends State<InputDateRange> {
               children: <Widget>[
                 SelectedDateRange(
                   fieldStartLabelText: widget.fieldStartLabelText ??
-                      context.localization.dateRangeStartLabel,
+                      context.localization!.labelStartDate,
                   fieldEndLabelText: widget.fieldEndLabelText ??
-                      context.localization.dateRangeEndLabel,
+                      context.localization!.labelEndDate,
                   currentDate: widget.currentDate,
                   startDate: isStartDateValid ? startDate : null,
                   endDate: isEndDateValid ? endDate : null,
@@ -156,9 +156,9 @@ class InputDateRangeState extends State<InputDateRange> {
         ),
         child: _DateRangeTextField(
           fieldStartLabelText: widget.fieldStartLabelText ??
-              context.localization.dateRangeStartLabel,
-          fieldEndLabelText: widget.fieldEndLabelText ??
-              context.localization.dateRangeEndLabel,
+              context.localization!.labelStartDate,
+          fieldEndLabelText:
+              widget.fieldEndLabelText ?? context.localization!.labelEndDate,
           dateFormat: 'dd-MM-yyyy',
           initialStartDate: startDate,
           initialEndDate: endDate,
@@ -196,7 +196,7 @@ class InputDateRangeState extends State<InputDateRange> {
           TextButton(
             onPressed: _onCancelTap,
             child: Text(
-              widget.cancelText ?? context.localization.cancelButtonLabel,
+              widget.cancelText ?? context.localization!.labelActionCancel,
               style: context.theme.textStyle(
                 textStyle: TextStyles.button,
                 color: context.theme.colors.coral,
@@ -205,7 +205,7 @@ class InputDateRangeState extends State<InputDateRange> {
           ),
           TextButton(
             child: Text(
-              widget.confirmText ?? context.localization.okButtonLabel,
+              widget.confirmText ?? context.localization!.labelActionOk,
               style: context.theme.textStyle(
                 textStyle: TextStyles.button,
                 color: _isDateValidForApply()

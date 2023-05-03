@@ -1,12 +1,45 @@
 import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
-import 'package:deriv_theme/text_styles.dart';
-import 'package:deriv_theme/theme_provider.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-///{@template date_range_picker}
-/// Customized date range picker widget that supports both `input` and `calendar` mode.
+/// {@template date_range_picker}
+/// Deriv Theme based date range picker.
 ///
+/// When the date picker is first displayed, it will show the month of
+/// [initialStartDate], with [initialStartDate] to [initialEndDate] selected.
+///
+/// The [minAllowedDate] is the earliest allowable date. The [maxAllowedDate] is the latest
+/// allowable date. [initialStartDate] and [initialEndDate] must either fall between these dates,
+/// or be equal to one of them. For each of these [DateTime] parameters, only
+/// their dates are considered. Their time fields are ignored. They must all
+/// be non-null.
+///
+/// The [currentDate] represents the current day (i.e. today). This
+/// date will be highlighted in the day grid. If null, the date of
+/// `DateTime.now()` will be used.
+///
+/// The [context], [useRootNavigator] and [routeSettings] arguments are passed to
+/// [showDialog], the documentation for which discusses how it is used. [context]
+/// and [useRootNavigator] must be non-null.
+///
+/// The following optional string parameters allow you to override the default
+/// text used for various parts of the dialog:
+///
+///   * [cancelText], label on the cancel button.
+///   * [confirmText], label on the ok button.
+///   * [fieldStartLabelText], label for the start date text input field.
+///   * [fieldEndLabelText], label for the end date text input field.
+///   * [labelSelectedDateRange], label for the selected date range.
+///   * [semanticLabelEditIcon], semantic label for the edit icon.
+///   * [semanticLabelClose], semantic label for the close icon.
+///   * [semanticLabelConfirm], semantic label for the confirm icon.
+///   * [semanticLabelCalender], semantic label for the calender icon.
+///   * [toolTipEdit], tooltip for the edit icon.
+///   * [toolTipClose], tooltip for the close icon.
+///   * [toolTipConfirm], tooltip for the confirm icon.
+///   * [toolTipCalender], tooltip for the calender icon.
+
 /// For example:
 /// ```dart
 /// showDialog<DateRangeModel>(
@@ -26,15 +59,15 @@ import 'package:flutter/scheduler.dart';
 /// closes the dialog, [DateRangeModel] will be returned through which you can access the `startDate` and `endDate`
 /// of the range.
 ///
-/// **Note:** `initialStartDate` and `initialEndDate` must be within the range of `minAllowedDate` and `maxAllowedDate`.
 /// {@endtemplate}
 class DerivDateRangePicker extends StatefulWidget {
   ///{@macro date_range_picker}
-  const DerivDateRangePicker({
-    required this.currentDate,
+  DerivDateRangePicker({
+    required BuildContext context,
     required this.minAllowedDate,
     required this.maxAllowedDate,
     this.labelSelectedDateRange,
+    this.currentDate,
     this.cancelText,
     this.confirmText,
     this.semanticLabelEditIcon,
@@ -51,10 +84,17 @@ class DerivDateRangePicker extends StatefulWidget {
     this.semanticLabelCalender,
     this.toolTipCalender,
     Key? key,
-  }) : super(key: key);
+  })  : assert(minAllowedDate.isBefore(maxAllowedDate)),
+        assert(
+            initialEndDate == null || initialEndDate.isBefore(maxAllowedDate)),
+        assert(initialStartDate == null ||
+            initialEndDate == null ||
+            initialStartDate.isBefore(initialEndDate)),
+        assert(debugCheckHasDateRangeLocalizations(context)),
+        super(key: key);
 
   /// The [DateTime] representing today. It will be highlighted in the day grid.
-  final DateTime currentDate;
+  final DateTime? currentDate;
 
   /// The earliest allowed [DateTime] that the user can select.
   final DateTime minAllowedDate;
@@ -150,10 +190,11 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
         leading: IconButton(
           icon: Icon(
             Icons.close,
-            semanticLabel: widget.semanticLabelClose,
+            semanticLabel: widget.semanticLabelClose ??
+                context.localization!.labelSemanticClose,
             color: context.theme.colors.general,
           ),
-          tooltip: widget.toolTipClose,
+          tooltip: widget.toolTipClose ?? context.localization!.labelClose,
           onPressed: () => Navigator.pop(context),
         ),
         actions: <Widget>[
@@ -162,12 +203,14 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.check,
-                semanticLabel: widget.semanticLabelConfirm,
+                semanticLabel: widget.semanticLabelConfirm ??
+                    context.localization!.labelSemanticConfirm,
                 color: context.theme.colors.general.withOpacity(
                   getOpacity(isEnabled: _isSaveEnabled()),
                 ),
               ),
-              tooltip: widget.toolTipConfirm,
+              tooltip:
+                  widget.toolTipConfirm ?? context.localization!.labelConfirm,
               onPressed: _isSaveEnabled() ? _setSelectedDate : null,
             ),
           ),
@@ -191,7 +234,7 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
                   ),
                   child: Text(
                     widget.labelSelectedDateRange ??
-                        context.localization.unspecifiedDateRange,
+                        context.localization!.labelSelectedDateRange,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.overline,
                       color: context.theme.colors.lessProminent,
@@ -203,10 +246,10 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
                   children: <Widget>[
                     SelectedDateRange(
                       fieldStartLabelText: widget.fieldStartLabelText ??
-                          context.localization.dateRangeStartLabel,
+                          context.localization!.labelStartDate,
                       fieldEndLabelText: widget.fieldEndLabelText ??
-                          context.localization.dateRangeEndLabel,
-                      currentDate: widget.currentDate,
+                          context.localization!.labelEndDate,
+                      currentDate: widget.currentDate ?? DateTime.now(),
                       startDate: selectedStartDate,
                       endDate: selectedEndDate,
                     ),
@@ -218,7 +261,7 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
           ),
           Expanded(
             child: CalendarDateRange(
-              currentDate: widget.currentDate,
+              currentDate: widget.currentDate ?? DateTime.now(),
               firstDate: widget.minAllowedDate,
               lastDate: widget.maxAllowedDate,
               initialStartDate: selectedStartDate,
@@ -242,10 +285,11 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
             child: IconButton(
               icon: Icon(
                 Icons.edit,
-                semanticLabel: widget.semanticLabelEditIcon,
+                semanticLabel: widget.semanticLabelEditIcon ??
+                    context.localization!.labelSemanticEditIcon,
                 color: context.theme.colors.general,
               ),
-              tooltip: widget.toolTipEdit,
+              tooltip: widget.toolTipEdit ?? context.localization!.labelEdit,
               onPressed: showDateRangeInputDialog,
             ),
           ),
@@ -262,12 +306,13 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
           fieldStartLabelText: widget.fieldStartLabelText,
           fieldEndLabelText: widget.fieldEndLabelText,
           cancelText:
-              widget.cancelText ?? context.localization.cancelButtonLabel,
-          confirmText: widget.confirmText ?? context.localization.okButtonLabel,
+              widget.cancelText ?? context.localization!.labelActionCancel,
+          confirmText:
+              widget.confirmText ?? context.localization!.labelActionOk,
           labelSelectedDateRange: widget.labelSelectedDateRange,
           semanticCalenderLabel: widget.semanticLabelCalender,
           toolTipCalender: widget.toolTipCalender,
-          currentDate: widget.currentDate,
+          currentDate: widget.currentDate ?? DateTime.now(),
           minAllowedDate: widget.minAllowedDate,
           maxAllowedDate: widget.maxAllowedDate,
           initialStartDate: selectedStartDate,

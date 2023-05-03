@@ -1,37 +1,37 @@
 import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
+import 'package:deriv_date_range_picker/l10n/generated/date_range_localizations.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyHomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Deriv Date Range Picker'),
+    return const MaterialApp(
+      localizationsDelegates: [
+        DateRangeLocalizations.delegate,
+      ],
+      supportedLocales: DateRangeLocalizations.supportedLocales,
+      home: DatePickerPage(title: 'Date Picker'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
+class DatePickerPage extends StatefulWidget {
   final String title;
+  const DatePickerPage({super.key, required this.title});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<DatePickerPage> createState() => _DatePickerPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _DatePickerPageState extends State<DatePickerPage> {
   DateRangeModel date = DateRangeModel(
-      startDate: DateTime(2021, 1, 1), endDate: DateTime(2021, 1, 26));
+      startDate: DateTime(2021, 1, 2), endDate: DateTime(2021, 1, 26));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () async {
             final dateChosen = await showDialog<DateRangeModel>(
                 context: context,
-                builder: (context) => DerivDateRangePicker(
+                builder: (_) => DerivDateRangePicker(
+                      context: context,
                       currentDate: DateTime.now(),
                       minAllowedDate: DateTime(2021, 1, 1),
                       maxAllowedDate: DateTime(2021, 12, 31),

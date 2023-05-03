@@ -1,0 +1,16 @@
+{
+    "@@locale": "en",
+    "labelStartDate": "Start Date",
+    "labelEndDate": "End Date",
+    "labelSelectedDateRange": "Selected Date Range",
+    "labelActionCancel": "Cancel",
+    "labelActionOk": "OK",
+    "labelSemanticEditIcon": "Edit",
+    "labelEdit": "Edit",
+    "labelSemanticConfirm": "Confirm",
+    "labelConfirm": "Confirm",
+    "labelSemanticCalendar": "Calendar",
+    "labelCalendar": "Calendar",
+    "labelSemanticClose": "Close",
+    "labelClose": "Close"
+}

@@ -20,7 +20,8 @@ class DateInputFormatter extends TextInputFormatter {
     if (numericInput.length > 2) {
       numericInput =
           '${numericInput.substring(0, 2)}-${numericInput.substring(2)}';
-    } else if (numericInput.length > 5) {
+    }
+    if (numericInput.length > 5) {
       numericInput =
           '${numericInput.substring(0, 5)}-${numericInput.substring(5)}';
     }

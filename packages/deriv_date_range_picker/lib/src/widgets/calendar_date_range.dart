@@ -1,8 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
-import 'package:deriv_theme/text_styles.dart';
-import 'package:deriv_theme/theme_provider.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';

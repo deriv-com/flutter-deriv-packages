@@ -1,5 +1,4 @@
-import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
-import 'package:deriv_theme/theme_provider.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Animated popup dialog, to be used as the container of the popup dialogs with animation.
