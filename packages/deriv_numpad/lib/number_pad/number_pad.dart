@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:deriv_numpad/core/widgets/info_icon_button.dart';
