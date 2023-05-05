@@ -32,7 +32,7 @@ Future<void> openWebPage({
 
 final AppChromeSafariBrowser appSafariBrowser = AppChromeSafariBrowser();
 
-/// Opens in-app webview.
+/// Opens in-app tab activity webview.
 Future<void> openInAppTabActivityWebView({
   required BuildContext context,
   required String url,
@@ -53,9 +53,9 @@ Future<void> openInAppTabActivityWebView({
   }
 }
 
-bool get isInAppWebViewOpen => appSafariBrowser.isOpened();
+bool get isInAppTabActivityWebViewOpen => appSafariBrowser.isOpened();
 
-Future<void> closeInAppWebView() => appSafariBrowser.close();
+Future<void> closeInAppTabActivityWebView() => appSafariBrowser.close();
 
 Future<void> _openInAppTabView(String url) async => appSafariBrowser.open(
       url: Uri.parse(url),
