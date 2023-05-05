@@ -145,6 +145,9 @@ class DerivAuthService extends BaseAuthService {
   @override
   Future<void> onLoggedOut() => authRepository.onLoggedOut();
 
+  @override
+  Future<void> afterLogout() => authRepository.afterLogout();
+
   List<AccountModel> _filterSupportedAccounts(List<AccountModel> accounts) {
     final List<AccountModel> supportedAccounts =
         accounts.where((AccountModel account) => account.isSupported).toList();
