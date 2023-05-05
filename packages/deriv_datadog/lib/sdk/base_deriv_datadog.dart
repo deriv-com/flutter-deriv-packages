@@ -17,7 +17,7 @@ abstract class BaseDerivDatadog {
   void onTapEvent(String name, [Map<String, Object?> attributes]);
 
   /// A method to log a scroll event with the given name.
-  void onSscrollEvent(String name, [Map<String, Object?> attributes]);
+  void onScrollEvent(String name, [Map<String, Object?> attributes]);
 
   /// A method to log a swipe event with the given name.
   void onSwipeEvent(String name, [Map<String, Object?> attributes]);

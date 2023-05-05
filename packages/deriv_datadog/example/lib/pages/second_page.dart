@@ -53,8 +53,7 @@ class _SecondPageState extends State<SecondPage> {
                     setState(() => count++);
 
                     if (count >= 10) {
-                      DerivDatadog()
-                          .onSourceError("Error because QA wants to find one!");
+                      DerivDatadog().onSourceError("Error because QA wants to find one!");
                     }
                   },
                   child: const Text("Test Button 2"),

@@ -43,7 +43,7 @@ class DerivDatadog implements BaseDerivDatadog {
       );
 
   @override
-  void onSscrollEvent(
+  void onScrollEvent(
     String name, [
     Map<String, Object?> attributes = const <String, Object?>{},
   ]) =>
