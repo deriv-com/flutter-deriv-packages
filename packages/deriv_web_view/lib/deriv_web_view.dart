@@ -76,6 +76,7 @@ Future<void> openLoggedInWebPage({
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
+  required String appToken,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -95,6 +96,7 @@ Future<void> openLoggedInWebPage({
     loadingDialog: loadingDialog,
     tokenExpiredDialog: tokenExpiredDialog,
     rootNavigator: rootNavigator,
+    appToken: appToken,
     action: action,
     code: code,
   );
@@ -137,6 +139,7 @@ Future<void> openLoggedInWebPage({
       loadingDialog: loadingDialog,
       tokenExpiredDialog: tokenExpiredDialog,
       rootNavigator: rootNavigator,
+      appToken: appToken,
       action: action,
       code: code,
     );
@@ -155,6 +158,7 @@ Future<String?> _fetchOneTimeToken({
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
   required bool rootNavigator,
+  required String appToken,
   String? action,
   String? code,
 }) async {
@@ -167,6 +171,7 @@ Future<String?> _fetchOneTimeToken({
     endpoint: endpoint,
     refreshToken: refreshToken,
     defaultAccount: defaultAccount,
+    appToken: appToken,
     action: action,
     code: code,
   );
@@ -184,6 +189,7 @@ Future<String?> _getOneTimeToken({
   required String destinationAppId,
   required String? refreshToken,
   required String? defaultAccount,
+  required String appToken,
   String? action,
   String? code,
 }) async {
@@ -195,6 +201,7 @@ Future<String?> _getOneTimeToken({
       appId: appId,
       refreshToken: refreshToken,
       defaultAccount: defaultAccount,
+      appToken: appToken,
       action: action,
       code: code,
     );
@@ -218,6 +225,7 @@ Future<String?> _validateCredentials({
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
+  required String appToken,
   String? action,
   String? code,
 }) async {
@@ -231,6 +239,7 @@ Future<String?> _validateCredentials({
     defaultAccount: defaultAccount,
     loadingDialog: loadingDialog,
     rootNavigator: rootNavigator,
+    appToken: appToken,
     action: action,
     code: code,
   );

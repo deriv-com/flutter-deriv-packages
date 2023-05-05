@@ -96,12 +96,6 @@ jobs:
       #    name: update_checker test
       #    issue : This app is using a deprecated version of the Android embedding.
 
-      # - run:
-      #     working_directory: ~/flutter-deriv-packages/packages/deriv_ui
-      #     command: flutter pub get && flutter analyze && flutter test
-      #     name: deriv_ui analysis
-      #     issue : access issues
-
       - run:
           working_directory: ~/flutter-deriv-packages/packages/form_builder
           command: flutter pub get && flutter analyze && flutter test

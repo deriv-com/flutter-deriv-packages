@@ -75,3 +75,19 @@ String apiKey = Env().get<String>('API_KEY', defaultValue: 'API_KEY_VALUE');
 ```
 
 The `get` method returns a value of the type specified in the type parameter. Supported types are `String`, `int`, `double` and `bool`.
+
+### Getting environment variables with custom type
+
+Tou can also provide a `parser` function to parse the value to a custom type.
+
+```dart
+String apiKey = Env().get<String>('API_KEY', parserFactory: (String value) => value.toUpperCase());
+```
+
+### Getting encrypted environment variables
+
+if `encrypted` parameter is set to `true`, and `decryptionKey` is provided, the value will be decrypted using the provided key.
+
+```dart
+String apiKey = Env().get<String>('API_KEY', encrypted: true, decryptionKey: 'decryption_key');
+```

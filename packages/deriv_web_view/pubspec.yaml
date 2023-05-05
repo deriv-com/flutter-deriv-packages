@@ -19,12 +19,6 @@ dependencies:
       url: git@github.com:deriv-com/flutter-deriv-api.git
       ref: dev
 
-  deriv_api_key_provider:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_api_key_provider
-      ref: dev
-
   crypto: ^3.0.2
   equatable: ^2.0.3
   flutter_bloc: ^7.0.0

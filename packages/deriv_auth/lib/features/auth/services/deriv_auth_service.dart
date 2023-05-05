@@ -40,8 +40,10 @@ class DerivAuthService extends BaseAuthService {
   final BaseTokenService tokenService;
 
   @override
-  Future<AuthorizeEntity> onLoginRequest(GetTokensRequestModel request,
-      [Function? onInvalidJwtToken]) async {
+  Future<AuthorizeEntity> onLoginRequest(
+    GetTokensRequestModel request, [
+    Function? onInvalidJwtToken,
+  ]) async {
     try {
       final String jwtToken = await jwtService.getJwtToken();
 
@@ -60,9 +62,9 @@ class DerivAuthService extends BaseAuthService {
       if (_defaultAccountToken != null) {
         return login(
           _defaultAccountToken,
+          accounts: _supportedAccounts,
           signupProvider: request.signupProvider,
           refreshToken: _response.refreshToken,
-          accountsList: _supportedAccounts,
         );
       } else {
         throw DerivAuthException(
@@ -86,7 +88,7 @@ class DerivAuthService extends BaseAuthService {
   @override
   Future<AuthorizeEntity> login(
     String token, {
-    required List<AccountModel> accountsList,
+    required List<AccountModel> accounts,
     String? signupProvider,
     String? refreshToken,
   }) async {
@@ -103,7 +105,7 @@ class DerivAuthService extends BaseAuthService {
         accountList: responseAuthorizeEntity.accountList
             ?.map(
               (AccountListItem accountListItem) => accountListItem.copyWith(
-                token: accountsList
+                token: accounts
                         .where(
                           (AccountModel element) =>
                               element.accountId == accountListItem.loginid,
