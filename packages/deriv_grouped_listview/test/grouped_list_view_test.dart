@@ -1,4 +1,4 @@
-import 'package:deriv_grouped_listview/grouped_list_view/grouped_list_view.dart';
+import 'package:deriv_grouped_listview/grouped_list_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
