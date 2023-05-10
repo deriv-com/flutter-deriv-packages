@@ -18,9 +18,7 @@ class AppPerformance {
   late FirebasePerformance _firebasePerformance;
 
   /// Initializes the `AppPerformance`.
-  Future<void> init() async {
-    _firebasePerformance = FirebasePerformance.instance;
-  }
+  void init() => _firebasePerformance = FirebasePerformance.instance;
 
   Future<Trace> _createTrace({required String traceName}) async =>
       _firebasePerformance.newTrace(traceName);
@@ -33,20 +31,20 @@ class AppPerformance {
   /// Starts tracing the App Performance.
   Future<void> startTracing({required String traceName}) async {
     if (_traceMap.containsKey(traceName)) {
-      await stopTracing(traceName: traceName);
+      stopTracing(traceName: traceName);
     }
 
     try {
       final Trace trace = await _createTrace(traceName: traceName);
       _traceMap[traceName] = trace;
-      await trace.start();
+      trace.start();
     } catch (e) {
       log(e.toString());
     }
   }
 
   /// Stops tracing the App Performance.
-  Future<void> stopTracing({required String traceName}) async {
+  void stopTracing({required String traceName}) {
     try {
       final Trace? retrievedTrace = _traceMap[traceName];
       retrievedTrace?.stop();
