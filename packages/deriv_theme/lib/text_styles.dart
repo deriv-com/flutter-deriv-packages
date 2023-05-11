@@ -18,6 +18,13 @@ class TextStyles {
       height: 1.5,
       fontWeight: FontWeight.normal);
 
+  static TextStyle priceTitle = const TextStyle(
+    fontFamily: appFontFamily,
+    fontSize: 20,
+    height: 1.15,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle title = const TextStyle(
       fontFamily: appFontFamily,
       fontSize: 20,
@@ -65,6 +72,13 @@ class TextStyles {
       fontSize: 12,
       height: 1.3,
       fontWeight: FontWeight.bold);
+
+  static TextStyle headlineNormal = const TextStyle(
+    fontFamily: appFontFamily,
+    fontSize: 24,
+    height: 1.5,
+    fontWeight: FontWeight.normal,
+  );
 
   static TextStyle button = const TextStyle(
       fontFamily: appFontFamily,

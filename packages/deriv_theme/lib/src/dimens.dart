@@ -4,51 +4,114 @@
 /// In case of a theme change, use IDE refactoring technique to rename the value
 /// So it can be reflected wherever it is used with ease.
 class Dimens {
-  /// mini margin
+  /// 0 pixels margin.
+  static const double zeroMargin = 0;
+
+  /// 1 pixels margin.
+  static const double margin01 = 1;
+
+  /// 2 pixels margin.
   static const double margin02 = 2;
 
-  /// tiny margin
+  /// 4 pixels margin.
   static const double margin04 = 4;
 
-  /// small margin
+  /// 6 pixels margin
+  static const double margin06 = 6;
+
+  /// 8 pixels margin
   static const double margin08 = 8;
 
-  /// custom margin
+  /// 12 pixels margin.
   static const double margin12 = 12;
 
-  /// normal  margin
+  /// 14 pixels margin.
+  static const double margin14 = 14;
+
+  /// 16 pixels  margin.
   static const double margin16 = 16;
 
-  /// Large  margin
+  /// 18 pixels  margin
+  static const double margin18 = 18;
+
+  /// 24 pixels  margin
   static const double margin24 = 24;
 
-  /// XLarge  margin
+  /// 32 pixels  margin.
   static const double margin32 = 32;
 
-  /// XXLarge  margin
+  /// 36 pixels  margin.
+  static const double margin36 = 36;
+
+  /// 40 pixels  margin.
+  static const double margin40 = 40;
+
+  /// 44 pixels  margin.
+  static const double margin44 = 44;
+
+  /// 48 pixels  margin.
   static const double margin48 = 48;
 
-  /// XXXLarge  margin
+  /// 56 pixels  margin.
+  static const double margin56 = 56;
+
+  /// 64 pixels  margin.
+  static const double margin64 = 64;
+
+  /// 72 pixels  margin.
   static const double margin72 = 72;
 
-  /// XXXXLarge  margin
+  /// 78 pixels  margin.
+  static const double margin78 = 78;
+
+  /// 84 pixels  margin.
+  static const double margin84 = 84;
+
+  /// 96 pixels  margin.
   static const double margin96 = 96;
 
-  /// Border radius small
+  /// 128 pixels  margin.
+  static const double margin128 = 128;
+
+  /// Border radius small.
   static const double borderRadius04 = 4;
 
-  /// Border radius medium
+  /// Border radius medium.
   static const double borderRadius08 = 8;
 
-  /// Border radius large
+  /// Border radius large.
   static const double borderRadius16 = 16;
 
-  /// Small icon
+  /// Border radius maximum
+  static const double borderRadius100 = 100;
+
+  /// Very small icon 8x8
+  static const double iconSize8 = 8;
+
+  /// Small icon 12x12
+  static const double iconSize12 = 12;
+
+  /// Small icon 16x16.
   static const double iconSize16 = 16;
 
-  /// Medium icon
+  /// Medium icon.
   static const double iconSize24 = 24;
 
-  /// Large icon
+  /// Large icon.
   static const double iconSize32 = 32;
+
+  /// Size 40 icon.
+  static const double iconSize40 = 40;
+
+  /// Size 48 icon.
+  static const double iconSize48 = 48;
+
+  /// Size 64 icon.
+  static const double iconSize64 = 64;
+
+  /// Size 72 icon.
+  static const double iconSize72 = 72;
+
+  /// Size 96 icon.
+  static const double iconSize96 = 96;
 }

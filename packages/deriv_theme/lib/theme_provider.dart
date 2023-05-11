@@ -25,9 +25,15 @@ class ThemeProvider {
   In case of a theme change, use IDE refactoring technique to rename the values
   So they can be reflected wherever they are used in the app with ease.
   */
+  static const double zeroMargin = Dimens.zeroMargin;
+
+  static const double margin01 = Dimens.margin01;
+
   static const double margin02 = Dimens.margin02;
 
   static const double margin04 = Dimens.margin04;
+
+  static const double margin06 = Dimens.margin06;
 
   static const double margin08 = Dimens.margin08;
 
@@ -35,15 +41,33 @@ class ThemeProvider {
 
   static const double margin16 = Dimens.margin16;
 
+  static const double margin18 = Dimens.margin18;
+
   static const double margin24 = Dimens.margin24;
 
   static const double margin32 = Dimens.margin32;
 
+  static const double margin36 = Dimens.margin36;
+
+  static const double margin40 = Dimens.margin40;
+
+  static const double margin44 = Dimens.margin44;
+
   static const double margin48 = Dimens.margin48;
+
+  static const double margin56 = Dimens.margin56;
+
+  static const double margin64 = Dimens.margin64;
 
   static const double margin72 = Dimens.margin72;
 
+  static const double margin78 = Dimens.margin78;
+
+  static const double margin84 = Dimens.margin84;
+
   static const double margin96 = Dimens.margin96;
+
+  static const double margin128 = Dimens.margin128;
 
   static const double borderRadius04 = Dimens.borderRadius04;
 
@@ -51,11 +75,27 @@ class ThemeProvider {
 
   static const double borderRadius16 = Dimens.borderRadius16;
 
+  static const double borderRadius100 = Dimens.borderRadius100;
+
+  static const double iconSize8 = Dimens.iconSize8;
+
+  static const double iconSize12 = Dimens.iconSize12;
+
   static const double iconSize16 = Dimens.iconSize16;
 
   static const double iconSize24 = Dimens.iconSize24;
 
   static const double iconSize32 = Dimens.iconSize32;
+
+  static const double iconSize40 = Dimens.iconSize40;
+
+  static const double iconSize48 = Dimens.iconSize48;
+
+  static const double iconSize64 = Dimens.iconSize64;
+
+  static const double iconSize72 = Dimens.iconSize72;
+
+  static const double iconSize96 = Dimens.iconSize96;
 
   bool _isDarkTheme =
       SchedulerBinding.instance!.window.platformBrightness == Brightness.dark;
@@ -86,6 +126,12 @@ class ThemeProvider {
   Color get accentYellowColor => _isDarkTheme
       ? DarkThemeColors.accentYellow
       : LightThemeColors.accentYellow;
+
+  Color get informationColor => accentBlueColor;
+
+  Color get accentLightBlueColor => _isDarkTheme
+      ? DarkThemeColors.accentLightBlue
+      : LightThemeColors.accentLightBlue;
 
   @Deprecated('Use `colors.prominent` instead')
   Color get base01Color =>
@@ -124,8 +170,8 @@ class ThemeProvider {
       _isDarkTheme ? DarkThemeColors.green : LightThemeColors.green;
 
   @Deprecated('Use `colors.information` instead')
-  Color get informationColor =>
-      _isDarkTheme ? DarkThemeColors.information : LightThemeColors.information;
+  Color get accentBlueColor =>
+      _isDarkTheme ? DarkThemeColors.accentBlue : LightThemeColors.accentBlue;
 
   @Deprecated('Use `colors.disabled` instead')
   Color get disabledColor =>
