@@ -1,39 +1,48 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This is a flutter package that provides a date range picker widget based on deriv theme.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Provides a date range picker widget based on deriv theme.
+- Supports both calendar and input mode.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+In the `pubspec.yaml` of your flutter project, add the following dependency:
+
+```yaml
+dependencies:
+  deriv_date_range_picker:
+    git:
+        url: git@github.com:regentmarkets/flutter-deriv-packages.git
+        path: packages/deriv_date_range_picker
+        ref: dev
+```
+
+Then run `flutter pub get`.
+
+In your library add the following import:
+
+```dart
+import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
+```
+
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+final dateChosen = await showDialog<DateRangeModel>(
+                context: context,
+                builder: (_) => DerivDateRangePicker(
+                      context: context,
+                      currentDate: DateTime.now(),
+                      minAllowedDate: DateTime(2021, 1, 1),
+                      maxAllowedDate: DateTime(2021, 12, 31),
+                      initialStartDate: date.startDate,
+                      initialEndDate: date.endDate,
+                      mode: DateRangePickerMode.calendar,
+                    ));
+print(dateChosen); // Instance of 'DateRangeModel'
+print(dateChosen.startDate); // Instance of 'DateTime'
 ```
 
-## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.

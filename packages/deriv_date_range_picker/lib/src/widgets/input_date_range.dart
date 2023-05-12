@@ -17,8 +17,8 @@ class InputDateRange extends StatefulWidget {
     this.initialEndDate,
     this.fieldStartLabelText,
     this.fieldEndLabelText,
-    this.semanticCalenderLabel,
-    this.toolTipCalender,
+    this.semanticCalendarLabel,
+    this.toolTipCalendar,
     this.cancelText,
     this.confirmText,
     this.labelSelectedDateRange,
@@ -32,10 +32,10 @@ class InputDateRange extends StatefulWidget {
   final String? fieldEndLabelText;
 
   /// Semantic label for the calendar icon.
-  final String? semanticCalenderLabel;
+  final String? semanticCalendarLabel;
 
   /// Text that appears when the user long-presses the calendar icon.
-  final String? toolTipCalender;
+  final String? toolTipCalendar;
 
   /// Text for the cancel button.
   final String? cancelText;
@@ -173,14 +173,14 @@ class InputDateRangeState extends State<InputDateRange> {
           child: IconButton(
             icon: Icon(
               Icons.date_range,
-              semanticLabel: widget.semanticCalenderLabel,
+              semanticLabel: widget.semanticCalendarLabel,
               color: context.theme.colors.general.withOpacity(
                 getOpacity(
                   isEnabled: _isDateValidForCalendar(),
                 ),
               ),
             ),
-            tooltip: widget.toolTipCalender,
+            tooltip: widget.toolTipCalendar,
             onPressed: () {
               if (_isDateValidForCalendar()) {
                 _onConfirmTap(true);

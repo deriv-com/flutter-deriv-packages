@@ -34,11 +34,11 @@ import 'package:flutter/scheduler.dart';
 ///   * [semanticLabelEditIcon], semantic label for the edit icon.
 ///   * [semanticLabelClose], semantic label for the close icon.
 ///   * [semanticLabelConfirm], semantic label for the confirm icon.
-///   * [semanticLabelCalender], semantic label for the calender icon.
+///   * [semanticLabelCalendar], semantic label for the calendar icon.
 ///   * [toolTipEdit], tooltip for the edit icon.
 ///   * [toolTipClose], tooltip for the close icon.
 ///   * [toolTipConfirm], tooltip for the confirm icon.
-///   * [toolTipCalender], tooltip for the calender icon.
+///   * [toolTipCalendar], tooltip for the calendar icon.
 
 /// For example:
 /// ```dart
@@ -81,8 +81,8 @@ class DerivDateRangePicker extends StatefulWidget {
     this.toolTipConfirm,
     this.fieldStartLabelText,
     this.fieldEndLabelText,
-    this.semanticLabelCalender,
-    this.toolTipCalender,
+    this.semanticLabelCalendar,
+    this.toolTipCalendar,
     Key? key,
   })  : assert(minAllowedDate.isBefore(maxAllowedDate)),
         assert(
@@ -146,11 +146,11 @@ class DerivDateRangePicker extends StatefulWidget {
   /// Text that describes the action that will occur when the confirm button is long pressed.
   final String? toolTipConfirm;
 
-  // Semantic label for calender icon.
-  final String? semanticLabelCalender;
+  // Semantic label for Calendar icon.
+  final String? semanticLabelCalendar;
 
-  /// Text that describes the action that will occur when the calender icon is long pressed.
-  final String? toolTipCalender;
+  /// Text that describes the action that will occur when the Calendar icon is long pressed.
+  final String? toolTipCalendar;
 
   @override
   DerivDateRangePickerState createState() => DerivDateRangePickerState();
@@ -310,8 +310,8 @@ class DerivDateRangePickerState extends State<DerivDateRangePicker> {
           confirmText:
               widget.confirmText ?? context.localization!.labelActionOk,
           labelSelectedDateRange: widget.labelSelectedDateRange,
-          semanticCalenderLabel: widget.semanticLabelCalender,
-          toolTipCalender: widget.toolTipCalender,
+          semanticCalendarLabel: widget.semanticLabelCalendar,
+          toolTipCalendar: widget.toolTipCalendar,
           currentDate: widget.currentDate ?? DateTime.now(),
           minAllowedDate: widget.minAllowedDate,
           maxAllowedDate: widget.maxAllowedDate,
