@@ -112,7 +112,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
     try {
       await authService.logout();
-      await authService.onLoggedOut();
+      await authService.onLogout();
 
       emit(DerivAuthLoggedOutState());
       await authService.onPostLogout();

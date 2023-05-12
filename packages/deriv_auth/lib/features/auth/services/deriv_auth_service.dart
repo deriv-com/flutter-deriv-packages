@@ -143,7 +143,7 @@ class DerivAuthService extends BaseAuthService {
   Future<void> logout() => authRepository.logout();
 
   @override
-  Future<void> onLoggedOut() => authRepository.onLoggedOut();
+  Future<void> onLogout() => authRepository.onLogout();
 
   @override
   Future<void> onPostLogout() => authRepository.onPostLogout();

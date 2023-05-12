@@ -13,7 +13,7 @@ abstract class BaseAuthRepository {
   Future<void> logout();
 
   /// Functionality on user logs out.
-  Future<void> onLoggedOut();
+  Future<void> onLogout();
 
   /// Functionality on logout is done.
   Future<void> onPostLogout();
