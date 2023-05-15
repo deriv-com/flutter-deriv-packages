@@ -10,11 +10,9 @@ void main() {
 
   final List<MethodCall> log = <MethodCall>[];
 
-  testWidgets('Start chat with Deriv Live Chat plugin without customParams',
-      (WidgetTester tester) async {
-        
-    tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(channel,
-        (MethodCall methodCall) async {
+  setUp(() {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
       log.add(methodCall);
       switch (methodCall.method) {
         case 'open_live_chat_view':
@@ -23,7 +21,9 @@ void main() {
           return null;
       }
     });
+  });
 
+  test('Start chat with Deriv Live Chat plugin without customParams', () async {
     await DerivLiveChat.openChatView(
       licenseId: 'licenseId',
       username: 'visitorName',
