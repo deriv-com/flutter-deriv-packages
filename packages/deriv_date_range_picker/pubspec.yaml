@@ -4,7 +4,7 @@ version: 0.0.1
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: ">=2.19.5 <3.0.0"
+  sdk: ">=2.19.5 <=3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -14,9 +14,9 @@ dependencies:
     sdk: flutter
   deriv_theme:
     git:
-      url: git@github.com:mohammadt-deriv/flutter-deriv-packages.git
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: mohammad-t/update-deriv-theme-non-breaking
+      ref: dev
   intl: ^0.17.0
 
 dev_dependencies:
