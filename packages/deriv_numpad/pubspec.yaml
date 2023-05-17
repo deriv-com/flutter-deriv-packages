@@ -13,7 +13,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: 61838b122f47acc4f60404d8ba6d85e453f45f0e
+      ref: dev
 
   flutter_svg: ^1.0.3
   intl: ^0.17.0
