@@ -3,8 +3,6 @@ import 'dart:developer' as logger;
 
 import 'package:crypto/crypto.dart';
 
-import 'package:deriv_api_key_provider/native_app_token.dart';
-
 import 'package:deriv_web_view/models/app_authorization_challenge_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_challenge_response_model.dart';
 import 'package:deriv_web_view/models/app_authorization_request_model.dart';
@@ -22,10 +20,15 @@ Future<String?> performPassThroughAuthentication({
   required String? defaultAccount,
   required String endpoint,
   required String appId,
+  required String appToken,
   String? action,
   String? code,
 }) async {
-  final String jwtToken = await getJwtToken(endpoint: endpoint, appId: appId);
+  final String jwtToken = await getJwtToken(
+    endpoint: endpoint,
+    appId: appId,
+    appToken: appToken,
+  );
 
   final Map<String, dynamic> request = PtaLoginRequestModel(
     refreshToken: refreshToken ?? '',
@@ -59,12 +62,13 @@ Future<String?> performPassThroughAuthentication({
 Future<String> getJwtToken({
   required String endpoint,
   required String appId,
+  required String appToken,
 }) async {
   final AppAuthorizationChallengeResponseModel challenge =
       await _getAppAuthorizationChallenge(endpoint: endpoint, appId: appId);
 
   final String solution = _solveLoginChallenge(
-    appToken: await appToken,
+    appToken: appToken,
     challenge: challenge.challenge,
   );
 
