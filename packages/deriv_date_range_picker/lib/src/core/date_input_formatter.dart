@@ -5,7 +5,7 @@ class DateInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
-    String formattedText = _getHyphenedDate(newValue.text);
+    final String formattedText = _getHyphenedDate(newValue.text);
     return newValue.copyWith(
       text: formattedText,
       selection: TextSelection.collapsed(offset: formattedText.length),

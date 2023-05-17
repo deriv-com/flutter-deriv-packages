@@ -14,10 +14,10 @@ class _DateRangeTextField extends StatefulWidget {
     required this.isStartDateValid,
     required this.isEndDateValid,
     required this.onEditingComplete,
-    Key? key,
     required this.dateFormat,
     required this.fieldStartLabelText,
     required this.fieldEndLabelText,
+    Key? key,
   }) : super(key: key);
 
   /// Label for start date text field.
@@ -95,7 +95,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
   }) =>
       Expanded(
         child: TextField(
-          inputFormatters: [
+          inputFormatters: <TextInputFormatter>[
             DateInputFormatter(),
             LengthLimitingTextInputFormatter(10)
           ],

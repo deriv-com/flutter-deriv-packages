@@ -19,14 +19,13 @@ void main() {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpApp(
-        Builder(builder: (context) {
-          return DerivDateRangePicker(
-            context: context,
-            currentDate: currentTime,
-            minAllowedDate: DateTime(currentTime.year - 1, 11, 20),
-            maxAllowedDate: DateTime(currentTime.year + 1, 11, 25),
-          );
-        }),
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11, 20),
+                  maxAllowedDate: DateTime(currentTime.year + 1, 11, 25),
+                )),
       );
 
       await tester.idle();
@@ -54,16 +53,15 @@ void main() {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpApp(
-        Builder(builder: (context) {
-          return DerivDateRangePicker(
-            currentDate: currentTime,
-            minAllowedDate: DateTime(currentTime.year - 1, 11),
-            maxAllowedDate: DateTime(currentTime.year, 11, 25),
-            initialStartDate: DateTime(currentTime.year, 11, 10),
-            initialEndDate: DateTime(currentTime.year, 11, 19),
-            context: context,
-          );
-        }),
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                  initialStartDate: DateTime(currentTime.year, 11, 10),
+                  initialEndDate: DateTime(currentTime.year, 11, 19),
+                  context: context,
+                )),
       );
 
       await tester.idle();
@@ -89,16 +87,15 @@ void main() {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpApp(
-        Builder(builder: (context) {
-          return DerivDateRangePicker(
-            context: context,
-            currentDate: currentTime,
-            minAllowedDate: DateTime(currentTime.year - 1, 11),
-            maxAllowedDate: DateTime(currentTime.year, 11, 25),
-            initialStartDate: DateTime(currentTime.year - 1, 11, 10),
-            initialEndDate: DateTime(currentTime.year, 11, 19),
-          );
-        }),
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                  initialStartDate: DateTime(currentTime.year - 1, 11, 10),
+                  initialEndDate: DateTime(currentTime.year, 11, 19),
+                )),
       );
 
       await tester.idle();
@@ -126,14 +123,13 @@ void main() {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpApp(
-        Builder(builder: (context) {
-          return DerivDateRangePicker(
-            context: context,
-            minAllowedDate: DateTime(currentTime.year - 1, 11),
-            maxAllowedDate: DateTime(currentTime.year, 11, 25),
-            initialStartDate: DateTime(currentTime.year - 1, 11, 10),
-          );
-        }),
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                  initialStartDate: DateTime(currentTime.year - 1, 11, 10),
+                )),
       );
 
       await tester.idle();
@@ -161,15 +157,14 @@ void main() {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpApp(
-        Builder(builder: (context) {
-          return DerivDateRangePicker(
-            context: context,
-            currentDate: currentTime,
-            minAllowedDate: DateTime(currentTime.year - 1, 11),
-            maxAllowedDate: DateTime(currentTime.year + 1, 11, 25),
-            initialStartDate: DateTime(currentTime.year, 11, 10),
-          );
-        }),
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year + 1, 11, 25),
+                  initialStartDate: DateTime(currentTime.year, 11, 10),
+                )),
       );
 
       await tester.idle();
@@ -197,15 +192,14 @@ void main() {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpApp(
-        Builder(builder: (context) {
-          return DerivDateRangePicker(
-            context: context,
-            currentDate: currentTime,
-            minAllowedDate: DateTime(currentTime.year - 1, 11),
-            maxAllowedDate: DateTime(currentTime.year, 11, 25),
-            initialEndDate: DateTime(currentTime.year - 1, 11, 10),
-          );
-        }),
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                  initialEndDate: DateTime(currentTime.year - 1, 11, 10),
+                )),
       );
 
       await tester.idle();
@@ -233,15 +227,14 @@ void main() {
       final DateTime currentTime = DateTime.now();
 
       await tester.pumpApp(
-        Builder(builder: (context) {
-          return DerivDateRangePicker(
-            context: context,
-            currentDate: currentTime,
-            minAllowedDate: DateTime(currentTime.year - 1, 11),
-            maxAllowedDate: DateTime(currentTime.year, 11, 25),
-            initialEndDate: DateTime(currentTime.year, 11, 10),
-          );
-        }),
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                  initialEndDate: DateTime(currentTime.year, 11, 10),
+                )),
       );
 
       await tester.idle();

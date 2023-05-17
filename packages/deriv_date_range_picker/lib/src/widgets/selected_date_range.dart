@@ -11,11 +11,11 @@ class SelectedDateRange extends StatelessWidget {
   /// Initializes selected date range.
   const SelectedDateRange({
     required this.currentDate,
+    required this.fieldStartLabelText,
+    required this.fieldEndLabelText,
     this.startDate,
     this.endDate,
     Key? key,
-    required this.fieldStartLabelText,
-    required this.fieldEndLabelText,
   }) : super(key: key);
 
   /// Label text for the start date field.

@@ -140,23 +140,23 @@ class DerivDateRangePicker extends StatefulWidget {
   /// Text that describes the action that will occur when the close button is long pressed.
   final String? toolTipClose;
 
-  // Semantic label for confirm icon.
+  /// Semantic label for confirm icon.
   final String? semanticLabelConfirm;
 
   /// Text that describes the action that will occur when the confirm button is long pressed.
   final String? toolTipConfirm;
 
-  // Semantic label for Calendar icon.
+  /// Semantic label for Calendar icon.
   final String? semanticLabelCalendar;
 
   /// Text that describes the action that will occur when the Calendar icon is long pressed.
   final String? toolTipCalendar;
 
   @override
-  DerivDateRangePickerState createState() => DerivDateRangePickerState();
+  _DerivDateRangePickerState createState() => _DerivDateRangePickerState();
 }
 
-class DerivDateRangePickerState extends State<DerivDateRangePicker> {
+class _DerivDateRangePickerState extends State<DerivDateRangePicker> {
   DateTime? selectedStartDate;
   DateTime? selectedEndDate;
 

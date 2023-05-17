@@ -62,10 +62,10 @@ class InputDateRange extends StatefulWidget {
   final DateTime? initialEndDate;
 
   @override
-  InputDateRangeState createState() => InputDateRangeState();
+  _InputDateRangeState createState() => _InputDateRangeState();
 }
 
-class InputDateRangeState extends State<InputDateRange> {
+class _InputDateRangeState extends State<InputDateRange> {
   late DateTime? startDate;
   late DateTime? endDate;
   late bool isStartDateValid;

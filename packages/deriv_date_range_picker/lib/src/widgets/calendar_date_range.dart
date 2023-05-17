@@ -68,10 +68,10 @@ class CalendarDateRange extends StatefulWidget {
   final DateTime? initialEndDate;
 
   @override
-  CalendarDateRangeState createState() => CalendarDateRangeState();
+  _CalendarDateRangeState createState() => _CalendarDateRangeState();
 }
 
-class CalendarDateRangeState extends State<CalendarDateRange> {
+class _CalendarDateRangeState extends State<CalendarDateRange> {
   final GlobalKey scrollViewKey = GlobalKey();
 
   DateTime? startDate;

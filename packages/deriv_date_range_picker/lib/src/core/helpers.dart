@@ -118,4 +118,5 @@ String getTimeDuration({
   return '$duration';
 }
 
+/// Returns the opacity based on the [isEnabled] value.
 double getOpacity({required bool isEnabled}) => isEnabled ? 1.0 : 0.32;
