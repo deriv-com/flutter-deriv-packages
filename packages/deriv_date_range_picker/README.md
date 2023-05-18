@@ -26,6 +26,18 @@ In your library add the following import:
 import 'package:deriv_date_range_picker/deriv_date_range_picker.dart';
 ```
 
+In your MaterialApp add the `DateRangeLocalizations` delegate:
+
+
+```dart
+MaterialApp(
+  localizationsDelegates: [
+    DateRangeLocalizations.delegate,
+    /// ... more localization delegates
+  ],
+)
+```
+
 
 ## Usage
 
