@@ -101,22 +101,5 @@ InputDateModel parseDate({
   }
 }
 
-/// Returns the duration with proper unit
-String getTimeDuration({
-  required BuildContext context,
-  required int duration,
-  String? durationUnit,
-}) {
-  if (durationUnit == 'm') {
-    return '$duration minutes';
-  } else if (durationUnit == 'h') {
-    return '$duration hours';
-  } else if (durationUnit == 'd') {
-    return '$duration days';
-  }
-
-  return '$duration';
-}
-
 /// Returns the opacity based on the [isEnabled] value.
 double getOpacity({required bool isEnabled}) => isEnabled ? 1.0 : 0.32;

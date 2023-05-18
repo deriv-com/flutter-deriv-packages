@@ -7,14 +7,14 @@ import '../pump_app.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  group('Calendar Date Range Picker =>', () {
-    late DateRangeLocalizations localization;
+  late DateRangeLocalizations localization;
 
-    setUpAll(() async => localization =
-        await DateRangeLocalizations.delegate.load(const Locale('en')));
+  setUpAll(() async => localization =
+      await DateRangeLocalizations.delegate.load(const Locale('en')));
 
+  group(' Date Range Picker Calendar Mode =>', () {
     testWidgets(
-        'date range picker should show start and end label if initial start date and initial end date is not set.',
+        'should show start and end label if initial start date and initial end date is not set.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -27,9 +27,6 @@ void main() {
                   maxAllowedDate: DateTime(currentTime.year + 1, 11, 25),
                 )),
       );
-
-      await tester.idle();
-      await tester.pumpAndSettle();
 
       expect(find.byType(IconButton), findsNWidgets(3));
       expect(find.byType(DerivDateRangePicker), findsOneWidget);
@@ -48,7 +45,7 @@ void main() {
     });
 
     testWidgets(
-        'date range picker should show start and end date if initial start date and initial end date is set in same year.',
+        'should show start and end date if initial start date and initial end date is set in same year.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -63,9 +60,6 @@ void main() {
                   context: context,
                 )),
       );
-
-      await tester.idle();
-      await tester.pumpAndSettle();
 
       expect(find.byType(IconButton), findsNWidgets(3));
       expect(find.byType(DerivDateRangePicker), findsOneWidget);
@@ -82,7 +76,7 @@ void main() {
     });
 
     testWidgets(
-        'date range picker should show start and end date if initial start date and initial end date is set in different years.',
+        'should show start and end date if initial start date and initial end date is set in different years.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -97,9 +91,6 @@ void main() {
                   initialEndDate: DateTime(currentTime.year, 11, 19),
                 )),
       );
-
-      await tester.idle();
-      await tester.pumpAndSettle();
 
       expect(find.byType(IconButton), findsNWidgets(3));
       expect(find.byType(DerivDateRangePicker), findsOneWidget);
@@ -118,7 +109,7 @@ void main() {
     });
 
     testWidgets(
-        'date range picker should show start if initial start date is set and initial end date is not set. also, year is not equal to current date year.',
+        'should show start if initial start date is set and initial end date is not set. also, year is not equal to current date year.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -131,9 +122,6 @@ void main() {
                   initialStartDate: DateTime(currentTime.year - 1, 11, 10),
                 )),
       );
-
-      await tester.idle();
-      await tester.pumpAndSettle();
 
       expect(find.byType(IconButton), findsNWidgets(3));
       expect(find.byType(DerivDateRangePicker), findsOneWidget);
@@ -152,7 +140,7 @@ void main() {
     });
 
     testWidgets(
-        'date range picker should show start if initial start date is set and initial end date is not set. also, year is equal to current date year.',
+        'should show start date if initial start date is set and initial end date is not set. also, year is equal to current date year.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -166,9 +154,6 @@ void main() {
                   initialStartDate: DateTime(currentTime.year, 11, 10),
                 )),
       );
-
-      await tester.idle();
-      await tester.pumpAndSettle();
 
       expect(find.byType(IconButton), findsNWidgets(3));
       expect(find.byType(DerivDateRangePicker), findsOneWidget);
@@ -187,7 +172,7 @@ void main() {
     });
 
     testWidgets(
-        'date range picker should show end if initial end date is set and initial start date is not set. also, year is not equal to current date year.',
+        'should show end date if initial end date is set and initial start date is not set. also, year is not equal to current date year.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -201,9 +186,6 @@ void main() {
                   initialEndDate: DateTime(currentTime.year - 1, 11, 10),
                 )),
       );
-
-      await tester.idle();
-      await tester.pumpAndSettle();
 
       expect(find.byType(IconButton), findsNWidgets(3));
       expect(find.byType(DerivDateRangePicker), findsOneWidget);
@@ -222,7 +204,7 @@ void main() {
     });
 
     testWidgets(
-        'date range picker should show end if initial end date is set and initial start date is not set. also, year is equal to current date year.',
+        'should show end date if initial end date is set and initial start date is not set. also, year is equal to current date year.',
         (WidgetTester tester) async {
       final DateTime currentTime = DateTime.now();
 
@@ -237,9 +219,6 @@ void main() {
                 )),
       );
 
-      await tester.idle();
-      await tester.pumpAndSettle();
-
       expect(find.byType(IconButton), findsNWidgets(3));
       expect(find.byType(DerivDateRangePicker), findsOneWidget);
 
@@ -251,6 +230,135 @@ void main() {
               widget is RichText &&
               widget.text.toPlainText() ==
                   '${localization.labelStartDate} - Nov 10',
+        ),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets(
+        'should show date range picker input mode when edit button pressed from calendar',
+        (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
+
+      await tester.pumpApp(
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                )),
+      );
+
+      final Finder editButton = find.widgetWithIcon(IconButton, Icons.edit);
+
+      await tester.tap(editButton);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(InputDateRange), findsOneWidget);
+    });
+  });
+
+  group(' Date Range Picker Input Mode => ', () {
+    testWidgets(
+        'should open date range picker calendar mode when calendar tapped',
+        (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
+
+      await tester.pumpApp(
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  mode: DateRangePickerMode.input,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                )),
+      );
+
+      await tester.pumpAndSettle();
+
+      final Finder calendarIcon =
+          find.widgetWithIcon(IconButton, Icons.date_range);
+
+      await tester.tap(calendarIcon);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(CalendarDateRange), findsOneWidget);
+    });
+
+    testWidgets('should close on cancel button tapped',
+        (WidgetTester tester) async {
+      final DateTime currentTime = DateTime.now();
+
+      await tester.pumpApp(
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  mode: DateRangePickerMode.input,
+                  currentDate: currentTime,
+                  minAllowedDate: DateTime(currentTime.year - 1, 11),
+                  maxAllowedDate: DateTime(currentTime.year, 11, 25),
+                )),
+      );
+
+      await tester.pumpAndSettle();
+
+      final Finder cancelButton = find.widgetWithText(
+        TextButton,
+        localization.labelActionCancel,
+      );
+
+      await tester.tap(cancelButton);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(InputDateRange), findsNothing);
+      expect(find.byType(DerivDateRangePicker), findsNothing);
+    });
+
+    testWidgets('should show red outline on invalid date',
+        (WidgetTester tester) async {
+      await tester.pumpApp(
+        Builder(
+            builder: (BuildContext context) => DerivDateRangePicker(
+                  context: context,
+                  mode: DateRangePickerMode.input,
+                  minAllowedDate: DateTime(2022),
+                  maxAllowedDate: DateTime(2023),
+                )),
+      );
+
+      await tester.pumpAndSettle();
+
+      final Finder startDateInput =
+          find.widgetWithText(TextField, localization.labelStartDate);
+      final Finder endDateInput =
+          find.widgetWithText(TextField, localization.labelEndDate);
+
+      final DateTime _dateLessThanMin = DateTime(2021, 11, 10);
+      final DateTime _dateGreaterThanMax = DateTime(2024, 11, 10);
+
+      await tester.enterText(startDateInput, _dateLessThanMin.toString());
+      await tester.enterText(endDateInput, _dateGreaterThanMax.toString());
+      await tester.pumpAndSettle();
+
+      expect(
+        find.descendant(
+          of: startDateInput,
+          matching: find.byWidgetPredicate((Widget widget) =>
+              widget is InputDecorator &&
+              widget.decoration.enabledBorder!.borderSide.color ==
+                  const Color(0xFFFF444F)), // deriv error border color
+        ),
+        findsOneWidget,
+      );
+      expect(
+        find.descendant(
+          of: endDateInput,
+          matching: find.byWidgetPredicate((Widget widget) =>
+              widget is InputDecorator &&
+              widget.decoration.enabledBorder!.borderSide.color ==
+                  const Color(0xFFFF444F)), // deriv error border color
         ),
         findsOneWidget,
       );
