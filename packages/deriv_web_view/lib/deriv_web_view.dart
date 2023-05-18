@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:developer' as dev;
 
+import 'package:deriv_web_view/widgets/in_app_browser/chrome_safari_browser.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:deriv_web_view/helper.dart';
@@ -26,6 +29,47 @@ Future<void> openWebPage({
     );
   }
 }
+
+final AppChromeSafariBrowser appSafariBrowser = AppChromeSafariBrowser();
+
+/// Opens in-app tab activity webview.
+Future<void> openInAppTabActivityWebView({
+  required BuildContext context,
+  required String url,
+  String? title,
+  bool extendBodyBehindAppBar = false,
+  bool setEndpoint = false,
+  bool rootNavigator = false,
+  String? endpoint,
+  String? appId,
+  VoidCallback? onClosed,
+}) async {
+  try {
+    await _openInAppTabView(url);
+  } on PlatformException catch (_) {
+    await InAppBrowser().openUrlRequest(
+      urlRequest: URLRequest(url: Uri.parse(url)),
+    );
+  }
+}
+
+bool get isInAppTabActivityWebViewOpen => appSafariBrowser.isOpened();
+
+Future<void> closeInAppTabActivityWebView() => appSafariBrowser.close();
+
+Future<void> _openInAppTabView(String url) async => appSafariBrowser.open(
+      url: Uri.parse(url),
+      options: ChromeSafariBrowserClassOptions(
+        android: AndroidChromeCustomTabsOptions(
+          shareState: CustomTabsShareState.SHARE_STATE_OFF,
+        ),
+        ios: IOSSafariOptions(
+          dismissButtonStyle: IOSSafariDismissButtonStyle.CLOSE,
+          presentationStyle: IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
+          transitionStyle: IOSUIModalTransitionStyle.CROSS_DISSOLVE,
+        ),
+      ),
+    );
 
 /// Opens in-app webview.
 Future<void> openInAppWebView({
@@ -97,7 +141,7 @@ Future<void> openLoggedInWebPage({
       getPtaLoginUrl(host: endpoint, token: oneTimeToken);
 
   if (inAppBrowser) {
-    await openInAppWebView(
+    await openInAppTabActivityWebView(
       context: context,
       url: ptaLoginUrl,
       title: title,
