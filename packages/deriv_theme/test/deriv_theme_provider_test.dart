@@ -58,7 +58,7 @@ void main() {
   testWidgets(
       'DerivThemeProvider updates the theme mode when system brightness changes',
       (WidgetTester tester) async {
-    tester.binding.window.platformBrightnessTestValue = Brightness.light;
+    tester.platformDispatcher.platformBrightnessTestValue = Brightness.light;
 
     await tester.pumpWidget(
       DerivThemeProvider(
@@ -79,7 +79,7 @@ void main() {
     expect(container.color,
         const ThemeProvider(Brightness.light).colors.prominent);
 
-    tester.binding.window.platformBrightnessTestValue = Brightness.dark;
+    tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
     await tester.pumpAndSettle();
 
     container = tester.widget<Container>(find.byType(Container).first);
