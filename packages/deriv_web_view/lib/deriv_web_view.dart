@@ -30,8 +30,10 @@ Future<void> openWebPage({
   }
 }
 
-/// Opens in-app webview.
-Future<void> openInAppWebView({
+final AppChromeSafariBrowser appSafariBrowser = AppChromeSafariBrowser();
+
+/// Opens in-app tab activity webview.
+Future<void> openInAppTabActivityWebView({
   required BuildContext context,
   required String url,
   String? title,
@@ -43,7 +45,7 @@ Future<void> openInAppWebView({
   VoidCallback? onClosed,
 }) async {
   try {
-    await _openInAppBrowser(url);
+    await _openInAppTabView(url);
   } on PlatformException catch (_) {
     await InAppBrowser().openUrlRequest(
       urlRequest: URLRequest(url: Uri.parse(url)),
@@ -51,7 +53,11 @@ Future<void> openInAppWebView({
   }
 }
 
-Future<void> _openInAppBrowser(String url) async => AppChromeSafariBrowser().open(
+bool get isInAppTabActivityWebViewOpen => appSafariBrowser.isOpened();
+
+Future<void> closeInAppTabActivityWebView() => appSafariBrowser.close();
+
+Future<void> _openInAppTabView(String url) async => appSafariBrowser.open(
       url: Uri.parse(url),
       options: ChromeSafariBrowserClassOptions(
         android: AndroidChromeCustomTabsOptions(
@@ -61,6 +67,32 @@ Future<void> _openInAppBrowser(String url) async => AppChromeSafariBrowser().ope
           dismissButtonStyle: IOSSafariDismissButtonStyle.CLOSE,
           presentationStyle: IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
           transitionStyle: IOSUIModalTransitionStyle.CROSS_DISSOLVE,
+        ),
+      ),
+    );
+
+/// Opens in-app webview.
+Future<void> openInAppWebView({
+  required BuildContext context,
+  required String url,
+  String? title,
+  bool extendBodyBehindAppBar = false,
+  bool setEndpoint = false,
+  bool rootNavigator = false,
+  String? endpoint,
+  String? appId,
+  VoidCallback? onClosed,
+}) async =>
+    Navigator.of(context, rootNavigator: rootNavigator).push(
+      MaterialPageRoute<Widget>(
+        builder: (BuildContext context) => WebViewPage(
+          url: url,
+          title: title,
+          extendBodyBehindAppBar: extendBodyBehindAppBar,
+          setEndpoint: setEndpoint,
+          endpoint: endpoint,
+          appId: appId,
+          onClosed: onClosed,
         ),
       ),
     );
@@ -76,6 +108,7 @@ Future<void> openLoggedInWebPage({
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
+  required String appToken,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -95,6 +128,7 @@ Future<void> openLoggedInWebPage({
     loadingDialog: loadingDialog,
     tokenExpiredDialog: tokenExpiredDialog,
     rootNavigator: rootNavigator,
+    appToken: appToken,
     action: action,
     code: code,
   );
@@ -107,7 +141,7 @@ Future<void> openLoggedInWebPage({
       getPtaLoginUrl(host: endpoint, token: oneTimeToken);
 
   if (inAppBrowser) {
-    await openInAppWebView(
+    await openInAppTabActivityWebView(
       context: context,
       url: ptaLoginUrl,
       title: title,
@@ -137,6 +171,7 @@ Future<void> openLoggedInWebPage({
       loadingDialog: loadingDialog,
       tokenExpiredDialog: tokenExpiredDialog,
       rootNavigator: rootNavigator,
+      appToken: appToken,
       action: action,
       code: code,
     );
@@ -155,6 +190,7 @@ Future<String?> _fetchOneTimeToken({
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
   required bool rootNavigator,
+  required String appToken,
   String? action,
   String? code,
 }) async {
@@ -167,6 +203,7 @@ Future<String?> _fetchOneTimeToken({
     endpoint: endpoint,
     refreshToken: refreshToken,
     defaultAccount: defaultAccount,
+    appToken: appToken,
     action: action,
     code: code,
   );
@@ -184,6 +221,7 @@ Future<String?> _getOneTimeToken({
   required String destinationAppId,
   required String? refreshToken,
   required String? defaultAccount,
+  required String appToken,
   String? action,
   String? code,
 }) async {
@@ -195,6 +233,7 @@ Future<String?> _getOneTimeToken({
       appId: appId,
       refreshToken: refreshToken,
       defaultAccount: defaultAccount,
+      appToken: appToken,
       action: action,
       code: code,
     );
@@ -218,6 +257,7 @@ Future<String?> _validateCredentials({
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
+  required String appToken,
   String? action,
   String? code,
 }) async {
@@ -231,6 +271,7 @@ Future<String?> _validateCredentials({
     defaultAccount: defaultAccount,
     loadingDialog: loadingDialog,
     rootNavigator: rootNavigator,
+    appToken: appToken,
     action: action,
     code: code,
   );
