@@ -27,7 +27,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                     heightFactor: 1 - animationController.value,
                     child: Opacity(
                       opacity: 1 - animationController.value,
-                      child: _ExpandableBottomSheetToggler(),
+                      child: const _ExpandableBottomSheetToggler(),
                     ),
                   ),
                 Align(
@@ -71,8 +71,8 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
             Column(
               children: <Widget>[
                 if (expandableBottomSheetProvider.showToggler)
-                  _ExpandableBottomSheetToggler(),
-                _ExpandableBottomSheetTitle(),
+                  const _ExpandableBottomSheetToggler(),
+                const _ExpandableBottomSheetTitle(),
               ],
             ),
             if (_isLeftActionVisible(expandableBottomSheetProvider))
