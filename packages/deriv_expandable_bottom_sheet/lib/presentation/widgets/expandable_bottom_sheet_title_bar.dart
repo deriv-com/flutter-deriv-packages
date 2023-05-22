@@ -1,11 +1,9 @@
 part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetTitleBar extends StatelessWidget {
-
-  const _ExpandableBottomSheetTitleBar({
-    required this.labelContractDetails,
-    Key? key
-    }) : super(key: key);
+  const _ExpandableBottomSheetTitleBar(
+      {required this.labelContractDetails, Key? key})
+      : super(key: key);
 
   final String labelContractDetails;
 

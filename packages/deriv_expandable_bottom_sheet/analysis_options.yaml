@@ -1,5 +1,6 @@
 analyzer:
-  exclude:
+  language:
+    strict-raw-types: true
 
   errors:
     todo: ignore

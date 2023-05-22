@@ -5,6 +5,9 @@ analyzer:
     - lib/generated/**
     - /**.g.dart
 
+  language:
+    strict-raw-types: true
+
   errors:
     todo: ignore
     missing_required_param: warning

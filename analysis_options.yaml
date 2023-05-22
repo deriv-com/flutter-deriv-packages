@@ -3,7 +3,10 @@ analyzer:
     - lib/basic_api/**
     - lib/generated/**
     - test/**
-    
+
+  language:
+    strict-raw-types: true
+
   errors:
     todo: ignore
     missing_required_param: warning
