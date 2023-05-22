@@ -8,12 +8,12 @@ part 'rules/required_rule.dart';
 
 /// This class uses builder pattern to create a chain of validation rules to be
 /// used on [FormField]s.
-class FormValidator {
-  final List<FormFieldValidator> _validators = <FormFieldValidator>[];
+class FormValidator<T> {
+  final List<FormFieldValidator<T>> _validators = <FormFieldValidator<T>>[];
 
   /// Validates the field with all the given validation rules.
-  FormFieldValidator validate() => (dynamic fieldValue) {
-        for (final FormFieldValidator validator in _validators) {
+  FormFieldValidator<T> validate() => (dynamic fieldValue) {
+        for (final FormFieldValidator<T> validator in _validators) {
           final String? error = validator.call(fieldValue);
 
           if (error != null) {
@@ -25,7 +25,7 @@ class FormValidator {
       };
 
   /// Adds a custom [FormFieldValidator] to the validator chain.
-  FormValidator add(FormFieldValidator validator) {
+  FormValidator<T> add(FormFieldValidator<T> validator) {
     _validators.add(validator);
 
     return this;
