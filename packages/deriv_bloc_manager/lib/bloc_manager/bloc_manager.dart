@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Bloc manager class.
@@ -164,9 +165,9 @@ class BlocManager implements BaseBlocManager {
     final String blocKey = _getKey<B>(key);
 
     if (_hasRepository<B>(key)) {
-      await _repository[blocKey]?.close();
-      _repository.remove(blocKey);
+      final BlocBase<Object>? bloc = _repository.remove(blocKey);
 
+      await bloc?.close();
       await removeListener<B>(key: key);
     }
   }
