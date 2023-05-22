@@ -19,6 +19,12 @@ dependencies:
       url: git@github.com:bassam-deriv/flutter-deriv-api.git
       ref: new-flutter-3.10
 
+  deriv_api_key_provider:
+    git:
+      url: git@github.com:bassam-deriv/flutter-deriv-packages.git
+      path: packages/deriv_api_key_provider
+      ref: flutter-3.10
+
   crypto: ^3.0.2
   equatable: ^2.0.3
   bloc: ^8.1.1
