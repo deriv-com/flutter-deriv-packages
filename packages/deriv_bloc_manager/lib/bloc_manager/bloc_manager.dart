@@ -164,9 +164,9 @@ class BlocManager implements BaseBlocManager {
     final String blocKey = _getKey<B>(key);
 
     if (_hasRepository<B>(key)) {
-      await _repository[blocKey]?.close();
-      _repository.remove(blocKey);
+      final GenericBloc? bloc = _repository.remove(blocKey);
 
+      await bloc?.close();
       await removeListener<B>(key: key);
     }
   }
