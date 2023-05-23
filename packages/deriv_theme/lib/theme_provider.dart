@@ -121,8 +121,6 @@ class ThemeProvider {
       ? DarkThemeColors.accentYellow
       : LightThemeColors.accentYellow;
 
-  Color get informationColor => accentBlueColor;
-
   Color get accentLightBlueColor => _isDarkTheme
       ? DarkThemeColors.accentLightBlue
       : LightThemeColors.accentLightBlue;
