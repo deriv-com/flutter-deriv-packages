@@ -112,7 +112,6 @@ void main() {
       expect(
         Env().get<String>(
           'ENCRYPTED_VAR',
-          encrypted: true,
           decryptionKey: 'TbKjMndW1L8vczgGQfPo2IyUxh6XAEay',
         ),
         'ecnrypted message',
@@ -121,15 +120,6 @@ void main() {
 
     test('throws an exception if file is empty.', () async {
       expect(() => Env().load('test/.env.empty.test'), throwsException);
-    });
-
-    test(
-        'throws an exception if encrypted is true but no encryptionKey is proveided.',
-        () async {
-      expect(
-        () => Env().get<String>('valid_key', encrypted: true),
-        throwsException,
-      );
     });
 
     test('throws an exception if env is not initialized.', () async {
