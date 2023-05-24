@@ -76,7 +76,7 @@ class PopupAlertDialog extends StatefulWidget {
   final String? checkboxMessage;
 
   /// Checkbox callback whenever it's value changed.
-  final Function(bool?)? onCheckboxValueChanged;
+  final Function({bool? newValue})? onCheckboxValueChanged;
 
   @override
   _PopupAlertDialogState createState() => _PopupAlertDialogState();
@@ -106,7 +106,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-        backgroundColor: context.theme.base07Color,
+        backgroundColor: context.theme.colors.secondary,
         title: widget.title == null
             ? null
             : Text(
@@ -124,9 +124,9 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
                     CustomCheckbox(
                       message: widget.checkboxMessage ?? '',
                       value: _checkboxValue,
-                      onValueChanged: (bool? newValue) {
+                      onValueChanged: ({bool? newValue}) {
                         setState(() => _checkboxValue = newValue);
-                        widget.onCheckboxValueChanged?.call(newValue);
+                        widget.onCheckboxValueChanged?.call(newValue: newValue);
                       },
                     )
                 ],
@@ -139,7 +139,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
                 widget.negativeButtonLabel!.toUpperCase(),
                 style: context.theme.textStyle(
                   textStyle: TextStyles.button,
-                  color: context.theme.brandCoralColor,
+                  color: context.theme.colors.coral,
                 ),
               ),
             ),
@@ -161,7 +161,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
                   widget.positiveButtonLabel!.toUpperCase(),
                   style: context.theme.textStyle(
                     textStyle: TextStyles.button,
-                    color: context.theme.brandCoralColor,
+                    color: context.theme.colors.coral,
                   ),
                 ),
                 onPressed: () {

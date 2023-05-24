@@ -20,6 +20,7 @@ class InfoIconButton extends StatelessWidget {
   /// Description that is going to be shown in the dialog.
   final String? dialogDescription;
 
+  ///
   final String actionOK;
 
   /// Whether or not this [InfoIconButton] should show a loading indicator when
@@ -47,7 +48,7 @@ class InfoIconButton extends StatelessWidget {
                   dialogDescription!,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,
-                    color: context.theme.base02Color,
+                    color: context.theme.colors.general,
                   ),
                 ),
           positiveActionLabel: actionOK,

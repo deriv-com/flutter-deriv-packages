@@ -1,5 +1,4 @@
-import 'package:deriv_numpad/core/enums.dart';
-import 'package:deriv_numpad/numberpad.dart';
+import 'package:deriv_numpad/deriv_numberpad.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

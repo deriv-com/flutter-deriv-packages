@@ -25,11 +25,11 @@ class _NumberPadMessage extends StatelessWidget {
           style: numberPadProvider!.isAllInputsValid()
               ? context.theme.textStyle(
                   textStyle: TextStyles.caption,
-                  color: context.theme.base04Color,
+                  color: context.theme.colors.disabled,
                 )
               : context.theme.textStyle(
                   textStyle: TextStyles.captionBold,
-                  color: context.theme.brandCoralColor,
+                  color: context.theme.colors.coral,
                 ),
         ),
       ),

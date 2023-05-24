@@ -89,7 +89,6 @@ class NumberPad extends StatefulWidget {
   ///
   /// This widget is dismissible by click OK button or by touching anywhere outside number pad
   const NumberPad({
-    super.key,
     required this.formatter,
     required this.numberPadType,
     required this.label,
@@ -108,6 +107,7 @@ class NumberPad extends StatefulWidget {
     this.currentFocus = NumberPadInputFocus.firstInputField,
     this.dialogDescription,
     this.headerLeading,
+    super.key,
   });
 
   /// Sets the currency of the number pad
@@ -125,6 +125,7 @@ class NumberPad extends StatefulWidget {
   /// This length is applied to all available [TextField]s exist in the [BottomSheet].
   final int maxInputLength;
 
+  /// Class that contains all the texts used in the [NumberPad].
   final NumberPadLabel label;
 
   /// Sets the number  of the [TextField]s in [BottomSheet].
@@ -273,7 +274,7 @@ class _NumberPadState extends State<NumberPad> {
             children: <Widget>[
               Container(
                   decoration: BoxDecoration(
-                    color: context.theme.base08Color,
+                    color: context.theme.colors.primary,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(ThemeProvider.borderRadius16),
                       topRight: Radius.circular(ThemeProvider.borderRadius16),
@@ -289,7 +290,7 @@ class _NumberPadState extends State<NumberPad> {
                           0,
                         ),
                         decoration: BoxDecoration(
-                          color: context.theme.base07Color,
+                          color: context.theme.colors.secondary,
                           borderRadius: const BorderRadius.only(
                             topLeft:
                                 Radius.circular(ThemeProvider.borderRadius16),
