@@ -7,7 +7,6 @@ This repository contains private packages & plugins that are used by the company
 | Name                                                                      | Description                                                                                                            |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase' and 'Segment'.                                           |
-| [deriv_api_key_provider](./packages/deriv_api_key_provider)               | Used to provide deriv api key.                                                                                         |
 | [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                       |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)                       | Provides some tools to manage blocs.                                                                                   |
