@@ -23,7 +23,7 @@ class DateInputFormatter extends TextInputFormatter {
 
   /// Converts the input to hyphened date format.
   /// Example: 01012021 -> 01-01-2021
-  String _gethyphenedDate(String newValue, String oldValue) {
+  String _getHyphenedDate(String newValue, String oldValue) {
     const String _separator = '-';
     const int _maxChars = 10;
 
