@@ -101,7 +101,9 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
           ],
           controller: controller,
           keyboardType: TextInputType.number,
-          cursorColor: context.theme.colors.blue,
+          cursorColor: isValidDate
+              ? context.theme.colors.blue
+              : context.theme.colors.coral,
           textInputAction: controller == startDateInputController
               ? TextInputAction.next
               : TextInputAction.done,
@@ -132,7 +134,9 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
             labelText: labelText,
             labelStyle: context.theme.textStyle(
               textStyle: TextStyles.subheading,
-              color: context.theme.colors.blue,
+              color: isValidDate
+                  ? context.theme.colors.blue
+                  : context.theme.colors.coral,
             ),
           ),
           onChanged: (_) {
