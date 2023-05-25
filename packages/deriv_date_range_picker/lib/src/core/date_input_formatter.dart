@@ -9,7 +9,7 @@ class DateInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    final String hyphenedDate = _gethyphenedDate(newValue.text, oldValue.text);
+    final String hyphenedDate = _getHyphenedDate(newValue.text, oldValue.text);
 
     return newValue.copyWith(
         text: hyphenedDate,
