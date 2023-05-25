@@ -1,6 +1,6 @@
 # Numberpad
 
-A new Flutter project.
+Number Pad Widget for number input in Deriv Go and Deriv P2P.
 
 ## Usage:
 
