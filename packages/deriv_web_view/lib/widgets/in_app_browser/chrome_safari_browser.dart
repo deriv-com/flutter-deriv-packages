@@ -27,5 +27,9 @@ class AppChromeSafariBrowser extends ChromeSafariBrowser {
       logger.log('ChromeSafari browser initial load completed.');
 
   @override
-  void onClosed() => _onClosingCompleter?.complete();
+  void onClosed() {
+    _onClosingCompleter?.complete();
+
+    super.onClosed();
+  }
 }
