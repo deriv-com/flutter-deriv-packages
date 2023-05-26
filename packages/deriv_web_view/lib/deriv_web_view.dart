@@ -141,10 +141,11 @@ Future<void> openLoggedInWebPage({
       getPtaLoginUrl(host: endpoint, token: oneTimeToken);
 
   if (inAppBrowser) {
-    // TODO(Ramin): we put this here temporarily because validate credentials should be done after closing the web page.
-    // but when it's openning inside web browser or in-app tab activity the await on opening is not working.
-    // until we find-out how to call validate after the web page on those 2 cases we open those that their validate is
-    // true inside in-app WebView.
+    // TODO(Ramin): we put this here temporarily because validate credentials
+    //  should be done after closing the web page but when it's opening inside
+    //  web browser or in-app tab activity the await on opening is not working.
+    // until we find-out how to call validate after the web page on those 2
+    // cases we open those that their validate is true inside in-app WebView.
     if (validateCredentialsOnClosed) {
       await openInAppWebView(
         context: context,
