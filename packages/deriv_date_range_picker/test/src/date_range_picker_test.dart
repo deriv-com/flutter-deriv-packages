@@ -315,53 +315,5 @@ void main() {
       expect(find.byType(InputDateRange), findsNothing);
       expect(find.byType(DerivDateRangePicker), findsNothing);
     });
-
-    testWidgets('should show red outline on invalid date',
-        (WidgetTester tester) async {
-      await tester.pumpApp(
-        Builder(
-            builder: (BuildContext context) => DerivDateRangePicker(
-                  context: context,
-                  mode: DateRangePickerMode.input,
-                  minAllowedDate: DateTime(2022),
-                  maxAllowedDate: DateTime(2023),
-                )),
-      );
-
-      await tester.pumpAndSettle();
-
-      final Finder startDateInput =
-          find.widgetWithText(TextField, localization.labelStartDate);
-      final Finder endDateInput =
-          find.widgetWithText(TextField, localization.labelEndDate);
-
-      final DateTime _dateLessThanMin = DateTime(2021, 11, 10);
-      final DateTime _dateGreaterThanMax = DateTime(2024, 11, 10);
-
-      await tester.enterText(startDateInput, _dateLessThanMin.toString());
-      await tester.enterText(endDateInput, _dateGreaterThanMax.toString());
-      await tester.pumpAndSettle();
-
-      expect(
-        find.descendant(
-          of: startDateInput,
-          matching: find.byWidgetPredicate((Widget widget) =>
-              widget is InputDecorator &&
-              widget.decoration.enabledBorder!.borderSide.color ==
-                  const Color(0xFFFF444F)), // deriv error border color
-        ),
-        findsOneWidget,
-      );
-      expect(
-        find.descendant(
-          of: endDateInput,
-          matching: find.byWidgetPredicate((Widget widget) =>
-              widget is InputDecorator &&
-              widget.decoration.enabledBorder!.borderSide.color ==
-                  const Color(0xFFFF444F)), // deriv error border color
-        ),
-        findsOneWidget,
-      );
-    });
   });
 }

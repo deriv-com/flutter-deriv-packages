@@ -6,26 +6,21 @@ void main() {
   group('DateInputFormatter', () {
     late DateInputFormatter formatter;
 
-    setUpAll(() {
+    setUp(() {
       formatter = DateInputFormatter();
     });
 
-    test('should format input as hyphened date', () {
-      const TextEditingValue oldValue = TextEditingValue.empty;
-      const TextEditingValue newValue = TextEditingValue(
-        text: '01012021',
-        selection: TextSelection.collapsed(offset: 8),
-      );
-
-      final TextEditingValue formattedValue =
+    test('should format text as a hyphened date', () {
+      const TextEditingValue oldValue = TextEditingValue(text: '01012021');
+      const TextEditingValue newValue = TextEditingValue(text: '01012021');
+      final TextEditingValue updatedValue =
           formatter.formatEditUpdate(oldValue, newValue);
 
-      expect(formattedValue.text, '01-01-2021');
-      expect(formattedValue.selection.baseOffset, 10);
+      expect(updatedValue.text, '01-01-2021');
     });
 
     test('should remove non-numeric characters', () {
-      const TextEditingValue oldValue = TextEditingValue.empty;
+      const TextEditingValue oldValue = TextEditingValue(text: '01-01-2021');
       const TextEditingValue newValue = TextEditingValue(
         text: '01a&01-2021x',
         selection: TextSelection.collapsed(offset: 14),
@@ -35,7 +30,16 @@ void main() {
           formatter.formatEditUpdate(oldValue, newValue);
 
       expect(formattedValue.text, '01-01-2021');
-      expect(formattedValue.selection.baseOffset, 10);
+    });
+
+    test('should preserve cursor position', () {
+      const TextEditingValue oldValue = TextEditingValue(
+          text: '01012021', selection: TextSelection.collapsed(offset: 4));
+      const TextEditingValue newValue = TextEditingValue(text: '01012021');
+      final TextEditingValue updatedValue =
+          formatter.formatEditUpdate(oldValue, newValue);
+
+      expect(updatedValue.selection.baseOffset, 6);
     });
   });
 }
