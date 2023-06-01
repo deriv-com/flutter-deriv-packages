@@ -4,8 +4,8 @@ description: A wrapper around datadog_flutter_plugin to make it easier to use.
 version: 0.0.1
 
 environment:
-  sdk: ">=3.0.0"
-  flutter: ">=3.10.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: "3.10.2"
 
 dependencies:
   flutter:

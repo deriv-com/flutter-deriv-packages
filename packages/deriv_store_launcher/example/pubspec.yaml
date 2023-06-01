@@ -4,7 +4,8 @@ description: Demonstrates how to use the deriv_store_launcher plugin.
 publish_to: "none"
 
 environment:
-  sdk: ">=3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: "3.10.2"
 
 dependencies:
   flutter:
@@ -23,7 +24,7 @@ dev_dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_lint
-      ref: dev
+      ref: flutter-version-3
 
 flutter:
   uses-material-design: true

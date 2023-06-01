@@ -5,18 +5,18 @@ homepage:
 publish_to: none
 
 environment:
-  sdk: ">=3.0.0"
-  flutter: ">=3.10.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: "3.10.2"
 
 dependencies:
   flutter:
     sdk: flutter
-  
+
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: dev
+      ref: flutter-version-3
 
 dev_dependencies:
   flutter_test:

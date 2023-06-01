@@ -6,8 +6,8 @@ homepage: https://deriv.com/
 publish_to: "none"
 
 environment:
-  sdk: ">=3.0.0"
-  flutter: ">=3.10.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: "3.10.2"
 
 dependencies:
   bloc: ^8.1.1
