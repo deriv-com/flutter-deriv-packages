@@ -5,7 +5,6 @@ void main() {
   group('AccountListItem tests', () {
     test('toJson should return valid json.', () {
       final AccountListItem item = AccountListItem(
-        accountType: AccountTypeEnum.trading,
         createdAt: DateTime.now(),
         currency: 'USD',
         excludedUntil: DateTime.now(),
@@ -40,7 +39,6 @@ void main() {
 
       final AccountListItem item = AccountListItem.fromJson(json);
 
-      expect(item.accountType, equals(AccountTypeEnum.wallet));
       expect(item.currency, equals('EUR'));
       expect(item.landingCompanyName, equals('Test Company 2'));
       expect(item.loginid, equals('test_loginid_2'));
@@ -50,7 +48,6 @@ void main() {
 
     test('copyWith new values return correct object.', () {
       final AccountListItem item = AccountListItem(
-        accountType: AccountTypeEnum.trading,
         createdAt: DateTime.now(),
         currency: 'USD',
         excludedUntil: DateTime.now(),
@@ -64,17 +61,14 @@ void main() {
       );
 
       final AccountListItem copy = item.copyWith(
-        accountType: AccountTypeEnum.wallet,
         isVirtual: true,
       );
 
-      expect(copy.accountType, equals(AccountTypeEnum.wallet));
       expect(copy.isVirtual, equals(true));
       expect(copy.token, equals('test_token'));
     });
     test('copyWith method with null value return same instance.', () {
       final AccountListItem item = AccountListItem(
-        accountType: AccountTypeEnum.trading,
         createdAt: DateTime.now(),
         currency: 'USD',
         excludedUntil: DateTime.now(),
@@ -89,7 +83,6 @@ void main() {
 
       final AccountListItem copy = item.copyWith();
 
-      expect(copy.accountType, equals(AccountTypeEnum.trading));
       expect(copy.isVirtual, equals(false));
       expect(copy.token, equals('test_token'));
     });
