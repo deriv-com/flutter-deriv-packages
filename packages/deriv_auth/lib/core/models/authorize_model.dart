@@ -73,22 +73,6 @@ class AuthorizeResponseEntity extends AuthorizeResponseEntityModel {
       );
 }
 
-/// AccountTypeEnum mapper.
-final Map<String, AccountTypeEnum> accountTypeEnumMapper =
-    <String, AccountTypeEnum>{
-  'trading': AccountTypeEnum.trading,
-  'wallet': AccountTypeEnum.wallet,
-};
-
-/// AccountType Enum.
-enum AccountTypeEnum {
-  /// trading.
-  trading,
-
-  /// wallet.
-  wallet,
-}
-
 /// PlatformEnum mapper.
 final Map<String, PlatformEnum> platformEnumMapper = <String, PlatformEnum>{
   'deriv': PlatformEnum.deriv,
@@ -404,7 +388,7 @@ abstract class AccountListItemModel {
   });
 
   /// Account type.
-  final AccountTypeEnum? accountType;
+  final String? accountType;
 
   /// Creation time of the account as epoch.
   final DateTime? createdAt;
@@ -441,7 +425,7 @@ abstract class AccountListItemModel {
 class AccountListItem extends AccountListItemModel {
   /// Initializes Account list item class.
   const AccountListItem({
-    AccountTypeEnum? accountType,
+    String? accountType,
     DateTime? createdAt,
     String? currency,
     DateTime? excludedUntil,
@@ -469,9 +453,7 @@ class AccountListItem extends AccountListItemModel {
   /// Creates an instance from JSON.
   factory AccountListItem.fromJson(Map<String, dynamic> json) =>
       AccountListItem(
-        accountType: json['account_type'] == null
-            ? null
-            : accountTypeEnumMapper[json['account_type']],
+        accountType: json['account_type'],
         createdAt: getDateTime(json['created_at']),
         currency: json['currency'],
         excludedUntil: getDateTime(json['excluded_until']),
@@ -488,10 +470,7 @@ class AccountListItem extends AccountListItemModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> resultMap = <String, dynamic>{};
 
-    resultMap['account_type'] = accountTypeEnumMapper.entries
-        .firstWhere((MapEntry<String, AccountTypeEnum> entry) =>
-            entry.value == accountType)
-        .key;
+    resultMap['account_type'] = accountType;
     resultMap['created_at'] = getSecondsSinceEpochDateTime(createdAt);
     resultMap['currency'] = currency;
     resultMap['excluded_until'] = getSecondsSinceEpochDateTime(excludedUntil);
@@ -511,7 +490,7 @@ class AccountListItem extends AccountListItemModel {
 
   /// Creates a copy of instance with given parameters.
   AccountListItem copyWith({
-    AccountTypeEnum? accountType,
+    String? accountType,
     DateTime? createdAt,
     String? currency,
     DateTime? excludedUntil,
