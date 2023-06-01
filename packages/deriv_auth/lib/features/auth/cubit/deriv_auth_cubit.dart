@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
@@ -111,7 +113,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     emit(DerivAuthLoadingState());
 
     try {
-      await authService.logout();
+      unawaited(authService.logout());
       await authService.onLogout();
 
       emit(DerivAuthLoggedOutState());
