@@ -12,8 +12,11 @@ abstract class BaseAuthRepository {
   /// Log user out.
   Future<void> logout();
 
-  /// Functionality after user logs out.
-  Future<void> onLoggedOut();
+  /// Functionality on user logs out.
+  Future<void> onLogout();
+
+  /// Functionality on logout is done.
+  Future<void> onPostLogout();
 
   /// Get default user account from Persistance.
   Future<AccountModel?> getDefaultAccount();

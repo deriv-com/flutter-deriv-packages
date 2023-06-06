@@ -20,8 +20,11 @@ abstract class BaseAuthService {
   /// Logout user.
   Future<void> logout();
 
-  /// Functionality after user logs out.
-  Future<void> onLoggedOut();
+  /// Functionality on user logs out.
+  Future<void> onLogout();
+
+  /// Functionality on logout is done.
+  Future<void> onPostLogout();
 
   /// Get default user account.
   Future<AccountModel?> getDefaultAccount();
