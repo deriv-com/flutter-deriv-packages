@@ -156,6 +156,10 @@ Future<void> openLoggedInWebPage({
       endpoint: endpoint,
       appId: appId,
       onClosed: () {
+        // We're doing validate credentials only on opening inside InAppTabActivity.
+        // the other option we have is in external browser which we can't know
+        // when it's closed. because user can comeback to the app even without
+        // closing the browser.
         if (validateCredentialsOnClosed) {
           _validateCredentials(
             context: context,
