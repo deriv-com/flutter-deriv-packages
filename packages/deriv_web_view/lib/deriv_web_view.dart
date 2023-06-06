@@ -58,8 +58,8 @@ bool get isInAppTabActivityWebViewOpen => appSafariBrowser.isOpened();
 Future<void> closeInAppTabActivityWebView() => appSafariBrowser.close();
 
 Future<void> _openInAppTabView(String url, VoidCallback onClosed) async {
-  // Because the returning Future from browser `open` method is inconsistent
-  // we went with using a callback and call in on `onClosed` method of the browser.
+  // Because relying on returned Future from browser `open` method is inconsistent
+  // we went with using a callback and call in `onClosed` method of the browser.
   appSafariBrowser.onBrowserClosed = onClosed;
 
   return appSafariBrowser.open(
