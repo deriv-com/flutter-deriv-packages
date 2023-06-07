@@ -33,6 +33,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   intl_utils: ^2.8.3
   intl: ^0.17.0
+  patrol: ^1.1.4
       
 
 dev_dependencies:
@@ -45,8 +46,7 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/
+    - assets/icons/
 flutter_intl:
   enabled: true
   class_name: DerivAuthUILocalization
-  

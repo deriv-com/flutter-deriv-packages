@@ -1,5 +1,4 @@
 const String chooseNewPassIcon = 'assets/icons/ic_choose_new_pass.svg';
-const String mailIcon = 'assets/icons/ic_mail.svg';
 const String resetPassIcon = 'assets/icons/ic_reset_pass.svg';
 const String locationIcon = 'assets/icons/ic_location.svg';
 const String emailIssue1 = 'assets/icons/ic_email_issue_1.svg';
@@ -11,3 +10,4 @@ const String emailReadIcon = 'assets/icons/ic_email_read.svg';
 const String emailUnreadIcon = 'assets/icons/ic_email_unread.svg';
 const String twoFactorAuthIcon = 'assets/icons/ic_two_factor_auth.svg';
 const String unsupportedCountry = 'assets/icons/ic_unsupported_country.svg';
+const String mailIcon = 'assets/icons/ic_mail.svg';
