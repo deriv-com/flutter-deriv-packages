@@ -23,6 +23,7 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_store_launcher](./packages/deriv_store_launcher)                   | A plugin to lunch app stores base on platform and manufacturer.                                                        |
 | [deriv_technical_analysis](./packages/deriv_technical_analysis)           | A Dart package for Technical Analysis.                                                                                 |
 | [deriv_theme](./packages/deriv_theme)                                     | A package that contains the theme used by Deriv products.                                                              |
+| [deriv_ui](./packages/deriv_ui)                                           | A package that contains the UI components used by Deriv products.                                                      |
 | [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           |
