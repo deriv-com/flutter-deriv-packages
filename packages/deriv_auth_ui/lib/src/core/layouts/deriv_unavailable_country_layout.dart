@@ -1,10 +1,9 @@
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
 import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:deriv_ui/models/custom_icon_data_model.dart';
 import 'package:flutter/material.dart';
-
-import 'package:deriv_theme/deriv_theme.dart';
 
 /// A page to display not available country message with an icon.
 class DerivUnavailableCountryLayout extends StatelessWidget {
@@ -35,7 +34,6 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
               width: ThemeProvider.iconSize96,
               height: ThemeProvider.iconSize96,
             ),
-            onTapNavigation: () {},//TODO
           ),
         ),
       );

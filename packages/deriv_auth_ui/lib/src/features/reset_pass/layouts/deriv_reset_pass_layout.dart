@@ -6,9 +6,7 @@ import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// `Reset Pass` page which helps user to recover his/her password by validation his/her identity.
@@ -57,7 +55,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
             if (state is DerivResetPassEmailSentState) {
               _pageController.animateToPage(
                 1,
-                duration: const Duration(milliseconds: 300), //TODO 
+                duration: slidingPageChangeDuration,
                 curve: Curves.easeInOut,
               );
             } else if (state is DerivResetPassErrorState) {

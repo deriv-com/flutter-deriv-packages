@@ -3,7 +3,7 @@ description: A flutter package for deriv auth UI flows.
 version: 0.0.1
 
 environment:
-  sdk: '>=3.0.1 <4.0.0'
+  sdk: ">=3.0.1 <4.0.0"
   flutter: ">=3.10.3"
 
 publish_to: "none"
@@ -28,13 +28,12 @@ dependencies:
     git:
       url: git@github.com:bassam-deriv/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui
+      ref: 332be4f4880e4457055e0291e04eee25aac332b5
   flutter_svg: ^1.1.6
   smooth_page_indicator: ^1.1.0
   intl_utils: ^2.8.3
   intl: ^0.17.0
   patrol: ^1.1.4
-      
 
 dev_dependencies:
   flutter_test:
@@ -42,7 +41,7 @@ dev_dependencies:
   integration_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
+  mocktail: ^0.3.0
 
 flutter:
   assets:
