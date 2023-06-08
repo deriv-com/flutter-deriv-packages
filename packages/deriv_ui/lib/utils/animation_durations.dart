@@ -9,3 +9,6 @@ const Duration scrollAnimationDuration = Duration(seconds: 1);
 
 /// Duration used for auto scrolling in animated widgets
 const Duration autoScrollInterval = Duration(seconds: 4);
+
+/// Duration used for sliding page change navigation
+const Duration slidingPageChangeDuration = Duration(milliseconds: 300);
