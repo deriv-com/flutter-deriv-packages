@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-const int _maxTapCount = 6;
-const int _tapIntervalTimeout = 5;
+/// Tap count until onTapNavigation is called.
+const int maxTapCount = 0;
+
+/// Time before tap count resets.
+const int tapIntervalTimeout = 5;
 
 /// Setting gesture detector is a widget that opens app setting by tapping several times.
 class AppSettingGestureDetector extends StatefulWidget {
@@ -38,7 +41,7 @@ class _AppSettingGestureDetectorState extends State<AppSettingGestureDetector> {
       );
 
   void _onTap() {
-    if (_tapCount == _maxTapCount) {
+    if (_tapCount == maxTapCount) {
       _tapCount = 0;
 
       widget.onTapNavigation();
@@ -46,7 +49,7 @@ class _AppSettingGestureDetectorState extends State<AppSettingGestureDetector> {
     } else {
       if (_tapCount == 0) {
         Future<int>.delayed(
-          const Duration(seconds: _tapIntervalTimeout),
+          const Duration(seconds: tapIntervalTimeout),
           () => _tapCount = 0,
         );
       }
