@@ -18,7 +18,7 @@ class FullscreenMessage extends StatelessWidget {
   ///
   /// All arguments are optional and can be ignored.
   const FullscreenMessage({
-    required this.onTapNavigation, 
+    this.onTapNavigation,
     this.title,
     this.titleWidget,
     this.iconSemanticLabel,
@@ -59,7 +59,7 @@ class FullscreenMessage extends StatelessWidget {
   final bool isAppSettingGestureDetectorEnabled;
 
   /// The navigation Function after the clicks
-  final Function onTapNavigation;
+  final Function? onTapNavigation;
 
   /// [onPressed] callback
   ///
@@ -76,11 +76,13 @@ class FullscreenMessage extends StatelessWidget {
             if (iconData?.icon != null && iconData!.icon.isNotEmpty)
               AppSettingGestureDetector(
                 child: CustomImage(
-                  iconData: iconData!,
-                  semanticLabel: iconSemanticLabel
-                ),
-                enable: isAppSettingGestureDetectorEnabled, 
-                onTapNavigation: onTapNavigation,
+                    iconData: iconData!, semanticLabel: iconSemanticLabel),
+                enable: isAppSettingGestureDetectorEnabled,
+                onTapNavigation: () {
+                  if (onTapNavigation != null) {
+                    onTapNavigation!();
+                  }
+                },
               ),
             const SizedBox(height: ThemeProvider.margin16),
             if ((title != null && title!.isNotEmpty) || titleWidget != null)
