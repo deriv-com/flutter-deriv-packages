@@ -1,15 +1,13 @@
 import 'dart:async';
 
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
-import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_divider.dart';
-
+import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:deriv_auth/deriv_auth.dart';
 
 class DerivLoginLayout extends StatefulWidget {
   const DerivLoginLayout({
