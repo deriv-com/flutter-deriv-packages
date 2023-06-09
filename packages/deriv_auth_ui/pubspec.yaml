@@ -12,13 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_bloc: ^7.3.3
+  flutter_bloc: ^8.1.3
 
   deriv_auth:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_auth
-      ref: dev
+      ref: flutter-version-3
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
@@ -26,14 +26,13 @@ dependencies:
       ref: dev
   deriv_ui:
     git:
-      url: git@github.com:bassam-deriv/flutter-deriv-packages.git
+      url: git@github.com:sahani-deriv/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: 332be4f4880e4457055e0291e04eee25aac332b5
+      ref: deriv_auth_ui
   flutter_svg: ^1.1.6
   smooth_page_indicator: ^1.1.0
   intl_utils: ^2.8.3
-  intl: ^0.17.0
-  patrol: ^1.1.4
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -42,10 +41,12 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   mocktail: ^0.3.0
+  patrol: ^1.1.4
+
+flutter_intl:
+  enabled: true
+  class_name: DerivAuthUILocalization
 
 flutter:
   assets:
     - assets/icons/
-flutter_intl:
-  enabled: true
-  class_name: DerivAuthUILocalization
