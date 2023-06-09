@@ -108,6 +108,10 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Future<void> logout() async {
+    if (state is DerivAuthLoggedOutState) {
+      return;
+    }
+
     emit(DerivAuthLoadingState());
 
     try {
