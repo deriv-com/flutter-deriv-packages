@@ -1,5 +1,6 @@
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:example/features/signup/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +25,12 @@ class _LoginPageState extends State<LoginPage> {
       onLoggedIn: (_) {},
       onLoginError: (_) {},
       onResetPassTapped: () {},
-      onSignupTapped: () {},
+      onSignupTapped: () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SignupPage(),
+        ),
+      ),
       onSocialAuthButtonPressed: (_) {},
     );
   }

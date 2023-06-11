@@ -4,8 +4,8 @@ import 'package:deriv_auth/core/services/token/services/deriv_token_service.dart
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
 import 'package:deriv_auth_ui/generated/l10n.dart';
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:example/features/auth/pages/login_page.dart';
 import 'package:example/features/auth/repository/example_auth_repository.dart';
+import 'package:example/features/get_started/pages/get_started_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         builder: (context) => MaterialApp(
           theme: context.themeData,
           localizationsDelegates: const [DerivAuthUILocalization.delegate],
-          home: const LoginPage(),
+          home: const GetStartedPage(),
         ),
       ),
     );
