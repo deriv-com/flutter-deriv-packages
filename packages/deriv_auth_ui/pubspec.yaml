@@ -20,15 +20,15 @@ dependencies:
       path: packages/deriv_auth
       ref: flutter-version-3
   deriv_theme:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_theme
-      ref: dev
+    path:
+      ../deriv_theme
+    # git:
+    #   url: git@github.com:regentmarkets/flutter-deriv-packages.git
+    #   path: packages/deriv_theme
+    #   ref: dev
   deriv_ui:
-    git:
-      url: git@github.com:sahani-deriv/flutter-deriv-packages.git
-      path: packages/deriv_ui
-      ref: deriv_auth_ui
+    path:
+      ../deriv_ui
   flutter_svg: ^1.1.6
   smooth_page_indicator: ^1.1.0
   intl_utils: ^2.8.3
