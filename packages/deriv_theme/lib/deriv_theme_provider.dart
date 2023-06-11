@@ -16,6 +16,7 @@ class DerivThemeProvider extends StatefulWidget {
     this.initialTheme,
   });
 
+  /// Creates a [DerivThemeProvider] instance with updated context.
   factory DerivThemeProvider.builder({
     required WidgetBuilder builder,
     ThemeMode? initialTheme,
@@ -46,6 +47,7 @@ class DerivThemeProvider extends StatefulWidget {
       context.dependOnInheritedWidgetOfExactType<BrightnessProvider>()?.theme ??
       _defaultDerivTheme;
 
+  /// Returns the [ThemeData] of the closest ancestor [ThemeProvider].
   static ThemeData getThemeData(BuildContext context) =>
       context
           .dependOnInheritedWidgetOfExactType<BrightnessProvider>()
@@ -141,6 +143,7 @@ class BrightnessProvider extends InheritedWidget {
   ThemeProvider get theme =>
       brightness == Brightness.light ? _lightTheme : _darkTheme;
 
+  /// Gets a [ThemeData] based on the [brightness].
   ThemeData get themeData => ThemeData(
         // TODO(mohammad): check real values with design team.
         primaryColor: theme.colors.secondary,
