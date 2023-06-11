@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_mixin
 
+import 'package:deriv_theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'theme_provider.dart';
@@ -15,8 +16,19 @@ class DerivThemeProvider extends StatefulWidget {
     this.initialTheme,
   });
 
+  factory DerivThemeProvider.builder({
+    required WidgetBuilder builder,
+    ThemeMode? initialTheme,
+  }) =>
+      DerivThemeProvider(
+        initialTheme: initialTheme,
+        child: Builder(builder: builder),
+      );
+
   static const ThemeProvider _defaultDerivTheme =
       ThemeProvider(Brightness.dark);
+  static final ThemeData _defaultDerivThemeData =
+      ThemeData(brightness: Brightness.dark);
 
   /// The widget below this widget in the tree.
   final Widget child;
@@ -34,6 +46,12 @@ class DerivThemeProvider extends StatefulWidget {
       context.dependOnInheritedWidgetOfExactType<BrightnessProvider>()?.theme ??
       _defaultDerivTheme;
 
+  static ThemeData getThemeData(BuildContext context) =>
+      context
+          .dependOnInheritedWidgetOfExactType<BrightnessProvider>()
+          ?.themeData ??
+      _defaultDerivThemeData;
+
   @override
   State<DerivThemeProvider> createState() => _DerivThemeProviderState();
 }
@@ -46,12 +64,17 @@ class _DerivThemeProviderState extends State<DerivThemeProvider>
 
   @override
   void initState() {
+    super.initState();
+
     WidgetsBinding.instance.addObserver(this);
+    _themeMode = widget.initialTheme ?? _defaultTheme;
+  }
+
+  @override
+  void didChangeDependencies() {
     _systemBrightness = MediaQuery.platformBrightnessOf(context);
 
-    _themeMode = widget.initialTheme ?? _defaultTheme;
-
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -117,6 +140,36 @@ class BrightnessProvider extends InheritedWidget {
   /// Gets a [ThemeProvider] based on the [brightness].
   ThemeProvider get theme =>
       brightness == Brightness.light ? _lightTheme : _darkTheme;
+
+  ThemeData get themeData => ThemeData(
+        primaryColor: theme.colors.secondary,
+        fontFamily: theme.fontFamily,
+        brightness: brightness,
+        bottomSheetTheme: BottomSheetThemeData(
+          // Needed for bottom sheet, otherwise,
+          // sharp edges and different background color will appear at the top of the sheet.
+          backgroundColor: Colors.black.withOpacity(0),
+        ),
+        unselectedWidgetColor: theme.colors.disabled,
+        toggleButtonsTheme: ToggleButtonsThemeData(
+          textStyle: theme.textStyle(
+            textStyle: TextStyles.body2,
+          ),
+        ),
+        colorScheme: const ColorScheme.dark().copyWith(
+          primary: theme.colors.prominent,
+          secondary: theme.colors.coral,
+        ),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: theme.colors.disabled,
+          selectionHandleColor: theme.colors.disabled,
+          selectionColor: theme.colors.disabled,
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: theme.colors.secondary,
+          centerTitle: false,
+        ),
+      );
 
   /// The data from the closest [DerivThemeProvider] instance that encloses the given
   /// context.
