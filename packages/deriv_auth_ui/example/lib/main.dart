@@ -38,38 +38,10 @@ class MyApp extends StatelessWidget {
           connectionInfo: ExampleConnectionInfo(),
         ),
       ),
-      child: DerivThemeProvider(
+      child: DerivThemeProvider.builder(
         initialTheme: ThemeMode.dark,
-        child: MaterialApp(
-          theme: ThemeData(
-            primaryColor: context.theme.colors.secondary,
-            fontFamily: context.theme.fontFamily,
-            brightness: Brightness.dark,
-            bottomSheetTheme: BottomSheetThemeData(
-              // Needed for bottom sheet, otherwise,
-              // sharp edges and different background color will appear at the top of the sheet.
-              backgroundColor: Colors.black.withOpacity(0),
-            ),
-            unselectedWidgetColor: context.theme.colors.disabled,
-            toggleButtonsTheme: ToggleButtonsThemeData(
-              textStyle: context.theme.textStyle(
-                textStyle: TextStyles.body2,
-              ),
-            ),
-            colorScheme: const ColorScheme.dark().copyWith(
-              primary: context.theme.colors.prominent,
-              secondary: context.theme.colors.coral,
-            ),
-            textSelectionTheme: TextSelectionThemeData(
-              cursorColor: context.theme.colors.disabled,
-              selectionHandleColor: context.theme.colors.disabled,
-              selectionColor: context.theme.colors.disabled,
-            ),
-            appBarTheme: AppBarTheme.of(context).copyWith(
-              backgroundColor: context.theme.colors.secondary,
-              centerTitle: false,
-            ),
-          ),
+        builder: (context) => MaterialApp(
+          theme: context.themeData,
           localizationsDelegates: const [DerivAuthUILocalization.delegate],
           home: const LoginPage(),
         ),

@@ -142,6 +142,7 @@ class BrightnessProvider extends InheritedWidget {
       brightness == Brightness.light ? _lightTheme : _darkTheme;
 
   ThemeData get themeData => ThemeData(
+        // TODO(mohammad): check real values with design team.
         primaryColor: theme.colors.secondary,
         fontFamily: theme.fontFamily,
         brightness: brightness,

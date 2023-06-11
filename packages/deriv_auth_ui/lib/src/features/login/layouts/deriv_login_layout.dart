@@ -60,6 +60,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
               style: TextStyles.title,
             ),
             backgroundColor: context.theme.colors.secondary,
+            centerTitle: false,
           ),
           body: BlocConsumer<DerivAuthCubit, DerivAuthState>(
             bloc: authCubit,
@@ -107,7 +108,10 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   List<Widget> _buildTopSection() => <Widget>[
         Text(
           context.localization.labelLoginWelcomeBack,
-          style: TextStyles.title,
+          style: context.theme.textStyle(
+            textStyle: TextStyles.title,
+            color: context.theme.colors.prominent,
+          ),
         ),
         const SizedBox(height: ThemeProvider.margin08),
         Text(
