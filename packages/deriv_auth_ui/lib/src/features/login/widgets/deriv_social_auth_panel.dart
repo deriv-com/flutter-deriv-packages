@@ -1,10 +1,8 @@
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:deriv_auth/deriv_auth.dart';
 
 /// Panel of buttons for social authentication.
 class DerivSocialAuthPanel extends StatelessWidget {
@@ -42,13 +40,17 @@ class DerivSocialAuthPanel extends StatelessWidget {
         iconSize: ThemeProvider.iconSize40,
         icon: Opacity(
           opacity: getOpacity(isEnabled: isEnabled),
-          child: SvgPicture.asset(_getSocialMediaIcon(socialAuthProvider)),
+          child: SvgPicture.asset(
+            _getSocialMediaIcon(socialAuthProvider),
+            package: 'deriv_auth_ui',
+          ),
         ),
         onPressed: isEnabled
             ? () => onSocialAuthButtonPressed(socialAuthProvider)
             : null,
       );
 
-  String _getSocialMediaIcon(SocialAuthProvider socialAuthProvider) =>
-      'assets/icons/ic_${socialAuthProvider.name}.svg';
+  String _getSocialMediaIcon(SocialAuthProvider socialAuthProvider) {
+    return 'assets/icons/ic_${socialAuthProvider.name}.svg';
+  }
 }

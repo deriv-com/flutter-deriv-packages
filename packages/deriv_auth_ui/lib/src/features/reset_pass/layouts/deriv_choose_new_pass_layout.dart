@@ -1,17 +1,14 @@
 import 'dart:async';
 
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
+import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
+import 'package:deriv_auth_ui/src/features/signup/widgets/password_policy_checker_widget.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_auth/deriv_auth.dart';
-
-import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
-import 'package:deriv_auth_ui/src/features/signup/widgets/password_policy_checker_widget.dart';
-
 
 /// Choose new Pass page.
 class DerivChooseNewPassLayout extends StatefulWidget {
@@ -30,13 +27,13 @@ class DerivChooseNewPassLayout extends StatefulWidget {
   /// Reset pass cubit.
   final DerivResetPassCubit resetPassCubit;
 
-    final Function(String?) onResetPassError;
+  final Function(String?) onResetPassError;
 
-    final VoidCallback onResetPassSucceed;
-
+  final VoidCallback onResetPassSucceed;
 
   @override
-  State<DerivChooseNewPassLayout> createState() => _DerivChooseNewPassLayoutState();
+  State<DerivChooseNewPassLayout> createState() =>
+      _DerivChooseNewPassLayoutState();
 }
 
 class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
@@ -66,16 +63,13 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
             if (state is DerivResetPassPasswordChangedState) {
               _pageController.animateToPage(
                 1,
-                duration: const Duration(milliseconds: 300), //TODO
+                duration: slidingPageChangeDuration,
                 curve: Curves.easeInOut,
               );
 
-              Timer(
-                _successPageHoldDuration,
-                widget.onResetPassSucceed
-              );
+              Timer(_successPageHoldDuration, widget.onResetPassSucceed);
             } else if (state is DerivResetPassErrorState) {
-             widget.onResetPassError(state.errorMessage);
+              widget.onResetPassError(state.errorMessage);
             }
           },
           child: PageView(
@@ -211,9 +205,8 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
             ),
           ),
         ),
-       
         onPressed: isFormValid() ? _onSubmitEmailTapped : null,
-         child: Center(
+        child: Center(
           child: _isBusy
               ? const LoadingIndicator(
                   valueColor: Colors.white,
