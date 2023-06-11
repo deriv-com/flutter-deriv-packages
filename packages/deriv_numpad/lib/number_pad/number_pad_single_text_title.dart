@@ -17,7 +17,7 @@ class _NumberPadSingleTextTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        color: context.theme.base07Color,
+        color: context.theme.colors.secondary,
         padding: const EdgeInsets.symmetric(vertical: ThemeProvider.margin16),
         child: Stack(
           alignment: Alignment.center,

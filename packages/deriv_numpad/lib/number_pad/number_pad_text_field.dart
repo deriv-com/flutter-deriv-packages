@@ -28,7 +28,7 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
   void initState() {
     super.initState();
 
-    _labelColor = context.theme.base04Color;
+    _labelColor = context.theme.colors.disabled;
 
     widget.focusNode?.addListener(_onFocusChanged);
   }
@@ -41,7 +41,7 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
             ? context.theme.textStyle(textStyle: widget.textStyle)
             : context.theme.textStyle(
                 textStyle: widget.textStyle,
-                color: context.theme.brandCoralColor,
+                color: context.theme.colors.coral,
               ),
         decoration: widget.label.isEmpty
             ? const InputDecoration(border: InputBorder.none)
@@ -49,7 +49,7 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: context.theme.brandGreenishColor,
+                    color: context.theme.colors.blue,
                   ),
                 ),
                 labelText: widget.label,
@@ -76,8 +76,8 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
 
     if (widget.label.isNotEmpty) {
       setState(() => _labelColor = (widget.focusNode?.hasFocus ?? false)
-          ? context.theme.brandGreenishColor
-          : context.theme.base04Color);
+          ? context.theme.colors.blue
+          : context.theme.colors.disabled);
     }
   }
 }

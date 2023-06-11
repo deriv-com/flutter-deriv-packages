@@ -18,7 +18,7 @@ class CustomCheckbox extends StatelessWidget {
   final bool? value;
 
   /// A callback for the listeners of a checkbox, when the checkbox's value changes.
-  final Function(bool?)? onValueChanged;
+  final Function({bool? newValue})? onValueChanged;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -28,11 +28,11 @@ class CustomCheckbox extends StatelessWidget {
           children: <Widget>[
             Theme(
               data: ThemeData(
-                unselectedWidgetColor: context.theme.base04Color,
+                unselectedWidgetColor: context.theme.colors.disabled,
               ),
               child: Checkbox(
-                checkColor: context.theme.base08Color,
-                activeColor: context.theme.brandCoralColor,
+                checkColor: context.theme.colors.primary,
+                activeColor: context.theme.colors.coral,
                 value: value,
                 onChanged: onValueChanged == null
                     ? null
@@ -50,7 +50,7 @@ class CustomCheckbox extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,
-                    color: context.theme.base03Color,
+                    color: context.theme.colors.lessProminent,
                   ),
                 ),
               ),
@@ -60,5 +60,5 @@ class CustomCheckbox extends StatelessWidget {
       );
 
   void _onCheckboxValueChange({bool? newValue}) =>
-      onValueChanged?.call(newValue);
+      onValueChanged?.call(newValue: newValue);
 }

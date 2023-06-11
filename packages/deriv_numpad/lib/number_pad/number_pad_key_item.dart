@@ -96,21 +96,21 @@ class _NumberPadKeyState extends State<_NumberPadKey> {
                 child: TextButton(
                   style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(color: context.theme.base08Color),
+                      side: BorderSide(color: context.theme.colors.primary),
                     ),
                     backgroundColor: (text == applyValuesInput)
                         // TODO(emad): check Account to be loaded
                         ? (true
-                            ? context.theme.brandCoralColor
+                            ? context.theme.colors.coral
                             // ignore: dead_code
-                            : context.theme.base04Color)
-                        : context.theme.base07Color,
+                            : context.theme.colors.disabled)
+                        : context.theme.colors.secondary,
                   ),
                   child: text == backspaceInput
                       ? Icon(
                           Icons.backspace,
                           size: 18,
-                          color: context.theme.base01Color,
+                          color: context.theme.colors.prominent,
                         )
                       : Text(
                           text == applyValuesInput ? widget.actionOK : text,

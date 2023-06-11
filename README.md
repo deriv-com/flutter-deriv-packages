@@ -7,7 +7,6 @@ This repository contains private packages & plugins that are used by the company
 | Name                                                                      | Description                                                                                                            |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase' and 'Segment'.                                           |
-| [deriv_api_key_provider](./packages/deriv_api_key_provider)               | Used to provide deriv api key.                                                                                         |
 | [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                       |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)                       | Provides some tools to manage blocs.                                                                                   |
@@ -24,6 +23,8 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_store_launcher](./packages/deriv_store_launcher)                   | A plugin to lunch app stores base on platform and manufacturer.                                                        |
 | [deriv_technical_analysis](./packages/deriv_technical_analysis)           | A Dart package for Technical Analysis.                                                                                 |
 | [deriv_theme](./packages/deriv_theme)                                     | A package that contains the theme used by Deriv products.                                                              |
+| [deriv_ui](./packages/deriv_ui)                                           | A package that contains the UI components used by Deriv products.                                                      |
+| [deriv_utilities](./packages/deriv_utilities)                             | A package that contains the utilities including helper functions, mixins, and extensions.                              |
 | [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           |

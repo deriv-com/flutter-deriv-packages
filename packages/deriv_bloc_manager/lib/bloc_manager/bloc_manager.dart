@@ -88,9 +88,9 @@ class BlocManager implements BaseBlocManager {
   }
 
   @override
-  Future<void> removeListener<B extends GenericBloc>({
+  void removeListener<B extends GenericBloc>({
     String key = BaseBlocManager.defaultKey,
-  }) async {
+  }) {
     final String listenerKey = _getKey<B>(key);
 
     final List<String> subscriptionKeys = _subscriptions.keys
@@ -98,15 +98,11 @@ class BlocManager implements BaseBlocManager {
         .toList();
 
     for (final String key in subscriptionKeys) {
-      try {
-        await _subscriptions[key]?.cancel();
-      } on Exception catch (exception) {
+      _subscriptions[key]?.cancel().catchError((dynamic error) {
         BlocManagerException(
-          message: '<$B::$key> remove listener exception: $exception',
+          message: '<$B::$key> remove listener error: $error',
         );
-      } finally {
-        _subscriptions.remove(key);
-      }
+      }).whenComplete(() => _subscriptions.remove(key));
     }
   }
 
@@ -158,16 +154,16 @@ class BlocManager implements BaseBlocManager {
       );
 
   @override
-  Future<void> dispose<B extends GenericBloc>([
+  void dispose<B extends GenericBloc>([
     String key = BaseBlocManager.defaultKey,
-  ]) async {
+  ]) {
     final String blocKey = _getKey<B>(key);
 
     if (_hasRepository<B>(key)) {
       final GenericBloc? bloc = _repository.remove(blocKey);
 
-      await bloc?.close();
-      await removeListener<B>(key: key);
+      bloc?.close();
+      removeListener<B>(key: key);
     }
   }
 }

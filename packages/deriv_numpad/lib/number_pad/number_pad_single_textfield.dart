@@ -86,7 +86,7 @@ class _NumberPadSingleTextField extends StatelessWidget {
                       getStringWithMappedCurrencyName(numPadProvider.currency),
                       style: context.theme.textStyle(
                         textStyle: TextStyles.headlineNormal,
-                        color: context.theme.base04Color,
+                        color: context.theme.colors.disabled,
                       ),
                     ),
                   )

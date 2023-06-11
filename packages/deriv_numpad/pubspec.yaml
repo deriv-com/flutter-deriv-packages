@@ -4,7 +4,7 @@ version: 1.0.0+1
 publish_to: "none"
 
 environment:
-  sdk: ">=2.19.5 <3.0.0"
+  sdk: ">=2.18.4 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,7 +13,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: dev
+      ref: flutter-version-3
 
   flutter_svg: ^1.0.3
   intl: ^0.17.0

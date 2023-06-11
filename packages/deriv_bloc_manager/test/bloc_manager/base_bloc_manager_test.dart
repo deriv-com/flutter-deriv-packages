@@ -54,14 +54,12 @@ void main() {
         ..addListener<_TestCubit>(
           listenerKey: secondListenerKey,
           handler: (Object state) => expect(state, isTrue),
-        );
+        )
+        ..removeListener<_TestCubit>(key: firstListenerKey);
 
-      await blocManager.removeListener<_TestCubit>(key: firstListenerKey);
+      await Future<void>.delayed(Duration.zero);
 
-      expect(
-        blocManager.hasListener<_TestCubit>(firstListenerKey),
-        isFalse,
-      );
+      expect(blocManager.hasListener<_TestCubit>(firstListenerKey), isFalse);
     });
 
     test(
@@ -78,14 +76,12 @@ void main() {
           listenerKey: secondListenerKey,
           handler: (Object state) => expect(state, isTrue),
           key: blocKey,
-        );
+        )
+        ..removeListener<_TestCubit>();
 
-      await blocManager.removeListener<_TestCubit>();
+      await Future<void>.delayed(Duration.zero);
 
-      expect(
-        blocManager.hasListener<_TestCubit>(blocKey),
-        isFalse,
-      );
+      expect(blocManager.hasListener<_TestCubit>(blocKey), isFalse);
     });
 
     group('bloc manager exceptions test =>', () {

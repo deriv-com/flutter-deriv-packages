@@ -71,7 +71,7 @@ class LoadingIndicator extends StatelessWidget {
           child: CircularProgressIndicator(
             strokeWidth: strokeWidth,
             valueColor: AlwaysStoppedAnimation<Color>(
-              valueColor == null ? context.theme.brandCoralColor : valueColor!,
+              valueColor == null ? context.theme.colors.coral : valueColor!,
             ),
             backgroundColor: backgroundColor ?? Colors.transparent,
             value: value,
@@ -79,7 +79,7 @@ class LoadingIndicator extends StatelessWidget {
         )
       : LinearProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(
-            valueColor == null ? context.theme.brandCoralColor : valueColor!,
+            valueColor == null ? context.theme.colors.coral : valueColor!,
           ),
           backgroundColor: backgroundColor ?? Colors.transparent,
           value: value,

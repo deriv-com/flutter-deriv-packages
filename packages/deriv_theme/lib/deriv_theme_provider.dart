@@ -46,9 +46,8 @@ class _DerivThemeProviderState extends State<DerivThemeProvider>
 
   @override
   void initState() {
-    WidgetsBinding.instance?.addObserver(this);
-    _systemBrightness =
-        WidgetsBinding.instance?.window.platformBrightness ?? Brightness.dark;
+    WidgetsBinding.instance.addObserver(this);
+    _systemBrightness = MediaQuery.platformBrightnessOf(context);
 
     _themeMode = widget.initialTheme ?? _defaultTheme;
 
@@ -67,7 +66,7 @@ class _DerivThemeProviderState extends State<DerivThemeProvider>
 
   @override
   void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -75,9 +74,7 @@ class _DerivThemeProviderState extends State<DerivThemeProvider>
   void didChangePlatformBrightness() {
     if (mounted) {
       setState(() {
-        _systemBrightness =
-            WidgetsBinding.instance?.window.platformBrightness ??
-                _systemBrightness;
+        _systemBrightness = MediaQuery.platformBrightnessOf(context);
       });
     }
 
