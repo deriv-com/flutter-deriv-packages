@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Tap count until onTapNavigation is called.
-const int maxTapCount = 0;
+const int maxTapCount = 6;
 
 /// Time before tap count resets.
 const int tapIntervalTimeout = 5;
@@ -38,6 +38,7 @@ class _AppSettingGestureDetectorState extends State<AppSettingGestureDetector> {
   Widget build(BuildContext context) => GestureDetector(
         child: widget.child,
         onTap: widget.enable ? _onTap : null,
+        behavior: HitTestBehavior.opaque,
       );
 
   void _onTap() {

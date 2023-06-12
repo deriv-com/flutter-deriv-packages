@@ -38,7 +38,7 @@ void main() {
       expect(isOnPressedCalled, false);
     });
 
-    testWidgets('enables interaction when isEnabled is false',
+    testWidgets('enables interaction when isEnabled is true',
         (WidgetTester tester) async {
       bool isOnPressedCalled = false;
       await tester.pumpWidget(
