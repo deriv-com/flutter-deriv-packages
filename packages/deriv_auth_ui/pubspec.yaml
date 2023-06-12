@@ -50,3 +50,4 @@ flutter_intl:
 flutter:
   assets:
     - assets/icons/
+    - assets/images/
