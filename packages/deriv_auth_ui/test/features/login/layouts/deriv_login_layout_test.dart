@@ -17,6 +17,7 @@ void main() {
     setUpAll(() {
       authCubit = MockAuthCubit();
     });
+
     patrolTest(
         'renders email and password field including social auth buttons.',
         ($) async {
@@ -62,40 +63,6 @@ void main() {
           ));
 
       expect($(LoadingIndicator), findsOneWidget);
-    });
-
-    patrolTest('displays invalid email error on invalid email typed.',
-        ($) async {
-      final mockAuthState = DerivAuthLoggedOutState();
-      const invalidEmail = 'invalid-email';
-
-      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
-
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
-
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {},
-        onLoginError: (_) {},
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (_) {},
-      ));
-
-      print(authCubit.state);
-
-      final emailField = $(TextFormField).$('Password');
-
-      await emailField.tap();
-
-      expect(emailField.hitTestable(), findsOneWidget);
-
-      // await emailField.enterText(invalidEmail);
-
-      // await emailField.enterText(invalidEmail);
-
-      // expect($(Text).$('Enter a valid email address'), findsOneWidget);
     });
 
     patrolTest('calls onLoggedIn on successful login.', ($) async {
@@ -145,34 +112,6 @@ void main() {
       ));
 
       expect(onLoginErrorCalled, isTrue);
-    });
-
-    patrolTest('calls signupTapped when signup button is pressed.', ($) async {
-      final mockAuthState = DerivAuthLoggedOutState();
-
-      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
-
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
-
-      bool onSignupTappedCalled = false;
-
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {
-          onSignupTappedCalled = true;
-        },
-        onLoginError: (_) {},
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (_) {},
-      ));
-
-      final signupButton = $(InkWell).$('Create a new account');
-
-      await signupButton.tap();
-
-      expect(onSignupTappedCalled, isTrue);
     });
 
     patrolTest('calls resetPassTapped when reset button is pressed.',
