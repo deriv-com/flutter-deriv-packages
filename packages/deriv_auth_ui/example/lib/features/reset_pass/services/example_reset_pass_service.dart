@@ -10,5 +10,7 @@ class ExampleResetPassService implements BaseResetPasswordService {
   @override
   Future<VerifyEmailResponseEntity> sendVerificationEmail(
           VerifyEmailRequestEntity request) =>
-      Future.value(const VerifyEmailResponseEntity());
+      Future.value(const VerifyEmailResponseEntity(
+        verifyEmail: true,
+      ));
 }
