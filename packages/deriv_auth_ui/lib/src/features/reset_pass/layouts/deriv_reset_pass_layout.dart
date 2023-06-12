@@ -115,6 +115,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
                 resetPassIcon,
                 width: ThemeProvider.iconSize96,
                 height: ThemeProvider.iconSize96,
+                package: 'deriv_auth_ui',
               ),
               const SizedBox(height: ThemeProvider.margin16),
               Text(
