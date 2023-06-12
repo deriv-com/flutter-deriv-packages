@@ -1,0 +1,31 @@
+import 'package:deriv_auth/deriv_auth.dart';
+
+class ExampleLoginRepository implements BaseAuthRepository {
+  @override
+  Future<AuthorizeResponseEntity> authorize(String? token) =>
+      Future.value(const AuthorizeResponseEntity());
+
+  @override
+  Future<AccountModel?> getDefaultAccount() => Future.value(AccountModel(
+        accountId: "accountId",
+      ));
+
+  @override
+  Future<List<AccountModel>> getLatestAccounts() => Future.value([
+        AccountModel(
+          accountId: "accountId",
+        )
+      ]);
+
+  @override
+  Future<void> logout() => Future.value();
+
+  @override
+  Future<void> onLogin(AuthorizeEntity authorizeEntity) => Future.value();
+
+  @override
+  Future<void> onLogout() => Future.value();
+
+  @override
+  Future<void> onPostLogout() => Future.value();
+}

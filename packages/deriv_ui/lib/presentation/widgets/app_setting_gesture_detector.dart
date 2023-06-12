@@ -42,20 +42,19 @@ class _AppSettingGestureDetectorState extends State<AppSettingGestureDetector> {
       );
 
   void _onTap() {
+    _tapCount++;
+
     if (_tapCount == maxTapCount) {
       _tapCount = 0;
 
       widget.onTapNavigation();
-      
     } else {
-      if (_tapCount == 0) {
+      if (_tapCount == 1) {
         Future<int>.delayed(
           const Duration(seconds: tapIntervalTimeout),
           () => _tapCount = 0,
         );
       }
-
-      _tapCount++;
     }
   }
 }

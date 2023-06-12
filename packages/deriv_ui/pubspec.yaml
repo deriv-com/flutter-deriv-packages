@@ -12,16 +12,18 @@ dependencies:
     sdk: flutter
 
   deriv_theme:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_theme
-      ref: dev
+    path:
+      ../deriv_theme
+    # git:
+    #   url: git@github.com:regentmarkets/flutter-deriv-packages.git
+    #   path: packages/deriv_theme
+    #   ref: dev
 
   deriv_web_view:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_web_view
-      ref: dev
+      ref: flutter-version-3
 
   flutter_svg: ^1.0.3
 

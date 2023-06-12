@@ -16,3 +16,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter:
+  fonts:
+    - family: IBMPlexSans
+      fonts:
+        - asset: assets/fonts/ibm_plex_sans_bold.ttf
+          weight: 700
+        - asset: assets/fonts/ibm_plex_sans_medium.ttf
+          weight: 500
+        - asset: assets/fonts/ibm_plex_sans_light.ttf
+          weight: 300
+        - asset: assets/fonts/ibm_plex_sans_regular.ttf
