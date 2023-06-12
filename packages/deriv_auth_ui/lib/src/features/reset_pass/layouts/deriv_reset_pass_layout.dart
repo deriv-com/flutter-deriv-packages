@@ -195,7 +195,8 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
     setState(() => _isBusy = false);
   }
 
-  bool _isFormValid() => _getEmailValue().isNotEmpty;
+  bool _isFormValid() =>
+      _getEmailValue().isNotEmpty && _getEmailValue().isValidEmail;
 
   String? _emailValidator(String? input) {
     if (_getEmailValue().isValidEmail) {
