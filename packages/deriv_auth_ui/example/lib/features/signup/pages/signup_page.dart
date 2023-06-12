@@ -1,6 +1,6 @@
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
-import 'package:example/features/auth/pages/login_page.dart';
+import 'package:example/features/login/pages/login_page.dart';
 import 'package:example/features/signup/repositories/example_referral_repository.dart';
 import 'package:example/features/signup/repositories/example_signup_repository.dart';
 import 'package:flutter/material.dart';
