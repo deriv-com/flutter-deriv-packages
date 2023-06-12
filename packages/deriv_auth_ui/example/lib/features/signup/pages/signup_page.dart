@@ -1,9 +1,9 @@
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:example/features/login/pages/login_page.dart';
-import 'package:example/features/signup/repositories/example_referral_repository.dart';
-import 'package:example/features/signup/repositories/example_signup_repository.dart';
+import 'package:example/features/signup/pages/verify_email_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -13,16 +13,19 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  final signupCubit = DerivSignupCubit(
-    service: DerivSignupService(repository: ExampleSignupRepository()),
-    referralService: ExampleReferralRepository(),
-  );
   @override
   Widget build(BuildContext context) => DerivSignupLayout(
-        signupCubit: signupCubit,
+        signupCubit: context.read<DerivSignupCubit>(),
         onSocialAuthButtonPressed: (_) {},
         onSingupError: (_) {},
-        onSingupEmailSent: () {},
+        onSingupEmailSent: (email) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => VerifyEmailPage(email: email),
+            ),
+          );
+        },
         onSignupPressed: () {},
         onLoginTapped: () => Navigator.pushReplacement(
           context,

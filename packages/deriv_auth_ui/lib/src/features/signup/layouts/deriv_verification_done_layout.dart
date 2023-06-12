@@ -49,7 +49,10 @@ class DerivVerificationDoneLayout extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset(emailReadIcon),
+            SvgPicture.asset(
+              emailReadIcon,
+              package: 'deriv_auth_ui',
+            ),
             const SizedBox(height: ThemeProvider.margin16),
             Text(
               context.localization.labelThanksEmail,

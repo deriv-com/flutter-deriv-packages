@@ -14,5 +14,4 @@ export 'src/features/signup/layouts/deriv_verify_email_layout.dart';
 export 'src/features/signup//models/deriv_auth_utm_model.dart';
 export 'src/features/signup//models/deriv_password_policy_model.dart';
 export 'src/features/signup//models/deriv_residence_model.dart';
-export 'src/features/signup/repositories/deriv_country_selection_repository.dart';
 export 'src/features/signup/cubits/deriv_country_selection_cubit.dart';
