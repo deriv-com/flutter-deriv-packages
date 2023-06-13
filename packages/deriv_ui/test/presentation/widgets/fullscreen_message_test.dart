@@ -11,7 +11,7 @@ void main() {
       iconData = CustomIconData(icon: 'assets/icons/icon.svg');
     });
 
-    testWidgets('renders correctly with provided data',
+    testWidgets('renders correctly with title and description',
         (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
@@ -21,7 +21,6 @@ void main() {
               iconSemanticLabel: 'Icon',
               title: 'Title',
               description: 'Description',
-              onTapNavigation: () {},
             ),
           ),
         ),
@@ -47,6 +46,53 @@ void main() {
 
       expect(customImage.iconData, iconData);
       expect(customImage.semanticLabel, 'Icon');
+    });
+
+    testWidgets('renders correctly with titleWidget',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: FullscreenMessage(
+              iconData: iconData,
+              iconSemanticLabel: 'Icon',
+              titleWidget: const Text('Title Widget'),
+            ),
+          ),
+        ),
+      );
+
+      final Finder titleWidgetFinder = find.text('Title Widget');
+
+      expect(titleWidgetFinder, findsOneWidget);
+    });
+
+    testWidgets('shouldShowLoadingIndicator', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: FullscreenMessage(shouldShowLoadingIndicator: true),
+          ),
+        ),
+      );
+
+      final Finder loadingIndicatorFinder = find.byType(LoadingIndicator);
+
+      expect(loadingIndicatorFinder, findsOneWidget);
+    });
+
+    testWidgets('isActionButtonVisible', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: FullscreenMessage(actionLabel: 'Action Label'),
+          ),
+        ),
+      );
+
+      final Finder actionLabelFinder = find.text('Action Label'.toUpperCase());
+
+      expect(actionLabelFinder, findsOneWidget);
     });
   });
 }
