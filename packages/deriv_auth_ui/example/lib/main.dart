@@ -1,10 +1,10 @@
-import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
-import 'package:deriv_auth/features/reset_password/cubit/reset_password_cubit.dart';
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/generated/l10n.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:example/features/get_started/pages/get_started_page.dart';
 import 'package:example/features/login/repositories/example_login_repository.dart';
-import 'package:example/features/reset_pass/services/example_reset_pass_service.dart';
+import 'package:example/features/signup/repositories/example_referral_repository.dart';
+import 'package:example/features/signup/repositories/example_signup_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +17,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -30,8 +29,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (context) => DerivResetPassCubit(
-            service: ExampleResetPassService(),
+          create: (context) => DerivSignupCubit(
+            service: DerivSignupService(repository: ExampleSignupRepository()),
+            referralService: ExampleReferralRepository(),
           ),
         ),
       ],

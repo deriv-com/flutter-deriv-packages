@@ -26,7 +26,7 @@ class DerivSignupLayout extends StatefulWidget {
   final DerivSignupCubit signupCubit;
   final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
   final Function(DerivSignupErrorState) onSingupError;
-  final VoidCallback onSingupEmailSent;
+  final Function(String) onSingupEmailSent;
   final VoidCallback? onSignupPressed;
   final VoidCallback? onLoginTapped;
 
@@ -276,7 +276,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
     if (state is DerivSignupErrorState) {
       widget.onSingupError(state);
     } else if (state is DerivSignupEmailSentState) {
-      widget.onSingupEmailSent();
+      widget.onSingupEmailSent(emailController.text);
     }
   }
 

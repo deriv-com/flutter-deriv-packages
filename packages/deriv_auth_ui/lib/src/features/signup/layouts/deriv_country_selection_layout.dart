@@ -1,7 +1,6 @@
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
 import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
 import 'package:deriv_auth_ui/src/features/signup/cubits/deriv_country_selection_cubit.dart';
-import 'package:deriv_auth_ui/src/features/signup/repositories/deriv_country_selection_repository.dart';
 import 'package:deriv_auth_ui/src/features/signup/widgets/country_selection_list_widget.dart';
 import 'package:deriv_auth_ui/src/features/signup/models/deriv_residence_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -15,13 +14,13 @@ class DerivCountrySelectionLayout extends StatefulWidget {
   /// constructor of country selection page
   const DerivCountrySelectionLayout({
     required this.verificationCode,
-    required this.repository,
+    required this.residences,
     required this.onNextPressed,
     this.affiliateToken,
     Key? key,
   }) : super(key: key);
 
-  final DerivCountrySelectionRepository repository;
+  final Future<List<DerivResidenceModel>> residences;
 
   final VoidCallback onNextPressed;
 
@@ -77,7 +76,7 @@ class _DerivCountrySelectionLayoutState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset(locationIcon),
+            SvgPicture.asset(locationIcon, package: 'deriv_auth_ui'),
             const SizedBox(height: ThemeProvider.margin16),
             Text(
               context.localization.labelSelectCountry,
@@ -160,7 +159,7 @@ class _DerivCountrySelectionLayoutState
   }
 
   void _registerAndSetupBlocs() {
-    _countrySelectionCubit = DerivCountrySelectionCubit(widget.repository)
+    _countrySelectionCubit = DerivCountrySelectionCubit(widget.residences)
       ..fetchResidenceCounties();
   }
 
