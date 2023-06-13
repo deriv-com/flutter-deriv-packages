@@ -1,0 +1,70 @@
+import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:deriv_ui/presentation/widgets/base_text_field.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:patrol/patrol.dart';
+
+import '../../../mocks.dart';
+import '../../../pump_app.dart';
+
+void main() {
+  group('Deriv2FALayout', () {
+    late MockAuthCubit authCubit;
+    late String mockEmail;
+    late String mockPassword;
+
+    setUpAll(() {
+      authCubit = MockAuthCubit();
+      mockEmail = 'test@gmail.com';
+      mockPassword = 'test1234';
+    });
+
+    patrolTest('renders correctly', ($) async {
+      when(() => authCubit.state).thenAnswer((_) => DerivAuthLoggedOutState());
+
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([DerivAuthLoggedOutState()]));
+
+      await $.pumpApp(
+          settle: false,
+          Deriv2FALayout(
+              authCubit: authCubit, email: mockEmail, password: mockPassword));
+
+      expect($(Deriv2FALayout), findsOneWidget);
+      expect($(BaseTextField).$('2FA code'), findsOneWidget);
+      expect($(ElevatedButton).$('Proceed'), findsOneWidget);
+    });
+
+    patrolTest('procceds to login on correct code', ($) async {
+      when(() => authCubit.state).thenAnswer((_) => DerivAuthLoggedOutState());
+
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([DerivAuthLoggedOutState()]));
+
+      when(() => authCubit.systemLogin(
+              email: any(named: 'email'),
+              password: any(named: 'password'),
+              otp: any(named: 'otp')))
+          .thenAnswer((_) async => DerivAuthLoggedInState(
+                const AuthorizeEntity(),
+              ));
+
+      await $.pumpApp(Deriv2FALayout(
+        authCubit: authCubit,
+        email: mockEmail,
+        password: mockPassword,
+      ));
+
+      await $.enterText($(BaseTextField), '123456');
+
+      await $.tap($(ElevatedButton));
+
+      verify(() => authCubit.systemLogin(
+          email: any(named: 'email'),
+          password: any(named: 'password'),
+          otp: any(named: 'otp'))).called(1);
+    });
+  });
+}
