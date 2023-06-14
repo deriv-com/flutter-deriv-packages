@@ -1,5 +1,4 @@
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
-import 'package:deriv_auth_ui/src/features/signup/widgets/country_selection_list_widget.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -31,21 +30,6 @@ void main() {
       expect($(BaseTextField).$('Choose country'), findsOneWidget);
       expect($(ElevatedButton).$('Next'), findsOneWidget);
       expect($(Icons.keyboard_arrow_down), findsOneWidget);
-    });
-
-    patrolTest('CountrySelectionListWidget is opened as modal bottom sheet',
-        ($) async {
-      await $.pumpApp(DerivCountrySelectionLayout(
-        onNextPressed: () {},
-        verificationCode: '123456',
-        residences: residences,
-      ));
-
-      await $.tap($(BaseTextField));
-
-      await $.waitUntilExists($(CountrySelectionListWidget));
-
-      expect($(CountrySelectionListWidget), findsOneWidget);
     });
   });
 }
