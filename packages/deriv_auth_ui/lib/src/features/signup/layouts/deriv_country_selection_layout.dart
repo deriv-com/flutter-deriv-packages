@@ -51,7 +51,8 @@ class _DerivCountrySelectionLayoutState
   void initState() {
     super.initState();
 
-    _registerAndSetupBlocs();
+    _countrySelectionCubit = DerivCountrySelectionCubit(widget.residences)
+      ..fetchResidenceCounties();
 
     _textController = TextEditingController();
   }
@@ -158,11 +159,6 @@ class _DerivCountrySelectionLayoutState
         ),
       ),
     );
-  }
-
-  void _registerAndSetupBlocs() {
-    _countrySelectionCubit = DerivCountrySelectionCubit(widget.residences)
-      ..fetchResidenceCounties();
   }
 
   @override

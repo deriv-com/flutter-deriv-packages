@@ -1,10 +1,12 @@
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('RegexExtension', () {
     test('isValidEmail should return true for valid email', () {
-      const validEmail = 'test@example.com';
+      const String validEmail = 'test@example.com';
       expect(validEmail.isValidEmail, true);
     });
 

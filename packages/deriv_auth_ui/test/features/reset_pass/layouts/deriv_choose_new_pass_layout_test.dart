@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -18,7 +20,7 @@ void main() {
       mockResetPassCubit = MockDerivResetPassCubit();
     });
 
-    patrolTest('should render DerivChooseNewPassLayout', ($) async {
+    patrolTest('should render DerivChooseNewPassLayout', (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => resetPassState);
@@ -39,7 +41,7 @@ void main() {
 
     patrolTest(
         'should call onResetPassError when state is DerivResetPassErrorState',
-        ($) async {
+        (PatrolTester $) async {
       const errorState = DerivResetPassErrorState(errorMessage: 'test error');
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => errorState);
@@ -64,7 +66,7 @@ void main() {
 
     patrolTest(
         'should call onResetPassSucceed after 2 seconds when state is DerivResetPassPasswordChangedState',
-        ($) async {
+        (PatrolTester $) async {
       const passwordChangedState = DerivResetPassPasswordChangedState();
 
       when(() => mockResetPassCubit.state)
@@ -91,7 +93,7 @@ void main() {
       expect(onResetPassSucceedCalled, isTrue);
     });
 
-    patrolTest('should call changePassword when input is valid', ($) async {
+    patrolTest('should call changePassword when input is valid', (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const newPassTest = 'newPassWordTest123@';
 
@@ -119,7 +121,7 @@ void main() {
     });
 
     patrolTest('should not call changePassword when input is invalid',
-        ($) async {
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const newPassTest = 'pass';
 

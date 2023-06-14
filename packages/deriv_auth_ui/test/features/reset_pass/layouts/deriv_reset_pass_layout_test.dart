@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -17,7 +19,7 @@ void main() {
       mockResetPassCubit = MockDerivResetPassCubit();
     });
 
-    patrolTest('should render DerivResetPassLayout', ($) async {
+    patrolTest('should render DerivResetPassLayout', (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => resetPassState);
@@ -36,7 +38,7 @@ void main() {
 
     patrolTest(
         'should show emailSentPage when state is DerivResetPassEmailSentState',
-        ($) async {
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassEmailSentState();
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => resetPassState);
@@ -58,7 +60,7 @@ void main() {
 
     patrolTest(
         'should show submitEmailForm when state is DerivResetPassInitialState',
-        ($) async {
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => resetPassState);
@@ -79,7 +81,7 @@ void main() {
     });
 
     patrolTest('should not call sendVerificationEmail when email is invalid',
-        ($) async {
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const email = 'wrongEmail@format';
 
@@ -94,7 +96,7 @@ void main() {
         ),
       );
 
-      var emailTextField = $(BaseTextField).which<BaseTextField>(
+      final emailTextField = $(BaseTextField).which<BaseTextField>(
           (baseTextField) => baseTextField.labelText == 'Email');
 
       await $.enterText(emailTextField, email);
@@ -105,7 +107,7 @@ void main() {
     });
 
     patrolTest('should call sendVerificationEmail when email is valid',
-        ($) async {
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const email = 'correctEmail@format.com';
 
@@ -122,7 +124,7 @@ void main() {
         ),
       );
 
-      var emailTextField = $(BaseTextField).which<BaseTextField>(
+      final emailTextField = $(BaseTextField).which<BaseTextField>(
           (baseTextField) => baseTextField.labelText == 'Email');
 
       await $.enterText(emailTextField, email);
@@ -134,7 +136,7 @@ void main() {
 
     patrolTest(
         'should call OnResetPassError when state is DerivResetPassErrorState',
-        ($) async {
+        (PatrolTester $) async {
       const errorState = DerivResetPassErrorState(errorMessage: 'test error');
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => errorState);

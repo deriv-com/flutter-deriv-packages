@@ -11,20 +11,20 @@ void main() {
     late Future<List<DerivResidenceModel>> residences;
 
     setUp(() {
-      residences = Future.value([
-        DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
-        DerivResidenceModel(code: 'UK', name: 'England', isDisabled: true),
+      residences =
+          Future<List<DerivResidenceModel>>.value(<DerivResidenceModel>[
+        const DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'UK', name: 'England', isDisabled: true),
       ]);
     });
 
-    patrolTest('renders correctly', ($) async {
-      await $.pumpApp(
-          settle: false,
-          DerivCountrySelectionLayout(
-            onNextPressed: () {},
-            verificationCode: '123456',
-            residences: residences,
-          ));
+    patrolTest('renders correctly', (PatrolTester $) async {
+      await $.pumpApp(DerivCountrySelectionLayout(
+        onNextPressed: () {},
+        verificationCode: '123456',
+        residences: residences,
+      ));
 
       expect($(DerivCountrySelectionLayout), findsOneWidget);
       expect($(BaseTextField).$('Choose country'), findsOneWidget);

@@ -113,7 +113,7 @@ void main() {
     });
 
     patrolTest('password is no longer obscure after visibility icon pressed',
-        ($) async {
+        (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
           DerivSetPasswordLayout(
@@ -137,7 +137,7 @@ void main() {
     });
 
     patrolTest('start trading button is disabled until password is valid',
-        ($) async {
+        (PatrolTester $) async {
       const validPassword = 'Abcdefg123';
 
       await $.pumpApp(

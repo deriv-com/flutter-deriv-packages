@@ -11,13 +11,14 @@ void main() {
     late List<DerivResidenceModel> residences;
 
     setUpAll(() {
-      residences = ([
-        DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
-        DerivResidenceModel(code: 'UK', name: 'England', isDisabled: true),
-      ]);
+      residences = <DerivResidenceModel>[
+        const DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'UK', name: 'England', isDisabled: true),
+      ];
     });
 
-    patrolTest('renders correctly', ($) async {
+    patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           CountrySelectionListWidget(countries: residences, onChanged: (_) {}));
 
@@ -27,21 +28,22 @@ void main() {
       expect($(Text).$('England'), findsOneWidget);
     });
 
-    patrolTest('onChanged is called', ($) async {
+    patrolTest('onChanged is called', (PatrolTester $) async {
       bool isOnChangedCalled = false;
 
       await $.pumpApp(CountrySelectionListWidget(
           countries: residences,
-          onChanged: (country) => isOnChangedCalled = true));
+          onChanged: (int country) => isOnChangedCalled = true));
 
       await $.tap($(Text).$('Iran'));
 
       expect(isOnChangedCalled, true);
     });
 
-    patrolTest('search field appears on tapping search', ($) async {
+    patrolTest('search field appears on tapping search',
+        (PatrolTester $) async {
       await $.pumpApp(CountrySelectionListWidget(
-          countries: residences, onChanged: (country) => null));
+          countries: residences, onChanged: (int country) => null));
 
       await $.tap($(Icons.search));
 
