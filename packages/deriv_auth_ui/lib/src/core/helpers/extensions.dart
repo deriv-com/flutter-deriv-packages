@@ -1,5 +1,5 @@
 import 'package:deriv_auth_ui/generated/l10n.dart';
-import 'package:deriv_auth_ui/src/core/helpers/regex_helper.dart';
+import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
 /// Extension methods for input validation on [String] using regex.

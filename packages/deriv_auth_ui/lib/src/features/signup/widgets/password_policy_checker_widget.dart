@@ -1,8 +1,8 @@
 import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
-import 'package:deriv_auth_ui/src/core/helpers/regex_helper.dart';
-import 'package:deriv_theme/deriv_theme.dart';
-import 'package:flutter/material.dart';
 import 'package:deriv_auth_ui/src/features/signup/models/deriv_password_policy_model.dart';
+import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/deriv_ui.dart';
+import 'package:flutter/material.dart';
 
 /// A widget for checking alignment of entered password with list of policies.
 ///
