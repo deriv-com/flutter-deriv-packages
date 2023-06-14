@@ -13,7 +13,7 @@ void main() {
   late MockAuthCubit authCubit;
   late MockSignupCubit signupCubit;
 
-  setUpAll(() {
+  setUp(() {
     authCubit = MockAuthCubit();
     signupCubit = MockSignupCubit();
 
@@ -108,6 +108,59 @@ void main() {
       await $.tap($(ElevatedButton).$('Previous'));
 
       expect(isOnPreviousPressedCalled, true);
+    });
+
+    patrolTest('password is no longer obscure after visibility icon pressed',
+        ($) async {
+      await $.pumpApp(
+          settle: false,
+          DerivSetPasswordLayout(
+              authCubit: authCubit,
+              signupCubit: signupCubit,
+              onDerivAuthState: (_, __) {},
+              onDerivSignupState: (_, __) {},
+              onPreviousPressed: () {},
+              verificationCode: 'verificationCode',
+              residence: 'residence'));
+
+      await $.pump();
+
+      await $.tap($(Icons.visibility_off));
+
+      expect($(Icons.visibility), findsOneWidget);
+      expect(
+          $(BaseTextField)
+              .which<BaseTextField>((widget) => widget.obscureText == false),
+          findsOneWidget);
+    });
+
+    patrolTest('start trading button is disabled until password is valid',
+        ($) async {
+      const validPassword = 'Abcdefg123';
+
+      await $.pumpApp(
+          settle: false,
+          DerivSetPasswordLayout(
+              authCubit: authCubit,
+              signupCubit: signupCubit,
+              onDerivAuthState: (_, __) {},
+              onDerivSignupState: (_, __) {},
+              onPreviousPressed: () {},
+              verificationCode: 'verificationCode',
+              residence: 'residence'));
+
+      final startTradingButton = $(ElevatedButton).$('Start trading');
+
+      bool isStartTradingButtonEnabled =
+          startTradingButton.hitTestable().exists;
+
+      expect(isStartTradingButtonEnabled, false);
+
+      await $.enterText($(BaseTextField), validPassword);
+
+      isStartTradingButtonEnabled = startTradingButton.hitTestable().exists;
+
+      expect(isStartTradingButtonEnabled, true);
     });
   });
 }
