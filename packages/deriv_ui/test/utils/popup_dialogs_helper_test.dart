@@ -6,37 +6,36 @@ void main() {
   testWidgets('showAlertDialog displays the dialog with correct properties',
       (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
-      home: Builder(builder: (BuildContext context) => ElevatedButton(
-          onPressed: () async {
-            await showAlertDialog(
-              context: context,
-              title: 'Alert',
-              content: const Text('Sample content'),
-              positiveActionLabel: 'Retry',
-              negativeButtonLabel: 'Cancel',
-              onPositiveActionPressed: () {},
-              onNegativeActionPressed: () {},
-            );
-          },
-          child: const Text('Show Dialog'),
-        )),
+      home: Builder(
+          builder: (BuildContext context) => ElevatedButton(
+                onPressed: () async {
+                  await showAlertDialog(
+                    context: context,
+                    title: 'Alert',
+                    content: const Text('Sample content'),
+                    positiveActionLabel: 'Retry',
+                    negativeButtonLabel: 'Cancel',
+                    onPositiveActionPressed: () {},
+                    onNegativeActionPressed: () {},
+                  );
+                },
+                child: const Text('Show Dialog'),
+              )),
     ));
-
 
     await tester.tap(find.text('Show Dialog'));
     await tester.pumpAndSettle(const Duration(seconds: 5));
-
 
     expect(find.text('Alert'), findsOneWidget);
     expect(find.text('Sample content'), findsOneWidget);
     expect(find.text('Retry'.toUpperCase()), findsOneWidget);
     expect(find.text('Cancel'.toUpperCase()), findsOneWidget);
-
   });
 
-  testWidgets('showAlertDialogWithCheckbox displays the dialog with correct properties',
+  testWidgets(
+      'showAlertDialogWithCheckbox displays the dialog with correct properties',
       (WidgetTester tester) async {
-    final bool isChecked = false;
+    bool isCheckedLocal = false;
     await tester.pumpWidget(MaterialApp(
       home: Builder(
         builder: (BuildContext context) => ElevatedButton(
@@ -47,10 +46,10 @@ void main() {
               content: const Text('Sample content'),
               positiveActionLabel: 'Retry',
               negativeButtonLabel: 'Cancel',
-              checkBoxValue: isChecked,
+              checkBoxValue: isCheckedLocal,
               checkboxMessage: 'Checkbox Message',
               onCheckboxValueChanged: ({bool? isChecked}) {
-                isChecked = isChecked;
+                isCheckedLocal = isChecked ?? false;
               },
               onPositiveActionPressed: () {},
               onNegativeActionPressed: () {},
@@ -72,7 +71,8 @@ void main() {
     expect(find.byType(Checkbox), findsOneWidget);
   });
 
-    testWidgets('showSimpleLoadingDialog shows a loading indicator with correct title and message',
+  testWidgets(
+      'showSimpleLoadingDialog shows a loading indicator with correct title and message',
       (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Builder(
@@ -97,7 +97,8 @@ void main() {
     expect(find.byType(LoadingIndicator), findsOneWidget);
   });
 
-    testWidgets('showErrorDialog shows an error dialog with correct message and action',
+  testWidgets(
+      'showErrorDialog shows an error dialog with correct message and action',
       (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Builder(
@@ -121,24 +122,21 @@ void main() {
     expect(find.text('Try Again'.toUpperCase()), findsOneWidget);
   });
 
-    testWidgets('showTokenExpiredDialog',
-      (WidgetTester tester) async {
+  testWidgets('showTokenExpiredDialog', (WidgetTester tester) async {
+    bool isOnPositiveActionPressed = false;
 
-        bool isOnPositiveActionPressed = false;
-        
     await tester.pumpWidget(MaterialApp(
       home: Builder(
         builder: (BuildContext context) => ElevatedButton(
           onPressed: () async {
             await showTokenExpiredDialog(
-              context: context,
-              title: 'Title',
-              content: 'Content',
-              positiveActionLabel: 'Positive Action Label',
-              onPositiveActionPressed: (){
-                isOnPositiveActionPressed = true;
-              }
-            );
+                context: context,
+                title: 'Title',
+                content: 'Content',
+                positiveActionLabel: 'Positive Action Label',
+                onPositiveActionPressed: () {
+                  isOnPositiveActionPressed = true;
+                });
           },
           child: const Text('Show Dialog'),
         ),
@@ -157,7 +155,4 @@ void main() {
     expect(find.text('Title'), findsOneWidget);
     expect(find.text('Content'), findsOneWidget);
   });
-
-
-
 }
