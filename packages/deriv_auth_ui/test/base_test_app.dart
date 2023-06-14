@@ -10,10 +10,10 @@ class BaseTestApp extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [DerivAuthUILocalization.delegate],
-      home: child,
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+          DerivAuthUILocalization.delegate
+        ],
+        home: child,
+      );
 }

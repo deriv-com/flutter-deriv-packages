@@ -7,7 +7,7 @@ import '../../../pump_app.dart';
 
 void main() {
   group('DerivEmailNotReceivedLayout', () {
-    patrolTest('renders correctly', ($) async {
+    patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(DerivEmailNotReceivedLayout(
         onReEnterEmailPressed: () {},
       ));
@@ -18,7 +18,7 @@ void main() {
     });
 
     patrolTest('onReEnterEmailPressed is called when tapped on the button',
-        ($) async {
+        (PatrolTester $) async {
       bool isReEnterEmailPressed = false;
 
       await $.pumpApp(DerivEmailNotReceivedLayout(

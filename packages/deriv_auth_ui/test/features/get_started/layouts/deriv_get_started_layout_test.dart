@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +16,8 @@ void main() {
   group('DerivGetStartedLayout', () {
     late MockDerivGetStartedSlideModel mockSlideModel;
 
-    const appLogoIconPath = 'assets/icons/ic_logo_extended.svg';
-    const backgroundImagePath = 'assets/images/triangles.svg';
+    const String appLogoIconPath = 'assets/icons/ic_logo_extended.svg';
+    const String backgroundImagePath = 'assets/images/triangles.svg';
 
     setUpAll(() {
       mockSlideModel = MockDerivGetStartedSlideModel();
@@ -24,7 +26,7 @@ void main() {
       when(() => mockSlideModel.supportingText).thenReturn('Supporting text');
     });
 
-    patrolTest('should render DerivGetStartedLayout', ($) async {
+    patrolTest('should render DerivGetStartedLayout', (PatrolTester $) async {
       await $.pumpApp(DerivGetStartedLayout(
         slides: [mockSlideModel],
         appLogoIconPath: appLogoIconPath,
@@ -40,7 +42,7 @@ void main() {
     });
 
     patrolTest('should call onLoginTapped when login button is pressed',
-        ($) async {
+        (PatrolTester $) async {
       bool loginTapped = false;
 
       await $.pumpApp(DerivGetStartedLayout(
@@ -59,7 +61,7 @@ void main() {
     });
 
     patrolTest('should call onSignupTapped when signup button is pressed',
-        ($) async {
+        (PatrolTester $) async {
       bool signupTapped = false;
 
       await $.pumpApp(DerivGetStartedLayout(
@@ -73,7 +75,7 @@ void main() {
       ));
 
       await $.tap($(PrimaryButton));
-      
+
       expect(signupTapped, isTrue);
     });
   });

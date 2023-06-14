@@ -24,10 +24,19 @@ class DerivGetStartedLayout extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  /// Path to the app logo icon.
   final String appLogoIconPath;
+
+  /// Path to the background image.
   final String backgroundImagePath;
+
+  /// List of slides to be shown.
   final List<DerivGetStartedSlideModel> slides;
+
+  /// Callback to be called when login button is tapped.
   final VoidCallback onLoginTapped;
+
+  /// Callback to be called when signup button is tapped.
   final VoidCallback onSignupTapped;
 
   @override
@@ -122,37 +131,35 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
         );
       });
 
-  Widget _buildButtons() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        PrimaryButton(
-          onPressed: widget.onSignupTapped,
-          child: Center(
-            child: Text(
-              context.localization.actionGetAFreeAccount,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.body2,
-                color: context.theme.colors.prominent,
+  Widget _buildButtons() => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          PrimaryButton(
+            onPressed: widget.onSignupTapped,
+            child: Center(
+              child: Text(
+                context.localization.actionGetAFreeAccount,
+                style: context.theme.textStyle(
+                  textStyle: TextStyles.body2,
+                  color: context.theme.colors.prominent,
+                ),
               ),
             ),
           ),
-        ),
-        SecondaryButton(
-          onPressed: widget.onLoginTapped,
-          child: Center(
-            child: Text(
-              context.localization.actionLogin,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.body2,
-                color: context.theme.colors.prominent,
+          SecondaryButton(
+            onPressed: widget.onLoginTapped,
+            child: Center(
+              child: Text(
+                context.localization.actionLogin,
+                style: context.theme.textStyle(
+                  textStyle: TextStyles.body2,
+                  color: context.theme.colors.prominent,
+                ),
               ),
             ),
-          ),
-        )
-      ],
-    );
-  }
+          )
+        ],
+      );
 
   Widget _buildSlider() => Listener(
         onPointerDown: (_) => _autoScrollTimer.cancel(),

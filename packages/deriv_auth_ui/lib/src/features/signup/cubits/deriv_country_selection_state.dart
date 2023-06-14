@@ -16,7 +16,7 @@ class DerivCountrySelectionInitialState extends DerivCountrySelectionState {
       : super(const <DerivResidenceModel>[]);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => <Object?>[];
 }
 
 /// Country list loaded state.
@@ -26,5 +26,5 @@ class DerivCountrySelectionLoadedState extends DerivCountrySelectionState {
       : super(countries);
 
   @override
-  List<Object?> get props => [countries];
+  List<Object?> get props => <Object?>[countries];
 }

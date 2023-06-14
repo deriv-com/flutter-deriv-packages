@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -28,7 +30,7 @@ void main() {
   });
 
   group('DerivSetPasswordLayout', () {
-    patrolTest('renders correctly', ($) async {
+    patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
           DerivSetPasswordLayout(
@@ -47,7 +49,7 @@ void main() {
     });
 
     patrolTest('onDerivAuthState is called on DerivAuth state changes',
-        ($) async {
+        (PatrolTester $) async {
       bool isOnDerivAuthStateCalled = false;
 
       when(() => authCubit.stream).thenAnswer((_) => Stream.fromIterable([
@@ -68,7 +70,7 @@ void main() {
     });
 
     patrolTest('onDerivSignupState is called on DerivSignup state changes',
-        ($) async {
+        (PatrolTester $) async {
       bool isOnDerivSignupStateCalled = false;
 
       when(() => signupCubit.stream).thenAnswer((_) => Stream.fromIterable([
@@ -91,7 +93,7 @@ void main() {
     });
 
     patrolTest('onPreviousPressed is called upon tapping previous button',
-        ($) async {
+        (PatrolTester $) async {
       bool isOnPreviousPressedCalled = false;
 
       await $.pumpApp(

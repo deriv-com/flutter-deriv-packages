@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,10 +10,12 @@ void main() {
 
     setUp(() {
       final countries = [
-        DerivResidenceModel(
+        const DerivResidenceModel(
             code: 'us', name: 'United States', isDisabled: false),
-        DerivResidenceModel(code: 'fr', name: 'France', isDisabled: false),
-        DerivResidenceModel(code: 'de', name: 'Germany', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'fr', name: 'France', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'de', name: 'Germany', isDisabled: false),
       ];
       cubit = DerivCountrySelectionCubit(Future.value(countries));
     });
@@ -25,7 +29,7 @@ void main() {
       build: () => cubit,
       act: (cubit) => cubit.fetchResidenceCounties(),
       expect: () => [
-        DerivCountrySelectionLoadedState([
+        const DerivCountrySelectionLoadedState([
           DerivResidenceModel(
               code: 'us', name: 'United States', isDisabled: false),
         ]),

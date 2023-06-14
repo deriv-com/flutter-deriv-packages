@@ -7,11 +7,13 @@ import 'package:flutter_svg/svg.dart';
 
 /// Page to show when email is not received
 class DerivEmailNotReceivedLayout extends StatelessWidget {
+  /// Initializes the email not received page.
   const DerivEmailNotReceivedLayout({
     required this.onReEnterEmailPressed,
     Key? key,
   }) : super(key: key);
 
+  /// Callback to be called when re-enter email button is pressed.
   final VoidCallback onReEnterEmailPressed;
 
   @override

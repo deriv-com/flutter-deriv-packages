@@ -14,7 +14,10 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  /// Callback to be called when live chat button is pressed.
   final VoidCallback onLiveChatPressed;
+
+  /// Client app name.
   final String appName;
 
   @override

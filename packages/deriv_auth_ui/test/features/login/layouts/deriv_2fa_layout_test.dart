@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/presentation/widgets/base_text_field.dart';
@@ -21,7 +23,7 @@ void main() {
       mockPassword = 'test1234';
     });
 
-    patrolTest('renders correctly', ($) async {
+    patrolTest('renders correctly', (PatrolTester $) async {
       when(() => authCubit.state).thenAnswer((_) => DerivAuthLoggedOutState());
 
       when(() => authCubit.stream)
@@ -37,7 +39,7 @@ void main() {
       expect($(ElevatedButton).$('Proceed'), findsOneWidget);
     });
 
-    patrolTest('procceds to login on correct code', ($) async {
+    patrolTest('proceeds to login on correct code', (PatrolTester $) async {
       when(() => authCubit.state).thenAnswer((_) => DerivAuthLoggedOutState());
 
       when(() => authCubit.stream)

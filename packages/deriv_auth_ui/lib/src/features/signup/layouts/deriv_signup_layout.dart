@@ -23,11 +23,22 @@ class DerivSignupLayout extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  /// Signup cubit.
   final DerivSignupCubit signupCubit;
+
+  /// Callback to be called when social auth button is pressed.
   final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
+
+  /// Callback to be called when signup error occurs.
   final Function(DerivSignupErrorState) onSingupError;
+
+  /// Callback to be called when signup email is sent.
   final Function(String) onSingupEmailSent;
+
+  /// Callback to be called when signup button is pressed.
   final VoidCallback? onSignupPressed;
+
+  /// Callback to be called when login button is pressed.
   final VoidCallback? onLoginTapped;
 
   @override

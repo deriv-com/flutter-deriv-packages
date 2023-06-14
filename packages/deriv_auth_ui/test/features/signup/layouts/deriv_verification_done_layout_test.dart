@@ -7,7 +7,7 @@ import '../../../pump_app.dart';
 
 void main() {
   group('DerivVerificationDoneLayout', () {
-    patrolTest('renders correctly', ($) async {
+    patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(DerivVerificationDoneLayout(
         verificationCode: '123456',
         onContinuePressed: () {},
@@ -18,7 +18,7 @@ void main() {
       expect($(ElevatedButton).$('Continue'), findsOneWidget);
     });
 
-    patrolTest('onContinuePressed is called', ($) async {
+    patrolTest('onContinuePressed is called', (PatrolTester $) async {
       bool isContinuePressed = false;
 
       await $.pumpApp(DerivVerificationDoneLayout(

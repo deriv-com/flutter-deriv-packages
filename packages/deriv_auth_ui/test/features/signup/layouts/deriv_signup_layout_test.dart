@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
@@ -24,7 +26,7 @@ void main() {
           (_) => Stream.fromIterable([const DerivSignupInitialState()]));
     });
 
-    patrolTest('renders correctly', ($) async {
+    patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
           DerivSignupLayout(
@@ -44,7 +46,7 @@ void main() {
 
     patrolTest(
         'onSocialAuthButtonPressed is called upon tapping social auth option',
-        ($) async {
+        (PatrolTester $) async {
       bool isOnSocialAuthButtonPressedCalled = false;
 
       await $.pumpApp(DerivSignupLayout(
@@ -64,7 +66,7 @@ void main() {
     });
 
     patrolTest('onSignupEmailSent is called upon sign up email sent',
-        ($) async {
+        (PatrolTester $) async {
       bool isOnSignupEmailSentCalled = false;
 
       when(() => signupCubit.state)
@@ -86,7 +88,7 @@ void main() {
     });
 
     patrolTest('onSignupPressed is called upon tapping signup button',
-        ($) async {
+        (PatrolTester $) async {
       bool isOnSignupPressedCalled = false;
 
       when(() => signupCubit.sendVerificationEmail('test@gmail.com'))
@@ -112,7 +114,7 @@ void main() {
           .called(1);
     });
 
-    patrolTest('onLoginTapped is called upon tapping login button', ($) async {
+    patrolTest('onLoginTapped is called upon tapping login button', (PatrolTester $) async {
       bool isOnLoginTappedCalled = false;
 
       await $.pumpApp(DerivSignupLayout(
@@ -134,7 +136,7 @@ void main() {
       expect(isOnLoginTappedCalled, true);
     });
 
-    patrolTest('onSignupError is called upon signup error state', ($) async {
+    patrolTest('onSignupError is called upon signup error state', (PatrolTester $) async {
       bool isOnSignupErrorCalled = false;
 
       when(() => signupCubit.state).thenAnswer(

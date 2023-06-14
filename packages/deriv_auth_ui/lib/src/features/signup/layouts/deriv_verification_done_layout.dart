@@ -21,6 +21,7 @@ class DerivVerificationDoneLayout extends StatelessWidget {
   /// Affiliate token.
   final String? affiliateToken;
 
+  /// Callback to be called when continue button is tapped.
   final VoidCallback onContinuePressed;
 
   @override

@@ -10,6 +10,7 @@ class DerivCountrySelectionCubit extends Cubit<DerivCountrySelectionState> {
   DerivCountrySelectionCubit(this.residences)
       : super(const DerivCountrySelectionInitialState());
 
+  /// List of residence countries.
   final Future<List<DerivResidenceModel>> residences;
 
   /// Fetches residence countries.
@@ -18,7 +19,7 @@ class DerivCountrySelectionCubit extends Cubit<DerivCountrySelectionState> {
 
     final List<DerivResidenceModel> filteredCountries = countries
         .where(
-          (country) => _isAllowedCountry(country),
+          (DerivResidenceModel country) => _isAllowedCountry(country),
         )
         .toList();
 

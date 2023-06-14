@@ -13,7 +13,7 @@ void main() {
       testEmail = 'test@gmail.com';
     });
 
-    patrolTest('renders correctly', ($) async {
+    patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(DerivVerifyEmailLayout(
         email: testEmail,
         onEmailNotReceivedPressed: () {},
@@ -26,7 +26,7 @@ void main() {
     });
 
     patrolTest('onEmailNotReceivedPressed is called when tapped on the button',
-        ($) async {
+        (PatrolTester $) async {
       bool isEmailNotReceivedPressed = false;
 
       await $.pumpApp(DerivVerifyEmailLayout(

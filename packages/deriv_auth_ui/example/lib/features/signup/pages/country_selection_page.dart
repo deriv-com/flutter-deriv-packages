@@ -16,8 +16,9 @@ class CountrySelectionPage extends StatelessWidget {
         ));
       },
       residences: Future.value([
-        DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
-        DerivResidenceModel(code: 'UK', name: 'England', isDisabled: true),
+        const DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'UK', name: 'England', isDisabled: true),
       ]),
       verificationCode: verificationCode,
       affiliateToken: 'token',

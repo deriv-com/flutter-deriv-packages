@@ -18,7 +18,10 @@ class DerivResetPassLayout extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  /// Reset pass cubit.
   final DerivResetPassCubit cubit;
+
+  /// Callback to be called when reset pass fails.
   final Function(String?) onResetPassError;
 
   @override

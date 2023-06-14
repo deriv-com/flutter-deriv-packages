@@ -50,7 +50,6 @@ class DerivSocialAuthPanel extends StatelessWidget {
             : null,
       );
 
-  String _getSocialMediaIcon(SocialAuthProvider socialAuthProvider) {
-    return 'assets/icons/ic_${socialAuthProvider.name}.svg';
-  }
+  String _getSocialMediaIcon(SocialAuthProvider socialAuthProvider) =>
+      'assets/icons/ic_${socialAuthProvider.name}.svg';
 }

@@ -9,7 +9,6 @@ import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
-
 /// Two-factor-authentication page.
 class Deriv2FALayout extends StatefulWidget {
   /// Initializes the two-factor-authentication page.
@@ -26,6 +25,7 @@ class Deriv2FALayout extends StatefulWidget {
   /// User entered password in previous page.
   final String password;
 
+  /// Authentication cubit.
   final DerivAuthCubit authCubit;
 
   @override

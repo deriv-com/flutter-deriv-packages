@@ -27,8 +27,10 @@ class DerivChooseNewPassLayout extends StatefulWidget {
   /// Reset pass cubit.
   final DerivResetPassCubit resetPassCubit;
 
+  /// Callback to be called when reset pass fails.
   final Function(String?) onResetPassError;
 
+  /// Callback to be called when reset pass succeeds.
   final VoidCallback onResetPassSucceed;
 
   @override

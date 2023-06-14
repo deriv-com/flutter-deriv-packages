@@ -1,11 +1,13 @@
 
+// ignore_for_file: always_specify_types
+
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 
 void main() {
   group('DerivAuthUtmModel', () {
-    patrolTest('Constructor initializes all properties correctly', ($) async {
+    patrolTest('Constructor initializes all properties correctly', (PatrolTester $) async {
       final model = DerivAuthUtmModel(
         'source',
         'campaign',
@@ -29,7 +31,7 @@ void main() {
       expect(model.affiliateToken, 'affiliateToken');
     });
 
-    patrolTest('Constructor initializes optional properties as null', ($) async {
+    patrolTest('Constructor initializes optional properties as null', (PatrolTester $) async {
       final model = DerivAuthUtmModel('source', 'campaign', null, null, null, null, null, null, null);
 
       expect(model.utmCampaignId, isNull);

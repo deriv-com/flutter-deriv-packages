@@ -30,12 +30,22 @@ class DerivSetPasswordLayout extends StatefulWidget {
   /// Residence
   final String? residence;
 
+  ///  Signup cubit
   final DerivSignupCubit signupCubit;
+
+  /// Authentication cubit
   final DerivAuthCubit authCubit;
+
+  /// Utm model
   final DerivAuthUtmModel? utmModel;
 
+  /// Callback to be called when auth state changes.
   final void Function(BuildContext, DerivAuthState) onDerivAuthState;
+
+  /// Callback to be called when signup state changes.
   final void Function(BuildContext, DerivSignupState) onDerivSignupState;
+
+  /// Callback to be called when previous button is tapped.
   final VoidCallback onPreviousPressed;
 
   @override

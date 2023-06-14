@@ -20,8 +20,10 @@ class DerivCountrySelectionLayout extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  /// List of residences to be shown.
   final Future<List<DerivResidenceModel>> residences;
 
+  /// Callback to be called when next button is tapped.
   final VoidCallback onNextPressed;
 
   /// Verification Code from Previous Step. Saved for next step.

@@ -9,9 +9,10 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// A login page which allows user to login using email and password.
 class DerivLoginLayout extends StatefulWidget {
+  /// Initializes [DerivLoginLayout].
   const DerivLoginLayout({
-    Key? key,
     required this.authCubit,
     required this.onResetPassTapped,
     required this.onSignupTapped,
@@ -19,14 +20,28 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onLoggedIn,
     required this.onSocialAuthButtonPressed,
     this.onLoginTapped,
+    Key? key,
   }) : super(key: key);
 
+  /// Authentication cubit.
   final DerivAuthCubit authCubit;
+
+  /// Callback to be called when reset password button is tapped.
   final VoidCallback onResetPassTapped;
+
+  /// Callback to be called when signup button is tapped.
   final VoidCallback onSignupTapped;
+
+  /// Callback to be called when login button is tapped.
   final Function(DerivAuthErrorState) onLoginError;
+
+  /// Callback to be called when user is logged in.
   final Function(DerivAuthLoggedInState) onLoggedIn;
+
+  /// Callback to be called when social auth button is tapped.
   final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
+
+  /// Callback to be called when login button is tapped.
   final VoidCallback? onLoginTapped;
 
   @override

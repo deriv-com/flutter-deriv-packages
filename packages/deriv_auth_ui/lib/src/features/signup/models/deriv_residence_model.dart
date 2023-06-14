@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 
+/// Residence model.
 class DerivResidenceModel extends Equatable {
-  DerivResidenceModel({
+  /// Constructor for residence model.
+  const DerivResidenceModel({
     required this.isDisabled,
     required this.name,
     required this.code,
@@ -17,5 +19,5 @@ class DerivResidenceModel extends Equatable {
   final String code;
 
   @override
-  List<Object?> get props => [isDisabled, name, code];
+  List<Object?> get props => <Object?>[isDisabled, name, code];
 }

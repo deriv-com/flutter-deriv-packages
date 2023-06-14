@@ -1,4 +1,6 @@
+/// DerivAuthUtmModel
 class DerivAuthUtmModel {
+  /// Initialize [DerivAuthUtmModel]
   DerivAuthUtmModel(
     this.utmSource,
     this.utmCampaign,

@@ -1,5 +1,5 @@
 import 'package:deriv_auth/core/services/api_client/base_client.dart';
-import 'package:http/src/response.dart';
+import 'package:http/http.dart';
 
 class HttpClient implements BaseHttpClient {
   @override

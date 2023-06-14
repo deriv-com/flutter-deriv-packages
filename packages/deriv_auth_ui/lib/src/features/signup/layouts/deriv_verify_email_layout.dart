@@ -17,6 +17,7 @@ class DerivVerifyEmailLayout extends StatelessWidget {
   /// Email address to show in message
   final String? email;
 
+  /// Callback to be called when email not received button is tapped.
   final VoidCallback onEmailNotReceivedPressed;
 
   @override
@@ -49,7 +50,10 @@ class DerivVerifyEmailLayout extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset(emailUnreadIcon,package: 'deriv_auth_ui',),
+            SvgPicture.asset(
+              emailUnreadIcon,
+              package: 'deriv_auth_ui',
+            ),
             const SizedBox(height: ThemeProvider.margin16),
             Text(
               context.localization.labelCheckEmail,
