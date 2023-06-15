@@ -25,8 +25,18 @@ dependencies:
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 ```
 
-3. In your MaterialApp add the `DerivAuthUILocalization` delegate:
+3. Wrap your MaterialApp with `DerivThemeProvider`:
 
+```dart
+DerivThemeProvider.builder(
+        initialTheme: ThemeMode.dark,
+        builder: (context) => MaterialApp(
+          /// ...
+        ),
+      ),
+```
+
+4. In your MaterialApp add the `DerivAuthUILocalization` delegate:
 
 ```dart
 MaterialApp(
