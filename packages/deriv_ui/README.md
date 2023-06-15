@@ -1,39 +1,33 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# `deriv_ui` Flutter Package
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+The `deriv_ui` package is a collection of custom widgets and utility functions extracted from the main application, aiming to facilitate reusability and enhance readability.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+Here is the detailed structure of the components included in this package:
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Models
 
-## Features
+- [Custom Icon Data Model](./lib/models/custom_icon_data_model.dart)
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Widgets
 
-## Getting started
+- [App Setting Gesture Detector](./lib/presentation/widgets/app_setting_gesture_detector.dart)
+- [Base Text Field](./lib/presentation/widgets/base_text_field.dart)
+- [Custom Alert Dialog](./lib/presentation/widgets/custom_alert_dialog.dart)
+- [Custom Checkbox](./lib/presentation/widgets/custom_checkbox.dart)
+- [Custom Image](./lib/presentation/widgets/custom_image.dart)
+- [Full Screen Message](./lib/presentation/widgets/fullscreen_message.dart)
+- [Info Icon Button](./lib/presentation/widgets/info_icon_button.dart)
+- [Interaction](./lib/presentation/widgets/interaction.dart)
+- [Loading Indicator](./lib/presentation/widgets/loading_indicator.dart)
+- [Picture Badge](./lib/presentation/widgets/picture_badge.dart)
+- [Popup Alert Dialog](./lib/presentation/widgets/popup_alert_dialog.dart)
+- [Primary Button](./lib/presentation/widgets/primary_button.dart)
+- [Secondary Button](./lib/presentation/widgets/secondary_button.dart)
+- [Text Span Hyperlink](./lib/presentation/widgets/text_span_hyperlink.dart)
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Utilities
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- [Animation Durations](./lib/utils/animation_durations.dart)
+- [Color Helper](./lib/utils/color_helper.dart)
+- [Popup Dialogs Helper](./lib/utils/popup_dialogs_helper.dart)
+- [Regex Helpers](./lib/utils/regex_helpers.dart)
