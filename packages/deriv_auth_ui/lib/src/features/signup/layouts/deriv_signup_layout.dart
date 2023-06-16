@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// It offers creating demo accounts via email and third-party providers.
 /// It Also provides optional referral code section which can be disabled
-/// by setting [enableReferralCode] to false.
+/// by setting [enableReferralSection] to false.
 class DerivSignupLayout extends StatefulWidget {
   /// Initializes [DerivSignupLayout].
   const DerivSignupLayout({
@@ -20,7 +20,7 @@ class DerivSignupLayout extends StatefulWidget {
     required this.onSingupEmailSent,
     required this.onSignupPressed,
     required this.onLoginTapped,
-    this.enableReferralCode = false,
+    this.enableReferralSection = false,
     Key? key,
   }) : super(key: key);
 
@@ -43,7 +43,7 @@ class DerivSignupLayout extends StatefulWidget {
   final VoidCallback? onLoginTapped;
 
   /// Whether to show referral code section or not. Defaults to true.
-  final bool enableReferralCode;
+  final bool enableReferralSection;
 
   @override
   State<DerivSignupLayout> createState() => _DerivSignupLayoutState();
@@ -91,7 +91,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                     const SizedBox(height: ThemeProvider.margin24),
                     _buildEmailTextField(),
                     const SizedBox(height: ThemeProvider.margin36),
-                    if (isReferralEnabled) _buildReferralSection(),
+                    if (widget.enableReferralSection) _buildReferralSection(),
                     const SizedBox(height: ThemeProvider.margin16),
                     _buildSignUpButton(),
                     const SizedBox(height: ThemeProvider.margin24),
