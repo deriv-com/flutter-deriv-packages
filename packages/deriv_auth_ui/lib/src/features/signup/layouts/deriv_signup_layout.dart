@@ -1,16 +1,16 @@
-import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
+import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_divider.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
-
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:deriv_auth/deriv_auth.dart';
 
 /// It offers creating demo accounts via email and third-party providers.
-/// It Also provides optional referral code section.
+/// It Also provides optional referral code section which can be disabled
+/// by setting [enableReferralCode] to false.
 class DerivSignupLayout extends StatefulWidget {
   /// Initializes [DerivSignupLayout].
   const DerivSignupLayout({
@@ -20,6 +20,7 @@ class DerivSignupLayout extends StatefulWidget {
     required this.onSingupEmailSent,
     required this.onSignupPressed,
     required this.onLoginTapped,
+    this.enableReferralCode = false,
     Key? key,
   }) : super(key: key);
 
@@ -40,6 +41,9 @@ class DerivSignupLayout extends StatefulWidget {
 
   /// Callback to be called when login button is pressed.
   final VoidCallback? onLoginTapped;
+
+  /// Whether to show referral code section or not. Defaults to true.
+  final bool enableReferralCode;
 
   @override
   State<DerivSignupLayout> createState() => _DerivSignupLayoutState();
@@ -87,7 +91,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                     const SizedBox(height: ThemeProvider.margin24),
                     _buildEmailTextField(),
                     const SizedBox(height: ThemeProvider.margin36),
-                    _buildReferralSection(),
+                    if (isReferralEnabled) _buildReferralSection(),
                     const SizedBox(height: ThemeProvider.margin16),
                     _buildSignUpButton(),
                     const SizedBox(height: ThemeProvider.margin24),

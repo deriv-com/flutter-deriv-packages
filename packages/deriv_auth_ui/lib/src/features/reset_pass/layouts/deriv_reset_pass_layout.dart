@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/regex_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
-import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';

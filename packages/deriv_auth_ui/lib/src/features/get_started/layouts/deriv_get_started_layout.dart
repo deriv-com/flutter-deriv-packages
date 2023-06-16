@@ -3,14 +3,13 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/features/get_started/models/deriv_get_started_slide_model.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:deriv_theme/deriv_theme.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import 'package:deriv_auth_ui/src/features/get_started/models/deriv_get_started_slide_model.dart';
 
 /// An onboarding page which showcases key features of the app.
 class DerivGetStartedLayout extends StatefulWidget {
