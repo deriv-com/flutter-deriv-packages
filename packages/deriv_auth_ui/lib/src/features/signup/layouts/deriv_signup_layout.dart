@@ -20,7 +20,7 @@ class DerivSignupLayout extends StatefulWidget {
     required this.onSingupEmailSent,
     required this.onSignupPressed,
     required this.onLoginTapped,
-    this.enableReferralSection = false,
+    this.enableReferralSection = true,
     Key? key,
   }) : super(key: key);
 
