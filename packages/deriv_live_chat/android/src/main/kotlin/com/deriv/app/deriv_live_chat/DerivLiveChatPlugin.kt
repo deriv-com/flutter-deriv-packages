@@ -59,7 +59,9 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             val groupId = call.argument<String>("groupId")
             val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
-            chatWindowView = createCustomAndAttachChatWindowInstance(activity!!)
+            if (chatWindowView == null) {
+                chatWindowView = createCustomAndAttachChatWindowInstance(activity!!)
+            }
 
             val configuration = ChatWindowConfiguration.Builder()
                 .setLicenceNumber(licenseId)
@@ -71,7 +73,8 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
 
             chatWindowView?.setUpWindow(configuration)
             chatWindowView?.setUpListener(chatListener)
-            chatWindowView?.initialize()
+            if (chatWindowView?.isInitialized() == false)
+                chatWindowView?.initialize()
 
 
             chatWindowView?.showChatWindow()
@@ -79,6 +82,8 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             result.success(null)
         } else if (call.method.equals("close_live_chat_view")) {
             clearSession(chatWindowView?.context)
+            chatWindowView?.setUpListener(null);
+
             chatWindowView?.onBackPressed()
 
             result.success(null)
