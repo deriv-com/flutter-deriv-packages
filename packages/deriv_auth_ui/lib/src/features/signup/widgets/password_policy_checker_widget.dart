@@ -1,4 +1,4 @@
-import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:deriv_auth_ui/src/features/signup/models/deriv_password_policy_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';

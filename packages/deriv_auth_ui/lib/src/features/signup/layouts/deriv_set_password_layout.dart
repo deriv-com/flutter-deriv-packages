@@ -1,6 +1,7 @@
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
-import 'package:deriv_auth_ui/src/core/helpers/extensions.dart';
 import 'package:deriv_auth_ui/src/features/signup/models/deriv_auth_utm_model.dart';
 import 'package:deriv_auth_ui/src/features/signup/widgets/password_policy_checker_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
