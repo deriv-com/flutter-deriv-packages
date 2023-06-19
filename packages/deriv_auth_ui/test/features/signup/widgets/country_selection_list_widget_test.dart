@@ -12,7 +12,7 @@ void main() {
 
     setUpAll(() {
       residences = <DerivResidenceModel>[
-        const DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
+        const DerivResidenceModel(code: 'ID', name: 'Indonesia', isDisabled: false),
         const DerivResidenceModel(
             code: 'UK', name: 'England', isDisabled: true),
       ];
@@ -24,7 +24,7 @@ void main() {
 
       expect($(CountrySelectionListWidget), findsOneWidget);
       expect($(Icons.search), findsOneWidget);
-      expect($(Text).$('Iran'), findsOneWidget);
+      expect($(Text).$('Indonesia'), findsOneWidget);
       expect($(Text).$('England'), findsOneWidget);
     });
 
@@ -35,7 +35,7 @@ void main() {
           countries: residences,
           onChanged: (int country) => isOnChangedCalled = true));
 
-      await $.tap($(Text).$('Iran'));
+      await $.tap($(Text).$('Indonesia'));
 
       expect(isOnChangedCalled, true);
     });

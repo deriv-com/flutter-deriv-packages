@@ -13,7 +13,7 @@ void main() {
     setUp(() {
       residences =
           Future<List<DerivResidenceModel>>.value(<DerivResidenceModel>[
-        const DerivResidenceModel(code: 'IR', name: 'Iran', isDisabled: false),
+        const DerivResidenceModel(code: 'ID', name: 'Indonesia', isDisabled: false),
         const DerivResidenceModel(
             code: 'UK', name: 'England', isDisabled: true),
       ]);

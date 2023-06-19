@@ -5,6 +5,7 @@ import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:example/features/reset_pass/pages/choose_new_password_page.dart';
 import 'package:example/features/reset_pass/services/example_reset_pass_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResetPassPage extends StatefulWidget {
   const ResetPassPage({super.key});
@@ -28,7 +29,8 @@ class _ResetPassPageState extends State<ResetPassPage> {
         Timer(const Duration(seconds: 3), () {
           if (mounted) {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ChooseNewPasswordPage(cubit: cubit),
+              builder: (context) => BlocProvider.value(
+                  value: cubit, child: ChooseNewPasswordPage(cubit: cubit)),
             ));
           }
         });
@@ -38,7 +40,8 @@ class _ResetPassPageState extends State<ResetPassPage> {
 
   @override
   Widget build(BuildContext context) {
-    return DerivResetPassLayout(onResetPassError: (_) {});
+    return BlocProvider.value(
+        value: cubit, child: DerivResetPassLayout(onResetPassError: (_) {}));
   }
 
   @override
