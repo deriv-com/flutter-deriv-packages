@@ -4,6 +4,7 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
@@ -20,7 +21,8 @@ void main() {
       mockResetPassCubit = MockDerivResetPassCubit();
     });
 
-    patrolTest('should render DerivChooseNewPassLayout', (PatrolTester $) async {
+    patrolTest('should render DerivChooseNewPassLayout',
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => resetPassState);
@@ -28,11 +30,13 @@ void main() {
           .thenAnswer((_) => Stream.fromIterable([resetPassState]));
 
       await $.pumpApp(
-        DerivChooseNewPassLayout(
-          resetPassCubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
-          onResetPassSucceed: () {},
-          token: token,
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivChooseNewPassLayout(
+            onResetPassError: (String? error) {},
+            onResetPassSucceed: () {},
+            token: token,
+          ),
         ),
       );
 
@@ -51,13 +55,15 @@ void main() {
       var onResetPassErrorCalled = false;
 
       await $.pumpApp(
-        DerivChooseNewPassLayout(
-          resetPassCubit: mockResetPassCubit,
-          onResetPassError: (String? error) {
-            onResetPassErrorCalled = true;
-          },
-          onResetPassSucceed: () {},
-          token: token,
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivChooseNewPassLayout(
+            onResetPassError: (String? error) {
+              onResetPassErrorCalled = true;
+            },
+            onResetPassSucceed: () {},
+            token: token,
+          ),
         ),
       );
 
@@ -78,13 +84,15 @@ void main() {
 
       await $.pumpApp(
         settle: false,
-        DerivChooseNewPassLayout(
-          resetPassCubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
-          onResetPassSucceed: () {
-            onResetPassSucceedCalled = true;
-          },
-          token: token,
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivChooseNewPassLayout(
+            onResetPassError: (String? error) {},
+            onResetPassSucceed: () {
+              onResetPassSucceedCalled = true;
+            },
+            token: token,
+          ),
         ),
       );
 
@@ -93,7 +101,8 @@ void main() {
       expect(onResetPassSucceedCalled, isTrue);
     });
 
-    patrolTest('should call changePassword when input is valid', (PatrolTester $) async {
+    patrolTest('should call changePassword when input is valid',
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const newPassTest = 'newPassWordTest123@';
 
@@ -105,11 +114,13 @@ void main() {
           newPassword: any(named: 'newPassword'))).thenAnswer((_) async {});
 
       await $.pumpApp(
-        DerivChooseNewPassLayout(
-          resetPassCubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
-          onResetPassSucceed: () {},
-          token: token,
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivChooseNewPassLayout(
+            onResetPassError: (String? error) {},
+            onResetPassSucceed: () {},
+            token: token,
+          ),
         ),
       );
 
@@ -133,11 +144,13 @@ void main() {
           newPassword: any(named: 'newPassword'))).thenAnswer((_) async {});
 
       await $.pumpApp(
-        DerivChooseNewPassLayout(
-          resetPassCubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
-          onResetPassSucceed: () {},
-          token: token,
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivChooseNewPassLayout(
+            onResetPassError: (String? error) {},
+            onResetPassSucceed: () {},
+            token: token,
+          ),
         ),
       );
 

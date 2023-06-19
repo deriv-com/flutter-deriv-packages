@@ -12,7 +12,6 @@ class SetPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DerivSetPasswordLayout(
-      authCubit: context.read<DerivAuthCubit>(),
       onDerivAuthState: (context, state) {
         if (state is DerivAuthLoggedInState) {
           Navigator.of(context).pushAndRemoveUntil(
@@ -32,7 +31,6 @@ class SetPasswordPage extends StatelessWidget {
       },
       onPreviousPressed: () => Navigator.of(context).pop(),
       residence: 'residence',
-      signupCubit: context.read<DerivSignupCubit>(),
       verificationCode: verificationCode,
     );
   }

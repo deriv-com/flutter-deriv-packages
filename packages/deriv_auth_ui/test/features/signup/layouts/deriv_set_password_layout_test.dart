@@ -4,6 +4,7 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
@@ -33,14 +34,18 @@ void main() {
     patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
-          DerivSetPasswordLayout(
-            authCubit: authCubit,
-            signupCubit: signupCubit,
-            onDerivAuthState: (_, __) {},
-            onDerivSignupState: (_, __) {},
-            onPreviousPressed: () {},
-            verificationCode: '123456',
-            residence: 'id',
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<DerivAuthCubit>.value(value: authCubit),
+              BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+            ],
+            child: DerivSetPasswordLayout(
+              onDerivAuthState: (_, __) {},
+              onDerivSignupState: (_, __) {},
+              onPreviousPressed: () {},
+              verificationCode: '123456',
+              residence: 'id',
+            ),
           ));
 
       expect($(DerivSetPasswordLayout), findsOneWidget);
@@ -57,14 +62,18 @@ void main() {
             DerivAuthLoggedOutState(),
           ]));
 
-      await $.pumpApp(DerivSetPasswordLayout(
-          authCubit: authCubit,
-          signupCubit: signupCubit,
-          onDerivAuthState: (_, __) => isOnDerivAuthStateCalled = true,
-          onDerivSignupState: (_, __) {},
-          onPreviousPressed: () {},
-          verificationCode: 'verificationCode',
-          residence: 'residence'));
+      await $.pumpApp(MultiBlocProvider(
+        providers: [
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+        ],
+        child: DerivSetPasswordLayout(
+            onDerivAuthState: (_, __) => isOnDerivAuthStateCalled = true,
+            onDerivSignupState: (_, __) {},
+            onPreviousPressed: () {},
+            verificationCode: 'verificationCode',
+            residence: 'residence'),
+      ));
 
       expect(isOnDerivAuthStateCalled, true);
     });
@@ -80,14 +89,19 @@ void main() {
 
       await $.pumpApp(
           settle: false,
-          DerivSetPasswordLayout(
-              authCubit: authCubit,
-              signupCubit: signupCubit,
-              onDerivAuthState: (_, __) {},
-              onDerivSignupState: (_, __) => isOnDerivSignupStateCalled = true,
-              onPreviousPressed: () {},
-              verificationCode: 'verificationCode',
-              residence: 'residence'));
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<DerivAuthCubit>.value(value: authCubit),
+              BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+            ],
+            child: DerivSetPasswordLayout(
+                onDerivAuthState: (_, __) {},
+                onDerivSignupState: (_, __) =>
+                    isOnDerivSignupStateCalled = true,
+                onPreviousPressed: () {},
+                verificationCode: 'verificationCode',
+                residence: 'residence'),
+          ));
 
       expect(isOnDerivSignupStateCalled, true);
     });
@@ -98,14 +112,18 @@ void main() {
 
       await $.pumpApp(
           settle: false,
-          DerivSetPasswordLayout(
-              authCubit: authCubit,
-              signupCubit: signupCubit,
-              onDerivAuthState: (_, __) {},
-              onDerivSignupState: (_, __) {},
-              onPreviousPressed: () => isOnPreviousPressedCalled = true,
-              verificationCode: 'verificationCode',
-              residence: 'residence'));
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<DerivAuthCubit>.value(value: authCubit),
+              BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+            ],
+            child: DerivSetPasswordLayout(
+                onDerivAuthState: (_, __) {},
+                onDerivSignupState: (_, __) {},
+                onPreviousPressed: () => isOnPreviousPressedCalled = true,
+                verificationCode: 'verificationCode',
+                residence: 'residence'),
+          ));
 
       await $.tap($(ElevatedButton).$('Previous'));
 
@@ -116,14 +134,18 @@ void main() {
         (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
-          DerivSetPasswordLayout(
-              authCubit: authCubit,
-              signupCubit: signupCubit,
-              onDerivAuthState: (_, __) {},
-              onDerivSignupState: (_, __) {},
-              onPreviousPressed: () {},
-              verificationCode: 'verificationCode',
-              residence: 'residence'));
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<DerivAuthCubit>.value(value: authCubit),
+              BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+            ],
+            child: DerivSetPasswordLayout(
+                onDerivAuthState: (_, __) {},
+                onDerivSignupState: (_, __) {},
+                onPreviousPressed: () {},
+                verificationCode: 'verificationCode',
+                residence: 'residence'),
+          ));
 
       await $.pump();
 
@@ -142,14 +164,18 @@ void main() {
 
       await $.pumpApp(
           settle: false,
-          DerivSetPasswordLayout(
-              authCubit: authCubit,
-              signupCubit: signupCubit,
-              onDerivAuthState: (_, __) {},
-              onDerivSignupState: (_, __) {},
-              onPreviousPressed: () {},
-              verificationCode: 'verificationCode',
-              residence: 'residence'));
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<DerivAuthCubit>.value(value: authCubit),
+              BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+            ],
+            child: DerivSetPasswordLayout(
+                onDerivAuthState: (_, __) {},
+                onDerivSignupState: (_, __) {},
+                onPreviousPressed: () {},
+                verificationCode: 'verificationCode',
+                residence: 'residence'),
+          ));
 
       final startTradingButton = $(ElevatedButton).$('Start trading');
 

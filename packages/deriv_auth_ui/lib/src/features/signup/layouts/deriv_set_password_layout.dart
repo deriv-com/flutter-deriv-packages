@@ -14,8 +14,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 class DerivSetPasswordLayout extends StatefulWidget {
   /// constructor of country set password page
   const DerivSetPasswordLayout({
-    required this.authCubit,
-    required this.signupCubit,
     required this.onDerivAuthState,
     required this.onDerivSignupState,
     required this.onPreviousPressed,
@@ -30,12 +28,6 @@ class DerivSetPasswordLayout extends StatefulWidget {
 
   /// Residence
   final String? residence;
-
-  ///  Signup cubit
-  final DerivSignupCubit signupCubit;
-
-  /// Authentication cubit
-  final DerivAuthCubit authCubit;
 
   /// Utm model
   final DerivAuthUtmModel? utmModel;
@@ -73,7 +65,6 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
   @override
   Widget build(BuildContext context) =>
       BlocListener<DerivAuthCubit, DerivAuthState>(
-        bloc: widget.authCubit,
         listener: widget.onDerivAuthState,
         child: Scaffold(
           backgroundColor: context.theme.colors.primary,
@@ -134,7 +125,6 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
             const SizedBox(width: ThemeProvider.margin08),
             Expanded(
               child: BlocConsumer<DerivSignupCubit, DerivSignupState>(
-                bloc: widget.signupCubit,
                 listener: widget.onDerivSignupState,
                 builder: (BuildContext context, DerivSignupState state) =>
                     _buildStartTradingButton(state),
@@ -179,9 +169,10 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
                       .copyWith(color: context.theme.colors.prominent),
                 ),
         ),
-        onPressed: () async => widget.signupCubit.openNewVirtualAccount(
-          await _getNewVirtualAccountModel(),
-        ),
+        onPressed: () async =>
+            context.read<DerivSignupCubit>().openNewVirtualAccount(
+                  await _getNewVirtualAccountModel(),
+                ),
       );
 
   Widget _buildPreviousButton() => SecondaryButton(
@@ -215,12 +206,5 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
       utmAdGroupId: widget.utmModel?.utmAdGroupId,
       utmAdId: widget.utmModel?.utmAdId,
     );
-  }
-
-  @override
-  void dispose() {
-    widget.signupCubit.close();
-
-    super.dispose();
   }
 }

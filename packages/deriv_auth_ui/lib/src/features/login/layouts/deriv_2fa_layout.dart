@@ -12,7 +12,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 class Deriv2FALayout extends StatefulWidget {
   /// Initializes the two-factor-authentication page.
   const Deriv2FALayout({
-    required this.authCubit,
     required this.email,
     required this.password,
     Key? key,
@@ -23,9 +22,6 @@ class Deriv2FALayout extends StatefulWidget {
 
   /// User entered password in previous page.
   final String password;
-
-  /// Authentication cubit.
-  final DerivAuthCubit authCubit;
 
   @override
   State<Deriv2FALayout> createState() => _Deriv2FALayoutState();
@@ -49,7 +45,6 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
         ),
         backgroundColor: context.theme.colors.primary,
         body: BlocBuilder<DerivAuthCubit, DerivAuthState>(
-          bloc: widget.authCubit,
           builder: (BuildContext context, DerivAuthState loginState) =>
               ListView(
             padding: const EdgeInsets.symmetric(
@@ -123,11 +118,11 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
     FocusManager.instance.primaryFocus?.unfocus();
 
     if (!_isLoading()) {
-      widget.authCubit.systemLogin(
-        email: widget.email,
-        password: widget.password,
-        otp: _otpController.text,
-      );
+      context.read<DerivAuthCubit>().systemLogin(
+            email: widget.email,
+            password: widget.password,
+            otp: _otpController.text,
+          );
     }
   }
 
@@ -135,7 +130,8 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
       int.tryParse(_otpController.text) != null &&
       _otpController.text.length == maxInputLength;
 
-  bool _isLoading() => widget.authCubit.state is DerivAuthLoadingState;
+  bool _isLoading() =>
+      context.read<DerivAuthCubit>().state is DerivAuthLoadingState;
 
   @override
   void dispose() {

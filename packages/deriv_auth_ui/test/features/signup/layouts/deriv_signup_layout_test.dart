@@ -5,6 +5,7 @@ import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
@@ -29,13 +30,15 @@ void main() {
     patrolTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
-          DerivSignupLayout(
-            signupCubit: signupCubit,
-            onSocialAuthButtonPressed: (_) {},
-            onSingupError: (_) {},
-            onSingupEmailSent: (_) {},
-            onSignupPressed: () {},
-            onLoginTapped: () {},
+          BlocProvider<DerivSignupCubit>.value(
+            value: signupCubit,
+            child: DerivSignupLayout(
+              onSocialAuthButtonPressed: (_) {},
+              onSingupError: (_) {},
+              onSingupEmailSent: (_) {},
+              onSignupPressed: () {},
+              onLoginTapped: () {},
+            ),
           ));
 
       expect($(DerivSignupLayout), findsOneWidget);
@@ -49,15 +52,17 @@ void main() {
         (PatrolTester $) async {
       bool isOnSocialAuthButtonPressedCalled = false;
 
-      await $.pumpApp(DerivSignupLayout(
-        signupCubit: signupCubit,
-        onSocialAuthButtonPressed: (_) {
-          isOnSocialAuthButtonPressedCalled = true;
-        },
-        onSingupError: (_) {},
-        onSingupEmailSent: (_) {},
-        onSignupPressed: () {},
-        onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
+        value: signupCubit,
+        child: DerivSignupLayout(
+          onSocialAuthButtonPressed: (_) {
+            isOnSocialAuthButtonPressedCalled = true;
+          },
+          onSingupError: (_) {},
+          onSingupEmailSent: (_) {},
+          onSignupPressed: () {},
+          onLoginTapped: () {},
+        ),
       ));
 
       await $.tap($(DerivSocialAuthPanel));
@@ -75,13 +80,15 @@ void main() {
       when(() => signupCubit.stream).thenAnswer(
           (_) => Stream.fromIterable([const DerivSignupEmailSentState()]));
 
-      await $.pumpApp(DerivSignupLayout(
-        signupCubit: signupCubit,
-        onSocialAuthButtonPressed: (_) {},
-        onSingupError: (_) {},
-        onSingupEmailSent: (_) => isOnSignupEmailSentCalled = true,
-        onSignupPressed: () {},
-        onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
+        value: signupCubit,
+        child: DerivSignupLayout(
+          onSocialAuthButtonPressed: (_) {},
+          onSingupError: (_) {},
+          onSingupEmailSent: (_) => isOnSignupEmailSentCalled = true,
+          onSignupPressed: () {},
+          onLoginTapped: () {},
+        ),
       ));
 
       expect(isOnSignupEmailSentCalled, true);
@@ -94,13 +101,15 @@ void main() {
       when(() => signupCubit.sendVerificationEmail('test@gmail.com'))
           .thenAnswer((_) async => const DerivSignupEmailSentState());
 
-      await $.pumpApp(DerivSignupLayout(
-        signupCubit: signupCubit,
-        onSocialAuthButtonPressed: (_) {},
-        onSingupError: (_) {},
-        onSingupEmailSent: (_) {},
-        onSignupPressed: () => isOnSignupPressedCalled = true,
-        onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
+        value: signupCubit,
+        child: DerivSignupLayout(
+          onSocialAuthButtonPressed: (_) {},
+          onSingupError: (_) {},
+          onSingupEmailSent: (_) {},
+          onSignupPressed: () => isOnSignupPressedCalled = true,
+          onLoginTapped: () {},
+        ),
       ));
 
       final signUpButton = $(ElevatedButton).$('Create free demo account');
@@ -114,18 +123,21 @@ void main() {
           .called(1);
     });
 
-    patrolTest('onLoginTapped is called upon tapping login button', (PatrolTester $) async {
+    patrolTest('onLoginTapped is called upon tapping login button',
+        (PatrolTester $) async {
       bool isOnLoginTappedCalled = false;
 
-      await $.pumpApp(DerivSignupLayout(
-        signupCubit: signupCubit,
-        onSocialAuthButtonPressed: (_) {},
-        onSingupError: (_) {},
-        onSingupEmailSent: (_) {},
-        onSignupPressed: () {},
-        onLoginTapped: () {
-          isOnLoginTappedCalled = true;
-        },
+      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
+        value: signupCubit,
+        child: DerivSignupLayout(
+          onSocialAuthButtonPressed: (_) {},
+          onSingupError: (_) {},
+          onSingupEmailSent: (_) {},
+          onSignupPressed: () {},
+          onLoginTapped: () {
+            isOnLoginTappedCalled = true;
+          },
+        ),
       ));
 
       final loginButton = $(InkWell).$('Log in');
@@ -136,7 +148,8 @@ void main() {
       expect(isOnLoginTappedCalled, true);
     });
 
-    patrolTest('onSignupError is called upon signup error state', (PatrolTester $) async {
+    patrolTest('onSignupError is called upon signup error state',
+        (PatrolTester $) async {
       bool isOnSignupErrorCalled = false;
 
       when(() => signupCubit.state).thenAnswer(
@@ -145,13 +158,15 @@ void main() {
       when(() => signupCubit.stream).thenAnswer(
           (_) => Stream.fromIterable([const DerivSignupErrorState('')]));
 
-      await $.pumpApp(DerivSignupLayout(
-        signupCubit: signupCubit,
-        onSocialAuthButtonPressed: (_) {},
-        onSingupError: (_) => isOnSignupErrorCalled = true,
-        onSingupEmailSent: (_) {},
-        onSignupPressed: () {},
-        onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
+        value: signupCubit,
+        child: DerivSignupLayout(
+          onSocialAuthButtonPressed: (_) {},
+          onSingupError: (_) => isOnSignupErrorCalled = true,
+          onSingupEmailSent: (_) {},
+          onSignupPressed: () {},
+          onLoginTapped: () {},
+        ),
       ));
 
       expect(isOnSignupErrorCalled, true);

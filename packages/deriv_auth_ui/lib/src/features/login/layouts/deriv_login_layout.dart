@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
-import 'package:deriv_auth_ui/src/core/extensions/regex_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_divider.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -14,7 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DerivLoginLayout extends StatefulWidget {
   /// Initializes [DerivLoginLayout].
   const DerivLoginLayout({
-    required this.authCubit,
     required this.onResetPassTapped,
     required this.onSignupTapped,
     required this.onLoginError,
@@ -23,9 +22,6 @@ class DerivLoginLayout extends StatefulWidget {
     this.onLoginTapped,
     Key? key,
   }) : super(key: key);
-
-  /// Authentication cubit.
-  final DerivAuthCubit authCubit;
 
   /// Callback to be called when reset password button is tapped.
   final VoidCallback onResetPassTapped;
@@ -60,7 +56,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
 
   bool _isPasswordVisible = false;
 
-  DerivAuthCubit get authCubit => widget.authCubit;
+  DerivAuthCubit get authCubit => context.read<DerivAuthCubit>();
 
   @override
   Widget build(BuildContext context) => WillPopScope(

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
-import 'package:deriv_auth_ui/src/core/extensions/regex_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
 import 'package:deriv_auth_ui/src/features/signup/widgets/password_policy_checker_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -16,7 +16,6 @@ class DerivChooseNewPassLayout extends StatefulWidget {
   /// Initializes choose new pass page.
   const DerivChooseNewPassLayout({
     required this.token,
-    required this.resetPassCubit,
     required this.onResetPassSucceed,
     required this.onResetPassError,
     Key? key,
@@ -24,9 +23,6 @@ class DerivChooseNewPassLayout extends StatefulWidget {
 
   /// Access token for changing password. can be received from email verification step.
   final String token;
-
-  /// Reset pass cubit.
-  final DerivResetPassCubit resetPassCubit;
 
   /// Callback to be called when reset pass fails.
   final Function(String?) onResetPassError;
@@ -61,7 +57,6 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
           ),
         ),
         body: BlocListener<DerivResetPassCubit, DerivResetPassState>(
-          bloc: widget.resetPassCubit,
           listener: (BuildContext context, DerivResetPassState state) {
             if (state is DerivResetPassPasswordChangedState) {
               _pageController.animateToPage(
@@ -236,10 +231,10 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
     if ((_formKey.currentState?.validate() ?? false) && !_isBusy) {
       setState(() => _isBusy = true);
 
-      await widget.resetPassCubit.changePassword(
-        token: widget.token,
-        newPassword: _passController.text,
-      );
+      await context.read<DerivResetPassCubit>().changePassword(
+            token: widget.token,
+            newPassword: _passController.text,
+          );
 
       setState(() => _isBusy = false);
     }

@@ -5,6 +5,7 @@ import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
@@ -28,14 +29,18 @@ void main() {
       when(() => authCubit.stream)
           .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
 
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {},
-        onLoginError: (_) {},
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (p0) {},
-      ));
+      await $.pumpApp(
+        BlocProvider<DerivAuthCubit>.value(
+          value: authCubit,
+          child: DerivLoginLayout(
+            onResetPassTapped: () {},
+            onSignupTapped: () {},
+            onLoginError: (_) {},
+            onLoggedIn: (_) {},
+            onSocialAuthButtonPressed: (p0) {},
+          ),
+        ),
+      );
 
       expect($(DerivLoginLayout), findsOneWidget);
       expect($(BaseTextField).$('Email'), findsOneWidget);
@@ -53,14 +58,18 @@ void main() {
       when(() => authCubit.stream)
           .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
 
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {},
-        onLoginError: (_) {},
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (_) {},
-      ));
+      await $.pumpApp(
+        BlocProvider<DerivAuthCubit>.value(
+          value: authCubit,
+          child: DerivLoginLayout(
+            onResetPassTapped: () {},
+            onSignupTapped: () {},
+            onLoginError: (_) {},
+            onLoggedIn: (_) {},
+            onSocialAuthButtonPressed: (_) {},
+          ),
+        ),
+      );
 
       final emailField = $(BaseTextField).first;
       // final emailField = $(BaseTextField).$('Email'); --> this doesn't work
@@ -70,7 +79,8 @@ void main() {
       expect($(Text).$('Enter a valid email address'), findsOneWidget);
     });
 
-    patrolTest('displays loading error on AuthLoadingState', (PatrolTester $) async {
+    patrolTest('displays loading error on AuthLoadingState',
+        (PatrolTester $) async {
       final mockAuthState = DerivAuthLoadingState();
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
@@ -80,19 +90,22 @@ void main() {
 
       await $.pumpApp(
           settle: false,
-          DerivLoginLayout(
-            authCubit: authCubit,
-            onResetPassTapped: () {},
-            onSignupTapped: () {},
-            onLoginError: (_) {},
-            onLoggedIn: (_) {},
-            onSocialAuthButtonPressed: (_) {},
+          BlocProvider<DerivAuthCubit>.value(
+            value: authCubit,
+            child: DerivLoginLayout(
+              onResetPassTapped: () {},
+              onSignupTapped: () {},
+              onLoginError: (_) {},
+              onLoggedIn: (_) {},
+              onSocialAuthButtonPressed: (_) {},
+            ),
           ));
 
       expect($(LoadingIndicator), findsOneWidget);
     });
 
-    patrolTest('calls signupTapped when signup button is pressed.', (PatrolTester $) async {
+    patrolTest('calls signupTapped when signup button is pressed.',
+        (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedOutState();
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
@@ -102,15 +115,17 @@ void main() {
 
       bool onSignupTappedCalled = false;
 
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {
-          onSignupTappedCalled = true;
-        },
-        onLoginError: (_) {},
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (_) {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: DerivLoginLayout(
+          onResetPassTapped: () {},
+          onSignupTapped: () {
+            onSignupTappedCalled = true;
+          },
+          onLoginError: (_) {},
+          onLoggedIn: (_) {},
+          onSocialAuthButtonPressed: (_) {},
+        ),
       ));
 
       final signupButton = $(InkWell).$('Create a new account');
@@ -132,15 +147,17 @@ void main() {
 
       bool onLoggedInCalled = false;
 
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {},
-        onLoginError: (_) {},
-        onLoggedIn: (_) {
-          onLoggedInCalled = true;
-        },
-        onSocialAuthButtonPressed: (_) {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: DerivLoginLayout(
+          onResetPassTapped: () {},
+          onSignupTapped: () {},
+          onLoginError: (_) {},
+          onLoggedIn: (_) {
+            onLoggedInCalled = true;
+          },
+          onSocialAuthButtonPressed: (_) {},
+        ),
       ));
 
       expect(onLoggedInCalled, isTrue);
@@ -157,15 +174,17 @@ void main() {
 
       bool onLoginErrorCalled = false;
 
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {},
-        onLoginError: (_) {
-          onLoginErrorCalled = true;
-        },
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (_) {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: DerivLoginLayout(
+          onResetPassTapped: () {},
+          onSignupTapped: () {},
+          onLoginError: (_) {
+            onLoginErrorCalled = true;
+          },
+          onLoggedIn: (_) {},
+          onSocialAuthButtonPressed: (_) {},
+        ),
       ));
 
       expect(onLoginErrorCalled, isTrue);
@@ -182,15 +201,17 @@ void main() {
 
       bool onResetPassTappedCalled = false;
 
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {
-          onResetPassTappedCalled = true;
-        },
-        onSignupTapped: () {},
-        onLoginError: (_) {},
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (_) {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: DerivLoginLayout(
+          onResetPassTapped: () {
+            onResetPassTappedCalled = true;
+          },
+          onSignupTapped: () {},
+          onLoginError: (_) {},
+          onLoggedIn: (_) {},
+          onSocialAuthButtonPressed: (_) {},
+        ),
       ));
 
       await $(InkWell).$('Forgot password?').tap();
@@ -210,15 +231,17 @@ void main() {
 
       bool onSocialAuthButtonPressedCalled = false;
 
-      await $.pumpApp(DerivLoginLayout(
-        authCubit: authCubit,
-        onResetPassTapped: () {},
-        onSignupTapped: () {},
-        onLoginError: (_) {},
-        onLoggedIn: (_) {},
-        onSocialAuthButtonPressed: (_) {
-          onSocialAuthButtonPressedCalled = true;
-        },
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: DerivLoginLayout(
+          onResetPassTapped: () {},
+          onSignupTapped: () {},
+          onLoginError: (_) {},
+          onLoggedIn: (_) {},
+          onSocialAuthButtonPressed: (_) {
+            onSocialAuthButtonPressedCalled = true;
+          },
+        ),
       ));
 
       await $(IconButton).at(1).tap();

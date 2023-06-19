@@ -38,7 +38,7 @@ class _ResetPassPageState extends State<ResetPassPage> {
 
   @override
   Widget build(BuildContext context) {
-    return DerivResetPassLayout(cubit: cubit, onResetPassError: (_) {});
+    return DerivResetPassLayout(onResetPassError: (_) {});
   }
 
   @override

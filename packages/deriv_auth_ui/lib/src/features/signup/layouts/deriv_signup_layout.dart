@@ -14,7 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DerivSignupLayout extends StatefulWidget {
   /// Initializes [DerivSignupLayout].
   const DerivSignupLayout({
-    required this.signupCubit,
     required this.onSocialAuthButtonPressed,
     required this.onSingupError,
     required this.onSingupEmailSent,
@@ -23,9 +22,6 @@ class DerivSignupLayout extends StatefulWidget {
     this.enableReferralSection = true,
     Key? key,
   }) : super(key: key);
-
-  /// Signup cubit.
-  final DerivSignupCubit signupCubit;
 
   /// Callback to be called when social auth button is pressed.
   final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
@@ -74,7 +70,6 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
           backgroundColor: context.theme.colors.secondary,
         ),
         body: BlocConsumer<DerivSignupCubit, DerivSignupState>(
-          bloc: widget.signupCubit,
           listener: _onSignUpState,
           builder: (BuildContext context, DerivSignupState state) => Form(
             key: formKey,
@@ -267,20 +262,21 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
         isEnabled: _isFormValid(),
         onPressed: _onSignupTapped,
         child: Center(
-          child: widget.signupCubit.state is DerivSignupProgressState
-              ? const LoadingIndicator(
-                  valueColor: Colors.white,
-                  strokeWidth: ThemeProvider.margin02,
-                  height: ThemeProvider.iconSize16,
-                  width: ThemeProvider.iconSize16,
-                )
-              : Text(
-                  context.localization.actionCreateAccount,
-                  style: context.theme.textStyle(
-                    textStyle: TextStyles.body2,
-                    color: context.theme.colors.prominent,
-                  ),
-                ),
+          child:
+              context.read<DerivSignupCubit>().state is DerivSignupProgressState
+                  ? const LoadingIndicator(
+                      valueColor: Colors.white,
+                      strokeWidth: ThemeProvider.margin02,
+                      height: ThemeProvider.iconSize16,
+                      width: ThemeProvider.iconSize16,
+                    )
+                  : Text(
+                      context.localization.actionCreateAccount,
+                      style: context.theme.textStyle(
+                        textStyle: TextStyles.body2,
+                        color: context.theme.colors.prominent,
+                      ),
+                    ),
         ),
       );
 
@@ -323,10 +319,10 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
       return;
     }
 
-    await widget.signupCubit.sendVerificationEmail(
-      email,
-      referralCode: isReferralEnabled ? referralCode : null,
-    );
+    await context.read<DerivSignupCubit>().sendVerificationEmail(
+          email,
+          referralCode: isReferralEnabled ? referralCode : null,
+        );
 
     widget.onSignupPressed?.call();
   }

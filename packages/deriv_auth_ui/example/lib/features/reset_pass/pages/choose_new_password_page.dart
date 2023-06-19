@@ -12,7 +12,6 @@ class ChooseNewPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DerivChooseNewPassLayout(
       token: 'token',
-      resetPassCubit: cubit,
       onResetPassSucceed: () {
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(

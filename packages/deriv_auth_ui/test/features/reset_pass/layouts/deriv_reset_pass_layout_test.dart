@@ -4,6 +4,7 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
@@ -27,9 +28,11 @@ void main() {
           .thenAnswer((_) => Stream.fromIterable([resetPassState]));
 
       await $.pumpApp(
-        DerivResetPassLayout(
-          cubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivResetPassLayout(
+            onResetPassError: (String? error) {},
+          ),
         ),
       );
 
@@ -46,9 +49,11 @@ void main() {
           .thenAnswer((_) => Stream.fromIterable([resetPassState]));
 
       await $.pumpApp(
-        DerivResetPassLayout(
-          cubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivResetPassLayout(
+            onResetPassError: (String? error) {},
+          ),
         ),
       );
 
@@ -68,9 +73,11 @@ void main() {
           .thenAnswer((_) => Stream.fromIterable([resetPassState]));
 
       await $.pumpApp(
-        DerivResetPassLayout(
-          cubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivResetPassLayout(
+            onResetPassError: (String? error) {},
+          ),
         ),
       );
 
@@ -90,9 +97,11 @@ void main() {
           .thenAnswer((_) => Stream.fromIterable([resetPassState]));
 
       await $.pumpApp(
-        DerivResetPassLayout(
-          cubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivResetPassLayout(
+            onResetPassError: (String? error) {},
+          ),
         ),
       );
 
@@ -118,9 +127,11 @@ void main() {
           .thenAnswer((_) async {});
 
       await $.pumpApp(
-        DerivResetPassLayout(
-          cubit: mockResetPassCubit,
-          onResetPassError: (String? error) {},
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivResetPassLayout(
+            onResetPassError: (String? error) {},
+          ),
         ),
       );
 
@@ -146,11 +157,13 @@ void main() {
       var onResetPassErrorCalled = false;
 
       await $.pumpApp(
-        DerivResetPassLayout(
-          cubit: mockResetPassCubit,
-          onResetPassError: (String? error) {
-            onResetPassErrorCalled = true;
-          },
+        BlocProvider<DerivResetPassCubit>.value(
+          value: mockResetPassCubit,
+          child: DerivResetPassLayout(
+            onResetPassError: (String? error) {
+              onResetPassErrorCalled = true;
+            },
+          ),
         ),
       );
 

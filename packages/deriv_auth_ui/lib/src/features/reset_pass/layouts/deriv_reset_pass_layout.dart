@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
-import 'package:deriv_auth_ui/src/core/extensions/regex_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -14,13 +14,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 class DerivResetPassLayout extends StatefulWidget {
   /// Initializes reset pass page.
   const DerivResetPassLayout({
-    required this.cubit,
     required this.onResetPassError,
     Key? key,
   }) : super(key: key);
-
-  /// Reset pass cubit.
-  final DerivResetPassCubit cubit;
 
   /// Callback to be called when reset pass fails.
   final Function(String?) onResetPassError;
@@ -54,7 +50,6 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
           ),
         ),
         body: BlocListener<DerivResetPassCubit, DerivResetPassState>(
-          bloc: widget.cubit,
           listener: (BuildContext context, DerivResetPassState state) {
             if (state is DerivResetPassEmailSentState) {
               _pageController.animateToPage(
@@ -195,7 +190,9 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
 
     setState(() => _isBusy = true);
 
-    await widget.cubit.sendVerificationEmail(_getEmailValue());
+    await context
+        .read<DerivResetPassCubit>()
+        .sendVerificationEmail(_getEmailValue());
 
     setState(() => _isBusy = false);
   }
