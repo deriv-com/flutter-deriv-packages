@@ -1,4 +1,3 @@
-
 // ignore_for_file: always_specify_types
 
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
@@ -7,17 +6,18 @@ import 'package:patrol/patrol.dart';
 
 void main() {
   group('DerivAuthUtmModel', () {
-    patrolTest('Constructor initializes all properties correctly', (PatrolTester $) async {
+    patrolTest('Constructor initializes all properties correctly',
+        (PatrolTester $) async {
       final model = DerivAuthUtmModel(
-        'source',
-        'campaign',
-        'campaignId',
-        'adGroupId',
-        'adId',
-        'medium',
-        'content',
-        'term',
-        'affiliateToken',
+        affiliateToken: 'affiliateToken',
+        utmAdGroupId: 'adGroupId',
+        utmAdId: 'adId',
+        utmCampaign: 'campaign',
+        utmCampaignId: 'campaignId',
+        utmContent: 'content',
+        utmMedium: 'medium',
+        utmSource: 'source',
+        utmTerm: 'term',
       );
 
       expect(model.utmSource, 'source');
@@ -31,8 +31,9 @@ void main() {
       expect(model.affiliateToken, 'affiliateToken');
     });
 
-    patrolTest('Constructor initializes optional properties as null', (PatrolTester $) async {
-      final model = DerivAuthUtmModel('source', 'campaign', null, null, null, null, null, null, null);
+    patrolTest('Constructor initializes optional properties as null',
+        (PatrolTester $) async {
+      final model = DerivAuthUtmModel(utmSource: 'source', utmCampaign: 'campaign');
 
       expect(model.utmCampaignId, isNull);
       expect(model.utmAdGroupId, isNull);
