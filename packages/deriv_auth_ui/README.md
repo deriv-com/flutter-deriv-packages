@@ -66,20 +66,19 @@ MaterialApp(
 - **Login Layout**
     ``` dart
       DerivLoginLayout(
-            authCubit: authCubit,
             onResetPassTapped: () {
                 // Navigate to reset password page
             },
             onSignupTapped: () {
                 // Navigate to signup page
             },
-            onLoginError: (_) {
+            onLoginError: (DerivAuthErrorState error) {
                 // Show error message
             },
-            onLoggedIn: (_) {
+            onLoggedIn: (DerivAuthLoggedInState state) {
                 // Navigate to home page
             },
-            onSocialAuthButtonPressed: (_) {
+            onSocialAuthButtonPressed: (SocialAuthProvider provider) {
                 // Handle social auth
             },
           );
@@ -87,7 +86,6 @@ MaterialApp(
 - **2FA Layout**
     ``` dart
       Deriv2FALayout(
-            authCubit: authCubit,
             email: email,
             password: password,
           );
@@ -97,10 +95,9 @@ MaterialApp(
 - **Signup Layout**
     ``` dart
       DerivSignupLayout(
-            signupCubit: signupCubit,
-            onSocialAuthButtonPressed: (_) {},
-            onSingupError: (_) {},
-            onSingupEmailSent: (_) {},
+            onSocialAuthButtonPressed: (SocialAuthProvider provider) {},
+            onSingupError: (DerivSignupErrorState error) {},
+            onSingupEmailSent: (String email) {},
             onSignupPressed: () {},
             onLoginTapped: () {},
           );
@@ -136,10 +133,8 @@ MaterialApp(
 - **Set Password Layout**
     ``` dart
      DerivSetPasswordLayout(
-            authCubit: authCubit,
-            signupCubit: signupCubit,
-            onDerivAuthState: (_, __) {},
-            onDerivSignupState: (_, __) {},
+            onDerivAuthState: (BuildContext, DerivAuthState) {},
+            onDerivSignupState: (BuildContext, DerivSignupState) {},
             onPreviousPressed: () {},
             verificationCode: '123456',
             residence: 'residence',
@@ -150,7 +145,6 @@ MaterialApp(
 - **Reset Password Layout**
     ``` dart
      DerivResetPassLayout(
-          cubit: mockResetPassCubit,
           onResetPassError: (String? error) {},
         ),
     ```
@@ -158,7 +152,6 @@ MaterialApp(
 - **Choose New Password Layout**
     ``` dart
      DerivChooseNewPassLayout(
-          resetPassCubit: mockResetPassCubit,
           onResetPassError: (String? error) {},
           onResetPassSucceed: () {},
           token: token,
