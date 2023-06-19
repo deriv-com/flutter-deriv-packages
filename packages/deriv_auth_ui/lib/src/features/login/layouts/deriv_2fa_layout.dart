@@ -52,7 +52,7 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
               vertical: ThemeProvider.margin32,
             ),
             children: <Widget>[
-              SvgPicture.asset(twoFactorAuthIcon),
+              SvgPicture.asset(Assets.twoFactorAuthIcon),
               Text(
                 context.localization.labelTwoFactorAuth,
                 style: context.theme.textStyle(textStyle: TextStyles.title),

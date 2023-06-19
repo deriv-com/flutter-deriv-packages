@@ -78,7 +78,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SvgPicture.asset(
-              mailIcon,
+              Assets.mailIcon,
               width: ThemeProvider.iconSize96,
               height: ThemeProvider.iconSize96,
               package: 'deriv_auth_ui',
@@ -112,7 +112,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
             shrinkWrap: true,
             children: <Widget>[
               SvgPicture.asset(
-                resetPassIcon,
+                Assets.resetPassIcon,
                 width: ThemeProvider.iconSize96,
                 height: ThemeProvider.iconSize96,
                 package: 'deriv_auth_ui',

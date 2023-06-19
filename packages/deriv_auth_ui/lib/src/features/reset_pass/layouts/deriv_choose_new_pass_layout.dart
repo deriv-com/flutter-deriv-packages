@@ -113,7 +113,7 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
             children: <Widget>[
               Center(
                 child: SvgPicture.asset(
-                  chooseNewPassIcon,
+                  Assets.chooseNewPassIcon,
                   package: 'deriv_auth_ui',
                   width: ThemeProvider.iconSize96,
                   height: ThemeProvider.iconSize32,

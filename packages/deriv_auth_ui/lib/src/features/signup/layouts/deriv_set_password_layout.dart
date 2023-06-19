@@ -92,7 +92,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const SizedBox(height: ThemeProvider.margin96),
-              SvgPicture.asset(passwordIcon, package: 'deriv_auth_ui'),
+              SvgPicture.asset(Assets.passwordIcon, package: 'deriv_auth_ui'),
               const SizedBox(height: ThemeProvider.margin16),
               Text(
                 context.localization.labelKeepPassword,

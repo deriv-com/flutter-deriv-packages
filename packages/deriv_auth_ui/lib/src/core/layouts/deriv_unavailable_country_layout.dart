@@ -33,7 +33,7 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
           child: FullscreenMessage(
             titleWidget: _buildFullscreenTitle(context),
             iconData: CustomIconData(
-              icon: unsupportedCountry,
+              icon: Assets.unsupportedCountry,
               width: ThemeProvider.iconSize96,
               height: ThemeProvider.iconSize96,
             ),

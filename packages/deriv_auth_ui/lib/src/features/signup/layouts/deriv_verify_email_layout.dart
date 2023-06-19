@@ -51,7 +51,7 @@ class DerivVerifyEmailLayout extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SvgPicture.asset(
-              emailUnreadIcon,
+              Assets.emailUnreadIcon,
               package: 'deriv_auth_ui',
             ),
             const SizedBox(height: ThemeProvider.margin16),

@@ -79,7 +79,7 @@ class _DerivCountrySelectionLayoutState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset(locationIcon, package: 'deriv_auth_ui'),
+            SvgPicture.asset(Assets.locationIcon, package: 'deriv_auth_ui'),
             const SizedBox(height: ThemeProvider.margin16),
             Text(
               context.localization.labelSelectCountry,

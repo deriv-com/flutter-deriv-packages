@@ -51,7 +51,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
             const SizedBox(height: ThemeProvider.margin24),
             Row(
               children: <Widget>[
-                SvgPicture.asset(emailIssue1, package: 'deriv_auth_ui'),
+                SvgPicture.asset(Assets.emailIssue1, package: 'deriv_auth_ui'),
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
@@ -67,7 +67,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
             const SizedBox(height: ThemeProvider.margin24),
             Row(
               children: <Widget>[
-                SvgPicture.asset(emailIssue2, package: 'deriv_auth_ui'),
+                SvgPicture.asset(Assets.emailIssue2, package: 'deriv_auth_ui'),
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
@@ -83,7 +83,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
             const SizedBox(height: ThemeProvider.margin24),
             Row(
               children: <Widget>[
-                SvgPicture.asset(emailIssue3, package: 'deriv_auth_ui'),
+                SvgPicture.asset(Assets.emailIssue3, package: 'deriv_auth_ui'),
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
@@ -99,7 +99,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
             const SizedBox(height: ThemeProvider.margin24),
             Row(
               children: <Widget>[
-                SvgPicture.asset(emailIssue4, package: 'deriv_auth_ui'),
+                SvgPicture.asset(Assets.emailIssue4, package: 'deriv_auth_ui'),
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
