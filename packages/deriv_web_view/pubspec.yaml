@@ -17,7 +17,7 @@ dependencies:
   flutter_deriv_api:
     git:
       url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: flutter-version-3
+      ref: "010e4492ea4270c8f002bf5dfd8821f86838b09d"
 
   crypto: ^3.0.2
   equatable: ^2.0.3
