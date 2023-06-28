@@ -1,6 +1,7 @@
-import 'package:deriv_multi_future_listener/deriv_multi_future_listener.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'package:deriv_ui/utils/deriv_multi_future_listener.dart';
 
 void main() {
   group('DerivMultiFutureListener ', () {
