@@ -27,14 +27,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         let instance = SwiftDerivRudderstackPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         
-        do {
-            try configureAndBuildRSClient()
-        } catch {
-            print(error)
-        }
     }
     
-    private static func configureAndBuildRSClient() throws {
+    private  func configureAndBuildRSClient() throws {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
@@ -225,7 +220,12 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     
     // To enable sending rudder stack events.
     private func enable(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
-        
+        do {
+            try configureAndBuildRSClient()
+        } catch {
+            print(error)
+        }
+
         self.enabled = true
         result(true)
     }
