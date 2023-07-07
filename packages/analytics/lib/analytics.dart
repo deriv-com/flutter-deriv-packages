@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +35,11 @@ class Analytics {
 
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
-    await setupRudderStack();
+
+    // For ios we have to manually setup the rudderStack as it's not get initialized with register method.
+    if (Platform.isIOS) {
+      await setupRudderStackForIos();
+    }
 
     isEnabled
         ? await DerivRudderstack().enable()
@@ -112,8 +118,8 @@ class Analytics {
     await _setRudderStackDeviceToken(deviceToken);
   }
 
-  /// This method initialize the rudderStack client.
-  Future<void> setupRudderStack() async {
+  /// This method initialize the rudderStack client for ios.
+  Future<void> setupRudderStackForIos() async {
     await DerivRudderstack().setup();
   }
 
