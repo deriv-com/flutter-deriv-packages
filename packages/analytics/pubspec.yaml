@@ -13,7 +13,7 @@ dependencies:
     git:
       url: git@github.com:waqas-younas-deriv/flutter-deriv-packages.git
       path: packages/deriv_rudderstack
-      ref: 2bcd55345df84779c2b8d41539200796073dc42d
+      ref: 881311660a0178c2e6908ddaad2432c31e03fd34
 
   firebase_analytics: ^8.1.2
 
