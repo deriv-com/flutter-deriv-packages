@@ -11,9 +11,9 @@ environment:
 dependencies:
   deriv_rudderstack:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:waqas-younas-deriv/flutter-deriv-packages.git
       path: packages/deriv_rudderstack
-      ref: dev
+      ref: 70d8de977da4857403f6d939393a2a680e190772
 
   firebase_analytics: ^8.1.2
 
