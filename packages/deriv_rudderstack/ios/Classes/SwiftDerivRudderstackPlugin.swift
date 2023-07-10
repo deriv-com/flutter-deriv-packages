@@ -59,9 +59,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
                 .withLoglevel(Int32(logLevel))
             
             RSClient.getInstance(writeKey, config: builder.build())
-            result(true)
         }
-        result(false)
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -82,7 +80,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
             self.alias(call, result)
 
         case SETUP:
-            self.setupRudderStack(call, result)
+            self.setupRudderStack()
             
         case RESET:
             self.reset(result)
