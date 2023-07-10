@@ -30,7 +30,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         
     }
     
-    private func setupRudderStack() throws {
+    private func setupRudderStack() {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
