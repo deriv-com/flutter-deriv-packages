@@ -47,8 +47,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/deriv_rudderstack"
-      ref: "70d8de977da4857403f6d939393a2a680e190772"
-      resolved-ref: "70d8de977da4857403f6d939393a2a680e190772"
+      ref: "2bcd55345df84779c2b8d41539200796073dc42d"
+      resolved-ref: "2bcd55345df84779c2b8d41539200796073dc42d"
       url: "git@github.com:waqas-younas-deriv/flutter-deriv-packages.git"
     source: git
     version: "1.1.0"
