@@ -43,7 +43,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var context: Context
     private var enabled: Boolean = true
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "deriv_rudderstack")
         channel.setMethodCallHandler(this)
 
@@ -57,64 +57,76 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
 
         // Gets the values specified by the user at AndroidManifest.xml
         val applicationInfo: ApplicationInfo = context.packageManager
-                .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
+            .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
 
         val bundle = applicationInfo.metaData
 
         val writeKey = bundle.getString(WRITE_KEY)
         writeKey?.apply {
-            val trackApplicationLifecycleEvents = bundle.getBoolean(TRACK_APPLICATION_LIFECYCLE_EVENTS)
+            val trackApplicationLifecycleEvents =
+                bundle.getBoolean(TRACK_APPLICATION_LIFECYCLE_EVENTS)
             val recordScreenViews = bundle.getBoolean(RECORD_SCREEN_VIEWS)
             val debug = bundle.getBoolean(DEBUG, false)
 
-            val logLevel = if (debug) RudderLogger.RudderLogLevel.DEBUG else RudderLogger.RudderLogLevel.NONE
+            val logLevel =
+                if (debug) RudderLogger.RudderLogLevel.DEBUG else RudderLogger.RudderLogLevel.NONE
 
             rudderClient = RudderClient.getInstance(
-                    context,
-                    writeKey,
-                    RudderConfig.Builder()
-                            .withTrackLifecycleEvents(trackApplicationLifecycleEvents)
-                            .withRecordScreenViews(recordScreenViews)
-                            .withLogLevel(logLevel)
-                            .build()
+                context,
+                writeKey,
+                RudderConfig.Builder()
+                    .withTrackLifecycleEvents(trackApplicationLifecycleEvents)
+                    .withRecordScreenViews(recordScreenViews)
+                    .withLogLevel(logLevel)
+                    .build()
             )
         } ?: Log.e(TAG, "writeKey must not be null")
 
     }
 
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    override fun onMethodCall(call: MethodCall, result: Result) {
         when (checkMethod(call.method)) {
             IDENTIFY -> {
                 identify(call, result)
             }
+
             TRACK -> {
                 track(call, result)
             }
+
             SCREEN -> {
                 screen(call, result)
             }
+
             GROUP -> {
                 group(call, result)
             }
+
             ALIAS -> {
                 alias(call, result)
             }
+
             RESET -> {
                 reset(result)
             }
+
             SET_CONTEXT -> {
                 setContext(call, result)
             }
+
             ENABLE -> {
                 enable(result)
             }
+
             DISABLE -> {
                 disable(result)
             }
+
             TURNED_OFF -> {
                 result.success(false)
                 Log.i(TAG, "Rudderstack analytics was turned off")
             }
+
             else -> {
                 result.notImplemented()
             }
@@ -306,7 +318,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
         result.success(true)
     }
 
-    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
     }
 }

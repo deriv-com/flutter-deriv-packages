@@ -36,11 +36,6 @@ class Analytics {
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
 
-    // For ios we have to manually setup the rudderStack as it's not get initialized with register method.
-    if (Platform.isIOS) {
-      await setupRudderStackForIos();
-    }
-
     isEnabled
         ? await DerivRudderstack().enable()
         : await DerivRudderstack().disable();
@@ -116,11 +111,6 @@ class Analytics {
   /// Logs push token.
   Future<void> logPushToken(String deviceToken) async {
     await _setRudderStackDeviceToken(deviceToken);
-  }
-
-  /// This method initialize the rudderStack client for ios.
-  Future<void> setupRudderStackForIos() async {
-    await DerivRudderstack().setup();
   }
 
   /// Should be called at logout to clear up current `RudderStack` data.

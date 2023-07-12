@@ -15,7 +15,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     let IDENTIFY = "identify"
     let TRACK = "track"
     let SCREEN = "screen"
-    let SETUP = "setup"
     let GROUP = "group"
     let ALIAS = "alias"
     let RESET = "reset"
@@ -28,9 +27,11 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         let instance = SwiftDerivRudderstackPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         
+        setupRudderStack()
+        
     }
     
-    private func setupRudderStack() {
+    private static func setupRudderStack() {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
@@ -78,9 +79,6 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
             
         case ALIAS:
             self.alias(call, result)
-
-        case SETUP:
-            self.setupRudderStack()
             
         case RESET:
             self.reset(result)
