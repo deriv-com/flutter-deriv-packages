@@ -48,7 +48,7 @@ packages:
     description:
       path: "packages/deriv_rudderstack"
       ref: dev
-      resolved-ref: e7f8303206e33f0ddfe2b2d3cab4b131476d9d2b
+      resolved-ref: "8070d444cf2f43bed227ca3e3beb92d2a029347f"
       url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
     source: git
     version: "1.1.0"
