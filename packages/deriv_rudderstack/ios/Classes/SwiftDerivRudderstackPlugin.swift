@@ -30,7 +30,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         
     }
     
-    private func setupRudderStack() {
+    private func setupRudderStack(_ result: @escaping FlutterResult) {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
@@ -59,7 +59,10 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
                 .withLoglevel(Int32(logLevel))
             
             RSClient.getInstance(writeKey, config: builder.build())
+            result(true)
         }
+            result(false)
+
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -80,7 +83,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
             self.alias(call, result)
 
         case SETUP:
-            self.setupRudderStack()
+            self.setupRudderStack(result)
             
         case RESET:
             self.reset(result)
