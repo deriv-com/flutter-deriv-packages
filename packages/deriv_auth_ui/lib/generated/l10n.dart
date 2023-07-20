@@ -171,26 +171,6 @@ class DerivAuthUILocalization {
     );
   }
 
-  /// `Welcome back!`
-  String get labelLoginWelcomeBack {
-    return Intl.message(
-      'Welcome back!',
-      name: 'labelLoginWelcomeBack',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `It's good to see you again. Log in to start trading.`
-  String get labelLoginGreeting {
-    return Intl.message(
-      'It\'s good to see you again. Log in to start trading.',
-      name: 'labelLoginGreeting',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Email`
   String get labelEmail {
     return Intl.message(
@@ -546,26 +526,6 @@ class DerivAuthUILocalization {
     return Intl.message(
       'Got a referral code?',
       name: 'labelGotReferralCode',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Start trading with Deriv`
-  String get labelStartTradingWithDeriv {
-    return Intl.message(
-      'Start trading with Deriv',
-      name: 'labelStartTradingWithDeriv',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Join over 2.5 million traders worldwide who love trading on Deriv.`
-  String get labelSignupPageDescription {
-    return Intl.message(
-      'Join over 2.5 million traders worldwide who love trading on Deriv.',
-      name: 'labelSignupPageDescription',
       desc: '',
       args: [],
     );

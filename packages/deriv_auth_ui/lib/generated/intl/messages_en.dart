@@ -113,10 +113,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Keep your account secure with a password"),
         "labelLiveChat": MessageLookupByLibrary.simpleMessage("Live chat"),
         "labelLogIn": MessageLookupByLibrary.simpleMessage("Log in"),
-        "labelLoginGreeting": MessageLookupByLibrary.simpleMessage(
-            "It\'s good to see you again. Log in to start trading."),
-        "labelLoginWelcomeBack":
-            MessageLookupByLibrary.simpleMessage("Welcome back!"),
         "labelNotAvailable":
             MessageLookupByLibrary.simpleMessage("Not available"),
         "labelOrSignUpWith":
@@ -133,10 +129,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "labelSelectCountry":
             MessageLookupByLibrary.simpleMessage("Where do you live?"),
         "labelSignUp": MessageLookupByLibrary.simpleMessage("Sign up"),
-        "labelSignupPageDescription": MessageLookupByLibrary.simpleMessage(
-            "Join over 2.5 million traders worldwide who love trading on Deriv."),
-        "labelStartTradingWithDeriv":
-            MessageLookupByLibrary.simpleMessage("Start trading with Deriv"),
         "labelThanksEmail": MessageLookupByLibrary.simpleMessage(
             "Thanks for verifying your email"),
         "labelTwoFactorAuth":

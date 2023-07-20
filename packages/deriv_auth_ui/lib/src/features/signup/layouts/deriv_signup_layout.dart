@@ -19,6 +19,8 @@ class DerivSignupLayout extends StatefulWidget {
     required this.onSingupEmailSent,
     required this.onSignupPressed,
     required this.onLoginTapped,
+    required this.labelSignupPageText,
+    required this.labelSignupPageDescription,
     this.enableReferralSection = true,
     Key? key,
   }) : super(key: key);
@@ -40,6 +42,12 @@ class DerivSignupLayout extends StatefulWidget {
 
   /// Whether to show referral code section or not. Defaults to true.
   final bool enableReferralSection;
+
+  /// Title of signup page.
+  final String labelSignupPageText;
+
+  /// Description of signup page.
+  final String labelSignupPageDescription;
 
   @override
   State<DerivSignupLayout> createState() => _DerivSignupLayoutState();
@@ -201,12 +209,12 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
 
   List<Widget> _buildHeaderSection() => <Widget>[
         Text(
-          context.localization.labelStartTradingWithDeriv,
+          widget.labelSignupPageText,
           style: TextStyles.title,
         ),
         const SizedBox(height: ThemeProvider.margin08),
         Text(
-          context.localization.labelSignupPageDescription,
+          widget.labelSignupPageDescription,
           style: context.theme.textStyle(
             textStyle: TextStyles.body1,
             color: context.theme.colors.lessProminent,
