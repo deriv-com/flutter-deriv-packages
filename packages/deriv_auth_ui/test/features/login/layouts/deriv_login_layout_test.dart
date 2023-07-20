@@ -17,6 +17,9 @@ void main() {
   group('DerivLoginLayout', () {
     late MockAuthCubit authCubit;
 
+    const String welcomeLabel = 'Welcome Back';
+    const String greetingLabel = 'Let\'s start trading.';
+
     setUpAll(() => authCubit = MockAuthCubit());
 
     patrolTest(
@@ -33,8 +36,8 @@ void main() {
         BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
           child: DerivLoginLayout(
-            labelLoginWelcomeText: 'Welcome Back',
-            labelLoginGreeting: 'Let\'s start trading.',
+            welcomeLabel: welcomeLabel,
+            greetingLabel: greetingLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
             onLoginError: (_) {},
@@ -64,8 +67,8 @@ void main() {
         BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
           child: DerivLoginLayout(
-            labelLoginWelcomeText: 'Welcome Back',
-            labelLoginGreeting: 'Let\'s start trading.',
+            welcomeLabel: 'Welcome Back',
+            greetingLabel: 'Let\'s start trading.',
             onResetPassTapped: () {},
             onSignupTapped: () {},
             onLoginError: (_) {},
@@ -97,8 +100,8 @@ void main() {
           BlocProvider<DerivAuthCubit>.value(
             value: authCubit,
             child: DerivLoginLayout(
-              labelLoginWelcomeText: 'Welcome Back',
-              labelLoginGreeting: 'Let\'s start trading.',
+              welcomeLabel: welcomeLabel,
+              greetingLabel: greetingLabel,
               onResetPassTapped: () {},
               onSignupTapped: () {},
               onLoginError: (_) {},
@@ -124,8 +127,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: DerivLoginLayout(
-          labelLoginWelcomeText: 'Welcome Back',
-          labelLoginGreeting: 'Let\'s start trading.',
+          welcomeLabel: welcomeLabel,
+          greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {
             onSignupTappedCalled = true;
@@ -158,8 +161,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: DerivLoginLayout(
-          labelLoginWelcomeText: 'Welcome Back',
-          labelLoginGreeting: 'Let\'s start trading.',
+          welcomeLabel: welcomeLabel,
+          greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
           onLoginError: (_) {},
@@ -187,8 +190,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: DerivLoginLayout(
-          labelLoginWelcomeText: 'Welcome Back',
-          labelLoginGreeting: 'Let\'s start trading.',
+          welcomeLabel: welcomeLabel,
+          greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
           onLoginError: (_) {
@@ -216,8 +219,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: DerivLoginLayout(
-          labelLoginWelcomeText: 'Welcome Back',
-          labelLoginGreeting: 'Let\'s start trading.',
+          welcomeLabel: welcomeLabel,
+          greetingLabel: greetingLabel,
           onResetPassTapped: () {
             onResetPassTappedCalled = true;
           },
@@ -248,8 +251,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: DerivLoginLayout(
-          labelLoginWelcomeText: 'Welcome Back',
-          labelLoginGreeting: 'Let\'s start trading.',
+          welcomeLabel: welcomeLabel,
+          greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
           onLoginError: (_) {},

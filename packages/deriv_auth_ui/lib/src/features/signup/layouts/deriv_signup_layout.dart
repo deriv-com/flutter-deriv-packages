@@ -44,10 +44,10 @@ class DerivSignupLayout extends StatefulWidget {
   final bool enableReferralSection;
 
   /// Title of signup page.
-  final String labelSignupPageText;
+  final String signupPageLabel;
 
   /// Description of signup page.
-  final String labelSignupPageDescription;
+  final String signupPageDescription;
 
   @override
   State<DerivSignupLayout> createState() => _DerivSignupLayoutState();
@@ -209,12 +209,12 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
 
   List<Widget> _buildHeaderSection() => <Widget>[
         Text(
-          widget.labelSignupPageText,
+          widget.signupPageLabel,
           style: TextStyles.title,
         ),
         const SizedBox(height: ThemeProvider.margin08),
         Text(
-          widget.labelSignupPageDescription,
+          widget.signupPageDescription,
           style: context.theme.textStyle(
             textStyle: TextStyles.body1,
             color: context.theme.colors.lessProminent,

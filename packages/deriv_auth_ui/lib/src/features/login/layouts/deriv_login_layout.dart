@@ -44,10 +44,10 @@ class DerivLoginLayout extends StatefulWidget {
   final VoidCallback? onLoginTapped;
 
   /// Welcome text to be displayed on login page.
-  final String labelLoginWelcomeText;
+  final String welcomeLabel;
 
   /// Greeting text to be displayed on login page.
-  final String labelLoginGreeting;
+  final String greetingLabel;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -127,7 +127,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
 
   List<Widget> _buildTopSection() => <Widget>[
         Text(
-          widget.labelLoginWelcomeText,
+          widget.welcomeLabel,
           style: context.theme.textStyle(
             textStyle: TextStyles.title,
             color: context.theme.colors.prominent,
@@ -135,7 +135,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
         ),
         const SizedBox(height: ThemeProvider.margin08),
         Text(
-          widget.labelLoginGreeting,
+          widget.greetingLabel,
           style: context.theme.textStyle(
             textStyle: TextStyles.body1,
             color: context.theme.colors.lessProminent,

@@ -17,6 +17,9 @@ void main() {
   group('DerivSignupLayout', () {
     late MockSignupCubit signupCubit;
 
+    const String signupPageLabel = 'Create a free account';
+    const String signupPageDescription = 'Start trading within minutes.';
+
     setUpAll(() {
       signupCubit = MockSignupCubit();
 
@@ -33,8 +36,8 @@ void main() {
           BlocProvider<DerivSignupCubit>.value(
             value: signupCubit,
             child: DerivSignupLayout(
-              labelSignupPageText: 'Create a free account',
-              labelSignupPageDescription: 'Start trading within minutes.',
+              signupPageLabel: signupPageLabel,
+              signupPageDescription: signupPageDescription,
               onSocialAuthButtonPressed: (_) {},
               onSingupError: (_) {},
               onSingupEmailSent: (_) {},
@@ -57,8 +60,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
         value: signupCubit,
         child: DerivSignupLayout(
-          labelSignupPageText: 'Create a free account',
-          labelSignupPageDescription: 'Start trading within minutes.',
+          signupPageLabel: signupPageLabel,
+          signupPageDescription: signupPageDescription,
           onSocialAuthButtonPressed: (_) {
             isOnSocialAuthButtonPressedCalled = true;
           },
@@ -87,8 +90,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
         value: signupCubit,
         child: DerivSignupLayout(
-          labelSignupPageText: 'Create a free account',
-          labelSignupPageDescription: 'Start trading within minutes.',
+          signupPageLabel: signupPageLabel,
+          signupPageDescription: signupPageDescription,
           onSocialAuthButtonPressed: (_) {},
           onSingupError: (_) {},
           onSingupEmailSent: (_) => isOnSignupEmailSentCalled = true,
@@ -110,8 +113,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
         value: signupCubit,
         child: DerivSignupLayout(
-          labelSignupPageText: 'Create a free account',
-          labelSignupPageDescription: 'Start trading within minutes.',
+          signupPageLabel: signupPageLabel,
+          signupPageDescription: signupPageDescription,
           onSocialAuthButtonPressed: (_) {},
           onSingupError: (_) {},
           onSingupEmailSent: (_) {},
@@ -138,8 +141,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
         value: signupCubit,
         child: DerivSignupLayout(
-          labelSignupPageText: 'Create a free account',
-          labelSignupPageDescription: 'Start trading within minutes.',
+          signupPageLabel: signupPageLabel,
+          signupPageDescription: signupPageDescription,
           onSocialAuthButtonPressed: (_) {},
           onSingupError: (_) {},
           onSingupEmailSent: (_) {},
@@ -171,8 +174,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
         value: signupCubit,
         child: DerivSignupLayout(
-          labelSignupPageText: 'Create a free account',
-          labelSignupPageDescription: 'Start trading within minutes.',
+          signupPageLabel: 'Create a free account',
+          signupPageDescription: 'Start trading within minutes.',
           onSocialAuthButtonPressed: (_) {},
           onSingupError: (_) => isOnSignupErrorCalled = true,
           onSingupEmailSent: (_) {},
