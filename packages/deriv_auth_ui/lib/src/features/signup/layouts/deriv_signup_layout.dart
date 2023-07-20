@@ -19,8 +19,8 @@ class DerivSignupLayout extends StatefulWidget {
     required this.onSingupEmailSent,
     required this.onSignupPressed,
     required this.onLoginTapped,
-    required this.labelSignupPageText,
-    required this.labelSignupPageDescription,
+    required this.signupPageLabel,
+    required this.signupPageDescription,
     this.enableReferralSection = true,
     Key? key,
   }) : super(key: key);
