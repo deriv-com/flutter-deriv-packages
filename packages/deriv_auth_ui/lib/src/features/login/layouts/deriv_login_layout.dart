@@ -19,8 +19,8 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onLoginError,
     required this.onLoggedIn,
     required this.onSocialAuthButtonPressed,
-    required this.labelLoginWelcomeText,
-    required this.labelLoginGreeting,
+    required this.welcomeLabel,
+    required this.greetingLabel,
     this.onLoginTapped,
     Key? key,
   }) : super(key: key);
