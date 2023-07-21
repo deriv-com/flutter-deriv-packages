@@ -67,8 +67,8 @@ void main() {
         BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
           child: DerivLoginLayout(
-            welcomeLabel: 'Welcome Back',
-            greetingLabel: 'Let\'s start trading.',
+            welcomeLabel: welcomeLabel,
+            greetingLabel: greetingLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
             onLoginError: (_) {},

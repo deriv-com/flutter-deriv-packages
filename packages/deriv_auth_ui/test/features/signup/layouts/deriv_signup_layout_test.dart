@@ -174,8 +174,8 @@ void main() {
       await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
         value: signupCubit,
         child: DerivSignupLayout(
-          signupPageLabel: 'Create a free account',
-          signupPageDescription: 'Start trading within minutes.',
+          signupPageLabel: signupPageLabel,
+          signupPageDescription: signupPageDescription,
           onSocialAuthButtonPressed: (_) {},
           onSingupError: (_) => isOnSignupErrorCalled = true,
           onSingupEmailSent: (_) {},
