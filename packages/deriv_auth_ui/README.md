@@ -66,6 +66,9 @@ MaterialApp(
 - **Login Layout**
     ``` dart
       DerivLoginLayout(
+            welcomeLabel: 'Welcome back!',
+            greetingLabel:
+              'Log in to your Deriv account to start trading and investing.',
             onResetPassTapped: () {
                 // Navigate to reset password page
             },
@@ -95,6 +98,9 @@ MaterialApp(
 - **Signup Layout**
     ``` dart
       DerivSignupLayout(
+            signupPageLabel: 'Start trading with Deriv',
+            signupPageDescription:
+              'Join over 1 million traders worldwide who loves trading at Deriv.',
             onSocialAuthButtonPressed: (SocialAuthProvider provider) {},
             onSingupError: (DerivSignupErrorState error) {},
             onSingupEmailSent: (String email) {},
