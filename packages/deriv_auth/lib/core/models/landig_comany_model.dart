@@ -276,6 +276,9 @@ class LandingCompanyEntity extends LandingCompanyModel {
         virtualCompany: json['virtual_company'],
       );
 
+  /// Checks if CFDs are available for this landing company.
+  bool get isCFDsAvailable => derivez?.all?.standard != StandardEnum.none;
+
   /// Converts an instance to JSON.
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> resultMap = <String, dynamic>{};
