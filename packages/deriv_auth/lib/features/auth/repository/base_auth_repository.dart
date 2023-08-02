@@ -1,5 +1,6 @@
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 
 /// Interface of all authentication functions required from client.
 abstract class BaseAuthRepository {
@@ -23,4 +24,7 @@ abstract class BaseAuthRepository {
 
   /// Get latest saved user accounts.
   Future<List<AccountModel>> getLatestAccounts();
+
+  /// Get landing company.
+  Future<LandingCompanyEntity> getLandingCompany(String? countryCode);
 }

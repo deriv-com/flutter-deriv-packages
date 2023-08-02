@@ -12,10 +12,13 @@ class DerivAuthLoadingState extends DerivAuthState {}
 /// can be accessed by the client.
 class DerivAuthLoggedInState extends DerivAuthState {
   /// Initialize [DerivAuthLoggedInState].
-  DerivAuthLoggedInState(this.authorizeEntity);
+  DerivAuthLoggedInState(this.authorizeEntity, this.landingCompany);
 
   /// [AuthorizeEntity] hold all user information.
   final AuthorizeEntity authorizeEntity;
+
+  /// [LandingCompanyEntity] hold all landing company information.
+  final LandingCompanyEntity landingCompany;
 }
 
 /// Logged out state.
