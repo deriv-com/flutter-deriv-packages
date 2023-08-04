@@ -107,7 +107,13 @@ class WebSocket {
       _channel = getChannel(webSocket);
 
       _channel!.stream.listen(
-        _messageController.add,
+        (dynamic message) {
+          if (_messageController.isClosed) {
+            return;
+          }
+
+          _messageController.add(message);
+        },
         onDone: _attemptToReconnect,
         cancelOnError: true,
       );
@@ -165,9 +171,7 @@ class WebSocket {
   bool _isConnected() {
     final ConnectionState state = _connectionController.state;
 
-    return state is ConnectedState ||
-        state is ReconnectedState ||
-        state is DisconnectingState;
+    return state is ConnectedState || state is ReconnectedState;
   }
 
   bool _isReconnecting() {
