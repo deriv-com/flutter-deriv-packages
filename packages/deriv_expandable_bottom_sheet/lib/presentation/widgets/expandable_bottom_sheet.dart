@@ -181,7 +181,7 @@ class _ExpandableBottomSheetState extends State<ExpandableBottomSheet>
     });
 
     if (widget.lowerContent != null && widget.openMaximized) {
-      SchedulerBinding.instance.addPostFrameCallback(
+      SchedulerBinding.instance!.addPostFrameCallback(
         (_) => Future<void>.delayed(Duration.zero, open),
       );
     }

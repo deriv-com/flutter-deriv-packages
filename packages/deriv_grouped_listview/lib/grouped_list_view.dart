@@ -183,7 +183,7 @@ class _GroupedListViewState<E, G extends Comparable<Object>>
       _scrollController?.addListener(_scrollControllerListener);
     }
 
-    SchedulerBinding.instance
+    SchedulerBinding.instance!
         .addPostFrameCallback((_) => _initializeItemHeights());
   }
 

@@ -168,7 +168,7 @@ class _DerivDateRangePickerState extends State<DerivDateRangePicker> {
     selectedStartDate = widget.initialStartDate;
     selectedEndDate = widget.initialEndDate;
 
-    SchedulerBinding.instance.addPostFrameCallback((_) {
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
       if (widget.mode == DateRangePickerMode.input) {
         showDateRangeInputDialog();
       }
