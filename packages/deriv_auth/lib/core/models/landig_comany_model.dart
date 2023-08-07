@@ -42,6 +42,7 @@ abstract class LandingCompanyModel {
     this.derivez,
     this.financialCompany,
     this.gamingCompany,
+    this.name,
   });
 
   /// Available DerivEZ accounts.
@@ -52,6 +53,9 @@ abstract class LandingCompanyModel {
 
   /// Landing Company for gaming contracts (Synthetic Indices)
   final GamingCompany? gamingCompany;
+
+  /// Country name
+  final String? name;
 }
 
 /// Landing company class.
@@ -61,10 +65,12 @@ class LandingCompanyEntity extends LandingCompanyModel {
     Derivez? derivez,
     FinancialCompany? financialCompany,
     GamingCompany? gamingCompany,
+    String? name,
   }) : super(
           derivez: derivez,
           financialCompany: financialCompany,
           gamingCompany: gamingCompany,
+          name: name,
         );
 
   /// Creates an instance from JSON.
@@ -78,39 +84,11 @@ class LandingCompanyEntity extends LandingCompanyModel {
         gamingCompany: json['gaming_company'] == null
             ? null
             : GamingCompany.fromJson(json['gaming_company']),
+        name: json['name'],
       );
 
   /// Checks if CFDs are available for this landing company.
   bool get isCFDsAvailable => derivez?.all?.standard != StandardEnum.none;
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    if (derivez != null) {
-      resultMap['derivez'] = derivez!.toJson();
-    }
-    if (financialCompany != null) {
-      resultMap['financial_company'] = financialCompany!.toJson();
-    }
-    if (gamingCompany != null) {
-      resultMap['gaming_company'] = gamingCompany!.toJson();
-    }
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  LandingCompanyEntity copyWith({
-    Derivez? derivez,
-    FinancialCompany? financialCompany,
-    GamingCompany? gamingCompany,
-  }) =>
-      LandingCompanyEntity(
-        derivez: derivez ?? this.derivez,
-        financialCompany: financialCompany ?? this.financialCompany,
-        gamingCompany: gamingCompany ?? this.gamingCompany,
-      );
 }
 
 /// Derivez model class.
@@ -136,25 +114,6 @@ class Derivez extends DerivezModel {
   /// Creates an instance from JSON.
   factory Derivez.fromJson(Map<String, dynamic> json) => Derivez(
         all: json['all'] == null ? null : All.fromJson(json['all']),
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    if (all != null) {
-      resultMap['all'] = all!.toJson();
-    }
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  Derivez copyWith({
-    All? all,
-  }) =>
-      Derivez(
-        all: all ?? this.all,
       );
 }
 
@@ -183,26 +142,6 @@ class All extends AllModel {
         standard: json['standard'] == null
             ? null
             : standardEnumMapper[json['standard']],
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    resultMap['standard'] = standardEnumMapper.entries
-        .firstWhere(
-            (MapEntry<String, StandardEnum> entry) => entry.value == standard)
-        .key;
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  All copyWith({
-    StandardEnum? standard,
-  }) =>
-      All(
-        standard: standard ?? this.standard,
       );
 }
 
@@ -237,29 +176,6 @@ class FinancialCompany extends FinancialCompanyModel {
                 ),
               ),
       );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-    if (legalAllowedCurrencies != null) {
-      resultMap['legal_allowed_currencies'] = legalAllowedCurrencies!
-          .map<dynamic>(
-            (String item) => item,
-          )
-          .toList();
-    }
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  FinancialCompany copyWith({
-    List<String>? legalAllowedCurrencies,
-  }) =>
-      FinancialCompany(
-        legalAllowedCurrencies:
-            legalAllowedCurrencies ?? this.legalAllowedCurrencies,
-      );
 }
 
 /// Gaming company model class.
@@ -291,29 +207,5 @@ class GamingCompany extends GamingCompanyModel {
                   (dynamic item) => item,
                 ),
               ),
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    if (legalAllowedCurrencies != null) {
-      resultMap['legal_allowed_currencies'] = legalAllowedCurrencies!
-          .map<dynamic>(
-            (String item) => item,
-          )
-          .toList();
-    }
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  GamingCompany copyWith({
-    List<String>? legalAllowedCurrencies,
-  }) =>
-      GamingCompany(
-        legalAllowedCurrencies:
-            legalAllowedCurrencies ?? this.legalAllowedCurrencies,
       );
 }
