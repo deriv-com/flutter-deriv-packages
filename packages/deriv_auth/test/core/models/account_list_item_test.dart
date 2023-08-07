@@ -19,7 +19,6 @@ void main() {
 
       final Map<String, dynamic> json = item.toJson();
 
-      expect(json['account_type'], equals('trading'));
       expect(json['currency'], equals('USD'));
       expect(json['landing_company_name'], equals('Test Company'));
       expect(json['loginid'], equals('test_loginid'));

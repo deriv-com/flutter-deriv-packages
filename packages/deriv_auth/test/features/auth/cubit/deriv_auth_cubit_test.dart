@@ -169,6 +169,7 @@ void main() {
       });
       test('should emit [AuthLoggedOutState] upon a successful logout.', () {
         when(() => service.logout()).thenAnswer((_) => Future<void>.value());
+        when(() => service.onLogout()).thenAnswer((_) => Future<void>.value());
         when(() => service.onPostLogout()).thenAnswer(
           (_) => Future<void>.value(),
         );
