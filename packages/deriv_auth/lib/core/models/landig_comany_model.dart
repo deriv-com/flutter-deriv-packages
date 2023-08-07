@@ -34,7 +34,6 @@ enum StandardEnum {
   none,
 }
 
-// TODO(rezam-deriv): Remove unused properties.
 /// Landing company model class.
 abstract class LandingCompanyModel {
   /// Initializes Landing company model class .
