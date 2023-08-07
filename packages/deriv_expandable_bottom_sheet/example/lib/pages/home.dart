@@ -1,7 +1,6 @@
 /// This imports the required packages.
 import 'package:deriv_expandable_bottom_sheet/deriv_expandable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 /// This is a home screen widget that displays a button to show the expandable bottom sheet.
 class Home extends StatelessWidget {
