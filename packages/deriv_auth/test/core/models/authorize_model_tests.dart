@@ -6,7 +6,6 @@ void main() {
     final Map<String, dynamic> authorizeJson = <String, dynamic>{
       'account_list': <dynamic>[
         AccountListItem(
-          accountType: 'trading',
           createdAt: DateTime.now(),
           currency: 'USD',
           token: 'test_token',

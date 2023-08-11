@@ -7,6 +7,7 @@ import 'package:deriv_auth/core/extensions/extensions.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/core/services/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/core/services/api_client/http_client.dart';
 import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
@@ -219,4 +220,8 @@ class DerivAuthService extends BaseAuthService {
       );
     }
   }
+
+  @override
+  Future<LandingCompanyEntity> getLandingCompany(String? countryCode) =>
+      authRepository.getLandingCompany(countryCode);
 }

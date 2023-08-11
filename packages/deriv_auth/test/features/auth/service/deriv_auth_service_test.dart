@@ -534,13 +534,13 @@ void main() {
         verify(() => repository.logout()).called(1);
       });
 
-      test('should call the [onLogout] method.', () async {
-        when(() => repository.onLogout())
+      test('should call the [onLoggedOut] method.', () async {
+        when(() => repository.onPostLogout())
             .thenAnswer((_) => Future<void>.value());
 
-        await authService.onLogout();
+        await authService.onPostLogout();
 
-        verify(() => repository.onLogout()).called(1);
+        verify(() => repository.onPostLogout()).called(1);
       });
     },
   );

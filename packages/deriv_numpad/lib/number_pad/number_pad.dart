@@ -107,8 +107,8 @@ class NumberPad extends StatefulWidget {
     this.currentFocus = NumberPadInputFocus.firstInputField,
     this.dialogDescription,
     this.headerLeading,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   /// Sets the currency of the number pad
   ///

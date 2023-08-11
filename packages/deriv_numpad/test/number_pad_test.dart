@@ -467,7 +467,7 @@ void main() {
 }
 
 class TestWidget extends StatelessWidget {
-  const TestWidget(this.numberInput, {super.key});
+  const TestWidget(this.numberInput, {Key? key}) : super(key: key);
 
   final NumberPad numberInput;
 
