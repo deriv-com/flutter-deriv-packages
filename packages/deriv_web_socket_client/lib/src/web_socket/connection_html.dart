@@ -16,7 +16,7 @@ Future<WebSocket> connect(
 }) async {
   final WebSocket socket = WebSocket(url, protocols)..binaryType = binaryType;
 
-  if (socket.readyState == 1) {
+  if (socket.readyState == WebSocket.OPEN) {
     return socket;
   }
 
