@@ -1,3 +1,4 @@
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
 class ExampleLoginRepository implements BaseAuthRepository {
@@ -28,4 +29,8 @@ class ExampleLoginRepository implements BaseAuthRepository {
 
   @override
   Future<void> onPostLogout() => Future.value();
+
+  @override
+  Future<LandingCompanyEntity> getLandingCompany(String? countryCode) =>
+      Future.value(const LandingCompanyEntity());
 }

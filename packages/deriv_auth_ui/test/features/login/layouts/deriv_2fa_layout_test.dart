@@ -1,5 +1,6 @@
 // ignore_for_file: always_specify_types
 
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/presentation/widgets/base_text_field.dart';
@@ -54,7 +55,8 @@ void main() {
               password: any(named: 'password'),
               otp: any(named: 'otp')))
           .thenAnswer((_) async => DerivAuthLoggedInState(
-                const AuthorizeEntity(),
+                authorizeEntity: const AuthorizeEntity(),
+                landingCompany: const LandingCompanyEntity(),
               ));
 
       await $.pumpApp(
