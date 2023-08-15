@@ -1,5 +1,6 @@
 // ignore_for_file: always_specify_types
 
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
@@ -149,7 +150,10 @@ void main() {
     });
 
     patrolTest('calls onLoggedIn on successful login.', (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedInState(const AuthorizeEntity());
+      final mockAuthState = DerivAuthLoggedInState(
+        authorizeEntity: const AuthorizeEntity(),
+        landingCompany: const LandingCompanyEntity(),
+      );
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
