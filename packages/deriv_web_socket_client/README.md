@@ -2,6 +2,8 @@
 
 This is a WebSocket connection handler package that simplifies the management of WebSocket connections and provides a high-level API for handling WebSocket communication in Dart applications. The package is built on top of the `web_socket_channel` library but abstracts away some of the complexities of directly using `web_socket_channel`.
 
+![Uml Diagram](diagram.png)
+
 ### Example
 
 Here's a simple example of how to use the WebSocket connection handler:
