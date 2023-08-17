@@ -6,7 +6,7 @@ This package is used for collecting and sending analytical information from the 
 ```yaml
 analytics:
        git:
-         url: git@github.com:regentmarkets/flutter-deriv-packages.git
+         url: git@github.com:sahani-deriv/flutter-deriv-packages.git
          path: packages/analytics
          ref: <master/dev>
 ```
