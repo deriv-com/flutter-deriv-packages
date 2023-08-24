@@ -94,7 +94,7 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             Log.d(TAG, "onMethodCall: clear live chat")
             //clearSession(chatWindowView?.context)
             ChatWindowView.clearSession(chatWindowView?.context)
-            chatWindowView?.reload(true);
+            chatWindowView?.reload(true)
             chatWindowView?.setUpListener(null);
 
             chatWindowView?.onBackPressed()
