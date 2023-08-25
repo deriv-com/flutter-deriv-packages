@@ -33,7 +33,7 @@ class DerivLiveChat {
   static Future<void> closeChatView() async =>
       _liveChatMethodChannel.invokeMethod<dynamic>('close_live_chat_view');
 
-  /// Close chat window and clear chat history by invoking method channel.
+  /// Clear chat history by invoking method channel.
   static Future<void> clearChatView() async =>
       _liveChatMethodChannel.invokeMethod<dynamic>('clear_live_chat_view');
 
