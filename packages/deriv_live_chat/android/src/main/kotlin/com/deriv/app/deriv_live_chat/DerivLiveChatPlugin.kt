@@ -91,9 +91,6 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
         } else if (call.method.equals("clear_live_chat_view")) {
             ChatWindowView.clearSession(chatWindowView?.context)
             chatWindowView?.reload()
-            chatWindowView?.setUpListener(null);
-
-            chatWindowView?.onBackPressed()
 
             result.success(null)
         } else {
