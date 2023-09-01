@@ -14,7 +14,7 @@ This package contains the shared `Auth` UI for deriv apps. This was exctracted f
 ``` yaml
 dependencies:
    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:sahani-deriv/flutter-deriv-packages.git
       path: packages/deriv_auth_ui
       ref: dev
 ```

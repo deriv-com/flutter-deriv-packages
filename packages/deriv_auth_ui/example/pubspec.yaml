@@ -16,13 +16,13 @@ dependencies:
     path: ../
   deriv_auth:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:sahani-deriv/flutter-deriv-packages.git
       path: packages/deriv_auth
       ref: flutter-version-3
   deriv_theme:
     path: ../../deriv_theme
     # git:
-    #   url: git@github.com:regentmarkets/flutter-deriv-packages.git
+    #   url: git@github.com:sahani-deriv/flutter-deriv-packages.git
     #   path: packages/deriv_theme
     #   ref: dev
   flutter_bloc: ^8.1.3

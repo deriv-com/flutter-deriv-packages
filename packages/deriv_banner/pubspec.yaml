@@ -20,7 +20,7 @@ dev_dependencies:
 
   deriv_lint:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:sahani-deriv/flutter-deriv-packages.git
       path: packages/deriv_lint
       ref: flutter-version-3
 

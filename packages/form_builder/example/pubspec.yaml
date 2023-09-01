@@ -1,6 +1,6 @@
 name: form_builder_example
 description: An example project to demonstrate FormBuilder package.
-homepage: https://github.com/regentmarkets/flutter-deriv-packages
+homepage: https://github.com/sahani-deriv/flutter-deriv-packages
 publish_to: "none"
 version: 1.0.0+1
 
