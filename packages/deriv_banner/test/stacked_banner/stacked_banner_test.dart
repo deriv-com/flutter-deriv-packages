@@ -16,7 +16,6 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      // One in stacked list and one in expanded list.
       expect(find.text('MockItem1'), findsNWidgets(1));
     });
 
