@@ -1,0 +1,14 @@
+name: deriv_http_client
+description: A simple HTTP client for Deriv API services.
+
+version: 1.0.0
+
+environment:
+  sdk: ">=3.0.0"
+
+dependencies:
+  http: ^0.13.4
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
