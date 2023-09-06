@@ -19,6 +19,12 @@ dependencies:
       url: git@github.com:deriv-com/flutter-deriv-api.git
       ref: flutter-version-3
 
+  deriv_http_client:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_http_client
+      ref: flutter-version-3
+
   crypto: ^3.0.2
   equatable: ^2.0.3
   url_launcher: ^6.1.10
