@@ -17,12 +17,12 @@ dependencies:
   flutter_deriv_api:
     git:
       url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: flutter-version-3
+      ref: 178b47179736e2e7bd5cc09e5156454ab52962d2
 
   crypto: ^3.0.2
   equatable: ^2.0.3
   url_launcher: ^6.1.10
-  webview_flutter: ^4.2.1
+  webview_flutter: ^4.2.2
   flutter_inappwebview: ^5.7.2+3
 
 dev_dependencies:
