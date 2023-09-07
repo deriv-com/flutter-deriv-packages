@@ -1,6 +1,7 @@
 import 'package:deriv_auth/core/exceptions/referral_code_exception.dart';
 import 'package:deriv_auth/core/services/referral/my_affiliate_referral_code_service.dart';
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';

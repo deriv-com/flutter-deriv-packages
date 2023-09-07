@@ -1,6 +1,6 @@
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/jwt/models/app_auth_challenge/app_auth_challenge_response.dart';
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
