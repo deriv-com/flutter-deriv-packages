@@ -1,19 +1,19 @@
 import 'dart:async';
 import 'dart:developer' as dev;
 
+import 'package:deriv_web_view/helper.dart';
 import 'package:deriv_web_view/widgets/in_app_browser/chrome_safari_browser.dart';
+import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import 'package:deriv_web_view/helper.dart';
-import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
-
 /// Opens a url in a browser.
 Future<void> openWebPage({
   required BuildContext context,
   required String url,
+  required String userAgent,
   bool rootNavigator = false,
   LaunchMode launchMode = LaunchMode.externalApplication,
 }) async {
@@ -24,7 +24,10 @@ Future<void> openWebPage({
   } else {
     await Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
-        builder: (BuildContext context) => WebViewPage(url: url),
+        builder: (BuildContext context) => WebViewPage(
+          url: url,
+          userAgent: userAgent,
+        ),
       ),
     );
   }
@@ -81,6 +84,7 @@ Future<void> _openInAppTabView(String url, VoidCallback onClosed) async {
 Future<void> openInAppWebView({
   required BuildContext context,
   required String url,
+  required String userAgent,
   String? title,
   bool extendBodyBehindAppBar = false,
   bool setEndpoint = false,
@@ -92,6 +96,7 @@ Future<void> openInAppWebView({
     Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => WebViewPage(
+          userAgent: userAgent,
           url: url,
           title: title,
           extendBodyBehindAppBar: extendBodyBehindAppBar,
@@ -115,6 +120,7 @@ Future<void> openLoggedInWebPage({
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
   required String appToken,
+  required String userAgent,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -186,6 +192,7 @@ Future<void> openLoggedInWebPage({
       context: context,
       url: ptaLoginUrl,
       rootNavigator: rootNavigator,
+      userAgent: userAgent,
     );
   }
 }

@@ -14,22 +14,17 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_deriv_api:
-    git:
-      url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: flutter-version-3
-
-  deriv_http_client:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_http_client
-      ref: flutter-version-3
-
   crypto: ^3.0.2
   equatable: ^2.0.3
   url_launcher: ^6.1.10
   webview_flutter: ^4.2.1
   flutter_inappwebview: ^5.7.2+3
+  flutter_bloc: ^8.1.2
+  deriv_http_client:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_http_client
+      ref: flutter-version-3
 
 dev_dependencies:
   flutter_test:
