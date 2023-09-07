@@ -1,15 +1,23 @@
-# HttpClient
+# HTTP Client
 
-HttpClient is a Dart package that provides a singleton class for making HTTP requests. It simplifies the process of sending GET and POST requests, handling JSON encoding and decoding, and providing error handling for non-2xx HTTP status codes.
+This is a simple HTTP client library for making HTTP GET and POST requests in Dart. It provides an abstract `BaseHttpClient` class along with a concrete implementation called `HttpClient`. The library is designed to be easy to use and allows for basic authentication with optional error handling.
+
+### Features
+
+**GET Requests:** You can easily make HTTP GET requests by providing the URL and an optional basic authentication token.
+
+**POST Requests:** You can make HTTP POST requests by providing the URL, a JSON request body, and optional headers.
+
+**Error Handling:** The library includes an `HTTPClientException` class for handling HTTP errors. It captures important information such as the status code, error code, and error message.
 
 ### GET Request
 
 ```dart
 try {
   final response = await httpClient.get('https://example.com/api/data');
-  print('Response: ${response.body}');
+  // Handle the response here
 } catch (e) {
-  print('Error: $e');
+  // Handle errors
 }
 ```
 
@@ -17,16 +25,22 @@ try {
 
 ```dart
 try {
-  final response = await httpClient.get('https://example.com/api/data');
-  print('Response: ${response.body}');
+  final data = {
+    'key1': 'value1',
+    'key2': 'value2',
+  };
+
+  final response = await httpClient.post(
+    url: 'https://example.com/api/post',
+    jsonBody: data,
+  );
+
+  // Handle the response here
 } catch (e) {
-  print('Error: $e');
+  // Handle errors
 }
+
 ```
-
-### Singleton Pattern
-
-The `HttpClient` class is implemented as a Singleton pattern, ensuring that there is only one instance of it in your application. You can access this instance using `HttpClient()`.
 
 ```dart
 final HttpClient httpClient = HttpClient();
