@@ -10,6 +10,7 @@ import 'states/web_view_page_cubit.dart';
 class WebViewPage extends StatefulWidget {
   /// Starts an in-app web view to launch a [url].
   const WebViewPage({
+    required this.userAgent,
     Key? key,
     this.url,
     this.title,
@@ -19,7 +20,6 @@ class WebViewPage extends StatefulWidget {
     this.endpoint,
     this.appId,
     this.onClosed,
-    required this.userAgent,
   }) : super(key: key);
 
   /// User Agent.
