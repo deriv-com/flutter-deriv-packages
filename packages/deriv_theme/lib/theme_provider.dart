@@ -107,24 +107,24 @@ class ThemeProvider {
   String get fontFamily => TextStyles.appFontFamily;
 
   // Colors getters
-  @Deprecated('Use `colors.coral` instead')
+  // @Deprecated('Use `colors.coral` instead')
   Color get brandCoralColor => BrandColors.coral;
 
-  @Deprecated('Use `colors.blue` instead')
+  // @Deprecated('Use `colors.blue` instead')
   Color get brandGreenishColor => BrandColors.greenish;
 
-  @Deprecated('Use `colors.orange` instead')
+  // @Deprecated('Use `colors.orange` instead')
   Color get brandOrangeColor => BrandColors.orange;
 
-  @Deprecated('Use `colors.danger` instead')
+  // @Deprecated('Use `colors.danger` instead')
   Color get accentRedColor =>
       _isDarkTheme ? DarkThemeColors.accentRed : LightThemeColors.accentRed;
 
-  @Deprecated('Use `colors.success` instead')
+  // @Deprecated('Use `colors.success` instead')
   Color get accentGreenColor =>
       _isDarkTheme ? DarkThemeColors.accentGreen : LightThemeColors.accentGreen;
 
-  @Deprecated('Use `colors.warning` instead')
+  // @Deprecated('Use `colors.warning` instead')
   Color get accentYellowColor => _isDarkTheme
       ? DarkThemeColors.accentYellow
       : LightThemeColors.accentYellow;
@@ -133,47 +133,47 @@ class ThemeProvider {
       ? DarkThemeColors.accentLightBlue
       : LightThemeColors.accentLightBlue;
 
-  @Deprecated('Use `colors.prominent` instead')
+  // @Deprecated('Use `colors.prominent` instead')
   Color get base01Color =>
       _isDarkTheme ? DarkThemeColors.base01 : LightThemeColors.base01;
 
-  @Deprecated('Use `colors.general` instead')
+  // @Deprecated('Use `colors.general` instead')
   Color get base02Color =>
       _isDarkTheme ? DarkThemeColors.base02 : LightThemeColors.base02;
 
-  @Deprecated('Use `colors.lessProminent` instead')
+  // @Deprecated('Use `colors.lessProminent` instead')
   Color get base03Color =>
       _isDarkTheme ? DarkThemeColors.base03 : LightThemeColors.base03;
 
-  @Deprecated('Use `colors.disabled` instead')
+  // @Deprecated('Use `colors.disabled` instead')
   Color get base04Color =>
       _isDarkTheme ? DarkThemeColors.base04 : LightThemeColors.base04;
 
-  @Deprecated('Use `colors.active` instead')
+  // @Deprecated('Use `colors.active` instead')
   Color get base05Color =>
       _isDarkTheme ? DarkThemeColors.base05 : LightThemeColors.base05;
 
-  @Deprecated('Use `colors.hover` instead')
+  // @Deprecated('Use `colors.hover` instead')
   Color get base06Color =>
       _isDarkTheme ? DarkThemeColors.base06 : LightThemeColors.base06;
 
-  @Deprecated('Use `colors.secondary` instead')
+  // @Deprecated('Use `colors.secondary` instead')
   Color get base07Color =>
       _isDarkTheme ? DarkThemeColors.base07 : LightThemeColors.base07;
 
-  @Deprecated('Use `colors.primary` instead')
+  // @Deprecated('Use `colors.primary` instead')
   Color get base08Color =>
       _isDarkTheme ? DarkThemeColors.base08 : LightThemeColors.base08;
 
-  @Deprecated('Use `colors.green` instead')
+  // @Deprecated('Use `colors.green` instead')
   Color get greenColor =>
       _isDarkTheme ? DarkThemeColors.green : LightThemeColors.green;
 
-  @Deprecated('Use `colors.information` instead')
+  // @Deprecated('Use `colors.information` instead')
   Color get accentBlueColor =>
       _isDarkTheme ? DarkThemeColors.accentBlue : LightThemeColors.accentBlue;
 
-  @Deprecated('Use `colors.disabled` instead')
+  // @Deprecated('Use `colors.disabled` instead')
   Color get disabledColor =>
       _isDarkTheme ? DarkThemeColors.disabled : LightThemeColors.disabled;
 
