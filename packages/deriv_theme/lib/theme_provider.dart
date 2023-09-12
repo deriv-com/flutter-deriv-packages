@@ -34,6 +34,8 @@ class ThemeProvider {
 
   static const double margin12 = Dimens.margin12;
 
+  static const double margin14 = Dimens.margin14;
+
   static const double margin16 = Dimens.margin16;
 
   static const double margin18 = Dimens.margin18;
@@ -64,7 +66,13 @@ class ThemeProvider {
 
   static const double margin128 = Dimens.margin128;
 
+  static const double padding01 = Dimens.borderRadius01;
+
+  static const double padding02 = Dimens.borderRadius02;
+
   static const double borderRadius04 = Dimens.borderRadius04;
+
+  static const double borderRadius06 = Dimens.borderRadius06;
 
   static const double borderRadius08 = Dimens.borderRadius08;
 

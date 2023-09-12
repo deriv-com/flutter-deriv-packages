@@ -74,7 +74,16 @@ class Dimens {
   static const double margin128 = 128;
 
   /// Border radius small.
+  static const double borderRadius01 = 1;
+
+  /// Border radius small.
+  static const double borderRadius02 = 2;
+
+  /// Border radius small.
   static const double borderRadius04 = 4;
+
+  /// Border radius small.
+  static const double borderRadius06 = 6;
 
   /// Border radius medium.
   static const double borderRadius08 = 8;
