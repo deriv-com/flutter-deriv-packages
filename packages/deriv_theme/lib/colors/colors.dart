@@ -49,9 +49,9 @@ class Colors {
 
   Color get green => _fetchColor('green');
 
-  Color get disabledWallet => _fetchColor('disabledWallet');
+  Color get overlay => _fetchColor('overlay');
 
-  Color get walletBackground => _fetchColor('walletBackground');
+  Color get disabledWallet => _fetchColor('disabledWallet');
 
   Color get demoCardBackground => _fetchColor('demoCardBackground');
 
