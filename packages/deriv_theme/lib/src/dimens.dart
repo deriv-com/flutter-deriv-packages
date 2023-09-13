@@ -123,4 +123,22 @@ class Dimens {
 
   /// Size 96 icon.
   static const double iconSize96 = 96;
+
+  /// Small wallet width.
+  static const double walletWidthSmall = 224;
+
+  /// Small wallet height.
+  static const double walletHeightSmall = 136;
+
+  /// Medium wallet width.
+  static const double walletWidthMedium = 224;
+
+  /// Medium wallet height.
+  static const double walletHeightMedium = 136;
+
+  /// Large wallet width.
+  static const double walletWidthLarge = 288;
+
+  /// Large wallet height.
+  static const double walletHeightLarge = 176;
 }

@@ -30,6 +30,10 @@ const Map<String, Color> lightTheme = <String, Color>{
   'green': Color(0xFF71BD0E),
 
   // Wallet
+  'disabledWallet': Color(0x62D9D9D9),
+  'walletBackground': Color(0x26FFFFFF),
+  'demoCardBackground': Color(0xFFFBDDDD),
+  'realCardBackground': Color(0xFF151717),
   'tradersHubDemoBegin': Color(0x3D377CFC),
   'tradersHubDemoEnd': Color(0xB8377CFC),
   'tradersHubRealBegin': Color(0x3D00A79E),

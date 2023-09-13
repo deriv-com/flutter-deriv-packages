@@ -49,6 +49,14 @@ class Colors {
 
   Color get green => _fetchColor('green');
 
+  Color get disabledWallet => _fetchColor('disabledWallet');
+
+  Color get walletBackground => _fetchColor('walletBackground');
+
+  Color get demoCardBackground => _fetchColor('demoCardBackground');
+
+  Color get realCardBackground => _fetchColor('realCardBackground');
+
   Color get tradersHubDemoBegin => _fetchColor('tradersHubDemoBegin');
 
   Color get tradersHubDemoEnd => _fetchColor('tradersHubDemoEnd');
