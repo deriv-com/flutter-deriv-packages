@@ -12,7 +12,7 @@ import 'text_styles.dart';
 /// access font family, various app colors, update app theme, and get text style
 class ThemeProvider {
   // TODO(mohammad): rename to DerivTheme.
-  const ThemeProvider([this.brightness = Brightness.dark]);
+  const ThemeProvider(this.brightness);
 
   final Brightness brightness;
 

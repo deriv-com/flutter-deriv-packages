@@ -28,4 +28,28 @@ const Map<String, Color> darkTheme = <String, Color>{
 
   // Random (colors that are not part of the color palette)
   'green': Color(0xFF71BD0E),
+
+  // Wallet
+  'tradersHubDemoBegin': Color(0x3D377CFC),
+  'tradersHubDemoEnd': Color(0xB8377CFC),
+  'tradersHubRealBegin': Color(0x3D00A79E),
+  'tradersHubRealEnd': Color(0xB800A79E),
+  'usdWalletBegin': Color(0x7A283991),
+  'usdWalletEnd': Color(0x3DF44336),
+  'audWalletBegin': Color(0x7AFFCD00),
+  'audWalletEnd': Color(0x3D0DB43D),
+  'eurWalletBegin': Color(0x7AF8D12E),
+  'eurWalletEnd': Color(0x3D283991),
+  'btcWalletBegin': Color(0x7AFF6444),
+  'btcWalletEnd': Color(0x3DF7931B),
+  'ethWalletBegin': Color(0x7A828CAD),
+  'ethWalletEnd': Color(0x3D52567F),
+  'ltcWalletBegin': Color(0x7AC1CCCF),
+  'ltcWalletEnd': Color(0x3DA5A8A9),
+  'usdtWalletBegin': Color(0x7A009393),
+  'usdtWalletEnd': Color(0x3D009393),
+  'usdcWalletBegin': Color(0x7A224CE1),
+  'usdcWalletEnd': Color(0x3D2775CA),
+  'demoWalletBegin': Color(0x7AFF444F),
+  'demoWalletEnd': Color(0x3DFF6444),
 };

@@ -49,5 +49,49 @@ class Colors {
 
   Color get green => _fetchColor('green');
 
+  Color get tradersHubDemoBegin => _fetchColor('tradersHubDemoBegin');
+
+  Color get tradersHubDemoEnd => _fetchColor('tradersHubDemoEnd');
+
+  Color get tradersHubRealBegin => _fetchColor('tradersHubRealBegin');
+
+  Color get tradersHubRealEnd => _fetchColor('tradersHubRealEnd');
+
+  Color get usdWalletBegin => _fetchColor('usdWalletBegin');
+
+  Color get usdWalletEnd => _fetchColor('usdWalletEnd');
+
+  Color get audWalletBegin => _fetchColor('audWalletBegin');
+
+  Color get audWalletEnd => _fetchColor('audWalletEnd');
+
+  Color get eurWalletBegin => _fetchColor('eurWalletBegin');
+
+  Color get eurWalletEnd => _fetchColor('eurWalletEnd');
+
+  Color get btcWalletBegin => _fetchColor('btcWalletBegin');
+
+  Color get btcWalletEnd => _fetchColor('btcWalletEnd');
+
+  Color get ethWalletBegin => _fetchColor('ethWalletBegin');
+
+  Color get ethWalletEnd => _fetchColor('ethWalletEnd');
+
+  Color get ltcWalletBegin => _fetchColor('ltcWalletBegin');
+
+  Color get ltcWalletEnd => _fetchColor('ltcWalletEnd');
+
+  Color get usdtWalletBegin => _fetchColor('usdtWalletBegin');
+
+  Color get usdtWalletEnd => _fetchColor('usdtWalletEnd');
+
+  Color get usdcWalletBegin => _fetchColor('usdcWalletBegin');
+
+  Color get usdcWalletEnd => _fetchColor('usdcWalletEnd');
+
+  Color get demoWalletBegin => _fetchColor('demoWalletBegin');
+
+  Color get demoWalletEnd => _fetchColor('demoWalletEnd');
+
   Color _fetchColor(String name) => (isDark ? dark[name] : light[name])!;
 }
