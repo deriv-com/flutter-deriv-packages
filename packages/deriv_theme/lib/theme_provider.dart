@@ -100,6 +100,18 @@ class ThemeProvider {
 
   static const double iconSize96 = Dimens.iconSize96;
 
+  static const double walletWidthSmall = Dimens.walletWidthSmall;
+
+  static const double walletHeightSmall = Dimens.walletHeightSmall;
+
+  static const double walletWidthMedium = Dimens.walletWidthMedium;
+
+  static const double walletHeightMedium = Dimens.walletHeightMedium;
+
+  static const double walletWidthLarge = Dimens.walletWidthLarge;
+
+  static const double walletHeightLarge = Dimens.walletHeightLarge;
+
   bool get _isDarkTheme => brightness == Brightness.dark;
 
   bool get isDarkTheme => _isDarkTheme;
