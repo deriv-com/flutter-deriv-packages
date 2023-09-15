@@ -23,7 +23,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_web_view
-      ref: flutter-version-3
+      ref: dev
 
   flutter_svg: ^1.0.3
 
