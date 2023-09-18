@@ -72,10 +72,9 @@ void main() {
         'loginid': '12345',
         'preferred_language': 'en',
         'scopes': <String>['a', 'b', 'c'],
-        'trading': null,
+        'linked_to': null,
         'upgradeable_landing_companies': null,
         'user_id': 6789,
-        'wallet': null,
         'refresh_token': null,
       };
 
@@ -97,10 +96,9 @@ void main() {
       expect(entity.authorize!.loginid, equals('12345'));
       expect(entity.authorize!.preferredLanguage, equals('en'));
       expect(entity.authorize!.scopes, equals(<String>['a', 'b', 'c']));
-      expect(entity.authorize!.trading, isNull);
+      expect(entity.authorize!.linkedTo, isNull);
       expect(entity.authorize!.upgradeableLandingCompanies, isNull);
       expect(entity.authorize!.userId, equals(6789));
-      expect(entity.authorize!.wallet, isNull);
       expect(entity.authorize!.refreshToken, isNull);
     });
 
