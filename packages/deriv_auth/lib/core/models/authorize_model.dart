@@ -168,7 +168,7 @@ abstract class AuthorizeModel {
   final String? landingCompanyName;
 
   /// Details of the list of Trading accounts linked to the Wallet account.
-  final List<AuthorizeLinkedToItem>? linkedTo;
+  final List<LinkedToItem>? linkedTo;
 
   /// Currencies in client's residence country
   final Map<String, LocalCurrenciesPropertyEntity>? localCurrencies;
@@ -208,7 +208,7 @@ class AuthorizeEntity extends AuthorizeModel {
     bool? isVirtual,
     String? landingCompanyFullname,
     String? landingCompanyName,
-    List<AuthorizeLinkedToItem>? linkedTo,
+    List<LinkedToItem>? linkedTo,
     Map<String, LocalCurrenciesPropertyEntity>? localCurrencies,
     String? loginid,
     String? preferredLanguage,
@@ -258,9 +258,9 @@ class AuthorizeEntity extends AuthorizeModel {
         landingCompanyName: json['landing_company_name'],
         linkedTo: json['linked_to'] == null
             ? null
-            : List<AuthorizeLinkedToItem>.from(
+            : List<LinkedToItem>.from(
                 json['linked_to']?.map(
-                  (dynamic item) => AuthorizeLinkedToItem.fromJson(item),
+                  (dynamic item) => LinkedToItem.fromJson(item),
                 ),
               ),
         // TODOAuth(): fromjson(.tojson) wont work for localCurrencies .
@@ -317,7 +317,7 @@ class AuthorizeEntity extends AuthorizeModel {
     if (linkedTo != null) {
       resultMap['linked_to'] = linkedTo!
           .map<dynamic>(
-            (AuthorizeLinkedToItem item) => item.toJson(),
+            (LinkedToItem item) => item.toJson(),
           )
           .toList();
     }
@@ -354,7 +354,7 @@ class AuthorizeEntity extends AuthorizeModel {
     bool? isVirtual,
     String? landingCompanyFullname,
     String? landingCompanyName,
-    List<AuthorizeLinkedToItem>? linkedTo,
+    List<LinkedToItem>? linkedTo,
     Map<String, LocalCurrenciesPropertyEntity>? localCurrencies,
     String? loginid,
     String? preferredLanguage,
@@ -701,53 +701,6 @@ abstract class AuthorizeTradingModel {
 
   /// Details of the Wallet account linked to the Trading account.
   final List<TradingLinkedToItem>? linkedTo;
-}
-
-/// Authorize linked to item class.
-class AuthorizeLinkedToItem {
-  /// Initializes Authorize linked to item class.
-  const AuthorizeLinkedToItem({
-    this.loginid,
-    this.platform,
-  });
-
-  /// Creates an instance from JSON.
-  factory AuthorizeLinkedToItem.fromJson(Map<String, dynamic> json) =>
-      AuthorizeLinkedToItem(
-        loginid: json['loginid'],
-        platform: json['platform'] == null
-            ? null
-            : platformEnumMapper[json['platform']],
-      );
-
-  /// Account ID.
-  final String? loginid;
-
-  /// Account platform name.
-  final PlatformEnum? platform;
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    resultMap['loginid'] = loginid;
-    resultMap['platform'] = platformEnumMapper.entries
-        .firstWhere(
-            (MapEntry<String, PlatformEnum> entry) => entry.value == platform)
-        .key;
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  AuthorizeLinkedToItem copyWith({
-    String? loginid,
-    PlatformEnum? platform,
-  }) =>
-      AuthorizeLinkedToItem(
-        loginid: loginid ?? this.loginid,
-        platform: platform ?? this.platform,
-      );
 }
 
 /// Trading linked to item model class.
