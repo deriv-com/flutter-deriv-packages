@@ -75,15 +75,23 @@ class AuthorizeResponseEntity extends AuthorizeResponseEntityModel {
 
 /// PlatformEnum mapper.
 final Map<String, PlatformEnum> platformEnumMapper = <String, PlatformEnum>{
-  'deriv': PlatformEnum.deriv,
+  'derivez': PlatformEnum.derivez,
+  'dtrade': PlatformEnum.dtrade,
+  'dwallet': PlatformEnum.dwallet,
   'dxtrade': PlatformEnum.dxtrade,
   'mt5': PlatformEnum.mt5,
 };
 
-/// Platform Enum.
+/// Platform Enum indicating the account is on which platform.
 enum PlatformEnum {
-  /// deriv.
-  deriv,
+  /// derivez.
+  derivez,
+
+  /// dtrade.
+  dtrade,
+
+  /// dwallet.
+  dwallet,
 
   /// dxtrade.
   dxtrade,
@@ -610,11 +618,11 @@ class LinkedToItem extends LinkedToItemModel {
 
   /// Creates an instance from JSON.
   factory LinkedToItem.fromJson(Map<String, dynamic> json) => LinkedToItem(
-    loginid: json['loginid'],
-    platform: json['platform'] == null
-        ? null
-        : platformEnumMapper[json['platform']],
-  );
+        loginid: json['loginid'],
+        platform: json['platform'] == null
+            ? null
+            : platformEnumMapper[json['platform']],
+      );
 
   /// Converts an instance to JSON.
   Map<String, dynamic> toJson() {
