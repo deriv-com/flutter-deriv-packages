@@ -361,7 +361,6 @@ class AuthorizeEntity extends AuthorizeModel {
     List<String>? scopes,
     List<dynamic>? upgradeableLandingCompanies,
     int? userId,
-    AuthorizeWallet? wallet,
     String? signupProvider,
     String? refreshToken,
   }) =>
@@ -538,60 +537,6 @@ class AccountListItem extends AccountListItemModel {
       );
 }
 
-/// Trading model class.
-abstract class TradingModel {
-  /// Initializes Trading model class .
-  const TradingModel({
-    this.linkedTo,
-  });
-
-  /// Details of the Wallet account linked to the Trading account.
-  final List<LinkedToItem>? linkedTo;
-}
-
-/// Trading class.
-class Trading extends TradingModel {
-  /// Initializes Trading class.
-  const Trading({
-    List<LinkedToItem>? linkedTo,
-  }) : super(
-          linkedTo: linkedTo,
-        );
-
-  /// Creates an instance from JSON.
-  factory Trading.fromJson(Map<String, dynamic> json) => Trading(
-        linkedTo: json['linked_to'] == null
-            ? null
-            : List<LinkedToItem>.from(
-                json['linked_to']?.map(
-                  (dynamic item) => LinkedToItem.fromJson(item),
-                ),
-              ),
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    if (linkedTo != null) {
-      resultMap['linked_to'] = linkedTo!
-          .map<dynamic>(
-            (LinkedToItem item) => item.toJson(),
-          )
-          .toList();
-    }
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  Trading copyWith({
-    List<LinkedToItem>? linkedTo,
-  }) =>
-      Trading(
-        linkedTo: linkedTo ?? this.linkedTo,
-      );
-}
 
 /// Linked to item model class.
 abstract class LinkedToItemModel {
@@ -777,102 +722,6 @@ class TradingLinkedToItem extends TradingLinkedToItemModel {
       );
 }
 
-/// Authorize wallet model class.
-abstract class AuthorizeWalletModel {
-  /// Initializes Authorize wallet model class .
-  const AuthorizeWalletModel({
-    this.accountId,
-    this.balance,
-    this.currency,
-    this.linkedTo,
-    this.paymentMethod,
-  });
-
-  /// Wallet account ID.
-  final String? accountId;
-
-  /// Wallet account balance.
-  final double? balance;
-
-  /// Wallet account currency.
-  final String? currency;
-
-  /// Details of the list of Trading accounts linked to the Wallet account.
-  final List<WalletLinkedToItem2>? linkedTo;
-
-  /// Wallet account payment method.
-  final String? paymentMethod;
-}
-
-// TODO(Ramin): remove if not used.
-/// Authorize wallet class.
-class AuthorizeWallet extends AuthorizeWalletModel {
-  /// Initializes Authorize wallet class.
-  const AuthorizeWallet({
-    String? accountId,
-    double? balance,
-    String? currency,
-    List<WalletLinkedToItem2>? linkedTo,
-    String? paymentMethod,
-  }) : super(
-          accountId: accountId,
-          balance: balance,
-          currency: currency,
-          linkedTo: linkedTo,
-          paymentMethod: paymentMethod,
-        );
-
-  /// Creates an instance from JSON.
-  factory AuthorizeWallet.fromJson(Map<String, dynamic> json) =>
-      AuthorizeWallet(
-        accountId: json['account_id'],
-        balance: getDouble(json['balance']),
-        currency: json['currency'],
-        linkedTo: json['linked_to'] == null
-            ? null
-            : List<WalletLinkedToItem2>.from(
-                json['linked_to']?.map(
-                  (dynamic item) => WalletLinkedToItem2.fromJson(item),
-                ),
-              ),
-        paymentMethod: json['payment_method'],
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    resultMap['account_id'] = accountId;
-    resultMap['balance'] = balance;
-    resultMap['currency'] = currency;
-    if (linkedTo != null) {
-      resultMap['linked_to'] = linkedTo!
-          .map<dynamic>(
-            (WalletLinkedToItem2 item) => item.toJson(),
-          )
-          .toList();
-    }
-    resultMap['payment_method'] = paymentMethod;
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  AuthorizeWallet copyWith({
-    String? accountId,
-    double? balance,
-    String? currency,
-    List<WalletLinkedToItem2>? linkedTo,
-    String? paymentMethod,
-  }) =>
-      AuthorizeWallet(
-        accountId: accountId ?? this.accountId,
-        balance: balance ?? this.balance,
-        currency: currency ?? this.currency,
-        linkedTo: linkedTo ?? this.linkedTo,
-        paymentMethod: paymentMethod ?? this.paymentMethod,
-      );
-}
 
 /// Wallet linked to item2 model class.
 abstract class WalletLinkedToItem2Model {
@@ -895,60 +744,4 @@ abstract class WalletLinkedToItem2Model {
 
   /// Trading account platform name.
   final PlatformEnum? platform;
-}
-
-/// Wallet linked to item2 class.
-class WalletLinkedToItem2 extends WalletLinkedToItem2Model {
-  /// Initializes Wallet linked to item2 class.
-  const WalletLinkedToItem2({
-    String? accountId,
-    String? balance,
-    String? currency,
-    PlatformEnum? platform,
-  }) : super(
-          accountId: accountId,
-          balance: balance,
-          currency: currency,
-          platform: platform,
-        );
-
-  /// Creates an instance from JSON.
-  factory WalletLinkedToItem2.fromJson(Map<String, dynamic> json) =>
-      WalletLinkedToItem2(
-        accountId: json['account_id'],
-        balance: json['balance'],
-        currency: json['currency'],
-        platform: json['platform'] == null
-            ? null
-            : platformEnumMapper[json['platform']],
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    resultMap['account_id'] = accountId;
-    resultMap['balance'] = balance;
-    resultMap['currency'] = currency;
-    resultMap['platform'] = platformEnumMapper.entries
-        .firstWhere(
-            (MapEntry<String, PlatformEnum> entry) => entry.value == platform)
-        .key;
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  WalletLinkedToItem2 copyWith({
-    String? accountId,
-    String? balance,
-    String? currency,
-    PlatformEnum? platform,
-  }) =>
-      WalletLinkedToItem2(
-        accountId: accountId ?? this.accountId,
-        balance: balance ?? this.balance,
-        currency: currency ?? this.currency,
-        platform: platform ?? this.platform,
-      );
 }
