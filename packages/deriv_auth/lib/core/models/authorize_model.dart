@@ -393,9 +393,8 @@ abstract class AccountListItemModel {
     this.isDisabled,
     this.isVirtual,
     this.landingCompanyName,
+    this.linkedTo,
     this.loginid,
-    this.trading,
-    this.wallet,
     this.token,
   });
 
@@ -423,14 +422,11 @@ abstract class AccountListItemModel {
   /// Landing company shortcode the account belongs to.
   final String? landingCompanyName;
 
+  /// Details of the list of Trading accounts linked to the Wallet account.
+  final List<LinkedToItem>? linkedTo;
+
   /// The account ID of specified account.
   final String? loginid;
-
-  /// Details of the Trading account.
-  final Trading? trading;
-
-  /// Details of the Wallet account.
-  final Wallet? wallet;
 
   /// Saved account token.
   final String? token;
@@ -440,32 +436,18 @@ abstract class AccountListItemModel {
 class AccountListItem extends AccountListItemModel {
   /// Initializes Account list item class.
   const AccountListItem({
-    AccountCategoryEnum? accountCategory,
-    String? accountType,
-    DateTime? createdAt,
-    String? currency,
-    DateTime? excludedUntil,
-    bool? isDisabled,
-    bool? isVirtual,
-    String? landingCompanyName,
-    String? loginid,
-    Trading? trading,
-    Wallet? wallet,
-    String? token,
-  }) : super(
-          accountCategory: accountCategory,
-          accountType: accountType,
-          createdAt: createdAt,
-          currency: currency,
-          excludedUntil: excludedUntil,
-          isDisabled: isDisabled,
-          isVirtual: isVirtual,
-          landingCompanyName: landingCompanyName,
-          loginid: loginid,
-          trading: trading,
-          wallet: wallet,
-          token: token,
-        );
+    super.accountCategory,
+    super.accountType,
+    super.createdAt,
+    super.currency,
+    super.excludedUntil,
+    super.isDisabled,
+    super.isVirtual,
+    super.landingCompanyName,
+    super.linkedTo,
+    super.loginid,
+    super.token,
+  });
 
   /// Creates an instance from JSON.
   factory AccountListItem.fromJson(Map<String, dynamic> json) =>
@@ -480,16 +462,25 @@ class AccountListItem extends AccountListItemModel {
         isDisabled: getBool(json['is_disabled']),
         isVirtual: getBool(json['is_virtual']),
         landingCompanyName: json['landing_company_name'],
+        linkedTo: json['linked_to'] == null
+            ? null
+            : List<LinkedToItem>.from(
+                json['linked_to']?.map(
+                  (dynamic item) => LinkedToItem.fromJson(item),
+                ),
+              ),
         loginid: json['loginid'],
-        trading:
-            json['trading'] == null ? null : Trading.fromJson(json['trading']),
-        wallet: json['wallet'] == null ? null : Wallet.fromJson(json['wallet']),
+        token: json['token'],
       );
 
   /// Converts an instance to JSON.
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> resultMap = <String, dynamic>{};
 
+    resultMap['account_category'] = accountCategoryEnumMapper.entries
+        .firstWhere((MapEntry<String, AccountCategoryEnum> entry) =>
+            entry.value == accountCategory)
+        .key;
     resultMap['account_type'] = accountType;
     resultMap['created_at'] = getSecondsSinceEpochDateTime(createdAt);
     resultMap['currency'] = currency;
@@ -497,19 +488,22 @@ class AccountListItem extends AccountListItemModel {
     resultMap['is_disabled'] = isDisabled;
     resultMap['is_virtual'] = isVirtual;
     resultMap['landing_company_name'] = landingCompanyName;
+    if (linkedTo != null) {
+      resultMap['linked_to'] = linkedTo!
+          .map<dynamic>(
+            (LinkedToItem item) => item.toJson(),
+          )
+          .toList();
+    }
     resultMap['loginid'] = loginid;
-    if (trading != null) {
-      resultMap['trading'] = trading!.toJson();
-    }
-    if (wallet != null) {
-      resultMap['wallet'] = wallet!.toJson();
-    }
+    resultMap['token'] = token;
 
     return resultMap;
   }
 
   /// Creates a copy of instance with given parameters.
   AccountListItem copyWith({
+    AccountCategoryEnum? accountCategory,
     String? accountType,
     DateTime? createdAt,
     String? currency,
@@ -517,12 +511,12 @@ class AccountListItem extends AccountListItemModel {
     bool? isDisabled,
     bool? isVirtual,
     String? landingCompanyName,
+    List<LinkedToItem>? linkedTo,
     String? loginid,
-    Trading? trading,
-    Wallet? wallet,
     String? token,
   }) =>
       AccountListItem(
+        accountCategory: accountCategory ?? this.accountCategory,
         accountType: accountType ?? this.accountType,
         createdAt: createdAt ?? this.createdAt,
         currency: currency ?? this.currency,
@@ -530,9 +524,8 @@ class AccountListItem extends AccountListItemModel {
         isDisabled: isDisabled ?? this.isDisabled,
         isVirtual: isVirtual ?? this.isVirtual,
         landingCompanyName: landingCompanyName ?? this.landingCompanyName,
+        linkedTo: linkedTo ?? this.linkedTo,
         loginid: loginid ?? this.loginid,
-        trading: trading ?? this.trading,
-        wallet: wallet ?? this.wallet,
         token: token ?? this.token,
       );
 }
@@ -596,226 +589,38 @@ class Trading extends TradingModel {
 abstract class LinkedToItemModel {
   /// Initializes Linked to item model class .
   const LinkedToItemModel({
-    this.accountId,
-    this.balance,
-    this.currency,
-    this.paymentMethod,
+    this.loginid,
+    this.platform,
   });
 
-  /// Wallet account ID.
-  final String? accountId;
+  /// Account ID.
+  final String? loginid;
 
-  /// Wallet account balance.
-  final String? balance;
-
-  /// Wallet account currency.
-  final String? currency;
-
-  /// Wallet account payment method.
-  final String? paymentMethod;
+  /// Account platform name.
+  final PlatformEnum? platform;
 }
 
 /// Linked to item class.
 class LinkedToItem extends LinkedToItemModel {
   /// Initializes Linked to item class.
   const LinkedToItem({
-    String? accountId,
-    String? balance,
-    String? currency,
-    String? paymentMethod,
-  }) : super(
-          accountId: accountId,
-          balance: balance,
-          currency: currency,
-          paymentMethod: paymentMethod,
-        );
+    super.loginid,
+    super.platform,
+  });
 
   /// Creates an instance from JSON.
   factory LinkedToItem.fromJson(Map<String, dynamic> json) => LinkedToItem(
-        accountId: json['account_id'],
-        balance: json['balance'],
-        currency: json['currency'],
-        paymentMethod: json['payment_method'],
-      );
+    loginid: json['loginid'],
+    platform: json['platform'] == null
+        ? null
+        : platformEnumMapper[json['platform']],
+  );
 
   /// Converts an instance to JSON.
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> resultMap = <String, dynamic>{};
 
-    resultMap['account_id'] = accountId;
-    resultMap['balance'] = balance;
-    resultMap['currency'] = currency;
-    resultMap['payment_method'] = paymentMethod;
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  LinkedToItem copyWith({
-    String? accountId,
-    String? balance,
-    String? currency,
-    String? paymentMethod,
-  }) =>
-      LinkedToItem(
-        accountId: accountId ?? this.accountId,
-        balance: balance ?? this.balance,
-        currency: currency ?? this.currency,
-        paymentMethod: paymentMethod ?? this.paymentMethod,
-      );
-}
-
-/// Wallet model class.
-abstract class WalletModel {
-  /// Initializes Wallet model class .
-  const WalletModel({
-    this.accountId,
-    this.balance,
-    this.currency,
-    this.linkedTo,
-    this.paymentMethod,
-  });
-
-  /// Wallet account ID.
-  final String? accountId;
-
-  /// Wallet account balance.
-  final double? balance;
-
-  /// Wallet account currency.
-  final String? currency;
-
-  /// Details of the list of Trading accounts linked to the Wallet account.
-  final List<WalletLinkedToItem>? linkedTo;
-
-  /// Wallet account payment method.
-  final String? paymentMethod;
-}
-
-/// Wallet class.
-class Wallet extends WalletModel {
-  /// Initializes Wallet class.
-  const Wallet({
-    String? accountId,
-    double? balance,
-    String? currency,
-    List<WalletLinkedToItem>? linkedTo,
-    String? paymentMethod,
-  }) : super(
-          accountId: accountId,
-          balance: balance,
-          currency: currency,
-          linkedTo: linkedTo,
-          paymentMethod: paymentMethod,
-        );
-
-  /// Creates an instance from JSON.
-  factory Wallet.fromJson(Map<String, dynamic> json) => Wallet(
-        accountId: json['account_id'],
-        balance: getDouble(json['balance']),
-        currency: json['currency'],
-        linkedTo: json['linked_to'] == null
-            ? null
-            : List<WalletLinkedToItem>.from(
-                json['linked_to']?.map(
-                  (dynamic item) => WalletLinkedToItem.fromJson(item),
-                ),
-              ),
-        paymentMethod: json['payment_method'],
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    resultMap['account_id'] = accountId;
-    resultMap['balance'] = balance;
-    resultMap['currency'] = currency;
-    if (linkedTo != null) {
-      resultMap['linked_to'] = linkedTo!
-          .map<dynamic>(
-            (WalletLinkedToItem item) => item.toJson(),
-          )
-          .toList();
-    }
-    resultMap['payment_method'] = paymentMethod;
-
-    return resultMap;
-  }
-
-  /// Creates a copy of instance with given parameters.
-  Wallet copyWith({
-    String? accountId,
-    double? balance,
-    String? currency,
-    List<WalletLinkedToItem>? linkedTo,
-    String? paymentMethod,
-  }) =>
-      Wallet(
-        accountId: accountId ?? this.accountId,
-        balance: balance ?? this.balance,
-        currency: currency ?? this.currency,
-        linkedTo: linkedTo ?? this.linkedTo,
-        paymentMethod: paymentMethod ?? this.paymentMethod,
-      );
-}
-
-/// Wallet linked to item model class.
-abstract class WalletLinkedToItemModel {
-  /// Initializes Wallet linked to item model class .
-  const WalletLinkedToItemModel({
-    this.accountId,
-    this.balance,
-    this.currency,
-    this.platform,
-  });
-
-  /// Trading account ID.
-  final String? accountId;
-
-  /// Trading account balance.
-  final String? balance;
-
-  /// Trading account currency.
-  final String? currency;
-
-  /// Trading account platform name.
-  final PlatformEnum? platform;
-}
-
-/// Wallet linked to item class.
-class WalletLinkedToItem extends WalletLinkedToItemModel {
-  /// Initializes Wallet linked to item class.
-  const WalletLinkedToItem({
-    String? accountId,
-    String? balance,
-    String? currency,
-    PlatformEnum? platform,
-  }) : super(
-          accountId: accountId,
-          balance: balance,
-          currency: currency,
-          platform: platform,
-        );
-
-  /// Creates an instance from JSON.
-  factory WalletLinkedToItem.fromJson(Map<String, dynamic> json) =>
-      WalletLinkedToItem(
-        accountId: json['account_id'],
-        balance: json['balance'],
-        currency: json['currency'],
-        platform: json['platform'] == null
-            ? null
-            : platformEnumMapper[json['platform']],
-      );
-
-  /// Converts an instance to JSON.
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> resultMap = <String, dynamic>{};
-
-    resultMap['account_id'] = accountId;
-    resultMap['balance'] = balance;
-    resultMap['currency'] = currency;
+    resultMap['loginid'] = loginid;
     resultMap['platform'] = platformEnumMapper.entries
         .firstWhere(
             (MapEntry<String, PlatformEnum> entry) => entry.value == platform)
@@ -825,16 +630,12 @@ class WalletLinkedToItem extends WalletLinkedToItemModel {
   }
 
   /// Creates a copy of instance with given parameters.
-  WalletLinkedToItem copyWith({
-    String? accountId,
-    String? balance,
-    String? currency,
+  LinkedToItem copyWith({
+    String? loginid,
     PlatformEnum? platform,
   }) =>
-      WalletLinkedToItem(
-        accountId: accountId ?? this.accountId,
-        balance: balance ?? this.balance,
-        currency: currency ?? this.currency,
+      LinkedToItem(
+        loginid: loginid ?? this.loginid,
         platform: platform ?? this.platform,
       );
 }
