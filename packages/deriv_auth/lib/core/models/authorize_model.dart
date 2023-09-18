@@ -92,6 +92,22 @@ enum PlatformEnum {
   mt5,
 }
 
+/// A map from account categories strings to their corresponding enum class.
+const Map<String, AccountCategoryEnum> accountCategoryEnumMapper =
+    <String, AccountCategoryEnum>{
+  'wallet': AccountCategoryEnum.wallet,
+  'trading': AccountCategoryEnum.trading,
+};
+
+/// Account categories which are defined after migrating to wallet feature.
+enum AccountCategoryEnum {
+  /// The account is a wallet.
+  wallet,
+
+  /// The account is a trading account.
+  trading,
+}
+
 /// Authorize model class.
 abstract class AuthorizeModel {
   /// Initializes Authorize model class .
@@ -105,14 +121,13 @@ abstract class AuthorizeModel {
     this.isVirtual,
     this.landingCompanyFullname,
     this.landingCompanyName,
+    this.linkedTo,
     this.localCurrencies,
     this.loginid,
     this.preferredLanguage,
     this.scopes,
-    this.trading,
     this.upgradeableLandingCompanies,
     this.userId,
-    this.wallet,
     this.signupProvider,
     this.refreshToken,
   });
@@ -144,6 +159,9 @@ abstract class AuthorizeModel {
   /// Landing company shortcode the account belongs to.
   final String? landingCompanyName;
 
+  /// Details of the list of Trading accounts linked to the Wallet account.
+  final List<AuthorizeLinkedToItem>? linkedTo;
+
   /// Currencies in client's residence country
   final Map<String, LocalCurrenciesPropertyEntity>? localCurrencies;
 
@@ -156,17 +174,11 @@ abstract class AuthorizeModel {
   /// Scopes available to the token.
   final List<String>? scopes;
 
-  /// Details of the Trading account.
-  final AuthorizeTrading? trading;
-
   /// List of landing company shortcodes the account can upgrade to.
   final List<dynamic>? upgradeableLandingCompanies;
 
   /// The internal user ID for this account.
   final int? userId;
-
-  /// Details of the Wallet account.
-  final AuthorizeWallet? wallet;
 
   /// Signup Provider for Social Login
   final String? signupProvider;
@@ -188,14 +200,13 @@ class AuthorizeEntity extends AuthorizeModel {
     bool? isVirtual,
     String? landingCompanyFullname,
     String? landingCompanyName,
+    List<AuthorizeLinkedToItem>? linkedTo,
     Map<String, LocalCurrenciesPropertyEntity>? localCurrencies,
     String? loginid,
     String? preferredLanguage,
     List<String>? scopes,
-    AuthorizeTrading? trading,
     List<dynamic>? upgradeableLandingCompanies,
     int? userId,
-    AuthorizeWallet? wallet,
     String? signupProvider,
     String? refreshToken,
   }) : super(
@@ -208,14 +219,13 @@ class AuthorizeEntity extends AuthorizeModel {
           isVirtual: isVirtual,
           landingCompanyFullname: landingCompanyFullname,
           landingCompanyName: landingCompanyName,
+          linkedTo: linkedTo,
           localCurrencies: localCurrencies,
           loginid: loginid,
           preferredLanguage: preferredLanguage,
           scopes: scopes,
-          trading: trading,
           upgradeableLandingCompanies: upgradeableLandingCompanies,
           userId: userId,
-          wallet: wallet,
           signupProvider: signupProvider,
           refreshToken: refreshToken,
         );
@@ -238,6 +248,13 @@ class AuthorizeEntity extends AuthorizeModel {
         isVirtual: getBool(json['is_virtual']),
         landingCompanyFullname: json['landing_company_fullname'],
         landingCompanyName: json['landing_company_name'],
+        linkedTo: json['linked_to'] == null
+            ? null
+            : List<AuthorizeLinkedToItem>.from(
+                json['linked_to']?.map(
+                  (dynamic item) => AuthorizeLinkedToItem.fromJson(item),
+                ),
+              ),
         // TODOAuth(): fromjson(.tojson) wont work for localCurrencies .
         // localCurrencies: json['local_currencies'] == null
         //     ? null
@@ -259,9 +276,6 @@ class AuthorizeEntity extends AuthorizeModel {
                   (dynamic item) => item,
                 ),
               ),
-        trading: json['trading'] == null
-            ? null
-            : AuthorizeTrading.fromJson(json['trading']),
         upgradeableLandingCompanies:
             json['upgradeable_landing_companies'] == null
                 ? null
@@ -271,9 +285,6 @@ class AuthorizeEntity extends AuthorizeModel {
                     ),
                   ),
         userId: json['user_id'],
-        wallet: json['wallet'] == null
-            ? null
-            : AuthorizeWallet.fromJson(json['wallet']),
       );
 
   /// Converts an instance to JSON.
@@ -295,6 +306,13 @@ class AuthorizeEntity extends AuthorizeModel {
     resultMap['is_virtual'] = isVirtual;
     resultMap['landing_company_fullname'] = landingCompanyFullname;
     resultMap['landing_company_name'] = landingCompanyName;
+    if (linkedTo != null) {
+      resultMap['linked_to'] = linkedTo!
+          .map<dynamic>(
+            (AuthorizeLinkedToItem item) => item.toJson(),
+          )
+          .toList();
+    }
     resultMap['local_currencies'] = localCurrencies;
     resultMap['loginid'] = loginid;
     resultMap['preferred_language'] = preferredLanguage;
@@ -305,9 +323,6 @@ class AuthorizeEntity extends AuthorizeModel {
           )
           .toList();
     }
-    if (trading != null) {
-      resultMap['trading'] = trading!.toJson();
-    }
     if (upgradeableLandingCompanies != null) {
       resultMap['upgradeable_landing_companies'] = upgradeableLandingCompanies!
           .map<dynamic>(
@@ -316,9 +331,6 @@ class AuthorizeEntity extends AuthorizeModel {
           .toList();
     }
     resultMap['user_id'] = userId;
-    if (wallet != null) {
-      resultMap['wallet'] = wallet!.toJson();
-    }
 
     return resultMap;
   }
@@ -334,11 +346,11 @@ class AuthorizeEntity extends AuthorizeModel {
     bool? isVirtual,
     String? landingCompanyFullname,
     String? landingCompanyName,
+    List<AuthorizeLinkedToItem>? linkedTo,
     Map<String, LocalCurrenciesPropertyEntity>? localCurrencies,
     String? loginid,
     String? preferredLanguage,
     List<String>? scopes,
-    AuthorizeTrading? trading,
     List<dynamic>? upgradeableLandingCompanies,
     int? userId,
     AuthorizeWallet? wallet,
@@ -356,15 +368,14 @@ class AuthorizeEntity extends AuthorizeModel {
         landingCompanyFullname:
             landingCompanyFullname ?? this.landingCompanyFullname,
         landingCompanyName: landingCompanyName ?? this.landingCompanyName,
+        linkedTo: linkedTo ?? this.linkedTo,
         localCurrencies: localCurrencies ?? this.localCurrencies,
         loginid: loginid ?? this.loginid,
         preferredLanguage: preferredLanguage ?? this.preferredLanguage,
         scopes: scopes ?? this.scopes,
-        trading: trading ?? this.trading,
         upgradeableLandingCompanies:
             upgradeableLandingCompanies ?? this.upgradeableLandingCompanies,
         userId: userId ?? this.userId,
-        wallet: wallet ?? this.wallet,
         signupProvider: signupProvider ?? this.signupProvider,
         refreshToken: refreshToken ?? this.refreshToken,
       );
@@ -374,6 +385,7 @@ class AuthorizeEntity extends AuthorizeModel {
 abstract class AccountListItemModel {
   /// Initializes Account list item model class .
   const AccountListItemModel({
+    this.accountCategory,
     this.accountType,
     this.createdAt,
     this.currency,
@@ -386,6 +398,9 @@ abstract class AccountListItemModel {
     this.wallet,
     this.token,
   });
+
+  /// Account category.
+  final AccountCategoryEnum? accountCategory;
 
   /// Account type.
   final String? accountType;
@@ -425,6 +440,7 @@ abstract class AccountListItemModel {
 class AccountListItem extends AccountListItemModel {
   /// Initializes Account list item class.
   const AccountListItem({
+    AccountCategoryEnum? accountCategory,
     String? accountType,
     DateTime? createdAt,
     String? currency,
@@ -437,6 +453,7 @@ class AccountListItem extends AccountListItemModel {
     Wallet? wallet,
     String? token,
   }) : super(
+          accountCategory: accountCategory,
           accountType: accountType,
           createdAt: createdAt,
           currency: currency,
@@ -453,6 +470,9 @@ class AccountListItem extends AccountListItemModel {
   /// Creates an instance from JSON.
   factory AccountListItem.fromJson(Map<String, dynamic> json) =>
       AccountListItem(
+        accountCategory: json['account_category'] == null
+            ? null
+            : accountCategoryEnumMapper[json['account_category']],
         accountType: json['account_type'],
         createdAt: getDateTime(json['created_at']),
         currency: json['currency'],
@@ -874,48 +894,50 @@ abstract class AuthorizeTradingModel {
   final List<TradingLinkedToItem>? linkedTo;
 }
 
-/// Authorize trading class.
-class AuthorizeTrading extends AuthorizeTradingModel {
-  /// Initializes Authorize trading class.
-  const AuthorizeTrading({
-    List<TradingLinkedToItem>? linkedTo,
-  }) : super(
-          linkedTo: linkedTo,
-        );
+/// Authorize linked to item class.
+class AuthorizeLinkedToItem {
+  /// Initializes Authorize linked to item class.
+  const AuthorizeLinkedToItem({
+    this.loginid,
+    this.platform,
+  });
 
   /// Creates an instance from JSON.
-  factory AuthorizeTrading.fromJson(Map<String, dynamic> json) =>
-      AuthorizeTrading(
-        linkedTo: json['linked_to'] == null
+  factory AuthorizeLinkedToItem.fromJson(Map<String, dynamic> json) =>
+      AuthorizeLinkedToItem(
+        loginid: json['loginid'],
+        platform: json['platform'] == null
             ? null
-            : List<TradingLinkedToItem>.from(
-                json['linked_to']?.map(
-                  (dynamic item) => TradingLinkedToItem.fromJson(item),
-                ),
-              ),
+            : platformEnumMapper[json['platform']],
       );
+
+  /// Account ID.
+  final String? loginid;
+
+  /// Account platform name.
+  final PlatformEnum? platform;
 
   /// Converts an instance to JSON.
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> resultMap = <String, dynamic>{};
 
-    if (linkedTo != null) {
-      resultMap['linked_to'] = linkedTo!
-          .map<dynamic>(
-            (TradingLinkedToItem item) => item.toJson(),
-          )
-          .toList();
-    }
+    resultMap['loginid'] = loginid;
+    resultMap['platform'] = platformEnumMapper.entries
+        .firstWhere(
+            (MapEntry<String, PlatformEnum> entry) => entry.value == platform)
+        .key;
 
     return resultMap;
   }
 
   /// Creates a copy of instance with given parameters.
-  AuthorizeTrading copyWith({
-    List<TradingLinkedToItem>? linkedTo,
+  AuthorizeLinkedToItem copyWith({
+    String? loginid,
+    PlatformEnum? platform,
   }) =>
-      AuthorizeTrading(
-        linkedTo: linkedTo ?? this.linkedTo,
+      AuthorizeLinkedToItem(
+        loginid: loginid ?? this.loginid,
+        platform: platform ?? this.platform,
       );
 }
 
@@ -1020,6 +1042,7 @@ abstract class AuthorizeWalletModel {
   final String? paymentMethod;
 }
 
+// TODO(Ramin): remove if not used.
 /// Authorize wallet class.
 class AuthorizeWallet extends AuthorizeWalletModel {
   /// Initializes Authorize wallet class.
