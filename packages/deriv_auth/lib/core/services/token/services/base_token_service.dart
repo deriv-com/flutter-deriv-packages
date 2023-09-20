@@ -1,7 +1,7 @@
 import 'package:deriv_auth/core/connection_info.dart';
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// An interface for functionalities which a token service should provide.
 abstract class BaseTokenService {

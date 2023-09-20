@@ -1,8 +1,8 @@
 import 'package:deriv_auth/core/exceptions/referral_code_exception.dart';
 import 'package:deriv_auth/core/extensions/extensions.dart';
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/referral/base_referral_code_service.dart';
 import 'package:deriv_auth/core/services/referral/models/my_affiliate_referral_code_request_model.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:http/http.dart';
 
 /// `My Affiliate` Implementation of [BaseReferralCodeService].

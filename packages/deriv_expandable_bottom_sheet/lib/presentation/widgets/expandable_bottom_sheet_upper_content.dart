@@ -27,7 +27,7 @@ class _ExpandableBottomSheetUpperContentState
 
     return Builder(
       builder: (BuildContext context) {
-        SchedulerBinding.instance!.addPostFrameCallback(
+        SchedulerBinding.instance.addPostFrameCallback(
           (_) => widget.onHeightCalculated(context.size!.height),
         );
 
@@ -42,7 +42,7 @@ class _ExpandableBottomSheetUpperContentState
   }
 
   bool _heightChangeHandler(BuildContext context) {
-    SchedulerBinding.instance!.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         widget.onHeightCalculated(context.size!.height);
         widget.onHeightChanged?.call();

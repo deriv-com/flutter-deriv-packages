@@ -1,8 +1,8 @@
 import 'package:deriv_auth/core/connection_info.dart';
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// Deriv Implementation of a [BaseTokenService].
 class DerivTokenService implements BaseTokenService {

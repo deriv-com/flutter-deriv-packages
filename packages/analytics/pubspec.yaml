@@ -6,7 +6,8 @@ homepage: https://deriv.com/
 publish_to: "none"
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   deriv_rudderstack:
@@ -15,7 +16,8 @@ dependencies:
       path: packages/deriv_rudderstack
       ref: dev
 
-  firebase_analytics: ^8.1.2
+  firebase_analytics: ^10.4.0
+  firebase_core: ^2.12.0
 
   flutter:
     sdk: flutter

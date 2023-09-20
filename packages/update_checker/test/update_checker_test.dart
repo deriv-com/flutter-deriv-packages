@@ -1,5 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:update_checker/update_checker.dart';
 
@@ -27,22 +27,24 @@ void main() {
         Map<String, dynamic>? rawData,
         int buildNumber,
         Iterable<dynamic> expect,
-      ) => blocTest<UpdateBloc, dynamic>(
-          description,
-          build: () {
-            when(mockFirebaseDatabaseRepository.fetchUpdateData()).thenAnswer(
-              (_) async => rawData,
-            );
-            when(mockPackageInfoRepository.getAppBuildNumber())
-                .thenAnswer((_) async => buildNumber);
-            return UpdateBloc(
-              firebaseDatabaseRepository: mockFirebaseDatabaseRepository,
-              packageInfoRepository: mockPackageInfoRepository,
-            );
-          },
-          act: (UpdateBloc bloc) => bloc.add(UpdateFetchEvent()),
-          expect: () => expect,
-        );
+      ) =>
+          blocTest<UpdateBloc, dynamic>(
+            description,
+            build: () {
+              when(() => mockFirebaseDatabaseRepository.fetchUpdateData())
+                  .thenAnswer(
+                (_) async => rawData,
+              );
+              when(() => mockPackageInfoRepository.getAppBuildNumber())
+                  .thenAnswer((_) async => buildNumber);
+              return UpdateBloc(
+                firebaseDatabaseRepository: mockFirebaseDatabaseRepository,
+                packageInfoRepository: mockPackageInfoRepository,
+              );
+            },
+            act: (UpdateBloc bloc) => bloc.add(UpdateFetchEvent()),
+            expect: () => expect,
+          );
 
       test(
         'should emit UpdateInitialState as initial state',

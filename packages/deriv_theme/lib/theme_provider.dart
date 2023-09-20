@@ -34,6 +34,8 @@ class ThemeProvider {
 
   static const double margin12 = Dimens.margin12;
 
+  static const double margin14 = Dimens.margin14;
+
   static const double margin16 = Dimens.margin16;
 
   static const double margin18 = Dimens.margin18;
@@ -64,7 +66,17 @@ class ThemeProvider {
 
   static const double margin128 = Dimens.margin128;
 
+  static const double margin144 = Dimens.margin144;
+
+  static const double margin176 = Dimens.margin176;
+
+  static const double padding01 = Dimens.borderRadius01;
+
+  static const double padding02 = Dimens.borderRadius02;
+
   static const double borderRadius04 = Dimens.borderRadius04;
+
+  static const double borderRadius06 = Dimens.borderRadius06;
 
   static const double borderRadius08 = Dimens.borderRadius08;
 
@@ -91,6 +103,18 @@ class ThemeProvider {
   static const double iconSize72 = Dimens.iconSize72;
 
   static const double iconSize96 = Dimens.iconSize96;
+
+  static const double walletWidthSmall = Dimens.walletWidthSmall;
+
+  static const double walletHeightSmall = Dimens.walletHeightSmall;
+
+  static const double walletWidthMedium = Dimens.walletWidthMedium;
+
+  static const double walletHeightMedium = Dimens.walletHeightMedium;
+
+  static const double walletWidthLarge = Dimens.walletWidthLarge;
+
+  static const double walletHeightLarge = Dimens.walletHeightLarge;
 
   bool get _isDarkTheme => brightness == Brightness.dark;
 
@@ -121,8 +145,6 @@ class ThemeProvider {
       ? DarkThemeColors.accentYellow
       : LightThemeColors.accentYellow;
 
-  Color get informationColor => accentBlueColor;
-
   Color get accentLightBlueColor => _isDarkTheme
       ? DarkThemeColors.accentLightBlue
       : LightThemeColors.accentLightBlue;
@@ -131,23 +153,22 @@ class ThemeProvider {
   Color get base01Color =>
       _isDarkTheme ? DarkThemeColors.base01 : LightThemeColors.base01;
 
-  @Deprecated('Use `colors.general` instead')
   Color get base02Color =>
       _isDarkTheme ? DarkThemeColors.base02 : LightThemeColors.base02;
 
-  @Deprecated('Use `colors.lessProminent` instead')
+  @Deprecated('Use `colors.general` instead')
   Color get base03Color =>
       _isDarkTheme ? DarkThemeColors.base03 : LightThemeColors.base03;
 
-  @Deprecated('Use `colors.disabled` instead')
+  @Deprecated('Use `colors.lessProminent` instead')
   Color get base04Color =>
       _isDarkTheme ? DarkThemeColors.base04 : LightThemeColors.base04;
 
-  @Deprecated('Use `colors.active` instead')
+  @Deprecated('Use `colors.disabled` instead')
   Color get base05Color =>
       _isDarkTheme ? DarkThemeColors.base05 : LightThemeColors.base05;
 
-  @Deprecated('Use `colors.hover` instead')
+  @Deprecated('Use `colors.active` instead')
   Color get base06Color =>
       _isDarkTheme ? DarkThemeColors.base06 : LightThemeColors.base06;
 

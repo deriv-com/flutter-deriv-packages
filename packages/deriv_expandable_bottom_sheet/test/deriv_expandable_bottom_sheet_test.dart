@@ -1,5 +1,4 @@
 import 'package:deriv_expandable_bottom_sheet/deriv_expandable_bottom_sheet.dart';
-import 'package:deriv_theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -20,7 +19,7 @@ void main() {
         lowerContent: Container(),
         onOpen: () => isOpen = true,
         onClose: () => isOpen = false,
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       final Finder togglerFinder = find.text(title);
@@ -47,7 +46,7 @@ void main() {
         upperContent: Container(),
         lowerContent: Container(),
         onOpen: () => isOpen = true,
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -67,7 +66,7 @@ void main() {
         upperContent: Container(),
         lowerContent: Container(),
         onClose: () => isOpen = false,
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -87,7 +86,7 @@ void main() {
         title: title,
         upperContent: Container(),
         lowerContent: Container(),
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -103,7 +102,7 @@ void main() {
         hint: hint,
         upperContent: Container(),
         lowerContent: Container(),
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -126,7 +125,7 @@ void main() {
           child: const Text('left action'),
           onPressed: () => isExecuted = true,
         ),
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -149,7 +148,7 @@ void main() {
           child: const Text('right action'),
           onPressed: () => isExecuted = true,
         ),
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -171,7 +170,7 @@ void main() {
           child: const Text('right action'),
           onPressed: () {},
         ),
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));
@@ -188,7 +187,7 @@ void main() {
         upperContent: Container(),
         lowerContent: Container(),
         onOpen: () => timesExecuted++,
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       final Finder togglerFinder = find.text(title);
@@ -217,7 +216,7 @@ void main() {
         upperContent: Container(),
         lowerContent: Container(),
         onClose: () => timesExecuted++,
-        labelContractDetails: '', 
+        labelContractDetails: '',
       );
 
       final Finder togglerFinder = find.text(title);
@@ -247,8 +246,8 @@ void main() {
       final ExpandableBottomSheet bottomSheet = ExpandableBottomSheet(
         title: title,
         upperContent: Container(),
-        onDismiss: () => isDismissed = true, 
-        labelContractDetails: '', 
+        onDismiss: () => isDismissed = true,
+        labelContractDetails: '',
       );
 
       await tester.pumpWidget(_TestApp(bottomSheet));

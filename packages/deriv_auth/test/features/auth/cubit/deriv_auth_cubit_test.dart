@@ -2,6 +2,7 @@ import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
@@ -59,6 +60,9 @@ void main() {
         when(() => service.getLatestAccounts()).thenAnswer((_) =>
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
+
+        when(() => service.getLandingCompany(any())).thenAnswer((_) =>
+            Future<LandingCompanyEntity>.value(const LandingCompanyEntity()));
 
         when(() => service.login(any(), accounts: any(named: 'accounts')))
             .thenAnswer((_) =>

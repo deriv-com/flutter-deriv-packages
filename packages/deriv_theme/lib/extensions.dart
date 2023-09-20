@@ -7,4 +7,7 @@ import 'package:deriv_theme/theme_provider.dart';
 extension ContextExtension on BuildContext {
   /// Gets [ThemeProvider].
   ThemeProvider get theme => DerivThemeProvider.getTheme(this);
+
+  /// Gets flutter [ThemeData] based on `Deriv` design system.
+  ThemeData? get themeData => DerivThemeProvider.getThemeData(this);
 }

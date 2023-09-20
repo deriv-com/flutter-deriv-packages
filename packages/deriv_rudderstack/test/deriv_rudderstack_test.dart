@@ -17,14 +17,16 @@ void main() {
 
   setUp(() {
     log = <MethodCall>[];
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+    .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
       log.add(methodCall);
       return true;
     });
   });
 
   tearDown(() {
-    channel.setMockMethodCallHandler(null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+    .setMockMethodCallHandler(channel, null);
     log.clear();
   });
 

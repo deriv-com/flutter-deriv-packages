@@ -28,20 +28,22 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: const Text('Rudderstack example app'),
           ),
-          body: Builder(
-            builder: (BuildContext context) => Column(
-              children: <Widget>[
-                _enableController(context),
-                const Divider(),
-                GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  padding: const EdgeInsets.all(16),
-                  children: _eventsList(context),
-                ),
-              ],
+          body: SingleChildScrollView(
+            child: Builder(
+              builder: (BuildContext context) => Column(
+                children: <Widget>[
+                  _enableController(context),
+                  const Divider(),
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    padding: const EdgeInsets.all(16),
+                    children: _eventsList(context),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
