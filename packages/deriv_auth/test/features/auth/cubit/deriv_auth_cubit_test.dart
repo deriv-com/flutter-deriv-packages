@@ -7,10 +7,12 @@ import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
+import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 import '../mocked_data/mocked_auth_models.dart';
+import '../../social_auth/mocks/mock_social_provider_model.dart';
 
 class MockAuthService extends Mock implements BaseAuthService {}
 
@@ -106,7 +108,8 @@ void main() {
 
         verify(() => service.onLoginRequest(any())).called(1);
       });
-      test('should emit [AuthLoggedInState] upon a successful social login.',
+      test(
+          'should emit [AuthLoggedInState] upon a successful social login with one-all.',
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
 
@@ -125,6 +128,37 @@ void main() {
         );
 
         authCubit.socialLogin(oneAllConnectionToken: 'token');
+
+        verify(() => service.onLoginRequest(any())).called(1);
+      });
+
+      test(
+          'should emit [AuthLoggedInState] upon a successful social login with in-house service.',
+          () {
+        registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
+
+        when(() => service.onLoginRequest(any())).thenAnswer(
+            (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+
+        final List<TypeMatcher<DerivAuthState>> expectedResponse =
+            <TypeMatcher<DerivAuthState>>[
+          isA<DerivAuthLoadingState>(),
+          isA<DerivAuthLoggedInState>(),
+        ];
+
+        expectLater(
+          authCubit.stream,
+          emitsInOrder(expectedResponse),
+        );
+
+        authCubit.socialLoginV2(
+          socialAuthProvider: mockSocialAuthProviders
+                  .any((SocialAuthProviderModel element) => false)
+              ? mockSocialAuthProviders.first
+              : mockSocialAuthProviders.last,
+          callbackState: 'state',
+          code: 'code',
+        );
 
         verify(() => service.onLoginRequest(any())).called(1);
       });

@@ -1,4 +1,6 @@
 /// The selected parameter that should be highlighted when opening the Social login or signup
+// ignore_for_file: constant_identifier_names
+
 enum SocialAuthType {
   /// Login social type.
   login,
@@ -12,8 +14,11 @@ enum AuthType {
   /// Login using email and password.
   system,
 
-  /// Login with social accounts.
-  social
+  /// Login with social accounts in one all.
+  social,
+
+  /// Login with social accounts in PKCE.
+  socialLogin,
 }
 
 /// Social auth provider.

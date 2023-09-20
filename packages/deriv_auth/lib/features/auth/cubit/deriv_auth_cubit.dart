@@ -10,6 +10,8 @@ import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 
+import '../../social_auth/models/social_auth_provider_model.dart';
+
 part 'deriv_auth_state.dart';
 
 /// This Cubit is the single source of truth for user login status,
@@ -54,6 +56,28 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         signupProvider: signupProvider,
         otp: otp,
       ),
+    );
+  }
+
+  @override
+  Future<void> socialLoginV2({
+    required SocialAuthProviderModel socialAuthProvider,
+    required String callbackState,
+    required String code,
+    String? otp,
+  }) async {
+    emit(DerivAuthLoadingState());
+
+    await _loginRequest(
+      GetTokensRequestModel(
+          type: AuthType.socialLogin,
+          nonce: socialAuthProvider.nonce,
+          state: socialAuthProvider.state,
+          codeVerifier: socialAuthProvider.codeVerifier,
+          code: code,
+          callbackState: callbackState,
+          otp: otp,
+          signupProvider: socialAuthProvider.name),
     );
   }
 
