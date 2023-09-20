@@ -9,6 +9,7 @@ void main() {
   patrolTest('DerivUnavailableCountryLayout', (PatrolTester $) async {
     await $.pumpWidgetAndSettle(BaseTestApp(
       child: DerivUnavailableCountryLayout(
+        userAgent: '',
         appName: 'TestApp',
         onLiveChatPressed: () {},
       ),
