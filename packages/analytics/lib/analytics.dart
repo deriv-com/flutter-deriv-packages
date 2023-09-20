@@ -31,6 +31,8 @@ class Analytics {
   /// bool [isEnabled] enables or disables "Analytics".
   Future<void> init({required bool isEnabled}) async {
     _firebaseAnalytics = FirebaseAnalytics();
+
+
     
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
