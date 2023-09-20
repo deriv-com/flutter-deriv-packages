@@ -43,6 +43,8 @@ class Analytics {
 
     // For ios we have to manually setup the rudderStack as it's not get initialized with register method.
     if (Platform.isIOS) {
+
+      
       await setupRudderStackForIos();
     }
 
