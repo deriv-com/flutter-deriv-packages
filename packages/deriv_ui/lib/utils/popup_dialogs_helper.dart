@@ -6,7 +6,6 @@ import 'package:deriv_ui/presentation/widgets/popup_alert_dialog.dart';
 import 'package:deriv_ui/presentation/widgets/text_span_hyperlink.dart';
 import 'package:flutter/material.dart';
 
-
 /// Displays a pop alert dialog, usually retry and it is used when there is no connection to internet.
 Future<void> showAlertDialog({
   required BuildContext context,
@@ -155,8 +154,6 @@ Future<void> showSimpleLoadingDialog(
       },
     );
 
-
-
 /// Shows a simple error dialog with single `TryAgain` action.
 Future<void> showErrorDialog({
   required BuildContext context,
@@ -184,13 +181,13 @@ Future<void> showErrorDialog({
     );
 
 /// Shows a dialog for informing user that his session has been expired.
-Future<void> showTokenExpiredDialog({
-  required BuildContext context,
-  required String title,
-  required String content,
-  required String positiveActionLabel,
-  required Function() onPositiveActionPressed
-  }) => showAlertDialog(
+Future<void> showTokenExpiredDialog(
+        {required BuildContext context,
+        required String title,
+        required String content,
+        required String positiveActionLabel,
+        required Function() onPositiveActionPressed}) =>
+    showAlertDialog(
       context: context,
       title: title,
       content: Text(
@@ -206,16 +203,16 @@ Future<void> showTokenExpiredDialog({
     );
 
 /// Shows a dialog for informing user that his account has been deactivated.
-Future<void> showAccountDeactivatedDialog({
-  required BuildContext context,
-  required String title,
-  required String content,
-  required String hyperlinkLabel,
-  required String hyperlinkUrl,
-  required String positiveActionLabel,
-  required String hyperlinkDescription,
-  required Function() onPositiveActionPressed
-  }) =>
+Future<void> showAccountDeactivatedDialog(
+        {required BuildContext context,
+        required String title,
+        required String content,
+        required String hyperlinkLabel,
+        required String hyperlinkUrl,
+        required String positiveActionLabel,
+        required String hyperlinkDescription,
+        required String userAgent,
+        required Function() onPositiveActionPressed}) =>
     showAlertDialog(
       context: context,
       title: title,
@@ -232,6 +229,7 @@ Future<void> showAccountDeactivatedDialog({
               label: hyperlinkLabel,
               url: hyperlinkUrl,
               openInAppWebview: false,
+              userAgent: userAgent,
             ),
             TextSpan(
               text: hyperlinkDescription,
