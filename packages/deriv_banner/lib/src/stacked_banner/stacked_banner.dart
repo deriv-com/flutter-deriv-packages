@@ -66,7 +66,7 @@ class StackedBanner extends StatefulWidget {
   final double topPadding;
 
   /// The callback triggered when the list of banner items is either expanded or collapsed.
-  final Function(bool)? isExpanded;
+  final Function({required bool isExpanded})? isExpanded;
 
   /// Will be called when banners are dismissed.
   final VoidCallback? onDismissed;
@@ -130,7 +130,7 @@ class _StackedBannerState extends State<StackedBanner>
 
   // This method should get called everytime the banners list is updated.
   void _onBannerListUpdated() {
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_bannerItems.length < _minExpandedItems) {
         _collapseList();
       }
@@ -145,7 +145,7 @@ class _StackedBannerState extends State<StackedBanner>
 
     _setupAnimationControllers();
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _collapsedSize =
           (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
               .size;
@@ -303,7 +303,7 @@ class _StackedBannerState extends State<StackedBanner>
 
     setState(() => _stackIndex = 1);
 
-    widget.isExpanded?.call(true);
+    widget.isExpanded?.call(isExpanded: true);
   }
 
   void _removeExtraBanners() {
@@ -316,7 +316,7 @@ class _StackedBannerState extends State<StackedBanner>
     _stackIndex = 0;
 
     await _listExpansionController.reverse();
-    widget.isExpanded?.call(false);
+    widget.isExpanded?.call(isExpanded: false);
   }
 
   double _getTopOffset(int index) {

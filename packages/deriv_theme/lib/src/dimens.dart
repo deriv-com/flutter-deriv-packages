@@ -28,53 +28,68 @@ class Dimens {
   /// 14 pixels margin.
   static const double margin14 = 14;
 
-  /// 16 pixels  margin.
+  /// 16 pixels margin.
   static const double margin16 = 16;
 
-  /// 18 pixels  margin
+  /// 18 pixels margin
   static const double margin18 = 18;
 
-  /// 24 pixels  margin
+  /// 24 pixels margin
   static const double margin24 = 24;
 
-  /// 32 pixels  margin.
+  /// 32 pixels margin.
   static const double margin32 = 32;
 
-  /// 36 pixels  margin.
+  /// 36 pixels margin.
   static const double margin36 = 36;
 
-  /// 40 pixels  margin.
+  /// 40 pixels margin.
   static const double margin40 = 40;
 
-  /// 44 pixels  margin.
+  /// 44 pixels margin.
   static const double margin44 = 44;
 
-  /// 48 pixels  margin.
+  /// 48 pixels margin.
   static const double margin48 = 48;
 
-  /// 56 pixels  margin.
+  /// 56 pixels margin.
   static const double margin56 = 56;
 
-  /// 64 pixels  margin.
+  /// 64 pixels margin.
   static const double margin64 = 64;
 
-  /// 72 pixels  margin.
+  /// 72 pixels margin.
   static const double margin72 = 72;
 
-  /// 78 pixels  margin.
+  /// 78 pixels margin.
   static const double margin78 = 78;
 
-  /// 84 pixels  margin.
+  /// 84 pixels margin.
   static const double margin84 = 84;
 
-  /// 96 pixels  margin.
+  /// 96 pixels margin.
   static const double margin96 = 96;
 
-  /// 128 pixels  margin.
+  /// 128 pixels margin.
   static const double margin128 = 128;
+
+  /// 144 pixels margin.
+  static const double margin144 = 144;
+
+  /// 176 pixels margin.
+  static const double margin176 = 176;
+
+  /// Border radius small.
+  static const double borderRadius01 = 1;
+
+  /// Border radius small.
+  static const double borderRadius02 = 2;
 
   /// Border radius small.
   static const double borderRadius04 = 4;
+
+  /// Border radius small.
+  static const double borderRadius06 = 6;
 
   /// Border radius medium.
   static const double borderRadius08 = 8;
@@ -114,4 +129,22 @@ class Dimens {
 
   /// Size 96 icon.
   static const double iconSize96 = 96;
+
+  /// Small wallet width.
+  static const double walletWidthSmall = 224;
+
+  /// Small wallet height.
+  static const double walletHeightSmall = 136;
+
+  /// Medium wallet width.
+  static const double walletWidthMedium = 224;
+
+  /// Medium wallet height.
+  static const double walletHeightMedium = 136;
+
+  /// Large wallet width.
+  static const double walletWidthLarge = 288;
+
+  /// Large wallet height.
+  static const double walletHeightLarge = 176;
 }

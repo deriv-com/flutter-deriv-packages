@@ -10,6 +10,9 @@ analyzer:
     # https://github.com/flutter/flutter/pull/24528
     sdk_version_async_exported_from_core: ignore
 
+  language:
+    strict-raw-types: true
+
 linter:
   rules:
     # Taken from https://github.com/dart-lang/linter/blob/master/example/all.yaml
