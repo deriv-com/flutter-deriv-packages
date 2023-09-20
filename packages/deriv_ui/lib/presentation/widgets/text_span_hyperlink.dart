@@ -26,7 +26,14 @@ TextSpan buildTextSpanHyperlink({
         ..onTap = () => onTap == null
             ? openInAppWebview
                 ? openInAppWebView(
-                    context: context, url: url!, userAgent: userAgent)
-                : openWebPage(context: context, url: url!, userAgent: userAgent)
+                    context: context,
+                    url: url!,
+                    userAgent: userAgent,
+                  )
+                : openWebPage(
+                    context: context,
+                    url: url!,
+                    userAgent: userAgent,
+                  )
             : onTap(),
     );

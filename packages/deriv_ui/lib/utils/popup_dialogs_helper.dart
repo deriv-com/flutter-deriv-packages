@@ -181,12 +181,13 @@ Future<void> showErrorDialog({
     );
 
 /// Shows a dialog for informing user that his session has been expired.
-Future<void> showTokenExpiredDialog(
-        {required BuildContext context,
-        required String title,
-        required String content,
-        required String positiveActionLabel,
-        required Function() onPositiveActionPressed}) =>
+Future<void> showTokenExpiredDialog({
+  required BuildContext context,
+  required String title,
+  required String content,
+  required String positiveActionLabel,
+  required Function() onPositiveActionPressed,
+}) =>
     showAlertDialog(
       context: context,
       title: title,
@@ -203,16 +204,17 @@ Future<void> showTokenExpiredDialog(
     );
 
 /// Shows a dialog for informing user that his account has been deactivated.
-Future<void> showAccountDeactivatedDialog(
-        {required BuildContext context,
-        required String title,
-        required String content,
-        required String hyperlinkLabel,
-        required String hyperlinkUrl,
-        required String positiveActionLabel,
-        required String hyperlinkDescription,
-        required String userAgent,
-        required Function() onPositiveActionPressed}) =>
+Future<void> showAccountDeactivatedDialog({
+  required BuildContext context,
+  required String title,
+  required String content,
+  required String hyperlinkLabel,
+  required String hyperlinkUrl,
+  required String positiveActionLabel,
+  required String hyperlinkDescription,
+  required String userAgent,
+  required Function() onPositiveActionPressed,
+}) =>
     showAlertDialog(
       context: context,
       title: title,

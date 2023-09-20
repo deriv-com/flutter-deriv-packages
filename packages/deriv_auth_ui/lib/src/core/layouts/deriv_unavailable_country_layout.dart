@@ -64,14 +64,15 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
               ),
               children: <InlineSpan>[
                 buildTextSpanHyperlink(
-                    context: context,
-                    label: context.localization.labelLiveChat,
-                    onTap: onLiveChatPressed,
-                    style: context.theme.textStyle(
-                      textStyle: TextStyles.body1Bold,
-                      color: context.theme.colors.coral,
-                    ),
-                    userAgent: userAgent),
+                  context: context,
+                  label: context.localization.labelLiveChat,
+                  onTap: onLiveChatPressed,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.body1Bold,
+                    color: context.theme.colors.coral,
+                  ),
+                  userAgent: userAgent,
+                ),
                 TextSpan(
                   text: '.',
                   style: context.theme.textStyle(
