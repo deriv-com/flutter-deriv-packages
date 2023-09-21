@@ -24,7 +24,7 @@ dev_dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_lint
-      ref: flutter-version-3
+      ref: dev
 
 flutter:
   uses-material-design: true

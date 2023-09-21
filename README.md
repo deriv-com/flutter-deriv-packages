@@ -27,6 +27,7 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_theme](./packages/deriv_theme)                                     | A package that contains the theme used by Deriv products.                                                              |
 | [deriv_ui](./packages/deriv_ui)                                           | A package that contains the UI components used by Deriv products.                                                      |
 | [deriv_utilities](./packages/deriv_utilities)                             | A package that contains the utilities including helper functions, mixins, and extensions.                              |
+| [deriv_websocket](./packages/deriv_web_socket_client)                     | A package that provides a easy to use websocket client.                                                                |
 | [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           |
