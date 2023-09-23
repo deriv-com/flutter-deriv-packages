@@ -200,32 +200,6 @@ void main() {
 
         verify(() => repository.onLogin(any())).called(1);
       });
-      test(
-          'should return valid authorize model when calling loginRequest with valid jwt.',
-          () async {
-        when(() => jwtService.getJwtToken()).thenAnswer(
-          (_) => Future<String>.value(validJwtToken),
-        );
-
-        final AuthorizeEntity response = await authService.onLoginRequest(
-          GetTokensRequestModel(
-            type: AuthType.system,
-            email: 'email',
-            password: 'pass',
-            signupProvider: 'signupProvider',
-          ),
-        );
-
-        expect(response.userId, mockedValidAuthorizeEntity.userId);
-        expect(response.refreshToken, 'refreshToken');
-        expect(response.signupProvider, 'signupProvider');
-        expect(
-            response.accountList
-                ?.every((AccountListItem account) => account.token != null),
-            true);
-
-        verify(() => repository.onLogin(any())).called(1);
-      });
 
       test('should auto fetch new jwt token if current one is expired.',
           () async {

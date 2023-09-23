@@ -14,6 +14,7 @@ void main() {
     _socialAuthService = MockSocialAuthService();
     _socialAuthCubit = SocialAuthCubit(socialAuthService: _socialAuthService);
   });
+
   group('SocialAuthCubit', () {
     test('emits [SocialAuthLoadedState] with social auth providers.', () {
       when(() => _socialAuthService.getSocialAuthProviders())
@@ -23,9 +24,10 @@ void main() {
           <TypeMatcher<SocialAuthState>>[
         isA<SocialAuthLoadingState>(),
         isA<SocialAuthLoadedState>().having(
-            (SocialAuthLoadedState state) => state.socialAuthProviders,
-            'list of social auth providers',
-            mockSocialAuthProviders),
+          (SocialAuthLoadedState state) => state.socialAuthProviders,
+          'list of social auth providers',
+          mockSocialAuthProviders,
+        ),
       ];
 
       expectLater(

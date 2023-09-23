@@ -108,6 +108,7 @@ void main() {
 
         verify(() => service.onLoginRequest(any())).called(1);
       });
+
       test(
           'should emit [AuthLoggedInState] upon a successful social login with one-all.',
           () {
@@ -162,6 +163,7 @@ void main() {
 
         verify(() => service.onLoginRequest(any())).called(1);
       });
+
       test('should emit [AuthLoggedInState] upon a successful otp login.', () {
         when(() => service.onLoginRequest(any())).thenAnswer(
             (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));

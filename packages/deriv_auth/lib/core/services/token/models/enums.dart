@@ -14,10 +14,10 @@ enum AuthType {
   /// Login using email and password.
   system,
 
-  /// Login with social accounts in one all.
+  /// Login with social accounts with one-all service.
   social,
 
-  /// Login with social accounts in PKCE.
+  /// Login with social accounts with in-house service.
   socialLogin,
 }
 
