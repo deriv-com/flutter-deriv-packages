@@ -11,14 +11,14 @@ abstract class DerivAuthIO {
     String? otp,
   });
 
-  /// Social login with [oneAllConnectionToken] using one-all service.
-  /// Using it as fallback plan of [socialAuth]
+  /// Social login/signup with [oneAllConnectionToken] using one-all service.
+  /// Using it as fallback plan of [socialAuth]. Will be removed in the future.
   Future<void> socialLogin({
     required String oneAllConnectionToken,
     String? otp,
   });
 
-  /// Social login using custom in-house service.
+  /// Social login/signup using custom in-house service.
   Future<void> socialAuth({
     required SocialAuthDto socialAuthDto,
     String? otp,
