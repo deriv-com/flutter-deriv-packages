@@ -1,5 +1,4 @@
 /// The selected parameter that should be highlighted when opening the Social login or signup
-// ignore_for_file: constant_identifier_names
 
 enum SocialAuthType {
   /// Login social type.
