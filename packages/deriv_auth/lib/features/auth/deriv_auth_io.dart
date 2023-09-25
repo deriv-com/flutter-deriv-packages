@@ -12,17 +12,15 @@ abstract class DerivAuthIO {
   });
 
   /// Social login with [oneAllConnectionToken] using one-all service.
-  /// Using it as fallback plan of [socialLoginV2]
+  /// Using it as fallback plan of [socialAuth]
   Future<void> socialLogin({
     required String oneAllConnectionToken,
     String? otp,
   });
 
   /// Social login using custom in-house service.
-  Future<void> socialLoginV2({
-    required SocialAuthProviderModel socialAuthProvider,
-    required String callbackState,
-    required String code,
+  Future<void> socialAuth({
+    required SocialAuthDto socialAuthDto,
     String? otp,
   });
 

@@ -9,6 +9,7 @@ import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
+import '../../social_auth/mocks/mock_social_auth_dto.dart';
 import '../mocked_data/mocked_auth_models.dart';
 
 class MockAuthRepository extends Mock implements BaseAuthRepository {}
@@ -182,11 +183,7 @@ void main() {
           GetTokensRequestModel(
             type: AuthType.socialLogin,
             signupProvider: 'signupProvider',
-            state: 'state',
-            nonce: 'nonce',
-            codeVerifier: 'codeVerifier',
-            code: 'code',
-            callbackState: 'callbackState',
+            socialAuthDto: mockSocialAuthDto,
           ),
         );
 

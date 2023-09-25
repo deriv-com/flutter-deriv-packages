@@ -4,7 +4,7 @@ SocialAuthProviderModel mockSocialAuthProvider = SocialAuthProviderModel(
   authUrl: 'https://mock.com/auth',
   codeChallenge: 'codeChallenge',
   codeVerifier: 'codeVerifier',
-  name: 'Provider One',
+  name: SocialAuthProvider.google,
   nonce: 'nonce',
   state: 'state',
 );

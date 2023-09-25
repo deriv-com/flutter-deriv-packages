@@ -15,9 +15,11 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
   /// Get list of social auth providers.
   Future<void> getSocialAuthProviders() async {
     emit(SocialAuthLoadingState());
+
     try {
       final List<SocialAuthProviderModel> socialAuthProviders =
           await socialAuthService.getSocialAuthProviders();
+
       emit(SocialAuthLoadedState(socialAuthProviders: socialAuthProviders));
     } on Exception catch (e) {
       emit(SocialAuthErrorState(

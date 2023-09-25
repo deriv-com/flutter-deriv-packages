@@ -1,4 +1,4 @@
-import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -8,7 +8,7 @@ void main() {
         authUrl: 'https://example.com/oauth2/google',
         codeChallenge: 'abc123',
         codeVerifier: 'def456',
-        name: 'Google',
+        name: SocialAuthProvider.google,
         nonce: 'xyz789',
         state: '123abc',
       );
@@ -16,7 +16,7 @@ void main() {
         authUrl: 'https://example.com/oauth2/google',
         codeChallenge: 'abc123',
         codeVerifier: 'def456',
-        name: 'Google',
+        name: SocialAuthProvider.google,
         nonce: 'xyz789',
         state: '123abc',
       );
@@ -39,7 +39,7 @@ void main() {
                 authUrl: 'https://example.com/oauth2/google',
                 codeChallenge: 'abc123',
                 codeVerifier: 'def456',
-                name: 'Google',
+                name: SocialAuthProvider.google,
                 nonce: 'xyz789',
                 state: '123abc',
               )),

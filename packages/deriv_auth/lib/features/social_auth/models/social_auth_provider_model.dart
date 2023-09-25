@@ -1,3 +1,4 @@
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:equatable/equatable.dart';
 
 /// A class that contains the data of a social auth provider.
@@ -18,7 +19,7 @@ class SocialAuthProviderModel with EquatableMixin {
         authUrl: json['auth_url'],
         codeChallenge: json['code_challenge'],
         codeVerifier: json['code_verifier'],
-        name: json['name'],
+        name: SocialAuthProvider.values.byName(json['name']),
         nonce: json['nonce'],
         state: json['state'],
       );
@@ -33,7 +34,7 @@ class SocialAuthProviderModel with EquatableMixin {
   final String codeVerifier;
 
   /// Name of social auth provider.
-  final String name;
+  final SocialAuthProvider name;
 
   /// Nonce.
   final String nonce;
