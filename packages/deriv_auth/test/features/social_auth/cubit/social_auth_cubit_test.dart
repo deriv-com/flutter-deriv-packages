@@ -1,4 +1,5 @@
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -42,7 +43,11 @@ void main() {
 
     test('emits [SocialAuthErrorState] when an error occurs.', () {
       when(() => _socialAuthService.getSocialAuthProviders())
-          .thenThrow(Exception());
+          .thenThrow(HTTPClientException(
+        statusCode: 500,
+        message: 'message',
+        errorCode: 'TEST_CODE',
+      ));
 
       final List<TypeMatcher<SocialAuthState>> expectedResponse =
           <TypeMatcher<SocialAuthState>>[
