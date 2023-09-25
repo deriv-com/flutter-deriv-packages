@@ -31,6 +31,16 @@ class DerivSocialAuthService implements BaseSocialAuthService {
 
     final Map<String, dynamic> jsonResponse = convert.jsonDecode(response.body);
 
+    if (response.statusCode ~/ 100 != 2) {
+      throw HTTPClientException(
+        errorCode: jsonResponse['error_code'],
+        statusCode: response.statusCode,
+        message: jsonResponse.containsKey('message')
+            ? jsonResponse['message']
+            : 'Server Error',
+      );
+    }
+
     return (jsonResponse['data'] as List<dynamic>)
         .map<SocialAuthProviderModel>(
             (dynamic provider) => SocialAuthProviderModel.fromJson(provider))

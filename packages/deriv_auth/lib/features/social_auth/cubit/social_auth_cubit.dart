@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/features/social_auth/cubit/social_auth_state.dart';
 import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
@@ -24,6 +26,9 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
       emit(SocialAuthLoadedState(socialAuthProviders: socialAuthProviders));
     } on HTTPClientException catch (e) {
       emit(SocialAuthErrorState(message: e.message));
+    } on Exception catch (e) {
+      log(e.toString());
+      emit(SocialAuthErrorState(message: e.toString()));
     }
   }
 }
