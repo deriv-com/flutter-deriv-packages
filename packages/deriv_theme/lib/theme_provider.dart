@@ -66,6 +66,10 @@ class ThemeProvider {
 
   static const double margin128 = Dimens.margin128;
 
+  static const double margin144 = Dimens.margin144;
+
+  static const double margin176 = Dimens.margin176;
+
   static const double padding01 = Dimens.borderRadius01;
 
   static const double padding02 = Dimens.borderRadius02;
@@ -152,23 +156,23 @@ class ThemeProvider {
   Color get base02Color =>
       _isDarkTheme ? DarkThemeColors.base02 : LightThemeColors.base02;
 
-  @Deprecated('Use `colors.lessProminent` instead')
+  @Deprecated('Use `colors.general` instead')
   Color get base03Color =>
       _isDarkTheme ? DarkThemeColors.base03 : LightThemeColors.base03;
 
-  @Deprecated('Use `colors.disabled` instead')
+  @Deprecated('Use `colors.lessProminent` instead')
   Color get base04Color =>
       _isDarkTheme ? DarkThemeColors.base04 : LightThemeColors.base04;
 
-  @Deprecated('Use `colors.active` instead')
+  @Deprecated('Use `colors.disabled` instead')
   Color get base05Color =>
       _isDarkTheme ? DarkThemeColors.base05 : LightThemeColors.base05;
 
-  @Deprecated('Use `colors.hover` instead')
+  @Deprecated('Use `colors.active` instead')
   Color get base06Color =>
       _isDarkTheme ? DarkThemeColors.base06 : LightThemeColors.base06;
 
-  // @Deprecated('Use `colors.secondary` instead')
+  @Deprecated('Use `colors.secondary` instead')
   Color get base07Color =>
       _isDarkTheme ? DarkThemeColors.base07 : LightThemeColors.base07;
 

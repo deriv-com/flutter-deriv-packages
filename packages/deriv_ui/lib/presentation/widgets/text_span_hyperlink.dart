@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 TextSpan buildTextSpanHyperlink({
   required BuildContext context,
   required String label,
+  required String userAgent,
   String? url,
   VoidCallback? onTap,
   bool openInAppWebview = true,
@@ -24,7 +25,15 @@ TextSpan buildTextSpanHyperlink({
       recognizer: TapGestureRecognizer()
         ..onTap = () => onTap == null
             ? openInAppWebview
-                ? openInAppWebView(context: context, url: url!)
-                : openWebPage(context: context, url: url!)
+                ? openInAppWebView(
+                    context: context,
+                    url: url!,
+                    userAgent: userAgent,
+                  )
+                : openWebPage(
+                    context: context,
+                    url: url!,
+                    userAgent: userAgent,
+                  )
             : onTap(),
     );

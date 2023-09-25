@@ -11,6 +11,7 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
   const DerivUnavailableCountryLayout({
     required this.onLiveChatPressed,
     required this.appName,
+    required this.userAgent,
     Key? key,
   }) : super(key: key);
 
@@ -19,6 +20,9 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
 
   /// Client app name.
   final String appName;
+
+  /// User Agent
+  final String userAgent;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -31,7 +35,7 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
           color: context.theme.colors.primary,
           child: FullscreenMessage(
-            titleWidget: _buildFullscreenTitle(context),
+            titleWidget: _buildFullscreenTitle(context, userAgent),
             iconData: CustomIconData(
               icon: Assets.unsupportedCountry,
               width: ThemeProvider.iconSize96,
@@ -41,7 +45,8 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
         ),
       );
 
-  Widget _buildFullscreenTitle(BuildContext context) => Column(
+  Widget _buildFullscreenTitle(BuildContext context, String userAgent) =>
+      Column(
         children: <Widget>[
           const SizedBox(height: ThemeProvider.margin16),
           Text(
@@ -66,6 +71,7 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
                     textStyle: TextStyles.body1Bold,
                     color: context.theme.colors.coral,
                   ),
+                  userAgent: userAgent,
                 ),
                 TextSpan(
                   text: '.',
