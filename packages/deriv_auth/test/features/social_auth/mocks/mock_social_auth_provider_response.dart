@@ -1,7 +1,7 @@
 Map<String, dynamic> mockSocialAuthProviderResponse = <String, dynamic>{
   'data': <Map<String, dynamic>>[
     <String, String>{
-      'name': 'Provider One',
+      'name': 'google',
       'auth_url': 'https://mock.com/auth',
       'nonce': 'nonce',
       'state': 'state',
