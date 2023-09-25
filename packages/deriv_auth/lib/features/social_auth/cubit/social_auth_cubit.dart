@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/features/social_auth/cubit/social_auth_state.dart';
 import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
 import 'package:deriv_auth/features/social_auth/services/base_social_auth_service.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// This Cubit is the single source of truth for social authentication.
 class SocialAuthCubit extends Cubit<SocialAuthState> {
@@ -21,10 +22,8 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
           await socialAuthService.getSocialAuthProviders();
 
       emit(SocialAuthLoadedState(socialAuthProviders: socialAuthProviders));
-    } on Exception catch (e) {
-      emit(SocialAuthErrorState(
-        message: e.toString(),
-      ));
+    } on HTTPClientException catch (e) {
+      emit(SocialAuthErrorState(message: e.message));
     }
   }
 }
