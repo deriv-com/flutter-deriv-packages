@@ -127,13 +127,24 @@ Some usage examples:
   );
   ```
 
-- `socialLogin`: login with `oneAllConnectionToken` and `signupProvider`:
-
+- `socialLogin`: login with `oneAllConnectionToken` and `signupProvider` using OneAll service:
+  
   ```dart
-  /// Call the [socialLogin] method.
+  /// Call the [socialLogin] method as a fallback of [socialAuth].
   _cubit.socialLogin(
     oneAllConnectionToken: userEmail,
-    signupProvider: userPassword,
+    signupProvider: SignupProvider.facebook,
+    otp: otp, // only for 2FA enabled accounts.
+  );
+  ```
+
+- `socialAuth`: login with `socialAuthDto` using in-house social authentication service:
+
+  ```dart
+  /// Call the [socialAuth] method.
+  _cubit.socialAuth(
+    socialAuthDto: socialAuthDto,
+    otp: otp, // only for 2FA enabled accounts.
   );
   ```
 
@@ -197,7 +208,7 @@ DerivSignupCubit(
       service: DerivSignupService(
         repository: DerivSignupRepository(),
       ),
-    ));
+    );
 ```
 
 Some usage examples:
@@ -285,4 +296,49 @@ Some usage examples:
     token: token,
     newPassword: newPassword,
   );
+  ```
+### **_SocialAuthCubit:_**
+
+</br>
+
+This cubit is responsible for handling the logic related getting social auth providers from deriv's social service.
+
+To create an instance of `SocialAuthCubit` we need a `DerivSocialAuthService` which implements `BaseSocialAuthService` that holds all the logic of the cubit. `DerivSocialAuthService` will require the following:
+  - `HttpClient` for Http requests.
+  - The `AuthConnectionInfo` which holds the `appId` and `endpoint` of that client.
+
+  ```dart
+  /// Client Interface to implement [GetSocialAuthProviders].
+  abstract class BaseSocialAuthService {
+    /// Get list of social auth providers.
+    Future<List<SocialAuthProviderModel>> getSocialAuthProviders();
+  }
+
+  ```
+
+Then we can proceed to create a `SocialAuthCubit` as follows:
+
+```dart
+SocialAuthCubit(
+      socialAuthService: DerivSocialAuthService(
+        client: HttpClient(),
+        connectionInfo: DerivAuthConnectionInfo(),
+      ),
+)
+```
+
+Some usage examples:
+
+- First, start by getting the instance of `SocialAuthCubit`:
+
+  ```dart
+  /// Get the [DerivResetPasswordCubit] instance.
+  final SocialAuthCubit _cubit = BlocManager.instance().fetch<SocialAuthCubit>();
+  ```
+
+- `getSocialAuthProviders`: retreives all the available social auth providers.
+
+  ```dart
+  /// Call the [getSocialAuthProviders] method.
+  _cubit.getSocialAuthProviders();
   ```
