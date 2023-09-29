@@ -13,11 +13,11 @@ class SocialAuthLoadingState extends SocialAuthState {}
 class SocialAuthErrorState extends SocialAuthState {
   /// Initializes a [SocialAuthErrorState].
   SocialAuthErrorState({
-    required this.message,
+    this.message,
   });
 
   /// Error message.
-  final String message;
+  final String? message;
 }
 
 /// Loaded state of [SocialAuthCubit].

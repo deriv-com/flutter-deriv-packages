@@ -28,7 +28,7 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
       emit(SocialAuthErrorState(message: e.message));
     } on Exception catch (e) {
       log(e.toString());
-      emit(SocialAuthErrorState(message: e.toString()));
+      emit(SocialAuthErrorState());
     }
   }
 }
