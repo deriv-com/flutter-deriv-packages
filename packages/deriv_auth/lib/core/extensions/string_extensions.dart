@@ -4,7 +4,7 @@ extension StringExtension on String {
   String? parseXMLTag(String tag) =>
       RegExp('<$tag>(.*)<\/$tag>').firstMatch(this)?.group(1);
 
-  /// Converts a string from camelCase to snake_case.
+  /// Converts a camelCase string to snake_case.
   String toSnakeCase() => replaceAllMapped(
         RegExp(r'([A-Z])'),
         (Match match) => '_${match[0]}',
