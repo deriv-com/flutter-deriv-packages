@@ -1,9 +1,8 @@
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 import 'package:deriv_auth/core/constants/constants.dart';
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
-import 'package:deriv_auth/core/services/api_client/exceptions/http_exceptions.dart';
 import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
@@ -535,12 +534,12 @@ void main() {
       });
 
       test('should call the [onLoggedOut] method.', () async {
-        when(() => repository.onLoggedOut())
+        when(() => repository.onPostLogout())
             .thenAnswer((_) => Future<void>.value());
 
-        await authService.onLoggedOut();
+        await authService.onPostLogout();
 
-        verify(() => repository.onLoggedOut()).called(1);
+        verify(() => repository.onPostLogout()).called(1);
       });
     },
   );

@@ -11,9 +11,9 @@ class FirebaseDatabaseRepository {
   /// Fetches the update information from the database.
   Future<dynamic> fetchUpdateData() async {
     final DatabaseReference dbRef = FirebaseDatabase.instance
-        .reference()
+        .ref()
         .child('build')
         .child(Platform.operatingSystem);
-    return (await dbRef.once()).value;
+    return (await dbRef.once()).snapshot.value;
   }
 }

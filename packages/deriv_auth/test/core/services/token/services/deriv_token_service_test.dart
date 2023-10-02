@@ -1,7 +1,7 @@
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';

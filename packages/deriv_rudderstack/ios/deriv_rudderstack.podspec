@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'deriv_rudderstack'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'A new Flutter plugin to wrap RudderStack SDK.'
   s.description      = <<-DESC
 A new Flutter plugin to wrap RudderStack SDK.

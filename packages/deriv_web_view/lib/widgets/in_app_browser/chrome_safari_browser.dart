@@ -1,23 +1,21 @@
-import 'dart:async';
 import 'dart:developer' as logger;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 /// This class uses native Chrome Custom Tabs on Android SFSafariViewController on iOS.
 class AppChromeSafariBrowser extends ChromeSafariBrowser {
-  Completer<void>? _onClosingCompleter;
-
-  @override
-  Future<void> open({
-    required Uri url,
-    ChromeSafariBrowserClassOptions? options,
-  }) {
-    // We're using a Completer to be able to do await on the open method.
-    // The Completer gets completed in onClose method.
-    _onClosingCompleter = Completer<void>();
-    super.open(url: url, options: options);
-    return _onClosingCompleter!.future;
+  /// Returns the singleton instance of [AppChromeSafariBrowser].
+  factory AppChromeSafariBrowser() {
+    return _instance ??= AppChromeSafariBrowser._();
   }
+
+  AppChromeSafariBrowser._();
+
+  static AppChromeSafariBrowser? _instance;
+
+  /// Is called when the browser is closed.
+  VoidCallback? onBrowserClosed;
 
   @override
   void onOpened() => logger.log('ChromeSafari browser opened.');
@@ -28,7 +26,7 @@ class AppChromeSafariBrowser extends ChromeSafariBrowser {
 
   @override
   void onClosed() {
-    _onClosingCompleter?.complete();
+    onBrowserClosed?.call();
 
     super.onClosed();
   }

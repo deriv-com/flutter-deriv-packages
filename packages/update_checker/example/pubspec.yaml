@@ -6,14 +6,15 @@ homepage: https://deriv.com/
 publish_to: "none"
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: "3.10.2"
 
 dependencies:
-  firebase_core: ^1.2.0
-  firebase_database: ^7.0.0
+  firebase_core: ^2.9.0
+  firebase_database: ^10.1.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.0.0
+  flutter_bloc: ^8.1.2
 
   update_checker:
     path: ../

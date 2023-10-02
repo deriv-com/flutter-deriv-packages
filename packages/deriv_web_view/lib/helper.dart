@@ -3,14 +3,14 @@ import 'dart:developer' as logger;
 
 import 'package:crypto/crypto.dart';
 
+import 'package:deriv_http_client/deriv_http_client.dart';
+
 import 'package:deriv_web_view/models/app_authorization_challenge_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_challenge_response_model.dart';
 import 'package:deriv_web_view/models/app_authorization_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_response_model.dart';
 import 'package:deriv_web_view/models/pta_login_request_model.dart';
 import 'package:deriv_web_view/models/pta_login_response_model.dart';
-
-import 'package:flutter_deriv_api/services/connection/http_client/http_client.dart';
 
 /// Using this function, a `one-time-token` will be generated in order to access current logged in user to the application with [destinationAppId].
 Future<String?> performPassThroughAuthentication({

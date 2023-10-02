@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:intl/intl.dart';
 
 import 'package:deriv_auth/core/services/referral/models/my_affiliate_referral_code_request_model.dart';
@@ -8,7 +9,6 @@ import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/verify_email_model.dart';
 import 'package:deriv_auth/features/signup/base_signup_io.dart';
 import 'package:deriv_auth/features/signup/models/new_virtual_account_request_model.dart';
-import 'package:deriv_auth/core/services/api_client/http_client.dart';
 import 'package:deriv_auth/core/services/referral/base_referral_code_service.dart';
 import 'package:deriv_auth/core/services/referral/my_affiliate_referral_code_service.dart';
 import 'package:deriv_auth/features/signup/models/signup_error_type.dart';

@@ -15,6 +15,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     let IDENTIFY = "identify"
     let TRACK = "track"
     let SCREEN = "screen"
+    let SETUP = "setup"
     let GROUP = "group"
     let ALIAS = "alias"
     let RESET = "reset"
@@ -27,14 +28,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
         let instance = SwiftDerivRudderstackPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         
-        do {
-            try configureAndBuildRSClient()
-        } catch {
-            print(error)
-        }
     }
     
-    private static func configureAndBuildRSClient() throws {
+    private func setupRudderStack(_ result: @escaping FlutterResult) {
         var nsDictionary: NSDictionary?
         
         // Gets the values specified by the user at info.plist
@@ -63,7 +59,10 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
                 .withLoglevel(Int32(logLevel))
             
             RSClient.getInstance(writeKey, config: builder.build())
+            result(true)
         }
+            result(false)
+
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -82,6 +81,9 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
             
         case ALIAS:
             self.alias(call, result)
+
+        case SETUP:
+            self.setupRudderStack(result)
             
         case RESET:
             self.reset(result)
@@ -225,7 +227,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     
     // To enable sending rudder stack events.
     private func enable(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
-        
+      
         self.enabled = true
         result(true)
     }

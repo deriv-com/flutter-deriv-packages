@@ -56,7 +56,6 @@ export 'src/indicators/calculations/ma_env/ma_env_upper_indicator.dart';
 export 'src/indicators/calculations/macd/macd_histogram_indicator.dart';
 export 'src/indicators/calculations/macd/macd_indicator.dart';
 export 'src/indicators/calculations/macd/signal_macd_indicator.dart';
-export 'src/indicators/calculations/macd/signal_macd_indicator.dart';
 export 'src/indicators/calculations/mma_indicator.dart';
 export 'src/indicators/calculations/parabolic_sar.dart';
 export 'src/indicators/calculations/roc_indicator.dart';

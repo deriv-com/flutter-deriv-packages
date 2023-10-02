@@ -101,6 +101,18 @@ class DerivRudderstack {
     return false;
   }
 
+  /// The `setup` initialize the rudderStack client.
+  Future<bool> setup() async {
+    try {
+      final bool response = await _channel.invokeMethod<dynamic>('setup');
+      return response;
+    } on PlatformException catch (e) {
+      logger.log('${(DerivRudderstack).toString()}: ${e.message}');
+    }
+
+    return false;
+  }
+
   /// Use the `reset` call to clear the persisted traits for the identify call.
   /// This is required for Logout operations.
   Future<bool> reset() async {

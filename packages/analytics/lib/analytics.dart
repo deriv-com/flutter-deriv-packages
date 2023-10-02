@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:deriv_rudderstack/deriv_rudderstack.dart';
@@ -27,12 +30,20 @@ class Analytics {
   /// Initialises the `Analytics`.
   /// Sets the device-token to `RudderStack`.
   /// bool [isEnabled] enables or disables "Analytics".
-  Future<void> init({required bool isEnabled}) async {
-    _firebaseAnalytics = FirebaseAnalytics();
+  Future<void> init({
+    required bool isEnabled,
+    required FirebaseApp firebaseApp,
+  }) async {
+    _firebaseAnalytics = FirebaseAnalytics.instanceFor(app: firebaseApp);
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
     // Enable or disable the analytics on this device.
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
+
+    // For ios we have to manually setup the rudderStack as it's not get initialized with register method.
+    if (Platform.isIOS) {
+      await setupRudderStackForIos();
+    }
 
     isEnabled
         ? await DerivRudderstack().enable()
@@ -102,13 +113,18 @@ class Analytics {
   Future<void> _setRudderStackDeviceToken(String deviceToken) =>
       DerivRudderstack().setContext(token: deviceToken);
 
-  /// Sets the user id to `Firebase`.
+  /// Sets the user id for `Firebase`.
   Future<void> _setFirebaseUserId(String userId) =>
-      _firebaseAnalytics.setUserId(userId);
+      _firebaseAnalytics.setUserId(id: userId);
 
   /// Logs push token.
   Future<void> logPushToken(String deviceToken) async {
     await _setRudderStackDeviceToken(deviceToken);
+  }
+
+  /// This method initialize the rudderStack client for ios.
+  Future<void> setupRudderStackForIos() async {
+    await DerivRudderstack().setup();
   }
 
   /// Should be called at logout to clear up current `RudderStack` data.

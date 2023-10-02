@@ -4,6 +4,7 @@ import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
@@ -42,6 +43,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   Future<void> socialLogin({
     required String oneAllConnectionToken,
     final String? signupProvider,
+    String? otp,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -50,6 +52,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         type: AuthType.social,
         oneAllConnectionToken: oneAllConnectionToken,
         signupProvider: signupProvider,
+        otp: otp,
       ),
     );
   }
@@ -66,7 +69,13 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   Future<void> _loginRequest(GetTokensRequestModel request) async {
     try {
-      emit(DerivAuthLoggedInState(await authService.onLoginRequest(request)));
+      final AuthorizeEntity authorizeEntity =
+          await authService.onLoginRequest(request);
+      final LandingCompanyEntity landingCompanyEntity =
+          await authService.getLandingCompany(authorizeEntity.country);
+      emit(DerivAuthLoggedInState(
+          authorizeEntity: authorizeEntity,
+          landingCompany: landingCompanyEntity));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
@@ -77,11 +86,13 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     required List<AccountModel> accounts,
   }) async {
     try {
-      emit(
-        DerivAuthLoggedInState(
-          await authService.login(token, accounts: accounts),
-        ),
-      );
+      final AuthorizeEntity authorizeEntity =
+          await authService.login(token, accounts: accounts);
+      final LandingCompanyEntity landingCompanyEntity =
+          await authService.getLandingCompany(authorizeEntity.country);
+      emit(DerivAuthLoggedInState(
+          authorizeEntity: authorizeEntity,
+          landingCompany: landingCompanyEntity));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
@@ -108,6 +119,10 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Future<void> logout() async {
+    if (state is DerivAuthLoggedOutState) {
+      return;
+    }
+
     emit(DerivAuthLoadingState());
 
     try {

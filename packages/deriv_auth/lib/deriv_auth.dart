@@ -6,7 +6,6 @@ export 'core/models/auth_error/auth_error.dart';
 export 'core/models/auth_error/auth_error_model.dart';
 export 'core/models/authorize_model.dart';
 export 'core/models/verify_email_model.dart';
-export 'core/services/api_client/http_client.dart';
 export 'core/services/jwt/repository/deriv_jwt_repository.dart';
 export 'core/services/jwt/services/deriv_jwt_service.dart';
 export 'core/services/token/models/enums.dart';

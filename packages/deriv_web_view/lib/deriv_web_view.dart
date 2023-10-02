@@ -1,30 +1,33 @@
 import 'dart:async';
 import 'dart:developer' as dev;
 
+import 'package:deriv_web_view/helper.dart';
 import 'package:deriv_web_view/widgets/in_app_browser/chrome_safari_browser.dart';
+import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import 'package:deriv_web_view/helper.dart';
-import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
-
 /// Opens a url in a browser.
 Future<void> openWebPage({
   required BuildContext context,
   required String url,
+  required String userAgent,
   bool rootNavigator = false,
   LaunchMode launchMode = LaunchMode.externalApplication,
 }) async {
-  final bool? isLaunchable = await canLaunchUrlString(url);
+  final bool isLaunchable = await canLaunchUrlString(url);
 
-  if (isLaunchable ?? false) {
+  if (isLaunchable) {
     await launchUrlString(url, mode: launchMode);
   } else {
     await Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
-        builder: (BuildContext context) => WebViewPage(url: url),
+        builder: (BuildContext context) => WebViewPage(
+          url: url,
+          userAgent: userAgent,
+        ),
       ),
     );
   }
@@ -36,16 +39,16 @@ final AppChromeSafariBrowser appSafariBrowser = AppChromeSafariBrowser();
 Future<void> openInAppTabActivityWebView({
   required BuildContext context,
   required String url,
+  required VoidCallback onClosed,
   String? title,
   bool extendBodyBehindAppBar = false,
   bool setEndpoint = false,
   bool rootNavigator = false,
   String? endpoint,
   String? appId,
-  VoidCallback? onClosed,
 }) async {
   try {
-    await _openInAppTabView(url);
+    await _openInAppTabView(url, onClosed);
   } on PlatformException catch (_) {
     await InAppBrowser().openUrlRequest(
       urlRequest: URLRequest(url: Uri.parse(url)),
@@ -57,24 +60,31 @@ bool get isInAppTabActivityWebViewOpen => appSafariBrowser.isOpened();
 
 Future<void> closeInAppTabActivityWebView() => appSafariBrowser.close();
 
-Future<void> _openInAppTabView(String url) async => appSafariBrowser.open(
-      url: Uri.parse(url),
-      options: ChromeSafariBrowserClassOptions(
-        android: AndroidChromeCustomTabsOptions(
-          shareState: CustomTabsShareState.SHARE_STATE_OFF,
-        ),
-        ios: IOSSafariOptions(
-          dismissButtonStyle: IOSSafariDismissButtonStyle.CLOSE,
-          presentationStyle: IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
-          transitionStyle: IOSUIModalTransitionStyle.CROSS_DISSOLVE,
-        ),
+Future<void> _openInAppTabView(String url, VoidCallback onClosed) async {
+  // Because relying on returned Future from browser `open` method is inconsistent
+  // we went with using a callback and call in `onClosed` method of the browser.
+  appSafariBrowser.onBrowserClosed = onClosed;
+
+  return appSafariBrowser.open(
+    url: Uri.parse(url),
+    options: ChromeSafariBrowserClassOptions(
+      android: AndroidChromeCustomTabsOptions(
+        shareState: CustomTabsShareState.SHARE_STATE_OFF,
       ),
-    );
+      ios: IOSSafariOptions(
+        dismissButtonStyle: IOSSafariDismissButtonStyle.CLOSE,
+        presentationStyle: IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
+        transitionStyle: IOSUIModalTransitionStyle.CROSS_DISSOLVE,
+      ),
+    ),
+  );
+}
 
 /// Opens in-app webview.
 Future<void> openInAppWebView({
   required BuildContext context,
   required String url,
+  required String userAgent,
   String? title,
   bool extendBodyBehindAppBar = false,
   bool setEndpoint = false,
@@ -86,6 +96,7 @@ Future<void> openInAppWebView({
     Navigator.of(context, rootNavigator: rootNavigator).push(
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) => WebViewPage(
+          userAgent: userAgent,
           url: url,
           title: title,
           extendBodyBehindAppBar: extendBodyBehindAppBar,
@@ -109,6 +120,7 @@ Future<void> openLoggedInWebPage({
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
   required String appToken,
+  required String userAgent,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -149,31 +161,38 @@ Future<void> openLoggedInWebPage({
       rootNavigator: rootNavigator,
       endpoint: endpoint,
       appId: appId,
-      onClosed: onClosed,
+      onClosed: () {
+        // We're doing validate credentials only on opening inside InAppTabActivity.
+        // the other option we have is in external browser which we can't know
+        // when it's closed. because user can comeback to the app even without
+        // closing the browser.
+        if (validateCredentialsOnClosed) {
+          _validateCredentials(
+            context: context,
+            redirectPath: redirectPath,
+            endpoint: endpoint,
+            appId: appId,
+            destinationAppId: destinationAppId,
+            refreshToken: refreshToken,
+            defaultAccount: defaultAccount,
+            loadingDialog: loadingDialog,
+            tokenExpiredDialog: tokenExpiredDialog,
+            rootNavigator: rootNavigator,
+            appToken: appToken,
+            action: action,
+            code: code,
+          );
+        }
+
+        onClosed?.call();
+      },
     );
   } else {
     await openWebPage(
       context: context,
       url: ptaLoginUrl,
       rootNavigator: rootNavigator,
-    );
-  }
-
-  if (validateCredentialsOnClosed) {
-    await _validateCredentials(
-      context: context,
-      redirectPath: redirectPath,
-      endpoint: endpoint,
-      appId: appId,
-      destinationAppId: destinationAppId,
-      refreshToken: refreshToken,
-      defaultAccount: defaultAccount,
-      loadingDialog: loadingDialog,
-      tokenExpiredDialog: tokenExpiredDialog,
-      rootNavigator: rootNavigator,
-      appToken: appToken,
-      action: action,
-      code: code,
+      userAgent: userAgent,
     );
   }
 }

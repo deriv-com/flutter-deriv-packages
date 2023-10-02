@@ -11,7 +11,8 @@ void main() {
   final List<MethodCall> log = <MethodCall>[];
 
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
       log.add(methodCall);
       switch (methodCall.method) {
         case 'open_live_chat_view':
