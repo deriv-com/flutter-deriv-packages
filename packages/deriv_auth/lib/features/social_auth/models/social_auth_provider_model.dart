@@ -43,7 +43,7 @@ class SocialAuthProviderModel with EquatableMixin {
   final String state;
 
   @override
-  List<Object?> get props => <Object>[
+  List<Object?> get props => <Object?>[
         authUrl,
         codeChallenge,
         codeVerifier,

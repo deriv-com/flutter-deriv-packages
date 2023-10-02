@@ -25,24 +25,32 @@ void main() {
     });
 
     test(
-        'supports fromJson',
-        () => expect(
-              SocialAuthProviderModel.fromJson(<String, dynamic>{
-                'auth_url': 'https://example.com/oauth2/google',
-                'code_challenge': 'abc123',
-                'code_verifier': 'def456',
-                'name': 'google',
-                'nonce': 'xyz789',
-                'state': '123abc',
-              }),
-              equals(SocialAuthProviderModel(
-                authUrl: 'https://example.com/oauth2/google',
-                codeChallenge: 'abc123',
-                codeVerifier: 'def456',
-                name: SocialAuthProvider.google,
-                nonce: 'xyz789',
-                state: '123abc',
-              )),
-            ));
+      'supports fromJson',
+      () {
+        final Map<String, dynamic> json = <String, dynamic>{
+          'auth_url': 'https://example.com/oauth2/google',
+          'code_challenge': 'abc123',
+          'code_verifier': 'def456',
+          'name': 'google',
+          'nonce': 'xyz789',
+          'state': '123abc',
+        };
+
+        final SocialAuthProviderModel expectedProvider =
+            SocialAuthProviderModel(
+          authUrl: 'https://example.com/oauth2/google',
+          codeChallenge: 'abc123',
+          codeVerifier: 'def456',
+          name: SocialAuthProvider.google,
+          nonce: 'xyz789',
+          state: '123abc',
+        );
+
+        expect(
+          SocialAuthProviderModel.fromJson(json),
+          equals(expectedProvider),
+        );
+      },
+    );
   });
 }

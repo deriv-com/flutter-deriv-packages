@@ -1,4 +1,4 @@
-import '../models/social_auth_provider_model.dart';
+import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
 
 /// Interface to define all social authentication-related functionality.
 abstract class BaseSocialAuthService {
