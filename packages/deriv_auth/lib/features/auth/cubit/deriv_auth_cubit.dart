@@ -74,8 +74,11 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       emit(DerivAuthLoggedInState(
+        DerivAuthModel(
           authorizeEntity: authorizeEntity,
-          landingCompany: landingCompanyEntity));
+          landingCompany: landingCompanyEntity,
+        ),
+      ));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
@@ -91,8 +94,10 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       emit(DerivAuthLoggedInState(
-          authorizeEntity: authorizeEntity,
-          landingCompany: landingCompanyEntity));
+        DerivAuthModel(
+            authorizeEntity: authorizeEntity,
+            landingCompany: landingCompanyEntity),
+      ));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));
     }
