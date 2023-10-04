@@ -21,12 +21,17 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   /// [BaseAuthService] handles all login logic of cubit.
   final BaseAuthService authService;
 
+  bool _updateSocialLoginFlag({required bool isSocialLogin}) =>
+      authService.isSocialLogin = isSocialLogin;
+
   @override
   Future<void> systemLogin({
     required String email,
     required String password,
     String? otp,
   }) async {
+    _updateSocialLoginFlag(isSocialLogin: false);
+
     emit(DerivAuthLoadingState());
 
     await _loginRequest(
@@ -45,6 +50,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     final String? signupProvider,
     String? otp,
   }) async {
+    _updateSocialLoginFlag(isSocialLogin: true);
+
     emit(DerivAuthLoadingState());
 
     await _loginRequest(
