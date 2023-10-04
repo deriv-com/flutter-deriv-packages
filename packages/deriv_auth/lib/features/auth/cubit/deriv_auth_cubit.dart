@@ -95,8 +95,9 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           await authService.getLandingCompany(authorizeEntity.country);
       emit(DerivAuthLoggedInState(
         DerivAuthModel(
-            authorizeEntity: authorizeEntity,
-            landingCompany: landingCompanyEntity),
+          authorizeEntity: authorizeEntity,
+          landingCompany: landingCompanyEntity,
+        ),
       ));
     } on DerivAuthException catch (error) {
       emit(DerivAuthErrorState(message: error.message, type: error.type));

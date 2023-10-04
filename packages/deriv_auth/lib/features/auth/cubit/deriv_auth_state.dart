@@ -35,6 +35,8 @@ class DerivAuthErrorState extends DerivAuthState {
   final AuthErrorType type;
 }
 
+/// Encapsulates the [AuthorizeEntity] and [LandingCompanyEntity] date of the
+/// user.
 class DerivAuthModel {
   DerivAuthModel({
     required this.authorizeEntity,
