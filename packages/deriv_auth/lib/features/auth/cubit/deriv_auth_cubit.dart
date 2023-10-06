@@ -21,14 +21,12 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   /// [BaseAuthService] handles all login logic of cubit.
   final BaseAuthService authService;
 
-
   @override
   Future<void> systemLogin({
     required String email,
     required String password,
     String? otp,
   }) async {
-
     emit(DerivAuthLoadingState());
 
     await _loginRequest(
@@ -48,7 +46,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     final String? signupProvider,
     String? otp,
   }) async {
-
     emit(DerivAuthLoadingState());
 
     await _loginRequest(

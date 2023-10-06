@@ -1,9 +1,7 @@
 part of 'deriv_auth_cubit.dart';
 
 /// Authentication states
-abstract class DerivAuthState {
-
-}
+abstract class DerivAuthState {}
 
 /// Authentication in progress state.
 class DerivAuthLoadingState extends DerivAuthState {}
