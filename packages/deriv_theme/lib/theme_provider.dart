@@ -100,6 +100,8 @@ class ThemeProvider {
 
   static const double borderRadius08 = Dimens.borderRadius08;
 
+  static const double borderRadius12 = Dimens.borderRadius12;
+
   static const double borderRadius16 = Dimens.borderRadius16;
 
   static const double borderRadius100 = Dimens.borderRadius100;
