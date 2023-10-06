@@ -33,6 +33,8 @@ class Analytics {
   Future<void> init({
     required bool isEnabled,
     required FirebaseApp firebaseApp,
+    required String rudderstackDataPlaneUrl, 
+    required String rudderstackWriteKey
   }) async {
     _firebaseAnalytics = FirebaseAnalytics.instanceFor(app: firebaseApp);
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
@@ -41,9 +43,10 @@ class Analytics {
     await _firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled);
 
     // For ios we have to manually setup the rudderStack as it's not get initialized with register method.
-    if (Platform.isIOS) {
-      await setupRudderStackForIos();
-    }
+      await setup(
+        dataPlaneUrl: rudderstackDataPlaneUrl,
+        writeKey: rudderstackWriteKey,
+      );
 
     isEnabled
         ? await DerivRudderstack().enable()
@@ -54,9 +57,6 @@ class Analytics {
   void _newRouteHandler(PageRoute<dynamic> route) {
     setCurrentScreen(
       screenName: route.settings.name ?? '',
-      // ignore: avoid_as
-      properties: route.settings.arguments as Map<String, dynamic>? ??
-          <String, dynamic>{},
     );
   }
 
@@ -80,7 +80,6 @@ class Analytics {
   /// Captures information about current screen in use.
   void setCurrentScreen({
     required String screenName,
-    Map<String, dynamic> properties = const <String, dynamic>{},
   }) {
     if (ignoredRoutes.contains(screenName)) {
       return;
@@ -88,8 +87,7 @@ class Analytics {
     _firebaseAnalytics.setCurrentScreen(screenName: screenName);
 
     DerivRudderstack().screen(
-      screenName: screenName,
-      properties: properties,
+      screenName: screenName
     );
   }
 
@@ -123,8 +121,11 @@ class Analytics {
   }
 
   /// This method initialize the rudderStack client for ios.
-  Future<void> setupRudderStackForIos() async {
-    await DerivRudderstack().setup();
+  Future<void> setup({required String dataPlaneUrl, required String writeKey}) async {
+    await DerivRudderstack().setup(
+      dataPlaneUrl: dataPlaneUrl,
+      writeKey: writeKey,
+    );
   }
 
   /// Should be called at logout to clear up current `RudderStack` data.
