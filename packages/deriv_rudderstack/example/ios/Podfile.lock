@@ -1,30 +1,41 @@
 PODS:
-  - deriv_rudderstack (0.0.1):
-    - Flutter
-    - Rudder (~> 1.1.0)
   - Flutter (1.0.0)
-  - Rudder (1.1.5)
+  - MetricsReporter (1.1.1):
+    - RSCrashReporter (= 1.0.0)
+    - RudderKit (= 1.4.0)
+  - RSCrashReporter (1.0.0)
+  - Rudder (1.22.0):
+    - MetricsReporter (= 1.1.1)
+  - rudder_plugin_ios (0.0.1):
+    - Flutter
+    - Rudder (< 2.0.0, >= 1.20.0)
+  - RudderKit (1.4.0)
 
 DEPENDENCIES:
-  - deriv_rudderstack (from `.symlinks/plugins/deriv_rudderstack/ios`)
   - Flutter (from `Flutter`)
-  - Rudder
+  - rudder_plugin_ios (from `.symlinks/plugins/rudder_plugin_ios/ios`)
 
 SPEC REPOS:
   trunk:
+    - MetricsReporter
+    - RSCrashReporter
     - Rudder
+    - RudderKit
 
 EXTERNAL SOURCES:
-  deriv_rudderstack:
-    :path: ".symlinks/plugins/deriv_rudderstack/ios"
   Flutter:
     :path: Flutter
+  rudder_plugin_ios:
+    :path: ".symlinks/plugins/rudder_plugin_ios/ios"
 
 SPEC CHECKSUMS:
-  deriv_rudderstack: 2b40c54282698ef571b35c40289a224b14d07b23
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  Rudder: ef9240308583b37ee163f69e1bb24b8e6b5ce69b
+  MetricsReporter: 759631361ffd2b8f0d375b1225c8a631311f6da2
+  RSCrashReporter: e9ccaebd996263f8325a6cbef44ff74aa5f58e30
+  Rudder: 2ba2921e48264533782310798c0f7b14bfbe42ec
+  rudder_plugin_ios: 04662d54ab52c6265b5effb50ad5eb748ea0322d
+  RudderKit: f272f9872183946452ac94cd7bb2244a71e6ca8f
 
-PODFILE CHECKSUM: 10ad9430ce285540acaeec6d0be04eebce76fafb
+PODFILE CHECKSUM: 1959d098c91d8a792531a723c4a9d7e9f6a01e38
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.10.2

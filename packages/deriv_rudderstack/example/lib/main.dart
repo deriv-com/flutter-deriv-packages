@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:deriv_rudderstack/deriv_rudderstack.dart';
 
 void main() {
-  runApp(MyApp());
+  
+  runApp(const MyApp());
 }
 
 // ignore: public_member_api_docs
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -19,7 +22,10 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    DerivRudderstack().disable();
+    DerivRudderstack().setup(
+      dataPlaneUrl: "https://regentmarkqfgr.dataplane.rudderstack.com",
+      writeKey: "2WKnh3zSj4pAVZa4y85U3j7n43A"
+    );
   }
 
   @override
@@ -80,11 +86,8 @@ class _MyAppState extends State<MyApp> {
             ),
             onTap: () async {
               final bool result = await DerivRudderstack().track(
-                  eventName: 'Application Opened',
-                  properties: <String, dynamic>{
-                    'entry1': 'test1',
-                    'entry2': 'test2'
-                  });
+                  eventName: 'Application Opened'
+                  );
 
               _showSnackBar(context, result);
             }),
@@ -100,11 +103,8 @@ class _MyAppState extends State<MyApp> {
             ),
             onTap: () async {
               final bool result = await DerivRudderstack().screen(
-                  screenName: 'main',
-                  properties: <String, dynamic>{
-                    'entry1': 'test1',
-                    'entry2': 'test2'
-                  });
+                  screenName: 'main'
+              );
 
               _showSnackBar(context, result);
             }),
@@ -120,11 +120,8 @@ class _MyAppState extends State<MyApp> {
             ),
             onTap: () async {
               final bool result = await DerivRudderstack().group(
-                  groupId: 'Group-id-test',
-                  traits: <String, dynamic>{
-                    'entry1': 'test1',
-                    'entry2': 'test2'
-                  });
+                  groupId: 'Group-id-test'
+              );
               _showSnackBar(context, result);
             }),
         InkWell(

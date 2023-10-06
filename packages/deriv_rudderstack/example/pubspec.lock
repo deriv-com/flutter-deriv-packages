@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.1"
+  cupertino_icons:
+    dependency: "direct main"
+    description:
+      name: cupertino_icons
+      sha256: d57953e10f9f8327ce64a508a355f0b1ec902193f66288e8cb5070e7c47eeb2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.6"
   deriv_rudderstack:
     dependency: "direct main"
     description:
@@ -61,8 +69,21 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_lints:
+    dependency: "direct dev"
+    description:
+      name: flutter_lints
+      sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
   flutter_test:
     dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -74,6 +95,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
+  lints:
+    dependency: transitive
+    description:
+      name: lints
+      sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      sha256: "7ad7215c15420a102ec687bb320a7312afd449bac63bfb1c60d9787c27b9767f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   matcher:
     dependency: transitive
     description:
@@ -106,6 +143,54 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  plugin_platform_interface:
+    dependency: transitive
+    description:
+      name: plugin_platform_interface
+      sha256: da3fdfeccc4d4ff2da8f8c556704c08f912542c5fb3cf2233ed75372384a034d
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.6"
+  rudder_plugin_android:
+    dependency: transitive
+    description:
+      name: rudder_plugin_android
+      sha256: da7d16ee782aa55e1e03044b7b387680b161acd212de898d0f44ccdd36fa50a4
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
+  rudder_plugin_ios:
+    dependency: transitive
+    description:
+      name: rudder_plugin_ios
+      sha256: "229fc33bebabb9b192fdb12827f58cd32052c80a248271332647f6cbfd1e2d75"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
+  rudder_plugin_web:
+    dependency: transitive
+    description:
+      name: rudder_plugin_web
+      sha256: "02230b8ee1181b4f43da3cb30b296163efe6fb82f56254cd582ce9aa1051e8cc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
+  rudder_sdk_flutter:
+    dependency: transitive
+    description:
+      name: rudder_sdk_flutter
+      sha256: "0cc58d5d6d7bf6f0d3ff4cd04c16e2e41d117d0e1ca630b14aeb77eb46e62387"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.1"
+  rudder_sdk_flutter_platform_interface:
+    dependency: transitive
+    description:
+      name: rudder_sdk_flutter_platform_interface
+      sha256: "4086380e6893b95fcedd7c76638d2d7aa5ea291488b9125c27b233a9531b8e8d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -168,5 +253,5 @@ packages:
     source: hosted
     version: "2.1.4"
 sdks:
-  dart: ">=3.0.0 <4.0.0"
+  dart: ">=3.0.6 <4.0.0"
   flutter: ">=3.10.2"

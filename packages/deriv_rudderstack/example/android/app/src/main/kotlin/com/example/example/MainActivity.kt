@@ -1,4 +1,4 @@
-package com.deriv.deriv_rudderstack_example
+package com.example.example
 
 import io.flutter.embedding.android.FlutterActivity
 
