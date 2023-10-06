@@ -1,7 +1,9 @@
 part of 'deriv_auth_cubit.dart';
 
 /// Authentication states
-abstract class DerivAuthState {}
+abstract class DerivAuthState {
+
+}
 
 /// Authentication in progress state.
 class DerivAuthLoadingState extends DerivAuthState {}
@@ -33,7 +35,11 @@ class DerivAuthErrorState extends DerivAuthState {
   DerivAuthErrorState({
     required this.message,
     required this.type,
+    required this.isSocialLogin,
   });
+
+  /// Boolean to identify if the user is logging in via social login or system login
+  final bool isSocialLogin;
 
   /// Error message.
   final String message;

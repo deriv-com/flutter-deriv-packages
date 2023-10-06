@@ -21,8 +21,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   /// [BaseAuthService] handles all login logic of cubit.
   final BaseAuthService authService;
 
-  bool _updateSocialLoginFlag({required bool isSocialLogin}) =>
-      authService.isSocialLogin = isSocialLogin;
 
   @override
   Future<void> systemLogin({
@@ -30,7 +28,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     required String password,
     String? otp,
   }) async {
-    _updateSocialLoginFlag(isSocialLogin: false);
 
     emit(DerivAuthLoadingState());
 
@@ -41,6 +38,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         password: password,
         otp: otp,
       ),
+      false,
     );
   }
 
@@ -50,7 +48,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     final String? signupProvider,
     String? otp,
   }) async {
-    _updateSocialLoginFlag(isSocialLogin: true);
 
     emit(DerivAuthLoadingState());
 
@@ -61,6 +58,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         signupProvider: signupProvider,
         otp: otp,
       ),
+      true,
     );
   }
 
@@ -74,7 +72,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     );
   }
 
-  Future<void> _loginRequest(GetTokensRequestModel request) async {
+  Future<void> _loginRequest(GetTokensRequestModel request, bool isSocialLogin) async {
     try {
       final AuthorizeEntity authorizeEntity =
           await authService.onLoginRequest(request);
@@ -84,7 +82,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           authorizeEntity: authorizeEntity,
           landingCompany: landingCompanyEntity));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
+      emit(DerivAuthErrorState(message: error.message, type: error.type, isSocialLogin: isSocialLogin));
     }
   }
 
@@ -101,7 +99,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           authorizeEntity: authorizeEntity,
           landingCompany: landingCompanyEntity));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
+      emit(DerivAuthErrorState(message: error.message, type: error.type, isSocialLogin: false));
     }
   }
 

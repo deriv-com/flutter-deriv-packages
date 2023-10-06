@@ -35,7 +35,4 @@ abstract class BaseAuthService {
 
   /// Get landing company.
   Future<LandingCompanyEntity> getLandingCompany(String? countryCode);
-
-  /// Boolean to identify if the user is logging in via social login or system login
-  bool isSocialLogin = false;
 }
