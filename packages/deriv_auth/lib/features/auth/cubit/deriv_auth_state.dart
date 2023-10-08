@@ -14,6 +14,7 @@ class DerivAuthLoggedInState extends DerivAuthState {
   /// Initialize [DerivAuthLoggedInState].
   DerivAuthLoggedInState(this.authModel);
 
+  /// The auth information of the user.
   final DerivAuthModel authModel;
 }
 
@@ -38,7 +39,8 @@ class DerivAuthErrorState extends DerivAuthState {
 /// Encapsulates the [AuthorizeEntity] and [LandingCompanyEntity] date of the
 /// user.
 class DerivAuthModel {
-  DerivAuthModel({
+  /// Initializes [DerivAuthModel].
+  const DerivAuthModel({
     required this.authorizeEntity,
     required this.landingCompany,
   });
