@@ -9,6 +9,7 @@ void main() {
 
 // ignore: public_member_api_docs
 class MyApp extends StatefulWidget {
+  // ignore: public_member_api_docs
   const MyApp({super.key});
 
   @override
@@ -23,8 +24,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     DerivRudderstack().setup(
-      dataPlaneUrl: "https://regentmarkqfgr.dataplane.rudderstack.com",
-      writeKey: "2WKnh3zSj4pAVZa4y85U3j7n43A"
+      dataPlaneUrl: 'https://regentmarkqfgr.dataplane.rudderstack.com',
+      writeKey: '2WKnh3zSj4pAVZa4y85U3j7n43A'
     );
   }
 
@@ -59,12 +60,12 @@ class _MyAppState extends State<MyApp> {
         InkWell(
           child: Container(
             padding: const EdgeInsets.all(8),
+            color: Colors.teal[100],
             child: const Center(
                 child: Text(
               'Identify',
               style: TextStyle(fontSize: 18),
             )),
-            color: Colors.teal[100],
           ),
           onTap: () async {
             await DerivRudderstack()
@@ -77,12 +78,12 @@ class _MyAppState extends State<MyApp> {
         InkWell(
             child: Container(
               padding: const EdgeInsets.all(8),
+              color: Colors.blue[100],
               child: const Center(
                   child: Text(
                 'Track',
                 style: TextStyle(fontSize: 18),
               )),
-              color: Colors.blue[100],
             ),
             onTap: () async {
               final bool result = await DerivRudderstack().track(
@@ -94,12 +95,12 @@ class _MyAppState extends State<MyApp> {
         InkWell(
             child: Container(
               padding: const EdgeInsets.all(8),
+              color: Colors.orange[100],
               child: const Center(
                   child: Text(
                 'Screen',
                 style: TextStyle(fontSize: 18),
               )),
-              color: Colors.orange[100],
             ),
             onTap: () async {
               final bool result = await DerivRudderstack().screen(
@@ -111,12 +112,12 @@ class _MyAppState extends State<MyApp> {
         InkWell(
             child: Container(
               padding: const EdgeInsets.all(8),
+              color: Colors.indigo[100],
               child: const Center(
                   child: Text(
                 'group',
                 style: TextStyle(fontSize: 18),
               )),
-              color: Colors.indigo[100],
             ),
             onTap: () async {
               final bool result = await DerivRudderstack().group(
@@ -127,12 +128,12 @@ class _MyAppState extends State<MyApp> {
         InkWell(
             child: Container(
               padding: const EdgeInsets.all(8),
+              color: Colors.purple[100],
               child: const Center(
                   child: Text(
                 'alias',
                 style: TextStyle(fontSize: 18),
               )),
-              color: Colors.purple[100],
             ),
             onTap: () async {
               final bool result =
@@ -142,12 +143,12 @@ class _MyAppState extends State<MyApp> {
         InkWell(
             child: Container(
               padding: const EdgeInsets.all(8),
+              color: Colors.deepOrange[100],
               child: const Center(
                   child: Text(
                 'reset',
                 style: TextStyle(fontSize: 18),
               )),
-              color: Colors.deepOrange[100],
             ),
             onTap: () async {
               final bool result = await DerivRudderstack().reset();
