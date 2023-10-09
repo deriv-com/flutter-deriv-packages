@@ -69,7 +69,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     );
   }
 
-  Future<void> _loginRequest(GetTokensRequestModel request, bool isSocialLogin) async {
+  Future<void> _loginRequest(
+      GetTokensRequestModel request, bool isSocialLogin) async {
     try {
       final AuthorizeEntity authorizeEntity =
           await authService.onLoginRequest(request);
@@ -79,7 +80,11 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           authorizeEntity: authorizeEntity,
           landingCompany: landingCompanyEntity));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type, isSocialLogin: isSocialLogin));
+      emit(DerivAuthErrorState(
+        message: error.message,
+        type: error.type,
+        isSocialLogin: isSocialLogin,
+      ));
     }
   }
 
@@ -96,7 +101,11 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           authorizeEntity: authorizeEntity,
           landingCompany: landingCompanyEntity));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type, isSocialLogin: false));
+      emit(DerivAuthErrorState(
+        message: error.message,
+        type: error.type,
+        isSocialLogin: false,
+      ));
     }
   }
 
