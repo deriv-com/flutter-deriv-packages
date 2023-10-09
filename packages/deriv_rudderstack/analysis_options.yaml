@@ -1,6 +1,7 @@
 analyzer:
   exclude:
     - lib/generated/**
+    - lib/example/**
 
   language:
     strict-raw-types: true
