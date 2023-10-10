@@ -22,6 +22,10 @@ class DerivAuthLoggedInState extends DerivAuthState {
 
   /// [LandingCompanyEntity] hold all landing company information.
   final LandingCompanyEntity landingCompany;
+
+  /// Indicates if the user is migrated to wallets or not.
+  bool get isMigratedToWallets =>
+      authorizeEntity.linkedTo?.isNotEmpty ?? false;
 }
 
 /// Logged out state.

@@ -1,3 +1,4 @@
+import 'package:bloc_test/bloc_test.dart';
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
@@ -106,6 +107,7 @@ void main() {
 
         verify(() => service.onLoginRequest(any())).called(1);
       });
+
       test('should emit [AuthLoggedInState] upon a successful social login.',
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
@@ -258,6 +260,41 @@ void main() {
           () => service.login(any(), accounts: any(named: 'accounts')),
         ).called(1);
       });
+
+      test(
+        '[isMigratedToWallets] should return false when the required account is'
+        ' not migrated to any wallets.',
+        () => () async {
+          whenListen(
+            authCubit,
+            Stream<DerivAuthState>.fromIterable(
+              <DerivAuthState>[
+                DerivAuthLoadingState(),
+                DerivAuthLoggedInState(
+                    authorizeEntity: mockedValidAuthorizeEntity,
+                    landingCompany: const LandingCompanyEntity()),
+              ],
+            ),
+          );
+
+          await expectLater(
+            authCubit.stream,
+            emitsInOrder(
+              <dynamic>[
+                isA<DerivAuthLoadingState>(),
+                isA<DerivAuthLoggedInState>(),
+              ],
+            ),
+          );
+
+          expect(authCubit.state, isA<DerivAuthLoggedInState>());
+
+          final DerivAuthLoggedInState loggedInState =
+              authCubit.state as DerivAuthLoggedInState;
+
+          expect(loggedInState.isMigratedToWallets, isFalse);
+        },
+      );
     },
   );
 }
