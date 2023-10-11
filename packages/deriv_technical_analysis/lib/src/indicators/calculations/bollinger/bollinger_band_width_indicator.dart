@@ -1,4 +1,3 @@
-import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
 import 'package:deriv_technical_analysis/src/models/models.dart';
 
 import '../../cached_indicator.dart';
@@ -24,7 +23,7 @@ class BollingerBandWidthIndicator<T extends IndicatorResult>
   final BollingerBandsUpperIndicator<T> bbu;
 
   /// The middle band Indicator. Typically an SMAIndicator is used.
-  final Indicator<T> bbm;
+  final CachedIndicator<T> bbm;
 
   /// The lower band Indicator.
   final BollingerBandsLowerIndicator<T> bbl;
@@ -39,4 +38,20 @@ class BollingerBandWidthIndicator<T extends IndicatorResult>
                 bbm.getValue(index).quote) *
             hundred,
       );
+
+  @override
+  void copyValuesFrom(covariant BollingerBandWidthIndicator<T> other) {
+    super.copyValuesFrom(other);
+    bbm.copyValuesFrom(other.bbm);
+    bbu.copyValuesFrom(other.bbu);
+    bbl.copyValuesFrom(other.bbl);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    bbm.invalidate(index);
+    bbu.invalidate(index);
+    bbl.invalidate(index);
+  }
 }
