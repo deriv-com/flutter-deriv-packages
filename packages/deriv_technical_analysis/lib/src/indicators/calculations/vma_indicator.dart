@@ -12,7 +12,7 @@ class VMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
   final Indicator<T> indicator;
 
   /// Chande Momentum Oscillator indicator
-  final Indicator<T> cmoIndicator;
+  final CachedIndicator<T> cmoIndicator;
 
   /// Period
   final int period;
@@ -33,5 +33,17 @@ class VMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
 
     final double result = a * cmo * (src - prev) + prev;
     return createResult(index: index, quote: result);
+  }
+
+  @override
+  void copyValuesFrom(covariant VMAIndicator<T> other) {
+    super.copyValuesFrom(other);
+    cmoIndicator.copyValuesFrom(other.cmoIndicator);
+  }
+
+  @override
+  void invalidate(int index) {
+    cmoIndicator.invalidate(index);
+    super.invalidate(index);
   }
 }

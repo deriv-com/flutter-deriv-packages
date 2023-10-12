@@ -64,4 +64,18 @@ class SMIIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
 
     return createResult(index: index, quote: smi);
   }
+
+  @override
+  void copyValuesFrom(covariant SMIIndicator<T> other) {
+    super.copyValuesFrom(other);
+    _avgRel.copyValuesFrom(other._avgRel);
+    _avgDiff.copyValuesFrom(other._avgDiff);
+  }
+
+  @override
+  void invalidate(int index) {
+    _avgRel.invalidate(index);
+    _avgDiff.invalidate(index);
+    super.invalidate(index);
+  }
 }

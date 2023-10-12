@@ -23,7 +23,6 @@ class ZLEMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
 
   @override
   T calculate(int index) {
-    print('ZLEMAIndicator.calculate($index)');
     if (index + 1 < period) {
       // Starting point of the ZLEMA
       return SMAIndicator<T>(indicator, period).getValue(index);

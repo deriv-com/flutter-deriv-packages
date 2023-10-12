@@ -34,4 +34,18 @@ class DXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     }
     return createResult(index: index, quote: (diffDI / sumDI) * 100);
   }
+
+  @override
+  void copyValuesFrom(covariant DXIndicator<T> other) {
+    super.copyValuesFrom(other);
+    positiveDIIndicator.copyValuesFrom(other.positiveDIIndicator);
+    negativeDIIndicator.copyValuesFrom(other.negativeDIIndicator);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    positiveDIIndicator.invalidate(index);
+    negativeDIIndicator.invalidate(index);
+  }
 }

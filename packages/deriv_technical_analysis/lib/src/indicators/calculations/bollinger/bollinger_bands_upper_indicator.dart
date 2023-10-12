@@ -1,7 +1,6 @@
 import 'package:deriv_technical_analysis/src/models/models.dart';
 
 import '../../cached_indicator.dart';
-import '../../indicator.dart';
 
 /// Bollinger bands upper indicator
 class BollingerBandsUpperIndicator<T extends IndicatorResult>

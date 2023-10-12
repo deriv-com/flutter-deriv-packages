@@ -1,4 +1,12 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+
+import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/dx_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/calculations/mma_indicator.dart';
+import 'package:deriv_technical_analysis/src/models/data_input.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
+
+import 'negative_di_indicator.dart';
+import 'positive_di_indicator.dart';
 
 /// Average Directional Movement. Part of the Directional Movement System.
 class ADXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
@@ -28,4 +36,16 @@ class ADXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
 
   @override
   T calculate(int index) => _averageDXIndicator.getValue(index);
+
+  @override
+  void copyValuesFrom(covariant ADXIndicator<T> other) {
+    super.copyValuesFrom(other);
+    _averageDXIndicator.copyValuesFrom(other._averageDXIndicator);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    _averageDXIndicator.invalidate(index);
+  }
 }

@@ -1,7 +1,6 @@
 import 'package:deriv_technical_analysis/src/models/models.dart';
 
 import '../../cached_indicator.dart';
-import '../../indicator.dart';
 
 /// Calculates the value for donchian middle channel.
 class DonchianMiddleChannelIndicator<T extends IndicatorResult>
@@ -11,10 +10,10 @@ class DonchianMiddleChannelIndicator<T extends IndicatorResult>
       : super(upperChannel.input);
 
   /// Donchian upper channel indicator.
-  final Indicator<T> upperChannel;
+  final CachedIndicator<T> upperChannel;
 
   /// Donchian lower channel indicator.
-  final Indicator<T> lowerChannel;
+  final CachedIndicator<T> lowerChannel;
 
   @override
   T calculate(int index) {
@@ -24,5 +23,19 @@ class DonchianMiddleChannelIndicator<T extends IndicatorResult>
       index: index,
       quote: lower + (upper - lower) / 2,
     );
+  }
+
+  @override
+  void copyValuesFrom(covariant DonchianMiddleChannelIndicator<T> other) {
+    super.copyValuesFrom(other);
+    upperChannel.copyValuesFrom(other.upperChannel);
+    lowerChannel.copyValuesFrom(other.lowerChannel);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    upperChannel.invalidate(index);
+    lowerChannel.invalidate(index);
   }
 }
