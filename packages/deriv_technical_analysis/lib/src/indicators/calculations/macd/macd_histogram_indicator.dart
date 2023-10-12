@@ -1,4 +1,7 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import '../../../models/models.dart';
+import '../../cached_indicator.dart';
+import 'macd_indicator.dart';
+import 'signal_macd_indicator.dart';
 
 ///Histogram of Moving Average Convergance Divergence Indicator.
 ///Difference of MACD & SignalMACD Indicator.

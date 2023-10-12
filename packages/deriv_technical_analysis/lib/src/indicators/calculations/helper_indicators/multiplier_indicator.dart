@@ -1,4 +1,5 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
 
 /// A helper indicator to multiply another indicator values by a [coefficient].
 class MultiplierIndicator<T extends IndicatorResult> extends Indicator<T> {

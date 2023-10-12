@@ -1,6 +1,10 @@
 import 'dart:math';
 
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
+
+import '../lowest_value_indicator.dart';
 
 /// Aroon Down indicator.
 class AroonDownIndicator<T extends IndicatorResult> extends CachedIndicator<T> {

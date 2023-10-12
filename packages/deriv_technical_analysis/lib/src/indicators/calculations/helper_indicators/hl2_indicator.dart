@@ -1,4 +1,6 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/data_input.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
 
 /// A helper indicator to get the [(H + L) / 2] value of a list of [IndicatorOHLC]
 class HL2Indicator<T extends IndicatorResult> extends Indicator<T> {

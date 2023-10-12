@@ -1,4 +1,7 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import '../../models/models.dart';
+import '../cached_indicator.dart';
+import '../indicator.dart';
+import 'sma_indicator.dart';
 
 /// Zero-lag Exponential Moving Average indicator
 class ZLEMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
