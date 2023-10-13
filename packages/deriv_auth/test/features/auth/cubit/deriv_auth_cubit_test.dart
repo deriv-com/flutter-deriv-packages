@@ -1,3 +1,4 @@
+import 'package:bloc_test/bloc_test.dart';
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
@@ -239,7 +240,7 @@ void main() {
             <TypeMatcher<DerivAuthState>>[
           isA<DerivAuthLoadingState>(),
           isA<DerivAuthLoggedInState>().having(
-              (DerivAuthLoggedInState state) => state.authorizeEntity,
+              (DerivAuthLoggedInState state) => state.authModel.authorizeEntity,
               'authorized entity',
               mockedValidAuthorizeEntity),
         ];
@@ -288,6 +289,42 @@ void main() {
           () => service.login(any(), accounts: any(named: 'accounts')),
         ).called(1);
       });
+
+      test(
+        '[isMigratedToWallets] should return false when the required account is'
+        ' not migrated to any wallets.',
+        () => () async {
+          whenListen(
+            authCubit,
+            Stream<DerivAuthState>.fromIterable(
+              <DerivAuthState>[
+                DerivAuthLoadingState(),
+                DerivAuthLoggedInState(const DerivAuthModel(
+                  authorizeEntity: mockedValidAuthorizeEntity,
+                  landingCompany: LandingCompanyEntity(),
+                )),
+              ],
+            ),
+          );
+
+          await expectLater(
+            authCubit.stream,
+            emitsInOrder(
+              <dynamic>[
+                isA<DerivAuthLoadingState>(),
+                isA<DerivAuthLoggedInState>(),
+              ],
+            ),
+          );
+
+          expect(authCubit.state, isA<DerivAuthLoggedInState>());
+
+          final DerivAuthLoggedInState loggedInState =
+              authCubit.state as DerivAuthLoggedInState;
+
+          expect(loggedInState.isMigratedToWallets, isFalse);
+        },
+      );
     },
   );
 }

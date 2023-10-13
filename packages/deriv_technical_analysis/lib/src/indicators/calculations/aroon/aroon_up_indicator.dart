@@ -1,6 +1,10 @@
 import 'dart:math';
 
-import '../../../../deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
+
+import '../highest_value_indicator.dart';
 
 /// Aroon Up Indicator
 class AroonUpIndicator<T extends IndicatorResult> extends CachedIndicator<T> {

@@ -1,4 +1,5 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import '../models/data_input.dart';
+import '../models/models.dart';
 
 /// Base class of all indicators.
 ///

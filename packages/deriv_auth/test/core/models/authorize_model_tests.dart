@@ -6,6 +6,7 @@ void main() {
     final Map<String, dynamic> authorizeJson = <String, dynamic>{
       'account_list': <dynamic>[
         AccountListItem(
+          accountCategory: AccountCategoryEnum.trading,
           createdAt: DateTime.now(),
           currency: 'USD',
           token: 'test_token',
@@ -13,14 +14,16 @@ void main() {
       ],
       'balance': 500,
       'country': 'US',
-      'trading':
-          const AuthorizeTrading(linkedTo: <TradingLinkedToItem>[]).toJson(),
+      'linked_to': <dynamic>[
+        const LinkedToItem(
+          loginid: 'test_loginid',
+          platform: PlatformEnum.dwallet,
+        ).toJson(),
+      ],
       'currency': 'USD',
       'preferred_language': 'en',
       'scopes': <String>['a', 'b', 'c'],
       'user_id': 6789,
-      // 'wallet': null,
-      'wallet': const AuthorizeWallet(accountId: 'test_account_id').toJson(),
     };
     test('fromJson() should create an instance of AuthorizeEntity from JSON.',
         () {
@@ -30,12 +33,12 @@ void main() {
       expect(authorizeEntity.accountList, isNotNull);
       expect(authorizeEntity.balance, 500);
       expect(authorizeEntity.country, 'US');
-      expect(authorizeEntity.trading?.linkedTo, <TradingLinkedToItem>[]);
+      expect(authorizeEntity.linkedTo!.first.loginid, 'test_loginid');
+      expect(authorizeEntity.linkedTo!.first.platform, PlatformEnum.dwallet);
       expect(authorizeEntity.currency, 'USD');
       expect(authorizeEntity.preferredLanguage, 'en');
       expect(authorizeEntity.scopes, <String>['a', 'b', 'c']);
       expect(authorizeEntity.userId, 6789);
-      expect(authorizeEntity.wallet?.accountId, equals('test_account_id'));
       // expect(authorizeEntity.wallet, isA<AuthorizeWallet>());
     });
 

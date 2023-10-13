@@ -1,4 +1,5 @@
 import 'package:deriv_technical_analysis/src/helpers/functions.dart';
+import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/bollinger/bollinger_bands_upper_indicator.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/bollinger/percent_b_indicator.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/close_value_inidicator.dart';
@@ -58,7 +59,7 @@ void main() {
       final CloseValueIndicator<MockResult> closePrice =
           CloseValueIndicator<MockResult>(MockInput(ticks));
 
-      final Indicator<MockResult> bbmSMA =
+      final CachedIndicator<MockResult> bbmSMA =
           SMAIndicator<MockResult>(closePrice, period);
       final StandardDeviationIndicator<MockResult> standardDeviation =
           StandardDeviationIndicator<MockResult>(closePrice, period);

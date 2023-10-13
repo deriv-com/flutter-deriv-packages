@@ -28,4 +28,16 @@ class HMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
 
   @override
   T calculate(int index) => _sqrtWma.getValue(index);
+
+  @override
+  void copyValuesFrom(covariant HMAIndicator<T> other) {
+    super.copyValuesFrom(other);
+    _sqrtWma.copyValuesFrom(other._sqrtWma);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    _sqrtWma.invalidate(index);
+  }
 }

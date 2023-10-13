@@ -1,4 +1,8 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import '../../models/models.dart';
+import '../cached_indicator.dart';
+import '../indicator.dart';
+import 'sma_indicator.dart';
+import 'wma_indicator.dart';
 
 /// Least Square Moving Average indicator
 class LSMAIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
