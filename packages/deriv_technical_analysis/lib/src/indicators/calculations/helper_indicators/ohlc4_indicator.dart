@@ -1,4 +1,6 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/data_input.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
 
 /// A helper indicator to get the [(O+ H + L+ C) / 4] value of a list of [IndicatorOHLC]
 class OHLC4Indicator<T extends IndicatorResult> extends Indicator<T> {

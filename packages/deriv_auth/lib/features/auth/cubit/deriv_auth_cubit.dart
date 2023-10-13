@@ -37,6 +37,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         password: password,
         otp: otp,
       ),
+      false,
     );
   }
 
@@ -55,6 +56,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         signupProvider: signupProvider,
         otp: otp,
       ),
+      true,
     );
   }
 
@@ -84,17 +86,25 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     );
   }
 
-  Future<void> _loginRequest(GetTokensRequestModel request) async {
+  Future<void> _loginRequest(
+      GetTokensRequestModel request, bool isSocialLogin) async {
     try {
       final AuthorizeEntity authorizeEntity =
           await authService.onLoginRequest(request);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       emit(DerivAuthLoggedInState(
+        DerivAuthModel(
           authorizeEntity: authorizeEntity,
-          landingCompany: landingCompanyEntity));
+          landingCompany: landingCompanyEntity,
+        ),
+      ));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
+      emit(DerivAuthErrorState(
+        message: error.message,
+        type: error.type,
+        isSocialLogin: isSocialLogin,
+      ));
     }
   }
 
@@ -108,10 +118,17 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       emit(DerivAuthLoggedInState(
+        DerivAuthModel(
           authorizeEntity: authorizeEntity,
-          landingCompany: landingCompanyEntity));
+          landingCompany: landingCompanyEntity,
+        ),
+      ));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
+      emit(DerivAuthErrorState(
+        message: error.message,
+        type: error.type,
+        isSocialLogin: false,
+      ));
     }
   }
 

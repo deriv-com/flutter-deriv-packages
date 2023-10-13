@@ -1,7 +1,6 @@
 import 'package:deriv_technical_analysis/src/models/models.dart';
 
 import '../../cached_indicator.dart';
-import '../../indicator.dart';
 
 /// Bollinger bands lower indicator
 class BollingerBandsLowerIndicator<T extends IndicatorResult>
@@ -18,10 +17,10 @@ class BollingerBandsLowerIndicator<T extends IndicatorResult>
       : super.fromIndicator(bbm);
 
   /// Indicator
-  final Indicator<T> indicator;
+  final CachedIndicator<T> indicator;
 
   /// The middle indicator of the BollingerBand
-  final Indicator<T> bbm;
+  final CachedIndicator<T> bbm;
 
   /// Default is 2.
   final double k;
@@ -32,4 +31,19 @@ class BollingerBandsLowerIndicator<T extends IndicatorResult>
         quote:
             bbm.getValue(index).quote - (indicator.getValue(index).quote * k),
       );
+
+  @override
+  void copyValuesFrom(covariant BollingerBandsLowerIndicator<T> other) {
+    super.copyValuesFrom(other);
+    indicator.copyValuesFrom(other.indicator);
+    bbm.copyValuesFrom(other.bbm);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+
+    indicator.invalidate(index);
+    bbm.invalidate(index);
+  }
 }

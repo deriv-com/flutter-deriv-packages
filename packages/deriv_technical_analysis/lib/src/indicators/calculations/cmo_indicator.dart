@@ -34,4 +34,18 @@ class CMOIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
       quote: ((sumOfGains - sumOfLosses) / (sumOfGains + sumOfLosses)) * 100,
     );
   }
+
+  @override
+  void copyValuesFrom(covariant CMOIndicator<T> other) {
+    super.copyValuesFrom(other);
+    _gainIndicator.copyValuesFrom(other._gainIndicator);
+    _lossIndicator.copyValuesFrom(other._lossIndicator);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    _gainIndicator.invalidate(index);
+    _lossIndicator.invalidate(index);
+  }
 }

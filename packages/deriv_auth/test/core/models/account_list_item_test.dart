@@ -5,6 +5,7 @@ void main() {
   group('AccountListItem tests', () {
     test('toJson should return valid json.', () {
       final AccountListItem item = AccountListItem(
+        accountCategory: AccountCategoryEnum.wallet,
         createdAt: DateTime.now(),
         currency: 'USD',
         excludedUntil: DateTime.now(),
@@ -12,8 +13,12 @@ void main() {
         isVirtual: false,
         landingCompanyName: 'Test Company',
         loginid: 'test_loginid',
-        trading: const Trading(),
-        wallet: const Wallet(),
+        linkedTo: <LinkedToItem>[
+          const LinkedToItem(
+            loginid: 'test_loginid_1',
+            platform: PlatformEnum.dtrade,
+          )
+        ],
         token: 'test_token',
       );
 
@@ -22,8 +27,8 @@ void main() {
       expect(json['currency'], equals('USD'));
       expect(json['landing_company_name'], equals('Test Company'));
       expect(json['loginid'], equals('test_loginid'));
-      expect(json['trading'], isNotNull);
-      expect(json['wallet'], isNotNull);
+      expect(json['linked_to'], isNotNull);
+      expect(json['linked_to'].first['loginid'], 'test_loginid_1');
     });
 
     test('fromJson should create object from map.', () {
@@ -32,8 +37,12 @@ void main() {
         'currency': 'EUR',
         'landing_company_name': 'Test Company 2',
         'loginid': 'test_loginid_2',
-        'trading': const Trading().toJson(),
-        'wallet': const Wallet().toJson(),
+        'linked_to': <Map<String, dynamic>>[
+          <String, dynamic>{
+            'loginid': 'test_loginid_1',
+            'platform': 'dtrade',
+          },
+        ],
       };
 
       final AccountListItem item = AccountListItem.fromJson(json);
@@ -41,8 +50,8 @@ void main() {
       expect(item.currency, equals('EUR'));
       expect(item.landingCompanyName, equals('Test Company 2'));
       expect(item.loginid, equals('test_loginid_2'));
-      expect(item.trading, isNotNull);
-      expect(item.wallet, isNotNull);
+      expect(item.linkedTo!.first.platform, PlatformEnum.dtrade);
+      expect(item.linkedTo!.first.loginid, 'test_loginid_1');
     });
 
     test('copyWith new values return correct object.', () {
@@ -54,8 +63,6 @@ void main() {
         isVirtual: false,
         landingCompanyName: 'Test Company',
         loginid: 'test_loginid',
-        trading: const Trading(),
-        wallet: const Wallet(),
         token: 'test_token',
       );
 
@@ -75,8 +82,12 @@ void main() {
         isVirtual: false,
         landingCompanyName: 'Test Company',
         loginid: 'test_loginid',
-        trading: const Trading(),
-        wallet: const Wallet(),
+        linkedTo: <LinkedToItem>[
+          const LinkedToItem(
+            loginid: 'test_loginid_1',
+            platform: PlatformEnum.dtrade,
+          ),
+        ],
         token: 'test_token',
       );
 

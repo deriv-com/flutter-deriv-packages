@@ -1,7 +1,6 @@
 import 'package:deriv_technical_analysis/src/models/models.dart';
 
 import '../../cached_indicator.dart';
-import '../../indicator.dart';
 import 'ma_env_shift_types.dart';
 
 /// Moving Average Envelope lower indicator
@@ -17,7 +16,7 @@ class MAEnvLowerIndicator<T extends IndicatorResult>
       : super.fromIndicator(maEnvMiddleIndicator);
 
   /// The middle indicator of the Moving Average Envelope
-  final Indicator<T> maEnvMiddleIndicator;
+  final CachedIndicator<T> maEnvMiddleIndicator;
 
   /// Moving Average Envelope indicator shift
   final double shift;
@@ -35,4 +34,16 @@ class MAEnvLowerIndicator<T extends IndicatorResult>
   double _getShiftedValue(double value) => shiftType == ShiftType.percent
       ? value * (1 - (shift / 100))
       : value - shift;
+
+  @override
+  void copyValuesFrom(covariant MAEnvLowerIndicator<T> other) {
+    super.copyValuesFrom(other);
+    maEnvMiddleIndicator.copyValuesFrom(other.maEnvMiddleIndicator);
+  }
+
+  @override
+  void invalidate(int index) {
+    maEnvMiddleIndicator.invalidate(index);
+    super.invalidate(index);
+  }
 }
