@@ -73,6 +73,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         socialAuthDto: socialAuthDto,
         otp: otp,
       ),
+      true,
     );
   }
 
