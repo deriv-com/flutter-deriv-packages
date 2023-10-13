@@ -18,7 +18,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_auth
-      ref: dev
+      ref: d5bef178341a318f911b42b8105d8c3d50c6b63e
   deriv_theme:
     path: ../deriv_theme
     # git:
