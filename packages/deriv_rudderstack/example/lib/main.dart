@@ -24,8 +24,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     DerivRudderstack().setup(
-      dataPlaneUrl: 'https://regentmarkqfgr.dataplane.rudderstack.com',
-      writeKey: '2WKnh3zSj4pAVZa4y85U3j7n43A'
+      dataPlaneUrl: 'data_plane_url',
+      writeKey: 'write_key'
     );
   }
 

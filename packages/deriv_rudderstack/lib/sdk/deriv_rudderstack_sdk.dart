@@ -1,20 +1,33 @@
 import 'dart:async';
 
 import 'package:deriv_rudderstack/core/logger.dart';
-import 'package:deriv_rudderstack/sdk/deriv_rudderstack_actions.dart';
+import 'package:deriv_rudderstack/sdk/deriv_rudderstack_events_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 import 'package:rudder_sdk_flutter/RudderController.dart';
 
-
-
 /// A wrapper around RudderStack Flutter SDK.
-class DerivRudderstack implements DerivRudderstackActions {
+class DerivRudderstack implements DerivRudderstackEventsRepository {
+  RudderController _rudderClient = RudderController.instance;
+  Logger _logger = ConsoleLogger();
 
   /// The [RudderController] instance used for tracking events.
-  final RudderController rudderClient = RudderController.instance;
+  RudderController get rudderClient => _rudderClient;
 
   /// The [Logger] instance used for logging messages and errors.
-  final Logger logger = ConsoleLogger();
+  Logger get logger => _logger;
+
+  /// Sets the [rudderClient] instance in the case of testing.
+  @visibleForTesting
+  set rudderClient(RudderController rudderClient) {
+    _rudderClient = rudderClient;
+  }
+
+  /// Sets the [logger] instance in the case of testing.
+  @visibleForTesting
+  set logger(Logger logger) {
+    _logger = logger;
+  }
 
   /// Identifies a user with the given [userId].
   @override
@@ -45,10 +58,13 @@ class DerivRudderstack implements DerivRudderstackActions {
   ///
   /// Takes [dataPlaneUrl] and [writeKey] as parameters.
   @override
-  Future<bool> setup({required String dataPlaneUrl, required String writeKey}) async =>
+  Future<bool> setup({
+    required String dataPlaneUrl, 
+    required String writeKey
+    }) async =>
       _execute(() {
         final RudderConfigBuilder builder = RudderConfigBuilder()
-        ..withDataPlaneUrl(dataPlaneUrl);
+          ..withDataPlaneUrl(dataPlaneUrl);
         rudderClient.initialize(writeKey, config: builder.build());
       });
 

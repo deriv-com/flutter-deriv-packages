@@ -1,8 +1,7 @@
 import 'dart:async';
 
 /// Defines all the actions that the Rudderstack client can perform
-abstract class DerivRudderstackActions {
-
+abstract class DerivRudderstackEventsRepository {
   /// Identifies a user with the given [userId].
   Future<bool> identify({required String userId});
 
@@ -36,5 +35,4 @@ abstract class DerivRudderstackActions {
   ///
   /// Takes a [token] as a parameter.
   Future<bool> setContext({required String token});
-
 }
