@@ -34,6 +34,9 @@ class Dimens {
   /// 18 pixels margin
   static const double margin18 = 18;
 
+  /// 20 pixels margin.
+  static const double margin20 = 20;
+
   /// 24 pixels margin
   static const double margin24 = 24;
 

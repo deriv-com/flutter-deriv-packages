@@ -40,6 +40,8 @@ class ThemeProvider {
 
   static const double margin18 = Dimens.margin18;
 
+  static const double margin20 = Dimens.margin20;
+
   static const double margin24 = Dimens.margin24;
 
   static const double margin32 = Dimens.margin32;
