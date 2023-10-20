@@ -22,6 +22,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   /// [BaseAuthService] handles all login logic of cubit.
   final BaseAuthService authService;
 
+  bool _isUserMigrated = false;
+
   @override
   Future<void> systemLogin({
     required String email,
@@ -94,6 +96,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           await authService.onLoginRequest(request);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
+      _isUserMigrated = _checkUserMigrated(authorizeEntity);
       emit(DerivAuthLoggedInState(
         DerivAuthModel(
           authorizeEntity: authorizeEntity,
@@ -118,6 +121,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           await authService.login(token, accounts: accounts);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
+      _isUserMigrated = _checkUserMigrated(authorizeEntity);
       emit(DerivAuthLoggedInState(
         DerivAuthModel(
           authorizeEntity: authorizeEntity,
@@ -170,6 +174,18 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       emit(DerivAuthLoggedOutState());
     }
   }
+
+  /// Indicates if the user is migrated to wallets or not.
+  ///
+  /// The user is considered  migrated if at least one of their accounts
+  /// is [AccountCategoryEnum.wallet]
+  bool get isMigratedToWallets => _isUserMigrated;
+
+  bool _checkUserMigrated(AuthorizeEntity authorizeEntity) =>
+      authorizeEntity.accountList?.any(
+              (AccountListItem account) =>
+          account.accountCategory == AccountCategoryEnum.wallet) ??
+          false;
 
   @override
   Stream<DerivAuthState> get output => stream;

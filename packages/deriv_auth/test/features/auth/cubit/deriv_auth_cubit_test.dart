@@ -319,10 +319,7 @@ void main() {
 
           expect(authCubit.state, isA<DerivAuthLoggedInState>());
 
-          final DerivAuthLoggedInState loggedInState =
-              authCubit.state as DerivAuthLoggedInState;
-
-          expect(loggedInState.isMigratedToWallets, isFalse);
+          expect(authCubit.isMigratedToWallets, isFalse);
         },
       );
     },
