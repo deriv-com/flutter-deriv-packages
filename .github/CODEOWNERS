@@ -28,19 +28,6 @@
 #
 #  In the case of emergency, the repo administrators can bypass this requirement.
 
-
-
-# ================================================
-#  GitHub username registry
-#  (just to make this file easier to understand)
-# ================================================
-
-#ramin-deriv
-#ahrar-deriv
-#waqas-younas-deriv
-#sahani-deriv
-#reza-deriv
-
 ######################################################################################################
 #
 # CODEOWNERS rules
@@ -59,7 +46,7 @@
 # (in case no pattern matches a path in a PR - this should be treated as a bug and result in adding the path to CODEOWNERS)
 # ==============================================================
 
-*                                                                   @ramin-deriv @waqas-younas-deriv @ahrar-deriv @sahani-deriv @reza-deriv
+* @ramin-deriv @waqas-younas-deriv @ahrar-deriv @sahani-deriv @reza-deriv @abed-deriv @emad-deriv
 
 # ==============================================================
 #  analytics
@@ -93,7 +80,7 @@
 #  deriv_bloc_manager
 # ==============================================================
 
-/packages/deriv_bloc_manager/**/*                                   @sahani-deriv
+/packages/deriv_bloc_manager/**/*                                   @ramin-deriv @waqas-younas-deriv @emad-deriv
 
 
 # ==============================================================
@@ -121,13 +108,24 @@
 #  deriv_date_range_picker
 # ==============================================================
 
-/packages/deriv_date_range_picker/**/*                                         @reze-deriv
-
+/packages/deriv_date_range_picker/**/*                              @emad-deriv
 
 
 # ==============================================================
-#  deriv_date_range_picker
+#   deriv_live_chat
 # ==============================================================
 
-/packages/deriv_date_range_picker/**/*                                         @reze-deriv
+/packages/deriv_live_chat/**/*                                      @ramin-deriv @ahrar-deriv
+
+
+# ==============================================================
+#   deriv_rudderstack
+# ==============================================================
+
+/packages/deriv_rudderstack/**/*                                    @emad-deriv
+
+
+
+
+
 
