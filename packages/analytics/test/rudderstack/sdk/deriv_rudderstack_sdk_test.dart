@@ -98,15 +98,15 @@ void main() {
       const String dataPlaneUrl = 'wrong_url';
       const String writeKey = 'test_write_key';
 
-      await derivRudderstack.setup(const RudderstackConfiguration(
-          dataPlaneUrl: dataPlaneUrl, writeKey: writeKey));
+       when(() => mockRudderController.initialize(any(), config: any(named: 'config')))
+          .thenThrow(Exception());
 
-      verify(() => mockRudderController.initialize(writeKey,
-          config: any(named: 'config'))).called(1);
+      final bool result = await derivRudderstack.setup(
+          const RudderstackConfiguration(
+              dataPlaneUrl: dataPlaneUrl, writeKey: writeKey));
 
-      when(() => derivRudderstack.setup(const RudderstackConfiguration(
-          dataPlaneUrl: dataPlaneUrl,
-          writeKey: writeKey))).thenThrow(Exception());
+      expect(result, false);
+      
     });
 
     test('reset calls rudderClient.reset', () async {
