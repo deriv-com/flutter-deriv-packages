@@ -83,6 +83,15 @@ class DerivFirebaseAnalytics implements BaseAnalytics<FirebaseConfiguration> {
         await _firebaseAnalytics.setUserId(id: id);
       });
 
+  /// Sets a user property to a given value.
+  Future<bool> setUserProperty({
+    required String name,
+    required String value,
+  }) async =>
+      _execute(() async {
+        await _firebaseAnalytics.setUserProperty(name: name, value: value);
+      });
+
   /// Executes [action] and logs errors, if any.
   Future<bool> _execute(Function action) async {
     try {

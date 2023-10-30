@@ -63,5 +63,45 @@ void main() {
 
       verify(() => mockFirebaseAnalytics.setUserId(id: userId)).called(1);
     });
+
+    test('should call logEvent with correct parameters', () async {
+      const String name = 'test_name';
+      const Map<String, dynamic> params = <String, dynamic>{};
+
+      when(() => mockFirebaseAnalytics.logEvent(
+            name: name,
+            parameters: params,
+          )).thenAnswer((_) async => true);
+
+      await derivFirebaseAnalytics.logEvent(
+        name: name,
+        parameters: params,
+      );
+
+      verify(() => mockFirebaseAnalytics.logEvent(
+            name: name,
+            parameters: params,
+          )).called(1);
+    });
+
+    test('should call setUserProperty with correct parameters', () async {
+      const String name = 'test_name';
+      const String value = 'test_value';
+
+      when(() => mockFirebaseAnalytics.setUserProperty(
+            name: name,
+            value: value,
+          )).thenAnswer((_) async => true);
+
+      await derivFirebaseAnalytics.setUserProperty(
+        name: name,
+        value: value,
+      );
+
+      verify(() => mockFirebaseAnalytics.setUserProperty(
+            name: name,
+            value: value,
+          )).called(1);
+    });
   });
 }
