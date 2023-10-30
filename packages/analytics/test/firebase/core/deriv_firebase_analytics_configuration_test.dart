@@ -5,18 +5,14 @@ void main() {
   group('FirebaseConfiguration', () {
     test('FirebaseConfiguration with isAnalyticsCollectionEnabled true', () {
       const FirebaseConfiguration config =
-          FirebaseConfiguration(
-            isAnalyticsCollectionEnabled: true
-          );
+          FirebaseConfiguration(isAnalyticsCollectionEnabled: true);
 
       expect(config.isAnalyticsCollectionEnabled, isTrue);
     });
 
     test('FirebaseConfiguration with isAnalyticsCollectionEnabled false', () {
       const FirebaseConfiguration config =
-          FirebaseConfiguration(
-            isAnalyticsCollectionEnabled: false
-          );
+          FirebaseConfiguration(isAnalyticsCollectionEnabled: false);
 
       expect(config.isAnalyticsCollectionEnabled, isFalse);
     });

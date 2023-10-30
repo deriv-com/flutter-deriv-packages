@@ -8,7 +8,7 @@ import 'package:datadog_flutter_plugin/datadog_flutter_plugin.dart' as datadog;
 import 'package:analytics/sdk/datadog/core/enums.dart' as deriv_datadog_enums;
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   group('DerivDatadog', () {
     late DerivDatadog derivDatadog;
@@ -18,33 +18,28 @@ void main() {
     setUpAll(() {
       DatadogSdk.initializeForTesting();
       datadogSdk = DatadogSdk.instance;
-      derivDatadog = DerivDatadog()
-      ..setDatadogSdk(datadogSdk);
+      derivDatadog = DerivDatadog()..setDatadogSdk(datadogSdk);
       derivDatadogConfiguration = const DerivDatadogConfiguration(
-        applicationId: 'applicationId', 
-        clientToken: 'clientToken', 
-        env: 'env', 
+        applicationId: 'applicationId',
+        clientToken: 'clientToken',
+        env: 'env',
         trackingConsent: deriv_datadog_enums.TrackingConsent.granted,
-
       );
-
-      
     });
 
-    test('DerivDatadog constructor should return correct Object.', () {
+    test('should return correct instance of DerivDatadog', () {
       expect(derivDatadog, isA<DerivDatadog>());
       expect(derivDatadog, isA<BaseAnalytics<DerivDatadogConfiguration>>());
     });
 
-    test('navigationObserver', () {
+    test('should return correct NavigatorObserver', () {
       final NavigatorObserver navigationObserver =
           derivDatadog.navigatorObserver;
       expect(navigationObserver, isNotNull);
       expect(navigationObserver, isA<datadog.DatadogNavigationObserver>());
     });
 
-    test('setup', () async {
-
+    test('should call setup with correct parameters', () async {
       final bool result = await derivDatadog.setup(derivDatadogConfiguration);
       expect(result, true);
     });

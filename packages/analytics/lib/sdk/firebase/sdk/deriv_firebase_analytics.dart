@@ -21,46 +21,47 @@ class DerivFirebaseAnalytics implements BaseAnalytics<FirebaseConfiguration> {
       DerivFirebaseAnalytics._internal();
 
   @override
-  NavigatorObserver get navigatorObserver => AnalyticsRouteObserver(
-    onNewRoute: (Route<dynamic> route) => setCurrentScreen(
-      screenName: route.settings.name ?? 'Empty Screen Name',
-    )
-    );
+  NavigatorObserver get navigatorObserver =>
+      AnalyticsRouteObserver(onNewRoute: (Route<dynamic> route) {
+        if (route.settings.name != null) {
+          setCurrentScreen(
+            screenName: route.settings.name!,
+          );
+        }
+      });
 
   late FirebaseAnalytics _firebaseAnalytics;
 
   final Logger _logger = ConsoleLogger();
 
   /// Sets up the Firebase client.
-  /// 
+  ///
   /// This method must be called before any other method.
   @override
-  Future<bool> setup(FirebaseConfiguration configuration) =>
-  _execute(() async {
+  Future<bool> setup(FirebaseConfiguration configuration) => _execute(() async {
         await _firebaseAnalytics.setAnalyticsCollectionEnabled(
             configuration.isAnalyticsCollectionEnabled);
       });
-      
 
-  /// Set current screen.
-  Future<bool> setCurrentScreen({
-    required String screenName
-  }) async =>
+  /// Logs the passed [screenName] to firebase analytics.
+  /// [screenName] is required and the method returns true if logging completed
+  /// Successfully, otherwise, a false is returned.
+  Future<bool> setCurrentScreen({required String screenName}) async =>
       _execute(() async {
-        await _firebaseAnalytics.setCurrentScreen(
-          screenName: screenName
-        );
+        await _firebaseAnalytics.setCurrentScreen(screenName: screenName);
       });
-/// Logs the standard login event.
-///
-/// Apps with a login feature can report this event to signify that a user has logged in.
+
+  /// Logs the standard login event.
+  ///
+  /// Apps with a login feature can report this event to signify that a user has logged in.
   Future<bool> logLogin({
     String? loginMethod,
   }) async =>
       _execute(() async {
         await _firebaseAnalytics.logLogin(loginMethod: loginMethod);
       });
-/// Logs a custom Flutter Analytics event with the given [name] and event [parameters].
+
+  /// Logs a custom Flutter Analytics event with the given [name] and event [parameters].
   Future<bool> logEvent({
     required String name,
     Map<String, dynamic>? parameters,
@@ -71,9 +72,10 @@ class DerivFirebaseAnalytics implements BaseAnalytics<FirebaseConfiguration> {
           parameters: parameters,
         );
       });
-/// Sets the user ID property.
-///
-/// Setting a null [id] removes the user id.
+
+  /// Sets the user ID property.
+  ///
+  /// Setting a null [id] removes the user id.
   Future<bool> setUserId({
     required String id,
   }) async =>

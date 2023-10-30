@@ -9,8 +9,7 @@ import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 import 'package:rudder_sdk_flutter/RudderController.dart';
 
 /// A wrapper around RudderStack Flutter SDK.
-class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration>{
-
+class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration> {
   /// Creates a new [DerivRudderstack] instance.
   factory DerivRudderstack() => _instance;
 
@@ -18,13 +17,15 @@ class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration>{
 
   static final DerivRudderstack _instance = DerivRudderstack._internal();
 
-
   @override
-  NavigatorObserver get navigatorObserver => AnalyticsRouteObserver(
-    onNewRoute: (Route<dynamic> route) => screen(
-      screenName: route.settings.name ?? 'Empty Screen Name',
-    )
-    );
+  NavigatorObserver get navigatorObserver =>
+      AnalyticsRouteObserver(onNewRoute: (Route<dynamic> route) {
+        if (route.settings.name != null) {
+          screen(
+            screenName: route.settings.name!,
+          );
+        }
+      });
 
   RudderController _rudderClient = RudderController.instance;
   Logger _logger = ConsoleLogger();
@@ -47,7 +48,7 @@ class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration>{
     _logger = logger;
   }
 
-  /// Identifies a user with the given [userId].
+  /// Sets the user id for this instance.
   Future<bool> identify({required String userId}) async =>
       _execute(() => rudderClient.identify(userId));
 
@@ -71,13 +72,12 @@ class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration>{
   ///
   /// Takes [dataPlaneUrl] and [writeKey] as parameters.
   @override
-  Future<bool> setup(
-    RudderstackConfiguration configuration
-  ) async =>
+  Future<bool> setup(RudderstackConfiguration configuration) async =>
       _execute(() {
         final RudderConfigBuilder builder = RudderConfigBuilder()
           ..withDataPlaneUrl(configuration.dataPlaneUrl);
-        rudderClient.initialize(configuration.writeKey, config: builder.build());
+        rudderClient.initialize(configuration.writeKey,
+            config: builder.build());
       });
 
   /// Resets the RudderStack client state.
@@ -105,5 +105,4 @@ class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration>{
       return false;
     }
   }
-  
 }

@@ -60,7 +60,7 @@ extension DatadogSiteExtension on DatadogSite {
   /// The consent getter method is an extension to the [datadog.DatadogSite]
   /// enum that returns the corresponding [datadog.DatadogSite] value for
   /// the given [DatadogSite] value.
-  datadog.DatadogSite get site => siteMapper[this]!;
+  datadog.DatadogSite get site => siteMapper[this] ?? datadog.DatadogSite.us1;
 }
 
 /// A mapper class to map [DatadogSite] to [datadog.DatadogSite].

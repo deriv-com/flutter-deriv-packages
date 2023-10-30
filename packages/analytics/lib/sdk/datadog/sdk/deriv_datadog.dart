@@ -10,7 +10,6 @@ import 'package:flutter/widgets.dart';
 
 /// Implement Datadog
 class DerivDatadog implements BaseAnalytics<DerivDatadogConfiguration> {
-
   /// Returns the singleton instance of the [DerivDatadog].
   factory DerivDatadog() => _instance ??= DerivDatadog._();
 
@@ -35,47 +34,48 @@ class DerivDatadog implements BaseAnalytics<DerivDatadogConfiguration> {
   }
 
   @override
-  Future<bool> setup(
-    DerivDatadogConfiguration configuration
-  ) async {
-    try{
-    final datadog.RumConfiguration rumConfiguration = datadog.RumConfiguration(
-      applicationId: configuration.applicationId,
-      sessionSamplingRate: configuration.sessionSamplingRate ?? 100,
-      tracingSamplingRate: configuration.tracingSamplingRate ?? 100,
-    );
-
-    final datadog.DdSdkConfiguration datadogConfiguration =
-        datadog.DdSdkConfiguration(
-      clientToken: configuration.clientToken,
-      env: configuration.env,
-      serviceName: configuration.serviceName,
-      site: configuration.site?.site ?? DatadogSite.us1.site,
-      trackingConsent: configuration.trackingConsent.consent,
-      nativeCrashReportEnabled: configuration.nativeCrashReportEnabled ?? true,
-      loggingConfiguration: datadog.LoggingConfiguration(),
-      rumConfiguration: rumConfiguration,
-    );
-    
-    final FlutterExceptionHandler? originalOnError = FlutterError.onError;
-    FlutterError.onError = (FlutterErrorDetails details) {
-      _datadogSDK.rum?.handleFlutterError(details);
-      originalOnError?.call(details);
-    };
-    final ErrorCallback? platformOriginalOnError = PlatformDispatcher.instance.onError;
-    PlatformDispatcher.instance.onError = (Object e, StackTrace st) {
-      _datadogSDK.rum?.addErrorInfo(
-        e.toString(),
-        datadog.RumErrorSource.source,
-        stackTrace: st,
+  Future<bool> setup(DerivDatadogConfiguration configuration) async {
+    try {
+      final datadog.RumConfiguration rumConfiguration =
+          datadog.RumConfiguration(
+        applicationId: configuration.applicationId,
+        sessionSamplingRate: configuration.sessionSamplingRate ?? 100,
+        tracingSamplingRate: configuration.tracingSamplingRate ?? 100,
       );
-      return platformOriginalOnError?.call(e, st) ?? false;
-    };
 
-    await _datadogSDK.initialize(datadogConfiguration);
-    _datadogSDK
-        .updateConfigurationInfo(LateConfigurationProperty.trackErrors, true);
-return true;
+      final datadog.DdSdkConfiguration datadogConfiguration =
+          datadog.DdSdkConfiguration(
+        clientToken: configuration.clientToken,
+        env: configuration.env,
+        serviceName: configuration.serviceName,
+        site: configuration.site?.site ?? DatadogSite.us1.site,
+        trackingConsent: configuration.trackingConsent.consent,
+        nativeCrashReportEnabled:
+            configuration.nativeCrashReportEnabled ?? true,
+        loggingConfiguration: datadog.LoggingConfiguration(),
+        rumConfiguration: rumConfiguration,
+      );
+
+      final FlutterExceptionHandler? originalOnError = FlutterError.onError;
+      FlutterError.onError = (FlutterErrorDetails details) {
+        _datadogSDK.rum?.handleFlutterError(details);
+        originalOnError?.call(details);
+      };
+      final ErrorCallback? platformOriginalOnError =
+          PlatformDispatcher.instance.onError;
+      PlatformDispatcher.instance.onError = (Object e, StackTrace st) {
+        _datadogSDK.rum?.addErrorInfo(
+          e.toString(),
+          datadog.RumErrorSource.source,
+          stackTrace: st,
+        );
+        return platformOriginalOnError?.call(e, st) ?? false;
+      };
+
+      await _datadogSDK.initialize(datadogConfiguration);
+      _datadogSDK.updateConfigurationInfo(
+          LateConfigurationProperty.trackErrors, true);
+      return true;
     } on Exception {
       return false;
     }

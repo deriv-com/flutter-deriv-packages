@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:analytics/sdk/firebase/core/firebase_configuration.dart';
 import 'package:analytics/sdk/firebase/sdk/deriv_firebase_analytics.dart';
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
@@ -12,9 +10,12 @@ import 'analytics_route_observer.dart';
 
 /// Class that collects and send analytical information to `Firebase` and
 /// `RudderStack`.
+@Deprecated(
+    'Use DerivFirebaseAnalytics, DerivRudderstack, or DerivDatadog instead.')
 class Analytics {
   /// Initialises
-  @Deprecated('Use DerivFirebaseAnalytics, DerivRudderstack, or DerivDatadog instead.')
+  @Deprecated(
+      'Use DerivFirebaseAnalytics, DerivRudderstack, or DerivDatadog instead.')
   factory Analytics() => _instance;
 
   Analytics._internal();
@@ -29,20 +30,21 @@ class Analytics {
   late DerivFirebaseAnalytics _derivFirebaseAnalytics;
 
   /// An instance of custom route observer created for analytics.
-  @Deprecated("Use the 'navigatorObserver' in DerivFirebaseAnalytics, DerivRudderstack, or DerivDatadog instead.")
+  @Deprecated(
+      "Use the 'navigatorObserver' in DerivFirebaseAnalytics, DerivRudderstack, or DerivDatadog instead.")
   late AnalyticsRouteObserver observer;
 
   /// Initialises the `Analytics`.
   /// Sets the device-token to `RudderStack`.
   /// bool [isEnabled] enables or disables "Analytics".
-  //add a deprecated message saying that this is deprecated and initalize each sdk separately
-  @Deprecated("Use the 'setup' function in DerivFirebaseAnalytics, DerivRudderstack, or DerivDatadog instead.")
+  @Deprecated(
+      "Use the 'setup' function in DerivFirebaseAnalytics, DerivRudderstack, or DerivDatadog instead.")
   Future<void> init(
       {required bool isEnabled,
       required FirebaseApp firebaseApp,
-      RudderstackConfiguration? configuration
-      }) async {
-    _derivFirebaseAnalytics = DerivFirebaseAnalytics(FirebaseAnalytics.instanceFor(app: firebaseApp));
+      RudderstackConfiguration? configuration}) async {
+    _derivFirebaseAnalytics =
+        DerivFirebaseAnalytics(FirebaseAnalytics.instanceFor(app: firebaseApp));
     observer = AnalyticsRouteObserver(onNewRoute: _newRouteHandler);
 
     // Enable or disable the analytics on this device.
@@ -52,8 +54,7 @@ class Analytics {
       ),
     );
 
-    // For ios we have to manually setup the rudderStack as it's not get initialized with register method.
-      if(configuration != null) {
+    if (configuration != null) {
       await DerivRudderstack().setup(configuration);
     }
 
@@ -83,7 +84,8 @@ class Analytics {
   }
 
   /// Captures information about current screen in use.
-  @Deprecated("Use the 'setCurrentScreen' function in DerivFirebaseAnalytics or the 'screen' function DerivRudderstack instead.")
+  @Deprecated(
+      "Use the 'setCurrentScreen' function in DerivFirebaseAnalytics or the 'screen' function DerivRudderstack instead.")
   void setCurrentScreen({
     required String screenName,
   }) {
@@ -96,7 +98,8 @@ class Analytics {
   }
 
   /// Captures `login` event upon a successful user log in.
-  @Deprecated("Use the 'logLoginEvent' function in DerivFirebaseAnalytics or the 'identify' function in DerivRudderstack instead.")
+  @Deprecated(
+      "Use the 'logLoginEvent' function in DerivFirebaseAnalytics or the 'identify' function in DerivRudderstack instead.")
   Future<void> logLoginEvent(
       {required String deviceToken, required int userId}) async {
     await _setFirebaseUserId(userId.toString());
@@ -108,7 +111,8 @@ class Analytics {
   }
 
   /// Captures `logout` event when the user logs out.
-  @Deprecated("Use the 'logLogoutEvent' function in DerivFirebaseAnalytics instead.")
+  @Deprecated(
+      "Use the 'logLogoutEvent' function in DerivFirebaseAnalytics instead.")
   void logLogoutEvent() {
     _derivFirebaseAnalytics.logEvent(name: 'logout');
   }
