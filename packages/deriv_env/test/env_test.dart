@@ -12,6 +12,27 @@ void main() {
       expect(() => EnvLoader().get<String>('STRING_VAR'), throwsException);
     });
 
+    test('load() method should populate env map.', () async {
+      expect(EnvLoader().isInitialized, isFalse);
+
+      await EnvLoader().initialize(Env(), 'test/.env.test');
+
+      expect(EnvLoader().isInitialized, isTrue);
+
+      expect(EnvLoader().env!.entries.length, 7);
+
+      expect(EnvLoader().env!.entries['STRING_VAR'], 'hello world');
+      expect(EnvLoader().env!.entries['INT_VAR'], '123');
+      expect(EnvLoader().env!.entries['DOUBLE_VAR'], '3.14');
+      expect(EnvLoader().env!.entries['BOOL_VAR'], 'true');
+      expect(EnvLoader().env!.entries['VAR_WITH_EQUALS'], 'hello=world');
+      expect(EnvLoader().env!.entries['VAR_WITH_HASH'], 'hello#world');
+      expect(
+        EnvLoader().env!.entries['ENCRYPTED_VAR'],
+        'dVyH3QjdHYcjcS2TQ1XenmDVvf5ViN8ZpSVEcjfFhsk=',
+      );
+    });
+
     test('get() method should return default value if key is not found.',
         () async {
       await EnvLoader().initialize(Env(), 'test/.env.test');
