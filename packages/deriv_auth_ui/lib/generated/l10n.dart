@@ -840,6 +840,76 @@ class DerivAuthUILocalization {
       args: [],
     );
   }
+
+  /// `Developer`
+  String get labelDeveloper {
+    return Intl.message(
+      'Developer',
+      name: 'labelDeveloper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Endpoint`
+  String get labelEndpoint {
+    return Intl.message(
+      'Endpoint',
+      name: 'labelEndpoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Endpoint`
+  String get semanticEndpoint {
+    return Intl.message(
+      'Endpoint',
+      name: 'semanticEndpoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `invalid endpoint`
+  String get warnInvalidEndpoint {
+    return Intl.message(
+      'invalid endpoint',
+      name: 'warnInvalidEndpoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Application ID`
+  String get labelApplicationID {
+    return Intl.message(
+      'Application ID',
+      name: 'labelApplicationID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Application ID`
+  String get semanticApplicationID {
+    return Intl.message(
+      'Application ID',
+      name: 'semanticApplicationID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `invalid application ID`
+  String get warnInvalidApplicationID {
+    return Intl.message(
+      'invalid application ID',
+      name: 'warnInvalidApplicationID',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

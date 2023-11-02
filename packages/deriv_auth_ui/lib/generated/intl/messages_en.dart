@@ -109,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "informVerificationEmailSent": m1,
         "informYourPassHasBeenReset": MessageLookupByLibrary.simpleMessage(
             "Your password has been reset"),
+        "labelApplicationID":
+            MessageLookupByLibrary.simpleMessage("Application ID"),
         "labelCheckEmail":
             MessageLookupByLibrary.simpleMessage("Check your email"),
         "labelChooseCountry":
@@ -121,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create a password"),
         "labelCreatePassword":
             MessageLookupByLibrary.simpleMessage("Create a password"),
+        "labelDeveloper": MessageLookupByLibrary.simpleMessage("Developer"),
         "labelDontHaveAnAccountYet":
             MessageLookupByLibrary.simpleMessage("Don’t have an account yet?"),
         "labelEmail": MessageLookupByLibrary.simpleMessage("Email"),
@@ -134,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The email address you entered had a mistake or typo (happens to the best of us)."),
         "labelEmailIssueWrongEmail": MessageLookupByLibrary.simpleMessage(
             "You accidentally gave us another email address (Usually a work or a personal one instead of the one you meant)."),
+        "labelEndpoint": MessageLookupByLibrary.simpleMessage("Endpoint"),
         "labelGotReferralCode":
             MessageLookupByLibrary.simpleMessage("Got a referral code?"),
         "labelHaveAccount":
@@ -166,8 +170,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("2FA code"),
         "labelVerifyYourEmail":
             MessageLookupByLibrary.simpleMessage("Verify your email"),
+        "semanticApplicationID":
+            MessageLookupByLibrary.simpleMessage("Application ID"),
+        "semanticEndpoint": MessageLookupByLibrary.simpleMessage("Endpoint"),
         "warnCountryNotAvailable": MessageLookupByLibrary.simpleMessage(
             "Unfortunately, Deriv is not available in your country."),
+        "warnInvalidApplicationID":
+            MessageLookupByLibrary.simpleMessage("invalid application ID"),
+        "warnInvalidEndpoint":
+            MessageLookupByLibrary.simpleMessage("invalid endpoint"),
         "warnNotAvailableCountries": MessageLookupByLibrary.simpleMessage(
             "If you have any questions, contact us via "),
         "warnNotAvailableCountriesTitle": m2,
