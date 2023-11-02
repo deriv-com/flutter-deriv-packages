@@ -21,6 +21,7 @@ class EnvLoader {
   /// Returns `true` if [Env] is initialized, otherwise `false`.
   bool get isInitialized => _env?.isInitialized ?? false;
 
+  /// Initializes [EnvLoader] with an instance of [BaseEnv].
   /// Loads environment variables from a `.env` file.
   ///
   /// If [filename] is not provided, it will default to `.env`.
