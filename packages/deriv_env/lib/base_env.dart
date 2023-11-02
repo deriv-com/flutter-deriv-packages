@@ -12,5 +12,10 @@ abstract class BaseEnv {
   Future<void> load([String filename = '.env']);
 
   /// Retrieves an environment variable value by key.
-  T get<T>(String key, {T? defaultValue});
+  T get<T>(
+    String key, {
+    T? defaultValue,
+    T Function(String value)? parser,
+    String decryptionKey = '',
+  });
 }
