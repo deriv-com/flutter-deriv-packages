@@ -9,7 +9,7 @@ abstract class BaseEnv {
   /// Loads environment variables from a `.env` file.
   ///
   /// If [filename] is not provided, it will default to `.env`.
-  Future<void> load([String filename = '.env']);
+  Future<void> load(String envFileContent);
 
   /// Retrieves an environment variable value by key.
   T get<T>(String key, {T? defaultValue});

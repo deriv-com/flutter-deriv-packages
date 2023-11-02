@@ -1,5 +1,3 @@
-import 'package:flutter/services.dart';
-
 import 'base_env.dart';
 import 'cipher.dart';
 
@@ -27,10 +25,10 @@ class Env extends BaseEnv {
   }
 
   @override
-  Future<void> load([String filename = '.env']) async {
+  Future<void> load(String envFileContent) async {
     _entries.clear();
 
-    final List<String> fileEntries = await _getEntriesFromFile(filename);
+    final List<String> fileEntries = await _getEntriesFromFile(envFileContent);
 
     for (final String entry in fileEntries) {
       final List<String> items = entry.split('=');
@@ -81,11 +79,9 @@ class Env extends BaseEnv {
     }
   }
 
-  Future<List<String>> _getEntriesFromFile(String filename) async {
-    final String envFileContent = await rootBundle.loadString(filename);
-
+  Future<List<String>> _getEntriesFromFile(String envFileContent) async {
     if (envFileContent.isEmpty) {
-      throw Exception('$runtimeType: $filename is empty.');
+      throw Exception('$runtimeType: File content is empty.');
     }
 
     final List<String> entries = <String>[];
