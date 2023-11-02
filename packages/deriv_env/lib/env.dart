@@ -1,15 +1,10 @@
+import 'package:flutter/services.dart';
+
 import 'base_env.dart';
 import 'cipher.dart';
 
 /// [Env] class is a singleton class that provides access to environment variables.
 class Env extends BaseEnv {
-  /// Returns the singleton instance of [Env].
-  factory Env() => _instance;
-
-  Env._();
-
-  static final Env _instance = Env._();
-
   bool _isInitialized = false;
 
   final Map<String, dynamic> _entries = <String, dynamic>{};
@@ -25,10 +20,10 @@ class Env extends BaseEnv {
   }
 
   @override
-  Future<void> load(String envFileContent) async {
+  Future<void> load([String filename = '.env']) async {
     _entries.clear();
 
-    final List<String> fileEntries = await _getEntriesFromFile(envFileContent);
+    final List<String> fileEntries = await _getEntriesFromFile(filename);
 
     for (final String entry in fileEntries) {
       final List<String> items = entry.split('=');
@@ -79,9 +74,11 @@ class Env extends BaseEnv {
     }
   }
 
-  Future<List<String>> _getEntriesFromFile(String envFileContent) async {
+  Future<List<String>> _getEntriesFromFile(String filename) async {
+    final String envFileContent = await rootBundle.loadString(filename);
+
     if (envFileContent.isEmpty) {
-      throw Exception('$runtimeType: File content is empty.');
+      throw Exception('$runtimeType: $filename is empty.');
     }
 
     final List<String> entries = <String>[];
