@@ -15,6 +15,9 @@ class EnvLoader {
   /// The environment variables provider.
   BaseEnv? _env;
 
+  /// The instance of [BaseEnv].
+  BaseEnv? get env => _env;
+
   /// Returns `true` if [Env] is initialized, otherwise `false`.
   bool get isInitialized => _env?.isInitialized ?? false;
 
@@ -34,6 +37,11 @@ class EnvLoader {
     String decryptionKey = '',
   }) =>
       isInitialized
-          ? _env!.get<T>(key, defaultValue: defaultValue)
+          ? _env!.get<T>(
+              key,
+              defaultValue: defaultValue,
+              parser: parser,
+              decryptionKey: decryptionKey,
+            )
           : throw Exception('EnvLoader is not initialized.');
 }
