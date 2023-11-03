@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
 import 'package:deriv_auth_ui/src/features/get_started/models/deriv_get_started_slide_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -133,26 +134,32 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
   Widget _buildButtons() => Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          PrimaryButton(
-            onPressed: widget.onSignupTapped,
-            child: Center(
-              child: Text(
-                context.localization.actionGetAFreeAccount,
-                style: context.theme.textStyle(
-                  textStyle: TextStyles.body2,
-                  color: context.theme.colors.prominent,
+          Semantics(
+            label: SemanticsLabels.starterPageSignupButtonSemantic,
+            child: PrimaryButton(
+              onPressed: widget.onSignupTapped,
+              child: Center(
+                child: Text(
+                  context.localization.actionGetAFreeAccount,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.body2,
+                    color: context.theme.colors.prominent,
+                  ),
                 ),
               ),
             ),
           ),
-          SecondaryButton(
-            onPressed: widget.onLoginTapped,
-            child: Center(
-              child: Text(
-                context.localization.actionLogin,
-                style: context.theme.textStyle(
-                  textStyle: TextStyles.body2,
-                  color: context.theme.colors.prominent,
+          Semantics(
+            label: SemanticsLabels.starterPageLoginButtonSemantic,
+            child: SecondaryButton(
+              onPressed: widget.onLoginTapped,
+              child: Center(
+                child: Text(
+                  context.localization.actionLogin,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.body2,
+                    color: context.theme.colors.prominent,
+                  ),
                 ),
               ),
             ),

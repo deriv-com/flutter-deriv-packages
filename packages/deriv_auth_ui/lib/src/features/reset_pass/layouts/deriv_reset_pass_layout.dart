@@ -4,6 +4,7 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -135,6 +136,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
               ),
               const SizedBox(height: ThemeProvider.margin24),
               BaseTextField(
+                semanticLabel: SemanticsLabels.resetPasswordEmailFieldSemantic,
                 controller: _emailController,
                 focusNode: _emailFocusNode,
                 labelText: context.localization.labelEmail,
@@ -152,32 +154,35 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
         ),
       );
 
-  Widget _buildSubmitEmailButton() => ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            context.theme.colors.coral.withOpacity(
-              getOpacity(isEnabled: _isFormValid()),
+  Widget _buildSubmitEmailButton() => Semantics(
+        label: SemanticsLabels.resetPasswordButtonSemantic,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+              context.theme.colors.coral.withOpacity(
+                getOpacity(isEnabled: _isFormValid()),
+              ),
             ),
           ),
-        ),
-        onPressed: _isFormValid() ? _onSubmitEmailTapped : null,
-        child: Center(
-          child: _isBusy
-              ? LoadingIndicator(
-                  valueColor: context.theme.colors.prominent,
-                  strokeWidth: ThemeProvider.margin02,
-                  height: ThemeProvider.margin16,
-                  width: ThemeProvider.margin16,
-                )
-              : Text(
-                  context.localization.actionResetPass,
-                  style: context.theme.textStyle(
-                    textStyle: TextStyles.body2,
-                    color: context.theme.colors.prominent.withOpacity(
-                      getOpacity(isEnabled: _isFormValid()),
+          onPressed: _isFormValid() ? _onSubmitEmailTapped : null,
+          child: Center(
+            child: _isBusy
+                ? LoadingIndicator(
+                    valueColor: context.theme.colors.prominent,
+                    strokeWidth: ThemeProvider.margin02,
+                    height: ThemeProvider.margin16,
+                    width: ThemeProvider.margin16,
+                  )
+                : Text(
+                    context.localization.actionResetPass,
+                    style: context.theme.textStyle(
+                      textStyle: TextStyles.body2,
+                      color: context.theme.colors.prominent.withOpacity(
+                        getOpacity(isEnabled: _isFormValid()),
+                      ),
                     ),
                   ),
-                ),
+          ),
         ),
       );
 

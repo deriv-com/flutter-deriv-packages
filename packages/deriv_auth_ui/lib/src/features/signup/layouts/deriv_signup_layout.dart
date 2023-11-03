@@ -8,6 +8,8 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/helpers/semantic_labels.dart';
+
 /// It offers creating demo accounts via email and third-party providers.
 /// It Also provides optional referral code section which can be disabled
 /// by setting [enableReferralSection] to false.
@@ -187,6 +189,8 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                     vertical: ThemeProvider.margin16,
                   ),
                   child: BaseTextField(
+                    semanticLabel:
+                        SemanticsLabels.signupReferralTextFieldSemantic,
                     controller: referralController,
                     onChanged: (_) {
                       if (mounted) {
@@ -251,6 +255,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
       );
 
   Widget _buildEmailTextField() => BaseTextField(
+        semanticLabel: SemanticsLabels.signupEmailFieldSemantic,
         controller: emailController,
         focusNode: emailFocusNode,
         labelText: context.localization.labelEmail,
@@ -266,25 +271,28 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
         },
       );
 
-  Widget _buildSignUpButton() => PrimaryButton(
-        isEnabled: _isFormValid(),
-        onPressed: _onSignupTapped,
-        child: Center(
-          child:
-              context.read<DerivSignupCubit>().state is DerivSignupProgressState
-                  ? const LoadingIndicator(
-                      valueColor: Colors.white,
-                      strokeWidth: ThemeProvider.margin02,
-                      height: ThemeProvider.iconSize16,
-                      width: ThemeProvider.iconSize16,
-                    )
-                  : Text(
-                      context.localization.actionCreateAccount,
-                      style: context.theme.textStyle(
-                        textStyle: TextStyles.body2,
-                        color: context.theme.colors.prominent,
-                      ),
+  Widget _buildSignUpButton() => Semantics(
+        label: SemanticsLabels.signupButtonSemantic,
+        child: PrimaryButton(
+          isEnabled: _isFormValid(),
+          onPressed: _onSignupTapped,
+          child: Center(
+            child: context.read<DerivSignupCubit>().state
+                    is DerivSignupProgressState
+                ? const LoadingIndicator(
+                    valueColor: Colors.white,
+                    strokeWidth: ThemeProvider.margin02,
+                    height: ThemeProvider.iconSize16,
+                    width: ThemeProvider.iconSize16,
+                  )
+                : Text(
+                    context.localization.actionCreateAccount,
+                    style: context.theme.textStyle(
+                      textStyle: TextStyles.body2,
+                      color: context.theme.colors.prominent,
                     ),
+                  ),
+          ),
         ),
       );
 
