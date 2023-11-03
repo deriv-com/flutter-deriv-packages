@@ -14,7 +14,6 @@ class DerivSettingLayout extends StatefulWidget {
   /// Login Setting Page Constructor
   const DerivSettingLayout({
     required this.updateFlavorConfigs,
-    required this.appEnvironmentKey,
     required this.appLabel,
     required this.saveValues,
     this.endpoint = defaultEndpoint,
@@ -27,13 +26,10 @@ class DerivSettingLayout extends StatefulWidget {
   }) : super(key: key);
 
   /// Update flavor configurations
-  final Future<VoidCallback> updateFlavorConfigs;
+  final Future<void> updateFlavorConfigs;
 
   /// Save values to shared preferences
   final Function({required String endpoint, required String appId}) saveValues;
-
-  /// App environment key
-  final String appEnvironmentKey;
 
   /// End Point
   final String endpoint;
