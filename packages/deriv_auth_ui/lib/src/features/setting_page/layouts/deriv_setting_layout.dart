@@ -15,7 +15,7 @@ class DerivSettingLayout extends StatefulWidget {
   const DerivSettingLayout({
     required this.updateFlavorConfigs,
     required this.appEnvironmentKey,
-    required this.applabel,
+    required this.appLabel,
     required this.saveValues,
     this.endpoint = defaultEndpoint,
     this.appId = defaultAppId,
@@ -42,7 +42,7 @@ class DerivSettingLayout extends StatefulWidget {
   final String appId;
 
   /// Application label
-  final String applabel;
+  final String appLabel;
 
   /// Dev flavor app.
   final String devApp;
@@ -96,7 +96,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
         child: Scaffold(
           appBar: AppBar(
             elevation: ThemeProvider.zeroMargin,
-            title: Text(widget.applabel),
+            title: Text(widget.appLabel),
           ),
           body: Form(
             key: _formKey,
@@ -198,11 +198,11 @@ class _SettingsPageState extends State<DerivSettingLayout> {
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: context.theme.base04Color,
+                  color: context.theme.colors.lessProminent,
                 ),
               ),
               labelText: label,
-              labelStyle: TextStyle(color: context.theme.base04Color),
+              labelStyle: TextStyle(color: context.theme.colors.lessProminent),
               border: const OutlineInputBorder(),
             ),
             controller: controller,

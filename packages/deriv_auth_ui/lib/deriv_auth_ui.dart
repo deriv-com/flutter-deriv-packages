@@ -6,6 +6,7 @@ export 'src/features/login/layouts/deriv_login_layout.dart';
 export 'src/features/reset_pass/layouts/deriv_choose_new_pass_layout.dart';
 export 'src/features/reset_pass/layouts/deriv_reset_pass_layout.dart';
 export 'src/features/reset_pass/layouts/deriv_success_pass_change_layout.dart';
+export 'src/features/setting_page/layouts/deriv_setting_layout.dart';
 export 'src/features/signup/cubits/deriv_country_selection_cubit.dart';
 export 'src/features/signup/layouts/deriv_country_selection_layout.dart';
 export 'src/features/signup/layouts/deriv_email_not_received_layout.dart';
