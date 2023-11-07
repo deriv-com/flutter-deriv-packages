@@ -137,6 +137,7 @@ class _BaseTextFieldState extends State<BaseTextField> {
 
   @override
   Widget build(BuildContext context) => Semantics(
+        explicitChildNodes: true,
         label: widget.semanticLabel,
         child: TextFormField(
           key: _formFieldKey,

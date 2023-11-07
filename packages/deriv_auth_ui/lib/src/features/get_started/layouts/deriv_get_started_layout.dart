@@ -135,6 +135,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Semantics(
+            explicitChildNodes: true,
             label: SemanticsLabels.starterPageSignupButtonSemantic,
             child: PrimaryButton(
               onPressed: widget.onSignupTapped,
@@ -150,6 +151,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
             ),
           ),
           Semantics(
+            explicitChildNodes: true,
             label: SemanticsLabels.starterPageLoginButtonSemantic,
             child: SecondaryButton(
               onPressed: widget.onLoginTapped,

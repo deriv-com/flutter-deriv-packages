@@ -155,6 +155,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
       );
 
   Widget _buildSubmitEmailButton() => Semantics(
+        explicitChildNodes: true,
         label: SemanticsLabels.resetPasswordButtonSemantic,
         child: ElevatedButton(
           style: ButtonStyle(
