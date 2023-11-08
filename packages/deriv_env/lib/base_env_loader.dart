@@ -1,5 +1,5 @@
 /// Base class for retrieve environment variables providers.
-abstract class BaseEnv {
+abstract class BaseEnvLoader {
   /// Returns `true` if [Env] is initialized, otherwise `false`.
   bool get isInitialized;
 
@@ -9,7 +9,7 @@ abstract class BaseEnv {
   /// Loads environment variables from a `.env` file.
   ///
   /// If [filename] is not provided, it will default to `.env`.
-  Future<void> load([String filename = '.env']);
+  Future<void> loadFile([String filename = '.env']);
 
   /// Retrieves an environment variable value by key.
   T get<T>(

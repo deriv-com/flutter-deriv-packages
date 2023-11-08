@@ -13,61 +13,61 @@ void main() {
     });
 
     test('load() method should populate env map.', () async {
-      expect(EnvLoader().isInitialized, isFalse);
+      expect(Env().isInitialized, isFalse);
 
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(EnvLoader().isInitialized, isTrue);
+      expect(Env().isInitialized, isTrue);
 
-      expect(EnvLoader().env!.entries.length, 7);
+      expect(Env().env!.entries.length, 7);
 
-      expect(EnvLoader().env!.entries['STRING_VAR'], 'hello world');
-      expect(EnvLoader().env!.entries['INT_VAR'], '123');
-      expect(EnvLoader().env!.entries['DOUBLE_VAR'], '3.14');
-      expect(EnvLoader().env!.entries['BOOL_VAR'], 'true');
-      expect(EnvLoader().env!.entries['VAR_WITH_EQUALS'], 'hello=world');
-      expect(EnvLoader().env!.entries['VAR_WITH_HASH'], 'hello#world');
+      expect(Env().env!.entries['STRING_VAR'], 'hello world');
+      expect(Env().env!.entries['INT_VAR'], '123');
+      expect(Env().env!.entries['DOUBLE_VAR'], '3.14');
+      expect(Env().env!.entries['BOOL_VAR'], 'true');
+      expect(Env().env!.entries['VAR_WITH_EQUALS'], 'hello=world');
+      expect(Env().env!.entries['VAR_WITH_HASH'], 'hello#world');
       expect(
-        EnvLoader().env!.entries['ENCRYPTED_VAR'],
+        Env().env!.entries['ENCRYPTED_VAR'],
         'dVyH3QjdHYcjcS2TQ1XenmDVvf5ViN8ZpSVEcjfFhsk=',
       );
     });
 
     test('get() method should return default value if key is not found.',
         () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
       expect(
-        EnvLoader().get<String>('INVALID_KEY', defaultValue: 'default'),
+        Env().get<String>('INVALID_KEY', defaultValue: 'default'),
         'default',
       );
     });
 
     test('get() method should parse value as int.', () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(EnvLoader().get<int>('INT_VAR'), 123);
+      expect(Env().get<int>('INT_VAR'), 123);
     });
 
     test('get() method should parse value as double.', () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(EnvLoader().get<double>('DOUBLE_VAR'), 3.14);
+      expect(Env().get<double>('DOUBLE_VAR'), 3.14);
     });
 
     test('get() method should parse value as bool.', () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(EnvLoader().get<bool>('BOOL_VAR'), isTrue);
+      expect(Env().get<bool>('BOOL_VAR'), isTrue);
     });
 
     test(
         'get() method should parse value with a parser factory if it is provided.',
         () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
       expect(
-        EnvLoader().get<String>(
+        Env().get<String>(
           'STRING_VAR',
           parser: (String value) => value.toUpperCase(),
         ),
@@ -75,7 +75,7 @@ void main() {
       );
 
       expect(
-        EnvLoader().get<int>(
+        Env().get<int>(
           'INT_VAR',
           parser: (String value) => int.parse(value) * 2,
         ),
@@ -83,7 +83,7 @@ void main() {
       );
 
       expect(
-        EnvLoader().get<double>(
+        Env().get<double>(
           'DOUBLE_VAR',
           parser: (String value) => double.parse(value) * 2,
         ),
@@ -91,7 +91,7 @@ void main() {
       );
 
       expect(
-        EnvLoader().get<bool>(
+        Env().get<bool>(
           'DOUBLE_VAR',
           parser: (String value) => double.parse(value) > 3.14,
         ),
@@ -101,17 +101,17 @@ void main() {
 
     test('check handling variables with special characters like `#` and `=`.',
         () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(EnvLoader().env!.entries['VAR_WITH_EQUALS'], 'hello=world');
-      expect(EnvLoader().env!.entries['VAR_WITH_HASH'], 'hello#world');
+      expect(Env().env!.entries['VAR_WITH_EQUALS'], 'hello=world');
+      expect(Env().env!.entries['VAR_WITH_HASH'], 'hello#world');
     });
 
     test('handle encrypted variable.', () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
       expect(
-        EnvLoader().get<String>(
+        Env().get<String>(
           'ENCRYPTED_VAR',
           decryptionKey: 'TbKjMndW1L8vczgGQfPo2IyUxh6XAEay',
         ),
@@ -120,7 +120,7 @@ void main() {
     });
 
     test('throws an exception if file is empty.', () async {
-      expect(() => EnvLoader().initialize(Env(), 'test/.env.empty.test'),
+      expect(() => Env().initialize(EnvLoader(), 'test/.env.empty.test'),
           throwsException);
     });
 
@@ -129,18 +129,17 @@ void main() {
     });
 
     test('throws an exception if key is not found.', () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(() => EnvLoader().get<String>('INVALID_KEY'), throwsException);
+      expect(() => Env().get<String>('INVALID_KEY'), throwsException);
     });
 
     test(
         'does not throw an exception if key is not found and a default value is provided.',
         () async {
-      await EnvLoader().initialize(Env(), 'test/.env.test');
+      await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(() => EnvLoader().get('INVALID_KEY', defaultValue: 42),
-          returnsNormally);
+      expect(() => Env().get('INVALID_KEY', defaultValue: 42), returnsNormally);
     });
   });
 }

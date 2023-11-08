@@ -1,48 +1,107 @@
-import 'package:deriv_env/base_env.dart';
+import 'package:flutter/services.dart';
 
-/// This class is used to load environment variables from a .env file
-class EnvLoader {
-  /// The singleton instance of [EnvLoader].
-  factory EnvLoader() {
-    _instance ??= EnvLoader._internal();
-    return _instance!;
+import 'base_env_loader.dart';
+import 'cipher.dart';
+
+/// [Env] class is a singleton class that provides access to environment variables.
+class EnvLoader extends BaseEnvLoader {
+  bool _isInitialized = false;
+
+  final Map<String, dynamic> _entries = <String, dynamic>{};
+
+  @override
+  bool get isInitialized => _isInitialized;
+
+  @override
+  Map<String, dynamic> get entries {
+    _checkInitialization();
+
+    return _entries;
   }
 
-  EnvLoader._internal();
+  @override
+  Future<void> loadFile([String filename = '.env']) async {
+    _entries.clear();
 
-  static EnvLoader? _instance;
+    final List<String> fileEntries = await _getEntriesFromFile(filename);
 
-  /// The environment variables provider.
-  BaseEnv? _env;
+    for (final String entry in fileEntries) {
+      final List<String> items = entry.split('=');
 
-  /// The instance of [BaseEnv].
-  BaseEnv? get env => _env;
+      if (items.length > 1) {
+        _entries[items.first.trim()] = items.sublist(1).join('=').trim();
+      }
+    }
 
-  /// Returns `true` if [Env] is initialized, otherwise `false`.
-  bool get isInitialized => _env?.isInitialized ?? false;
-
-  /// Initializes [EnvLoader] with an instance of [BaseEnv].
-  /// Loads environment variables from a `.env` file.
-  ///
-  /// If [filename] is not provided, it will default to `.env`.
-  Future<void> initialize(BaseEnv env, [String filename = '.env']) async {
-    _env = env;
-    return _env!.load(filename);
+    _isInitialized = true;
   }
 
-  /// Retrieves an environment variable value by key.
+  @override
   T get<T>(
     String key, {
     T? defaultValue,
     T Function(String value)? parser,
     String decryptionKey = '',
-  }) =>
-      isInitialized
-          ? _env!.get<T>(
-              key,
-              defaultValue: defaultValue,
-              parser: parser,
-              decryptionKey: decryptionKey,
-            )
-          : throw Exception('EnvLoader is not initialized.');
+  }) {
+    _checkInitialization();
+
+    if (!_entries.containsKey(key)) {
+      if (defaultValue == null) {
+        throw Exception('$runtimeType does not contain a value for key: $key.');
+      }
+
+      return defaultValue;
+    }
+
+    final String value = decryptionKey.isEmpty
+        ? _entries[key]
+        : Cipher().decrypt(message: _entries[key], key: decryptionKey);
+
+    if (parser != null) {
+      return parser(value);
+    }
+
+    switch (T) {
+      case int:
+        return int.tryParse(value) as T;
+      case double:
+        return double.tryParse(value) as T;
+      case bool:
+        return (value.toLowerCase() == 'true') as T;
+
+      default:
+        return value as T;
+    }
+  }
+
+  Future<List<String>> _getEntriesFromFile(String filename) async {
+    final String envFileContent = await rootBundle.loadString(filename);
+
+    if (envFileContent.isEmpty) {
+      throw Exception('$runtimeType: $filename is empty.');
+    }
+
+    final List<String> entries = <String>[];
+    final List<String> content = envFileContent.split('\n');
+
+    for (final String line in content) {
+      if (line.isEmpty || line.startsWith('#')) {
+        continue;
+      }
+
+      entries.add(line);
+    }
+
+    return entries;
+  }
+
+  void _checkInitialization() {
+    if (_isInitialized) {
+      return;
+    }
+
+    throw Exception(
+      '$runtimeType is not initialized, call load() method first.',
+    );
+  }
 }
