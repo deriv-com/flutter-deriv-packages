@@ -67,7 +67,13 @@ class EnvLoader extends BaseEnvLoader {
       case double:
         return double.tryParse(value) as T;
       case bool:
-        return (value.toLowerCase() == 'true') as T;
+        if (value.toLowerCase() == 'true') {
+          return true as T;
+        } else if (value.toLowerCase() == 'false') {
+          return false as T;
+        } else {
+          throw FormatException('Invalid boolean value: $value');
+        }
 
       default:
         return value as T;
