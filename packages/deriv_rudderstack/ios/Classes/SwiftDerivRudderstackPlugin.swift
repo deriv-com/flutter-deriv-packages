@@ -53,7 +53,10 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
                 }
             }
             
+            let dataPlaneUrl = nsDictionary?["com.deriv.rudderstack.DATA_PLANE_URL"] as? String ?? "https://deriv-dataplane.rudderstack.com"
+            
             let builder: RSConfigBuilder = RSConfigBuilder()
+                .withDataPlaneUrl(dataPlaneUrl)
                 .withTrackLifecycleEvens(trackApplicationLifecycleEvents)
                 .withRecordScreenViews(recordScreenViews)
                 .withLoglevel(Int32(logLevel))
