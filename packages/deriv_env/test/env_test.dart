@@ -6,6 +6,14 @@ import 'package:deriv_env/env.dart';
 void main() {
   setUpAll(() => TestWidgetsFlutterBinding.ensureInitialized());
 
+  const String stringKey = 'STRING_VAR';
+  const String intKey = 'INT_VAR';
+  const String doubleKey = 'DOUBLE_VAR';
+  const String boolKey = 'BOOL_VAR';
+  const String varWithEqualsKey = 'VAR_WITH_EQUALS';
+  const String varWithHashKey = 'VAR_WITH_HASH';
+  const String encryptedKey = 'ENCRYPTED_VAR';
+
   group('env class test =>', () {
     test('get() method should throw exception if env is not initialized.',
         () async {
@@ -21,14 +29,14 @@ void main() {
 
       expect(Env().env!.entries.length, 7);
 
-      expect(Env().env!.entries['STRING_VAR'], 'hello world');
-      expect(Env().env!.entries['INT_VAR'], '123');
-      expect(Env().env!.entries['DOUBLE_VAR'], '3.14');
-      expect(Env().env!.entries['BOOL_VAR'], 'true');
-      expect(Env().env!.entries['VAR_WITH_EQUALS'], 'hello=world');
-      expect(Env().env!.entries['VAR_WITH_HASH'], 'hello#world');
+      expect(Env().env!.entries[stringKey], 'hello world');
+      expect(Env().env!.entries[intKey], '123');
+      expect(Env().env!.entries[doubleKey], '3.14');
+      expect(Env().env!.entries[boolKey], 'true');
+      expect(Env().env!.entries[varWithEqualsKey], 'hello=world');
+      expect(Env().env!.entries[varWithHashKey], 'hello#world');
       expect(
-        Env().env!.entries['ENCRYPTED_VAR'],
+        Env().env!.entries[encryptedKey],
         'dVyH3QjdHYcjcS2TQ1XenmDVvf5ViN8ZpSVEcjfFhsk=',
       );
     });
@@ -46,19 +54,19 @@ void main() {
     test('get() method should parse value as int.', () async {
       await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(Env().get<int>('INT_VAR'), 123);
+      expect(Env().get<int>(intKey), 123);
     });
 
     test('get() method should parse value as double.', () async {
       await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(Env().get<double>('DOUBLE_VAR'), 3.14);
+      expect(Env().get<double>(doubleKey), 3.14);
     });
 
     test('get() method should parse value as bool.', () async {
       await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(Env().get<bool>('BOOL_VAR'), isTrue);
+      expect(Env().get<bool>(boolKey), isTrue);
     });
 
     test(
@@ -68,7 +76,7 @@ void main() {
 
       expect(
         Env().get<String>(
-          'STRING_VAR',
+          stringKey,
           parser: (String value) => value.toUpperCase(),
         ),
         'HELLO WORLD',
@@ -76,7 +84,7 @@ void main() {
 
       expect(
         Env().get<int>(
-          'INT_VAR',
+          intKey,
           parser: (String value) => int.parse(value) * 2,
         ),
         246,
@@ -84,7 +92,7 @@ void main() {
 
       expect(
         Env().get<double>(
-          'DOUBLE_VAR',
+          doubleKey,
           parser: (String value) => double.parse(value) * 2,
         ),
         6.28,
@@ -92,7 +100,7 @@ void main() {
 
       expect(
         Env().get<bool>(
-          'DOUBLE_VAR',
+          doubleKey,
           parser: (String value) => double.parse(value) > 3.14,
         ),
         false,
@@ -103,8 +111,8 @@ void main() {
         () async {
       await Env().initialize(EnvLoader(), 'test/.env.test');
 
-      expect(Env().env!.entries['VAR_WITH_EQUALS'], 'hello=world');
-      expect(Env().env!.entries['VAR_WITH_HASH'], 'hello#world');
+      expect(Env().env!.entries[varWithEqualsKey], 'hello=world');
+      expect(Env().env!.entries[varWithHashKey], 'hello#world');
     });
 
     test('handle encrypted variable.', () async {
@@ -112,7 +120,7 @@ void main() {
 
       expect(
         Env().get<String>(
-          'ENCRYPTED_VAR',
+          encryptedKey,
           decryptionKey: 'TbKjMndW1L8vczgGQfPo2IyUxh6XAEay',
         ),
         'ecnrypted message',
