@@ -1,0 +1,33 @@
+name: all_packages
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    branches:
+      - "*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+      - uses: bluefireteam/melos-action@v1
+        with:
+          melos-version: "3.0.1"
+      - name: "Run Pub Get"
+        run: melos bootstrap
+      - name: "Run Analyze"
+        run: melos run analyze
+      - name: "Run Test"
+        run: melos run test

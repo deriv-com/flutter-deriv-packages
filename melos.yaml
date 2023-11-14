@@ -4,6 +4,9 @@ repository: https://github.com/regentmarkets/flutter-deriv-packages
 packages:
   - packages/*
 
+ignore:
+  - packages/deriv_auth_ui
+
 command:
   version:
     # Generate commit links in package changelogs.
@@ -16,3 +19,23 @@ command:
     # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
     # makes the CI much more stable.
     runPubGetInParallel: false
+
+scripts:
+  analyze:
+    name: Flutter Analyze
+    description: Run flutter analyze for all packages.
+    run: flutter analyze
+    exec:
+      concurrency: 1
+      failFast: true
+
+  test:
+    name: Flutter Test
+    description: Run flutter test for all packages.
+    run: |
+      if [ -d "test" ]; then 
+        flutter test
+      fi
+    exec:
+      consurrency: 1
+      failFast: true
