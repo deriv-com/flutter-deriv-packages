@@ -3,7 +3,6 @@ package com.deriv.deriv_rudderstack
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.os.Build
 import com.rudderstack.android.sdk.core.*
 import io.flutter.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -78,7 +77,7 @@ class DerivRudderstackPlugin : FlutterPlugin, MethodCallHandler {
                     .withDataPlaneUrl(
                         bundle.getString(
                             DATA_PLANE_URL,
-                            "https://deriv-dataplane.rudderstack.com"
+                            ""
                         )
                     )
                     .withTrackLifecycleEvents(trackApplicationLifecycleEvents)

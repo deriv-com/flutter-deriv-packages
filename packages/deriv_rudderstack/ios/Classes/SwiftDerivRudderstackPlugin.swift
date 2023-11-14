@@ -53,7 +53,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
                 }
             }
             
-            let dataPlaneUrl = nsDictionary?["com.deriv.rudderstack.DATA_PLANE_URL"] as? String ?? "https://deriv-dataplane.rudderstack.com"
+            let dataPlaneUrl = nsDictionary?["com.deriv.rudderstack.DATA_PLANE_URL"] as? String ?? ""
             
             let builder: RSConfigBuilder = RSConfigBuilder()
                 .withDataPlaneUrl(dataPlaneUrl)
@@ -64,8 +64,8 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
             RSClient.getInstance(writeKey, config: builder.build())
             result(true)
         }
-            result(false)
-
+        result(false)
+        
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -84,7 +84,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
             
         case ALIAS:
             self.alias(call, result)
-
+            
         case SETUP:
             self.setupRudderStack(result)
             
@@ -230,7 +230,7 @@ public class SwiftDerivRudderstackPlugin: NSObject, FlutterPlugin {
     
     // To enable sending rudder stack events.
     private func enable(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
-      
+        
         self.enabled = true
         result(true)
     }
