@@ -14,7 +14,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_rudderstack
-      ref: dev
+      ref: update_rudderstack
 
   firebase_analytics: ^10.4.0
   firebase_core: ^2.12.0
