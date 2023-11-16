@@ -44,6 +44,9 @@ Set the WRITE_KEY in addition to enabling the plugin to track app lifecycle, scr
             android:name="com.deriv.rudderstack.WRITE_KEY"
             android:value="ADD-YOUR-KEY" />
         <meta-data
+            android:name="com.deriv.rudderstack.DATA_PLANE_URL"
+            android:value="ADD-YOUR-DATA_PLANE_URL" />
+        <meta-data
             android:name="com.deriv.rudderstack.TRACK_APPLICATION_LIFECYCLE_EVENTS"
             android:value="false" />
         <meta-data
@@ -65,6 +68,8 @@ Set the WRITE_KEY in addition to enabling the plugin to track app lifecycle, scr
 	[...]
     <key>com.deriv.rudderstack.WRITE_KEY</key>
     <string>ADD-YOUR-KEY</string>
+    <key>com.deriv.rudderstack.DATA_PLANE_URL</key>
+    <string>ADD-YOUR-DATA-PLANE-URL</string>
 	<key>com.deriv.rudderstack.TRACK_APPLICATION_LIFECYCLE_EVENTS</key>
     <false/>
     <key>com.deriv.rudderstack.RECORD_SCREEN_VIEWS</key>

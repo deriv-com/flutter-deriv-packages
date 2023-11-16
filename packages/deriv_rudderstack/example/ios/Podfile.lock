@@ -1,5 +1,5 @@
 PODS:
-  - deriv_rudderstack (0.0.1):
+  - deriv_rudderstack (1.0.0):
     - Flutter
     - Rudder (~> 1.1.0)
   - Flutter (1.0.0)
@@ -21,10 +21,10 @@ EXTERNAL SOURCES:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  deriv_rudderstack: 2b40c54282698ef571b35c40289a224b14d07b23
+  deriv_rudderstack: 15634c868de0f4d41c610f5c31e156efb11d8e14
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   Rudder: ef9240308583b37ee163f69e1bb24b8e6b5ce69b
 
 PODFILE CHECKSUM: 10ad9430ce285540acaeec6d0be04eebce76fafb
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0
