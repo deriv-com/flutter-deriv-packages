@@ -1,7 +1,7 @@
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/endpoint_helper.dart';
-import 'package:deriv_auth_ui/src/core/helpers/regex_helper.dart';
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/utils/regex_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
