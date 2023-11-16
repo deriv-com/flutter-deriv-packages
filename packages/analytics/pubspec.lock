@@ -53,11 +53,11 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/deriv_rudderstack"
-      ref: dev
-      resolved-ref: "5ef83344abef12e7d598e8ca9cade10a69b51797"
+      ref: rudderstack_kotlin_1_8_22
+      resolved-ref: "17fb84ad10533ebb655ea0d30a954d22335af6d8"
       url: "git@github.com:regentmarkets/flutter-deriv-packages.git"
     source: git
-    version: "1.1.0"
+    version: "1.2.0"
   fake_async:
     dependency: transitive
     description:
