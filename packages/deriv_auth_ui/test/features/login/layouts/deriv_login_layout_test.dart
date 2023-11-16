@@ -9,8 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
@@ -23,7 +22,7 @@ void main() {
 
     setUpAll(() => authCubit = MockAuthCubit());
 
-    patrolTest(
+    patrolWidgetTest(
         'renders email and password field including social auth buttons.',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedOutState();
@@ -54,7 +53,7 @@ void main() {
       expect($(DerivSocialAuthPanel), findsOneWidget);
     });
 
-    patrolTest('displays invalid email error on invalid email typed.',
+    patrolWidgetTest('displays invalid email error on invalid email typed.',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedOutState();
       const invalidEmail = 'invalid-email';
@@ -87,7 +86,7 @@ void main() {
       expect($(Text).$('Enter a valid email address'), findsOneWidget);
     });
 
-    patrolTest('displays loading error on AuthLoadingState',
+    patrolWidgetTest('displays loading error on AuthLoadingState',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthLoadingState();
 
@@ -114,7 +113,7 @@ void main() {
       expect($(LoadingIndicator), findsOneWidget);
     });
 
-    patrolTest('calls signupTapped when signup button is pressed.',
+    patrolWidgetTest('calls signupTapped when signup button is pressed.',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedOutState();
 
@@ -149,10 +148,13 @@ void main() {
       expect(onSignupTappedCalled, isTrue);
     });
 
-    patrolTest('calls onLoggedIn on successful login.', (PatrolTester $) async {
+    patrolWidgetTest('calls onLoggedIn on successful login.',
+        (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedInState(
-        authorizeEntity: const AuthorizeEntity(),
-        landingCompany: const LandingCompanyEntity(),
+        const DerivAuthModel(
+          authorizeEntity: AuthorizeEntity(),
+          landingCompany: LandingCompanyEntity(),
+        ),
       );
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
@@ -180,9 +182,12 @@ void main() {
       expect(onLoggedInCalled, isTrue);
     });
 
-    patrolTest('calls onLoginError on login error.', (PatrolTester $) async {
+    patrolWidgetTest('calls onLoginError on login error.',
+        (PatrolTester $) async {
       final mockAuthState = DerivAuthErrorState(
-          message: 'error', type: AuthErrorType.failedAuthorization);
+          isSocialLogin: false,
+          message: 'error',
+          type: AuthErrorType.failedAuthorization);
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
@@ -209,7 +214,7 @@ void main() {
       expect(onLoginErrorCalled, isTrue);
     });
 
-    patrolTest('calls resetPassTapped when reset button is pressed.',
+    patrolWidgetTest('calls resetPassTapped when reset button is pressed.',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedOutState();
 
@@ -240,7 +245,7 @@ void main() {
       expect(onResetPassTappedCalled, isTrue);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'calls onSocialAuthButtonPressed when social auth button is pressed.',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedOutState();

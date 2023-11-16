@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
@@ -30,7 +29,7 @@ void main() {
           (_) => Stream.fromIterable([const DerivSignupInitialState()]));
     });
 
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
           BlocProvider<DerivSignupCubit>.value(
@@ -52,7 +51,7 @@ void main() {
       expect($(DerivSocialAuthPanel), findsOneWidget);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'onSocialAuthButtonPressed is called upon tapping social auth option',
         (PatrolTester $) async {
       bool isOnSocialAuthButtonPressedCalled = false;
@@ -77,7 +76,7 @@ void main() {
       expect(isOnSocialAuthButtonPressedCalled, true);
     });
 
-    patrolTest('onSignupEmailSent is called upon sign up email sent',
+    patrolWidgetTest('onSignupEmailSent is called upon sign up email sent',
         (PatrolTester $) async {
       bool isOnSignupEmailSentCalled = false;
 
@@ -103,7 +102,7 @@ void main() {
       expect(isOnSignupEmailSentCalled, true);
     });
 
-    patrolTest('onSignupPressed is called upon tapping signup button',
+    patrolWidgetTest('onSignupPressed is called upon tapping signup button',
         (PatrolTester $) async {
       bool isOnSignupPressedCalled = false;
 
@@ -134,7 +133,7 @@ void main() {
           .called(1);
     });
 
-    patrolTest('onLoginTapped is called upon tapping login button',
+    patrolWidgetTest('onLoginTapped is called upon tapping login button',
         (PatrolTester $) async {
       bool isOnLoginTappedCalled = false;
 
@@ -161,7 +160,7 @@ void main() {
       expect(isOnLoginTappedCalled, true);
     });
 
-    patrolTest('onSignupError is called upon signup error state',
+    patrolWidgetTest('onSignupError is called upon signup error state',
         (PatrolTester $) async {
       bool isOnSignupErrorCalled = false;
 

@@ -1,13 +1,12 @@
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../pump_app.dart';
 
 void main() {
   group('DerivEmailNotReceivedLayout', () {
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(DerivEmailNotReceivedLayout(
         onReEnterEmailPressed: () {},
       ));
@@ -17,7 +16,8 @@ void main() {
           findsOneWidget);
     });
 
-    patrolTest('onReEnterEmailPressed is called when tapped on the button',
+    patrolWidgetTest(
+        'onReEnterEmailPressed is called when tapped on the button',
         (PatrolTester $) async {
       bool isReEnterEmailPressed = false;
 

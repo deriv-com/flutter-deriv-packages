@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
@@ -31,7 +30,7 @@ void main() {
   });
 
   group('DerivSetPasswordLayout', () {
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
           MultiBlocProvider(
@@ -53,7 +52,7 @@ void main() {
       expect($(ElevatedButton), findsNWidgets(2));
     });
 
-    patrolTest('onDerivAuthState is called on DerivAuth state changes',
+    patrolWidgetTest('onDerivAuthState is called on DerivAuth state changes',
         (PatrolTester $) async {
       bool isOnDerivAuthStateCalled = false;
 
@@ -78,7 +77,8 @@ void main() {
       expect(isOnDerivAuthStateCalled, true);
     });
 
-    patrolTest('onDerivSignupState is called on DerivSignup state changes',
+    patrolWidgetTest(
+        'onDerivSignupState is called on DerivSignup state changes',
         (PatrolTester $) async {
       bool isOnDerivSignupStateCalled = false;
 
@@ -106,7 +106,7 @@ void main() {
       expect(isOnDerivSignupStateCalled, true);
     });
 
-    patrolTest('onPreviousPressed is called upon tapping previous button',
+    patrolWidgetTest('onPreviousPressed is called upon tapping previous button',
         (PatrolTester $) async {
       bool isOnPreviousPressedCalled = false;
 
@@ -130,7 +130,8 @@ void main() {
       expect(isOnPreviousPressedCalled, true);
     });
 
-    patrolTest('password is no longer obscure after visibility icon pressed',
+    patrolWidgetTest(
+        'password is no longer obscure after visibility icon pressed',
         (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
@@ -158,7 +159,7 @@ void main() {
           findsOneWidget);
     });
 
-    patrolTest('start trading button is disabled until password is valid',
+    patrolWidgetTest('start trading button is disabled until password is valid',
         (PatrolTester $) async {
       const validPassword = 'Abcdefg123';
 
