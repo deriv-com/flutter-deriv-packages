@@ -16,7 +16,7 @@ dependencies:
     path: ../
   deriv_auth:
     git:
-      url: git@github.com:sahani-deriv/flutter-deriv-packages.git
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_auth
       ref: auth-ui-update
 
