@@ -24,6 +24,7 @@ class DerivSignupLayout extends StatefulWidget {
     required this.onLoginTapped,
     required this.signupPageLabel,
     required this.signupPageDescription,
+    this.isSocialAuthEnabled = true,
     this.authErrorStateHandler,
     this.enableReferralSection = true,
     this.onAuthError,
@@ -61,6 +62,9 @@ class DerivSignupLayout extends StatefulWidget {
   /// Description of signup page.
   final String signupPageDescription;
 
+  /// Whether to display social auth buttons.
+  final bool isSocialAuthEnabled;
+
   @override
   State<DerivSignupLayout> createState() => _DerivSignupLayoutState();
 }
@@ -89,7 +93,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
               Text(context.localization.labelSignUp, style: TextStyles.title),
           backgroundColor: context.theme.colors.secondary,
         ),
-        body: AuthStateListener(
+        body: DerivAuthStateListener(
           authErrorStateHandler: widget.authErrorStateHandler,
           onError: widget.onAuthError,
           child: BlocConsumer<DerivSignupCubit, DerivSignupState>(
@@ -115,14 +119,18 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                       const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthDivider(
                         label: context.localization.labelOrSignUpWith,
+                        isVisible: widget.isSocialAuthEnabled,
                       ),
-                      const SizedBox(height: ThemeProvider.margin24),
+                      if (widget.isSocialAuthEnabled)
+                        const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthPanel(
                         isEnabled: !isReferralEnabled,
                         onSocialAuthButtonPressed:
                             widget.onSocialAuthButtonPressed,
+                        isVisible: widget.isSocialAuthEnabled,
                       ),
-                      const SizedBox(height: ThemeProvider.margin24),
+                      if (widget.isSocialAuthEnabled)
+                        const SizedBox(height: ThemeProvider.margin24),
                       _buildFooterSection(),
                     ],
                   ),
@@ -152,6 +160,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                   dialogTitle: context.localization.labelReferralInfoTitle,
                   dialogDescription:
                       context.localization.infoReferralInfoDescription,
+                  positiveActionLabel: context.localization.actionOk,
                   iconSize: ThemeProvider.iconSize24,
                 ),
                 const SizedBox(width: ThemeProvider.margin08),
@@ -233,7 +242,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
           widget.signupPageDescription,
           style: context.theme.textStyle(
             textStyle: TextStyles.body1,
-            color: context.theme.colors.lessProminent,
+            color: context.theme.colors.general,
           ),
         ),
       ];
@@ -246,7 +255,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
               context.localization.labelHaveAccount,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
             ),
             InkWell(

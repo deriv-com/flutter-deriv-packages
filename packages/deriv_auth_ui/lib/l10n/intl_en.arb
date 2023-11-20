@@ -10,6 +10,7 @@
       }
     }
   },
+  "actionOk": "OK",
   "warnNotAvailableCountries": "If you have any questions, contact us via ",
   "labelLiveChat": "Live chat",
   "actionGetAFreeAccount": "Get a free account",

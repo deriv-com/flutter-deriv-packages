@@ -25,14 +25,13 @@ dependencies:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
       ref: dev
-      # TODO(@ahrar-deriv): replace after merge commit PR 314
+
   deriv_ui:
-    path: ../deriv_ui
-    # git:
-    #   url: git@github.com:sahani-deriv/flutter-deriv-packages.git
-    #   path: packages/deriv_ui
-    #   ref: auth-ui-update
-    #
+    git:
+      url: git@github.com:sahani-deriv/flutter-deriv-packages.git
+      path: packages/deriv_ui
+      ref: auth-ui-update
+
   flutter_svg: ^1.1.6
   smooth_page_indicator: ^1.1.0
   intl_utils: ^2.8.3

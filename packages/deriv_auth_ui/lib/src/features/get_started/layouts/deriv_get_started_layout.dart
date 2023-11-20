@@ -227,7 +227,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               supportingText,
               style: context.theme.textStyle(
                 textStyle: TextStyles.title,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
               textAlign: TextAlign.center,
             ),

@@ -241,9 +241,9 @@ The package handles the mapping of the error state to the corresponding method i
 
 
 ```dart
-class AuthStateListener extends StatelessWidget {
+class DerivAuthStateListener extends StatelessWidget {
   /// {@macro auth_state_listener}
-  const AuthStateListener({
+  const DerivAuthStateListener({
     required this.child,
     super.key,
     this.onLoggedIn,
@@ -253,7 +253,7 @@ class AuthStateListener extends StatelessWidget {
     this.authErrorStateHandler,
   });
 
-  /// The [Widget] that is using this [AuthStateListener].
+  /// The [Widget] that is using this [DerivAuthStateListener].
   final Widget child;
 
   /// Callback to be called when user is logged in.

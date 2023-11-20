@@ -10,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol_finders/patrol_finders.dart';
-
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
@@ -151,10 +150,12 @@ void main() {
 
     patrolWidgetTest('calls onLoggedIn on successful login.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedInState(const DerivAuthModel(
-        authorizeEntity: AuthorizeEntity(),
-        landingCompany: LandingCompanyEntity(),
-      ));
+      final mockAuthState = DerivAuthLoggedInState(
+        const DerivAuthModel(
+          authorizeEntity: AuthorizeEntity(),
+          landingCompany: LandingCompanyEntity(),
+        ),
+      );
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
@@ -184,10 +185,9 @@ void main() {
     patrolWidgetTest('calls onLoginError on login error.',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthErrorState(
-        isSocialLogin: false,
-        message: 'error',
-        type: AuthErrorType.failedAuthorization,
-      );
+          isSocialLogin: false,
+          message: 'error',
+          type: AuthErrorType.failedAuthorization);
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 

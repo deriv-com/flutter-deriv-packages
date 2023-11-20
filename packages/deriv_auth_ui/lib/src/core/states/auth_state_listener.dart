@@ -8,9 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// This was created to make it easier to use [AuthErrorStateHandler] by
 /// handling the mapping of auth error states with [AuthErrorStateHandler]'s method'.
 /// {@endtemplate}
-class AuthStateListener extends StatelessWidget {
+class DerivAuthStateListener extends StatelessWidget {
   /// {@macro auth_state_listener}
-  const AuthStateListener({
+  const DerivAuthStateListener({
     required this.child,
     super.key,
     this.onLoggedIn,
@@ -20,7 +20,7 @@ class AuthStateListener extends StatelessWidget {
     this.authErrorStateHandler,
   });
 
-  /// The [Widget] that is using this [AuthStateListener].
+  /// The [Widget] that is using this [DerivAuthStateListener].
   final Widget child;
 
   /// Callback to be called when user is logged in.

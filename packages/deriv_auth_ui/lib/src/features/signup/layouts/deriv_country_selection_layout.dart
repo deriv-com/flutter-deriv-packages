@@ -139,8 +139,7 @@ class _DerivCountrySelectionLayoutState
             enabled: _shouldEnableCountrySelectionField(state),
             validator: (String? value) => _countrySelectionValidator(context,
                 selectedCountry: state.selectedCountry),
-            onTap: () =>
-                _onSelectCountryTap(state.countries ?? <DerivResidenceModel>[]),
+            onTap: () => _onSelectCountryTap(state.countries),
           ),
         ),
       );

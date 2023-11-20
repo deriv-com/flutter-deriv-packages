@@ -32,3 +32,40 @@ This repository contains private packages & plugins that are used by the company
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           |
 
+## Environment Setup
+
+We use [Melos](https://pub.dev/packages/melos) to manage the multiple packages in this repository. To get started, install Melos globally:
+
+```bash
+$ dart pub global activate melos
+```
+
+Running `pub get` on all packages, run:
+
+```bash
+$ melos bootstrap
+```
+
+`Analyze` and `Test` has already been configured in `melos.yaml` so you can do the following:
+
+<b>Running `flutter analyze` on all packages:</b>
+
+```bash
+$ melos run analyze
+```
+
+<b>Running `flutter test` on all packages: </b>
+
+```bash
+$ melos run test --no-select
+```
+
+If you'd like to run any other command on all packages, you can configure it in `melos.yaml` or run it directly with melos:
+
+```bash
+$ melos exec --\
+    your command here
+``` 
+
+
+

@@ -41,7 +41,7 @@ void main() {
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>(
           create: (_) => authCubit,
-          child: AuthStateListener(
+          child: DerivAuthStateListener(
               onLoggedIn: (_) {
                 isOnLoggedInCalled = true;
               },
@@ -66,7 +66,7 @@ void main() {
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>(
           create: (_) => authCubit,
-          child: AuthStateListener(
+          child: DerivAuthStateListener(
               onLoggedOut: () {
                 isOnLoggedOutCalled = true;
               },
@@ -91,7 +91,7 @@ void main() {
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>(
           create: (_) => authCubit,
-          child: AuthStateListener(
+          child: DerivAuthStateListener(
               onLoading: () {
                 isOnLoadingCalled = true;
               },
@@ -120,7 +120,7 @@ void main() {
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>(
           create: (_) => authCubit,
-          child: AuthStateListener(
+          child: DerivAuthStateListener(
               onError: (_) {
                 isOnErrorCalled = true;
               },

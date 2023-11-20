@@ -1,4 +1,5 @@
 import 'package:deriv_auth_ui/src/core/helpers/country_selection_helper.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:deriv_auth_ui/src/features/signup/models/deriv_residence_model.dart';
 

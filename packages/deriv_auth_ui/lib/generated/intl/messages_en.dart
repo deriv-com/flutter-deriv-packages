@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Get a free account"),
         "actionLogin": MessageLookupByLibrary.simpleMessage("Log in"),
         "actionNext": MessageLookupByLibrary.simpleMessage("Next"),
+        "actionOk": MessageLookupByLibrary.simpleMessage("OK"),
         "actionPrevious": MessageLookupByLibrary.simpleMessage("Previous"),
         "actionProceed": MessageLookupByLibrary.simpleMessage("Proceed"),
         "actionReenterEmail": MessageLookupByLibrary.simpleMessage(

@@ -3,7 +3,6 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol_finders/patrol_finders.dart';
-
 import '../../../pump_app.dart';
 
 void main() {

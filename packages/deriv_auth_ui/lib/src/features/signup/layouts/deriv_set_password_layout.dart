@@ -68,7 +68,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
   }
 
   @override
-  Widget build(BuildContext context) => AuthStateListener(
+  Widget build(BuildContext context) => DerivAuthStateListener(
         authErrorStateHandler: widget.authErrorStateHandler,
         onError: widget.onAuthError,
         child: Scaffold(

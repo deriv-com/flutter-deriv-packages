@@ -76,7 +76,7 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const SizedBox(height: ThemeProvider.margin72),
-                Expanded(child: _buildContent()),
+                _buildContent(),
                 const SizedBox(height: ThemeProvider.margin24),
                 _buildSubmitPassButton()
               ],

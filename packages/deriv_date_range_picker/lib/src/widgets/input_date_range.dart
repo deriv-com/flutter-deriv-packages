@@ -124,7 +124,7 @@ class _InputDateRangeState extends State<InputDateRange> {
                     context.localization!.labelSelectedDateRange,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.overline,
-                  color: context.theme.colors.lessProminent,
+                  color: context.theme.colors.general,
                 ),
               ),
             ),

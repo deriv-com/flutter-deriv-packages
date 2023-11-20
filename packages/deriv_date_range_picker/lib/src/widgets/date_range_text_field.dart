@@ -109,7 +109,7 @@ class _DateRangeTextFieldState extends State<_DateRangeTextField> {
               : TextInputAction.done,
           style: context.theme.textStyle(
             textStyle: TextStyles.subheading,
-            color: context.theme.colors.lessProminent,
+            color: context.theme.colors.general,
           ),
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(

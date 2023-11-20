@@ -71,6 +71,16 @@ class DerivAuthUILocalization {
     );
   }
 
+  /// `OK`
+  String get actionOk {
+    return Intl.message(
+      'OK',
+      name: 'actionOk',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `If you have any questions, contact us via `
   String get warnNotAvailableCountries {
     return Intl.message(

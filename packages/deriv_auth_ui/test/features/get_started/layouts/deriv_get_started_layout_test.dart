@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol_finders/patrol_finders.dart';
-
 import '../../../pump_app.dart';
 
 class MockDerivGetStartedSlideModel extends Mock
