@@ -18,7 +18,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_auth
-      ref: auth-ui-update
+      ref: dev
 
   deriv_theme:
     git:
@@ -30,7 +30,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: auth-ui-update
+      ref: dev
 
   flutter_svg: ^1.1.6
   smooth_page_indicator: ^1.1.0
