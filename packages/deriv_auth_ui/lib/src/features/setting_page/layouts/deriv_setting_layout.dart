@@ -20,8 +20,6 @@ class DerivSettingLayout extends StatefulWidget {
     this.appId = defaultAppId,
     this.devApp = 'com.deriv.app.dev',
     this.stagingApp = 'com.deriv.app.staging',
-    this.getAppEnv,
-    this.setAppEnv,
     Key? key,
   }) : super(key: key);
 
@@ -45,12 +43,6 @@ class DerivSettingLayout extends StatefulWidget {
 
   /// Staging flavor app.
   final String stagingApp;
-
-  /// Gets the value of user default for showing Server Maintenance.
-  final Future<bool>? getAppEnv;
-
-  /// Stores user default for showing the prompt to confirm exit from Deriv EZ.
-  final Future<void> Function({required bool value})? setAppEnv;
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -117,29 +109,12 @@ class _SettingsPageState extends State<DerivSettingLayout> {
         if (snapshot.hasData &&
             (snapshot.data?.packageName == widget.devApp ||
                 snapshot.data?.packageName == widget.stagingApp)) {
-          return Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
             child: Row(
               children: <Widget>[
-                const Text('Production environment'),
-                const SizedBox(width: ThemeProvider.margin08),
-                FutureBuilder<bool>(
-                    future: widget.getAppEnv,
-                    builder:
-                        (BuildContext context, AsyncSnapshot<bool?> snapshot) {
-                      if (snapshot.hasData && widget.setAppEnv != null) {
-                        return Switch(
-                          value: snapshot.data ?? false,
-                          onChanged: (bool val) {
-                            setState(() {
-                              widget.setAppEnv!(value: val);
-                            });
-                          },
-                        );
-                      }
-                      return const SizedBox.shrink();
-                    })
+                Text('Production environment'),
+                SizedBox(width: ThemeProvider.margin08),
               ],
             ),
           );
