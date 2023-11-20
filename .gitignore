@@ -28,6 +28,8 @@ pubspec.lock
 .pub/
 /build/
 coverage/
+pubspec_overrides.yaml
+pubspec.lock
 
 
 gradlew.bat
