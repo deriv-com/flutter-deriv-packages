@@ -2,7 +2,7 @@ name: form_builder
 description: A simpler and cleaner way to create, validate and submit forms.
 homepage: https://github.com/regentmarkets/flutter-deriv-packages
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.0
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
