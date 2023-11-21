@@ -19,7 +19,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Setup Git User
         uses: fregante/setup-git-user@v2
