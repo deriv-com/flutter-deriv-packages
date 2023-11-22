@@ -18,13 +18,13 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_auth
-      ref: dev
+      ref: deriv_auth-v1.0.0
   deriv_theme:
-    path: ../../deriv_theme
-    # git:
-    #   url: git@github.com:regentmarkets/flutter-deriv-packages.git
-    #   path: packages/deriv_theme
-    #   ref: dev
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_theme
+      ref: deriv_theme-v1.0.0
+
   flutter_bloc: ^8.1.3
   http: ^0.13.6
 
