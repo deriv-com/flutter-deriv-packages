@@ -42,15 +42,10 @@ jobs:
           melos-version: "3.0.1"
 
       - name: Create git tag based on version
-        run: melos version --yes
-
-      - name: Get latest tag
-        run: |
-          echo tag=$(git describe --tags `git rev-list --tags --max-count=1`) >> $GITHUB_OUTPUT
-        id: get-latest-tag
+        run: melos version --yes --all
 
       - name: Push tag
-        run: git push origin ${{ steps.get-latest-tag.outputs.tag }}
+        run: git push --tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
