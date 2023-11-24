@@ -41,7 +41,8 @@ class DerivAuthService extends BaseAuthService {
 
   @override
   Future<AuthorizeEntity> onLoginRequest(
-    GetTokensRequestModel request, [
+    GetTokensRequestModel request,
+    String userAgent, [
     Function? onInvalidJwtToken,
   ]) async {
     try {
@@ -50,6 +51,7 @@ class DerivAuthService extends BaseAuthService {
       final GetTokensResponseModel _response = await tokenService.getUserTokens(
         request: request,
         client: HttpClient(),
+        userAgent: userAgent,
         jwtToken: jwtToken,
         connectionInfo: connectionInfo,
       );
@@ -78,7 +80,7 @@ class DerivAuthService extends BaseAuthService {
 
         jwtService.clearJwtToken();
 
-        return onLoginRequest(request);
+        return onLoginRequest(request, userAgent);
       } else {
         throw _mapHttpErrorToDerivAuthError(error);
       }
@@ -200,7 +202,7 @@ class DerivAuthService extends BaseAuthService {
         return DerivAuthException(
           type: AuthErrorType.invalidResidence,
           message: exception.message,
-        );  
+        );
 
       default:
         return DerivAuthException(

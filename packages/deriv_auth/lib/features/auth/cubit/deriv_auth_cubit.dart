@@ -10,6 +10,7 @@ import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 import 'package:deriv_auth/features/social_auth/models/social_auth_dto.dart';
+import 'package:flutter_deriv_api/helpers/helpers.dart';
 
 part 'deriv_auth_state.dart';
 
@@ -92,8 +93,9 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   Future<void> _loginRequest(
       GetTokensRequestModel request, bool isSocialLogin) async {
     try {
+      final String userAgent = await getUserAgent();
       final AuthorizeEntity authorizeEntity =
-          await authService.onLoginRequest(request);
+          await authService.onLoginRequest(request, userAgent);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
@@ -182,10 +184,9 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   bool get isMigratedToWallets => _isUserMigrated;
 
   bool _checkUserMigrated(AuthorizeEntity authorizeEntity) =>
-      authorizeEntity.accountList?.any(
-              (AccountListItem account) =>
+      authorizeEntity.accountList?.any((AccountListItem account) =>
           account.accountCategory == AccountCategoryEnum.wallet) ??
-          false;
+      false;
 
   @override
   Stream<DerivAuthState> get output => stream;

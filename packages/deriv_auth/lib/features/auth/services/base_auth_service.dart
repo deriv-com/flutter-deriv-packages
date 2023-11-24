@@ -8,6 +8,7 @@ abstract class BaseAuthService {
   /// Function before logging user in.
   Future<AuthorizeEntity> onLoginRequest(
     GetTokensRequestModel request,
+    String userAgent,
   );
 
   /// Log in a user with [token].

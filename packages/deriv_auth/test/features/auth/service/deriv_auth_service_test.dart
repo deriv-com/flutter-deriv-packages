@@ -60,6 +60,7 @@ void main() {
     when(() => tokenService.getUserTokens(
           request: any(named: 'request'),
           client: any(named: 'client'),
+          userAgent: 'user_agent',
           jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
           connectionInfo: any(named: 'connectionInfo'),
         )).thenAnswer(
@@ -75,6 +76,7 @@ void main() {
     when(() => tokenService.getUserTokens(
           request: any(named: 'request'),
           client: any(named: 'client'),
+          userAgent: 'user_agent',
           jwtToken: any(named: 'jwtToken', that: equals(invalidJwtToken)),
           connectionInfo: any(named: 'connectionInfo'),
         )).thenThrow(
@@ -133,6 +135,7 @@ void main() {
             password: 'pass',
             signupProvider: 'signupProvider',
           ),
+          'user_agent',
         );
 
         expect(response.userId, mockedValidAuthorizeEntity.userId);
@@ -159,6 +162,7 @@ void main() {
             signupProvider: 'signupProvider',
             oneAllConnectionToken: 'oneAllConnectionToken',
           ),
+          'user_agent',
         );
 
         expect(response.userId, mockedValidAuthorizeEntity.userId);
@@ -185,6 +189,7 @@ void main() {
             signupProvider: 'signupProvider',
             socialAuthDto: mockSocialAuthDto,
           ),
+          'user_agent',
         );
 
         expect(response.userId, mockedValidAuthorizeEntity.userId);
@@ -207,16 +212,19 @@ void main() {
         );
 
         final AuthorizeEntity response = await authService.onLoginRequest(
-            GetTokensRequestModel(
-              type: AuthType.system,
-              email: 'email',
-              password: 'pass',
-              signupProvider: 'signupProvider',
-            ), () {
-          when(() => jwtService.getJwtToken()).thenAnswer(
-            (_) => Future<String>.value(validJwtToken),
-          );
-        });
+          GetTokensRequestModel(
+            type: AuthType.system,
+            email: 'email',
+            password: 'pass',
+            signupProvider: 'signupProvider',
+          ),
+          'user_agent',
+          () {
+            when(() => jwtService.getJwtToken()).thenAnswer(
+              (_) => Future<String>.value(validJwtToken),
+            );
+          },
+        );
 
         verify(() => jwtService.getJwtToken()).called(2);
 
@@ -239,6 +247,7 @@ void main() {
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
               client: any(named: 'client'),
+              userAgent: 'user_agent',
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -257,6 +266,7 @@ void main() {
                 password: 'pass',
                 signupProvider: 'signupProvider',
               ),
+              'user_agent',
             ),
             throwsA(
               isA<DerivAuthException>().having(
@@ -276,6 +286,7 @@ void main() {
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
               client: any(named: 'client'),
+              userAgent: 'user_agent',
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -294,6 +305,7 @@ void main() {
                 password: 'pass',
                 signupProvider: 'signupProvider',
               ),
+              'user_agent',
             ),
             throwsA(
               isA<DerivAuthException>().having(
@@ -313,6 +325,7 @@ void main() {
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
               client: any(named: 'client'),
+              userAgent: 'user_agent',
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -331,6 +344,7 @@ void main() {
                 password: 'pass',
                 signupProvider: 'signupProvider',
               ),
+              'user_agent',
             ),
             throwsA(
               isA<DerivAuthException>().having(
@@ -422,6 +436,7 @@ void main() {
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
               client: any(named: 'client'),
+              userAgent: 'user_agent',
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -440,6 +455,7 @@ void main() {
                 password: 'pass',
                 signupProvider: 'signupProvider',
               ),
+              'user_agent',
             ),
             throwsA(
               isA<DerivAuthException>().having(
@@ -459,6 +475,7 @@ void main() {
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
               client: any(named: 'client'),
+              userAgent: 'user_agent',
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -477,6 +494,7 @@ void main() {
                 password: 'pass',
                 signupProvider: 'signupProvider',
               ),
+              'user_agent',
             ),
             throwsA(
               isA<DerivAuthException>().having(
@@ -496,6 +514,7 @@ void main() {
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
               client: any(named: 'client'),
+              userAgent: 'user_agent',
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -514,6 +533,7 @@ void main() {
                 password: 'pass',
                 signupProvider: 'signupProvider',
               ),
+              'user_agent',
             ),
             throwsA(
               isA<DerivAuthException>().having(

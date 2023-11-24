@@ -90,7 +90,7 @@ void main() {
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.system));
 
-        when(() => service.onLoginRequest(any())).thenAnswer(
+        when(() => service.onLoginRequest(any(), any())).thenAnswer(
             (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
@@ -106,7 +106,7 @@ void main() {
 
         authCubit.systemLogin(email: 'email', password: 'password');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any(), any())).called(1);
       });
 
       test(
@@ -114,7 +114,7 @@ void main() {
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
 
-        when(() => service.onLoginRequest(any())).thenAnswer(
+        when(() => service.onLoginRequest(any(), any())).thenAnswer(
             (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
@@ -130,7 +130,7 @@ void main() {
 
         authCubit.socialLogin(oneAllConnectionToken: 'token');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any(), any())).called(1);
       });
 
       test(
@@ -138,7 +138,7 @@ void main() {
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
 
-        when(() => service.onLoginRequest(any())).thenAnswer(
+        when(() => service.onLoginRequest(any(), any())).thenAnswer(
             (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
@@ -156,11 +156,11 @@ void main() {
           socialAuthDto: mockSocialAuthDto,
         );
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any(), any())).called(1);
       });
 
       test('should emit [AuthLoggedInState] upon a successful otp login.', () {
-        when(() => service.onLoginRequest(any())).thenAnswer(
+        when(() => service.onLoginRequest(any(), any())).thenAnswer(
             (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
@@ -175,14 +175,15 @@ void main() {
         );
         authCubit.systemLogin(email: 'email', password: 'pass', otp: 'otp');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any(), any())).called(1);
       });
 
       test('should emit [AuthErrorState] when an exception occurs in service.',
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.system));
 
-        when(() => service.onLoginRequest(any())).thenThrow(DerivAuthException(
+        when(() => service.onLoginRequest(any(), any()))
+            .thenThrow(DerivAuthException(
           message: 'message',
           type: AuthErrorType.expiredAccount,
         ));
@@ -200,7 +201,7 @@ void main() {
 
         authCubit.systemLogin(email: 'email', password: 'pass');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(any(), any())).called(1);
       });
       test('should emit [AuthLoggedOutState] upon a successful logout.', () {
         when(() => service.logout()).thenAnswer((_) => Future<void>.value());

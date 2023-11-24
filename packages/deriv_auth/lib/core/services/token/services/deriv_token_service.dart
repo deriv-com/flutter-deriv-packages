@@ -10,6 +10,7 @@ class DerivTokenService implements BaseTokenService {
   Future<GetTokensResponseModel> getUserTokens({
     required GetTokensRequestModel request,
     required BaseHttpClient client,
+    required String userAgent,
     required String jwtToken,
     required AuthConnectionInfo connectionInfo,
   }) async {
@@ -22,7 +23,10 @@ class DerivTokenService implements BaseTokenService {
       url: loginUrl,
       jsonBody:
           request.copyWith(appId: int.parse(connectionInfo.appId)).toJson(),
-      headers: <String, String>{'Authorization': 'Bearer $jwtToken'},
+      headers: <String, String>{
+        'Authorization': 'Bearer $jwtToken',
+        'User-Agent': userAgent,
+      },
     );
 
     return GetTokensResponseModel.fromJson(jsonResponse);
