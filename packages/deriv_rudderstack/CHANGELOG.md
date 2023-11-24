@@ -1,7 +1,3 @@
-## 1.0.0
-
- - Bump "deriv_rudderstack" to `1.0.0`.
-
 ## 1.1.0
 Migrated to null safety
 
