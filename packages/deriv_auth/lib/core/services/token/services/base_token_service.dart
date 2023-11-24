@@ -9,8 +9,8 @@ abstract class BaseTokenService {
   Future<GetTokensResponseModel> getUserTokens({
     required GetTokensRequestModel request,
     required BaseHttpClient client,
-    required String userAgent,
     required String jwtToken,
     required AuthConnectionInfo connectionInfo,
+    String? userAgent,
   });
 }

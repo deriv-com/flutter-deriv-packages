@@ -42,7 +42,6 @@ void main() {
       final GetTokensResponseModel response = await _tokenService.getUserTokens(
         request: GetTokensRequestModel(),
         client: _client,
-        userAgent: 'user_agent',
         jwtToken: _jwtToken,
         connectionInfo: _connectionInfo,
       );

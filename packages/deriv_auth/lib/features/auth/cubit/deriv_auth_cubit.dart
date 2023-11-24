@@ -95,7 +95,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     try {
       final String userAgent = await getUserAgent();
       final AuthorizeEntity authorizeEntity =
-          await authService.onLoginRequest(request, userAgent);
+          await authService.onLoginRequest(request, userAgent: userAgent);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);

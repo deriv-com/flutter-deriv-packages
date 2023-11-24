@@ -41,10 +41,10 @@ class DerivAuthService extends BaseAuthService {
 
   @override
   Future<AuthorizeEntity> onLoginRequest(
-    GetTokensRequestModel request,
-    String userAgent, [
+    GetTokensRequestModel request, {
+    String? userAgent,
     Function? onInvalidJwtToken,
-  ]) async {
+  }) async {
     try {
       final String jwtToken = await jwtService.getJwtToken();
 
@@ -80,7 +80,7 @@ class DerivAuthService extends BaseAuthService {
 
         jwtService.clearJwtToken();
 
-        return onLoginRequest(request, userAgent);
+        return onLoginRequest(request, userAgent: userAgent);
       } else {
         throw _mapHttpErrorToDerivAuthError(error);
       }
