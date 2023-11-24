@@ -32,6 +32,24 @@ abstract class AbstractEMAIndicator<T extends IndicatorResult>
           prevValue,
     );
   }
+
+  @override
+  void copyValuesFrom(covariant AbstractEMAIndicator<T> other) {
+    super.copyValuesFrom(other);
+    if (indicator is CachedIndicator) {
+      (indicator as CachedIndicator<T>)
+          .copyValuesFrom(other.indicator as CachedIndicator<T>);
+    }
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+
+    if (indicator is CachedIndicator) {
+      (indicator as CachedIndicator<T>).invalidate(index);
+    }
+  }
 }
 
 /// EMA indicator

@@ -156,8 +156,7 @@ class _BaseTextFieldState extends State<BaseTextField> {
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color:
-                  widget.focusedBorderColor ?? context.theme.colors.blue,
+              color: widget.focusedBorderColor ?? context.theme.colors.blue,
             ),
             borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
           ),
@@ -174,8 +173,7 @@ class _BaseTextFieldState extends State<BaseTextField> {
             color: _hasError
                 ? context.theme.colors.coral
                 : _hasFocus()
-                    ? widget.focusedLabelColor ??
-                        context.theme.colors.blue
+                    ? widget.focusedLabelColor ?? context.theme.colors.blue
                     : widget.labelColor ?? context.theme.colors.disabled,
           ),
           counterText: widget.showCounterText ? null : '',
@@ -197,7 +195,7 @@ class _BaseTextFieldState extends State<BaseTextField> {
 
   Color _getTextFieldColor() => widget.enabled && _hasFocus()
       ? widget.focusedTextColor ?? context.theme.colors.prominent
-      : widget.textColor ?? context.theme.colors.lessProminent;
+      : widget.textColor ?? context.theme.colors.general;
 
   String? _validator(String? input) {
     final String? errorMsg = widget.validator?.call(input);

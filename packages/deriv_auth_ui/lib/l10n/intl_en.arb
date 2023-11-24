@@ -10,6 +10,7 @@
       }
     }
   },
+  "actionOk": "OK",
   "warnNotAvailableCountries": "If you have any questions, contact us via ",
   "labelLiveChat": "Live chat",
   "actionGetAFreeAccount": "Get a free account",
@@ -89,5 +90,27 @@
   "informPasswordPolicyLowerAndUpper": "Upper and lower case letters",
   "informPasswordPolicyNumber": "At least one number",
   "warnPasswordContainsSymbol": "Use symbols for strong password.",
-  "labelReferralCode": "Referral Code"
+  "labelReferralCode": "Referral Code",
+  "actionTryAgain": "Try Again",
+  "informInvalid2FACode": "The code you entered is invalid. Check and try again.",
+  "informFailedAuthentication": "Your email or password may be incorrect. Did you sign up with a social account? Check and try again.",
+  "informDeactivatedAccount": "Your account is deactivated.",
+   "informFailedAuthorization": "Authorization failed.",
+  "informInvalidResidence": "Invalid residence.",
+  "informInvalidCredentials": "Invalid credentials.",
+  "informMissingOtp": "Missing one-time password.",
+  "informSelfClosed": "Your account has been closed.",
+  "informUnexpectedError": "An unexpected error occurred.",
+  "informUnsupportedCountry": "Your country is not supported.",
+  "informExpiredAccount": "Your account is expired",
+  "labelCountryConsentBrazil": "I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company.",
+  "informConnectionError": "Connection error. Please try again later.",
+  "informSwitchAccountError": "Switch account error. Please try again later.",
+  "labelDeveloper": "Developer",
+  "labelEndpoint": "Endpoint",
+  "semanticEndpoint": "Endpoint",
+  "warnInvalidEndpoint": "invalid endpoint",
+  "labelApplicationID": "Application ID",
+  "semanticApplicationID": "Application ID",
+  "warnInvalidApplicationID": "invalid application ID"
 }

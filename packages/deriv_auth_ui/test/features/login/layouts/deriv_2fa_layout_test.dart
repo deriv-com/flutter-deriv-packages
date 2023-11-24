@@ -55,8 +55,9 @@ void main() {
               password: any(named: 'password'),
               otp: any(named: 'otp')))
           .thenAnswer((_) async => DerivAuthLoggedInState(const DerivAuthModel(
-              authorizeEntity: AuthorizeEntity(),
-              landingCompany: LandingCompanyEntity())));
+                authorizeEntity: AuthorizeEntity(),
+                landingCompany: LandingCompanyEntity(),
+              )));
 
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>.value(

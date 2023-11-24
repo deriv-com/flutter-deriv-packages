@@ -262,7 +262,7 @@ void main() {
           ..send('ping')
           ..send('pong');
 
-        await Future<void>.delayed(Duration.zero);
+        await Future<void>.delayed(const Duration(milliseconds: 500));
 
         expect(messages, equals(<String>['ping', 'pong']));
 

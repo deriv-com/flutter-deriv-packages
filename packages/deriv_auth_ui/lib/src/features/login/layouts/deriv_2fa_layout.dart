@@ -63,7 +63,7 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
                 context.localization.informEnterTwoFactorAuthCode,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.body1,
-                  color: context.theme.colors.lessProminent,
+                  color: context.theme.colors.general,
                 ),
                 textAlign: TextAlign.center,
               ),

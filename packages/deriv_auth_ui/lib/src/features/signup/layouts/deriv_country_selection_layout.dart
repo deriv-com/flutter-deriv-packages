@@ -1,5 +1,6 @@
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
+import 'package:deriv_auth_ui/src/core/helpers/country_selection_helper.dart';
 import 'package:deriv_auth_ui/src/features/signup/cubits/deriv_country_selection_cubit.dart';
 import 'package:deriv_auth_ui/src/features/signup/models/deriv_residence_model.dart';
 import 'package:deriv_auth_ui/src/features/signup/widgets/country_selection_list_widget.dart';
@@ -17,6 +18,7 @@ class DerivCountrySelectionLayout extends StatefulWidget {
     required this.residences,
     required this.onNextPressed,
     this.affiliateToken,
+    this.countryConsentMessage,
     Key? key,
   }) : super(key: key);
 
@@ -32,6 +34,9 @@ class DerivCountrySelectionLayout extends StatefulWidget {
   /// Affiliate token.
   final String? affiliateToken;
 
+  /// Message to be shown beside country consent checkbox.
+  final String? countryConsentMessage;
+
   @override
   State<DerivCountrySelectionLayout> createState() =>
       _DerivCountrySelectionLayoutState();
@@ -45,14 +50,13 @@ class _DerivCountrySelectionLayoutState
   late TextEditingController _textController;
 
   late final DerivCountrySelectionCubit _countrySelectionCubit;
-  DerivResidenceModel? _selectedResidence;
 
   @override
   void initState() {
     super.initState();
 
     _countrySelectionCubit = DerivCountrySelectionCubit(widget.residences)
-      ..fetchResidenceCounties();
+      ..fetchResidenceCountries();
 
     _textController = TextEditingController();
   }
@@ -61,15 +65,29 @@ class _DerivCountrySelectionLayoutState
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: context.theme.colors.primary,
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Expanded(child: _buildUpperPage()),
-              Padding(
-                padding: const EdgeInsets.all(ThemeProvider.margin16),
-                child: _buildLowerPage(),
-              ),
-            ],
+          child: BlocListener<DerivCountrySelectionCubit,
+              DerivCountrySelectionState>(
+            bloc: _countrySelectionCubit,
+            listener: (BuildContext context, DerivCountrySelectionState state) {
+              if (state.selectedCountry != null &&
+                  state.selectedCountry?.name != null) {
+                _textController.text = state.selectedCountry?.name ?? '';
+              }
+
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _formKey.currentState!.validate();
+              });
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Expanded(child: _buildUpperPage()),
+                Padding(
+                  padding: const EdgeInsets.all(ThemeProvider.margin16),
+                  child: _buildLowerPage(),
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -86,7 +104,11 @@ class _DerivCountrySelectionLayoutState
               style: TextStyles.title,
             ),
             const SizedBox(height: ThemeProvider.margin24),
-            _buildSelectionInput()
+            _buildSelectionInput(),
+            const SizedBox(height: ThemeProvider.margin16),
+            _buildCountryConsentCheckbox(
+              countryConsentMessage: widget.countryConsentMessage,
+            ),
           ],
         ),
       );
@@ -114,24 +136,31 @@ class _DerivCountrySelectionLayoutState
               color: context.theme.colors.prominent,
             ),
             readOnly: true,
-            enabled: state is DerivCountrySelectionLoadedState,
-            validator: (String? value) => _selectedResidence!.isDisabled
-                ? context.localization.warnCountryNotAvailable
-                : null,
+            enabled: _shouldEnableCountrySelectionField(state),
+            validator: (String? value) => _countrySelectionValidator(context,
+                selectedCountry: state.selectedCountry),
             onTap: () => _onSelectCountryTap(state.countries),
           ),
         ),
       );
 
-  Widget _buildNextButton() => PrimaryButton(
-        isEnabled:
-            _selectedResidence != null && !_selectedResidence!.isDisabled,
-        onPressed: widget.onNextPressed,
-        child: Center(
-          child: Text(
-            context.localization.actionNext,
-            style: TextStyles.button
-                .copyWith(color: context.theme.colors.prominent),
+  Widget _buildNextButton() =>
+      BlocBuilder<DerivCountrySelectionCubit, DerivCountrySelectionState>(
+        bloc: _countrySelectionCubit,
+        builder: (BuildContext context, DerivCountrySelectionState state) =>
+            PrimaryButton(
+          isEnabled: _shouldEnableNextButton(
+            state.selectedCountry,
+            isConsentRequired: state.selectedCountryRequiresConsent,
+            agreedToTerms: state.agreedToTerms,
+          ),
+          onPressed: widget.onNextPressed,
+          child: Center(
+            child: Text(
+              context.localization.actionNext,
+              style: TextStyles.button
+                  .copyWith(color: context.theme.colors.prominent),
+            ),
           ),
         ),
       );
@@ -150,15 +179,96 @@ class _DerivCountrySelectionLayoutState
           countries: countries,
           onChanged: (int index) => setState(
             () {
-              _textController.text = countries[index].name;
-              _selectedResidence = countries[index];
-
-              _formKey.currentState!.validate();
+              _countrySelectionCubit.changeSelectedCountry(
+                selectedCountry: countries[index],
+              );
             },
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildCountryConsentCheckbox({String? countryConsentMessage}) =>
+      BlocBuilder<DerivCountrySelectionCubit, DerivCountrySelectionState>(
+        bloc: _countrySelectionCubit,
+        builder: (BuildContext context, DerivCountrySelectionState state) {
+          final DerivResidenceModel? selectedCountry = state.selectedCountry;
+
+          if (selectedCountry == null ||
+              !state.selectedCountryRequiresConsent) {
+            return const SizedBox.shrink();
+          }
+
+          return CustomCheckbox(
+            padding: const EdgeInsets.symmetric(
+              vertical: ThemeProvider.margin16,
+            ),
+            contentsVerticalAlignment: CrossAxisAlignment.start,
+            value: state.agreedToTerms,
+            onValueChanged: ({bool? isChecked}) =>
+                _countrySelectionCubit.updateCountryConsentStatus(
+              agreedToTerms: isChecked,
+            ),
+            message: countryConsentMessage ??
+                getCountryConsentMessage(
+                  context,
+                  countryCode: selectedCountry.code,
+                ),
+          );
+        },
+      );
+
+  /// Validates the country selection.
+  String? _countrySelectionValidator(
+    BuildContext context, {
+    DerivResidenceModel? selectedCountry,
+  }) {
+    if (selectedCountry != null && selectedCountry.isDisabled) {
+      return context.localization.warnCountryNotAvailable;
+    }
+
+    return null;
+  }
+
+  /// Determines whether the next button should be enabled based on country selection.
+  ///
+  /// Returns `true` if the following conditions are met:
+  /// - A country is selected.
+  /// - The selected country is not disabled.
+  /// - If `isConsentRequired` is true, the user must agree to the terms.
+  ///
+  /// Otherwise, returns `false`.
+  bool _shouldEnableNextButton(
+    DerivResidenceModel? selectedCountry, {
+    bool agreedToTerms = false,
+    bool isConsentRequired = false,
+  }) {
+    if (selectedCountry == null) {
+      return false;
+    }
+
+    bool shouldEnable = !selectedCountry.isDisabled;
+
+    if (isConsentRequired) {
+      shouldEnable = shouldEnable && agreedToTerms;
+    }
+
+    return shouldEnable;
+  }
+
+  /// Determines whether the country selection field should be enabled
+  /// based on the given state.
+  bool _shouldEnableCountrySelectionField(
+    DerivCountrySelectionState countrySelectionState,
+  ) {
+    if (countrySelectionState is DerivCountrySelectionLoadedState ||
+        countrySelectionState is DerivCountryChangedState ||
+        countrySelectionState is DerivCountryConsentChangedState) {
+      return true;
+    }
+
+    return false;
   }
 
   @override

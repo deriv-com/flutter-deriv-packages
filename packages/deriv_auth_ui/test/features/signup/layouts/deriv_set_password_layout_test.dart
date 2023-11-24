@@ -39,7 +39,6 @@ void main() {
               BlocProvider<DerivSignupCubit>.value(value: signupCubit),
             ],
             child: DerivSetPasswordLayout(
-              onDerivAuthState: (_, __) {},
               onDerivSignupState: (_, __) {},
               onPreviousPressed: () {},
               verificationCode: '123456',
@@ -50,31 +49,6 @@ void main() {
       expect($(DerivSetPasswordLayout), findsOneWidget);
       expect($(BaseTextField).$('Create a password'), findsOneWidget);
       expect($(ElevatedButton), findsNWidgets(2));
-    });
-
-    patrolWidgetTest('onDerivAuthState is called on DerivAuth state changes',
-        (PatrolTester $) async {
-      bool isOnDerivAuthStateCalled = false;
-
-      when(() => authCubit.stream).thenAnswer((_) => Stream.fromIterable([
-            DerivAuthLoadingState(),
-            DerivAuthLoggedOutState(),
-          ]));
-
-      await $.pumpApp(MultiBlocProvider(
-        providers: [
-          BlocProvider<DerivAuthCubit>.value(value: authCubit),
-          BlocProvider<DerivSignupCubit>.value(value: signupCubit),
-        ],
-        child: DerivSetPasswordLayout(
-            onDerivAuthState: (_, __) => isOnDerivAuthStateCalled = true,
-            onDerivSignupState: (_, __) {},
-            onPreviousPressed: () {},
-            verificationCode: 'verificationCode',
-            residence: 'residence'),
-      ));
-
-      expect(isOnDerivAuthStateCalled, true);
     });
 
     patrolWidgetTest(
@@ -95,7 +69,6 @@ void main() {
               BlocProvider<DerivSignupCubit>.value(value: signupCubit),
             ],
             child: DerivSetPasswordLayout(
-                onDerivAuthState: (_, __) {},
                 onDerivSignupState: (_, __) =>
                     isOnDerivSignupStateCalled = true,
                 onPreviousPressed: () {},
@@ -104,6 +77,65 @@ void main() {
           ));
 
       expect(isOnDerivSignupStateCalled, true);
+    });
+
+    patrolWidgetTest('calls [AuthErrorStateHandler] on auth error state.',
+        (PatrolTester $) async {
+      final mockAuthState = DerivAuthErrorState(
+        isSocialLogin: false,
+        message: 'error',
+        type: AuthErrorType.failedAuthorization,
+      );
+
+      when(() => authCubit.state).thenReturn(mockAuthState);
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+
+      await $.pumpApp(MultiBlocProvider(
+        providers: [
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+        ],
+        child: DerivSetPasswordLayout(
+            onDerivSignupState: (_, __) {},
+            onPreviousPressed: () {},
+            verificationCode: 'verificationCode',
+            residence: 'residence'),
+      ));
+
+      expect($(PopupAlertDialog).$('Authorization failed.'), findsOneWidget);
+    });
+
+    patrolWidgetTest('onAuthError is called on auth error state.',
+        (PatrolTester $) async {
+      final mockAuthState = DerivAuthErrorState(
+        isSocialLogin: false,
+        message: 'error',
+        type: AuthErrorType.failedAuthorization,
+      );
+
+      when(() => authCubit.state).thenReturn(mockAuthState);
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+
+      bool isOnAuthErrorCalled = false;
+
+      await $.pumpApp(MultiBlocProvider(
+        providers: [
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<DerivSignupCubit>.value(value: signupCubit),
+        ],
+        child: DerivSetPasswordLayout(
+            onDerivSignupState: (_, __) {},
+            onPreviousPressed: () {},
+            onAuthError: (_) {
+              isOnAuthErrorCalled = true;
+            },
+            verificationCode: 'verificationCode',
+            residence: 'residence'),
+      ));
+
+      expect(isOnAuthErrorCalled, true);
     });
 
     patrolWidgetTest('onPreviousPressed is called upon tapping previous button',
@@ -118,7 +150,6 @@ void main() {
               BlocProvider<DerivSignupCubit>.value(value: signupCubit),
             ],
             child: DerivSetPasswordLayout(
-                onDerivAuthState: (_, __) {},
                 onDerivSignupState: (_, __) {},
                 onPreviousPressed: () => isOnPreviousPressedCalled = true,
                 verificationCode: 'verificationCode',
@@ -141,7 +172,6 @@ void main() {
               BlocProvider<DerivSignupCubit>.value(value: signupCubit),
             ],
             child: DerivSetPasswordLayout(
-                onDerivAuthState: (_, __) {},
                 onDerivSignupState: (_, __) {},
                 onPreviousPressed: () {},
                 verificationCode: 'verificationCode',
@@ -171,7 +201,6 @@ void main() {
               BlocProvider<DerivSignupCubit>.value(value: signupCubit),
             ],
             child: DerivSetPasswordLayout(
-                onDerivAuthState: (_, __) {},
                 onDerivSignupState: (_, __) {},
                 onPreviousPressed: () {},
                 verificationCode: 'verificationCode',

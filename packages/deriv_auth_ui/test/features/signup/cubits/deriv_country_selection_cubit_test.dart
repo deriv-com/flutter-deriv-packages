@@ -6,29 +6,95 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('DerivCountrySelectionCubit', () {
-    late DerivCountrySelectionCubit cubit;
+    late DerivCountrySelectionCubit countrySelectionCubit;
+    late List<DerivResidenceModel> countriesList;
 
     setUp(() {
-      final countries = [
+      countriesList = [
         const DerivResidenceModel(
             code: 'us', name: 'United States', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'br', name: 'Brazil', isDisabled: false),
         const DerivResidenceModel(
             code: 'fr', name: 'France', isDisabled: false),
         const DerivResidenceModel(
             code: 'de', name: 'Germany', isDisabled: false),
       ];
-      cubit = DerivCountrySelectionCubit(Future.value(countries));
-    });
 
-    test('initial state is DerivCountrySelectionInitialState', () {
-      expect(cubit.state, const DerivCountrySelectionInitialState());
+      countrySelectionCubit =
+          DerivCountrySelectionCubit(Future.value(countriesList));
     });
 
     blocTest<DerivCountrySelectionCubit, DerivCountrySelectionState>(
-      'emits DerivCountrySelectionLoadedState with filtered countries when fetchResidenceCounties is called',
-      build: () => cubit,
-      act: (cubit) => cubit.fetchResidenceCounties(),
-      expect: () => [isA<DerivCountrySelectionLoadedState>()],
-    );
+        'Initial states is [DerivCountrySelectionInitialState]',
+        build: () => countrySelectionCubit,
+        verify: (DerivCountrySelectionCubit cubit) {
+          expect(
+            cubit.state,
+            isA<DerivCountrySelectionInitialState>(),
+          );
+        });
+
+    blocTest<DerivCountrySelectionCubit, DerivCountrySelectionState>(
+        'Verify cubit emits the right states by loading country list',
+        build: () => countrySelectionCubit,
+        act: (DerivCountrySelectionCubit cubit) =>
+            countrySelectionCubit.fetchResidenceCountries(),
+        verify: (DerivCountrySelectionCubit cubit) {
+          expect(
+            cubit.state,
+            isA<DerivCountrySelectionLoadedState>(),
+          );
+        });
+
+    blocTest<DerivCountrySelectionCubit, DerivCountrySelectionState>(
+        'Verify cubit emits the right states by changing the country selection.',
+        build: () => countrySelectionCubit,
+        seed: () => DerivCountrySelectionLoadedState(countriesList),
+        act: (DerivCountrySelectionCubit cubit) => cubit.changeSelectedCountry(
+              selectedCountry: countriesList[0],
+            ),
+        verify: (DerivCountrySelectionCubit cubit) {
+          expect(
+            countrySelectionCubit.state,
+            isA<DerivCountryChangedState>(),
+          );
+
+          expect(
+            countrySelectionCubit.state.selectedCountry?.code,
+            countriesList[0].code,
+          );
+        });
+
+    blocTest<DerivCountrySelectionCubit, DerivCountrySelectionState>(
+        'Verify cubit emits the right states when it changing the consent status(Checkbox).',
+        build: () => countrySelectionCubit,
+        seed: () => DerivCountrySelectionLoadedState(countriesList),
+        act: (DerivCountrySelectionCubit cubit) {
+          cubit
+            ..changeSelectedCountry(
+              selectedCountry: const DerivResidenceModel(
+                  code: 'br', name: 'Brazil', isDisabled: false),
+            )
+            ..updateCountryConsentStatus(
+              agreedToTerms: !cubit.state.agreedToTerms,
+            );
+        },
+        verify: (DerivCountrySelectionCubit cubit) {
+          expect(
+            cubit.state,
+            isA<DerivCountryConsentChangedState>(),
+          );
+
+          expect(
+            cubit.state.selectedCountryRequiresConsent,
+            true,
+          );
+
+          expect(
+            cubit.state.agreedToTerms,
+            true,
+          );
+        });
   });
 }

@@ -20,6 +20,7 @@ class DerivGetStartedLayout extends StatefulWidget {
     required this.backgroundImagePath,
     required this.onLoginTapped,
     required this.onSignupTapped,
+    required this.onTapNavigation,
     Key? key,
   }) : super(key: key);
 
@@ -37,6 +38,9 @@ class DerivGetStartedLayout extends StatefulWidget {
 
   /// Callback to be called when signup button is tapped.
   final VoidCallback onSignupTapped;
+
+  /// Navigation to be called when screen is tapped seven times.
+  final VoidCallback onTapNavigation;
 
   @override
   State<DerivGetStartedLayout> createState() => _DerivGetStartedLayoutState();
@@ -102,7 +106,9 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
   PreferredSizeWidget _buildAppBar(BuildContext context) => AppBar(
         backgroundColor: context.theme.colors.secondary,
         centerTitle: false,
-        title: SvgPicture.asset(widget.appLogoIconPath),
+        title: AppSettingGestureDetector(
+            onTapNavigation: widget.onTapNavigation,
+            child: SvgPicture.asset(widget.appLogoIconPath)),
       );
 
   Timer _buildNewScrollTimer() => Timer.periodic(
@@ -221,7 +227,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               supportingText,
               style: context.theme.textStyle(
                 textStyle: TextStyles.title,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
               textAlign: TextAlign.center,
             ),

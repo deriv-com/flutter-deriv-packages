@@ -40,9 +40,9 @@ void main() {
             greetingLabel: greetingLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
-            onLoginError: (_) {},
             onLoggedIn: (_) {},
             onSocialAuthButtonPressed: (p0) {},
+            onLoginError: (_) {},
           ),
         ),
       );
@@ -71,9 +71,9 @@ void main() {
             greetingLabel: greetingLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
-            onLoginError: (_) {},
             onLoggedIn: (_) {},
             onSocialAuthButtonPressed: (_) {},
+            onLoginError: (_) {},
           ),
         ),
       );
@@ -104,9 +104,9 @@ void main() {
               greetingLabel: greetingLabel,
               onResetPassTapped: () {},
               onSignupTapped: () {},
-              onLoginError: (_) {},
               onLoggedIn: (_) {},
               onSocialAuthButtonPressed: (_) {},
+              onLoginError: (_) {},
             ),
           ));
 
@@ -133,9 +133,9 @@ void main() {
           onSignupTapped: () {
             onSignupTappedCalled = true;
           },
-          onLoginError: (_) {},
           onLoggedIn: (_) {},
           onSocialAuthButtonPressed: (_) {},
+          onLoginError: (_) {},
         ),
       ));
 
@@ -171,11 +171,11 @@ void main() {
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoginError: (_) {},
           onLoggedIn: (_) {
             onLoggedInCalled = true;
           },
           onSocialAuthButtonPressed: (_) {},
+          onLoginError: (_) {},
         ),
       ));
 
@@ -214,6 +214,35 @@ void main() {
       expect(onLoginErrorCalled, isTrue);
     });
 
+    patrolWidgetTest('calls [AuthErrorStateHandler] on auth error state.',
+        (PatrolTester $) async {
+      final mockAuthState = DerivAuthErrorState(
+        isSocialLogin: false,
+        message: 'error',
+        type: AuthErrorType.failedAuthorization,
+      );
+
+      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
+
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: DerivLoginLayout(
+          welcomeLabel: welcomeLabel,
+          greetingLabel: greetingLabel,
+          onResetPassTapped: () {},
+          onSignupTapped: () {},
+          onLoginError: (_) {},
+          onLoggedIn: (_) {},
+          onSocialAuthButtonPressed: (_) {},
+        ),
+      ));
+
+      expect($(PopupAlertDialog).$('Authorization failed.'), findsOneWidget);
+    });
+
     patrolWidgetTest('calls resetPassTapped when reset button is pressed.',
         (PatrolTester $) async {
       final mockAuthState = DerivAuthLoggedOutState();
@@ -234,9 +263,9 @@ void main() {
             onResetPassTappedCalled = true;
           },
           onSignupTapped: () {},
-          onLoginError: (_) {},
           onLoggedIn: (_) {},
           onSocialAuthButtonPressed: (_) {},
+          onLoginError: (_) {},
         ),
       ));
 
@@ -264,11 +293,11 @@ void main() {
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoginError: (_) {},
           onLoggedIn: (_) {},
           onSocialAuthButtonPressed: (_) {
             onSocialAuthButtonPressedCalled = true;
           },
+          onLoginError: (_) {},
         ),
       ));
 

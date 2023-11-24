@@ -1,4 +1,3 @@
-
 /// Holds required information of a password policy.
 class DerivPasswordPolicyModel {
   /// Initializes [DerivPasswordPolicyModel].

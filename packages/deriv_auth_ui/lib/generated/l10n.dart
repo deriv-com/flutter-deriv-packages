@@ -71,6 +71,16 @@ class DerivAuthUILocalization {
     );
   }
 
+  /// `OK`
+  String get actionOk {
+    return Intl.message(
+      'OK',
+      name: 'actionOk',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `If you have any questions, contact us via `
   String get warnNotAvailableCountries {
     return Intl.message(
@@ -686,6 +696,226 @@ class DerivAuthUILocalization {
     return Intl.message(
       'Referral Code',
       name: 'labelReferralCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get actionTryAgain {
+    return Intl.message(
+      'Try Again',
+      name: 'actionTryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The code you entered is invalid. Check and try again.`
+  String get informInvalid2FACode {
+    return Intl.message(
+      'The code you entered is invalid. Check and try again.',
+      name: 'informInvalid2FACode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your email or password may be incorrect. Did you sign up with a social account? Check and try again.`
+  String get informFailedAuthentication {
+    return Intl.message(
+      'Your email or password may be incorrect. Did you sign up with a social account? Check and try again.',
+      name: 'informFailedAuthentication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your account is deactivated.`
+  String get informDeactivatedAccount {
+    return Intl.message(
+      'Your account is deactivated.',
+      name: 'informDeactivatedAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authorization failed.`
+  String get informFailedAuthorization {
+    return Intl.message(
+      'Authorization failed.',
+      name: 'informFailedAuthorization',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid residence.`
+  String get informInvalidResidence {
+    return Intl.message(
+      'Invalid residence.',
+      name: 'informInvalidResidence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid credentials.`
+  String get informInvalidCredentials {
+    return Intl.message(
+      'Invalid credentials.',
+      name: 'informInvalidCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Missing one-time password.`
+  String get informMissingOtp {
+    return Intl.message(
+      'Missing one-time password.',
+      name: 'informMissingOtp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your account has been closed.`
+  String get informSelfClosed {
+    return Intl.message(
+      'Your account has been closed.',
+      name: 'informSelfClosed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occurred.`
+  String get informUnexpectedError {
+    return Intl.message(
+      'An unexpected error occurred.',
+      name: 'informUnexpectedError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your country is not supported.`
+  String get informUnsupportedCountry {
+    return Intl.message(
+      'Your country is not supported.',
+      name: 'informUnsupportedCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your account is expired`
+  String get informExpiredAccount {
+    return Intl.message(
+      'Your account is expired',
+      name: 'informExpiredAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company.`
+  String get labelCountryConsentBrazil {
+    return Intl.message(
+      'I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company.',
+      name: 'labelCountryConsentBrazil',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection error. Please try again later.`
+  String get informConnectionError {
+    return Intl.message(
+      'Connection error. Please try again later.',
+      name: 'informConnectionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Switch account error. Please try again later.`
+  String get informSwitchAccountError {
+    return Intl.message(
+      'Switch account error. Please try again later.',
+      name: 'informSwitchAccountError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Developer`
+  String get labelDeveloper {
+    return Intl.message(
+      'Developer',
+      name: 'labelDeveloper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Endpoint`
+  String get labelEndpoint {
+    return Intl.message(
+      'Endpoint',
+      name: 'labelEndpoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Endpoint`
+  String get semanticEndpoint {
+    return Intl.message(
+      'Endpoint',
+      name: 'semanticEndpoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `invalid endpoint`
+  String get warnInvalidEndpoint {
+    return Intl.message(
+      'invalid endpoint',
+      name: 'warnInvalidEndpoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Application ID`
+  String get labelApplicationID {
+    return Intl.message(
+      'Application ID',
+      name: 'labelApplicationID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Application ID`
+  String get semanticApplicationID {
+    return Intl.message(
+      'Application ID',
+      name: 'semanticApplicationID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `invalid application ID`
+  String get warnInvalidApplicationID {
+    return Intl.message(
+      'invalid application ID',
+      name: 'warnInvalidApplicationID',
       desc: '',
       args: [],
     );
