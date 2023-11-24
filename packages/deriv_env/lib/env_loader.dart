@@ -5,6 +5,12 @@ import 'cipher.dart';
 
 /// [Env] class is a singleton class that provides access to environment variables.
 class EnvLoader extends BaseEnvLoader {
+  /// Creates a new instance of [EnvLoader].
+  EnvLoader({required this.filePath});
+
+  /// The path to the file.
+  final String filePath;
+
   bool _isInitialized = false;
 
   final Map<String, dynamic> _entries = <String, dynamic>{};
@@ -20,10 +26,10 @@ class EnvLoader extends BaseEnvLoader {
   }
 
   @override
-  Future<void> loadFile([String filename = '.env']) async {
+  Future<void> loadEnvironment() async {
     _entries.clear();
 
-    final List<String> fileEntries = await _getEntriesFromFile(filename);
+    final List<String> fileEntries = await _getEntriesFromFile(filePath);
 
     for (final String entry in fileEntries) {
       final List<String> items = entry.split('=');

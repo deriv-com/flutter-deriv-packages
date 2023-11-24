@@ -1,4 +1,5 @@
 import 'base_env_loader.dart';
+import 'env_loader.dart';
 
 /// This class is used to load environment variables from a .env file
 class Env {
@@ -25,9 +26,16 @@ class Env {
   /// Loads environment variables from a `.env` file.
   ///
   /// If [filename] is not provided, it will default to `.env`.
-  Future<void> initialize(BaseEnvLoader env, [String filename = '.env']) async {
+  Future<void> initialize(BaseEnvLoader env) async {
     _env = env;
-    return _env!.loadFile(filename);
+    return _env!.loadEnvironment();
+  }
+
+  /// Loads environment variables from a `.env` file.
+  @Deprecated('Use initialize() method instead.')
+  Future<void> load([String filePath = '.env']) async {
+    _env ??= EnvLoader(filePath: filePath);
+    return _env!.loadEnvironment();
   }
 
   /// Retrieves an environment variable value by key.

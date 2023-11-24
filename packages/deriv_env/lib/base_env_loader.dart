@@ -6,10 +6,8 @@ abstract class BaseEnvLoader {
   /// Returns all environment variables as a [Map].
   Map<String, dynamic> get entries;
 
-  /// Loads environment variables from a `.env` file.
-  ///
-  /// If [filename] is not provided, it will default to `.env`.
-  Future<void> loadFile([String filename = '.env']);
+  /// Loads environment variables.
+  Future<void> loadEnvironment();
 
   /// Retrieves an environment variable value by key.
   T get<T>(
