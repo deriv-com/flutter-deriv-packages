@@ -1,3 +1,7 @@
+## 1.0.0
+
+ - y
+
 ## [1.0.0]
 - Migrated the package to null safety.
 
