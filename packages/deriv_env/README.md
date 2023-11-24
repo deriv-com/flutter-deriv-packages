@@ -36,7 +36,7 @@ bool isInitialized = Env().isInitialized;
 Before using any environment variables, you need to intialize the `Env` class and pass it an instnace of the EnvLoader and the path to the file. The `initialize` method loads the variables from a file with the specified filename (default is `.env`).
 
 ```dart
-await Env().initialize(EnvLoader(), '.env');
+await Env().initialize(EnvLoader(filePath: '.env'));
 ```
 
 The load method expects the file to contain key-value pairs separated by an equals sign (`=`) and each pair separated by a newline character (`\n`). Blank lines and comments (lines starting with a `#`) are ignored.
