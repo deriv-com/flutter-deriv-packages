@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
@@ -43,6 +41,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         otp: otp,
       ),
       isSocialLogin: false,
+      userAgent: userAgent,
     );
   }
 
@@ -63,6 +62,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         otp: otp,
       ),
       isSocialLogin: true,
+      userAgent: userAgent,
     );
   }
 
@@ -81,6 +81,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         otp: otp,
       ),
       isSocialLogin: true,
+      userAgent: userAgent,
     );
   }
 
