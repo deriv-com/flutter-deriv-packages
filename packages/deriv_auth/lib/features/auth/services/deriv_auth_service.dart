@@ -53,6 +53,7 @@ class DerivAuthService extends BaseAuthService {
         client: HttpClient(),
         jwtToken: jwtToken,
         connectionInfo: connectionInfo,
+        userAgent: userAgent,
       );
 
       final List<AccountModel> _supportedAccounts =
