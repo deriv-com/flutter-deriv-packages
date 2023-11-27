@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - Bump "update_checker" to `1.1.0`.
+
 ## [1.1.0]
 
 - Migrated to Null Safety
