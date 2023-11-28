@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
@@ -25,7 +24,7 @@ void main() {
       mockPassword = 'test1234';
     });
 
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       when(() => authCubit.state).thenAnswer((_) => DerivAuthLoggedOutState());
 
       when(() => authCubit.stream)
@@ -44,7 +43,8 @@ void main() {
       expect($(ElevatedButton).$('Proceed'), findsOneWidget);
     });
 
-    patrolTest('proceeds to login on correct code', (PatrolTester $) async {
+    patrolWidgetTest('proceeds to login on correct code',
+        (PatrolTester $) async {
       when(() => authCubit.state).thenAnswer((_) => DerivAuthLoggedOutState());
 
       when(() => authCubit.stream)
@@ -54,10 +54,10 @@ void main() {
               email: any(named: 'email'),
               password: any(named: 'password'),
               otp: any(named: 'otp')))
-          .thenAnswer((_) async => DerivAuthLoggedInState(
-                authorizeEntity: const AuthorizeEntity(),
-                landingCompany: const LandingCompanyEntity(),
-              ));
+          .thenAnswer((_) async => DerivAuthLoggedInState(const DerivAuthModel(
+                authorizeEntity: AuthorizeEntity(),
+                landingCompany: LandingCompanyEntity(),
+              )));
 
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>.value(

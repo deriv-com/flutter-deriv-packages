@@ -96,7 +96,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
               textAlign: TextAlign.center,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
             ),
             const SizedBox(height: kToolbarHeight),
@@ -130,7 +130,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
                   context.localization.informResetPassByEmail,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,
-                    color: context.theme.colors.lessProminent,
+                    color: context.theme.colors.general,
                   ),
                 ),
               ),

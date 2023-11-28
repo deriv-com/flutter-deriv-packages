@@ -1,114 +1,56 @@
-import 'package:flutter/services.dart';
+import 'base_env_loader.dart';
+import 'env_loader.dart';
 
-import 'base_env.dart';
-import 'cipher.dart';
-
-/// [Env] class is a singleton class that provides access to environment variables.
-class Env extends BaseEnv {
-  /// Returns the singleton instance of [Env].
-  factory Env() => _instance;
-
-  Env._();
-
-  static final Env _instance = Env._();
-
-  bool _isInitialized = false;
-
-  final Map<String, dynamic> _entries = <String, dynamic>{};
-
-  @override
-  bool get isInitialized => _isInitialized;
-
-  @override
-  Map<String, dynamic> get entries {
-    _checkInitialization();
-
-    return _entries;
+/// This class is used to load environment variables from a .env file
+class Env {
+  /// The singleton instance of [EnvLoader].
+  factory Env() {
+    _instance ??= Env._internal();
+    return _instance!;
   }
 
-  @override
-  Future<void> load([String filename = '.env']) async {
-    _entries.clear();
+  Env._internal();
 
-    final List<String> fileEntries = await _getEntriesFromFile(filename);
+  static Env? _instance;
 
-    for (final String entry in fileEntries) {
-      final List<String> items = entry.split('=');
+  /// The environment variables provider.
+  BaseEnvLoader? _env;
 
-      if (items.length > 1) {
-        _entries[items.first.trim()] = items.sublist(1).join('=').trim();
-      }
-    }
+  /// The instance of [BaseEnv].
+  BaseEnvLoader? get env => _env;
 
-    _isInitialized = true;
+  /// Returns `true` if [Env] is initialized, otherwise `false`.
+  bool get isInitialized => _env?.isInitialized ?? false;
+
+  /// Initializes [EnvLoader] with an instance of [BaseEnv].
+  /// Loads environment variables from a `.env` file.
+  ///
+  /// If [filename] is not provided, it will default to `.env`.
+  Future<void> initialize(BaseEnvLoader env) async {
+    _env = env;
+    return _env!.loadEnvironment();
   }
 
-  @override
+  /// Loads environment variables from a `.env` file.
+  @Deprecated('Use initialize() method instead.')
+  Future<void> load([String filePath = '.env']) async {
+    _env ??= EnvLoader(filePath: filePath);
+    return _env!.loadEnvironment();
+  }
+
+  /// Retrieves an environment variable value by key.
   T get<T>(
     String key, {
     T? defaultValue,
     T Function(String value)? parser,
     String decryptionKey = '',
-  }) {
-    _checkInitialization();
-
-    if (!_entries.containsKey(key)) {
-      if (defaultValue == null) {
-        throw Exception('$runtimeType does not contain a value for key: $key.');
-      }
-
-      return defaultValue;
-    }
-
-    final String value = decryptionKey.isEmpty
-        ? _entries[key]
-        : Cipher().decrypt(message: _entries[key], key: decryptionKey);
-
-    if (parser != null) {
-      return parser(value);
-    }
-
-    switch (T) {
-      case int:
-        return int.tryParse(value) as T;
-      case double:
-        return double.tryParse(value) as T;
-      case bool:
-        return (value.toLowerCase() == 'true') as T;
-
-      default:
-        return value as T;
-    }
-  }
-
-  Future<List<String>> _getEntriesFromFile(String filename) async {
-    final String envFileContent = await rootBundle.loadString(filename);
-
-    if (envFileContent.isEmpty) {
-      throw Exception('$runtimeType: $filename is empty.');
-    }
-
-    final List<String> entries = <String>[];
-    final List<String> content = envFileContent.split('\n');
-
-    for (final String line in content) {
-      if (line.isEmpty || line.startsWith('#')) {
-        continue;
-      }
-
-      entries.add(line);
-    }
-
-    return entries;
-  }
-
-  void _checkInitialization() {
-    if (_isInitialized) {
-      return;
-    }
-
-    throw Exception(
-      '$runtimeType is not initialized, call load() method first.',
-    );
-  }
+  }) =>
+      isInitialized
+          ? _env!.get<T>(
+              key,
+              defaultValue: defaultValue,
+              parser: parser,
+              decryptionKey: decryptionKey,
+            )
+          : throw Exception('EnvLoader is not initialized.');
 }

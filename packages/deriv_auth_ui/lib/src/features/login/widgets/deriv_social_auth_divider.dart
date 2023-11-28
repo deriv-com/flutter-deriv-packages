@@ -6,29 +6,37 @@ class DerivSocialAuthDivider extends StatelessWidget {
   /// Initializes the class.
   const DerivSocialAuthDivider({
     required this.label,
+    this.isVisible = true,
     Key? key,
   }) : super(key: key);
 
   /// The label that displayed in the divider.
   final String label;
 
+  /// Whether the buttons are visible.
+  /// Defaults to `true`. Acts as a flag to hide the buttons.
+  final bool isVisible;
+
   @override
-  Widget build(BuildContext context) => Row(
-        children: <Widget>[
-          _buildDivider(context),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: ThemeProvider.margin08),
-            child: Text(
-              label,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+  Widget build(BuildContext context) => Visibility(
+        visible: isVisible,
+        child: Row(
+          children: <Widget>[
+            _buildDivider(context),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: ThemeProvider.margin08),
+              child: Text(
+                label,
+                style: context.theme.textStyle(
+                  textStyle: TextStyles.body1,
+                  color: context.theme.colors.general,
+                ),
               ),
             ),
-          ),
-          _buildDivider(context),
-        ],
+            _buildDivider(context),
+          ],
+        ),
       );
 
   Widget _buildDivider(BuildContext context) => Expanded(

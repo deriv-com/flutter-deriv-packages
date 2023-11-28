@@ -196,6 +196,12 @@ class DerivAuthService extends BaseAuthService {
           message: exception.message,
         );
 
+      case invalidResidence:
+        return DerivAuthException(
+          type: AuthErrorType.invalidResidence,
+          message: exception.message,
+        );  
+
       default:
         return DerivAuthException(
           type: AuthErrorType.failedAuthorization,

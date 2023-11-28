@@ -8,6 +8,8 @@ class CustomCheckbox extends StatelessWidget {
     required this.message,
     this.value = false,
     this.onValueChanged,
+    this.padding = const EdgeInsets.only(top: ThemeProvider.margin08),
+    this.contentsVerticalAlignment = CrossAxisAlignment.center,
     Key? key,
   }) : super(key: key);
 
@@ -20,11 +22,24 @@ class CustomCheckbox extends StatelessWidget {
   /// A callback for the listeners of a checkbox, when the checkbox's value changes.
   final Function({bool? isChecked})? onValueChanged;
 
+  /// Padding of the checkbox.
+  final EdgeInsetsGeometry padding;
+
+  /// The vertical alignment of the check and message within the row.
+  /// Defaults to [CrossAxisAlignment.center].
+  ///
+  /// Example use case:
+  /// If the checkbox's message is longer than the width of the screen,
+  /// the message will be wrapped to the multiple line. Then, the message and
+  /// the checkbox can be aligned vertically top, center, or bottom of the row.
+  final CrossAxisAlignment contentsVerticalAlignment;
+
   @override
   Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.only(top: ThemeProvider.margin08),
+        padding: padding,
         transform: Matrix4.translationValues(-14, 0, 0),
         child: Row(
+          crossAxisAlignment: contentsVerticalAlignment,
           children: <Widget>[
             Theme(
               data: ThemeData(
@@ -47,7 +62,7 @@ class CustomCheckbox extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,
-                    color: context.theme.colors.lessProminent,
+                    color: context.theme.colors.general,
                   ),
                 ),
                 onTap: onValueChanged == null

@@ -2,8 +2,7 @@ import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../pump_app.dart';
 
 void main() {
@@ -13,13 +12,14 @@ void main() {
     setUp(() {
       residences =
           Future<List<DerivResidenceModel>>.value(<DerivResidenceModel>[
-        const DerivResidenceModel(code: 'ID', name: 'Indonesia', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'ID', name: 'Indonesia', isDisabled: false),
         const DerivResidenceModel(
             code: 'UK', name: 'England', isDisabled: true),
       ]);
     });
 
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(DerivCountrySelectionLayout(
         onNextPressed: () {},
         verificationCode: '123456',
