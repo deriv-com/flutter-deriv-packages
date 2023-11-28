@@ -12,21 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-
   deriv_auth_ui:
     path: ../
-
-  deriv_auth:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_auth
-      ref: deriv_auth-v1.0.2
-  deriv_theme:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_theme
-      ref: deriv_theme-v2.0.0
-
   flutter_bloc: ^8.1.3
   http: ^0.13.6
 
