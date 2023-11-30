@@ -1,5 +1,4 @@
-## Commit Rules:
-
+## <span style="color:DarkGoldenRod">Commit Rules:</span>
 This commits rules is set to ensure all the developers follows a uniform way of writing commits so that it is easy to read the changes made and also automate versioning.
 The commits are based on [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) which is a widely followed convention for commits. While writing a commit message to any changes made to code base, make sure it reflects the changes and follows the conventions i.e:
 
@@ -30,12 +29,13 @@ feat(deriv_auth): add UI for sign in page
 - add bloc for sign in logic implementation
 - add google services for authentication
 ```
-### Breaking Changes Indicator
-Breaking changes should be indicated by an `!` before the `:` in the subject line e.g. `feat(api)!: remove status endpoint`
+### <span style="color:Crimson">Breaking Changes Indicator</span>
+Breaking changes should be indicated by an 
+<span style="color:red;font-size:2em"> ! </span> 
+before the `:` in the subject line e.g. `feat(api)!: remove status endpoint`
 * Is an **optional** part of the format
 
-More changes types:
-
+<b>More changes types:</b>
 | Changes Types | Meaning                    | Description                                                                                                   |
 | ------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | feat          | Features                   | A new feature                                                                                                 |
@@ -132,7 +132,7 @@ build, chore, ci, docs, style, refactor, perf, test
 ```
 <p>&nbsp;</p>
 
-## PR Rules:
+## <span style="color:DarkGoldenRod">PR Rules:</span>
 
 This Rules is set to create a uniform way of submitting Pull requests where all the necessary information for the changes are listed in the title, or description. There is a standard template for creating PR. When you are creating a PR to any repo always make sure:
 
