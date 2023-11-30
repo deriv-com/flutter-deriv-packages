@@ -94,4 +94,16 @@ class DerivDatadog implements BaseAnalytics<DerivDatadogConfiguration> {
         email: email,
         extraInfo: extraInfo,
       );
+
+  /// Logs Custom Event
+  void logEvent({
+    required RumUserActionType type,
+    required String name,
+    Map<String, Object?> attributes = const <String, Object?>{},
+  }) =>
+      _datadogSDK.rum?.addUserAction(
+        type.rumUserActionType,
+        name,
+        attributes,
+      );
 }
