@@ -76,6 +76,7 @@ await datadog.setup(DerivDatadogConfiguration(
   clientToken: 'your_client_token',
   applicationId: 'your_application_id',
   env: 'production',
+  trackingConsent: TrackingConsent.granted,
 ));
 ```
 
