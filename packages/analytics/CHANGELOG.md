@@ -1,4 +1,4 @@
-## [1.1.0]
+## [2.0.0]
 - Introduced a flexible configuration system to support multiple analytics providers.
 - Added `BaseAnalyticsConfiguration` interface for standardizing analytics configuration.
 - Internalized and restructured Datadog analytics by providing a `DerivDatadog` class that implements `BaseAnalytics<DerivDatadogConfiguration>`.
