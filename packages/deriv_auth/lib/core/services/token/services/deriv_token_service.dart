@@ -25,7 +25,7 @@ class DerivTokenService implements BaseTokenService {
           request.copyWith(appId: int.parse(connectionInfo.appId)).toJson(),
       headers: <String, String>{
         'Authorization': 'Bearer $jwtToken',
-        'User-Agent': userAgent ?? ''
+        'User-Agent': userAgent ?? 'Dart/3.0 (dart:io)'
       },
     );
 
