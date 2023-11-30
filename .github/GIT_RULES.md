@@ -94,6 +94,44 @@ Optional: If you would like to pre populate your commit box with the commit temp
 * ```
   style: remove empty line
   ```
+<p>&nbsp;</p>
+
+## Semantic versioning:
+<center><span style="color:lime; font-size: 4em;">1 . 4 . 3 + 2</span></center>
+<center><span style="color:green; font-size: 2em;">Major . Minor . Patch + build</span></center>
+<p>&nbsp;</p>
+
+<b><span style="color:orange">Major Release:</span></b>
+If a ```“breaking change”``` is introduced, the major release number must be increased
+
+```
+feat(api)!: remove status endpoint
+fix!: bug fix with breaking change
+```
+
+<b><span style="color:orange">Minor Release:</span></b>
+New features have been introduced, which are backwards compatible ```no “breaking changes”```
+
+
+```
+feat: new feature
+```
+
+<b><span style="color:orange">Patch Release: </span></b>
+Bug fixes ```no “breaking changes”```</br>
+```
+fix: something in code
+```
+
+<b><span style="color:orange">Build:</span></b> This number is optional and can be used to differentiate between different builds of the same version.
+</br>
+
+<b>no change || build bump:</b>
+```
+build, chore, ci, docs, style, refactor, perf, test
+```
+<p>&nbsp;</p>
+
 ## PR Rules:
 
 This Rules is set to create a uniform way of submitting Pull requests where all the necessary information for the changes are listed in the title, or description. There is a standard template for creating PR. When you are creating a PR to any repo always make sure:
