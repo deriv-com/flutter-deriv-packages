@@ -29,12 +29,6 @@ feat(deriv_auth): add UI for sign in page
 - add bloc for sign in logic implementation
 - add google services for authentication
 ```
-### <span style="color:Crimson">Breaking Changes Indicator</span>
-Breaking changes should be indicated by an 
-<span style="color:red;font-size:2em"> ! </span> 
-before the `:` in the subject line e.g. `feat(api)!: remove status endpoint`
-* Is an **optional** part of the format
-
 <b>More changes types:</b>
 | Changes Types | Meaning                    | Description                                                                                                   |
 | ------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -94,9 +88,16 @@ Optional: If you would like to pre populate your commit box with the commit temp
 * ```
   style: remove empty line
   ```
+### <span style="color:Crimson">Breaking Changes Indicator</span>
+Breaking changes should be indicated by an 
+<span style="color:red;font-size:2em"> ! </span> 
+before the `:` in the subject line e.g. `feat(api)!: remove status endpoint`
+* Is an **optional** part of the format
+
+
 <p>&nbsp;</p>
 
-## Semantic versioning:
+## <span style="color:DarkGoldenRod">Semantic versioning:
 <center><span style="color:lime; font-size: 4em;">1 . 4 . 3 + 2</span></center>
 <center><span style="color:green; font-size: 2em;">Major . Minor . Patch + build</span></center>
 <p>&nbsp;</p>
@@ -126,9 +127,9 @@ fix: something in code
 <b><span style="color:orange">Build:</span></b> This number is optional and can be used to differentiate between different builds of the same version.
 </br>
 
-<b>no change || build bump:</b>
+<b>no change <span style="color:orange">| | </span>build bump:</b>
 ```
-build, chore, ci, docs, style, refactor, perf, test
+build, chore, ci, docs, style, perf, test
 ```
 <p>&nbsp;</p>
 
