@@ -55,6 +55,7 @@ void main() {
   DerivRudderstack().setup(RudderstackConfiguration(
       dataPlaneUrl: 'RUDDERSTACK_DATA_PLANE_URL',
       writeKey: 'RUDDERSTACK_WRITE_KEY',
+      debugEnabled: true,
     ));
 
     DerivFirebaseAnalytics(FirebaseAnalytics.instanceFor(app: await Firebase.initializeApp())).setup(
