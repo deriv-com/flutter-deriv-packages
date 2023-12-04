@@ -2,6 +2,10 @@ import 'package:deriv_dependency_injector/dependency_injector.dart';
 
 const String _defaultKey = 'default';
 
+@Deprecated('This package is deprecated and will be removed in the future. '
+    'Please use the deriv dependency injector package from: '
+    'https://github.com/deriv-com/deriv-dependency-injector')
+
 /// Injector class for dependency injection.
 class Injector {
   /// Get the instance of the named injector or create a new one if it doesn't exist.
