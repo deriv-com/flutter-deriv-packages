@@ -123,6 +123,7 @@ Bug fixes ```no “breaking changes”```</br>
 ```
 fix: something in code
 refactor: code changes that doesn't fix or add anything
+```
 
 <b><span style="color:orange">Build:</span></b> This number is optional and can be used to differentiate between different builds of the same version.
 </br>
