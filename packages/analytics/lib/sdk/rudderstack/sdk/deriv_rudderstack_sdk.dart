@@ -75,7 +75,8 @@ class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration> {
   Future<bool> setup(RudderstackConfiguration configuration) async =>
       _execute(() {
         final RudderConfigBuilder builder = RudderConfigBuilder()
-          ..withDataPlaneUrl(configuration.dataPlaneUrl);
+          ..withDataPlaneUrl(configuration.dataPlaneUrl)
+          ..withDebug(configuration.debugEnabled);
         rudderClient.initialize(configuration.writeKey,
             config: builder.build());
       });
