@@ -10,6 +10,7 @@ class DerivSocialAuthPanel extends StatelessWidget {
   const DerivSocialAuthPanel({
     required this.onSocialAuthButtonPressed,
     this.isEnabled = true,
+    this.isVisible = true,
     Key? key,
   }) : super(key: key);
 
@@ -19,19 +20,26 @@ class DerivSocialAuthPanel extends StatelessWidget {
   /// Defaults to `true`.
   final bool isEnabled;
 
+  /// Whether the buttons are visible.
+  /// Defaults to `true`. Acts as a flag to hide the buttons.
+  final bool isVisible;
+
   /// onPressed callback for social auth buttons.
   final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
 
   @override
-  Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _buildSocialAuthButton(SocialAuthProvider.apple),
-          const SizedBox(width: ThemeProvider.margin24),
-          _buildSocialAuthButton(SocialAuthProvider.google),
-          const SizedBox(width: ThemeProvider.margin24),
-          _buildSocialAuthButton(SocialAuthProvider.facebook),
-        ],
+  Widget build(BuildContext context) => Visibility(
+        visible: isVisible,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _buildSocialAuthButton(SocialAuthProvider.apple),
+            const SizedBox(width: ThemeProvider.margin24),
+            _buildSocialAuthButton(SocialAuthProvider.google),
+            const SizedBox(width: ThemeProvider.margin24),
+            _buildSocialAuthButton(SocialAuthProvider.facebook),
+          ],
+        ),
       );
 
   Widget _buildSocialAuthButton(SocialAuthProvider socialAuthProvider) =>

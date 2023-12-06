@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
 import 'package:deriv_auth_ui/src/features/get_started/models/deriv_get_started_slide_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -20,6 +21,7 @@ class DerivGetStartedLayout extends StatefulWidget {
     required this.backgroundImagePath,
     required this.onLoginTapped,
     required this.onSignupTapped,
+    required this.onTapNavigation,
     Key? key,
   }) : super(key: key);
 
@@ -37,6 +39,9 @@ class DerivGetStartedLayout extends StatefulWidget {
 
   /// Callback to be called when signup button is tapped.
   final VoidCallback onSignupTapped;
+
+  /// Navigation to be called when screen is tapped seven times.
+  final VoidCallback onTapNavigation;
 
   @override
   State<DerivGetStartedLayout> createState() => _DerivGetStartedLayoutState();
@@ -102,7 +107,9 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
   PreferredSizeWidget _buildAppBar(BuildContext context) => AppBar(
         backgroundColor: context.theme.colors.secondary,
         centerTitle: false,
-        title: SvgPicture.asset(widget.appLogoIconPath),
+        title: AppSettingGestureDetector(
+            onTapNavigation: widget.onTapNavigation,
+            child: SvgPicture.asset(widget.appLogoIconPath)),
       );
 
   Timer _buildNewScrollTimer() => Timer.periodic(
@@ -133,26 +140,34 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
   Widget _buildButtons() => Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          PrimaryButton(
-            onPressed: widget.onSignupTapped,
-            child: Center(
-              child: Text(
-                context.localization.actionGetAFreeAccount,
-                style: context.theme.textStyle(
-                  textStyle: TextStyles.body2,
-                  color: context.theme.colors.prominent,
+          Semantics(
+            explicitChildNodes: true,
+            label: SemanticsLabels.starterPageSignupButtonSemantic,
+            child: PrimaryButton(
+              onPressed: widget.onSignupTapped,
+              child: Center(
+                child: Text(
+                  context.localization.actionGetAFreeAccount,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.body2,
+                    color: context.theme.colors.prominent,
+                  ),
                 ),
               ),
             ),
           ),
-          SecondaryButton(
-            onPressed: widget.onLoginTapped,
-            child: Center(
-              child: Text(
-                context.localization.actionLogin,
-                style: context.theme.textStyle(
-                  textStyle: TextStyles.body2,
-                  color: context.theme.colors.prominent,
+          Semantics(
+            explicitChildNodes: true,
+            label: SemanticsLabels.starterPageLoginButtonSemantic,
+            child: SecondaryButton(
+              onPressed: widget.onLoginTapped,
+              child: Center(
+                child: Text(
+                  context.localization.actionLogin,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.body2,
+                    color: context.theme.colors.prominent,
+                  ),
                 ),
               ),
             ),
@@ -221,7 +236,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               supportingText,
               style: context.theme.textStyle(
                 textStyle: TextStyles.title,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
               textAlign: TextAlign.center,
             ),

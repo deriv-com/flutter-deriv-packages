@@ -20,3 +20,10 @@ RegExp validPasswordLengthRegex = RegExp(r'^.{8,25}$');
 
 /// Valid Password length for login.
 RegExp validLoginPasswordLengthRegex = RegExp(r'^.{6,25}$');
+
+/// Check if [str] input contains only a-z letters and 0-9 numbers
+bool hasOnlySmallLettersAndNumberInput(String str) =>
+    RegExp('^[a-z0-9.]+\$').hasMatch(str);
+
+/// Check if [string] input contains only 0-9 numbers
+bool hasOnlyNumberInput(String string) => RegExp('^[0-9]+\$').hasMatch(string);

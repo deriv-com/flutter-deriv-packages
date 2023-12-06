@@ -11,5 +11,6 @@ abstract class BaseTokenService {
     required BaseHttpClient client,
     required String jwtToken,
     required AuthConnectionInfo connectionInfo,
+    String? userAgent,
   });
 }

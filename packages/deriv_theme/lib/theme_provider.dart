@@ -40,6 +40,8 @@ class ThemeProvider {
 
   static const double margin18 = Dimens.margin18;
 
+  static const double margin20 = Dimens.margin20;
+
   static const double margin24 = Dimens.margin24;
 
   static const double margin32 = Dimens.margin32;
@@ -64,11 +66,35 @@ class ThemeProvider {
 
   static const double margin96 = Dimens.margin96;
 
+  static const double margin112 = Dimens.margin112;
+
   static const double margin128 = Dimens.margin128;
 
   static const double margin144 = Dimens.margin144;
 
+  static const double margin164 = Dimens.margin164;
+
   static const double margin176 = Dimens.margin176;
+
+  static const double margin192 = Dimens.margin192;
+
+  static const double margin224 = Dimens.margin224;
+
+  static const double margin250 = Dimens.margin250;
+
+  static const double margin256 = Dimens.margin256;
+
+  static const double margin288 = Dimens.margin288;
+
+  static const double margin320 = Dimens.margin320;
+
+  static const double margin360 = Dimens.margin360;
+
+  static const double margin400 = Dimens.margin400;
+
+  static const double margin448 = Dimens.margin448;
+
+  static const double margin512 = Dimens.margin512;
 
   static const double padding01 = Dimens.borderRadius01;
 

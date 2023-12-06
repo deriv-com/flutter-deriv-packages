@@ -1,9 +1,18 @@
+import 'package:deriv_env/env_loader.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:deriv_env/env.dart';
 
 void main() {
   setUpAll(() => TestWidgetsFlutterBinding.ensureInitialized());
+
+  const String stringKey = 'STRING_VAR';
+  const String intKey = 'INT_VAR';
+  const String doubleKey = 'DOUBLE_VAR';
+  const String boolKey = 'BOOL_VAR';
+  const String varWithEqualsKey = 'VAR_WITH_EQUALS';
+  const String varWithHashKey = 'VAR_WITH_HASH';
+  const String encryptedKey = 'ENCRYPTED_VAR';
 
   group('env class test =>', () {
     test('get() method should throw exception if env is not initialized.',
@@ -14,27 +23,27 @@ void main() {
     test('load() method should populate env map.', () async {
       expect(Env().isInitialized, isFalse);
 
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
       expect(Env().isInitialized, isTrue);
 
-      expect(Env().entries.length, 7);
+      expect(Env().env!.entries.length, 7);
 
-      expect(Env().entries['STRING_VAR'], 'hello world');
-      expect(Env().entries['INT_VAR'], '123');
-      expect(Env().entries['DOUBLE_VAR'], '3.14');
-      expect(Env().entries['BOOL_VAR'], 'true');
-      expect(Env().entries['VAR_WITH_EQUALS'], 'hello=world');
-      expect(Env().entries['VAR_WITH_HASH'], 'hello#world');
+      expect(Env().env!.entries[stringKey], 'hello world');
+      expect(Env().env!.entries[intKey], '123');
+      expect(Env().env!.entries[doubleKey], '3.14');
+      expect(Env().env!.entries[boolKey], 'true');
+      expect(Env().env!.entries[varWithEqualsKey], 'hello=world');
+      expect(Env().env!.entries[varWithHashKey], 'hello#world');
       expect(
-        Env().entries['ENCRYPTED_VAR'],
+        Env().env!.entries[encryptedKey],
         'dVyH3QjdHYcjcS2TQ1XenmDVvf5ViN8ZpSVEcjfFhsk=',
       );
     });
 
     test('get() method should return default value if key is not found.',
         () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
       expect(
         Env().get<String>('INVALID_KEY', defaultValue: 'default'),
@@ -43,31 +52,31 @@ void main() {
     });
 
     test('get() method should parse value as int.', () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
-      expect(Env().get<int>('INT_VAR'), 123);
+      expect(Env().get<int>(intKey), 123);
     });
 
     test('get() method should parse value as double.', () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
-      expect(Env().get<double>('DOUBLE_VAR'), 3.14);
+      expect(Env().get<double>(doubleKey), 3.14);
     });
 
     test('get() method should parse value as bool.', () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
-      expect(Env().get<bool>('BOOL_VAR'), isTrue);
+      expect(Env().get<bool>(boolKey), isTrue);
     });
 
     test(
         'get() method should parse value with a parser factory if it is provided.',
         () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
       expect(
         Env().get<String>(
-          'STRING_VAR',
+          stringKey,
           parser: (String value) => value.toUpperCase(),
         ),
         'HELLO WORLD',
@@ -75,7 +84,7 @@ void main() {
 
       expect(
         Env().get<int>(
-          'INT_VAR',
+          intKey,
           parser: (String value) => int.parse(value) * 2,
         ),
         246,
@@ -83,7 +92,7 @@ void main() {
 
       expect(
         Env().get<double>(
-          'DOUBLE_VAR',
+          doubleKey,
           parser: (String value) => double.parse(value) * 2,
         ),
         6.28,
@@ -91,7 +100,7 @@ void main() {
 
       expect(
         Env().get<bool>(
-          'DOUBLE_VAR',
+          doubleKey,
           parser: (String value) => double.parse(value) > 3.14,
         ),
         false,
@@ -100,18 +109,18 @@ void main() {
 
     test('check handling variables with special characters like `#` and `=`.',
         () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
-      expect(Env().entries['VAR_WITH_EQUALS'], 'hello=world');
-      expect(Env().entries['VAR_WITH_HASH'], 'hello#world');
+      expect(Env().env!.entries[varWithEqualsKey], 'hello=world');
+      expect(Env().env!.entries[varWithHashKey], 'hello#world');
     });
 
     test('handle encrypted variable.', () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
       expect(
         Env().get<String>(
-          'ENCRYPTED_VAR',
+          encryptedKey,
           decryptionKey: 'TbKjMndW1L8vczgGQfPo2IyUxh6XAEay',
         ),
         'ecnrypted message',
@@ -119,7 +128,9 @@ void main() {
     });
 
     test('throws an exception if file is empty.', () async {
-      expect(() => Env().load('test/.env.empty.test'), throwsException);
+      expect(
+          () => Env().initialize(EnvLoader(filePath: 'test/.env.empty.test')),
+          throwsException);
     });
 
     test('throws an exception if env is not initialized.', () async {
@@ -127,7 +138,7 @@ void main() {
     });
 
     test('throws an exception if key is not found.', () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
       expect(() => Env().get<String>('INVALID_KEY'), throwsException);
     });
@@ -135,7 +146,7 @@ void main() {
     test(
         'does not throw an exception if key is not found and a default value is provided.',
         () async {
-      await Env().load('test/.env.test');
+      await Env().initialize(EnvLoader(filePath: 'test/.env.test'));
 
       expect(() => Env().get('INVALID_KEY', defaultValue: 42), returnsNormally);
     });

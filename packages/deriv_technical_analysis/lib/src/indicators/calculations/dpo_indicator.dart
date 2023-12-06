@@ -1,5 +1,9 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/difference_indicator.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
+
+import '../cached_indicator.dart';
+import '../indicator.dart';
+import 'helper_indicators/previous_value_indicator.dart';
 
 /// Detrended Price Oscillator Indicator
 class DPOIndicator<T extends IndicatorResult> extends CachedIndicator<T> {

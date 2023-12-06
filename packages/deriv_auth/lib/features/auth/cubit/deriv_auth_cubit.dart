@@ -9,6 +9,7 @@ import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
+import 'package:deriv_auth/features/social_auth/models/social_auth_dto.dart';
 
 part 'deriv_auth_state.dart';
 
@@ -21,21 +22,26 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   /// [BaseAuthService] handles all login logic of cubit.
   final BaseAuthService authService;
 
+  bool _isUserMigrated = false;
+
   @override
   Future<void> systemLogin({
     required String email,
     required String password,
     String? otp,
+    String? userAgent,
   }) async {
     emit(DerivAuthLoadingState());
 
     await _loginRequest(
-      GetTokensRequestModel(
+      request: GetTokensRequestModel(
         type: AuthType.system,
         email: email,
         password: password,
         otp: otp,
       ),
+      isSocialLogin: false,
+      userAgent: userAgent,
     );
   }
 
@@ -44,16 +50,38 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     required String oneAllConnectionToken,
     final String? signupProvider,
     String? otp,
+    String? userAgent,
   }) async {
     emit(DerivAuthLoadingState());
 
     await _loginRequest(
-      GetTokensRequestModel(
+      request: GetTokensRequestModel(
         type: AuthType.social,
         oneAllConnectionToken: oneAllConnectionToken,
         signupProvider: signupProvider,
         otp: otp,
       ),
+      isSocialLogin: true,
+      userAgent: userAgent,
+    );
+  }
+
+  @override
+  Future<void> socialAuth({
+    required SocialAuthDto socialAuthDto,
+    String? otp,
+    String? userAgent,
+  }) async {
+    emit(DerivAuthLoadingState());
+
+    await _loginRequest(
+      request: GetTokensRequestModel(
+        type: AuthType.socialLogin,
+        socialAuthDto: socialAuthDto,
+        otp: otp,
+      ),
+      isSocialLogin: true,
+      userAgent: userAgent,
     );
   }
 
@@ -67,17 +95,31 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     );
   }
 
-  Future<void> _loginRequest(GetTokensRequestModel request) async {
+  Future<void> _loginRequest({
+    required GetTokensRequestModel request,
+    required bool isSocialLogin,
+    String? userAgent,
+  }) async {
     try {
-      final AuthorizeEntity authorizeEntity =
-          await authService.onLoginRequest(request);
+      final AuthorizeEntity authorizeEntity = await authService.onLoginRequest(
+        request: request,
+        userAgent: userAgent,
+      );
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
+      _isUserMigrated = _checkUserMigrated(authorizeEntity);
       emit(DerivAuthLoggedInState(
+        DerivAuthModel(
           authorizeEntity: authorizeEntity,
-          landingCompany: landingCompanyEntity));
+          landingCompany: landingCompanyEntity,
+        ),
+      ));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
+      emit(DerivAuthErrorState(
+        message: error.message,
+        type: error.type,
+        isSocialLogin: isSocialLogin,
+      ));
     }
   }
 
@@ -90,11 +132,19 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
           await authService.login(token, accounts: accounts);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
+      _isUserMigrated = _checkUserMigrated(authorizeEntity);
       emit(DerivAuthLoggedInState(
+        DerivAuthModel(
           authorizeEntity: authorizeEntity,
-          landingCompany: landingCompanyEntity));
+          landingCompany: landingCompanyEntity,
+        ),
+      ));
     } on DerivAuthException catch (error) {
-      emit(DerivAuthErrorState(message: error.message, type: error.type));
+      emit(DerivAuthErrorState(
+        message: error.message,
+        type: error.type,
+        isSocialLogin: false,
+      ));
     }
   }
 
@@ -135,6 +185,17 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       emit(DerivAuthLoggedOutState());
     }
   }
+
+  /// Indicates if the user is migrated to wallets or not.
+  ///
+  /// The user is considered  migrated if at least one of their accounts
+  /// is [AccountCategoryEnum.wallet]
+  bool get isMigratedToWallets => _isUserMigrated;
+
+  bool _checkUserMigrated(AuthorizeEntity authorizeEntity) =>
+      authorizeEntity.accountList?.any((AccountListItem account) =>
+          account.accountCategory == AccountCategoryEnum.wallet) ??
+      false;
 
   @override
   Stream<DerivAuthState> get output => stream;

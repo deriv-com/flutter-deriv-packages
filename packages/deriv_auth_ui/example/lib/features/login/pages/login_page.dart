@@ -1,5 +1,6 @@
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:example/core/example_auth_error_state_handler.dart';
 import 'package:example/features/home/pages/home_page.dart';
 import 'package:example/features/reset_pass/pages/reset_pass_page.dart';
 import 'package:example/features/signup/pages/signup_page.dart';
@@ -32,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           builder: (context) => const HomePage(),
         ),
       ),
+      authErrorStateHandler: ExampleAuthErrorStateHandler(context: context),
       onLoginError: (_) {},
       onResetPassTapped: () => Navigator.push(
         context,

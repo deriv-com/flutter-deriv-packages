@@ -237,7 +237,7 @@ class _DerivDateRangePickerState extends State<DerivDateRangePicker> {
                         context.localization!.labelSelectedDateRange,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.overline,
-                      color: context.theme.colors.lessProminent,
+                      color: context.theme.colors.general,
                     ),
                   ),
                 ),

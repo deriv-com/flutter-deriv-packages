@@ -24,10 +24,11 @@ lib/basic_api/generated/*.json
 .flutter-plugins
 .packages
 .pub-cache/
-pubspec.lock
 .pub/
 /build/
 coverage/
+/packages/**/pubspec_overrides.yaml
+/packages/**/pubspec.lock
 
 
 gradlew.bat

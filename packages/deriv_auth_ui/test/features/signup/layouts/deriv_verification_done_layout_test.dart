@@ -1,13 +1,12 @@
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../pump_app.dart';
 
 void main() {
   group('DerivVerificationDoneLayout', () {
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(DerivVerificationDoneLayout(
         verificationCode: '123456',
         onContinuePressed: () {},
@@ -18,7 +17,7 @@ void main() {
       expect($(ElevatedButton).$('Continue'), findsOneWidget);
     });
 
-    patrolTest('onContinuePressed is called', (PatrolTester $) async {
+    patrolWidgetTest('onContinuePressed is called', (PatrolTester $) async {
       bool isContinuePressed = false;
 
       await $.pumpApp(DerivVerificationDoneLayout(

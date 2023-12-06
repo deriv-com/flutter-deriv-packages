@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
@@ -20,7 +19,8 @@ void main() {
       mockResetPassCubit = MockDerivResetPassCubit();
     });
 
-    patrolTest('should render DerivResetPassLayout', (PatrolTester $) async {
+    patrolWidgetTest('should render DerivResetPassLayout',
+        (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
 
       when(() => mockResetPassCubit.state).thenAnswer((_) => resetPassState);
@@ -39,7 +39,7 @@ void main() {
       expect($(DerivResetPassLayout), findsOneWidget);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'should show emailSentPage when state is DerivResetPassEmailSentState',
         (PatrolTester $) async {
       const resetPassState = DerivResetPassEmailSentState();
@@ -63,7 +63,7 @@ void main() {
           findsOneWidget);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'should show submitEmailForm when state is DerivResetPassInitialState',
         (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
@@ -87,7 +87,8 @@ void main() {
           findsOneWidget);
     });
 
-    patrolTest('should not call sendVerificationEmail when email is invalid',
+    patrolWidgetTest(
+        'should not call sendVerificationEmail when email is invalid',
         (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const email = 'wrongEmail@format';
@@ -115,7 +116,7 @@ void main() {
       verifyNever(() => mockResetPassCubit.sendVerificationEmail(email));
     });
 
-    patrolTest('should call sendVerificationEmail when email is valid',
+    patrolWidgetTest('should call sendVerificationEmail when email is valid',
         (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const email = 'correctEmail@format.com';
@@ -145,7 +146,7 @@ void main() {
       verify(() => mockResetPassCubit.sendVerificationEmail(email)).called(1);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'should call OnResetPassError when state is DerivResetPassErrorState',
         (PatrolTester $) async {
       const errorState = DerivResetPassErrorState(errorMessage: 'test error');

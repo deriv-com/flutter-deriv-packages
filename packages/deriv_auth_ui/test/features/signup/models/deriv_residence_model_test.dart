@@ -2,11 +2,11 @@
 
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:patrol/patrol.dart';
+import 'package:patrol_finders/patrol_finders.dart';
 
 void main() {
   group('DerivResidenceModel', () {
-    patrolTest('Constructor initializes all properties correctly',
+    patrolWidgetTest('Constructor initializes all properties correctly',
         (PatrolTester $) async {
       const model = DerivResidenceModel(
         isDisabled: true,

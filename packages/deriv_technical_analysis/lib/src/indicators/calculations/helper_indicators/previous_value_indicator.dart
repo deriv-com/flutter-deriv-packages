@@ -1,6 +1,8 @@
 import 'dart:math';
 
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
 
 /// An indicator which calculates the previous values of the given indicator.
 class PreviousValueIndicator<T extends IndicatorResult>

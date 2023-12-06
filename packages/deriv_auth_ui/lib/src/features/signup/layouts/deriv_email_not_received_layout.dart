@@ -45,7 +45,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
               context.localization.labelEmailIssueHeader,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
             ),
             const SizedBox(height: ThemeProvider.margin24),
@@ -58,7 +58,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                     context.localization.labelEmailIssueSpam,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
-                      color: context.theme.colors.lessProminent,
+                      color: context.theme.colors.general,
                     ),
                   ),
                 ),
@@ -74,7 +74,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                     context.localization.labelEmailIssueWrongEmail,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
-                      color: context.theme.colors.lessProminent,
+                      color: context.theme.colors.general,
                     ),
                   ),
                 ),
@@ -90,7 +90,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                     context.localization.labelEmailIssueTypo,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
-                      color: context.theme.colors.lessProminent,
+                      color: context.theme.colors.general,
                     ),
                   ),
                 ),
@@ -106,7 +106,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                     context.localization.labelEmailIssueFirewall,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
-                      color: context.theme.colors.lessProminent,
+                      color: context.theme.colors.general,
                     ),
                   ),
                 ),

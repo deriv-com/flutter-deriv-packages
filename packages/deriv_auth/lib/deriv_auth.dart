@@ -23,3 +23,4 @@ export 'features/signup/models/new_virtual_account_request_model.dart';
 export 'features/signup/models/signup_error_type.dart';
 export 'features/signup/repository/base_signup_repository.dart';
 export 'features/signup/services/deriv_signup_service.dart';
+export 'features/social_auth/social_auth.dart';

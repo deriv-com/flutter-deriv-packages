@@ -9,6 +9,7 @@ import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
+import '../../social_auth/mocks/mock_social_auth_dto.dart';
 import '../mocked_data/mocked_auth_models.dart';
 
 class MockAuthRepository extends Mock implements BaseAuthRepository {}
@@ -126,11 +127,63 @@ void main() {
         );
 
         final AuthorizeEntity response = await authService.onLoginRequest(
-          GetTokensRequestModel(
+          request: GetTokensRequestModel(
             type: AuthType.system,
             email: 'email',
             password: 'pass',
             signupProvider: 'signupProvider',
+          ),
+        );
+
+        expect(response.userId, mockedValidAuthorizeEntity.userId);
+        expect(response.refreshToken, 'refreshToken');
+        expect(response.signupProvider, 'signupProvider');
+        expect(
+            response.accountList
+                ?.every((AccountListItem account) => account.token != null),
+            true);
+
+        verify(() => repository.onLogin(any())).called(1);
+      });
+
+      test(
+          'should return valid authorize model when calling social type loginRequest with valid jwt.',
+          () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        final AuthorizeEntity response = await authService.onLoginRequest(
+          request: GetTokensRequestModel(
+            type: AuthType.social,
+            signupProvider: 'signupProvider',
+            oneAllConnectionToken: 'oneAllConnectionToken',
+          ),
+        );
+
+        expect(response.userId, mockedValidAuthorizeEntity.userId);
+        expect(response.refreshToken, 'refreshToken');
+        expect(response.signupProvider, 'signupProvider');
+        expect(
+            response.accountList
+                ?.every((AccountListItem account) => account.token != null),
+            true);
+
+        verify(() => repository.onLogin(any())).called(1);
+      });
+
+      test(
+          'should return valid authorize model when calling socialLogin type loginRequest with valid jwt.',
+          () async {
+        when(() => jwtService.getJwtToken()).thenAnswer(
+          (_) => Future<String>.value(validJwtToken),
+        );
+
+        final AuthorizeEntity response = await authService.onLoginRequest(
+          request: GetTokensRequestModel(
+            type: AuthType.socialLogin,
+            signupProvider: 'signupProvider',
+            socialAuthDto: mockSocialAuthDto,
           ),
         );
 
@@ -154,16 +207,17 @@ void main() {
         );
 
         final AuthorizeEntity response = await authService.onLoginRequest(
-            GetTokensRequestModel(
+            request: GetTokensRequestModel(
               type: AuthType.system,
               email: 'email',
               password: 'pass',
               signupProvider: 'signupProvider',
-            ), () {
-          when(() => jwtService.getJwtToken()).thenAnswer(
-            (_) => Future<String>.value(validJwtToken),
-          );
-        });
+            ),
+            onInvalidJwtToken: () {
+              when(() => jwtService.getJwtToken()).thenAnswer(
+                (_) => Future<String>.value(validJwtToken),
+              );
+            });
 
         verify(() => jwtService.getJwtToken()).called(2);
 
@@ -198,7 +252,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -235,7 +289,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -272,7 +326,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -381,7 +435,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -418,7 +472,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -455,7 +509,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',

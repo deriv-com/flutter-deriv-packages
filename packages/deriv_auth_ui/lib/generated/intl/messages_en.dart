@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Get a free account"),
         "actionLogin": MessageLookupByLibrary.simpleMessage("Log in"),
         "actionNext": MessageLookupByLibrary.simpleMessage("Next"),
+        "actionOk": MessageLookupByLibrary.simpleMessage("OK"),
         "actionPrevious": MessageLookupByLibrary.simpleMessage("Previous"),
         "actionProceed": MessageLookupByLibrary.simpleMessage("Proceed"),
         "actionReenterEmail": MessageLookupByLibrary.simpleMessage(
@@ -51,20 +52,39 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Reset my password"),
         "actionStartTrading":
             MessageLookupByLibrary.simpleMessage("Start trading"),
+        "actionTryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
         "infoReferralInfoDescription": MessageLookupByLibrary.simpleMessage(
             "An alphanumeric code provided by a Deriv affiliate, applicable for email sign-ups only."),
+        "informConnectionError": MessageLookupByLibrary.simpleMessage(
+            "Connection error. Please try again later."),
+        "informDeactivatedAccount": MessageLookupByLibrary.simpleMessage(
+            "Your account is deactivated."),
         "informEnterTwoFactorAuthCode": MessageLookupByLibrary.simpleMessage(
             "Enter the 6-digit code from the authenticator app on your phone."),
+        "informExpiredAccount":
+            MessageLookupByLibrary.simpleMessage("Your account is expired"),
+        "informFailedAuthentication": MessageLookupByLibrary.simpleMessage(
+            "Your email or password may be incorrect. Did you sign up with a social account? Check and try again."),
+        "informFailedAuthorization":
+            MessageLookupByLibrary.simpleMessage("Authorization failed."),
+        "informInvalid2FACode": MessageLookupByLibrary.simpleMessage(
+            "The code you entered is invalid. Check and try again."),
+        "informInvalidCredentials":
+            MessageLookupByLibrary.simpleMessage("Invalid credentials."),
         "informInvalidEmailFormat":
             MessageLookupByLibrary.simpleMessage("Enter a valid email address"),
         "informInvalidPasswordFormat": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid password format"),
         "informInvalidReferralCode": MessageLookupByLibrary.simpleMessage(
             "The referral code you entered is invalid. Check and try again."),
+        "informInvalidResidence":
+            MessageLookupByLibrary.simpleMessage("Invalid residence."),
         "informLetsContinue":
             MessageLookupByLibrary.simpleMessage("Let\'s continue."),
         "informLoginOptions":
             MessageLookupByLibrary.simpleMessage("Or log in with"),
+        "informMissingOtp":
+            MessageLookupByLibrary.simpleMessage("Missing one-time password."),
         "informPasswordPolicy":
             MessageLookupByLibrary.simpleMessage("Your password must have:"),
         "informPasswordPolicyLength":
@@ -78,20 +98,33 @@ class MessageLookup extends MessageLookupByLibrary {
             "You’ll need to log in with your new password. Hang on, we’re redirecting you."),
         "informResetPassByEmail": MessageLookupByLibrary.simpleMessage(
             "We\'ll email you instructions to reset your password."),
+        "informSelfClosed": MessageLookupByLibrary.simpleMessage(
+            "Your account has been closed."),
         "informSendResetPasswordEmail": m0,
+        "informSwitchAccountError": MessageLookupByLibrary.simpleMessage(
+            "Switch account error. Please try again later."),
+        "informUnexpectedError": MessageLookupByLibrary.simpleMessage(
+            "An unexpected error occurred."),
+        "informUnsupportedCountry": MessageLookupByLibrary.simpleMessage(
+            "Your country is not supported."),
         "informVerificationEmailSent": m1,
         "informYourPassHasBeenReset": MessageLookupByLibrary.simpleMessage(
             "Your password has been reset"),
+        "labelApplicationID":
+            MessageLookupByLibrary.simpleMessage("Application ID"),
         "labelCheckEmail":
             MessageLookupByLibrary.simpleMessage("Check your email"),
         "labelChooseCountry":
             MessageLookupByLibrary.simpleMessage("Choose country"),
         "labelChooseNewPass":
             MessageLookupByLibrary.simpleMessage("Choose a new password"),
+        "labelCountryConsentBrazil": MessageLookupByLibrary.simpleMessage(
+            "I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company."),
         "labelCreatePass":
             MessageLookupByLibrary.simpleMessage("Create a password"),
         "labelCreatePassword":
             MessageLookupByLibrary.simpleMessage("Create a password"),
+        "labelDeveloper": MessageLookupByLibrary.simpleMessage("Developer"),
         "labelDontHaveAnAccountYet":
             MessageLookupByLibrary.simpleMessage("Don’t have an account yet?"),
         "labelEmail": MessageLookupByLibrary.simpleMessage("Email"),
@@ -105,6 +138,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The email address you entered had a mistake or typo (happens to the best of us)."),
         "labelEmailIssueWrongEmail": MessageLookupByLibrary.simpleMessage(
             "You accidentally gave us another email address (Usually a work or a personal one instead of the one you meant)."),
+        "labelEndpoint": MessageLookupByLibrary.simpleMessage("Endpoint"),
         "labelGotReferralCode":
             MessageLookupByLibrary.simpleMessage("Got a referral code?"),
         "labelHaveAccount":
@@ -137,8 +171,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("2FA code"),
         "labelVerifyYourEmail":
             MessageLookupByLibrary.simpleMessage("Verify your email"),
+        "semanticApplicationID":
+            MessageLookupByLibrary.simpleMessage("Application ID"),
+        "semanticEndpoint": MessageLookupByLibrary.simpleMessage("Endpoint"),
         "warnCountryNotAvailable": MessageLookupByLibrary.simpleMessage(
             "Unfortunately, Deriv is not available in your country."),
+        "warnInvalidApplicationID":
+            MessageLookupByLibrary.simpleMessage("invalid application ID"),
+        "warnInvalidEndpoint":
+            MessageLookupByLibrary.simpleMessage("invalid endpoint"),
         "warnNotAvailableCountries": MessageLookupByLibrary.simpleMessage(
             "If you have any questions, contact us via "),
         "warnNotAvailableCountriesTitle": m2,

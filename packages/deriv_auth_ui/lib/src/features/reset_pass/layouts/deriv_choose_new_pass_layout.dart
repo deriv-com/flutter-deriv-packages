@@ -36,12 +36,9 @@ class DerivChooseNewPassLayout extends StatefulWidget {
 }
 
 class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
-  static const Duration _successPageHoldDuration = Duration(seconds: 2);
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _passController = TextEditingController();
   final FocusNode _passFocusNode = FocusNode();
-  final PageController _pageController = PageController();
 
   bool _isBusy = false;
   bool _isPasswordVisible = false;
@@ -59,25 +56,12 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
         body: BlocListener<DerivResetPassCubit, DerivResetPassState>(
           listener: (BuildContext context, DerivResetPassState state) {
             if (state is DerivResetPassPasswordChangedState) {
-              _pageController.animateToPage(
-                1,
-                duration: slidingPageChangeDuration,
-                curve: Curves.easeInOut,
-              );
-
-              Timer(_successPageHoldDuration, widget.onResetPassSucceed);
+              widget.onResetPassSucceed();
             } else if (state is DerivResetPassErrorState) {
               widget.onResetPassError(state.errorMessage);
             }
           },
-          child: PageView(
-            controller: _pageController,
-            physics: const NeverScrollableScrollPhysics(),
-            children: <Widget>[
-              _buildChooseNewPassSection(context),
-              _buildSuccessPassChangeSection(context)
-            ],
-          ),
+          child: _buildChooseNewPassSection(context),
         ),
       );
 
@@ -92,7 +76,7 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const SizedBox(height: ThemeProvider.margin72),
-                Expanded(child: _buildContent()),
+                _buildContent(),
                 const SizedBox(height: ThemeProvider.margin24),
                 _buildSubmitPassButton()
               ],
@@ -158,44 +142,6 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
         ),
       );
 
-  Widget _buildSuccessPassChangeSection(BuildContext context) => Center(
-        child: Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const SizedBox(
-                height: ThemeProvider.margin16,
-                width: ThemeProvider.margin16,
-                child: LoadingIndicator(
-                  valueColor: Colors.white,
-                  strokeWidth: 2.5,
-                ),
-              ),
-              const SizedBox(
-                height: ThemeProvider.margin16,
-              ),
-              Text(
-                context.localization.informYourPassHasBeenReset,
-                style: TextStyles.title,
-              ),
-              const SizedBox(
-                height: ThemeProvider.margin08,
-              ),
-              Text(
-                context.localization.informRedirectLogin,
-                textAlign: TextAlign.center,
-                style: context.theme.textStyle(
-                  textStyle: TextStyles.body1,
-                  color: context.theme.colors.lessProminent,
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-
   Widget _buildSubmitPassButton() => ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(
@@ -252,7 +198,6 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
 
   @override
   void dispose() {
-    _pageController.dispose();
     _passController.dispose();
     _passFocusNode.dispose();
 
