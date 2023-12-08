@@ -138,7 +138,7 @@ Future<void> showSimpleLoadingDialog(
                               bodyMessage,
                               style: context.theme.textStyle(
                                 textStyle: TextStyles.body1,
-                                color: context.theme.colors.lessProminent,
+                                color: context.theme.colors.general,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -172,7 +172,7 @@ Future<void> showErrorDialog({
           errorMessage ?? '',
           style: context.theme.textStyle(
             textStyle: TextStyles.body1,
-            color: context.theme.colors.lessProminent,
+            color: context.theme.colors.general,
           ),
         ),
         positiveActionLabel: actionLabel,
@@ -195,7 +195,7 @@ Future<void> showTokenExpiredDialog({
         content,
         style: context.theme.textStyle(
           textStyle: TextStyles.body1,
-          color: context.theme.colors.lessProminent,
+          color: context.theme.colors.general,
         ),
       ),
       positiveActionLabel: positiveActionLabel,
@@ -223,7 +223,7 @@ Future<void> showAccountDeactivatedDialog({
           text: content,
           style: context.theme.textStyle(
             textStyle: TextStyles.body1,
-            color: context.theme.colors.lessProminent,
+            color: context.theme.colors.general,
           ),
           children: <InlineSpan>[
             buildTextSpanHyperlink(

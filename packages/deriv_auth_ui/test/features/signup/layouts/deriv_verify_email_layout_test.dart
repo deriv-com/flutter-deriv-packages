@@ -1,8 +1,7 @@
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../pump_app.dart';
 
 void main() {
@@ -13,7 +12,7 @@ void main() {
       testEmail = 'test@gmail.com';
     });
 
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(DerivVerifyEmailLayout(
         email: testEmail,
         onEmailNotReceivedPressed: () {},
@@ -25,7 +24,8 @@ void main() {
       expect($(Text).$('Check your email'), findsOneWidget);
     });
 
-    patrolTest('onEmailNotReceivedPressed is called when tapped on the button',
+    patrolWidgetTest(
+        'onEmailNotReceivedPressed is called when tapped on the button',
         (PatrolTester $) async {
       bool isEmailNotReceivedPressed = false;
 

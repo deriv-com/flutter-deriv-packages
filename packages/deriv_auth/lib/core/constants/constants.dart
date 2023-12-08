@@ -16,6 +16,9 @@ const String selfClosedError = 'SELF_CLOSED';
 /// Error occurs if tries to login on deactivated account.
 const String accountUnavailableError = 'AccountUnavailable';
 
+/// Error occurs if tries to login from unsupported country.
+const String invalidResidence = 'INVALID_RESIDENCE';
+
 /// Error message when user's country is not accepted.
 const String notAvailableCountryMessage =
     'This service is not available in your country.';

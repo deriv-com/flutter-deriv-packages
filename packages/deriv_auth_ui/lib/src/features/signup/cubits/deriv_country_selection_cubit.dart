@@ -1,3 +1,4 @@
+import 'package:deriv_auth_ui/src/core/helpers/country_selection_helper.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:deriv_auth_ui/src/features/signup/models/deriv_residence_model.dart';
@@ -14,53 +15,53 @@ class DerivCountrySelectionCubit extends Cubit<DerivCountrySelectionState> {
   final Future<List<DerivResidenceModel>> residences;
 
   /// Fetches residence countries.
-  Future<void> fetchResidenceCounties() async {
+  Future<void> fetchResidenceCountries() async {
     final List<DerivResidenceModel> countries = await residences;
 
     final List<DerivResidenceModel> filteredCountries = countries
         .where(
-          (DerivResidenceModel country) => _isAllowedCountry(country),
+          (DerivResidenceModel country) =>
+              isAllowedCountry(countryCode: country.code),
         )
         .toList();
 
     emit(DerivCountrySelectionLoadedState(filteredCountries));
   }
 
-  bool _isAllowedCountry(DerivResidenceModel country) => _notAllowedCountryCodes
-      .every((String countryCode) => country.code != countryCode);
+  /// Changes the selected country and updates the state accordingly.
+  ///
+  /// If [selectedCountry] is not `null`, this method emits a [DerivCountryChangedState]
+  /// with the updated selected country.
+  ///
+  /// This method does not perform any action if [selectedCountry] is `null`.
+  Future<void> changeSelectedCountry({
+    DerivResidenceModel? selectedCountry,
+  }) async {
+    if (selectedCountry != null) {
+      emit(
+        DerivCountryChangedState(
+          state.countries,
+          selectedCountry: selectedCountry,
+          selectedCountryRequiresConsent: isConsentRequired(
+            countryCode: selectedCountry.code,
+          ),
+        ),
+      );
+    }
+  }
 
-  static final List<String> _notAllowedCountryCodes = <String>[
-    // MF country codes.
-    'de',
-    'es',
-    'fr',
-    'gr',
-    'it',
-    'lu',
-    'mf',
-    // MLT country codes.
-    'at',
-    'be',
-    'bg',
-    'cy',
-    'cz',
-    'dk',
-    'ee',
-    'fi',
-    'hr',
-    'hu',
-    'ie',
-    'lt',
-    'lv',
-    'nl',
-    'pl',
-    'pt',
-    'ro',
-    'se',
-    'si',
-    'sk',
-    // MX country codes.
-    'gb',
-    'im'
-  ];
+  /// Updates the country consent status and triggers a state change.
+  ///
+  /// [agreedToTerms]: Whether the user has agreed to the terms for the
+  /// selected country.
+  Future<void> updateCountryConsentStatus({bool? agreedToTerms = false}) async {
+    emit(
+      DerivCountryConsentChangedState(
+        state.countries,
+        selectedCountry: state.selectedCountry,
+        selectedCountryRequiresConsent: state.selectedCountryRequiresConsent,
+        agreedToTerms: agreedToTerms,
+      ),
+    );
+  }
 }

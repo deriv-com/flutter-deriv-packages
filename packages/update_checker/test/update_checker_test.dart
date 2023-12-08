@@ -38,7 +38,7 @@ void main() {
               when(() => mockPackageInfoRepository.getAppBuildNumber())
                   .thenAnswer((_) async => buildNumber);
               return UpdateBloc(
-                firebaseDatabaseRepository: mockFirebaseDatabaseRepository,
+                firebaseRepository: mockFirebaseDatabaseRepository,
                 packageInfoRepository: mockPackageInfoRepository,
               );
             },
@@ -48,7 +48,10 @@ void main() {
 
       test(
         'should emit UpdateInitialState as initial state',
-        () => expect(UpdateBloc().state, UpdateInitialState()),
+        () => expect(
+            UpdateBloc(firebaseRepository: mockFirebaseDatabaseRepository)
+                .state,
+            UpdateInitialState()),
       );
 
       generateBlocTest(
