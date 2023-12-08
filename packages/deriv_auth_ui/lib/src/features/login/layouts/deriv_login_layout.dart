@@ -22,6 +22,8 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onSocialAuthButtonPressed,
     required this.welcomeLabel,
     required this.greetingLabel,
+    this.isShowForgotPassword = true,
+    this.isShowCreateAccount = true,
     this.isSocialAuthEnabled = true,
     this.authErrorStateHandler,
     this.onLoginError,
@@ -58,6 +60,12 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
+
+  /// Whether to display forgot password section.
+  final bool isShowForgotPassword;
+
+  /// Whether to display create account section.
+  final bool isShowCreateAccount;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -112,7 +120,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       ..._buildTextFields(
                           isEnabled: state is! DerivAuthLoadingState),
                       const SizedBox(height: ThemeProvider.margin24),
-                      _buildForgotPassButton(),
+                      widget.isShowForgotPassword
+                          ? _buildForgotPassButton()
+                          : const SizedBox(),
                       const SizedBox(height: ThemeProvider.margin24),
                       _buildLoginButton(),
                       const SizedBox(height: ThemeProvider.margin24),
@@ -129,7 +139,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
-                      _buildFooterSection(),
+                      widget.isShowCreateAccount
+                          ? _buildFooterSection()
+                          : const SizedBox(),
                     ],
                   ),
                 ),
