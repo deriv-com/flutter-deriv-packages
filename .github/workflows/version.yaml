@@ -7,48 +7,41 @@ on:
     branches:
       - dev
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   version_and_tag:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && !contains(github.event.pull_request.title, 'chore(version)')
     steps:
       - name: Git Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
         with:
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           fetch-depth: 0
 
       - name: Setup Git User
-        uses: fregante/setup-git-user@v2
+        uses: fregante/setup-git-user@77c1b5542f14ab6db4b8462d6857e31deb988b09
 
       - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
         with:
           channel: "stable"
           flutter-version: "3.10.2"
           cache: true
 
       - name: Setup Melos
-        uses: bluefireteam/melos-action@v3
+        uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
         with:
           melos-version: "3.2.0"
           run-bootstrap: false
 
       - name: Create git tag based on version
-        # only consider changes from the commit mentioned below
         run: melos version --all --yes
 
       - name: Push tag
         run: git push --tags
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request on updated changelog and pubspec file.
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
         with:
           token: ${{ secrets.PAT }}
           title: "chore(version): bump version and update changelog"
