@@ -1,3 +1,7 @@
+## 2.0.1
+
+ - **REFACTOR**(analytics): [MOBC-546] Creating unified analytics package. ([#315](https://github.com/regentmarkets/flutter-deriv-packages/issues/315)). ([fd1d8ed3](https://github.com/regentmarkets/flutter-deriv-packages/commit/fd1d8ed345d4ecf91c5f6c1463c5196b40abcbf6))
+
 ## [2.0.0]
 - Introduced a flexible configuration system to support multiple analytics providers.
 - Added `BaseAnalyticsConfiguration` interface for standardizing analytics configuration.

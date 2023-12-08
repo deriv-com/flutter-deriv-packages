@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v2.0.1`](#analytics---v201)
+
+---
+
+#### `analytics` - `v2.0.1`
+
+ - **REFACTOR**(analytics): [MOBC-546] Creating unified analytics package. ([#315](https://github.com/regentmarkets/flutter-deriv-packages/issues/315)). ([fd1d8ed3](https://github.com/regentmarkets/flutter-deriv-packages/commit/fd1d8ed345d4ecf91c5f6c1463c5196b40abcbf6))
+
+
 ## 2023-12-04
 
 ### Changes
