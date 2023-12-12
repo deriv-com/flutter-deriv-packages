@@ -16,9 +16,9 @@ dependencies:
 
   deriv_auth:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:anas-deriv/flutter-deriv-packages.git
       path: packages/deriv_auth
-      ref: deriv_auth-v1.1.0
+      ref: Anas/auth-bug-fix
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
