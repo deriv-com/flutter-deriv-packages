@@ -30,5 +30,6 @@ class GetStartedPage extends StatelessWidget {
             builder: (context) => const SignupPage(),
           ),
         ),
+        onTapNavigation: () {},
       );
 }

@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_divider.dart';
 import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -16,11 +18,13 @@ class DerivLoginLayout extends StatefulWidget {
   const DerivLoginLayout({
     required this.onResetPassTapped,
     required this.onSignupTapped,
-    required this.onLoginError,
     required this.onLoggedIn,
     required this.onSocialAuthButtonPressed,
     required this.welcomeLabel,
     required this.greetingLabel,
+    this.isSocialAuthEnabled = true,
+    this.authErrorStateHandler,
+    this.onLoginError,
     this.onLoginTapped,
     Key? key,
   }) : super(key: key);
@@ -31,8 +35,11 @@ class DerivLoginLayout extends StatefulWidget {
   /// Callback to be called when signup button is tapped.
   final VoidCallback onSignupTapped;
 
-  /// Callback to be called when login button is tapped.
-  final Function(DerivAuthErrorState) onLoginError;
+  /// Extension of base [AuthErrorStateHandler]. If not provided, base implementation will be used.
+  final AuthErrorStateHandler? authErrorStateHandler;
+
+  /// Callback to be called when login error occurs.
+  final Function(DerivAuthErrorState)? onLoginError;
 
   /// Callback to be called when user is logged in.
   final Function(DerivAuthLoggedInState) onLoggedIn;
@@ -48,6 +55,9 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Greeting text to be displayed on login page.
   final String greetingLabel;
+
+  /// Whether to display social auth buttons.
+  final bool isSocialAuthEnabled;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -108,13 +118,17 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthDivider(
                         label: context.localization.informLoginOptions,
+                        isVisible: widget.isSocialAuthEnabled,
                       ),
-                      const SizedBox(height: ThemeProvider.margin24),
+                      if (widget.isSocialAuthEnabled)
+                        const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthPanel(
                         onSocialAuthButtonPressed:
                             widget.onSocialAuthButtonPressed,
+                        isVisible: widget.isSocialAuthEnabled,
                       ),
-                      const SizedBox(height: ThemeProvider.margin24),
+                      if (widget.isSocialAuthEnabled)
+                        const SizedBox(height: ThemeProvider.margin24),
                       _buildFooterSection(),
                     ],
                   ),
@@ -138,13 +152,14 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
           widget.greetingLabel,
           style: context.theme.textStyle(
             textStyle: TextStyles.body1,
-            color: context.theme.colors.lessProminent,
+            color: context.theme.colors.general,
           ),
         ),
       ];
 
   List<Widget> _buildTextFields({required bool isEnabled}) => <Widget>[
         BaseTextField(
+          semanticLabel: SemanticsLabels.loginEmailFieldSemantic,
           controller: _emailController,
           focusNode: _emailFocusNode,
           labelText: context.localization.labelEmail,
@@ -159,6 +174,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
         ),
         const SizedBox(height: ThemeProvider.margin32),
         BaseTextField(
+          semanticLabel: SemanticsLabels.loginPasswordFieldSemantic,
           controller: _passwordController,
           focusNode: _passwordFocusNode,
           labelText: context.localization.labelPassword,
@@ -240,7 +256,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
               context.localization.labelDontHaveAnAccountYet,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
             ),
             InkWell(
@@ -262,7 +278,13 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
 
   void _onAuthState(BuildContext context, DerivAuthState state) {
     if (state is DerivAuthErrorState) {
-      widget.onLoginError.call(state);
+      widget.onLoginError?.call(state);
+
+      authErrorStateMapper(
+        authErrorState: state,
+        authErrorStateHandler: widget.authErrorStateHandler ??
+            AuthErrorStateHandler(context: context),
+      );
     }
 
     if (state is DerivAuthLoggedInState) {

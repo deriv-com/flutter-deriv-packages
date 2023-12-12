@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
@@ -21,7 +20,7 @@ void main() {
       mockResetPassCubit = MockDerivResetPassCubit();
     });
 
-    patrolTest('should render DerivChooseNewPassLayout',
+    patrolWidgetTest('should render DerivChooseNewPassLayout',
         (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
 
@@ -43,7 +42,7 @@ void main() {
       expect($(DerivChooseNewPassLayout), findsOneWidget);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'should call onResetPassError when state is DerivResetPassErrorState',
         (PatrolTester $) async {
       const errorState = DerivResetPassErrorState(errorMessage: 'test error');
@@ -70,7 +69,7 @@ void main() {
       expect(onResetPassErrorCalled, isTrue);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'should call onResetPassSucceed after 2 seconds when state is DerivResetPassPasswordChangedState',
         (PatrolTester $) async {
       const passwordChangedState = DerivResetPassPasswordChangedState();
@@ -101,7 +100,7 @@ void main() {
       expect(onResetPassSucceedCalled, isTrue);
     });
 
-    patrolTest('should call changePassword when input is valid',
+    patrolWidgetTest('should call changePassword when input is valid',
         (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const newPassTest = 'newPassWordTest123@';
@@ -131,7 +130,7 @@ void main() {
           token: token, newPassword: newPassTest)).called(1);
     });
 
-    patrolTest('should not call changePassword when input is invalid',
+    patrolWidgetTest('should not call changePassword when input is invalid',
         (PatrolTester $) async {
       const resetPassState = DerivResetPassInitialState();
       const newPassTest = 'pass';

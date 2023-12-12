@@ -2,8 +2,7 @@ import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_auth_ui/src/features/signup/widgets/country_selection_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../pump_app.dart';
 
 void main() {
@@ -12,13 +11,14 @@ void main() {
 
     setUpAll(() {
       residences = <DerivResidenceModel>[
-        const DerivResidenceModel(code: 'ID', name: 'Indonesia', isDisabled: false),
+        const DerivResidenceModel(
+            code: 'ID', name: 'Indonesia', isDisabled: false),
         const DerivResidenceModel(
             code: 'UK', name: 'England', isDisabled: true),
       ];
     });
 
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           CountrySelectionListWidget(countries: residences, onChanged: (_) {}));
 
@@ -28,7 +28,7 @@ void main() {
       expect($(Text).$('England'), findsOneWidget);
     });
 
-    patrolTest('onChanged is called', (PatrolTester $) async {
+    patrolWidgetTest('onChanged is called', (PatrolTester $) async {
       bool isOnChangedCalled = false;
 
       await $.pumpApp(CountrySelectionListWidget(
@@ -40,7 +40,7 @@ void main() {
       expect(isOnChangedCalled, true);
     });
 
-    patrolTest('search field appears on tapping search',
+    patrolWidgetTest('search field appears on tapping search',
         (PatrolTester $) async {
       await $.pumpApp(CountrySelectionListWidget(
           countries: residences, onChanged: (int country) => null));

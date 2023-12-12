@@ -157,7 +157,7 @@ class _MonthItemState extends State<_MonthItem> {
               localizations.formatMonthYear(widget.displayedMonth),
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
             ),
           ),
@@ -197,7 +197,7 @@ class _MonthItemState extends State<_MonthItem> {
 
     TextStyle itemStyle = context.theme.textStyle(
       textStyle: TextStyles.body1,
-      color: context.theme.colors.lessProminent,
+      color: context.theme.colors.general,
     );
 
     BoxDecoration? decoration;

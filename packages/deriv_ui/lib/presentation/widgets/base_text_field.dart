@@ -32,6 +32,7 @@ class BaseTextField extends StatefulWidget {
     this.onEditingComplete,
     this.onChanged,
     this.onTap,
+    this.semanticLabel,
     Key? key,
   }) : super(key: key);
 
@@ -113,6 +114,9 @@ class BaseTextField extends StatefulWidget {
   /// onTap callback function.
   final VoidCallback? onTap;
 
+  /// Semantic label.
+  final String? semanticLabel;
+
   @override
   _BaseTextFieldState createState() => _BaseTextFieldState();
 }
@@ -132,72 +136,73 @@ class _BaseTextFieldState extends State<BaseTextField> {
   }
 
   @override
-  Widget build(BuildContext context) => TextFormField(
-        key: _formFieldKey,
-        controller: widget.controller,
-        focusNode: widget.focusNode,
-        initialValue: widget.initialValue,
-        keyboardType: widget.keyboardType,
-        maxLength: widget.maxLength,
-        autocorrect: false,
-        readOnly: widget.readOnly,
-        enabled: widget.enabled,
-        obscureText: widget.obscureText,
-        textInputAction: widget.textInputAction,
-        inputFormatters: widget.inputFormatters,
-        decoration: InputDecoration(
-          labelText: widget.labelText,
-          border: const OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: widget.borderColor ?? context.theme.colors.hover,
+  Widget build(BuildContext context) => Semantics(
+        explicitChildNodes: true,
+        label: widget.semanticLabel,
+        child: TextFormField(
+          key: _formFieldKey,
+          controller: widget.controller,
+          focusNode: widget.focusNode,
+          initialValue: widget.initialValue,
+          keyboardType: widget.keyboardType,
+          maxLength: widget.maxLength,
+          autocorrect: false,
+          readOnly: widget.readOnly,
+          enabled: widget.enabled,
+          obscureText: widget.obscureText,
+          textInputAction: widget.textInputAction,
+          inputFormatters: widget.inputFormatters,
+          decoration: InputDecoration(
+            labelText: widget.labelText,
+            border: const OutlineInputBorder(),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: widget.borderColor ?? context.theme.colors.hover,
+              ),
+              borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
             ),
-            borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color:
-                  widget.focusedBorderColor ?? context.theme.colors.blue,
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: widget.focusedBorderColor ?? context.theme.colors.blue,
+              ),
             ),
-            borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: context.theme.colors.coral),
+              borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: context.theme.colors.coral),
+              borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
+            ),
+            labelStyle: context.theme.textStyle(
+              textStyle: TextStyles.subheading,
+              color: _hasError
+                  ? context.theme.colors.coral
+                  : _hasFocus()
+                      ? widget.focusedLabelColor ?? context.theme.colors.blue
+                      : widget.labelColor ?? context.theme.colors.disabled,
+            ),
+            counterText: widget.showCounterText ? null : '',
+            errorMaxLines: widget.errorMaxLines,
+            prefix: widget.prefix,
+            prefixStyle: context.theme.textStyle(
+              textStyle: TextStyles.subheading,
+              color: _getTextFieldColor(),
+            ),
+            suffixIcon: widget.suffixIcon,
           ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: context.theme.colors.coral),
-            borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: context.theme.colors.coral),
-            borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
-          ),
-          labelStyle: context.theme.textStyle(
-            textStyle: TextStyles.subheading,
-            color: _hasError
-                ? context.theme.colors.coral
-                : _hasFocus()
-                    ? widget.focusedLabelColor ??
-                        context.theme.colors.blue
-                    : widget.labelColor ?? context.theme.colors.disabled,
-          ),
-          counterText: widget.showCounterText ? null : '',
-          errorMaxLines: widget.errorMaxLines,
-          prefix: widget.prefix,
-          prefixStyle: context.theme.textStyle(
-            textStyle: TextStyles.subheading,
-            color: _getTextFieldColor(),
-          ),
-          suffixIcon: widget.suffixIcon,
+          onEditingComplete: widget.onEditingComplete,
+          validator: _validator,
+          onChanged: _onChanged,
+          onTap: widget.onTap,
         ),
-        onEditingComplete: widget.onEditingComplete,
-        validator: _validator,
-        onChanged: _onChanged,
-        onTap: widget.onTap,
       );
 
   bool _hasFocus() => widget.focusNode?.hasFocus ?? false;
 
   Color _getTextFieldColor() => widget.enabled && _hasFocus()
       ? widget.focusedTextColor ?? context.theme.colors.prominent
-      : widget.textColor ?? context.theme.colors.lessProminent;
+      : widget.textColor ?? context.theme.colors.general;
 
   String? _validator(String? input) {
     final String? errorMsg = widget.validator?.call(input);

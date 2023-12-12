@@ -10,6 +10,7 @@ class UpdateInfo extends Equatable {
     this.changelog,
     this.changelogs,
     this.url,
+    this.huaweiUrl,
   });
 
   /// [isOptional] determines if the update is optional or not.
@@ -33,6 +34,9 @@ class UpdateInfo extends Equatable {
   /// [url] is alternative url for updating the app, can be empty.
   final String? url;
 
+  /// [huaweiUrl] is Huawei URL for Redirecting Huawei Users to AppGallery.
+  final String? huaweiUrl;
+
   @override
   List<dynamic> get props => <dynamic>[isOptional, buildNumber, url];
 
@@ -41,5 +45,6 @@ class UpdateInfo extends Equatable {
       'isOptional: $isOptional, '
       'buildNumber: $buildNumber, '
       'url: $url'
+      'huaweiUrl: $huaweiUrl'
       ')';
 }

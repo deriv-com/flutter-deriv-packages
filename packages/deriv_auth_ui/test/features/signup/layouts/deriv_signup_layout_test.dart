@@ -8,41 +8,50 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../mocks.dart';
 import '../../../pump_app.dart';
 
 void main() {
   group('DerivSignupLayout', () {
     late MockSignupCubit signupCubit;
+    late MockAuthCubit authCubit;
 
     const String signupPageLabel = 'Create a free account';
     const String signupPageDescription = 'Start trading within minutes.';
 
     setUpAll(() {
       signupCubit = MockSignupCubit();
+      authCubit = MockAuthCubit();
 
       when(() => signupCubit.state)
           .thenAnswer((_) => const DerivSignupInitialState());
 
       when(() => signupCubit.stream).thenAnswer(
           (_) => Stream.fromIterable([const DerivSignupInitialState()]));
+
+      when(() => authCubit.state).thenAnswer((_) => DerivAuthLoadingState());
+
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([DerivAuthLoadingState()]));
     });
 
-    patrolTest('renders correctly', (PatrolTester $) async {
+    patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(
           settle: false,
-          BlocProvider<DerivSignupCubit>.value(
-            value: signupCubit,
-            child: DerivSignupLayout(
-              signupPageLabel: signupPageLabel,
-              signupPageDescription: signupPageDescription,
-              onSocialAuthButtonPressed: (_) {},
-              onSingupError: (_) {},
-              onSingupEmailSent: (_) {},
-              onSignupPressed: () {},
-              onLoginTapped: () {},
+          BlocProvider<DerivAuthCubit>.value(
+            value: authCubit,
+            child: BlocProvider<DerivSignupCubit>.value(
+              value: signupCubit,
+              child: DerivSignupLayout(
+                signupPageLabel: signupPageLabel,
+                signupPageDescription: signupPageDescription,
+                onSocialAuthButtonPressed: (_) {},
+                onSingupError: (_) {},
+                onSingupEmailSent: (_) {},
+                onSignupPressed: () {},
+                onLoginTapped: () {},
+              ),
             ),
           ));
 
@@ -52,23 +61,26 @@ void main() {
       expect($(DerivSocialAuthPanel), findsOneWidget);
     });
 
-    patrolTest(
+    patrolWidgetTest(
         'onSocialAuthButtonPressed is called upon tapping social auth option',
         (PatrolTester $) async {
       bool isOnSocialAuthButtonPressedCalled = false;
 
-      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
-        value: signupCubit,
-        child: DerivSignupLayout(
-          signupPageLabel: signupPageLabel,
-          signupPageDescription: signupPageDescription,
-          onSocialAuthButtonPressed: (_) {
-            isOnSocialAuthButtonPressedCalled = true;
-          },
-          onSingupError: (_) {},
-          onSingupEmailSent: (_) {},
-          onSignupPressed: () {},
-          onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: BlocProvider<DerivSignupCubit>.value(
+          value: signupCubit,
+          child: DerivSignupLayout(
+            signupPageLabel: signupPageLabel,
+            signupPageDescription: signupPageDescription,
+            onSocialAuthButtonPressed: (_) {
+              isOnSocialAuthButtonPressedCalled = true;
+            },
+            onSingupError: (_) {},
+            onSingupEmailSent: (_) {},
+            onSignupPressed: () {},
+            onLoginTapped: () {},
+          ),
         ),
       ));
 
@@ -77,7 +89,7 @@ void main() {
       expect(isOnSocialAuthButtonPressedCalled, true);
     });
 
-    patrolTest('onSignupEmailSent is called upon sign up email sent',
+    patrolWidgetTest('onSignupEmailSent is called upon sign up email sent',
         (PatrolTester $) async {
       bool isOnSignupEmailSentCalled = false;
 
@@ -87,39 +99,43 @@ void main() {
       when(() => signupCubit.stream).thenAnswer(
           (_) => Stream.fromIterable([const DerivSignupEmailSentState()]));
 
-      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
-        value: signupCubit,
-        child: DerivSignupLayout(
-          signupPageLabel: signupPageLabel,
-          signupPageDescription: signupPageDescription,
-          onSocialAuthButtonPressed: (_) {},
-          onSingupError: (_) {},
-          onSingupEmailSent: (_) => isOnSignupEmailSentCalled = true,
-          onSignupPressed: () {},
-          onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: BlocProvider<DerivSignupCubit>.value(
+          value: signupCubit,
+          child: DerivSignupLayout(
+              signupPageLabel: signupPageLabel,
+              signupPageDescription: signupPageDescription,
+              onSocialAuthButtonPressed: (_) {},
+              onSingupError: (_) {},
+              onSingupEmailSent: (_) => isOnSignupEmailSentCalled = true,
+              onSignupPressed: () {},
+              onLoginTapped: () {}),
         ),
       ));
 
       expect(isOnSignupEmailSentCalled, true);
     });
 
-    patrolTest('onSignupPressed is called upon tapping signup button',
+    patrolWidgetTest('onSignupPressed is called upon tapping signup button',
         (PatrolTester $) async {
       bool isOnSignupPressedCalled = false;
 
       when(() => signupCubit.sendVerificationEmail('test@gmail.com'))
           .thenAnswer((_) async => const DerivSignupEmailSentState());
 
-      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
-        value: signupCubit,
-        child: DerivSignupLayout(
-          signupPageLabel: signupPageLabel,
-          signupPageDescription: signupPageDescription,
-          onSocialAuthButtonPressed: (_) {},
-          onSingupError: (_) {},
-          onSingupEmailSent: (_) {},
-          onSignupPressed: () => isOnSignupPressedCalled = true,
-          onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: BlocProvider<DerivSignupCubit>.value(
+          value: signupCubit,
+          child: DerivSignupLayout(
+              signupPageLabel: signupPageLabel,
+              signupPageDescription: signupPageDescription,
+              onSocialAuthButtonPressed: (_) {},
+              onSingupError: (_) {},
+              onSingupEmailSent: (_) {},
+              onSignupPressed: () => isOnSignupPressedCalled = true,
+              onLoginTapped: () {}),
         ),
       ));
 
@@ -134,22 +150,24 @@ void main() {
           .called(1);
     });
 
-    patrolTest('onLoginTapped is called upon tapping login button',
+    patrolWidgetTest('onLoginTapped is called upon tapping login button',
         (PatrolTester $) async {
       bool isOnLoginTappedCalled = false;
 
-      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
-        value: signupCubit,
-        child: DerivSignupLayout(
-          signupPageLabel: signupPageLabel,
-          signupPageDescription: signupPageDescription,
-          onSocialAuthButtonPressed: (_) {},
-          onSingupError: (_) {},
-          onSingupEmailSent: (_) {},
-          onSignupPressed: () {},
-          onLoginTapped: () {
-            isOnLoginTappedCalled = true;
-          },
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: BlocProvider<DerivSignupCubit>.value(
+          value: signupCubit,
+          child: DerivSignupLayout(
+              signupPageLabel: signupPageLabel,
+              signupPageDescription: signupPageDescription,
+              onSocialAuthButtonPressed: (_) {},
+              onSingupError: (_) {},
+              onSingupEmailSent: (_) {},
+              onSignupPressed: () {},
+              onLoginTapped: () {
+                isOnLoginTappedCalled = true;
+              }),
         ),
       ));
 
@@ -161,7 +179,7 @@ void main() {
       expect(isOnLoginTappedCalled, true);
     });
 
-    patrolTest('onSignupError is called upon signup error state',
+    patrolWidgetTest('onSignupError is called upon signup error state',
         (PatrolTester $) async {
       bool isOnSignupErrorCalled = false;
 
@@ -171,20 +189,85 @@ void main() {
       when(() => signupCubit.stream).thenAnswer(
           (_) => Stream.fromIterable([const DerivSignupErrorState('')]));
 
-      await $.pumpApp(BlocProvider<DerivSignupCubit>.value(
-        value: signupCubit,
-        child: DerivSignupLayout(
-          signupPageLabel: signupPageLabel,
-          signupPageDescription: signupPageDescription,
-          onSocialAuthButtonPressed: (_) {},
-          onSingupError: (_) => isOnSignupErrorCalled = true,
-          onSingupEmailSent: (_) {},
-          onSignupPressed: () {},
-          onLoginTapped: () {},
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: BlocProvider<DerivSignupCubit>.value(
+          value: signupCubit,
+          child: DerivSignupLayout(
+              signupPageLabel: signupPageLabel,
+              signupPageDescription: signupPageDescription,
+              onSocialAuthButtonPressed: (_) {},
+              onSingupError: (_) => isOnSignupErrorCalled = true,
+              onSingupEmailSent: (_) {},
+              onSignupPressed: () {},
+              onLoginTapped: () {}),
         ),
       ));
 
       expect(isOnSignupErrorCalled, true);
+    });
+    patrolWidgetTest('onAuthError is called upon auth error state',
+        (PatrolTester $) async {
+      bool isOnAuthErrorCalled = false;
+
+      final mockAuthState = DerivAuthErrorState(
+        isSocialLogin: false,
+        message: 'error',
+        type: AuthErrorType.failedAuthorization,
+      );
+
+      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
+
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+        value: authCubit,
+        child: BlocProvider<DerivSignupCubit>.value(
+          value: signupCubit,
+          child: DerivSignupLayout(
+              signupPageLabel: signupPageLabel,
+              signupPageDescription: signupPageDescription,
+              onSocialAuthButtonPressed: (_) {},
+              onSingupError: (_) {},
+              onSingupEmailSent: (_) {},
+              onSignupPressed: () {},
+              onAuthError: (_) => isOnAuthErrorCalled = true,
+              onLoginTapped: () {}),
+        ),
+      ));
+
+      expect(isOnAuthErrorCalled, true);
+    });
+
+    patrolWidgetTest('calls [AuthErrorStateHandler] on auth error state.',
+        (PatrolTester $) async {
+      final mockAuthState = DerivAuthErrorState(
+        isSocialLogin: false,
+        message: 'error',
+        type: AuthErrorType.failedAuthorization,
+      );
+
+      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
+
+      when(() => authCubit.stream)
+          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+
+      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
+          value: authCubit,
+          child: BlocProvider<DerivSignupCubit>.value(
+            value: signupCubit,
+            child: DerivSignupLayout(
+                signupPageLabel: signupPageLabel,
+                signupPageDescription: signupPageDescription,
+                onSocialAuthButtonPressed: (_) {},
+                onSingupError: (_) {},
+                onSingupEmailSent: (_) {},
+                onSignupPressed: () {},
+                onLoginTapped: () {}),
+          )));
+
+      expect($(PopupAlertDialog).$('Authorization failed.'), findsOneWidget);
     });
   });
 }

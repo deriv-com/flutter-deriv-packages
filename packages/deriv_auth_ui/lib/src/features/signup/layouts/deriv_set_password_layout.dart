@@ -1,8 +1,9 @@
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
 import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
-import 'package:deriv_auth_ui/src/features/signup/models/deriv_auth_utm_model.dart';
+import 'package:deriv_auth_ui/src/core/states/auth_state_listener.dart';
 import 'package:deriv_auth_ui/src/features/signup/widgets/password_policy_checker_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -14,12 +15,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 class DerivSetPasswordLayout extends StatefulWidget {
   /// constructor of country set password page
   const DerivSetPasswordLayout({
-    required this.onDerivAuthState,
     required this.onDerivSignupState,
     required this.onPreviousPressed,
     required this.verificationCode,
     required this.residence,
+    this.authErrorStateHandler,
     this.utmModel,
+    this.onAuthError,
     Key? key,
   }) : super(key: key);
 
@@ -32,8 +34,11 @@ class DerivSetPasswordLayout extends StatefulWidget {
   /// Utm model
   final DerivAuthUtmModel? utmModel;
 
-  /// Callback to be called when auth state changes.
-  final void Function(BuildContext, DerivAuthState) onDerivAuthState;
+  /// Extension of base [AuthErrorStateHandler]. If not provided, base implementation will be used.
+  final AuthErrorStateHandler? authErrorStateHandler;
+
+  /// Callback to be called on [DerivAuthErrorState]
+  final Function(DerivAuthErrorState)? onAuthError;
 
   /// Callback to be called when signup state changes.
   final void Function(BuildContext, DerivSignupState) onDerivSignupState;
@@ -63,9 +68,9 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      BlocListener<DerivAuthCubit, DerivAuthState>(
-        listener: widget.onDerivAuthState,
+  Widget build(BuildContext context) => DerivAuthStateListener(
+        authErrorStateHandler: widget.authErrorStateHandler,
+        onError: widget.onAuthError,
         child: Scaffold(
           backgroundColor: context.theme.colors.primary,
           body: SafeArea(

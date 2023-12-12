@@ -69,7 +69,7 @@ class PasswordPolicyCheckerWidget extends StatelessWidget {
                 context.localization.informPasswordPolicy,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.body1,
-                  color: context.theme.colors.lessProminent,
+                  color: context.theme.colors.general,
                 ),
               ),
               const SizedBox(height: ThemeProvider.margin04),
@@ -114,7 +114,7 @@ class PasswordPolicyCheckerWidget extends StatelessWidget {
         textStyle: TextStyles.body1,
         color: policy.isMatchWith(password)
             ? context.theme.colors.hover
-            : context.theme.colors.lessProminent,
+            : context.theme.colors.general,
       );
 
   Widget _buildPolicyIcon({
@@ -129,7 +129,7 @@ class PasswordPolicyCheckerWidget extends StatelessWidget {
         policy.isMatchWith(password) ? Icons.check : Icons.circle;
 
     final Color color = policy.isMatchWith(password)
-        ? context.theme.colors.lessProminent
+        ? context.theme.colors.general
         : context.theme.colors.coral;
 
     return Padding(
