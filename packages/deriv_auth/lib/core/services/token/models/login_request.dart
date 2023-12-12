@@ -11,7 +11,7 @@ class GetTokensRequestModel with EquatableMixin {
     this.type,
     this.email,
     this.password,
-    this.appId,
+    this.appId = 1408,
     this.otp,
     this.oneAllConnectionToken,
     this.signupProvider,
