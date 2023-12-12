@@ -38,6 +38,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         email: email,
         password: password,
         otp: otp,
+        appId: 1408,
       ),
       false,
     );
