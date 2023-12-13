@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_dependency_injector` - `v1.0.1`](#deriv_dependency_injector---v101)
+
+---
+
+#### `deriv_dependency_injector` - `v1.0.1`
+
+ - **REFACTOR**(deriv_dependency_injector): [MOBC-534] deprecate deriv dependency injector ([#347](https://github.com/regentmarkets/flutter-deriv-packages/issues/347)). ([92426f15](https://github.com/regentmarkets/flutter-deriv-packages/commit/92426f15eaa5caa529724590e006fd0f65d6800e))
+
+
 ## 2023-12-08
 
 ### Changes

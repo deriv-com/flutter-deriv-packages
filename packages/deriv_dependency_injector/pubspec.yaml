@@ -1,7 +1,7 @@
 name: deriv_dependency_injector
 description: A package for handling dependency injection in Dart.
 
-version: 1.0.0
+version: 1.0.1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
