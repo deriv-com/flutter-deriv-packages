@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:deriv_feature_flag/growthbook/deriv_growth_book.dart';
 import 'package:growthbook_sdk_flutter/growthbook_sdk_flutter.dart';
 
@@ -23,4 +25,7 @@ class FeatureFlagRepository {
   /// get the feature flags value from the sdk.
   bool isFeatureOn(String key, {bool defaultValue = false}) =>
       _growthBookSDK.feature(key).on ?? defaultValue;
+
+  @visibleForTesting
+  GrowthBookSDK get growthBookSDK => _growthBookSDK;
 }
