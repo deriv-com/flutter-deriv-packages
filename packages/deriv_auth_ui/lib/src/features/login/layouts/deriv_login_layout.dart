@@ -293,7 +293,8 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   }
 
   bool _isFormValid() =>
-      _getEmailValue().isNotEmpty && _passwordController.text.isNotEmpty;
+      _getEmailValue().isValidEmail &&
+      _passwordController.text.isValidLoginPasswordLength;
 
   String? _emailValidator(String? input) {
     if (_getEmailValue().isValidEmail) {
