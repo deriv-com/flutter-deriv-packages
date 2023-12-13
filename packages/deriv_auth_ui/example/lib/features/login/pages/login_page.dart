@@ -24,9 +24,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return DerivLoginLayout(
-      isShowCreateAccount: false,
-      isShowForgotPassword: false,
-      isSocialAuthEnabled: false,
       welcomeLabel: 'Welcome back!',
       greetingLabel:
           'Log in to your Deriv account to start trading and investing.',
