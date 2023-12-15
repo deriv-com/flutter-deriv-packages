@@ -127,7 +127,7 @@ void main() {
         );
 
         final AuthorizeEntity response = await authService.onLoginRequest(
-          GetTokensRequestModel(
+          request: GetTokensRequestModel(
             type: AuthType.system,
             email: 'email',
             password: 'pass',
@@ -154,7 +154,7 @@ void main() {
         );
 
         final AuthorizeEntity response = await authService.onLoginRequest(
-          GetTokensRequestModel(
+          request: GetTokensRequestModel(
             type: AuthType.social,
             signupProvider: 'signupProvider',
             oneAllConnectionToken: 'oneAllConnectionToken',
@@ -180,7 +180,7 @@ void main() {
         );
 
         final AuthorizeEntity response = await authService.onLoginRequest(
-          GetTokensRequestModel(
+          request: GetTokensRequestModel(
             type: AuthType.socialLogin,
             signupProvider: 'signupProvider',
             socialAuthDto: mockSocialAuthDto,
@@ -207,16 +207,17 @@ void main() {
         );
 
         final AuthorizeEntity response = await authService.onLoginRequest(
-            GetTokensRequestModel(
+            request: GetTokensRequestModel(
               type: AuthType.system,
               email: 'email',
               password: 'pass',
               signupProvider: 'signupProvider',
-            ), () {
-          when(() => jwtService.getJwtToken()).thenAnswer(
-            (_) => Future<String>.value(validJwtToken),
-          );
-        });
+            ),
+            onInvalidJwtToken: () {
+              when(() => jwtService.getJwtToken()).thenAnswer(
+                (_) => Future<String>.value(validJwtToken),
+              );
+            });
 
         verify(() => jwtService.getJwtToken()).called(2);
 
@@ -251,7 +252,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -288,7 +289,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -325,7 +326,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -434,7 +435,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -471,7 +472,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',
@@ -508,7 +509,7 @@ void main() {
 
         expect(
             authService.onLoginRequest(
-              GetTokensRequestModel(
+              request: GetTokensRequestModel(
                 type: AuthType.system,
                 email: 'email',
                 password: 'pass',

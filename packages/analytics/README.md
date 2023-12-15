@@ -1,121 +1,127 @@
-# analytics
-***
-This package is used for collecting and sending analytical information from the app to "Firebase" and "RudderStack".
+# Deriv Analytics Library
+
+A Flutter analytics library that integrates multiple analytics services including Datadog, Firebase, and RudderStack.
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Quick Start](#quick-start)
+3. [Configuration](#configuration)
+    - [Datadog](#datadog)
+    - [Firebase](#firebase)
+    - [RudderStack](#rudderstack)
+4. [Logging Events](#logging-events)
+5. [User Identification](#user-identification)
+6. [Tracking Screens](#tracking-screens)
+
 ## Installation
-##### 1. Add to pubspec.yaml
+
+To install the package, add the following to your `pubspec.yaml`:
+
 ```yaml
-analytics:
+dependencies:
+  analytics:
        git:
          url: git@github.com:regentmarkets/flutter-deriv-packages.git
          path: packages/analytics
          ref: <master/dev>
 ```
-Setup the Android and iOS sources as described at rudderstack.com and generate the write keys for Android and iOS sources.
 
-Set the WRITE_KEY in addition to enabling the plugin to track app lifecycle, screens, and whether to enable debug mode or not in Android and iOS as follows:
+Run `flutter packages get` to fetch the package.
 
-### Android
-```xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.deriv.deriv_rudderstack_example">
-    <application>
-        <activity>
-            [...]
-        </activity>
-        <meta-data
-            android:name="com.deriv.rudderstack.WRITE_KEY"
-            android:value="ADD-YOUR-KEY" />
-        <meta-data
-            android:name="com.deriv.rudderstack.TRACK_APPLICATION_LIFECYCLE_EVENTS"
-            android:value="false" />
-        <meta-data
-            android:name="com.deriv.rudderstack.RECORD_SCREEN_VIEWS"
-            android:value="false" />
-        <meta-data android:name="com.deriv.rudderstack.DEBUG" android:value="false" />
+## Quick Start
 
+Initialize the analytics services you want to use in your `main.dart`:
 
-    </application>
-</manifest>
-```
+```dart
+final datadog = DerivDatadog();
+final firebase = DerivFirebaseAnalytics();
+final rudderstack = DerivRudderstack();
 
-### iOS
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	[...]
-    <key>com.deriv.rudderstack.WRITE_KEY</key>
-    <string>ADD-YOUR-KEY</string>
-	<key>com.deriv.rudderstack.TRACK_APPLICATION_LIFECYCLE_EVENTS</key>
-    <false/>
-    <key>com.deriv.rudderstack.RECORD_SCREEN_VIEWS</key>
-    <false/>
-    <key>com.deriv.rudderstack.DEBUG</key>
-    <false/>
-	[...]
-</dict>
-</plist>
-```
+void main() {
 
-## How to use
-***
-##### 1. Enabling analytics.
-```dart
-Analytics().init(
-    isEnabled: true, // set value to false for disable 'Analytics'
-  );
-```
-##### 2. To track PageRoute transitions.
-```dart
-MaterialApp(
-    navigatorObservers: Analytics().observer == null
-        ? []
-        : [Analytics().observer],
-  );
-```
-##### 3. Logging to 'RudderStack' in different scenarios.
-###### when app is  opened.
-```dart
-Analytics().logAppOpened();
-```
-###### when app is in background.
-```dart
-Analytics().logAppBackgrounded();
-```
-###### when app is crashed.
-```dart
-Analytics().logAppCrashed();
-```
+    WidgetsFlutterBinding.ensureInitialized();
 
-##### 4. Sending information about current screen.
-```dart
-Analytics().setCurrentScreen(screenName: "<CURRENT_SCREEN_NAME_HERE>");
-```
-##### 4. Setting routes/screens which need to be ignored for analytics.
-```dart
-Analytics().setIgnoredRoutes([
-      'IGNORED_SCREEN_NAME_1',
-      'IGNORED_SCREEN_NAME_2',
-      '.....................',
-      'IGNORED_SCREEN_NAME_N'
-    ]);
-```
-##### 4. Sending information during user login.
-```dart
-Analytics().logLoginEvent(userId: "<USER_ID_HERE", deviceToken: "<FIREBASE_TOKEN_HERE>",);
-```
-##### 7. Sending information during user logout.
-```dart
-Analytics().logLogoutEvent();
-```
-##### 8. Sending information about important events to "Firebase".
-```dart
-Analytics().logToFirebase(
-      name: "<EVENT_NAME_HERE>",
-      params: <String, dynamic>{'PARAM_1': 'VALUE_1',
-                                'PARAM_1': 'VALUE_1',
-                                '.......': '.......',
-                                'PARAM_N': 'VALUE_N'},
+    DerivDatadogConfiguration configuration = DerivDatadogConfiguration(
+      applicationId: 'DATADOG_APPLICATION_ID',
+      clientToken: 'DATADOG_CLIENT_TOKEN',
+      env: 'DATADOG_ENVIRONMENT',
+      serviceName: 'DATADOG_SERVICE_NAME',
+      trackingConsent: TrackingConsent.granted,
     );
+
+  DerivDatadog().setup(configuration);
+
+  DerivRudderstack().setup(RudderstackConfiguration(
+      dataPlaneUrl: 'RUDDERSTACK_DATA_PLANE_URL',
+      writeKey: 'RUDDERSTACK_WRITE_KEY',
+      debugEnabled: true,
+    ));
+
+    DerivFirebaseAnalytics(FirebaseAnalytics.instanceFor(app: await Firebase.initializeApp())).setup(
+      FirebaseConfiguration(
+        isAnalyticsCollectionEnabled: true,
+      ),
+    );
+    
+  runApp(MyApp());
+}
+```
+
+## Configuration
+
+### Datadog
+
+```dart
+await datadog.setup(DerivDatadogConfiguration(
+  clientToken: 'your_client_token',
+  applicationId: 'your_application_id',
+  env: 'production',
+  trackingConsent: TrackingConsent.granted,
+));
+```
+
+### Firebase
+
+```dart
+await firebase.setup(FirebaseConfiguration(
+  isAnalyticsCollectionEnabled: true,
+));
+```
+
+### RudderStack
+
+```dart
+await rudderstack.setup(RudderstackConfiguration(
+  dataPlaneUrl: 'your_data_plane_url',
+  writeKey: 'your_write_key',
+));
+```
+
+## Logging Events
+
+You can log events as follows:
+
+```dart
+datadog.logEvent('button_click', {'label': 'cta_button'});
+firebase.logEvent('button_click', {'label': 'cta_button'});
+rudderstack.track('button_click');
+```
+
+## User Identification
+
+To identify a user:
+
+```dart
+datadog.setUserInfo(id: '123', email: 'email@example.com');
+firebase.setUserId(id: '123');
+rudderstack.identify(userId: '123');
+```
+
+## Tracking Screens
+
+```dart
+datadog.screen(screenName: 'Home');
+firebase.setCurrentScreen(screenName: 'Home');
+rudderstack.screen(screenName: 'Home');
 ```

@@ -1,5 +1,4 @@
-## Commit Rules:
-
+## <span style="color:DarkGoldenRod">Commit Rules:</span>
 This commits rules is set to ensure all the developers follows a uniform way of writing commits so that it is easy to read the changes made and also automate versioning.
 The commits are based on [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) which is a widely followed convention for commits. While writing a commit message to any changes made to code base, make sure it reflects the changes and follows the conventions i.e:
 
@@ -30,12 +29,7 @@ feat(deriv_auth): add UI for sign in page
 - add bloc for sign in logic implementation
 - add google services for authentication
 ```
-### Breaking Changes Indicator
-Breaking changes should be indicated by an `!` before the `:` in the subject line e.g. `feat(api)!: remove status endpoint`
-* Is an **optional** part of the format
-
-More changes types:
-
+<b>More changes types:</b>
 | Changes Types | Meaning                    | Description                                                                                                   |
 | ------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | feat          | Features                   | A new feature                                                                                                 |
@@ -94,7 +88,53 @@ Optional: If you would like to pre populate your commit box with the commit temp
 * ```
   style: remove empty line
   ```
-## PR Rules:
+### <span style="color:Crimson">Breaking Changes Indicator</span>
+Breaking changes should be indicated by an 
+<span style="color:red;font-size:2em"> ! </span> 
+before the `:` in the subject line e.g. `feat(api)!: remove status endpoint`
+* Is an **optional** part of the format
+
+
+<p>&nbsp;</p>
+
+## <span style="color:DarkGoldenRod">Semantic versioning:
+<center><span style="color:lime; font-size: 4em;">1 . 4 . 3 + 2</span></center>
+<center><span style="color:green; font-size: 2em;">Major . Minor . Patch + build</span></center>
+<p>&nbsp;</p>
+
+<b><span style="color:orange">Major Release:</span></b>
+If a ```“breaking change”``` is introduced, the major release number must be increased
+
+```
+feat(api)!: remove status endpoint
+fix!: bug fix with breaking change
+```
+
+<b><span style="color:orange">Minor Release:</span></b>
+New features have been introduced, which are backwards compatible ```no “breaking changes”```
+
+
+```
+feat: new feature
+```
+
+<b><span style="color:orange">Patch Release: </span></b>
+Bug fixes ```no “breaking changes”```</br>
+```
+fix: something in code
+refactor: code changes that doesn't fix or add anything
+```
+
+<b><span style="color:orange">Build:</span></b> This number is optional and can be used to differentiate between different builds of the same version.
+</br>
+
+<b>no change <span style="color:orange">| | </span>build bump:</b>
+```
+build, chore, ci, docs, style, perf, test
+```
+<p>&nbsp;</p>
+
+## <span style="color:DarkGoldenRod">PR Rules:</span>
 
 This Rules is set to create a uniform way of submitting Pull requests where all the necessary information for the changes are listed in the title, or description. There is a standard template for creating PR. When you are creating a PR to any repo always make sure:
 
