@@ -264,17 +264,20 @@ class AuthorizeEntity extends AuthorizeModel {
                 ),
               ),
         // TODOAuth(): fromjson(.tojson) wont work for localCurrencies .
-        // localCurrencies: json['local_currencies'] == null
-        //     ? null
-        //     : Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
-        //         json['local_currencies']
-        //             .entries
-        //             .map<MapEntry<String, LocalCurrenciesPropertyEntity>>(
-        //                 (MapEntry<String, dynamic> entry) =>
-        //                     MapEntry<String, LocalCurrenciesPropertyEntity>(
-        //                         entry.key,
-        //                         LocalCurrenciesPropertyEntity.fromJson(
-        //                             entry.value)))),
+        // fast fix: localCurrencies: json['local_currencies'] == null
+        localCurrencies: json['local_currencies'] == null
+            ? null
+            : Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
+                json['local_currencies']
+                    .entries
+                    .map<MapEntry<String, LocalCurrenciesPropertyEntity>>(
+                      (MapEntry<String, dynamic> entry) =>
+                          MapEntry<String, LocalCurrenciesPropertyEntity>(
+                        entry.key,
+                        LocalCurrenciesPropertyEntity.fromJson(entry.value),
+                      ),
+                    ),
+              ),
         loginid: json['loginid'],
         preferredLanguage: json['preferred_language'],
         scopes: json['scopes'] == null
@@ -537,7 +540,6 @@ class AccountListItem extends AccountListItemModel {
       );
 }
 
-
 /// Linked to item model class.
 abstract class LinkedToItemModel {
   /// Initializes Linked to item model class .
@@ -721,7 +723,6 @@ class TradingLinkedToItem extends TradingLinkedToItemModel {
         paymentMethod: paymentMethod ?? this.paymentMethod,
       );
 }
-
 
 /// Wallet linked to item2 model class.
 abstract class WalletLinkedToItem2Model {
