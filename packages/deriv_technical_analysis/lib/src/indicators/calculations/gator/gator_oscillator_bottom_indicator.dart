@@ -57,4 +57,18 @@ class GatorOscillatorIndicatorBottomBar<T extends IndicatorResult>
 
     return createResult(index: index, quote: quote);
   }
+
+  @override
+  void copyValuesFrom(covariant GatorOscillatorIndicatorBottomBar<T> other) {
+    super.copyValuesFrom(other);
+    lipsIndicator.copyValuesFrom(other.lipsIndicator);
+    teethIndicator.copyValuesFrom(other.teethIndicator);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    lipsIndicator.invalidate(index);
+    teethIndicator.invalidate(index);
+  }
 }

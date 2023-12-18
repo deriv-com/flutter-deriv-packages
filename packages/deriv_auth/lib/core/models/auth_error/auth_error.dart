@@ -35,4 +35,7 @@ enum AuthErrorType {
 
   /// Error occurs if tries to login on deactivated account.
   accountUnavailable,
+
+  /// Error occurs if tries to login from unsupported country.
+  invalidResidence,
 }

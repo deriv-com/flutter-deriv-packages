@@ -1,4 +1,5 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
 
 /// Difference values between two indicators
 class DifferenceIndicator<T extends IndicatorResult> extends Indicator<T> {

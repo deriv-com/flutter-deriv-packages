@@ -1,0 +1,35 @@
+name: deriv_numpad
+description: A new Flutter project.
+version: 1.0.2
+publish_to: "none"
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  deriv_theme:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_theme
+      ref: deriv_theme-v2.2.0
+
+  flutter_svg: ^1.0.3
+  intl: ^0.17.0
+  decimal: ^2.3.2
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  intl_utils: ^2.0.0
+
+  flutter_lints: ^1.0.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/ic_handle.svg

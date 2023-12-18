@@ -24,12 +24,13 @@ class DarkThemeColors {
   static const Color accentYellow = Color(0xFFFFAD3A);
   static const Color accentRed = Color(0xFFCC2E3D);
   static const Color green = Color(0xFF71BD0E);
-  static const Color information = Color(0xFF377CFC);
   static const Color disabled = Color(0xFF3E3E3E);
+  static const Color accentBlue = Color(0xFF377CFC);
+  static const Color accentLightBlue = Color(0xFF77A6FD);
 }
 
 /// These colors suits the light theme of Deriv
-//todo: replace values based on light theme when available
+// TODO(Naif): replace values based on light theme when available
 class LightThemeColors {
   static const Color base01 = Color(0xFFFFFFFF);
   static const Color base02 = Color(0xFFEAECED);
@@ -43,6 +44,7 @@ class LightThemeColors {
   static const Color accentYellow = Color(0xFFFFAD3A);
   static const Color accentRed = Color(0xFFCC2E3D);
   static const Color green = Color(0xFF71BD0E);
-  static const Color information = Color(0xFF377CFC);
   static const Color disabled = Color(0xFF3E3E3E);
+  static const Color accentBlue = Color(0xFF377CFC);
+  static const Color accentLightBlue = Color(0xFF77A6FD);
 }

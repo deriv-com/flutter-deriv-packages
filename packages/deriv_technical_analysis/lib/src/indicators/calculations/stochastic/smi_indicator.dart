@@ -1,6 +1,15 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/difference_indicator.dart';
 import 'package:deriv_technical_analysis/src/indicators/calculations/helper_indicators/mean_indicator.dart';
+import 'package:deriv_technical_analysis/src/models/data_input.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
+
+import '../../cached_indicator.dart';
+import '../ema_indicator.dart';
+import '../helper_indicators/close_value_inidicator.dart';
+import '../helper_indicators/high_value_indicator.dart';
+import '../helper_indicators/low_value_indicator.dart';
+import '../highest_value_indicator.dart';
+import '../lowest_value_indicator.dart';
 
 /// Stochastic Momentum Index indicator
 ///
@@ -63,5 +72,19 @@ class SMIIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     final double smi = avgDiff != 0 ? (avgRel / (avgDiff / 2) * 100) : 0;
 
     return createResult(index: index, quote: smi);
+  }
+
+  @override
+  void copyValuesFrom(covariant SMIIndicator<T> other) {
+    super.copyValuesFrom(other);
+    _avgRel.copyValuesFrom(other._avgRel);
+    _avgDiff.copyValuesFrom(other._avgDiff);
+  }
+
+  @override
+  void invalidate(int index) {
+    _avgRel.invalidate(index);
+    _avgDiff.invalidate(index);
+    super.invalidate(index);
   }
 }

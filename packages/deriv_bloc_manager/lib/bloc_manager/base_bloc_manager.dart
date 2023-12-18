@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 /// Function signature for `BlocManagerListenerHandler`.
@@ -55,7 +53,7 @@ abstract class BaseBlocManager {
   ///
   /// [key] is registered listener identifier.
   /// NOTE: if you need to check listener for specific bloc type leave it `empty`.
-  Future<void> removeListener<B extends GenericBloc>({String key = defaultKey});
+  void removeListener<B extends GenericBloc>({String key = defaultKey});
 
   /// Indicates that bloc of type [B] has listener or not.
   ///
@@ -72,5 +70,5 @@ abstract class BaseBlocManager {
   });
 
   /// Disposes the bloc of type [B].
-  Future<void> dispose<B extends GenericBloc>([String key = defaultKey]);
+  void dispose<B extends GenericBloc>([String key = defaultKey]);
 }

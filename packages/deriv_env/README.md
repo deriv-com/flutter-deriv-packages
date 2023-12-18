@@ -31,12 +31,12 @@ You can check if the environment variable is initialized using the `isInitialize
 bool isInitialized = Env().isInitialized;
 ```
 
-### Loading environment variables
+### Initializing the Env 
 
-Before using any environment variables, you need to load them from a file. The `load` method loads the variables from a file with the specified filename (default is `.env`).
+Before using any environment variables, you need to intialize the `Env` class and pass it an instnace of the EnvLoader and the path to the file. The `initialize` method loads the variables from a file with the specified filename (default is `.env`).
 
 ```dart
-await Env().load();
+await Env().initialize(EnvLoader(filePath: '.env'));
 ```
 
 The load method expects the file to contain key-value pairs separated by an equals sign (`=`) and each pair separated by a newline character (`\n`). Blank lines and comments (lines starting with a `#`) are ignored.
@@ -75,3 +75,19 @@ String apiKey = Env().get<String>('API_KEY', defaultValue: 'API_KEY_VALUE');
 ```
 
 The `get` method returns a value of the type specified in the type parameter. Supported types are `String`, `int`, `double` and `bool`.
+
+### Getting environment variables with custom type
+
+Tou can also provide a `parser` function to parse the value to a custom type.
+
+```dart
+String apiKey = Env().get<String>('API_KEY', parserFactory: (String value) => value.toUpperCase());
+```
+
+### Getting encrypted environment variables
+
+if `encrypted` parameter is set to `true`, and `decryptionKey` is provided, the value will be decrypted using the provided key.
+
+```dart
+String apiKey = Env().get<String>('API_KEY', encrypted: true, decryptionKey: 'decryption_key');
+```

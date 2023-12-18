@@ -1,14 +1,16 @@
 analyzer:
   exclude:
     - example/**
-  strong-mode:
-    implicit-dynamic: false
+
   errors:
     todo: ignore
     missing_required_param: warning
     missing_return: warning
     # https://github.com/flutter/flutter/pull/24528
     sdk_version_async_exported_from_core: ignore
+
+  language:
+    strict-raw-types: true
 
 linter:
   rules:
@@ -90,7 +92,6 @@ linter:
     - prefer_const_literals_to_create_immutables
     - prefer_constructors_over_static_methods
     - prefer_contains
-    - prefer_equal_for_default_values
     - prefer_expression_function_bodies # https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo#consider-using--for-short-functions-and-methods
     - prefer_final_fields
     - prefer_final_in_for_each

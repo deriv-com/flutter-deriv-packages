@@ -1,0 +1,42 @@
+name: flutter_deriv_packages
+repository: https://github.com/regentmarkets/flutter-deriv-packages
+
+packages:
+  - packages/*
+
+command:
+  version:
+    # Generate commit links in package changelogs.
+    linkToCommits: true
+    workspaceChangelog: true
+    updateGitTagRefs: true
+
+  bootstrap:
+    # It seems so that running "pub get" in parallel has some issues (like
+    # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
+    # makes the CI much more stable.
+    runPubGetInParallel: false
+
+scripts:
+  analyze:
+    name: Flutter Analyze
+    description: Run flutter analyze for all packages.
+    ## Only fail if there are errors or warnings and not on infos.
+    run: |
+      if flutter analyze 2>&1 | grep -q -E 'error:|warning:'; 
+          then exit 1
+          else exit 0
+      fi
+    exec:
+      concurrency: 1
+      failFast: true
+
+  test:
+    name: Flutter Test
+    description: Run flutter test for all packages.
+    run: flutter test --coverage
+    exec:
+      failFast: true
+    packageFilters:
+      dirExists:
+        - test

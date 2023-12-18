@@ -1,10 +1,12 @@
 package com.deriv.app.deriv_live_chat
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,7 +61,9 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             val groupId = call.argument<String>("groupId")
             val customParams = call.argument<HashMap<String, String>>("customParams")!!
 
-            chatWindowView = createCustomAndAttachChatWindowInstance(activity!!)
+            if (chatWindowView == null) {
+                chatWindowView = createCustomAndAttachChatWindowInstance(activity!!)
+            }
 
             val configuration = ChatWindowConfiguration.Builder()
                 .setLicenceNumber(licenseId)
@@ -71,15 +75,22 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
 
             chatWindowView?.setUpWindow(configuration)
             chatWindowView?.setUpListener(chatListener)
-            chatWindowView?.initialize()
+            if (chatWindowView?.isInitialized() == false)
+                chatWindowView?.initialize()
 
 
             chatWindowView?.showChatWindow()
 
             result.success(null)
         } else if (call.method.equals("close_live_chat_view")) {
-            clearSession(chatWindowView?.context)
+            chatWindowView?.setUpListener(null);
+
             chatWindowView?.onBackPressed()
+
+            result.success(null)
+        } else if (call.method.equals("clear_live_chat_view")) {
+            ChatWindowView.clearSession(chatWindowView?.context)
+            chatWindowView?.reload()
 
             result.success(null)
         } else {

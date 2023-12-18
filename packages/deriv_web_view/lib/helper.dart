@@ -3,7 +3,7 @@ import 'dart:developer' as logger;
 
 import 'package:crypto/crypto.dart';
 
-import 'package:deriv_api_key_provider/native_app_token.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 
 import 'package:deriv_web_view/models/app_authorization_challenge_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_challenge_response_model.dart';
@@ -11,8 +11,6 @@ import 'package:deriv_web_view/models/app_authorization_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_response_model.dart';
 import 'package:deriv_web_view/models/pta_login_request_model.dart';
 import 'package:deriv_web_view/models/pta_login_response_model.dart';
-
-import 'package:flutter_deriv_api/services/connection/http_client/http_client.dart';
 
 /// Using this function, a `one-time-token` will be generated in order to access current logged in user to the application with [destinationAppId].
 Future<String?> performPassThroughAuthentication({
@@ -22,10 +20,15 @@ Future<String?> performPassThroughAuthentication({
   required String? defaultAccount,
   required String endpoint,
   required String appId,
+  required String appToken,
   String? action,
   String? code,
 }) async {
-  final String jwtToken = await getJwtToken(endpoint: endpoint, appId: appId);
+  final String jwtToken = await getJwtToken(
+    endpoint: endpoint,
+    appId: appId,
+    appToken: appToken,
+  );
 
   final Map<String, dynamic> request = PtaLoginRequestModel(
     refreshToken: refreshToken ?? '',
@@ -59,12 +62,13 @@ Future<String?> performPassThroughAuthentication({
 Future<String> getJwtToken({
   required String endpoint,
   required String appId,
+  required String appToken,
 }) async {
   final AppAuthorizationChallengeResponseModel challenge =
       await _getAppAuthorizationChallenge(endpoint: endpoint, appId: appId);
 
   final String solution = _solveLoginChallenge(
-    appToken: await appToken,
+    appToken: appToken,
     challenge: challenge.challenge,
   );
 

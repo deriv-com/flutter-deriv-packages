@@ -55,6 +55,9 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
                     result(nil)
                 }
             case "close_live_chat_view":
+                
+                result(nil)
+            case "clear_live_chat_view":
                 LiveChat.clearSession()
                 result(nil)
 

@@ -49,5 +49,9 @@
     <false/>
     <key>com.deriv.rudderstack.WRITE_KEY</key>
     <string>ADD-YOUR-KEY</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

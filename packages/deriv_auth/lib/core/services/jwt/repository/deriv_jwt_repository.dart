@@ -1,9 +1,9 @@
 import 'package:deriv_auth/core/connection_info.dart';
-import 'package:deriv_auth/core/services/api_client/base_client.dart';
 import 'package:deriv_auth/core/services/jwt/models/app_auth/app_authorization_request.dart';
 import 'package:deriv_auth/core/services/jwt/models/app_auth/app_authorization_response.dart';
 import 'package:deriv_auth/core/services/jwt/models/app_auth_challenge/app_auth_challenge_request.dart';
 import 'package:deriv_auth/core/services/jwt/models/app_auth_challenge/app_auth_challenge_response.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 
 import 'base_jwt_repository.dart';
 

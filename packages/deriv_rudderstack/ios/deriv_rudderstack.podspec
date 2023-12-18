@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'deriv_rudderstack'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'A new Flutter plugin to wrap RudderStack SDK.'
   s.description      = <<-DESC
 A new Flutter plugin to wrap RudderStack SDK.
@@ -15,7 +15,7 @@ A new Flutter plugin to wrap RudderStack SDK.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'Rudder', '~> 1.0'
+  s.dependency 'Rudder', '~> 1.1.0'
   s.platform = :ios, '12.0'
   s.preserve_paths = 'Rudder.framework'
   s.xcconfig = { 'OTHER_LDFLAGS' => '-framework Rudder' }

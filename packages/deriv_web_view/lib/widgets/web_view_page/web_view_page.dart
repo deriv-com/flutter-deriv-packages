@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'package:flutter_deriv_api/helpers/helpers.dart';
-
 import 'states/web_view_page_cubit.dart';
 
 /// Web view widget to launch urls in an in-app web page.
 class WebViewPage extends StatefulWidget {
   /// Starts an in-app web view to launch a [url].
   const WebViewPage({
+    required this.userAgent,
     Key? key,
     this.url,
     this.title,
@@ -22,6 +21,9 @@ class WebViewPage extends StatefulWidget {
     this.appId,
     this.onClosed,
   }) : super(key: key);
+
+  /// User Agent.
+  final String userAgent;
 
   /// Web view route name.
   static const String routeName = 'web_view_page';
@@ -57,16 +59,22 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPageState extends State<WebViewPage> {
-  WebViewController? _webViewController;
+  late final WebViewController _webViewController;
   final WebViewPageCubit _webViewPageCubit = WebViewPageCubit();
 
   @override
   void initState() {
     super.initState();
-
-    if (Platform.isAndroid) {
-      WebView.platform = SurfaceAndroidWebView();
-    }
+    _webViewController = WebViewController()
+      ..setUserAgent(widget.userAgent)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (_) => _onPageStarted(),
+          onProgress: _onProgress,
+        ),
+      )
+      ..loadRequest(Uri.parse(widget.url ?? 'https://deriv.com'))
+      ..setJavaScriptMode(JavaScriptMode.unrestricted);
   }
 
   @override
@@ -81,24 +89,11 @@ class _WebViewPageState extends State<WebViewPage> {
         ),
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
-        body: FutureBuilder<String?>(
-          future: getUserAgent(),
-          builder: (BuildContext context, AsyncSnapshot<String?> snapshot) =>
-              snapshot.connectionState == ConnectionState.done
-                  ? WillPopScope(
-                      onWillPop: _onWillPop,
-                      child: WebView(
-                        initialUrl: widget.url,
-                        userAgent: snapshot.data,
-                        javascriptMode: JavascriptMode.unrestricted,
-                        onWebViewCreated:
-                            (WebViewController webViewController) =>
-                                _webViewController = webViewController,
-                        onPageStarted: (_) => _onPageStarted(),
-                        onProgress: _onProgress,
-                      ),
-                    )
-                  : const SizedBox(),
+        body: WillPopScope(
+          onWillPop: _onWillPop,
+          child: WebViewWidget(
+            controller: _webViewController,
+          ),
         ),
       );
 
@@ -116,8 +111,8 @@ class _WebViewPageState extends State<WebViewPage> {
       );
 
   Future<bool> _onWillPop() async {
-    await _webViewController?.clearCache();
-    await CookieManager().clearCookies();
+    await _webViewController.clearCache();
+    await WebViewCookieManager().clearCookies();
 
     widget.onClosed?.call();
 
@@ -140,7 +135,7 @@ class _WebViewPageState extends State<WebViewPage> {
     }
   }
 
-  void _setUpEndpoint() => _webViewController?.runJavascript(
+  void _setUpEndpoint() => _webViewController.runJavaScript(
         '''
           (() => {
             try {

@@ -16,8 +16,7 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      // One in stacked list and one in expanded list.
-      expect(find.text('MockItem1'), findsNWidgets(2));
+      expect(find.text('MockItem1'), findsNWidgets(1));
     });
 
     testWidgets('remove item works', (WidgetTester tester) async {

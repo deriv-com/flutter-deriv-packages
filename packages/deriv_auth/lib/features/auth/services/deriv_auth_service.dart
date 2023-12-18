@@ -7,13 +7,13 @@ import 'package:deriv_auth/core/extensions/extensions.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
-import 'package:deriv_auth/core/services/api_client/exceptions/http_exceptions.dart';
-import 'package:deriv_auth/core/services/api_client/http_client.dart';
+import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
 import 'package:deriv_auth/features/auth/repository/base_auth_repository.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 
 import 'base_auth_service.dart';
 
@@ -40,8 +40,11 @@ class DerivAuthService extends BaseAuthService {
   final BaseTokenService tokenService;
 
   @override
-  Future<AuthorizeEntity> onLoginRequest(GetTokensRequestModel request,
-      [Function? onInvalidJwtToken]) async {
+  Future<AuthorizeEntity> onLoginRequest({
+    required GetTokensRequestModel request,
+    String? userAgent,
+    Function? onInvalidJwtToken,
+  }) async {
     try {
       final String jwtToken = await jwtService.getJwtToken();
 
@@ -50,6 +53,7 @@ class DerivAuthService extends BaseAuthService {
         client: HttpClient(),
         jwtToken: jwtToken,
         connectionInfo: connectionInfo,
+        userAgent: userAgent,
       );
 
       final List<AccountModel> _supportedAccounts =
@@ -60,9 +64,9 @@ class DerivAuthService extends BaseAuthService {
       if (_defaultAccountToken != null) {
         return login(
           _defaultAccountToken,
+          accounts: _supportedAccounts,
           signupProvider: request.signupProvider,
           refreshToken: _response.refreshToken,
-          accountsList: _supportedAccounts,
         );
       } else {
         throw DerivAuthException(
@@ -76,7 +80,7 @@ class DerivAuthService extends BaseAuthService {
 
         jwtService.clearJwtToken();
 
-        return onLoginRequest(request);
+        return onLoginRequest(request: request, userAgent: userAgent);
       } else {
         throw _mapHttpErrorToDerivAuthError(error);
       }
@@ -86,7 +90,7 @@ class DerivAuthService extends BaseAuthService {
   @override
   Future<AuthorizeEntity> login(
     String token, {
-    required List<AccountModel> accountsList,
+    required List<AccountModel> accounts,
     String? signupProvider,
     String? refreshToken,
   }) async {
@@ -103,7 +107,7 @@ class DerivAuthService extends BaseAuthService {
         accountList: responseAuthorizeEntity.accountList
             ?.map(
               (AccountListItem accountListItem) => accountListItem.copyWith(
-                token: accountsList
+                token: accounts
                         .where(
                           (AccountModel element) =>
                               element.accountId == accountListItem.loginid,
@@ -141,7 +145,10 @@ class DerivAuthService extends BaseAuthService {
   Future<void> logout() => authRepository.logout();
 
   @override
-  Future<void> onLoggedOut() => authRepository.onLoggedOut();
+  Future<void> onLogout() => authRepository.onLogout();
+
+  @override
+  Future<void> onPostLogout() => authRepository.onPostLogout();
 
   List<AccountModel> _filterSupportedAccounts(List<AccountModel> accounts) {
     final List<AccountModel> supportedAccounts =
@@ -191,6 +198,12 @@ class DerivAuthService extends BaseAuthService {
           message: exception.message,
         );
 
+      case invalidResidence:
+        return DerivAuthException(
+          type: AuthErrorType.invalidResidence,
+          message: exception.message,
+        );
+
       default:
         return DerivAuthException(
           type: AuthErrorType.failedAuthorization,
@@ -214,4 +227,8 @@ class DerivAuthService extends BaseAuthService {
       );
     }
   }
+
+  @override
+  Future<LandingCompanyEntity> getLandingCompany(String? countryCode) =>
+      authRepository.getLandingCompany(countryCode);
 }
