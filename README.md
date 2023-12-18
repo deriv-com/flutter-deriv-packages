@@ -23,6 +23,7 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_web_view](./packages/deriv_web_view)                     | Deriv web view package.                                                      |
 | [form_builder](./packages/form_builder)                         | A simpler and cleaner way to create, validate and submit forms.              |
 | [update_checker](./packages/update_checker)                     | Check and retrieve update information from the server for the given package. |
+| [deriv_feature_flag](./packages/deriv_feature_flag)             | A package to provide feature flag functionality for apps.                    |
 
 # Add New Package in CI Configuration(config.yml)
 
