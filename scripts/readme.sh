@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd ..
 # Get the output of `melos list -l`
 melos_output=$(melos list -l)
 
