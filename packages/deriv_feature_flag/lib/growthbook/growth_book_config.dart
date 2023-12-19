@@ -7,7 +7,6 @@ class GrowthBookConfig {
   /// Determine the GrowthBook client api key.
   static String get gbClientKey {
     final key = Env().get<String>('GROWTHBOOK_API_KEY');
-
     logger.log('GrowthBook key is $key');
     return key;
   }
@@ -45,6 +44,7 @@ class GrowthBookConfig {
   ) {
     final key = experiment.key ?? '';
     final id = result.variationID?.toString() ?? '';
+
     logger.log('Experiment Id: $key');
     logger.log('Variation Id: $id');
   }
