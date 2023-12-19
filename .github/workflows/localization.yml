@@ -1,0 +1,68 @@
+name: Localization Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  update-localizations:
+    defaults:
+      run:
+        working-directory: ./packages/deriv_localizations
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'l10n_master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: "3.10.2"
+          cache: true
+      
+      - name: Setup Config
+        run: |
+          git config --global user.name 'bassam-deriv'
+          git config --global user.email 'bassam.elobeid@regentmarkets.com'
+
+      - name: Make the script files executable
+        run: chmod +x l10n.sh
+      - name: Run the scripts
+        run: |
+          ./l10n.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+
+      - name: Create Pull Request.
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "chore(version): Crowdin Localization Generated"
+          base: master
