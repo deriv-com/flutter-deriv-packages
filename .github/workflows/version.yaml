@@ -44,7 +44,7 @@ jobs:
         run: chmod +x readme.sh
         working-directory: ./scripts
 
-      - name: run readme scripts
+      - name: Update README.md
         run: bash readme.sh
         working-directory: ./scripts
 
