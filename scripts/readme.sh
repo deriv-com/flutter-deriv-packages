@@ -16,5 +16,5 @@ function parse_melos_output() {
 parse_melos_output "$melos_output" | while read -r package version; do
     package=$(echo $package | xargs)  
     version=$(echo $version | awk '{print $1}')
-    sed -i '' -E "s|($package.*)(v[0-9\.+\-]+)|\1v$version|g" README.md
+    sed -i -E "s|($package.*)(v[0-9\.+\-]+)|\1v$version|g" README.md
 done
