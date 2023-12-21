@@ -5,12 +5,16 @@ on:
     types:
       - closed
     branches:
-      - master
+      - fix-linux
 
 jobs:
   version_and_tag:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && !contains(github.event.pull_request.title, 'chore(version)')
+    if: >
+      github.event.pull_request.merged == true && 
+      !contains(github.event.pull_request.title, 'chore') && 
+      !contains(github.event.pull_request.title, 'ci') && 
+      !contains(github.event.pull_request.title, 'add')
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
@@ -38,13 +42,17 @@ jobs:
         run: melos version --all --yes
 
       - name: Push tag
-        run: git push --tags
+        run: |
+          output=$(git push --tags) 
+          echo "PUSH_OUTPUT=$output" >> $GITHUB_ENV
 
       - name: Make the script files executable
+        if: ${{ env.PUSH_OUTPUT != *"Everything up-to-date"* }}
         run: chmod +x readme.sh
         working-directory: ./scripts
 
       - name: Update README.md
+        if: ${{ env.PUSH_OUTPUT != *"Everything up-to-date"* }}
         run: bash readme.sh
         working-directory: ./scripts
 
@@ -53,4 +61,4 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           title: "chore(version): bump version and update changelog"
-          base: master
+          base: fix-linux
