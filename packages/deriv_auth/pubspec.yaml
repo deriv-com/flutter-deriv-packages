@@ -1,6 +1,6 @@
 name: deriv_auth
 description: Provides deriv authentication functionalities for dart/flutter apps.
-version: 1.2.1
+version: 1.2.2
 
 publish_to: "none"
 

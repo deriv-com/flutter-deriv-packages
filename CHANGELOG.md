@@ -3,6 +3,98 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v1.1.0`](#analytics---v110)
+ - [`deriv_auth` - `v1.2.2`](#deriv_auth---v122)
+ - [`deriv_auth_ui` - `v0.0.3`](#deriv_auth_ui---v003)
+ - [`deriv_banner` - `v0.0.2`](#deriv_banner---v002)
+ - [`deriv_date_range_picker` - `v0.0.1+3`](#deriv_date_range_picker---v0013)
+ - [`deriv_env` - `v0.0.1+3`](#deriv_env---v0013)
+ - [`deriv_numpad` - `v1.0.3`](#deriv_numpad---v103)
+ - [`deriv_theme` - `v2.3.0`](#deriv_theme---v230)
+ - [`deriv_ui` - `v0.0.3`](#deriv_ui---v003)
+ - [`deriv_feature_flag` - `v0.0.1+1`](#deriv_feature_flag---v0011)
+ - [`deriv_expandable_bottom_sheet` - `v0.0.1+3`](#deriv_expandable_bottom_sheet---v0013)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_feature_flag` - `v0.0.1+1`
+ - `deriv_expandable_bottom_sheet` - `v0.0.1+3`
+
+---
+
+#### `analytics` - `v1.1.0`
+
+ - **FEAT**(analytics): add sokmething. ([c35a6fa9](https://github.com/regentmarkets/flutter-deriv-packages/commit/c35a6fa98e8608336bc238995fcc230bd3d3e143))
+
+#### `deriv_auth` - `v1.2.2`
+
+ - **FIX**(deriv_auth): local currencies fromJson authorize_model.dart ([#367](https://github.com/regentmarkets/flutter-deriv-packages/issues/367)). ([4d39a44a](https://github.com/regentmarkets/flutter-deriv-packages/commit/4d39a44a2de970219b241db43bb06b2022f04a3f))
+
+#### `deriv_auth_ui` - `v0.0.3`
+
+ - **REFACTOR**(deriv_auth_ui): [MOBC-629] Adding semantics to UI components ([#321](https://github.com/regentmarkets/flutter-deriv-packages/issues/321)). ([36a0c1fa](https://github.com/regentmarkets/flutter-deriv-packages/commit/36a0c1faa0b47d4f735a79daf67c9e2c0089938e))
+ - **REFACTOR**: deriv country selection cubit. ([5b0d5f0c](https://github.com/regentmarkets/flutter-deriv-packages/commit/5b0d5f0c37ecd732739204d2a41c334779803945))
+ - **REFACTOR**: deriv country selection cubit. ([e88f6332](https://github.com/regentmarkets/flutter-deriv-packages/commit/e88f6332844433953a63ff5933612ea2e115b045))
+ - **REFACTOR**: make countries non-nullable. ([e65d7587](https://github.com/regentmarkets/flutter-deriv-packages/commit/e65d7587e334e82486f6510a50015784adf6fddd))
+ - **REFACTOR**: add eof and remove deprecated lint. ([c2c7a80a](https://github.com/regentmarkets/flutter-deriv-packages/commit/c2c7a80a5fe39f747897a8a6be09701d125716e9))
+ - **REFACTOR**: auth state handler. ([84e2099d](https://github.com/regentmarkets/flutter-deriv-packages/commit/84e2099d65abe8585c64773254fca99059b3b4cb))
+ - **REFACTOR**: auth state handling in signup and set password page. ([05c12d53](https://github.com/regentmarkets/flutter-deriv-packages/commit/05c12d53906de229d316fdbcf18396e4b34aed1f))
+ - **FIX**: spacing after social flag. ([d782c86a](https://github.com/regentmarkets/flutter-deriv-packages/commit/d782c86a69eae3489e261060c7eacf63eb2da9d0))
+ - **FIX**: add missing ok label in referal dialog. ([086fc636](https://github.com/regentmarkets/flutter-deriv-packages/commit/086fc636bdae24da873a9931e7b053b50e6b1a73))
+ - **FIX**: reset password button alignment. ([411b2115](https://github.com/regentmarkets/flutter-deriv-packages/commit/411b2115d0f891b61036e601c5f26045e3a861f3))
+ - **FIX**: change color to general. ([cac78e49](https://github.com/regentmarkets/flutter-deriv-packages/commit/cac78e49f1650fe1ba5f7698b97ce7a5adaa1308))
+ - **FEAT**: [MOBC-608] auth ui setting page ([#320](https://github.com/regentmarkets/flutter-deriv-packages/issues/320)). ([ce8d202b](https://github.com/regentmarkets/flutter-deriv-packages/commit/ce8d202bc1636f29ca99475d645d99aead663e57))
+ - **FEAT**: add flag for social login. ([016f3902](https://github.com/regentmarkets/flutter-deriv-packages/commit/016f3902d6d110f76446a0cc4ce0edfa2f35dd8a))
+ - **FEAT**: reset pass success page. ([afb19891](https://github.com/regentmarkets/flutter-deriv-packages/commit/afb1989104a02fc3e8c03a55e1b35216500be422))
+ - **FEAT**: add gesture detector in get started layout. ([185928c6](https://github.com/regentmarkets/flutter-deriv-packages/commit/185928c6d8489d8edf3732a58cf05d91b0cac71b))
+ - **FEAT**: country consent added in country_selection_layout. ([7cc23945](https://github.com/regentmarkets/flutter-deriv-packages/commit/7cc239455f1169777f8c11d78487f1e39e35e76b))
+ - **FEAT**: add social button flag. ([f8f95171](https://github.com/regentmarkets/flutter-deriv-packages/commit/f8f9517127a5cda26eed12c290f702c8623826e9))
+ - **FEAT**: add auth error state handler in set password page. ([737ed84a](https://github.com/regentmarkets/flutter-deriv-packages/commit/737ed84a282869bce1bbde00794309e9e9fc2b34))
+ - **FEAT**: add auth error state handler in sign up page. ([b7910157](https://github.com/regentmarkets/flutter-deriv-packages/commit/b79101574ac82790c8acb3fb5cda93dfb6274500))
+ - **FEAT**: add deriv auth error state handler. ([6818ff32](https://github.com/regentmarkets/flutter-deriv-packages/commit/6818ff321b0875a039013e339e55cabba683a4fb))
+ - **DOCS**: update documentation based on latest changes. ([4ba23ea9](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ba23ea9b791d5d1d6aaf54fd4562ba1232e4259))
+
+#### `deriv_banner` - `v0.0.2`
+
+ - **FEAT**(deriv-banner): add. ([c551d991](https://github.com/regentmarkets/flutter-deriv-packages/commit/c551d9917837ac8f5a8e74e6e9818de5a90d2a95))
+
+#### `deriv_date_range_picker` - `v0.0.1+3`
+
+ - **FIX**: change color to general. ([cac78e49](https://github.com/regentmarkets/flutter-deriv-packages/commit/cac78e49f1650fe1ba5f7698b97ce7a5adaa1308))
+
+#### `deriv_env` - `v0.0.1+3`
+
+ - **REFACTOR**(deriv_env): make package independent of env file ([#318](https://github.com/regentmarkets/flutter-deriv-packages/issues/318)). ([a7242c81](https://github.com/regentmarkets/flutter-deriv-packages/commit/a7242c81b97fda70a622d7bbbb97fe997067117a))
+
+#### `deriv_numpad` - `v1.0.3`
+
+ - **FIX**: change color to general. ([cac78e49](https://github.com/regentmarkets/flutter-deriv-packages/commit/cac78e49f1650fe1ba5f7698b97ce7a5adaa1308))
+
+#### `deriv_theme` - `v2.3.0`
+
+ - **FEAT**: Ayaan/Added margins 112 and 164 ([#319](https://github.com/regentmarkets/flutter-deriv-packages/issues/319)). ([bf625820](https://github.com/regentmarkets/flutter-deriv-packages/commit/bf6258206b4bb4cbdd1ef6744e07e2adb8d0d5ee))
+
+#### `deriv_ui` - `v0.0.3`
+
+ - **REFACTOR**(deriv_auth_ui): [MOBC-629] Adding semantics to UI components ([#321](https://github.com/regentmarkets/flutter-deriv-packages/issues/321)). ([36a0c1fa](https://github.com/regentmarkets/flutter-deriv-packages/commit/36a0c1faa0b47d4f735a79daf67c9e2c0089938e))
+ - **FIX**: change color to general. ([cac78e49](https://github.com/regentmarkets/flutter-deriv-packages/commit/cac78e49f1650fe1ba5f7698b97ce7a5adaa1308))
+ - **FEAT**: country consent added in country_selection_layout. ([7cc23945](https://github.com/regentmarkets/flutter-deriv-packages/commit/7cc239455f1169777f8c11d78487f1e39e35e76b))
+
+
 ## 2023-12-18
 
 ### Changes

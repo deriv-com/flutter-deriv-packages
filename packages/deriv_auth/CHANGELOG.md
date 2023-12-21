@@ -1,3 +1,7 @@
+## 1.2.2
+
+ - **FIX**(deriv_auth): local currencies fromJson authorize_model.dart ([#367](https://github.com/regentmarkets/flutter-deriv-packages/issues/367)). ([4d39a44a](https://github.com/regentmarkets/flutter-deriv-packages/commit/4d39a44a2de970219b241db43bb06b2022f04a3f))
+
 ## 1.2.1
 
  - **FIX**(deriv_auth): local currencies fromJson authorize_model.dart ([#367](https://github.com/regentmarkets/flutter-deriv-packages/issues/367)). ([4d39a44a](https://github.com/regentmarkets/flutter-deriv-packages/commit/4d39a44a2de970219b241db43bb06b2022f04a3f))

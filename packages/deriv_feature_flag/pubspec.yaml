@@ -1,6 +1,6 @@
 name: deriv_feature_flag
 description: A new Flutter package project.
-version: 0.0.1
+version: 0.0.1+1
 publish_to: none
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_env
-      ref: deriv_env-v0.0.1+1
+      ref: deriv_env-v0.0.1+3
   flutter:
     sdk: flutter
   growthbook_sdk_flutter: ^3.0.0+0
