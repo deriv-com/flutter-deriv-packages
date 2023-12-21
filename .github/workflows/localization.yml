@@ -45,5 +45,5 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.PAT }}
-          title: "chore(version): Crowdin Localization Generated"
+          title: "chore(deriv_localizations): Crowdin Localization Generated"
           base: master
