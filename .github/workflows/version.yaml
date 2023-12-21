@@ -44,7 +44,6 @@ jobs:
       - name: Push tag
         id: push-tag
         run: |
-          git tag finaltest12345
           output=$(git push --tags 2>&1)
 
           if [[ $output == *"Everything up-to-date"* ]]; then
