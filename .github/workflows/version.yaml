@@ -47,12 +47,12 @@ jobs:
           echo "PUSH_OUTPUT=$output" >> $GITHUB_ENV
 
       - name: Make the script files executable
-        if: ${{ env.PUSH_OUTPUT != *"Everything up-to-date"* }}
+        if: ${{ !contains(env.PUSH_OUTPUT, 'Everything up-to-date') }}
         run: chmod +x readme.sh
         working-directory: ./scripts
 
       - name: Update README.md
-        if: ${{ env.PUSH_OUTPUT != *"Everything up-to-date"* }}
+        if: ${{ !contains(env.PUSH_OUTPUT, 'Everything up-to-date') }}
         run: bash readme.sh
         working-directory: ./scripts
 

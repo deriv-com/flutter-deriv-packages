@@ -1,0 +1,34 @@
+name: send_slack_notifications
+description: Send Slack notifications
+inputs:
+  SLACK_WEBHOOK_URL:
+    description: "Slack webhook URL"
+    required: true
+  status:
+    description: "Job status"
+    required: true
+  release_type:
+    description: "Release type"
+    required: true
+  version:
+    description: "Version"
+    required: true
+    default: "N/A"
+runs:
+  using: composite
+  steps:
+    - name: Send Slack Notification on Success
+      run: |
+        curl -X POST -H "Content-type: application/json" --data '{
+            "blocks": [
+                {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "*Packages:*\n- *deriv_feature_flag-v0.0.1*\n\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md"
+              }
+            }
+            ]
+        }' \
+          ${{ inputs.SLACK_WEBHOOK_URL }}
+      shell: bash
