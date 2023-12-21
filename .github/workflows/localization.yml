@@ -29,8 +29,8 @@ jobs:
       
       - name: Setup Config
         run: |
-          git config --global user.name 'bassam-deriv'
-          git config --global user.email 'bassam.elobeid@regentmarkets.com'
+          git config --global user.name 'mobile-apps-deriv'
+          git config --global user.email 'mobileapps@regentmarkets.com'
 
       - name: Make the script files executable
         run: chmod +x l10n.sh
