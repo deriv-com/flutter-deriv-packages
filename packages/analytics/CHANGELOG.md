@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**(analytics): add sokmething. ([c35a6fa9](https://github.com/regentmarkets/flutter-deriv-packages/commit/c35a6fa98e8608336bc238995fcc230bd3d3e143))
+
 ## 1.1.0
 
  - **FEAT**(analytics): add sokmething. ([c35a6fa9](https://github.com/regentmarkets/flutter-deriv-packages/commit/c35a6fa98e8608336bc238995fcc230bd3d3e143))

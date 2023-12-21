@@ -15,6 +15,49 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`analytics` - `v1.2.0`](#analytics---v120)
+ - [`deriv_banner` - `v0.0.3`](#deriv_banner---v003)
+ - [`deriv_date_range_picker` - `v0.0.1+4`](#deriv_date_range_picker---v0014)
+ - [`deriv_expandable_bottom_sheet` - `v0.0.1+4`](#deriv_expandable_bottom_sheet---v0014)
+ - [`deriv_numpad` - `v1.0.4`](#deriv_numpad---v104)
+
+---
+
+#### `analytics` - `v1.2.0`
+
+ - **FEAT**(analytics): add sokmething. ([c35a6fa9](https://github.com/regentmarkets/flutter-deriv-packages/commit/c35a6fa98e8608336bc238995fcc230bd3d3e143))
+
+#### `deriv_banner` - `v0.0.3`
+
+ - **FEAT**(deriv-banner): add. ([c551d991](https://github.com/regentmarkets/flutter-deriv-packages/commit/c551d9917837ac8f5a8e74e6e9818de5a90d2a95))
+
+#### `deriv_date_range_picker` - `v0.0.1+4`
+
+ - **FIX**: update dependencies. ([3df2560a](https://github.com/regentmarkets/flutter-deriv-packages/commit/3df2560ae2e1e7f5918dc632036001a4b6fb14bb))
+ - **FIX**: change color to general. ([cac78e49](https://github.com/regentmarkets/flutter-deriv-packages/commit/cac78e49f1650fe1ba5f7698b97ce7a5adaa1308))
+
+#### `deriv_expandable_bottom_sheet` - `v0.0.1+4`
+
+ - **FIX**: update dependencies. ([3df2560a](https://github.com/regentmarkets/flutter-deriv-packages/commit/3df2560ae2e1e7f5918dc632036001a4b6fb14bb))
+
+#### `deriv_numpad` - `v1.0.4`
+
+ - **FIX**: update dependencies. ([3df2560a](https://github.com/regentmarkets/flutter-deriv-packages/commit/3df2560ae2e1e7f5918dc632036001a4b6fb14bb))
+ - **FIX**: change color to general. ([cac78e49](https://github.com/regentmarkets/flutter-deriv-packages/commit/cac78e49f1650fe1ba5f7698b97ce7a5adaa1308))
+
+
+## 2023-12-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`analytics` - `v1.1.0`](#analytics---v110)
  - [`deriv_auth` - `v1.2.2`](#deriv_auth---v122)
  - [`deriv_auth_ui` - `v0.0.3`](#deriv_auth_ui---v003)
