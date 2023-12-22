@@ -64,7 +64,7 @@ class WebSocket {
 
   /// Closes the connection.
   Future<void> close([int? code, String? reason]) async {
-    final ConnectionState state = _connectionController.state;
+    final DerivConnectionState state = _connectionController.state;
 
     if (state is DisconnectedState) {
       return;
@@ -96,7 +96,7 @@ class WebSocket {
         pingInterval: pingInterval,
       ).timeout(timeout);
 
-      final ConnectionState connectionState = _connectionController.state;
+      final DerivConnectionState connectionState = _connectionController.state;
 
       if (connectionState is ReconnectingState) {
         _connectionController.add(const ReconnectedState());
@@ -169,19 +169,19 @@ class WebSocket {
   }
 
   bool _isConnected() {
-    final ConnectionState state = _connectionController.state;
+    final DerivConnectionState state = _connectionController.state;
 
     return state is ConnectedState || state is ReconnectedState;
   }
 
   bool _isReconnecting() {
-    final ConnectionState state = _connectionController.state;
+    final DerivConnectionState state = _connectionController.state;
 
     return state is ReconnectingState;
   }
 
   bool _isDisconnecting() {
-    final ConnectionState state = _connectionController.state;
+    final DerivConnectionState state = _connectionController.state;
 
     return state is DisconnectingState;
   }

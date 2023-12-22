@@ -51,7 +51,7 @@ void main() {
 
         await expectLater(
           socket.connection,
-          emitsInOrder(<ConnectionState>[
+          emitsInOrder(<DerivConnectionState>[
             const ConnectingState(),
             const ConnectedState(),
           ]),
@@ -98,14 +98,15 @@ void main() {
           onConnection: (WebSocketChannel c) => channel = c,
         );
 
-        final List<ConnectionState> connectionStates = <ConnectionState>[];
+        final List<DerivConnectionState> connectionStates =
+            <DerivConnectionState>[];
 
         final WebSocket socket = WebSocket(Uri.parse('ws://localhost:$port'))
           ..connection.listen(connectionStates.add);
 
         await expectLater(
           socket.connection,
-          emitsInOrder(<ConnectionState>[
+          emitsInOrder(<DerivConnectionState>[
             const ConnectingState(),
             const ConnectedState(),
           ]),
@@ -118,7 +119,7 @@ void main() {
 
         expect(
           connectionStates,
-          equals(<ConnectionState>[
+          equals(<DerivConnectionState>[
             const ConnectingState(),
             const ConnectedState(),
             const DisconnectedState(code: closeCode, reason: closeReason),
@@ -135,7 +136,7 @@ void main() {
 
         await expectLater(
           socket.connection,
-          emitsInOrder(<ConnectionState>[
+          emitsInOrder(<DerivConnectionState>[
             const ReconnectingState(),
             const ReconnectedState(),
           ]),
@@ -153,14 +154,15 @@ void main() {
           () async {
         server = await createWebSocketServer();
 
-        final List<ConnectionState> connectionStates = <ConnectionState>[];
+        final List<DerivConnectionState> connectionStates =
+            <DerivConnectionState>[];
         final WebSocket socket = WebSocket(
           Uri.parse('ws://localhost:${server!.port}'),
         )..connection.listen(connectionStates.add);
 
         await expectLater(
           socket.connection,
-          emitsInOrder(<ConnectionState>[
+          emitsInOrder(<DerivConnectionState>[
             const ConnectingState(),
             const ConnectedState(),
           ]),
@@ -172,7 +174,7 @@ void main() {
 
         await expectLater(
           connectionStates,
-          equals(<ConnectionState>[
+          equals(<DerivConnectionState>[
             const ConnectingState(),
             const ConnectedState(),
             const DisconnectingState(),
@@ -204,7 +206,7 @@ void main() {
 
         await expectLater(
           socket.connection,
-          emitsInOrder(<ConnectionState>[
+          emitsInOrder(<DerivConnectionState>[
             const ConnectingState(),
             const ConnectedState(),
           ]),
@@ -252,7 +254,7 @@ void main() {
 
         await expectLater(
           socket.connection,
-          emitsInOrder(<ConnectionState>[
+          emitsInOrder(<DerivConnectionState>[
             const ConnectingState(),
             const ConnectedState(),
           ]),
@@ -291,7 +293,7 @@ void main() {
 
         await expectLater(
           socket.connection,
-          emitsInOrder(<ConnectionState>[const DisconnectedState()]),
+          emitsInOrder(<DerivConnectionState>[const DisconnectedState()]),
         );
 
         expect(socket.connection.state, equals(const DisconnectedState()));

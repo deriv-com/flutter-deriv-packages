@@ -1,46 +1,46 @@
 import 'package:equatable/equatable.dart';
 
 /// Base class for connection states.
-abstract class ConnectionState with EquatableMixin {
-  /// Initializes [ConnectionState].
-  const ConnectionState();
+abstract class DerivConnectionState with EquatableMixin {
+  /// Initializes [DerivConnectionState].
+  const DerivConnectionState();
 
   @override
   List<Object?> get props => <Object?>[];
 }
 
 /// Connectiong state, used when the connection is being established.
-class ConnectingState extends ConnectionState {
+class ConnectingState extends DerivConnectionState {
   /// Initializes [ConnectingState].
   const ConnectingState();
 }
 
 /// Connected state, used when the connection is established.
-class ConnectedState extends ConnectionState {
+class ConnectedState extends DerivConnectionState {
   /// Initializes [ConnectedState].
   const ConnectedState();
 }
 
 /// Reconnecting state, used when the connection is being established after a disconnection.
-class ReconnectingState extends ConnectionState {
+class ReconnectingState extends DerivConnectionState {
   /// Initializes [ReconnectingState].
   const ReconnectingState();
 }
 
 /// Reconnected state, used when the connection is established after a disconnection.
-class ReconnectedState extends ConnectionState {
+class ReconnectedState extends DerivConnectionState {
   /// Initializes [ReconnectedState].
   const ReconnectedState();
 }
 
 /// Disconnecting state, used when the connection is being closed.
-class DisconnectingState extends ConnectionState {
+class DisconnectingState extends DerivConnectionState {
   /// Initializes [DisconnectingState].
   const DisconnectingState();
 }
 
 /// Disconnected state, used when the connection is closed.
-class DisconnectedState extends ConnectionState {
+class DisconnectedState extends DerivConnectionState {
   /// Initializes [DisconnectedState].
   const DisconnectedState({
     this.code,
