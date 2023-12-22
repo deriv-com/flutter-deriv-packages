@@ -53,6 +53,21 @@ jobs:
           fi
         shell: bash
 
+      - name: Get new tags
+        id: new-tags
+        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
+        run: |
+          local_tags=$(git tag)
+          remote_tags=$(git ls-remote --tags origin | cut -d/ -f3)
+          new_tags=$(comm -23 <(sort <<<"$local_tags") <(sort <<<"$remote_tags"))
+
+          # Format new tags into a single line with '\n' between tags
+          formatted_tags=$(echo -e "$new_tags" | tr '\n' '\\n')
+
+          # Append the formatted tags to the file
+          echo -e "NEW_TAGS=$formatted_tags" >> "$GITHUB_OUTPUT"
+        shell: bash
+
       - name: Make the script files executable
         if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
         run: chmod +x readme.sh
@@ -62,6 +77,13 @@ jobs:
         if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
         run: bash readme.sh
         working-directory: ./scripts
+
+      - name: Send Slack Notification
+        uses: ./.github/actions/send_slack_notifications
+        with:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          TAGS: ${{ steps.new-tags.outputs.NEW_TAGS }}
 
       - name: Create Pull Request on updated changelog and pubspec file.
         uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
