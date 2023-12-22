@@ -13,9 +13,6 @@ jobs:
         working-directory: ./packages/deriv_localizations
     if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'l10n_master'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
