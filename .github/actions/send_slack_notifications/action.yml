@@ -22,7 +22,7 @@ runs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "<!here> *New Package Update*"
+                  "text": "<!channel> *New Package Update*"
                 }
               },
               {
