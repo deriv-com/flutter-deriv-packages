@@ -14,8 +14,10 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'l10n_master'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
+      - name: Git Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Setup Flutter
         uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
