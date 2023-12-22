@@ -19,6 +19,7 @@ This repository contains private packages & plugins that are used by the company
 | [deriv_http_client](./packages/deriv_http_client)                         | A package that provides a wrapper for http package.                                                                    |
 | [deriv_lint](./packages/deriv_lint)                                       | A Dart package that provides lint rules for Dart and Flutter.                                                          |
 | [deriv_live_chat](./packages/deriv_live_chat)                             | A plugin for live chat SDK support to dart.                                                                            |
+| [deriv_localizations](./packages/deriv_localizations)                             | A Package that contains the localization arb(coming from Crowdin) and dart generated files for flutter_deriv_packages.                                                                            |
 | [deriv_numpad](./packages/deriv_numpad)                                   | Number Pad Widget for number input.                                                                                    |
 | [deriv_rudderstack](./packages/deriv_rudderstack)                         | A plugin that add RudderStack SDK support to Flutter.                                                                  |
 | [deriv_signup_login](./packages/deriv_signup_login)                       | A package for handling in app signup and login.                                                                        |
