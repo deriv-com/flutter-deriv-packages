@@ -14,7 +14,7 @@ jobs:
       github.event.pull_request.merged == true && 
       !contains(github.event.pull_request.title, 'chore') && 
       !contains(github.event.pull_request.title, 'ci') && 
-      !contains(github.event.pull_request.title, 'add')
+      !contains(github.event.pull_request.title, 'add_package')
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
@@ -62,6 +62,10 @@ jobs:
         if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
         run: bash readme.sh
         working-directory: ./scripts
+
+      - name: Send Slack Notifications
+        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
+        uses: ./.github/actions/send_slack_notifications
 
       - name: Create Pull Request on updated changelog and pubspec file.
         uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
