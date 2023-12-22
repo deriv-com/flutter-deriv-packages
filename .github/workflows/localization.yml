@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
         with:
           channel: "stable"
           flutter-version: "3.10.2"
@@ -39,7 +39,7 @@ jobs:
         
 
       - name: Create Pull Request.
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
         with:
           token: ${{ secrets.PAT }}
           title: "chore(deriv_localizations): Crowdin Localization Generated"
