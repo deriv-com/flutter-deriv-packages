@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth_ui` - `v0.0.3`](#deriv_auth_ui---v003)
+
+---
+
+#### `deriv_auth_ui` - `v0.0.3`
+
+ - **FEAT**(deriv_auth_ui): add option to enable/disable forgot password & create account ([#352](https://github.com/regentmarkets/flutter-deriv-packages/issues/352)). ([1db8715b](https://github.com/regentmarkets/flutter-deriv-packages/commit/1db8715bb48474f89a464f8f777c927ec1fa313a))
+
+
 ## 2023-12-21
 
 ### Changes

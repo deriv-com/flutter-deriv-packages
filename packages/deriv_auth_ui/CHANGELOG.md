@@ -1,3 +1,7 @@
+## 0.0.3
+
+ - **FEAT**(deriv_auth_ui): add option to enable/disable forgot password & create account ([#352](https://github.com/regentmarkets/flutter-deriv-packages/issues/352)). ([1db8715b](https://github.com/regentmarkets/flutter-deriv-packages/commit/1db8715bb48474f89a464f8f777c927ec1fa313a))
+
 ## 0.0.2+2
 
  - **FIX**(deriv_auth_ui): login button enabled on invalid email and password ([#366](https://github.com/regentmarkets/flutter-deriv-packages/issues/366)). ([5109a0c0](https://github.com/regentmarkets/flutter-deriv-packages/commit/5109a0c0bdc2d5adcfe699db2a8abfcd499126d4))
