@@ -1,9 +1,19 @@
 import 'package:equatable/equatable.dart';
 
 /// Base class for connection states.
+@Deprecated('Use DerivConnectionState instead.')
 abstract class ConnectionState with EquatableMixin {
   /// Initializes [ConnectionState].
   const ConnectionState();
+
+  @override
+  List<Object?> get props => <Object?>[];
+}
+
+/// Base class for connection states.
+abstract class DerivConnectionState with EquatableMixin {
+  /// Initializes [DerivConnectionState].
+  const DerivConnectionState();
 
   @override
   List<Object?> get props => <Object?>[];
