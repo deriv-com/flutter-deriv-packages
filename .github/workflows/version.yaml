@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     if: >
       github.event.pull_request.merged == true && 
-      !contains(github.event.pull_request.title, 'chore') && 
-      !contains(github.event.pull_request.title, 'ci') && 
-      !contains(github.event.pull_request.title, 'add_package')
+      !startsWith(github.event.pull_request.title, 'chore') && 
+      !startsWith(github.event.pull_request.title, 'ci') && 
+      !startsWith(github.event.pull_request.title, 'add')
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
