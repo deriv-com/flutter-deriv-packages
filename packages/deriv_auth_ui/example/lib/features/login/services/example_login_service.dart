@@ -17,9 +17,7 @@ class ExampleLoginService extends BaseAuthService {
 
   @override
   Future<AuthorizeEntity> onLoginRequest(
-    GetTokensRequestModel request, [
-    Function? onInvalidJwtToken,
-  ]) async =>
+          {required GetTokensRequestModel request, String? userAgent}) async =>
       const AuthorizeEntity();
 
   @override

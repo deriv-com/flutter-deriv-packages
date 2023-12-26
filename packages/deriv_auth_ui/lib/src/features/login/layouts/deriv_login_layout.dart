@@ -22,6 +22,8 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onSocialAuthButtonPressed,
     required this.welcomeLabel,
     required this.greetingLabel,
+    this.isForgotPasswordEnabled = true,
+    this.isCreateAccountEnabled = true,
     this.isSocialAuthEnabled = true,
     this.authErrorStateHandler,
     this.onLoginError,
@@ -58,6 +60,12 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
+
+  /// Whether to display forgot password section.
+  final bool isForgotPasswordEnabled;
+
+  /// Whether to display create account section.
+  final bool isCreateAccountEnabled;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -112,7 +120,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       ..._buildTextFields(
                           isEnabled: state is! DerivAuthLoadingState),
                       const SizedBox(height: ThemeProvider.margin24),
-                      _buildForgotPassButton(),
+                      widget.isForgotPasswordEnabled
+                          ? _buildForgotPassButton()
+                          : const SizedBox(),
                       const SizedBox(height: ThemeProvider.margin24),
                       _buildLoginButton(),
                       const SizedBox(height: ThemeProvider.margin24),
@@ -129,7 +139,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
-                      _buildFooterSection(),
+                      widget.isCreateAccountEnabled
+                          ? _buildFooterSection()
+                          : const SizedBox(),
                     ],
                   ),
                 ),
@@ -293,7 +305,8 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   }
 
   bool _isFormValid() =>
-      _getEmailValue().isNotEmpty && _passwordController.text.isNotEmpty;
+      _getEmailValue().isValidEmail &&
+      _passwordController.text.isValidLoginPasswordLength;
 
   String? _emailValidator(String? input) {
     if (_getEmailValue().isValidEmail) {

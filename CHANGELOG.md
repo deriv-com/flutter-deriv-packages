@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth_ui` - `v0.0.3`](#deriv_auth_ui---v003)
+
+---
+
+#### `deriv_auth_ui` - `v0.0.3`
+
+ - **FEAT**(deriv_auth_ui): add option to enable/disable forgot password & create account ([#352](https://github.com/regentmarkets/flutter-deriv-packages/issues/352)). ([1db8715b](https://github.com/regentmarkets/flutter-deriv-packages/commit/1db8715bb48474f89a464f8f777c927ec1fa313a))
+
+
+## 2023-12-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth_ui` - `v0.0.2+2`](#deriv_auth_ui---v0022)
+
+---
+
+#### `deriv_auth_ui` - `v0.0.2+2`
+
+ - **FIX**(deriv_auth_ui): login button enabled on invalid email and password ([#366](https://github.com/regentmarkets/flutter-deriv-packages/issues/366)). ([5109a0c0](https://github.com/regentmarkets/flutter-deriv-packages/commit/5109a0c0bdc2d5adcfe699db2a8abfcd499126d4))
+
+
+## 2023-12-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v1.2.1`](#deriv_auth---v121)
+ - [`deriv_auth_ui` - `v0.0.2+1`](#deriv_auth_ui---v0021)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth_ui` - `v0.0.2+1`
+
+---
+
+#### `deriv_auth` - `v1.2.1`
+
+ - **FIX**(deriv_auth): local currencies fromJson authorize_model.dart ([#367](https://github.com/regentmarkets/flutter-deriv-packages/issues/367)). ([4d39a44a](https://github.com/regentmarkets/flutter-deriv-packages/commit/4d39a44a2de970219b241db43bb06b2022f04a3f))
+
+
 ## 2023-12-13
 
 ### Changes
