@@ -1,0 +1,113 @@
+package com.deriv.passkeys.deriv_passkeys
+
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.content.Context
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.credentials.CreateCredentialResponse;
+import androidx.credentials.CreatePublicKeyCredentialRequest;
+import androidx.credentials.Credential;
+import androidx.credentials.CredentialManager;
+import androidx.credentials.GetPasswordOption;
+import androidx.credentials.CredentialManagerCallback;
+import androidx.credentials.GetCredentialRequest;
+import androidx.credentials.GetCredentialResponse;
+import androidx.credentials.GetPublicKeyCredentialOption;
+import androidx.credentials.PublicKeyCredential;
+import androidx.credentials.exceptions.CreateCredentialCancellationException
+import androidx.credentials.exceptions.CreateCredentialException;
+import androidx.credentials.exceptions.CreateCredentialInterruptedException
+import androidx.credentials.exceptions.publickeycredential.CreatePublicKeyCredentialDomException
+import androidx.credentials.exceptions.CreateCredentialProviderConfigurationException
+import androidx.credentials.exceptions.CreateCredentialUnknownException
+import androidx.credentials.exceptions.CreateCredentialCustomException
+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+
+class PasskeyManager (context: Context) {
+
+    // Initialize the Credential Manager
+    private val credentialManager = CredentialManager.create(context)
+    private val coroutineScope = MainScope()
+    private val context = context;
+
+    fun createPasskey(requestJson: String, preferImmediatelyAvailableCredentials: Boolean) {
+        val createPublicKeyCredentialRequest = CreatePublicKeyCredentialRequest(
+                // Contains the request in JSON format. Uses the standard WebAuthn
+                // web JSON spec.
+                requestJson = requestJson,
+                // Defines whether you prefer to use only immediately available
+                // credentials, not hybrid credentials, to fulfill this request.
+                // This value is false by default.
+                preferImmediatelyAvailableCredentials = preferImmediatelyAvailableCredentials,
+        )
+
+        // Execute CreateCredentialRequest asynchronously to register credentials
+        // for a user account. Handle success and failure cases with the result and
+        // exceptions, respectively.
+        coroutineScope.launch {
+            try {
+                val result = credentialManager.createCredential(
+                        // Use an activity-based context to avoid undefined system
+                        // UI launching behavior
+                        context = context,
+                        request = createPublicKeyCredentialRequest,
+                )
+                print("handlePasskeyRegistrationResult($result)")
+            } catch (e : CreateCredentialException){
+                handleFailure(e)
+            }
+        }
+    }
+
+    fun handleFailure(e: CreateCredentialException) {
+        when (e) {
+            is CreatePublicKeyCredentialDomException -> {
+                // Handle the passkey DOM errors thrown according to the
+                // WebAuthn spec.
+                print("CreatePublicKeyCredentialDomException(${e.domError})")
+            }
+            is CreateCredentialCancellationException -> {
+                // The user intentionally canceled the operation and chose not
+                // to register the credential.
+                print("CreateCredentialCancellationException(${e.errorMessage})")
+            }
+            is CreateCredentialInterruptedException -> {
+                // Retry-able error. Consider retrying the call.
+                print("CreateCredentialInterruptedException(${e.errorMessage})")
+            }
+            is CreateCredentialProviderConfigurationException -> {
+                // Your app is missing the provider configuration dependency.
+                // Most likely, you're missing the
+                // "credentials-play-services-auth" module.
+                print("CreateCredentialProviderConfigurationException(${e.errorMessage})")
+            }
+            is CreateCredentialUnknownException -> {
+                print("CreateCredentialUnknownException(${e.errorMessage})")
+            }
+            is CreateCredentialCustomException -> {
+                // You have encountered an error from a 3rd-party SDK. If you
+                // make the API call with a request object that's a subclass of
+                // CreateCustomCredentialRequest using a 3rd-party SDK, then you
+                // should check for any custom exception type constants within
+                // that SDK to match with e.type. Otherwise, drop or log the
+                // exception.
+                print("CreateCredentialCustomException(${e.errorMessage})")
+            }
+            else -> Log.w(TAG, "Unexpected exception type ${e::class.java.name}")
+        }
+    }
+
+    fun signInWithPasskey() {
+        // Implement logic to sign in using a passkey
+    }
+
+    fun managePasskeys() {
+        // Implement logic to manage existing passkeys
+    }
+
+    // Additional helper methods as needed
+}
