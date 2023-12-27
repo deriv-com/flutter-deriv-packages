@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -17,8 +19,11 @@ class MethodChannelDerivPasskeys implements DerivPasskeysPlatform {
   }
 
   @override
-  Future<String?> createPasskey() async {
-    final passkey = await methodChannel.invokeMethod<String>('createPasskey');
+  Future<String?> createPasskey(Map<String, dynamic> requestJson) async {
+    // call final passkey = await methodChannel.invokeMethod<String>('createPasskey'); with requestJson
+    final jsonString = jsonEncode(requestJson);
+    final passkey = await methodChannel
+        .invokeMethod<String>('createPasskey', {'requestJson': jsonString});
     return passkey;
   }
 }

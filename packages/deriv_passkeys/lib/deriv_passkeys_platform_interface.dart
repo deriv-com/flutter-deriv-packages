@@ -27,7 +27,7 @@ abstract class DerivPasskeysPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> createPasskey() {
+  Future<String?> createPasskey(Map<String, dynamic> requestJson) {
     throw UnimplementedError('createPasskey() has not been implemented.');
   }
 }

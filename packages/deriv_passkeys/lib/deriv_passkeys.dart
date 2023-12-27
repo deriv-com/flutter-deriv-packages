@@ -5,7 +5,7 @@ class DerivPasskeys {
     return DerivPasskeysPlatform.instance.getPlatformVersion();
   }
 
-  Future<String?> createPasskey() {
-    return DerivPasskeysPlatform.instance.createPasskey();
+  Future<String?> createPasskey(Map<String, dynamic> requestJson) {
+    return DerivPasskeysPlatform.instance.createPasskey(requestJson);
   }
 }
