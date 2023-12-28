@@ -69,10 +69,10 @@ class _MyAppState extends State<MyApp> {
                 };
 
                 Map<String, dynamic> json = {
-                  "rp": {"id": "deriv.com", "name": "Deriv"},
+                  "rp": {"id": "pro-7837426045311437779.frontendapi.corbado.io", "name": "Deriv"},
                   "user": publicKeyCredentialUserEntityJson,
                   "challenge":
-                      "Base64URLStringChallenge", // Replace with actual Base64URL encoded challenge
+                  "Base64URLStringChallenge", // Replace with actual Base64URL encoded challenge
                   "pubKeyCredParams": [
                     {"alg": -7, "type": "public-key"}
                   ],
