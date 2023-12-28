@@ -35,8 +35,7 @@ class PasskeyManager (private val activity: Activity) {
     private val coroutineScope = MainScope()
 
     fun createPasskey(requestJson: String, preferImmediatelyAvailableCredentials: Boolean) {
-        println(requestJson)
-        println("PasskeyManager@createPasskey called!!!")
+        println("PasskeyManager@createPasskey called.")
         val createPublicKeyCredentialRequest = CreatePublicKeyCredentialRequest(
                 // Contains the request in JSON format. Uses the standard WebAuthn
                 // web JSON spec.
@@ -47,8 +46,7 @@ class PasskeyManager (private val activity: Activity) {
                 preferImmediatelyAvailableCredentials = preferImmediatelyAvailableCredentials,
         )
 
-        println("createPublicKeyCredentialRequest passed!!!")
-        println(createPublicKeyCredentialRequest)
+        println("createPublicKeyCredentialRequest passed.")
 
         // Execute CreateCredentialRequest asynchronously to register credentials
         // for a user account. Handle success and failure cases with the result and
@@ -61,7 +59,7 @@ class PasskeyManager (private val activity: Activity) {
                         context = activity,
                         request = createPublicKeyCredentialRequest,
                 )
-                println("handlePasskeyRegistrationResult($result)")
+                println("handlePasskeyRegistrationResult(${result.data.toString()})")
             } catch (e : CreateCredentialException){
                 handleFailure(e)
             }

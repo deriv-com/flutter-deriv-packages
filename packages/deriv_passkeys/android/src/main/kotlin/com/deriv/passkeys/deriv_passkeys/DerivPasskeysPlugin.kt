@@ -32,16 +32,13 @@ public class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAwar
   }
 
   override fun onDetachedFromActivity() {
-    // Implement logic when the Activity is detached (if necessary)
   }
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    // Implement logic when the Activity is reattached after configuration changes (if necessary)
     activity = binding.activity
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    // Implement logic when the Activity is detached for configuration changes (if necessary)
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
@@ -49,14 +46,6 @@ public class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAwar
       "createPasskey" -> {
         println("createPasskey method called in Android.")
         val requestJsonString: String? = call.argument<String>("requestJson")
-
-
-
-        if(requestJsonString != null) {
-          println(requestJsonString)
-        }else{
-          println("requestJsonString is null!!!")
-        }
 
         requestJsonString?.let{
           println("it: ")
@@ -66,8 +55,6 @@ public class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAwar
           passkeyManager.createPasskey(it, preferImmediatelyAvailableCredentials)
           result.success("good")
         }
-
-         // You can modify this based on the function result
       }
       "getPlatformVersion" -> {
         result.success("Android ${android.os.Build.VERSION.RELEASE}")
