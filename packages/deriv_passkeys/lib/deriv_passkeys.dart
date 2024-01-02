@@ -8,4 +8,8 @@ class DerivPasskeys {
   Future<String?> createPasskey(Map<String, dynamic> requestJson) {
     return DerivPasskeysPlatform.instance.createPasskey(requestJson);
   }
+
+  Future<String?> signInWithPasskey(Map<String, dynamic> requestJson) {
+    return DerivPasskeysPlatform.instance.signInWithPasskey(requestJson);
+  }
 }

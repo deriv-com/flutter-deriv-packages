@@ -26,4 +26,13 @@ class MethodChannelDerivPasskeys implements DerivPasskeysPlatform {
         .invokeMethod<String>('createPasskey', {'requestJson': jsonString});
     return passkey;
   }
+
+  @override
+  Future<String?> signInWithPasskey(Map<String, dynamic> requestJson) async {
+    // call final passkey = await methodChannel.invokeMethod<String>('signInWithPasskey'); with requestJson
+    final jsonString = jsonEncode(requestJson);
+    final passkey = await methodChannel
+        .invokeMethod<String>('signInWithPasskey', {'requestJson': jsonString});
+    return passkey;
+  }
 }

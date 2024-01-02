@@ -48,12 +48,38 @@ public class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAwar
         val requestJsonString: String? = call.argument<String>("requestJson")
 
         requestJsonString?.let{
-          println("it: ")
-          println(it)
           val preferImmediatelyAvailableCredentials = call.argument<Boolean>("preferImmediatelyAvailableCredentials") ?: false
           val passkeyManager = PasskeyManager(activity)
-          passkeyManager.createPasskey(it, preferImmediatelyAvailableCredentials)
-          result.success("good")
+          passkeyManager.createPasskey(it, preferImmediatelyAvailableCredentials, object : Callback {
+            override fun onSuccess(value: String) {
+              result.success(value)
+            }
+
+            override fun onFailure(error: String) {
+//              throw Exception(message = error);
+//              result.failure(Exception(message = error))
+            }
+          })
+
+        }
+      }
+      "signInWithPasskey" -> {
+        println("signInWithPasskey method called in Android.")
+        val requestJsonString: String? = call.argument<String>("requestJson")
+
+        requestJsonString?.let{
+          val passkeyManager = PasskeyManager(activity)
+          passkeyManager.signInWithPasskey(it, object : Callback {
+            override fun onSuccess(value: String) {
+              result.success(value)
+            }
+
+            override fun onFailure(error: String) {
+//              throw Exception(message = error);
+//              result.failure(Exception(message = error))
+            }
+          })
+
         }
       }
       "getPlatformVersion" -> {

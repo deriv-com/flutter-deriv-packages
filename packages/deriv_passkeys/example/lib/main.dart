@@ -60,19 +60,28 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: InkWell(
+          title: const Text('Plugin example app'),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Running on: $_platformVersion\n'),
+            LargeBlueInkWellButton(
               onTap: () async {
                 Map<String, dynamic> publicKeyCredentialUserEntityJson = {
                   "id": base64UrlEncodeString("yourUserId"),
-                  "name": "user@example.com",
+                  "name": "bassam@deriv.com",
                   "displayName": "User Name"
                 };
 
                 Map<String, dynamic> json = {
-                  "rp": {"id": "pro-7837426045311437779.frontendapi.corbado.io", "name": "Deriv"},
+                  "rp": {
+                    "id": "pro-7837426045311437779.frontendapi.corbado.io",
+                    "name": "Deriv"
+                  },
                   "user": publicKeyCredentialUserEntityJson,
                   "challenge":
-                  "Base64URLStringChallenge", // Replace with actual Base64URL encoded challenge
+                      "Base64URLStringChallenge", // Replace with actual Base64URL encoded challenge
                   "pubKeyCredParams": [
                     {"alg": -7, "type": "public-key"}
                   ],
@@ -82,13 +91,72 @@ class _MyAppState extends State<MyApp> {
                   "attestation": "none",
                   "extensions": {}
                 };
+                print("asdfasdf");
                 final passkey = await _derivPasskeysPlugin.createPasskey(json);
-                print(passkey);
+                print("passkey: " + passkey.toString());
               },
-              child: const Text('Plugin example app')),
+              text: 'Create Passkey',
+            ),
+            SizedBox(height: 16),
+            LargeBlueInkWellButton(
+              onTap: () async {
+                Map<String, dynamic> publicKeyCredentialUserEntityJson = {
+                  "id": base64UrlEncodeString("yourUserId"),
+                  "name": "bassam123@deriv.com",
+                  "displayName": "User Name"
+                };
+                Map<String, dynamic> json = {
+                  "challenge": "T1xCsnxM2DNL2KdK5CLa6fMhD7OBqho6syzInk_n-Uo",
+                  "allowCredentials": [],
+                  "timeout": 1800000,
+                  "userVerification": "required",
+                  "rpId": "pro-7837426045311437779.frontendapi.corbado.io"
+                };
+                print("asdfasdf");
+                final passkey =
+                    await _derivPasskeysPlugin.signInWithPasskey(json);
+                print("login passkey: " + passkey.toString());
+              },
+              text: 'Sign in with Passkey',
+            )
+          ],
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+      ),
+    );
+  }
+}
+
+// large blue InkWell Button stateless
+class LargeBlueInkWellButton extends StatelessWidget {
+  final String text;
+  final Function() onTap;
+
+  const LargeBlueInkWellButton({
+    super.key,
+    required this.text,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        height: 48,
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
       ),
     );
