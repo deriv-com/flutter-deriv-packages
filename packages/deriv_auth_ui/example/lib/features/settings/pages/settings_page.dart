@@ -23,7 +23,6 @@ _saveValues({required String appId, required String endpoint}) {
   logger.log('endpoint is $endpoint');
 }
 
-_updateFlavorConfig() async {
+Future<void> _updateFlavorConfig() async {
   logger.log('Flavor CONFIG is updated');
-  await Future.value(Duration.zero);
 }
