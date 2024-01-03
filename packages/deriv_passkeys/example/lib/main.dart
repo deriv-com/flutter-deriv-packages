@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
               onTap: () async {
                 Map<String, dynamic> publicKeyCredentialUserEntityJson = {
                   "id": base64UrlEncodeString("yourUserId"),
-                  "name": "bassam@deriv.com",
+                  "name": "bassam+1@deriv.com",
                   "displayName": "User Name"
                 };
 
@@ -87,10 +87,16 @@ class _MyAppState extends State<MyApp> {
                   ],
                   "timeout": 60000,
                   "excludeCredentials": [], // Array of credentials to exclude
-                  "authenticatorSelection": {},
+                  "authenticatorSelection": {
+                    "authenticatorAttachment": "platform",
+                    "requireResidentKey": true,
+                    "residentKey": "required",
+                    "userVerification": "required"
+                  },
                   "attestation": "none",
                   "extensions": {}
                 };
+
                 print("asdfasdf");
                 final passkey = await _derivPasskeysPlugin.createPasskey(json);
                 print("passkey: " + passkey.toString());
@@ -102,7 +108,7 @@ class _MyAppState extends State<MyApp> {
               onTap: () async {
                 Map<String, dynamic> publicKeyCredentialUserEntityJson = {
                   "id": base64UrlEncodeString("yourUserId"),
-                  "name": "bassam123@deriv.com",
+                  "name": "bassam+1@deriv.com",
                   "displayName": "User Name"
                 };
                 Map<String, dynamic> json = {

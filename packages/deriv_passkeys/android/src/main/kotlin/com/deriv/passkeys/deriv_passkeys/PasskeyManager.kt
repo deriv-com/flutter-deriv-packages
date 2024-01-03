@@ -26,6 +26,7 @@ import androidx.credentials.exceptions.CreateCredentialProviderConfigurationExce
 import androidx.credentials.exceptions.CreateCredentialUnknownException
 import androidx.credentials.exceptions.CreateCredentialCustomException
 import androidx.credentials.exceptions.GetCredentialException
+import androidx.credentials.exceptions.NoCredentialException
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
@@ -74,7 +75,6 @@ class PasskeyManager (private val activity: Activity) {
 
             } catch (e : CreateCredentialException){
                 handleFailure(e)
-                throw e
             }
         }
     }
@@ -142,8 +142,11 @@ class PasskeyManager (private val activity: Activity) {
 
                 responseJson?.let { callback.onSuccess(it) } ?: callback.onFailure("No response JSON found")
             } catch (e : GetCredentialException) {
-                println(e.message)
-                throw e
+                if(e is NoCredentialException){
+                    Log.e("CredentialManager", "No credential available", e)
+                }else{
+                    Log.e("CredentialManager", "Unknown Error", e)
+                }
             }
         }
     }
