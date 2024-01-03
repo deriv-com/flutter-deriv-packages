@@ -51,7 +51,7 @@ Future<void> openInAppTabActivityWebView({
     await _openInAppTabView(url, onClosed);
   } on PlatformException catch (_) {
     await InAppBrowser().openUrlRequest(
-      urlRequest: URLRequest(url: Uri.parse(url)),
+      urlRequest: URLRequest(url: WebUri(url)),
     );
   }
 }
@@ -66,16 +66,12 @@ Future<void> _openInAppTabView(String url, VoidCallback onClosed) async {
   appSafariBrowser.onBrowserClosed = onClosed;
 
   return appSafariBrowser.open(
-    url: Uri.parse(url),
-    options: ChromeSafariBrowserClassOptions(
-      android: AndroidChromeCustomTabsOptions(
-        shareState: CustomTabsShareState.SHARE_STATE_OFF,
-      ),
-      ios: IOSSafariOptions(
-        dismissButtonStyle: IOSSafariDismissButtonStyle.CLOSE,
-        presentationStyle: IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
-        transitionStyle: IOSUIModalTransitionStyle.CROSS_DISSOLVE,
-      ),
+    url: WebUri(url),
+    settings: ChromeSafariBrowserSettings(
+      shareState: CustomTabsShareState.SHARE_STATE_OFF,
+      dismissButtonStyle: DismissButtonStyle.CLOSE,
+      presentationStyle: ModalPresentationStyle.OVER_FULL_SCREEN,
+      transitionStyle: ModalTransitionStyle.CROSS_DISSOLVE,
     ),
   );
 }

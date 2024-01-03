@@ -18,7 +18,7 @@ dependencies:
   equatable: ^2.0.3
   url_launcher: ^6.1.10
   webview_flutter: ^4.2.1
-  flutter_inappwebview: ^5.7.2+3
+  flutter_inappwebview: ^6.0.0
   flutter_bloc: ^8.1.2
   deriv_http_client:
     git:
