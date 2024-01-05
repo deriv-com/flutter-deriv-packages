@@ -11,7 +11,7 @@ deriv_ui:
   git:
     url: git@github.com:regentmarkets/flutter-deriv-packages.git
     path: packages/deriv_ui
-    ref: deriv_ui-v0.0.2 #your prefered version
+    ref: deriv_ui-v0.0.2+1 #your prefered version
 ```
 
 ## Packages
@@ -20,7 +20,7 @@ deriv_ui:
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase' and 'Segment'.                                           | [v1.0.2](./packages/analytics/CHANGELOG.md)                       |
 | [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v1.2.1 ](./packages/deriv_auth/CHANGELOG.md)                     |
-| [deriv_auth_ui](./packages/deriv_auth_ui)                                 | A Dart package that provides Authentication UI for Deriv applications.                                                 | [v0.0.2+2](./packages/deriv_auth_ui/CHANGELOG.md)                 |
+| [deriv_auth_ui](./packages/deriv_auth_ui)                                 | A Dart package that provides Authentication UI for Deriv applications.                                                 | [v0.0.3+1](./packages/deriv_auth_ui/CHANGELOG.md)                 |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                       | [v0.0.1](./packages/deriv_banner/CHANGELOG.md)                    |
 | [flutter_deriv_bloc_manager](./packages/deriv_bloc_manager)               | Provides some tools to manage blocs.                                                                                   | [v0.0.1](./packages/flutter_deriv_bloc_manager/CHANGELOG.md)      |
 | [deriv_datadog](./packages/deriv_datadog)                                 | A package that helps you monitor the performance and user interactions of your Flutter app by sending data to Datadog. | [v0.0.1](./packages/deriv_datadog/CHANGELOG.md)                   |
@@ -36,10 +36,10 @@ deriv_ui:
 | [deriv_store_launcher](./packages/deriv_store_launcher)                   | A plugin to launch app stores base on platform and manufacturer.                                                       | [v0.0.1](./packages/deriv_store_launcher/CHANGELOG.md)            |
 | [deriv_technical_analysis](./packages/deriv_technical_analysis)           | A Dart package for Technical Analysis.                                                                                 | [v0.0.1](./packages/deriv_technical_analysis/CHANGELOG.md)        |
 | [deriv_theme](./packages/deriv_theme)                                     | A package that contains the theme used by Deriv products.                                                              | [v2.2.0](./packages/deriv_theme/CHANGELOG.md)                     |
-| [deriv_ui](./packages/deriv_ui)                                           | A package that contains the UI components used by Deriv products.                                                      | [v0.0.2](./packages/deriv_ui/CHANGELOG.md)                        |
+| [deriv_ui](./packages/deriv_ui)                                           | A package that contains the UI components used by Deriv products.                                                      | [v0.0.2+1](./packages/deriv_ui/CHANGELOG.md)                        |
 | [deriv_utilities](./packages/deriv_utilities)                             | A package that contains the utilities including helper functions, mixins, and extensions.                              | [v1.0.0](./packages/deriv_utilities/CHANGELOG.md)                 |
 | [deriv_websocket](./packages/deriv_web_socket_client)                     | A package that provides a easy to use websocket client.                                                                | [v1.0.0](./packages/deriv_web_socket_client/CHANGELOG.md)         |
-| [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                | [v0.0.1](./packages/deriv_web_view/CHANGELOG.md)                  |
+| [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                | [v0.0.1+1](./packages/deriv_web_view/CHANGELOG.md)                  |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        | [v1.0.0+1](./packages/form_builder/CHANGELOG.md)                  |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           | [v1.2.0](./packages/update_checker/CHANGELOG.md)                  |
 | [deriv_feature_flag](./packages/deriv_feature_flag)                       | A package to provide feature flag functionality for apps.                                                              | [v0.0.1](./packages/deriv_feature_flag/CHANGELOG.md)              |
