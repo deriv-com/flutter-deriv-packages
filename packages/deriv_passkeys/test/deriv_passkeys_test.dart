@@ -7,9 +7,16 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockDerivPasskeysPlatform
     with MockPlatformInterfaceMixin
     implements DerivPasskeysPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
+
+  @override
+  Future<String?> createPasskey(Map<String, dynamic> requestJson) =>
+      Future.value('42');
+
+  @override
+  Future<String?> signInWithPasskey(Map<String, dynamic> requestJson) =>
+      Future.value('42');
 }
 
 void main() {
