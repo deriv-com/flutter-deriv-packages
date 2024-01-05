@@ -15,8 +15,6 @@ runs:
   steps:
     - name: Send Slack Notification on Package Update
       run: |
-        PR_TITLE="${{ inputs.PR_TITLE }}"
-        TAGS="${{ inputs.TAGS }}"
         curl -X POST -H 'Content-type: application/json' \
         --data '{
         	"blocks": [
@@ -31,14 +29,14 @@ runs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*\"$PR_TITLE\"*"
+                  "text": "*${{ inputs.PR_TITLE }}*"
                 }
               },
               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*Packages released:*\n- *\"$TAGS\"*\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md"
+                  "text": "*Packages released:*\n- *${{ inputs.TAGS }}*\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md"
               }
             }
           ]
