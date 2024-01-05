@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_live_chat` - `v0.0.1+1`](#deriv_live_chat---v0011)
+
+---
+
+#### `deriv_live_chat` - `v0.0.1+1`
+
+ - **FIX**(deriv_live_chat): [DERG-750] Glitch on clicking LiveChat icon ([#307](https://github.com/regentmarkets/flutter-deriv-packages/issues/307)). ([658716d0](https://github.com/regentmarkets/flutter-deriv-packages/commit/658716d09caa60dbc02fdedeb7c7b452cbdc06c6))
+
+
+## 2024-01-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_web_view` - `v0.0.1+1`](#deriv_web_view---v0011)
  - [`deriv_ui` - `v0.0.2+1`](#deriv_ui---v0021)
  - [`deriv_auth_ui` - `v0.0.3+1`](#deriv_auth_ui---v0031)
