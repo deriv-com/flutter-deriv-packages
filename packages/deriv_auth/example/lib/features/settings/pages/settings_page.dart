@@ -1,5 +1,5 @@
 import 'dart:developer' as logger;
-import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
