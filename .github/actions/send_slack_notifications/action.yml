@@ -1,0 +1,45 @@
+name: send_slack_notifications
+description: Send Slack notifications
+inputs:
+  SLACK_WEBHOOK_URL:
+    description: "Slack webhook URL"
+    required: true
+  PR_TITLE:
+    description: "Pull request title"
+    required: true
+  TAGS:
+    description: "New tags released"
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Send Slack Notification on Package Update
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{
+        	"blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "<!channel> *New Package Update*"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*${{ inputs.PR_TITLE }}*"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Packages released:*\n- *${{ inputs.TAGS }}*\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md"
+              }
+            }
+          ]
+        }' \
+          ${{ inputs.SLACK_WEBHOOK_URL }}
+      shell: bash
