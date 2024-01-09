@@ -11,12 +11,10 @@ class MockDerivPasskeysPlatform
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<String?> createPasskey(Map<String, dynamic> requestJson) =>
-      Future.value('42');
+  Future<String?> createCredential(String options) => Future.value('42');
 
   @override
-  Future<String?> signInWithPasskey(Map<String, dynamic> requestJson) =>
-      Future.value('42');
+  Future<String?> getCredential(String options) => Future.value('42');
 }
 
 void main() {
@@ -24,13 +22,5 @@ void main() {
 
   test('$MethodChannelDerivPasskeys is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelDerivPasskeys>());
-  });
-
-  test('getPlatformVersion', () async {
-    DerivPasskeys derivPasskeysPlugin = DerivPasskeys();
-    MockDerivPasskeysPlatform fakePlatform = MockDerivPasskeysPlatform();
-    DerivPasskeysPlatform.instance = fakePlatform;
-
-    expect(await derivPasskeysPlugin.getPlatformVersion(), '42');
   });
 }

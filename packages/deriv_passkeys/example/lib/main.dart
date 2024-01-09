@@ -1,9 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 
 void main() {
@@ -18,36 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
   final _derivPasskeysPlugin = DerivPasskeys();
-
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion = await _derivPasskeysPlugin.getPlatformVersion() ??
-          'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
 
   String base64UrlEncodeString(String input) {
     var bytes = utf8.encode(input);
@@ -65,20 +33,16 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Running on: $_platformVersion\n'),
             LargeBlueInkWellButton(
               onTap: () async {
                 Map<String, dynamic> publicKeyCredentialUserEntityJson = {
                   "id": base64UrlEncodeString("yourUserId"),
-                  "name": "bassam+1@deriv.com",
+                  "name": "bassam+3@deriv.com",
                   "displayName": "User Name"
                 };
 
                 Map<String, dynamic> json = {
-                  "rp": {
-                    "id": "pro-7837426045311437779.frontendapi.corbado.io",
-                    "name": "Deriv"
-                  },
+                  "rp": {"id": "qa163.deriv.dev", "name": "Deriv"},
                   "user": publicKeyCredentialUserEntityJson,
                   "challenge":
                       "Base64URLStringChallenge", // Replace with actual Base64URL encoded challenge
@@ -97,9 +61,19 @@ class _MyAppState extends State<MyApp> {
                   "extensions": {}
                 };
 
-                print("asdfasdf");
-                final passkey = await _derivPasskeysPlugin.createPasskey(json);
-                print("passkey: " + passkey.toString());
+                final isPasskeySupported =
+                    await _derivPasskeysPlugin.isSupported();
+
+                final creationOptions = jsonEncode(json);
+                _derivPasskeysPlugin
+                    .createCredential(creationOptions)
+                    .then((response) {
+                  print(response);
+                  // Send response to the server
+                }).catchError((error) {
+                  print(error);
+                  // Handle error
+                });
               },
               text: 'Create Passkey',
             ),
@@ -116,12 +90,21 @@ class _MyAppState extends State<MyApp> {
                   "allowCredentials": [],
                   "timeout": 1800000,
                   "userVerification": "required",
-                  "rpId": "pro-7837426045311437779.frontendapi.corbado.io"
+                  "rpId": "qa163.deriv.dev"
                 };
-                print("asdfasdf");
-                final passkey =
-                    await _derivPasskeysPlugin.signInWithPasskey(json);
-                print("login passkey: " + passkey.toString());
+
+                final isPasskeySupported =
+                    await _derivPasskeysPlugin.isSupported();
+
+// Obtain creationOptions from the server
+                final getOptions = jsonEncode(json);
+                _derivPasskeysPlugin.getCredential(getOptions).then((response) {
+                  print(response);
+                  // Send response to the server
+                }).catchError((error) {
+                  print(error);
+                  // Handle error
+                });
               },
               text: 'Sign in with Passkey',
             )

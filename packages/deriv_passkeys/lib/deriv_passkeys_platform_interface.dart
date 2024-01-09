@@ -1,6 +1,5 @@
+import 'package:deriv_passkeys/deriv_passkeys_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
-import 'deriv_passkeys_method_channel.dart';
 
 abstract class DerivPasskeysPlatform extends PlatformInterface {
   /// Constructs a DerivPasskeysPlatform.
@@ -27,11 +26,13 @@ abstract class DerivPasskeysPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> createPasskey(Map<String, dynamic> requestJson) {
-    throw UnimplementedError('createPasskey() has not been implemented.');
+  Future<String?> createCredential(String options) {
+    throw UnimplementedError(
+        'createCredential(String options) has not been implemented.');
   }
 
-  Future<String?> signInWithPasskey(Map<String, dynamic> requestJson) {
-    throw UnimplementedError('signInWithPasskey() has not been implemented.');
+  Future<String?> getCredential(String options) {
+    throw UnimplementedError(
+        'getCredential(String options) has not been implemented.');
   }
 }

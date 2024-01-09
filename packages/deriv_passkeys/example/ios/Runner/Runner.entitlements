@@ -4,8 +4,10 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>https://42e0-94-201-147-222.ngrok-free.app</string>
-		<string>https://pro-7837426045311437779.frontendapi.corbado.io</string>
+		<string>applinks:pro-7837426045311437779.frontendapi.corbado.io</string>
+		<string>webcredentials:pro-7837426045311437779.frontendapi.corbado.io</string>
+		<string>applinks:qa163.deriv.dev</string>
+		<string>webcredentials:qa163.deriv.dev</string>
 	</array>
 </dict>
 </plist>

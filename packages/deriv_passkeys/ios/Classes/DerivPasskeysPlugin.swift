@@ -1,42 +1,65 @@
 import Flutter
 import UIKit
+import AuthenticationServices
 
 public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
-  public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "deriv_passkeys", binaryMessenger: registrar.messenger())
-    let instance = DerivPasskeysPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
-  }
+    
+    
+    
+    public static func register(with registrar: FlutterPluginRegistrar) {
+        let channel = FlutterMethodChannel(name: "deriv_passkeys", binaryMessenger: registrar.messenger())
+        let instance = DerivPasskeysPlugin()
+        registrar.addMethodCallDelegate(instance, channel: channel)
+    }
+    
+    public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
 
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    switch call.method {
-    case "getPlatformVersion":
-      result("iOS " + UIDevice.current.systemVersion)
-    case "createPasskey":
-      if #available(iOS 15.0, *) {
-        guard let args = call.arguments as? [String: Any],
-              let jsonString = args["requestJson"] as? String,
-              let jsonData = jsonString.data(using: .utf8),
-              let arguments = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else {
-            result(FlutterError(code: "ARGUMENT_ERROR",
-                                message: "Failed to parse the arguments",
-                                details: nil))
-            return
-        }
+        let derivPasskeysManager = DerivPasskeysManager()
 
-        let challengeString = arguments["challenge"] as? String ?? ""
-        let userIDString = arguments["userID"] as? String ?? ""
-        
-        let passkeyManager = PasskeyManager()
-        passkeyManager.createPasskey(challengeString: challengeString, userIDString: userIDString)
-        result("Passkey creation initiated")
-    } else {
+        switch call.method {
+        case "getPlatformVersion":
+            result(getPlatformVersion())
+        case "createCredential":
+        if #available(iOS 15.0, *) {
+            if let args = call.arguments as? Dictionary<String, Any>, let options = args["options"] as? String {
+                derivPasskeysManager.createCredential(options) { credential, error in
+                    if let err = error {
+                        result(FlutterError(code: String(describing: type(of: err)), message: "\(err)", details: nil))
+                        return
+                    }
+                    result(credential!)
+                }
+            }
+            else {
+                result(FlutterError(code: "CreateCredentialError", message: "Options not found", details: nil))
+            }
+            } else {
         result(FlutterError(code: "UNAVAILABLE",
                             message: "Passkey creation not available on this iOS version",
                             details: nil))
     }
-    default:
-      result(FlutterMethodNotImplemented)
+        case "getCredential":
+        if #available(iOS 15.0, *) {
+            if let args = call.arguments as? Dictionary<String, Any>, let options = args["options"] as? String {
+                derivPasskeysManager.getCredential(options) { credential, error in
+                    if let err = error {
+                        result(FlutterError(code: String(describing: type(of: err)), message: "\(err)", details: nil))
+                        return
+                    }
+                    result(credential!)
+                }
+            }
+            else {
+                result(FlutterError(code: "GetCredentialError", message: "Options not found", details: nil))
+            }
+            } else {
+        result(FlutterError(code: "UNAVAILABLE",
+                            message: "Passkey creation not available on this iOS version",
+                            details: nil))
     }
-  }
+        default:
+            result(FlutterMethodNotImplemented)
+        }
+    }
 }
+
