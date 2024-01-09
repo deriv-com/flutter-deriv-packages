@@ -1,6 +1,6 @@
 name: deriv_ui
 description: A new Flutter package project.
-version: 0.0.2
+version: 0.0.2+1
 publish_to: none
 
 environment:
@@ -21,7 +21,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_web_view
-      ref: deriv_web_view-v0.0.1
+      ref: deriv_web_view-v0.0.1+1
 
   flutter_svg: ^1.0.3
 
