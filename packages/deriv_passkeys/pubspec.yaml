@@ -1,7 +1,7 @@
 name: deriv_passkeys
 description: A new Flutter project.
 version: 0.0.1
-homepage:
+publish_to: 'none'
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -9,6 +9,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  deriv_theme:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_theme
+      ref: deriv_theme-v2.2.0
+  
+  flutter_svg: ^2.0.9
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
@@ -39,10 +47,8 @@ flutter:
       ios:
         pluginClass: DerivPasskeysPlugin
 
-  # To add assets to your plugin package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/svg/passkey_icon.svg
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages

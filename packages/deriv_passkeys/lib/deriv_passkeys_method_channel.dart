@@ -1,12 +1,12 @@
 import 'package:deriv_passkeys/deriv_passkeys_platform_interface.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// An implementation of [FlutterPasskeyPlatform] that uses method channels.
 class MethodChannelDerivPasskeys extends DerivPasskeysPlatform {
-  /// The method channel used to interact with the native platform.
-  @visibleForTesting
-  final methodChannel = const MethodChannel('deriv_passkeys');
+  MethodChannel methodChannel;
+
+  MethodChannelDerivPasskeys({MethodChannel? channel})
+      : methodChannel = channel ?? const MethodChannel('deriv_passkeys');
 
   @override
   Future<String?> getPlatformVersion() async {

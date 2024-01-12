@@ -2,7 +2,8 @@ import Flutter
 import UIKit
 import AuthenticationServices
 
-public class DerivPasskeysManager{
+@available(iOS 15.0, *)
+public class DerivPasskeysManager{        
     enum PluginError: Error {
         case unknownError
         case notFound(String)
@@ -33,14 +34,12 @@ public class DerivPasskeysManager{
         }
     }
     
-    private func getPlatformVersion() -> String {
-        return "iOS " + UIDevice.current.systemVersion
-    }
-    
+    @available(iOS 15.0, *)
     private func getPlatformPublicKeyCredentials() -> [String] {
         return (UserDefaults.standard.object(forKey: "platformPublicKeyCredentials") as? [String]) ?? []
     }
     
+    @available(iOS 15.0, *)
     private func savePlatformPublicKeyCredential(_ credential: ASAuthorizationCredential) {
         var credentialID = ""
         if let credential = credential as? ASAuthorizationPlatformPublicKeyCredentialRegistration {
@@ -58,6 +57,8 @@ public class DerivPasskeysManager{
         }
     }
     
+    
+    @available(iOS 15.0, *)
     private func handlePlatformExcludedCredentials(_ options: PublicKeyCredentialRequestOptions) throws {
         let excludeCredentials = options.excludeCredentials
         guard excludeCredentials.count > 0 else { return }
@@ -71,6 +72,7 @@ public class DerivPasskeysManager{
         }
     }
     
+    @available(iOS 15.0, *)
     private func findPlatformCredentials(_ credentials: [Data]) -> [Data] {
         guard credentials.count > 0 else { return [] }
         var foundCredentials: [Data] = []
@@ -86,6 +88,7 @@ public class DerivPasskeysManager{
         return foundCredentials
     }
     
+    @available(iOS 15.0, *)
     private func createPlatformPublicKeyCredentialRegistrationRequest(_ options: PublicKeyCredentialRequestOptions) throws -> ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest {
         let rpId = try options.rpId
         let challenge = try options.challenge
@@ -107,6 +110,7 @@ public class DerivPasskeysManager{
         return registrationRequest
     }
     
+    @available(iOS 15.0, *)
     private func createSecurityKeyPublicKeyCredentialRegistrationRequest(_ options: PublicKeyCredentialRequestOptions) throws -> ASAuthorizationSecurityKeyPublicKeyCredentialRegistrationRequest {
         let rpId = try options.rpId
         let challenge = try options.challenge
@@ -131,6 +135,7 @@ public class DerivPasskeysManager{
         return registrationRequest
     }
     
+    @available(iOS 15.0, *)
     private func createPlatformPublicKeyCredentialAssertionRequest(_ options: PublicKeyCredentialRequestOptions) throws -> ASAuthorizationPlatformPublicKeyCredentialAssertionRequest {
         let rpId = try options.rpId
         let challenge = try options.challenge
@@ -147,6 +152,7 @@ public class DerivPasskeysManager{
         return assertionRequest
     }
     
+    @available(iOS 15.0, *)
     private func createSecurityKeyPublicKeyCredentialAssertionRequest(_ options: PublicKeyCredentialRequestOptions) throws -> ASAuthorizationSecurityKeyPublicKeyCredentialAssertionRequest {
         let rpId = try options.rpId
         let challenge = try options.challenge
@@ -162,6 +168,7 @@ public class DerivPasskeysManager{
         return assertionRequest
     }
     
+    @available(iOS 15.0, *)
     private func getPresentationContextProvider() throws -> ASAuthorizationControllerPresentationContextProviding {
         let keyWindow = UIApplication.shared.connectedScenes
             .filter({$0.activationState == .foregroundActive})
@@ -184,6 +191,7 @@ public class DerivPasskeysManager{
         return contextProvider
     }
     
+    @available(iOS 15.0, *)
     private func requestCredential(_ authorizationRequests: [ASAuthorizationRequest]) throws -> ASAuthorizationCredential {
         let authController = ASAuthorizationController(authorizationRequests: authorizationRequests)
         let authCtrlDelete = AuthCtrlDelegate()
@@ -206,6 +214,7 @@ public class DerivPasskeysManager{
         return authorization.credential
     }
     
+    @available(iOS 15.0, *)
     private func generateCredentialRegistrationResponse(_ credentialID: Data, _ rawClientDataJSON: Data, _ rawAttestationObject: Data? = nil) throws -> [String: Any] {
         let response = [
             "id": credentialID.base64url,
@@ -224,6 +233,7 @@ public class DerivPasskeysManager{
         return response
     }
     
+    @available(iOS 15.0, *)
     private func generateCredentialAssertionResponse(_ credentialID: Data, _ userID: Data, _ signature: Data, _ rawAuthenticatorData: Data, _ rawClientDataJSON: Data) throws -> [String: Any] {
         let response = [
             "id": credentialID.base64url,
@@ -240,6 +250,7 @@ public class DerivPasskeysManager{
         return response
     }
     
+    @available(iOS 15.0, *)
     private func generateCredentialResponse(_ credential: ASAuthorizationCredential) throws -> [String: Any] {
         var response: [String: Any] = [:]
         switch (credential) {
@@ -261,6 +272,7 @@ public class DerivPasskeysManager{
         return response
     }
     
+    @available(iOS 15.0, *)
     private func requestCredentialRegistration(_ options: PublicKeyCredentialRequestOptions) throws -> String {
         var authorizationRequests: [ASAuthorizationRequest] = []
         switch options.authenticatorAttachment {
@@ -277,6 +289,7 @@ public class DerivPasskeysManager{
         return try response.jsonString
     }
     
+    @available(iOS 15.0, *)
     private func requestCredentialAssertion(_ options: PublicKeyCredentialRequestOptions) throws -> String {
         var authorizationRequests: [ASAuthorizationRequest] = []
         switch options.authenticatorAttachment {
@@ -302,7 +315,8 @@ public class DerivPasskeysManager{
         return try response.jsonString
     }
     
-    private func createCredential(_ options: String, _ callback: @escaping (_ credential: String?, _ error: Error?) -> Void) {
+    @available(iOS 15.0, *)
+    public func createCredential(_ options: String, _ callback: @escaping (_ credential: String?, _ error: Error?) -> Void) {
         Task {
             do {
                 let credential = try requestCredentialRegistration(PublicKeyCredentialRequestOptions(options))
@@ -313,7 +327,8 @@ public class DerivPasskeysManager{
         }
     }
     
-    private func getCredential(_ options: String, _ callback: @escaping (_ credential: String?, _ error: Error?) -> Void) {
+    @available(iOS 15.0, *)
+    public func getCredential(_ options: String, _ callback: @escaping (_ credential: String?, _ error: Error?) -> Void) {
         Task {
             do {
                 let credential = try requestCredentialAssertion(PublicKeyCredentialRequestOptions(options))
@@ -325,6 +340,7 @@ public class DerivPasskeysManager{
     }
 }
 
+@available(iOS 15.0, *)
 extension DerivPasskeysManager.PluginError: CustomStringConvertible {
     var description: String {
         switch self {
@@ -340,24 +356,28 @@ extension DerivPasskeysManager.PluginError: CustomStringConvertible {
     }
 }
 
+@available(iOS 15.0, *)
 extension DerivPasskeysManager.PluginError: LocalizedError {
     private var errorDescription: String {
         return self.description
     }
 }
 
+@available(iOS 15.0, *)
 extension FlutterViewController: ASAuthorizationControllerPresentationContextProviding {
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
 }
 
+@available(iOS 15.0, *)
 extension Data {
     var base64url: String {
         self.base64EncodedString().replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_").replacingOccurrences(of: "=", with: "")
     }
 }
 
+@available(iOS 15.0, *)
 extension Dictionary where Key == String {
     var jsonString: String {
         get throws {

@@ -32,9 +32,6 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
   private lateinit var channel: MethodChannel
   private var activity: Activity? = null
 
-  private fun getPlatformVersion(): String {
-    return "Android ${android.os.Build.VERSION.RELEASE}"
-  }
 
   private fun createCredential(@NonNull options: String, @NonNull callback: (credential: String?, e: Exception?) -> Unit) {
     if (activity == null) {
@@ -90,7 +87,7 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
-      "getPlatformVersion" -> result.success(getPlatformVersion())
+      "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
       "createCredential" -> {
         val options = call.argument("options") as String?
         if (options == null) {

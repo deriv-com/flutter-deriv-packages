@@ -1,6 +1,5 @@
 import Flutter
 import UIKit
-import AuthenticationServices
 
 public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
     
@@ -14,13 +13,14 @@ public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
 
-        let derivPasskeysManager = DerivPasskeysManager()
+        
 
         switch call.method {
         case "getPlatformVersion":
-            result(getPlatformVersion())
+            result("iOS " + UIDevice.current.systemVersion)
         case "createCredential":
         if #available(iOS 15.0, *) {
+            let derivPasskeysManager = DerivPasskeysManager()
             if let args = call.arguments as? Dictionary<String, Any>, let options = args["options"] as? String {
                 derivPasskeysManager.createCredential(options) { credential, error in
                     if let err = error {
@@ -40,6 +40,7 @@ public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
     }
         case "getCredential":
         if #available(iOS 15.0, *) {
+            let derivPasskeysManager = DerivPasskeysManager()
             if let args = call.arguments as? Dictionary<String, Any>, let options = args["options"] as? String {
                 derivPasskeysManager.getCredential(options) { credential, error in
                     if let err = error {

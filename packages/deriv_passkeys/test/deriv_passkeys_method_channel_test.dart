@@ -2,26 +2,104 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:deriv_passkeys/deriv_passkeys_method_channel.dart';
 
+class MockMethodChannel extends MethodChannel {
+  MockMethodChannel() : super('deriv_passkeys');
+
+  Future<Object?> handler(MethodCall methodCall) async {
+    return invokeMethod<Object?>(methodCall.method, methodCall.arguments);
+  }
+
+  @override
+  Future<T?> invokeMethod<T>(String method, [dynamic arguments]) async {
+    switch (method) {
+      case 'getPlatformVersion':
+        return '42' as T?;
+      case 'createCredential':
+        String options = arguments['options'];
+        if (options == 'valid options') {
+          return 'credential created' as T?;
+        } else {
+          throw PlatformException(
+            code: 'invalid_argument',
+            message: 'Invalid options provided',
+          );
+        }
+      case 'getCredential':
+        String options = arguments['options'];
+        if (options == 'valid options') {
+          return 'credential retrieved' as T?;
+        } else {
+          throw PlatformException(
+            code: 'invalid_argument',
+            message: 'Invalid options provided',
+          );
+        }
+      default:
+        throw PlatformException(
+          code: 'method_not_implemented',
+          message: 'Method not implemented on platform',
+        );
+    }
+  }
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  MethodChannelDerivPasskeys platform = MethodChannelDerivPasskeys();
-  const MethodChannel channel = MethodChannel('deriv_passkeys');
+  late MethodChannelDerivPasskeys platform;
+  late MockMethodChannel mockChannel;
 
   setUp(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
-      channel,
-      (MethodCall methodCall) async {
-        return '42';
-      },
+    mockChannel = MockMethodChannel();
+    platform = MethodChannelDerivPasskeys();
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+      mockChannel,
+      mockChannel.handler,
     );
   });
 
   tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(mockChannel, null);
   });
 
   test('getPlatformVersion', () async {
     expect(await platform.getPlatformVersion(), '42');
+  });
+
+  test('createCredential with valid options', () async {
+    const options = 'valid options';
+    final response = await platform.createCredential(options);
+    expect(response, 'credential created');
+  });
+
+  test('createCredential with invalid options throws PlatformException', () {
+    const options = 'invalid options';
+    expect(
+      () => platform.createCredential(options),
+      throwsA(isA<PlatformException>()),
+    );
+  });
+
+  test('getCredential with valid options', () async {
+    const options = 'valid options';
+    final response = await platform.getCredential(options);
+    expect(response, 'credential retrieved');
+  });
+
+  test('getCredential with invalid options throws PlatformException', () {
+    const options = 'invalid options';
+    expect(
+      () => platform.getCredential(options),
+      throwsA(isA<PlatformException>()),
+    );
+  });
+
+  test('Method not implemented throws PlatformException', () async {
+    expect(
+      () => platform.methodChannel.invokeMethod('nonExistentMethod'),
+      throwsA(isA<PlatformException>()),
+    );
   });
 }
