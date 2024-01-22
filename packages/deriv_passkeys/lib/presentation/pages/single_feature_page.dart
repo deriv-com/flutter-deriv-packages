@@ -1,4 +1,4 @@
-import 'package:architecture_template_poc/features/single_feature/presentation/widgets/single_feature_widget.dart';
+import 'package:deriv_passkeys/presentation/widgets/continue_with_passkey_button.dart';
 import 'package:flutter/material.dart';
 
 /// Main singleFeature flow in wallets.
@@ -12,5 +12,6 @@ class SingleFeaturePage extends StatelessWidget {
   static const String routeName = 'single_feature_page';
 
   @override
-  Widget build(BuildContext context) => const Scaffold(body: SingleFeatureWidget());
+  Widget build(BuildContext context) =>
+      const Scaffold(body: ContinueWithPasskeyButton());
 }

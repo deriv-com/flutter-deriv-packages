@@ -1,5 +1,4 @@
-
-import 'package:architecture_template_poc/core/data/base_data_source.dart';
+import 'package:deriv_passkeys/core/data/base_data_source.dart';
 
 /// [BaseSingleFeatureDataSource] defines a contract for all SingleFeature data sources.
 ///

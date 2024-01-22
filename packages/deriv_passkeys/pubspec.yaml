@@ -15,9 +15,19 @@ dependencies:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
       ref: deriv_theme-v2.2.0
+  deriv_ui:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_ui
+      ref: deriv_ui-v0.0.2+1
+
   
   flutter_svg: ^2.0.9
   plugin_platform_interface: ^2.0.2
+
+
+dependency_overrides:
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:

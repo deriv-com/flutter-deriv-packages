@@ -1,13 +1,12 @@
+import 'package:deriv_passkeys/interactor/services/deriv_passkeys_method_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:deriv_passkeys/deriv_passkeys_method_channel.dart';
 
 class MockMethodChannel extends MethodChannel {
   MockMethodChannel() : super('deriv_passkeys');
 
-  Future<Object?> handler(MethodCall methodCall) async {
-    return invokeMethod<Object?>(methodCall.method, methodCall.arguments);
-  }
+  Future<Object?> handler(MethodCall methodCall) async =>
+      invokeMethod<Object?>(methodCall.method, methodCall.arguments);
 
   @override
   Future<T?> invokeMethod<T>(String method, [dynamic arguments]) async {
@@ -15,7 +14,7 @@ class MockMethodChannel extends MethodChannel {
       case 'getPlatformVersion':
         return '42' as T?;
       case 'createCredential':
-        String options = arguments['options'];
+        final String options = arguments['options'];
         if (options == 'valid options') {
           return 'credential created' as T?;
         } else {
@@ -25,7 +24,7 @@ class MockMethodChannel extends MethodChannel {
           );
         }
       case 'getCredential':
-        String options = arguments['options'];
+        final String options = arguments['options'];
         if (options == 'valid options') {
           return 'credential retrieved' as T?;
         } else {
@@ -69,13 +68,13 @@ void main() {
   });
 
   test('createCredential with valid options', () async {
-    const options = 'valid options';
-    final response = await platform.createCredential(options);
+    const String options = 'valid options';
+    final String? response = await platform.createCredential(options);
     expect(response, 'credential created');
   });
 
   test('createCredential with invalid options throws PlatformException', () {
-    const options = 'invalid options';
+    const String options = 'invalid options';
     expect(
       () => platform.createCredential(options),
       throwsA(isA<PlatformException>()),
@@ -83,13 +82,13 @@ void main() {
   });
 
   test('getCredential with valid options', () async {
-    const options = 'valid options';
-    final response = await platform.getCredential(options);
+    const String options = 'valid options';
+    final String? response = await platform.getCredential(options);
     expect(response, 'credential retrieved');
   });
 
   test('getCredential with invalid options throws PlatformException', () {
-    const options = 'invalid options';
+    const String options = 'invalid options';
     expect(
       () => platform.getCredential(options),
       throwsA(isA<PlatformException>()),

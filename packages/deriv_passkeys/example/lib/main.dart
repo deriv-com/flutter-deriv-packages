@@ -1,5 +1,8 @@
+import 'package:deriv_passkeys/presentation/states/bloc/deriv_passkeys_bloc.dart';
 import 'package:deriv_passkeys/presentation/widgets/continue_with_passkey_button.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,16 +18,48 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
+    return BlocProvider(
+      create: (context) => DerivPasskeysBloc(),
+      child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: context.theme.colors.secondary,
+          fontFamily: context.theme.fontFamily,
+          brightness: Brightness.dark,
+          bottomSheetTheme: BottomSheetThemeData(
+            backgroundColor: Colors.black.withOpacity(0),
+            modalBarrierColor: Colors.black.withOpacity(0.72),
+          ),
+          unselectedWidgetColor: context.theme.colors.lessProminent,
+          toggleButtonsTheme: ToggleButtonsThemeData(
+            textStyle: context.theme.textStyle(
+              textStyle: TextStyles.body2,
+            ),
+          ),
+          colorScheme: const ColorScheme.dark().copyWith(
+            primary: context.theme.colors.prominent,
+            secondary: context.theme.colors.coral,
+          ),
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: context.theme.colors.lessProminent,
+            selectionHandleColor: context.theme.colors.lessProminent,
+            selectionColor: context.theme.colors.lessProminent,
+          ),
+          appBarTheme: AppBarTheme.of(context).copyWith(
+            backgroundColor: context.theme.colors.secondary,
+            centerTitle: false,
+          ),
         ),
-        body: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ContinueWithPasskeyButton(),
-          ],
+        home: Scaffold(
+          backgroundColor: context.theme.colors.primary,
+          appBar: AppBar(
+            title: const Text('Deriv Passkeys example app'),
+          ),
+          body: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ContinueWithPasskeyButton(),
+            ],
+          ),
         ),
       ),
     );

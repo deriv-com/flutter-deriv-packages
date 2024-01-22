@@ -1,5 +1,4 @@
-
-import 'package:architecture_template_poc/core/domain/base_repository.dart';
+import 'package:deriv_passkeys/core/domain/base_repository.dart';
 
 /// [BaseSingleFeatureRepository] defines a contract for all SingleFeature repositories.
 ///

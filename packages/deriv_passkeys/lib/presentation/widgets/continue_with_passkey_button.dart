@@ -1,92 +1,62 @@
-import 'dart:convert';
-
-import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/presentation/constants/assets.dart';
+import 'package:deriv_passkeys/presentation/states/bloc/deriv_passkeys_bloc.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:deriv_ui/deriv_ui.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ContinueWithPasskeyButton extends StatelessWidget {
+/// A button that allows users to continue with passkey
+class ContinueWithPasskeyButton extends StatefulWidget {
+  /// constructs a [ContinueWithPasskeyButton]
   const ContinueWithPasskeyButton({super.key});
 
-  String base64UrlEncodeString(String input) {
-    final List<int> bytes = utf8.encode(input);
-    final String base64Str = base64Url.encode(bytes);
-    return base64Str;
+  @override
+  State<ContinueWithPasskeyButton> createState() =>
+      _ContinueWithPasskeyButtonState();
+}
+
+class _ContinueWithPasskeyButtonState extends State<ContinueWithPasskeyButton> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<DerivPasskeysBloc>().add(const DerivPasskeysInit());
   }
 
   @override
-  Widget build(BuildContext context) => IconButton(
-        padding: EdgeInsets.zero,
-        iconSize: ThemeProvider.iconSize40,
-        icon: SvgPicture.asset(
-          Assets.passkeySvgIcon,
-          package: 'deriv_passkeys',
-        ),
-        onPressed: () async {
-          final _derivPasskeysPlugin = DerivPasskeys();
-
-          final Map<String, dynamic> publicKeyCredentialUserEntityJson = {
-            'id': base64UrlEncodeString('yourUserId'),
-            'name': 'bassam+3@deriv.com',
-            'displayName': 'User Name'
-          };
-
-          final Map<String, dynamic> signupJson = {
-            'rp': <String, String>{
-              'id': 'pro-7837426045311437779.frontendapi.corbado.io',
-              'name': 'Deriv'
+  Widget build(BuildContext context) =>
+      BlocBuilder<DerivPasskeysBloc, DerivPasskeysState>(
+        builder: (BuildContext context, DerivPasskeysState state) {
+          if (state is DerivPasskeysNotSupported) {
+            return const SizedBox();
+          }
+          if (state is DerivPasskeysError) {
+            // TODO(bassam-deriv): Handle error
+          }
+          return SecondaryButton(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SvgPicture.asset(
+                  Assets.passkeySvgIcon,
+                  package: 'deriv_passkeys',
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'Continue with Passkey',
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.body2,
+                    color: context.theme.colors.prominent,
+                  ),
+                ),
+              ],
+            ),
+            onPressed: () async {
+              context
+                  .read<DerivPasskeysBloc>()
+                  .add(DerivPasskeysGetCredential());
             },
-            'user': publicKeyCredentialUserEntityJson,
-            'challenge':
-                'Base64URLStringChallenge', // Replace with actual Base64URL encoded challenge
-            'pubKeyCredParams': <Map<String, Object>>[
-              <String, Object>{'alg': -7, 'type': 'public-key'}
-            ],
-            'timeout': 60000,
-            'excludeCredentials': [], // Array of credentials to exclude
-            'authenticatorSelection': <String, Object>{
-              'authenticatorAttachment': 'platform',
-              'requireResidentKey': true,
-              'residentKey': 'required',
-              'userVerification': 'required'
-            },
-            'attestation': 'none',
-            'extensions': {}
-          };
-
-          final isPasskeySupported = await _derivPasskeysPlugin.isSupported();
-
-          final String creationOptions = jsonEncode(signupJson);
-          await _derivPasskeysPlugin
-              .createCredential(creationOptions)
-              .then((response) {
-            print(response);
-            // Send response to the server
-          }).catchError((error) {
-            print(error);
-            // Handle error
-          });
-
-          await Future<void>.delayed(const Duration(seconds: 5));
-
-          final Map<String, dynamic> loginJson = {
-            'challenge': 'T1xCsnxM2DNL2KdK5CLa6fMhD7OBqho6syzInk_n-Uo',
-            'allowCredentials': [],
-            'timeout': 1800000,
-            'userVerification': 'required',
-            'rpId': 'pro-7837426045311437779.frontendapi.corbado.io'
-          };
-
-// Obtain creationOptions from the server
-          final String getOptions = jsonEncode(loginJson);
-          _derivPasskeysPlugin.getCredential(getOptions).then((response) {
-            print(response);
-            // Send response to the server
-          }).catchError((error) {
-            print(error);
-            // Handle error
-          });
+          );
         },
       );
 }
