@@ -62,7 +62,7 @@ jobs:
           new_tags=$(comm -23 <(sort <<<"$local_tags") <(sort <<<"$remote_tags"))
 
           # Format new tags into a single line with '\n' between tags
-          formatted_tags=$(echo -e "$new_tags" | tr '\n' '\\n')
+          formatted_tags=$(echo -e "$new_tags" | tr '\n' '  ')
 
           # Append the formatted tags to the file
           echo -e "NEW_TAGS=$formatted_tags" >> "$GITHUB_OUTPUT"
