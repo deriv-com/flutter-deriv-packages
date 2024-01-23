@@ -28,7 +28,7 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
-          title: Text(context.localization.labelNotAvailable),
+          title: Text(context.derivAuthLocalization.labelNotAvailable),
         ),
         body: Container(
           padding:
@@ -50,14 +50,15 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: ThemeProvider.margin16),
           Text(
-            context.localization.warnNotAvailableCountriesTitle(appName),
+            context.derivAuthLocalization
+                .warnNotAvailableCountriesTitle(appName),
             style: TextStyles.title,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: ThemeProvider.margin08),
           RichText(
             text: TextSpan(
-              text: context.localization.warnNotAvailableCountries,
+              text: context.derivAuthLocalization.warnNotAvailableCountries,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
                 color: context.theme.colors.general,
@@ -65,7 +66,7 @@ class DerivUnavailableCountryLayout extends StatelessWidget {
               children: <InlineSpan>[
                 buildTextSpanHyperlink(
                   context: context,
-                  label: context.localization.labelLiveChat,
+                  label: context.derivAuthLocalization.labelLiveChat,
                   onTap: onLiveChatPressed,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1Bold,

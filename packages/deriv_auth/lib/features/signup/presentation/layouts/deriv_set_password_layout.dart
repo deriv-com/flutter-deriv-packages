@@ -99,7 +99,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
               SvgPicture.asset(Assets.passwordIcon, package: 'deriv_auth'),
               const SizedBox(height: ThemeProvider.margin16),
               Text(
-                context.localization.labelKeepPassword,
+                context.derivAuthLocalization.labelKeepPassword,
                 style: TextStyles.title,
                 textAlign: TextAlign.center,
               ),
@@ -142,7 +142,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
         focusNode: _passwordFocusNode,
         controller: _passwordTextController,
         obscureText: !_isPasswordVisible,
-        labelText: context.localization.labelCreatePassword,
+        labelText: context.derivAuthLocalization.labelCreatePassword,
         labelColor: context.theme.colors.disabled,
         focusedLabelColor: context.theme.colors.blue,
         suffixIcon: IconButton(
@@ -168,7 +168,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
                   strokeWidth: 3,
                 )
               : Text(
-                  context.localization.actionStartTrading,
+                  context.derivAuthLocalization.actionStartTrading,
                   style: TextStyles.button
                       .copyWith(color: context.theme.colors.prominent),
                 ),
@@ -183,7 +183,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
         onPressed: widget.onPreviousPressed,
         child: Center(
           child: Text(
-            context.localization.actionPrevious,
+            context.derivAuthLocalization.actionPrevious,
             style: context.theme.textStyle(
               textStyle: TextStyles.button,
             ),

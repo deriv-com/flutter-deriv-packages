@@ -14,7 +14,7 @@ class DerivSuccessPassChangeLayout extends StatelessWidget {
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
           title: Text(
-            context.localization.labelResetPassword,
+            context.derivAuthLocalization.labelResetPassword,
             style: TextStyles.title,
           ),
         ),
@@ -37,14 +37,14 @@ class DerivSuccessPassChangeLayout extends StatelessWidget {
                   height: ThemeProvider.margin16,
                 ),
                 Text(
-                  context.localization.informYourPassHasBeenReset,
+                  context.derivAuthLocalization.informYourPassHasBeenReset,
                   style: TextStyles.title,
                 ),
                 const SizedBox(
                   height: ThemeProvider.margin08,
                 ),
                 Text(
-                  context.localization.informRedirectLogin,
+                  context.derivAuthLocalization.informRedirectLogin,
                   textAlign: TextAlign.center,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,

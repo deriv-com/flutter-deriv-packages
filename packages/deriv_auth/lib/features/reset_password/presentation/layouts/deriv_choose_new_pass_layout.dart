@@ -46,7 +46,7 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
           title: Text(
-            context.localization.labelResetPassword,
+            context.derivAuthLocalization.labelResetPassword,
             style: TextStyles.title,
           ),
         ),
@@ -103,14 +103,14 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
             ),
             const SizedBox(height: ThemeProvider.margin48),
             Text(
-              context.localization.labelChooseNewPass,
+              context.derivAuthLocalization.labelChooseNewPass,
               style: TextStyles.title,
             ),
             const SizedBox(height: ThemeProvider.margin24),
             BaseTextField(
               controller: _passController,
               focusNode: _passFocusNode,
-              labelText: context.localization.labelCreatePass,
+              labelText: context.derivAuthLocalization.labelCreatePass,
               obscureText: !_isPasswordVisible,
               suffixIcon: IconButton(
                 icon: Icon(
@@ -155,7 +155,7 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
                   width: ThemeProvider.iconSize16,
                 )
               : Text(
-                  context.localization.actionResetPass,
+                  context.derivAuthLocalization.actionResetPass,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent.withOpacity(
@@ -186,7 +186,7 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
       return null;
     }
 
-    return context.localization.informInvalidPasswordFormat;
+    return context.derivAuthLocalization.informInvalidPasswordFormat;
   }
 
   bool isFormValid() => _passwordValidator(_passController.text) == null;

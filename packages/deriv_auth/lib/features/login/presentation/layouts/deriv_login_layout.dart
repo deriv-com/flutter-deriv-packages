@@ -93,7 +93,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
           appBar: AppBar(
             elevation: ThemeProvider.zeroMargin,
             title: Text(
-              context.localization.labelLogIn,
+              context.derivAuthLocalization.labelLogIn,
               style: TextStyles.title,
             ),
             backgroundColor: context.theme.colors.secondary,
@@ -126,7 +126,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       _buildLoginButton(),
                       const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthDivider(
-                        label: context.localization.informLoginOptions,
+                        label: context.derivAuthLocalization.informLoginOptions,
                         isVisible: widget.isSocialAuthEnabled,
                       ),
                       if (widget.isSocialAuthEnabled)
@@ -173,7 +173,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
           semanticLabel: SemanticsLabels.loginEmailFieldSemantic,
           controller: _emailController,
           focusNode: _emailFocusNode,
-          labelText: context.localization.labelEmail,
+          labelText: context.derivAuthLocalization.labelEmail,
           borderColor: context.theme.colors.hover,
           focusedBorderColor: context.theme.colors.blue,
           keyboardType: TextInputType.emailAddress,
@@ -188,7 +188,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
           semanticLabel: SemanticsLabels.loginPasswordFieldSemantic,
           controller: _passwordController,
           focusNode: _passwordFocusNode,
-          labelText: context.localization.labelPassword,
+          labelText: context.derivAuthLocalization.labelPassword,
           obscureText: !_isPasswordVisible,
           enabled: isEnabled,
           suffixIcon: IconButton(
@@ -214,7 +214,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
         child: InkWell(
           onTap: widget.onResetPassTapped,
           child: Text(
-            context.localization.actionForgotPassword,
+            context.derivAuthLocalization.actionForgotPassword,
             style: context.theme.textStyle(
               textStyle: TextStyles.body2,
               color: context.theme.colors.coral,
@@ -247,7 +247,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                     width: ThemeProvider.iconSize16,
                   )
                 : Text(
-                    context.localization.actionLogin,
+                    context.derivAuthLocalization.actionLogin,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body2,
                       color: context.theme.colors.prominent.withOpacity(
@@ -264,7 +264,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              context.localization.labelDontHaveAnAccountYet,
+              context.derivAuthLocalization.labelDontHaveAnAccountYet,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
                 color: context.theme.colors.general,
@@ -275,7 +275,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
               child: Padding(
                 padding: const EdgeInsets.all(ThemeProvider.margin04),
                 child: Text(
-                  context.localization.actionCreateANewAccount,
+                  context.derivAuthLocalization.actionCreateANewAccount,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.coral,
@@ -312,7 +312,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
       return null;
     }
 
-    return context.localization.informInvalidEmailFormat;
+    return context.derivAuthLocalization.informInvalidEmailFormat;
   }
 
   String? _passwordValidator(String? input) {
@@ -320,7 +320,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
       return null;
     }
 
-    return context.localization.warnPasswordLength;
+    return context.derivAuthLocalization.warnPasswordLength;
   }
 
   Future<void> _onLoginTapped() async {

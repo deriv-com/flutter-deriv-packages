@@ -32,7 +32,7 @@ String getCountryConsentMessage(
   }
 
   final Map<String, String> consentMessages = <String, String>{
-    'br': context.localization.labelCountryConsentBrazil,
+    'br': context.derivAuthLocalization.labelCountryConsentBrazil,
     // Add more countries and consent messages here.
   };
 
