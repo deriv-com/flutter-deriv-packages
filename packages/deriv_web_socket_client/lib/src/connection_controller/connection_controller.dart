@@ -8,19 +8,19 @@ class ConnectionController extends BaseConnectionController {
   /// Initializes [ConnectionController].
   ConnectionController()
       : _state = const ConnectingState(),
-        _controller = StreamController<ConnectionState>.broadcast() {
+        _controller = StreamController<DerivConnectionState>.broadcast() {
     _controller.add(_state);
   }
 
-  ConnectionState _state;
-  final StreamController<ConnectionState> _controller;
+  DerivConnectionState _state;
+  final StreamController<DerivConnectionState> _controller;
 
   @override
-  ConnectionState get state => _state;
+  DerivConnectionState get state => _state;
 
   @override
-  StreamSubscription<ConnectionState> listen(
-    void Function(ConnectionState event)? onData, {
+  StreamSubscription<DerivConnectionState> listen(
+    void Function(DerivConnectionState event)? onData, {
     Function? onError,
     void Function()? onDone,
     bool? cancelOnError,
@@ -32,13 +32,13 @@ class ConnectionController extends BaseConnectionController {
             cancelOnError: cancelOnError,
           );
 
-  Stream<ConnectionState> _getStream() async* {
+  Stream<DerivConnectionState> _getStream() async* {
     yield _state;
     yield* _controller.stream;
   }
 
   /// Sets the connection state to [state] and notifies listeners.
-  void add(ConnectionState state) {
+  void add(DerivConnectionState state) {
     _state = state;
     _controller.add(state);
   }

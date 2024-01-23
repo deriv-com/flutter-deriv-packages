@@ -3,6 +3,116 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_banner` - `v0.0.1+1`](#deriv_banner---v0011)
+ - [`deriv_store_launcher` - `v0.0.1+1`](#deriv_store_launcher---v0011)
+
+---
+
+#### `deriv_banner` - `v0.0.1+1`
+
+ - **REFACTOR**(deriv_banner): updated kotlin version ([#399](https://github.com/regentmarkets/flutter-deriv-packages/issues/399)). ([9c19b5b4](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c19b5b45aaa40897a7b9884794ab9cbb29fe4ff))
+
+#### `deriv_store_launcher` - `v0.0.1+1`
+
+ - **REFACTOR**(deriv_store_launcher): udpated kotlin and gradle version ([#400](https://github.com/regentmarkets/flutter-deriv-packages/issues/400)). ([ad9d72e1](https://github.com/regentmarkets/flutter-deriv-packages/commit/ad9d72e10186e695a72d022d3b3f6ebdd5120666))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`update_checker` - `v1.2.1`](#update_checker---v121)
+
+---
+
+#### `update_checker` - `v1.2.1`
+
+ - **REFACTOR**(update_checker): increase package info plus version ([#407](https://github.com/regentmarkets/flutter-deriv-packages/issues/407)). ([5147c12b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5147c12bd6b49aed82dd4e3036f63de79816edba))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_web_socket_client` - `v1.0.1`](#deriv_web_socket_client---v101)
+
+---
+
+#### `deriv_web_socket_client` - `v1.0.1`
+
+ - **REFACTOR**: rename ConnectionState to DerivConnectionState ([#384](https://github.com/regentmarkets/flutter-deriv-packages/issues/384)). ([0252a312](https://github.com/regentmarkets/flutter-deriv-packages/commit/0252a3120fd5f78b7d4a1aa61c0f0ca3f41de40a))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v2.0.2`](#deriv_auth---v202)
+
+---
+
+#### `deriv_auth` - `v2.0.2`
+
+ - **FIX**(deriv_auth): fix overflow issue in change password layout ([#404](https://github.com/regentmarkets/flutter-deriv-packages/issues/404)). ([abd05684](https://github.com/regentmarkets/flutter-deriv-packages/commit/abd056841f774ffb806e76569b60701d2fa74808))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v2.0.1`](#deriv_auth---v201)
+
+---
+
+#### `deriv_auth` - `v2.0.1`
+
+ - **REFACTOR**(deriv_auth): updated package_info_plus ([#401](https://github.com/regentmarkets/flutter-deriv-packages/issues/401)). ([16d402a4](https://github.com/regentmarkets/flutter-deriv-packages/commit/16d402a45e680df0734f04fb5dee7f4eb1067119))
+
+
 ## 2024-01-15
 
 ### Changes

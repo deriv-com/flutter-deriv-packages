@@ -1,3 +1,11 @@
+## 2.0.2
+
+ - **FIX**(deriv_auth): fix overflow issue in change password layout ([#404](https://github.com/regentmarkets/flutter-deriv-packages/issues/404)). ([abd05684](https://github.com/regentmarkets/flutter-deriv-packages/commit/abd056841f774ffb806e76569b60701d2fa74808))
+
+## 2.0.1
+
+ - **REFACTOR**(deriv_auth): updated package_info_plus ([#401](https://github.com/regentmarkets/flutter-deriv-packages/issues/401)). ([16d402a4](https://github.com/regentmarkets/flutter-deriv-packages/commit/16d402a45e680df0734f04fb5dee7f4eb1067119))
+
 ## 2.0.0
 
 > Note: This release has breaking changes.
