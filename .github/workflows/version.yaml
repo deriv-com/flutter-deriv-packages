@@ -41,21 +41,8 @@ jobs:
       - name: Create git tag based on version
         run: melos version --all --yes
 
-      - name: Push tag
-        id: push-tag
-        run: |
-          output=$(git push --tags 2>&1)
-
-          if [[ $output == *"Everything up-to-date"* ]]; then
-            echo "PUSH_OUTPUT=No package updated" >> $GITHUB_OUTPUT
-          else
-            echo "PUSH_OUTPUT=Packages updated" >> $GITHUB_OUTPUT
-          fi
-        shell: bash
-
       - name: Get new tags
         id: new-tags
-        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
         run: |
           local_tags=$(git tag)
           remote_tags=$(git ls-remote --tags origin | cut -d/ -f3)
@@ -66,6 +53,18 @@ jobs:
 
           # Append the formatted tags to the file
           echo -e "NEW_TAGS=$formatted_tags" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - name: Push tag
+        id: push-tag
+        run: |
+          output=$(git push --tags 2>&1)
+
+          if [[ $output == *"Everything up-to-date"* ]]; then
+            echo "PUSH_OUTPUT=No package updated" >> $GITHUB_OUTPUT
+          else
+            echo "PUSH_OUTPUT=Packages updated" >> $GITHUB_OUTPUT
+          fi
         shell: bash
 
       - name: Make the script files executable
@@ -87,6 +86,7 @@ jobs:
 
       - name: Send Slack Notification
         uses: ./.github/actions/send_slack_notifications
+        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
         with:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           PR_TITLE: ${{ github.event.pull_request.title }}
