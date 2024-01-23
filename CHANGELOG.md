@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_ui` - `v0.0.2+2`](#deriv_ui---v0022)
+ - [`deriv_auth` - `v2.0.3`](#deriv_auth---v203)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v2.0.3`
+
+---
+
+#### `deriv_ui` - `v0.0.2+2`
+
+ - **REFACTOR**(deriv_ui): updated flutter_svg ([#411](https://github.com/regentmarkets/flutter-deriv-packages/issues/411)). ([2289efcb](https://github.com/regentmarkets/flutter-deriv-packages/commit/2289efcbfe3b7de160e0c4cee58b72a347d78eb9))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_banner` - `v0.0.1+1`](#deriv_banner---v0011)
  - [`deriv_store_launcher` - `v0.0.1+1`](#deriv_store_launcher---v0011)
 
