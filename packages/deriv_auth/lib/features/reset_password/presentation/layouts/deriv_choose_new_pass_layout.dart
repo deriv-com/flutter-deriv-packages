@@ -69,14 +69,16 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
         child: Center(
           child: Form(
             key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: ThemeProvider.margin72),
-                _buildContent(),
-                const SizedBox(height: ThemeProvider.margin24),
-                _buildSubmitPassButton()
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const SizedBox(height: ThemeProvider.margin72),
+                  _buildContent(),
+                  const SizedBox(height: ThemeProvider.margin24),
+                  _buildSubmitPassButton()
+                ],
+              ),
             ),
           ),
         ),
@@ -89,53 +91,49 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
 
           return true;
         },
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Center(
-                child: SvgPicture.asset(
-                  Assets.chooseNewPassIcon,
-                  package: 'deriv_auth',
-                  width: ThemeProvider.iconSize96,
-                  height: ThemeProvider.iconSize32,
+        child: Column(
+          children: <Widget>[
+            Center(
+              child: SvgPicture.asset(
+                Assets.chooseNewPassIcon,
+                package: 'deriv_auth',
+                width: ThemeProvider.iconSize96,
+                height: ThemeProvider.iconSize32,
+              ),
+            ),
+            const SizedBox(height: ThemeProvider.margin48),
+            Text(
+              context.localization.labelChooseNewPass,
+              style: TextStyles.title,
+            ),
+            const SizedBox(height: ThemeProvider.margin24),
+            BaseTextField(
+              controller: _passController,
+              focusNode: _passFocusNode,
+              labelText: context.localization.labelCreatePass,
+              obscureText: !_isPasswordVisible,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  color: context.theme.colors.disabled,
                 ),
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onPressed: () =>
+                    setState(() => _isPasswordVisible = !_isPasswordVisible),
               ),
-              const SizedBox(height: ThemeProvider.margin48),
-              Text(
-                context.localization.labelChooseNewPass,
-                style: TextStyles.title,
+              validator: _passwordValidator,
+              onChanged: (_) => setState(() {}),
+              onEditingComplete: () => _formKey.currentState?.validate(),
+            ),
+            const SizedBox(height: ThemeProvider.margin40),
+            PasswordPolicyCheckerWidget(
+              passwordController: _passController,
+              policies: PasswordPolicyCheckerWidget.getDerivPasswordPolicies(
+                context,
               ),
-              const SizedBox(height: ThemeProvider.margin24),
-              BaseTextField(
-                controller: _passController,
-                focusNode: _passFocusNode,
-                labelText: context.localization.labelCreatePass,
-                obscureText: !_isPasswordVisible,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _isPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    color: context.theme.colors.disabled,
-                  ),
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onPressed: () =>
-                      setState(() => _isPasswordVisible = !_isPasswordVisible),
-                ),
-                validator: _passwordValidator,
-                onChanged: (_) => setState(() {}),
-                onEditingComplete: () => _formKey.currentState?.validate(),
-              ),
-              const SizedBox(height: ThemeProvider.margin40),
-              PasswordPolicyCheckerWidget(
-                passwordController: _passController,
-                policies: PasswordPolicyCheckerWidget.getDerivPasswordPolicies(
-                  context,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       );
 
