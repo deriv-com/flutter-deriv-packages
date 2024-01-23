@@ -15,6 +15,28 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_auth` - `v2.0.4`](#deriv_auth---v204)
+
+---
+
+#### `deriv_auth` - `v2.0.4`
+
+ - **REFACTOR**(deriv_auth): renamed localization getter in ContextExtension ([#414](https://github.com/regentmarkets/flutter-deriv-packages/issues/414)). ([b625fbce](https://github.com/regentmarkets/flutter-deriv-packages/commit/b625fbce37e7acfd9454ba16b908207aee3c9a86))
+ - **REFACTOR**(deriv_auth): Update package info plus deriv auth ([#410](https://github.com/regentmarkets/flutter-deriv-packages/issues/410)). ([e2e717f3](https://github.com/regentmarkets/flutter-deriv-packages/commit/e2e717f36e93039cadc706cc29b12b48a7c1b411))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_ui` - `v0.0.2+2`](#deriv_ui---v0022)
  - [`deriv_auth` - `v2.0.3`](#deriv_auth---v203)
 
