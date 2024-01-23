@@ -23,7 +23,7 @@ dependencies:
       path: packages/deriv_web_view
       ref: deriv_web_view-v0.0.1+1
 
-  flutter_svg: ^1.0.3
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
