@@ -2,7 +2,6 @@
 
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/login/presentation/layouts/deriv_2fa_layout.dart';
 import 'package:deriv_ui/presentation/widgets/base_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +34,8 @@ void main() {
         settle: false,
         BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
-          child: Deriv2FALayout(email: mockEmail, password: mockPassword),
+          child: Deriv2FALayout.systemLogin(
+              email: mockEmail, password: mockPassword),
         ),
       );
 
@@ -63,7 +63,7 @@ void main() {
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
-          child: Deriv2FALayout(
+          child: Deriv2FALayout.systemLogin(
             email: mockEmail,
             password: mockPassword,
           ),
