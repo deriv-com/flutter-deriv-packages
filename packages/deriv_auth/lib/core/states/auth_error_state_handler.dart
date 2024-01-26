@@ -20,8 +20,8 @@ base class AuthErrorStateHandler {
   void invalid2faCode(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informInvalid2FACode,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informInvalid2FACode,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -29,8 +29,8 @@ base class AuthErrorStateHandler {
   void onAccountUnavailable(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informDeactivatedAccount,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informDeactivatedAccount,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -38,8 +38,8 @@ base class AuthErrorStateHandler {
   void onExpiredAccount(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informExpiredAccount,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informExpiredAccount,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -47,8 +47,8 @@ base class AuthErrorStateHandler {
   void onFailedAuthorization(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informFailedAuthorization,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informFailedAuthorization,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -56,8 +56,8 @@ base class AuthErrorStateHandler {
   void onInavlidResidence(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informInvalidResidence,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informInvalidResidence,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -65,8 +65,8 @@ base class AuthErrorStateHandler {
   void onInvalidCredentials(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informInvalidCredentials,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informInvalidCredentials,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -74,8 +74,8 @@ base class AuthErrorStateHandler {
   void onMissingOtp(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informMissingOtp,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informMissingOtp,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -83,8 +83,8 @@ base class AuthErrorStateHandler {
   void onSelfClosed(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informSelfClosed,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informSelfClosed,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -92,8 +92,8 @@ base class AuthErrorStateHandler {
   void onUnexpectedError(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informUnexpectedError,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informUnexpectedError,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -101,8 +101,8 @@ base class AuthErrorStateHandler {
   void onUnsupportedCountry(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informUnsupportedCountry,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informUnsupportedCountry,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -110,8 +110,8 @@ base class AuthErrorStateHandler {
   void onConnectionError(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informConnectionError,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informConnectionError,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 
@@ -119,8 +119,8 @@ base class AuthErrorStateHandler {
   void onSwitchAccountError(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.localization.informSwitchAccountError,
-      actionLabel: context.localization.actionTryAgain,
+      errorMessage: context.derivAuthLocalization.informSwitchAccountError,
+      actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }
 }

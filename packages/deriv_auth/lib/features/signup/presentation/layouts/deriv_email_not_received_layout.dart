@@ -42,7 +42,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              context.localization.labelEmailIssueHeader,
+              context.derivAuthLocalization.labelEmailIssueHeader,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
                 color: context.theme.colors.general,
@@ -55,7 +55,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
-                    context.localization.labelEmailIssueSpam,
+                    context.derivAuthLocalization.labelEmailIssueSpam,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
                       color: context.theme.colors.general,
@@ -71,7 +71,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
-                    context.localization.labelEmailIssueWrongEmail,
+                    context.derivAuthLocalization.labelEmailIssueWrongEmail,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
                       color: context.theme.colors.general,
@@ -87,7 +87,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
-                    context.localization.labelEmailIssueTypo,
+                    context.derivAuthLocalization.labelEmailIssueTypo,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
                       color: context.theme.colors.general,
@@ -103,7 +103,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
                 const SizedBox(width: ThemeProvider.margin24),
                 Flexible(
                   child: Text(
-                    context.localization.labelEmailIssueFirewall,
+                    context.derivAuthLocalization.labelEmailIssueFirewall,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
                       color: context.theme.colors.general,
@@ -127,7 +127,7 @@ class DerivEmailNotReceivedLayout extends StatelessWidget {
         onPressed: onReEnterEmailPressed,
         child: Center(
           child: Text(
-            context.localization.actionReenterEmail,
+            context.derivAuthLocalization.actionReenterEmail,
             style: context.theme.textStyle(
               textStyle: TextStyles.button
                   .copyWith(color: context.theme.colors.prominent),

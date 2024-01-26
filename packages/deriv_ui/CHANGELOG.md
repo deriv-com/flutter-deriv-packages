@@ -1,3 +1,7 @@
+## 0.0.2+2
+
+ - **REFACTOR**(deriv_ui): updated flutter_svg ([#411](https://github.com/regentmarkets/flutter-deriv-packages/issues/411)). ([2289efcb](https://github.com/regentmarkets/flutter-deriv-packages/commit/2289efcbfe3b7de160e0c4cee58b72a347d78eb9))
+
 ## 0.0.2+1
 
  - Update a dependency to the latest release.

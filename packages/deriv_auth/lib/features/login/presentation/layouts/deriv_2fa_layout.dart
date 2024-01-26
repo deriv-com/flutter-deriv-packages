@@ -1,5 +1,5 @@
-import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/core/helpers/assets.dart';
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -9,18 +9,44 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 /// Two-factor-authentication page.
 class Deriv2FALayout extends StatefulWidget {
-  /// Initializes the two-factor-authentication page.
-  const Deriv2FALayout({
+  /// Initializes the two-factor-authentication page for system login.
+  const Deriv2FALayout.systemLogin({
     required this.email,
     required this.password,
     Key? key,
-  }) : super(key: key);
+  })  : oneAllConnectionToken = null,
+        socialAuthDto = null,
+        super(key: key);
+
+  /// Initializes the two-factor-authentication page for social login.
+  const Deriv2FALayout.socialLogin({
+    required this.socialAuthDto,
+    Key? key,
+  })  : email = null,
+        password = null,
+        oneAllConnectionToken = null,
+        super(key: key);
+
+  /// Initializes the two-factor-authentication page for one all social login.
+  const Deriv2FALayout.oneAll({
+    required this.oneAllConnectionToken,
+    Key? key,
+  })  : email = null,
+        password = null,
+        socialAuthDto = null,
+        super(key: key);
 
   /// User entered email in previous page.
-  final String email;
+  final String? email;
 
   /// User entered password in previous page.
-  final String password;
+  final String? password;
+
+  /// For one all social login with 2FA.
+  final String? oneAllConnectionToken;
+
+  /// For in house social login with 2FA.
+  final SocialAuthDto? socialAuthDto;
 
   @override
   State<Deriv2FALayout> createState() => _Deriv2FALayoutState();
@@ -38,7 +64,7 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
           title: Text(
-            context.localization.labelLogIn,
+            context.derivAuthLocalization.labelLogIn,
             style: TextStyles.title,
           ),
         ),
@@ -53,13 +79,13 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
             children: <Widget>[
               SvgPicture.asset(Assets.twoFactorAuthIcon),
               Text(
-                context.localization.labelTwoFactorAuth,
+                context.derivAuthLocalization.labelTwoFactorAuth,
                 style: context.theme.textStyle(textStyle: TextStyles.title),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: ThemeProvider.margin08),
               Text(
-                context.localization.informEnterTwoFactorAuthCode,
+                context.derivAuthLocalization.informEnterTwoFactorAuthCode,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.body1,
                   color: context.theme.colors.general,
@@ -69,8 +95,8 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
               const SizedBox(height: ThemeProvider.margin24),
               BaseTextField(
                 controller: _otpController,
-                labelText:
-                    context.localization.labelTwoFactorAuthenticationCode,
+                labelText: context
+                    .derivAuthLocalization.labelTwoFactorAuthenticationCode,
                 labelColor: context.theme.colors.disabled,
                 focusNode: _otpFocusNode,
                 enabled: !_isLoading(),
@@ -100,7 +126,7 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
                             width: ThemeProvider.iconSize16,
                           )
                         : Text(
-                            context.localization.actionProceed,
+                            context.derivAuthLocalization.actionProceed,
                             style: TextStyles.body2.copyWith(
                               color: context.theme.colors.prominent,
                             ),
@@ -117,11 +143,23 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
     FocusManager.instance.primaryFocus?.unfocus();
 
     if (!_isLoading()) {
-      context.read<DerivAuthCubit>().systemLogin(
-            email: widget.email,
-            password: widget.password,
-            otp: _otpController.text,
-          );
+      if (widget.oneAllConnectionToken != null) {
+        context.read<DerivAuthCubit>().socialLogin(
+              oneAllConnectionToken: widget.oneAllConnectionToken!,
+              otp: _otpController.text,
+            );
+      } else if (widget.socialAuthDto != null) {
+        context.read<DerivAuthCubit>().socialAuth(
+              socialAuthDto: widget.socialAuthDto!,
+              otp: _otpController.text,
+            );
+      } else if (widget.email != null && widget.password != null) {
+        context.read<DerivAuthCubit>().systemLogin(
+              email: widget.email!,
+              password: widget.password!,
+              otp: _otpController.text,
+            );
+      }
     }
   }
 

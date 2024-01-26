@@ -3,6 +3,254 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-01-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v2.0.7`](#deriv_auth---v207)
+
+---
+
+#### `deriv_auth` - `v2.0.7`
+
+ - **FIX**(deriv_auth): fix 2fa for social login ([#418](https://github.com/regentmarkets/flutter-deriv-packages/issues/418)). ([5a1001c5](https://github.com/regentmarkets/flutter-deriv-packages/commit/5a1001c5d6411baa9c07407db4794bf594cec9a9))
+
+
+## 2024-01-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v2.0.6`](#deriv_auth---v206)
+
+---
+
+#### `deriv_auth` - `v2.0.6`
+
+ - **REFACTOR**(deriv_auth): improve reset password error handling ([#417](https://github.com/regentmarkets/flutter-deriv-packages/issues/417)). ([cc2d2ebb](https://github.com/regentmarkets/flutter-deriv-packages/commit/cc2d2ebbbecf53de56aa7c067aec4ad505fcc6b5))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v2.0.4`](#deriv_auth---v204)
+
+---
+
+#### `deriv_auth` - `v2.0.4`
+
+ - **REFACTOR**(deriv_auth): renamed localization getter in ContextExtension ([#414](https://github.com/regentmarkets/flutter-deriv-packages/issues/414)). ([b625fbce](https://github.com/regentmarkets/flutter-deriv-packages/commit/b625fbce37e7acfd9454ba16b908207aee3c9a86))
+ - **REFACTOR**(deriv_auth): Update package info plus deriv auth ([#410](https://github.com/regentmarkets/flutter-deriv-packages/issues/410)). ([e2e717f3](https://github.com/regentmarkets/flutter-deriv-packages/commit/e2e717f36e93039cadc706cc29b12b48a7c1b411))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.2+2`](#deriv_ui---v0022)
+ - [`deriv_auth` - `v2.0.3`](#deriv_auth---v203)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v2.0.3`
+
+---
+
+#### `deriv_ui` - `v0.0.2+2`
+
+ - **REFACTOR**(deriv_ui): updated flutter_svg ([#411](https://github.com/regentmarkets/flutter-deriv-packages/issues/411)). ([2289efcb](https://github.com/regentmarkets/flutter-deriv-packages/commit/2289efcbfe3b7de160e0c4cee58b72a347d78eb9))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_banner` - `v0.0.1+1`](#deriv_banner---v0011)
+ - [`deriv_store_launcher` - `v0.0.1+1`](#deriv_store_launcher---v0011)
+
+---
+
+#### `deriv_banner` - `v0.0.1+1`
+
+ - **REFACTOR**(deriv_banner): updated kotlin version ([#399](https://github.com/regentmarkets/flutter-deriv-packages/issues/399)). ([9c19b5b4](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c19b5b45aaa40897a7b9884794ab9cbb29fe4ff))
+
+#### `deriv_store_launcher` - `v0.0.1+1`
+
+ - **REFACTOR**(deriv_store_launcher): udpated kotlin and gradle version ([#400](https://github.com/regentmarkets/flutter-deriv-packages/issues/400)). ([ad9d72e1](https://github.com/regentmarkets/flutter-deriv-packages/commit/ad9d72e10186e695a72d022d3b3f6ebdd5120666))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`update_checker` - `v1.2.1`](#update_checker---v121)
+
+---
+
+#### `update_checker` - `v1.2.1`
+
+ - **REFACTOR**(update_checker): increase package info plus version ([#407](https://github.com/regentmarkets/flutter-deriv-packages/issues/407)). ([5147c12b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5147c12bd6b49aed82dd4e3036f63de79816edba))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_web_socket_client` - `v1.0.1`](#deriv_web_socket_client---v101)
+
+---
+
+#### `deriv_web_socket_client` - `v1.0.1`
+
+ - **REFACTOR**: rename ConnectionState to DerivConnectionState ([#384](https://github.com/regentmarkets/flutter-deriv-packages/issues/384)). ([0252a312](https://github.com/regentmarkets/flutter-deriv-packages/commit/0252a3120fd5f78b7d4a1aa61c0f0ca3f41de40a))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v2.0.2`](#deriv_auth---v202)
+
+---
+
+#### `deriv_auth` - `v2.0.2`
+
+ - **FIX**(deriv_auth): fix overflow issue in change password layout ([#404](https://github.com/regentmarkets/flutter-deriv-packages/issues/404)). ([abd05684](https://github.com/regentmarkets/flutter-deriv-packages/commit/abd056841f774ffb806e76569b60701d2fa74808))
+
+
+## 2024-01-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v2.0.1`](#deriv_auth---v201)
+
+---
+
+#### `deriv_auth` - `v2.0.1`
+
+ - **REFACTOR**(deriv_auth): updated package_info_plus ([#401](https://github.com/regentmarkets/flutter-deriv-packages/issues/401)). ([16d402a4](https://github.com/regentmarkets/flutter-deriv-packages/commit/16d402a45e680df0734f04fb5dee7f4eb1067119))
+
+
+## 2024-01-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_numpad` - `v1.1.0`](#deriv_numpad---v110)
+
+---
+
+#### `deriv_numpad` - `v1.1.0`
+
+ - **REFACTOR**(deriv_numpad): UI polishing. ([f78c4668](https://github.com/regentmarkets/flutter-deriv-packages/commit/f78c46684d060d304913c945157d1847ec511c98))
+ - **REFACTOR**(deriv_numpad): update spacing in textField UI. ([caa25dce](https://github.com/regentmarkets/flutter-deriv-packages/commit/caa25dce509356cf709393282253ed8b68b82ff3))
+ - **REFACTOR**(deriv_numpad): add mock stream value in `example` app for exchange rate. ([0876e700](https://github.com/regentmarkets/flutter-deriv-packages/commit/0876e700d6abf672932b5a008234aa2227aef690))
+ - **REFACTOR**(deriv_numpad): add `onClose` callback to exchanger. ([14ff5224](https://github.com/regentmarkets/flutter-deriv-packages/commit/14ff5224dfdd7b111b6fba0b2638cc3eb9c9aa60))
+ - **REFACTOR**(deriv_numpad): update ui spacing. ([0890e6b8](https://github.com/regentmarkets/flutter-deriv-packages/commit/0890e6b819d74df89211135d2329511cd80b16db))
+ - **REFACTOR**(deriv_numpad): add return type for currency exchange. ([0e24f5f7](https://github.com/regentmarkets/flutter-deriv-packages/commit/0e24f5f7ffdb7f26f1237d0e279a72a8eb242dea))
+ - **REFACTOR**(deriv_numpad): Minor UI adjustments. ([3830bb3b](https://github.com/regentmarkets/flutter-deriv-packages/commit/3830bb3be7f9e49b268ab5322a0eb677dd42f5b8))
+ - **REFACTOR**(deriv_numpad): update `example` app. ([7e6a70c8](https://github.com/regentmarkets/flutter-deriv-packages/commit/7e6a70c83632cab98f7a820120560ca2544fc9c0))
+ - **REFACTOR**(deriv_numpad): update notifier instance fetching logic. ([036f7c65](https://github.com/regentmarkets/flutter-deriv-packages/commit/036f7c65e090ed27a7d8ba36e54eab837431129b))
+ - **FIX**(deriv_numpad): handle exchange rate change when field is empty. ([9b0ff0b0](https://github.com/regentmarkets/flutter-deriv-packages/commit/9b0ff0b0079c4c90683bf4d868eed96287ed6fd1))
+ - **FIX**(deriv_numpad): fix secondary currency type issue. ([6821bd2b](https://github.com/regentmarkets/flutter-deriv-packages/commit/6821bd2b9a0bd8a81bc1c16bc2a4e8fc30674842))
+ - **FIX**(deriv_numpad): fix range validation for default case. ([4b403dff](https://github.com/regentmarkets/flutter-deriv-packages/commit/4b403dff5ffd92b28b8e69cf77e24a598ea0a6e5))
+ - **FIX**(deriv_numpad): add title for exchanger. ([4347d4fb](https://github.com/regentmarkets/flutter-deriv-packages/commit/4347d4fb9be768b459873c1fa8be3b5e053f332b))
+ - **FIX**(deriv_numpad): add dynamic validation from client code. ([f07b5d8a](https://github.com/regentmarkets/flutter-deriv-packages/commit/f07b5d8a54bb3e3996cbe9b272ed4a1d778aaf9f))
+ - **FIX**(deriv_numpad): fix empty textfield while swapping. ([3fa9786c](https://github.com/regentmarkets/flutter-deriv-packages/commit/3fa9786c0df1b00bd68188d208e506d92b2606fb))
+ - **FIX**(deriv_numpad): fallback sdk version to minimum `2.16.2`. ([e2162e16](https://github.com/regentmarkets/flutter-deriv-packages/commit/e2162e1658280003379e58e6b7edf31bd1d7619e))
+ - **FEAT**(deriv_numpad): add factory constructor for currency exchange. ([5744974b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5744974b35acf52ab99c078c45c1cbb69061b44d))
+ - **FEAT**(deriv_numpad): add rate changing stream for currency exchange. ([ae9ddbea](https://github.com/regentmarkets/flutter-deriv-packages/commit/ae9ddbea0a1d74c8d31fe92ee5db8e2b3b499a47))
+ - **FEAT**(deriv_numpad): update exchange logic for crypto exchange. ([ac808e69](https://github.com/regentmarkets/flutter-deriv-packages/commit/ac808e69ba4e109d21094a2a00493f531c7c28df))
+ - **FEAT**(deriv_numpad): polish exchange logic when swapping currency. ([12bbb017](https://github.com/regentmarkets/flutter-deriv-packages/commit/12bbb017b68adf6eaec634e7ecf7f3d6e84299d1))
+ - **FEAT**(deriv_numpad): add ability to switch between currency. ([894449f1](https://github.com/regentmarkets/flutter-deriv-packages/commit/894449f1996f455803bc020301df6eafea1d7ba1))
+ - **FEAT**(deriv_numpad): add currency exchange UI. ([c47c2a85](https://github.com/regentmarkets/flutter-deriv-packages/commit/c47c2a85e5566cc2b867b847c2136189e5c4d856))
+ - **FEAT**(deriv_numpad): add currency switcher ui. ([5ffd83c7](https://github.com/regentmarkets/flutter-deriv-packages/commit/5ffd83c721f19373eeb428bcf36597d575620442))
+ - **DOCS**: minor adjustments in documentation. ([7ac660f6](https://github.com/regentmarkets/flutter-deriv-packages/commit/7ac660f6134b9eb89bdf0b5efb40a3dce58ae2ae))
+ - **DOCS**(deriv_numpad): add documentation for public member. ([28266e8e](https://github.com/regentmarkets/flutter-deriv-packages/commit/28266e8edf65dfe34d4d9f3470508ab83d8855a0))
+ - **DOCS**(deriv_numpad): add documentation for public variables. ([8cbb263e](https://github.com/regentmarkets/flutter-deriv-packages/commit/8cbb263eff0c39b1ba2ab7bad645546954a41146))
+
+
 ## 2024-01-09
 
 ### Changes

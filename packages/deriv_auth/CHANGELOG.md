@@ -1,3 +1,28 @@
+## 2.0.7
+
+ - **FIX**(deriv_auth): fix 2fa for social login ([#418](https://github.com/regentmarkets/flutter-deriv-packages/issues/418)). ([5a1001c5](https://github.com/regentmarkets/flutter-deriv-packages/commit/5a1001c5d6411baa9c07407db4794bf594cec9a9))
+
+## 2.0.6
+
+ - **REFACTOR**(deriv_auth): improve reset password error handling ([#417](https://github.com/regentmarkets/flutter-deriv-packages/issues/417)). ([cc2d2ebb](https://github.com/regentmarkets/flutter-deriv-packages/commit/cc2d2ebbbecf53de56aa7c067aec4ad505fcc6b5))
+
+## 2.0.4
+
+ - **REFACTOR**(deriv_auth): renamed localization getter in ContextExtension ([#414](https://github.com/regentmarkets/flutter-deriv-packages/issues/414)). ([b625fbce](https://github.com/regentmarkets/flutter-deriv-packages/commit/b625fbce37e7acfd9454ba16b908207aee3c9a86))
+ - **REFACTOR**(deriv_auth): Update package info plus deriv auth ([#410](https://github.com/regentmarkets/flutter-deriv-packages/issues/410)). ([e2e717f3](https://github.com/regentmarkets/flutter-deriv-packages/commit/e2e717f36e93039cadc706cc29b12b48a7c1b411))
+
+## 2.0.3
+
+ - Update a dependency to the latest release.
+
+## 2.0.2
+
+ - **FIX**(deriv_auth): fix overflow issue in change password layout ([#404](https://github.com/regentmarkets/flutter-deriv-packages/issues/404)). ([abd05684](https://github.com/regentmarkets/flutter-deriv-packages/commit/abd056841f774ffb806e76569b60701d2fa74808))
+
+## 2.0.1
+
+ - **REFACTOR**(deriv_auth): updated package_info_plus ([#401](https://github.com/regentmarkets/flutter-deriv-packages/issues/401)). ([16d402a4](https://github.com/regentmarkets/flutter-deriv-packages/commit/16d402a45e680df0734f04fb5dee7f4eb1067119))
+
 ## 2.0.0
 
 > Note: This release has breaking changes.

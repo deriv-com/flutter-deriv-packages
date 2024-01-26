@@ -147,7 +147,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               onPressed: widget.onSignupTapped,
               child: Center(
                 child: Text(
-                  context.localization.actionGetAFreeAccount,
+                  context.derivAuthLocalization.actionGetAFreeAccount,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent,
@@ -163,7 +163,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               onPressed: widget.onLoginTapped,
               child: Center(
                 child: Text(
-                  context.localization.actionLogin,
+                  context.derivAuthLocalization.actionLogin,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent,

@@ -29,7 +29,7 @@ class DerivVerificationDoneLayout extends StatelessWidget {
         backgroundColor: context.theme.colors.primary,
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
-          title: Text(context.localization.labelVerifyYourEmail),
+          title: Text(context.derivAuthLocalization.labelVerifyYourEmail),
         ),
         body: SafeArea(
           child: Column(
@@ -56,12 +56,12 @@ class DerivVerificationDoneLayout extends StatelessWidget {
             ),
             const SizedBox(height: ThemeProvider.margin16),
             Text(
-              context.localization.labelThanksEmail,
+              context.derivAuthLocalization.labelThanksEmail,
               style: TextStyles.title,
             ),
             const SizedBox(height: ThemeProvider.margin08),
             Text(
-              context.localization.informLetsContinue,
+              context.derivAuthLocalization.informLetsContinue,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
                 color: context.theme.colors.general,
@@ -80,7 +80,7 @@ class DerivVerificationDoneLayout extends StatelessWidget {
         onPressed: onContinuePressed,
         child: Center(
           child: Text(
-            context.localization.actionContinue,
+            context.derivAuthLocalization.actionContinue,
             style: context.theme.textStyle(
               textStyle: TextStyles.button
                   .copyWith(color: context.theme.colors.prominent),

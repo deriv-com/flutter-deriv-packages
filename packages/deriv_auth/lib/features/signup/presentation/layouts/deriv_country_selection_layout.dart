@@ -100,7 +100,7 @@ class _DerivCountrySelectionLayoutState
             SvgPicture.asset(Assets.locationIcon, package: 'deriv_auth'),
             const SizedBox(height: ThemeProvider.margin16),
             Text(
-              context.localization.labelSelectCountry,
+              context.derivAuthLocalization.labelSelectCountry,
               style: TextStyles.title,
             ),
             const SizedBox(height: ThemeProvider.margin24),
@@ -127,7 +127,7 @@ class _DerivCountrySelectionLayoutState
           key: _formKey,
           child: BaseTextField(
             controller: _textController,
-            labelText: context.localization.labelChooseCountry,
+            labelText: context.derivAuthLocalization.labelChooseCountry,
             labelColor: context.theme.colors.disabled,
             focusNode: _focusNode,
             focusedLabelColor: context.theme.colors.blue,
@@ -157,7 +157,7 @@ class _DerivCountrySelectionLayoutState
           onPressed: widget.onNextPressed,
           child: Center(
             child: Text(
-              context.localization.actionNext,
+              context.derivAuthLocalization.actionNext,
               style: TextStyles.button
                   .copyWith(color: context.theme.colors.prominent),
             ),
@@ -225,7 +225,7 @@ class _DerivCountrySelectionLayoutState
     DerivResidenceModel? selectedCountry,
   }) {
     if (selectedCountry != null && selectedCountry.isDisabled) {
-      return context.localization.warnCountryNotAvailable;
+      return context.derivAuthLocalization.warnCountryNotAvailable;
     }
 
     return null;
