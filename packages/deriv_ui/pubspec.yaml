@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   deriv_theme:
     git:
@@ -24,6 +26,7 @@ dependencies:
       ref: deriv_web_view-v0.0.1+1
 
   flutter_svg: ^1.0.3
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +39,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
   # To add assets to your package, add an assets section, like this:
   assets:
     - assets/icons/
