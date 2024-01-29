@@ -1,3 +1,7 @@
+import 'package:deriv_passkeys/data/data_sources/base_deriv_passkeys_data_source.dart';
+import 'package:deriv_passkeys/data/mappers/deriv_passkeys_mapper.dart';
+import 'package:deriv_passkeys/data/models/deriv_passkeys_options_model.dart';
+import 'package:deriv_passkeys/data/repositories/deriv_passkeys_repository.dart';
 import 'package:deriv_passkeys/interactor/services/deriv_passkeys_method_channel.dart';
 import 'package:deriv_passkeys/interactor/services/base_deriv_passkeys_method_channel.dart';
 import 'package:deriv_passkeys/interactor/services/deriv_passkeys_service.dart';
@@ -29,6 +33,20 @@ class MockBaseDerivPasskeysMethodChannel
       : Future<String?>.value('42');
 }
 
+final class MockDerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
+  MockDerivPasskeysDataSource(super.mapper);
+
+  @override
+  Future<DerivPasskeysOptionsModel> getOptions() =>
+      Future<DerivPasskeysOptionsModel>.value(DerivPasskeysOptionsModel(
+        challenge: 'challenge',
+        rpId: 'rpId',
+        allowCredentials: <dynamic>[],
+        userVerification: 'userVerification',
+        timeout: 18000,
+      ));
+}
+
 void main() {
   final BaseDerivPasskeysMethodChannel initialPlatform =
       BaseDerivPasskeysMethodChannel.instance;
@@ -38,10 +56,16 @@ void main() {
   });
 
   group('DerivPasskeys', () {
-    late DerivPasskeys derivPasskeys;
+    late DerivPasskeysService derivPasskeysService;
 
     setUp(() {
-      derivPasskeys = DerivPasskeys();
+      derivPasskeysService = DerivPasskeysService(
+        DerivPasskeysRepository(
+          MockDerivPasskeysDataSource(
+            DerivPasskeysMapper(),
+          ),
+        ),
+      );
       BaseDerivPasskeysMethodChannel.instance =
           MockBaseDerivPasskeysMethodChannel();
     });
@@ -53,14 +77,14 @@ void main() {
     test('isSupported returns true for iOS 15 or newer', () async {
       BaseDerivPasskeysMethodChannel.instance =
           MockBaseDerivPasskeysMethodChannel()..mockPlatformVersion = 'iOS 15';
-      final bool isSupported = await derivPasskeys.isSupported();
+      final bool isSupported = await derivPasskeysService.isSupported();
       expect(isSupported, true);
     });
 
     test('isSupported returns false for iOS versions older than 15', () async {
       BaseDerivPasskeysMethodChannel.instance =
           MockBaseDerivPasskeysMethodChannel()..mockPlatformVersion = 'iOS 14';
-      final bool isSupported = await derivPasskeys.isSupported();
+      final bool isSupported = await derivPasskeysService.isSupported();
       expect(isSupported, false);
     });
 
@@ -68,7 +92,7 @@ void main() {
       BaseDerivPasskeysMethodChannel.instance =
           MockBaseDerivPasskeysMethodChannel()
             ..mockPlatformVersion = 'Android 9';
-      final bool isSupported = await derivPasskeys.isSupported();
+      final bool isSupported = await derivPasskeysService.isSupported();
       expect(isSupported, true);
     });
 
@@ -78,12 +102,13 @@ void main() {
       BaseDerivPasskeysMethodChannel.instance =
           MockBaseDerivPasskeysMethodChannel()
             ..mockPlatformVersion = 'Unknown 1';
-      final bool isSupported = await derivPasskeys.isSupported();
+      final bool isSupported = await derivPasskeysService.isSupported();
       expect(isSupported, false);
     });
 
     test('createCredential returns response if not null', () async {
-      final String response = await derivPasskeys.createCredential('options');
+      final String response =
+          await derivPasskeysService.createCredential('options');
       expect(response, '42');
     });
 
@@ -93,12 +118,12 @@ void main() {
           .instance = MockBaseDerivPasskeysMethodChannel()
         ..mockCreateCredential = (String options) => Future<String?>.value();
 
-      expect(() => derivPasskeys.createCredential('options'),
+      expect(() => derivPasskeysService.createCredential('options'),
           throwsA(isInstanceOf<PlatformException>()));
     });
 
     test('getCredential returns response if not null', () async {
-      final String response = await derivPasskeys.getCredential('options');
+      final String response = await derivPasskeysService.getCredential();
       expect(response, '42');
     });
 
@@ -108,7 +133,7 @@ void main() {
           MockBaseDerivPasskeysMethodChannel()
             ..mockGetCredential = (String options) => Future<String?>.value();
 
-      expect(() => derivPasskeys.getCredential('options'),
+      expect(() => derivPasskeysService.getCredential(),
           throwsA(isInstanceOf<PlatformException>()));
     });
   });

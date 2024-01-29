@@ -24,6 +24,7 @@ dependencies:
   
   flutter_svg: ^2.0.9
   plugin_platform_interface: ^2.0.2
+  http: ^0.13.4
 
 
 dependency_overrides:

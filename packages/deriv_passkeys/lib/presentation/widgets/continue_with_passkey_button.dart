@@ -31,7 +31,21 @@ class _ContinueWithPasskeyButtonState extends State<ContinueWithPasskeyButton> {
             return const SizedBox();
           }
           if (state is DerivPasskeysError) {
-            // TODO(bassam-deriv): Handle error
+            return Column(
+              children: <Widget>[
+                Text(state.message),
+                InkWell(
+                    onTap: () {
+                      context
+                          .read<DerivPasskeysBloc>()
+                          .add(const DerivPasskeysInit());
+                    },
+                    child: const Text('Reset')),
+              ],
+            );
+          }
+          if (state is DerivPasskeysLoading) {
+            return const Center(child: CircularProgressIndicator());
           }
           return SecondaryButton(
             child: Row(
@@ -43,7 +57,7 @@ class _ContinueWithPasskeyButtonState extends State<ContinueWithPasskeyButton> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Continue with Passkey',
+                  'Passkeys',
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent,

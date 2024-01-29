@@ -10,10 +10,10 @@ part 'deriv_passkeys_event.dart';
 /// [DerivPasskeysBloc] handles the state within the DerivPasskeys flow.
 class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
   /// Creates a [DerivPasskeysBloc].
-  DerivPasskeysBloc() : super(DerivPasskeysInitial()) {
+  DerivPasskeysBloc(this.derivPasskeysService) : super(DerivPasskeysInitial()) {
     on<DerivPasskeysInit>(
         (DerivPasskeysInit event, Emitter<DerivPasskeysState> emit) async {
-      final bool isPasskeySupported = await DerivPasskeys().isSupported();
+      final bool isPasskeySupported = await derivPasskeysService.isSupported();
       if (!isPasskeySupported) {
         emit(DerivPasskeysNotSupported());
       } else {
@@ -25,24 +25,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         Emitter<DerivPasskeysState> emit) async {
       emit(DerivPasskeysLoading());
 
-      final Map<String, dynamic> loginJson = <String, dynamic>{
-        'challenge': 'T1xCsnxM2DNL2KdK5CLa6fMhD7OBqho6syzInk_n-Uo',
-        'allowCredentials': <dynamic>[],
-        'timeout': 1800000,
-        'userVerification': 'required',
-        'rpId': 'pro-7837426045311437779.frontendapi.corbado.io'
-      };
-
-      final String getOptions = jsonEncode(loginJson);
-      await DerivPasskeys().getCredential(getOptions).then((String response) {
-        // TODO(bassam-deriv): Send response to the server
-      }).catchError((Object error) {
-        // TODO(bassam-deriv): Handle error
-      });
-
-      await DerivPasskeys()
-          .getCredential(getOptions)
-          .then((String? credential) {
+      await derivPasskeysService.getCredential().then((String? credential) {
         emit(DerivPasskeysInitial());
       }).catchError((Object error) {
         emit(DerivPasskeysError(error.toString()));
@@ -85,7 +68,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
 
       final String creationOptions = jsonEncode(signupJson);
 
-      await DerivPasskeys()
+      await derivPasskeysService
           .createCredential(creationOptions)
           .then((String? credential) {
         emit(DerivPasskeysInitial());
@@ -94,6 +77,9 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
       });
     });
   }
+
+  /// The service used to get data from.
+  final DerivPasskeysService derivPasskeysService;
 }
 
 // TODO(bassam-deriv): Remove this method once API is implemented

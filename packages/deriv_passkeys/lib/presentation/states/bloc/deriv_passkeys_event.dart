@@ -1,7 +1,7 @@
 part of 'deriv_passkeys_bloc.dart';
 
 /// [DerivPasskeysEvent] represents the events within the DerivPasskeys flow.
-sealed class DerivPasskeysEvent extends Equatable {
+class DerivPasskeysEvent extends Equatable {
   /// Creates a [DerivPasskeysEvent].
   const DerivPasskeysEvent();
 
@@ -10,7 +10,7 @@ sealed class DerivPasskeysEvent extends Equatable {
 }
 
 /// [DerivPasskeysInit] represents the init event within the DerivPasskeys flow.
-final class DerivPasskeysInit extends DerivPasskeysEvent {
+class DerivPasskeysInit extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysInit].
   const DerivPasskeysInit();
 
@@ -19,7 +19,7 @@ final class DerivPasskeysInit extends DerivPasskeysEvent {
 }
 
 /// [DerivPasskeysCreateCredential] represents the create credential event within the DerivPasskeys flow.
-final class DerivPasskeysCreateCredential extends DerivPasskeysEvent {
+class DerivPasskeysCreateCredential extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysCreateCredential].
   const DerivPasskeysCreateCredential(this.options);
 
@@ -31,10 +31,10 @@ final class DerivPasskeysCreateCredential extends DerivPasskeysEvent {
 }
 
 /// [DerivPasskeysGetCredential] represents the get credential event within the DerivPasskeys flow.
-final class DerivPasskeysGetCredential extends DerivPasskeysEvent {}
+class DerivPasskeysGetCredential extends DerivPasskeysEvent {}
 
 /// [DerivPasskeysGetPasskeysList] represents the get passkeys list event within the DerivPasskeys flow.
-final class DerivPasskeysGetPasskeysList extends DerivPasskeysEvent {
+class DerivPasskeysGetPasskeysList extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysGetPasskeysList].
   const DerivPasskeysGetPasskeysList(this.options);
 
@@ -46,7 +46,7 @@ final class DerivPasskeysGetPasskeysList extends DerivPasskeysEvent {
 }
 
 /// [DerivPasskeysRevokeCredential] represents the revoke credential event within the DerivPasskeys flow.
-final class DerivPasskeysRevokeCredential extends DerivPasskeysEvent {
+class DerivPasskeysRevokeCredential extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysRevokeCredential].
   const DerivPasskeysRevokeCredential(this.options);
 
@@ -58,7 +58,7 @@ final class DerivPasskeysRevokeCredential extends DerivPasskeysEvent {
 }
 
 /// [DerivPasskeysEditCredential] represents the edit credential event within the DerivPasskeys flow.
-final class DerivPasskeysEditCredential extends DerivPasskeysEvent {
+class DerivPasskeysEditCredential extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysEditCredential].
   const DerivPasskeysEditCredential(this.options);
 

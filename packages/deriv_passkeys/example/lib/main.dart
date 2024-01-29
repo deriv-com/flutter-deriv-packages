@@ -1,3 +1,7 @@
+import 'package:deriv_passkeys/data/data_sources/deriv_passkeys_data_source.dart';
+import 'package:deriv_passkeys/data/mappers/deriv_passkeys_mapper.dart';
+import 'package:deriv_passkeys/data/repositories/deriv_passkeys_repository.dart';
+import 'package:deriv_passkeys/interactor/services/deriv_passkeys_service.dart';
 import 'package:deriv_passkeys/presentation/states/bloc/deriv_passkeys_bloc.dart';
 import 'package:deriv_passkeys/presentation/widgets/continue_with_passkey_button.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -19,7 +23,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DerivPasskeysBloc(),
+      create: (context) => DerivPasskeysBloc(
+        DerivPasskeysService(
+          DerivPasskeysRepository(
+            DerivPasskeysDataSource(
+              DerivPasskeysMapper(),
+            ),
+          ),
+        ),
+      ),
       child: MaterialApp(
         theme: ThemeData(
           primaryColor: context.theme.colors.secondary,

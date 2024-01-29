@@ -1,13 +1,16 @@
+import 'dart:convert';
+
+import 'package:deriv_passkeys/domain/base_repositories/base_deriv_passkeys_repository.dart';
 import 'package:deriv_passkeys/interactor/services/base_deriv_passkeys_method_channel.dart';
 import 'package:flutter/services.dart';
 
 /// A wrapper class that contains methods to interact with the native platform for passkey.
-class DerivPasskeys {
-  /// Returns the default instance of [DerivPasskeys].
-  factory DerivPasskeys() => _instance;
-  DerivPasskeys._internal();
+class DerivPasskeysService {
+  /// Constructs a [DerivPasskeysService] with [BaseDerivPasskeysRepository].
+  DerivPasskeysService(this.repository);
 
-  static final DerivPasskeys _instance = DerivPasskeys._internal();
+  /// The repository used to get data for Passkeys functionalities.
+  final BaseDerivPasskeysRepository repository;
 
   /// Returns true if the device supports passkey.
   Future<bool> isSupported() async {
@@ -44,9 +47,14 @@ class DerivPasskeys {
   }
 
   /// Gets a passkey credential.
-  Future<String> getCredential(String options) async {
+  Future<String> getCredential() async {
+    final Map<String, dynamic> getOptionsResult =
+        (await repository.getOptions()).toJson();
+    final String options = jsonEncode(getOptionsResult);
+
     final String? response =
         await BaseDerivPasskeysMethodChannel.instance.getCredential(options);
+
     if (response == null) {
       throw PlatformException(
           code: 'null-response',
