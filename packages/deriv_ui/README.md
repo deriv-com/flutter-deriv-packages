@@ -8,6 +8,12 @@ Here is the detailed structure of the components included in this package:
 
 - [Custom Icon Data Model](./lib/models/custom_icon_data_model.dart)
 
+## Components
+
+- [Banner](./lib/presentation/components/banner/README.md)
+- [Date Range Picker](./lib/presentation/components/date_range_picker/README.md)
+- [Expandable bottom sheet](./lib/presentation/components/expandable_bottom_sheet/README.md)
+
 ## Widgets
 
 - [App Setting Gesture Detector](./lib/presentation/widgets/app_setting_gesture_detector.dart)
