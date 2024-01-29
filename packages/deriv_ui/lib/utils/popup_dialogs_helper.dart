@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_ui/presentation/widgets/loading_indicator.dart';
-import 'package:deriv_ui/presentation/widgets/popup_alert_dialog.dart';
-import 'package:deriv_ui/presentation/widgets/text_span_hyperlink.dart';
+import 'package:deriv_ui/widgets/loading_indicator.dart';
+import 'package:deriv_ui/widgets/popup_alert_dialog.dart';
+import 'package:deriv_ui/widgets/text_span_hyperlink.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a pop alert dialog, usually retry and it is used when there is no connection to internet.

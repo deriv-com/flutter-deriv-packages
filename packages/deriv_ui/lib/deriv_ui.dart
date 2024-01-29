@@ -1,3 +1,3 @@
-export 'presentation/widgets/widgets.dart';
-export 'presentation/components/components.dart';
+export 'widgets/widgets.dart';
+export 'components/components.dart';
 export 'utils/utils.dart';
