@@ -2,7 +2,7 @@
 
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_ui/presentation/widgets/base_text_field.dart';
+import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
