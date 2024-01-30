@@ -65,4 +65,9 @@ class DerivResetPassCubit extends Cubit<DerivResetPassState>
 
   @override
   Stream<DerivResetPassState> get output => stream;
+
+  @override
+  void resetState() {
+    emit(const DerivResetPassInitialState());
+  }
 }
