@@ -10,26 +10,26 @@ Here is the detailed structure of the components included in this package:
 
 ## Components
 
-- [Banner](./lib/presentation/components/banner/README.md)
-- [Date Range Picker](./lib/presentation/components/date_range_picker/README.md)
-- [Expandable bottom sheet](./lib/presentation/components/expandable_bottom_sheet/README.md)
+- [Banner](./lib/components/banner/README.md)
+- [Date Range Picker](./lib/components/date_range_picker/README.md)
+- [Expandable bottom sheet](./lib/components/expandable_bottom_sheet/README.md)
 
 ## Widgets
 
-- [App Setting Gesture Detector](./lib/presentation/widgets/app_setting_gesture_detector.dart)
-- [Base Text Field](./lib/presentation/widgets/base_text_field.dart)
-- [Custom Alert Dialog](./lib/presentation/widgets/custom_alert_dialog.dart)
-- [Custom Checkbox](./lib/presentation/widgets/custom_checkbox.dart)
-- [Custom Image](./lib/presentation/widgets/custom_image.dart)
-- [Full Screen Message](./lib/presentation/widgets/fullscreen_message.dart)
-- [Info Icon Button](./lib/presentation/widgets/info_icon_button.dart)
-- [Interaction](./lib/presentation/widgets/interaction.dart)
-- [Loading Indicator](./lib/presentation/widgets/loading_indicator.dart)
-- [Picture Badge](./lib/presentation/widgets/picture_badge.dart)
-- [Popup Alert Dialog](./lib/presentation/widgets/popup_alert_dialog.dart)
-- [Primary Button](./lib/presentation/widgets/primary_button.dart)
-- [Secondary Button](./lib/presentation/widgets/secondary_button.dart)
-- [Text Span Hyperlink](./lib/presentation/widgets/text_span_hyperlink.dart)
+- [App Setting Gesture Detector](./lib/widgets/app_setting_gesture_detector.dart)
+- [Base Text Field](./lib/widgets/base_text_field.dart)
+- [Custom Alert Dialog](./lib/widgets/custom_alert_dialog.dart)
+- [Custom Checkbox](./lib/widgets/custom_checkbox.dart)
+- [Custom Image](./lib/widgets/custom_image.dart)
+- [Full Screen Message](./lib/widgets/fullscreen_message.dart)
+- [Info Icon Button](./lib/widgets/info_icon_button.dart)
+- [Interaction](./lib/widgets/interaction.dart)
+- [Loading Indicator](./lib/widgets/loading_indicator.dart)
+- [Picture Badge](./lib/widgets/picture_badge.dart)
+- [Popup Alert Dialog](./lib/widgets/popup_alert_dialog.dart)
+- [Primary Button](./lib/widgets/primary_button.dart)
+- [Secondary Button](./lib/widgets/secondary_button.dart)
+- [Text Span Hyperlink](./lib/widgets/text_span_hyperlink.dart)
 
 ## Utilities
 
