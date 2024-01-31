@@ -118,7 +118,7 @@
 - **Choose New Password Layout**
     ``` dart
      DerivChooseNewPassLayout(
-          onResetPassError: (String? error) {},
+          onResetPassError: ({String? error, bool? isLinkExpired}) {},
           onResetPassSucceed: () {},
           token: token,
         ),
