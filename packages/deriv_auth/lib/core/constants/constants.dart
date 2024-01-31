@@ -61,3 +61,6 @@ const String accountOpeningEmailType = 'account_opening';
 
 /// Supported date format when signing up.
 const String dateFormat = 'yyyy-MM-dd';
+
+/// Reset password invalid link error
+const String resetPasswordInvalidLinkError = 'InvalidToken';

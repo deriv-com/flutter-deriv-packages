@@ -22,7 +22,7 @@ class DerivChooseNewPassLayout extends StatefulWidget {
   final String token;
 
   /// Callback to be called when reset pass fails.
-  final Function(String?) onResetPassError;
+  final Function({String? error, bool? isLinkExpired}) onResetPassError;
 
   /// Callback to be called when reset pass succeeds.
   final VoidCallback onResetPassSucceed;
@@ -55,7 +55,9 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
             if (state is DerivResetPassPasswordChangedState) {
               widget.onResetPassSucceed();
             } else if (state is DerivResetPassErrorState) {
-              widget.onResetPassError(state.errorMessage);
+              widget.onResetPassError(
+                  error: state.errorMessage,
+                  isLinkExpired: state.isLinkExpired);
             }
           },
           child: _buildChooseNewPassSection(context),

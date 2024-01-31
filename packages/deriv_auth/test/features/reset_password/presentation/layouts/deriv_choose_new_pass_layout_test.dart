@@ -33,7 +33,7 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivChooseNewPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({String? error, bool? isLinkExpired}) {},
             onResetPassSucceed: () {},
             token: token,
           ),
@@ -58,7 +58,7 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivChooseNewPassLayout(
-            onResetPassError: (String? error) {
+            onResetPassError: ({String? error, bool? isLinkExpired}) {
               onResetPassErrorCalled = true;
             },
             onResetPassSucceed: () {},
@@ -87,7 +87,7 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivChooseNewPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({String? error, bool? isLinkExpired}) {},
             onResetPassSucceed: () {
               onResetPassSucceedCalled = true;
             },
@@ -117,7 +117,7 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivChooseNewPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({String? error, bool? isLinkExpired}) {},
             onResetPassSucceed: () {},
             token: token,
           ),
@@ -147,7 +147,7 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivChooseNewPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({String? error, bool? isLinkExpired}) {},
             onResetPassSucceed: () {},
             token: token,
           ),
