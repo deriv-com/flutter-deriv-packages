@@ -4,4 +4,7 @@ import 'package:deriv_auth/features/social_auth/models/social_auth_provider_mode
 abstract class BaseSocialAuthService {
   /// Get list of social auth providers.
   Future<List<SocialAuthProviderModel>> getSocialAuthProviders();
+
+  /// Handle social authentication.
+  
 }

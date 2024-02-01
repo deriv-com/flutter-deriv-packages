@@ -10,6 +10,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import 'widgets/in_app_browser/in_app_browser.dart';
+
 /// Opens a url in a browser.
 Future<void> openWebPage({
   required BuildContext context,
@@ -38,7 +40,6 @@ final AppChromeSafariBrowser appSafariBrowser = AppChromeSafariBrowser();
 
 /// Opens in-app tab activity webview.
 Future<void> openInAppTabActivityWebView({
-  required BuildContext context,
   required String url,
   required VoidCallback onClosed,
   String? title,
@@ -182,7 +183,6 @@ Future<void> openLoggedInWebPage({
 
   if (inAppBrowser) {
     await openInAppTabActivityWebView(
-      context: context,
       url: ptaLoginUrl,
       title: title,
       setEndpoint: true,

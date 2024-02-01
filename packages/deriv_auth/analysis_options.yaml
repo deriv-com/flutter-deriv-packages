@@ -1,6 +1,6 @@
 analyzer:
-  exclude:
-    - example/**
+  # exclude:
+  #   - example/**
   errors:
     todo: ignore
     missing_required_param: warning

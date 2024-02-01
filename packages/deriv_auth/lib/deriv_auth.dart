@@ -8,6 +8,7 @@ export 'core/models/authorize_model.dart';
 export 'core/models/verify_email_model.dart';
 export 'core/services/jwt/repository/deriv_jwt_repository.dart';
 export 'core/services/jwt/services/deriv_jwt_service.dart';
+export 'core/helpers/semantic_labels.dart';
 export 'core/services/token/models/enums.dart';
 export 'core/services/token/services/deriv_token_service.dart';
 export 'core/services/referral/models/my_affiliate_referral_code_request_model.dart';

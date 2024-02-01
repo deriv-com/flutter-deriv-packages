@@ -3,7 +3,7 @@
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/features/login/presentation/layouts/deriv_login_layout.dart';
-import 'package:deriv_auth/features/login/presentation/widgets/deriv_social_auth_panel.dart';
+import 'package:deriv_auth/features/social_auth/presentation/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
