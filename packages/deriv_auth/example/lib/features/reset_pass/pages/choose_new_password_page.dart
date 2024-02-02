@@ -19,7 +19,7 @@ class ChooseNewPasswordPage extends StatelessWidget {
           ),
         );
       },
-      onResetPassError: ({String? error, bool? isLinkExpired}) {},
+      onResetPassError: ({required bool isLinkExpired, String? error}) {},
     );
   }
 }
