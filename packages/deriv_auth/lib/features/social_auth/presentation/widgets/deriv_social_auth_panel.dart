@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -59,8 +61,6 @@ class DerivSocialAuthPanel extends StatefulWidget {
 }
 
 class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
-  SocialAuthProvider? _selectedSocialAuthProvider;
-
   late SocialAuthCubit _socialAuthCubit;
 
   @override
@@ -102,8 +102,7 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         ),
         onPressed: widget.isEnabled
             ? () {
-                _selectedSocialAuthProvider = socialAuthProvider;
-                _socialAuthCubit.getSocialAuthProviders();
+                _socialAuthCubit.selectSocialLoginProvider(socialAuthProvider);
               }
             : null,
       );
@@ -115,14 +114,25 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
     if (state is SocialAuthLoadedState) {
       widget.onSocialAuthLoadedState();
 
-      /// As a fallback plan of in-house service, backend is going to send empty list of
-      /// social auth providers if something goes wrong. In that case, we should
-      /// be using one-all service.This will be removed once the in-house service is
-      /// stable.
-      if (state.socialAuthProviders.isEmpty) {
-        _oneAllSocialAuth();
-      } else {
-        _socialAuth(state.socialAuthProviders);
+      if (state.selectedSocialAuthProvider != null) {
+        final SocialAuthProviderModel selectedSocialAuthProviderModel =
+            state.selectedSocialAuthProvider!;
+
+        handleSocialAuth(
+          redirectURL: widget.redirectURL,
+          socialAuthProviderModel: selectedSocialAuthProviderModel,
+          onClosed: () => log('Social Auth WebView Closed'),
+          socialAuthUriHandler: (Uri uri) {
+            final Map<String, String> callbackData =
+                fetchCallbackState(redirectUri: uri);
+
+            _socialAuthDeepLinkHandler(
+              socialAuthProvider: selectedSocialAuthProviderModel,
+              code: callbackData['code']!,
+              callbackState: callbackData['callbackState']!,
+            );
+          },
+        );
       }
     }
     if (state is SocialAuthLoadingState) {
@@ -130,69 +140,6 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
     }
     if (state is SocialAuthErrorState) {
       widget.onSocialAuthErrorState(state.message);
-    }
-  }
-
-  /// Handles the social authentication with OneAll service.
-  void _oneAllSocialAuth() {
-    handleOneAllSocialAuth(
-      socialAuthProvider: _selectedSocialAuthProvider!,
-      onClosed: () => _selectedSocialAuthProvider = null,
-      redirectURL: widget.redirectURL,
-      uriHandler: (Uri uri) {
-        final String connectionToken =
-            fetchConnectionToken(oneAllRedirectUri: uri);
-
-        _oneAllDeepLinkHandler(
-          oneAllConnectionToken: connectionToken,
-          socialAuthProvider: _selectedSocialAuthProvider!,
-        );
-      },
-    );
-  }
-
-  void _oneAllDeepLinkHandler({
-    required String oneAllConnectionToken,
-    required SocialAuthProvider socialAuthProvider,
-  }) {
-    widget.onPressed?.call(
-      oneAllConnectionToken: oneAllConnectionToken,
-      socialAuthDto: null,
-    );
-    context.read<DerivAuthCubit>().socialLogin(
-          oneAllConnectionToken: oneAllConnectionToken,
-          signupProvider: socialAuthProvider.name,
-        );
-  }
-
-  /// Handles the social authentication with in-house social auth service.
-  void _socialAuth(List<SocialAuthProviderModel> socialAuthProviders) {
-    final List<SocialAuthProviderModel> socialAuthProviderModel =
-        socialAuthProviders
-            .where(
-              (SocialAuthProviderModel socialAuthProvider) =>
-                  socialAuthProvider.name == _selectedSocialAuthProvider,
-            )
-            .toList();
-
-    if (socialAuthProviderModel.isEmpty) {
-      _oneAllSocialAuth();
-    } else {
-      handleSocialAuth(
-        redirectURL: widget.redirectURL,
-        socialAuthProviderModel: socialAuthProviderModel.first,
-        onClosed: () => _selectedSocialAuthProvider = null,
-        socialAuthUriHandler: (Uri uri) {
-          final Map<String, String> callbackData =
-              fetchCallbackState(redirectUri: uri);
-
-          _socialAuthDeepLinkHandler(
-            socialAuthProvider: socialAuthProviderModel.first,
-            code: callbackData['code']!,
-            callbackState: callbackData['callbackState']!,
-          );
-        },
-      );
     }
   }
 
@@ -221,7 +168,6 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
 
   @override
   void dispose() {
-    _selectedSocialAuthProvider = null;
     super.dispose();
   }
 }

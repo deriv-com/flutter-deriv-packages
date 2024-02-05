@@ -25,8 +25,12 @@ class SocialAuthLoadedState extends SocialAuthState {
   /// Initializes a [SocialAuthLoadedState].
   SocialAuthLoadedState({
     required this.socialAuthProviders,
+    this.selectedSocialAuthProvider,
   });
 
   /// List of social auth providers.
   final List<SocialAuthProviderModel> socialAuthProviders;
+
+  /// Selected social auth provider model.
+  final SocialAuthProviderModel? selectedSocialAuthProvider;
 }

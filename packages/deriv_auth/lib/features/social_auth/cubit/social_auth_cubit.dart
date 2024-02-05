@@ -1,9 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:deriv_auth/features/social_auth/cubit/social_auth_state.dart';
-import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
-import 'package:deriv_auth/features/social_auth/services/base_social_auth_service.dart';
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// This Cubit is the single source of truth for social authentication.
@@ -29,6 +27,36 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
     } on Exception catch (e) {
       log(e.toString());
       emit(SocialAuthErrorState());
+    }
+  }
+
+  /// Emits [SocialAuthLoadedState] with selected social auth provider model.
+  Future<void> selectSocialLoginProvider(
+      SocialAuthProvider selectedSocialAuthProvider) async {
+    try {
+      final List<SocialAuthProviderModel> socialAuthProviders =
+          await socialAuthService.getSocialAuthProviders();
+
+      final List<SocialAuthProviderModel> socialAuthProviderModel =
+          socialAuthProviders
+              .where(
+                (SocialAuthProviderModel socialAuthProvider) =>
+                    socialAuthProvider.name == selectedSocialAuthProvider,
+              )
+              .toList();
+
+      if (socialAuthProviderModel.isNotEmpty) {
+        emit(SocialAuthLoadedState(
+          socialAuthProviders:
+              (state as SocialAuthLoadedState).socialAuthProviders,
+          selectedSocialAuthProvider: socialAuthProviderModel.first,
+        ));
+      } else {
+        emit(SocialAuthErrorState(message: 'Social Auth Provider not found'));
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      emit(SocialAuthErrorState(message: e.toString()));
     }
   }
 }
