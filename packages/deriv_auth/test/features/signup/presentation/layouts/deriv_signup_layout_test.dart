@@ -1,8 +1,4 @@
-// ignore_for_file: always_specify_types
-
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/social_auth/presentation/widgets/deriv_social_auth_panel.dart';
-import 'package:deriv_auth/features/signup/presentation/layouts/deriv_signup_layout.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,13 +24,13 @@ void main() {
       when(() => signupCubit.state)
           .thenAnswer((_) => const DerivSignupInitialState());
 
-      when(() => signupCubit.stream).thenAnswer(
-          (_) => Stream.fromIterable([const DerivSignupInitialState()]));
+      when(() => signupCubit.stream).thenAnswer((_) => Stream.fromIterable(
+          <DerivSignupState>[const DerivSignupInitialState()]));
 
       when(() => authCubit.state).thenAnswer((_) => DerivAuthLoadingState());
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([DerivAuthLoadingState()]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream.fromIterable(<DerivAuthState>[DerivAuthLoadingState()]));
     });
 
     patrolWidgetTest('renders correctly', (PatrolTester $) async {
@@ -45,6 +41,11 @@ void main() {
             child: BlocProvider<DerivSignupCubit>.value(
               value: signupCubit,
               child: DerivSignupLayout(
+                onSocialAuthLoadingState: () {},
+                onSocialAuthErrorState: (String? error) {},
+                onSocialAuthLoadedState: () {},
+                redirectURL: 'deriv://example',
+                onWebViewError: (String error) {},
                 signupPageLabel: signupPageLabel,
                 signupPageDescription: signupPageDescription,
                 onSocialAuthButtonPressed: (_) {},
@@ -72,6 +73,11 @@ void main() {
         child: BlocProvider<DerivSignupCubit>.value(
           value: signupCubit,
           child: DerivSignupLayout(
+            onSocialAuthLoadingState: () {},
+            onSocialAuthErrorState: (String? error) {},
+            onSocialAuthLoadedState: () {},
+            redirectURL: 'deriv://example',
+            onWebViewError: (String error) {},
             signupPageLabel: signupPageLabel,
             signupPageDescription: signupPageDescription,
             onSocialAuthButtonPressed: (_) {
@@ -97,14 +103,19 @@ void main() {
       when(() => signupCubit.state)
           .thenAnswer((_) => const DerivSignupEmailSentState());
 
-      when(() => signupCubit.stream).thenAnswer(
-          (_) => Stream.fromIterable([const DerivSignupEmailSentState()]));
+      when(() => signupCubit.stream).thenAnswer((_) => Stream.fromIterable(
+          <DerivSignupState>[const DerivSignupEmailSentState()]));
 
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: BlocProvider<DerivSignupCubit>.value(
           value: signupCubit,
           child: DerivSignupLayout(
+              onSocialAuthLoadingState: () {},
+              onSocialAuthErrorState: (String? error) {},
+              onSocialAuthLoadedState: () {},
+              redirectURL: 'deriv://example',
+              onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
               signupPageDescription: signupPageDescription,
               onSocialAuthButtonPressed: (_) {},
@@ -130,6 +141,11 @@ void main() {
         child: BlocProvider<DerivSignupCubit>.value(
           value: signupCubit,
           child: DerivSignupLayout(
+              onSocialAuthLoadingState: () {},
+              onSocialAuthErrorState: (String? error) {},
+              onSocialAuthLoadedState: () {},
+              redirectURL: 'deriv://example',
+              onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
               signupPageDescription: signupPageDescription,
               onSocialAuthButtonPressed: (_) {},
@@ -140,7 +156,8 @@ void main() {
         ),
       ));
 
-      final signUpButton = $(ElevatedButton).$('Create free demo account');
+      final PatrolFinder signUpButton =
+          $(ElevatedButton).$('Create free demo account');
 
       await $.enterText($(BaseTextField), 'test@gmail.com');
       await $.tap(signUpButton);
@@ -160,6 +177,11 @@ void main() {
         child: BlocProvider<DerivSignupCubit>.value(
           value: signupCubit,
           child: DerivSignupLayout(
+              onSocialAuthLoadingState: () {},
+              onSocialAuthErrorState: (String? error) {},
+              onSocialAuthLoadedState: () {},
+              redirectURL: 'deriv://example',
+              onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
               signupPageDescription: signupPageDescription,
               onSocialAuthButtonPressed: (_) {},
@@ -172,7 +194,7 @@ void main() {
         ),
       ));
 
-      final loginButton = $(InkWell).$('Log in');
+      final PatrolFinder loginButton = $(InkWell).$('Log in');
 
       await $.scrollUntilVisible(finder: loginButton);
       await $.tap(loginButton);
@@ -187,14 +209,19 @@ void main() {
       when(() => signupCubit.state).thenAnswer(
           (_) => const DerivSignupErrorState('This is a test error message'));
 
-      when(() => signupCubit.stream).thenAnswer(
-          (_) => Stream.fromIterable([const DerivSignupErrorState('')]));
+      when(() => signupCubit.stream).thenAnswer((_) => Stream.fromIterable(
+          <DerivSignupState>[const DerivSignupErrorState('')]));
 
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: BlocProvider<DerivSignupCubit>.value(
           value: signupCubit,
           child: DerivSignupLayout(
+              onSocialAuthLoadingState: () {},
+              onSocialAuthErrorState: (String? error) {},
+              onSocialAuthLoadedState: () {},
+              redirectURL: 'deriv://example',
+              onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
               signupPageDescription: signupPageDescription,
               onSocialAuthButtonPressed: (_) {},
@@ -211,7 +238,7 @@ void main() {
         (PatrolTester $) async {
       bool isOnAuthErrorCalled = false;
 
-      final mockAuthState = DerivAuthErrorState(
+      final DerivAuthErrorState mockAuthState = DerivAuthErrorState(
         isSocialLogin: false,
         message: 'error',
         type: AuthErrorType.failedAuthorization,
@@ -219,14 +246,19 @@ void main() {
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer(
+          (_) => Stream.fromIterable(<DerivAuthState>[mockAuthState]));
 
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
         value: authCubit,
         child: BlocProvider<DerivSignupCubit>.value(
           value: signupCubit,
           child: DerivSignupLayout(
+              onSocialAuthLoadingState: () {},
+              onSocialAuthErrorState: (String? error) {},
+              onSocialAuthLoadedState: () {},
+              redirectURL: 'deriv://example',
+              onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
               signupPageDescription: signupPageDescription,
               onSocialAuthButtonPressed: (_) {},
@@ -243,7 +275,7 @@ void main() {
 
     patrolWidgetTest('calls [AuthErrorStateHandler] on auth error state.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthErrorState(
+      final DerivAuthErrorState mockAuthState = DerivAuthErrorState(
         isSocialLogin: false,
         message: 'error',
         type: AuthErrorType.failedAuthorization,
@@ -251,14 +283,19 @@ void main() {
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer(
+          (_) => Stream.fromIterable(<DerivAuthState>[mockAuthState]));
 
       await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
           child: BlocProvider<DerivSignupCubit>.value(
             value: signupCubit,
             child: DerivSignupLayout(
+                onSocialAuthLoadingState: () {},
+                onSocialAuthErrorState: (String? error) {},
+                onSocialAuthLoadedState: () {},
+                redirectURL: 'deriv://example',
+                onWebViewError: (String error) {},
                 signupPageLabel: signupPageLabel,
                 signupPageDescription: signupPageDescription,
                 onSocialAuthButtonPressed: (_) {},

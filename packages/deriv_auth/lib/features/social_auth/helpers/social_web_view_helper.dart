@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
 import 'package:deriv_web_view/web_view.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_deriv_api/helpers/miscellaneous_helper.dart';
 import 'package:uni_links2/uni_links.dart';
 
@@ -13,35 +11,20 @@ StreamSubscription<Uri?>? _uriLinkStream;
 Future<void> handleSocialAuth({
   required SocialAuthProviderModel socialAuthProviderModel,
   required Function(Uri) socialAuthUriHandler,
-  required VoidCallback onClosed,
   required String redirectURL,
-}) async {
-  await _openBrowser(
-    url: socialAuthProviderModel.authUrl,
-    uriHandler: socialAuthUriHandler,
-    onClosed: onClosed,
-    redirectURL: redirectURL,
-  );
-
-  _setupLinkStream(socialAuthUriHandler);
-}
-
-Future<void> _openBrowser({
-  required String url,
-  required Function(Uri) uriHandler,
-  required VoidCallback onClosed,
-  required String redirectURL,
+  required Function(String) onError,
 }) async {
   await openInAppWebViewWithUriHandler(
-      url: url,
+      url: socialAuthProviderModel.authUrl,
       userAgent: await getUserAgent(),
-      uriHandler: uriHandler,
-      onError: (String message) => FirebaseCrashlytics.instance.log(message),
+      uriHandler: socialAuthUriHandler,
+      onError: onError,
       onClosed: () {
-        onClosed();
         _uriLinkStream?.cancel();
       },
       redirectURLs: <String>[redirectURL]);
+
+  _setupLinkStream(socialAuthUriHandler);
 }
 
 void _setupLinkStream(Function(Uri) uriHandler) {

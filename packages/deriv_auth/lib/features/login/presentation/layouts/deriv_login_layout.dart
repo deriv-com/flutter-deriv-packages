@@ -12,13 +12,14 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onResetPassTapped,
     required this.onSignupTapped,
     required this.onLoggedIn,
-    required this.onSocialAuthButtonPressed,
     required this.welcomeLabel,
     required this.greetingLabel,
     required this.onSocialAuthLoadingState,
     required this.onSocialAuthErrorState,
     required this.onSocialAuthLoadedState,
     required this.redirectURL,
+    required this.onWebViewError,
+    this.onSocialAuthButtonPressed,
     this.isForgotPasswordEnabled = true,
     this.isCreateAccountEnabled = true,
     this.isSocialAuthEnabled = true,
@@ -44,10 +45,12 @@ class DerivLoginLayout extends StatefulWidget {
   final Function(DerivAuthLoggedInState) onLoggedIn;
 
   /// Callback to be called when social auth button is tapped.
-  final SocialAuthCallback onSocialAuthButtonPressed;
+  /// Give access to [SocialAuthDto] for 2FA.
+  final SocialAuthCallback? onSocialAuthButtonPressed;
 
   /// Callback to be called when login button is tapped.
-  final VoidCallback? onLoginTapped;
+  /// Give access to email and password.
+  final Function(String email, String password)? onLoginTapped;
 
   /// Welcome text to be displayed on login page.
   final String welcomeLabel;
@@ -75,6 +78,9 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Redirect URL for social auth.
   final String redirectURL;
+
+  /// Callback for web view error.
+  final Function(String) onWebViewError;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -150,6 +156,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                         onSocialAuthErrorState: (String? error) =>
                             widget.onSocialAuthErrorState(error),
                         isVisible: widget.isSocialAuthEnabled,
+                        onWebViewError: widget.onWebViewError,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
@@ -339,7 +346,10 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   }
 
   Future<void> _onLoginTapped() async {
-    widget.onLoginTapped?.call();
+    widget.onLoginTapped?.call(
+      _getEmailValue(),
+      _passwordController.text,
+    );
 
     _emailFocusNode.unfocus();
     _passwordFocusNode.unfocus();

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -11,10 +9,7 @@ import '../../helpers/social_web_view_helper.dart';
 
 /// Type definition for social auth callback
 /// called when user presses social auth button.
-typedef SocialAuthCallback = Function({
-  String? oneAllConnectionToken,
-  SocialAuthDto? socialAuthDto,
-});
+typedef SocialAuthCallback = ValueSetter<SocialAuthDto>;
 
 /// Panel of buttons for social authentication.
 class DerivSocialAuthPanel extends StatefulWidget {
@@ -24,6 +19,7 @@ class DerivSocialAuthPanel extends StatefulWidget {
     required this.onSocialAuthErrorState,
     required this.onSocialAuthLoadedState,
     required this.redirectURL,
+    required this.onWebViewError,
     this.isEnabled = true,
     this.isVisible = true,
     Key? key,
@@ -55,6 +51,9 @@ class DerivSocialAuthPanel extends StatefulWidget {
 
   /// Redirect URL for social auth.
   final String redirectURL;
+
+  /// Callback for web view error.
+  final Function(String) onWebViewError;
 
   @override
   State<DerivSocialAuthPanel> createState() => _DerivSocialAuthPanelState();
@@ -121,7 +120,6 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         handleSocialAuth(
           redirectURL: widget.redirectURL,
           socialAuthProviderModel: selectedSocialAuthProviderModel,
-          onClosed: () => log('Social Auth WebView Closed'),
           socialAuthUriHandler: (Uri uri) {
             final Map<String, String> callbackData =
                 fetchCallbackState(redirectUri: uri);
@@ -132,6 +130,7 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
               callbackState: callbackData['callbackState']!,
             );
           },
+          onError: widget.onWebViewError,
         );
       }
     }
@@ -158,8 +157,7 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
     );
 
     widget.onPressed?.call(
-      oneAllConnectionToken: null,
-      socialAuthDto: socialAuthDto,
+      socialAuthDto,
     );
 
     BlocProvider.of<DerivAuthCubit>(context)

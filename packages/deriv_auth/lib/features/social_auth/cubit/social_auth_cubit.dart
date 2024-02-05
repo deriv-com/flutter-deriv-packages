@@ -8,18 +8,23 @@ import 'package:deriv_http_client/deriv_http_client.dart';
 class SocialAuthCubit extends Cubit<SocialAuthState> {
   /// Initialize a [SocialAuthCubit].
   SocialAuthCubit({required this.socialAuthService})
-      : super(SocialAuthInitialState());
+      : super(SocialAuthInitialState()) {
+    getSocialAuthProviders();
+  }
 
   /// [BaseSocialAuthService] handles all social authentication logic of cubit.
   final BaseSocialAuthService socialAuthService;
+
+  /// List of social auth providers.
+  List<SocialAuthProviderModel> socialAuthProviders =
+      <SocialAuthProviderModel>[];
 
   /// Get list of social auth providers.
   Future<void> getSocialAuthProviders() async {
     emit(SocialAuthLoadingState());
 
     try {
-      final List<SocialAuthProviderModel> socialAuthProviders =
-          await socialAuthService.getSocialAuthProviders();
+      socialAuthProviders = await socialAuthService.getSocialAuthProviders();
 
       emit(SocialAuthLoadedState(socialAuthProviders: socialAuthProviders));
     } on HTTPClientException catch (e) {
@@ -34,8 +39,7 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
   Future<void> selectSocialLoginProvider(
       SocialAuthProvider selectedSocialAuthProvider) async {
     try {
-      final List<SocialAuthProviderModel> socialAuthProviders =
-          await socialAuthService.getSocialAuthProviders();
+      emit(SocialAuthLoadingState());
 
       final List<SocialAuthProviderModel> socialAuthProviderModel =
           socialAuthProviders
@@ -47,16 +51,15 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
 
       if (socialAuthProviderModel.isNotEmpty) {
         emit(SocialAuthLoadedState(
-          socialAuthProviders:
-              (state as SocialAuthLoadedState).socialAuthProviders,
+          socialAuthProviders: socialAuthProviders,
           selectedSocialAuthProvider: socialAuthProviderModel.first,
         ));
       } else {
-        emit(SocialAuthErrorState(message: 'Social Auth Provider not found'));
+        emit(SocialAuthErrorState());
       }
     } on Exception catch (e) {
       log(e.toString());
-      emit(SocialAuthErrorState(message: e.toString()));
+      emit(SocialAuthErrorState());
     }
   }
 }

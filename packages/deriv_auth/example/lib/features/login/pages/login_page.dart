@@ -1,3 +1,4 @@
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
 import 'package:deriv_auth/features/login/presentation/layouts/deriv_login_layout.dart';
 import 'package:example/core/example_auth_error_state_handler.dart';
@@ -24,6 +25,11 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return DerivLoginLayout(
+      onSocialAuthLoadingState: () {},
+      onSocialAuthErrorState: (String? error) {},
+      onSocialAuthLoadedState: () {},
+      redirectURL: 'deriv://example',
+      onWebViewError: (String error) {},
       welcomeLabel: 'Welcome back!',
       greetingLabel:
           'Log in to your Deriv account to start trading and investing.',
@@ -47,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
           builder: (context) => const SignupPage(),
         ),
       ),
-      onSocialAuthButtonPressed: (_) {},
+      onSocialAuthButtonPressed: (SocialAuthDto socialAuthDto) {},
     );
   }
 }
