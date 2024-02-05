@@ -66,6 +66,7 @@ Future<void> openInAppWebViewWithUriHandler({
   required Function(Uri) uriHandler,
   required Function(String) onError,
   required VoidCallback onClosed,
+  required List<String> redirectURLs,
 }) async {
   try {
     _openInAppTabView(url, onClosed);
@@ -73,6 +74,7 @@ Future<void> openInAppWebViewWithUriHandler({
     final AppInAppBrowser browser = AppInAppBrowser(
       onUrlChanged: (Uri uri) => uriHandler(uri),
       onError: (String message) => onError(message),
+      redirectURLs: redirectURLs,
     );
 
     await browser.openUrlRequest(
