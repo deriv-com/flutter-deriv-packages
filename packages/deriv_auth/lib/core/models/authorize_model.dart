@@ -271,10 +271,8 @@ class AuthorizeEntity extends AuthorizeModel {
         // fast fix: localCurrencies: json['local_currencies'] == null
         localCurrencies: json['local_currencies'] == null
             ? null
-            : (json['local_currencies'] as Map<String, dynamic>).map(
-          (String key, value) => MapEntry(
-              key, LocalCurrenciesPropertyEntity.fromJson(value as Map<String, dynamic>)),
-        ),
+            : Map.from(json["local_currencies"])
+            .map((k, v) => MapEntry<String, LocalCurrenciesPropertyEntity>(k, LocalCurrenciesPropertyEntity.fromJson(v))),
         loginid: json['loginid'],
         preferredLanguage: json['preferred_language'],
         scopes: json['scopes'] == null
