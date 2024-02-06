@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 
 class DerivFeatureFlag {
   /// Initilize the FeatureFlag service for the whole app.
-  Future<void> initialize(FeatureFlagConfig featureFlagConfig) async {
+  Future<void> initialize(FeatureFlagConfig featureFlagConfig, String? hostUrl) async {
     final DerivGrowthBook derivGrowthBook = DerivGrowthBook(
       featureFlagConfig: featureFlagConfig,
+      hostUrl: hostUrl,
     );
     await FeatureFlagRepository.getInstance()
         .setup(derivGrowthBook: derivGrowthBook);
