@@ -269,10 +269,10 @@ class AuthorizeEntity extends AuthorizeModel {
               ),
         // TODOAuth(): fromjson(.tojson) wont work for localCurrencies .
         // fast fix: localCurrencies: json['local_currencies'] == null
-        localCurrencies: json['local_currencies'] == null
-            ? null
-            : Map.from(json["local_currencies"])
-            .map((k, v) => MapEntry<String, LocalCurrenciesPropertyEntity>(k, LocalCurrenciesPropertyEntity.fromJson(v))),
+        // localCurrencies: json['local_currencies'] == null
+        //     ? null
+        //     : Map.from(json["local_currencies"])
+        //     .map((k, v) => MapEntry<String, LocalCurrenciesPropertyEntity>(k, LocalCurrenciesPropertyEntity.fromJson(v))),
         loginid: json['loginid'],
         preferredLanguage: json['preferred_language'],
         scopes: json['scopes'] == null
