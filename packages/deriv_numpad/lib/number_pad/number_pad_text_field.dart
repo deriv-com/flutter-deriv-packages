@@ -8,8 +8,10 @@ class _NumberPadTextField extends StatefulWidget {
     this.focusNode,
     this.textAlign,
     this.label = '',
+    this.suffixIcon,
   });
 
+  final Widget? suffixIcon;
   final TextEditingController? controller;
   final TextStyle textStyle;
   final FocusNode? focusNode;
@@ -44,8 +46,24 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
                 color: context.theme.colors.coral,
               ),
         decoration: widget.label.isEmpty
-            ? const InputDecoration(border: InputBorder.none)
+            ? InputDecoration(
+                border: InputBorder.none,
+                suffixIcon: widget.suffixIcon != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                            right: ThemeProvider.margin16),
+                        child: widget.suffixIcon,
+                      )
+                    : null,
+              )
             : InputDecoration(
+                suffixIcon: widget.suffixIcon != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                            right: ThemeProvider.margin16),
+                        child: widget.suffixIcon,
+                      )
+                    : null,
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -61,6 +79,7 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
         textAlign: widget.textAlign ?? TextAlign.start,
         readOnly: true,
         showCursor: true,
+        cursorColor: context.theme.colors.prominent,
         enableInteractiveSelection: false,
         autofocus: true,
       );

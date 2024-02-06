@@ -1,8 +1,12 @@
 import 'dart:async';
 import 'dart:ui' as ui;
 
+import 'package:deriv_numpad/core/widgets/currency_switcher.dart';
 import 'package:deriv_numpad/core/widgets/info_icon_button.dart';
+import 'package:deriv_numpad/number_pad/model/currency_detail.dart';
+import 'package:deriv_numpad/number_pad/model/exchange_rate_model.dart';
 import 'package:deriv_numpad/number_pad/model/number_pad_label.dart';
+import 'package:deriv_numpad/number_pad/notifier/exchange_notifier.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -110,6 +114,38 @@ class NumberPad extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  /// This is the instance of Numberpad which has currency exchanger within it.
+  ///
+  /// It will return [NumberPadData] which contains the latest currency amount.
+  factory NumberPad.withCurrencyExchanger({
+    /// This information will be prefilled in the textField
+    required CurrencyDetail primaryCurrency,
+
+    /// stream of exchange rate of the currencies. Here,
+    ///  [base_currency] should be same as [currencyType] in `primaryCurrency`.
+    /// [target_currency] will be the currency shown in currency switcher.
+    /// When there is a new exchange rate in this stream, the value in currency switcher changes.
+    required Stream<ExchangeRateModel> exchangeRatesStream,
+
+    /// The initial exchange rate for the currency provided.
+    required ExchangeRateModel initialExchangeRate,
+
+    /// Any validation for currencies.
+    required NumberPadLabel label,
+
+    /// Calls when this widget is closed.
+    NumberPadCloseCallback? onClose,
+    String title = '',
+  }) =>
+      _NumpadWithExchange(
+        label: label,
+        primaryCurrency: primaryCurrency,
+        exchangeRatesStream: exchangeRatesStream,
+        initialExchangeRate: initialExchangeRate,
+        title: title,
+        onClose: onClose,
+      );
+
   /// Sets the currency of the number pad
   ///
   /// The currency code that will be shown on the right side of the number pad text input area.
@@ -212,6 +248,7 @@ class _NumberPadState extends State<NumberPad> {
   late NumberFormat _formatter;
   TextEditingController? _firstInputController;
   TextEditingController? _secondInputController;
+  late ExchangeController _exchangeController;
   late FocusNode _firstInputFocusNode;
   FocusNode? _secondInputFocusNode;
 
@@ -223,9 +260,7 @@ class _NumberPadState extends State<NumberPad> {
     _formatter = widget.formatter;
     _firstInputController = TextEditingController();
     _firstInputFocusNode = FocusNode();
-    _firstInputController?.text = widget.firstInputInitialValue == null
-        ? noInput
-        : _formatter.format(widget.firstInputInitialValue);
+    _firstInputController?.text = _getFirstInputControllerText();
 
     if (widget.numberPadType == NumberPadWidgetType.doubleInput) {
       _secondInputController = TextEditingController();
@@ -244,8 +279,18 @@ class _NumberPadState extends State<NumberPad> {
     widget.onOpen?.call();
   }
 
+  String _getFirstInputControllerText() {
+    if (widget.firstInputInitialValue != null) {
+      return _formatter.format(widget.firstInputInitialValue);
+    } else {
+      return noInput;
+    }
+  }
+
   @override
-  Widget build(BuildContext context) => _NumberPadProvider(
+  Widget build(BuildContext ctx) => _buildWholeNumpad(context);
+
+  Widget _buildWholeNumpad(BuildContext context) => _NumberPadProvider(
         type: widget.numberPadType,
         label: widget.label,
         formatter: _formatter,
@@ -262,17 +307,18 @@ class _NumberPadState extends State<NumberPad> {
         isSecondInputInRange: _isSecondInputInRange,
         isFirstInputInRange: _isFirstInputInRange,
         isAllInputsValid: _isAllInputsValid,
-        child: WillPopScope(
-          onWillPop: () async {
-            _applyInputs(NumberPadCloseType.clickOutsideView);
+        child: Builder(
+          builder: (BuildContext context) => WillPopScope(
+            onWillPop: () async {
+              _applyInputs(NumberPadCloseType.clickOutsideView);
 
-            return Future<bool>.value(true);
-          },
-          child: ListView(
-            shrinkWrap: true,
-            physics: const ClampingScrollPhysics(),
-            children: <Widget>[
-              Container(
+              return Future<bool>.value(true);
+            },
+            child: ListView(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              children: <Widget>[
+                Container(
                   decoration: BoxDecoration(
                     color: context.theme.colors.primary,
                     borderRadius: const BorderRadius.only(
@@ -283,11 +329,8 @@ class _NumberPadState extends State<NumberPad> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        padding: const EdgeInsets.fromLTRB(
-                          ThemeProvider.margin16,
-                          0,
-                          ThemeProvider.margin16,
-                          0,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: ThemeProvider.margin16,
                         ),
                         decoration: BoxDecoration(
                           color: context.theme.colors.secondary,
@@ -305,8 +348,8 @@ class _NumberPadState extends State<NumberPad> {
                                   const EdgeInsets.all(ThemeProvider.margin08),
                               child: SvgPicture.asset(
                                 handleIcon,
-                                width: 40,
-                                height: 4,
+                                width: ThemeProvider.margin40,
+                                height: ThemeProvider.margin04,
                                 semanticsLabel: widget
                                     .label.semanticNumberPadBottomSheetHandle,
                               ),
@@ -325,13 +368,18 @@ class _NumberPadState extends State<NumberPad> {
                               firstTitleValue: widget.firstInputTitle,
                               secondTitleValue: widget.secondInputTitle,
                             ),
-                      _NumberPadMessage(message: _validateMessage()),
+                      getCustomValidationText(context) != null
+                          ? _NumberPadMessage(
+                              messageText: getCustomValidationText(context))
+                          : _NumberPadMessage(message: _validateMessage()),
                       _NumberPadKeypadWidget(
                         onKeyPressed: _onKeyboardButtonPressed,
                       )
                     ],
-                  )),
-            ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -343,6 +391,16 @@ class _NumberPadState extends State<NumberPad> {
   ) {
     switch (text) {
       case applyValuesInput:
+        if (ExchangeNotifier.of(context) != null) {
+          final double returningValue =
+              ExchangeNotifier.of(context)!.finalAmount();
+          final NumberPadData data = NumberPadData(
+            firstInputValue: returningValue,
+          );
+          widget.onClose?.call(NumberPadWidgetType.doubleInput,
+              NumberPadCloseType.pressOK, data);
+          return Navigator.of(context).pop(data);
+        }
         _applyInputs(NumberPadCloseType.pressOK);
         break;
       case backspaceInput:
@@ -354,6 +412,7 @@ class _NumberPadState extends State<NumberPad> {
           _setNewAmount(controller, text);
         }
     }
+    ExchangeNotifier.of(context)?.onChangeCurrency(controller.text);
   }
 
   void _applyInputs(NumberPadCloseType closeStyle) {
@@ -398,6 +457,17 @@ class _NumberPadState extends State<NumberPad> {
     Navigator.pop(context, data);
   }
 
+  RichText? getCustomValidationText(BuildContext context) {
+    final RichText? Function(String value)? onValidate =
+        _NumberPadProvider.of(context)?.label.onValidate;
+    if (onValidate == null) {
+      return null;
+    } else {
+      final RichText? richText = onValidate(_firstInputController?.text ?? '');
+      return richText;
+    }
+  }
+
   String _validateMessage() {
     String message = '';
 
@@ -411,17 +481,25 @@ class _NumberPadState extends State<NumberPad> {
           lowerLimit: widget.firstInputMinimumValue ?? 0);
 
       if (!isFirstMoreThanMin) {
-        return message = widget.label.warnValueCantBeLessThan(
-          widget.firstInputTitle,
-          widget.firstInputMinimumValue ?? 0,
-          getStringWithMappedCurrencyName(_currency),
-        );
+        final String Function(
+                Object input, Object minAmount, Object currencySymbol)?
+            callback = widget.label.warnValueCantBeLessThan;
+        return message = callback?.call(
+              widget.firstInputTitle,
+              widget.firstInputMinimumValue ?? 0,
+              getStringWithMappedCurrencyName(_currency),
+            ) ??
+            '';
       } else if (!isFirstLessThanMax) {
-        return message = widget.label.warnValueCantBeGreaterThan(
-          widget.firstInputTitle,
-          widget.firstInputMaximumValue,
-          getStringWithMappedCurrencyName(_currency),
-        );
+        final String Function(
+                Object input, Object maxAmount, Object currencySymbol)?
+            callback = widget.label.warnValueCantBeGreaterThan;
+        return message = callback?.call(
+              widget.firstInputTitle,
+              widget.firstInputMaximumValue,
+              getStringWithMappedCurrencyName(_currency),
+            ) ??
+            '';
       }
     }
     if (widget.numberPadType == NumberPadWidgetType.doubleInput) {
@@ -435,27 +513,41 @@ class _NumberPadState extends State<NumberPad> {
             lowerLimit: widget.secondInputMinimumValue);
 
         if (!isSecondMoreThanMin) {
-          return message = widget.label.warnDoubleInputValueCantBeLessThan(
-            widget.secondInputTitle,
-            widget.secondInputMinimumValue,
-            getStringWithMappedCurrencyName(_currency),
-          );
+          final String Function(
+                  Object input, Object minAmount, Object currencySymbol)?
+              callback = widget.label.warnDoubleInputValueCantBeLessThan;
+          return message = callback?.call(
+                widget.secondInputTitle,
+                widget.secondInputMinimumValue,
+                getStringWithMappedCurrencyName(_currency),
+              ) ??
+              '';
         } else if (!isSecondLessThanMax) {
-          return message = widget.label.warnDoubleInputValueCantBeGreaterThan(
-            widget.secondInputTitle,
-            widget.secondInputMaximumValue!,
-            getStringWithMappedCurrencyName(_currency),
-          );
+          final String Function(
+                  Object input, Object maxAmount, Object currencySymbol)?
+              callback = widget.label.warnDoubleInputValueCantBeGreaterThan;
+          return message = callback?.call(
+                widget.secondInputTitle,
+                widget.secondInputMaximumValue!,
+                getStringWithMappedCurrencyName(_currency),
+              ) ??
+              '';
         }
       }
     } else if (widget.firstInputMinimumValue != null &&
         widget.firstInputMaximumValue != double.maxFinite) {
-      return message = widget.label.warnValueShouldBeInRange(
-        widget.firstInputTitle,
-        widget.firstInputMinimumValue ?? 0,
-        getStringWithMappedCurrencyName(_currency),
-        widget.firstInputMaximumValue,
-      );
+      final String Function(
+          Object input,
+          Object minAmountClear,
+          Object currencySymbol,
+          Object maxAmount)? callback = widget.label.warnValueShouldBeInRange;
+      return callback?.call(
+            widget.firstInputTitle,
+            widget.firstInputMinimumValue ?? 0,
+            getStringWithMappedCurrencyName(_currency),
+            widget.firstInputMaximumValue,
+          ) ??
+          '';
     }
     return message;
   }
@@ -533,7 +625,7 @@ class _NumberPadState extends State<NumberPad> {
   }
 
   bool _isFirstInputInRange() =>
-      hasNoValue(_firstInputController?.text) ||
+      !hasNoValue(_firstInputController?.text) &&
       isBetweenLimits(
         value: _firstInputController?.text ?? '',
         upperLimit: widget.firstInputMaximumValue,
@@ -546,5 +638,64 @@ class _NumberPadState extends State<NumberPad> {
         value: _secondInputController?.text ?? '',
         upperLimit: widget.secondInputMaximumValue!,
         lowerLimit: widget.secondInputMinimumValue,
+      );
+}
+
+class _NumpadWithExchange extends NumberPad {
+  _NumpadWithExchange({
+    required NumberPadLabel label,
+    required this.primaryCurrency,
+    required this.exchangeRatesStream,
+    required this.initialExchangeRate,
+    required String title,
+    NumberPadCloseCallback? onClose,
+  }) : super(
+          numberPadType: NumberPadWidgetType.singleInput,
+          formatter: NumberFormat.decimalPattern()..maximumFractionDigits = 8,
+          label: label,
+          firstInputTitle: title,
+          onClose: onClose,
+        );
+
+  final CurrencyDetail primaryCurrency;
+
+  final Stream<ExchangeRateModel> exchangeRatesStream;
+
+  final ExchangeRateModel initialExchangeRate;
+
+  @override
+  State<StatefulWidget> createState() => _NumberPadWithExchangeState(
+        exchangeRatesStream: exchangeRatesStream,
+        initialExchangeRate: initialExchangeRate,
+        primaryCurrency: primaryCurrency,
+      );
+}
+
+class _NumberPadWithExchangeState extends _NumberPadState {
+  _NumberPadWithExchangeState({
+    required this.primaryCurrency,
+    required this.exchangeRatesStream,
+    required this.initialExchangeRate,
+  });
+  final CurrencyDetail primaryCurrency;
+  final Stream<ExchangeRateModel> exchangeRatesStream;
+  final ExchangeRateModel initialExchangeRate;
+
+  @override
+  void initState() {
+    super.initState();
+    super._firstInputController!.text = primaryCurrency.displayAmount;
+    _exchangeController = ExchangeController(
+      primaryCurrency: primaryCurrency,
+      currencyFieldController: super._firstInputController!,
+      rateSource: exchangeRatesStream,
+      initialExchangeRate: initialExchangeRate,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) => ExchangeNotifier(
+        child: super.build(context),
+        notifier: _exchangeController,
       );
 }

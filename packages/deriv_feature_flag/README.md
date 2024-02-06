@@ -4,7 +4,7 @@ This package provides feature flag functionality for mobile applications.
 
 ## Getting started
 
-## To use the lints, add a dependency in your `pubspec.yaml`:
+### To use the lints, add a dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
@@ -15,7 +15,16 @@ dependencies:
       ref: ref
 ```
 
-Initialize and provide your feature flags key,value pairs:
+### Configuring your .env file
+
+Following keys should be added to your .env file:
+
+```yaml
+GROWTHBOOK_API_KEY=your_api_key
+GROWTHBOOK_HOST_URL=your_host_url
+```
+
+### Initialize and provide your feature flags key,value pairs:
 
 ```dart
 final config = FeatureFlagConfig(
@@ -23,7 +32,7 @@ final config = FeatureFlagConfig(
     'sample_feature_key': true,
   },
 );
-await DerivFeatureFlag.initialize(config);
+await DerivFeatureFlag().initialize(config);
 ```
 
 Then use it in your project:

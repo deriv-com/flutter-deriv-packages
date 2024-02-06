@@ -41,6 +41,20 @@ jobs:
       - name: Create git tag based on version
         run: melos version --all --yes
 
+      - name: Get new tags
+        id: new-tags
+        run: |
+          local_tags=$(git tag)
+          remote_tags=$(git ls-remote --tags origin | cut -d/ -f3)
+          new_tags=$(comm -23 <(sort <<<"$local_tags") <(sort <<<"$remote_tags"))
+
+          # Format new tags into a single line with '\n' between tags
+          formatted_tags=$(echo -e "$new_tags" | tr '\n' '  ')
+
+          # Append the formatted tags to the file
+          echo -e "NEW_TAGS=$formatted_tags" >> "$GITHUB_OUTPUT"
+        shell: bash
+
       - name: Push tag
         id: push-tag
         run: |
@@ -69,3 +83,11 @@ jobs:
           token: ${{ secrets.PAT }}
           title: "chore(version): bump version and update changelog"
           base: master
+
+      - name: Send Slack Notification
+        uses: ./.github/actions/send_slack_notifications
+        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
+        with:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          TAGS: ${{ steps.new-tags.outputs.NEW_TAGS }}

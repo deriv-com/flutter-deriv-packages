@@ -13,4 +13,7 @@ abstract class DerivResetPasswordIO {
 
   /// Deriv reset pass output.
   Stream<DerivResetPassState> get output;
+
+  /// Resets [DerivResetPassState] to [DerivResetPassInitialState].
+  void resetState();
 }

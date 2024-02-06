@@ -1,0 +1,4 @@
+pull_request_title: "chore(deriv_localizations): Crowdin Localization Updated"
+files:
+  - source: /packages/deriv_localizations/lib/l10n/**/app_en.arb
+    translation: /packages/deriv_localizations/lib/l10n/**/app_%two_letters_code%.arb

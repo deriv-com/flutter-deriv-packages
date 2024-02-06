@@ -4,7 +4,7 @@ library web_socket_handler;
 
 export 'src/connection_controller/connection_state.dart'
     show
-        ConnectionState,
+        DerivConnectionState,
         ConnectingState,
         ConnectedState,
         ReconnectingState,

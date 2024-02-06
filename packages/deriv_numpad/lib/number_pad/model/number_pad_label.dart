@@ -1,18 +1,21 @@
+import 'package:flutter/material.dart';
+
 /// A class that will hold all the strings required by the NumberPad widget.
 class NumberPadLabel {
   /// Initialize [NumberPadLabel].
   NumberPadLabel({
-    required this.semanticNumberPadBottomSheetHandle,
-    required this.warnValueCantBeLessThan,
-    required this.warnValueCantBeGreaterThan,
-    required this.warnDoubleInputValueCantBeLessThan,
-    required this.warnDoubleInputValueCantBeGreaterThan,
-    required this.warnValueShouldBeInRange,
     required this.actionOK,
+    this.semanticNumberPadBottomSheetHandle,
+    this.warnValueCantBeLessThan,
+    this.warnValueCantBeGreaterThan,
+    this.warnDoubleInputValueCantBeLessThan,
+    this.warnDoubleInputValueCantBeGreaterThan,
+    this.warnValueShouldBeInRange,
+    this.onValidate,
   });
 
   /// Semantic label for the handle svg at the top of the NumberPad bottom sheet.
-  final String semanticNumberPadBottomSheetHandle;
+  final String? semanticNumberPadBottomSheetHandle;
 
   /// The text on the 'OK' button that's in the AlertDialgue.
   final String actionOK;
@@ -22,28 +25,28 @@ class NumberPadLabel {
     Object input,
     Object minAmount,
     Object currencySymbol,
-  ) warnValueCantBeLessThan;
+  )? warnValueCantBeLessThan;
 
   /// `{Input} can't be greater than {maxAmount} {currencySymbol}`
   final String Function(
     Object input,
     Object maxAmount,
     Object currencySymbol,
-  ) warnValueCantBeGreaterThan;
+  )? warnValueCantBeGreaterThan;
 
   /// `Invalid {Input}. {Input} can't be less than {minAmount} {currencySymbol}`
   final String Function(
     Object input,
     Object minAmount,
     Object currencySymbol,
-  ) warnDoubleInputValueCantBeLessThan;
+  )? warnDoubleInputValueCantBeLessThan;
 
   /// `Invalid {Input}. {Input} can't be greater than {maxAmount} {currencySymbol}`
   final String Function(
     Object input,
     Object maxAmount,
     Object currencySymbol,
-  ) warnDoubleInputValueCantBeGreaterThan;
+  )? warnDoubleInputValueCantBeGreaterThan;
 
   /// `{Input} between {minAmountClear} {currencySymbol} and {maxAmount} {currencySymbol}`
   final String Function(
@@ -51,5 +54,10 @@ class NumberPadLabel {
     Object minAmountClear,
     Object currencySymbol,
     Object maxAmount,
-  ) warnValueShouldBeInRange;
+  )? warnValueShouldBeInRange;
+
+  /// With this, client code can have their own validation logic.
+  /// Returning [RichText] means this will show the message in the UI
+  /// Returning [null] means it won't show the message in the UI.
+  final RichText? Function(String)? onValidate;
 }

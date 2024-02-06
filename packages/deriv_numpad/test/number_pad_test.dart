@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:deriv_numpad/core/widgets/currency_switcher.dart';
 import 'package:deriv_numpad/deriv_numberpad.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -463,6 +466,182 @@ void main() {
       expect(data.firstInputValue, isNull);
       expect(data.secondInputValue, isNull);
     });
+  });
+
+  group('NumberPad with exchange currency', () {
+    late ExchangeRateModel mockExchangeRate;
+    late Stream<ExchangeRateModel> mockExchangeStream;
+    setUpAll(() {
+      mockExchangeRate = ExchangeRateModel(
+        baseCurrency: 'BTC',
+        targetCurrency: 'USD',
+        exchangeRate: 42800,
+      );
+      mockExchangeStream =
+          StreamController<ExchangeRateModel>.broadcast().stream;
+    });
+
+    testWidgets('should render exchange switcher, numpad, and title',
+        (WidgetTester widgetTester) async {
+      await widgetTester.pumpWidget(
+        TestWidget(
+          NumberPad.withCurrencyExchanger(
+            primaryCurrency: CurrencyDetail(0.123, 'BTC'),
+            exchangeRatesStream: mockExchangeStream,
+            initialExchangeRate: mockExchangeRate,
+            title: 'Amount',
+            label: NumberPadLabel(
+              actionOK: 'OK',
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Amount'), findsOneWidget);
+      expect(find.byType(CurrencySwitcher), findsOneWidget);
+      expect(find.byType(TextButton), findsNWidgets(13));
+      expect(find.byType(TextField), findsOneWidget);
+    });
+
+    testWidgets(
+        'should populate the textfield when there is an amount in primaryCurrency. ',
+        (WidgetTester widgetTester) async {
+      final CurrencyDetail mockPrimaryCurrency = CurrencyDetail(0.123, 'BTC');
+      await widgetTester.pumpWidget(
+        TestWidget(
+          NumberPad.withCurrencyExchanger(
+            primaryCurrency: mockPrimaryCurrency,
+            exchangeRatesStream: mockExchangeStream,
+            initialExchangeRate: mockExchangeRate,
+            title: 'Amount',
+            label: NumberPadLabel(
+              actionOK: 'OK',
+            ),
+          ),
+        ),
+      );
+
+      final TextField textField =
+          find.byType(TextField).evaluate().first.widget as TextField;
+
+      expect(textField.controller!.text, mockPrimaryCurrency.displayAmount);
+
+      expect(find.text('5264.40 '), findsOneWidget);
+    });
+
+    testWidgets(
+        'should render the exchanged amount in USD in UI when user inputs amount in BTC from the keypad.',
+        (WidgetTester widgetTester) async {
+      final CurrencyDetail mockPrimaryCurrency = CurrencyDetail(0, 'BTC');
+      await widgetTester.pumpWidget(
+        TestWidget(
+          NumberPad.withCurrencyExchanger(
+            primaryCurrency: mockPrimaryCurrency,
+            exchangeRatesStream: mockExchangeStream,
+            initialExchangeRate: mockExchangeRate,
+            title: 'Amount',
+            label: NumberPadLabel(
+              actionOK: 'OK',
+            ),
+          ),
+        ),
+      );
+
+      // Inputted 0 from the keypad
+      await widgetTester.tap(find.text('0'));
+      await widgetTester.pumpAndSettle();
+
+      // Inputted . from the keypad
+      await widgetTester.tap(find.text('.'));
+      await widgetTester.pumpAndSettle();
+
+      // Inputted 3 from the keypad
+      await widgetTester.tap(find.text('3'));
+      await widgetTester.pumpAndSettle();
+
+      // Inputted 5 from the keypad
+      await widgetTester.tap(find.text('5'));
+      await widgetTester.pumpAndSettle();
+
+      // Inputted 5 from the keypad
+      await widgetTester.tap(find.text('5'));
+      await widgetTester.pumpAndSettle();
+
+      expect(find.text('15194.00 '), findsOneWidget);
+    });
+
+    testWidgets(
+      'should switch amount from currency switcher to textfield and vice versa when currency Switcher is pressed.',
+      (WidgetTester widgetTester) async {
+        final CurrencyDetail mockPrimaryCurrency = CurrencyDetail(0.123, 'BTC');
+
+        await widgetTester.pumpWidget(
+          TestWidget(
+            NumberPad.withCurrencyExchanger(
+              primaryCurrency: mockPrimaryCurrency,
+              exchangeRatesStream: mockExchangeStream,
+              initialExchangeRate: mockExchangeRate,
+              title: 'Amount',
+              label: NumberPadLabel(
+                actionOK: 'OK',
+              ),
+            ),
+          ),
+        );
+
+        await widgetTester.tap(find.text('5264.40 '));
+        await widgetTester.pumpAndSettle();
+
+        final TextField textField =
+            find.byType(TextField).evaluate().first.widget as TextField;
+
+        expect(textField.controller!.text, '5264.40');
+        expect(find.text('0.12300000 '), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'should render the exchanged amount in BTC in UI when user inputs amount in USD from the keypad after it is switched.',
+      (WidgetTester widgetTester) async {
+        final CurrencyDetail mockPrimaryCurrency = CurrencyDetail(0, 'BTC');
+
+        await widgetTester.pumpWidget(
+          TestWidget(
+            NumberPad.withCurrencyExchanger(
+              primaryCurrency: mockPrimaryCurrency,
+              exchangeRatesStream: mockExchangeStream,
+              initialExchangeRate: mockExchangeRate,
+              title: 'Amount',
+              label: NumberPadLabel(
+                actionOK: 'OK',
+              ),
+            ),
+          ),
+        );
+
+        // switch to USD amount.
+        await widgetTester.tap(find.text('USD'));
+        await widgetTester.pumpAndSettle();
+
+        // Inputted 1 from the keypad
+        await widgetTester.tap(find.text('1'));
+        await widgetTester.pumpAndSettle();
+
+        // Inputted 8 from the keypad
+        await widgetTester.tap(find.text('8'));
+        await widgetTester.pumpAndSettle();
+
+        // Inputted 0 from the keypad
+        await widgetTester.tap(find.text('0'));
+        await widgetTester.pumpAndSettle();
+
+        // Inputted 0 from the keypad
+        await widgetTester.tap(find.text('0'));
+        await widgetTester.pumpAndSettle();
+
+        expect(find.text('0.04205607 '), findsOneWidget);
+      },
+    );
   });
 }
 

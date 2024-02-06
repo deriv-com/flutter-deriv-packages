@@ -55,6 +55,8 @@ class DerivResetPassCubit extends Cubit<DerivResetPassState>
       /// Check if password is reset
       if (isPasswordReset) {
         emit(const DerivResetPassPasswordChangedState());
+      } else {
+        emit(const DerivResetPassErrorState());
       }
     } on Exception catch (e) {
       emit(DerivResetPassErrorState(errorMessage: e.toString()));
@@ -63,4 +65,9 @@ class DerivResetPassCubit extends Cubit<DerivResetPassState>
 
   @override
   Stream<DerivResetPassState> get output => stream;
+
+  @override
+  void resetState() {
+    emit(const DerivResetPassInitialState());
+  }
 }

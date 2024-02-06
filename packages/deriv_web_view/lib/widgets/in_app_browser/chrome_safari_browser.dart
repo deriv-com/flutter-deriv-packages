@@ -21,8 +21,13 @@ class AppChromeSafariBrowser extends ChromeSafariBrowser {
   void onOpened() => logger.log('ChromeSafari browser opened.');
 
   @override
-  void onCompletedInitialLoad() =>
+  void onCompletedInitialLoad(bool? didLoadSuccessfully) {
+    if (didLoadSuccessfully == true) {
       logger.log('ChromeSafari browser initial load completed.');
+    } else {
+      logger.log('ChromeSafari browser initial load failed.');
+    }
+  }
 
   @override
   void onClosed() {

@@ -1,9 +1,13 @@
 part of 'number_pad.dart';
 
 class _NumberPadMessage extends StatelessWidget {
-  const _NumberPadMessage({required this.message});
+  const _NumberPadMessage({
+    this.message,
+    this.messageText,
+  }) : assert(message != null || messageText != null);
 
-  final String message;
+  final RichText? messageText;
+  final String? message;
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +24,20 @@ class _NumberPadMessage extends StatelessWidget {
           left: ThemeProvider.margin16,
           right: ThemeProvider.margin16,
         ),
-        child: Text(
-          message,
-          style: numberPadProvider!.isAllInputsValid()
-              ? context.theme.textStyle(
-                  textStyle: TextStyles.caption,
-                  color: context.theme.colors.disabled,
-                )
-              : context.theme.textStyle(
-                  textStyle: TextStyles.captionBold,
-                  color: context.theme.colors.coral,
-                ),
-        ),
+        child: messageText != null
+            ? messageText!
+            : Text(
+                message!,
+                style: numberPadProvider!.isAllInputsValid()
+                    ? context.theme.textStyle(
+                        textStyle: TextStyles.caption,
+                        color: context.theme.colors.disabled,
+                      )
+                    : context.theme.textStyle(
+                        textStyle: TextStyles.captionBold,
+                        color: context.theme.colors.coral,
+                      ),
+              ),
       ),
     );
   }

@@ -28,7 +28,7 @@ class DerivResetPassPasswordChangedState extends DerivResetPassState {
 class DerivResetPassErrorState extends DerivResetPassState {
   /// Initializes Reset pass error State.
   const DerivResetPassErrorState({
-    required this.errorMessage,
+    this.errorMessage,
   });
 
   /// Error message.

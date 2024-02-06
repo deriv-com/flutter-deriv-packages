@@ -6,25 +6,29 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
+  cupertino_icons: ^1.0.2
   deriv_numpad:
     path: ../
-
-  cupertino_icons: ^1.0.2
-  intl: ^0.17.0
+  flutter:
+    sdk: flutter
+  intl: ^0.18.0
+  deriv_theme:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_theme
+      ref: deriv_theme-v2.2.0
 
 dev_dependencies:
+  flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^1.0.4
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/ic_handle.svg
+    - assets/ic_currency_swap.svg

@@ -1,3 +1,7 @@
+## 1.2.1
+
+ - **REFACTOR**(update_checker): increase package info plus version ([#407](https://github.com/regentmarkets/flutter-deriv-packages/issues/407)). ([5147c12b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5147c12bd6b49aed82dd4e3036f63de79816edba))
+
 ## [1.1.0]
 
 - Migrated to Null Safety

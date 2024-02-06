@@ -1,0 +1,39 @@
+name: issue_created
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  send-issue-created-slack-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup jq
+        run: sudo apt-get install jq
+
+      - name: Send Slack Notification on Github Issue Opened
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: |
+          LABELS=$(echo '${{ toJson(github.event.issue.labels.*.name) }}' | jq -r 'join(", ")')
+          curl -X POST -H 'Authorization: Bearer $SLACK_BOT_TOKEN' \
+              -H 'Content-type: application/json' \
+              --data "{
+                \"channel\": \"flutter_deriv_packages_issues\",
+                \"text\": \"Issue Created\",
+                \"blocks\": [
+                  {
+                    \"type\": \"section\",
+                    \"text\": {
+                      \"type\": \"mrkdwn\",
+                      \"text\": \"*Issue Creator:* ${{ github.event.issue.user.login }}\n*Issue Title:* ${{ github.event.issue.title }}\n*Issue URL:* ${{ github.event.issue.html_url }}\n*Issue Labels:* $LABELS\"
+                    }
+                  }
+                ]
+              }" \
+              https://slack.com/api/chat.postMessage
+        shell: bash
+

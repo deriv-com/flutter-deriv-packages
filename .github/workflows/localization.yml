@@ -1,0 +1,48 @@
+name: Localization Update
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  update-localizations:
+    defaults:
+      run:
+        working-directory: ./packages/deriv_localizations
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'l10n_master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
+        with:
+          channel: "stable"
+          flutter-version: "3.10.2"
+          cache: true
+      
+      - name: Setup Config
+        run: |
+          git config --global user.name 'mobile-apps-deriv'
+          git config --global user.email 'mobileapps@regentmarkets.com'
+
+      - name: Make the script files executable
+        run: chmod +x l10n.sh
+      - name: Run the scripts
+        run: |
+          ./l10n.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        
+
+      - name: Create Pull Request.
+        uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
+        with:
+          token: ${{ secrets.PAT }}
+          title: "refactor(deriv_localizations): Crowdin Localization Generated"
+          base: master
