@@ -49,6 +49,7 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
             context.derivAuthLocalization.labelResetPassword,
             style: TextStyles.title,
           ),
+          centerTitle: false,
         ),
         body: BlocListener<DerivResetPassCubit, DerivResetPassState>(
           listener: (BuildContext context, DerivResetPassState state) {

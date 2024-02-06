@@ -120,8 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose a new password"),
         "labelCountryConsentBrazil": MessageLookupByLibrary.simpleMessage(
             "I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company."),
-        "labelCreatePass":
-            MessageLookupByLibrary.simpleMessage("Create a password"),
+        "labelCreatePass": MessageLookupByLibrary.simpleMessage("Password"),
         "labelCreatePassword":
             MessageLookupByLibrary.simpleMessage("Create a password"),
         "labelDeveloper": MessageLookupByLibrary.simpleMessage("Developer"),
@@ -157,7 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "labelReferralInfoTitle":
             MessageLookupByLibrary.simpleMessage("Affiliate referral code"),
         "labelResetPassword":
-            MessageLookupByLibrary.simpleMessage("Reset Password"),
+            MessageLookupByLibrary.simpleMessage("Reset password"),
         "labelSearchCountry":
             MessageLookupByLibrary.simpleMessage("Search country"),
         "labelSelectCountry":

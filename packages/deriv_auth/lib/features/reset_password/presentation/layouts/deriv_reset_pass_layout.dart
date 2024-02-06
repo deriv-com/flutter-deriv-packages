@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:deriv_auth/core/helpers/assets.dart';
-import 'package:deriv_auth/core/helpers/semantic_labels.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -47,6 +46,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
             context.derivAuthLocalization.labelResetPassword,
             style: TextStyles.title,
           ),
+          centerTitle: false,
         ),
         body: BlocListener<DerivResetPassCubit, DerivResetPassState>(
           listener: (BuildContext context, DerivResetPassState state) {
@@ -126,6 +126,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
               Center(
                 child: Text(
                   context.derivAuthLocalization.informResetPassByEmail,
+                  textAlign: TextAlign.center,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,
                     color: context.theme.colors.general,
