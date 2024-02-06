@@ -615,7 +615,7 @@ class LocalCurrenciesPropertyEntity extends LocalCurrenciesPropertyModel {
   /// Creates an instance from JSON.
   factory LocalCurrenciesPropertyEntity.fromJson(Map<String, dynamic> json) =>
       LocalCurrenciesPropertyEntity(
-        fractionalDigits: json['fractional_digits'],
+        fractionalDigits: json['fractional_digits'] as int,
       );
 
   /// Converts an instance to JSON.
