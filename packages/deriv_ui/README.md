@@ -13,6 +13,7 @@ Here is the detailed structure of the components included in this package:
 - [Banner](./lib/components/banner/README.md)
 - [Date Range Picker](./lib/components/date_range_picker/README.md)
 - [Expandable bottom sheet](./lib/components/expandable_bottom_sheet/README.md)
+- [Grouped List View](./lib/components/grouped_list_view/README.md)
 
 ## Widgets
 
