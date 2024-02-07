@@ -129,8 +129,6 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
     FocusManager.instance.primaryFocus?.unfocus();
 
     if (!_isLoading()) {
-      _otpController.clear();
-
       if (widget.socialAuthDto != null) {
         context.read<DerivAuthCubit>().socialAuth(
               socialAuthDto: widget.socialAuthDto!,
@@ -143,6 +141,8 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
               otp: _otpController.text,
             );
       }
+
+      _otpController.clear();
     }
   }
 
