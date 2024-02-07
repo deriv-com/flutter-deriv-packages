@@ -107,7 +107,6 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
           title: Text(context.derivAuthLocalization.labelSignUp,
               style: TextStyles.title),
           backgroundColor: context.theme.colors.secondary,
-          centerTitle: false,
         ),
         body: DerivAuthStateListener(
           authErrorStateHandler: widget.authErrorStateHandler,

@@ -30,7 +30,6 @@ class DerivVerifyEmailLayout extends StatelessWidget {
             style: TextStyles.title,
           ),
           backgroundColor: context.theme.colors.secondary,
-          centerTitle: false,
         ),
         body: SafeArea(
           child: Column(

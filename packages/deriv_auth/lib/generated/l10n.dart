@@ -251,10 +251,10 @@ class DerivAuthLocalization {
     );
   }
 
-  /// `Reset password`
+  /// `Reset Password`
   String get labelResetPassword {
     return Intl.message(
-      'Reset password',
+      'Reset Password',
       name: 'labelResetPassword',
       desc: '',
       args: [],
@@ -271,10 +271,10 @@ class DerivAuthLocalization {
     );
   }
 
-  /// `Password`
+  /// `Create a password`
   String get labelCreatePass {
     return Intl.message(
-      'Password',
+      'Create a password',
       name: 'labelCreatePass',
       desc: '',
       args: [],
