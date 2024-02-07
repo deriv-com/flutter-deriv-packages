@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../helpers/social_web_view_helper.dart';
-
 /// Type definition for social auth callback
 /// called when user presses social auth button.
 typedef SocialAuthCallback = ValueSetter<SocialAuthDto>;
@@ -101,7 +99,17 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         ),
         onPressed: widget.isEnabled
             ? () {
-                _socialAuthCubit.selectSocialLoginProvider(socialAuthProvider);
+                _socialAuthCubit.selectSocialLoginProvider(
+                  selectedSocialAuthProvider: socialAuthProvider,
+                  redirectUrl: widget.redirectURL,
+                  onWebViewError: widget.onWebViewError,
+                  onRedirectUrlReceived: (SocialAuthDto socialAuthDto) {
+                    widget.onPressed?.call(socialAuthDto);
+
+                    BlocProvider.of<DerivAuthCubit>(context)
+                        .socialAuth(socialAuthDto: socialAuthDto);
+                  },
+                );
               }
             : null,
       );
@@ -112,27 +120,6 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
   void _handleSocialAuthState(SocialAuthState state) {
     if (state is SocialAuthLoadedState) {
       widget.onSocialAuthLoadedState();
-
-      if (state.selectedSocialAuthProvider != null) {
-        final SocialAuthProviderModel selectedSocialAuthProviderModel =
-            state.selectedSocialAuthProvider!;
-
-        handleSocialAuth(
-          redirectURL: widget.redirectURL,
-          socialAuthProviderModel: selectedSocialAuthProviderModel,
-          socialAuthUriHandler: (Uri uri) {
-            final Map<String, String> callbackData =
-                fetchCallbackState(redirectUri: uri);
-
-            _socialAuthDeepLinkHandler(
-              socialAuthProvider: selectedSocialAuthProviderModel,
-              code: callbackData['code']!,
-              callbackState: callbackData['callbackState']!,
-            );
-          },
-          onError: widget.onWebViewError,
-        );
-      }
     }
     if (state is SocialAuthLoadingState) {
       widget.onSocialAuthLoadingState();
@@ -140,28 +127,6 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
     if (state is SocialAuthErrorState) {
       widget.onSocialAuthErrorState(state.message);
     }
-  }
-
-  void _socialAuthDeepLinkHandler({
-    required SocialAuthProviderModel socialAuthProvider,
-    required String code,
-    required String callbackState,
-  }) {
-    final SocialAuthDto socialAuthDto = SocialAuthDto(
-      nonce: socialAuthProvider.nonce,
-      state: socialAuthProvider.state,
-      codeVerifier: socialAuthProvider.codeVerifier,
-      code: code,
-      callbackState: callbackState,
-      provider: socialAuthProvider.name,
-    );
-
-    widget.onPressed?.call(
-      socialAuthDto,
-    );
-
-    BlocProvider.of<DerivAuthCubit>(context)
-        .socialAuth(socialAuthDto: socialAuthDto);
   }
 
   @override

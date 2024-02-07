@@ -1,0 +1,57 @@
+import 'dart:async';
+
+import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
+import 'package:deriv_web_view/web_view.dart';
+import 'package:flutter_deriv_api/helpers/miscellaneous_helper.dart';
+import 'package:uni_links2/uni_links.dart';
+
+/// Type definition for social auth uri handler.
+typedef SocialAuthUriHandler = void Function(
+    {required String code, required String state});
+StreamSubscription<Uri?>? _uriLinkStream;
+
+/// Service to handle social auth web view.
+final class SocialAuthWebViewService {
+  /// Handle in-house social auth.
+  Future<void> handleSocialAuth({
+    required SocialAuthProviderModel socialAuthProviderModel,
+    required SocialAuthUriHandler socialAuthUriHandler,
+    required String redirectURL,
+    required Function(String) onError,
+  }) async {
+    await openInAppWebViewWithUriHandler(
+        url: socialAuthProviderModel.authUrl,
+        userAgent: await getUserAgent(),
+        uriHandler: (Uri uri) {
+          socialAuthUriHandler(
+            code: uri.queryParameters['code'].toString(),
+            state: uri.queryParameters['state'].toString(),
+          );
+        },
+        onError: onError,
+        onClosed: () {
+          _uriLinkStream?.cancel();
+        },
+        redirectURLs: <String>[redirectURL]);
+
+    _setupLinkStream(socialAuthUriHandler);
+  }
+
+  void _setupLinkStream(SocialAuthUriHandler uriHandler) {
+    _uriLinkStream = uriLinkStream.listen(
+      (Uri? uri) {
+        _uriLinkStream?.cancel();
+
+        if (uri != null) {
+          closeInAppTabActivityWebView();
+
+          uriHandler(
+            code: uri.queryParameters['code'].toString(),
+            state: uri.queryParameters['state'].toString(),
+          );
+        }
+      },
+      onError: (dynamic error) async => closeInAppTabActivityWebView(),
+    );
+  }
+}

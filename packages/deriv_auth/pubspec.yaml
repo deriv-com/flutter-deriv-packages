@@ -51,8 +51,6 @@ dependencies:
   crypto: ^3.0.2
   http: ^0.13.5
   uni_links2: ^0.6.0+2
-  uuid: ^3.0.0
-  firebase_crashlytics: ^3.4.9
 
 dev_dependencies:
   mocktail: ^0.3.0
