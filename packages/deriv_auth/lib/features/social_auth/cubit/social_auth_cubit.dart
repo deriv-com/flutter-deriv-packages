@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth/features/social_auth/services/base_social_web_view_service.dart';
 import 'package:deriv_auth/features/social_auth/services/social_web_view_service.dart';
 import 'package:deriv_http_client/deriv_http_client.dart';
 
@@ -10,7 +11,7 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
   /// Initialize a [SocialAuthCubit].
   SocialAuthCubit({
     required this.socialAuthService,
-    SocialAuthWebViewService? socialAuthWebViewService,
+    BaseSocialWebViewService? socialAuthWebViewService,
   })  : _socialAuthWebViewService =
             socialAuthWebViewService ?? SocialAuthWebViewService(),
         super(SocialAuthInitialState()) {
@@ -20,7 +21,7 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
   /// [BaseSocialAuthService] handles all social authentication logic of cubit.
   final BaseSocialAuthService socialAuthService;
 
-  final SocialAuthWebViewService _socialAuthWebViewService;
+  final BaseSocialWebViewService _socialAuthWebViewService;
 
   /// List of social auth providers.
   List<SocialAuthProviderModel> socialAuthProviders =

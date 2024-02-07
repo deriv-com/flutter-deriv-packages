@@ -1,18 +1,16 @@
 import 'dart:async';
 
-import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
+import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_web_view/web_view.dart';
 import 'package:flutter_deriv_api/helpers/miscellaneous_helper.dart';
 import 'package:uni_links2/uni_links.dart';
 
-/// Type definition for social auth uri handler.
-typedef SocialAuthUriHandler = void Function(
-    {required String code, required String state});
-StreamSubscription<Uri?>? _uriLinkStream;
-
 /// Service to handle social auth web view.
-final class SocialAuthWebViewService {
+final class SocialAuthWebViewService implements BaseSocialWebViewService {
+  StreamSubscription<Uri?>? _uriLinkStream;
+
   /// Handle in-house social auth.
+  @override
   Future<void> handleSocialAuth({
     required SocialAuthProviderModel socialAuthProviderModel,
     required SocialAuthUriHandler socialAuthUriHandler,

@@ -6,3 +6,5 @@ export 'presentation/widgets/deriv_social_auth_panel.dart';
 export 'presentation/widgets/deriv_social_auth_divider.dart';
 export 'services/base_social_auth_service.dart';
 export 'services/deriv_social_auth_service.dart';
+export 'services/base_social_web_view_service.dart';
+export 'services/social_web_view_service.dart';
