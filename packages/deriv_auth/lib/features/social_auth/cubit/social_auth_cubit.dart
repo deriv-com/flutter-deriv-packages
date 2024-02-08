@@ -2,8 +2,6 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/social_auth/services/base_social_web_view_service.dart';
-import 'package:deriv_auth/features/social_auth/services/social_web_view_service.dart';
 import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// This Cubit is the single source of truth for social authentication.
