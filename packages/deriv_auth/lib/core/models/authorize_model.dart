@@ -264,20 +264,13 @@ class AuthorizeEntity extends AuthorizeModel {
                 ),
               ),
         // TODOAuth(): fromjson(.tojson) wont work for localCurrencies .
-        // fast fix: localCurrencies: json['local_currencies'] == null
+        // fast fix: localCurrencies: json['local_currencies']
+        // the tojson method in deriv-api not converting local_currencies
+        // properly so we need to fix the usage of these duplicate classes
+        // in deriv-auth and deriv-api
         localCurrencies: json['local_currencies'] == null
             ? null
-            : Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
-                json['local_currencies']
-                    .entries
-                    .map<MapEntry<String, LocalCurrenciesPropertyEntity>>(
-                      (MapEntry<String, dynamic> entry) =>
-                          MapEntry<String, LocalCurrenciesPropertyEntity>(
-                        entry.key,
-                        LocalCurrenciesPropertyEntity.fromJson(entry.value),
-                      ),
-                    ),
-              ),
+            : convertLocalCurrency(json),
         loginid: json['loginid'],
         preferredLanguage: json['preferred_language'],
         scopes: json['scopes'] == null
@@ -297,6 +290,28 @@ class AuthorizeEntity extends AuthorizeModel {
                   ),
         userId: json['user_id'],
       );
+
+  /// Converts local_currencies
+  static Map<String, LocalCurrenciesPropertyEntity>? convertLocalCurrency(
+      Map<String, dynamic> json) {
+    // adding try catch for DerivGo as DerivP2P not having any issue with local_currencies
+    try {
+      return Map<String, LocalCurrenciesPropertyEntity>.fromEntries(
+        json['local_currencies']
+            .entries
+            .map<MapEntry<String, LocalCurrenciesPropertyEntity>>(
+              (MapEntry<String, dynamic> entry) =>
+                  MapEntry<String, LocalCurrenciesPropertyEntity>(
+                entry.key,
+                LocalCurrenciesPropertyEntity.fromJson(entry.value),
+              ),
+            ),
+      );
+      // ignore: avoid_catches_without_on_clauses
+    } catch (e) {
+      return null;
+    }
+  }
 
   /// Converts an instance to JSON.
   Map<String, dynamic> toJson() {
