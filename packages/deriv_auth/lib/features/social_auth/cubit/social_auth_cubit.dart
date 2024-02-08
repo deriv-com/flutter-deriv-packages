@@ -57,8 +57,6 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
     required Function(SocialAuthDto) onRedirectUrlReceived,
   }) async {
     try {
-      emit(SocialAuthLoadingState());
-
       final List<SocialAuthProviderModel> socialAuthProviderModel =
           socialAuthProviders
               .where(
