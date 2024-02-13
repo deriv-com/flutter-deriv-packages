@@ -10,7 +10,7 @@ void main() {
     patrolWidgetTest('renders correctly', (PatrolTester $) async {
       await $.pumpApp(settle: false, const DerivSuccessPassChangeLayout());
 
-      expect($(Text).$('Reset Password'), findsOneWidget);
+      expect($(Text).$('Reset password'), findsOneWidget);
       expect($(Text).$('Your password has been reset'), findsOneWidget);
     });
   });
