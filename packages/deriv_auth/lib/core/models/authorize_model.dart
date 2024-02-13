@@ -75,6 +75,7 @@ class AuthorizeResponseEntity extends AuthorizeResponseEntityModel {
 
 /// PlatformEnum mapper.
 final Map<String, PlatformEnum> platformEnumMapper = <String, PlatformEnum>{
+  'ctrader': PlatformEnum.ctrader,
   'derivez': PlatformEnum.derivez,
   'dtrade': PlatformEnum.dtrade,
   'dwallet': PlatformEnum.dwallet,
@@ -84,6 +85,9 @@ final Map<String, PlatformEnum> platformEnumMapper = <String, PlatformEnum>{
 
 /// Platform Enum indicating the account is on which platform.
 enum PlatformEnum {
+  /// ctrader
+  ctrader,
+
   /// derivez.
   derivez,
 
