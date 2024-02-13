@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.4`](#deriv_ui---v004)
+ - [`deriv_auth` - `v2.1.2`](#deriv_auth---v212)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v2.1.2`
+
+---
+
+#### `deriv_ui` - `v0.0.4`
+
+ - **FEAT**(deriv_ui): [MOBC-751] add form_builder to deriv_ui ([#443](https://github.com/regentmarkets/flutter-deriv-packages/issues/443)). ([c2be88ef](https://github.com/regentmarkets/flutter-deriv-packages/commit/c2be88ef478b40ff99c053b68cf625d80e4f7fc7))
+ - **FEAT**: add grouped_list_view ([#445](https://github.com/regentmarkets/flutter-deriv-packages/issues/445)). ([b0eaafe6](https://github.com/regentmarkets/flutter-deriv-packages/commit/b0eaafe6294ee2629af12c6234758b92676e4c7c))
+
+
 ## 2024-02-08
 
 ### Changes
