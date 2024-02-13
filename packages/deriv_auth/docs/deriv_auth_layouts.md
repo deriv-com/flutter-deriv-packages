@@ -32,8 +32,12 @@
             onLoggedIn: (DerivAuthLoggedInState state) {
                 // Navigate to home page
             },
-            onSocialAuthButtonPressed: (SocialAuthProvider provider) {
-                // Handle social auth
+            onSocialAuthButtonPressed: (SocialAuthDto socialAuthDto) {
+                // Get access to dto from social auth to be used 
+                // for navigating to 2FA page
+            },
+            socialAuthStateHandler: (SocialAuthState state) {
+                // Handle social auth state
             },
           );
     ```
@@ -48,10 +52,6 @@
         Deriv2FALayout.socialLogin(
                 socialAuthDto: socialAuthDto,
             );
-    // For 2FA with oneAll social login
-        Deriv2FALayout.oneAll(
-                oneAllConnectionToken: oneAllConnectionToken,
-                );
     ```
 
 ### - Signup Flow
@@ -66,6 +66,13 @@
             onSingupEmailSent: (String email) {},
             onSignupPressed: () {},
             onLoginTapped: () {},
+            socialAuthStateHandler: (SocialAuthState state) {
+                // Handle social auth state
+            },
+            onSocialAuthButtonPressed: (SocialAuthDto socialAuthDto) {
+                // Get access to dto from social auth to be used 
+                // for navigating to 2FA page
+            },
           );
     ```
 - **Verify Email Layout**
