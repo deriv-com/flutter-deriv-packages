@@ -10,14 +10,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ---
 
 Packages with breaking changes:
-
  - [`deriv_auth` - `v3.0.0`](#deriv_auth---v300)
 
 Packages with other changes:
 
  - [`deriv_ui` - `v0.0.4`](#deriv_ui---v004)
-
----
 
 #### `deriv_auth` - `v3.0.0`
 
