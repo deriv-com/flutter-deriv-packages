@@ -29,8 +29,12 @@ class DerivResetPassErrorState extends DerivResetPassState {
   /// Initializes Reset pass error State.
   const DerivResetPassErrorState({
     this.errorMessage,
+    this.isLinkExpired = false,
   });
 
   /// Error message.
   final String? errorMessage;
+
+  /// Set to true if the error state is caused by an expired link.
+  final bool isLinkExpired;
 }

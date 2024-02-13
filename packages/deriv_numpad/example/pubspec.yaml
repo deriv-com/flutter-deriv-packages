@@ -28,7 +28,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  assets:
-    - assets/ic_handle.svg
-    - assets/ic_currency_swap.svg

@@ -1,3 +1,14 @@
+## 3.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_auth): add `isLinkExpired` boolean to reset password error state ([#428](https://github.com/regentmarkets/flutter-deriv-packages/issues/428)). ([29c93ac6](https://github.com/regentmarkets/flutter-deriv-packages/commit/29c93ac6fbb82ee48aee225050c2f1d3ddd79b39))
+
+## 2.1.2
+
+ - Update a dependency to the latest release.
+
+
 ## 2.1.1
 
  - Update a dependency to the latest release.

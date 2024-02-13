@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:deriv_numpad/number_pad/model/numpad_validation_text.dart';
 
 /// A class that will hold all the strings required by the NumberPad widget.
 class NumberPadLabel {
@@ -57,7 +57,7 @@ class NumberPadLabel {
   )? warnValueShouldBeInRange;
 
   /// With this, client code can have their own validation logic.
-  /// Returning [RichText] means this will show the message in the UI
+  /// Returning [NumpadValidationText] means this will show the message in the UI
   /// Returning [null] means it won't show the message in the UI.
-  final RichText? Function(String)? onValidate;
+  final NumpadValidationText? Function(String)? onValidate;
 }

@@ -4,6 +4,7 @@ import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:deriv_auth/core/models/verify_email_model.dart';
 import 'package:deriv_auth/features/reset_password/deriv_reset_password_io.dart';
 import 'package:deriv_auth/features/reset_password/services/base_reset_password_service.dart';
+import 'package:flutter_deriv_api/api/exceptions/base_api_exception.dart';
 
 part 'reset_password_state.dart';
 
@@ -56,8 +57,13 @@ class DerivResetPassCubit extends Cubit<DerivResetPassState>
       if (isPasswordReset) {
         emit(const DerivResetPassPasswordChangedState());
       } else {
-        emit(const DerivResetPassErrorState());
+        emit(const DerivResetPassErrorState(isLinkExpired: true));
       }
+    } on BaseAPIException catch (e) {
+      /// flutter_deriv_api throws BaseAPIException with specified error code on expired link.
+      emit(DerivResetPassErrorState(
+          errorMessage: e.toString(),
+          isLinkExpired: e.code == resetPasswordInvalidLinkError));
     } on Exception catch (e) {
       emit(DerivResetPassErrorState(errorMessage: e.toString()));
     }

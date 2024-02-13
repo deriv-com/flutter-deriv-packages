@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+ - [`deriv_auth` - `v3.0.0`](#deriv_auth---v300)
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.4`](#deriv_ui---v004)
+
+#### `deriv_auth` - `v3.0.0`
+
+ - **BREAKING** **REFACTOR**(deriv_auth): add `isLinkExpired` boolean to reset password error state ([#428](https://github.com/regentmarkets/flutter-deriv-packages/issues/428)). ([29c93ac6](https://github.com/regentmarkets/flutter-deriv-packages/commit/29c93ac6fbb82ee48aee225050c2f1d3ddd79b39))
+
+#### `deriv_ui` - `v0.0.4`
+
+ - **FEAT**(deriv_ui): [MOBC-751] add form_builder to deriv_ui ([#443](https://github.com/regentmarkets/flutter-deriv-packages/issues/443)). ([c2be88ef](https://github.com/regentmarkets/flutter-deriv-packages/commit/c2be88ef478b40ff99c053b68cf625d80e4f7fc7))
+ - **FEAT**: add grouped_list_view ([#445](https://github.com/regentmarkets/flutter-deriv-packages/issues/445)). ([b0eaafe6](https://github.com/regentmarkets/flutter-deriv-packages/commit/b0eaafe6294ee2629af12c6234758b92676e4c7c))
+
+
+## 2024-02-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_numpad` - `v1.1.1`](#deriv_numpad---v111)
+
+---
+
+#### `deriv_numpad` - `v1.1.1`
+
+ - **REFACTOR**(deriv_numpad): pass validation result to numpad. ([1e44cd04](https://github.com/regentmarkets/flutter-deriv-packages/commit/1e44cd04437eee9db677ca12b0d3cfbc094ca613))
+ - **FIX**(deriv_numpad): fix asset not found issue. ([1af28c77](https://github.com/regentmarkets/flutter-deriv-packages/commit/1af28c775adf1d516161c9f5d80c2958b53a0ef5))
+
+
 ## 2024-02-06
 
 ### Changes
