@@ -4,9 +4,6 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 /// The browser that is used to launch deriv's login web page
 class AppInAppBrowser extends InAppBrowser {
-  /// AppInAppBrowser is called from *login_helper.dart* and launches deriv's
-  /// login page.
-  ///
   /// It takes the following requires parameters
   /// [onUrlChanged] function that is called when the url passed has changed,
   /// for a redirect link in this case.
@@ -14,14 +11,17 @@ class AppInAppBrowser extends InAppBrowser {
   AppInAppBrowser({
     required this.onUrlChanged,
     required this.onError,
+    required this.redirectURLs,
   });
 
   /// A Function callback to url change.
   void Function(Uri) onUrlChanged;
 
+  /// A Function callback to error.
   void Function(String) onError;
 
-  final List<String> _redirectURLs = <String>['deriv://multipliers'];
+  /// List of redirect urls.
+  List<String> redirectURLs;
 
   @override
   void onBrowserCreated() => logger.log('\n\nBrowser Created!\n\n');
@@ -30,7 +30,7 @@ class AppInAppBrowser extends InAppBrowser {
   void onLoadStart(Uri? url) {
     logger.log('\n\nStarted\n\n');
 
-    for (final String redirectURL in _redirectURLs) {
+    for (final String redirectURL in redirectURLs) {
       if (url.toString().startsWith(redirectURL)) {
         close();
         onUrlChanged(url!);

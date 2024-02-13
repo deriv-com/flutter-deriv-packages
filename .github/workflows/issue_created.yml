@@ -1,0 +1,45 @@
+name: issue_created
+
+on:
+  issues:
+    types: [opened]
+
+env:
+  issue_title: ${{ github.event.issue.title }}
+
+jobs:
+  send-issue-created-slack-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - name: Setup jq
+        run: sudo apt-get install jq
+
+      - name: Send Slack Notification on Github Issue Opened
+        run: |
+          LABELS=$(echo '${{ toJson(github.event.issue.labels.*.name) }}' | jq -r 'join(", ")')
+          curl -X POST -H 'Content-type: application/json' \
+              --data "{
+                \"text\": \"Issue Created\",
+                \"blocks\": [
+                  {
+                    \"type\": \"section\",
+                    \"text\": {
+                      \"type\": \"mrkdwn\",
+                      \"text\": \"<!channel> *New Github Issue*\"
+                    }
+                  },
+                  {
+                    \"type\": \"section\",
+                    \"text\": {
+                      \"type\": \"mrkdwn\",
+                      \"text\": \"*Issue Creator:* ${{ github.event.issue.user.login }}\n*Issue Title:* $issue_title\n*Issue URL:* ${{ github.event.issue.html_url }}\n*Issue Labels:* $LABELS\"
+                    }
+                  }
+                ]
+              }" \
+              ${{ secrets.SLACK_WEBHOOK_ISSUES }}
+        shell: bash
+

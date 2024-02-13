@@ -6,6 +6,7 @@ import 'package:deriv_numpad/core/widgets/info_icon_button.dart';
 import 'package:deriv_numpad/number_pad/model/currency_detail.dart';
 import 'package:deriv_numpad/number_pad/model/exchange_rate_model.dart';
 import 'package:deriv_numpad/number_pad/model/number_pad_label.dart';
+import 'package:deriv_numpad/number_pad/model/numpad_validation_text.dart';
 import 'package:deriv_numpad/number_pad/notifier/exchange_notifier.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
@@ -348,6 +349,7 @@ class _NumberPadState extends State<NumberPad> {
                                   const EdgeInsets.all(ThemeProvider.margin08),
                               child: SvgPicture.asset(
                                 handleIcon,
+                                package: 'deriv_numpad',
                                 width: ThemeProvider.margin40,
                                 height: ThemeProvider.margin04,
                                 semanticsLabel: widget
@@ -458,12 +460,13 @@ class _NumberPadState extends State<NumberPad> {
   }
 
   RichText? getCustomValidationText(BuildContext context) {
-    final RichText? Function(String value)? onValidate =
+    final NumpadValidationText? Function(String value)? onValidate =
         _NumberPadProvider.of(context)?.label.onValidate;
     if (onValidate == null) {
       return null;
     } else {
-      final RichText? richText = onValidate(_firstInputController?.text ?? '');
+      final RichText? richText =
+          onValidate(_firstInputController?.text ?? '')?.text;
       return richText;
     }
   }

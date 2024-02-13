@@ -3,6 +3,7 @@ import 'dart:developer' as dev;
 
 import 'package:deriv_web_view/helper.dart';
 import 'package:deriv_web_view/widgets/in_app_browser/chrome_safari_browser.dart';
+import 'package:deriv_web_view/widgets/in_app_browser/in_app_browser.dart';
 import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,6 +53,37 @@ Future<void> openInAppTabActivityWebView({
   } on PlatformException catch (_) {
     await InAppBrowser().openUrlRequest(
       urlRequest: URLRequest(url: WebUri(url)),
+    );
+  }
+}
+
+/// Opens in-app tab activity web view.
+/// Uses [AppChromeSafariBrowser] if available, otherwise uses [AppInAppBrowser]
+/// which takes [uriHandler] to handle redirect uri.
+Future<void> openInAppWebViewWithUriHandler({
+  required String url,
+  required String userAgent,
+  required Function(Uri) uriHandler,
+  required Function(String) onError,
+  required VoidCallback onClosed,
+  required List<String> redirectURLs,
+}) async {
+  try {
+    _openInAppTabView(url, onClosed);
+  } on PlatformException catch (_) {
+    final AppInAppBrowser browser = AppInAppBrowser(
+      onUrlChanged: (Uri uri) => uriHandler(uri),
+      onError: (String message) => onError(message),
+      redirectURLs: redirectURLs,
+    );
+
+    await browser.openUrlRequest(
+      urlRequest: URLRequest(url: WebUri(url)),
+      settings: InAppBrowserClassSettings(
+          webViewSettings: InAppWebViewSettings(
+        userAgent: userAgent,
+        clearCache: true,
+      )),
     );
   }
 }

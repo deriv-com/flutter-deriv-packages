@@ -1,3 +1,7 @@
+## 2.1.1
+
+ - Update a dependency to the latest release.
+
 ## 2.1.0
 
  - **FEAT**(deriv_ui): [MOBC-740] move UI related packages to deriv_ui ([#422](https://github.com/regentmarkets/flutter-deriv-packages/issues/422)). ([a2fd5b97](https://github.com/regentmarkets/flutter-deriv-packages/commit/a2fd5b97f81a0dbbc7a6bf07625027e04dfb9a5d))

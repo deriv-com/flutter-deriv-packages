@@ -1,6 +1,6 @@
 name: deriv_auth
 description: Provides deriv authentication functionalities for dart/flutter apps.
-version: 2.1.0
+version: 2.1.1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -21,7 +21,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.3
+      ref: deriv_ui-v0.0.3+1
 
   deriv_http_client:
     git:

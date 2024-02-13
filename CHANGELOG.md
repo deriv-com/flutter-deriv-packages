@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_numpad` - `v1.1.1`](#deriv_numpad---v111)
+
+---
+
+#### `deriv_numpad` - `v1.1.1`
+
+ - **REFACTOR**(deriv_numpad): pass validation result to numpad. ([1e44cd04](https://github.com/regentmarkets/flutter-deriv-packages/commit/1e44cd04437eee9db677ca12b0d3cfbc094ca613))
+ - **FIX**(deriv_numpad): fix asset not found issue. ([1af28c77](https://github.com/regentmarkets/flutter-deriv-packages/commit/1af28c775adf1d516161c9f5d80c2958b53a0ef5))
+
+
+## 2024-02-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`deriv_feature_flag` - `v0.1.0`](#deriv_feature_flag---v010)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `deriv_feature_flag` - `v0.1.0`
+
+ - **DOCS**(deriv_feature_flag): update readme. ([9c86a182](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c86a18271df410161099e0d7ffa3002b17fd3ca))
+ - **BREAKING** **REFACTOR**(deriv_feature_flag): remove static from initialize method. ([6c9c50e5](https://github.com/regentmarkets/flutter-deriv-packages/commit/6c9c50e550d1cf32723d1beb8238c74a37444c2d))
+
+
+## 2024-02-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`deriv_web_view` - `v0.1.0`](#deriv_web_view---v010)
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.3+1`](#deriv_ui---v0031)
+ - [`deriv_auth` - `v2.1.1`](#deriv_auth---v211)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_ui` - `v0.0.3+1`
+ - `deriv_auth` - `v2.1.1`
+
+---
+
+#### `deriv_web_view` - `v0.1.0`
+
+ - **FEAT**(deriv_web_view): add open in app web view with redirect url handling helper. ([4b910581](https://github.com/regentmarkets/flutter-deriv-packages/commit/4b9105816e489dfc2997e1c406b4b96af8d9e190))
+ - **BREAKING** **REFACTOR**(deriv_web_view): remove hardcoded redirect urls. ([68d2ef60](https://github.com/regentmarkets/flutter-deriv-packages/commit/68d2ef600109cb1d55533ede41298d01b18f26c7))
+
+
 ## 2024-01-30
 
 ### Changes

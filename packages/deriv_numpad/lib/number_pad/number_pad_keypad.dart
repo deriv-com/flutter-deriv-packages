@@ -47,11 +47,27 @@ class _NumberPadKeypadWidgetState extends State<_NumberPadKeypadWidget> {
             final int index = columnCounter + counter;
             return _NumberPadKey(
               index: index,
-              ignoring: _NumberPadProvider.of(context)!.isAllInputsValid(),
+              ignoring: _NumberPadProvider.of(context)!.isAllInputsValid() &&
+                  _noErrorExist(),
               onPressed: widget.onKeyPressed,
               actionOK: _NumberPadProvider.of(context)!.label.actionOK,
             );
           }),
         ),
       );
+
+  bool _noErrorExist() {
+    final _NumberPadProvider provider = _NumberPadProvider.of(context)!;
+    final NumpadValidationText? Function(String value)? validate =
+        provider.label.onValidate;
+    if (validate == null) {
+      return true;
+    } else {
+      final NumpadValidationText? result =
+          validate(provider.firstInputController!.text);
+      final bool _noError = result == null || result.enableActionButton;
+
+      return _noError;
+    }
+  }
 }
