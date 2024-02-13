@@ -12,6 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/login/services/example_login_service.dart';
 
 void main() {
+  /// Added [DevicePreview] while fixing on UI issue
+  /// that was only in smaller devices. This later can be removed
+  /// when we are fully using widget book.
   runApp(DevicePreview(
     builder: (context) => const MyApp(),
   ));
