@@ -88,6 +88,6 @@ jobs:
         uses: ./.github/actions/send_slack_notifications
         if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
         with:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
           PR_TITLE: ${{ github.event.pull_request.title }}
           TAGS: ${{ steps.new-tags.outputs.NEW_TAGS }}

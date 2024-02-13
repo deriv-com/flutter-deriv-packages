@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:deriv_numpad/deriv_numberpad.dart';
+import 'package:deriv_numpad/number_pad/model/numpad_validation_text.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -74,20 +75,52 @@ class Homepage extends StatelessWidget {
                       primaryCurrency: CurrencyDetail(0.123, 'BTC'),
                       label: NumberPadLabel(
                         onValidate: (value) {
-                          return RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text:
-                                      'The daily limit between your USD Wallet and Deriv Apps is [100,000.00] USD',
+                          if (value.isEmpty) {
+                            return NumpadValidationText(
+                              enableActionButton: false,
+                              text: RichText(
+                                text: TextSpan(
+                                  text: 'Please enter an amount',
                                   style: context.theme.textStyle(
                                     textStyle: TextStyles.captionBold,
-                                    color: context.theme.colors.disabled,
+                                    color: context.theme.colors.blue,
                                   ),
                                 ),
-                              ],
-                            ),
-                          );
+                              ),
+                            );
+                          }
+                          if (double.parse(value) > 50) {
+                            return NumpadValidationText(
+                              enableActionButton: false,
+                              text: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  text:
+                                      'You have reached the daily transfer limit of [50,000.00] USD between your USD Wallet and Deriv X.',
+                                  style: context.theme.textStyle(
+                                    textStyle: TextStyles.captionBold,
+                                    color: context.theme.colors.blue,
+                                  ),
+                                ),
+                              ),
+                            );
+                          } else {
+                            return NumpadValidationText(
+                              text: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'This looks good! Hehe',
+                                      style: context.theme.textStyle(
+                                        textStyle: TextStyles.captionBold,
+                                        color: context.theme.colors.disabled,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }
                         },
                         actionOK: 'OK',
                       ),
@@ -112,8 +145,9 @@ class Homepage extends StatelessWidget {
                       currency: 'USD',
                       firstInputTitle: 'Amount',
                       formatter: NumberFormat.decimalPattern(),
+                      firstInputInitialValue: 20,
+                      firstInputMaximumValue: 100,
                       firstInputMinimumValue: 10,
-                      firstInputMaximumValue: 60,
                       label: NumberPadLabel(
                         semanticNumberPadBottomSheetHandle:
                             'semanticNumberPadBottomSheetHandle',

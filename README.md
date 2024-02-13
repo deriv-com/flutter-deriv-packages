@@ -31,7 +31,7 @@ deriv_ui:
 | [deriv_lint](./packages/deriv_lint)                                       | A Dart package that provides lint rules for Dart and Flutter.                                                          | [v1.0.0](./packages/deriv_lint/CHANGELOG.md)                      |
 | [deriv_live_chat](./packages/deriv_live_chat)                             | A plugin for live chat SDK support to dart.                                                                            | [v0.0.1+1](./packages/deriv_live_chat/CHANGELOG.md)                 |
 | [deriv_localizations](./packages/deriv_localizations)                             | A Package that contains the localization arb(coming from Crowdin) and dart generated files for flutter_deriv_packages.                                                                            |
-| [deriv_numpad](./packages/deriv_numpad)                                   | Number Pad Widget for number input.                                                                                    | [v1.1.0](./packages/deriv_numpad/CHANGELOG.md)                    |
+| [deriv_numpad](./packages/deriv_numpad)                                   | Number Pad Widget for number input.                                                                                    | [v1.1.1](./packages/deriv_numpad/CHANGELOG.md)                    |
 | [deriv_rudderstack](./packages/deriv_rudderstack)                         | A plugin that add RudderStack SDK support to Flutter.                                                                  | [v1.1.0](./packages/deriv_rudderstack/CHANGELOG.md)               |
 | [deriv_store_launcher](./packages/deriv_store_launcher)                   | A plugin to launch app stores base on platform and manufacturer.                                                       | [v0.0.1+1](./packages/deriv_store_launcher/CHANGELOG.md)            |
 | [deriv_technical_analysis](./packages/deriv_technical_analysis)           | A Dart package for Technical Analysis.                                                                                 | [v0.0.1](./packages/deriv_technical_analysis/CHANGELOG.md)        |
@@ -42,7 +42,7 @@ deriv_ui:
 | [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                | [v0.1.0](./packages/deriv_web_view/CHANGELOG.md)                  |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        | [v1.0.0+1](./packages/form_builder/CHANGELOG.md)                  |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           | [v1.2.1](./packages/update_checker/CHANGELOG.md)                  |
-| [deriv_feature_flag](./packages/deriv_feature_flag)                       | A package to provide feature flag functionality for apps.                                                              | [v0.0.1](./packages/deriv_feature_flag/CHANGELOG.md)              |
+| [deriv_feature_flag](./packages/deriv_feature_flag)                       | A package to provide feature flag functionality for apps.                                                              | [v0.1.0](./packages/deriv_feature_flag/CHANGELOG.md)              |
 
 ## Environment Setup
 
