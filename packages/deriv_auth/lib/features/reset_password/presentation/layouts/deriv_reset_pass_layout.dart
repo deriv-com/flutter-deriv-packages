@@ -126,6 +126,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
               Center(
                 child: Text(
                   context.derivAuthLocalization.informResetPassByEmail,
+                  textAlign: TextAlign.center,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,
                     color: context.theme.colors.general,
