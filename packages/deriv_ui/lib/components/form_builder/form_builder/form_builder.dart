@@ -85,9 +85,9 @@ class FormBuilderState extends State<FormBuilder> {
   /// Registers the form field with the given unique name in the form fields.
   void registerField(String name, dynamic field) {
     if (controller.fields.containsKey(name)) {
-      // It is safe to replace the new field with the old one that has the same key,
-      // In such case [FormBuilder] will only care about the last one and ignore the
-      // old one.
+      // It is safe to replace the new field with the old one that has the
+      // same key, In such case [FormBuilder] will only care about the last one
+      // and ignore the old one.
       debugPrint(
         'FormBuilder: A field with the "$name" name already exists. '
         'Replacing the old field with the new one.',

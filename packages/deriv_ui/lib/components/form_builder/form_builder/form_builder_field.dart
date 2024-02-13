@@ -119,19 +119,19 @@ class FormBuilderFieldState<F extends FormBuilderField<T>, T>
       return widget.initialValue;
     }
 
-    final dynamic _value =
+    final dynamic value =
         _formBuilderState?.controller.initialValueOf<dynamic>(widget.name);
 
-    if (_value is T) {
-      return _value;
+    if (value is T) {
+      return value;
     }
 
-    if (_value != null) {
+    if (value != null) {
       assert(() {
         debugPrint(
           'FormBuilder: The initial value type of the field "${widget.name}" '
           'does not match the type of the field. '
-          'Expected ($T), got (${_value.runtimeType})',
+          'Expected ($T), got (${value.runtimeType})',
         );
 
         return true;
