@@ -14,9 +14,7 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onLoggedIn,
     required this.welcomeLabel,
     required this.greetingLabel,
-    required this.onSocialAuthLoadingState,
-    required this.onSocialAuthErrorState,
-    required this.onSocialAuthLoadedState,
+    required this.socialAuthStateHandler,
     required this.redirectURL,
     required this.onWebViewError,
     this.onSocialAuthButtonPressed,
@@ -67,14 +65,8 @@ class DerivLoginLayout extends StatefulWidget {
   /// Whether to display create account section.
   final bool isCreateAccountEnabled;
 
-  /// Callback to be called when social auth is in loading state.
-  final VoidCallback onSocialAuthLoadingState;
-
-  /// Callback to be called when social auth error occurs.
-  final Function(String? error) onSocialAuthErrorState;
-
-  /// Callback to be called when social auth is loaded.
-  final VoidCallback onSocialAuthLoadedState;
+  /// Social auth state handler.
+  final Function(SocialAuthState) socialAuthStateHandler;
 
   /// Redirect URL for social auth.
   final String redirectURL;
@@ -148,13 +140,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthPanel(
+                        socialAuthStateHandler: widget.socialAuthStateHandler,
                         redirectURL: widget.redirectURL,
                         onPressed: widget.onSocialAuthButtonPressed,
-                        onSocialAuthLoadedState: widget.onSocialAuthLoadedState,
-                        onSocialAuthLoadingState:
-                            widget.onSocialAuthLoadingState,
-                        onSocialAuthErrorState: (String? error) =>
-                            widget.onSocialAuthErrorState(error),
                         isVisible: widget.isSocialAuthEnabled,
                         onWebViewError: widget.onWebViewError,
                       ),

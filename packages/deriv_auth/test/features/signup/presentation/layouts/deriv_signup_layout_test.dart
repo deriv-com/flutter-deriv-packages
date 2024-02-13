@@ -59,9 +59,7 @@ void main() {
               BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
             ],
             child: DerivSignupLayout(
-              onSocialAuthLoadingState: () {},
-              onSocialAuthErrorState: (String? error) {},
-              onSocialAuthLoadedState: () {},
+              socialAuthStateHandler: (SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
@@ -103,9 +101,7 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivSignupLayout(
-            onSocialAuthLoadingState: () {},
-            onSocialAuthErrorState: (String? error) {},
-            onSocialAuthLoadedState: () {},
+            socialAuthStateHandler: (SocialAuthState state) {},
             redirectURL: 'deriv://example',
             onWebViewError: (String error) {},
             signupPageLabel: signupPageLabel,
@@ -145,9 +141,7 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivSignupLayout(
-              onSocialAuthLoadingState: () {},
-              onSocialAuthErrorState: (String? error) {},
-              onSocialAuthLoadedState: () {},
+              socialAuthStateHandler: (SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
@@ -178,9 +172,7 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivSignupLayout(
-              onSocialAuthLoadingState: () {},
-              onSocialAuthErrorState: (String? error) {},
-              onSocialAuthLoadedState: () {},
+              socialAuthStateHandler: (SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
@@ -217,9 +209,7 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivSignupLayout(
-              onSocialAuthLoadingState: () {},
-              onSocialAuthErrorState: (String? error) {},
-              onSocialAuthLoadedState: () {},
+              socialAuthStateHandler: (SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
@@ -261,9 +251,7 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivSignupLayout(
-              onSocialAuthLoadingState: () {},
-              onSocialAuthErrorState: (String? error) {},
-              onSocialAuthLoadedState: () {},
+              socialAuthStateHandler: (SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
@@ -301,9 +289,7 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivSignupLayout(
-              onSocialAuthLoadingState: () {},
-              onSocialAuthErrorState: (String? error) {},
-              onSocialAuthLoadedState: () {},
+              socialAuthStateHandler: (SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               signupPageLabel: signupPageLabel,
@@ -340,9 +326,7 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivSignupLayout(
-            onSocialAuthLoadingState: () {},
-            onSocialAuthErrorState: (String? error) {},
-            onSocialAuthLoadedState: () {},
+            socialAuthStateHandler: (SocialAuthState state) {},
             redirectURL: 'deriv://example',
             onWebViewError: (String error) {},
             signupPageLabel: signupPageLabel,
@@ -357,10 +341,9 @@ void main() {
       expect($(PopupAlertDialog).$('Authorization failed.'), findsOneWidget);
     });
 
-    patrolWidgetTest(
-        'calls [onSocialAuthLoadingState] on [SocialAuthLoadingState]',
+    patrolWidgetTest('calls [socialAuthHandler] on [SocialAuthState]',
         (PatrolTester $) async {
-      bool isOnSocialAuthLoadingStateCalled = false;
+      bool isSocialAuthHandlerCalled = false;
 
       final SocialAuthLoadingState socialAuthLoadingState =
           SocialAuthLoadingState();
@@ -379,90 +362,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivSignupLayout(
-            onSocialAuthLoadingState: () {
-              isOnSocialAuthLoadingStateCalled = true;
-            },
-            onSocialAuthErrorState: (String? error) {},
-            onSocialAuthLoadedState: () {},
-            redirectURL: 'deriv://example',
-            onWebViewError: (String error) {},
-            signupPageLabel: signupPageLabel,
-            signupPageDescription: signupPageDescription,
-            onSocialAuthButtonPressed: (_) {},
-            onSingupError: (_) {},
-            onSingupEmailSent: (_) {},
-            onSignupPressed: () {},
-            onLoginTapped: () {}),
-      ));
-
-      expect(isOnSocialAuthLoadingStateCalled, true);
-    });
-
-    patrolWidgetTest('calls [onSocialAuthErrorState] on [SocialAuthErrorState]',
-        (PatrolTester $) async {
-      bool isOnSocialAuthErrorStateCalled = false;
-
-      final SocialAuthErrorState socialAuthErrorState =
-          SocialAuthErrorState(message: 'error');
-
-      when(() => socialAuthCubit.state).thenAnswer((_) => socialAuthErrorState);
-
-      when(() => socialAuthCubit.stream).thenAnswer((_) =>
-          Stream<SocialAuthState>.fromIterable(
-              <SocialAuthState>[socialAuthErrorState]));
-
-      await $.pumpApp(MultiBlocProvider(
-        providers: <SingleChildWidget>[
-          BlocProvider<DerivAuthCubit>.value(value: authCubit),
-          BlocProvider<DerivSignupCubit>.value(value: signupCubit),
-          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
-        ],
-        child: DerivSignupLayout(
-            onSocialAuthLoadingState: () {},
-            onSocialAuthErrorState: (String? error) {
-              isOnSocialAuthErrorStateCalled = true;
-            },
-            onSocialAuthLoadedState: () {},
-            redirectURL: 'deriv://example',
-            onWebViewError: (String error) {},
-            signupPageLabel: signupPageLabel,
-            signupPageDescription: signupPageDescription,
-            onSocialAuthButtonPressed: (_) {},
-            onSingupError: (_) {},
-            onSingupEmailSent: (_) {},
-            onSignupPressed: () {},
-            onLoginTapped: () {}),
-      ));
-
-      expect(isOnSocialAuthErrorStateCalled, true);
-    });
-
-    patrolWidgetTest(
-        'calls [onSocialAuthLoadedState] on [SocialAuthLoadedState]',
-        (PatrolTester $) async {
-      bool isOnSocialAuthLoadedStateCalled = false;
-
-      final SocialAuthLoadedState socialAuthLoadedState = SocialAuthLoadedState(
-          socialAuthProviders: <SocialAuthProviderModel>[]);
-
-      when(() => socialAuthCubit.state)
-          .thenAnswer((_) => socialAuthLoadedState);
-
-      when(() => socialAuthCubit.stream).thenAnswer((_) =>
-          Stream<SocialAuthState>.fromIterable(
-              <SocialAuthState>[socialAuthLoadedState]));
-
-      await $.pumpApp(MultiBlocProvider(
-        providers: <SingleChildWidget>[
-          BlocProvider<DerivAuthCubit>.value(value: authCubit),
-          BlocProvider<DerivSignupCubit>.value(value: signupCubit),
-          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
-        ],
-        child: DerivSignupLayout(
-            onSocialAuthLoadingState: () {},
-            onSocialAuthErrorState: (String? error) {},
-            onSocialAuthLoadedState: () {
-              isOnSocialAuthLoadedStateCalled = true;
+            socialAuthStateHandler: (SocialAuthState state) {
+              isSocialAuthHandlerCalled = true;
             },
             redirectURL: 'deriv://example',
             onWebViewError: (String error) {},
@@ -475,7 +376,7 @@ void main() {
             onLoginTapped: () {}),
       ));
 
-      expect(isOnSocialAuthLoadedStateCalled, true);
+      expect(isSocialAuthHandlerCalled, true);
     });
   });
 }

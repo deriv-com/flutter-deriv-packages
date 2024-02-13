@@ -17,9 +17,7 @@ class DerivSignupLayout extends StatefulWidget {
     required this.onLoginTapped,
     required this.signupPageLabel,
     required this.signupPageDescription,
-    required this.onSocialAuthLoadingState,
-    required this.onSocialAuthErrorState,
-    required this.onSocialAuthLoadedState,
+    required this.socialAuthStateHandler,
     required this.redirectURL,
     required this.onWebViewError,
     this.onSocialAuthButtonPressed,
@@ -65,14 +63,8 @@ class DerivSignupLayout extends StatefulWidget {
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
 
-  /// Callback to be called when social auth is in loading state.
-  final VoidCallback onSocialAuthLoadingState;
-
-  /// Callback to be called when social auth error occurs.
-  final Function(String? error) onSocialAuthErrorState;
-
-  /// Callback to be called when social auth is loaded.
-  final VoidCallback onSocialAuthLoadedState;
+  /// Social auth state handler.
+  final Function(SocialAuthState) socialAuthStateHandler;
 
   /// Redirect URL for social auth.
   final String redirectURL;
@@ -141,11 +133,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                       DerivSocialAuthPanel(
                         isEnabled: !isReferralEnabled,
                         isVisible: widget.isSocialAuthEnabled,
-                        onSocialAuthLoadedState: widget.onSocialAuthLoadedState,
-                        onSocialAuthLoadingState:
-                            widget.onSocialAuthLoadingState,
-                        onSocialAuthErrorState: (String? error) =>
-                            widget.onSocialAuthErrorState(error),
+                        socialAuthStateHandler: widget.socialAuthStateHandler,
                         redirectURL: widget.redirectURL,
                         onWebViewError: widget.onWebViewError,
                       ),

@@ -13,9 +13,7 @@ typedef SocialAuthCallback = ValueSetter<SocialAuthDto>;
 class DerivSocialAuthPanel extends StatefulWidget {
   /// Initializes [DerivSocialAuthPanel].
   const DerivSocialAuthPanel({
-    required this.onSocialAuthLoadingState,
-    required this.onSocialAuthErrorState,
-    required this.onSocialAuthLoadedState,
+    required this.socialAuthStateHandler,
     required this.redirectURL,
     required this.onWebViewError,
     this.isEnabled = true,
@@ -34,14 +32,8 @@ class DerivSocialAuthPanel extends StatefulWidget {
   /// Defaults to `true`. Acts as a flag to hide the buttons.
   final bool isVisible;
 
-  /// Callback for social auth loading state.
-  final VoidCallback onSocialAuthLoadingState;
-
-  /// Callback for social auth error state.
-  final Function(String? error) onSocialAuthErrorState;
-
-  /// Callback for social auth loaded state.
-  final VoidCallback onSocialAuthLoadedState;
+  /// Social auth state handler.
+  final Function(SocialAuthState) socialAuthStateHandler;
 
   /// onPressed callback for social auth buttons.
   /// Gives access to the social auth token and dto.
@@ -71,7 +63,7 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         visible: widget.isVisible,
         child: BlocListener<SocialAuthCubit, SocialAuthState>(
           listener: (BuildContext context, SocialAuthState state) {
-            _handleSocialAuthState(state);
+            widget.socialAuthStateHandler(state);
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -116,18 +108,6 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
 
   String _getSocialMediaIcon(SocialAuthProvider socialAuthProvider) =>
       'assets/icons/ic_${socialAuthProvider.name}.svg';
-
-  void _handleSocialAuthState(SocialAuthState state) {
-    if (state is SocialAuthLoadedState) {
-      widget.onSocialAuthLoadedState();
-    }
-    if (state is SocialAuthLoadingState) {
-      widget.onSocialAuthLoadingState();
-    }
-    if (state is SocialAuthErrorState) {
-      widget.onSocialAuthErrorState(state.message);
-    }
-  }
 
   @override
   void dispose() {
