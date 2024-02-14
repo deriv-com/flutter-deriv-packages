@@ -11,7 +11,7 @@ jobs:
     defaults:
       run:
         working-directory: ./packages/deriv_localizations
-    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'l10n_master'
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'crowdin'
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
