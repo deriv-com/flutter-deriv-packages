@@ -9,7 +9,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app không có sẵn ở quốc gia của bạn';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get warnPasswordLength => 'Bạn nên nhập từ 8-25 ký tự.';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'Đặt lại mật khẩu';
 
   @override
   String get labelChooseNewPass => 'Chọn mật khẩu mới';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'Mật khẩu';
 
   @override
   String get informYourPassHasBeenReset => 'Mật khẩu của bạn đã được đặt lại';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get informFailedAuthentication => 'Email hoặc mật khẩu của bạn có thể không chính xác. Bạn đã đăng ký với một tài khoản xã hội chưa? Kiểm tra và thử lại.';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'Tài khoản của bạn bị vô hiệu hóa.';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'Ủy quyền không thành công.';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'Nơi cư trú không hợp lệ.';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'Thông tin đăng nhập không hợp lệ.';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'Thiếu mật khẩu một lần.';
 
   @override
   String get informSelfClosed => 'Tài khoản này của bạn đã bị vô hiệu hóa.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get informUnexpectedError => 'Đã có lỗi bất ngờ xảy ra.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'Đất nước của bạn không được hỗ trợ.';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'Tài khoản của bạn đã hết hạn';
 
   @override
   String get labelCountryConsentBrazil => 'Tôi xác nhận rằng yêu cầu mở tài khoản của tôi với Deriv để giao dịch các sản phẩm OTC được phát hành và cung cấp độc quyền bên ngoài Brazil là do tôi thực hiện. Tôi hoàn toàn hiểu rằng Deriv không bị quản lý bởi CVM và thông qua Deriv, tôi dự định thiết lập quan hệ với một công ty nước ngoài.';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'Lỗi kết nối. Vui lòng thử lại sau.';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'Chuyển đổi lỗi tài khoản. Vui lòng thử lại sau.';
 
   @override
   String get labelDeveloper => 'Nhà phát triển';

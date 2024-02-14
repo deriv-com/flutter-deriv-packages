@@ -9,7 +9,7 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app ülkenizde mevcut değil';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get warnPasswordLength => '8-25 arası karakter girmelisiniz.';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'Şifreyi sıfırla';
 
   @override
   String get labelChooseNewPass => 'Yeni bir şifre seç';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'Şifre';
 
   @override
   String get informYourPassHasBeenReset => 'Şifreniz sıfırlandı';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get informFailedAuthentication => 'E-posta adresiniz veya şifreniz yanlış olabilir. Sosyal bir hesapla mı kaydoldunuz? Kontrol edin ve tekrar deneyin.';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'Hesabınız devre dışı bırakıldı.';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'Yetkilendirme başarısız oldu.';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'Geçersiz ikamet.';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'Geçersiz kimlik bilgileri.';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'Tek seferlik şifre eksik.';
 
   @override
   String get informSelfClosed => 'Hesabınız kapatıldı.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get informUnexpectedError => 'Beklenmedik bir hata oluştu.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'Ülkeniz desteklenmiyor.';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'Hesabınızın süresi doldu';
 
   @override
   String get labelCountryConsentBrazil => 'Sadece Brezilya dışında yayınlanan ve sunulan OTC ürünlerinin ticaretini yapmak için Deriv\'de bir hesap açma talebimin tarafımdan başlatıldığını onaylıyorum. Deriv\'in CVM tarafından düzenlenmediğini ve Deriv\'e başvurarak yabancı bir şirketle ilişki kurmayı amaçladığımı tamamen anlıyorum.';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'Bağlantı hatası. Lütfen daha sonra tekrar deneyin.';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'Hesap hatası değiştir. Lütfen daha sonra tekrar deneyin.';
 
   @override
   String get labelDeveloper => 'Geliştirici';

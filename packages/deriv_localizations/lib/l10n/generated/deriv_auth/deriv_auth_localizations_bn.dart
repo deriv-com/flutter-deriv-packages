@@ -9,7 +9,7 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app আপনার দেশে উপলব্ধ নেই';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get warnPasswordLength => 'আপনার 8-25 অক্ষর লিখতে হবে।';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'পাসওয়ার্ড রিসেট';
 
   @override
   String get labelChooseNewPass => 'একটি নতুন পাসওয়ার্ড বেছে নিন';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'পাসওয়ার্ড';
 
   @override
   String get informYourPassHasBeenReset => 'আপনার পাসওয়ার্ড পুনরায় সেট করা হয়েছে';
@@ -215,40 +215,40 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get informFailedAuthentication => 'আপনার ইমেল বা পাসওয়ার্ড ভুল হতে পারে। আপনি কি একটি সামাজিক অ্যাকাউন্ট দিয়ে সাইন আপ করেছেন? চেক করুন এবং আবার চেষ্টা করুন।';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'আপনার অ্যাকাউন্ট নিষ্ক্রিয় করা হয়েছে।';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'অনুমোদন ব্যর্থ হয়েছে।';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'অবৈধ বাসস্থান।';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'অবৈধ শংসাপত্র।';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'একবার পাসওয়ার্ড অনুপস্থিত।';
 
   @override
-  String get informSelfClosed => 'Your account has been closed.';
+  String get informSelfClosed => 'আপনার অ্যাকাউন্ট বন্ধ করা হয়েছে।';
 
   @override
-  String get informUnexpectedError => 'An unexpected error occurred.';
+  String get informUnexpectedError => 'অপ্রত্যাশিত ত্রুটি ঘটেছে।';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'আপনার দেশ সমর্থিত হয়নি।';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'আপনার অ্যাকাউন্টের মেয়াদ শেষ হয়েছে';
 
   @override
   String get labelCountryConsentBrazil => 'আমি এর মাধ্যমে নিশ্চিত করি যে ব্রাজিলের বাইরে একচেটিয়াভাবে জারি করা এবং দেওয়া ওটিসি পণ্যগুলি বাণিজ্য করার জন্য ডেরিভের সাথে একটি অ্যাকাউন্ট খোলার জন্য আমার অনুরোধ আমার দ্বারা শুরু আমি পুরোপুরি বুঝতে পারি যে ডেরিভ সিভিএম দ্বারা নিয়ন্ত্রিত নয় এবং ডেরিভের কাছে পৌঁছানোর মাধ্যমে আমি একটি বিদেশী সংস্থার সাথে সম্পর্ক স্থাপন করার ইচ্ছা করি।';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'সংযোগ ত্রুটি। দয়া করে পরে আবার চেষ্টা করুন।';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'অ্যাকাউন্ট ত্রুটি পরিবর্তন করুন দয়া করে পরে আবার চেষ্টা করুন।';
 
   @override
   String get labelDeveloper => 'ডেভেলপার';

@@ -9,7 +9,7 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app ඔබේ රටේ නොමැත';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get warnPasswordLength => 'ඔබ අක්ෂර 8-25 ක් ඇතුළත් කළ යුතුය.';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'මුරපදය නැවත සකස් කරන්න';
 
   @override
   String get labelChooseNewPass => 'නව මුරපදයක් තෝරන්න';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'මුරපදය';
 
   @override
   String get informYourPassHasBeenReset => 'ඔබගේ මුරපදය නැවත සකසා ඇත';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get informFailedAuthentication => 'ඔබගේ විද්යුත් තැපෑල හෝ මුරපදය වැරදි විය හැකිය. ඔබ සමාජ ගිණුමක් සමඟ ලියාපදිංචි වූවාද? පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'ඔබගේ ගිණුම අක්රිය කර ඇත.';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'බලය අසාර්ථක විය.';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'අවලංගු පදිංචිය.';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'අවලංගු අක්තපත්ර';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'එක් වරක් මුරපදය අතුරුදහන් වේ.';
 
   @override
   String get informSelfClosed => 'ඔබේ ගිණුම වසා ඇත.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get informUnexpectedError => 'අනපේක්ෂිත දෝෂයක් ඇති විය.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'ඔබේ රට සහයෝගය නොදක්වයි.';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'ඔබගේ ගිණුම කල් ඉකුත් වී ඇත';
 
   @override
   String get labelCountryConsentBrazil => 'බ්‍රසීලයෙන් පිටතදී නිකුත් කරන ලද සහ පිරිනමන OTC නිෂ්පාදන ගනුදෙනු කිරීමට Deriv සමඟ ගිණුමක් විවෘත කිරීම සඳහා වන මගේ ඉල්ලීම මා විසින් ආරම්භ කරන ලද බව මෙයින් තහවුරු කරමි. Deriv CVM මඟින් නියාමනය නොවන බව මට හොඳින් වැටහෙන අතර Deriv වෙත පිවිසීමෙන් මම විදේශීය සමාගමක් සමඟ සබඳතාවක් පිහිටුවීමට අදහස් කරමි.';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'සම්බන්ධතා දෝෂය. කරුණාකර පසුව නැවත උත්සාහ කරන්න.';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'ගිණුම් දෝෂය මාරු කරන්න. කරුණාකර පසුව නැවත උත්සාහ කරන්න.';
 
   @override
   String get labelDeveloper => 'සංවර්ධක';

@@ -9,7 +9,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app ไม่สามารถใช้ได้ในประเทศของคุณ';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get warnPasswordLength => 'คุณควรป้อนอักขระ 8-25 ตัว';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'ตั้งค่ารหัสผ่าน';
 
   @override
   String get labelChooseNewPass => 'เลือกรหัสผ่านอันใหม่';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'รหัสผ่าน';
 
   @override
   String get informYourPassHasBeenReset => 'รหัสผ่านของคุณถูกเปลี่ยนแปลงแล้ว';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get informFailedAuthentication => 'อีเมลหรือรหัสผ่านของคุณอาจไม่ถูกต้อง คุณได้ลงทะเบียนด้วยบัญชีโซเชียลหรือไม่? โปรดตรวจสอบแล้วลองอีกครั้ง';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'บัญชีของคุณถูกปิดใช้งาน';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'การอนุญาตล้มเหลว';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'ที่พักอาศัยไม่ถูกต้อง';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'ข้อมูลประจำตัวไม่ถูกต้อง';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'รหัสผ่านแบบครั้งเดียวหายไป';
 
   @override
   String get informSelfClosed => 'บัญชีของคุณได้ถูกปิดแล้ว.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get informUnexpectedError => 'มีข้อผิดพลาดเกิดขึ้น.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'ประเทศของคุณไม่ได้รับการสนับสนุน';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'บัญชีของคุณหมดอายุ';
 
   @override
   String get labelCountryConsentBrazil => 'ข้าพเจ้าขอยืนยันว่าคำขอเปิดบัญชีกับ Deriv เพื่อทำการซื้อขายผลิตภัณฑ์ OTC ที่ออกและนำเสนอเฉพาะนอกประเทศบราซิลนั้นมาจากความคิดริเริ่มโดยข้าพเจ้าเอง ข้าพเจ้าเข้าใจดีว่า Deriv ไม่ได้ถูกควบคุมดูแลโดย CVM และในการที่ข้าพเจ้าเข้าหา Deriv นั้นข้าพเจ้ามีเจตนาที่จะสร้างความสัมพันธ์กับบริษัทจากต่างประเทศ';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'ข้อผิดพลาดในการเชื่อมต่อโปรดลองอีกครั้งในภายหลัง';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'ข้อผิดพลาดในการสลับบัญชีโปรดลองอีกครั้งในภายหลัง';
 
   @override
   String get labelDeveloper => 'ผู้พัฒนาระบบ';

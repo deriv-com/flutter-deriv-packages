@@ -9,7 +9,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '귀하의 국가에서는 $app 을 (를) 사용할 수 없습니다.';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get warnPasswordLength => '8~25자의 문자를 입력해야 합니다.';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => '비밀번호 재설정';
 
   @override
   String get labelChooseNewPass => '새 비밀번호를 선택하세요';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => '패스워드';
 
   @override
   String get informYourPassHasBeenReset => '비밀번호가 재설정되었습니다';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get informFailedAuthentication => '이메일 또는 비밀번호가 올바르지 않을 수 있습니다. 소셜 계정으로 가입하셨나요? 확인 후 다시 시도해 주세요.';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => '계정이 비활성화되었습니다.';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => '인증에 실패했습니다.';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => '거주지가 잘못되었습니다.';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => '자격 증명이 올바르지 않습니다.';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => '일회용 비밀번호가 없습니다.';
 
   @override
   String get informSelfClosed => '귀하의 계좌는 닫겼습니다.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get informUnexpectedError => '예상하지 못한 오류가 발생했습니다.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => '귀하의 국가는 지원되지 않습니다.';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => '계정이 만료되었습니다.';
 
   @override
   String get labelCountryConsentBrazil => '본인은 브라질 이외의 지역에서만 발행 및 제공되는 OTC 상품을 거래하기 위해 Deriv를 통한 계정을 개설하고자 하는 요청이 본인에 의해 시작되었음을 확정합니다. 본인은 Deriv가 CVM의 규제를 받지 않는다는 것을 충분히 이해하고 있으며 Deriv에 접근함으로써 외국 회사와 관계를 구축하고자 합니다.';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => '연결 오류.나중에 다시 시도해 주세요.';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => '계정 전환 오류.나중에 다시 시도해 주세요.';
 
   @override
   String get labelDeveloper => '개발자';

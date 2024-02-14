@@ -9,7 +9,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app não está disponível em seu país';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get warnPasswordLength => 'Deve introduzir de 8 a 25 caracteres.';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'Redefinir senha';
 
   @override
   String get labelChooseNewPass => 'Escolher uma nova palavra-passe';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'Senha';
 
   @override
   String get informYourPassHasBeenReset => 'A palavra-passe foi alterada';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get informFailedAuthentication => 'O e-mail ou a palavra-passe podem estar incorretos. Criou a conta através de umas das contas das redes sociais? Verifique e tente novamente.';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'Sua conta está desativada.';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'Falha na autorização.';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'Residência inválida.';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'Credenciais inválidas.';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'Senha de uso único ausente.';
 
   @override
   String get informSelfClosed => 'Sua conta foi fechada.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get informUnexpectedError => 'Ocorreu um erro inesperado.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'Seu país não é suportado.';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'Sua conta expirou';
 
   @override
   String get labelCountryConsentBrazil => 'Venho por este meio confirmar que o pedido de abertura de conta com a Deriv para negociar produtos OTC emitidos e oferecidos exclusivamente fora do Brasil foi realizado por mim. Compreendo plenamente que a Deriv não é regulada pela CVM e, ao abordar a Deriv, pretendo estabelecer uma relação com uma empresa estrangeira.';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'Erro de conexão. Por favor, tente novamente mais tarde.';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'Erro de troca de conta. Por favor, tente novamente mais tarde.';
 
   @override
   String get labelDeveloper => 'Programador';

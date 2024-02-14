@@ -9,7 +9,7 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app غير متاح في بلدك';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get warnPasswordLength => 'يجب إدخال 8-25 حرفًا.';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
   String get labelChooseNewPass => 'اختر كلمة مرور جديدة';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'كلمة المرور';
 
   @override
   String get informYourPassHasBeenReset => 'تم إعادة تعيين كلمة المرور الخاصة بك';
@@ -206,7 +206,7 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get labelReferralCode => 'رمز الإحالة';
 
   @override
-  String get actionTryAgain => 'Try Again';
+  String get actionTryAgain => 'حاول مرة أخرى';
 
   @override
   String get informInvalid2FACode => 'الرمز الذي أدخلته غير صالح. تحقق وحاول مرة أخرى.';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get informFailedAuthentication => 'قد يكون بريدك الإلكتروني أو كلمة المرور غير صحيحة. هل قمت بالتسجيل باستخدام حساب اجتماعي؟ تحقق وحاول مرة أخرى.';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'تم إلغاء تنشيط حسابك.';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'فشلت عملية التخويل.';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'إقامة غير صالحة.';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'بيانات اعتماد غير صالحة.';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'كلمة مرور مفقودة لمرة واحدة.';
 
   @override
   String get informSelfClosed => 'تم إغلاق الحساب الخاص بك.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get informUnexpectedError => 'حدث خطأ غير متوقع.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'بلدك غير مدعوم.';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'انتهت صلاحية حسابك';
 
   @override
   String get labelCountryConsentBrazil => 'أؤكد بموجب هذا أن طلبي لفتح حساب مع Deriv لتداول منتجات OTC الصادرة والمعروضة حصريًا خارج البرازيل قد بادرت به. أفهم تمامًا أن Deriv لا تخضع للتنظيم من قبل CVM ومن خلال الاتصال بـ Deriv أعتزم إقامة علاقة مع شركة أجنبية.';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'خطأ اتصال. يرجى المحاولة مرة أخرى لاحقًا.';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'خطأ في تبديل الحساب. يرجى المحاولة مرة أخرى لاحقًا.';
 
   @override
   String get labelDeveloper => 'المطوّر';

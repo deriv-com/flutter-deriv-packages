@@ -9,7 +9,7 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app 不在您的國家/地區提供';
   }
 
   @override
@@ -67,13 +67,13 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get warnPasswordLength => '必须输入 8-25 个字符。';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => '重設密碼';
 
   @override
   String get labelChooseNewPass => '选新密码';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => '密碼';
 
   @override
   String get informYourPassHasBeenReset => '密码已重置';
@@ -215,19 +215,19 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get informFailedAuthentication => '电子邮件或密码可能不正确。是否用社交账户注册？请检查并重试。';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => '您的帳戶已停用。';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => '授權失敗。';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => '無效的居住。';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => '無效的認證。';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => '遺失一次性密碼。';
 
   @override
   String get informSelfClosed => '帳戶已關閉.';
@@ -236,19 +236,19 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get informUnexpectedError => '發生不可預測錯誤.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => '您的國家不受支持。';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => '您的帳戶已過期';
 
   @override
   String get labelCountryConsentBrazil => '本人特此确认，在 Deriv 开立账户以交易由巴西境外推出和提供的场外交易产品的请求是由本人提出的。本人完全理解 Deriv 不受 CVM 监管，且通过与 Deriv 接触，本人打算与一家外国公司建立关系。';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => '連線錯誤。請稍後再試一次。';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => '切換帳戶錯誤。請稍後再試一次。';
 
   @override
   String get labelDeveloper => '开发员';
