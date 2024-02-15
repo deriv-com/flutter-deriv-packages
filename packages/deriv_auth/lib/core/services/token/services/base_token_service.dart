@@ -8,7 +8,6 @@ abstract class BaseTokenService {
   /// Fetches all account tokens of a single user + his single refresh token.
   Future<GetTokensResponseModel> getUserTokens({
     required GetTokensRequestModel request,
-    required BaseHttpClient client,
     required String jwtToken,
     required AuthConnectionInfo connectionInfo,
     String? userAgent,
