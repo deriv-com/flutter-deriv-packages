@@ -15,10 +15,10 @@ class FeatureFlagConfig {
   /// Force specific experiments to always assign a specific variation (QA).
   final Map<String, int> forcedVariations;
 
-  ///
+  /// Feature flag service host url
   final String hostUrl;
 
-  ///
+  /// Feature flag service client key
   final String clientKey;
 
   FeatureFlagConfig({
