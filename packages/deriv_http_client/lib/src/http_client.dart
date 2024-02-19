@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert' as convert;
 
 import 'package:flutter_system_proxy/flutter_system_proxy.dart';
@@ -70,6 +71,7 @@ class ProxyAwareHttpClient implements BaseHttpClient {
   }
 
   late HttpClient _httpClient;
+  final Completer<void> _setupCompleter = Completer<void>();
 
   Future<void> _setupProxy(String url) async {
     final String proxy = await FlutterSystemProxy.findProxyFromEnvironment(url);
@@ -77,17 +79,23 @@ class ProxyAwareHttpClient implements BaseHttpClient {
     httpClient.findProxy = (uri) => proxy;
 
     _httpClient = HttpClient(IOClient(httpClient));
+
+    _setupCompleter.complete();
   }
 
   @override
-  Future<http.Response> get(String url, {String? basicAuthToken}) =>
-      _httpClient.get(url, basicAuthToken: basicAuthToken);
+  Future<http.Response> get(String url, {String? basicAuthToken}) async {
+    await _setupCompleter.future;
+    return _httpClient.get(url, basicAuthToken: basicAuthToken);
+  }
 
   @override
   Future<Map<String, dynamic>> post({
     required String url,
     required Map<String, dynamic> jsonBody,
     Map<String, String>? headers,
-  }) =>
-      _httpClient.post(url: url, jsonBody: jsonBody, headers: headers);
+  }) async {
+    await _setupCompleter.future;
+    return _httpClient.post(url: url, jsonBody: jsonBody, headers: headers);
+  }
 }
