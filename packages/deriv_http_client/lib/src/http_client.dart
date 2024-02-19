@@ -1,6 +1,9 @@
 import 'dart:convert' as convert;
 
+import 'package:flutter_system_proxy/flutter_system_proxy.dart';
 import 'package:http/http.dart' as http;
+import 'dart:io' as io;
+import 'package:http/io_client.dart';
 
 import 'base_http_client.dart';
 import 'http_client_exception.dart';
@@ -58,4 +61,33 @@ class HttpClient extends BaseHttpClient {
 
     return jsonResponse;
   }
+}
+
+/// An implementation of [BaseHttpClient] that is aware of proxy settings.
+class ProxyAwareHttpClient implements BaseHttpClient {
+  ProxyAwareHttpClient(String url) {
+    _setupProxy(url);
+  }
+
+  late HttpClient _httpClient;
+
+  Future<void> _setupProxy(String url) async {
+    final String proxy = await FlutterSystemProxy.findProxyFromEnvironment(url);
+    final io.HttpClient httpClient = io.HttpClient();
+    httpClient.findProxy = (uri) => proxy;
+
+    _httpClient = HttpClient(IOClient(httpClient));
+  }
+
+  @override
+  Future<http.Response> get(String url, {String? basicAuthToken}) =>
+      _httpClient.get(url, basicAuthToken: basicAuthToken);
+
+  @override
+  Future<Map<String, dynamic>> post({
+    required String url,
+    required Map<String, dynamic> jsonBody,
+    Map<String, String>? headers,
+  }) =>
+      _httpClient.post(url: url, jsonBody: jsonBody, headers: headers);
 }
