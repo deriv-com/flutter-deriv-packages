@@ -1,3 +1,4 @@
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -9,6 +10,9 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 )
 Widget checkboxCheckedUsecase(BuildContext context) {
   return CustomCheckbox(
+    padding: const EdgeInsets.all(
+      ThemeProvider.margin24,
+    ),
     message: context.knobs
         .string(label: 'checkbox message', initialValue: 'Checkbox'),
     value: true,
@@ -21,6 +25,9 @@ Widget checkboxCheckedUsecase(BuildContext context) {
 )
 Widget checkboxUncheckedUsecase(BuildContext context) {
   return CustomCheckbox(
+    padding: const EdgeInsets.all(
+      ThemeProvider.margin24,
+    ),
     message: context.knobs
         .string(label: 'checkbox message', initialValue: 'Checkbox'),
     value: false,

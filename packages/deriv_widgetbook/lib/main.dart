@@ -1,6 +1,4 @@
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_theme/theme/dark_theme.dart';
-import 'package:deriv_theme/theme/light_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -26,38 +24,21 @@ class MyApp extends StatelessWidget {
           initialDevice: Devices.android.bigPhone,
         ),
         BuilderAddon(
-            name: 'App Builder',
-            builder: (BuildContext context, Widget child) {
-              return DerivThemeProvider(
-                  child: SafeArea(child: Center(child: child)));
+            name: 'Theme builder',
+            builder: (context, child) {
+              return DerivThemeProvider.builder(
+                  initialTheme: ThemeMode.dark,
+                  builder: (context) {
+                    return MaterialApp(
+                      title: 'Widgetbook Example',
+                      theme: context.themeData,
+                      home: Scaffold(
+                        backgroundColor: context.theme.colors.primary,
+                        body: child,
+                      ),
+                    );
+                  });
             }),
-        ThemeAddon(
-          themes: [
-            const WidgetbookTheme(
-              name: 'Light',
-              data: ThemeMode.light,
-            ),
-            const WidgetbookTheme(
-              name: 'Dark',
-              data: ThemeMode.dark,
-            ),
-          ],
-          themeBuilder:
-              (BuildContext context, ThemeMode themeMode, Widget child) {
-            return DerivThemeProvider.builder(
-              initialTheme: themeMode,
-              builder: (BuildContext context) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  DerivThemeProvider.changeThemeMode(context, themeMode);
-                });
-                return ColoredBox(
-                  color: context.theme.colors.primary,
-                  child: child,
-                );
-              },
-            );
-          },
-        ),
         AlignmentAddon(),
         LocalizationAddon(
             locales: DateRangeLocalizations.supportedLocales,
