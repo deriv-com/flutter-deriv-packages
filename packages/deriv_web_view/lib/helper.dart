@@ -24,10 +24,15 @@ Future<String?> performPassThroughAuthentication({
   String? action,
   String? code,
 }) async {
+  final url = getPtaLoginUrl(host: endpoint);
+
+  final BaseHttpClient client = ProxyAwareHttpClient(url);
+
   final String jwtToken = await getJwtToken(
     endpoint: endpoint,
     appId: appId,
     appToken: appToken,
+    client: client,
   );
 
   final Map<String, dynamic> request = PtaLoginRequestModel(
@@ -44,7 +49,7 @@ Future<String?> performPassThroughAuthentication({
   late final Map<String, dynamic> response;
 
   try {
-    response = await HttpClient().post(
+    response = await client.post(
       url: getPtaLoginUrl(host: endpoint),
       jsonBody: request,
       headers: <String, String>{'Authorization': 'Bearer $jwtToken'},
@@ -63,9 +68,14 @@ Future<String> getJwtToken({
   required String endpoint,
   required String appId,
   required String appToken,
+  required BaseHttpClient client,
 }) async {
   final AppAuthorizationChallengeResponseModel challenge =
-      await _getAppAuthorizationChallenge(endpoint: endpoint, appId: appId);
+      await _getAppAuthorizationChallenge(
+    endpoint: endpoint,
+    appId: appId,
+    client: client,
+  );
 
   final String solution = _solveLoginChallenge(
     appToken: appToken,
@@ -77,6 +87,7 @@ Future<String> getJwtToken({
     expire: challenge.expire,
     endpoint: endpoint,
     appId: appId,
+    client: client,
   );
 }
 
@@ -85,8 +96,9 @@ Future<String> _authorizeApp({
   required int expire,
   required String endpoint,
   required String appId,
+  required BaseHttpClient client,
 }) async {
-  final Map<String, dynamic> jsonResponse = await HttpClient().post(
+  final Map<String, dynamic> jsonResponse = await client.post(
     url: _getPtaAuthorizeUrl(endpoint),
     jsonBody: AppAuthorizationRequestModel(
       appId: int.parse(appId),
@@ -101,8 +113,9 @@ Future<String> _authorizeApp({
 Future<AppAuthorizationChallengeResponseModel> _getAppAuthorizationChallenge({
   required String endpoint,
   required String appId,
+  required BaseHttpClient client,
 }) async {
-  final Map<String, dynamic> jsonResponse = await HttpClient().post(
+  final Map<String, dynamic> jsonResponse = await client.post(
     url: _getPtaVerifyUrl(endpoint),
     jsonBody: AppAuthorizationChallengeRequestModel(
       appId: int.parse(appId),
