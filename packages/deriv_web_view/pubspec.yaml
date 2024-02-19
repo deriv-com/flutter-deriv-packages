@@ -20,15 +20,11 @@ dependencies:
   webview_flutter: ^4.2.1
   flutter_inappwebview: ^6.0.0
   flutter_bloc: ^8.1.2
-  flutter_system_proxy:
-    git:
-      url: git@github.com:BrowserStackCE/flutter_system_proxy.git
-      ref: main
   deriv_http_client:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:ramin-deriv/flutter-deriv-packages.git
       path: packages/deriv_http_client
-      ref: deriv_http_client-v1.0.0
+      ref: ramin/make_auth_webview_httpclient_packages_proxy_aware
 
 dev_dependencies:
   flutter_test:
