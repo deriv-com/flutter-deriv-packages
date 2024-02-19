@@ -74,9 +74,7 @@ class ProxyAwareHttpClient implements BaseHttpClient {
   final Completer<void> _setupCompleter = Completer<void>();
 
   Future<void> _setupProxy(String url) async {
-    // final String proxy = await FlutterSystemProxy.findProxyFromEnvironment(url);
-    final String proxy = io.HttpClient.findProxyFromEnvironment(Uri.parse(url));
-
+    final String proxy = await FlutterSystemProxy.findProxyFromEnvironment(url);
     final io.HttpClient httpClient = io.HttpClient();
     httpClient.findProxy = (uri) => proxy;
 
