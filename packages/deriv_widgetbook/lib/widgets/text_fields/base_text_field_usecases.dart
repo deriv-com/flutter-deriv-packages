@@ -10,7 +10,6 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 Widget baseTextFieldEnabledUseCase(BuildContext context) {
   return BaseTextField(
     focusNode: FocusNode(),
-    autofocus: true,
     onChanged: (value) {},
     labelText: context.knobs.string(
       label: 'Label',

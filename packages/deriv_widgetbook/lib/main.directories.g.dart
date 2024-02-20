@@ -10,24 +10,28 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:deriv_widgetbook/components/banner/banner_usecases.dart' as _i2;
-import 'package:deriv_widgetbook/widgets/buttons/info_icon_button_usecases.dart'
-    as _i7;
-import 'package:deriv_widgetbook/widgets/buttons/primary_button_usecases.dart'
-    as _i10;
-import 'package:deriv_widgetbook/widgets/buttons/secondary_button_usecases.dart'
-    as _i11;
-import 'package:deriv_widgetbook/widgets/checkbox/checkbox_usecases.dart'
-    as _i5;
-import 'package:deriv_widgetbook/widgets/dialogs/custom_alert_dailog_usecases.dart'
-    as _i4;
-import 'package:deriv_widgetbook/widgets/dialogs/popup_alert_dialog_usecases.dart'
-    as _i9;
-import 'package:deriv_widgetbook/widgets/full_screen_message/full_screen_message_usecases.dart'
-    as _i6;
-import 'package:deriv_widgetbook/widgets/loading_indicator/loading_indicator_usecases.dart'
-    as _i8;
-import 'package:deriv_widgetbook/widgets/text_fields/base_text_field_usecases.dart'
+import 'package:deriv_widgetbook/components/numpad/numpad_with_exchanger_usecase.dart'
     as _i3;
+import 'package:deriv_widgetbook/components/numpad/numpad_without_exchanger_usecase.dart'
+    as _i4;
+import 'package:deriv_widgetbook/widgets/buttons/info_icon_button_usecases.dart'
+    as _i9;
+import 'package:deriv_widgetbook/widgets/buttons/primary_button_usecases.dart'
+    as _i12;
+import 'package:deriv_widgetbook/widgets/buttons/secondary_button_usecases.dart'
+    as _i13;
+import 'package:deriv_widgetbook/widgets/checkbox/checkbox_usecases.dart'
+    as _i7;
+import 'package:deriv_widgetbook/widgets/dialogs/custom_alert_dailog_usecases.dart'
+    as _i6;
+import 'package:deriv_widgetbook/widgets/dialogs/popup_alert_dialog_usecases.dart'
+    as _i11;
+import 'package:deriv_widgetbook/widgets/full_screen_message/full_screen_message_usecases.dart'
+    as _i8;
+import 'package:deriv_widgetbook/widgets/loading_indicator/loading_indicator_usecases.dart'
+    as _i10;
+import 'package:deriv_widgetbook/widgets/text_fields/base_text_field_usecases.dart'
+    as _i5;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -50,7 +54,30 @@ final directories = <_i1.WidgetbookNode>[
             ],
           )
         ],
-      )
+      ),
+      _i1.WidgetbookFolder(
+        name: 'numpad',
+        children: [
+          _i1.WidgetbookFolder(
+            name: 'widgets',
+            children: [
+              _i1.WidgetbookComponent(
+                name: 'NumberPad',
+                useCases: [
+                  _i1.WidgetbookUseCase(
+                    name: 'With Currency Exchanger',
+                    builder: _i3.numpadWithCurrencyExchangerUseCase,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'Without Currency Exchanger',
+                    builder: _i4.numpadUseCase,
+                  ),
+                ],
+              )
+            ],
+          )
+        ],
+      ),
     ],
   ),
   _i1.WidgetbookFolder(
@@ -61,15 +88,15 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Disabled',
-            builder: _i3.baseTextFieldDisabledUseCase,
+            builder: _i5.baseTextFieldDisabledUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'Enabled',
-            builder: _i3.baseTextFieldEnabledUseCase,
+            builder: _i5.baseTextFieldEnabledUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'Error',
-            builder: _i3.baseTextFieldErrorUseCase,
+            builder: _i5.baseTextFieldErrorUseCase,
           ),
         ],
       ),
@@ -78,15 +105,15 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'No button',
-            builder: _i4.customAlertDialogNoButtonUseCase,
+            builder: _i6.customAlertDialogNoButtonUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'One button',
-            builder: _i4.customAlertDialogOneButtonUseCase,
+            builder: _i6.customAlertDialogOneButtonUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'Two buttons',
-            builder: _i4.customAlertDialogUseCase,
+            builder: _i6.customAlertDialogUseCase,
           ),
         ],
       ),
@@ -95,11 +122,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'checked',
-            builder: _i5.checkboxCheckedUsecase,
+            builder: _i7.checkboxCheckedUsecase,
           ),
           _i1.WidgetbookUseCase(
             name: 'unchecked',
-            builder: _i5.checkboxUncheckedUsecase,
+            builder: _i7.checkboxUncheckedUsecase,
           ),
         ],
       ),
@@ -108,11 +135,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'No button',
-            builder: _i6.fullScreenMessageUseCase,
+            builder: _i8.fullScreenMessageUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'With button',
-            builder: _i6.fullScreenMessageWithButtonUseCase,
+            builder: _i8.fullScreenMessageWithButtonUseCase,
           ),
         ],
       ),
@@ -120,7 +147,7 @@ final directories = <_i1.WidgetbookNode>[
         name: 'InfoIconButton',
         useCase: _i1.WidgetbookUseCase(
           name: 'Info icon button',
-          builder: _i7.infoIconButtonUseCase,
+          builder: _i9.infoIconButtonUseCase,
         ),
       ),
       _i1.WidgetbookComponent(
@@ -128,11 +155,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Circular',
-            builder: _i8.loadingIndicatorUseCase,
+            builder: _i10.loadingIndicatorUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'Linear',
-            builder: _i8.linearLoadingIndicatorUseCase,
+            builder: _i10.linearLoadingIndicatorUseCase,
           ),
         ],
       ),
@@ -141,11 +168,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'With checkbox',
-            builder: _i9.popupAlertDialogUseCase,
+            builder: _i11.popupAlertDialogUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'Without checkbox',
-            builder: _i9.popupAlertDialogWithoutCheckboxUseCase,
+            builder: _i11.popupAlertDialogWithoutCheckboxUseCase,
           ),
         ],
       ),
@@ -154,11 +181,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Disabled',
-            builder: _i10.primaryButtonDisabledUseCase,
+            builder: _i12.primaryButtonDisabledUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'Enabled',
-            builder: _i10.primaryButtonEnabledUseCase,
+            builder: _i12.primaryButtonEnabledUseCase,
           ),
         ],
       ),
@@ -167,11 +194,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Disabled',
-            builder: _i11.secondaryButtonDisabledUseCase,
+            builder: _i13.secondaryButtonDisabledUseCase,
           ),
           _i1.WidgetbookUseCase(
             name: 'Enabled',
-            builder: _i11.secondaryButtonEnabledUseCase,
+            builder: _i13.secondaryButtonEnabledUseCase,
           ),
         ],
       ),

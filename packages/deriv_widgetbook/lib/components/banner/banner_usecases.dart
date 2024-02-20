@@ -10,7 +10,6 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 )
 Widget stackedBannerUseCase(BuildContext context) {
   return StackedBanner(
-    collapsedItemsKey: GlobalKey(),
     collapseButtonBuilder: (BuildContext context) => Container(
       alignment: Alignment.center,
       height: ThemeProvider.margin32,
@@ -23,6 +22,10 @@ Widget stackedBannerUseCase(BuildContext context) {
       child: Text(
         context.knobs
             .string(label: 'Collapse Button Label', initialValue: 'Collapse'),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.theme.colors.prominent,
+        ),
       ),
     ),
     controller: StackedBannerController(),
