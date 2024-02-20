@@ -42,10 +42,18 @@ class MyApp extends StatelessWidget {
                   DerivThemeProvider.changeThemeMode(context, themeMode);
                 });
                 return MaterialApp(
+                  supportedLocales: DateRangeLocalizations.supportedLocales,
+                  localizationsDelegates: const [
+                    DefaultWidgetsLocalizations.delegate,
+                    DefaultMaterialLocalizations.delegate,
+                    DateRangeLocalizations.delegate,
+                  ],
                   theme: context.themeData,
                   home: Scaffold(
                       backgroundColor: context.theme.colors.primary,
-                      body: child),
+                      body: SafeArea(
+                        child: child,
+                      )),
                 );
               },
             );

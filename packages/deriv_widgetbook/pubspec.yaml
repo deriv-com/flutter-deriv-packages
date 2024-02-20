@@ -17,6 +17,7 @@ dependencies:
     path: ../deriv_ui
   deriv_theme:
     path: ../deriv_theme
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
