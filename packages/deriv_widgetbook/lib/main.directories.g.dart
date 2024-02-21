@@ -9,8 +9,9 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:deriv_widgetbook/components/banner/banner_usecases.dart' as _i2;
 import 'package:deriv_widgetbook/components/date_range_picker/date_range_picker_calender_usecase.dart'
+    as _i2;
+import 'package:deriv_widgetbook/components/date_range_picker/date_range_picker_input_usecase.dart'
     as _i3;
 import 'package:deriv_widgetbook/components/expandable_bottomsheet/expandable_bottomsheet_usecase.dart'
     as _i4;
@@ -45,34 +46,23 @@ final directories = <_i1.WidgetbookNode>[
     name: 'components',
     children: [
       _i1.WidgetbookFolder(
-        name: 'banner',
-        children: [
-          _i1.WidgetbookFolder(
-            name: 'widgets',
-            children: [
-              _i1.WidgetbookLeafComponent(
-                name: 'StackedBanner',
-                useCase: _i1.WidgetbookUseCase(
-                  name: 'Stacked banner',
-                  builder: _i2.stackedBannerUseCase,
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-      _i1.WidgetbookFolder(
         name: 'date_range_picker',
         children: [
           _i1.WidgetbookFolder(
             name: 'widgets',
             children: [
-              _i1.WidgetbookLeafComponent(
+              _i1.WidgetbookComponent(
                 name: 'DerivDateRangePicker',
-                useCase: _i1.WidgetbookUseCase(
-                  name: 'DateRangePicker calendar mode',
-                  builder: _i3.dateRangePickerUseCase,
-                ),
+                useCases: [
+                  _i1.WidgetbookUseCase(
+                    name: 'DateRangePicker calendar mode',
+                    builder: _i2.dateRangePickerCalendarUseCase,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'DateRangePicker input mode',
+                    builder: _i3.dateRangePickerCalendarUseCase,
+                  ),
+                ],
               )
             ],
           )
