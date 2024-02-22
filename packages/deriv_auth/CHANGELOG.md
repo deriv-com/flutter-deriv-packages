@@ -1,3 +1,12 @@
+## 4.1.1
+
+ - Update a dependency to the latest release.
+
+## 4.1.0
+
+ - **FIX**(deriv_auth): localCurrency issue. ([efbeb86d](https://github.com/regentmarkets/flutter-deriv-packages/commit/efbeb86d5ed69edf27f31625818092a921119ed6))
+ - **FEAT**(deriv-auth): add ctrader to platformEnumMapper. ([38bc6f86](https://github.com/regentmarkets/flutter-deriv-packages/commit/38bc6f861e5c98b38e558aa2f7d54253f0a12807))
+
 ## 4.0.0
 
 > Note: This release has breaking changes.

@@ -3,6 +3,98 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_feature_flag` - `v0.1.0+1`](#deriv_feature_flag---v0101)
+
+---
+
+#### `deriv_feature_flag` - `v0.1.0+1`
+
+ - **FIX**(deriv_feature_flag): remove env dependancy ([#477](https://github.com/regentmarkets/flutter-deriv-packages/issues/477)). ([c62b20eb](https://github.com/regentmarkets/flutter-deriv-packages/commit/c62b20eb88cf1397ecf4437a7854ff19187d7662))
+
+
+## 2024-02-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`update_checker` - `v1.2.2`](#update_checker---v122)
+
+---
+
+#### `update_checker` - `v1.2.2`
+
+ - **FIX**(update_checker): fix optional update issue in remote config [#475](https://github.com/regentmarkets/flutter-deriv-packages/issues/475). ([ac0dc26b](https://github.com/regentmarkets/flutter-deriv-packages/commit/ac0dc26b46b478248ea81d1dba6b7c6844b88995))
+
+
+## 2024-02-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.6`](#deriv_ui---v006)
+ - [`deriv_auth` - `v4.1.1`](#deriv_auth---v411)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v4.1.1`
+
+---
+
+#### `deriv_ui` - `v0.0.6`
+
+ - **FEAT**(deriv_ui): [MOBC-750] add deriv_numpad to deriv_ui ([#434](https://github.com/regentmarkets/flutter-deriv-packages/issues/434)). ([3802e2e6](https://github.com/regentmarkets/flutter-deriv-packages/commit/3802e2e6d874cbd3ed21b3ca0f6983000840938a))
+
+
+## 2024-02-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v4.1.0`](#deriv_auth---v410)
+
+---
+
+#### `deriv_auth` - `v4.1.0`
+
+ - **FIX**(deriv_auth): localCurrency issue. ([efbeb86d](https://github.com/regentmarkets/flutter-deriv-packages/commit/efbeb86d5ed69edf27f31625818092a921119ed6))
+ - **FEAT**(deriv-auth): add ctrader to platformEnumMapper. ([38bc6f86](https://github.com/regentmarkets/flutter-deriv-packages/commit/38bc6f861e5c98b38e558aa2f7d54253f0a12807))
+
+
 ## 2024-02-14
 
 ### Changes

@@ -1,3 +1,7 @@
+## 0.0.6
+
+ - **FEAT**(deriv_ui): [MOBC-750] add deriv_numpad to deriv_ui ([#434](https://github.com/regentmarkets/flutter-deriv-packages/issues/434)). ([3802e2e6](https://github.com/regentmarkets/flutter-deriv-packages/commit/3802e2e6d874cbd3ed21b3ca0f6983000840938a))
+
 ## 0.0.5
 
  - **FEAT**(deriv_ui): [MOBC-751] add form_builder to deriv_ui ([#443](https://github.com/regentmarkets/flutter-deriv-packages/issues/443)). ([c2be88ef](https://github.com/regentmarkets/flutter-deriv-packages/commit/c2be88ef478b40ff99c053b68cf625d80e4f7fc7))

@@ -87,7 +87,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
     final bool isMandatory = appBuildNumber < minVersion;
 
     final bool isOptional =
-        appBuildNumber < latestVersion && appBuildNumber > minVersion;
+        appBuildNumber < latestVersion && appBuildNumber >= minVersion;
 
     // checks if no update available and return
     if (!isMandatory && !isOptional) {

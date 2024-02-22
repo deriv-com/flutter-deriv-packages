@@ -1,3 +1,7 @@
+## 0.1.0+1
+
+ - **FIX**(deriv_feature_flag): remove env dependancy ([#477](https://github.com/regentmarkets/flutter-deriv-packages/issues/477)). ([c62b20eb](https://github.com/regentmarkets/flutter-deriv-packages/commit/c62b20eb88cf1397ecf4437a7854ff19187d7662))
+
 ## 0.1.0
 
 > Note: This release has breaking changes.

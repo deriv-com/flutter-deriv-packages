@@ -1,17 +1,12 @@
 name: deriv_feature_flag
-description: A new Flutter package project.
-version: 0.1.0
+description: wrapper to handle feature flag for deriv applications
+version: 0.1.0+1
 publish_to: none
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  deriv_env:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_env
-      ref: deriv_env-v0.0.1+1
   flutter:
     sdk: flutter
   growthbook_sdk_flutter: ^3.0.0+0

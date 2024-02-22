@@ -1,3 +1,7 @@
+## 1.2.2
+
+ - **FIX**(update_checker): fix optional update issue in remote config [#475](https://github.com/regentmarkets/flutter-deriv-packages/issues/475). ([ac0dc26b](https://github.com/regentmarkets/flutter-deriv-packages/commit/ac0dc26b46b478248ea81d1dba6b7c6844b88995))
+
 ## 1.2.1
 
  - **REFACTOR**(update_checker): increase package info plus version ([#407](https://github.com/regentmarkets/flutter-deriv-packages/issues/407)). ([5147c12b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5147c12bd6b49aed82dd4e3036f63de79816edba))
