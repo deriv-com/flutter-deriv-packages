@@ -29,6 +29,11 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
     _labelColor = context.theme.colors.disabled;
 
