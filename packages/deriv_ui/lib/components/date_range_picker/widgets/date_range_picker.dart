@@ -179,7 +179,7 @@ class _DerivDateRangePickerState extends State<DerivDateRangePicker> {
   Widget build(BuildContext context) => Visibility(
         visible: showCalendar,
         child: Scaffold(
-          backgroundColor: context.theme.colors.prominent,
+          backgroundColor: context.theme.colors.secondary,
           appBar: _buildAppBar(),
           body: _buildCalendar(),
         ),
