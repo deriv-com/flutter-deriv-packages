@@ -195,7 +195,7 @@ class _DerivDateRangePickerState extends State<DerivDateRangePicker> {
             color: context.theme.colors.general,
           ),
           tooltip: widget.toolTipClose ?? context.localization!.labelClose,
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         actions: <Widget>[
           Padding(
@@ -337,7 +337,7 @@ class _DerivDateRangePickerState extends State<DerivDateRangePicker> {
     }
   }
 
-  void _setSelectedDate() => Navigator.pop(
+  void _setSelectedDate() => Navigator.maybePop(
         context,
         selectedStartDate == null && selectedEndDate == null
             ? null
