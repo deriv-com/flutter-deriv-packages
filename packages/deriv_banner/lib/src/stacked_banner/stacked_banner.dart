@@ -59,7 +59,6 @@ class StackedBanner extends StatefulWidget {
     this.onDismissed,
     this.animationDuration = const Duration(milliseconds: 250),
     this.maxBannersCount = 5,
-    this.collapsedItemsKey,
   })  : assert(maxBannersCount > 0),
         assert(maxBannersCount >= maxCollapsedItems);
 
@@ -104,8 +103,6 @@ class StackedBanner extends StatefulWidget {
   /// The duration for sliding/collapsing/expanding animtions of banner itesm.
   final Duration animationDuration;
 
-  final GlobalKey? collapsedItemsKey;
-
   @override
   _StackedBannerState createState() => _StackedBannerState();
 }
@@ -122,9 +119,9 @@ class _StackedBannerState extends State<StackedBanner>
 
   final List<Widget> _bannerItems = <Widget>[];
 
-  Size? _collapsedSize;
+  final GlobalKey _collapsedItemsKey = GlobalKey();
 
-  late GlobalKey<State<StatefulWidget>> _collapsedItemsKey;
+  Size? _collapsedSize;
 
   /// Minimum number of visible banner items when the banner is expanded.
   ///
@@ -149,8 +146,6 @@ class _StackedBannerState extends State<StackedBanner>
     _setupAnimationControllers();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _collapsedItemsKey = widget.collapsedItemsKey ?? GlobalKey();
-
       _collapsedSize =
           (_collapsedItemsKey.currentContext!.findRenderObject() as RenderBox)
               .size;
