@@ -19,16 +19,7 @@ class DerivPasskeysInit extends DerivPasskeysEvent {
 }
 
 /// [DerivPasskeysCreateCredential] represents the create credential event within the DerivPasskeys flow.
-class DerivPasskeysCreateCredential extends DerivPasskeysEvent {
-  /// Creates a [DerivPasskeysCreateCredential].
-  const DerivPasskeysCreateCredential(this.options);
-
-  /// The options to create a credential.
-  final String options;
-
-  @override
-  List<Object> get props => <Object>[options];
-}
+class DerivPasskeysCreateCredential extends DerivPasskeysEvent {}
 
 /// [DerivPasskeysGetCredential] represents the get credential event within the DerivPasskeys flow.
 class DerivPasskeysGetCredential extends DerivPasskeysEvent {}
@@ -36,13 +27,10 @@ class DerivPasskeysGetCredential extends DerivPasskeysEvent {}
 /// [DerivPasskeysGetPasskeysList] represents the get passkeys list event within the DerivPasskeys flow.
 class DerivPasskeysGetPasskeysList extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysGetPasskeysList].
-  const DerivPasskeysGetPasskeysList(this.options);
-
-  /// The options to get a passkeys list.
-  final String options;
+  const DerivPasskeysGetPasskeysList();
 
   @override
-  List<Object> get props => <Object>[options];
+  List<Object> get props => <Object>[];
 }
 
 /// [DerivPasskeysRevokeCredential] represents the revoke credential event within the DerivPasskeys flow.

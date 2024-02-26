@@ -1,4 +1,4 @@
-import 'package:deriv_passkeys/interactor/services/deriv_passkeys_method_channel.dart';
+import 'package:deriv_passkeys/data/platform/deriv_passkeys_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 /// The interface that implementations of deriv_passkeys must implement.

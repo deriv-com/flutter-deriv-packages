@@ -19,16 +19,22 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.2+1
+      ref: deriv_ui-v0.0.6
+  flutter_deriv_api:
+    git:
+      url: git@github.com:deriv-com/flutter-deriv-api.git
+      ref: 64ad3673598ad807b43f751fc2ec7bc5ef01203e
 
   
   flutter_svg: ^2.0.9
   plugin_platform_interface: ^2.0.2
   http: ^0.13.4
+  device_marketing_names: ^0.8.0
 
 
 dependency_overrides:
   flutter_svg: ^2.0.9
+  
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +66,15 @@ flutter:
 
   assets:
     - assets/svg/passkey_icon.svg
+    - assets/svg/effortless_login_passkey_icon.svg
+    - assets/svg/passkey_created_success_icon.svg
+    - assets/svg/fingerprint_icon.svg
+    - assets/svg/sync_icon.svg
+    - assets/svg/lock_icon.svg
+    - assets/svg/light_bulb_icon.svg
+    - assets/svg/learn_more_passkeys_icon.svg
+    - assets/svg/add_passkey_icon.svg
+    - assets/svg/face_id.svg
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages

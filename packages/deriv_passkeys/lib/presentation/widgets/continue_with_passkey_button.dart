@@ -31,6 +31,7 @@ class _ContinueWithPasskeyButtonState extends State<ContinueWithPasskeyButton> {
             return const SizedBox();
           }
           if (state is DerivPasskeysError) {
+            // TODO(bassam-deriv): Handle Error state once backend is ready
             return Column(
               children: <Widget>[
                 Text(state.message),
@@ -57,7 +58,7 @@ class _ContinueWithPasskeyButtonState extends State<ContinueWithPasskeyButton> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Passkeys',
+                  'Passkey',
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent,

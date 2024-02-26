@@ -37,7 +37,7 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
     if (activity == null) {
       throw IllegalStateException("Activity not found")
     }
-    JSONObject(options) // check if options is a valid json string
+    JSONObject(options)
     val createPublicKeyCredentialRequest = CreatePublicKeyCredentialRequest(
       requestJson = options,
       preferImmediatelyAvailableCredentials = false
@@ -61,7 +61,7 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
     if (activity == null) {
       throw IllegalStateException("Activity not found")
     }
-    JSONObject(options) // check if options is a valid json string
+    JSONObject(options)
     val getPublicKeyCredentialOption = GetPublicKeyCredentialOption(
       requestJson = options
     )

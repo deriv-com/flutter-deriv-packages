@@ -18,7 +18,7 @@ class DerivPasskeysLoaded extends DerivPasskeysState {
   const DerivPasskeysLoaded(this.passkeysList);
 
   /// The passkeys list.
-  final String passkeysList;
+  final List<DerivPasskeyEntity> passkeysList;
 
   @override
   List<Object> get props => <Object>[passkeysList];
@@ -26,6 +26,9 @@ class DerivPasskeysLoaded extends DerivPasskeysState {
 
 /// [DerivPasskeysLoading] represents the loading state within the DerivPasskeys flow.
 class DerivPasskeysLoading extends DerivPasskeysState {}
+
+/// [DerivPasskeysCreatedSuccessfully] represents the created successfully state within the DerivPasskeys flow.
+class DerivPasskeysCreatedSuccessfully extends DerivPasskeysState {}
 
 /// [DerivPasskeysNotSupported] represents the not supported state within the DerivPasskeys flow.
 class DerivPasskeysNotSupported extends DerivPasskeysState {}
