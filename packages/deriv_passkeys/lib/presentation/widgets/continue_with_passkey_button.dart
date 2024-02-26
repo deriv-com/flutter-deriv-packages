@@ -48,25 +48,37 @@ class _ContinueWithPasskeyButtonState extends State<ContinueWithPasskeyButton> {
           if (state is DerivPasskeysLoading) {
             return const Center(child: CircularProgressIndicator());
           }
-          return SecondaryButton(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SvgPicture.asset(
-                  Assets.passkeySvgIcon,
-                  package: 'deriv_passkeys',
+          return InkWell(
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(
+                  color: context.theme.colors.active,
                 ),
-                const SizedBox(width: 8),
-                Text(
-                  'Passkey',
-                  style: context.theme.textStyle(
-                    textStyle: TextStyles.body2,
-                    color: context.theme.colors.prominent,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SvgPicture.asset(
+                    Assets.passkeySvgIcon,
+                    package: 'deriv_passkeys',
                   ),
-                ),
-              ],
+                  const SizedBox(width: 8),
+                  Text(
+                    'Passkey',
+                    style: context.theme.textStyle(
+                      textStyle: TextStyles.body2,
+                      color: context.theme.colors.prominent,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            onPressed: () async {
+            onTap: () async {
               context
                   .read<DerivPasskeysBloc>()
                   .add(DerivPasskeysGetCredential());
