@@ -29,6 +29,8 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
   @override
   void initState() {
     super.initState();
+
+    widget.focusNode?.addListener(_onFocusChanged);
   }
 
   @override
@@ -36,8 +38,6 @@ class _NumberPadTextFieldState extends State<_NumberPadTextField> {
     super.didChangeDependencies();
 
     _labelColor = context.theme.colors.disabled;
-
-    widget.focusNode?.addListener(_onFocusChanged);
   }
 
   @override
