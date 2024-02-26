@@ -1,9 +1,5 @@
-import 'package:deriv_auth/core/helpers/semantic_labels.dart';
-import 'package:deriv_auth/core/states/auth_error_state_handler.dart';
 import 'package:deriv_auth/core/states/auth_state_listener.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/login/presentation/widgets/deriv_social_auth_divider.dart';
-import 'package:deriv_auth/features/login/presentation/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +11,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DerivSignupLayout extends StatefulWidget {
   /// Initializes [DerivSignupLayout].
   const DerivSignupLayout({
-    required this.onSocialAuthButtonPressed,
     required this.onSingupError,
     required this.onSingupEmailSent,
     required this.onSignupPressed,
     required this.onLoginTapped,
     required this.signupPageLabel,
     required this.signupPageDescription,
+    required this.socialAuthStateHandler,
+    required this.redirectURL,
+    required this.onWebViewError,
+    this.onSocialAuthButtonPressed,
     this.isSocialAuthEnabled = true,
     this.authErrorStateHandler,
     this.enableReferralSection = true,
@@ -29,8 +28,9 @@ class DerivSignupLayout extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  /// Callback to be called when social auth button is pressed.
-  final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
+  /// Callback to be called when social auth button is tapped.
+  /// Give access to [SocialAuthDto] for 2FA.
+  final SocialAuthCallback? onSocialAuthButtonPressed;
 
   /// Callback to be called when signup error occurs.
   final Function(DerivSignupErrorState) onSingupError;
@@ -62,6 +62,15 @@ class DerivSignupLayout extends StatefulWidget {
 
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
+
+  /// Social auth state handler.
+  final Function(SocialAuthState) socialAuthStateHandler;
+
+  /// Redirect URL for social auth.
+  final String redirectURL;
+
+  /// Callback for web view error.
+  final Function(String) onWebViewError;
 
   @override
   State<DerivSignupLayout> createState() => _DerivSignupLayoutState();
@@ -123,9 +132,10 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                         const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthPanel(
                         isEnabled: !isReferralEnabled,
-                        onSocialAuthButtonPressed:
-                            widget.onSocialAuthButtonPressed,
                         isVisible: widget.isSocialAuthEnabled,
+                        socialAuthStateHandler: widget.socialAuthStateHandler,
+                        redirectURL: widget.redirectURL,
+                        onWebViewError: widget.onWebViewError,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),

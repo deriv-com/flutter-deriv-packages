@@ -1,3 +1,8 @@
+## 1.1.1
+
+ - **REFACTOR**(deriv_numpad): pass validation result to numpad. ([1e44cd04](https://github.com/regentmarkets/flutter-deriv-packages/commit/1e44cd04437eee9db677ca12b0d3cfbc094ca613))
+ - **FIX**(deriv_numpad): fix asset not found issue. ([1af28c77](https://github.com/regentmarkets/flutter-deriv-packages/commit/1af28c775adf1d516161c9f5d80c2958b53a0ef5))
+
 ## 1.1.0
 
  - **REFACTOR**(deriv_numpad): UI polishing. ([f78c4668](https://github.com/regentmarkets/flutter-deriv-packages/commit/f78c46684d060d304913c945157d1847ec511c98))

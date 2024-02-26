@@ -1,5 +1,7 @@
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/features/reset_password/services/base_reset_password_service.dart';
+import 'package:flutter_deriv_api/api/exceptions/base_api_exception.dart';
+import 'package:flutter_deriv_api/api/models/base_exception_model.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
@@ -78,6 +80,25 @@ void main() {
   });
 
   test(
+      'Should emit [DerivResetPassErrorState] with isLinkExpired true if chagePassword is unsuccessful.',
+      () async {
+    when(() => service.resetPassword(
+            verificationCode: any(named: 'verificationCode'),
+            newPassword: any(named: 'newPassword')))
+        .thenAnswer((_) async => Future<bool>.value(false));
+
+    await resetPassCubit.changePassword(
+        token: '123', newPassword: 'newpassword');
+    expect(
+        resetPassCubit.state,
+        isA<DerivResetPassErrorState>().having(
+          (DerivResetPassErrorState state) => state.isLinkExpired,
+          'reset password link expired',
+          true,
+        ));
+  });
+
+  test(
       'Should emit [DerivResetPassErrorState] if chagePassword throws an exception.',
       () async {
     when(() => service.resetPassword(
@@ -87,5 +108,28 @@ void main() {
     await resetPassCubit.changePassword(
         token: '123', newPassword: 'newpassword');
     expect(resetPassCubit.state, isA<DerivResetPassErrorState>());
+  });
+
+  test('''Should emit [DerivResetPassErrorState] with isLinkExpired set to true 
+      if chagePassword throws an [BaseAPIException] with error code InvalidToken.''',
+      () async {
+    when(() =>
+        service.resetPassword(
+            verificationCode: any(named: 'verificationCode'),
+            newPassword: any(named: 'newPassword'))).thenThrow(BaseAPIException(
+        baseExceptionModel: BaseExceptionModel(
+      code: 'InvalidToken',
+    )));
+
+    await resetPassCubit.changePassword(
+        token: '123', newPassword: 'newpassword');
+
+    expect(
+        resetPassCubit.state,
+        isA<DerivResetPassErrorState>().having(
+          (DerivResetPassErrorState state) => state.isLinkExpired,
+          'reset password link expired',
+          true,
+        ));
   });
 }

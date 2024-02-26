@@ -44,6 +44,7 @@ class CurrencySwitcher extends StatelessWidget {
                 const SizedBox(width: ThemeProvider.margin04),
                 SvgPicture.asset(
                   swapIcon,
+                  package: 'deriv_numpad',
                   height: ThemeProvider.iconSize16,
                   width: ThemeProvider.iconSize16,
                   colorFilter: ColorFilter.mode(

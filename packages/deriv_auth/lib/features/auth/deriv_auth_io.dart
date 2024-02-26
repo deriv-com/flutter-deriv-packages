@@ -13,6 +13,8 @@ abstract class DerivAuthIO {
 
   /// Social login/signup with [oneAllConnectionToken] using one-all service.
   /// Using it as fallback plan of [socialAuth]. Will be removed in the future.
+  @Deprecated(
+      'OneAll has been removed so this method is no longer useful. Use socialAuth instead.')
   Future<void> socialLogin({
     required String oneAllConnectionToken,
     String? otp,

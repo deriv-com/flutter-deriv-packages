@@ -14,8 +14,7 @@ class Deriv2FALayout extends StatefulWidget {
     required this.email,
     required this.password,
     Key? key,
-  })  : oneAllConnectionToken = null,
-        socialAuthDto = null,
+  })  : socialAuthDto = null,
         super(key: key);
 
   /// Initializes the two-factor-authentication page for social login.
@@ -24,16 +23,6 @@ class Deriv2FALayout extends StatefulWidget {
     Key? key,
   })  : email = null,
         password = null,
-        oneAllConnectionToken = null,
-        super(key: key);
-
-  /// Initializes the two-factor-authentication page for one all social login.
-  const Deriv2FALayout.oneAll({
-    required this.oneAllConnectionToken,
-    Key? key,
-  })  : email = null,
-        password = null,
-        socialAuthDto = null,
         super(key: key);
 
   /// User entered email in previous page.
@@ -41,9 +30,6 @@ class Deriv2FALayout extends StatefulWidget {
 
   /// User entered password in previous page.
   final String? password;
-
-  /// For one all social login with 2FA.
-  final String? oneAllConnectionToken;
 
   /// For in house social login with 2FA.
   final SocialAuthDto? socialAuthDto;
@@ -143,12 +129,7 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
     FocusManager.instance.primaryFocus?.unfocus();
 
     if (!_isLoading()) {
-      if (widget.oneAllConnectionToken != null) {
-        context.read<DerivAuthCubit>().socialLogin(
-              oneAllConnectionToken: widget.oneAllConnectionToken!,
-              otp: _otpController.text,
-            );
-      } else if (widget.socialAuthDto != null) {
+      if (widget.socialAuthDto != null) {
         context.read<DerivAuthCubit>().socialAuth(
               socialAuthDto: widget.socialAuthDto!,
               otp: _otpController.text,
@@ -160,6 +141,8 @@ class _Deriv2FALayoutState extends State<Deriv2FALayout> {
               otp: _otpController.text,
             );
       }
+
+      _otpController.clear();
     }
   }
 

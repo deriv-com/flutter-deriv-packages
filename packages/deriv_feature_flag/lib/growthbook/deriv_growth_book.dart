@@ -10,8 +10,8 @@ class DerivGrowthBook extends BaseGrowthBook implements GrowthBookConfig {
 
   DerivGrowthBook({required FeatureFlagConfig featureFlagConfig}) {
     _gbsdkBuilderApp = GBSDKBuilderApp(
-      hostURL: GrowthBookConfig.gbHostUrl,
-      apiKey: GrowthBookConfig.gbClientKey,
+      hostURL: featureFlagConfig.hostUrl,
+      apiKey: featureFlagConfig.clientKey,
       attributes: featureFlagConfig.attributes,
       enable: featureFlagConfig.enable,
       qaMode: featureFlagConfig.qaMode,

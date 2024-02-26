@@ -1,3 +1,43 @@
+## 5.0.1
+
+ - Update a dependency to the latest release.
+
+## 5.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_auth): [MOBC-802] migrate to deriv_localizations package [#486](https://github.com/regentmarkets/flutter-deriv-packages/issues/486). ([e9297272](https://github.com/regentmarkets/flutter-deriv-packages/commit/e9297272c91235263cf2335b8ba69a3a1d9c1583))
+
+## 4.1.1
+
+ - Update a dependency to the latest release.
+
+## 4.1.0
+
+ - **FIX**(deriv_auth): localCurrency issue. ([efbeb86d](https://github.com/regentmarkets/flutter-deriv-packages/commit/efbeb86d5ed69edf27f31625818092a921119ed6))
+ - **FEAT**(deriv-auth): add ctrader to platformEnumMapper. ([38bc6f86](https://github.com/regentmarkets/flutter-deriv-packages/commit/38bc6f861e5c98b38e558aa2f7d54253f0a12807))
+
+## 4.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**(deriv_auth): handle webview logic for social login ([#446](https://github.com/regentmarkets/flutter-deriv-packages/issues/446)). ([94eeec1e](https://github.com/regentmarkets/flutter-deriv-packages/commit/94eeec1eeda0ffe7809d49e541cb76363a9b8326))
+
+## 3.0.1
+
+ - **FIX**(deriv_auth): reset password design mismatch ([#456](https://github.com/regentmarkets/flutter-deriv-packages/issues/456)). ([efe30f1a](https://github.com/regentmarkets/flutter-deriv-packages/commit/efe30f1a8884ced0397d546dbe6144cea88d124c))
+
+## 3.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_auth): add `isLinkExpired` boolean to reset password error state ([#428](https://github.com/regentmarkets/flutter-deriv-packages/issues/428)). ([29c93ac6](https://github.com/regentmarkets/flutter-deriv-packages/commit/29c93ac6fbb82ee48aee225050c2f1d3ddd79b39))
+
+## 2.1.2
+
+ - Update a dependency to the latest release.
+
+
 ## 2.1.1
 
  - Update a dependency to the latest release.

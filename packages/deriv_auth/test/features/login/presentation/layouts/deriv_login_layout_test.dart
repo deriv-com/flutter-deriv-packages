@@ -1,14 +1,11 @@
-// ignore_for_file: always_specify_types
-
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/login/presentation/layouts/deriv_login_layout.dart';
-import 'package:deriv_auth/features/login/presentation/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:nested/nested.dart';
 import 'package:patrol_finders/patrol_finders.dart';
 
 import '../../../../mocks.dart';
@@ -17,32 +14,53 @@ import '../../../../pump_app.dart';
 void main() {
   group('DerivLoginLayout', () {
     late MockAuthCubit authCubit;
+    late MockSocialAuthCubit socialAuthCubit;
 
     const String welcomeLabel = 'Welcome Back';
     const String greetingLabel = 'Let\'s start trading.';
 
-    setUpAll(() => authCubit = MockAuthCubit());
+    setUpAll(() {
+      authCubit = MockAuthCubit();
+      socialAuthCubit = MockSocialAuthCubit();
+
+      registerFallbackValue(SocialAuthProvider.google);
+
+      when(() => socialAuthCubit.stream).thenAnswer((_) =>
+          Stream<SocialAuthState>.fromIterable(<SocialAuthState>[
+            SocialAuthLoadedState(
+                socialAuthProviders: <SocialAuthProviderModel>[])
+          ]));
+
+      when(() => socialAuthCubit.state).thenAnswer((_) => SocialAuthLoadedState(
+          socialAuthProviders: <SocialAuthProviderModel>[]));
+    });
 
     patrolWidgetTest(
         'renders email and password field including social auth buttons.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedOutState();
+      final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
       await $.pumpApp(
-        BlocProvider<DerivAuthCubit>.value(
-          value: authCubit,
+        MultiBlocProvider(
+          providers: <SingleChildWidget>[
+            BlocProvider<DerivAuthCubit>.value(value: authCubit),
+            BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+          ],
           child: DerivLoginLayout(
+            socialAuthStateHandler: (SocialAuthState state) {},
+            redirectURL: 'deriv://example',
+            onWebViewError: (String error) {},
             welcomeLabel: welcomeLabel,
             greetingLabel: greetingLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
             onLoggedIn: (_) {},
-            onSocialAuthButtonPressed: (p0) {},
+            onSocialAuthButtonPressed: (SocialAuthDto p0) {},
             onLoginError: (_) {},
           ),
         ),
@@ -56,18 +74,24 @@ void main() {
 
     patrolWidgetTest('displays invalid email error on invalid email typed.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedOutState();
-      const invalidEmail = 'invalid-email';
+      final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
+      const String invalidEmail = 'invalid-email';
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
       await $.pumpApp(
-        BlocProvider<DerivAuthCubit>.value(
-          value: authCubit,
+        MultiBlocProvider(
+          providers: <SingleChildWidget>[
+            BlocProvider<DerivAuthCubit>.value(value: authCubit),
+            BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+          ],
           child: DerivLoginLayout(
+            socialAuthStateHandler: (SocialAuthState state) {},
+            redirectURL: 'deriv://example',
+            onWebViewError: (String error) {},
             welcomeLabel: welcomeLabel,
             greetingLabel: greetingLabel,
             onResetPassTapped: () {},
@@ -79,7 +103,7 @@ void main() {
         ),
       );
 
-      final emailField = $(BaseTextField).first;
+      final PatrolFinder emailField = $(BaseTextField).first;
       // final emailField = $(BaseTextField).$('Email'); --> this doesn't work
 
       await $.enterText(emailField, invalidEmail);
@@ -89,18 +113,24 @@ void main() {
 
     patrolWidgetTest('displays loading error on AuthLoadingState',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoadingState();
+      final DerivAuthLoadingState mockAuthState = DerivAuthLoadingState();
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
       await $.pumpApp(
           settle: false,
-          BlocProvider<DerivAuthCubit>.value(
-            value: authCubit,
+          MultiBlocProvider(
+            providers: <SingleChildWidget>[
+              BlocProvider<DerivAuthCubit>.value(value: authCubit),
+              BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+            ],
             child: DerivLoginLayout(
+              socialAuthStateHandler: (SocialAuthState state) {},
+              redirectURL: 'deriv://example',
+              onWebViewError: (String error) {},
               welcomeLabel: welcomeLabel,
               greetingLabel: greetingLabel,
               onResetPassTapped: () {},
@@ -116,18 +146,24 @@ void main() {
 
     patrolWidgetTest('calls signupTapped when signup button is pressed.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedOutState();
+      final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
       bool onSignupTappedCalled = false;
 
-      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
-        value: authCubit,
+      await $.pumpApp(MultiBlocProvider(
+        providers: <SingleChildWidget>[
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+        ],
         child: DerivLoginLayout(
+          socialAuthStateHandler: (SocialAuthState state) {},
+          redirectURL: 'deriv://example',
+          onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
@@ -140,7 +176,7 @@ void main() {
         ),
       ));
 
-      final signupButton = $(InkWell).$('Create a new account');
+      final PatrolFinder signupButton = $(InkWell).$('Create a new account');
 
       await $.scrollUntilVisible(finder: signupButton);
 
@@ -151,7 +187,7 @@ void main() {
 
     patrolWidgetTest('calls onLoggedIn on successful login.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedInState(
+      final DerivAuthLoggedInState mockAuthState = DerivAuthLoggedInState(
         const DerivAuthModel(
           authorizeEntity: AuthorizeEntity(),
           landingCompany: LandingCompanyEntity(),
@@ -160,14 +196,20 @@ void main() {
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
       bool onLoggedInCalled = false;
 
-      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
-        value: authCubit,
+      await $.pumpApp(MultiBlocProvider(
+        providers: <SingleChildWidget>[
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+        ],
         child: DerivLoginLayout(
+          socialAuthStateHandler: (SocialAuthState state) {},
+          redirectURL: 'deriv://example',
+          onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
@@ -185,21 +227,27 @@ void main() {
 
     patrolWidgetTest('calls onLoginError on login error.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthErrorState(
+      final DerivAuthErrorState mockAuthState = DerivAuthErrorState(
           isSocialLogin: false,
           message: 'error',
           type: AuthErrorType.failedAuthorization);
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
       bool onLoginErrorCalled = false;
 
-      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
-        value: authCubit,
+      await $.pumpApp(MultiBlocProvider(
+        providers: <SingleChildWidget>[
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+        ],
         child: DerivLoginLayout(
+          socialAuthStateHandler: (SocialAuthState state) {},
+          redirectURL: 'deriv://example',
+          onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
@@ -217,20 +265,26 @@ void main() {
 
     patrolWidgetTest('calls [AuthErrorStateHandler] on auth error state.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthErrorState(
+      final DerivAuthErrorState mockAuthState = DerivAuthErrorState(
         isSocialLogin: false,
-        message: 'error',
+        message: 'Authorization failed.',
         type: AuthErrorType.failedAuthorization,
       );
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
-      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
-        value: authCubit,
+      await $.pumpApp(MultiBlocProvider(
+        providers: <SingleChildWidget>[
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+        ],
         child: DerivLoginLayout(
+          socialAuthStateHandler: (SocialAuthState state) {},
+          redirectURL: 'deriv://example',
+          onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
@@ -246,18 +300,24 @@ void main() {
 
     patrolWidgetTest('calls resetPassTapped when reset button is pressed.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedOutState();
+      final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
 
       bool onResetPassTappedCalled = false;
 
-      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
-        value: authCubit,
+      await $.pumpApp(MultiBlocProvider(
+        providers: <SingleChildWidget>[
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+        ],
         child: DerivLoginLayout(
+          socialAuthStateHandler: (SocialAuthState state) {},
+          redirectURL: 'deriv://example',
+          onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           greetingLabel: greetingLabel,
           onResetPassTapped: () {
@@ -278,18 +338,34 @@ void main() {
     patrolWidgetTest(
         'calls onSocialAuthButtonPressed when social auth button is pressed.',
         (PatrolTester $) async {
-      final mockAuthState = DerivAuthLoggedOutState();
-
-      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
-
-      when(() => authCubit.stream)
-          .thenAnswer((_) => Stream.fromIterable([mockAuthState]));
+      final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
 
       bool onSocialAuthButtonPressedCalled = false;
 
-      await $.pumpApp(BlocProvider<DerivAuthCubit>.value(
-        value: authCubit,
+      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
+
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
+
+      /// Should be called when social auth button is pressed.
+      when(() => socialAuthCubit.selectSocialLoginProvider(
+          selectedSocialAuthProvider: any(named: 'selectedSocialAuthProvider'),
+          redirectUrl: 'deriv://example',
+          onWebViewError: any(named: 'onWebViewError'),
+          onRedirectUrlReceived:
+              any(named: 'onRedirectUrlReceived'))).thenAnswer((_) async {
+        onSocialAuthButtonPressedCalled = true;
+      });
+
+      await $.pumpApp(MultiBlocProvider(
+        providers: <SingleChildWidget>[
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+        ],
         child: DerivLoginLayout(
+          socialAuthStateHandler: (SocialAuthState state) {},
+          redirectURL: 'deriv://example',
+          onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
@@ -305,6 +381,48 @@ void main() {
       await $(IconButton).at(1).tap();
 
       expect(onSocialAuthButtonPressedCalled, isTrue);
+    });
+
+    patrolWidgetTest('calls socialAuthHandler on [SocialAuthState]',
+        (PatrolTester $) async {
+      final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
+
+      bool onSocialAuthHandlerCalled = false;
+
+      when(() => authCubit.state).thenAnswer((_) => mockAuthState);
+
+      when(() => authCubit.stream).thenAnswer((_) =>
+          Stream<DerivAuthState>.fromIterable(<DerivAuthState>[mockAuthState]));
+
+      when(() => socialAuthCubit.stream).thenAnswer((_) =>
+          Stream<SocialAuthState>.fromIterable(
+              <SocialAuthState>[SocialAuthErrorState()]));
+
+      when(() => socialAuthCubit.state)
+          .thenAnswer((_) => SocialAuthErrorState());
+
+      await $.pumpApp(MultiBlocProvider(
+        providers: <SingleChildWidget>[
+          BlocProvider<DerivAuthCubit>.value(value: authCubit),
+          BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
+        ],
+        child: DerivLoginLayout(
+          socialAuthStateHandler: (SocialAuthState state) {
+            onSocialAuthHandlerCalled = true;
+          },
+          redirectURL: 'deriv://example',
+          onWebViewError: (String error) {},
+          welcomeLabel: welcomeLabel,
+          greetingLabel: greetingLabel,
+          onResetPassTapped: () {},
+          onSignupTapped: () {},
+          onLoggedIn: (_) {},
+          onSocialAuthButtonPressed: (_) {},
+          onLoginError: (_) {},
+        ),
+      ));
+
+      expect(onSocialAuthHandlerCalled, isTrue);
     });
   });
 }

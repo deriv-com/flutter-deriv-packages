@@ -1,6 +1,7 @@
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/generated/l10n.dart';
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:deriv_localizations/l10n/generated/deriv_auth/deriv_auth_localizations.dart';
 import 'package:example/features/get_started/pages/get_started_page.dart';
 import 'package:example/features/login/repositories/example_login_repository.dart';
 import 'package:example/features/signup/repositories/example_referral_repository.dart';
@@ -11,7 +12,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/login/services/example_login_service.dart';
 
 void main() {
-  runApp(const MyApp());
+  /// Added [DevicePreview] while fixing on UI issue
+  /// that was only in smaller devices. This later can be removed
+  /// when we are fully using widget book.
+  runApp(DevicePreview(
+    builder: (context) => const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,7 +45,8 @@ class MyApp extends StatelessWidget {
         initialTheme: ThemeMode.dark,
         builder: (context) => MaterialApp(
           theme: context.themeData,
-          localizationsDelegates: const [DerivAuthLocalization.delegate],
+          builder: DevicePreview.appBuilder,
+          localizationsDelegates: const [DerivAuthLocalizations.delegate],
           home: const GetStartedPage(),
         ),
       ),

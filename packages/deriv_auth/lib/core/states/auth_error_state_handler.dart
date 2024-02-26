@@ -47,7 +47,7 @@ base class AuthErrorStateHandler {
   void onFailedAuthorization(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
-      errorMessage: context.derivAuthLocalization.informFailedAuthorization,
+      errorMessage: state.message,
       actionLabel: context.derivAuthLocalization.actionTryAgain,
     );
   }

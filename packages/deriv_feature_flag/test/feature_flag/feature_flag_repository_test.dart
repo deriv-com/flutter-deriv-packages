@@ -10,6 +10,8 @@ import 'mock_classes.dart';
 void main() {
   final mockGrowthBookSDK = MockGrowthBookSDK();
   final FeatureFlagConfig featureFlagConfig = FeatureFlagConfig(
+    hostUrl: '',
+    clientKey: '',
     features: {
       Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
     },
