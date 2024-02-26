@@ -35,44 +35,49 @@ class CustomCheckbox extends StatelessWidget {
   final CrossAxisAlignment contentsVerticalAlignment;
 
   @override
-  Widget build(BuildContext context) => Container(
-        padding: padding,
-        transform: Matrix4.translationValues(-14, 0, 0),
-        child: Row(
-          crossAxisAlignment: contentsVerticalAlignment,
-          children: <Widget>[
-            Theme(
-              data: ThemeData(
-                unselectedWidgetColor: context.theme.colors.disabled,
-              ),
-              child: Checkbox(
-                checkColor: context.theme.colors.primary,
-                activeColor: context.theme.colors.coral,
-                value: value,
-                onChanged: onValueChanged == null
-                    ? null
-                    : (bool? newValue) =>
-                        _onCheckboxValueChange(newValue: newValue!),
-              ),
+  Widget build(BuildContext context) {
+    return Container(
+      padding: padding,
+      transform: Matrix4.translationValues(-14, 0, 0),
+      child: Row(
+        crossAxisAlignment: contentsVerticalAlignment,
+        children: <Widget>[
+          Checkbox(
+            checkColor: context.theme.colors.primary,
+            activeColor: context.theme.colors.coral,
+            fillColor: MaterialStateProperty.resolveWith(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.selected)) {
+                  return context.theme.colors.coral;
+                }
+                return context.theme.colors.primary;
+              },
             ),
-            Expanded(
-              child: GestureDetector(
-                child: Text(
-                  message,
-                  textAlign: TextAlign.left,
-                  style: context.theme.textStyle(
-                    textStyle: TextStyles.body1,
-                    color: context.theme.colors.general,
-                  ),
+            value: value,
+            onChanged: onValueChanged == null
+                ? null
+                : (bool? newValue) =>
+                    _onCheckboxValueChange(newValue: newValue!),
+          ),
+          Expanded(
+            child: GestureDetector(
+              child: Text(
+                message,
+                textAlign: TextAlign.left,
+                style: context.theme.textStyle(
+                  textStyle: TextStyles.body1,
+                  color: context.theme.colors.general,
                 ),
-                onTap: onValueChanged == null
-                    ? null
-                    : () => _onCheckboxValueChange(newValue: value),
               ),
-            )
-          ],
-        ),
-      );
+              onTap: onValueChanged == null
+                  ? null
+                  : () => _onCheckboxValueChange(newValue: value),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 
   void _onCheckboxValueChange({bool? newValue}) =>
       onValueChanged?.call(isChecked: newValue);
