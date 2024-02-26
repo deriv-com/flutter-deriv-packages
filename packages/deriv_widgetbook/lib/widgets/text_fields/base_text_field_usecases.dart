@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:deriv_ui/deriv_ui.dart';
-import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Created to preserve state while changing knobs.
+final uscase1Key = GlobalKey();
+final uscase2Key = GlobalKey();
 @UseCase(
   name: 'Enabled',
   type: BaseTextField,
 )
 Widget baseTextFieldEnabledUseCase(BuildContext context) {
   return BaseTextField(
-    focusNode: FocusNode(),
+    key: uscase1Key,
+    autofocus: true,
     onChanged: (value) {},
-    labelText: context.knobs.string(
-      label: 'Label',
-      initialValue: 'Label',
-    ),
+    labelText: 'Label',
   );
 }
 
@@ -24,12 +24,8 @@ Widget baseTextFieldEnabledUseCase(BuildContext context) {
 )
 Widget baseTextFieldDisabledUseCase(BuildContext context) {
   return BaseTextField(
-    focusNode: FocusNode(),
     onChanged: (value) {},
-    labelText: context.knobs.string(
-      label: 'Label',
-      initialValue: 'Label',
-    ),
+    labelText: 'Label',
     enabled: false,
   );
 }
@@ -40,12 +36,10 @@ Widget baseTextFieldDisabledUseCase(BuildContext context) {
 )
 Widget baseTextFieldErrorUseCase(BuildContext context) {
   return BaseTextField(
-    focusNode: FocusNode(),
+    key: uscase2Key,
+    autofocus: true,
     onChanged: (value) {},
-    labelText: context.knobs.string(
-      label: 'Label',
-      initialValue: 'Label',
-    ),
+    labelText: 'Enter something for error',
     validator: (p0) {
       return 'This field is required';
     },
