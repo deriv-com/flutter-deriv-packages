@@ -1,4 +1,4 @@
-package com.example.deriv_widgetbook
+package com.deriv.widgetbook
 
 import io.flutter.embedding.android.FlutterActivity
 
