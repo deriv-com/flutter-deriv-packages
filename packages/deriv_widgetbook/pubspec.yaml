@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
   widgetbook_annotation: ^3.1.0
   widgetbook: ^3.7.1
   deriv_ui:
@@ -29,13 +28,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   widgetbook_generator: ^3.7.0
   build_runner: ^2.4.8
-
-dependency_overrides:
-  deriv_theme:
-    path: ../deriv_theme
 
 flutter:
   uses-material-design: true
