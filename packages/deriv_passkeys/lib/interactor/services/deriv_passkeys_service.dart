@@ -97,7 +97,7 @@ class DerivPasskeysService implements BaseServiceWithRepository {
   Future<String> getCredential() async {
     final Map<String, dynamic> getOptionsResult =
         (await repository.getOptions()).toJson();
-    getOptionsResult['rpId'] = 'e003-94-201-147-222.ngrok-free.app';
+    // getOptionsResult['rpId'] = 'e003-94-201-147-222.ngrok-free.app';
 
     // final Map<String, dynamic> getOptionsResult = {
     //   // 'rpId': 'pro-7837426045311437779.frontendapi.corbado.io',
