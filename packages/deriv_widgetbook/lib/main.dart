@@ -18,24 +18,23 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Widgetbook.material(
-      directories: directories,
-      addons: [
-        DeviceFrameAddon(
-          devices: Devices.all,
-          initialDevice: Devices.android.bigPhone,
-        ),
-        ThemeAddon(
-          themes: [
-            const WidgetbookTheme(
-              name: 'Dark',
-              data: ThemeMode.dark,
-            ),
-          ],
-          themeBuilder:
-              (BuildContext context, ThemeMode themeMode, Widget child) {
-            return DerivThemeProvider.builder(
+  Widget build(BuildContext context) => Widgetbook.material(
+        directories: directories,
+        addons: <WidgetbookAddon>[
+          DeviceFrameAddon(
+            devices: Devices.all,
+            initialDevice: Devices.android.bigPhone,
+          ),
+          ThemeAddon<ThemeMode>(
+            themes: <WidgetbookTheme<ThemeMode>>[
+              const WidgetbookTheme<ThemeMode>(
+                name: 'Dark',
+                data: ThemeMode.dark,
+              ),
+            ],
+            themeBuilder:
+                (BuildContext context, ThemeMode themeMode, Widget child) =>
+                    DerivThemeProvider.builder(
               initialTheme: themeMode,
               builder: (BuildContext context) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -43,7 +42,8 @@ class MyApp extends StatelessWidget {
                 });
                 return MaterialApp(
                   supportedLocales: DateRangeLocalizations.supportedLocales,
-                  localizationsDelegates: const [
+                  localizationsDelegates: const <LocalizationsDelegate<
+                      dynamic>>[
                     DefaultWidgetsLocalizations.delegate,
                     DefaultMaterialLocalizations.delegate,
                     DateRangeLocalizations.delegate,
@@ -56,20 +56,18 @@ class MyApp extends StatelessWidget {
                       )),
                 );
               },
-            );
-          },
-        ),
-        AlignmentAddon(),
-        LocalizationAddon(
-            locales: DateRangeLocalizations.supportedLocales,
-            localizationsDelegates: [
-              DefaultWidgetsLocalizations.delegate,
-              DefaultMaterialLocalizations.delegate,
-              DateRangeLocalizations.delegate,
-            ]),
-        TextScaleAddon(scales: [1.0, 2.0, 3.0]),
-        InspectorAddon(),
-      ],
-    );
-  }
+            ),
+          ),
+          AlignmentAddon(),
+          LocalizationAddon(
+              locales: DateRangeLocalizations.supportedLocales,
+              localizationsDelegates: <LocalizationsDelegate<dynamic>>[
+                DefaultWidgetsLocalizations.delegate,
+                DefaultMaterialLocalizations.delegate,
+                DateRangeLocalizations.delegate,
+              ]),
+          TextScaleAddon(scales: <double>[1, 2, 3]),
+          InspectorAddon(),
+        ],
+      );
 }

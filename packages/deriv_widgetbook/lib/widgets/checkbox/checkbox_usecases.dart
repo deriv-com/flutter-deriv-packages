@@ -8,28 +8,23 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   name: 'checked',
   type: CustomCheckbox,
 )
-Widget checkboxCheckedUsecase(BuildContext context) {
-  return CustomCheckbox(
-    padding: const EdgeInsets.all(
-      ThemeProvider.margin24,
-    ),
-    message: context.knobs
-        .string(label: 'checkbox message', initialValue: 'Checkbox'),
-    value: true,
-  );
-}
+Widget checkboxCheckedUsecase(BuildContext context) => CustomCheckbox(
+      padding: const EdgeInsets.all(
+        ThemeProvider.margin24,
+      ),
+      message: context.knobs
+          .string(label: 'checkbox message', initialValue: 'Checkbox'),
+      value: true,
+    );
 
 @UseCase(
   name: 'unchecked',
   type: CustomCheckbox,
 )
-Widget checkboxUncheckedUsecase(BuildContext context) {
-  return CustomCheckbox(
-    padding: const EdgeInsets.all(
-      ThemeProvider.margin24,
-    ),
-    message: context.knobs
-        .string(label: 'checkbox message', initialValue: 'Checkbox'),
-    value: false,
-  );
-}
+Widget checkboxUncheckedUsecase(BuildContext context) => CustomCheckbox(
+      padding: const EdgeInsets.all(
+        ThemeProvider.margin24,
+      ),
+      message: context.knobs
+          .string(label: 'checkbox message', initialValue: 'Checkbox'),
+    );

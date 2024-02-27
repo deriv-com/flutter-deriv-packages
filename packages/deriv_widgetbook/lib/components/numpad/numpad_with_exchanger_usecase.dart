@@ -10,11 +10,13 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   type: NumberPad,
 )
 Widget numpadWithCurrencyExchangerUseCase(BuildContext context) {
-  final controller = StreamController<ExchangeRateModel>.broadcast();
+  final StreamController<ExchangeRateModel> controller =
+      StreamController<ExchangeRateModel>.broadcast();
   return Align(
     alignment: Alignment.bottomCenter,
     child: NumberPad.withCurrencyExchanger(
-      onClose: (type, closeType, result) {},
+      onClose: (NumberPadWidgetType type, NumberPadCloseType closeType,
+          NumberPadData result) {},
       title: 'Amount',
       exchangeRatesStream: controller.stream,
       initialExchangeRate: ExchangeRateModel(
@@ -24,7 +26,7 @@ Widget numpadWithCurrencyExchangerUseCase(BuildContext context) {
       ),
       primaryCurrency: CurrencyDetail(0.123, 'BTC'),
       label: NumberPadLabel(
-        onValidate: (value) {
+        onValidate: (String value) {
           if (value.isEmpty) {
             return NumpadValidationText(
               enableActionButton: false,
@@ -58,7 +60,7 @@ Widget numpadWithCurrencyExchangerUseCase(BuildContext context) {
             return NumpadValidationText(
               text: RichText(
                 text: TextSpan(
-                  children: [
+                  children: <InlineSpan>[
                     TextSpan(
                       text: 'This looks good! Hehe',
                       style: context.theme.textStyle(

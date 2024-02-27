@@ -6,16 +6,14 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   name: 'Circular',
   type: LoadingIndicator,
 )
-Widget loadingIndicatorUseCase(BuildContext context) {
-  return const LoadingIndicator();
-}
+Widget loadingIndicatorUseCase(BuildContext context) =>
+    const LoadingIndicator();
 
 @UseCase(
   name: 'Linear',
   type: LoadingIndicator,
 )
-Widget linearLoadingIndicatorUseCase(BuildContext context) {
-  return const LoadingIndicator(
-    isCircular: false,
-  );
-}
+Widget linearLoadingIndicatorUseCase(BuildContext context) =>
+    const LoadingIndicator(
+      isCircular: false,
+    );

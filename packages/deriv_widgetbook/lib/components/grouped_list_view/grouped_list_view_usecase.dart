@@ -6,21 +6,20 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   name: 'Grouped List View',
   type: GroupedListView,
 )
-Widget groupedListViewUseCase(BuildContext context) {
-  return GroupedListView<dynamic, String>(
-    items: listItems,
-    groupBy: (dynamic element) => element['group'],
-    groupBuilder: (String value) => Container(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(value),
-    ),
-    itemBuilder: (dynamic element) => Container(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(element['name']),
-    ),
-    hasStickyHeader: true,
-  );
-}
+Widget groupedListViewUseCase(BuildContext context) =>
+    GroupedListView<dynamic, String>(
+      items: listItems,
+      groupBy: (dynamic element) => element['group'],
+      groupBuilder: (String value) => Container(
+        padding: const EdgeInsets.all(8),
+        child: Text(value),
+      ),
+      itemBuilder: (dynamic element) => Container(
+        padding: const EdgeInsets.all(8),
+        child: Text(element['name']),
+      ),
+      hasStickyHeader: true,
+    );
 
 final List<Map<String, String>> listItems = <Map<String, String>>[
   <String, String>{'name': 'Item 02', 'group': 'Group 01'},

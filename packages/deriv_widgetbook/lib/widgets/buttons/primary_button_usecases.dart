@@ -8,40 +8,36 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   name: 'Enabled',
   type: PrimaryButton,
 )
-Widget primaryButtonEnabledUseCase(BuildContext context) {
-  return PrimaryButton(
-    onPressed: () {},
-    child: Text(
-      context.knobs.string(
-        label: 'Button Text',
-        initialValue: 'Text',
+Widget primaryButtonEnabledUseCase(BuildContext context) => PrimaryButton(
+      onPressed: () {},
+      child: Text(
+        context.knobs.string(
+          label: 'Button Text',
+          initialValue: 'Text',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body2,
+          color: context.theme.colors.prominent,
+        ),
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.body2,
-        color: context.theme.colors.prominent,
-      ),
-    ),
-  );
-}
+    );
 
 @UseCase(
   name: 'Disabled',
   type: PrimaryButton,
 )
-Widget primaryButtonDisabledUseCase(BuildContext context) {
-  return PrimaryButton(
-    onPressed: () {},
-    isEnabled: false,
-    child: Text(
-      context.knobs.string(
-        label: 'Button Text',
-        initialValue: 'Text',
+Widget primaryButtonDisabledUseCase(BuildContext context) => PrimaryButton(
+      onPressed: () {},
+      isEnabled: false,
+      child: Text(
+        context.knobs.string(
+          label: 'Button Text',
+          initialValue: 'Text',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body2,
+          color: context.theme.colors.prominent
+              .withOpacity(getOpacity(isEnabled: false)),
+        ),
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.body2,
-        color: context.theme.colors.prominent
-            .withOpacity(getOpacity(isEnabled: false)),
-      ),
-    ),
-  );
-}
+    );

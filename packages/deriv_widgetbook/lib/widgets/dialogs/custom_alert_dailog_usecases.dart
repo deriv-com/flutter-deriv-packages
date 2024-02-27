@@ -8,100 +8,96 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   name: 'Two buttons',
   type: CustomAlertDialog,
 )
-Widget customAlertDialogUseCase(BuildContext context) {
-  return CustomAlertDialog(
-    title: Text(
-      context.knobs.string(
-        label: 'Title',
-        initialValue: 'Title',
+Widget customAlertDialogUseCase(BuildContext context) => CustomAlertDialog(
+      title: Text(
+        context.knobs.string(
+          label: 'Title',
+          initialValue: 'Title',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.title,
+          color: context.theme.colors.prominent,
+        ),
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.title,
-        color: context.theme.colors.prominent,
+      content: Text(
+        context.knobs.string(
+          label: 'Content',
+          initialValue: 'This is the default content.',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.theme.colors.prominent,
+        ),
       ),
-    ),
-    content: Text(
-      context.knobs.string(
-        label: 'Content',
-        initialValue: 'This is the default content.',
+      negativeActionLabel: context.knobs.string(
+        label: 'Negative Action Label',
+        initialValue: 'Cancel',
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.body1,
-        color: context.theme.colors.prominent,
+      positiveActionLabel: context.knobs.string(
+        label: 'Positive Action Label',
+        initialValue: 'Confirm',
       ),
-    ),
-    negativeActionLabel: context.knobs.string(
-      label: 'Negative Action Label',
-      initialValue: 'Cancel',
-    ),
-    positiveActionLabel: context.knobs.string(
-      label: 'Positive Action Label',
-      initialValue: 'Confirm',
-    ),
-    onNegativeActionPressed: () {},
-    onPositiveActionPressed: () {},
-  );
-}
+      onNegativeActionPressed: () {},
+      onPositiveActionPressed: () {},
+    );
 
 @UseCase(
   name: 'One button',
   type: CustomAlertDialog,
 )
-Widget customAlertDialogOneButtonUseCase(BuildContext context) {
-  return CustomAlertDialog(
-    title: Text(
-      context.knobs.string(
-        label: 'Title',
-        initialValue: 'Title',
+Widget customAlertDialogOneButtonUseCase(BuildContext context) =>
+    CustomAlertDialog(
+      title: Text(
+        context.knobs.string(
+          label: 'Title',
+          initialValue: 'Title',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.title,
+          color: context.theme.colors.prominent,
+        ),
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.title,
-        color: context.theme.colors.prominent,
+      content: Text(
+        context.knobs.string(
+          label: 'Content',
+          initialValue: 'This is the default content.',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.theme.colors.prominent,
+        ),
       ),
-    ),
-    content: Text(
-      context.knobs.string(
-        label: 'Content',
-        initialValue: 'This is the default content.',
+      positiveActionLabel: context.knobs.string(
+        label: 'Positive Action Label',
+        initialValue: 'Confirm',
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.body1,
-        color: context.theme.colors.prominent,
-      ),
-    ),
-    positiveActionLabel: context.knobs.string(
-      label: 'Positive Action Label',
-      initialValue: 'Confirm',
-    ),
-    onPositiveActionPressed: () {},
-  );
-}
+      onPositiveActionPressed: () {},
+    );
 
 @UseCase(
   name: 'No button',
   type: CustomAlertDialog,
 )
-Widget customAlertDialogNoButtonUseCase(BuildContext context) {
-  return CustomAlertDialog(
-    title: Text(
-      context.knobs.string(
-        label: 'Title',
-        initialValue: 'Title',
+Widget customAlertDialogNoButtonUseCase(BuildContext context) =>
+    CustomAlertDialog(
+      title: Text(
+        context.knobs.string(
+          label: 'Title',
+          initialValue: 'Title',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.title,
+          color: context.theme.colors.prominent,
+        ),
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.title,
-        color: context.theme.colors.prominent,
+      content: Text(
+        context.knobs.string(
+          label: 'Content',
+          initialValue: 'This is the default content.',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.theme.colors.prominent,
+        ),
       ),
-    ),
-    content: Text(
-      context.knobs.string(
-        label: 'Content',
-        initialValue: 'This is the default content.',
-      ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.body1,
-        color: context.theme.colors.prominent,
-      ),
-    ),
-  );
-}
+    );

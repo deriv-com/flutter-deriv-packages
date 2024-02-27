@@ -8,40 +8,36 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   name: 'Enabled',
   type: SecondaryButton,
 )
-Widget secondaryButtonEnabledUseCase(BuildContext context) {
-  return SecondaryButton(
-    onPressed: () {},
-    child: Text(
-      context.knobs.string(
-        label: 'Button Text',
-        initialValue: 'Text',
+Widget secondaryButtonEnabledUseCase(BuildContext context) => SecondaryButton(
+      onPressed: () {},
+      child: Text(
+        context.knobs.string(
+          label: 'Button Text',
+          initialValue: 'Text',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body2,
+          color: context.theme.colors.prominent,
+        ),
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.body2,
-        color: context.theme.colors.prominent,
-      ),
-    ),
-  );
-}
+    );
 
 @UseCase(
   name: 'Disabled',
   type: SecondaryButton,
 )
-Widget secondaryButtonDisabledUseCase(BuildContext context) {
-  return SecondaryButton(
-    onPressed: () {},
-    isEnabled: false,
-    child: Text(
-      context.knobs.string(
-        label: 'Button Text',
-        initialValue: 'Text',
+Widget secondaryButtonDisabledUseCase(BuildContext context) => SecondaryButton(
+      onPressed: () {},
+      isEnabled: false,
+      child: Text(
+        context.knobs.string(
+          label: 'Button Text',
+          initialValue: 'Text',
+        ),
+        style: context.theme.textStyle(
+          textStyle: TextStyles.body2,
+          color: context.theme.colors.prominent
+              .withOpacity(getOpacity(isEnabled: false)),
+        ),
       ),
-      style: context.theme.textStyle(
-        textStyle: TextStyles.body2,
-        color: context.theme.colors.prominent
-            .withOpacity(getOpacity(isEnabled: false)),
-      ),
-    ),
-  );
-}
+    );
