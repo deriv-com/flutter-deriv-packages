@@ -3,14 +3,15 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
 /// Created to preserve state while changing knobs.
-final GlobalKey<State<StatefulWidget>> uscase1Key = GlobalKey();
-final GlobalKey<State<StatefulWidget>> uscase2Key = GlobalKey();
+final GlobalKey<State<StatefulWidget>> enabledTextFieldKey = GlobalKey();
+final GlobalKey<State<StatefulWidget>> errorTextFieldKey = GlobalKey();
+
 @UseCase(
   name: 'Enabled',
   type: BaseTextField,
 )
 Widget baseTextFieldEnabledUseCase(BuildContext context) => BaseTextField(
-      key: uscase1Key,
+      key: enabledTextFieldKey,
       autofocus: true,
       onChanged: (String value) {},
       labelText: 'Label',
@@ -31,7 +32,7 @@ Widget baseTextFieldDisabledUseCase(BuildContext context) => BaseTextField(
   type: BaseTextField,
 )
 Widget baseTextFieldErrorUseCase(BuildContext context) => BaseTextField(
-      key: uscase2Key,
+      key: errorTextFieldKey,
       autofocus: true,
       onChanged: (String value) {},
       labelText: 'Enter something for error',
