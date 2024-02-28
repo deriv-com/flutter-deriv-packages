@@ -46,38 +46,40 @@ class DerivPasskeysService implements BaseServiceWithRepository {
   /// Creates a passkey credential.
   Future<String?> createCredential() async {
     try {
-      final Map<String, dynamic> publicKeyCredentialUserEntityJson =
-          <String, String>{
-        'id': _base64UrlEncodeString('yourUserId'),
-        'name': 'bassam@deriv.com',
-        'displayName': 'User Name'
-      };
+      final Map<String, dynamic> getRegisterOptionsResult =
+          (await repository.getRegisterOptions()).options;
+      // final Map<String, dynamic> publicKeyCredentialUserEntityJson =
+      //     <String, String>{
+      //   'id': _base64UrlEncodeString('yourUserId'),
+      //   'name': 'bassam@deriv.com',
+      //   'displayName': 'User Name'
+      // };
 
-      final Map<String, dynamic> signupJson = <String, dynamic>{
-        'attestation': 'direct',
-        'authenticatorSelection': <String, Object>{
-          'requireResidentKey': true,
-          'residentKey': 'required',
-          'userVerification': 'preferred'
-        },
-        'challenge': 'GVdqW4fq-Svc5SEOo3cIFox8zCnojiRjoP4aC2PiAb0',
-        'excludeCredentials': <dynamic>[],
-        'extensions': <String, bool>{'credProps': true},
-        'pubKeyCredParams': <Map<String, Object>>[
-          <String, Object>{'alg': -8, 'type': 'public-key'},
-          <String, Object>{'alg': -7, 'type': 'public-key'},
-          <String, Object>{'alg': -257, 'type': 'public-key'}
-        ],
-        'rp': <String, String>{
-          // 'id': 'pro-7837426045311437779.frontendapi.corbado.io',
-          'id': 'e003-94-201-147-222.ngrok-free.app',
-          'name': 'Deriv'
-        },
-        'timeout': 60000,
-        'user': publicKeyCredentialUserEntityJson
-      };
+      // final Map<String, dynamic> signupJson = <String, dynamic>{
+      //   'attestation': 'direct',
+      //   'authenticatorSelection': <String, Object>{
+      //     'requireResidentKey': true,
+      //     'residentKey': 'required',
+      //     'userVerification': 'preferred'
+      //   },
+      //   'challenge': 'GVdqW4fq-Svc5SEOo3cIFox8zCnojiRjoP4aC2PiAb0',
+      //   'excludeCredentials': <dynamic>[],
+      //   'extensions': <String, bool>{'credProps': true},
+      //   'pubKeyCredParams': <Map<String, Object>>[
+      //     <String, Object>{'alg': -8, 'type': 'public-key'},
+      //     <String, Object>{'alg': -7, 'type': 'public-key'},
+      //     <String, Object>{'alg': -257, 'type': 'public-key'}
+      //   ],
+      //   'rp': <String, String>{
+      //     // 'id': 'pro-7837426045311437779.frontendapi.corbado.io',
+      //     'id': 'e003-94-201-147-222.ngrok-free.app',
+      //     'name': 'Deriv'
+      //   },
+      //   'timeout': 60000,
+      //   'user': publicKeyCredentialUserEntityJson
+      // };
 
-      final String options = jsonEncode(signupJson);
+      final String options = jsonEncode(getRegisterOptionsResult);
       final String? response = await BaseDerivPasskeysMethodChannel.instance
           .createCredential(options);
       printLongString(response!);

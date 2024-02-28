@@ -62,9 +62,7 @@ final class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         await PasskeysRegisterOptionsResponse.fetch(
             const PasskeysRegisterOptionsRequest());
 
-    print(response.toJson());
-
     return DerivPasskeysOptionsModel.fromJson(
-        jsonDecode(response.toJson()['passkeys_register_options']));
+        response.toJson()['passkeys_register_options']);
   }
 }
