@@ -15,9 +15,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) => DerivSignupLayout(
-        onSocialAuthLoadingState: () {},
-        onSocialAuthErrorState: (String? error) {},
-        onSocialAuthLoadedState: () {},
+        socialAuthStateHandler: (_) => {},
         redirectURL: 'deriv://example',
         onWebViewError: (String error) {},
         authErrorStateHandler: ExampleAuthErrorStateHandler(context: context),

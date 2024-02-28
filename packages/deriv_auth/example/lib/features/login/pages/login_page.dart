@@ -25,9 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return DerivLoginLayout(
-      onSocialAuthLoadingState: () {},
-      onSocialAuthErrorState: (String? error) {},
-      onSocialAuthLoadedState: () {},
+      socialAuthStateHandler: (_){},
       redirectURL: 'deriv://example',
       onWebViewError: (String error) {},
       welcomeLabel: 'Welcome back!',

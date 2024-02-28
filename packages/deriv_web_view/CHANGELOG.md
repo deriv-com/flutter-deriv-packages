@@ -1,3 +1,7 @@
+## 0.1.0+1
+
+ - **FIX**(deriv_web_view): fix platform exception not being caught ([#489](https://github.com/regentmarkets/flutter-deriv-packages/issues/489)). ([89f038a0](https://github.com/regentmarkets/flutter-deriv-packages/commit/89f038a0717c1902c6fbc22668705ad2636df9d5))
+
 ## 0.1.0
 
 > Note: This release has breaking changes.

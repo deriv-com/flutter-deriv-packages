@@ -33,7 +33,7 @@ void authErrorStateMapper({
       authErrorStateHandler.onFailedAuthorization(authErrorState);
       return;
     case AuthErrorType.invalidResidence:
-      authErrorStateHandler.onInavlidResidence(authErrorState);
+      authErrorStateHandler.onInvalidResidence(authErrorState);
       return;
     case AuthErrorType.expiredAccount:
       authErrorStateHandler.onExpiredAccount(authErrorState);
