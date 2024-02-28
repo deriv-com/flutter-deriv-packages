@@ -1,4 +1,5 @@
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth/features/single_entry/features/signup/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
 /// Verify email page
@@ -29,12 +30,8 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
       builder: (BuildContext context) => DerivEmailNotReceivedLayout(
         onReEnterEmailPressed: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => DerivVerifyEmailLayout(
-              email: widget.email,
-              onEmailNotReceivedPressed: () =>
-                  onEmailNotReceivedPressed(context),
-            ),
+          MaterialPageRoute<Widget>(
+            builder: (BuildContext context) => const SignupPage(),
           ),
         ),
       ),
