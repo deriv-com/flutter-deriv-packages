@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer' as dev;
 
-import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:deriv_web_view/helper.dart';
 import 'package:deriv_web_view/widgets/in_app_browser/chrome_safari_browser.dart';
 import 'package:deriv_web_view/widgets/in_app_browser/in_app_browser.dart';
@@ -10,9 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
-/// A callback to resolve http client
-typedef HttpClientPredicate = Future<BaseHttpClient> Function(String url);
 
 /// Opens a url in a browser.
 Future<void> openWebPage({
@@ -153,7 +149,6 @@ Future<void> openLoggedInWebPage({
   required bool rootNavigator,
   required String appToken,
   required String userAgent,
-  HttpClientPredicate? getHttpClient,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -174,7 +169,6 @@ Future<void> openLoggedInWebPage({
     tokenExpiredDialog: tokenExpiredDialog,
     rootNavigator: rootNavigator,
     appToken: appToken,
-    getHttpClient: getHttpClient,
     action: action,
     code: code,
   );
@@ -213,7 +207,6 @@ Future<void> openLoggedInWebPage({
             tokenExpiredDialog: tokenExpiredDialog,
             rootNavigator: rootNavigator,
             appToken: appToken,
-            getHttpClient: getHttpClient,
             action: action,
             code: code,
           );
@@ -245,7 +238,6 @@ Future<String?> _fetchOneTimeToken({
   required void Function(BuildContext context) loadingDialog,
   required bool rootNavigator,
   required String appToken,
-  HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
 }) async {
@@ -261,7 +253,6 @@ Future<String?> _fetchOneTimeToken({
     appToken: appToken,
     action: action,
     code: code,
-    getHttpClient: getHttpClient,
   );
 
   Navigator.of(context, rootNavigator: rootNavigator).pop();
@@ -278,7 +269,6 @@ Future<String?> _getOneTimeToken({
   required String? refreshToken,
   required String? defaultAccount,
   required String appToken,
-  HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
 }) async {
@@ -293,7 +283,6 @@ Future<String?> _getOneTimeToken({
       appToken: appToken,
       action: action,
       code: code,
-      getHttpClient: getHttpClient,
     );
 
     return token;
@@ -316,7 +305,6 @@ Future<String?> _validateCredentials({
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
   required String appToken,
-  HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
 }) async {
@@ -331,7 +319,6 @@ Future<String?> _validateCredentials({
     loadingDialog: loadingDialog,
     rootNavigator: rootNavigator,
     appToken: appToken,
-    getHttpClient: getHttpClient,
     action: action,
     code: code,
   );
