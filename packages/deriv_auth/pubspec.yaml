@@ -9,18 +9,6 @@ environment:
 
 publish_to: "none"
 
-dependency_overrides:
-  deriv_http_client:
-    git:
-      url: git@github.com:ramin-deriv/flutter-deriv-packages.git
-      path: packages/deriv_http_client
-      ref: ramin/make_auth_and_web_view_proxy_aware
-  deriv_web_view:
-    git:
-      url: git@github.com:ramin-deriv/flutter-deriv-packages.git
-      path: packages/deriv_web_view
-      ref: ramin/make_auth_and_web_view_proxy_aware
-
 dependencies:
   flutter:
     sdk: flutter
@@ -39,9 +27,9 @@ dependencies:
 
   deriv_http_client:
     git:
-      url: git@github.com:ramin-deriv/flutter-deriv-packages.git
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_http_client
-      ref: ramin/make_auth_and_web_view_proxy_aware
+      ref: deriv_http_client-v2.0.0
 
   flutter_deriv_api:
     git:
@@ -50,9 +38,9 @@ dependencies:
 
   deriv_web_view:
     git:
-      url: git@github.com:ramin-deriv/flutter-deriv-packages.git
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_web_view
-      ref: ramin/make_auth_and_web_view_proxy_aware
+      ref: deriv_web_view-v0.2.0
 
   deriv_localizations:
     git:
