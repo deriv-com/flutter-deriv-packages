@@ -92,17 +92,6 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   DerivAuthCubit get authCubit => context.read<DerivAuthCubit>();
 
   @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<SocialAuthCubit>(context)
-        .stream
-        .listen((SocialAuthState event) {
-      widget.socialAuthStateHandler(event);
-    });
-    // BlocProvider.of<SocialAuthCubit>(context).getSocialAuthProviders();
-  }
-
-  @override
   Widget build(BuildContext context) => WillPopScope(
         onWillPop: () async =>
             authCubit.state is! DerivAuthLoadingState &&
@@ -144,31 +133,18 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       const SizedBox(height: ThemeProvider.margin24),
                       _buildLoginButton(),
                       const SizedBox(height: ThemeProvider.margin24),
-                      BlocBuilder<SocialAuthCubit, SocialAuthState>(
-                        // listener: (BuildContext context,
-                        //     SocialAuthState socialState) {
-                        //   widget.socialAuthStateHandler(socialState);
-                        // },
-                        builder: (BuildContext context,
-                                SocialAuthState socialState) =>
-                            Column(
-                          children: <Widget>[
-                            DerivSocialAuthDivider(
-                              label: context
-                                  .derivAuthLocalization.informLoginOptions,
-                              isVisible: _isSocialAuthVisible(socialState),
-                            ),
-                            const SizedBox(height: ThemeProvider.margin24),
-                            DerivSocialAuthPanel(
-                              socialAuthStateHandler:
-                                  widget.socialAuthStateHandler,
-                              redirectURL: widget.redirectURL,
-                              onPressed: widget.onSocialAuthButtonPressed,
-                              isVisible: _isSocialAuthVisible(socialState),
-                              onWebViewError: widget.onWebViewError,
-                            ),
-                          ],
-                        ),
+                      DerivSocialAuthDivider(
+                        label: context.derivAuthLocalization.informLoginOptions,
+                        isVisible: widget.isSocialAuthEnabled,
+                      ),
+                      if (widget.isSocialAuthEnabled)
+                        const SizedBox(height: ThemeProvider.margin24),
+                      DerivSocialAuthPanel(
+                        socialAuthStateHandler: widget.socialAuthStateHandler,
+                        redirectURL: widget.redirectURL,
+                        onPressed: widget.onSocialAuthButtonPressed,
+                        isVisible: widget.isSocialAuthEnabled,
+                        onWebViewError: widget.onWebViewError,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
@@ -340,13 +316,6 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   bool _isFormValid() =>
       _getEmailValue().isValidEmail &&
       _passwordController.text.isValidLoginPasswordLength;
-
-  bool _isSocialAuthVisible(SocialAuthState state) {
-    if (state is SocialAuthLoadedState) {
-      return widget.isSocialAuthEnabled && state.socialAuthProviders.isNotEmpty;
-    }
-    return widget.isSocialAuthEnabled && state is! SocialAuthLoadingState;
-  }
 
   String? _emailValidator(String? input) {
     if (_getEmailValue().isValidEmail) {
