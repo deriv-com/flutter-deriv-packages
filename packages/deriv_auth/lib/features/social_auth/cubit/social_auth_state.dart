@@ -1,11 +1,7 @@
 import 'package:deriv_auth/features/social_auth/models/social_auth_provider_model.dart';
-import 'package:equatable/equatable.dart';
 
 /// Abstract class to define all social authentication-related state.
-abstract class SocialAuthState extends Equatable {
-  @override
-  List<Object?> get props => <Object?>[];
-}
+abstract class SocialAuthState {}
 
 /// Initial state of [SocialAuthCubit].
 class SocialAuthInitialState extends SocialAuthState {}
@@ -22,9 +18,6 @@ class SocialAuthErrorState extends SocialAuthState {
 
   /// Error message.
   final String? message;
-
-  @override
-  List<Object?> get props => <Object?>[message];
 }
 
 /// Loaded state of [SocialAuthCubit].
@@ -36,7 +29,4 @@ class SocialAuthLoadedState extends SocialAuthState {
 
   /// List of social auth providers.
   final List<SocialAuthProviderModel> socialAuthProviders;
-
-  @override
-  List<Object?> get props => <Object?>[socialAuthProviders];
 }

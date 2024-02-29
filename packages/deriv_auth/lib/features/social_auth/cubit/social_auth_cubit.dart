@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// This Cubit is the single source of truth for social authentication.
 class SocialAuthCubit extends Cubit<SocialAuthState> {
@@ -12,7 +11,9 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
     BaseSocialWebViewService? socialAuthWebViewService,
   })  : _socialAuthWebViewService =
             socialAuthWebViewService ?? SocialAuthWebViewService(),
-        super(SocialAuthInitialState());
+        super(SocialAuthInitialState()) {
+    getSocialAuthProviders();
+  }
 
   /// [BaseSocialAuthService] handles all social authentication logic of cubit.
   final BaseSocialAuthService socialAuthService;
@@ -24,22 +25,20 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
       <SocialAuthProviderModel>[];
 
   /// Get list of social auth providers.
-  Future<List<SocialAuthProviderModel>?> getSocialAuthProviders() async {
+  Future<void> getSocialAuthProviders() async {
     emit(SocialAuthLoadingState());
 
     try {
       socialAuthProviders = await socialAuthService.getSocialAuthProviders();
 
       emit(SocialAuthLoadedState(socialAuthProviders: socialAuthProviders));
-
-      return socialAuthProviders;
-    } on HTTPClientException catch (e) {
-      emit(SocialAuthErrorState(message: e.message));
     } on Exception catch (e) {
       log(e.toString());
-      emit(SocialAuthErrorState());
+      socialAuthProviders = <SocialAuthProviderModel>[];
+
+      emit(SocialAuthLoadedState(
+          socialAuthProviders: const <SocialAuthProviderModel>[]));
     }
-    return null;
   }
 
   /// Handles opening social auth web view based on [SocialAuthProviderModel.authUrl].

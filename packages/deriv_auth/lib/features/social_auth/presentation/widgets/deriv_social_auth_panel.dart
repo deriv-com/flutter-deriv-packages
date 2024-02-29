@@ -61,20 +61,19 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
   @override
   Widget build(BuildContext context) => Visibility(
         visible: widget.isVisible,
-        child: BlocListener<SocialAuthCubit, SocialAuthState>(
-          listener: (BuildContext context, SocialAuthState state) {
-            widget.socialAuthStateHandler(state);
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildSocialAuthButton(SocialAuthProvider.apple),
-              const SizedBox(width: ThemeProvider.margin24),
-              _buildSocialAuthButton(SocialAuthProvider.google),
-              const SizedBox(width: ThemeProvider.margin24),
-              _buildSocialAuthButton(SocialAuthProvider.facebook),
-            ],
-          ),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildSocialAuthButton(SocialAuthProvider.apple),
+                const SizedBox(width: ThemeProvider.margin24),
+                _buildSocialAuthButton(SocialAuthProvider.google),
+                const SizedBox(width: ThemeProvider.margin24),
+                _buildSocialAuthButton(SocialAuthProvider.facebook),
+              ],
+            ),
+          ],
         ),
       );
 
@@ -91,22 +90,17 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         ),
         onPressed: widget.isEnabled
             ? () async {
-                final List<SocialAuthProviderModel>? socialAuthProviders =
-                    await _socialAuthCubit.getSocialAuthProviders();
+                await _socialAuthCubit.selectSocialLoginProvider(
+                  selectedSocialAuthProvider: socialAuthProvider,
+                  redirectUrl: widget.redirectURL,
+                  onWebViewError: widget.onWebViewError,
+                  onRedirectUrlReceived: (SocialAuthDto socialAuthDto) {
+                    widget.onPressed?.call(socialAuthDto);
 
-                if (socialAuthProviders != null) {
-                  await _socialAuthCubit.selectSocialLoginProvider(
-                    selectedSocialAuthProvider: socialAuthProvider,
-                    redirectUrl: widget.redirectURL,
-                    onWebViewError: widget.onWebViewError,
-                    onRedirectUrlReceived: (SocialAuthDto socialAuthDto) {
-                      widget.onPressed?.call(socialAuthDto);
-
-                      BlocProvider.of<DerivAuthCubit>(context)
-                          .socialAuth(socialAuthDto: socialAuthDto);
-                    },
-                  );
-                }
+                    BlocProvider.of<DerivAuthCubit>(context)
+                        .socialAuth(socialAuthDto: socialAuthDto);
+                  },
+                );
               }
             : null,
       );
