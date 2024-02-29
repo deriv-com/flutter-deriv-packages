@@ -1,7 +1,7 @@
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/generated/l10n.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:deriv_localizations/l10n/generated/deriv_auth/deriv_auth_localizations.dart';
 import 'package:example/features/get_started/pages/get_started_page.dart';
 import 'package:example/features/login/repositories/example_login_repository.dart';
 import 'package:example/features/signup/repositories/example_referral_repository.dart';
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         builder: (context) => MaterialApp(
           theme: context.themeData,
           builder: DevicePreview.appBuilder,
-          localizationsDelegates: const [DerivAuthLocalization.delegate],
+          localizationsDelegates: const [DerivAuthLocalizations.delegate],
           home: const GetStartedPage(),
         ),
       ),

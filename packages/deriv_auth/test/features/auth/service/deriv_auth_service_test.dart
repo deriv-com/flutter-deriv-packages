@@ -59,7 +59,6 @@ void main() {
 
     when(() => tokenService.getUserTokens(
           request: any(named: 'request'),
-          client: any(named: 'client'),
           jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
           connectionInfo: any(named: 'connectionInfo'),
         )).thenAnswer(
@@ -74,7 +73,6 @@ void main() {
 
     when(() => tokenService.getUserTokens(
           request: any(named: 'request'),
-          client: any(named: 'client'),
           jwtToken: any(named: 'jwtToken', that: equals(invalidJwtToken)),
           connectionInfo: any(named: 'connectionInfo'),
         )).thenThrow(
@@ -239,7 +237,6 @@ void main() {
 
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
-              client: any(named: 'client'),
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -276,7 +273,6 @@ void main() {
 
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
-              client: any(named: 'client'),
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -313,7 +309,6 @@ void main() {
 
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
-              client: any(named: 'client'),
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -422,7 +417,6 @@ void main() {
 
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
-              client: any(named: 'client'),
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -459,7 +453,6 @@ void main() {
 
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
-              client: any(named: 'client'),
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(
@@ -496,7 +489,6 @@ void main() {
 
         when(() => tokenService.getUserTokens(
               request: any(named: 'request'),
-              client: any(named: 'client'),
               jwtToken: any(named: 'jwtToken', that: equals(validJwtToken)),
               connectionInfo: any(named: 'connectionInfo'),
             )).thenThrow(

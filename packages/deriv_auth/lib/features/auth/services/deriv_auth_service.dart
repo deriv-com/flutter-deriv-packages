@@ -50,7 +50,6 @@ class DerivAuthService extends BaseAuthService {
 
       final GetTokensResponseModel _response = await tokenService.getUserTokens(
         request: request,
-        client: HttpClient(),
         jwtToken: jwtToken,
         connectionInfo: connectionInfo,
         userAgent: userAgent,

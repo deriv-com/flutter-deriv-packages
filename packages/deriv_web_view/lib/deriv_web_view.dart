@@ -69,7 +69,7 @@ Future<void> openInAppWebViewWithUriHandler({
   required List<String> redirectURLs,
 }) async {
   try {
-    _openInAppTabView(url, onClosed);
+    await _openInAppTabView(url, onClosed);
   } on PlatformException catch (_) {
     final AppInAppBrowser browser = AppInAppBrowser(
       onUrlChanged: (Uri uri) => uriHandler(uri),
