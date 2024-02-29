@@ -1,4 +1,3 @@
-import 'package:deriv_auth/core/states/states.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
 /// Maps the [DerivAuthErrorState] to the corresponding [AuthErrorStateHandler].

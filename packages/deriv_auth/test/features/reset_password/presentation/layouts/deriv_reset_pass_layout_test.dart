@@ -1,7 +1,6 @@
 // ignore_for_file: always_specify_types
 
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/reset_password/presentation/layouts/deriv_reset_pass_layout.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +31,10 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivResetPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({
+              required bool isLinkExpired,
+              String? error,
+            }) {},
           ),
         ),
       );
@@ -53,7 +55,10 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivResetPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({
+              required bool isLinkExpired,
+              String? error,
+            }) {},
           ),
         ),
       );
@@ -77,7 +82,10 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivResetPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({
+              required bool isLinkExpired,
+              String? error,
+            }) {},
           ),
         ),
       );
@@ -102,7 +110,10 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivResetPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({
+              required bool isLinkExpired,
+              String? error,
+            }) {},
           ),
         ),
       );
@@ -132,7 +143,10 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivResetPassLayout(
-            onResetPassError: (String? error) {},
+            onResetPassError: ({
+              required bool isLinkExpired,
+              String? error,
+            }) {},
           ),
         ),
       );
@@ -162,7 +176,10 @@ void main() {
         BlocProvider<DerivResetPassCubit>.value(
           value: mockResetPassCubit,
           child: DerivResetPassLayout(
-            onResetPassError: (String? error) {
+            onResetPassError: ({
+              required bool isLinkExpired,
+              String? error,
+            }) {
               onResetPassErrorCalled = true;
             },
           ),

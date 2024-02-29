@@ -1,3 +1,7 @@
+## 0.0.6+4
+
+ - **REFACTOR**(deriv_ui): update deriv_ui dependencies ([#499](https://github.com/regentmarkets/flutter-deriv-packages/issues/499)). ([2ade47f5](https://github.com/regentmarkets/flutter-deriv-packages/commit/2ade47f5f42a37325e4e4906c8c095fc26d777b6))
+
 ## 0.0.6+3
 
  - Update a dependency to the latest release.

@@ -18,7 +18,7 @@ class DerivResetPassLayout extends StatefulWidget {
   }) : super(key: key);
 
   /// Callback to be called when reset pass fails.
-  final Function(String?) onResetPassError;
+  final ResetPassErrorCallback onResetPassError;
 
   @override
   State<DerivResetPassLayout> createState() => _DerivResetPassLayoutState();
@@ -57,7 +57,10 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
                 curve: Curves.easeInOut,
               );
             } else if (state is DerivResetPassErrorState) {
-              widget.onResetPassError(state.errorMessage);
+              widget.onResetPassError(
+                error: state.errorMessage,
+                isLinkExpired: state.isLinkExpired,
+              );
             }
           },
           child: PageView(

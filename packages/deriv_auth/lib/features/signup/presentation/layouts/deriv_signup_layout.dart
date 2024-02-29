@@ -1,4 +1,3 @@
-import 'package:deriv_auth/core/states/auth_state_listener.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -136,6 +135,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                         socialAuthStateHandler: widget.socialAuthStateHandler,
                         redirectURL: widget.redirectURL,
                         onWebViewError: widget.onWebViewError,
+                        onPressed: widget.onSocialAuthButtonPressed,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),

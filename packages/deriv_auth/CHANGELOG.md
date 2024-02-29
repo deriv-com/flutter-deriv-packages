@@ -1,3 +1,11 @@
+## 6.1.0
+
+ - **FEAT**(deriv_auth): single entry ([#420](https://github.com/regentmarkets/flutter-deriv-packages/issues/420)). ([e594c05b](https://github.com/regentmarkets/flutter-deriv-packages/commit/e594c05b87c05d189913a7de8b9e1e4e6d03b76a))
+
+## 6.0.2
+
+ - Update a dependency to the latest release.
+
 ## 6.0.0
 
 > Note: This release has breaking changes.
