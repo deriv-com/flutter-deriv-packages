@@ -22,6 +22,7 @@ class DerivTokenService implements BaseTokenService {
     /// Extract login url from connection info.
     final String baseUrl = 'https://${connectionInfo.endpoint}/oauth2/api/v1';
     final String loginUrl = '$baseUrl/login';
+    final ProxyAwareHttpClient client = ProxyAwareHttpClient(baseUrl);
 
     final BaseHttpClient httpClient = client ?? HttpClient();
 

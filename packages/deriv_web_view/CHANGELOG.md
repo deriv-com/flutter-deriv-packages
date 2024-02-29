@@ -1,3 +1,9 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_auth): ramin_make_auth_and_web_view_proxy_aware ([#483](https://github.com/regentmarkets/flutter-deriv-packages/issues/483)). ([e99afc92](https://github.com/regentmarkets/flutter-deriv-packages/commit/e99afc926531c0c36c567d0ac8c66e906fa27ea5))
+
 ## 0.1.0+1
 
  - **FIX**(deriv_web_view): fix platform exception not being caught ([#489](https://github.com/regentmarkets/flutter-deriv-packages/issues/489)). ([89f038a0](https://github.com/regentmarkets/flutter-deriv-packages/commit/89f038a0717c1902c6fbc22668705ad2636df9d5))

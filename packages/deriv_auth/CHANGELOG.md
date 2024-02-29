@@ -1,3 +1,13 @@
+## 6.0.2
+
+ - Update a dependency to the latest release.
+
+## 6.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_auth): ramin_make_auth_and_web_view_proxy_aware ([#483](https://github.com/regentmarkets/flutter-deriv-packages/issues/483)). ([e99afc92](https://github.com/regentmarkets/flutter-deriv-packages/commit/e99afc926531c0c36c567d0ac8c66e906fa27ea5))
+
 ## 5.0.3
 
  - **REFACTOR**(deriv_auth): rename inavalid to invalid in auth state handler ([#490](https://github.com/regentmarkets/flutter-deriv-packages/issues/490)). ([2e9cfa75](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e9cfa75007fce25b90394bd92905e9c3ca876cc))
