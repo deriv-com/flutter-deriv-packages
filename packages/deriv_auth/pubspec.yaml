@@ -51,11 +51,7 @@ dependencies:
     git:
       url: git@github.com:ramin-deriv/flutter-deriv-packages.git
       path: packages/deriv_web_view
-<<<<<<< HEAD
       ref: ramin/make_auth_and_web_view_proxy_aware
-=======
-      ref: deriv_web_view-v0.2.1
->>>>>>> upstream/master
 
   deriv_localizations:
     git:
