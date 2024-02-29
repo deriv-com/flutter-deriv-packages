@@ -55,18 +55,17 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
   @override
   void didChangeDependencies() {
     _socialAuthCubit = BlocProvider.of<SocialAuthCubit>(context);
-    _socialAuthCubit.getSocialAuthProviders();
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) => Visibility(
         visible: widget.isVisible,
-        child: BlocConsumer<SocialAuthCubit, SocialAuthState>(
+        child: BlocListener<SocialAuthCubit, SocialAuthState>(
           listener: (BuildContext context, SocialAuthState state) {
             widget.socialAuthStateHandler(state);
           },
-          builder: (BuildContext context, SocialAuthState state) => Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _buildSocialAuthButton(SocialAuthProvider.apple),
@@ -84,34 +83,36 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         padding: EdgeInsets.zero,
         iconSize: ThemeProvider.iconSize40,
         icon: Opacity(
-          opacity: getOpacity(isEnabled: _isSocialLoginEnabled()),
+          opacity: getOpacity(isEnabled: widget.isEnabled),
           child: SvgPicture.asset(
             _getSocialMediaIcon(socialAuthProvider),
             package: 'deriv_auth',
           ),
         ),
-        onPressed: _isSocialLoginEnabled()
+        onPressed: widget.isEnabled
             ? () async {
-                await _socialAuthCubit.selectSocialLoginProvider(
-                  selectedSocialAuthProvider: socialAuthProvider,
-                  redirectUrl: widget.redirectURL,
-                  onWebViewError: widget.onWebViewError,
-                  onRedirectUrlReceived: (SocialAuthDto socialAuthDto) {
-                    widget.onPressed?.call(socialAuthDto);
+                final List<SocialAuthProviderModel>? socialAuthProviders =
+                    await _socialAuthCubit.getSocialAuthProviders();
 
-                    BlocProvider.of<DerivAuthCubit>(context)
-                        .socialAuth(socialAuthDto: socialAuthDto);
-                  },
-                );
+                if (socialAuthProviders != null) {
+                  await _socialAuthCubit.selectSocialLoginProvider(
+                    selectedSocialAuthProvider: socialAuthProvider,
+                    redirectUrl: widget.redirectURL,
+                    onWebViewError: widget.onWebViewError,
+                    onRedirectUrlReceived: (SocialAuthDto socialAuthDto) {
+                      widget.onPressed?.call(socialAuthDto);
+
+                      BlocProvider.of<DerivAuthCubit>(context)
+                          .socialAuth(socialAuthDto: socialAuthDto);
+                    },
+                  );
+                }
               }
             : null,
       );
 
   String _getSocialMediaIcon(SocialAuthProvider socialAuthProvider) =>
       'assets/icons/ic_${socialAuthProvider.name}.svg';
-
-  bool _isSocialLoginEnabled() =>
-      widget.isEnabled && _socialAuthCubit.socialAuthProviders.isNotEmpty;
 
   @override
   void dispose() {
