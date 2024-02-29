@@ -12,9 +12,7 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
     BaseSocialWebViewService? socialAuthWebViewService,
   })  : _socialAuthWebViewService =
             socialAuthWebViewService ?? SocialAuthWebViewService(),
-        super(SocialAuthInitialState()) {
-    getSocialAuthProviders();
-  }
+        super(SocialAuthInitialState());
 
   /// [BaseSocialAuthService] handles all social authentication logic of cubit.
   final BaseSocialAuthService socialAuthService;
@@ -33,8 +31,9 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
       socialAuthProviders = await socialAuthService.getSocialAuthProviders();
 
       emit(SocialAuthLoadedState(socialAuthProviders: socialAuthProviders));
-    } on HTTPClientException catch (e) {
-      emit(SocialAuthErrorState(message: e.message));
+    } on HTTPClientException {
+      emit(SocialAuthLoadedState(
+          socialAuthProviders: <SocialAuthProviderModel>[]));
     } on Exception catch (e) {
       log(e.toString());
       emit(SocialAuthErrorState());
@@ -55,6 +54,8 @@ class SocialAuthCubit extends Cubit<SocialAuthState> {
     required Function(SocialAuthDto) onRedirectUrlReceived,
   }) async {
     try {
+      emit(SocialAuthLoadingState());
+
       final List<SocialAuthProviderModel> socialAuthProviderModel =
           socialAuthProviders
               .where(

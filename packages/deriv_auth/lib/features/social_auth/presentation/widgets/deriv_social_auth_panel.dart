@@ -55,17 +55,18 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
   @override
   void didChangeDependencies() {
     _socialAuthCubit = BlocProvider.of<SocialAuthCubit>(context);
+    _socialAuthCubit.getSocialAuthProviders();
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) => Visibility(
         visible: widget.isVisible,
-        child: BlocListener<SocialAuthCubit, SocialAuthState>(
+        child: BlocConsumer<SocialAuthCubit, SocialAuthState>(
           listener: (BuildContext context, SocialAuthState state) {
             widget.socialAuthStateHandler(state);
           },
-          child: Row(
+          builder: (BuildContext context, SocialAuthState state) => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _buildSocialAuthButton(SocialAuthProvider.apple),
@@ -83,15 +84,15 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         padding: EdgeInsets.zero,
         iconSize: ThemeProvider.iconSize40,
         icon: Opacity(
-          opacity: getOpacity(isEnabled: widget.isEnabled),
+          opacity: getOpacity(isEnabled: _isSocialLoginEnabled()),
           child: SvgPicture.asset(
             _getSocialMediaIcon(socialAuthProvider),
             package: 'deriv_auth',
           ),
         ),
-        onPressed: widget.isEnabled
-            ? () {
-                _socialAuthCubit.selectSocialLoginProvider(
+        onPressed: _isSocialLoginEnabled()
+            ? () async {
+                await _socialAuthCubit.selectSocialLoginProvider(
                   selectedSocialAuthProvider: socialAuthProvider,
                   redirectUrl: widget.redirectURL,
                   onWebViewError: widget.onWebViewError,
@@ -108,6 +109,9 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
 
   String _getSocialMediaIcon(SocialAuthProvider socialAuthProvider) =>
       'assets/icons/ic_${socialAuthProvider.name}.svg';
+
+  bool _isSocialLoginEnabled() =>
+      widget.isEnabled && _socialAuthCubit.socialAuthProviders.isNotEmpty;
 
   @override
   void dispose() {
