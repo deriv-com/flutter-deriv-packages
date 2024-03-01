@@ -10,6 +10,7 @@ import 'package:patrol_finders/patrol_finders.dart';
 
 import '../../../../mocks.dart';
 import '../../../../pump_app.dart';
+import '../../../social_auth/mocks/mock_social_provider_model.dart';
 
 void main() {
   group('DerivLoginLayout', () {
@@ -25,14 +26,21 @@ void main() {
 
       registerFallbackValue(SocialAuthProvider.google);
 
-      when(() => socialAuthCubit.stream).thenAnswer((_) =>
-          Stream<SocialAuthState>.fromIterable(<SocialAuthState>[
-            SocialAuthLoadedState(
-                socialAuthProviders: <SocialAuthProviderModel>[])
-          ]));
+      when(() => socialAuthCubit.stream).thenAnswer(
+          (_) => Stream<SocialAuthState>.fromIterable(<SocialAuthState>[
+                SocialAuthLoadedState(
+                    socialAuthProviders: <SocialAuthProviderModel>[
+                      mockSocialAuthProvider
+                    ])
+              ]));
 
       when(() => socialAuthCubit.state).thenAnswer((_) => SocialAuthLoadedState(
-          socialAuthProviders: <SocialAuthProviderModel>[]));
+              socialAuthProviders: <SocialAuthProviderModel>[
+                mockSocialAuthProvider
+              ]));
+
+      when(() => socialAuthCubit.getSocialAuthProviders()).thenAnswer(
+          (_) async => <SocialAuthProviderModel>[mockSocialAuthProvider]);
     });
 
     patrolWidgetTest(
