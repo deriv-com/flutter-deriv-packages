@@ -32,6 +32,13 @@ class DerivFeatureFlag {
         defaultValue: defaultValue,
       );
 
+  /// To get the value of a feature flag if it's not a boolean.
+  dynamic getFeatureFlagValue(String key, {dynamic defaultValue = false}) =>
+      FeatureFlagRepository.getInstance().getFeatureValue(
+        key,
+        defaultValue: defaultValue,
+      );
+
   /// only for testing purposes.
   @visibleForTesting
   bool isFeatureOnTest(FeatureFlagRepository featureFlagRepository, String key,
