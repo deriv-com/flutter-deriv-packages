@@ -1,3 +1,9 @@
+## 0.0.6+5
+
+ - **REFACTOR**(deriv_ui): remove example and android folder ([#503](https://github.com/regentmarkets/flutter-deriv-packages/issues/503)). ([8c90e199](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c90e1995a3a04c945923cb0f8f0e7480cde03b7))
+ - **REFACTOR**(deriv_ui): update deriv_ui dependencies ([#499](https://github.com/regentmarkets/flutter-deriv-packages/issues/499)). ([51192870](https://github.com/regentmarkets/flutter-deriv-packages/commit/511928702f997536812529e081c81e4ae8f6122b))
+ - **REFACTOR**(deriv_ui): update deriv_ui dependencies ([#499](https://github.com/regentmarkets/flutter-deriv-packages/issues/499)). ([2ade47f5](https://github.com/regentmarkets/flutter-deriv-packages/commit/2ade47f5f42a37325e4e4906c8c095fc26d777b6))
+
 ## 0.0.6+4
 
  - **REFACTOR**(deriv_ui): update deriv_ui dependencies ([#499](https://github.com/regentmarkets/flutter-deriv-packages/issues/499)). ([2ade47f5](https://github.com/regentmarkets/flutter-deriv-packages/commit/2ade47f5f42a37325e4e4906c8c095fc26d777b6))

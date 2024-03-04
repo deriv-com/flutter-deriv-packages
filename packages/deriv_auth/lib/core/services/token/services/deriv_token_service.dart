@@ -11,12 +11,13 @@ class DerivTokenService implements BaseTokenService {
     required GetTokensRequestModel request,
     required String jwtToken,
     required AuthConnectionInfo connectionInfo,
+    BaseHttpClient? httpClient,
     String? userAgent,
   }) async {
     /// Extract login url from connection info.
     final String baseUrl = 'https://${connectionInfo.endpoint}/oauth2/api/v1';
     final String loginUrl = '$baseUrl/login';
-    final ProxyAwareHttpClient client = ProxyAwareHttpClient(baseUrl);
+    final BaseHttpClient client = httpClient ?? ProxyAwareHttpClient(baseUrl);
 
     /// Call API.
     final Map<String, dynamic> jsonResponse = await client.post(
