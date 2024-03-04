@@ -3,7 +3,7 @@ import 'package:deriv_ui/components/language_selector/models/language_model.dart
 import 'package:flutter/material.dart';
 
 /// {@template language_selector_item}
-/// Language selector item to show language flag and name in bottom sheet.
+/// Language selector item for [LanguageItemList].
 /// {@endtemplate}
 class LanguageSelectorItem extends StatelessWidget {
   /// {@macro language_selector_item}

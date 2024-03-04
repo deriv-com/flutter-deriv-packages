@@ -4,7 +4,7 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
 /// {@template language_item_list}
-/// List of language items.
+/// List of language items. Used in bottom sheet for providing language options.
 /// Handles [onLanguageSelected] when item is selected.
 /// {@endtemplate}
 class LanguageItemList extends StatefulWidget {
