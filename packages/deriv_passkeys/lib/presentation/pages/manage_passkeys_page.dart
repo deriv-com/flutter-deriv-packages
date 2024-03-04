@@ -14,11 +14,22 @@ import 'package:flutter_svg/svg.dart';
 /// Main singleFeature flow in wallets.
 ///
 /// This is the landing page after a user clicks on the singleFeature button.
-class ManagePasskeysPage extends StatelessWidget {
+class ManagePasskeysPage extends StatefulWidget {
   /// Creates a [ManagePasskeysPage].
   const ManagePasskeysPage({
     super.key,
   });
+
+  @override
+  State<ManagePasskeysPage> createState() => _ManagePasskeysPageState();
+}
+
+class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<DerivPasskeysBloc>().add(const DerivPasskeysInit());
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
