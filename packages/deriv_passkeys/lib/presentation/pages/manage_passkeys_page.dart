@@ -58,6 +58,13 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
         ),
         body: BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
             listener: (BuildContext context, DerivPasskeysState state) {
+          if (state is DerivPasskeysNotSupported) {
+            return;
+          } else if (state is! DerivPasskeysLoaded) {
+            context
+                .read<DerivPasskeysBloc>()
+                .add(const DerivPasskeysGetPasskeysList());
+          }
           if (state is DerivPasskeysCreatedSuccessfully) {
             String platformName = 'Unsupported Platform';
             //get if device is android or ios
