@@ -58,7 +58,8 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
         ),
         body: BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
             listener: (BuildContext context, DerivPasskeysState state) {
-          if (state is DerivPasskeysNotSupported) {
+          if (state is DerivPasskeysNotSupported ||
+              state is DerivPasskeysLoading) {
             return;
           } else if (state is! DerivPasskeysLoaded) {
             context
