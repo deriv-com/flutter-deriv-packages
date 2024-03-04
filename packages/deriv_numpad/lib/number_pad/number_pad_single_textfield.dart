@@ -79,8 +79,8 @@ class _NumberPadSingleTextField extends StatelessWidget {
             ),
             numPadProvider != null
                 ? Padding(
-                    padding: const EdgeInsets.only(
-                      right: margin,
+                    padding: const EdgeInsetsDirectional.only(
+                      start: margin,
                     ),
                     child: Text(
                       getStringWithMappedCurrencyName(numPadProvider.currency),
