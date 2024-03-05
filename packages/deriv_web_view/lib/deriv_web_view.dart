@@ -3,7 +3,6 @@ import 'dart:developer' as dev;
 
 import 'package:deriv_web_view/helper.dart';
 import 'package:deriv_web_view/widgets/in_app_browser/chrome_safari_browser.dart';
-import 'package:deriv_web_view/widgets/in_app_browser/in_app_browser.dart';
 import 'package:deriv_web_view/widgets/web_view_page/web_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,38 +51,7 @@ Future<void> openInAppTabActivityWebView({
     await _openInAppTabView(url, onClosed);
   } on PlatformException catch (_) {
     await InAppBrowser().openUrlRequest(
-      urlRequest: URLRequest(url: WebUri(url)),
-    );
-  }
-}
-
-/// Opens in-app tab activity web view.
-/// Uses [AppChromeSafariBrowser] if available, otherwise uses [AppInAppBrowser]
-/// which takes [uriHandler] to handle redirect uri.
-Future<void> openInAppWebViewWithUriHandler({
-  required String url,
-  required String userAgent,
-  required Function(Uri) uriHandler,
-  required Function(String) onError,
-  required VoidCallback onClosed,
-  required List<String> redirectURLs,
-}) async {
-  try {
-    await _openInAppTabView(url, onClosed);
-  } on PlatformException catch (_) {
-    final AppInAppBrowser browser = AppInAppBrowser(
-      onUrlChanged: (Uri uri) => uriHandler(uri),
-      onError: (String message) => onError(message),
-      redirectURLs: redirectURLs,
-    );
-
-    await browser.openUrlRequest(
-      urlRequest: URLRequest(url: WebUri(url)),
-      settings: InAppBrowserClassSettings(
-          webViewSettings: InAppWebViewSettings(
-        userAgent: userAgent,
-        clearCache: true,
-      )),
+      urlRequest: URLRequest(url: Uri.parse(url)),
     );
   }
 }
@@ -98,12 +66,16 @@ Future<void> _openInAppTabView(String url, VoidCallback onClosed) async {
   appSafariBrowser.onBrowserClosed = onClosed;
 
   return appSafariBrowser.open(
-    url: WebUri(url),
-    settings: ChromeSafariBrowserSettings(
-      shareState: CustomTabsShareState.SHARE_STATE_OFF,
-      dismissButtonStyle: DismissButtonStyle.CLOSE,
-      presentationStyle: ModalPresentationStyle.OVER_FULL_SCREEN,
-      transitionStyle: ModalTransitionStyle.CROSS_DISSOLVE,
+    url: Uri.parse(url),
+    options: ChromeSafariBrowserClassOptions(
+      android: AndroidChromeCustomTabsOptions(
+        shareState: CustomTabsShareState.SHARE_STATE_OFF,
+      ),
+      ios: IOSSafariOptions(
+        dismissButtonStyle: IOSSafariDismissButtonStyle.CLOSE,
+        presentationStyle: IOSUIModalPresentationStyle.OVER_FULL_SCREEN,
+        transitionStyle: IOSUIModalTransitionStyle.CROSS_DISSOLVE,
+      ),
     ),
   );
 }
@@ -149,6 +121,7 @@ Future<void> openLoggedInWebPage({
   required bool rootNavigator,
   required String appToken,
   required String userAgent,
+  Locale? language,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -171,6 +144,7 @@ Future<void> openLoggedInWebPage({
     appToken: appToken,
     action: action,
     code: code,
+    language: language,
   );
 
   if (oneTimeToken == null) {
@@ -209,6 +183,7 @@ Future<void> openLoggedInWebPage({
             appToken: appToken,
             action: action,
             code: code,
+            language: language,
           );
         }
 
@@ -238,6 +213,7 @@ Future<String?> _fetchOneTimeToken({
   required void Function(BuildContext context) loadingDialog,
   required bool rootNavigator,
   required String appToken,
+  Locale? language,
   String? action,
   String? code,
 }) async {
@@ -253,6 +229,7 @@ Future<String?> _fetchOneTimeToken({
     appToken: appToken,
     action: action,
     code: code,
+    language: language,
   );
 
   Navigator.of(context, rootNavigator: rootNavigator).pop();
@@ -269,6 +246,7 @@ Future<String?> _getOneTimeToken({
   required String? refreshToken,
   required String? defaultAccount,
   required String appToken,
+  Locale? language,
   String? action,
   String? code,
 }) async {
@@ -283,6 +261,7 @@ Future<String?> _getOneTimeToken({
       appToken: appToken,
       action: action,
       code: code,
+      language: language,
     );
 
     return token;
@@ -305,6 +284,7 @@ Future<String?> _validateCredentials({
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
   required String appToken,
+  Locale? language,
   String? action,
   String? code,
 }) async {
@@ -321,6 +301,7 @@ Future<String?> _validateCredentials({
     appToken: appToken,
     action: action,
     code: code,
+    language: language,
   );
 
   if (oneTimeToken == null) {

@@ -32,6 +32,7 @@ class UrlParamsModel {
     required this.selectedAccount,
     this.action,
     this.code,
+    this.language,
   });
 
   /// URL that user should be redirected to for example `/cashier`.
@@ -46,12 +47,15 @@ class UrlParamsModel {
   /// Code.
   final String? code;
 
+  final String? language;
+
   /// Converts a instance of this class to json.
   Map<String, dynamic> toJson() => <String, dynamic>{
         'redirect_url': redirectUrl,
         'selected_acct': selectedAccount,
         if (action != null) 'action': action,
         if (code != null) 'code': code,
+        if (language != null) 'lang': language,
         'platform': 'derivgo',
       };
 }

@@ -2,15 +2,14 @@ import 'dart:convert';
 import 'dart:developer' as logger;
 
 import 'package:crypto/crypto.dart';
-
 import 'package:deriv_http_client/deriv_http_client.dart';
-
 import 'package:deriv_web_view/models/app_authorization_challenge_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_challenge_response_model.dart';
 import 'package:deriv_web_view/models/app_authorization_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_response_model.dart';
 import 'package:deriv_web_view/models/pta_login_request_model.dart';
 import 'package:deriv_web_view/models/pta_login_response_model.dart';
+import 'package:flutter/material.dart';
 
 /// Using this function, a `one-time-token` will be generated in order to access current logged in user to the application with [destinationAppId].
 Future<String?> performPassThroughAuthentication({
@@ -21,18 +20,14 @@ Future<String?> performPassThroughAuthentication({
   required String endpoint,
   required String appId,
   required String appToken,
+  Locale? language,
   String? action,
   String? code,
 }) async {
-  final url = getPtaLoginUrl(host: endpoint);
-
-  final BaseHttpClient client = ProxyAwareHttpClient(url);
-
   final String jwtToken = await getJwtToken(
     endpoint: endpoint,
     appId: appId,
     appToken: appToken,
-    client: client,
   );
 
   final Map<String, dynamic> request = PtaLoginRequestModel(
@@ -43,13 +38,14 @@ Future<String?> performPassThroughAuthentication({
       selectedAccount: defaultAccount ?? '',
       action: action,
       code: code,
+      language: language?.languageCode,
     ),
   ).toJson();
 
   late final Map<String, dynamic> response;
 
   try {
-    response = await client.post(
+    response = await HttpClient().post(
       url: getPtaLoginUrl(host: endpoint),
       jsonBody: request,
       headers: <String, String>{'Authorization': 'Bearer $jwtToken'},
@@ -68,14 +64,9 @@ Future<String> getJwtToken({
   required String endpoint,
   required String appId,
   required String appToken,
-  required BaseHttpClient client,
 }) async {
   final AppAuthorizationChallengeResponseModel challenge =
-      await _getAppAuthorizationChallenge(
-    endpoint: endpoint,
-    appId: appId,
-    client: client,
-  );
+      await _getAppAuthorizationChallenge(endpoint: endpoint, appId: appId);
 
   final String solution = _solveLoginChallenge(
     appToken: appToken,
@@ -87,7 +78,6 @@ Future<String> getJwtToken({
     expire: challenge.expire,
     endpoint: endpoint,
     appId: appId,
-    client: client,
   );
 }
 
@@ -96,9 +86,8 @@ Future<String> _authorizeApp({
   required int expire,
   required String endpoint,
   required String appId,
-  required BaseHttpClient client,
 }) async {
-  final Map<String, dynamic> jsonResponse = await client.post(
+  final Map<String, dynamic> jsonResponse = await HttpClient().post(
     url: _getPtaAuthorizeUrl(endpoint),
     jsonBody: AppAuthorizationRequestModel(
       appId: int.parse(appId),
@@ -113,9 +102,8 @@ Future<String> _authorizeApp({
 Future<AppAuthorizationChallengeResponseModel> _getAppAuthorizationChallenge({
   required String endpoint,
   required String appId,
-  required BaseHttpClient client,
 }) async {
-  final Map<String, dynamic> jsonResponse = await client.post(
+  final Map<String, dynamic> jsonResponse = await HttpClient().post(
     url: _getPtaVerifyUrl(endpoint),
     jsonBody: AppAuthorizationChallengeRequestModel(
       appId: int.parse(appId),
