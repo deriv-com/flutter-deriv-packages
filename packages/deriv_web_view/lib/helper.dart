@@ -2,15 +2,14 @@ import 'dart:convert';
 import 'dart:developer' as logger;
 
 import 'package:crypto/crypto.dart';
-
 import 'package:deriv_http_client/deriv_http_client.dart';
-
 import 'package:deriv_web_view/models/app_authorization_challenge_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_challenge_response_model.dart';
 import 'package:deriv_web_view/models/app_authorization_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_response_model.dart';
 import 'package:deriv_web_view/models/pta_login_request_model.dart';
 import 'package:deriv_web_view/models/pta_login_response_model.dart';
+import 'package:flutter/material.dart';
 
 /// Using this function, a `one-time-token` will be generated in order to access current logged in user to the application with [destinationAppId].
 Future<String?> performPassThroughAuthentication({
@@ -21,6 +20,7 @@ Future<String?> performPassThroughAuthentication({
   required String endpoint,
   required String appId,
   required String appToken,
+  Locale? language,
   String? action,
   String? code,
 }) async {
@@ -38,6 +38,7 @@ Future<String?> performPassThroughAuthentication({
       selectedAccount: defaultAccount ?? '',
       action: action,
       code: code,
+      language: language?.languageCode,
     ),
   ).toJson();
 
