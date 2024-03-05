@@ -39,9 +39,9 @@ dependencies:
 
   deriv_web_view:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:emad-deriv/flutter-deriv-packages.git
       path: packages/deriv_web_view
-      ref: deriv_web_view-v0.2.1
+      ref: emad/add-language-parameter-to-deriv-webview-package
 
   deriv_localizations:
     git:
