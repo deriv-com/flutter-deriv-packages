@@ -60,8 +60,9 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
               widget.onResetPassSucceed();
             } else if (state is DerivResetPassErrorState) {
               widget.onResetPassError(
-                  error: state.errorMessage,
-                  isLinkExpired: state.isLinkExpired);
+                error: state.errorMessage,
+                isLinkExpired: state.isLinkExpired,
+              );
             }
           },
           child: _buildChooseNewPassSection(context),

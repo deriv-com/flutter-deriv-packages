@@ -1,8 +1,6 @@
 import 'package:deriv_auth/core/helpers/assets.dart';
-import 'package:deriv_auth/core/states/auth_error_state_handler.dart';
 import 'package:deriv_auth/core/states/auth_state_listener.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/signup/models/deriv_auth_utm_model.dart';
 import 'package:deriv_auth/features/signup/presentation/widgets/password_policy_checker_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
