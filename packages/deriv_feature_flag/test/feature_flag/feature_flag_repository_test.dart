@@ -61,6 +61,6 @@ void main() {
       expect(result, equals(true));
     });
 
-    // TODO(Ramin): getFeatureValue test. need to first fix test setup since mock response using `when` doesn't seem to be working.
+    // TODO(Ramin): getFeatureValue test. need to first fix test setup since mock response using `when` here is not working correctly right now.
   });
 }
