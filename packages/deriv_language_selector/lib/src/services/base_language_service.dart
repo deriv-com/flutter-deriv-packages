@@ -1,7 +1,7 @@
 import 'package:deriv_ui/deriv_ui.dart';
 
 abstract class BaseLanguageService {
-  void getActiveLanguages();
+  Future<void> getActiveLanguages({bool isStream = false});
 
   Future<void> loadAndSetLanguage(LanguageModel language);
 

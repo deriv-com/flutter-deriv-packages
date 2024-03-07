@@ -15,7 +15,7 @@ final class LanguageService implements BaseLanguageService {
     this.supportedLanguages,
   });
 
-  List<LanguageModel> _languages = _setLanguages([], defaultLanguages);
+  List<LanguageModel> _languages = _generateLanguages([], defaultLanguages);
 
   LanguageModel get defaultLanguage => _languages.first;
 
@@ -33,21 +33,35 @@ final class LanguageService implements BaseLanguageService {
   }
 
   @override
-  void getActiveLanguages() {
-    languageRepository.getSupportedLanguagesFromServer(
-      onLanguagesFetched: (List<String> activeLanguages) {
-        final localLanguages = supportedLanguages ?? defaultLanguages;
+  Future<void> getActiveLanguages({bool isStream = false}) async {
+    final localLanguages = supportedLanguages ?? defaultLanguages;
 
-        if (_languages.isNotEmpty) {
-          _languages = _setLanguages(
-              localLanguages
-                  .where((language) =>
-                      activeLanguages.contains(language.locale.languageCode))
-                  .toList(),
-              localLanguages);
-        }
-      },
-    );
+    if (isStream) {
+      _setLanguges([], localLanguages);
+
+      /// In deriv go, they get active languages from the stream.
+      /// This is to set up method for new event stream.
+      await languageRepository.getSupportedLanguagesFromServer(
+        onLanguagesFetched: (List<String> activeLanguages) {
+          _setLanguges(activeLanguages, localLanguages);
+        },
+      );
+    } else {
+      final activeLanguages =
+          await languageRepository.getSupportedLanguagesFromServer();
+
+      _setLanguges(activeLanguages, localLanguages);
+    }
+  }
+
+  _setLanguges(
+      List<String> activeLanguages, List<LanguageEntity> localLanguages) {
+    _languages = _generateLanguages(
+        localLanguages
+            .where((language) =>
+                activeLanguages.contains(language.locale.languageCode))
+            .toList(),
+        localLanguages);
   }
 
   @override
@@ -62,7 +76,7 @@ final class LanguageService implements BaseLanguageService {
     languageRepository.reconnectToServerWithNewLanguage(Locale(language.code));
   }
 
-  static List<LanguageModel> _setLanguages(
+  static List<LanguageModel> _generateLanguages(
     List<LanguageEntity> activeLanguages,
     List<LanguageEntity> localLanguages,
   ) {
