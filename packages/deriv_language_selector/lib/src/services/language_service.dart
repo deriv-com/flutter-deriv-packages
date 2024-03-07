@@ -36,6 +36,10 @@ final class LanguageService implements BaseLanguageService {
     _languages = _setLanguages(_supportedLanguages);
   }
 
+  LanguageModel get defaultLanguage => _languages.first;
+
+  List<LanguageModel> get languages => _languages;
+
   @override
   Future<LanguageModel> getCurrentLanguage() async {
     final code = await _languageDataSource.getLanguage();
