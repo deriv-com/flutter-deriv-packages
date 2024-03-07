@@ -4,7 +4,7 @@ import 'package:deriv_feature_flag/growthbook/deriv_growth_book.dart';
 import 'package:flutter/material.dart';
 
 class DerivFeatureFlag {
-  /// Initilize the FeatureFlag service for the whole app.
+  /// Initializes the FeatureFlag service for the whole app.
   Future<void> initialize(FeatureFlagConfig featureFlagConfig) async {
     final DerivGrowthBook derivGrowthBook = DerivGrowthBook(
       featureFlagConfig: featureFlagConfig,
@@ -32,7 +32,10 @@ class DerivFeatureFlag {
         defaultValue: defaultValue,
       );
 
-  /// To get the value of a feature flag if it's not a boolean.
+  /// Returns the value of a feature flag.
+  ///
+  /// The returned value, depending on the feature flag, can be a boolean,
+  /// string, num, or a Map.
   dynamic getFeatureFlagValue(String key, {dynamic defaultValue = false}) =>
       FeatureFlagRepository.getInstance().getFeatureValue(
         key,
