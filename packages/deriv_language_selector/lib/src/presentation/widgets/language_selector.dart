@@ -9,6 +9,7 @@ class LanguageSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LanguageCubit, LanguageState>(
+      bloc: context.read<LanguageCubit>(),
       builder: (context, state) {
         return LanguageSelectorWidget(
             languageItem: state.language,

@@ -5,24 +5,28 @@ final class LanguageDataSource implements BaseLanguageDataSource {
   /// Local storage key of application language
   final String localStorageKey;
 
-  /// Shared Preferences instance.
-  final SharedPreferences sharedPreferences;
-
   LanguageDataSource({
-    required this.localStorageKey,
-    required this.sharedPreferences,
-  });
+    this.localStorageKey = 'appLanguage',
+  }) {
+    _init();
+  }
+
+  late SharedPreferences _sharedPreferences;
+
+  _init() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+  }
 
   @override
   Future<String?> getLanguage({bool shouldReload = false}) async {
     if (shouldReload) {
-      await sharedPreferences.reload();
+      await _sharedPreferences.reload();
     }
-    return sharedPreferences.getString(localStorageKey);
+    return _sharedPreferences.getString(localStorageKey);
   }
 
   @override
   Future<void> setLanguage(String language) {
-    return sharedPreferences.setString(localStorageKey, language);
+    return _sharedPreferences.setString(localStorageKey, language);
   }
 }
