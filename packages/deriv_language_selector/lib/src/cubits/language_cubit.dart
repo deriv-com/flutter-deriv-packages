@@ -32,7 +32,7 @@ class LanguageCubit extends Cubit<LanguageState> {
 
   Future<void> _loadCurrentLanguage() async {
     final LanguageModel language = await languageService.getCurrentLanguage();
-    await languageService.getActiveLanguages();
+    languageService.getActiveLanguages();
     await updateLanguage(language);
   }
 }

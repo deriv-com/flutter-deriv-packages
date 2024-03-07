@@ -33,20 +33,21 @@ final class LanguageService implements BaseLanguageService {
   }
 
   @override
-  Future<List<LanguageModel>> getActiveLanguages() async {
-    final activeLanguages =
-        await languageRepository.getSupportedLanguagesFromServer();
+  void getActiveLanguages() {
+    languageRepository.getSupportedLanguagesFromServer(
+      onLanguagesFetched: (List<String> activeLanguages) {
+        final localLanguages = supportedLanguages ?? defaultLanguages;
 
-    final localLanguages = supportedLanguages ?? defaultLanguages;
-
-    _languages = _setLanguages(
-        localLanguages
-            .where((language) =>
-                activeLanguages.contains(language.locale.languageCode))
-            .toList(),
-        localLanguages);
-
-    return _languages;
+        if (_languages.isNotEmpty) {
+          _languages = _setLanguages(
+              localLanguages
+                  .where((language) =>
+                      activeLanguages.contains(language.locale.languageCode))
+                  .toList(),
+              localLanguages);
+        }
+      },
+    );
   }
 
   @override
