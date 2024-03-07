@@ -3,7 +3,6 @@ export 'data/base_language_data_source.dart';
 export 'data/language_data_source.dart';
 export 'helpers/language_helper.dart';
 export 'models/language_entity.dart';
-export 'presentation/widgets/language_bottom_sheet.dart';
 export 'presentation/widgets/language_selector.dart';
 export 'repository/base_language_repository.dart';
 export 'services/base_language_service.dart';

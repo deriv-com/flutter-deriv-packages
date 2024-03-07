@@ -56,4 +56,20 @@ List<LanguageEntity> defaultLanguages = [
     name: '中文',
     locale: const Locale('zh'),
   ),
+  LanguageEntity(
+    name: '한국어',
+    locale: const Locale('ko'),
+  ),
+  LanguageEntity(
+    name: 'Bahasa Indonesia',
+    locale: const Locale('id'),
+  ),
+  LanguageEntity(
+    name: 'Türkçe',
+    locale: const Locale('tr'),
+  ),
+  LanguageEntity(
+    name: 'Swahili',
+    locale: const Locale('sw'),
+  ),
 ];
