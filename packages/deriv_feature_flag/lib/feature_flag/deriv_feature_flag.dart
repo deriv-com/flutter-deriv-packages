@@ -9,6 +9,10 @@ class DerivFeatureFlag {
     final DerivGrowthBook derivGrowthBook = DerivGrowthBook(
       featureFlagConfig: featureFlagConfig,
     );
+    // TODO(Ramin): FeatureFlagRepository should be non-singleton or another way
+    //  to be able to send different attributes during one app run session.
+    //  Since sending attributes happens in the initialization and if during one
+    //  app run session we might want to send different attributes (e.g. country)
     await FeatureFlagRepository.getInstance()
         .setup(derivGrowthBook: derivGrowthBook);
   }
