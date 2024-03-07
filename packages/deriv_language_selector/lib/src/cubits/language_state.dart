@@ -1,6 +1,6 @@
 part of 'language_cubit.dart';
 
-/// Abstract form language state.
+/// Abstract for language state.
 abstract class LanguageState {
   /// Instantiate [LanguageState].
   LanguageState({
@@ -8,9 +8,10 @@ abstract class LanguageState {
     required this.activeLanguages,
   });
 
-  /// Language
+  /// Instance of [LanguageModel].
   final LanguageModel language;
 
+  /// Languages currently actively supported in the app.
   final List<LanguageModel> activeLanguages;
 }
 

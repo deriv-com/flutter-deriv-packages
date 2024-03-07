@@ -1,13 +1,8 @@
 import 'package:deriv_language_selector/deriv_language_selector.dart';
 import 'package:flutter/material.dart';
 
-Locale getLocaleFromString(String code) {
-  final List<String> codes = code.split('_');
-  final Locale locale = Locale(codes[0], codes.length > 1 ? codes[1] : null);
-  return locale;
-}
-
-List<LanguageEntity> defaultLanguages = [
+/// Default languages for the package.
+List<LanguageEntity> defaultLanguages = <LanguageEntity>[
   LanguageEntity(
     name: 'English',
     locale: const Locale('en'),

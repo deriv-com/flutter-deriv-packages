@@ -5,9 +5,11 @@ import 'package:deriv_ui/deriv_ui.dart';
 
 part 'language_state.dart';
 
-/// Language Bloc that manages the language localization in the app.
+/// {@template language_cubit}
+/// A [Cubit] which manages the language state of the app.
+/// {@endtemplate}
 class LanguageCubit extends Cubit<LanguageState> {
-  /// Instantiate [LanguageCubit].
+  /// {@macro language_cubit}
   LanguageCubit({
     required this.languageService,
   }) : super(LanguageLoadedState(
@@ -20,19 +22,21 @@ class LanguageCubit extends Cubit<LanguageState> {
   /// Language service.
   final LanguageService languageService;
 
-  /// Updates the language.
+  /// Updates the language and emits [LanguageLoadedState].
   Future<void> updateLanguage(
     LanguageModel language,
   ) async {
     await languageService.loadAndSetLanguage(language);
+
     emit(LanguageLoadedState(
         language: language, activeLanguages: languageService.languages));
     languageService.reconnectToServerWithNewLanguage(language);
   }
 
+  /// Loads the current language and emits [LanguageLoadedState].
   Future<void> _loadCurrentLanguage() async {
     final LanguageModel language = await languageService.getCurrentLanguage();
-    languageService.getActiveLanguages();
+    await languageService.getActiveLanguages();
     await updateLanguage(language);
   }
 }

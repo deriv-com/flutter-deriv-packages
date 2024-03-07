@@ -1,14 +1,19 @@
 import 'package:deriv_language_selector/deriv_language_selector.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// Implementation of [BaseLanguageDataSource]
 final class LanguageDataSource implements BaseLanguageDataSource {
-  /// Local storage key of application language
-  final String localStorageKey;
-
+  /// Instantiate [LanguageDataSource].
   LanguageDataSource({
     required this.prefInstance,
     this.localStorageKey = 'appLanguage',
   });
+
+  /// Local storage key of application language to
+  /// be stored in shared preferences.
+  final String localStorageKey;
+
+  /// Instance of shared preferences.
   final SharedPreferences prefInstance;
 
   @override
@@ -20,7 +25,6 @@ final class LanguageDataSource implements BaseLanguageDataSource {
   }
 
   @override
-  Future<void> setLanguage(String language) {
-    return prefInstance.setString(localStorageKey, language);
-  }
+  Future<void> setLanguage(String language) =>
+      prefInstance.setString(localStorageKey, language);
 }

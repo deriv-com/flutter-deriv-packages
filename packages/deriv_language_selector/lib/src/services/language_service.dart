@@ -2,42 +2,52 @@ import 'package:deriv_language_selector/deriv_language_selector.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
-typedef SupportedLanguages = Set<Map<String, String>>;
-
-final class LanguageService implements BaseLanguageService {
-  final BaseLanguageRepository languageRepository;
-  final LanguageDataSource languageDataSource;
-  final List<LanguageEntity>? supportedLanguages;
-
+/// Implementation of [BaseLanguageService].
+class LanguageService implements BaseLanguageService {
+  /// Instantiate [LanguageService].
   LanguageService({
     required this.languageRepository,
     required this.languageDataSource,
     this.supportedLanguages,
   });
 
-  List<LanguageModel> _languages = _generateLanguages([], defaultLanguages);
+  /// Instantance of [BaseLanguageRepository].
+  final BaseLanguageRepository languageRepository;
 
+  /// Instantance of [BaseLanguageDataSource].
+  final BaseLanguageDataSource languageDataSource;
+
+  /// List of supported languages.
+  final List<LanguageEntity>? supportedLanguages;
+
+  List<LanguageModel> _languages =
+      _generateLanguages(<LanguageEntity>[], defaultLanguages);
+
+  /// Default language of the app.
   LanguageModel get defaultLanguage => _languages.first;
 
+  /// List of active languages.
   List<LanguageModel> get languages => _languages;
 
   @override
   Future<LanguageModel> getCurrentLanguage() async {
-    final code = await languageDataSource.getLanguage();
+    final String? code = await languageDataSource.getLanguage();
 
     if (code == null) {
       return _languages.first;
     } else {
-      return _languages.firstWhere((element) => element.code == code);
+      return _languages
+          .firstWhere((LanguageModel element) => element.code == code);
     }
   }
 
   @override
   Future<void> getActiveLanguages({bool isStream = false}) async {
-    final localLanguages = supportedLanguages ?? defaultLanguages;
+    final List<LanguageEntity> localLanguages =
+        supportedLanguages ?? defaultLanguages;
 
     if (isStream) {
-      _setLanguges([], localLanguages);
+      _setLanguges(<String>[], localLanguages);
 
       /// In deriv go, they get active languages from the stream.
       /// This is to set up method for new event stream.
@@ -47,18 +57,19 @@ final class LanguageService implements BaseLanguageService {
         },
       );
     } else {
-      final activeLanguages =
+      final List<String> activeLanguages =
           await languageRepository.getSupportedLanguagesFromServer();
 
       _setLanguges(activeLanguages, localLanguages);
     }
   }
 
-  _setLanguges(
+  /// Set the active languages.
+  void _setLanguges(
       List<String> activeLanguages, List<LanguageEntity> localLanguages) {
     _languages = _generateLanguages(
         localLanguages
-            .where((language) =>
+            .where((LanguageEntity language) =>
                 activeLanguages.contains(language.locale.languageCode))
             .toList(),
         localLanguages);
@@ -79,15 +90,15 @@ final class LanguageService implements BaseLanguageService {
   static List<LanguageModel> _generateLanguages(
     List<LanguageEntity> activeLanguages,
     List<LanguageEntity> localLanguages,
-  ) {
-    return localLanguages
-        .where((language) =>
-            activeLanguages.isEmpty ||
-            activeLanguages
-                .where((element) => element.locale == language.locale)
-                .isNotEmpty)
-        .map((activeLanguage) => activeLanguage.toModel(
-            'assets/icons/flags/ic_flag_${activeLanguage.locale.languageCode}.png'))
-        .toList();
-  }
+  ) =>
+      localLanguages
+          .where((LanguageEntity language) =>
+              activeLanguages.isEmpty ||
+              activeLanguages
+                  .where((LanguageEntity element) =>
+                      element.locale == language.locale)
+                  .isNotEmpty)
+          .map((LanguageEntity activeLanguage) => activeLanguage.toModel(
+              'assets/icons/flags/ic_flag_${activeLanguage.locale.languageCode}.png'))
+          .toList();
 }
