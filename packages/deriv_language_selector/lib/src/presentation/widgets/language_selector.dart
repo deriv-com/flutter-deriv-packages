@@ -16,7 +16,8 @@ class LanguageSelector extends StatelessWidget {
   })  : isBottomSheet = false,
         super(key: key);
 
-  final Function(Widget, BuildContext)? showLanguageBottomSheet;
+  final Function(Widget bottomsheet, BuildContext context)?
+      showLanguageBottomSheet;
 
   final bool? isBottomSheet;
 
