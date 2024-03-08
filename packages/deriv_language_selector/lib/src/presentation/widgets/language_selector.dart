@@ -1,4 +1,4 @@
-import 'package:deriv_language_selector/src/cubits/language_cubit.dart';
+import 'package:deriv_language_selector/deriv_language_selector.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,15 +8,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// It uses [LanguageCubit] to manage the language state.
 class LanguageSelector extends StatelessWidget {
   /// Instantiate [LanguageSelector] as a bottomsheet.
+  /// The bottom sheet provides list of languages to select from.
   const LanguageSelector.bottomSheet({
     Key? key,
   })  : isBottomSheet = true,
         showLanguageBottomSheet = null,
+        bottomsheetTitle = null,
         super(key: key);
 
-  /// Instantiate [LanguageSelector] as a button.
+  /// Instantiate [LanguageSelector] as a button that opens
+  /// the language bottom sheet when clicked.
   const LanguageSelector.button({
     required this.showLanguageBottomSheet,
+    required this.bottomsheetTitle,
     Key? key,
   })  : isBottomSheet = false,
         super(key: key);
@@ -30,35 +34,39 @@ class LanguageSelector extends StatelessWidget {
   /// Flag to determine if the widget is a bottom sheet or a button.
   final bool? isBottomSheet;
 
+  /// Title of the bottom sheet for the case when
+  /// going for default bottom sheet.
+  final String? bottomsheetTitle;
+
   @override
   Widget build(BuildContext context) =>
       BlocBuilder<LanguageCubit, LanguageState>(
         bloc: BlocProvider.of<LanguageCubit>(context),
         builder: (BuildContext context, LanguageState state) => isBottomSheet!
-            ? LanguageItemList(
-                items: state.activeLanguages
-                  ..sort((LanguageModel a, LanguageModel b) =>
-                      a.name.compareTo(b.name)),
-                onLanguageSelected: (LanguageModel language) {
-                  context.read<LanguageCubit>().updateLanguage(language);
-                },
-                selectedItem: state.language,
-              )
+            ? _buildLanguageBottomSheet(context, state)
             : LanguageSelectorWidget(
                 languageItem: state.language,
                 onPressed: () {
-                  showLanguageBottomSheet?.call(
-                    LanguageItemList(
-                      items: state.activeLanguages
-                        ..sort((LanguageModel a, LanguageModel b) =>
-                            a.name.compareTo(b.name)),
-                      onLanguageSelected: (LanguageModel language) {
-                        context.read<LanguageCubit>().updateLanguage(language);
-                      },
-                      selectedItem: state.language,
-                    ),
-                    context,
-                  );
+                  showLanguageBottomSheet != null
+                      ? showLanguageBottomSheet!.call(
+                          _buildLanguageBottomSheet(context, state),
+                          context,
+                        )
+                      : showExpandableLanguageBottomSheet(
+                          context: context,
+                          bottomsheetTitle: bottomsheetTitle!);
                 }),
+      );
+
+  LanguageItemList _buildLanguageBottomSheet(
+          BuildContext context, LanguageState state) =>
+      LanguageItemList(
+        items: state.activeLanguages
+          ..sort(
+              (LanguageModel a, LanguageModel b) => a.name.compareTo(b.name)),
+        onLanguageSelected: (LanguageModel language) {
+          context.read<LanguageCubit>().updateLanguage(language);
+        },
+        selectedItem: state.language,
       );
 }
