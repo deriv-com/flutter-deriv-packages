@@ -70,6 +70,9 @@ class Dimens {
   /// 84 pixels margin.
   static const double margin84 = 84;
 
+  /// 92 pixels margin.
+  static const double margin92 = 92;
+
   /// 96 pixels margin.
   static const double margin96 = 96;
 
