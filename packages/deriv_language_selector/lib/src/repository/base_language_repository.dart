@@ -9,7 +9,7 @@ abstract class BaseLanguageRepository {
   /// this method to update the active languages in the app.
   /// P2P fetches from Remote Config as Future. P2P can ignore this parameter.
   Future<List<String>> getSupportedLanguagesFromServer({
-    ValueSetter<List<String>> onLanguageFetched,
+    required ValueSetter<List<String>> onLanguageFetched,
   });
 
   /// Reconnect to server with new language.
