@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 /// be implemented by client apps.
 abstract class BaseLanguageRepository {
   /// Get supported languages from server.
-  Future<List<String>> getSupportedLanguagesFromServer();
+  /// [onLanguageFetched] is helpful for case when languages are fetched from a stream.
+  /// Example: Deriv Go app fetches languages from a stream. Deriv Go can use
+  /// this method to update the active languages in the app.
+  /// P2P fetches from Remote Config as Future. P2P can ignore this parameter.
+  Future<List<String>> getSupportedLanguagesFromServer({
+    ValueSetter<List<String>> onLanguageFetched,
+  });
 
   /// Reconnect to server with new language.
   void reconnectToServerWithNewLanguage(Locale locale);

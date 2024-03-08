@@ -47,7 +47,11 @@ class LanguageService implements BaseLanguageService {
         supportedLanguages ?? defaultLanguages;
 
     final List<String> activeLanguages =
-        await languageRepository.getSupportedLanguagesFromServer();
+        await languageRepository.getSupportedLanguagesFromServer(
+      onLanguageFetched: (List<String> value) {
+        _setLanguges(value, localLanguages);
+      },
+    );
 
     _setLanguges(activeLanguages, localLanguages);
   }

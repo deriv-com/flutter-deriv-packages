@@ -33,6 +33,14 @@ class LanguageCubit extends Cubit<LanguageState> {
     languageService.reconnectToServerWithNewLanguage(language);
   }
 
+  /// Updates the active languages and emits [LanguageLoadedState].
+  /// [languageService.languages] is changed incase active languages are
+  /// coming from a stream.
+  Future<void> updateActiveLanguages() async {
+    emit(LanguageLoadedState(
+        language: state.language, activeLanguages: languageService.languages));
+  }
+
   /// Loads the current language and emits [LanguageLoadedState].
   Future<void> _loadCurrentLanguage() async {
     final LanguageModel language = await languageService.getCurrentLanguage();
