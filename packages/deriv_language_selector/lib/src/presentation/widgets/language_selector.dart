@@ -19,15 +19,16 @@ class LanguageSelector extends StatelessWidget {
   /// Instantiate [LanguageSelector] as a button that opens
   /// the language bottom sheet when clicked.
   const LanguageSelector.button({
-    required this.showLanguageBottomSheet,
     required this.bottomsheetTitle,
+    this.showLanguageBottomSheet,
     Key? key,
   })  : isBottomSheet = false,
         super(key: key);
 
   /// Function to show the language bottom sheet.
   /// The bottom sheet widget is passed through this function
-  /// to client code to show the bottom sheet.
+  /// to client code to show the bottom sheet. If not provided,
+  /// defaults to [showExpandableLanguageBottomSheet].
   final Function(Widget bottomsheet, BuildContext context)?
       showLanguageBottomSheet;
 
