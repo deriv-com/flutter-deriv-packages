@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 /// be implemented by client apps.
 abstract class BaseLanguageRepository {
   /// Get supported languages from server.
-  Future<List<String>> getSupportedLanguagesFromServer(
-      {ValueSetter<List<String>>? onLanguagesFetched});
+  Future<List<String>> getSupportedLanguagesFromServer();
 
   /// Reconnect to server with new language.
   void reconnectToServerWithNewLanguage(Locale locale);

@@ -42,26 +42,14 @@ class LanguageService implements BaseLanguageService {
   }
 
   @override
-  Future<void> getActiveLanguages({bool isStream = false}) async {
+  Future<void> getActiveLanguages() async {
     final List<LanguageEntity> localLanguages =
         supportedLanguages ?? defaultLanguages;
 
-    if (isStream) {
-      _setLanguges(<String>[], localLanguages);
+    final List<String> activeLanguages =
+        await languageRepository.getSupportedLanguagesFromServer();
 
-      /// In deriv go, they get active languages from the stream.
-      /// This is to set up method for new event stream.
-      await languageRepository.getSupportedLanguagesFromServer(
-        onLanguagesFetched: (List<String> activeLanguages) {
-          _setLanguges(activeLanguages, localLanguages);
-        },
-      );
-    } else {
-      final List<String> activeLanguages =
-          await languageRepository.getSupportedLanguagesFromServer();
-
-      _setLanguges(activeLanguages, localLanguages);
-    }
+    _setLanguges(activeLanguages, localLanguages);
   }
 
   /// Set the active languages.
