@@ -1,9 +1,9 @@
 part of 'language_cubit.dart';
 
 /// Abstract for language state.
-abstract class LanguageState {
+abstract class LanguageState extends Equatable {
   /// Instantiate [LanguageState].
-  LanguageState({
+  const LanguageState({
     required this.language,
     required this.activeLanguages,
   });
@@ -22,4 +22,10 @@ class LanguageLoadedState extends LanguageState {
       {required LanguageModel language,
       required List<LanguageModel> activeLanguages})
       : super(language: language, activeLanguages: activeLanguages);
+
+  @override
+  List<Object?> get props => <dynamic>[
+        language,
+        activeLanguages,
+      ];
 }
