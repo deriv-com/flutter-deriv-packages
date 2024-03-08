@@ -11,6 +11,7 @@ class LanguageSelectorItem extends StatelessWidget {
     required this.isSelected,
     required this.item,
     required this.onPressed,
+    this.package,
     super.key,
   });
 
@@ -22,6 +23,9 @@ class LanguageSelectorItem extends StatelessWidget {
 
   /// Callback function for on pressed.
   final ValueSetter<LanguageModel> onPressed;
+
+  /// Name of the package where the flag image is located.
+  final String? package;
 
   @override
   Widget build(BuildContext context) => IgnorePointer(
@@ -53,7 +57,10 @@ class LanguageSelectorItem extends StatelessWidget {
                     right: ThemeProvider.margin16,
                   ),
                   child: Image(
-                    image: AssetImage(item.flag),
+                    image: AssetImage(
+                      item.flag,
+                      package: package,
+                    ),
                     width: ThemeProvider.margin24,
                   ),
                 ),

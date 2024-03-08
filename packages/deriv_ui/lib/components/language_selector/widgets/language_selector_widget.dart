@@ -10,6 +10,7 @@ class LanguageSelectorWidget extends StatelessWidget {
   const LanguageSelectorWidget({
     required this.languageItem,
     required this.onPressed,
+    this.package,
     super.key,
   });
 
@@ -18,6 +19,9 @@ class LanguageSelectorWidget extends StatelessWidget {
 
   /// Callback function for on pressed.
   final VoidCallback onPressed;
+
+  /// Name of the package where the flag image is located.
+  final String? package;
 
   @override
   Widget build(BuildContext context) => TextButton(
@@ -41,6 +45,7 @@ class LanguageSelectorWidget extends StatelessWidget {
             Image(
               image: AssetImage(
                 languageItem.flag,
+                package: package,
               ),
               width: ThemeProvider.margin24,
               height: ThemeProvider.margin16,

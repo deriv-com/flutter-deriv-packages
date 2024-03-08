@@ -13,6 +13,7 @@ class LanguageItemList extends StatefulWidget {
     required this.items,
     required this.onLanguageSelected,
     this.selectedItem,
+    this.package,
   });
 
   /// List of language items
@@ -23,6 +24,9 @@ class LanguageItemList extends StatefulWidget {
 
   /// Callback function for on language item select
   final ValueSetter<LanguageModel> onLanguageSelected;
+
+  /// Name of the package where the flag image is located.
+  final String? package;
 
   @override
   _LanguageItemListState createState() => _LanguageItemListState();
@@ -37,6 +41,7 @@ class _LanguageItemListState extends State<LanguageItemList> {
           mainAxisSize: MainAxisSize.min,
           children: widget.items
               .map((LanguageModel item) => LanguageSelectorItem(
+                  package: widget.package,
                   item: item,
                   isSelected: widget.selectedItem != null &&
                       widget.selectedItem?.code == item.code,
