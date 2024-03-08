@@ -18,7 +18,7 @@ abstract class LanguageState extends Equatable {
 /// Language Loaded state.
 class LanguageLoadedState extends LanguageState {
   /// Instantiate [LanguageLoadedState].
-  LanguageLoadedState(
+  const LanguageLoadedState(
       {required LanguageModel language,
       required List<LanguageModel> activeLanguages})
       : super(language: language, activeLanguages: activeLanguages);
