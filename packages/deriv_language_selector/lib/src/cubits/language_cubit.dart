@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:deriv_language_selector/deriv_language_selector.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 
