@@ -10,7 +10,7 @@ final class LanguageDataSource implements BaseLanguageDataSource {
   });
 
   /// Local storage key of application language to
-  /// be stored in shared preferences.
+  /// be stored in shared preferences. Default is `appLanguage`.
   final String localStorageKey;
 
   /// Instance of shared preferences.

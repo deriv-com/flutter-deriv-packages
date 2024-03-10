@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void showExpandableLanguageBottomSheet({
   required BuildContext context,
   required String bottomsheetTitle,
+  bool usePackageFlags = true,
 }) =>
     showModalBottomSheet<String>(
       context: context,
@@ -16,7 +17,9 @@ void showExpandableLanguageBottomSheet({
         value: BlocProvider.of<LanguageCubit>(context),
         child: ExpandableBottomSheet(
           title: bottomsheetTitle,
-          upperContent: const LanguageSelector.bottomSheet(),
+          upperContent: LanguageSelector.bottomSheet(
+            usePackageFlags: usePackageFlags,
+          ),
           // TODO(sahani): Remove labelContractDetails
           labelContractDetails: '',
         ),
