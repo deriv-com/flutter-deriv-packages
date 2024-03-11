@@ -2,14 +2,16 @@ import 'dart:convert';
 import 'dart:developer' as logger;
 
 import 'package:crypto/crypto.dart';
+
 import 'package:deriv_http_client/deriv_http_client.dart';
+import 'package:deriv_web_view/deriv_web_view.dart';
+
 import 'package:deriv_web_view/models/app_authorization_challenge_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_challenge_response_model.dart';
 import 'package:deriv_web_view/models/app_authorization_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_response_model.dart';
 import 'package:deriv_web_view/models/pta_login_request_model.dart';
 import 'package:deriv_web_view/models/pta_login_response_model.dart';
-import 'package:flutter/material.dart';
 
 /// Using this function, a `one-time-token` will be generated in order to access current logged in user to the application with [destinationAppId].
 Future<String?> performPassThroughAuthentication({
@@ -21,12 +23,13 @@ Future<String?> performPassThroughAuthentication({
   required String appId,
   required String appToken,
   String? languageCode,
+  HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
 }) async {
   final url = getPtaLoginUrl(host: endpoint);
 
-  final BaseHttpClient client = ProxyAwareHttpClient(url);
+  final BaseHttpClient client = await getHttpClient?.call(url) ?? HttpClient();
 
   final String jwtToken = await getJwtToken(
     endpoint: endpoint,
