@@ -1,3 +1,11 @@
+## 6.3.0
+
+ - **FEAT**(deriv_http_client): update to the latest deriv_http_client ([#501](https://github.com/regentmarkets/flutter-deriv-packages/issues/501)). ([d582995a](https://github.com/regentmarkets/flutter-deriv-packages/commit/d582995a226906c34c69c7716b3e5573c88c0c4e))
+
+## 6.2.1
+
+ - Update a dependency to the latest release.
+
 ## 6.2.0
 
  - **REFACTOR**(deriv_ui): remove example and android folder ([#503](https://github.com/regentmarkets/flutter-deriv-packages/issues/503)). ([8c90e199](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c90e1995a3a04c945923cb0f8f0e7480cde03b7))

@@ -1,3 +1,11 @@
+## 0.0.6+7
+
+ - Update a dependency to the latest release.
+
+## 0.0.6+6
+
+ - **FIX**(deriv_ui): validating secondary currency instead of main currency in numpad. ([37154fb4](https://github.com/regentmarkets/flutter-deriv-packages/commit/37154fb4c7b9171ae6a1caf0e9d7dad58b63f9be))
+
 ## 0.0.6+5
 
  - **REFACTOR**(deriv_ui): remove example and android folder ([#503](https://github.com/regentmarkets/flutter-deriv-packages/issues/503)). ([8c90e199](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c90e1995a3a04c945923cb0f8f0e7480cde03b7))
