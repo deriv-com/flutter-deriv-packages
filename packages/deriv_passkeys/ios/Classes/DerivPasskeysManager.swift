@@ -221,14 +221,14 @@ public class DerivPasskeysManager{
             "rawId": credentialID.base64url,
             "type": "public-key",
             "response": [
-                "attestationObject": rawAttestationObject?.base64url ?? "null",
                 "clientDataJSON": rawClientDataJSON.base64url,
-                "getAuthenticatorData": [:] as [String : Any],
-                "getPublicKey": [:] as [String : Any],
-                "getPublicKeyAlgorithm": [:] as [String : Any],
-                "getTransports": [:] as [String : Any],
+                "attestationObject": rawAttestationObject?.base64url ?? "null",
+                "transports": [:] as [String : Any],
+                "authenticatorData": [:] as [String : Any],
+                "publicKeyAlgorithm": [:] as [String : Any],
+                "publicKey": [:] as [String : Any],
             ] as [String : Any],
-            "getClientExtensionResults": [:] as [String : Any]
+            "clientExtensionResults": [:] as [String : Any]
         ] as [String : Any]
         return response
     }
@@ -245,7 +245,7 @@ public class DerivPasskeysManager{
                 "userHandle": userID.base64url,
                 "clientDataJSON": rawClientDataJSON.base64url,
             ] as [String : Any],
-            "getClientExtensionResults": [:] as [String : Any]
+            "clientExtensionResults": [:] as [String : Any]
         ] as [String : Any]
         return response
     }
