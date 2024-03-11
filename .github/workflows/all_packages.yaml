@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - dev
+      - status-checks
   pull_request:
     branches:
       - "*"
@@ -15,7 +16,6 @@ concurrency:
 
 jobs:
   analyze_and_test:
-    name: all_packages
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
