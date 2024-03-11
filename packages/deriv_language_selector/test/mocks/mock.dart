@@ -12,10 +12,12 @@ class MockLanguageRepository extends Mock implements BaseLanguageRepository {}
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 
+class MockLanguageCubit extends Mock implements LanguageCubit {}
+
 final LanguageModel mockLanguageModel = LanguageModel(
   code: 'en',
   name: 'English',
-  flag: 'en',
+  flag: 'assets/icons/flags/ic_flag_en.png',
 );
 
 final LanguageEntity mockLanguageEntity = LanguageEntity(

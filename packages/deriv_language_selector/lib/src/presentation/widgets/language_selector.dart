@@ -23,6 +23,7 @@ class LanguageSelector extends StatelessWidget {
   /// builder: (BuildContext context) => LanguageSelector.bottomSheet(
   /// usePackageFlags: false,
   /// );
+  /// ```
   const LanguageSelector.bottomSheet({
     this.usePackageFlags = true,
     Key? key,
