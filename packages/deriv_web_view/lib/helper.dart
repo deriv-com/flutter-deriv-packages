@@ -20,7 +20,7 @@ Future<String?> performPassThroughAuthentication({
   required String endpoint,
   required String appId,
   required String appToken,
-  Locale? language,
+  String? languageCode,
   String? action,
   String? code,
 }) async {
@@ -43,7 +43,7 @@ Future<String?> performPassThroughAuthentication({
       selectedAccount: defaultAccount ?? '',
       action: action,
       code: code,
-      language: language?.languageCode,
+      languageCode: languageCode,
     ),
   ).toJson();
 
