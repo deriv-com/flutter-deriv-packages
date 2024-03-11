@@ -39,28 +39,25 @@ class LanguageSelectorWidget extends StatelessWidget {
             ThemeProvider.margin08,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Image(
-                image: AssetImage(
-                  languageItem.flag,
-                  package: package,
-                ),
-                width: ThemeProvider.margin24,
-                height: ThemeProvider.margin16,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Image(
+              image: AssetImage(
+                languageItem.flag,
+                package: package,
               ),
-              const SizedBox(width: ThemeProvider.margin08),
-              Text(
-                languageItem.code.toUpperCase(),
-                style: context.theme.textStyle(
-                  textStyle: TextStyles.subheading,
-                ),
+              width: ThemeProvider.margin24,
+              height: ThemeProvider.margin16,
+            ),
+            const SizedBox(width: ThemeProvider.margin08),
+            Text(
+              languageItem.code.toUpperCase(),
+              style: context.theme.textStyle(
+                textStyle: TextStyles.subheading,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         onPressed: onPressed,
       );
