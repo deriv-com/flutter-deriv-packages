@@ -15,6 +15,7 @@ concurrency:
 
 jobs:
   analyze_and_test:
+    name: analyze_and_test
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
