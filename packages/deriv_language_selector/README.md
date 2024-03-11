@@ -64,13 +64,12 @@ final LanguageService languageService = LanguageService(
       prefInstance: PrefService.instance!, //instance of shared preferences
       localStorageKey: 'language', // optional, default is 'appLanguage'
     ),
-    supportedLanguages: localLanguageEntity, // optional, default is provided.
+    supportedLanguages: supportedLanguages, // List of supported `LanguageEntity`
   );
 
 BlocProvider(
   create: (context) => LanguageCubit(
-    repository: LanguageRepository(),
-    dat
+    languageService: languageService,
   ),
   child: Widget(),
 );
