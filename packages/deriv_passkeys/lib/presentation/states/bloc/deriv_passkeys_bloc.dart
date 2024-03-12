@@ -1,6 +1,5 @@
 import 'package:deriv_passkeys/domain/entities/deriv_passkey_entity.dart';
 import 'package:deriv_passkeys/interactor/services/deriv_passkeys_service.dart';
-import 'package:device_marketing_names/device_marketing_names.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,8 +36,6 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
           return;
         }
         emit(DerivPasskeysCreatedSuccessfully());
-        final DeviceMarketingNames deviceNames = DeviceMarketingNames();
-        final String singleDeviceName = await deviceNames.getSingleName();
         final DerivPasskeyEntity derivPasskeyEntity = credential;
         passkeysList.add(derivPasskeyEntity);
         emit(DerivPasskeysLoaded(passkeysList));
