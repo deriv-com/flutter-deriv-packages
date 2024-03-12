@@ -3,7 +3,6 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// {@template language_selector}
 /// A widget that displays the language selector.
 /// It can be used as a button or a bottom sheet based on the constructor used.
 /// It uses [LanguageCubit] to manage the language state.
