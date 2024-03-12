@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-03-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.3.1`](#deriv_auth---v631)
+ - [`deriv_theme` - `v2.3.0`](#deriv_theme---v230)
+ - [`deriv_ui` - `v0.0.7`](#deriv_ui---v007)
+ - [`deriv_widgetbook` - `v0.0.2`](#deriv_widgetbook---v002)
+ - [`deriv_numpad` - `v1.1.2`](#deriv_numpad---v112)
+ - [`deriv_date_range_picker` - `v0.0.1+3`](#deriv_date_range_picker---v0013)
+ - [`deriv_expandable_bottom_sheet` - `v0.0.1+3`](#deriv_expandable_bottom_sheet---v0013)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_numpad` - `v1.1.2`
+ - `deriv_date_range_picker` - `v0.0.1+3`
+ - `deriv_expandable_bottom_sheet` - `v0.0.1+3`
+
+---
+
+#### `deriv_auth` - `v6.3.1`
+
+ - **FIX**: deriv_toke_service_test ([#519](https://github.com/regentmarkets/flutter-deriv-packages/issues/519)). ([25b9dc45](https://github.com/regentmarkets/flutter-deriv-packages/commit/25b9dc454c222bb7299d859a21cb1b3cb874c1bf))
+
+#### `deriv_theme` - `v2.3.0`
+
+ - **FEAT**(deriv_ui): add language selector component ([#509](https://github.com/regentmarkets/flutter-deriv-packages/issues/509)). ([bff66151](https://github.com/regentmarkets/flutter-deriv-packages/commit/bff661513f330d014154657fbf170b75512dc180))
+
+#### `deriv_ui` - `v0.0.7`
+
+<<<<<<< HEAD
+=======
+ - **FIX**(deriv_ui): update deriv_theme ([#525](https://github.com/regentmarkets/flutter-deriv-packages/issues/525)). ([304a5b59](https://github.com/regentmarkets/flutter-deriv-packages/commit/304a5b59d1603196ae37f53a682db8de69bedcf0))
+>>>>>>> 48d45ba4626fe38f562e5fdcba78a6002468e03d
+ - **FIX**(deriv_ui): update theme dependency ([#522](https://github.com/regentmarkets/flutter-deriv-packages/issues/522)). ([d00e3edf](https://github.com/regentmarkets/flutter-deriv-packages/commit/d00e3edfe08e861401c501b2ac1944a9d7af11f2))
+ - **FEAT**(deriv_ui): add language selector component ([#509](https://github.com/regentmarkets/flutter-deriv-packages/issues/509)). ([bff66151](https://github.com/regentmarkets/flutter-deriv-packages/commit/bff661513f330d014154657fbf170b75512dc180))
+
+#### `deriv_widgetbook` - `v0.0.2`
+
+ - **FEAT**(deriv_ui): add language selector component ([#509](https://github.com/regentmarkets/flutter-deriv-packages/issues/509)). ([bff66151](https://github.com/regentmarkets/flutter-deriv-packages/commit/bff661513f330d014154657fbf170b75512dc180))
+
+
 ## 2024-03-08
 
 ### Changes
