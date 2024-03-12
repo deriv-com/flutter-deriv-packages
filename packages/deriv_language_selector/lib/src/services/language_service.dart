@@ -47,11 +47,13 @@ class LanguageService implements BaseLanguageService {
         supportedLanguages ?? defaultLanguages;
 
     final List<String> activeLanguages =
-        await languageRepository.getSupportedLanguagesFromServer(
-      onLanguageFetched: (List<String> value) {
-        _setLanguges(value, localLanguages);
-      },
-    );
+        (await languageRepository.getSupportedLanguagesFromServer(
+              onLanguageFetched: (List<String> value) {
+                _setLanguges(value,
+                    localLanguages); // useful for stream (refer to Deriv Go's getSupportedLanguagesFromServer method)
+              },
+            )) ??
+            <String>[];
 
     _setLanguges(activeLanguages, localLanguages);
   }
