@@ -1,3 +1,7 @@
+## 6.3.1
+
+ - **FIX**: deriv_toke_service_test ([#519](https://github.com/regentmarkets/flutter-deriv-packages/issues/519)). ([25b9dc45](https://github.com/regentmarkets/flutter-deriv-packages/commit/25b9dc454c222bb7299d859a21cb1b3cb874c1bf))
+
 ## 6.3.0
 
  - **FEAT**(deriv_http_client): update to the latest deriv_http_client ([#501](https://github.com/regentmarkets/flutter-deriv-packages/issues/501)). ([d582995a](https://github.com/regentmarkets/flutter-deriv-packages/commit/d582995a226906c34c69c7716b3e5573c88c0c4e))
