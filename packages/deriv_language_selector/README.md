@@ -35,21 +35,60 @@ import 'package:deriv_language_selector/deriv_language_selector.dart';
 
 ```dart
 class LanguageRepository implements BaseLanguageRepository {
+
+
   @override
-  Future<List<String>> getSupportedLanguagesFromServer({
+  FutureOr<List<String>?> getSupportedLanguagesFromServer({
     required ValueSetter<List<String>> onLanguageFetched,
   }) async {
-    // provide your implementation
+    
+    // If the server sends as a Future. (Ref from Deriv P2P app)
+    await FirebaseRemoteConfig.instance.fetchAndActivate();
+    final RemoteConfigValue remoteConfigValue = FirebaseRemoteConfig.instance
+        .getValue(FirebaseRemoteConfigKeys.localLanguages);
+    final String languagesData = remoteConfigValue.asString();
+
+
+    if (languagesData.isNotEmpty) {
+      final List<Map<String, dynamic>> listOfMaps =
+          List<Map<String, dynamic>>.from(jsonDecode(languagesData));
+      return listOfMaps
+          .where((Map<String, dynamic> element) => element['active'] == true)
+          .map((Map<String, dynamic> e) => e['countryCode'].toString())
+          .toList();
+    } else{
+      return <String>[];
+    }
+
+    // If the server sends as stream (Ref from Deriv GO app)
+    final WebsiteStatusCubit websiteStatusCubitInstance =
+        BlocManager.instance.fetch<WebsiteStatusCubit>();
+
+    websiteStatusCubitInstance.stream
+        .startWith(websiteStatusCubitInstance.state)
+        .listen(
+      (WebsiteStatusState state) {
+        if (state.websiteStatus != null) {
+          // this will update the active languages in [LanguageService]
+          // which is used by [LanguageCubit].
+          onLanguageFetched.call(state.websiteStatus!.supportedLanguages!);
+
+          BlocManager.instance.fetch<LanguageCubit>().updateActiveLanguages();
+        }
+      },
+    );
+
+    return null;
   }
 
   @override
   Future<void> loadLanguage(Locale locale) async {
-    // provide your implementation
+    await Localization.delegate.load(locale);
   }
 
   @override
   void reconnectToServerWithNewLanguage(Locale locale) {
-    // provide your implementation
+    // provide your implementation to reconnect to websocket with new language.
   }
 }
 ```
