@@ -16,21 +16,31 @@ class DerivPasskeyModel extends Equatable {
   factory DerivPasskeyModel.fromJson(Map<String, dynamic> json) =>
       DerivPasskeyModel(
         createdAt: json['created_at'] as int,
-        id: json['id'] as int,
-        lastUsed: json['last_used'] as int,
+        id: json['id'] as String,
+        lastUsed: json['last_used'] as int?,
         name: json['name'] as String,
         passkeyId: json['passkey_id'] as String,
         storedOn: json['stored_on'] as String,
       );
 
+  /// Creates a JSON object from a [DerivPasskeyModel].
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'created_at': createdAt,
+        'id': id,
+        'last_used': lastUsed,
+        'name': name,
+        'passkey_id': passkeyId,
+        'stored_on': storedOn,
+      };
+
   /// [createdAt] is the creation date.
   final int createdAt;
 
   /// [id] is the passkey ID.
-  final int id;
+  final String id;
 
   /// [lastUsed] is the last used date.
-  final int lastUsed;
+  final int? lastUsed;
 
   /// [name] is the passkey name.
   final String name;
@@ -42,7 +52,7 @@ class DerivPasskeyModel extends Equatable {
   final String storedOn;
 
   @override
-  List<Object> get props => <Object>[
+  List<Object?> get props => <Object?>[
         createdAt,
         id,
         lastUsed,

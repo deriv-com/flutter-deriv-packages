@@ -1,12 +1,13 @@
 import 'dart:convert';
 
-import 'package:deriv_passkeys/core/Interactor/base_service_with_repository.dart';
 import 'package:deriv_passkeys/domain/base_repositories/base_deriv_passkeys_repository.dart';
+import 'package:deriv_passkeys/domain/entities/deriv_passkey_entity.dart';
+import 'package:deriv_passkeys/domain/entities/deriv_passkeys_register_credentials_entity.dart';
 import 'package:deriv_passkeys/domain/platform/base_deriv_passkeys_method_channel.dart';
 import 'package:flutter/services.dart';
 
 /// A wrapper class that contains methods to interact with the native platform for passkey.
-class DerivPasskeysService implements BaseServiceWithRepository {
+class DerivPasskeysService {
   /// Constructs a [DerivPasskeysService] with [BaseDerivPasskeysRepository].
   DerivPasskeysService(this.repository);
 
@@ -36,62 +37,40 @@ class DerivPasskeysService implements BaseServiceWithRepository {
     return isSupported;
   }
 
-  void printLongString(String text) {
-    final RegExp pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
-    pattern
-        .allMatches(text)
-        .forEach((RegExpMatch match) => print(match.group(0)));
-  }
-
   /// Creates a passkey credential.
-  Future<String?> createCredential() async {
+  Future<DerivPasskeyEntity?> createCredential() async {
     try {
       final Map<String, dynamic> getRegisterOptionsResult =
           (await repository.getRegisterOptions()).options;
-      // final Map<String, dynamic> publicKeyCredentialUserEntityJson =
-      //     <String, String>{
-      //   'id': _base64UrlEncodeString('yourUserId'),
-      //   'name': 'bassam@deriv.com',
-      //   'displayName': 'User Name'
-      // };
+      final Map<String, String> publicKeyCredentialUserEntityJson =
+          <String, String>{
+        'id': _base64UrlEncodeString(
+            getRegisterOptionsResult['user']['id'].toString()),
+        'name': getRegisterOptionsResult['user']['name'],
+        'displayName': getRegisterOptionsResult['user']['displayName']
+      };
 
-      // final Map<String, dynamic> signupJson = <String, dynamic>{
-      //   'attestation': 'direct',
-      //   'authenticatorSelection': <String, Object>{
-      //     'requireResidentKey': true,
-      //     'residentKey': 'required',
-      //     'userVerification': 'preferred'
-      //   },
-      //   'challenge': 'GVdqW4fq-Svc5SEOo3cIFox8zCnojiRjoP4aC2PiAb0',
-      //   'excludeCredentials': <dynamic>[],
-      //   'extensions': <String, bool>{'credProps': true},
-      //   'pubKeyCredParams': <Map<String, Object>>[
-      //     <String, Object>{'alg': -8, 'type': 'public-key'},
-      //     <String, Object>{'alg': -7, 'type': 'public-key'},
-      //     <String, Object>{'alg': -257, 'type': 'public-key'}
-      //   ],
-      //   'rp': <String, String>{
-      //     // 'id': 'pro-7837426045311437779.frontendapi.corbado.io',
-      //     'id': 'e003-94-201-147-222.ngrok-free.app',
-      //     'name': 'Deriv'
-      //   },
-      //   'timeout': 60000,
-      //   'user': publicKeyCredentialUserEntityJson
-      // };
+      getRegisterOptionsResult['user'] = publicKeyCredentialUserEntityJson;
 
       final String options = jsonEncode(getRegisterOptionsResult);
-      final String? response = await BaseDerivPasskeysMethodChannel.instance
+      final String? credentials = await BaseDerivPasskeysMethodChannel.instance
           .createCredential(options);
-      printLongString(response!);
-      if (response == null) {
-        print('null-response');
+      if (credentials == null) {
         throw PlatformException(
             code: 'null-response',
             message: 'Unable to get response from Passkey.');
       }
-      return response;
-    } catch (e) {
-      print(e);
+      final Map<String, dynamic> decodedCredentials = jsonDecode(credentials);
+      final DerivPasskeyEntity getRegisterPasskeysResult =
+          await repository.registerCredentials(
+        DerivPasskeysRegisterCredentialsEntity(
+          publicKeyCredential: decodedCredentials,
+          name: 'Passkey',
+        ),
+      );
+      return getRegisterPasskeysResult;
+    } on Exception {
+      return null;
     }
   }
 

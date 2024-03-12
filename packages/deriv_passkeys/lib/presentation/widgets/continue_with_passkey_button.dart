@@ -7,43 +7,29 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A button that allows users to continue with passkey
-class ContinueWithPasskeyButton extends StatefulWidget {
+class ContinueWithPasskeyButton extends StatelessWidget {
   /// constructs a [ContinueWithPasskeyButton]
   const ContinueWithPasskeyButton({super.key});
 
   @override
-  State<ContinueWithPasskeyButton> createState() =>
-      _ContinueWithPasskeyButtonState();
-}
-
-class _ContinueWithPasskeyButtonState extends State<ContinueWithPasskeyButton> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<DerivPasskeysBloc>().add(const DerivPasskeysInit());
-  }
-
-  @override
   Widget build(BuildContext context) =>
-      BlocBuilder<DerivPasskeysBloc, DerivPasskeysState>(
+      BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
+        listener: (BuildContext context, DerivPasskeysState state) {
+          if (state is DerivPasskeysError) {
+            showAlertDialog(
+              context: context,
+              title: 'An unexpected error occurred!',
+              content: const Text('Please try again later.'),
+              positiveActionLabel: 'OK',
+              onPositiveActionPressed: () {
+                Navigator.of(context).pop();
+              },
+            );
+          }
+        },
         builder: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysNotSupported) {
             return const SizedBox();
-          }
-          if (state is DerivPasskeysError) {
-            // TODO(bassam-deriv): Handle Error state once backend is ready
-            return Column(
-              children: <Widget>[
-                Text(state.message),
-                InkWell(
-                    onTap: () {
-                      context
-                          .read<DerivPasskeysBloc>()
-                          .add(const DerivPasskeysInit());
-                    },
-                    child: const Text('Reset')),
-              ],
-            );
           }
           if (state is DerivPasskeysLoading) {
             return const Center(child: CircularProgressIndicator());

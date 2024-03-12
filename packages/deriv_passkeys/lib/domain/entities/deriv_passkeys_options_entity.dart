@@ -1,7 +1,5 @@
-import 'package:deriv_passkeys/core/domain/base_entity.dart';
-
 /// [DerivPasskeysOptionsEntity] represents a DerivPasskeysOptions entity.
-final class DerivPasskeysOptionsEntity extends BaseEntity {
+final class DerivPasskeysOptionsEntity {
   /// Creates a [DerivPasskeysOptionsEntity].
   /// [challenge] is the challenge string.
   /// [rpId] is the relying party ID.

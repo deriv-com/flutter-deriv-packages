@@ -1,7 +1,5 @@
-import 'package:deriv_passkeys/core/data/base_model.dart';
-
 /// [DerivPasskeysOptionsModel] DTO for DerivPasskeysOptions data coming from the WebsocketAPI.
-final class DerivPasskeysOptionsModel extends BaseModel {
+final class DerivPasskeysOptionsModel {
   /// Creates a [DerivPasskeysOptionsModel].
   /// [challenge] is the challenge string.
   /// [rpId] is the relying party ID.

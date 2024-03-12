@@ -28,7 +28,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
   @override
   void initState() {
     super.initState();
-    context.read<DerivPasskeysBloc>().add(const DerivPasskeysInit());
+    context.read<DerivPasskeysBloc>().add(const DerivPasskeysGetPasskeysList());
   }
 
   @override
@@ -130,7 +130,9 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
       Expanded(
         child: Padding(
           padding: const EdgeInsets.all(24),
-          child: ListView.builder(
+          child: ListView.separated(
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
             itemCount: state.passkeysList.length,
             itemBuilder: (BuildContext context, int index) => Padding(
               padding: const EdgeInsets.only(bottom: 16),

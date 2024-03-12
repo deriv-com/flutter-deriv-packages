@@ -1,18 +1,20 @@
-import 'package:deriv_passkeys/core/data/base_data_source.dart';
 import 'package:deriv_passkeys/data/mappers/deriv_passkeys_mapper.dart';
+import 'package:deriv_passkeys/data/models/deriv_passkey_model.dart';
 import 'package:deriv_passkeys/data/models/deriv_passkeys_options_model.dart';
+import 'package:deriv_passkeys/data/models/deriv_passkeys_register_options_model.dart';
 import 'package:deriv_passkeys/data/models/deriv_passkeys_verify_credentials_request_body.dart';
 import 'package:deriv_passkeys/data/models/deriv_passkeys_verify_credentials_response.dart';
+import 'package:flutter_deriv_api/api/response/passkeys_register_response_result.dart';
+import 'package:flutter_deriv_api/basic_api/generated/passkeys_register_send.dart';
 
 /// [BaseDerivPasskeysDataSource] defines a contract for all DerivPasskeys data sources.
 ///
 /// All DerivPasskeys data sources should extend this class, and implement its abstract methods.
-abstract base class BaseDerivPasskeysDataSource implements BaseDataSource {
+abstract base class BaseDerivPasskeysDataSource {
   /// Creates a [BaseDerivPasskeysDataSource].
   BaseDerivPasskeysDataSource(this.mapper);
 
   /// The mapper used to map the data source to the domain.
-  @override
   final DerivPasskeysMapper mapper;
 
   /// Get options for authentication with DerivPasskeys.
@@ -23,5 +25,9 @@ abstract base class BaseDerivPasskeysDataSource implements BaseDataSource {
       DerivPasskeysVerifyCredentialsRequestBody body);
 
   /// Get options for registration with DerivPasskeys.
-  Future<DerivPasskeysOptionsModel> getRegisterOptions();
+  Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions();
+
+  /// Register credentials with DerivPasskeys.
+  Future<DerivPasskeyModel> registerCredentials(
+      PasskeysRegisterRequest request);
 }

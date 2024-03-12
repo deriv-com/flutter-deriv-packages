@@ -9,9 +9,6 @@ abstract class DerivPasskeysState extends Equatable {
   List<Object> get props => <Object>[];
 }
 
-/// [DerivPasskeysInitial] represents the initial state within the DerivPasskeys flow.
-class DerivPasskeysInitial extends DerivPasskeysState {}
-
 /// [DerivPasskeysLoaded] represents the loaded state within the DerivPasskeys flow.
 class DerivPasskeysLoaded extends DerivPasskeysState {
   /// Creates a [DerivPasskeysLoaded].

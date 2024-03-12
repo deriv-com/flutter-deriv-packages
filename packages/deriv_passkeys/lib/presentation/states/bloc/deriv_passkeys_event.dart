@@ -9,15 +9,6 @@ class DerivPasskeysEvent extends Equatable {
   List<Object> get props => <Object>[];
 }
 
-/// [DerivPasskeysInit] represents the init event within the DerivPasskeys flow.
-class DerivPasskeysInit extends DerivPasskeysEvent {
-  /// Creates a [DerivPasskeysInit].
-  const DerivPasskeysInit();
-
-  @override
-  List<Object> get props => <Object>[];
-}
-
 /// [DerivPasskeysCreateCredential] represents the create credential event within the DerivPasskeys flow.
 class DerivPasskeysCreateCredential extends DerivPasskeysEvent {}
 
@@ -28,6 +19,15 @@ class DerivPasskeysGetCredential extends DerivPasskeysEvent {}
 class DerivPasskeysGetPasskeysList extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysGetPasskeysList].
   const DerivPasskeysGetPasskeysList();
+
+  @override
+  List<Object> get props => <Object>[];
+}
+
+/// [SetDerivPasskeysNotSupported] represents the set not supported event within the DerivPasskeys flow.
+class SetDerivPasskeysNotSupported extends DerivPasskeysEvent {
+  /// Creates a [SetDerivPasskeysNotSupported].
+  const SetDerivPasskeysNotSupported();
 
   @override
   List<Object> get props => <Object>[];

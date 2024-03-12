@@ -10,15 +10,10 @@ part 'deriv_passkeys_event.dart';
 /// [DerivPasskeysBloc] handles the state within the DerivPasskeys flow.
 class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
   /// Creates a [DerivPasskeysBloc].
-  DerivPasskeysBloc(this.derivPasskeysService) : super(DerivPasskeysInitial()) {
-    on<DerivPasskeysInit>(
-        (DerivPasskeysInit event, Emitter<DerivPasskeysState> emit) async {
-      final bool isPasskeySupported = await derivPasskeysService.isSupported();
-      if (!isPasskeySupported) {
-        emit(DerivPasskeysNotSupported());
-      } else {
-        emit(DerivPasskeysInitial());
-      }
+  DerivPasskeysBloc(this.derivPasskeysService) : super(DerivPasskeysLoading()) {
+    on<SetDerivPasskeysNotSupported>((SetDerivPasskeysNotSupported event,
+        Emitter<DerivPasskeysState> emit) async {
+      emit(DerivPasskeysNotSupported());
     });
 
     on<DerivPasskeysGetCredential>((DerivPasskeysGetCredential event,
@@ -26,7 +21,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
       emit(DerivPasskeysLoading());
 
       await derivPasskeysService.getCredential().then((String? credential) {
-        emit(DerivPasskeysInitial());
+        emit(DerivPasskeysLoaded(passkeysList));
       }).catchError((Object error) {
         emit(DerivPasskeysError(error.toString()));
       });
@@ -36,7 +31,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         Emitter<DerivPasskeysState> emit) async {
       await derivPasskeysService
           .createCredential()
-          .then((String? credential) async {
+          .then((DerivPasskeyEntity? credential) async {
         if (credential == null) {
           emit(DerivPasskeysError('Error creating passkey'));
           return;
@@ -44,14 +39,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         emit(DerivPasskeysCreatedSuccessfully());
         final DeviceMarketingNames deviceNames = DeviceMarketingNames();
         final String singleDeviceName = await deviceNames.getSingleName();
-        final DerivPasskeyEntity derivPasskeyEntity = DerivPasskeyEntity(
-          createdAt: DateTime.now().millisecondsSinceEpoch,
-          id: 1,
-          lastUsed: 'Never',
-          name: 'Passkey',
-          passkeyId: 'passkeyId',
-          storedOn: singleDeviceName,
-        );
+        final DerivPasskeyEntity derivPasskeyEntity = credential;
         passkeysList.add(derivPasskeyEntity);
         emit(DerivPasskeysLoaded(passkeysList));
       }).catchError((Object error) {
@@ -64,6 +52,14 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
       emit(DerivPasskeysLoading());
 
       emit(DerivPasskeysLoaded(passkeysList));
+    });
+
+    derivPasskeysService.isSupported().then((bool isSupported) {
+      if (isSupported) {
+        add(const DerivPasskeysGetPasskeysList());
+      } else {
+        add(const SetDerivPasskeysNotSupported());
+      }
     });
   }
 

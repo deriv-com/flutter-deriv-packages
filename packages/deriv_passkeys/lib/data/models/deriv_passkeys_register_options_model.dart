@@ -1,7 +1,5 @@
-import 'package:deriv_passkeys/core/data/base_model.dart';
-
 /// [DerivPasskeysRegisterOptionsModel] DTO for DerivPasskeysOptions data coming from the WebsocketAPI.
-final class DerivPasskeysRegisterOptionsModel extends BaseModel {
+final class DerivPasskeysRegisterOptionsModel {
   /// Creates a [DerivPasskeysRegisterOptionsModel].
   DerivPasskeysRegisterOptionsModel({
     required this.options,
@@ -16,6 +14,5 @@ final class DerivPasskeysRegisterOptionsModel extends BaseModel {
   final Map<String, dynamic> options;
 
   /// Creates a JSON object from a [DerivPasskeysRegisterOptionsModel].
-  Map<String, dynamic> toJson() =>
-      <String, dynamic>{'passkeys_register_options': options};
+  Map<String, dynamic> toJson() => options;
 }

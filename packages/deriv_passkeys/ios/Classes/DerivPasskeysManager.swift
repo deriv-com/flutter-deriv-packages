@@ -223,10 +223,7 @@ public class DerivPasskeysManager{
             "response": [
                 "clientDataJSON": rawClientDataJSON.base64url,
                 "attestationObject": rawAttestationObject?.base64url ?? "null",
-                "transports": [:] as [String : Any],
-                "authenticatorData": [:] as [String : Any],
-                "publicKeyAlgorithm": [:] as [String : Any],
-                "publicKey": [:] as [String : Any],
+                "transports": ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor.Transport.allSupported.map { $0.rawValue },
             ] as [String : Any],
             "clientExtensionResults": [:] as [String : Any]
         ] as [String : Any]
