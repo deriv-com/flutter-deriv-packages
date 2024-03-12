@@ -16,6 +16,7 @@ Here is the detailed structure of the components included in this package:
 - [Numpad](./lib/components/numpad/README.md)
 - [Form Builder](./lib/components/form_builder/README.md)
 - [Grouped List View](./lib/components/grouped_list_view/README.md)
+- [Language Selector](./lib/components/language_selector/README.md)
 
 ## Widgets
 
