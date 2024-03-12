@@ -456,6 +456,14 @@ class _NumberPadState extends State<NumberPad> {
     if (onValidate == null) {
       return null;
     } else {
+      if (ExchangeNotifier.of(context) != null) {
+        final String? amountInString =
+            ExchangeNotifier.of(context)?.finalAmount() != 0.0
+                ? ExchangeNotifier.of(context)?.finalAmount().toString()
+                : '';
+        final RichText? richText = onValidate(amountInString ?? '')?.text;
+        return richText;
+      }
       final RichText? richText =
           onValidate(_firstInputController?.text ?? '')?.text;
       return richText;
