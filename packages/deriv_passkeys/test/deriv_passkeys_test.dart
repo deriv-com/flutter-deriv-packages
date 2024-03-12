@@ -1,11 +1,17 @@
 import 'package:deriv_passkeys/data/data_sources/base_deriv_passkeys_data_source.dart';
 import 'package:deriv_passkeys/data/mappers/deriv_passkeys_mapper.dart';
+import 'package:deriv_passkeys/data/models/deriv_passkey_model.dart';
 import 'package:deriv_passkeys/data/models/deriv_passkeys_options_model.dart';
+import 'package:deriv_passkeys/data/models/deriv_passkeys_register_options_model.dart';
+import 'package:deriv_passkeys/data/models/deriv_passkeys_verify_credentials_request_body.dart';
+import 'package:deriv_passkeys/data/models/deriv_passkeys_verify_credentials_response.dart';
 import 'package:deriv_passkeys/data/repositories/deriv_passkeys_repository.dart';
 import 'package:deriv_passkeys/data/platform/deriv_passkeys_method_channel.dart';
+import 'package:deriv_passkeys/domain/entities/deriv_passkey_entity.dart';
 import 'package:deriv_passkeys/domain/platform/base_deriv_passkeys_method_channel.dart';
 import 'package:deriv_passkeys/interactor/services/deriv_passkeys_service.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_deriv_api/basic_api/generated/passkeys_register_send.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -45,6 +51,57 @@ final class MockDerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         userVerification: 'userVerification',
         timeout: 18000,
       ));
+
+  @override
+  Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions() =>
+      Future<DerivPasskeysRegisterOptionsModel>.value(
+          DerivPasskeysRegisterOptionsModel(
+        options: <String, dynamic>{
+          'publicKey': <String, dynamic>{
+            'rp': <String, dynamic>{
+              'id': 'id',
+              'name': 'name',
+            },
+            'user': <String, dynamic>{
+              'id': 'id',
+              'name': 'name',
+              'displayName': 'displayName',
+            },
+            'challenge': 'challenge',
+            'pubKeyCredParams': <dynamic>[
+              <String, dynamic>{
+                'type': 'type',
+                'alg': -1,
+              }
+            ],
+            'timeout': 18000,
+            'attestation': 'attestation',
+            'extensions': <String, dynamic>{},
+          }
+        },
+      ));
+
+  @override
+  Future<DerivPasskeyModel> registerCredentials(
+          PasskeysRegisterRequest request) =>
+      Future<DerivPasskeyModel>.value(
+        const DerivPasskeyModel(
+            createdAt: 0,
+            id: 'id',
+            lastUsed: 0,
+            name: 'name',
+            passkeyId: '',
+            storedOn: ''),
+      );
+
+  @override
+  Future<DerivPasskeysVerifyCredentialsResponse> verifyCredentials(
+          DerivPasskeysVerifyCredentialsRequestBody body) =>
+      Future<DerivPasskeysVerifyCredentialsResponse>.value(
+        DerivPasskeysVerifyCredentialsResponse(
+          success: true,
+        ),
+      );
 }
 
 void main() {
@@ -107,9 +164,9 @@ void main() {
     });
 
     test('createCredential returns response if not null', () async {
-      final String response =
-          await derivPasskeysService.createCredential('options');
-      expect(response, '42');
+      final DerivPasskeyEntity? response =
+          await derivPasskeysService.createCredential();
+      expect(response, isNotNull);
     });
 
     test('createCredential throws PlatformException if response is null',
@@ -118,7 +175,7 @@ void main() {
           .instance = MockBaseDerivPasskeysMethodChannel()
         ..mockCreateCredential = (String options) => Future<String?>.value();
 
-      expect(() => derivPasskeysService.createCredential('options'),
+      expect(() => derivPasskeysService.createCredential(),
           throwsA(isInstanceOf<PlatformException>()));
     });
 
