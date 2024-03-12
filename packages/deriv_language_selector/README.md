@@ -9,7 +9,7 @@ A package to handle language changes in the app.
 - Handles state of the language of the app using Cubits.
 - Provides interfaces to be implemented by the app to handle the language changes.
 - Default flags and supported languages are: 
-`en, es, fr, id, it, pl, pt, ru, th, vi, zh, ar, de, ko, sw`
+`en, es, fr, id, it, pl, pt, ru, th, vi, zh, ar, de, ko, sw, tr`
 Client apps have the flexibility to use their own flag asset and supported languages.
 
 ## Usage
