@@ -21,6 +21,9 @@ class DerivPasskeysLoaded extends DerivPasskeysState {
   List<Object> get props => <Object>[passkeysList];
 }
 
+/// [DerivPasskeysInitialized] represents the initialized state within the DerivPasskeys flow.
+class DerivPasskeysInitialized extends DerivPasskeysState {}
+
 /// [DerivPasskeysLoading] represents the loading state within the DerivPasskeys flow.
 class DerivPasskeysLoading extends DerivPasskeysState {}
 

@@ -30,4 +30,7 @@ abstract base class BaseDerivPasskeysDataSource {
   /// Register credentials with DerivPasskeys.
   Future<DerivPasskeyModel> registerCredentials(
       PasskeysRegisterRequest request);
+
+  /// Get passkeys list.
+  Future<List<DerivPasskeyModel>> getPasskeysList();
 }

@@ -74,6 +74,18 @@ class DerivPasskeysService {
     }
   }
 
+  /// Gets a list of passkeys.
+  Future<List<DerivPasskeyEntity>> getPasskeysList() async {
+    try {
+      final List<DerivPasskeyEntity> getPasskeysListResult =
+          await repository.getPasskeysList();
+      return getPasskeysListResult;
+    } catch (e) {
+      print(e);
+      return <DerivPasskeyEntity>[];
+    }
+  }
+
   /// Gets a passkey credential.
   Future<String> getCredential() async {
     final Map<String, dynamic> getOptionsResult =

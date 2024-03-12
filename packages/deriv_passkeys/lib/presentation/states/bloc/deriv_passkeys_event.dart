@@ -24,6 +24,15 @@ class DerivPasskeysGetPasskeysList extends DerivPasskeysEvent {
   List<Object> get props => <Object>[];
 }
 
+/// [SetDerivPasskeysInitialized] represents the set initialized event within the DerivPasskeys flow.
+class SetDerivPasskeysInitialized extends DerivPasskeysEvent {
+  /// Creates a [SetDerivPasskeysInitialized].
+  const SetDerivPasskeysInitialized();
+
+  @override
+  List<Object> get props => <Object>[];
+}
+
 /// [SetDerivPasskeysNotSupported] represents the set not supported event within the DerivPasskeys flow.
 class SetDerivPasskeysNotSupported extends DerivPasskeysEvent {
   /// Creates a [SetDerivPasskeysNotSupported].

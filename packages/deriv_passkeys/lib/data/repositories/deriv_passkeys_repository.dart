@@ -34,4 +34,9 @@ final class DerivPasskeysRepository extends BaseDerivPasskeysRepository {
           .registerCredentials(dataSource.mapper
               .mapDerivPasskeysRegisterCredentialsEntity(entity))
           .then(dataSource.mapper.mapDerivPasskeyModel);
+
+  @override
+  Future<List<DerivPasskeyEntity>> getPasskeysList() =>
+      dataSource.getPasskeysList().then((List<DerivPasskeyModel> models) =>
+          models.map(dataSource.mapper.mapDerivPasskeyModel).toList());
 }

@@ -10,6 +10,11 @@ part 'deriv_passkeys_event.dart';
 class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
   /// Creates a [DerivPasskeysBloc].
   DerivPasskeysBloc(this.derivPasskeysService) : super(DerivPasskeysLoading()) {
+    on<SetDerivPasskeysInitialized>((SetDerivPasskeysInitialized event,
+        Emitter<DerivPasskeysState> emit) async {
+      emit(DerivPasskeysInitialized());
+    });
+
     on<SetDerivPasskeysNotSupported>((SetDerivPasskeysNotSupported event,
         Emitter<DerivPasskeysState> emit) async {
       emit(DerivPasskeysNotSupported());
@@ -48,12 +53,19 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         Emitter<DerivPasskeysState> emit) async {
       emit(DerivPasskeysLoading());
 
-      emit(DerivPasskeysLoaded(passkeysList));
+      await derivPasskeysService
+          .getPasskeysList()
+          .then((List<DerivPasskeyEntity> _passkeysList) {
+        passkeysList = _passkeysList;
+        emit(DerivPasskeysLoaded(passkeysList));
+      }).catchError((Object error) {
+        emit(DerivPasskeysError(error.toString()));
+      });
     });
 
     derivPasskeysService.isSupported().then((bool isSupported) {
       if (isSupported) {
-        add(const DerivPasskeysGetPasskeysList());
+        add(const SetDerivPasskeysInitialized());
       } else {
         add(const SetDerivPasskeysNotSupported());
       }

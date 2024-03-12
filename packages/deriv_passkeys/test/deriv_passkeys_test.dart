@@ -102,6 +102,20 @@ final class MockDerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
           success: true,
         ),
       );
+
+  @override
+  Future<List<DerivPasskeyModel>> getPasskeysList() =>
+      Future<List<DerivPasskeyModel>>.value(
+        <DerivPasskeyModel>[
+          const DerivPasskeyModel(
+              createdAt: 0,
+              id: 'id',
+              lastUsed: 0,
+              name: 'name',
+              passkeyId: '',
+              storedOn: ''),
+        ],
+      );
 }
 
 void main() {

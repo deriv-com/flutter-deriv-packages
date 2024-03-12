@@ -11,9 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-/// Main singleFeature flow in wallets.
-///
-/// This is the landing page after a user clicks on the singleFeature button.
 class EffortlessPasskeysPage extends StatelessWidget {
   /// Creates a [EffortlessPasskeysPage].
   const EffortlessPasskeysPage({

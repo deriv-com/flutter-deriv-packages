@@ -11,9 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-/// Main singleFeature flow in wallets.
-///
-/// This is the landing page after a user clicks on the singleFeature button.
 class ManagePasskeysPage extends StatefulWidget {
   /// Creates a [ManagePasskeysPage].
   const ManagePasskeysPage({
@@ -58,14 +55,6 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
         ),
         body: BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
             listener: (BuildContext context, DerivPasskeysState state) {
-          if (state is DerivPasskeysNotSupported ||
-              state is DerivPasskeysLoading) {
-            return;
-          } else if (state is! DerivPasskeysLoaded) {
-            context
-                .read<DerivPasskeysBloc>()
-                .add(const DerivPasskeysGetPasskeysList());
-          }
           if (state is DerivPasskeysCreatedSuccessfully) {
             String platformName = 'Unsupported Platform';
             //get if device is android or ios

@@ -16,4 +16,7 @@ abstract base class BaseDerivPasskeysRepository {
   /// Register credentials with DerivPasskeys.
   Future<DerivPasskeyEntity> registerCredentials(
       DerivPasskeysRegisterCredentialsEntity entity);
+
+  /// Get passkeys list.
+  Future<List<DerivPasskeyEntity>> getPasskeysList();
 }
