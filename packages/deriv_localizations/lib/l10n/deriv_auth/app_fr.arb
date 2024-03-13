@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Vous n'avez pas encore de compte ?",
   "actionCreateANewAccount": "Créer un compte",
   "informInvalidEmailFormat": "Saisissez une adresse e-mail valide",
-  "warnPasswordLength": "Vous devez saisir 8 à 25 caractères.",
+  "warnPasswordLength": "You should enter 6-25 characters.",
   "labelResetPassword": "Réinitialiser le mot",
   "labelChooseNewPass": "Choisir un nouveau mot de passe",
   "labelCreatePass": "Mot de passe",

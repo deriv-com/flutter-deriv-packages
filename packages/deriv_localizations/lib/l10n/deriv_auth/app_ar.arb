@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "ليس لديك حساب حتى الآن؟",
   "actionCreateANewAccount": "إنشاء حساب جديد",
   "informInvalidEmailFormat": "أدخل عنوان بريد إلكتروني صالح",
-  "warnPasswordLength": "يجب إدخال 8-25 حرفًا.",
+  "warnPasswordLength": "You should enter 6-25 characters.",
   "labelResetPassword": "إعادة تعيين كلمة المرور",
   "labelChooseNewPass": "اختر كلمة مرور جديدة",
   "labelCreatePass": "كلمة المرور",

@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Sie haben noch kein Konto?",
   "actionCreateANewAccount": "Erstelle ein neues Konto",
   "informInvalidEmailFormat": "Geben Sie eine gültige E-Mail Adresse ein",
-  "warnPasswordLength": "Sie sollten 8-25 Zeichen eingeben.",
+  "warnPasswordLength": "You should enter 6-25 characters.",
   "labelResetPassword": "Passwort zurücksetzen",
   "labelChooseNewPass": "Wählen Sie ein neues Passwort",
   "labelCreatePass": "Passwort",

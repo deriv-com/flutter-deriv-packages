@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Huna akaunti bado?",
   "actionCreateANewAccount": "Unda akaunti mpya",
   "informInvalidEmailFormat": "Ingiza anwani halali ya barua pepe",
-  "warnPasswordLength": "Unapaswa kuingiza mchanganyiko wa tarakimu 8-25.",
+  "warnPasswordLength": "You should enter 6-25 characters.",
   "labelResetPassword": "Rudisha nenosiri",
   "labelChooseNewPass": "Chagua nenosiri mpya",
   "labelCreatePass": "Nenosiri",
