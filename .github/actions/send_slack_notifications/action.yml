@@ -1,11 +1,13 @@
 name: send_slack_notifications
 description: Send Slack notifications
+inputs:
+  SLACK_WEBHOOK_PACKAGE_UPDATE:
+    description: 'Slack webhook URL'
+    required: true
 runs:
   using: composite
   steps:
     - name: Send Slack Notification on Package Update
-      env:
-        SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
       run: |
         curl -X POST -H 'Content-type: application/json' \
         --data '{
@@ -33,5 +35,5 @@ runs:
             }
           ]
         }' \
-          $SLACK_WEBHOOK_PACKAGE_UPDATE
+          ${{ inputs.slack_webhook }}
       shell: bash

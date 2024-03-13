@@ -82,6 +82,8 @@ jobs:
 
       - name: Send Slack Notification
         uses: ./.github/actions/send_slack_notifications
+        with:
+          SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
         env:
           PR_TITLE: "Test PR title"
           TAGS: "Test Tag"
