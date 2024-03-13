@@ -26,7 +26,7 @@ void main() {
 
   setUpAll(() {
     _client = MockHttpClient();
-    _tokenService = DerivTokenService();
+    _tokenService = DerivTokenService(_client);
     _jwtToken = 'jwtToken';
     _connectionInfo = MockConnectionInfo();
 
@@ -41,6 +41,7 @@ void main() {
     test('getUserTokens', () async {
       final GetTokensResponseModel response = await _tokenService.getUserTokens(
         request: GetTokensRequestModel(),
+        httpClient: _client,
         jwtToken: _jwtToken,
         connectionInfo: _connectionInfo,
       );
