@@ -35,5 +35,5 @@ runs:
             }
           ]
         }' \
-          ${{ inputs.slack_webhook }}
+          ${{ inputs.SLACK_WEBHOOK_PACKAGE_UPDATE }}
       shell: bash
