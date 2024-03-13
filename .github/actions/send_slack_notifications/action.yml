@@ -4,7 +4,7 @@ runs:
   using: composite
   steps:
     - name: Send Slack Notification on Package Update
-      secrets:
+      env:
         SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
       run: |
         curl -X POST -H 'Content-type: application/json' \
@@ -33,5 +33,5 @@ runs:
             }
           ]
         }' \
-          ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE  }}
+          $SLACK_WEBHOOK_PACKAGE_UPDATE
       shell: bash
