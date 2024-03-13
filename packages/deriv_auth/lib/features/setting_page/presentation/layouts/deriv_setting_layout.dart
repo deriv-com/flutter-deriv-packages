@@ -26,7 +26,8 @@ class DerivSettingLayout extends StatefulWidget {
   }) : super(key: key);
 
   /// Update flavor configurations
-  final Future<void> updateFlavorConfigs;
+  final Function({required String endpoint, required String appId})
+      updateFlavorConfigs;
 
   /// Save values to shared preferences
   final Function({required String endpoint, required String appId}) saveValues;
@@ -75,18 +76,19 @@ class _SettingsPageState extends State<DerivSettingLayout> {
   @override
   Widget build(BuildContext context) => WillPopScope(
         onWillPop: () async {
+          final String endpoint = _endpointController.text.isNotEmpty
+              ? _endpointController.text
+              : defaultEndpoint;
+          final String appId = _appIdController.text.isNotEmpty
+              ? _appIdController.text
+              : defaultAppId;
+
           // Save Values to shared preferences
-          widget.saveValues(
-            endpoint: _endpointController.text.isNotEmpty
-                ? _endpointController.text
-                : defaultEndpoint,
-            appId: _appIdController.text.isNotEmpty
-                ? _appIdController.text
-                : defaultAppId,
-          );
+          await widget.saveValues(endpoint: endpoint, appId: appId);
 
           // Update Flavor Configurations before dismissing the page
-          await widget.updateFlavorConfigs;
+          await widget.updateFlavorConfigs(endpoint: endpoint, appId: appId);
+
           return true;
         },
         child: Scaffold(

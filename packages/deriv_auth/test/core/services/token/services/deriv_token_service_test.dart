@@ -41,7 +41,6 @@ void main() {
     test('getUserTokens', () async {
       final GetTokensResponseModel response = await _tokenService.getUserTokens(
         request: GetTokensRequestModel(),
-        client: _client,
         jwtToken: _jwtToken,
         connectionInfo: _connectionInfo,
       );

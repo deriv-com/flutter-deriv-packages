@@ -53,7 +53,7 @@ base class AuthErrorStateHandler {
   }
 
   /// User is trying to authenticate from an unsupported residence.
-  void onInavlidResidence(DerivAuthErrorState state) {
+  void onInvalidResidence(DerivAuthErrorState state) {
     showErrorDialog(
       context: context,
       errorMessage: context.derivAuthLocalization.informInvalidResidence,

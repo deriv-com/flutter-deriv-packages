@@ -43,7 +43,7 @@ final class MockAuthErrorStateHandler extends AuthErrorStateHandler {
   }
 
   @override
-  void onInavlidResidence(DerivAuthErrorState errorState) {
+  void onInvalidResidence(DerivAuthErrorState errorState) {
     lastHandledError = errorState;
   }
 

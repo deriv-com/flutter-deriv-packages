@@ -9,7 +9,6 @@ class DerivTokenService implements BaseTokenService {
   @override
   Future<GetTokensResponseModel> getUserTokens({
     required GetTokensRequestModel request,
-    required BaseHttpClient client,
     required String jwtToken,
     required AuthConnectionInfo connectionInfo,
     String? userAgent,
@@ -17,6 +16,7 @@ class DerivTokenService implements BaseTokenService {
     /// Extract login url from connection info.
     final String baseUrl = 'https://${connectionInfo.endpoint}/oauth2/api/v1';
     final String loginUrl = '$baseUrl/login';
+    final ProxyAwareHttpClient client = ProxyAwareHttpClient(baseUrl);
 
     /// Call API.
     final Map<String, dynamic> jsonResponse = await client.post(

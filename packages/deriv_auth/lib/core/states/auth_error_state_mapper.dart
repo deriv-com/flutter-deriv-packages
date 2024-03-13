@@ -1,4 +1,3 @@
-import 'package:deriv_auth/core/states/states.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 
 /// Maps the [DerivAuthErrorState] to the corresponding [AuthErrorStateHandler].
@@ -33,7 +32,7 @@ void authErrorStateMapper({
       authErrorStateHandler.onFailedAuthorization(authErrorState);
       return;
     case AuthErrorType.invalidResidence:
-      authErrorStateHandler.onInavlidResidence(authErrorState);
+      authErrorStateHandler.onInvalidResidence(authErrorState);
       return;
     case AuthErrorType.expiredAccount:
       authErrorStateHandler.onExpiredAccount(authErrorState);

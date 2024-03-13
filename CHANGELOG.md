@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.6+4`](#deriv_ui---v0064)
+ - [`deriv_auth` - `v6.0.2`](#deriv_auth---v602)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.0.2`
+
+---
+
+#### `deriv_ui` - `v0.0.6+4`
+
+ - **REFACTOR**(deriv_ui): update deriv_ui dependencies ([#499](https://github.com/regentmarkets/flutter-deriv-packages/issues/499)). ([2ade47f5](https://github.com/regentmarkets/flutter-deriv-packages/commit/2ade47f5f42a37325e4e4906c8c095fc26d777b6))
+
+
+## 2024-02-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`deriv_auth` - `v6.0.0`](#deriv_auth---v600)
+ - [`deriv_http_client` - `v2.0.0`](#deriv_http_client---v200)
+ - [`deriv_web_view` - `v0.2.0`](#deriv_web_view---v020)
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.6+3`](#deriv_ui---v0063)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_ui` - `v0.0.6+3`
+
+---
+
+#### `deriv_auth` - `v6.0.0`
+
+ - **BREAKING** **REFACTOR**(deriv_auth): ramin_make_auth_and_web_view_proxy_aware ([#483](https://github.com/regentmarkets/flutter-deriv-packages/issues/483)). ([e99afc92](https://github.com/regentmarkets/flutter-deriv-packages/commit/e99afc926531c0c36c567d0ac8c66e906fa27ea5))
+
+#### `deriv_http_client` - `v2.0.0`
+
+ - **BREAKING** **REFACTOR**(deriv_auth): ramin_make_auth_and_web_view_proxy_aware ([#483](https://github.com/regentmarkets/flutter-deriv-packages/issues/483)). ([e99afc92](https://github.com/regentmarkets/flutter-deriv-packages/commit/e99afc926531c0c36c567d0ac8c66e906fa27ea5))
+
+#### `deriv_web_view` - `v0.2.0`
+
+ - **BREAKING** **REFACTOR**(deriv_auth): ramin_make_auth_and_web_view_proxy_aware ([#483](https://github.com/regentmarkets/flutter-deriv-packages/issues/483)). ([e99afc92](https://github.com/regentmarkets/flutter-deriv-packages/commit/e99afc926531c0c36c567d0ac8c66e906fa27ea5))
+
+
+## 2024-02-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v5.0.3`](#deriv_auth---v503)
+
+---
+
+#### `deriv_auth` - `v5.0.3`
+
+ - **REFACTOR**(deriv_auth): rename inavalid to invalid in auth state handler ([#490](https://github.com/regentmarkets/flutter-deriv-packages/issues/490)). ([2e9cfa75](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e9cfa75007fce25b90394bd92905e9c3ca876cc))
+
+
+## 2024-02-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_web_view` - `v0.1.0+1`](#deriv_web_view---v0101)
+ - [`deriv_auth` - `v5.0.2`](#deriv_auth---v502)
+ - [`deriv_ui` - `v0.0.6+2`](#deriv_ui---v0062)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v5.0.2`
+ - `deriv_ui` - `v0.0.6+2`
+
+---
+
+#### `deriv_web_view` - `v0.1.0+1`
+
+ - **FIX**(deriv_web_view): fix platform exception not being caught ([#489](https://github.com/regentmarkets/flutter-deriv-packages/issues/489)). ([89f038a0](https://github.com/regentmarkets/flutter-deriv-packages/commit/89f038a0717c1902c6fbc22668705ad2636df9d5))
+
+
 ## 2024-02-26
 
 ### Changes
