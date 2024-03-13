@@ -1,9 +1,5 @@
 name: send_slack_notifications
 description: Send Slack notifications
-inputs:
-  SLACK_WEBHOOK_PACKAGE_UPDATE:
-    description: 'Slack webhook URL'
-    required: true
 runs:
   using: composite
   steps:
@@ -35,5 +31,5 @@ runs:
             }
           ]
         }' \
-          ${{ inputs.SLACK_WEBHOOK_PACKAGE_UPDATE }}
+          ${{ env.SLACK_WEBHOOK_PACKAGE_UPDATE }}
       shell: bash
