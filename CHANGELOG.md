@@ -279,55 +279,6 @@ Packages with dependency updates only:
 
 Packages with breaking changes:
 
- - There are no breaking changes in this release.
-
-Packages with other changes:
-
- - [`deriv_auth` - `v6.1.0`](#deriv_auth---v610)
-
----
-
-#### `deriv_auth` - `v6.1.0`
-
- - **FEAT**(deriv_auth): single entry ([#420](https://github.com/regentmarkets/flutter-deriv-packages/issues/420)). ([e594c05b](https://github.com/regentmarkets/flutter-deriv-packages/commit/e594c05b87c05d189913a7de8b9e1e4e6d03b76a))
-
-
-## 2024-02-29
-
-### Changes
-
----
-
-Packages with breaking changes:
-
- - There are no breaking changes in this release.
-
-Packages with other changes:
-
- - [`deriv_ui` - `v0.0.6+4`](#deriv_ui---v0064)
- - [`deriv_auth` - `v6.0.2`](#deriv_auth---v602)
-
-Packages with dependency updates only:
-
-> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
-
- - `deriv_auth` - `v6.0.2`
-
----
-
-#### `deriv_ui` - `v0.0.6+4`
-
- - **REFACTOR**(deriv_ui): update deriv_ui dependencies ([#499](https://github.com/regentmarkets/flutter-deriv-packages/issues/499)). ([2ade47f5](https://github.com/regentmarkets/flutter-deriv-packages/commit/2ade47f5f42a37325e4e4906c8c095fc26d777b6))
-
-
-## 2024-02-29
-
-### Changes
-
----
-
-Packages with breaking changes:
-
  - [`deriv_auth` - `v6.0.0`](#deriv_auth---v600)
  - [`deriv_http_client` - `v2.0.0`](#deriv_http_client---v200)
  - [`deriv_web_view` - `v0.2.0`](#deriv_web_view---v020)
@@ -1420,4 +1371,3 @@ Packages with other changes:
 #### `deriv_env` - `v0.0.1+1`
 
  - **REFACTOR**(deriv_env): make package independent of env file ([#318](https://github.com/regentmarkets/flutter-deriv-packages/issues/318)). ([a7242c81](https://github.com/regentmarkets/flutter-deriv-packages/commit/a7242c81b97fda70a622d7bbbb97fe997067117a))
-
