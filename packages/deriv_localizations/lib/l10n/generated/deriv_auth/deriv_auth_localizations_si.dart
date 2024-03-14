@@ -64,7 +64,7 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'වලංගු විද්යුත් තැපැල් ලිපිනයක් ඇතුළත් කරන්න';
 
   @override
-  String get warnPasswordLength => 'ඔබ අක්ෂර 8-25 ක් ඇතුළත් කළ යුතුය.';
+  String get warnPasswordLength => 'ඔබ අක්ෂර 6-25 ක් ඇතුළත් කළ යුතුය.';
 
   @override
   String get labelResetPassword => 'මුරපදය නැවත සකස් කරන්න';

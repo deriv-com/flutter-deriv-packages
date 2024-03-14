@@ -9,225 +9,225 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app 不在您的國家/地區提供';
+    return '您的國家/地區不能使用 $app';
   }
 
   @override
-  String get actionOk => '確定';
+  String get actionOk => '确定';
 
   @override
-  String get warnNotAvailableCountries => '如有任何疑问，请通过以下方式联系我们 ';
+  String get warnNotAvailableCountries => '如果有任何疑問，請通過以下方式與我們聯繫 ';
 
   @override
-  String get labelLiveChat => '实时聊天';
+  String get labelLiveChat => '即時聊天';
 
   @override
-  String get actionGetAFreeAccount => '获取免费账号';
+  String get actionGetAFreeAccount => '獲取免費帳戶';
 
   @override
-  String get actionLogin => '登录';
+  String get actionLogin => '登入';
 
   @override
-  String get labelTwoFactorAuth => '双因素身份验证';
+  String get labelTwoFactorAuth => '雙因素身份驗證';
 
   @override
-  String get informEnterTwoFactorAuthCode => '在手机输入身份验证器应用程序的 6 位数代码。';
+  String get informEnterTwoFactorAuthCode => '在手機的驗證器應用程式中輸入 6 位數代碼。';
 
   @override
-  String get labelTwoFactorAuthenticationCode => '2FA 代码';
+  String get labelTwoFactorAuthenticationCode => '2FA 代碼';
 
   @override
-  String get actionProceed => '执行';
+  String get actionProceed => '執行';
 
   @override
-  String get labelLogIn => '登录';
+  String get labelLogIn => '登入';
 
   @override
-  String get informLoginOptions => '或通过以下登录';
+  String get informLoginOptions => '或通過以下方式登入';
 
   @override
-  String get labelEmail => '电子邮件';
+  String get labelEmail => '電子郵件';
 
   @override
-  String get labelPassword => '密码';
+  String get labelPassword => '密碼';
 
   @override
-  String get actionForgotPassword => '忘记密码?';
+  String get actionForgotPassword => '忘記密碼？';
 
   @override
-  String get labelDontHaveAnAccountYet => '还没有账户？';
+  String get labelDontHaveAnAccountYet => '還沒有帳戶？';
 
   @override
-  String get actionCreateANewAccount => '开立新账户';
+  String get actionCreateANewAccount => '開立新帳戶';
 
   @override
-  String get informInvalidEmailFormat => '输入有效的电子邮件地址';
+  String get informInvalidEmailFormat => '請輸入有效的電子郵件地址';
 
   @override
-  String get warnPasswordLength => '必须输入 8-25 个字符。';
+  String get warnPasswordLength => '必须输入 6-25 个字符。';
 
   @override
   String get labelResetPassword => '重設密碼';
 
   @override
-  String get labelChooseNewPass => '选新密码';
+  String get labelChooseNewPass => '選新密碼';
 
   @override
   String get labelCreatePass => '密碼';
 
   @override
-  String get informYourPassHasBeenReset => '密码已重置';
+  String get informYourPassHasBeenReset => '密碼已重設';
 
   @override
-  String get informRedirectLogin => '需要使用新密码登录。请稍等，正在重定向。';
+  String get informRedirectLogin => '需要使用新密碼登入。等等，正在重導向。';
 
   @override
-  String get actionResetPass => '重置密码';
+  String get actionResetPass => '重設密碼';
 
   @override
-  String get informInvalidPasswordFormat => '请输入有效的密码格式';
+  String get informInvalidPasswordFormat => '請輸入有效的密碼格式';
 
   @override
-  String get labelCheckEmail => '查看您的電子郵件';
+  String get labelCheckEmail => '查看電子郵件';
 
   @override
   String informSendResetPasswordEmail(String email) {
-    return '已发送邮件至 $email，内含重置密码的链接。';
+    return '已傳送郵件至$email ，內含重設密碼的連結。';
   }
 
   @override
-  String get informResetPassByEmail => '会传送内含重设密码的说明的电子邮件。';
+  String get informResetPassByEmail => '將以電子郵件傳送重設密碼的說明。';
 
   @override
-  String get labelSelectCountry => '您的居住地是哪裡？';
+  String get labelSelectCountry => '您的居住地是哪里？';
 
   @override
-  String get labelChooseCountry => '选择国家';
+  String get labelChooseCountry => '選擇國家';
 
   @override
-  String get warnCountryNotAvailable => '对不起，您的所在国不可用 Deriv。';
+  String get warnCountryNotAvailable => '對不起，您的所在國不可用 Deriv。';
 
   @override
-  String get actionNext => '下一步';
+  String get actionNext => '下一頁';
 
   @override
-  String get labelEmailIssueHeader => '如果数分钟内没有收到我们发送的电子邮件，可能是因为发生了几种情况而引起的：';
+  String get labelEmailIssueHeader => '如果數分鐘內沒有收到我們傳送的電子郵件，可能是因為發生了幾種情況而引起的:';
 
   @override
   String get labelEmailIssueSpam => '郵件在您的垃圾郵箱（有時一些郵件會誤送到那兒）。';
 
   @override
-  String get labelEmailIssueWrongEmail => '您不小心给了我们另一个电子邮件地址（通常非您本意，而是属于工作或个人性质的）。';
+  String get labelEmailIssueWrongEmail => '您不小心給了我們另一個電子郵件地址（通常非您本意，而是屬於工作或個人性質的）。';
 
   @override
-  String get labelEmailIssueTypo => '您输入的电子邮件地址拼写有误（有时这是难免的）。';
+  String get labelEmailIssueTypo => '您輸入的電子郵件地址拼寫有誤（有時這是難免的）。';
 
   @override
-  String get labelEmailIssueFirewall => '无法发送电子邮件到此地址（通常是因为安装了防火墙或筛选器）。';
+  String get labelEmailIssueFirewall => '電子郵件無法傳送到此地址（通常是因為安裝了防火牆或篩選器）。';
 
   @override
-  String get actionReenterEmail => '重新输入电子邮件并重试';
+  String get actionReenterEmail => '重新輸入電子郵件並重試';
 
   @override
-  String get labelKeepPassword => '用密碼保障您的帳戶安全';
+  String get labelKeepPassword => '用密碼保障帳戶安全';
 
   @override
-  String get labelCreatePassword => '创建密码';
+  String get labelCreatePassword => '建立密碼';
 
   @override
-  String get actionStartTrading => '开始交易';
+  String get actionStartTrading => '開始交易';
 
   @override
-  String get actionPrevious => '之前';
+  String get actionPrevious => '上一頁';
 
   @override
-  String get labelSignUp => '注册';
+  String get labelSignUp => '註冊';
 
   @override
-  String get labelOrSignUpWith => '或通过以下注册';
+  String get labelOrSignUpWith => '或使用以下方式註冊';
 
   @override
-  String get labelReferralInfoTitle => '联盟推荐码';
+  String get labelReferralInfoTitle => '聯盟推薦代碼';
 
   @override
-  String get infoReferralInfoDescription => 'Deriv 联盟会员提供的字母数字代码，仅用于电子邮件注册。';
+  String get infoReferralInfoDescription => '由 Deriv 聯盟會員提供的字母數字代碼，僅適用於電子郵件註冊。';
 
   @override
-  String get labelGotReferralCode => '有推荐码吗？';
+  String get labelGotReferralCode => '有推薦代碼嗎？';
 
   @override
-  String get labelHaveAccount => '已经有账户？';
+  String get labelHaveAccount => '已經有帳戶？';
 
   @override
-  String get actionCreateAccount => '开立免费演示账户';
+  String get actionCreateAccount => '開立免費示範帳戶';
 
   @override
-  String get informInvalidReferralCode => '输入的推荐码无效。请检查并重试。';
+  String get informInvalidReferralCode => '輸入的推薦代碼無效。檢查並再試一次。';
 
   @override
-  String get labelVerifyYourEmail => '电子邮件验证';
+  String get labelVerifyYourEmail => '電子郵件驗證';
 
   @override
-  String get labelThanksEmail => '谢谢您验证了电子邮件';
+  String get labelThanksEmail => '謝謝您驗證了電子郵件';
 
   @override
-  String get informLetsContinue => '让我们继续。';
+  String get informLetsContinue => '讓我們繼續。';
 
   @override
-  String get actionContinue => '继续';
+  String get actionContinue => '繼續';
 
   @override
-  String get labelSearchCountry => '搜索国家';
+  String get labelSearchCountry => '搜尋國家';
 
   @override
   String informVerificationEmailSent(String email) {
-    return '已发送邮件至 $email，内含激活账户的链接。';
+    return '已傳送郵件至$email ，內含激活帳戶的連結。';
   }
 
   @override
-  String get actionEmailNotReceived => '没收到邮件？';
+  String get actionEmailNotReceived => '沒收到郵件?';
 
   @override
-  String get informPasswordPolicy => '密码必须有：';
+  String get informPasswordPolicy => '密碼必須具有：';
 
   @override
-  String get informPasswordPolicyLength => '8-25 个字符';
+  String get informPasswordPolicyLength => '8-25 個字元';
 
   @override
-  String get informPasswordPolicyLowerAndUpper => '大写和小写字母';
+  String get informPasswordPolicyLowerAndUpper => '大小寫英文字母';
 
   @override
-  String get informPasswordPolicyNumber => '至少一个数字';
+  String get informPasswordPolicyNumber => '至少一個數字';
 
   @override
-  String get warnPasswordContainsSymbol => '使用符号加强密码安全。';
+  String get warnPasswordContainsSymbol => '使用符號加強密碼。';
 
   @override
-  String get labelReferralCode => '推荐码';
+  String get labelReferralCode => '推薦代碼';
 
   @override
   String get actionTryAgain => '重試';
 
   @override
-  String get informInvalid2FACode => '输入的代码无效。请检查并重试。';
+  String get informInvalid2FACode => '輸入的推薦代碼無效。檢查並再試一次。';
 
   @override
-  String get informFailedAuthentication => '电子邮件或密码可能不正确。是否用社交账户注册？请检查并重试。';
+  String get informFailedAuthentication => '電子郵件地址或密碼不正確。是否用社交帳戶註冊？檢查並再試一次。';
 
   @override
-  String get informDeactivatedAccount => '您的帳戶已停用。';
+  String get informDeactivatedAccount => '帳戶已停用。';
 
   @override
   String get informFailedAuthorization => '授權失敗。';
 
   @override
-  String get informInvalidResidence => '無效的居住。';
+  String get informInvalidResidence => '無效的居住地。';
 
   @override
-  String get informInvalidCredentials => '無效的認證。';
+  String get informInvalidCredentials => '無效的憑證.';
 
   @override
-  String get informMissingOtp => '遺失一次性密碼。';
+  String get informMissingOtp => '缺少一次性密碼。';
 
   @override
   String get informSelfClosed => '帳戶已關閉.';
@@ -236,13 +236,13 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get informUnexpectedError => '發生不可預測錯誤.';
 
   @override
-  String get informUnsupportedCountry => '您的國家不受支持。';
+  String get informUnsupportedCountry => '您的國家不受支援。';
 
   @override
-  String get informExpiredAccount => '您的帳戶已過期';
+  String get informExpiredAccount => '帳戶已過期';
 
   @override
-  String get labelCountryConsentBrazil => '本人特此确认，在 Deriv 开立账户以交易由巴西境外推出和提供的场外交易产品的请求是由本人提出的。本人完全理解 Deriv 不受 CVM 监管，且通过与 Deriv 接触，本人打算与一家外国公司建立关系。';
+  String get labelCountryConsentBrazil => '本人特此確認，在 Deriv 開立帳戶以交易由巴西境外推出和提供的場外交易產品的要求是由本人提出的。本人完全理解 Deriv 不受 CVM 監管，且通過與 Deriv 接觸，本人打算與一家外國公司建立關係。';
 
   @override
   String get informConnectionError => '連線錯誤。請稍後再試一次。';
@@ -251,23 +251,23 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get informSwitchAccountError => '切換帳戶錯誤。請稍後再試一次。';
 
   @override
-  String get labelDeveloper => '开发员';
+  String get labelDeveloper => '開發員';
 
   @override
-  String get labelEndpoint => '终结点';
+  String get labelEndpoint => '端點';
 
   @override
-  String get semanticEndpoint => '终结点';
+  String get semanticEndpoint => '端點';
 
   @override
-  String get warnInvalidEndpoint => '无效的终结点';
+  String get warnInvalidEndpoint => '無效的端點';
 
   @override
-  String get labelApplicationID => '应用程序 ID';
+  String get labelApplicationID => '應用程式 ID';
 
   @override
-  String get semanticApplicationID => '应用程序 ID';
+  String get semanticApplicationID => '應用程式 ID';
 
   @override
-  String get warnInvalidApplicationID => '无效的应用程序 ID';
+  String get warnInvalidApplicationID => '無效的應用程式 ID';
 }
