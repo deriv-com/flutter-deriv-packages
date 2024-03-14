@@ -1,9 +1,17 @@
 name: send_slack_notifications
 description: Send Slack notifications
+inputs:
+  TAGS:
+    description: "New tags released"
+    required: true
 runs:
   using: composite
   steps:
     - name: Send Slack Notification on Package Update
+      env:
+          SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
+          PR_TITLE: "Test PR title"
+          TAGS: ${{ inputs.TAGS }}
       run: |
         curl -X POST -H 'Content-type: application/json' \
         --data '{
@@ -19,17 +27,17 @@ runs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*${{ env.PR_TITLE }}*"
+                  "text": "*$PR_TITLE*"
                 }
               },
               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*Packages released:*\n- *${{ env.TAGS }}*\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md"
+                  "text": "*Packages released:*\n- *$TAGS*\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md"
               }
             }
           ]
         }' \
-          ${{ env.SLACK_WEBHOOK_PACKAGE_UPDATE }}
+          $SLACK_WEBHOOK_PACKAGE_UPDATE
       shell: bash
