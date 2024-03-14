@@ -17,7 +17,7 @@ Packages with other changes:
 
  - [`deriv_localizations` - `v1.1.2`](#deriv_localizations---v112)
  - [`deriv_ui` - `v0.0.7+1`](#deriv_ui---v0071)
- - [`deriv_auth` - `v6.3.2`](#deriv_auth---v632)
+ - [`deriv_auth` - `v6.3.3`](#deriv_auth---v632)
  - [`deriv_widgetbook` - `v0.0.2+1`](#deriv_widgetbook---v0021)
  - [`deriv_language_selector` - `v0.0.1+1`](#deriv_language_selector---v0011)
 
