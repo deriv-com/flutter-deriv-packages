@@ -1,6 +1,12 @@
 name: send_slack_notifications
 description: Send Slack notifications
 inputs:
+  SLACK_WEBHOOK_PACKAGE_UPDATE:
+    description: "Slack webhook URL"
+    required: true
+  PR_TITLE:
+    description: "Pull request title"
+    required: true
   TAGS:
     description: "New tags released"
     required: true
@@ -8,8 +14,8 @@ runs:
   steps:
     - name: Send Slack Notification on Package Update
       env:
-          SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
-          PR_TITLE: "Test PR title"
+          SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ inputs.SLACK_WEBHOOK_PACKAGE_UPDATE }}
+          PR_TITLE: ${{ inputs.PR_TITLE }}
           TAGS: ${{ inputs.TAGS }}
       run: |
         curl -X POST -H 'Content-type: application/json' \
