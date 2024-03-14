@@ -1,3 +1,7 @@
+## 6.3.2
+
+ - Update a dependency to the latest release.
+
 ## 6.3.1
 
  - **FIX**: deriv_toke_service_test ([#519](https://github.com/regentmarkets/flutter-deriv-packages/issues/519)). ([25b9dc45](https://github.com/regentmarkets/flutter-deriv-packages/commit/25b9dc454c222bb7299d859a21cb1b3cb874c1bf))
