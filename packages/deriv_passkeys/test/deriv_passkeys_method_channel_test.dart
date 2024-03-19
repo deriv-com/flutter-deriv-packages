@@ -1,4 +1,4 @@
-import 'package:deriv_passkeys/data/platform/deriv_passkeys_method_channel.dart';
+import 'package:deriv_passkeys/src/data/platform/deriv_passkeys_method_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 

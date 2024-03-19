@@ -24,7 +24,8 @@ public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
             if let args = call.arguments as? Dictionary<String, Any>, let options = args["options"] as? String {
                 derivPasskeysManager.createCredential(options) { credential, error in
                     if let err = error {
-                        result(FlutterError(code: String(describing: type(of: err)), message: "\(err)", details: nil))
+                        let errorCode = (err as NSError).code
+                        result(FlutterError(code: String(errorCode), message: "\(err)", details: nil))
                         return
                     }
                     result(credential!)
@@ -44,20 +45,20 @@ public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
             if let args = call.arguments as? Dictionary<String, Any>, let options = args["options"] as? String {
                 derivPasskeysManager.getCredential(options) { credential, error in
                     if let err = error {
-                        result(FlutterError(code: String(describing: type(of: err)), message: "\(err)", details: nil))
+                        let errorCode = (err as NSError).code
+                        result(FlutterError(code: String(errorCode), message: "\(err)", details: nil))
                         return
                     }
                     result(credential!)
                 }
-            }
-            else {
+            }else {
                 result(FlutterError(code: "GetCredentialError", message: "Options not found", details: nil))
             }
             } else {
         result(FlutterError(code: "UNAVAILABLE",
                             message: "Passkey creation not available on this iOS version",
                             details: nil))
-    }
+            }
         default:
             result(FlutterMethodNotImplemented)
         }

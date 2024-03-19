@@ -14,12 +14,12 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v2.2.0
+      ref: deriv_theme-v2.3.0
   deriv_ui:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.6
+      ref: deriv_ui-v0.0.7+1
   flutter_deriv_api:
     git:
       url: git@github.com:deriv-com/flutter-deriv-api.git

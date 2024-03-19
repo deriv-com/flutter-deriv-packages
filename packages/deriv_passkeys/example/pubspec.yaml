@@ -32,20 +32,9 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v2.2.0
-  deriv_auth:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_auth
-      ref: deriv_auth-v4.1.1
-  deriv_env:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_env
-      ref: deriv_env-v0.0.1+1
+      ref: deriv_theme-v2.3.0
   deriv_passkeys:
     path: ../
-  flutter_secure_storage: ^8.0.0
   
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -81,5 +70,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - .env
