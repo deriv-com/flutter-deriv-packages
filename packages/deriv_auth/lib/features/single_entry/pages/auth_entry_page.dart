@@ -14,11 +14,11 @@ class AuthEntryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
-          BlocProvider<DerivAuthCubit>.value(
-            value: AuthData().data.derivAuthCubit,
+          BlocProvider<DerivAuthCubit>(
+            create: (context) => AuthData().data.derivAuthCubit,
           ),
-          BlocProvider<SocialAuthCubit>.value(
-            value: AuthData().data.socialAuthCubit,
+          BlocProvider<SocialAuthCubit>(
+            create: (context) => AuthData().data.socialAuthCubit,
           ),
         ],
         child: const GetStartedPage(),
