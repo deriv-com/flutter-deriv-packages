@@ -22,15 +22,6 @@ class AuthData {
   /// data getter
   AuthEntryModel get data => _data;
 
-  /// Cubit Getter
-  DerivAuthCubit get derivAuthCubit => DerivAuthCubit(
-        authService: AuthData().data.derivAuthService,
-      );
-
-  /// Social Auth Cubit Getter
-  SocialAuthCubit get socialAuthCubit =>
-      SocialAuthCubit(socialAuthService: AuthData().data.socialAuthService);
-
   /// data setter
   set data(AuthEntryModel data) {
     _data = data;

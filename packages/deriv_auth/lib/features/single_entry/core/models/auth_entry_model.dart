@@ -7,8 +7,8 @@ class AuthEntryModel {
   const AuthEntryModel({
     required this.getStartedPage,
     required this.loginPageModel,
-    required this.derivAuthService,
-    required this.socialAuthService,
+    required this.derivAuthCubit,
+    required this.socialAuthCubit,
     required this.signupPageModel,
     required this.settingPageModel,
     required this.resetPassPageModel,
@@ -21,7 +21,7 @@ class AuthEntryModel {
   final LoginPageModel loginPageModel;
 
   /// DerivAuthService
-  final DerivAuthService derivAuthService;
+  final DerivAuthCubit derivAuthCubit;
 
   /// SignupPage data model
   final SignupPageModel signupPageModel;
@@ -32,5 +32,5 @@ class AuthEntryModel {
   /// ResetPassPage data model
   final ResetPassPageModel resetPassPageModel;
 
-  final DerivSocialAuthService socialAuthService;
+  final SocialAuthCubit socialAuthCubit;
 }
