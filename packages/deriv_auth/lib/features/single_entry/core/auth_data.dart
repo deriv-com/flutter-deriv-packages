@@ -24,18 +24,7 @@ class AuthData {
 
   /// Cubit Getter
   DerivAuthCubit get derivAuthCubit => DerivAuthCubit(
-        authService: DerivAuthService(
-          jwtService: DerivJwtService(
-            repository: DerivJwtRepository(
-              client: AuthData().data.httpClient,
-              appToken: AuthData().data.appToken,
-              connectionInfo: AuthData().data.connectionInfo,
-            ),
-          ),
-          tokenService: DerivTokenService(AuthData().data.httpClient),
-          authRepository: AuthData().data.derivAuthRepository,
-          connectionInfo: AuthData().data.connectionInfo,
-        ),
+        authService: AuthData().data.derivAuthService,
       );
 
   /// Social Auth Cubit Getter
