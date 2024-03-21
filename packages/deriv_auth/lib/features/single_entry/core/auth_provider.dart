@@ -5,7 +5,7 @@ import 'package:deriv_auth/features/social_auth/cubit/social_auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AuthProvider {
+class AuthProvider extends StatelessWidget {
   AuthProvider({
     required this.widget,
     required this.derivAuthCubit,
