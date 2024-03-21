@@ -1,4 +1,5 @@
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// Auth Entry Model class
 class AuthEntryModel {
@@ -7,6 +8,7 @@ class AuthEntryModel {
     required this.getStartedPage,
     required this.loginPageModel,
     required this.derivAuthCubit,
+    required this.socialAuthCubit,
     required this.signupPageModel,
     required this.settingPageModel,
     required this.resetPassPageModel,
@@ -18,7 +20,7 @@ class AuthEntryModel {
   /// LoginPage data model
   final LoginPageModel loginPageModel;
 
-  /// DerivAuthCubit
+  /// DerivAuthService
   final DerivAuthCubit derivAuthCubit;
 
   /// SignupPage data model
@@ -29,4 +31,6 @@ class AuthEntryModel {
 
   /// ResetPassPage data model
   final ResetPassPageModel resetPassPageModel;
+
+  final SocialAuthCubit socialAuthCubit;
 }
