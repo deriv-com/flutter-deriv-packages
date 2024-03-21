@@ -1,3 +1,7 @@
+## 0.0.7+1
+
+ - **REFACTOR**(deriv_ui): update theme deps. ([db4c4bc2](https://github.com/regentmarkets/flutter-deriv-packages/commit/db4c4bc2a6d4f042ab624f781ea0dc5e837ed860))
+
 ## 0.0.7
 
  - **FIX**(deriv_ui): update deriv_theme ([#525](https://github.com/regentmarkets/flutter-deriv-packages/issues/525)). ([304a5b59](https://github.com/regentmarkets/flutter-deriv-packages/commit/304a5b59d1603196ae37f53a682db8de69bedcf0))

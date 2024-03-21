@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-03-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.1.2`](#deriv_localizations---v112)
+ - [`deriv_ui` - `v0.0.7+1`](#deriv_ui---v0071)
+ - [`deriv_auth` - `v6.3.3`](#deriv_auth---v632)
+ - [`deriv_widgetbook` - `v0.0.2+1`](#deriv_widgetbook---v0021)
+ - [`deriv_language_selector` - `v0.0.1+1`](#deriv_language_selector---v0011)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.3.2`
+ - `deriv_widgetbook` - `v0.0.2+1`
+ - `deriv_language_selector` - `v0.0.1+1`
+
+---
+
+#### `deriv_localizations` - `v1.1.2`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#534](https://github.com/regentmarkets/flutter-deriv-packages/issues/534)). ([bfe24625](https://github.com/regentmarkets/flutter-deriv-packages/commit/bfe24625b6c9076514f559d403f9ea7d339dc6be))
+
+#### `deriv_ui` - `v0.0.7+1`
+
+ - **REFACTOR**(deriv_ui): update theme deps. ([db4c4bc2](https://github.com/regentmarkets/flutter-deriv-packages/commit/db4c4bc2a6d4f042ab624f781ea0dc5e837ed860))
+
+
 ## 2024-03-12
 
 ### Changes
@@ -43,10 +80,6 @@ Packages with dependency updates only:
 
 #### `deriv_ui` - `v0.0.7`
 
-<<<<<<< HEAD
-=======
- - **FIX**(deriv_ui): update deriv_theme ([#525](https://github.com/regentmarkets/flutter-deriv-packages/issues/525)). ([304a5b59](https://github.com/regentmarkets/flutter-deriv-packages/commit/304a5b59d1603196ae37f53a682db8de69bedcf0))
->>>>>>> 48d45ba4626fe38f562e5fdcba78a6002468e03d
  - **FIX**(deriv_ui): update theme dependency ([#522](https://github.com/regentmarkets/flutter-deriv-packages/issues/522)). ([d00e3edf](https://github.com/regentmarkets/flutter-deriv-packages/commit/d00e3edfe08e861401c501b2ac1944a9d7af11f2))
  - **FEAT**(deriv_ui): add language selector component ([#509](https://github.com/regentmarkets/flutter-deriv-packages/issues/509)). ([bff66151](https://github.com/regentmarkets/flutter-deriv-packages/commit/bff661513f330d014154657fbf170b75512dc180))
 
