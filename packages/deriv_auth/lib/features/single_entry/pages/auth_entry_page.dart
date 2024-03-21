@@ -2,7 +2,6 @@ import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/features/single_entry/core/auth_data.dart';
 import 'package:deriv_auth/features/single_entry/features/get_started/pages/get_started_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// Auth entry page for single entry
 class AuthEntryPage extends StatelessWidget {
@@ -12,15 +11,5 @@ class AuthEntryPage extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => MultiBlocProvider(
-        providers: [
-          BlocProvider<DerivAuthCubit>(
-            create: (context) => AuthData().data.derivAuthCubit,
-          ),
-          BlocProvider<SocialAuthCubit>(
-            create: (context) => AuthData().data.socialAuthCubit,
-          ),
-        ],
-        child: const GetStartedPage(),
-      );
+  Widget build(BuildContext context) => const GetStartedPage();
 }
