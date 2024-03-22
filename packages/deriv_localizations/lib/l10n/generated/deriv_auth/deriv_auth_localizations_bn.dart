@@ -64,7 +64,7 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'একটি বৈধ ইমেল ঠিকানা লিখুন';
 
   @override
-  String get warnPasswordLength => 'আপনার 8-25 অক্ষর লিখতে হবে।';
+  String get warnPasswordLength => 'আপনি 6-25 অক্ষর লিখতে হবে।';
 
   @override
   String get labelResetPassword => 'পাসওয়ার্ড রিসেট';

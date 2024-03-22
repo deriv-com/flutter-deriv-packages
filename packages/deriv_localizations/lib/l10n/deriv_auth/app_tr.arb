@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Henüz bir hesabınız yok mu?",
   "actionCreateANewAccount": "Yeni bir hesap oluştur",
   "informInvalidEmailFormat": "Geçerli bir e-posta adresi girin",
-  "warnPasswordLength": "8-25 arası karakter girmelisiniz.",
+  "warnPasswordLength": "6-25 arası karakter girmelisiniz.",
   "labelResetPassword": "Şifreyi sıfırla",
   "labelChooseNewPass": "Yeni bir şifre seç",
   "labelCreatePass": "Şifre",

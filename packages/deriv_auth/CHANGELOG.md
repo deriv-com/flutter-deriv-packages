@@ -1,3 +1,41 @@
+## 6.3.3
+
+ - Update a dependency to the latest release.
+ 
+
+## 6.3.2
+
+ - Update a dependency to the latest release.
+
+## 6.3.1
+
+ - **FIX**: deriv_toke_service_test ([#519](https://github.com/regentmarkets/flutter-deriv-packages/issues/519)). ([25b9dc45](https://github.com/regentmarkets/flutter-deriv-packages/commit/25b9dc454c222bb7299d859a21cb1b3cb874c1bf))
+
+## 6.3.0
+
+ - **FEAT**(deriv_http_client): update to the latest deriv_http_client ([#501](https://github.com/regentmarkets/flutter-deriv-packages/issues/501)). ([d582995a](https://github.com/regentmarkets/flutter-deriv-packages/commit/d582995a226906c34c69c7716b3e5573c88c0c4e))
+
+## 6.2.1
+
+ - Update a dependency to the latest release.
+
+## 6.2.0
+
+ - **REFACTOR**(deriv_ui): remove example and android folder ([#503](https://github.com/regentmarkets/flutter-deriv-packages/issues/503)). ([8c90e199](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c90e1995a3a04c945923cb0f8f0e7480cde03b7))
+ - **FIX**(deriv_auth): endpoint change not reflecting in social login ([#498](https://github.com/regentmarkets/flutter-deriv-packages/issues/498)). ([32e33a46](https://github.com/regentmarkets/flutter-deriv-packages/commit/32e33a464092dcd570f5ef8d7524e0dc9b369566))
+ - **FIX**(deriv_auth): endpoint change not reflecting in social login ([#498](https://github.com/regentmarkets/flutter-deriv-packages/issues/498)). ([5714a5dd](https://github.com/regentmarkets/flutter-deriv-packages/commit/5714a5dd403c5fd0fc97d3ee634f9c76241b22da))
+ - **FEAT**(deriv_auth): single entry ([#420](https://github.com/regentmarkets/flutter-deriv-packages/issues/420)). ([19130046](https://github.com/regentmarkets/flutter-deriv-packages/commit/19130046f21d24a28a5e135914308a411ee762e3))
+ - **FEAT**(deriv_auth): single entry ([#420](https://github.com/regentmarkets/flutter-deriv-packages/issues/420)). ([e594c05b](https://github.com/regentmarkets/flutter-deriv-packages/commit/e594c05b87c05d189913a7de8b9e1e4e6d03b76a))
+
+## 6.1.1
+
+ - **FIX**(deriv_auth): endpoint change not reflecting in social login ([#498](https://github.com/regentmarkets/flutter-deriv-packages/issues/498)). ([5714a5dd](https://github.com/regentmarkets/flutter-deriv-packages/commit/5714a5dd403c5fd0fc97d3ee634f9c76241b22da))
+
+
+## 6.1.0
+
+ - **FEAT**(deriv_auth): single entry ([#420](https://github.com/regentmarkets/flutter-deriv-packages/issues/420)). ([e594c05b](https://github.com/regentmarkets/flutter-deriv-packages/commit/e594c05b87c05d189913a7de8b9e1e4e6d03b76a))
+
 ## 6.0.2
 
  - Update a dependency to the latest release.

@@ -64,7 +64,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Proszę wprowadzić prawidłowy adres e-mail';
 
   @override
-  String get warnPasswordLength => 'Wprowadź od 8 do 25 znaków.';
+  String get warnPasswordLength => 'Należy wprowadzić 6-25 znaków.';
 
   @override
   String get labelResetPassword => 'Zresetuj hasło';

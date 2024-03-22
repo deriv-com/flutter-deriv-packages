@@ -64,7 +64,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => '유효한 이메일 주소를 입력하세요';
 
   @override
-  String get warnPasswordLength => '8~25자의 문자를 입력해야 합니다.';
+  String get warnPasswordLength => '6-25자를 입력해야 합니다.';
 
   @override
   String get labelResetPassword => '비밀번호 재설정';

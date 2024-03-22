@@ -1,0 +1,39 @@
+name: deriv_widgetbook
+description: Storybook for Deriv UI widgets and components.
+publish_to: "none"
+version: 0.0.2+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  widgetbook_annotation: ^3.1.0
+  widgetbook: ^3.7.1
+  deriv_ui:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_ui
+      ref: deriv_ui-v0.0.7+1
+  deriv_theme:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_theme
+      ref: deriv_theme-v2.3.0
+  intl: ^0.18.0
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.1
+  widgetbook_generator: ^3.7.0
+  build_runner: ^2.4.8
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/

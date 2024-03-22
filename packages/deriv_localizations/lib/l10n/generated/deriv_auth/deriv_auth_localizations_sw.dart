@@ -64,7 +64,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Ingiza anwani halali ya barua pepe';
 
   @override
-  String get warnPasswordLength => 'Unapaswa kuingiza mchanganyiko wa tarakimu 8-25.';
+  String get warnPasswordLength => 'Unapaswa kuingiza herufi 6-25.';
 
   @override
   String get labelResetPassword => 'Rudisha nenosiri';

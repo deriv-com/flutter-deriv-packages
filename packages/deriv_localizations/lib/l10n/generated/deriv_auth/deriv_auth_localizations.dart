@@ -240,7 +240,7 @@ abstract class DerivAuthLocalizations {
   /// No description provided for @warnPasswordLength.
   ///
   /// In en, this message translates to:
-  /// **'You should enter 8-25 characters.'**
+  /// **'You should enter 6-25 characters.'**
   String get warnPasswordLength;
 
   /// No description provided for @labelResetPassword.

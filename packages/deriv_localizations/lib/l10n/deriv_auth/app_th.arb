@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "ยังไม่มีบัญชีใช่ไหม?",
   "actionCreateANewAccount": "สร้างบัญชีใหม่",
   "informInvalidEmailFormat": "ป้อนที่อยู่อีเมล์ที่ถูกต้อง",
-  "warnPasswordLength": "คุณควรป้อนอักขระ 8-25 ตัว",
+  "warnPasswordLength": "คุณควรป้อนอักขระ 6-25 ตัว",
   "labelResetPassword": "ตั้งค่ารหัสผ่าน",
   "labelChooseNewPass": "เลือกรหัสผ่านอันใหม่",
   "labelCreatePass": "รหัสผ่าน",

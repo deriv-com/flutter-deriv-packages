@@ -160,6 +160,9 @@ class Dimens {
   /// Size 48 icon.
   static const double iconSize48 = 48;
 
+  /// Size 48 icon.
+  static const double iconSize58 = 58;
+
   /// Size 64 icon.
   static const double iconSize64 = 64;
 

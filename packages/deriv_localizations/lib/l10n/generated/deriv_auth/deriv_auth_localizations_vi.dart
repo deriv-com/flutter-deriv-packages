@@ -64,7 +64,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Nhập địa chỉ email hợp lệ';
 
   @override
-  String get warnPasswordLength => 'Bạn nên nhập từ 8-25 ký tự.';
+  String get warnPasswordLength => 'Bạn nên nhập vào 6-25 ký tự.';
 
   @override
   String get labelResetPassword => 'Đặt lại mật khẩu';

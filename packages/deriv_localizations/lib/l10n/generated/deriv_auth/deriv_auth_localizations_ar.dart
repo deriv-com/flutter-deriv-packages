@@ -64,7 +64,7 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'أدخل عنوان بريد إلكتروني صالح';
 
   @override
-  String get warnPasswordLength => 'يجب إدخال 8-25 حرفًا.';
+  String get warnPasswordLength => 'يجب إدخال 6-25 حرفًا.';
 
   @override
   String get labelResetPassword => 'إعادة تعيين كلمة المرور';

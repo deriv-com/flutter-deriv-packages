@@ -64,7 +64,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Введите действительный адрес электронной почты';
 
   @override
-  String get warnPasswordLength => 'Вы должны ввести 8-25 символов.';
+  String get warnPasswordLength => 'Вы должны ввести 6-25 символов.';
 
   @override
   String get labelResetPassword => 'Сбросить пароль';

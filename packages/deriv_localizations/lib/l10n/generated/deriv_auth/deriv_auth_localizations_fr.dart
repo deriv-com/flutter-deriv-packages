@@ -28,10 +28,10 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get actionLogin => 'Connexion';
 
   @override
-  String get labelTwoFactorAuth => 'L\'Authentification deux facteurs';
+  String get labelTwoFactorAuth => 'Authentification à deux facteurs';
 
   @override
-  String get informEnterTwoFactorAuthCode => 'Saisissez le code à 6 chiffres de l\'application d\'authentification sur votre téléphone.';
+  String get informEnterTwoFactorAuthCode => 'Saisissez le code à 6 chiffres qui s\'affiche sur l\'application d\'authentification de votre téléphone.';
 
   @override
   String get labelTwoFactorAuthenticationCode => 'code 2FA';
@@ -52,7 +52,7 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get labelPassword => 'Mot de passe';
 
   @override
-  String get actionForgotPassword => 'Mot de passe oublié?';
+  String get actionForgotPassword => 'Mot de passe oublié ?';
 
   @override
   String get labelDontHaveAnAccountYet => 'Vous n\'avez pas encore de compte ?';
@@ -64,13 +64,13 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Saisissez une adresse e-mail valide';
 
   @override
-  String get warnPasswordLength => 'Vous devez saisir 8 à 25 caractères.';
+  String get warnPasswordLength => 'Vous devez saisir entre 6 à 25 caractères.';
 
   @override
   String get labelResetPassword => 'Réinitialiser le mot';
 
   @override
-  String get labelChooseNewPass => 'Choisir un nouveau mot de passe';
+  String get labelChooseNewPass => 'Définir un nouveau mot de passe';
 
   @override
   String get labelCreatePass => 'Mot de passe';
@@ -96,10 +96,10 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail => 'Nous vous enverrons des instructions par e-mail pour réinitialiser votre mot de passe.';
+  String get informResetPassByEmail => 'Nous vous enverrons des instructions par e-mail pour la réinitialisation de votre mot de passe.';
 
   @override
-  String get labelSelectCountry => 'Où habitez-vous?';
+  String get labelSelectCountry => 'Où résidez-vous ?';
 
   @override
   String get labelChooseCountry => 'Sélectionnez votre pays';
@@ -111,22 +111,22 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get actionNext => 'Suivant';
 
   @override
-  String get labelEmailIssueHeader => 'Si vous ne recevez pas un courriel de notre part dans les minutes qui suivent, il se peut que quelques événements se soient produits :';
+  String get labelEmailIssueHeader => 'Si vous ne recevez pas un courriel de notre part dans les minutes qui suivent, cela peut être dû aux raisons suivantes :';
 
   @override
-  String get labelEmailIssueSpam => 'L\'e-mail se trouve dans votre dossier spam (Parfois des choses s\'y perdent).';
+  String get labelEmailIssueSpam => 'L\'e-mail se trouve dans votre dossier spam (parfois des choses s\'y perdent).';
 
   @override
-  String get labelEmailIssueWrongEmail => 'Vous nous avez accidentellement donné une autre adresse électronique (généralement une adresse professionnelle ou personnelle au lieu de celle que vous vouliez).';
+  String get labelEmailIssueWrongEmail => 'Vous nous avez involontairement fourni une autre adresse électronique (généralement une adresse professionnelle ou personnelle différente de celle que vous vouliez fournir).';
 
   @override
-  String get labelEmailIssueTypo => 'L\'adresse email que vous avez entré comportait une erreur ou une faute de frappe (cela arrive aux meilleurs d\'entre nous).';
+  String get labelEmailIssueTypo => 'L\'adresse e-mail que vous avez fournie comportait une erreur ou une faute de frappe (cela arrive même aux meilleurs d\'entre nous).';
 
   @override
   String get labelEmailIssueFirewall => 'Nous ne parvenons pas à envoyer d\'e-mail à cette adresse (généralement en raison de pare-feu ou de filtrage).';
 
   @override
-  String get actionReenterEmail => 'Re-saisissez e-mail et réessayez';
+  String get actionReenterEmail => 'Saisissez à nouveau votre e-mail et réessayez';
 
   @override
   String get labelKeepPassword => 'Protégez votre compte avec un mot de passe';
@@ -159,7 +159,7 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get labelHaveAccount => 'Vous avez déjà un compte ?';
 
   @override
-  String get actionCreateAccount => 'Ouvrir un compte démo';
+  String get actionCreateAccount => 'Créer un compte démo';
 
   @override
   String get informInvalidReferralCode => 'Le code de parrainage que vous avez saisi n\'est pas valide. Vérifiez et réessayez.';
@@ -200,7 +200,7 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'Au moins un chiffre';
 
   @override
-  String get warnPasswordContainsSymbol => 'Utilisez des symboles pour un mot de passe fort.';
+  String get warnPasswordContainsSymbol => 'Utilisez des symboles pour obtenir un mot de passe fort.';
 
   @override
   String get labelReferralCode => 'Code de parrainage';
@@ -218,7 +218,7 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get informDeactivatedAccount => 'Votre compte est désactivé.';
 
   @override
-  String get informFailedAuthorization => 'L\'autorisation a échoué.';
+  String get informFailedAuthorization => 'Échec de l\'autorisation.';
 
   @override
   String get informInvalidResidence => 'Résidence non valide.';
@@ -254,13 +254,13 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get labelDeveloper => 'Développeur';
 
   @override
-  String get labelEndpoint => 'Point terminal';
+  String get labelEndpoint => 'Point de terminaison';
 
   @override
   String get semanticEndpoint => 'Point de terminaison';
 
   @override
-  String get warnInvalidEndpoint => 'identifiant point terminal';
+  String get warnInvalidEndpoint => 'point de terminaison non valide';
 
   @override
   String get labelApplicationID => 'Identifiant de l\'application';
@@ -269,5 +269,5 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get semanticApplicationID => 'Identifiant de l\'application';
 
   @override
-  String get warnInvalidApplicationID => 'identifiant application ID';
+  String get warnInvalidApplicationID => 'identifiant de l\'application non valide';
 }

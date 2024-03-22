@@ -63,6 +63,14 @@ class _NumberPadKeypadWidgetState extends State<_NumberPadKeypadWidget> {
     if (validate == null) {
       return true;
     } else {
+      if (ExchangeNotifier.of(context) != null) {
+        final String? amountInString =
+            ExchangeNotifier.of(context)?.finalAmount() != 0.0
+                ? ExchangeNotifier.of(context)?.finalAmount().toString()
+                : '';
+        final NumpadValidationText? result = validate(amountInString ?? '');
+        return result == null || result.enableActionButton;
+      }
       final NumpadValidationText? result =
           validate(provider.firstInputController!.text);
       final bool noError = result == null || result.enableActionButton;
