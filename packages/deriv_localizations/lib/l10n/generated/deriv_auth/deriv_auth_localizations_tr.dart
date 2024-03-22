@@ -64,7 +64,7 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Geçerli bir e-posta adresi girin';
 
   @override
-  String get warnPasswordLength => '8-25 arası karakter girmelisiniz.';
+  String get warnPasswordLength => '6-25 arası karakter girmelisiniz.';
 
   @override
   String get labelResetPassword => 'Şifreyi sıfırla';
