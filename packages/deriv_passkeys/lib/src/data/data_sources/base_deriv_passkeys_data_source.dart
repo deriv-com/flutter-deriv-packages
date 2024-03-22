@@ -10,7 +10,7 @@ import 'package:flutter_deriv_api/basic_api/generated/passkeys_register_send.dar
 /// [BaseDerivPasskeysDataSource] defines a contract for all DerivPasskeys data sources.
 ///
 /// All DerivPasskeys data sources should extend this class, and implement its abstract methods.
-abstract base class BaseDerivPasskeysDataSource {
+abstract class BaseDerivPasskeysDataSource {
   /// Creates a [BaseDerivPasskeysDataSource].
   BaseDerivPasskeysDataSource(this.mapper);
 

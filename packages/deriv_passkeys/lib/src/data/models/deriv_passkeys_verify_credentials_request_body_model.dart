@@ -9,7 +9,8 @@ final class DerivPasskeysVerifyCredentialsRequestBodyModel {
 
   /// Creates a [DerivPasskeysVerifyCredentialsRequestBodyModel] from a JSON object.
   factory DerivPasskeysVerifyCredentialsRequestBodyModel.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       DerivPasskeysVerifyCredentialsRequestBodyModel(
         appId: json['app_id'] as String,
         publicKeyCredential:

@@ -1,6 +1,7 @@
-import 'package:deriv_passkeys/src/data/exceptions/platform_exceptions.dart';
+import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/domain/entities/passkeys_connection_info_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
+import 'package:deriv_passkeys/src/exceptions/server_exceptions.dart';
 import 'package:deriv_passkeys/src/interactor/services/deriv_passkeys_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,29 +42,28 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         jwtToken: jwtToken,
         passkeysConnectionInfoEntity: connectionInfo,
       )
-          .then((DerivPasskeysVerifyCredentialsResponseEntity?
+          .then((DerivPasskeysVerifyCredentialsResponseEntity
               derivPasskeysVerifyCredentialsResponseEntity) {
-        if (derivPasskeysVerifyCredentialsResponseEntity != null &&
-            derivPasskeysVerifyCredentialsResponseEntity.success) {
+        emit(
+          DerivPasskeysCredentialVerifiedState(
+            token: derivPasskeysVerifyCredentialsResponseEntity.token,
+          ),
+        );
+      }).catchError((Object error) {
+        if (error is CanceledPlatformException) {
+          emit(DerivPasskeysLoadedState(passkeysList));
+        } else if (error is NoCredentialPlatformException) {
+          emit(const NoCredentialErrorState());
+        } else if (error is ServerException) {
           emit(
-            DerivPasskeysCredentialVerifiedState(
-              token: derivPasskeysVerifyCredentialsResponseEntity.token,
+            DerivPasskeysErrorState(
+              error.message,
+              errorCode: error.errorCode,
             ),
           );
         } else {
           emit(const DerivPasskeysErrorState('Error verifying passkey'));
-          return;
         }
-      }).catchError((Object error) {
-        if (error is CanceledPlatformException) {
-          emit(DerivPasskeysLoadedState(passkeysList));
-          return;
-        }
-        if (error is NoCredentialPlatformException) {
-          emit(const NoCredentialErrorState());
-          return;
-        }
-        emit(DerivPasskeysErrorState(error.toString()));
       });
     });
 
@@ -72,11 +72,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
             Emitter<DerivPasskeysState> emit) async {
       await derivPasskeysService
           .createCredential()
-          .then((DerivPasskeyEntity? credential) async {
-        if (credential == null) {
-          emit(const DerivPasskeysErrorState('Error creating passkey'));
-          return;
-        }
+          .then((DerivPasskeyEntity credential) async {
         emit(DerivPasskeysCreatedSuccessfullyState());
         final DerivPasskeyEntity derivPasskeyEntity = credential;
         passkeysList.add(derivPasskeyEntity);
@@ -86,7 +82,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
           emit(DerivPasskeysLoadedState(passkeysList));
           return;
         }
-        emit(DerivPasskeysErrorState(error.toString()));
+        emit(const DerivPasskeysErrorState('Error creating passkey'));
       });
     });
 

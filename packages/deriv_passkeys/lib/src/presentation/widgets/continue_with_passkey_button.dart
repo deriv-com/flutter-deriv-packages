@@ -36,11 +36,17 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                 },
               );
             } else {
+              // TODO(bassam): localize these Strings.
+              const String title = 'An unexpected error occurred!';
+              String content = 'Please try again later.';
+              if (state.errorCode == 'PASSKEYS_SERVICE_ERROR') {
+                content = state.message;
+              }
               showAlertDialog(
                 context: context,
                 // TODO(bassam): localize the title, content, and positiveActionLabel
-                title: 'An unexpected error occurred!',
-                content: const Text('Please try again later.'),
+                title: title,
+                content: Text(content),
                 positiveActionLabel: 'OK',
                 onPositiveActionPressed: () {
                   Navigator.of(context).pop();

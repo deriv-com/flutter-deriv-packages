@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 /// [DerivPasskeysRegisterOptionsEntity] DTO for DerivPasskeysOptions data coming from the WebsocketAPI.
-final class DerivPasskeysRegisterOptionsEntity {
+final class DerivPasskeysRegisterOptionsEntity extends Equatable {
   /// Creates a [DerivPasskeysRegisterOptionsEntity].
-  DerivPasskeysRegisterOptionsEntity({
+  const DerivPasskeysRegisterOptionsEntity({
     required this.options,
   });
 
@@ -15,4 +17,7 @@ final class DerivPasskeysRegisterOptionsEntity {
 
   /// Creates a JSON object from a [DerivPasskeysRegisterOptionsEntity].
   Map<String, dynamic> toJson() => options;
+
+  @override
+  List<Object?> get props => <Object?>[options];
 }

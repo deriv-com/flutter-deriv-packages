@@ -1,14 +1,15 @@
+import 'package:equatable/equatable.dart';
+
 /// A Dart class that contains the response from the REST API to verify credentials.
-final class DerivPasskeysVerifyCredentialsResponseModel {
+final class DerivPasskeysVerifyCredentialsResponseModel extends Equatable {
   /// Creates a [DerivPasskeysVerifyCredentialsResponseModel].
-  DerivPasskeysVerifyCredentialsResponseModel({
+  const DerivPasskeysVerifyCredentialsResponseModel({
     required this.response,
-    required this.success,
   });
 
   /// contains the response from the REST API to verify credentials.
   final Map<String, dynamic> response;
 
-  /// contains the success status of the response from the REST API to verify credentials.
-  final bool success;
+  @override
+  List<Object?> get props => <Object?>[response];
 }

@@ -11,7 +11,7 @@ final class DerivPasskeysRegisterOptionsModel {
       DerivPasskeysRegisterOptionsModel(options: json);
 
   /// [options] is the challenge string.
-  final Map<String, dynamic> options;
+  Map<String, dynamic> options;
 
   /// Creates a JSON object from a [DerivPasskeysRegisterOptionsModel].
   Map<String, dynamic> toJson() => options;

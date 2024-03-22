@@ -14,7 +14,7 @@ import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_verify_credent
 import 'package:flutter_deriv_api/basic_api/generated/passkeys_register_send.dart';
 
 /// [DerivPasskeysMapper] maps [DerivPasskeysOptionsModel] to [DerivPasskeysOptionsEntity].
-final class DerivPasskeysMapper {
+class DerivPasskeysMapper {
   /// Maps [DerivPasskeysOptionsModel] to [DerivPasskeysOptionsEntity].
   DerivPasskeysOptionsEntity mapDerivPasskeysOptionsModel(
           DerivPasskeysOptionsModel model) =>
@@ -52,7 +52,6 @@ final class DerivPasskeysMapper {
               DerivPasskeysVerifyCredentialsResponseModel model) =>
           DerivPasskeysVerifyCredentialsResponseEntity(
             token: (model.response['tokens'] as List<dynamic>).first['token'],
-            success: model.success,
           );
 
   /// Maps [ConnectionInfoEntity] to [PasskeysConnectionInfoModel].

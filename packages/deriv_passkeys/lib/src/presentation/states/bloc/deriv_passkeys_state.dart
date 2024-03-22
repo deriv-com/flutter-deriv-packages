@@ -48,13 +48,16 @@ class DerivPasskeysNotSupportedState extends DerivPasskeysState {}
 /// [DerivPasskeysErrorState] represents the error state within the DerivPasskeys flow.
 class DerivPasskeysErrorState extends DerivPasskeysState {
   /// Creates a [DerivPasskeysErrorState].
-  const DerivPasskeysErrorState(this.message);
+  const DerivPasskeysErrorState(this.message, {this.errorCode = ''});
 
   /// The error message.
   final String message;
 
+  /// The error code
+  final String errorCode;
+
   @override
-  List<Object> get props => <Object>[message];
+  List<Object> get props => <Object>[message, errorCode];
 }
 
 /// [NoCredentialErrorState] represents the no credential error state within the DerivPasskeys flow.

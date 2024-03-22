@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 /// A dart class that serves as a request body for the `DerivPasskeysVerifyCredentials` request.
-final class DerivPasskeysVerifyCredentialsRequestBodyEntity {
+final class DerivPasskeysVerifyCredentialsRequestBodyEntity extends Equatable {
   /// Creates a [DerivPasskeysVerifyCredentialsRequestBodyEntity].
-  DerivPasskeysVerifyCredentialsRequestBodyEntity({
+  const DerivPasskeysVerifyCredentialsRequestBodyEntity({
     required this.appId,
     required this.publicKeyCredential,
     required this.type,
@@ -32,4 +34,7 @@ final class DerivPasskeysVerifyCredentialsRequestBodyEntity {
         'publicKeyCredential': publicKeyCredential,
         'type': type,
       };
+
+  @override
+  List<Object?> get props => <Object?>[appId, publicKeyCredential, type];
 }

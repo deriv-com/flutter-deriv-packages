@@ -16,7 +16,7 @@ class UnorderedList extends StatelessWidget {
     final List<Widget> widgetList = <Widget>[];
     for (final String text in texts) {
       widgetList
-        ..add(_UnorderedListItem(text, style))
+        ..add(UnorderedListItem(text, style))
         ..add(const SizedBox(height: 5));
     }
 
@@ -25,9 +25,16 @@ class UnorderedList extends StatelessWidget {
   }
 }
 
-class _UnorderedListItem extends StatelessWidget {
-  const _UnorderedListItem(this.text, this.textStyle);
+/// A widget that displays an unordered list item.
+@visibleForTesting
+class UnorderedListItem extends StatelessWidget {
+  /// Creates an [UnorderedListItem].
+  const UnorderedListItem(this.text, this.textStyle);
+
+  /// The text to display.
   final String text;
+
+  /// The style to use for the text.
   final TextStyle? textStyle;
 
   @override

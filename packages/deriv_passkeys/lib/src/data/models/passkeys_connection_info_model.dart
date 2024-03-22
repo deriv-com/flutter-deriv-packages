@@ -11,4 +11,14 @@ class PasskeysConnectionInfoModel {
 
   /// Deriv client app ID.
   String appId;
+
+  /// Copies the current instance with some new values.
+  PasskeysConnectionInfoModel copyWith({
+    String? endpoint,
+    String? appId,
+  }) =>
+      PasskeysConnectionInfoModel(
+        endpoint: endpoint ?? this.endpoint,
+        appId: appId ?? this.appId,
+      );
 }

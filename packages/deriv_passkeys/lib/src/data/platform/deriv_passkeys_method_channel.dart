@@ -1,10 +1,10 @@
-import 'package:deriv_passkeys/src/data/exceptions/platform_exceptions.dart';
+import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/domain/platform/base_deriv_passkeys_method_channel.dart';
 import 'package:flutter/services.dart';
 
-/// An implementation of [FlutterPasskeyPlatform] that uses method channels.
+/// An implementation of [BaseDerivPasskeysMethodChannel] that uses method channels.
 class MethodChannelDerivPasskeys extends BaseDerivPasskeysMethodChannel {
-  /// Constructs a [MethodChannelFlutterPasskey] with an optional [MethodChannel];
+  /// Constructs a [MethodChannelDerivPasskeys] with an optional [MethodChannel];
   MethodChannelDerivPasskeys({
     MethodChannel? channel,
   }) : methodChannel = channel ?? const MethodChannel('deriv_passkeys');

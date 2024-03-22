@@ -1,17 +1,15 @@
-import 'package:deriv_passkeys/src/data/data_sources/base_deriv_passkeys_data_source.dart';
-import 'package:deriv_passkeys/src/data/mappers/deriv_passkeys_mapper.dart';
+import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/data/models/deriv_passkey_model.dart';
-import 'package:deriv_passkeys/src/data/models/deriv_passkeys_options_model.dart';
-import 'package:deriv_passkeys/src/data/models/deriv_passkeys_register_options_model.dart';
-import 'package:deriv_passkeys/src/data/repositories/deriv_passkeys_repository.dart';
 import 'package:deriv_passkeys/src/data/platform/deriv_passkeys_method_channel.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
+import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_verify_credentials_response_entity.dart';
 import 'package:deriv_passkeys/src/domain/platform/base_deriv_passkeys_method_channel.dart';
-import 'package:deriv_passkeys/interactor/services/deriv_passkeys_service.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_deriv_api/basic_api/generated/passkeys_register_send.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
+import '../data/deriv_passkeys_data_source_mock_setup.dart';
 
 class MockBaseDerivPasskeysMethodChannel
     with MockPlatformInterfaceMixin
@@ -29,91 +27,12 @@ class MockBaseDerivPasskeysMethodChannel
   Future<String?> createCredential(String options) =>
       mockCreateCredential != null
           ? mockCreateCredential!(options)
-          : Future<String?>.value('42');
+          : Future<String?>.value('{}');
 
   @override
   Future<String?> getCredential(String options) => mockGetCredential != null
       ? mockGetCredential!(options)
-      : Future<String?>.value('42');
-}
-
-final class MockDerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
-  MockDerivPasskeysDataSource(super.mapper);
-
-  @override
-  Future<DerivPasskeysOptionsModel> getOptions() =>
-      Future<DerivPasskeysOptionsModel>.value(DerivPasskeysOptionsModel(
-        challenge: 'challenge',
-        rpId: 'rpId',
-        allowCredentials: <dynamic>[],
-        userVerification: 'userVerification',
-        timeout: 18000,
-      ));
-
-  @override
-  Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions() =>
-      Future<DerivPasskeysRegisterOptionsModel>.value(
-          DerivPasskeysRegisterOptionsModel(
-        options: <String, dynamic>{
-          'publicKey': <String, dynamic>{
-            'rp': <String, dynamic>{
-              'id': 'id',
-              'name': 'name',
-            },
-            'user': <String, dynamic>{
-              'id': 'id',
-              'name': 'name',
-              'displayName': 'displayName',
-            },
-            'challenge': 'challenge',
-            'pubKeyCredParams': <dynamic>[
-              <String, dynamic>{
-                'type': 'type',
-                'alg': -1,
-              }
-            ],
-            'timeout': 18000,
-            'attestation': 'attestation',
-            'extensions': <String, dynamic>{},
-          }
-        },
-      ));
-
-  @override
-  Future<DerivPasskeyModel> registerCredentials(
-          PasskeysRegisterRequest request) =>
-      Future<DerivPasskeyModel>.value(
-        const DerivPasskeyModel(
-            createdAt: 0,
-            id: 'id',
-            lastUsed: 0,
-            name: 'name',
-            passkeyId: '',
-            storedOn: ''),
-      );
-
-  @override
-  Future<DerivPasskeysVerifyCredentialsResponse> verifyCredentials(
-          DerivPasskeysVerifyCredentialsRequestBody body) =>
-      Future<DerivPasskeysVerifyCredentialsResponse>.value(
-        DerivPasskeysVerifyCredentialsResponse(
-          success: true,
-        ),
-      );
-
-  @override
-  Future<List<DerivPasskeyModel>> getPasskeysList() =>
-      Future<List<DerivPasskeyModel>>.value(
-        <DerivPasskeyModel>[
-          const DerivPasskeyModel(
-              createdAt: 0,
-              id: 'id',
-              lastUsed: 0,
-              name: 'name',
-              passkeyId: '',
-              storedOn: ''),
-        ],
-      );
+      : Future<String?>.value('{}');
 }
 
 void main() {
@@ -126,13 +45,14 @@ void main() {
 
   group('DerivPasskeys', () {
     late DerivPasskeysService derivPasskeysService;
+    final MockDerivPasskeysDataSource mockDerivPasskeysDataSource =
+        MockDerivPasskeysDataSource();
 
     setUp(() {
+      derivPasskeysDataSourceMockSetup();
       derivPasskeysService = DerivPasskeysService(
         DerivPasskeysRepository(
-          MockDerivPasskeysDataSource(
-            DerivPasskeysMapper(),
-          ),
+          mockDerivPasskeysDataSource,
         ),
       );
       BaseDerivPasskeysMethodChannel.instance =
@@ -176,34 +96,84 @@ void main() {
     });
 
     test('createCredential returns response if not null', () async {
-      final DerivPasskeyEntity? response =
+      when(() => mockDerivPasskeysDataSource.getRegisterOptions())
+          .thenAnswer((_) async => derivPasskeysRegisterOptionsModel);
+      when(() => mockDerivPasskeysDataSource.registerCredentials(
+            any(),
+          )).thenAnswer((_) async => derivPasskeyModel);
+      final DerivPasskeyEntity response =
           await derivPasskeysService.createCredential();
       expect(response, isNotNull);
+      expect(response, isA<DerivPasskeyEntity>());
     });
 
     test('createCredential throws PlatformException if response is null',
         () async {
+      when(() => mockDerivPasskeysDataSource.getRegisterOptions())
+          .thenAnswer((_) async => derivPasskeysRegisterOptionsModel);
+
       BaseDerivPasskeysMethodChannel
           .instance = MockBaseDerivPasskeysMethodChannel()
         ..mockCreateCredential = (String options) => Future<String?>.value();
-
-      expect(() => derivPasskeysService.createCredential(),
-          throwsA(isInstanceOf<PlatformException>()));
+      expect(
+        () => derivPasskeysService.createCredential(),
+        throwsA(isA<PlatformException>()),
+      );
     });
 
-    test('getCredential returns response if not null', () async {
-      final String response = await derivPasskeysService.getCredential();
-      expect(response, '42');
+    test('verifyCredential returns response if not null', () async {
+      when(() => mockDerivPasskeysDataSource.getOptions(
+            passkeysConnectionInfoModel:
+                any(named: 'passkeysConnectionInfoModel'),
+          )).thenAnswer(
+        (_) async => derivPasskeysOptionsModel,
+      );
+      when(() => mockDerivPasskeysDataSource.verifyCredentials(
+                requestBodyModel: any(named: 'requestBodyModel'),
+                jwtToken: any(named: 'jwtToken'),
+                passkeysConnectionInfoModel:
+                    any(named: 'passkeysConnectionInfoModel'),
+                userAgent: any(named: 'userAgent'),
+              ))
+          .thenAnswer((_) async => derivPasskeysVerifyCredentialsResponseModel);
+      final DerivPasskeysVerifyCredentialsResponseEntity response =
+          await derivPasskeysService.verifyCredential(
+        jwtToken: jwtToken,
+        passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
+      );
+      expect(response, isNotNull);
+      expect(response, isA<DerivPasskeysVerifyCredentialsResponseEntity>());
     });
 
-    test('getCredential throws PlatformException if response is null',
+    test('verifyCredential throws PlatformException if response is null',
         () async {
+      when(() => mockDerivPasskeysDataSource.getOptions(
+            passkeysConnectionInfoModel:
+                any(named: 'passkeysConnectionInfoModel'),
+          )).thenAnswer(
+        (_) async => derivPasskeysOptionsModel,
+      );
       BaseDerivPasskeysMethodChannel.instance =
           MockBaseDerivPasskeysMethodChannel()
             ..mockGetCredential = (String options) => Future<String?>.value();
 
-      expect(() => derivPasskeysService.getCredential(),
+      expect(
+          () => derivPasskeysService.verifyCredential(
+                jwtToken: jwtToken,
+                passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
+              ),
           throwsA(isInstanceOf<PlatformException>()));
+    });
+    test('getPasskeysList returns response if not null', () async {
+      when(() => mockDerivPasskeysDataSource.getPasskeysList())
+          .thenAnswer((_) async => <DerivPasskeyModel>[derivPasskeyModel]);
+      final List<DerivPasskeyEntity> response = await DerivPasskeysService(
+        DerivPasskeysRepository(
+          mockDerivPasskeysDataSource,
+        ),
+      ).getPasskeysList();
+      expect(response, isNotNull);
+      expect(response, isA<List<DerivPasskeyEntity>>());
     });
   });
 }

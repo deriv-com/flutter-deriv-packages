@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:deriv_passkeys/src/data/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/domain/base_repositories/base_deriv_passkeys_repository.dart';
 import 'package:deriv_passkeys/src/domain/entities/passkeys_connection_info_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
@@ -41,43 +40,36 @@ class DerivPasskeysService {
   }
 
   /// Creates a passkey credential.
-  Future<DerivPasskeyEntity?> createCredential() async {
-    try {
-      final Map<String, dynamic> getRegisterOptionsResult =
-          (await repository.getRegisterOptions()).options;
-      final Map<String, String> publicKeyCredentialUserEntityJson =
-          <String, String>{
-        'id': _base64UrlEncodeString(
-            getRegisterOptionsResult['user']['id'].toString()),
-        'name': getRegisterOptionsResult['user']['name'],
-        'displayName': getRegisterOptionsResult['user']['displayName']
-      };
+  Future<DerivPasskeyEntity> createCredential() async {
+    final Map<String, dynamic> getRegisterOptionsResult =
+        (await repository.getRegisterOptions()).options;
+    final Map<String, String> publicKeyCredentialUserEntityJson =
+        <String, String>{
+      'id': _base64UrlEncodeString(
+          getRegisterOptionsResult['user']['id'].toString()),
+      'name': getRegisterOptionsResult['user']['name'],
+      'displayName': getRegisterOptionsResult['user']['displayName']
+    };
 
-      getRegisterOptionsResult['user'] = publicKeyCredentialUserEntityJson;
+    getRegisterOptionsResult['user'] = publicKeyCredentialUserEntityJson;
 
-      final String options = jsonEncode(getRegisterOptionsResult);
-      final String? credentials = await BaseDerivPasskeysMethodChannel.instance
-          .createCredential(options);
-      if (credentials == null) {
-        throw PlatformException(
-            code: 'null-response',
-            message: 'Unable to get response from Passkey.');
-      }
-      final Map<String, dynamic> decodedCredentials = jsonDecode(credentials);
-      final DerivPasskeyEntity getRegisterPasskeysResult =
-          await repository.registerCredentials(
-        DerivPasskeysRegisterCredentialsEntity(
-          publicKeyCredential: decodedCredentials,
-          name: 'Passkey',
-        ),
-      );
-      return getRegisterPasskeysResult;
-    } on PlatformException catch (e) {
-      if (e is CanceledPlatformException) {
-        rethrow;
-      }
-      return null;
+    final String options = jsonEncode(getRegisterOptionsResult);
+    final String? credentials =
+        await BaseDerivPasskeysMethodChannel.instance.createCredential(options);
+    if (credentials == null) {
+      throw PlatformException(
+          code: 'null-response',
+          message: 'Unable to get response from Passkey.');
     }
+    final Map<String, dynamic> decodedCredentials = jsonDecode(credentials);
+    final DerivPasskeyEntity getRegisterPasskeysResult =
+        await repository.registerCredentials(
+      DerivPasskeysRegisterCredentialsEntity(
+        publicKeyCredential: decodedCredentials,
+        name: 'Passkey',
+      ),
+    );
+    return getRegisterPasskeysResult;
   }
 
   /// Gets a list of passkeys.
@@ -88,50 +80,41 @@ class DerivPasskeysService {
   }
 
   /// Gets a passkey credential.
-  Future<DerivPasskeysVerifyCredentialsResponseEntity?> verifyCredential({
+  Future<DerivPasskeysVerifyCredentialsResponseEntity> verifyCredential({
     required String jwtToken,
     required PasskeysConnectionInfoEntity passkeysConnectionInfoEntity,
     String? userAgent,
   }) async {
-    try {
-      final Map<String, dynamic> getOptionsResult =
-          (await repository.getOptions(
-        passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
-      ))
-              .toJson();
-      final String options = jsonEncode(getOptionsResult);
+    final Map<String, dynamic> getOptionsResult = (await repository.getOptions(
+      passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
+    ))
+        .toJson();
+    final String options = jsonEncode(getOptionsResult);
 
-      final String? response =
-          await BaseDerivPasskeysMethodChannel.instance.getCredential(options);
+    final String? response =
+        await BaseDerivPasskeysMethodChannel.instance.getCredential(options);
 
-      if (response == null) {
-        throw PlatformException(
-            code: 'null-response',
-            message: 'Unable to get response from Passkey.');
-      }
-
-      final Map<String, dynamic> decodedResponse = jsonDecode(response);
-
-      final DerivPasskeysVerifyCredentialsResponseEntity
-          getVerifyCredentialsResult = await repository.verifyCredentials(
-        requestBodyEntity: DerivPasskeysVerifyCredentialsRequestBodyEntity(
-          appId: passkeysConnectionInfoEntity.appId,
-          publicKeyCredential: decodedResponse,
-          type: 'passkeys',
-        ),
-        jwtToken: jwtToken,
-        passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
-        userAgent: userAgent,
-      );
-
-      return getVerifyCredentialsResult;
-    } on PlatformException catch (e) {
-      if (e is NoCredentialPlatformException ||
-          e is CanceledPlatformException) {
-        rethrow;
-      }
-      return null;
+    if (response == null) {
+      throw PlatformException(
+          code: 'null-response',
+          message: 'Unable to get response from Passkey.');
     }
+
+    final Map<String, dynamic> decodedResponse = jsonDecode(response);
+
+    final DerivPasskeysVerifyCredentialsResponseEntity
+        getVerifyCredentialsResult = await repository.verifyCredentials(
+      requestBodyEntity: DerivPasskeysVerifyCredentialsRequestBodyEntity(
+        appId: passkeysConnectionInfoEntity.appId,
+        publicKeyCredential: decodedResponse,
+        type: 'passkeys',
+      ),
+      jwtToken: jwtToken,
+      passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
+      userAgent: userAgent,
+    );
+
+    return getVerifyCredentialsResult;
   }
 }
 

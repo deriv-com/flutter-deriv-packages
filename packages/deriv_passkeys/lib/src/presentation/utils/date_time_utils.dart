@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 ///returns DateTime from timestamp
 DateTime dateTimeFromTimestamp(int timestamp) =>
     DateTime.fromMillisecondsSinceEpoch(timestamp);
@@ -7,12 +9,14 @@ DateTime dateTimeFromTimestamp(int timestamp) =>
 String formattedDate(DateTime date) {
   final String day = date.day.toString();
   final String year = date.year.toString();
-  final String suffix = _getDaySuffix(date.day);
-  final String monthName = _getMonthName(date.month);
+  final String suffix = getDaySuffix(date.day);
+  final String monthName = getMonthName(date.month);
   return '$monthName $day$suffix, $year';
 }
 
-String _getDaySuffix(int day) {
+///returns day suffix
+@visibleForTesting
+String getDaySuffix(int day) {
   if (day >= 11 && day <= 13) {
     return 'th';
   }
@@ -28,7 +32,9 @@ String _getDaySuffix(int day) {
   }
 }
 
-String _getMonthName(int month) {
+///returns month name
+@visibleForTesting
+String getMonthName(int month) {
   switch (month) {
     case 1:
       return 'January';

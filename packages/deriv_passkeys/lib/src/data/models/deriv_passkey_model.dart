@@ -53,12 +53,6 @@ class DerivPasskeyModel extends Equatable {
   final String storedOn;
 
   @override
-  List<Object?> get props => <Object?>[
-        createdAt,
-        id,
-        lastUsed,
-        name,
-        passkeyId,
-        storedOn,
-      ];
+  List<Object?> get props =>
+      <Object?>[createdAt, id, lastUsed, name, passkeyId, storedOn];
 }

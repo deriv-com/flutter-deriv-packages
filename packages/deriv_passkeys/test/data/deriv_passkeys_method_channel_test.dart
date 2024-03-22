@@ -1,4 +1,5 @@
 import 'package:deriv_passkeys/src/data/platform/deriv_passkeys_method_channel.dart';
+import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,8 +16,13 @@ class MockMethodChannel extends MethodChannel {
         return '42' as T?;
       case 'createCredential':
         final String options = arguments['options'];
-        if (options == 'valid options') {
+        if (options == 'valid_options') {
           return 'credential created' as T?;
+        } else if (options == 'user_cancelled') {
+          throw PlatformException(
+            code: 'CreateCredentialCancellationException',
+            message: 'CreateCredentialCancellationException',
+          );
         } else {
           throw PlatformException(
             code: 'invalid_argument',
@@ -25,8 +31,18 @@ class MockMethodChannel extends MethodChannel {
         }
       case 'getCredential':
         final String options = arguments['options'];
-        if (options == 'valid options') {
+        if (options == 'valid_options') {
           return 'credential retrieved' as T?;
+        } else if (options == 'user_cancelled') {
+          throw PlatformException(
+            code: 'GetCredentialCancellationException',
+            message: 'GetCredentialCancellationException',
+          );
+        } else if (options == 'no_credential') {
+          throw PlatformException(
+            code: 'NoCredentialException',
+            message: 'GetCredentialCancellationException',
+          );
         } else {
           throw PlatformException(
             code: 'invalid_argument',
@@ -68,9 +84,18 @@ void main() {
   });
 
   test('createCredential with valid options', () async {
-    const String options = 'valid options';
+    const String options = 'valid_options';
     final String? response = await platform.createCredential(options);
     expect(response, 'credential created');
+  });
+
+  test('createCredential with user cancelled throws CanceledPlatformException',
+      () {
+    const String options = 'user_cancelled';
+    expect(
+      () => platform.createCredential(options),
+      throwsA(isA<CanceledPlatformException>()),
+    );
   });
 
   test('createCredential with invalid options throws PlatformException', () {
@@ -82,9 +107,27 @@ void main() {
   });
 
   test('getCredential with valid options', () async {
-    const String options = 'valid options';
+    const String options = 'valid_options';
     final String? response = await platform.getCredential(options);
     expect(response, 'credential retrieved');
+  });
+
+  test('getCredential with user cancelled throws CanceledPlatformException',
+      () {
+    const String options = 'user_cancelled';
+    expect(
+      () => platform.getCredential(options),
+      throwsA(isA<CanceledPlatformException>()),
+    );
+  });
+
+  test('getCredential with no credential throws NoCredentialPlatformException',
+      () {
+    const String options = 'no_credential';
+    expect(
+      () => platform.getCredential(options),
+      throwsA(isA<NoCredentialPlatformException>()),
+    );
   });
 
   test('getCredential with invalid options throws PlatformException', () {

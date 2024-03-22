@@ -1,5 +1,7 @@
+import 'package:equatable/equatable.dart';
+
 /// [DerivPasskeysOptionsEntity] represents a DerivPasskeysOptions entity.
-final class DerivPasskeysOptionsEntity {
+final class DerivPasskeysOptionsEntity extends Equatable {
   /// Creates a [DerivPasskeysOptionsEntity].
   /// [challenge] is the challenge string.
   /// [rpId] is the relying party ID.
@@ -46,4 +48,13 @@ final class DerivPasskeysOptionsEntity {
         'userVerification': userVerification,
         'allowCredentials': allowCredentials,
       };
+
+  @override
+  List<Object?> get props => <Object?>[
+        challenge,
+        rpId,
+        timeout,
+        userVerification,
+        allowCredentials,
+      ];
 }
