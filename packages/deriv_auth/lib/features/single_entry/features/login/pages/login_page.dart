@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) => DerivLoginLayout(
         welcomeLabel: AuthData().data.loginPageModel.welcomeLabel,
         greetingLabel: AuthData().data.loginPageModel.greetingLabel,
-        onLoggedIn: (_) => AuthData().data.loginPageModel.onLoggedIn,
+        onLoggedIn: AuthData().data.loginPageModel.onLoggedIn,
         authErrorStateHandler:
             AuthData().data.loginPageModel.authErrorStateHandler,
         onLoginError: AuthData().data.loginPageModel.onLoginError,
