@@ -4,7 +4,7 @@ This repository contains private packages & plugins that are used by the company
 
 ## Using the packages
 
-Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v6.3.2)`. To use the package, add the following to your pubspec.yaml file:
+Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v6.3.4)`. To use the package, add the following to your pubspec.yaml file:
 
 
 ```yaml
@@ -20,7 +20,7 @@ deriv_ui:
 | Name                                                                      | Description                                                                                                            | Version                                                           |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase' and 'Segment'.                                           | [v1.0.2](./packages/analytics/CHANGELOG.md)                       |
-| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v6.3.3 ](./packages/deriv_auth/CHANGELOG.md)                     |
+| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v6.3.4 ](./packages/deriv_auth/CHANGELOG.md)                     |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                       | [v0.0.1+1](./packages/deriv_banner/CHANGELOG.md)                  |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)                       | Provides some tools to manage blocs.                                                                                   | [v0.0.1](./packages/deriv_bloc_manager/CHANGELOG.md)              |
 | [deriv_datadog](./packages/deriv_datadog)                                 | A package that helps you monitor the performance and user interactions of your Flutter app by sending data to Datadog. | [v0.0.1](./packages/deriv_datadog/CHANGELOG.md)                   |
@@ -32,7 +32,7 @@ deriv_ui:
 | [deriv_lint](./packages/deriv_lint)                                       | A Dart package that provides lint rules for Dart and Flutter.                                                          | [v1.0.0](./packages/deriv_lint/CHANGELOG.md)                      |
 | [deriv_live_chat](./packages/deriv_live_chat)                             | A plugin for live chat SDK support to dart.                                                                            | [v0.0.1+1](./packages/deriv_live_chat/CHANGELOG.md)               |
 | [deriv_language_selector](./packages/deriv_language_selector)             | A package to handle language change of the app.                                                                        | [v0.0.1+1](./packages/deriv_language_selector/CHANGELOG.md)         |
-| [deriv_localizations](./packages/deriv_localizations)                     | A Package that contains the localization arb(coming from Crowdin) and dart generated files for flutter_deriv_packages. | [v1.1.1](./packages/deriv_localizations/CHANGELOG.md)             |                                                      |                                                                                                   [v1.1.2](./packages/deriv_localizations/CHANGELOG.md)             |
+| [deriv_localizations](./packages/deriv_localizations)                     | A Package that contains the localization arb(coming from Crowdin) and dart generated files for flutter_deriv_packages. | [v1.1.1](./packages/deriv_localizations/CHANGELOG.md)             |                                                      |                                                                                                   [v1.1.3](./packages/deriv_localizations/CHANGELOG.md)             |
 | [deriv_numpad](./packages/deriv_numpad)                                   | Number Pad Widget for number input.                                                                                    | [v1.1.2](./packages/deriv_numpad/CHANGELOG.md)                    |
 | [deriv_rudderstack](./packages/deriv_rudderstack)                         | A plugin that add RudderStack SDK support to Flutter.                                                                  | [v1.1.0](./packages/deriv_rudderstack/CHANGELOG.md)               |
 | [deriv_store_launcher](./packages/deriv_store_launcher)                   | A plugin to launch app stores base on platform and manufacturer.                                                       | [v0.0.1+1](./packages/deriv_store_launcher/CHANGELOG.md)          |
