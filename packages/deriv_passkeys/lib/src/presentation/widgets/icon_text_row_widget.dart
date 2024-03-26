@@ -7,8 +7,7 @@ class IconTextRowWidget extends StatelessWidget {
   const IconTextRowWidget({
     required this.assetName,
     required this.text,
-    Key? key,
-  }) : super(key: key);
+  });
 
   /// The name of the asset to display.
   final String assetName;

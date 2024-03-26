@@ -13,15 +13,20 @@ class UnorderedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> widgetList = <Widget>[];
-    for (final String text in texts) {
-      widgetList
-        ..add(UnorderedListItem(text, style))
-        ..add(const SizedBox(height: 5));
-    }
+    final List<Column> widgetList = texts
+        .map((String text) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                UnorderedListItem(text, style),
+                const SizedBox(height: 5),
+              ],
+            ))
+        .toList();
 
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start, children: widgetList);
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: widgetList,
+    );
   }
 }
 

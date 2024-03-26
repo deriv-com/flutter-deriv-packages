@@ -1,14 +1,12 @@
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/data/models/deriv_passkey_model.dart';
-import 'package:deriv_passkeys/src/data/models/deriv_passkeys_options_model.dart';
 import 'package:deriv_passkeys/src/data/models/deriv_passkeys_register_options_model.dart';
-import 'package:deriv_passkeys/src/data/models/deriv_passkeys_verify_credentials_response_model.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_options_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_register_options_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_verify_credentials_response_entity.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
 
 import 'deriv_passkeys_data_source_mock_setup.dart';
 

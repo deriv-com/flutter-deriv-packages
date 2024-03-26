@@ -61,7 +61,7 @@ class ContinueWithPasskeyButton extends StatelessWidget {
           }
           if (state is DerivPasskeysLoadingState) {
             return const Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(12),
               child: Center(child: CircularProgressIndicator()),
             );
           }

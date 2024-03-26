@@ -1,32 +1,15 @@
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
-import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_verify_credentials_response_entity.dart';
 import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/exceptions/server_exceptions.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 
-class _MockDerivPasskeysService extends Mock implements DerivPasskeysService {}
-
-class _MockPasskeysConnectionInfoEntity extends Mock
-    implements PasskeysConnectionInfoEntity {}
+import 'deriv_passkeys_bloc_setup.dart';
 
 void main() {
-  late DerivPasskeysBloc derivPasskeysBloc;
-  late _MockDerivPasskeysService mockDerivPasskeysService;
-  late _MockPasskeysConnectionInfoEntity mockConnectionInfoEntity;
-
   setUp(() {
-    mockDerivPasskeysService = _MockDerivPasskeysService();
-    mockConnectionInfoEntity = _MockPasskeysConnectionInfoEntity();
-    when(() => mockDerivPasskeysService.isSupported())
-        .thenAnswer((_) async => true);
-    derivPasskeysBloc = DerivPasskeysBloc(
-      derivPasskeysService: mockDerivPasskeysService,
-      connectionInfo: mockConnectionInfoEntity,
-      getJwtToken: () async => 'jwtToken',
-    );
-    registerFallbackValue(mockConnectionInfoEntity);
+    setupDerivPasskeysBloc();
   });
 
   group('DerivPasskeysBloc', () {
@@ -35,11 +18,21 @@ void main() {
     });
 
     test(
-        'initial state should be SetDerivPasskeysNotSupportedEvent if not supported',
-        () {
+        'initial state should be DerivPasskeysNotSupportedState if not supported',
+        () async {
       when(() => mockDerivPasskeysService.isSupported())
-          .thenAnswer((_) async => false);
-      expect(derivPasskeysBloc.state, isA<DerivPasskeysInitializedState>());
+          .thenAnswer((_) async => Future<bool>(() => false));
+      final DerivPasskeysBloc unsupportedDerivPasskeysBloc = DerivPasskeysBloc(
+        derivPasskeysService: mockDerivPasskeysService,
+        connectionInfo: mockPasskeysConnectionInfoEntity,
+        getJwtToken: () async => 'jwtToken',
+      );
+      await expectLater(
+        unsupportedDerivPasskeysBloc.stream,
+        emits(
+          isA<DerivPasskeysNotSupportedState>(),
+        ),
+      );
     });
 
     test(
@@ -56,14 +49,7 @@ void main() {
     test(
         'DerivPasskeysVerifyCredentialEvent should emit DerivPasskeysCredentialVerifiedState',
         () {
-      const DerivPasskeysVerifyCredentialsResponseEntity mockResponseEntity =
-          DerivPasskeysVerifyCredentialsResponseEntity(token: 'token');
-
-      when(() => mockDerivPasskeysService.verifyCredential(
-            jwtToken: any(named: 'jwtToken'),
-            passkeysConnectionInfoEntity:
-                any(named: 'passkeysConnectionInfoEntity'),
-          )).thenAnswer((_) async => mockResponseEntity);
+      setupSuccessDerivPasskeysVerifyCredentialEvent();
 
       expectLater(
         derivPasskeysBloc.stream,

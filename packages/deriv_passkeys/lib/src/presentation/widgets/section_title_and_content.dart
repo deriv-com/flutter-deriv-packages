@@ -7,8 +7,7 @@ class SectionTitleAndContent extends StatelessWidget {
   const SectionTitleAndContent({
     required this.title,
     required this.content,
-    Key? key,
-  }) : super(key: key);
+  });
 
   /// The title of the section.
   final String title;

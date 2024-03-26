@@ -11,7 +11,7 @@ import 'package:deriv_passkeys/src/exceptions/server_exceptions.dart';
 import 'package:flutter_deriv_api/api/api_initializer.dart';
 import 'package:flutter_deriv_api/basic_api/generated/passkeys_register_send.dart';
 import 'package:flutter_deriv_api/services/connection/api_manager/mock_api.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 import 'package:http/http.dart';
 import 'package:http/testing.dart';

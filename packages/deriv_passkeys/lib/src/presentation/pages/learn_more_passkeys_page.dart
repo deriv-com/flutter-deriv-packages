@@ -128,7 +128,7 @@ class LearnMorePasskeysPage extends StatelessWidget {
                               UnorderedList(
                                 texts: const <String>[
                                   'Enable screen lock on your device.',
-                                  'Sign in to your Google or iCloud account. ',
+                                  'Sign in to your Google or iCloud account.',
                                   'Enable Bluetooth.',
                                 ],
                                 style: TextStyle(
