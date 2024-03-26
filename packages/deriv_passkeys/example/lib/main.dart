@@ -24,9 +24,7 @@ class _MyAppState extends State<MyApp> {
       create: (context) => DerivPasskeysBloc(
         derivPasskeysService: DerivPasskeysService(
           DerivPasskeysRepository(
-            DerivPasskeysDataSource(
-              DerivPasskeysMapper(),
-            ),
+            DerivPasskeysDataSource(DerivPasskeysMapper()),
           ),
         ),
         connectionInfo: PasskeysConnectionInfoEntity(
