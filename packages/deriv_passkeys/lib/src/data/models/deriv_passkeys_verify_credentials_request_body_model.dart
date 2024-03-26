@@ -1,17 +1,17 @@
 /// A dart class that serves as a request body for the `DerivPasskeysVerifyCredentials` request.
-final class DerivPasskeysVerifyCredentialsRequestBodyModel {
-  /// Creates a [DerivPasskeysVerifyCredentialsRequestBodyModel].
-  DerivPasskeysVerifyCredentialsRequestBodyModel({
+final class DerivPasskeysVerifyCredentialsRequest {
+  /// Creates a [DerivPasskeysVerifyCredentialsRequest].
+  DerivPasskeysVerifyCredentialsRequest({
     required this.appId,
     required this.publicKeyCredential,
     required this.type,
   });
 
-  /// Creates a [DerivPasskeysVerifyCredentialsRequestBodyModel] from a JSON object.
-  factory DerivPasskeysVerifyCredentialsRequestBodyModel.fromJson(
+  /// Creates a [DerivPasskeysVerifyCredentialsRequest] from a JSON object.
+  factory DerivPasskeysVerifyCredentialsRequest.fromJson(
     Map<String, dynamic> json,
   ) =>
-      DerivPasskeysVerifyCredentialsRequestBodyModel(
+      DerivPasskeysVerifyCredentialsRequest(
         appId: json['app_id'] as String,
         publicKeyCredential:
             json['publicKeyCredential'] as Map<String, dynamic>,
@@ -27,20 +27,20 @@ final class DerivPasskeysVerifyCredentialsRequestBodyModel {
   /// The type.
   final String type;
 
-  /// Converts the [DerivPasskeysVerifyCredentialsRequestBodyModel] to a JSON object.
+  /// Converts the [DerivPasskeysVerifyCredentialsRequest] to a JSON object.
   Map<String, dynamic> toJson() => <String, dynamic>{
         'app_id': appId,
         'publicKeyCredential': publicKeyCredential,
         'type': type,
       };
 
-  /// Copies the [DerivPasskeysVerifyCredentialsRequestBodyModel] with some new values.
-  DerivPasskeysVerifyCredentialsRequestBodyModel copyWith({
+  /// Copies the [DerivPasskeysVerifyCredentialsRequest] with some new values.
+  DerivPasskeysVerifyCredentialsRequest copyWith({
     String? appId,
     Map<String, dynamic>? publicKeyCredential,
     String? type,
   }) =>
-      DerivPasskeysVerifyCredentialsRequestBodyModel(
+      DerivPasskeysVerifyCredentialsRequest(
         appId: appId ?? this.appId,
         publicKeyCredential: publicKeyCredential ?? this.publicKeyCredential,
         type: type ?? this.type,

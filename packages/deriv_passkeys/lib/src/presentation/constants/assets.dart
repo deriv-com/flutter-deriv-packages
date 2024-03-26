@@ -29,7 +29,4 @@ class Assets {
 
   /// [addPasskeyIcon] is the svg icon used for passkey.
   static const String addPasskeyIcon = 'assets/svg/add_passkey_icon.svg';
-
-  /// [faceIdIcon] is the svg icon used for passkey.
-  static const String faceIdIcon = 'assets/svg/face_id.svg';
 }

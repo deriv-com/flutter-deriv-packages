@@ -41,16 +41,16 @@ void main() {
     });
 
     test(
-        'mapDerivPasskeysVerifyCredentialsRequestBodyEntity should return DerivPasskeysVerifyCredentialsRequestBodyModel',
+        'mapDerivPasskeysVerifyCredentialsRequestBodyEntity should return DerivPasskeysVerifyCredentialsRequest',
         () {
-      final DerivPasskeysVerifyCredentialsRequestBodyEntity entity =
+      const DerivPasskeysVerifyCredentialsRequestBodyEntity entity =
           DerivPasskeysVerifyCredentialsRequestBodyEntity(
               appId: '', publicKeyCredential: <String, dynamic>{}, type: '');
 
-      final DerivPasskeysVerifyCredentialsRequestBodyModel result =
+      final DerivPasskeysVerifyCredentialsRequest result =
           mapper.mapDerivPasskeysVerifyCredentialsRequestBodyEntity(entity);
 
-      expect(result, isA<DerivPasskeysVerifyCredentialsRequestBodyModel>());
+      expect(result, isA<DerivPasskeysVerifyCredentialsRequest>());
     });
 
     test(
@@ -84,7 +84,7 @@ void main() {
     test(
         'mapDerivPasskeysRegisterCredentialsEntity should return PasskeysRegisterRequest',
         () {
-      final DerivPasskeysRegisterCredentialsEntity entity =
+      const DerivPasskeysRegisterCredentialsEntity entity =
           DerivPasskeysRegisterCredentialsEntity(
         publicKeyCredential: <String, dynamic>{},
         name: '',
@@ -99,7 +99,7 @@ void main() {
     test(
         'mapDerivPasskeysVerifyCredentialsResponseModel should return DerivPasskeysVerifyCredentialsResponseEntity',
         () {
-      final DerivPasskeysVerifyCredentialsResponseModel model =
+      const DerivPasskeysVerifyCredentialsResponseModel model =
           DerivPasskeysVerifyCredentialsResponseModel(
         response: <String, dynamic>{
           'tokens': <dynamic>[

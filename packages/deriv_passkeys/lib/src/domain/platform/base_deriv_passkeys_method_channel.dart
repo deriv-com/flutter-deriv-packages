@@ -25,7 +25,7 @@ abstract class BaseDerivPasskeysMethodChannel extends PlatformInterface {
   }
 
   /// Returns the platform version.
-  Future<String?> getPlatformVersion();
+  Future<bool?> isPlatformSupported();
 
   /// Creates a passkey credential.
   Future<String?> createCredential(String options);

@@ -36,9 +36,9 @@ const DerivPasskeysVerifyCredentialsRequestBodyEntity
   type: '',
 );
 
-final DerivPasskeysVerifyCredentialsRequestBodyModel
-    derivPasskeysVerifyCredentialsRequestBodyModel =
-    DerivPasskeysVerifyCredentialsRequestBodyModel(
+final DerivPasskeysVerifyCredentialsRequest
+    derivPasskeysVerifyCredentialsRequest =
+    DerivPasskeysVerifyCredentialsRequest(
   appId: '1234',
   publicKeyCredential: <String, dynamic>{},
   type: '',
@@ -114,7 +114,7 @@ final DerivPasskeysOptionsModel derivPasskeysOptionsModel =
 
 /// Sets up the mock data for [DerivPasskeysDataSource].
 void derivPasskeysDataSourceMockSetup() {
-  registerFallbackValue(derivPasskeysVerifyCredentialsRequestBodyModel);
+  registerFallbackValue(derivPasskeysVerifyCredentialsRequest);
   registerFallbackValue(derivPasskeysVerifyCredentialsRequestBodyEntity);
   registerFallbackValue(passkeysConnectionInfoModel);
   registerFallbackValue(jwtToken);

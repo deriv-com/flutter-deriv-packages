@@ -7,7 +7,7 @@ final class DerivPasskeysOptionsEntity extends Equatable {
   /// [rpId] is the relying party ID.
   /// [timeout] is the timeout in seconds.
   /// [userVerification] is the user verification method.
-  DerivPasskeysOptionsEntity({
+  const DerivPasskeysOptionsEntity({
     required this.challenge,
     required this.rpId,
     required this.timeout,

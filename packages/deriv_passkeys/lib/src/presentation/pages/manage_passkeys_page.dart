@@ -19,7 +19,7 @@ class ManagePasskeysPage extends StatefulWidget {
     super.key,
   });
 
-  ///
+  /// The bloc to handle the passkey state
   final DerivPasskeysBloc derivPasskeysBloc;
 
   @override

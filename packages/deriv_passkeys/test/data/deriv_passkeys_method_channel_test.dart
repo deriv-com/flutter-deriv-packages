@@ -12,8 +12,8 @@ class MockMethodChannel extends MethodChannel {
   @override
   Future<T?> invokeMethod<T>(String method, [dynamic arguments]) async {
     switch (method) {
-      case 'getPlatformVersion':
-        return '42' as T?;
+      case 'isPlatformSupported':
+        return true as T?;
       case 'createCredential':
         final String options = arguments['options'];
         if (options == 'valid_options') {
@@ -79,8 +79,8 @@ void main() {
         .setMockMethodCallHandler(mockChannel, null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+  test('isSupported', () async {
+    expect(await platform.isPlatformSupported(), isTrue);
   });
 
   test('createCredential with valid options', () async {

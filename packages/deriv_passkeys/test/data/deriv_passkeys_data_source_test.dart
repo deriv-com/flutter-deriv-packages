@@ -125,9 +125,9 @@ void main() {
   });
 
   group('verifyCredentials', () {
-    DerivPasskeysVerifyCredentialsRequestBodyModel
-        derivPasskeysVerifyCredentialsRequestBodyModel =
-        DerivPasskeysVerifyCredentialsRequestBodyModel(
+    final DerivPasskeysVerifyCredentialsRequest
+        derivPasskeysVerifyCredentialsRequest =
+        DerivPasskeysVerifyCredentialsRequest(
       appId: 'appId',
       publicKeyCredential: <String, dynamic>{},
       type: 'type',
@@ -137,7 +137,7 @@ void main() {
         () async {
       expect(
           dataSource.verifyCredentials(
-            requestBodyModel: derivPasskeysVerifyCredentialsRequestBodyModel,
+            requestBodyModel: derivPasskeysVerifyCredentialsRequest,
             jwtToken: 'jwtToken',
             passkeysConnectionInfoModel: passkeysConnectionInfoModel,
           ),
@@ -149,7 +149,7 @@ void main() {
         () async {
       expect(
         () => dataSource.verifyCredentials(
-          requestBodyModel: derivPasskeysVerifyCredentialsRequestBodyModel,
+          requestBodyModel: derivPasskeysVerifyCredentialsRequest,
           jwtToken: 'jwtToken',
           passkeysConnectionInfoModel: passkeysConnectionInfoModel.copyWith(
             endpoint: 'error_code_exists',
@@ -164,7 +164,7 @@ void main() {
         () async {
       expect(
         () => dataSource.verifyCredentials(
-          requestBodyModel: derivPasskeysVerifyCredentialsRequestBodyModel,
+          requestBodyModel: derivPasskeysVerifyCredentialsRequest,
           jwtToken: 'jwtToken',
           passkeysConnectionInfoModel: passkeysConnectionInfoModel.copyWith(
             endpoint: 'no_error_code',

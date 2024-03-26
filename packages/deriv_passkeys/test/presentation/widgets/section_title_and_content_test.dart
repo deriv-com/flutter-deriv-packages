@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/section_title_and_content.dart';
 
 void main() {

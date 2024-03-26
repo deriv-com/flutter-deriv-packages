@@ -17,11 +17,8 @@ class MockBaseDerivPasskeysMethodChannel
   Future<String?> Function(String options)? mockCreateCredential;
   Future<String?> Function(String options)? mockGetCredential;
 
-  String mockPlatformVersion = 'iOS 15';
-
   @override
-  Future<String?> getPlatformVersion() =>
-      Future<String?>.value(mockPlatformVersion);
+  Future<bool?> isPlatformSupported() => Future<bool?>.value(true);
 
   @override
   Future<String?> createCredential(String options) =>
@@ -63,36 +60,9 @@ void main() {
       BaseDerivPasskeysMethodChannel.instance = initialPlatform;
     });
 
-    test('isSupported returns true for iOS 15 or newer', () async {
-      BaseDerivPasskeysMethodChannel.instance =
-          MockBaseDerivPasskeysMethodChannel()..mockPlatformVersion = 'iOS 15';
+    test('isSupported returns true', () async {
       final bool isSupported = await derivPasskeysService.isSupported();
       expect(isSupported, true);
-    });
-
-    test('isSupported returns false for iOS versions older than 15', () async {
-      BaseDerivPasskeysMethodChannel.instance =
-          MockBaseDerivPasskeysMethodChannel()..mockPlatformVersion = 'iOS 14';
-      final bool isSupported = await derivPasskeysService.isSupported();
-      expect(isSupported, false);
-    });
-
-    test('isSupported returns true for Android 9 or newer', () async {
-      BaseDerivPasskeysMethodChannel.instance =
-          MockBaseDerivPasskeysMethodChannel()
-            ..mockPlatformVersion = 'Android 9';
-      final bool isSupported = await derivPasskeysService.isSupported();
-      expect(isSupported, true);
-    });
-
-    test(
-        'isSupported returns false for unexpected platform string or malformed version',
-        () async {
-      BaseDerivPasskeysMethodChannel.instance =
-          MockBaseDerivPasskeysMethodChannel()
-            ..mockPlatformVersion = 'Unknown 1';
-      final bool isSupported = await derivPasskeysService.isSupported();
-      expect(isSupported, false);
     });
 
     test('createCredential returns response if not null', () async {

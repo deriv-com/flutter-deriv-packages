@@ -64,7 +64,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
 
   @override
   Future<DerivPasskeysVerifyCredentialsResponseModel> verifyCredentials({
-    required DerivPasskeysVerifyCredentialsRequestBodyModel requestBodyModel,
+    required DerivPasskeysVerifyCredentialsRequest requestBodyModel,
     required String jwtToken,
     required PasskeysConnectionInfoModel passkeysConnectionInfoModel,
     String? userAgent,

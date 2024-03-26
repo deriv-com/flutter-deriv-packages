@@ -24,7 +24,7 @@ abstract class BaseDerivPasskeysDataSource {
 
   /// Verify the user's DerivPasskeys credentials.
   Future<DerivPasskeysVerifyCredentialsResponseModel> verifyCredentials({
-    required DerivPasskeysVerifyCredentialsRequestBodyModel requestBodyModel,
+    required DerivPasskeysVerifyCredentialsRequest requestBodyModel,
     required String jwtToken,
     required PasskeysConnectionInfoModel passkeysConnectionInfoModel,
     String? userAgent,

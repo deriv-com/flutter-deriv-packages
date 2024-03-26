@@ -20,6 +20,11 @@ dependencies:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
       ref: deriv_ui-v0.0.7+1
+  deriv_http_client:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_http_client
+      ref: deriv_http_client-v2.0.1
   flutter_deriv_api:
     git:
       url: git@github.com:deriv-com/flutter-deriv-api.git
@@ -29,6 +34,7 @@ dependencies:
   flutter_svg: ^2.0.9
   plugin_platform_interface: ^2.0.2
   http: ^0.13.4
+  jiffy: ^6.2.1
 
 
 dependency_overrides:

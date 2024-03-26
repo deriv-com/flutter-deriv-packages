@@ -13,11 +13,8 @@ class MethodChannelDerivPasskeys extends BaseDerivPasskeysMethodChannel {
   MethodChannel methodChannel;
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final String? version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
+  Future<bool?> isPlatformSupported() async =>
+      methodChannel.invokeMethod<bool>('isPlatformSupported');
 
   @override
   Future<String?> createCredential(String options) =>

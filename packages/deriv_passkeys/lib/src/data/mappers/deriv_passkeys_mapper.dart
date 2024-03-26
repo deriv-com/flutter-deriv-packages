@@ -20,12 +20,11 @@ class DerivPasskeysMapper {
           DerivPasskeysOptionsModel model) =>
       DerivPasskeysOptionsEntity.fromJson(model.toJson());
 
-  /// Maps [DerivPasskeysVerifyCredentialsRequestBodyModel] to [DerivPasskeysVerifyCredentialsRequestBodyEntity].
-  DerivPasskeysVerifyCredentialsRequestBodyModel
+  /// Maps [DerivPasskeysVerifyCredentialsRequest] to [DerivPasskeysVerifyCredentialsRequestBodyEntity].
+  DerivPasskeysVerifyCredentialsRequest
       mapDerivPasskeysVerifyCredentialsRequestBodyEntity(
               DerivPasskeysVerifyCredentialsRequestBodyEntity entity) =>
-          DerivPasskeysVerifyCredentialsRequestBodyModel.fromJson(
-              entity.toJson());
+          DerivPasskeysVerifyCredentialsRequest.fromJson(entity.toJson());
 
   /// Maps [DerivPasskeysRegisterOptionsModel] to [DerivPasskeysRegisterOptionsEntity].
   DerivPasskeysRegisterOptionsEntity mapDerivPasskeysRegisterOptionsModel(

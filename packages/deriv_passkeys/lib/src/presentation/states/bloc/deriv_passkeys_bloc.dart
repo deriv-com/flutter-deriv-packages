@@ -14,9 +14,9 @@ part 'deriv_passkeys_event.dart';
 class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
   /// Creates a [DerivPasskeysBloc].
   DerivPasskeysBloc({
-    required this.derivPasskeysService,
-    required this.connectionInfo,
-    required this.getJwtToken,
+    required DerivPasskeysService derivPasskeysService,
+    required PasskeysConnectionInfoEntity connectionInfo,
+    required Future<String> Function() getJwtToken,
   }) : super(DerivPasskeysLoadingState()) {
     on<SetDerivPasskeysInitializedEvent>(
         (SetDerivPasskeysInitializedEvent event,
@@ -112,13 +112,4 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
 
   /// The list of passkeys.
   List<DerivPasskeyEntity> passkeysList = <DerivPasskeyEntity>[];
-
-  /// The service used to get data from.
-  final DerivPasskeysService derivPasskeysService;
-
-  /// The connection info.
-  final PasskeysConnectionInfoEntity connectionInfo;
-
-  /// The function to get the JWT token.
-  final Future<String> Function() getJwtToken;
 }
