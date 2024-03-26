@@ -1,42 +1,34 @@
 package com.deriv.passkeys.deriv_passkeys
 
 import android.app.Activity
-import androidx.annotation.NonNull
+import android.content.Context
 import androidx.credentials.CreatePublicKeyCredentialRequest
 import androidx.credentials.CreatePublicKeyCredentialResponse
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetPublicKeyCredentialOption
 import androidx.credentials.PublicKeyCredential
-import androidx.credentials.exceptions.CreateCredentialException
 import androidx.credentials.exceptions.publickeycredential.CreatePublicKeyCredentialDomException
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import java.security.InvalidParameterException
 
-/** DerivPasskeysPlugin */
-class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, ViewModel() {
+/// DerivPasskeysPlugin is a Flutter plugin that provides a way to create and get credentials using the WebAuthn API.
+class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel: MethodChannel
-  private var activity: Activity? = null
+  private lateinit var context: Context
 
 
-  private fun createCredential(@NonNull options: String, @NonNull callback: (credential: String?, e: Exception?) -> Unit) {
-    if (activity == null) {
-      throw IllegalStateException("Activity not found")
-    }
+  private fun createCredential(options: String, callback: (credential: String?, e: Exception?) -> Unit) {
     JSONObject(options)
     val createPublicKeyCredentialRequest = CreatePublicKeyCredentialRequest(
       requestJson = options,
@@ -44,9 +36,9 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
     )
     viewModelScope.launch {
       try {
-        val credentialManager = CredentialManager.create(activity!!)
+        val credentialManager = CredentialManager.create(context)
         val result = credentialManager.createCredential(
-          context = activity!!,
+          context = context,
           request = createPublicKeyCredentialRequest,
         )
         val credential = result as CreatePublicKeyCredentialResponse
@@ -57,19 +49,16 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
     }
   }
 
-  private fun getCredential(@NonNull options: String, @NonNull callback: (credential: String?, e: Exception?) -> Unit) {
-    if (activity == null) {
-      throw IllegalStateException("Activity not found")
-    }
+  private fun getCredential(options: String, callback: (credential: String?, e: Exception?) -> Unit) {
     JSONObject(options)
     val getPublicKeyCredentialOption = GetPublicKeyCredentialOption(
       requestJson = options
     )
     viewModelScope.launch {
       try {
-        val credentialManager = CredentialManager.create(activity!!)
+        val credentialManager = CredentialManager.create(context)
         val result = credentialManager.getCredential(
-          context = activity!!,
+          context = context,
           request = GetCredentialRequest(listOf(getPublicKeyCredentialOption)),
         )
         val credential = result.credential as PublicKeyCredential
@@ -80,83 +69,68 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
     }
   }
 
-  override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+  override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "deriv_passkeys")
     channel.setMethodCallHandler(this)
+    context = flutterPluginBinding.applicationContext
   }
 
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+  override fun onMethodCall(call: MethodCall, result: Result) {
     when (call.method) {
-      "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      "isPlatformSupported" -> {
+        val isSupported = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P
+        result.success(isSupported)
+    }
       "createCredential" -> {
         val options = call.argument("options") as String?
-        if (options == null) {
-          result.error("InvalidParameterException", "Options not found", null)
-          return
-        }
-        try {
-          createCredential(options) { credential, e ->
-            if (credential != null) {
-              result.success(credential)
-            }
-            else if (e != null) {
-              var exceptionType = e.javaClass.kotlin.simpleName
-              if (e is CreatePublicKeyCredentialDomException) {
-                  exceptionType = "$exceptionType(${e.domError.javaClass.kotlin.simpleName ?: "DomError"})"
+        options?.let {
+          try {
+            createCredential(options) { credential, e ->
+              if (credential != null) {
+                result.success(credential)
               }
-              result.error(exceptionType ?: "Exception", e.message ?: "Exception occurred", null)
+              else if (e != null) {
+                var exceptionType = e.javaClass.kotlin.simpleName
+                if (e is CreatePublicKeyCredentialDomException) {
+                    exceptionType = "$exceptionType(${e.domError.javaClass.kotlin.simpleName ?: "DomError"})"
+                }
+                result.error(exceptionType ?: "Exception", e.message ?: "Exception occurred", null)
+              }
+              else {
+                result.error("Error", "Unknown error", null)
+              }
             }
-            else {
-              result.error("Error", "Unknown error", null)
-            }
+          } catch (e: Exception) {
+            result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
           }
-        } catch (e: Exception) {
-          result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
-        }
+          } :? run {
+            result.error("InvalidParameterException", "Options not found", null)
+          }
+        
       }
       "getCredential" -> {
         val options = call.argument("options") as String?
-        if (options == null) {
-          result.error("InvalidParameterException", "Options not found", null)
-          return
-        }
-        try {
-          getCredential(options) { credential, e ->
-            if (credential != null) {
-              result.success(credential)
+        options?.let {
+          try {
+            getCredential(options) { credential, e ->
+              if (credential != null) {
+                result.success(credential)
+              }
+              else if (e != null) {
+                result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
+              }
+              else {
+                result.error("Error", "Unknown error", null)
+              }
             }
-            else if (e != null) {
-              result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
-            }
-            else {
-              result.error("Error", "Unknown error", null)
-            }
+          } catch (e: Exception) {
+            result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
           }
-        } catch (e: Exception) {
-          result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
-        }
+          } :? run {
+            result.error("InvalidParameterException", "Options not found", null)
+          }
       }
       else -> result.notImplemented()
     }
-  }
-
-  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
-  }
-
-  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-    activity = binding.getActivity()
-  }
-
-  override fun onDetachedFromActivity() {
-    activity = null
-  }
-
-  override fun onDetachedFromActivityForConfigChanges() {
-    activity = null
-  }
-
-  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    activity = binding.getActivity()
   }
 }
