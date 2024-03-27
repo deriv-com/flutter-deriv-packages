@@ -8,5 +8,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get passkey_created_success_title => 'Success!';
 
   @override
-  String get passkey_created_success_message => 'Your account is now secured with a passkey. Manage your passkey through your \$platformName account settings.';
+  String passkey_created_success_message(string platformName) {
+    return 'Your account is now secured with a passkey. Manage your passkey through your $platformName account settings.';
+  }
 }

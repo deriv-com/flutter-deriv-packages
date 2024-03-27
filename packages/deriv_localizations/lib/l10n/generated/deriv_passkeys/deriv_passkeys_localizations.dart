@@ -100,8 +100,8 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @passkey_created_success_message.
   ///
   /// In en, this message translates to:
-  /// **'Your account is now secured with a passkey. Manage your passkey through your \$platformName account settings.'**
-  String get passkey_created_success_message;
+  /// **'Your account is now secured with a passkey. Manage your passkey through your {platformName} account settings.'**
+  String passkey_created_success_message(string platformName);
 }
 
 class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
