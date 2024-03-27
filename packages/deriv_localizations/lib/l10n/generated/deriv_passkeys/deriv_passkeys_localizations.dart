@@ -101,7 +101,7 @@ abstract class DerivPasskeysLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Your account is now secured with a passkey. Manage your passkey through your {platformName} account settings.'**
-  String passkey_created_success_message(string platformName);
+  String passkey_created_success_message(String platformName);
 }
 
 class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
