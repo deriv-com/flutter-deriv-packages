@@ -103,11 +103,11 @@ abstract class DerivPasskeysLocalizations {
   /// **'Your account is now secured with a passkey. Manage your passkey through your {platformName} account settings.'**
   String passkeyCreatedSuccessMessage(String platformName);
 
-  /// No description provided for @continue.
+  /// No description provided for @continueButtonText.
   ///
   /// In en, this message translates to:
   /// **'Continue'**
-  String get continue;
+  String get continueButtonText;
 
   /// No description provided for @unexpectedError.
   ///

@@ -13,7 +13,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   }
 
   @override
-  String get continue => 'Continue';
+  String get continueButtonText => 'Continue';
 
   @override
   String get unexpectedError => 'An unexpected error occurred!';
