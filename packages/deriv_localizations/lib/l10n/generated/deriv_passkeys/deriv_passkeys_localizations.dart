@@ -91,17 +91,161 @@ abstract class DerivPasskeysLocalizations {
     Locale('en')
   ];
 
-  /// No description provided for @passkey_created_success_title.
+  /// No description provided for @passkeyCreatedSuccessTitle.
   ///
   /// In en, this message translates to:
   /// **'Success!'**
-  String get passkey_created_success_title;
+  String get passkeyCreatedSuccessTitle;
 
-  /// No description provided for @passkey_created_success_message.
+  /// No description provided for @passkeyCreatedSuccessMessage.
   ///
   /// In en, this message translates to:
   /// **'Your account is now secured with a passkey. Manage your passkey through your {platformName} account settings.'**
-  String passkey_created_success_message(String platformName);
+  String passkeyCreatedSuccessMessage(String platformName);
+
+  /// No description provided for @continue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continue;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred!'**
+  String get unexpectedError;
+
+  /// No description provided for @unexpectedErrorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please try again later.'**
+  String get unexpectedErrorDescription;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
+
+  /// No description provided for @createPassKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Passkey'**
+  String get createPassKey;
+
+  /// No description provided for @experienceSaferLogins.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience safer logins'**
+  String get experienceSaferLogins;
+
+  /// No description provided for @enhanceSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'To enhance your security, tap Create passkey'**
+  String get enhanceSecurity;
+
+  /// No description provided for @here.
+  ///
+  /// In en, this message translates to:
+  /// **'here'**
+  String get here;
+
+  /// No description provided for @effortlessLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Effortless login with passkeys'**
+  String get effortlessLogin;
+
+  /// No description provided for @whatArePasskeys.
+  ///
+  /// In en, this message translates to:
+  /// **'What are passkeys?'**
+  String get whatArePasskeys;
+
+  /// No description provided for @whatArePasskeysDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Passkeys are a security measure that lets you log in the same way you unlock your device: with a fingerprint, a face scan, or a screen lock PIN.'**
+  String get whatArePasskeysDescription;
+
+  /// No description provided for @whyPasskeys.
+  ///
+  /// In en, this message translates to:
+  /// **'Why passkeys?'**
+  String get whyPasskeys;
+
+  /// No description provided for @whyPasskeysDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Passkeys are an added layer of security that protects your account against unauthorised access and phishing attacks.'**
+  String get whyPasskeysDescription;
+
+  /// No description provided for @howToCreatePasskey.
+  ///
+  /// In en, this message translates to:
+  /// **'How to create a passkey?'**
+  String get howToCreatePasskey;
+
+  /// No description provided for @howToCreatePasskeyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to ‘Account Settings’ to set up your passkey. Each device can only save one passkey; however, iOS users may still see the \"Create passkey\" button due to iOS’s ability to save passkeys on other devices.'**
+  String get howToCreatePasskeyDescription;
+
+  /// No description provided for @whereArePasskeysSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Where are passkeys saved?'**
+  String get whereArePasskeysSaved;
+
+  /// No description provided for @whereArePasskeysSavedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Passkeys are saved in your Google password manager for Android devices and in iCloud keychain on iOS devices to help you sign in on other devices.'**
+  String get whereArePasskeysSavedDescription;
+
+  /// No description provided for @whatHappensIfEmailChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'What happens if my Deriv account email is changed?'**
+  String get whatHappensIfEmailChanged;
+
+  /// No description provided for @whatHappensIfEmailChangedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Even if you change your email address, you can still continue to log in to your Deriv account with the same passkey.'**
+  String get whatHappensIfEmailChangedDescription;
+
+  /// No description provided for @tips.
+  ///
+  /// In en, this message translates to:
+  /// **'Tips'**
+  String get tips;
+
+  /// No description provided for @beforeUsingPasskeys.
+  ///
+  /// In en, this message translates to:
+  /// **'Before using passkeys'**
+  String get beforeUsingPasskeys;
+
+  /// No description provided for @enableScreenLock.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable screen lock on your device.'**
+  String get enableScreenLock;
+
+  /// No description provided for @signInGoogleOrIcloud.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to your Google or iCloud account.'**
+  String get signInGoogleOrIcloud;
+
+  /// No description provided for @enableBluetooth.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Bluetooth.'**
+  String get enableBluetooth;
 }
 
 class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
