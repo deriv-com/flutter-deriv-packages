@@ -64,7 +64,7 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => '請輸入有效的電子郵件地址';
 
   @override
-  String get warnPasswordLength => '必须输入 6-25 个字符。';
+  String get warnPasswordLength => '必須輸入 6-25 個字元。';
 
   @override
   String get labelResetPassword => '重設密碼';

@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "還沒有帳戶？",
   "actionCreateANewAccount": "開立新帳戶",
   "informInvalidEmailFormat": "請輸入有效的電子郵件地址",
-  "warnPasswordLength": "必须输入 6-25 个字符。",
+  "warnPasswordLength": "必須輸入 6-25 個字元。",
   "labelResetPassword": "重設密碼",
   "labelChooseNewPass": "選新密碼",
   "labelCreatePass": "密碼",
