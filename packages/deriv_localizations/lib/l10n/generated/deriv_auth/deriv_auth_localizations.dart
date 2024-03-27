@@ -79,8 +79,8 @@ abstract class DerivAuthLocalizations {
 
   final String localeName;
 
-  static DerivAuthLocalizations of(BuildContext context) {
-    return Localizations.of<DerivAuthLocalizations>(context, DerivAuthLocalizations)!;
+  static DerivAuthLocalizations? of(BuildContext context) {
+    return Localizations.of<DerivAuthLocalizations>(context, DerivAuthLocalizations);
   }
 
   static const LocalizationsDelegate<DerivAuthLocalizations> delegate = _DerivAuthLocalizationsDelegate();
