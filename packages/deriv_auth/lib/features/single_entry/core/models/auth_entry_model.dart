@@ -18,7 +18,7 @@ class AuthEntryModel {
   /// LoginPage data model
   final LoginPageModel loginPageModel;
 
-  /// DerivAuthService
+  /// DerivAuthCubit
   final DerivAuthCubit derivAuthCubit;
 
   /// SignupPage data model
