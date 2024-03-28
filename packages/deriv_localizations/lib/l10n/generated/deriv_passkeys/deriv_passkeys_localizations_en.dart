@@ -83,4 +83,34 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
 
   @override
   String get enableBluetooth => 'Enable Bluetooth.';
+
+  @override
+  String get noPasskeyFound => 'No passkey found!';
+
+  @override
+  String get noPasskeyFoundDescription => 'Please create a passkey to use this feature.';
+
+  @override
+  String get maybeLater => 'Maybe later';
+
+  @override
+  String get effortlessLoginWithPasskeys => 'Effortless login with passkeys';
+
+  @override
+  String get learnMoreAboutPasskeys => 'Learn more about passkeys';
+
+  @override
+  String get noNeedToRememberPassword => 'No need to remember a password';
+
+  @override
+  String get useYourBiometrics => 'Enhanced security with biometrics or screen lock';
+
+  @override
+  String get syncAcrossAllDevices => 'Sync across all devices';
+
+  @override
+  String get createPasskey => 'Create Passkey';
+
+  @override
+  String get unsupportedPlatform => 'Unsupported Platform';
 }

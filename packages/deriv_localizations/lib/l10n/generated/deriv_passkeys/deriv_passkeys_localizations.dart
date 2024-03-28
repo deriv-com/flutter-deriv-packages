@@ -246,6 +246,66 @@ abstract class DerivPasskeysLocalizations {
   /// In en, this message translates to:
   /// **'Enable Bluetooth.'**
   String get enableBluetooth;
+
+  /// No description provided for @noPasskeyFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No passkey found!'**
+  String get noPasskeyFound;
+
+  /// No description provided for @noPasskeyFoundDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please create a passkey to use this feature.'**
+  String get noPasskeyFoundDescription;
+
+  /// No description provided for @maybeLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Maybe later'**
+  String get maybeLater;
+
+  /// No description provided for @effortlessLoginWithPasskeys.
+  ///
+  /// In en, this message translates to:
+  /// **'Effortless login with passkeys'**
+  String get effortlessLoginWithPasskeys;
+
+  /// No description provided for @learnMoreAboutPasskeys.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn more about passkeys'**
+  String get learnMoreAboutPasskeys;
+
+  /// No description provided for @noNeedToRememberPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'No need to remember a password'**
+  String get noNeedToRememberPassword;
+
+  /// No description provided for @useYourBiometrics.
+  ///
+  /// In en, this message translates to:
+  /// **'Enhanced security with biometrics or screen lock'**
+  String get useYourBiometrics;
+
+  /// No description provided for @syncAcrossAllDevices.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync across all devices'**
+  String get syncAcrossAllDevices;
+
+  /// No description provided for @createPasskey.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Passkey'**
+  String get createPasskey;
+
+  /// No description provided for @unsupportedPlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsupported Platform'**
+  String get unsupportedPlatform;
 }
 
 class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
