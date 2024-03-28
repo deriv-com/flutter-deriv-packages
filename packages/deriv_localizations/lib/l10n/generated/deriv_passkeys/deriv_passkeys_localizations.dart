@@ -306,6 +306,30 @@ abstract class DerivPasskeysLocalizations {
   /// In en, this message translates to:
   /// **'Unsupported Platform'**
   String get unsupportedPlatform;
+
+  /// No description provided for @storedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored on'**
+  String get storedOn;
+
+  /// No description provided for @lastUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Last used'**
+  String get lastUsed;
+
+  /// No description provided for @rename.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get rename;
+
+  /// No description provided for @revoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get revoke;
 }
 
 class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {

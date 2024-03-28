@@ -113,4 +113,16 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
 
   @override
   String get unsupportedPlatform => 'Unsupported Platform';
+
+  @override
+  String get storedOn => 'Stored on';
+
+  @override
+  String get lastUsed => 'Last used';
+
+  @override
+  String get rename => 'Rename';
+
+  @override
+  String get revoke => 'Revoke';
 }
