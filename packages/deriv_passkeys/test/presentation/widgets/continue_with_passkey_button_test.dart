@@ -1,4 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:deriv_localizations/l10n/generated/deriv_passkeys/deriv_passkeys_localizations.dart';
+import 'package:deriv_localizations/l10n/generated/deriv_passkeys/deriv_passkeys_localizations_en.dart';
 import 'package:deriv_passkeys/src/presentation/states/bloc/deriv_passkeys_bloc.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/continue_with_passkey_button.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +17,15 @@ class _TestPage extends StatelessWidget {
   const _TestPage();
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: ContinueWithPasskeyButton(
-          derivPasskeysBloc: context.read<DerivPasskeysBloc>(),
+  Widget build(BuildContext context) => MaterialApp(
+        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+          DerivPasskeysLocalizations.delegate,
+        ],
+        locale: const Locale('en'),
+        home: Scaffold(
+          body: ContinueWithPasskeyButton(
+            derivPasskeysBloc: context.read<DerivPasskeysBloc>(),
+          ),
         ),
       );
 }
@@ -37,9 +45,7 @@ void main() {
       await tester.pumpWidget(
         BlocProvider<DerivPasskeysBloc>(
           create: (BuildContext context) => derivPasskeysBloc,
-          child: const MaterialApp(
-            home: _TestPage(),
-          ),
+          child: const _TestPage(),
         ),
       );
 
@@ -57,9 +63,7 @@ void main() {
       await tester.pumpWidget(
         BlocProvider<DerivPasskeysBloc>(
           create: (BuildContext context) => derivPasskeysBloc,
-          child: const MaterialApp(
-            home: _TestPage(),
-          ),
+          child: const _TestPage(),
         ),
       );
 
@@ -76,9 +80,7 @@ void main() {
       await tester.pumpWidget(
         BlocProvider<DerivPasskeysBloc>(
           create: (BuildContext context) => derivPasskeysBloc,
-          child: const MaterialApp(
-            home: _TestPage(),
-          ),
+          child: const _TestPage(),
         ),
       );
       await tester.pumpAndSettle();
@@ -99,21 +101,23 @@ void main() {
       await tester.pumpWidget(
         BlocProvider<DerivPasskeysBloc>(
           create: (BuildContext context) => derivPasskeysBloc,
-          child: const MaterialApp(
-            home: _TestPage(),
-          ),
+          child: const _TestPage(),
         ),
       );
 
       await tester.pumpAndSettle();
 
       expect(find.byType(AlertDialog), findsOneWidget);
-      expect(find.text('No passkey found!'), findsOneWidget);
-      expect(find.text('Please create a passkey to use this feature.'),
+      expect(find.text(DerivPasskeysLocalizationsEn().noPasskeyFound),
           findsOneWidget);
-      expect(find.text('OK'), findsOneWidget);
+      expect(
+          find.text(DerivPasskeysLocalizationsEn().noPasskeyFoundDescription),
+          findsOneWidget);
+      expect(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()),
+          findsOneWidget);
 
-      await tester.tap(find.text('OK'));
+      await tester
+          .tap(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()));
       await tester.pumpAndSettle();
 
       expect(find.byType(AlertDialog), findsNothing);
@@ -130,20 +134,23 @@ void main() {
       await tester.pumpWidget(
         BlocProvider<DerivPasskeysBloc>(
           create: (BuildContext context) => derivPasskeysBloc,
-          child: const MaterialApp(
-            home: _TestPage(),
-          ),
+          child: const _TestPage(),
         ),
       );
 
       await tester.pumpAndSettle();
 
       expect(find.byType(AlertDialog), findsOneWidget);
-      expect(find.text('An unexpected error occurred!'), findsOneWidget);
-      expect(find.text('Please try again later.'), findsOneWidget);
-      expect(find.text('OK'), findsOneWidget);
+      expect(find.text(DerivPasskeysLocalizationsEn().unexpectedError),
+          findsOneWidget);
+      expect(
+          find.text(DerivPasskeysLocalizationsEn().unexpectedErrorDescription),
+          findsOneWidget);
+      expect(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()),
+          findsOneWidget);
 
-      await tester.tap(find.text('OK'));
+      await tester
+          .tap(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()));
       await tester.pumpAndSettle();
 
       expect(find.byType(AlertDialog), findsNothing);
@@ -163,20 +170,21 @@ void main() {
       await tester.pumpWidget(
         BlocProvider<DerivPasskeysBloc>(
           create: (BuildContext context) => derivPasskeysBloc,
-          child: const MaterialApp(
-            home: _TestPage(),
-          ),
+          child: const _TestPage(),
         ),
       );
 
       await tester.pumpAndSettle();
 
       expect(find.byType(AlertDialog), findsOneWidget);
-      expect(find.text('An unexpected error occurred!'), findsOneWidget);
+      expect(find.text(DerivPasskeysLocalizationsEn().unexpectedError),
+          findsOneWidget);
       expect(find.text('error_message'), findsOneWidget);
-      expect(find.text('OK'), findsOneWidget);
+      expect(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()),
+          findsOneWidget);
 
-      await tester.tap(find.text('OK'));
+      await tester
+          .tap(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()));
       await tester.pumpAndSettle();
 
       expect(find.byType(AlertDialog), findsNothing);

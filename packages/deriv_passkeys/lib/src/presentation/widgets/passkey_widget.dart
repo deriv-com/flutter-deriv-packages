@@ -1,4 +1,5 @@
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
+import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/utils/date_time_utils.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -44,17 +45,14 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
               children: <Widget>[
                 const Text('Passkey', style: TextStyle(fontSize: 14)),
                 Text(
-                  // TODO(bassam): Add localization
-                  'Stored on: ${widget.passkey.storedOn}',
+                  '${context.derivPasskeysLocalizations!.storedOn}: ${widget.passkey.storedOn}',
                   style: TextStyle(
                     fontSize: 12,
                     color: context.theme.colors.general,
                   ),
                 ),
                 Text(
-                  // TODO(bassam): Add localization
-                  // TODO(bassam): lastUsed is an int and should be formatted as a date and localized as well
-                  'Last used: ${_lastUsed()}',
+                  '${context.derivPasskeysLocalizations!.lastUsed}: ${_lastUsed()}',
                   style: TextStyle(
                     fontSize: 12,
                     color: context.theme.colors.general,
@@ -72,8 +70,7 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
           //         onPressed: () {
           //         },
           //         child: Text(
-          //           // TODO(bassam): Add localization.
-          //           'Rename',
+          //           context.derivPasskeysLocalizations!.rename,
           //           style: TextStyle(
           //             fontSize: 14,
           //             color: context.theme.colors.general,
@@ -84,8 +81,7 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
           //         onPressed: () {
           //         },
           //         child: Text(
-          //           // TODO(bassam): Add localization.
-          //           'Revoke',
+          //           context.derivPasskeysLocalizations!.revoke,
           //           style: TextStyle(
           //             fontSize: 14,
           //             color: context.theme.colors.general,

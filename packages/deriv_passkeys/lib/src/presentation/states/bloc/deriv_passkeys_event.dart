@@ -17,7 +17,7 @@ class DerivPasskeysVerifyCredentialEvent extends DerivPasskeysEvent {}
 
 /// [DerivPasskeysGetPasskeysListEvent] represents the get passkeys list event within the DerivPasskeys flow.
 class DerivPasskeysGetPasskeysListEvent extends DerivPasskeysEvent {
-  /// Creates a [DerivPasskeysGetPasskeysList].
+  /// Creates a [DerivPasskeysGetPasskeysListEvent].
   const DerivPasskeysGetPasskeysListEvent();
 
   @override
@@ -65,3 +65,6 @@ class DerivPasskeysEditCredentialEvent extends DerivPasskeysEvent {
   @override
   List<Object> get props => <Object>[options];
 }
+
+/// [DerivPasskeysLogoutEvent] represents the logout event within the DerivPasskeys flow.
+class DerivPasskeysLogoutEvent extends DerivPasskeysEvent {}

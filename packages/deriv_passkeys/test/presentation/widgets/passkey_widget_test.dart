@@ -1,3 +1,4 @@
+import 'package:deriv_localizations/l10n/generated/deriv_passkeys/deriv_passkeys_localizations.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/passkey_widget.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,10 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
+          localizationsDelegates: <LocalizationsDelegate<dynamic>>[
+            DerivPasskeysLocalizations.delegate,
+          ],
+          locale: Locale('en'),
           home: Scaffold(
             body: PasskeyWidget(passkey: passkey),
           ),

@@ -94,11 +94,23 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
       await derivPasskeysService
           .getPasskeysList()
           .then((List<DerivPasskeyEntity> _passkeysList) {
+        print('Passkeys list: $_passkeysList');
         passkeysList = _passkeysList;
         emit(DerivPasskeysLoadedState(passkeysList));
       }).catchError((Object error) {
+        print('Error getting passkeys list: $error');
         emit(DerivPasskeysErrorState(error.toString()));
       });
+    });
+
+    on<DerivPasskeysLogoutEvent>(
+        (DerivPasskeysLogoutEvent event, Emitter<DerivPasskeysState> emit) {
+      passkeysList.clear();
+      if (state is DerivPasskeysNotSupportedState) {
+        emit(DerivPasskeysNotSupportedState());
+      } else {
+        emit(DerivPasskeysInitializedState());
+      }
     });
 
     derivPasskeysService.isSupported().then((bool isSupported) {

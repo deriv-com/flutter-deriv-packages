@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.dart';
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
@@ -62,14 +63,13 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
             bloc: widget.derivPasskeysBloc,
             listener: (BuildContext context, DerivPasskeysState state) {
               if (state is DerivPasskeysCreatedSuccessfullyState) {
-                String platformName = 'Unsupported Platform';
+                String platformName =
+                    context.derivPasskeysLocalizations!.unsupportedPlatform;
                 //get if device is android or ios
                 if (Platform.isIOS) {
-                  // TODO(bassam): replace with localized string if needed
                   platformName = 'IOS';
                 }
                 if (Platform.isAndroid) {
-                  // TODO(bassam): replace with localized string if needed
                   platformName = 'Android';
                 }
                 Navigator.push(
@@ -85,12 +85,12 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
               } else if (state is DerivPasskeysErrorState) {
                 showAlertDialog(
                   context: context,
-                  // TODO(bassam): localize the title, content, and positiveActionLabel
-                  title: 'An unexpected error occurred!',
-                  content: const Text(
-                    'Please try again later.',
+                  title: context.derivPasskeysLocalizations!.unexpectedError,
+                  content: Text(
+                    context
+                        .derivPasskeysLocalizations!.unexpectedErrorDescription,
                   ),
-                  positiveActionLabel: 'OK',
+                  positiveActionLabel: context.derivPasskeysLocalizations!.ok,
                   onPositiveActionPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -120,8 +120,8 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                                 widget.derivPasskeysBloc
                                     .add(DerivPasskeysCreateCredentialEvent());
                               },
-                              // TODO(bassam): localize the text
-                              child: const Text('Create Passkey'),
+                              child: Text(context
+                                  .derivPasskeysLocalizations!.createPassKey),
                             ),
                           ),
                         )
@@ -164,12 +164,11 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                   package: 'deriv_passkeys',
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 24),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Text(
-                  // TODO(bassam): localize the text
-                  'Experience safer logins',
-                  style: TextStyle(fontSize: 20),
+                  context.derivPasskeysLocalizations!.experienceSaferLogins,
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
               SizedBox(
@@ -178,10 +177,9 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     children: <InlineSpan>[
-                      const TextSpan(
-                          // TODO(bassam): localize the text
+                      TextSpan(
                           text:
-                              'To enhance your security, tap Create passkey. Learn more about passkeys '),
+                              '${context.derivPasskeysLocalizations!.enhanceSecurity} '),
                       WidgetSpan(
                         alignment: PlaceholderAlignment.middle,
                         child: InkWell(
@@ -194,8 +192,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                             );
                           },
                           child: Text(
-                            // TODO(bassam): localize the text
-                            'here.',
+                            '${context.derivPasskeysLocalizations!.here}.',
                             style: TextStyle(color: context.theme.colors.coral),
                           ),
                         ),

@@ -1,3 +1,4 @@
+import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/states/bloc/deriv_passkeys_bloc.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -26,28 +27,27 @@ class ContinueWithPasskeyButton extends StatelessWidget {
             if (state is NoCredentialErrorState) {
               showAlertDialog(
                 context: context,
-                // TODO(bassam): localize the title, content, and positiveActionLabel
-                title: 'No passkey found!',
-                content:
-                    const Text('Please create a passkey to use this feature.'),
-                positiveActionLabel: 'OK',
+                title: context.derivPasskeysLocalizations!.noPasskeyFound,
+                content: Text(context
+                    .derivPasskeysLocalizations!.noPasskeyFoundDescription),
+                positiveActionLabel: context.derivPasskeysLocalizations!.ok,
                 onPositiveActionPressed: () {
                   Navigator.of(context).pop();
                 },
               );
             } else {
-              // TODO(bassam): localize these Strings.
-              const String title = 'An unexpected error occurred!';
-              String content = 'Please try again later.';
+              final String title =
+                  context.derivPasskeysLocalizations!.unexpectedError;
+              String content = context
+                  .derivPasskeysLocalizations!.unexpectedErrorDescription;
               if (state.errorCode == 'PASSKEYS_SERVICE_ERROR') {
                 content = state.message;
               }
               showAlertDialog(
                 context: context,
-                // TODO(bassam): localize the title, content, and positiveActionLabel
                 title: title,
                 content: Text(content),
-                positiveActionLabel: 'OK',
+                positiveActionLabel: context.derivPasskeysLocalizations!.ok,
                 onPositiveActionPressed: () {
                   Navigator.of(context).pop();
                 },

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/data/models/deriv_passkey_model.dart';
 import 'package:deriv_passkeys/src/data/models/deriv_passkeys_options_model.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_deriv_api/services/connection/api_manager/mock_api.dart'
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:http/http.dart';
-import 'package:http/testing.dart';
 
 Future<Response> _mockHTTP(Request request) async {
   if (request.url.host.contains('error')) {
@@ -70,9 +70,27 @@ Future<Response> _mockHTTP(Request request) async {
   );
 }
 
+class FakeHttpClient extends Fake implements HttpClient {
+  @override
+  Future<Response> get(String url, {String? basicAuthToken}) async =>
+      _mockHTTP(Request('GET', Uri.parse(url)));
+
+  @override
+  Future<Map<String, dynamic>> post({
+    required String url,
+    required Map<String, dynamic> jsonBody,
+    Map<String, String>? headers,
+  }) async {
+    final Response response = await _mockHTTP(Request('POST', Uri.parse(url)));
+    return jsonDecode(response.body) as Map<String, dynamic>;
+  }
+}
+
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   late DerivPasskeysDataSource dataSource;
-  final MockClient mockClient = MockClient(_mockHTTP);
+  final HttpClient mockClient = FakeHttpClient();
   final PasskeysConnectionInfoModel passkeysConnectionInfoModel =
       PasskeysConnectionInfoModel(
     endpoint: 'deriv.com',
@@ -81,8 +99,8 @@ void main() {
 
   setUpAll(() {
     APIInitializer().initialize(api: MockAPI());
-    dataSource = DerivPasskeysDataSource.withMockClient(
-      DerivPasskeysMapper(),
+    dataSource = DerivPasskeysDataSource(
+      mapper: DerivPasskeysMapper(),
       client: mockClient,
     );
   });
@@ -156,21 +174,6 @@ void main() {
           ),
         ),
         throwsA(isA<ServerException>()),
-      );
-    });
-
-    test(
-        'should throw Exception when request is unsuccessful and response body does not contain "error_code".',
-        () async {
-      expect(
-        () => dataSource.verifyCredentials(
-          requestBodyModel: derivPasskeysVerifyCredentialsRequest,
-          jwtToken: 'jwtToken',
-          passkeysConnectionInfoModel: passkeysConnectionInfoModel.copyWith(
-            endpoint: 'no_error_code',
-          ),
-        ),
-        throwsA(isA<Exception>()),
       );
     });
   });

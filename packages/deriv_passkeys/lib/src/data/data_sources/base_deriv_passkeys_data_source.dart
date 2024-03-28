@@ -1,3 +1,4 @@
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:deriv_passkeys/src/data/mappers/deriv_passkeys_mapper.dart';
 import 'package:deriv_passkeys/src/data/models/passkeys_connection_info_model.dart';
 import 'package:deriv_passkeys/src/data/models/deriv_passkey_model.dart';
@@ -12,10 +13,13 @@ import 'package:flutter_deriv_api/basic_api/generated/passkeys_register_send.dar
 /// All DerivPasskeys data sources should extend this class, and implement its abstract methods.
 abstract class BaseDerivPasskeysDataSource {
   /// Creates a [BaseDerivPasskeysDataSource].
-  BaseDerivPasskeysDataSource(this.mapper);
+  BaseDerivPasskeysDataSource({required this.mapper, required this.client});
 
   /// The mapper used to map the data source to the domain.
   final DerivPasskeysMapper mapper;
+
+  /// The http client used to make http requests.
+  BaseHttpClient client;
 
   /// Get options for authentication with DerivPasskeys.
   Future<DerivPasskeysOptionsModel> getOptions({

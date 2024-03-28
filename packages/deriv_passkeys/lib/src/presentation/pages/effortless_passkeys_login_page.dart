@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.dart';
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
@@ -16,8 +17,15 @@ class EffortlessPasskeysPage extends StatelessWidget {
   /// Creates a [EffortlessPasskeysPage].
   const EffortlessPasskeysPage({
     required this.onFlowComplete,
+    required this.derivPasskeysBloc,
     super.key,
   });
+
+  /// The route name for the effortless passkeys page.
+  static const String routeName = 'effortless_passkeys_page';
+
+  /// The bloc to handle the passkey state
+  final DerivPasskeysBloc derivPasskeysBloc;
 
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onFlowComplete;
@@ -25,16 +33,15 @@ class EffortlessPasskeysPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       BlocListener<DerivPasskeysBloc, DerivPasskeysState>(
+        bloc: derivPasskeysBloc,
         listener: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysCreatedSuccessfullyState) {
-            String platformName = 'Unsupported Platform';
-            //get if device is android or ios
+            String platformName =
+                context.derivPasskeysLocalizations!.unsupportedPlatform;
             if (Platform.isIOS) {
-              // TODO(bassam): replace with localized string if needed
               platformName = 'IOS';
             }
             if (Platform.isAndroid) {
-              // TODO(bassam): replace with localized string if needed
               platformName = 'Android';
             }
             Navigator.push(
@@ -45,12 +52,9 @@ class EffortlessPasskeysPage extends StatelessWidget {
                         onPageClose: onFlowComplete,
                       )),
             );
-          } else if (state is DerivPasskeysErrorState) {
-            // TODO(bassam): Handle error state if needed, e.g., show a Snackbar
           }
         },
         child: Scaffold(
-          // TODO(bassam): localize all the strings in this page
           body: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +66,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                     child: TextButton(
                       onPressed: () => onFlowComplete(context),
                       child: Text(
-                        'MAYBE LATER',
+                        context.derivPasskeysLocalizations!.maybeLater,
                         style: TextStyle(color: context.theme.colors.coral),
                       ),
                     ),
@@ -79,28 +83,31 @@ class EffortlessPasskeysPage extends StatelessWidget {
                           Assets.effortlessPasskeysIcon,
                           package: 'deriv_passkeys',
                         ),
-                        const Text(
-                          'Effortless login with passkeys',
-                          style: TextStyle(fontSize: 20),
+                        Text(
+                          context.derivPasskeysLocalizations!
+                              .effortlessLoginWithPasskeys,
+                          style: const TextStyle(fontSize: 20),
                         ),
-                        const IconTextRowWidget(
+                        IconTextRowWidget(
                           assetName: Assets.fingerPrintIcon,
-                          text: 'No need to remember a password',
+                          text: context.derivPasskeysLocalizations!
+                              .noNeedToRememberPassword,
                         ),
                         Divider(
                           color: context.theme.colors.hover,
                         ),
-                        const IconTextRowWidget(
+                        IconTextRowWidget(
                           assetName: Assets.syncIcon,
-                          text: 'Sync across all devices',
+                          text: context
+                              .derivPasskeysLocalizations!.syncAcrossAllDevices,
                         ),
                         Divider(
                           color: context.theme.colors.hover,
                         ),
-                        const IconTextRowWidget(
+                        IconTextRowWidget(
                           assetName: Assets.lockIcon,
-                          text:
-                              'Enhanced security with biometrics or screen lock',
+                          text: context
+                              .derivPasskeysLocalizations!.useYourBiometrics,
                         ),
                         Divider(
                           color: context.theme.colors.hover,
@@ -110,8 +117,9 @@ class EffortlessPasskeysPage extends StatelessWidget {
                           child: RichText(
                             text: TextSpan(
                               children: <InlineSpan>[
-                                const TextSpan(
-                                    text: 'Learn more about passkeys '),
+                                TextSpan(
+                                    text:
+                                        '${context.derivPasskeysLocalizations!.learnMoreAboutPasskeys} '),
                                 WidgetSpan(
                                   alignment: PlaceholderAlignment.middle,
                                   child: InkWell(
@@ -125,7 +133,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                                       );
                                     },
                                     child: Text(
-                                      'here.',
+                                      '${context.derivPasskeysLocalizations!.here}.',
                                       style: TextStyle(
                                           color: context.theme.colors.coral),
                                     ),
@@ -149,8 +157,9 @@ class EffortlessPasskeysPage extends StatelessWidget {
                             .read<DerivPasskeysBloc>()
                             .add(DerivPasskeysCreateCredentialEvent());
                       },
-                      // TODO(bassam): replace with localized string
-                      child: const Text('Create Passkey'),
+                      child: Text(
+                        context.derivPasskeysLocalizations!.createPasskey,
+                      ),
                     ),
                   ),
                 )

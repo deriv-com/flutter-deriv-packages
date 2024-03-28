@@ -1,3 +1,4 @@
+import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/widgets/primary_button.dart';
@@ -46,15 +47,17 @@ class PasskeyCreatedPage extends StatelessWidget {
                             package: 'deriv_passkeys',
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 24),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 24),
                           child: Text(
-                            'Success!',
-                            style: TextStyle(fontSize: 20),
+                            context.derivPasskeysLocalizations!
+                                .passkeyCreatedSuccessTitle,
+                            style: const TextStyle(fontSize: 20),
                           ),
                         ),
                         Text(
-                          'Your account is now secured with a passkey. Manage your passkey through your $platformName account settings.',
+                          context.derivPasskeysLocalizations!
+                              .passkeyCreatedSuccessMessage(platformName),
                           style: TextStyle(
                             fontSize: 14,
                             color: context.theme.colors.general,
@@ -71,7 +74,8 @@ class PasskeyCreatedPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: PrimaryButton(
                       onPressed: () => onPageClose(context),
-                      child: const Text('Continue'),
+                      child: Text(context
+                          .derivPasskeysLocalizations!.continueButtonText),
                     ),
                   ),
                 )

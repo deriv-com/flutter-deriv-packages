@@ -1,3 +1,4 @@
+import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/section_title_and_content.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/unordered_list_widget.dart';
@@ -12,7 +13,6 @@ class LearnMorePasskeysPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        // TODO(bassam): localize all the strings in this page
         appBar: AppBar(),
         body: SingleChildScrollView(
           child: SafeArea(
@@ -28,17 +28,17 @@ class LearnMorePasskeysPage extends StatelessWidget {
                       package: 'deriv_passkeys',
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 24),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 24),
                     child: Text(
-                      'Effortless login with passkeys',
-                      style: TextStyle(fontSize: 20),
+                      context.derivPasskeysLocalizations!.effortlessLogin,
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
-                  const SectionTitleAndContent(
-                    title: 'What are passkeys?',
-                    content:
-                        'Passkeys are a security measure that lets you log in the same way you unlock your device: with a fingerprint, a face scan, or a screen lock PIN.',
+                  SectionTitleAndContent(
+                    title: context.derivPasskeysLocalizations!.whatArePasskeys,
+                    content: context
+                        .derivPasskeysLocalizations!.whatArePasskeysDescription,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -46,10 +46,10 @@ class LearnMorePasskeysPage extends StatelessWidget {
                       color: context.theme.colors.hover,
                     ),
                   ),
-                  const SectionTitleAndContent(
-                    title: 'Why passkeys?',
-                    content:
-                        'Passkeys are an added layer of security that protects your account against unauthorised access and phishing attacks.',
+                  SectionTitleAndContent(
+                    title: context.derivPasskeysLocalizations!.whyPasskeys,
+                    content: context
+                        .derivPasskeysLocalizations!.whyPasskeysDescription,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -57,10 +57,11 @@ class LearnMorePasskeysPage extends StatelessWidget {
                       color: context.theme.colors.hover,
                     ),
                   ),
-                  const SectionTitleAndContent(
-                    title: 'How to create a passkey?',
-                    content:
-                        'Go to ‘Account Settings’ on [platform name] to set up your passkey. Each device can only save one passkey; however, iOS users may still see the "Create passkey" button due to iOS’s ability to save passkeys on other devices.',
+                  SectionTitleAndContent(
+                    title:
+                        context.derivPasskeysLocalizations!.howToCreatePasskey,
+                    content: context.derivPasskeysLocalizations!
+                        .howToCreatePasskeyDescription,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -68,10 +69,11 @@ class LearnMorePasskeysPage extends StatelessWidget {
                       color: context.theme.colors.hover,
                     ),
                   ),
-                  const SectionTitleAndContent(
-                    title: 'Where are passkeys saved?',
-                    content:
-                        'Passkeys are saved in your Google password manager for Android devices and in iCloud keychain on iOS devices to help you sign in on other devices. ',
+                  SectionTitleAndContent(
+                    title: context
+                        .derivPasskeysLocalizations!.whereArePasskeysSaved,
+                    content: context.derivPasskeysLocalizations!
+                        .whereArePasskeysSavedDescription,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -79,12 +81,14 @@ class LearnMorePasskeysPage extends StatelessWidget {
                       color: context.theme.colors.hover,
                     ),
                   ),
-                  const SectionTitleAndContent(
-                    title: 'What happens if my Deriv account email is changed?',
-                    content:
-                        'Even if you change your email address, you can still continue to log in to your Deriv account with the same passkey. ',
+                  SectionTitleAndContent(
+                    title: context
+                        .derivPasskeysLocalizations!.whatHappensIfEmailChanged,
+                    content: context.derivPasskeysLocalizations!
+                        .whatHappensIfEmailChangedDescription,
                   ),
                   Container(
+                    width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     margin: const EdgeInsets.only(top: 16),
                     decoration: BoxDecoration(
@@ -95,6 +99,7 @@ class LearnMorePasskeysPage extends StatelessWidget {
                     ),
                     child: FittedBox(
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           SvgPicture.asset(
                             Assets.lightBulbIcon,
@@ -107,15 +112,15 @@ class LearnMorePasskeysPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                'Tips:',
+                                '${context.derivPasskeysLocalizations!.tips}:',
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: context.theme.colors.prominent,
                                 ),
                               ),
                               Text(
-                                'Before using passkeys:',
+                                '${context.derivPasskeysLocalizations!.beforeUsingPasskeys}:',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -126,10 +131,13 @@ class LearnMorePasskeysPage extends StatelessWidget {
                                 height: 4,
                               ),
                               UnorderedList(
-                                texts: const <String>[
-                                  'Enable screen lock on your device.',
-                                  'Sign in to your Google or iCloud account.',
-                                  'Enable Bluetooth.',
+                                texts: <String>[
+                                  context.derivPasskeysLocalizations!
+                                      .enableScreenLock,
+                                  context.derivPasskeysLocalizations!
+                                      .signInGoogleOrIcloud,
+                                  context.derivPasskeysLocalizations!
+                                      .enableBluetooth
                                 ],
                                 style: TextStyle(
                                   fontSize: 14,

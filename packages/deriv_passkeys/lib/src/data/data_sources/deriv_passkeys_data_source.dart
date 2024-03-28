@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_list_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_options_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_response_extended.dart';
@@ -25,27 +24,17 @@ import '../../exceptions/server_exceptions.dart';
 /// [DerivPasskeysDataSource] extends and implements [BaseDerivPasskeysDataSource].
 class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
   /// Creates a [DerivPasskeysDataSource].
-  DerivPasskeysDataSource(super.mapper);
-
-  /// Creates a [DerivPasskeysDataSource] with a mock client.
-  @visibleForTesting
-  DerivPasskeysDataSource.withMockClient(super.mapper, {required this.client});
-
-  /// The HTTP client.
-  http.Client client = http.Client();
+  DerivPasskeysDataSource({required super.mapper, required super.client});
 
   @override
   Future<DerivPasskeysOptionsModel> getOptions({
     required PasskeysConnectionInfoModel passkeysConnectionInfoModel,
   }) async {
-    final Map<String, String> headers = <String, String>{
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
-    };
+    final String url =
+        'https://${passkeysConnectionInfoModel.endpoint}/oauth2/api/v1/passkeys/login/options';
     final http.Response response = await client.get(
-        Uri.parse(
-            'https://${passkeysConnectionInfoModel.endpoint}/oauth2/api/v1/passkeys/login/options'),
-        headers: headers);
+      url,
+    );
 
     if (response.statusCode == 200) {
       return DerivPasskeysOptionsModel.fromJson(jsonDecode(response.body));
@@ -69,35 +58,31 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
     required PasskeysConnectionInfoModel passkeysConnectionInfoModel,
     String? userAgent,
   }) async {
+    final String url =
+        'https://${passkeysConnectionInfoModel.endpoint}/oauth2/api/v1/passkeys/login/verify';
+
     final Map<String, String> headers = <String, String>{
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $jwtToken',
       'User-Agent': userAgent ?? 'Dart/3.0 (dart:io)',
       'accept': 'application/json'
     };
-    final http.Response response = await client.post(
-        Uri.parse(
-            'https://${passkeysConnectionInfoModel.endpoint}/oauth2/api/v1/passkeys/login/verify'),
-        headers: headers,
-        body: jsonEncode(requestBodyModel.toJson()));
+    final Map<String, dynamic> jsonDecodedResponse = await client.post(
+      url: url,
+      headers: headers,
+      jsonBody: requestBodyModel.toJson(),
+    );
 
-    final Map<String, dynamic> jsonDecodedResponse = jsonDecode(response.body);
-
-    if (response.statusCode == 200) {
-      return DerivPasskeysVerifyCredentialsResponseModel(
-        response: jsonDecodedResponse,
+    if (jsonDecodedResponse.containsKey('error_code')) {
+      throw ServerException(
+        errorCode: jsonDecodedResponse['error_code'],
+        message: jsonDecodedResponse['message'],
       );
-    } else {
-      final Map<String, dynamic> jsonDecodedResponse =
-          jsonDecode(response.body);
-      if (jsonDecodedResponse.containsKey('error_code')) {
-        throw ServerException(
-          errorCode: jsonDecodedResponse['error_code'],
-          message: jsonDecodedResponse['message'],
-        );
-      }
-      throw Exception('Failed to verify credentials!');
     }
+
+    return DerivPasskeysVerifyCredentialsResponseModel(
+      response: jsonDecodedResponse,
+    );
   }
 
   @override

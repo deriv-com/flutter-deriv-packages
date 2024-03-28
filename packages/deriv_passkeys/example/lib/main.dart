@@ -1,3 +1,4 @@
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,8 @@ class _MyAppState extends State<MyApp> {
       create: (context) => DerivPasskeysBloc(
         derivPasskeysService: DerivPasskeysService(
           DerivPasskeysRepository(
-            DerivPasskeysDataSource(DerivPasskeysMapper()),
+            DerivPasskeysDataSource(
+                mapper: DerivPasskeysMapper(), client: HttpClient()),
           ),
         ),
         connectionInfo: PasskeysConnectionInfoEntity(
@@ -96,7 +98,6 @@ class MyPage extends StatelessWidget {
                       .read<DerivPasskeysBloc>()
                       .add(DerivPasskeysCreateCredentialEvent());
                 },
-                // TODO(bassam): localize the text
                 child: const Text('Create Passkey'),
               ),
             ),
