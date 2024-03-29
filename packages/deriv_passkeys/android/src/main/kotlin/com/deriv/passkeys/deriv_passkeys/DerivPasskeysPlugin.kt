@@ -75,7 +75,11 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
     context = flutterPluginBinding.applicationContext
   }
 
-  override fun onMethodCall(call: MethodCall, result: Result) {
+  override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+    channel.setMethodCallHandler(null)
+  }
+
+  override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
     when (call.method) {
       "isPlatformSupported" -> {
         val isSupported = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P
@@ -103,7 +107,7 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
           } catch (e: Exception) {
             result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
           }
-          } :? run {
+          } ?: run {
             result.error("InvalidParameterException", "Options not found", null)
           }
         
@@ -126,7 +130,7 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
           } catch (e: Exception) {
             result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
           }
-          } :? run {
+          } ?: run {
             result.error("InvalidParameterException", "Options not found", null)
           }
       }
