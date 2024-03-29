@@ -1,6 +1,6 @@
 {
   "labelNotAvailable": "사용할 수 없습니다",
-  "warnNotAvailableCountriesTitle": "귀하의 국가에서는 {app} 을 (를) 사용할 수 없습니다.",
+  "warnNotAvailableCountriesTitle": "귀하의 국가에서는 {app} 을(를) 사용할 수 없습니다.",
   "@warnNotAvailableCountriesTitle": {
     "description": "A message with a single parameter",
     "placeholders": {
@@ -10,13 +10,13 @@
       }
     }
   },
-  "actionOk": "OK",
-  "warnNotAvailableCountries": "궁금하신 점이 있으면 다음의 연락처로 문의해 주세요 ",
+  "actionOk": "확인",
+  "warnNotAvailableCountries": "궁금하신 점은 다음을 통해 문의해 주세요 ",
   "labelLiveChat": "실시간 채팅",
-  "actionGetAFreeAccount": "무료 계정 개설",
+  "actionGetAFreeAccount": "무료 계정 받기",
   "actionLogin": "로그인",
   "labelTwoFactorAuth": "2단계 인증",
-  "informEnterTwoFactorAuthCode": "휴대폰의 인증 앱에서 6자리 코드를 입력하세요.",
+  "informEnterTwoFactorAuthCode": "휴대폰 인증 앱에서 6자리 코드를 입력하세요.",
   "labelTwoFactorAuthenticationCode": "2FA 코드",
   "actionProceed": "진행",
   "labelLogIn": "로그인",
