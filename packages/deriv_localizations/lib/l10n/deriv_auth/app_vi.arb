@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Chưa có tài khoản?",
   "actionCreateANewAccount": "Tạo một tài khoản mới",
   "informInvalidEmailFormat": "Nhập địa chỉ email hợp lệ",
-  "warnPasswordLength": "You should enter 6-25 characters.",
+  "warnPasswordLength": "Bạn nên nhập vào 6-25 ký tự.",
   "labelResetPassword": "Đặt lại mật khẩu",
   "labelChooseNewPass": "Chọn mật khẩu mới",
   "labelCreatePass": "Mật khẩu",

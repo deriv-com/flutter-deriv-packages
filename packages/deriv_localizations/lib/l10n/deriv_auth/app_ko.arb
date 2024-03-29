@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "아직 계정이 없는가요?",
   "actionCreateANewAccount": "새 계정 생성",
   "informInvalidEmailFormat": "유효한 이메일 주소를 입력하세요",
-  "warnPasswordLength": "You should enter 6-25 characters.",
+  "warnPasswordLength": "6-25자를 입력해야 합니다.",
   "labelResetPassword": "비밀번호 재설정",
   "labelChooseNewPass": "새 비밀번호를 선택하세요",
   "labelCreatePass": "패스워드",

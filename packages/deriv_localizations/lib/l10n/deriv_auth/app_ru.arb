@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "У Вас еще нет учетной записи?",
   "actionCreateANewAccount": "Откройте новый счет",
   "informInvalidEmailFormat": "Введите действительный адрес электронной почты",
-  "warnPasswordLength": "You should enter 6-25 characters.",
+  "warnPasswordLength": "Вы должны ввести 6-25 символов.",
   "labelResetPassword": "Сбросить пароль",
   "labelChooseNewPass": "Выберите новый пароль",
   "labelCreatePass": "Пароль",

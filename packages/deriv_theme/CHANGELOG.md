@@ -1,3 +1,7 @@
+## 2.4.0
+
+ - **FEAT**(deriv_theme): [UPM-856] Add passkeys colors to deriv theme. ([#545](https://github.com/regentmarkets/flutter-deriv-packages/issues/545)). ([09c54bb6](https://github.com/regentmarkets/flutter-deriv-packages/commit/09c54bb6572d5c8ec0454cf41c8ef282b89f2689))
+
 ## 2.3.0
 
  - **FEAT**(deriv_ui): add language selector component ([#509](https://github.com/regentmarkets/flutter-deriv-packages/issues/509)). ([bff66151](https://github.com/regentmarkets/flutter-deriv-packages/commit/bff661513f330d014154657fbf170b75512dc180))

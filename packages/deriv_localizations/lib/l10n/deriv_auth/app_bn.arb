@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "এখনও অ্যাকাউন্ট নেই?",
   "actionCreateANewAccount": "একটি নতুন অ্যাকাউন্ট তৈরি করুন",
   "informInvalidEmailFormat": "একটি বৈধ ইমেল ঠিকানা লিখুন",
-  "warnPasswordLength": "You should enter 6-25 characters.",
+  "warnPasswordLength": "আপনি 6-25 অক্ষর লিখতে হবে।",
   "labelResetPassword": "পাসওয়ার্ড রিসেট",
   "labelChooseNewPass": "একটি নতুন পাসওয়ার্ড বেছে নিন",
   "labelCreatePass": "পাসওয়ার্ড",
