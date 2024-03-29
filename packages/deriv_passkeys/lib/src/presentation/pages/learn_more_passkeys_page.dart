@@ -31,14 +31,14 @@ class LearnMorePasskeysPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 24),
                     child: Text(
-                      context.derivPasskeysLocalizations!.effortlessLogin,
+                      context.derivPasskeysLocalizations.effortlessLogin,
                       style: const TextStyle(fontSize: 20),
                     ),
                   ),
                   SectionTitleAndContent(
-                    title: context.derivPasskeysLocalizations!.whatArePasskeys,
+                    title: context.derivPasskeysLocalizations.whatArePasskeys,
                     content: context
-                        .derivPasskeysLocalizations!.whatArePasskeysDescription,
+                        .derivPasskeysLocalizations.whatArePasskeysDescription,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -47,9 +47,9 @@ class LearnMorePasskeysPage extends StatelessWidget {
                     ),
                   ),
                   SectionTitleAndContent(
-                    title: context.derivPasskeysLocalizations!.whyPasskeys,
+                    title: context.derivPasskeysLocalizations.whyPasskeys,
                     content: context
-                        .derivPasskeysLocalizations!.whyPasskeysDescription,
+                        .derivPasskeysLocalizations.whyPasskeysDescription,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -59,8 +59,8 @@ class LearnMorePasskeysPage extends StatelessWidget {
                   ),
                   SectionTitleAndContent(
                     title:
-                        context.derivPasskeysLocalizations!.howToCreatePasskey,
-                    content: context.derivPasskeysLocalizations!
+                        context.derivPasskeysLocalizations.howToCreatePasskey,
+                    content: context.derivPasskeysLocalizations
                         .howToCreatePasskeyDescription,
                   ),
                   Padding(
@@ -71,8 +71,8 @@ class LearnMorePasskeysPage extends StatelessWidget {
                   ),
                   SectionTitleAndContent(
                     title: context
-                        .derivPasskeysLocalizations!.whereArePasskeysSaved,
-                    content: context.derivPasskeysLocalizations!
+                        .derivPasskeysLocalizations.whereArePasskeysSaved,
+                    content: context.derivPasskeysLocalizations
                         .whereArePasskeysSavedDescription,
                   ),
                   Padding(
@@ -83,8 +83,8 @@ class LearnMorePasskeysPage extends StatelessWidget {
                   ),
                   SectionTitleAndContent(
                     title: context
-                        .derivPasskeysLocalizations!.whatHappensIfEmailChanged,
-                    content: context.derivPasskeysLocalizations!
+                        .derivPasskeysLocalizations.whatHappensIfEmailChanged,
+                    content: context.derivPasskeysLocalizations
                         .whatHappensIfEmailChangedDescription,
                   ),
                   Container(
@@ -112,7 +112,7 @@ class LearnMorePasskeysPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '${context.derivPasskeysLocalizations!.tips}:',
+                                '${context.derivPasskeysLocalizations.tips}:',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -120,7 +120,7 @@ class LearnMorePasskeysPage extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${context.derivPasskeysLocalizations!.beforeUsingPasskeys}:',
+                                '${context.derivPasskeysLocalizations.beforeUsingPasskeys}:',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -132,11 +132,11 @@ class LearnMorePasskeysPage extends StatelessWidget {
                               ),
                               UnorderedList(
                                 texts: <String>[
-                                  context.derivPasskeysLocalizations!
+                                  context.derivPasskeysLocalizations
                                       .enableScreenLock,
-                                  context.derivPasskeysLocalizations!
+                                  context.derivPasskeysLocalizations
                                       .signInGoogleOrIcloud,
-                                  context.derivPasskeysLocalizations!
+                                  context.derivPasskeysLocalizations
                                       .enableBluetooth
                                 ],
                                 style: TextStyle(

@@ -45,14 +45,14 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
               children: <Widget>[
                 const Text('Passkey', style: TextStyle(fontSize: 14)),
                 Text(
-                  '${context.derivPasskeysLocalizations!.storedOn}: ${widget.passkey.storedOn}',
+                  '${context.derivPasskeysLocalizations.storedOn}: ${widget.passkey.storedOn}',
                   style: TextStyle(
                     fontSize: 12,
                     color: context.theme.colors.general,
                   ),
                 ),
                 Text(
-                  '${context.derivPasskeysLocalizations!.lastUsed}: ${_lastUsed()}',
+                  '${context.derivPasskeysLocalizations.lastUsed}: ${_lastUsed()}',
                   style: TextStyle(
                     fontSize: 12,
                     color: context.theme.colors.general,
@@ -70,7 +70,7 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
           //         onPressed: () {
           //         },
           //         child: Text(
-          //           context.derivPasskeysLocalizations!.rename,
+          //           context.derivPasskeysLocalizations.rename,
           //           style: TextStyle(
           //             fontSize: 14,
           //             color: context.theme.colors.general,
@@ -81,7 +81,7 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
           //         onPressed: () {
           //         },
           //         child: Text(
-          //           context.derivPasskeysLocalizations!.revoke,
+          //           context.derivPasskeysLocalizations.revoke,
           //           style: TextStyle(
           //             fontSize: 14,
           //             color: context.theme.colors.general,

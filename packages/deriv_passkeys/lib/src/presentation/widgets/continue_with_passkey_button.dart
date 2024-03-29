@@ -27,19 +27,19 @@ class ContinueWithPasskeyButton extends StatelessWidget {
             if (state is NoCredentialErrorState) {
               showAlertDialog(
                 context: context,
-                title: context.derivPasskeysLocalizations!.noPasskeyFound,
+                title: context.derivPasskeysLocalizations.noPasskeyFound,
                 content: Text(context
-                    .derivPasskeysLocalizations!.noPasskeyFoundDescription),
-                positiveActionLabel: context.derivPasskeysLocalizations!.ok,
+                    .derivPasskeysLocalizations.noPasskeyFoundDescription),
+                positiveActionLabel: context.derivPasskeysLocalizations.ok,
                 onPositiveActionPressed: () {
                   Navigator.of(context).pop();
                 },
               );
             } else {
               final String title =
-                  context.derivPasskeysLocalizations!.unexpectedError;
-              String content = context
-                  .derivPasskeysLocalizations!.unexpectedErrorDescription;
+                  context.derivPasskeysLocalizations.unexpectedError;
+              String content =
+                  context.derivPasskeysLocalizations.unexpectedErrorDescription;
               if (state.errorCode == 'PASSKEYS_SERVICE_ERROR') {
                 content = state.message;
               }
@@ -47,7 +47,7 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                 context: context,
                 title: title,
                 content: Text(content),
-                positiveActionLabel: context.derivPasskeysLocalizations!.ok,
+                positiveActionLabel: context.derivPasskeysLocalizations.ok,
                 onPositiveActionPressed: () {
                   Navigator.of(context).pop();
                 },

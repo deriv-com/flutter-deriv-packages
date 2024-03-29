@@ -37,7 +37,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
         listener: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysCreatedSuccessfullyState) {
             String platformName =
-                context.derivPasskeysLocalizations!.unsupportedPlatform;
+                context.derivPasskeysLocalizations.unsupportedPlatform;
             if (Platform.isIOS) {
               platformName = 'IOS';
             }
@@ -66,7 +66,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                     child: TextButton(
                       onPressed: () => onFlowComplete(context),
                       child: Text(
-                        context.derivPasskeysLocalizations!.maybeLater,
+                        context.derivPasskeysLocalizations.maybeLater,
                         style: TextStyle(color: context.theme.colors.coral),
                       ),
                     ),
@@ -84,13 +84,13 @@ class EffortlessPasskeysPage extends StatelessWidget {
                           package: 'deriv_passkeys',
                         ),
                         Text(
-                          context.derivPasskeysLocalizations!
+                          context.derivPasskeysLocalizations
                               .effortlessLoginWithPasskeys,
                           style: const TextStyle(fontSize: 20),
                         ),
                         IconTextRowWidget(
                           assetName: Assets.fingerPrintIcon,
-                          text: context.derivPasskeysLocalizations!
+                          text: context.derivPasskeysLocalizations
                               .noNeedToRememberPassword,
                         ),
                         Divider(
@@ -99,7 +99,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                         IconTextRowWidget(
                           assetName: Assets.syncIcon,
                           text: context
-                              .derivPasskeysLocalizations!.syncAcrossAllDevices,
+                              .derivPasskeysLocalizations.syncAcrossAllDevices,
                         ),
                         Divider(
                           color: context.theme.colors.hover,
@@ -107,7 +107,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                         IconTextRowWidget(
                           assetName: Assets.lockIcon,
                           text: context
-                              .derivPasskeysLocalizations!.useYourBiometrics,
+                              .derivPasskeysLocalizations.useYourBiometrics,
                         ),
                         Divider(
                           color: context.theme.colors.hover,
@@ -119,7 +119,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                               children: <InlineSpan>[
                                 TextSpan(
                                     text:
-                                        '${context.derivPasskeysLocalizations!.learnMoreAboutPasskeys} '),
+                                        '${context.derivPasskeysLocalizations.learnMoreAboutPasskeys} '),
                                 WidgetSpan(
                                   alignment: PlaceholderAlignment.middle,
                                   child: InkWell(
@@ -133,7 +133,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                                       );
                                     },
                                     child: Text(
-                                      '${context.derivPasskeysLocalizations!.here}.',
+                                      '${context.derivPasskeysLocalizations.here}.',
                                       style: TextStyle(
                                           color: context.theme.colors.coral),
                                     ),
@@ -158,7 +158,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                             .add(DerivPasskeysCreateCredentialEvent());
                       },
                       child: Text(
-                        context.derivPasskeysLocalizations!.createPasskey,
+                        context.derivPasskeysLocalizations.createPasskey,
                       ),
                     ),
                   ),

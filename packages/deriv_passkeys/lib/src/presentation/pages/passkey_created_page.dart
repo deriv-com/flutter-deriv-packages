@@ -50,13 +50,13 @@ class PasskeyCreatedPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 24),
                           child: Text(
-                            context.derivPasskeysLocalizations!
+                            context.derivPasskeysLocalizations
                                 .passkeyCreatedSuccessTitle,
                             style: const TextStyle(fontSize: 20),
                           ),
                         ),
                         Text(
-                          context.derivPasskeysLocalizations!
+                          context.derivPasskeysLocalizations
                               .passkeyCreatedSuccessMessage(platformName),
                           style: TextStyle(
                             fontSize: 14,
@@ -75,7 +75,7 @@ class PasskeyCreatedPage extends StatelessWidget {
                     child: PrimaryButton(
                       onPressed: () => onPageClose(context),
                       child: Text(context
-                          .derivPasskeysLocalizations!.continueButtonText),
+                          .derivPasskeysLocalizations.continueButtonText),
                     ),
                   ),
                 )

@@ -64,7 +64,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
             listener: (BuildContext context, DerivPasskeysState state) {
               if (state is DerivPasskeysCreatedSuccessfullyState) {
                 String platformName =
-                    context.derivPasskeysLocalizations!.unsupportedPlatform;
+                    context.derivPasskeysLocalizations.unsupportedPlatform;
                 //get if device is android or ios
                 if (Platform.isIOS) {
                   platformName = 'IOS';
@@ -85,12 +85,12 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
               } else if (state is DerivPasskeysErrorState) {
                 showAlertDialog(
                   context: context,
-                  title: context.derivPasskeysLocalizations!.unexpectedError,
+                  title: context.derivPasskeysLocalizations.unexpectedError,
                   content: Text(
                     context
-                        .derivPasskeysLocalizations!.unexpectedErrorDescription,
+                        .derivPasskeysLocalizations.unexpectedErrorDescription,
                   ),
-                  positiveActionLabel: context.derivPasskeysLocalizations!.ok,
+                  positiveActionLabel: context.derivPasskeysLocalizations.ok,
                   onPositiveActionPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -121,7 +121,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                                     .add(DerivPasskeysCreateCredentialEvent());
                               },
                               child: Text(context
-                                  .derivPasskeysLocalizations!.createPassKey),
+                                  .derivPasskeysLocalizations.createPassKey),
                             ),
                           ),
                         )
@@ -167,7 +167,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Text(
-                  context.derivPasskeysLocalizations!.experienceSaferLogins,
+                  context.derivPasskeysLocalizations.experienceSaferLogins,
                   style: const TextStyle(fontSize: 20),
                 ),
               ),
@@ -179,7 +179,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                     children: <InlineSpan>[
                       TextSpan(
                           text:
-                              '${context.derivPasskeysLocalizations!.enhanceSecurity} '),
+                              '${context.derivPasskeysLocalizations.enhanceSecurity} '),
                       WidgetSpan(
                         alignment: PlaceholderAlignment.middle,
                         child: InkWell(
@@ -192,7 +192,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                             );
                           },
                           child: Text(
-                            '${context.derivPasskeysLocalizations!.here}.',
+                            '${context.derivPasskeysLocalizations.here}.',
                             style: TextStyle(color: context.theme.colors.coral),
                           ),
                         ),
