@@ -5,7 +5,7 @@ import 'package:deriv_auth/features/social_auth/cubit/social_auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// A wrapper class for clients apps to manage state
+/// A wrapper class for clients apps to provide auth related cubits to the context.
 class AuthProvider extends StatelessWidget {
   /// Constructor [AuthProvider]
   const AuthProvider({
