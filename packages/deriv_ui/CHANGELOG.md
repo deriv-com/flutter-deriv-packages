@@ -1,3 +1,7 @@
+## 0.0.7+2
+
+ - Update a dependency to the latest release.
+
 ## 0.0.7+1
 
  - **REFACTOR**(deriv_ui): update theme deps. ([db4c4bc2](https://github.com/regentmarkets/flutter-deriv-packages/commit/db4c4bc2a6d4f042ab624f781ea0dc5e837ed860))
