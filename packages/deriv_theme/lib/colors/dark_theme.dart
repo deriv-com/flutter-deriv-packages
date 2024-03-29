@@ -56,4 +56,6 @@ const Map<String, Color> darkTheme = <String, Color>{
   'usdcWalletEnd': Color(0x3D2775CA),
   'demoWalletBegin': Color(0x7AFF444F),
   'demoWalletEnd': Color(0x3DFF6444),
+  'badgeBackgroundColor': Color(0xFF4D3500),
+  'badgeTextColor': Color(0xFFFFEABF),
 };

@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-03-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_theme` - `v2.4.0`](#deriv_theme---v240)
+ - [`deriv_auth` - `v6.3.5`](#deriv_auth---v635)
+ - [`deriv_ui` - `v0.0.7+2`](#deriv_ui---v0072)
+ - [`deriv_numpad` - `v1.1.3`](#deriv_numpad---v113)
+ - [`deriv_widgetbook` - `v0.0.2+2`](#deriv_widgetbook---v0022)
+ - [`deriv_expandable_bottom_sheet` - `v0.0.1+4`](#deriv_expandable_bottom_sheet---v0014)
+ - [`deriv_date_range_picker` - `v0.0.1+4`](#deriv_date_range_picker---v0014)
+ - [`deriv_language_selector` - `v0.0.1+2`](#deriv_language_selector---v0012)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.3.5`
+ - `deriv_ui` - `v0.0.7+2`
+ - `deriv_numpad` - `v1.1.3`
+ - `deriv_widgetbook` - `v0.0.2+2`
+ - `deriv_expandable_bottom_sheet` - `v0.0.1+4`
+ - `deriv_date_range_picker` - `v0.0.1+4`
+ - `deriv_language_selector` - `v0.0.1+2`
+
+---
+
+#### `deriv_theme` - `v2.4.0`
+
+ - **FEAT**(deriv_theme): [UPM-856] Add passkeys colors to deriv theme. ([#545](https://github.com/regentmarkets/flutter-deriv-packages/issues/545)). ([09c54bb6](https://github.com/regentmarkets/flutter-deriv-packages/commit/09c54bb6572d5c8ec0454cf41c8ef282b89f2689))
+
+
+## 2024-03-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.1.3`](#deriv_localizations---v113)
+ - [`deriv_auth` - `v6.3.4`](#deriv_auth---v634)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.3.4`
+
+---
+
+#### `deriv_localizations` - `v1.1.3`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#541](https://github.com/regentmarkets/flutter-deriv-packages/issues/541)). ([2129cb76](https://github.com/regentmarkets/flutter-deriv-packages/commit/2129cb76fce1ce120af0f1b357f24ff343dbd803))
+
+
 ## 2024-03-14
 
 ### Changes
@@ -80,10 +148,6 @@ Packages with dependency updates only:
 
 #### `deriv_ui` - `v0.0.7`
 
-<<<<<<< HEAD
-=======
- - **FIX**(deriv_ui): update deriv_theme ([#525](https://github.com/regentmarkets/flutter-deriv-packages/issues/525)). ([304a5b59](https://github.com/regentmarkets/flutter-deriv-packages/commit/304a5b59d1603196ae37f53a682db8de69bedcf0))
->>>>>>> 48d45ba4626fe38f562e5fdcba78a6002468e03d
  - **FIX**(deriv_ui): update theme dependency ([#522](https://github.com/regentmarkets/flutter-deriv-packages/issues/522)). ([d00e3edf](https://github.com/regentmarkets/flutter-deriv-packages/commit/d00e3edfe08e861401c501b2ac1944a9d7af11f2))
  - **FEAT**(deriv_ui): add language selector component ([#509](https://github.com/regentmarkets/flutter-deriv-packages/issues/509)). ([bff66151](https://github.com/regentmarkets/flutter-deriv-packages/commit/bff661513f330d014154657fbf170b75512dc180))
 
