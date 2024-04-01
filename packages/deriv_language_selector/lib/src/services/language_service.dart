@@ -31,8 +31,9 @@ class LanguageService implements BaseLanguageService {
 
   /// Default language of the app.
   LanguageModel get defaultLanguage => _languages.firstWhere(
-      (LanguageModel language) => language.code == platformLanguage,
-      orElse: () => _languages.first);
+        (LanguageModel language) => language.code == platformLanguage,
+        orElse: () => _languages.first,
+      );
 
   /// System/Device language code.
   String get platformLanguage => Platform.localeName.split('_').first;
@@ -47,8 +48,10 @@ class LanguageService implements BaseLanguageService {
     if (code == null) {
       return defaultLanguage;
     } else {
-      return _languages
-          .firstWhere((LanguageModel element) => element.code == code);
+      return _languages.firstWhere(
+        (LanguageModel element) => element.code == code,
+        orElse: () => defaultLanguage,
+      );
     }
   }
 
@@ -95,15 +98,25 @@ class LanguageService implements BaseLanguageService {
   static List<LanguageModel> _generateLanguages(
     List<LanguageEntity> activeLanguages,
     List<LanguageEntity> localLanguages,
-  ) =>
-      localLanguages
-          .where((LanguageEntity language) =>
-              activeLanguages.isEmpty ||
-              activeLanguages
-                  .where((LanguageEntity element) =>
-                      element.locale == language.locale)
-                  .isNotEmpty)
-          .map((LanguageEntity activeLanguage) => activeLanguage.toModel(
-              'assets/icons/flags/ic_flag_${activeLanguage.locale.languageCode}.png'))
-          .toList();
+  ) {
+    // Local/scoped function to convert a LanguageEntity to a LanguageModel.
+    LanguageModel convertToModel(LanguageEntity language) => language.toModel(
+        'assets/icons/flags/ic_flag_${language.locale.languageCode}.png');
+
+    // If there are no active languages, convert all local languages to models.
+    if (activeLanguages.isEmpty) {
+      return localLanguages.map(convertToModel).toList();
+    }
+
+    // Prepare a set of active languages based on locale for efficient lookup.
+    final Set<Locale> activeLanguagesSet = activeLanguages
+        .map((LanguageEntity language) => language.locale)
+        .toSet();
+
+    return localLanguages
+        .where((LanguageEntity language) =>
+            activeLanguagesSet.contains(language.locale))
+        .map(convertToModel)
+        .toList();
+  }
 }
