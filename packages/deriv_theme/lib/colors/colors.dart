@@ -101,5 +101,9 @@ class Colors {
 
   Color get demoWalletEnd => _fetchColor('demoWalletEnd');
 
+  Color get badgeBackgroundColor => _fetchColor('badgeBackgroundColor');
+
+  Color get badgeTextColor => _fetchColor('badgeTextColor');
+
   Color _fetchColor(String name) => (isDark ? dark[name] : light[name])!;
 }
