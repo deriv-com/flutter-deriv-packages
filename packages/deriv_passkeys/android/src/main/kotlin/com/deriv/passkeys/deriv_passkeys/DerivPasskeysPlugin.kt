@@ -1,7 +1,6 @@
 package com.deriv.passkeys.deriv_passkeys
 
 import android.app.Activity
-import android.content.Context
 import androidx.credentials.CreatePublicKeyCredentialRequest
 import androidx.credentials.CreatePublicKeyCredentialResponse
 import androidx.credentials.CredentialManager
@@ -17,15 +16,17 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
 
 /// DerivPasskeysPlugin is a Flutter plugin that provides a way to create and get credentials using the WebAuthn API.
-class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
+class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, ViewModel() {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel: MethodChannel
-  private lateinit var context: Context
+  private lateinit var activity: Activity
 
 
   private fun createCredential(options: String, callback: (credential: String?, e: Exception?) -> Unit) {
@@ -36,9 +37,9 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
     )
     viewModelScope.launch {
       try {
-        val credentialManager = CredentialManager.create(context)
+        val credentialManager = CredentialManager.create(activity)
         val result = credentialManager.createCredential(
-          context = context,
+          context = activity,
           request = createPublicKeyCredentialRequest,
         )
         val credential = result as CreatePublicKeyCredentialResponse
@@ -56,9 +57,9 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
     )
     viewModelScope.launch {
       try {
-        val credentialManager = CredentialManager.create(context)
+        val credentialManager = CredentialManager.create(activity)
         val result = credentialManager.getCredential(
-          context = context,
+          context = activity,
           request = GetCredentialRequest(listOf(getPublicKeyCredentialOption)),
         )
         val credential = result.credential as PublicKeyCredential
@@ -72,11 +73,24 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ViewModel() {
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "deriv_passkeys")
     channel.setMethodCallHandler(this)
-    context = flutterPluginBinding.applicationContext
+  }
+
+  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+    this.activity = binding.activity;
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
+  }
+
+  override fun onDetachedFromActivity() {
+  }
+
+  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+    this.activity = binding.activity;
+  }
+
+  override fun onDetachedFromActivityForConfigChanges() {
   }
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
