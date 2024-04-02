@@ -1,3 +1,7 @@
+## 6.3.6
+
+ - **FIX**(auth_single_entry): add auth cubits provider. ([8f71d1d5](https://github.com/regentmarkets/flutter-deriv-packages/commit/8f71d1d570508666843119d7c1317210484fcc20))
+
 ## 6.3.5
 
  - Update a dependency to the latest release.

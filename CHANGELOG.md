@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_auth` - `v6.3.6`](#deriv_auth---v636)
+
+---
+
+#### `deriv_auth` - `v6.3.6`
+
+ - **FIX**(auth_single_entry): add auth cubits provider. ([8f71d1d5](https://github.com/regentmarkets/flutter-deriv-packages/commit/8f71d1d570508666843119d7c1317210484fcc20))
+
+
+## 2024-03-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_theme` - `v2.4.0`](#deriv_theme---v240)
  - [`deriv_auth` - `v6.3.5`](#deriv_auth---v635)
  - [`deriv_ui` - `v0.0.7+2`](#deriv_ui---v0072)
