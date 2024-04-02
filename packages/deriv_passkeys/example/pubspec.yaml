@@ -32,7 +32,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v2.3.0
+      ref: deriv_theme-v2.4.0
   deriv_http_client:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
