@@ -1,6 +1,6 @@
 {
-  "passkeyCreatedSuccessTitle": "Success!",
-  "passkeyCreatedSuccessMessage": "Your account is now secured with a passkey. Manage your passkey through your {platformName} account settings.",
+  "passkeyCreatedSuccessTitle": "Concluído com sucesso!",
+  "passkeyCreatedSuccessMessage": "A sua conta está agora protegida com uma chave de acesso. Pode fazer a gestão da sua chave de acesso através das definições da sua conta {platformName}.",
   "@passkeyCreatedSuccessMessage": {
     "placeholders": {
       "platformName": {
@@ -9,13 +9,13 @@
       }
     }
   },
-  "continueButtonText": "Continue",
-  "unexpectedError": "An unexpected error occurred!",
-  "unexpectedErrorDescription": "Please try again later.",
+  "continueButtonText": "Continuar",
+  "unexpectedError": "Ocorreu um erro inesperado!",
+  "unexpectedErrorDescription": "Por favor, tente novamente mais tarde.",
   "ok": "Ok",
-  "createPassKey": "Create Passkey",
-  "experienceSaferLogins": "Experience safer logins",
-  "enhanceSecurity": "To enhance your security, tap Create passkey",
+  "createPassKey": "Criar chave de acesso",
+  "experienceSaferLogins": "Experimente inícios de sessão mais seguros",
+  "enhanceSecurity": "Para reforçar a sua segurança, clique em \"Criar chave de acesso\"",
   "here": "here",
   "effortlessLogin": "Effortless login with passkeys",
   "whatArePasskeys": "What are passkeys?",
