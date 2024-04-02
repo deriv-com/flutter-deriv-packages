@@ -59,12 +59,7 @@ class ContinueWithPasskeyButton extends StatelessWidget {
           if (state is DerivPasskeysNotSupportedState) {
             return const SizedBox();
           }
-          if (state is DerivPasskeysLoadingState) {
-            return const Padding(
-              padding: EdgeInsets.all(12),
-              child: Center(child: CircularProgressIndicator()),
-            );
-          }
+
           return InkWell(
             child: Container(
               padding: const EdgeInsets.symmetric(
@@ -77,23 +72,35 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                   color: context.theme.colors.active,
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SvgPicture.asset(
-                    Assets.passkeySvgIcon,
-                    package: 'deriv_passkeys',
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'Passkey',
-                    style: context.theme.textStyle(
-                      textStyle: TextStyles.body2,
-                      color: context.theme.colors.prominent,
+              child: state is DerivPasskeysLoadingState
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        LoadingIndicator(
+                          valueColor: context.theme.colors.prominent,
+                          strokeWidth: ThemeProvider.margin02,
+                          height: ThemeProvider.iconSize16,
+                          width: ThemeProvider.iconSize16,
+                        )
+                      ],
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SvgPicture.asset(
+                          Assets.passkeySvgIcon,
+                          package: 'deriv_passkeys',
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Passkey',
+                          style: context.theme.textStyle(
+                            textStyle: TextStyles.body2,
+                            color: context.theme.colors.prominent,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
             ),
             onTap: () async {
               derivPasskeysBloc.add(DerivPasskeysVerifyCredentialEvent());
