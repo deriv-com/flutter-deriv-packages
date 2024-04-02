@@ -153,8 +153,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: PrimaryButton(
                       onPressed: () {
-                        context
-                            .read<DerivPasskeysBloc>()
+                        derivPasskeysBloc
                             .add(DerivPasskeysCreateCredentialEvent());
                       },
                       child: Text(
