@@ -20,30 +20,30 @@ runs:
           TAGS: ${{ inputs.TAGS }}
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{
-        	"blocks": [
+        --data "{
+        	\"blocks\": [
               {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "<!channel> *New Package Update*"
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"<!channel> *New Package Update*\"
                 }
               },
               {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*$PR_TITLE*"
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*$PR_TITLE*\"
                 }
               },
               {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*Packages released:*\n- *$TAGS*\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md"
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*Packages released:*\n- *$TAGS*\n*Changelog:* https://github.com/regentmarkets/flutter-deriv-packages/blob/master/CHANGELOG.md\"
               }
             }
           ]
-        }' \
+        }" \
           $SLACK_WEBHOOK_PACKAGE_UPDATE
       shell: bash

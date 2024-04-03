@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-04-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.2.0`](#deriv_localizations---v120)
+ - [`deriv_auth` - `v6.3.7`](#deriv_auth---v637)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.3.7`
+
+---
+
+#### `deriv_localizations` - `v1.2.0`
+
+ - **FEAT**(deriv_localizations): [UPM-856] Adding deriv passkeys localizations. ([#544](https://github.com/regentmarkets/flutter-deriv-packages/issues/544)). ([9a3b42e2](https://github.com/regentmarkets/flutter-deriv-packages/commit/9a3b42e2468c9586eae4eb03ba8a7b2712f44de2))
+
+
+## 2024-03-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.3.6`](#deriv_auth---v636)
+
+---
+
+#### `deriv_auth` - `v6.3.6`
+
+ - **FIX**(auth_single_entry): add auth cubits provider. ([8f71d1d5](https://github.com/regentmarkets/flutter-deriv-packages/commit/8f71d1d570508666843119d7c1317210484fcc20))
+
+
 ## 2024-03-29
 
 ### Changes

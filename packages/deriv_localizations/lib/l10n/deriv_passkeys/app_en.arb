@@ -1,0 +1,50 @@
+{
+  "passkeyCreatedSuccessTitle": "Success!",
+  "passkeyCreatedSuccessMessage": "Your account is now secured with a passkey. Manage your passkey through your {platformName} account settings.",
+  "@passkeyCreatedSuccessMessage": {
+    "placeholders": {
+      "platformName": {
+        "required": true,
+        "type": "String"
+      }
+    }
+  },
+  "continueButtonText": "Continue",
+  "unexpectedError": "An unexpected error occurred!",
+  "unexpectedErrorDescription": "Please try again later.",
+  "ok": "Ok",
+  "createPassKey": "Create Passkey",
+  "experienceSaferLogins": "Experience safer logins",
+  "enhanceSecurity": "To enhance your security, tap Create passkey",
+  "here": "here",
+  "effortlessLogin": "Effortless login with passkeys",
+  "whatArePasskeys": "What are passkeys?",
+  "whatArePasskeysDescription": "Passkeys are a security measure that lets you log in the same way you unlock your device: with a fingerprint, a face scan, or a screen lock PIN.",
+  "whyPasskeys": "Why passkeys?",
+  "whyPasskeysDescription": "Passkeys are an added layer of security that protects your account against unauthorised access and phishing attacks.",
+  "howToCreatePasskey": "How to create a passkey?",
+  "howToCreatePasskeyDescription": "Go to ‘Account Settings’ to set up your passkey. Each device can only save one passkey; however, iOS users may still see the \"Create passkey\" button due to iOS’s ability to save passkeys on other devices.",
+  "whereArePasskeysSaved": "Where are passkeys saved?",
+  "whereArePasskeysSavedDescription": "Passkeys are saved in your Google password manager for Android devices and in iCloud keychain on iOS devices to help you sign in on other devices.",
+  "whatHappensIfEmailChanged": "What happens if my Deriv account email is changed?",
+  "whatHappensIfEmailChangedDescription": "Even if you change your email address, you can still continue to log in to your Deriv account with the same passkey.",
+  "tips": "Tips",
+  "beforeUsingPasskeys": "Before using passkeys",
+  "enableScreenLock": "Enable screen lock on your device.",
+  "signInGoogleOrIcloud": "Sign in to your Google or iCloud account.",
+  "enableBluetooth": "Enable Bluetooth.",
+  "noPasskeyFound": "No passkey found!",
+  "noPasskeyFoundDescription": "Please create a passkey to use this feature.",
+  "maybeLater": "Maybe later",
+  "effortlessLoginWithPasskeys": "Effortless login with passkeys",
+  "learnMoreAboutPasskeys": "Learn more about passkeys",
+  "noNeedToRememberPassword": "No need to remember a password",
+  "useYourBiometrics": "Enhanced security with biometrics or screen lock",
+  "syncAcrossAllDevices": "Sync across all devices",
+  "createPasskey": "Create Passkey",
+  "unsupportedPlatform": "Unsupported Platform",
+  "storedOn": "Stored on",
+  "lastUsed": "Last used",
+  "rename": "Rename",
+  "revoke": "Revoke"
+}
