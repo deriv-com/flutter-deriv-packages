@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-04-03
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_language_selector` - `v0.0.2`](#deriv_language_selector---v002)
+
+---
+
+#### `deriv_language_selector` - `v0.0.2`
+
+ - **FEAT**(deriv_language_selector): aliakbar/1586/set_device_lang_as_default_if_app_supports ([#540](https://github.com/regentmarkets/flutter-deriv-packages/issues/540)). ([88ba3104](https://github.com/regentmarkets/flutter-deriv-packages/commit/88ba31049eb3a718db3e1ee5e8e85f56689d94ba))
+
+
 ## 2024-04-02
 
 ### Changes

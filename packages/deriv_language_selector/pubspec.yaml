@@ -1,6 +1,6 @@
 name: deriv_language_selector
 description: A package to select language for the app. It provides both UI and logic for language selection.
-version: 0.0.1+2
+version: 0.0.2
 publish_to: "none"
 
 environment:
