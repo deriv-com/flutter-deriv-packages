@@ -22,6 +22,7 @@ void setupDerivPasskeysBloc() {
     getJwtToken: () async => 'jwtToken',
   );
   registerFallbackValue(mockPasskeysConnectionInfoEntity);
+  registerFallbackValue(() async => 'userAgent');
 }
 
 void setupSuccessDerivPasskeysVerifyCredentialEvent() {
@@ -29,7 +30,9 @@ void setupSuccessDerivPasskeysVerifyCredentialEvent() {
       DerivPasskeysVerifyCredentialsResponseEntity(token: 'token');
 
   when(() => mockDerivPasskeysService.verifyCredential(
-        jwtToken: 'jwtToken',
-        passkeysConnectionInfoEntity: mockPasskeysConnectionInfoEntity,
+        jwtToken: any(named: 'jwtToken'),
+        passkeysConnectionInfoEntity:
+            any(named: 'passkeysConnectionInfoEntity'),
+        userAgent: any(named: 'userAgent'),
       )).thenAnswer((_) async => mockResponseEntity);
 }

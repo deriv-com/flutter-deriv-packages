@@ -36,11 +36,14 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                 },
               );
             } else {
-              final String title =
-                  context.derivPasskeysLocalizations.unexpectedError;
+              String title = context.derivPasskeysLocalizations.unexpectedError;
               String content =
                   context.derivPasskeysLocalizations.unexpectedErrorDescription;
               if (state.errorCode == 'PASSKEYS_SERVICE_ERROR') {
+                content = state.message;
+              }
+              if (state.errorCode == 'PASSKEYS_NOT_FOUND') {
+                title = context.derivPasskeysLocalizations.noPasskeyFound;
                 content = state.message;
               }
               showAlertDialog(

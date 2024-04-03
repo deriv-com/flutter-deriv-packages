@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_list_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_options_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_response_extended.dart';
@@ -58,31 +59,38 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
     required PasskeysConnectionInfoModel passkeysConnectionInfoModel,
     String? userAgent,
   }) async {
-    final String url =
-        'https://${passkeysConnectionInfoModel.endpoint}/oauth2/api/v1/passkeys/login/verify';
+    try {
+      final String url =
+          'https://${passkeysConnectionInfoModel.endpoint}/oauth2/api/v1/passkeys/login/verify';
 
-    final Map<String, String> headers = <String, String>{
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $jwtToken',
-      'User-Agent': userAgent ?? 'Dart/3.0 (dart:io)',
-      'accept': 'application/json'
-    };
-    final Map<String, dynamic> jsonDecodedResponse = await client.post(
-      url: url,
-      headers: headers,
-      jsonBody: requestBodyModel.toJson(),
-    );
+      final Map<String, String> headers = <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $jwtToken',
+        'User-Agent': userAgent ?? 'Dart/3.0 (dart:io)',
+        'accept': 'application/json'
+      };
+      final Map<String, dynamic> jsonDecodedResponse = await client.post(
+        url: url,
+        headers: headers,
+        jsonBody: requestBodyModel.toJson(),
+      );
 
-    if (jsonDecodedResponse.containsKey('error_code')) {
+      if (jsonDecodedResponse.containsKey('error_code')) {
+        throw ServerException(
+          errorCode: jsonDecodedResponse['error_code'],
+          message: jsonDecodedResponse['message'],
+        );
+      }
+
+      return DerivPasskeysVerifyCredentialsResponseModel(
+        response: jsonDecodedResponse,
+      );
+    } on HTTPClientException catch (e) {
       throw ServerException(
-        errorCode: jsonDecodedResponse['error_code'],
-        message: jsonDecodedResponse['message'],
+        errorCode: e.errorCode ?? '',
+        message: e.message,
       );
     }
-
-    return DerivPasskeysVerifyCredentialsResponseModel(
-      response: jsonDecodedResponse,
-    );
   }
 
   @override

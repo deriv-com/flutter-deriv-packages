@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/domain/entities/passkeys_connection_info_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
@@ -33,6 +35,10 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
     on<DerivPasskeysVerifyCredentialEvent>(
         (DerivPasskeysVerifyCredentialEvent event,
             Emitter<DerivPasskeysState> emit) async {
+      if (state is DerivPasskeysLoadingState) {
+        return;
+      }
+
       emit(DerivPasskeysLoadingState());
 
       final String jwtToken = await getJwtToken();
@@ -41,6 +47,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
           .verifyCredential(
         jwtToken: jwtToken,
         passkeysConnectionInfoEntity: connectionInfo,
+        userAgent: WebSocket.userAgent,
       )
           .then((DerivPasskeysVerifyCredentialsResponseEntity
               derivPasskeysVerifyCredentialsResponseEntity) {
@@ -70,6 +77,10 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
     on<DerivPasskeysCreateCredentialEvent>(
         (DerivPasskeysCreateCredentialEvent event,
             Emitter<DerivPasskeysState> emit) async {
+      if (state is DerivPasskeysLoadingState) {
+        return;
+      }
+      emit(DerivPasskeysLoadingState());
       await derivPasskeysService
           .createCredential()
           .then((DerivPasskeyEntity credential) async {

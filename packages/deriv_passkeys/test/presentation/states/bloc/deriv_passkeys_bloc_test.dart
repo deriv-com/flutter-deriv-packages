@@ -69,6 +69,7 @@ void main() {
             jwtToken: any(named: 'jwtToken'),
             passkeysConnectionInfoEntity:
                 any(named: 'passkeysConnectionInfoEntity'),
+            userAgent: any(named: 'userAgent'),
           )).thenAnswer((_) async => throw CanceledPlatformException(
             code: '',
             message: '',
@@ -93,6 +94,7 @@ void main() {
             jwtToken: any(named: 'jwtToken'),
             passkeysConnectionInfoEntity:
                 any(named: 'passkeysConnectionInfoEntity'),
+            userAgent: any(named: 'userAgent'),
           )).thenAnswer((_) async => throw NoCredentialPlatformException(
             code: '',
             message: '',
@@ -117,6 +119,7 @@ void main() {
             jwtToken: any(named: 'jwtToken'),
             passkeysConnectionInfoEntity:
                 any(named: 'passkeysConnectionInfoEntity'),
+            userAgent: any(named: 'userAgent'),
           )).thenAnswer((_) async => throw ServerException(
             errorCode: '',
             message: '',
@@ -140,6 +143,7 @@ void main() {
             jwtToken: any(named: 'jwtToken'),
             passkeysConnectionInfoEntity:
                 any(named: 'passkeysConnectionInfoEntity'),
+            userAgent: any(named: 'userAgent'),
           )).thenAnswer((_) async => throw Exception());
 
       expectLater(
@@ -171,6 +175,7 @@ void main() {
       expectLater(
         derivPasskeysBloc.stream,
         emitsInOrder(<TypeMatcher<DerivPasskeysState>>[
+          isA<DerivPasskeysLoadingState>(),
           isA<DerivPasskeysCreatedSuccessfullyState>(),
           isA<DerivPasskeysLoadedState>(),
         ]),
@@ -191,9 +196,10 @@ void main() {
 
       expectLater(
         derivPasskeysBloc.stream,
-        emits(
+        emitsInOrder(<TypeMatcher<DerivPasskeysState>>[
+          isA<DerivPasskeysLoadingState>(),
           isA<DerivPasskeysLoadedState>(),
-        ),
+        ]),
       );
 
       derivPasskeysBloc.add(DerivPasskeysCreateCredentialEvent());
@@ -207,9 +213,10 @@ void main() {
 
       expectLater(
         derivPasskeysBloc.stream,
-        emits(
+        emitsInOrder(<TypeMatcher<DerivPasskeysState>>[
+          isA<DerivPasskeysLoadingState>(),
           isA<DerivPasskeysErrorState>(),
-        ),
+        ]),
       );
 
       derivPasskeysBloc.add(DerivPasskeysCreateCredentialEvent());
