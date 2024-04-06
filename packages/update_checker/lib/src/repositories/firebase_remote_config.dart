@@ -5,16 +5,19 @@ import 'package:update_checker/src/repositories/base_firebase.dart';
 /// the firebase database.
 class FirebaseRemoteConfigRepository implements BaseFirebase {
   /// Initializes the Firebase Database repository
-  const FirebaseRemoteConfigRepository();
+  const FirebaseRemoteConfigRepository({
+    this.versionControlKey = 'app_version_control',
+  });
 
-  static const String _versionControlKey = 'app_version_control';
+  /// Remote config key.
+  final String versionControlKey;
 
   /// Fetches the update information from the database.
   @override
   Future<String> fetchUpdateData() async {
     await FirebaseRemoteConfig.instance.fetchAndActivate();
     final RemoteConfigValue remoteConfigValue =
-        FirebaseRemoteConfig.instance.getValue(_versionControlKey);
+        FirebaseRemoteConfig.instance.getValue(versionControlKey);
     return remoteConfigValue.asString();
   }
 }
