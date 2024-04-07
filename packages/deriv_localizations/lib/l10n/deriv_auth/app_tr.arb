@@ -107,9 +107,9 @@
   "informConnectionError": "Bağlantı hatası. Lütfen daha sonra tekrar deneyin.",
   "informSwitchAccountError": "Hesap hatası değiştir. Lütfen daha sonra tekrar deneyin.",
   "labelDeveloper": "Geliştirici",
-  "labelEndpoint": "Endpoint",
+  "labelEndpoint": "Bitiş noktası",
   "semanticEndpoint": "Bitiş noktası",
-  "warnInvalidEndpoint": "geçersiz endpoint",
+  "warnInvalidEndpoint": "geçersiz bitiş noktası",
   "labelApplicationID": "Başvuru ID",
   "semanticApplicationID": "Başvuru ID",
   "warnInvalidApplicationID": "geçersiz başvuru ID"
