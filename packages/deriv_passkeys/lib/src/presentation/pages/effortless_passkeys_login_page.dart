@@ -44,7 +44,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
             if (Platform.isAndroid) {
               platformName = 'Android';
             }
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<Widget>(
                   builder: (BuildContext context) => PasskeyCreatedPage(
