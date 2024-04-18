@@ -1,36 +1,38 @@
 import 'package:deriv_feature_flag/feature_flag/feature_flag_config.dart';
 import 'package:deriv_feature_flag/feature_flag/feature_flag_repository.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:growthbook_sdk_flutter/growthbook_sdk_flutter.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'mock_classes.dart';
 
-void main() {
-  final mockGrowthBookSDK = MockGrowthBookSDK();
-  final FeatureFlagConfig featureFlagConfig = FeatureFlagConfig(
-    hostUrl: '',
-    clientKey: '',
-    features: {
-      Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
-    },
-  );
-  final MockDerivGrowthBook mockDerivGrowthBook = MockDerivGrowthBook(
-    featureFlagConfig: featureFlagConfig,
-  );
-  final featureFlagRepository = FeatureFlagRepository.getInstance();
+Future<void> main() async {
+  late final MockGrowthBookSDK mockGrowthBookSDK;
+  late FeatureFlagConfig featureFlagConfig;
+  late MockDerivGrowthBook mockDerivGrowthBook;
+  late FeatureFlagRepository featureFlagRepository;
 
-  setUp(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  setUpAll(() async {
+    mockGrowthBookSDK = MockGrowthBookSDK();
+    featureFlagConfig = FeatureFlagConfig(
+      hostUrl: '',
+      clientKey: '',
+      features: {
+        Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
+      },
+    );
+    mockDerivGrowthBook = MockDerivGrowthBook(
+      featureFlagConfig: featureFlagConfig,
+    );
+    featureFlagRepository = FeatureFlagRepository.getInstance();
+    await featureFlagRepository.setup(
+      derivGrowthBook: mockDerivGrowthBook,
+    );
   });
 
   group('FeatureFlagRepository:', () {
     test('initializes GrowthBook SDK correctly.', () async {
       // setup the repository.
-      await featureFlagRepository.setup(
-        derivGrowthBook: mockDerivGrowthBook,
-      );
       // expects to return an instance if the sdk.
       expect(featureFlagRepository.growthBookSDK, isA<GrowthBookSDK>());
     });
