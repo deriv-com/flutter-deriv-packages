@@ -149,6 +149,7 @@ Future<void> openLoggedInWebPage({
   required bool rootNavigator,
   required String appToken,
   required String userAgent,
+  required String platform,
   String destinationAppId = '16929',
   String? action,
   String? code,
@@ -171,6 +172,7 @@ Future<void> openLoggedInWebPage({
     appToken: appToken,
     action: action,
     code: code,
+    platform: platform,
   );
 
   if (oneTimeToken == null) {
@@ -209,6 +211,7 @@ Future<void> openLoggedInWebPage({
             appToken: appToken,
             action: action,
             code: code,
+            platform: platform,
           );
         }
 
@@ -232,6 +235,7 @@ Future<String?> _fetchOneTimeToken({
   required String redirectPath,
   required String endpoint,
   required String appId,
+  required String platform,
   required String destinationAppId,
   required String? refreshToken,
   required String? defaultAccount,
@@ -253,6 +257,7 @@ Future<String?> _fetchOneTimeToken({
     appToken: appToken,
     action: action,
     code: code,
+    platform: platform,
   );
 
   Navigator.of(context, rootNavigator: rootNavigator).pop();
@@ -269,6 +274,7 @@ Future<String?> _getOneTimeToken({
   required String? refreshToken,
   required String? defaultAccount,
   required String appToken,
+  required String platform,
   String? action,
   String? code,
 }) async {
@@ -283,6 +289,7 @@ Future<String?> _getOneTimeToken({
       appToken: appToken,
       action: action,
       code: code,
+      platform: platform,
     );
 
     return token;
@@ -305,6 +312,7 @@ Future<String?> _validateCredentials({
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
   required bool rootNavigator,
   required String appToken,
+  required String platform,
   String? action,
   String? code,
 }) async {
@@ -321,6 +329,7 @@ Future<String?> _validateCredentials({
     appToken: appToken,
     action: action,
     code: code,
+    platform: platform,
   );
 
   if (oneTimeToken == null) {
