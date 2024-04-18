@@ -1,7 +1,6 @@
 import 'package:deriv_feature_flag/deriv_feature_flag.dart';
 import 'package:deriv_feature_flag/feature_flag/deriv_feature_flag.dart';
 import 'package:deriv_feature_flag/feature_flag/feature_flag_repository.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:growthbook_sdk_flutter/growthbook_sdk_flutter.dart';
 import 'package:mocktail/mocktail.dart';
