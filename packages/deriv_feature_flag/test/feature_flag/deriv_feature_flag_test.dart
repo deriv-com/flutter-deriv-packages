@@ -31,6 +31,9 @@ void main() async {
 
       mockFeatureFlagRepository = MockFeatureFlagRepository();
 
+      when(() => mockDerivGrowthBook.initializeSDK())
+          .thenAnswer((_) async => MockGrowthBookSDK());
+
       await DerivFeatureFlag.initializeTest(mockDerivGrowthBook);
     });
     test('setup should set the repository properly.', () async {
