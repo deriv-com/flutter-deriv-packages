@@ -1,6 +1,6 @@
 import 'package:deriv_feature_flag/feature_flag/feature_flag_config.dart';
 import 'package:deriv_feature_flag/feature_flag/feature_flag_repository.dart';
-import 'package:flutter/material.dart';
+import 'package:deriv_feature_flag/growthbook/deriv_growth_book.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:growthbook_sdk_flutter/growthbook_sdk_flutter.dart';
 import 'package:mocktail/mocktail.dart';
@@ -8,29 +8,39 @@ import 'package:mocktail/mocktail.dart';
 import 'mock_classes.dart';
 
 void main() {
-  final mockGrowthBookSDK = MockGrowthBookSDK();
-  final FeatureFlagConfig featureFlagConfig = FeatureFlagConfig(
-    hostUrl: '',
-    clientKey: '',
-    features: {
-      Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
-    },
-  );
-  final MockDerivGrowthBook mockDerivGrowthBook = MockDerivGrowthBook(
-    featureFlagConfig: featureFlagConfig,
-  );
-  final featureFlagRepository = FeatureFlagRepository.getInstance();
+  late final FeatureFlagConfig featureFlagConfig;
 
-  setUp(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  late final DerivGrowthBook mockDerivGrowthBook;
+
+  late final FeatureFlagRepository featureFlagRepository;
+
+  late final GrowthBookSDK mockGrowthBookSDK;
+
+  setUpAll(() async {
+    featureFlagConfig = FeatureFlagConfig(
+      hostUrl: '',
+      clientKey: '',
+      features: {
+        Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
+      },
+    );
+
+    mockDerivGrowthBook = MockDerivGrowthBook(
+      featureFlagConfig: featureFlagConfig,
+    );
+
+    mockGrowthBookSDK = MockGrowthBookSDK();
+
+    featureFlagRepository = FeatureFlagRepository.getInstance();
+
+    // setup the repository.
+    await featureFlagRepository.setup(
+      derivGrowthBook: mockDerivGrowthBook,
+    );
   });
 
   group('FeatureFlagRepository:', () {
     test('initializes GrowthBook SDK correctly.', () async {
-      // setup the repository.
-      await featureFlagRepository.setup(
-        derivGrowthBook: mockDerivGrowthBook,
-      );
       // expects to return an instance if the sdk.
       expect(featureFlagRepository.growthBookSDK, isA<GrowthBookSDK>());
     });

@@ -1,7 +1,7 @@
 import 'package:deriv_feature_flag/deriv_feature_flag.dart';
 import 'package:deriv_feature_flag/feature_flag/deriv_feature_flag.dart';
 import 'package:deriv_feature_flag/feature_flag/feature_flag_repository.dart';
-import 'package:flutter/material.dart';
+import 'package:deriv_feature_flag/growthbook/deriv_growth_book.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:growthbook_sdk_flutter/growthbook_sdk_flutter.dart';
 import 'package:mocktail/mocktail.dart';
@@ -9,23 +9,27 @@ import 'package:mocktail/mocktail.dart';
 import 'mock_classes.dart';
 
 void main() async {
-  final FeatureFlagConfig featureFlagConfig = FeatureFlagConfig(
-    hostUrl: '',
-    clientKey: '',
-    features: {
-      Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
-    },
-  );
+  late final FeatureFlagConfig featureFlagConfig;
 
-  final mockDerivGrowthBook = MockDerivGrowthBook(
-    featureFlagConfig: featureFlagConfig,
-  );
+  late final DerivGrowthBook mockDerivGrowthBook;
 
-  final mockFeatureFlagRepository = MockFeatureFlagRepository();
-  await DerivFeatureFlag.initializeTest(mockDerivGrowthBook);
+  late final FeatureFlagRepository mockFeatureFlagRepository;
 
-  setUp(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  setUpAll(() async {
+    featureFlagConfig = FeatureFlagConfig(
+      hostUrl: '',
+      clientKey: '',
+      features: {
+        Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
+      },
+    );
+
+    mockDerivGrowthBook = MockDerivGrowthBook(
+      featureFlagConfig: featureFlagConfig,
+    );
+
+    mockFeatureFlagRepository = MockFeatureFlagRepository();
+    await DerivFeatureFlag.initializeTest(mockDerivGrowthBook);
   });
 
   group('FeatureFlagService', () {
