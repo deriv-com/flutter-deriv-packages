@@ -7,7 +7,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'mock_classes.dart';
 
-void main() {
+Future<void> main() async {
   final mockGrowthBookSDK = MockGrowthBookSDK();
   final FeatureFlagConfig featureFlagConfig = FeatureFlagConfig(
     hostUrl: '',
@@ -21,6 +21,10 @@ void main() {
   );
   final featureFlagRepository = FeatureFlagRepository.getInstance();
 
+  await featureFlagRepository.setup(
+    derivGrowthBook: mockDerivGrowthBook,
+  );
+
   setUp(() async {
     WidgetsFlutterBinding.ensureInitialized();
   });
@@ -28,9 +32,6 @@ void main() {
   group('FeatureFlagRepository:', () {
     test('initializes GrowthBook SDK correctly.', () async {
       // setup the repository.
-      await featureFlagRepository.setup(
-        derivGrowthBook: mockDerivGrowthBook,
-      );
       // expects to return an instance if the sdk.
       expect(featureFlagRepository.growthBookSDK, isA<GrowthBookSDK>());
     });
