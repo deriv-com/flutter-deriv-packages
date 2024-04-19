@@ -33,8 +33,6 @@ void main() {
 
     featureFlagRepository = FeatureFlagRepository.getInstance();
 
-    Future.delayed(const Duration(milliseconds: 500));
-
     // setup the repository.
     await featureFlagRepository.setup(
       derivGrowthBook: mockDerivGrowthBook,

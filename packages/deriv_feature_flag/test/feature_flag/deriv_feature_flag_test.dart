@@ -9,30 +9,30 @@ import 'package:mocktail/mocktail.dart';
 import 'mock_classes.dart';
 
 void main() async {
-  late final FeatureFlagConfig featureFlagConfig;
-
-  late final DerivGrowthBook mockDerivGrowthBook;
-
-  late final FeatureFlagRepository mockFeatureFlagRepository;
-
-  setUpAll(() async {
-    featureFlagConfig = FeatureFlagConfig(
-      hostUrl: '',
-      clientKey: '',
-      features: {
-        Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
-      },
-    );
-
-    mockDerivGrowthBook = MockDerivGrowthBook(
-      featureFlagConfig: featureFlagConfig,
-    );
-
-    mockFeatureFlagRepository = MockFeatureFlagRepository();
-    await DerivFeatureFlag.initializeTest(mockDerivGrowthBook);
-  });
-
   group('FeatureFlagService', () {
+    late final FeatureFlagConfig featureFlagConfig;
+
+    late final DerivGrowthBook mockDerivGrowthBook;
+
+    late final FeatureFlagRepository mockFeatureFlagRepository;
+
+    setUpAll(() async {
+      featureFlagConfig = FeatureFlagConfig(
+        hostUrl: '',
+        clientKey: '',
+        features: {
+          Features.isSocialAuthEnabled.key: GBFeature(defaultValue: true),
+        },
+      );
+
+      mockDerivGrowthBook = MockDerivGrowthBook(
+        featureFlagConfig: featureFlagConfig,
+      );
+
+      mockFeatureFlagRepository = MockFeatureFlagRepository();
+
+      await DerivFeatureFlag.initializeTest(mockDerivGrowthBook);
+    });
     test('setup should set the repository properly.', () async {
       // Act & Assert
       expect(
