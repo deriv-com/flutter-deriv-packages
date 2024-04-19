@@ -1,6 +1,6 @@
 {
   "passkeyCreatedSuccessTitle": "Succès!",
-  "passkeyCreatedSuccessMessage": "Votre compte est désormais sécurisé par une passkey. Gérez votre passkey via les paramètres de votre compte {platformName}.",
+  "passkeyCreatedSuccessMessage": "Votre compte est désormais sécurisé par une passkey. Gérez votre passkey à partir de vos paramètres de compte {platformName}.",
   "@passkeyCreatedSuccessMessage": {
     "placeholders": {
       "platformName": {
@@ -10,7 +10,7 @@
     }
   },
   "continueButtonText": "Continuer",
-  "unexpectedError": "Une erreur inattendue s'est produite!",
+  "unexpectedError": "Une erreur inattendue s'est produite !",
   "unexpectedErrorDescription": "Veuillez réessayer plus tard.",
   "ok": "Ok",
   "createPassKey": "Créer une passkey",
