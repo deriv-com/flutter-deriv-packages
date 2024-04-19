@@ -32,7 +32,7 @@
   "beforeUsingPasskeys": "Avant d'utiliser la passkey :",
   "enableScreenLock": "Activez le verrouillage de l'écran sur votre appareil.",
   "signInGoogleOrIcloud": "Connectez-vous à votre compte Google ou iCloud.",
-  "enableBluetooth": "Activer le Bluetooth.",
+  "enableBluetooth": "Activer Bluetooth.",
   "noPasskeyFound": "Aucun passkey n'a été trouvé !",
   "noPasskeyFoundDescription": "Veuillez créer une passkey pour utiliser cette fonctionnalité.",
   "maybeLater": "Peut-être plus tard",
