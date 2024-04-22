@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// Setting page model
 class SettingPageModel {
   /// Constructor [SettingPageModel]
@@ -27,5 +29,5 @@ class SettingPageModel {
       updateFlavorConfigs;
 
   /// Settings page navigation
-  final Function() settingsPageNavigation;
+  final Function(BuildContext context) settingsPageNavigation;
 }
