@@ -27,5 +27,5 @@ class SettingPageModel {
       updateFlavorConfigs;
 
   /// Settings page navigation
-  final String Function() settingsPageNavigation;
+  final Function() settingsPageNavigation;
 }
