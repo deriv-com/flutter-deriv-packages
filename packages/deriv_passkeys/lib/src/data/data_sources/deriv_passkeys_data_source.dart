@@ -140,6 +140,8 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         await PasskeysListResponseExtended.fetchRaw(
             const PasskeysListRequest());
 
+    sendMessage("response.passkeysList: " + response.passkeysList.toString());
+
     if (response.passkeysList == null) {
       sendMessage('Failed to load passkeys list!');
       throw Exception('Failed to load passkeys list!');
