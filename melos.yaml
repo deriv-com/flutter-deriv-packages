@@ -40,3 +40,6 @@ scripts:
     packageFilters:
       dirExists:
         - test
+      ignore:
+        # Ignore until we have a proper test.
+        - "deriv_feature_flag"
