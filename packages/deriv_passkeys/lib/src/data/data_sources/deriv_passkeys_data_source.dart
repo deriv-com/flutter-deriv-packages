@@ -38,7 +38,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
       url,
     );
 
-    sendError(response.body);
+    sendMessage(response.body);
 
     if (response.statusCode == 200) {
       return DerivPasskeysOptionsModel.fromJson(jsonDecode(response.body));
@@ -80,7 +80,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
 
       print("jsonDecodedResponse: " + jsonDecodedResponse.toString());
 
-      sendError(jsonDecodedResponse.toString());
+      sendMessage(jsonDecodedResponse.toString());
 
       if (jsonDecodedResponse.containsKey('error_code')) {
         throw ServerException(
@@ -94,7 +94,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
       );
     } on HTTPClientException catch (e) {
       print("HTTPClientException: " + e.toString());
-      sendError(e.toString());
+      sendMessage(e.toString());
       throw ServerException(
         errorCode: e.errorCode ?? '',
         message: e.message,
@@ -109,7 +109,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
             const PasskeysRegisterOptionsRequest());
 
     if (response.passkeysRegisterOptions == null) {
-      sendError('Failed to load register options!');
+      sendMessage('Failed to load register options!');
       throw Exception('Failed to load register options!');
     }
 
@@ -124,11 +124,11 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         await PasskeysRegisterResponseExtended.fetchRaw(request);
 
     if (response.passkeysRegister == null) {
-      sendError('Failed to register credentials!');
+      sendMessage('Failed to register credentials!');
       throw Exception('Failed to register credentials!');
     }
 
-    sendError("response.passkeysRegister['properties']: " +
+    sendMessage("response.passkeysRegister['properties']: " +
         response.passkeysRegister!['properties'].toString());
 
     return DerivPasskeyModel.fromJson(response.passkeysRegister!['properties']);
@@ -141,7 +141,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
             const PasskeysListRequest());
 
     if (response.passkeysList == null) {
-      sendError('Failed to load passkeys list!');
+      sendMessage('Failed to load passkeys list!');
       throw Exception('Failed to load passkeys list!');
     }
 

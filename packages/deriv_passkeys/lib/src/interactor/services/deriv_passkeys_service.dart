@@ -39,9 +39,14 @@ class DerivPasskeysService {
 
     getRegisterOptionsResult['user'] = publicKeyCredentialUserEntityJson;
 
+    sendMessage(
+        "getRegisterOptionsResult: " + getRegisterOptionsResult.toString());
+
     final String options = jsonEncode(getRegisterOptionsResult);
+    print("asdfasdfasdfasdfasfd");
     final String? credentials =
         await BaseDerivPasskeysMethodChannel.instance.createCredential(options);
+    sendMessage("credentials: " + credentials.toString());
     if (credentials == null) {
       throw PlatformException(
           code: 'null-response',
@@ -104,7 +109,7 @@ class DerivPasskeysService {
 
       return getVerifyCredentialsResult;
     } catch (e) {
-      sendError(e);
+      sendMessage(e);
       throw e;
     }
   }
