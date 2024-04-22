@@ -120,8 +120,13 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                                 widget.derivPasskeysBloc
                                     .add(DerivPasskeysCreateCredentialEvent());
                               },
-                              child: Text(context
-                                  .derivPasskeysLocalizations.createPassKey),
+                              child: Text(
+                                context
+                                    .derivPasskeysLocalizations.createPassKey,
+                                style: TextStyle(
+                                  color: context.theme.colors.prominent,
+                                ),
+                              ),
                             ),
                           ),
                         )

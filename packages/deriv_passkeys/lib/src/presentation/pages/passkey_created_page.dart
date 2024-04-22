@@ -74,8 +74,12 @@ class PasskeyCreatedPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: PrimaryButton(
                       onPressed: () => onPageClose(context),
-                      child: Text(context
-                          .derivPasskeysLocalizations.continueButtonText),
+                      child: Text(
+                        context.derivPasskeysLocalizations.continueButtonText,
+                        style: TextStyle(
+                          color: context.theme.colors.prominent,
+                        ),
+                      ),
                     ),
                   ),
                 )

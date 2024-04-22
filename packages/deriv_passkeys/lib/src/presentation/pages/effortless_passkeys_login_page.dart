@@ -158,6 +158,9 @@ class EffortlessPasskeysPage extends StatelessWidget {
                       },
                       child: Text(
                         context.derivPasskeysLocalizations.createPasskey,
+                        style: TextStyle(
+                          color: context.theme.colors.prominent,
+                        ),
                       ),
                     ),
                   ),

@@ -34,16 +34,24 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
   Widget build(BuildContext context) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SvgPicture.asset(
-            Assets.passkeySvgIcon,
-            package: 'deriv_passkeys',
+          Expanded(
+            child: SvgPicture.asset(
+              Assets.passkeySvgIcon,
+              package: 'deriv_passkeys',
+            ),
           ),
           const SizedBox(width: 8),
           Expanded(
+            flex: 10,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Text('Passkey', style: TextStyle(fontSize: 14)),
+                Text(widget.passkey.name,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: context.theme.colors.prominent,
+                    )),
                 Text(
                   '${context.derivPasskeysLocalizations.storedOn}: ${widget.passkey.storedOn}',
                   style: TextStyle(
