@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-04-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_web_view` - `v0.2.2+1`](#deriv_web_view---v0221)
+ - [`deriv_auth` - `v6.3.8`](#deriv_auth---v638)
+ - [`deriv_ui` - `v0.0.7+3`](#deriv_ui---v0073)
+ - [`deriv_widgetbook` - `v0.0.2+3`](#deriv_widgetbook---v0023)
+ - [`deriv_language_selector` - `v0.0.2+1`](#deriv_language_selector---v0021)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.3.8`
+ - `deriv_ui` - `v0.0.7+3`
+ - `deriv_widgetbook` - `v0.0.2+3`
+ - `deriv_language_selector` - `v0.0.2+1`
+
+---
+
+#### `deriv_web_view` - `v0.2.2+1`
+
+ - **FIX**(deriv_web_view): update PTA model ([#557](https://github.com/regentmarkets/flutter-deriv-packages/issues/557)). ([49583f82](https://github.com/regentmarkets/flutter-deriv-packages/commit/49583f823fdac9c3ec3a85529fad9ab9f6784c67))
+
+
 ## 2024-04-03
 
 ### Changes

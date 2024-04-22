@@ -1,3 +1,7 @@
+## 0.2.2+1
+
+ - **FIX**(deriv_web_view): update PTA model ([#557](https://github.com/regentmarkets/flutter-deriv-packages/issues/557)). ([49583f82](https://github.com/regentmarkets/flutter-deriv-packages/commit/49583f823fdac9c3ec3a85529fad9ab9f6784c67))
+
 ## 0.2.2
 
  - **FEAT**(deriv_http_client): update to the latest deriv_http_client ([#501](https://github.com/regentmarkets/flutter-deriv-packages/issues/501)). ([d582995a](https://github.com/regentmarkets/flutter-deriv-packages/commit/d582995a226906c34c69c7716b3e5573c88c0c4e))
