@@ -7,6 +7,7 @@ class SettingPageModel {
     required this.endpoint,
     required this.saveValues,
     required this.updateFlavorConfigs,
+    required this.settingsPageNavigation,
   });
 
   /// Setting page App label
@@ -24,4 +25,7 @@ class SettingPageModel {
   /// Update flavor configurations
   final Function({required String endpoint, required String appId})
       updateFlavorConfigs;
+
+  /// Settings page navigation
+  final String Function() settingsPageNavigation;
 }
