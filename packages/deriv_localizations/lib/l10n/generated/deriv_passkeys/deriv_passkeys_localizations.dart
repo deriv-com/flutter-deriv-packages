@@ -362,6 +362,18 @@ abstract class DerivPasskeysLocalizations {
   /// In en, this message translates to:
   /// **'Revoke'**
   String get revoke;
+
+  /// No description provided for @continueTradingButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Trading'**
+  String get continueTradingButtonText;
+
+  /// No description provided for @addMorePasskeysButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Add More Passkeys'**
+  String get addMorePasskeysButtonText;
 }
 
 class _DerivPasskeysLocalizationsDelegate
