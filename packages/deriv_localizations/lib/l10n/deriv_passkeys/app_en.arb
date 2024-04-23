@@ -53,5 +53,5 @@
   "rename": "Rename",
   "revoke": "Revoke",
   "continueTradingButtonText": "Continue Trading",
-  "AddMorePasskeysButtonText": "Add More Passkeys"
+  "addMorePasskeysButtonText": "Add More Passkeys"
 }
