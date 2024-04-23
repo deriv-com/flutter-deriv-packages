@@ -153,6 +153,7 @@ Future<void> openLoggedInWebPage({
   required bool rootNavigator,
   required String appToken,
   required String userAgent,
+  required String platform,
   HttpClientPredicate? getHttpClient,
   String destinationAppId = '16929',
   String? action,
@@ -177,6 +178,7 @@ Future<void> openLoggedInWebPage({
     getHttpClient: getHttpClient,
     action: action,
     code: code,
+    platform: platform,
   );
 
   if (oneTimeToken == null) {
@@ -216,6 +218,7 @@ Future<void> openLoggedInWebPage({
             getHttpClient: getHttpClient,
             action: action,
             code: code,
+            platform: platform,
           );
         }
 
@@ -245,6 +248,7 @@ Future<String?> _fetchOneTimeToken({
   required void Function(BuildContext context) loadingDialog,
   required bool rootNavigator,
   required String appToken,
+  required String platform,
   HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
@@ -262,6 +266,7 @@ Future<String?> _fetchOneTimeToken({
     action: action,
     code: code,
     getHttpClient: getHttpClient,
+    platform: platform,
   );
 
   Navigator.of(context, rootNavigator: rootNavigator).pop();
@@ -278,6 +283,7 @@ Future<String?> _getOneTimeToken({
   required String? refreshToken,
   required String? defaultAccount,
   required String appToken,
+  required String platform,
   HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
@@ -294,6 +300,7 @@ Future<String?> _getOneTimeToken({
       action: action,
       code: code,
       getHttpClient: getHttpClient,
+      platform: platform,
     );
 
     return token;
@@ -311,6 +318,7 @@ Future<String?> _validateCredentials({
   required String appId,
   required String destinationAppId,
   required String? refreshToken,
+  required String platform,
   required String? defaultAccount,
   required void Function(BuildContext context) loadingDialog,
   required Future<void> Function(BuildContext context) tokenExpiredDialog,
@@ -334,6 +342,7 @@ Future<String?> _validateCredentials({
     getHttpClient: getHttpClient,
     action: action,
     code: code,
+    platform: platform,
   );
 
   if (oneTimeToken == null) {

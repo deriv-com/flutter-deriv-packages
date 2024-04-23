@@ -30,6 +30,7 @@ class UrlParamsModel {
   UrlParamsModel({
     required this.redirectUrl,
     required this.selectedAccount,
+    required this.platform,
     this.action,
     this.code,
   });
@@ -39,6 +40,9 @@ class UrlParamsModel {
 
   /// Login Id of account.
   final String selectedAccount;
+
+  /// Platform.
+  final String platform;
 
   /// The action that caused redirect for example `passthrough_authentication`.
   final String? action;
@@ -52,6 +56,6 @@ class UrlParamsModel {
         'selected_acct': selectedAccount,
         if (action != null) 'action': action,
         if (code != null) 'code': code,
-        'platform': 'derivgo',
+        'platform': platform,
       };
 }
