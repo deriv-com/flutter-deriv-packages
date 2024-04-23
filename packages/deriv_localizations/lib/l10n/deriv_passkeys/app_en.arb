@@ -51,5 +51,7 @@
   "storedOn": "Stored on",
   "lastUsed": "Last used",
   "rename": "Rename",
-  "revoke": "Revoke"
+  "revoke": "Revoke",
+  "continueTradingButtonText": "Continue Trading",
+  "AddMorePasskeysButtonText": "Add More Passkeys"
 }
