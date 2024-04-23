@@ -43,31 +43,46 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get whatArePasskeys => 'What are passkeys?';
 
   @override
-  String get whatArePasskeysDescription => 'Passkeys are a security measure that lets you log in the same way you unlock your device: with a fingerprint, a face scan, or a screen lock PIN.';
+  String get whatArePasskeysDescriptionPoint1 => 'Secure alternative to passwords.';
+
+  @override
+  String get whatArePasskeysDescriptionPoint2 => 'Unlock your account like your phone - with biometrics, face scan or PIN.';
 
   @override
   String get whyPasskeys => 'Why passkeys?';
 
   @override
-  String get whyPasskeysDescription => 'Passkeys are an added layer of security that protects your account against unauthorised access and phishing attacks.';
+  String get whyPasskeysDescription1 => 'Extra security layer.';
+
+  @override
+  String get whyPasskeysDescription2 => 'Shields against unauthorised access and phishing.';
 
   @override
   String get howToCreatePasskey => 'How to create a passkey?';
 
   @override
-  String get howToCreatePasskeyDescription => 'Go to ‘Account Settings’ to set up your passkey. Each device can only save one passkey; however, iOS users may still see the \"Create passkey\" button due to iOS’s ability to save passkeys on other devices.';
+  String get howToCreatePasskeyDescription1 => 'Go to ‘Account Settings’ on Deriv.';
+
+  @override
+  String get howToCreatePasskeyDescription2 => 'You can create one passkey per device.';
 
   @override
   String get whereArePasskeysSaved => 'Where are passkeys saved?';
 
   @override
-  String get whereArePasskeysSavedDescription => 'Passkeys are saved in your Google password manager for Android devices and in iCloud keychain on iOS devices to help you sign in on other devices.';
+  String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google password manager.';
+
+  @override
+  String get whereArePasskeysSavedDescriptionIOS => 'iOS: iCloud keychain.';
 
   @override
   String get whatHappensIfEmailChanged => 'What happens if my Deriv account email is changed?';
 
   @override
-  String get whatHappensIfEmailChangedDescription => 'Even if you change your email address, you can still continue to log in to your Deriv account with the same passkey.';
+  String get whatHappensIfEmailChangedDescription1 => 'No problem! Your passkey still works.';
+
+  @override
+  String get whatHappensIfEmailChangedDescription2 => 'Sign in to Deriv with your existing passkey.';
 
   @override
   String get tips => 'Tips';
