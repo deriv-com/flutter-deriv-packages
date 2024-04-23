@@ -9,7 +9,7 @@ class SettingPageModel {
     required this.endpoint,
     required this.saveValues,
     required this.updateFlavorConfigs,
-    required this.settingsPageNavigation,
+    this.settingsPageNavigation,
   });
 
   /// Setting page App label
@@ -29,5 +29,5 @@ class SettingPageModel {
       updateFlavorConfigs;
 
   /// Settings page navigation
-  final Function(BuildContext context) settingsPageNavigation;
+  final Function(BuildContext context)? settingsPageNavigation;
 }
