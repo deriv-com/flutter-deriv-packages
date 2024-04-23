@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import '../core/helpers/custom_website_status_helper.dart';
 
 /// This is a data class for storing the currency data like amount, currencyType.
@@ -28,6 +30,15 @@ class CurrencyDetail {
     }
 
     return isFiat ? amount.toStringAsFixed(2) : amount.toStringAsFixed(8);
+  }
+
+  /// This will give a specific currency formatter based on what type of currency it is like fiat or crypto currency.
+  NumberFormat get formatter {
+    if (isFiat) {
+      return NumberFormat.decimalPattern()..maximumFractionDigits = 2;
+    } else {
+      return NumberFormat.decimalPattern()..maximumFractionDigits = 8;
+    }
   }
 
   /// This method is used to display currency for user.
