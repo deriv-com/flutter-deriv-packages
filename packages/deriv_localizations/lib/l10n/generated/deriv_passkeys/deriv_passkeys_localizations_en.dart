@@ -31,7 +31,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get experienceSaferLogins => 'Experience safer logins';
 
   @override
-  String get enhanceSecurity => 'To enhance your security, tap Create passkey';
+  String get enhanceSecurity => 'Enhanced security is just a tap away.';
 
   @override
   String get here => 'here';
@@ -146,4 +146,13 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
 
   @override
   String get addMorePasskeysButtonText => 'Add More Passkeys';
+
+  @override
+  String get unableToSetupPasskey => 'Unable to setup passkey';
+
+  @override
+  String get unableToSetupPasskeyDescription => 'We encountered an issue while setting up your passkey. The process might have been interrupted, or the session timed out. Please try again.';
+
+  @override
+  String get passkeysOffErrorTitle => 'The Passkeys service is unavailable';
 }
