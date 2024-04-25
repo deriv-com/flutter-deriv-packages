@@ -6,6 +6,7 @@ import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.d
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
 import 'package:deriv_passkeys/src/presentation/states/bloc/deriv_passkeys_bloc.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/icon_text_row_widget.dart';
+import 'package:deriv_passkeys/src/presentation/widgets/passkey_created_call_to_action.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,10 @@ import 'package:flutter_svg/svg.dart';
 class EffortlessPasskeysPage extends StatelessWidget {
   /// Creates a [EffortlessPasskeysPage].
   const EffortlessPasskeysPage({
-    required this.onFlowComplete,
+    required this.onPageClosed,
     required this.derivPasskeysBloc,
+    required this.addMorePasskeysNavigationCallback,
+    required this.continueTradingNavigationCallback,
     super.key,
   });
 
@@ -27,8 +30,16 @@ class EffortlessPasskeysPage extends StatelessWidget {
   /// The bloc to handle the passkey state
   final DerivPasskeysBloc derivPasskeysBloc;
 
+  /// Callback to be called when the user wants to add more passkeys.
+  final void Function(BuildContext context) addMorePasskeysNavigationCallback;
+
+  /// Callback to be called when the user wants to continue trading.
+  final void Function(BuildContext context) continueTradingNavigationCallback;
+
   /// Callback to be called when the flow is complete.
-  final void Function(BuildContext context) onFlowComplete;
+  final void Function(BuildContext context) onPageClosed;
+
+  ///
 
   @override
   Widget build(BuildContext context) =>
@@ -49,7 +60,15 @@ class EffortlessPasskeysPage extends StatelessWidget {
               MaterialPageRoute<Widget>(
                   builder: (BuildContext context) => PasskeyCreatedPage(
                         platformName: platformName,
-                        onPageClose: onFlowComplete,
+                        onPageClose: onPageClosed,
+                        derivPasskeysBloc: derivPasskeysBloc,
+                        bottomCallToAction: PasskeysCreatedCallToAction(
+                          derivPasskeysBloc: derivPasskeysBloc,
+                          addMorePasskeysNavigationCallback:
+                              addMorePasskeysNavigationCallback,
+                          continueTradingNavigationCallback:
+                              continueTradingNavigationCallback,
+                        ),
                       )),
             );
           }
@@ -64,7 +83,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: TextButton(
-                      onPressed: () => onFlowComplete(context),
+                      onPressed: () => onPageClosed(context),
                       child: Text(
                         context.derivPasskeysLocalizations.maybeLater,
                         style: TextStyle(color: context.theme.colors.coral),
@@ -127,8 +146,18 @@ class EffortlessPasskeysPage extends StatelessWidget {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute<Widget>(
-                                          builder: (_) =>
-                                              const LearnMorePasskeysPage(),
+                                          builder: (_) => LearnMorePasskeysPage(
+                                            derivPasskeysBloc:
+                                                derivPasskeysBloc,
+                                            onPageClosed:
+                                                (BuildContext context) {
+                                              Navigator.pop(context);
+                                            },
+                                            addMorePasskeysNavigationCallback:
+                                                addMorePasskeysNavigationCallback,
+                                            continueTradingNavigationCallback:
+                                                continueTradingNavigationCallback,
+                                          ),
                                         ),
                                       );
                                     },

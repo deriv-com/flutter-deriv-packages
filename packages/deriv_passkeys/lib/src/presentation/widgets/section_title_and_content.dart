@@ -1,3 +1,4 @@
+import 'package:deriv_passkeys/src/presentation/widgets/unordered_list_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -6,14 +7,14 @@ class SectionTitleAndContent extends StatelessWidget {
   /// Creates a [SectionTitleAndContent].
   const SectionTitleAndContent({
     required this.title,
-    required this.content,
+    required this.texts,
   });
 
   /// The title of the section.
   final String title;
 
   /// The content of the section.
-  final String content;
+  final List<String> texts;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -27,13 +28,14 @@ class SectionTitleAndContent extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text(
-            content,
+          UnorderedList(
+            texts: texts,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
               color: context.theme.colors.general,
             ),
+            expandedContent: true,
           ),
         ],
       );

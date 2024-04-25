@@ -5,6 +5,7 @@ import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.dart';
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
 import 'package:deriv_passkeys/src/presentation/states/bloc/deriv_passkeys_bloc.dart';
+import 'package:deriv_passkeys/src/presentation/widgets/passkey_created_call_to_action.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/passkey_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -17,11 +18,22 @@ class ManagePasskeysPage extends StatefulWidget {
   /// Creates a [ManagePasskeysPage].
   const ManagePasskeysPage({
     required this.derivPasskeysBloc,
+    required this.addMorePasskeysNavigationCallback,
+    required this.continueTradingNavigationCallback,
     super.key,
   });
 
+  /// The route name for the manage passkeys page.
+  static const String routeName = 'manage_passkeys_page';
+
   /// The bloc to handle the passkey state
   final DerivPasskeysBloc derivPasskeysBloc;
+
+  /// Callback to be called when the user wants to add more passkeys.
+  final void Function(BuildContext context) addMorePasskeysNavigationCallback;
+
+  /// Callback to be called when the user wants to continue trading.
+  final void Function(BuildContext context) continueTradingNavigationCallback;
 
   @override
   State<ManagePasskeysPage> createState() => _ManagePasskeysPageState();
@@ -52,8 +64,16 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute<Widget>(
-                      builder: (BuildContext context) =>
-                          const LearnMorePasskeysPage()),
+                      builder: (BuildContext context) => LearnMorePasskeysPage(
+                            derivPasskeysBloc: widget.derivPasskeysBloc,
+                            onPageClosed: (BuildContext context) {
+                              Navigator.pop(context);
+                            },
+                            addMorePasskeysNavigationCallback:
+                                widget.addMorePasskeysNavigationCallback,
+                            continueTradingNavigationCallback:
+                                widget.continueTradingNavigationCallback,
+                          )),
                 );
               },
             ),
@@ -80,23 +100,41 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                             onPageClose: (BuildContext context) {
                               Navigator.pop(context);
                             },
+                            derivPasskeysBloc: widget.derivPasskeysBloc,
+                            bottomCallToAction: PasskeysCreatedCallToAction(
+                              derivPasskeysBloc: widget.derivPasskeysBloc,
+                              addMorePasskeysNavigationCallback:
+                                  widget.addMorePasskeysNavigationCallback,
+                              continueTradingNavigationCallback:
+                                  widget.continueTradingNavigationCallback,
+                            ),
                           )),
                 );
               } else if (state is DerivPasskeysErrorState) {
+                String title =
+                    context.derivPasskeysLocalizations.unexpectedError;
+                String content = context
+                    .derivPasskeysLocalizations.unexpectedErrorDescription;
+
+                if (state.errorCode == 'PasskeysOff') {
+                  // title =
+                  //     context.derivPasskeysLocalizations.passkeysOffErrorTitle;
+                  content = '';
+                } else {
+                  widget.derivPasskeysBloc
+                      .add(const DerivPasskeysGetPasskeysListEvent());
+                }
                 showAlertDialog(
                   context: context,
-                  title: context.derivPasskeysLocalizations.unexpectedError,
+                  title: title,
                   content: Text(
-                    context
-                        .derivPasskeysLocalizations.unexpectedErrorDescription,
+                    content,
                   ),
                   positiveActionLabel: context.derivPasskeysLocalizations.ok,
                   onPositiveActionPressed: () {
                     Navigator.of(context).pop();
                   },
                 );
-                widget.derivPasskeysBloc
-                    .add(const DerivPasskeysGetPasskeysListEvent());
               }
             },
             builder: (BuildContext context, DerivPasskeysState state) {
@@ -192,7 +230,16 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute<Widget>(
-                                builder: (_) => const LearnMorePasskeysPage(),
+                                builder: (_) => LearnMorePasskeysPage(
+                                  derivPasskeysBloc: widget.derivPasskeysBloc,
+                                  onPageClosed: (BuildContext context) {
+                                    Navigator.pop(context);
+                                  },
+                                  addMorePasskeysNavigationCallback:
+                                      widget.addMorePasskeysNavigationCallback,
+                                  continueTradingNavigationCallback:
+                                      widget.continueTradingNavigationCallback,
+                                ),
                               ),
                             );
                           },

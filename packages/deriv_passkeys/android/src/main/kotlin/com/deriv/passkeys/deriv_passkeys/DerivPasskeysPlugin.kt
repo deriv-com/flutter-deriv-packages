@@ -124,7 +124,6 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
           } ?: run {
             result.error("InvalidParameterException", "Options not found", null)
           }
-        
       }
       "getCredential" -> {
         val options = call.argument("options") as String?

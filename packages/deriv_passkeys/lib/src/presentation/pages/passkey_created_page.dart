@@ -1,24 +1,32 @@
+import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_ui/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-///
+/// A stateless widget to build the passkey created successfully page.
 class PasskeyCreatedPage extends StatelessWidget {
   /// Creates a [PasskeyCreatedPage].
   const PasskeyCreatedPage({
     required this.platformName,
     required this.onPageClose,
+    required this.derivPasskeysBloc,
+    required this.bottomCallToAction,
     super.key,
   });
+
+  /// The bloc to handle the passkey state
+  final DerivPasskeysBloc derivPasskeysBloc;
 
   /// The name of the platform.
   final String platformName;
 
   /// A callback function that will be called when the user clicks on the 'Continue' button.
   final void Function(BuildContext context) onPageClose;
+
+  /// The widget to be displayed at the bottom of the page.
+  final Widget bottomCallToAction;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -68,21 +76,7 @@ class PasskeyCreatedPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: PrimaryButton(
-                      onPressed: () => onPageClose(context),
-                      child: Text(
-                        context.derivPasskeysLocalizations.continueButtonText,
-                        style: TextStyle(
-                          color: context.theme.colors.prominent,
-                        ),
-                      ),
-                    ),
-                  ),
-                )
+                bottomCallToAction,
               ],
             ),
           ),

@@ -14,7 +14,7 @@ void main() {
           home: Scaffold(
             body: SectionTitleAndContent(
               title: title,
-              content: content,
+              texts: <String>[content],
             ),
           ),
         ),

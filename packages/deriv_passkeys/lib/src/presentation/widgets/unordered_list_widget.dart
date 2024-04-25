@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 /// A widget that displays a list of items with bullet points.
 class UnorderedList extends StatelessWidget {
   /// Creates an [UnorderedList].
-  const UnorderedList({required this.texts, this.style});
+  const UnorderedList({
+    required this.texts,
+    this.style,
+    this.expandedContent = false,
+  });
 
   /// The list of texts to display.
   final List<String> texts;
@@ -11,13 +15,20 @@ class UnorderedList extends StatelessWidget {
   /// The style to use for the text.
   final TextStyle? style;
 
+  /// Whether the content should be expanded.
+  final bool expandedContent;
+
   @override
   Widget build(BuildContext context) {
     final List<Column> widgetList = texts
         .map((String text) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                UnorderedListItem(text, style),
+                UnorderedListItem(
+                  text: text,
+                  textStyle: style,
+                  expandedContent: expandedContent,
+                ),
                 const SizedBox(height: 5),
               ],
             ))
@@ -34,7 +45,11 @@ class UnorderedList extends StatelessWidget {
 @visibleForTesting
 class UnorderedListItem extends StatelessWidget {
   /// Creates an [UnorderedListItem].
-  const UnorderedListItem(this.text, this.textStyle);
+  const UnorderedListItem({
+    required this.text,
+    this.textStyle,
+    this.expandedContent = false,
+  });
 
   /// The text to display.
   final String text;
@@ -42,17 +57,32 @@ class UnorderedListItem extends StatelessWidget {
   /// The style to use for the text.
   final TextStyle? textStyle;
 
+  /// Whether the content should be expanded.
+  final bool expandedContent;
+
   @override
-  Widget build(BuildContext context) => Row(
-        children: <Widget>[
-          const SizedBox(
-            width: 5,
-          ),
-          Text('\u2022', style: textStyle),
-          const SizedBox(
-            width: 5,
-          ),
-          Text(text, style: textStyle),
-        ],
+  Widget build(BuildContext context) {
+    Widget content = Text(
+      text,
+      style: textStyle,
+    );
+    if (expandedContent) {
+      content = Expanded(
+        child: content,
       );
+    }
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(
+          width: 5,
+        ),
+        Text('\u2022', style: textStyle),
+        const SizedBox(
+          width: 5,
+        ),
+        content,
+      ],
+    );
+  }
 }
