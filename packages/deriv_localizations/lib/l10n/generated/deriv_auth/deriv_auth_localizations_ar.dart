@@ -270,4 +270,7 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'معرف تطبيق غير صالح';
+
+  @override
+  String get labelLanguage => 'Language';
 }

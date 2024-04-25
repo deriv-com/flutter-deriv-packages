@@ -270,4 +270,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => '유효하지 않은 애플리케이션 ID';
+
+  @override
+  String get labelLanguage => 'Language';
 }
