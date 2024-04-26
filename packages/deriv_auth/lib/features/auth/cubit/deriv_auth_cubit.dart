@@ -129,7 +129,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   }) async {
     try {
       final AuthorizeEntity authorizeEntity =
-          await authService.login(token, accounts: accounts);
+          await authService.login(token, null, accounts: accounts);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);

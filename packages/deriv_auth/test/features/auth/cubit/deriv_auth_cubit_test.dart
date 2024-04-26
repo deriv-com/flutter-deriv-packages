@@ -51,7 +51,7 @@ void main() {
 
         verify(() => service.getDefaultAccount()).called(1);
         verifyNever(
-          () => service.login(any(), accounts: any(named: 'accounts')),
+          () => service.login(any(), null, accounts: any(named: 'accounts')),
         );
       });
 
@@ -66,7 +66,7 @@ void main() {
         when(() => service.getLandingCompany(any())).thenAnswer((_) =>
             Future<LandingCompanyEntity>.value(const LandingCompanyEntity()));
 
-        when(() => service.login(any(), accounts: any(named: 'accounts')))
+        when(() => service.login(any(), null, accounts: any(named: 'accounts')))
             .thenAnswer((_) =>
                 Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
@@ -242,7 +242,7 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() => service.login(any(), accounts: any(named: 'accounts')))
+        when(() => service.login(any(), null, accounts: any(named: 'accounts')))
             .thenAnswer((_) =>
                 Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
@@ -263,7 +263,7 @@ void main() {
         authCubit.tokenLogin(_token);
 
         verify(
-          () => service.login(any(), accounts: any(named: 'accounts')),
+          () => service.login(any(), null, accounts: any(named: 'accounts')),
         ).called(1);
       });
 
@@ -276,7 +276,7 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() => service.login(any(), accounts: any(named: 'accounts')))
+        when(() => service.login(any(), null, accounts: any(named: 'accounts')))
             .thenThrow(DerivAuthException(
           message: 'message',
           type: AuthErrorType.invalidToken,
@@ -296,7 +296,7 @@ void main() {
         authCubit.tokenLogin(_token);
 
         verify(
-          () => service.login(any(), accounts: any(named: 'accounts')),
+          () => service.login(any(), null, accounts: any(named: 'accounts')),
         ).called(1);
       });
 

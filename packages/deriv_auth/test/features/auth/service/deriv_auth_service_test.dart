@@ -85,7 +85,7 @@ void main() {
       ),
     );
 
-    when(() => repository.authorize(validToken)).thenAnswer((_) =>
+    when(() => repository.authorize(validToken, null)).thenAnswer((_) =>
         Future<AuthorizeResponseEntity>.value(const AuthorizeResponseEntity(
             authorize: mockedValidAuthorizeEntity)));
 
@@ -101,6 +101,7 @@ void main() {
           () async {
         final AuthorizeEntity response = await authService.login(
           validToken,
+          null,
           accounts: <AccountModel>[
             AccountModel(accountId: '0', token: validToken)
           ],
@@ -350,6 +351,7 @@ void main() {
         expect(
             authService.login(
               validToken,
+              null,
               accounts: <AccountModel>[
                 AccountModel(accountId: '0', token: validToken)
               ],
@@ -368,7 +370,7 @@ void main() {
       test(
           'should throw [DerivAuthException] of type [expiredAccount] on login when token is expired.',
           () async {
-        when(() => repository.authorize(validToken))
+        when(() => repository.authorize(validToken, null))
             .thenAnswer((_) => Future<AuthorizeResponseEntity>.value(
                   const AuthorizeResponseEntity(),
                 ));
@@ -376,6 +378,7 @@ void main() {
         expect(
             authService.login(
               validToken,
+              null,
               accounts: <AccountModel>[
                 AccountModel(accountId: '0', token: validToken)
               ],
@@ -400,6 +403,7 @@ void main() {
         expect(
             authService.login(
               validToken,
+              null,
               accounts: <AccountModel>[
                 AccountModel(accountId: '0', token: validToken)
               ],
@@ -527,7 +531,7 @@ void main() {
       test(
           'should throw [DerivAuthException] of type [unsupportedCountry] on login when country not supported.',
           () async {
-        when(() => repository.authorize(validToken))
+        when(() => repository.authorize(validToken, null))
             .thenAnswer((_) => Future<AuthorizeResponseEntity>.value(
                   const AuthorizeResponseEntity(
                     authorize: mockedUnsupportedAuthorizeEntity,
@@ -537,6 +541,7 @@ void main() {
         expect(
             authService.login(
               validToken,
+              null,
               accounts: <AccountModel>[
                 AccountModel(accountId: '0', token: validToken)
               ],
