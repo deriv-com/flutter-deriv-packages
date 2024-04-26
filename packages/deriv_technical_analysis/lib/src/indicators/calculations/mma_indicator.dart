@@ -1,4 +1,6 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import '../../models/models.dart';
+import '../indicator.dart';
+import 'ema_indicator.dart';
 
 /// Modified moving average indicator.
 class MMAIndicator<T extends IndicatorResult> extends AbstractEMAIndicator<T> {

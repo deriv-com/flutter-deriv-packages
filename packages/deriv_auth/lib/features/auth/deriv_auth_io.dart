@@ -1,4 +1,4 @@
-import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
+import 'package:deriv_auth/deriv_auth.dart';
 
 /// Functionality that DerivAuthCubit provides.
 abstract class DerivAuthIO {
@@ -11,9 +11,16 @@ abstract class DerivAuthIO {
     String? otp,
   });
 
-  /// Social login with [oneAllConnectionToken].
+  /// Social login/signup with [oneAllConnectionToken] using one-all service.
+  /// Using it as fallback plan of [socialAuth]. Will be removed in the future.
   Future<void> socialLogin({
     required String oneAllConnectionToken,
+    String? otp,
+  });
+
+  /// Social login/signup using custom in-house service.
+  Future<void> socialAuth({
+    required SocialAuthDto socialAuthDto,
     String? otp,
   });
 

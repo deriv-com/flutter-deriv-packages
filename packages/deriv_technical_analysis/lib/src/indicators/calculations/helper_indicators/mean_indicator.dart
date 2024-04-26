@@ -1,4 +1,5 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/indicator.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
 
 /// A helper indicator to calculate Mean value of two indicators.
 class MeanIndicator<T extends IndicatorResult> extends Indicator<T> {

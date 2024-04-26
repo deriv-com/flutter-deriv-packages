@@ -51,7 +51,7 @@ This section shows how to create a new bloc/cubit following the proposed archite
 ```dart
 abstract class BaseStateListener {}
 
-abstract class AuthStateListener implements BaseStateListener {
+abstract class DerivAuthStateListener implements BaseStateListener {
   void onLogin(Authorize authorizedAccount);
 
   void onLogout();
@@ -64,7 +64,7 @@ abstract class ConnectivityStateListener implements BaseStateListener {
 }
 ```
 
-2- Create a cubit for a feature, let’s call it `FeatureCubit`. The cubit class will implement both `AuthStateListener` and `ConnectivityStateListener` so it can expose the 4 methods in addition to any other feature-specific states. The type of the state `FeatureCubit` is managing in this example, is **Status** with initial value as `initial`;
+2- Create a cubit for a feature, let’s call it `FeatureCubit`. The cubit class will implement both `DerivAuthStateListener` and `ConnectivityStateListener` so it can expose the 4 methods in addition to any other feature-specific states. The type of the state `FeatureCubit` is managing in this example, is **Status** with initial value as `initial`;
 
 ```dart
 enum Status {
@@ -82,7 +82,7 @@ The `FeatureCubit` will expose the common/share `onConnect`, `onDisconnect`, `on
 ```dart
 import 'package:bloc/bloc.dart';
 
-class FeatureCubit extends Cubit<Status> implements ConnectivityStateListener, AuthStateListener {
+class FeatureCubit extends Cubit<Status> implements ConnectivityStateListener, DerivAuthStateListener {
   FeatureCubit() : super(Status.initial);
 
   void loading() => emit(Status.loading);

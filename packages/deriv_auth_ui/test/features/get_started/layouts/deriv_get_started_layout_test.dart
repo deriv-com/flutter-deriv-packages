@@ -5,8 +5,7 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:patrol/patrol.dart';
-
+import 'package:patrol_finders/patrol_finders.dart';
 import '../../../pump_app.dart';
 
 class MockDerivGetStartedSlideModel extends Mock
@@ -26,8 +25,10 @@ void main() {
       when(() => mockSlideModel.supportingText).thenReturn('Supporting text');
     });
 
-    patrolTest('should render DerivGetStartedLayout', (PatrolTester $) async {
+    patrolWidgetTest('should render DerivGetStartedLayout',
+        (PatrolTester $) async {
       await $.pumpApp(DerivGetStartedLayout(
+        onTapNavigation: () {},
         slides: [mockSlideModel],
         appLogoIconPath: appLogoIconPath,
         backgroundImagePath: backgroundImagePath,
@@ -41,11 +42,12 @@ void main() {
       expect($(SecondaryButton), findsOneWidget);
     });
 
-    patrolTest('should call onLoginTapped when login button is pressed',
+    patrolWidgetTest('should call onLoginTapped when login button is pressed',
         (PatrolTester $) async {
       bool loginTapped = false;
 
       await $.pumpApp(DerivGetStartedLayout(
+        onTapNavigation: () {},
         slides: [mockSlideModel],
         appLogoIconPath: appLogoIconPath,
         backgroundImagePath: backgroundImagePath,
@@ -60,11 +62,12 @@ void main() {
       expect(loginTapped, isTrue);
     });
 
-    patrolTest('should call onSignupTapped when signup button is pressed',
+    patrolWidgetTest('should call onSignupTapped when signup button is pressed',
         (PatrolTester $) async {
       bool signupTapped = false;
 
       await $.pumpApp(DerivGetStartedLayout(
+        onTapNavigation: () {},
         slides: [mockSlideModel],
         appLogoIconPath: appLogoIconPath,
         backgroundImagePath: backgroundImagePath,

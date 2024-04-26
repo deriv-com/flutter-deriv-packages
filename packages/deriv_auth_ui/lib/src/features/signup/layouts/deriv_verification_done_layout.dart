@@ -64,7 +64,7 @@ class DerivVerificationDoneLayout extends StatelessWidget {
               context.localization.informLetsContinue,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
             ),
           ],

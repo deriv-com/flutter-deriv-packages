@@ -2,11 +2,11 @@
 
 import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:patrol/patrol.dart';
+import 'package:patrol_finders/patrol_finders.dart';
 
 void main() {
   group('DerivAuthUtmModel', () {
-    patrolTest('Constructor initializes all properties correctly',
+    patrolWidgetTest('Constructor initializes all properties correctly',
         (PatrolTester $) async {
       final model = DerivAuthUtmModel(
         affiliateToken: 'affiliateToken',
@@ -31,9 +31,10 @@ void main() {
       expect(model.affiliateToken, 'affiliateToken');
     });
 
-    patrolTest('Constructor initializes optional properties as null',
+    patrolWidgetTest('Constructor initializes optional properties as null',
         (PatrolTester $) async {
-      final model = DerivAuthUtmModel(utmSource: 'source', utmCampaign: 'campaign');
+      final model =
+          DerivAuthUtmModel(utmSource: 'source', utmCampaign: 'campaign');
 
       expect(model.utmCampaignId, isNull);
       expect(model.utmAdGroupId, isNull);

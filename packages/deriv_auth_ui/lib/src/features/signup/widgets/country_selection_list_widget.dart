@@ -113,7 +113,7 @@ class _CountrySelectionListWidgetState
         focusNode: _searchFocusNode,
         style: context.theme.textStyle(
           textStyle: TextStyles.subheading,
-          color: context.theme.colors.lessProminent,
+          color: context.theme.colors.general,
         ),
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -145,7 +145,7 @@ class _CountrySelectionListWidgetState
               _filteredCountries[index].name,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
             ),
           ),

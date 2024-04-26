@@ -32,19 +32,40 @@ This repository contains private packages & plugins that are used by the company
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           |
 
-# Add New Package in CI Configuration(config.yml)
+## Environment Setup
 
-This repository contains packages with CI configuration to run basic flutter commands, if we add new package under flutter-deriv-packages/packages we have to add package in .circleci/config.yml file.
+We use [Melos](https://pub.dev/packages/melos) to manage the multiple packages in this repository. To get started, install Melos globally:
 
-Steps to add new package in config.yml
+```bash
+$ dart pub global activate melos
+```
 
-1. Open root of the package flutter-deriv-packages
-2. Go to circleci/config.yml
-3. Go to Steps and add
+Running `pub get` on all packages, run:
 
-- run:
-  working_directory: ~/flutter-deriv-packages/packages/[new_package_name]
-  command: flutter pub get && flutter analyze && flutter test
-  name: [new_package_name] analysis
+```bash
+$ melos bootstrap
+```
 
-4. Edit Commands as per new package requirements.
+`Analyze` and `Test` has already been configured in `melos.yaml` so you can do the following:
+
+<b>Running `flutter analyze` on all packages:</b>
+
+```bash
+$ melos run analyze
+```
+
+<b>Running `flutter test` on all packages: </b>
+
+```bash
+$ melos run test --no-select
+```
+
+If you'd like to run any other command on all packages, you can configure it in `melos.yaml` or run it directly with melos:
+
+```bash
+$ melos exec --\
+    your command here
+``` 
+
+
+

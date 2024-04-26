@@ -1,0 +1,44 @@
+name: all_packages
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    branches:
+      - "*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
+        with:
+          channel: "stable"
+          flutter-version: "3.10.2"
+          cache: true
+
+      - name: Set SSH Key
+        uses: webfactory/ssh-agent@fd34b8dee206fe74b288a5e61bc95fba2f1911eb
+        with:
+          ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
+
+      - name: Install Melos and run pub get
+        uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
+        with:
+          melos-version: "3.0.1"
+
+      - name: Run Analyze
+        run: melos run analyze
+
+      - name: Run Test
+        run: melos run test --no-select

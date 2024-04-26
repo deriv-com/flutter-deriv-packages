@@ -12,8 +12,11 @@ enum AuthType {
   /// Login using email and password.
   system,
 
-  /// Login with social accounts.
-  social
+  /// Login with social accounts with one-all service.
+  social,
+
+  /// Login with social accounts with in-house service.
+  socialLogin,
 }
 
 /// Social auth provider.

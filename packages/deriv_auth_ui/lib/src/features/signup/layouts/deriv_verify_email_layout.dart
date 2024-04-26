@@ -64,7 +64,7 @@ class DerivVerifyEmailLayout extends StatelessWidget {
               context.localization.informVerificationEmailSent(email!),
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
-                color: context.theme.colors.lessProminent,
+                color: context.theme.colors.general,
               ),
               textAlign: TextAlign.center,
             ),

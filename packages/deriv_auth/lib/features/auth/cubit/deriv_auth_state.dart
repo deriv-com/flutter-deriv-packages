@@ -12,16 +12,10 @@ class DerivAuthLoadingState extends DerivAuthState {}
 /// can be accessed by the client.
 class DerivAuthLoggedInState extends DerivAuthState {
   /// Initialize [DerivAuthLoggedInState].
-  DerivAuthLoggedInState({
-    required this.authorizeEntity,
-    required this.landingCompany,
-  });
+  DerivAuthLoggedInState(this.authModel);
 
-  /// [AuthorizeEntity] hold all user information.
-  final AuthorizeEntity authorizeEntity;
-
-  /// [LandingCompanyEntity] hold all landing company information.
-  final LandingCompanyEntity landingCompany;
+  /// The auth information of the user.
+  final DerivAuthModel authModel;
 }
 
 /// Logged out state.
@@ -33,11 +27,31 @@ class DerivAuthErrorState extends DerivAuthState {
   DerivAuthErrorState({
     required this.message,
     required this.type,
+    required this.isSocialLogin,
   });
+
+  /// Boolean to identify if the user is logging in via social login or system login
+  final bool isSocialLogin;
 
   /// Error message.
   final String message;
 
   /// Error type.
   final AuthErrorType type;
+}
+
+/// Encapsulates the [AuthorizeEntity] and [LandingCompanyEntity] date of the
+/// user.
+class DerivAuthModel {
+  /// Initializes [DerivAuthModel].
+  const DerivAuthModel({
+    required this.authorizeEntity,
+    required this.landingCompany,
+  });
+
+  /// [AuthorizeEntity] hold all user information.
+  final AuthorizeEntity authorizeEntity;
+
+  /// [LandingCompanyEntity] hold all landing company information.
+  final LandingCompanyEntity landingCompany;
 }

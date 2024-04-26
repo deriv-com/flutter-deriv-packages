@@ -1,4 +1,9 @@
-import 'package:deriv_technical_analysis/deriv_technical_analysis.dart';
+import 'package:deriv_technical_analysis/src/indicators/cached_indicator.dart';
+import 'package:deriv_technical_analysis/src/models/data_input.dart';
+import 'package:deriv_technical_analysis/src/models/models.dart';
+
+import '../adx/negative_di_indicator.dart';
+import '../adx/positive_di_indicator.dart';
 
 /// Directional movement line Indicator.
 class DXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
@@ -33,5 +38,19 @@ class DXIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
       return createResult(index: index, quote: 0);
     }
     return createResult(index: index, quote: (diffDI / sumDI) * 100);
+  }
+
+  @override
+  void copyValuesFrom(covariant DXIndicator<T> other) {
+    super.copyValuesFrom(other);
+    positiveDIIndicator.copyValuesFrom(other.positiveDIIndicator);
+    negativeDIIndicator.copyValuesFrom(other.negativeDIIndicator);
+  }
+
+  @override
+  void invalidate(int index) {
+    super.invalidate(index);
+    positiveDIIndicator.invalidate(index);
+    negativeDIIndicator.invalidate(index);
   }
 }

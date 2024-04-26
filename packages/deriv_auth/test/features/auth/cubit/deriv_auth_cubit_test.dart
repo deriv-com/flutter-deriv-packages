@@ -1,3 +1,4 @@
+import 'package:bloc_test/bloc_test.dart';
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
@@ -10,6 +11,7 @@ import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
+import '../../social_auth/mocks/mock_social_auth_dto.dart';
 import '../mocked_data/mocked_auth_models.dart';
 
 class MockAuthService extends Mock implements BaseAuthService {}
@@ -88,8 +90,9 @@ void main() {
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.system));
 
-        when(() => service.onLoginRequest(any())).thenAnswer(
-            (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+        when(() => service.onLoginRequest(request: any(named: 'request')))
+            .thenAnswer((_) =>
+                Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
@@ -104,14 +107,18 @@ void main() {
 
         authCubit.systemLogin(email: 'email', password: 'password');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(request: any(named: 'request')))
+            .called(1);
       });
-      test('should emit [AuthLoggedInState] upon a successful social login.',
+
+      test(
+          'should emit [AuthLoggedInState] upon a successful social login with one-all.',
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
 
-        when(() => service.onLoginRequest(any())).thenAnswer(
-            (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+        when(() => service.onLoginRequest(request: any(named: 'request')))
+            .thenAnswer((_) =>
+                Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
@@ -126,11 +133,42 @@ void main() {
 
         authCubit.socialLogin(oneAllConnectionToken: 'token');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(request: any(named: 'request')))
+            .called(1);
       });
+
+      test(
+          'should emit [AuthLoggedInState] upon a successful social login with in-house service.',
+          () {
+        registerFallbackValue(GetTokensRequestModel(type: AuthType.social));
+
+        when(() => service.onLoginRequest(request: any(named: 'request')))
+            .thenAnswer((_) =>
+                Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+
+        final List<TypeMatcher<DerivAuthState>> expectedResponse =
+            <TypeMatcher<DerivAuthState>>[
+          isA<DerivAuthLoadingState>(),
+          isA<DerivAuthLoggedInState>(),
+        ];
+
+        expectLater(
+          authCubit.stream,
+          emitsInOrder(expectedResponse),
+        );
+
+        authCubit.socialAuth(
+          socialAuthDto: mockSocialAuthDto,
+        );
+
+        verify(() => service.onLoginRequest(request: any(named: 'request')))
+            .called(1);
+      });
+
       test('should emit [AuthLoggedInState] upon a successful otp login.', () {
-        when(() => service.onLoginRequest(any())).thenAnswer(
-            (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+        when(() => service.onLoginRequest(request: any(named: 'request')))
+            .thenAnswer((_) =>
+                Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
@@ -144,14 +182,16 @@ void main() {
         );
         authCubit.systemLogin(email: 'email', password: 'pass', otp: 'otp');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(request: any(named: 'request')))
+            .called(1);
       });
 
       test('should emit [AuthErrorState] when an exception occurs in service.',
           () {
         registerFallbackValue(GetTokensRequestModel(type: AuthType.system));
 
-        when(() => service.onLoginRequest(any())).thenThrow(DerivAuthException(
+        when(() => service.onLoginRequest(request: any(named: 'request')))
+            .thenThrow(DerivAuthException(
           message: 'message',
           type: AuthErrorType.expiredAccount,
         ));
@@ -169,7 +209,8 @@ void main() {
 
         authCubit.systemLogin(email: 'email', password: 'pass');
 
-        verify(() => service.onLoginRequest(any())).called(1);
+        verify(() => service.onLoginRequest(request: any(named: 'request')))
+            .called(1);
       });
       test('should emit [AuthLoggedOutState] upon a successful logout.', () {
         when(() => service.logout()).thenAnswer((_) => Future<void>.value());
@@ -209,7 +250,7 @@ void main() {
             <TypeMatcher<DerivAuthState>>[
           isA<DerivAuthLoadingState>(),
           isA<DerivAuthLoggedInState>().having(
-              (DerivAuthLoggedInState state) => state.authorizeEntity,
+              (DerivAuthLoggedInState state) => state.authModel.authorizeEntity,
               'authorized entity',
               mockedValidAuthorizeEntity),
         ];
@@ -258,6 +299,39 @@ void main() {
           () => service.login(any(), accounts: any(named: 'accounts')),
         ).called(1);
       });
+
+      test(
+        '[isMigratedToWallets] should return false when the required account is'
+        ' not migrated to any wallets.',
+        () => () async {
+          whenListen(
+            authCubit,
+            Stream<DerivAuthState>.fromIterable(
+              <DerivAuthState>[
+                DerivAuthLoadingState(),
+                DerivAuthLoggedInState(const DerivAuthModel(
+                  authorizeEntity: mockedValidAuthorizeEntity,
+                  landingCompany: LandingCompanyEntity(),
+                )),
+              ],
+            ),
+          );
+
+          await expectLater(
+            authCubit.stream,
+            emitsInOrder(
+              <dynamic>[
+                isA<DerivAuthLoadingState>(),
+                isA<DerivAuthLoggedInState>(),
+              ],
+            ),
+          );
+
+          expect(authCubit.state, isA<DerivAuthLoggedInState>());
+
+          expect(authCubit.isMigratedToWallets, isFalse);
+        },
+      );
     },
   );
 }
