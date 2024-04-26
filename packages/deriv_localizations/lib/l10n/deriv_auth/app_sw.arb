@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "hatua ya mwisho halali",
   "labelApplicationID": "Kitambulisho cha programu",
   "semanticApplicationID": "Kitambulisho cha programu",
-  "warnInvalidApplicationID": "kitambulisho cha programu halali"
+  "warnInvalidApplicationID": "kitambulisho cha programu halali",
+  "labelLanguage": "Language"
 }
