@@ -5,7 +5,11 @@ import 'package:deriv_auth/core/models/landig_comany_model.dart';
 /// Interface of all authentication functions required from client.
 abstract class BaseAuthRepository {
   /// Authorize user with [token].
-  Future<AuthorizeResponseEntity> authorize(String? token);
+  /// Multi-Token Authorize with [tokenList].
+  Future<AuthorizeResponseEntity> authorize(
+    String? token,
+    List<String>? tokenList,
+  );
 
   /// Client functionality after user logs in.
   Future<void> onLogin(AuthorizeEntity authorizeEntity);
