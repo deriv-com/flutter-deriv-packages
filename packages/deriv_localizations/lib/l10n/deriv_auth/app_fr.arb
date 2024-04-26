@@ -113,5 +113,5 @@
   "labelApplicationID": "Identifiant de l'application",
   "semanticApplicationID": "Identifiant de l'application",
   "warnInvalidApplicationID": "identifiant de l'application non valide",
-  "labelLanguage": "Language"
+  "labelLanguage": "Langue"
 }
