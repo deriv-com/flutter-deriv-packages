@@ -59,15 +59,19 @@ class DerivAuthService extends BaseAuthService {
           _filterSupportedAccounts(_response.accounts);
 
       final String? _defaultAccountToken = _supportedAccounts.first.token;
-      final List<String>? _tokenList = _supportedAccounts
-          .where((AccountModel account) => account.token != null)
-          .map((AccountModel accountModel) => accountModel.token!)
-          .toList();
+      final List<String> _tokenList = <String>[];
+
+      for (int i = 0; i < _supportedAccounts.length; i++) {
+        print(_supportedAccounts[i].token);
+        if (i != 0 && _supportedAccounts[i].token != null) {
+          _tokenList.add(_supportedAccounts[i].token!);
+        }
+      }
 
       if (_defaultAccountToken != null) {
         return login(
           _defaultAccountToken,
-          tokenList: _tokenList,
+          tokenList: _tokenList.isEmpty ? null : _tokenList,
           accounts: _supportedAccounts,
           signupProvider: request.signupProvider,
           refreshToken: _response.refreshToken,
@@ -101,7 +105,8 @@ class DerivAuthService extends BaseAuthService {
   }) async {
     try {
       final AuthorizeEntity? responseAuthorizeEntity =
-          (await authRepository.authorize(token, tokenList: tokenList)).authorize;
+          (await authRepository.authorize(token, tokenList: tokenList))
+              .authorize;
 
       _checkAuthorizeValidity(responseAuthorizeEntity);
 
