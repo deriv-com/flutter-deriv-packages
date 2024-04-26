@@ -113,5 +113,5 @@
   "labelApplicationID": "Başvuru ID",
   "semanticApplicationID": "Başvuru ID",
   "warnInvalidApplicationID": "geçersiz başvuru ID",
-  "labelLanguage": "Language"
+  "labelLanguage": "Dil"
 }
