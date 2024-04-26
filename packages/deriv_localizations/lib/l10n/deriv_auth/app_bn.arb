@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "অবৈধ শেষ পয়েন্ট",
   "labelApplicationID": "অ্যাপলিকেশন আইডি",
   "semanticApplicationID": "অ্যাপলিকেশন আইডি",
-  "warnInvalidApplicationID": "অবৈধ অ্যাপ্লিকেশন আইডি"
+  "warnInvalidApplicationID": "অবৈধ অ্যাপ্লিকেশন আইডি",
+  "labelLanguage": "Language"
 }
