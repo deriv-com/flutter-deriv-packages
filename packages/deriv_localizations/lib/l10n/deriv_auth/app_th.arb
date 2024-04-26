@@ -113,5 +113,5 @@
   "labelApplicationID": "รหัสไอดีแอปพลิเคชั่น",
   "semanticApplicationID": "รหัสไอดีแอปพลิเคชั่น",
   "warnInvalidApplicationID": "รหัสไอดีแอปพลิเคชั่นไม่ถูกต้อง",
-  "labelLanguage": "Language"
+  "labelLanguage": "ภาษา"
 }
