@@ -113,5 +113,5 @@
   "labelApplicationID": "معرف التطبيق",
   "semanticApplicationID": "معرف التطبيق",
   "warnInvalidApplicationID": "معرف تطبيق غير صالح",
-  "labelLanguage": "Language"
+  "labelLanguage": "اللغة"
 }
