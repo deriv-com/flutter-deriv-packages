@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "Ungültiger Endpunkt",
   "labelApplicationID": "Anwendungs-ID",
   "semanticApplicationID": "Anwendungs-ID",
-  "warnInvalidApplicationID": "ungültige Anwendungs-ID"
+  "warnInvalidApplicationID": "ungültige Anwendungs-ID",
+  "labelLanguage": "Language"
 }
