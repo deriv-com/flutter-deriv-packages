@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "อุปกรณ์ปลายทางไม่ถูกต้อง",
   "labelApplicationID": "รหัสไอดีแอปพลิเคชั่น",
   "semanticApplicationID": "รหัสไอดีแอปพลิเคชั่น",
-  "warnInvalidApplicationID": "รหัสไอดีแอปพลิเคชั่นไม่ถูกต้อง"
+  "warnInvalidApplicationID": "รหัสไอดีแอปพลิเคชั่นไม่ถูกต้อง",
+  "labelLanguage": "Language"
 }
