@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "نقطة نهاية غير صالحة",
   "labelApplicationID": "معرف التطبيق",
   "semanticApplicationID": "معرف التطبيق",
-  "warnInvalidApplicationID": "معرف تطبيق غير صالح"
+  "warnInvalidApplicationID": "معرف تطبيق غير صالح",
+  "labelLanguage": "Language"
 }
