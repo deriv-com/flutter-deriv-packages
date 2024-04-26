@@ -113,5 +113,5 @@
   "labelApplicationID": "애플리케이션 ID",
   "semanticApplicationID": "애플리케이션 ID",
   "warnInvalidApplicationID": "유효하지 않은 애플리케이션 ID",
-  "labelLanguage": "Language"
+  "labelLanguage": "언어"
 }
