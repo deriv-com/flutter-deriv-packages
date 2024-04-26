@@ -113,5 +113,5 @@
   "labelApplicationID": "ID da aplicação",
   "semanticApplicationID": "ID da aplicação",
   "warnInvalidApplicationID": "ID da aplicação inválido",
-  "labelLanguage": "Language"
+  "labelLanguage": "Idioma"
 }
