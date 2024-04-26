@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "geçersiz bitiş noktası",
   "labelApplicationID": "Başvuru ID",
   "semanticApplicationID": "Başvuru ID",
-  "warnInvalidApplicationID": "geçersiz başvuru ID"
+  "warnInvalidApplicationID": "geçersiz başvuru ID",
+  "labelLanguage": "Language"
 }
