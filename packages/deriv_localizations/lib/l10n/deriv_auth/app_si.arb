@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "අවලංගු අවසාන ලක්ෂ්යය",
   "labelApplicationID": "අයදුම් හැඳුනුම්පත",
   "semanticApplicationID": "අයදුම් හැඳුනුම්පත",
-  "warnInvalidApplicationID": "අවලංගු යෙදුම් හැඳුනු"
+  "warnInvalidApplicationID": "අවලංගු යෙදුම් හැඳුනු",
+  "labelLanguage": "Language"
 }
