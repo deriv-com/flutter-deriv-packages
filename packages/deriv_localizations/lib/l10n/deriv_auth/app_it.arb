@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "termine non valido",
   "labelApplicationID": "ID applicazione",
   "semanticApplicationID": "ID applicazione",
-  "warnInvalidApplicationID": "ID applicazione non valido"
+  "warnInvalidApplicationID": "ID applicazione non valido",
+  "labelLanguage": "Language"
 }
