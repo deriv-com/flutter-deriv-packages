@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "điểm kết thúc không hợp lệ",
   "labelApplicationID": "Mã đăng ký",
   "semanticApplicationID": "Mã đăng ký",
-  "warnInvalidApplicationID": "mã đăng ký không hợp lệ"
+  "warnInvalidApplicationID": "mã đăng ký không hợp lệ",
+  "labelLanguage": "Language"
 }
