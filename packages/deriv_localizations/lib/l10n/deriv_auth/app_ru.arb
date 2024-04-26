@@ -113,5 +113,5 @@
   "labelApplicationID": "ID приложения",
   "semanticApplicationID": "ID приложения",
   "warnInvalidApplicationID": "неверный ID приложения",
-  "labelLanguage": "Language"
+  "labelLanguage": "Язык"
 }
