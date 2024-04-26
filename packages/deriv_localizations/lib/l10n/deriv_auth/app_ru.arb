@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "неверная конечная точка",
   "labelApplicationID": "ID приложения",
   "semanticApplicationID": "ID приложения",
-  "warnInvalidApplicationID": "неверный ID приложения"
+  "warnInvalidApplicationID": "неверный ID приложения",
+  "labelLanguage": "Language"
 }
