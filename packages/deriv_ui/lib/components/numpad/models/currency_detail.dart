@@ -60,15 +60,6 @@ class CurrencyDetail {
     }
   }
 
-  /// This will give a specific currency formatter based on what type of currency it is like fiat or crypto currency.
-  NumberFormat get formatter {
-    if (isFiat) {
-      return NumberFormat.decimalPattern()..maximumFractionDigits = 2;
-    } else {
-      return NumberFormat.decimalPattern()..maximumFractionDigits = 8;
-    }
-  }
-
   /// This method is used to display currency for user.
   String get displayCurrency => getStringWithMappedCurrencyName(currencyType);
 }
