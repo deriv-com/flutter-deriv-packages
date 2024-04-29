@@ -15,7 +15,7 @@
   "ok": "Ok",
   "createPassKey": "Create Passkey",
   "experienceSaferLogins": "Experience safer logins",
-  "enhanceSecurity": "To enhance your security, tap Create passkey",
+  "enhanceSecurity": "Enhanced security is just a tap away.",
   "here": "here",
   "effortlessLogin": "Effortless login with passkeys",
   "whatArePasskeys": "What are passkeys?",
@@ -45,7 +45,7 @@
   "learnMoreAboutPasskeys": "Learn more about passkeys",
   "noNeedToRememberPassword": "No need to remember a password",
   "useYourBiometrics": "Enhanced security with biometrics or screen lock",
-  "syncAcrossAllDevices": "Sync across all devices",
+  "syncAcrossDevices": "Sync across devices",
   "createPasskey": "Create Passkey",
   "unsupportedPlatform": "Unsupported Platform",
   "storedOn": "Stored on",
@@ -53,5 +53,8 @@
   "rename": "Rename",
   "revoke": "Revoke",
   "continueTradingButtonText": "Continue Trading",
-  "addMorePasskeysButtonText": "Add More Passkeys"
+  "addMorePasskeysButtonText": "Add More Passkeys",
+  "unableToSetupPasskey": "Unable to setup passkey",
+  "unableToSetupPasskeyDescription": "We encountered an issue while setting up your passkey. The process might have been interrupted, or the session timed out. Please try again.",
+  "passkeysOffErrorTitle": "The Passkeys service is unavailable"
 }
