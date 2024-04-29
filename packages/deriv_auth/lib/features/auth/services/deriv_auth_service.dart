@@ -104,6 +104,10 @@ class DerivAuthService extends BaseAuthService {
     String? refreshToken,
   }) async {
     try {
+      if (tokenList?.isNotEmpty ?? false) {
+        print(
+            '------------------ RUNNING MULTI TOKEN AUTHORIZATION ------------------');
+      }
       final AuthorizeEntity? responseAuthorizeEntity =
           (await authRepository.authorize(token, tokenList: tokenList))
               .authorize;
