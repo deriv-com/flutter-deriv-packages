@@ -121,7 +121,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get useYourBiometrics => 'Enhanced security with biometrics or screen lock';
 
   @override
-  String get syncAcrossAllDevices => 'Sync across all devices';
+  String get syncAcrossDevices => 'Sync across devices';
 
   @override
   String get createPasskey => 'Create Passkey';

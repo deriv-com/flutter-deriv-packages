@@ -319,11 +319,11 @@ abstract class DerivPasskeysLocalizations {
   /// **'Enhanced security with biometrics or screen lock'**
   String get useYourBiometrics;
 
-  /// No description provided for @syncAcrossAllDevices.
+  /// No description provided for @syncAcrossDevices.
   ///
   /// In en, this message translates to:
-  /// **'Sync across all devices'**
-  String get syncAcrossAllDevices;
+  /// **'Sync across devices'**
+  String get syncAcrossDevices;
 
   /// No description provided for @createPasskey.
   ///
