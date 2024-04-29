@@ -130,7 +130,7 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @createPassKey.
   ///
   /// In en, this message translates to:
-  /// **'Create Passkey'**
+  /// **'Create passkey'**
   String get createPassKey;
 
   /// No description provided for @experienceSaferLogins.

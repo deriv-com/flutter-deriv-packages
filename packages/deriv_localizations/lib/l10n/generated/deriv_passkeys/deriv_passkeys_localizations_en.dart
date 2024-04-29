@@ -25,7 +25,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get ok => 'Ok';
 
   @override
-  String get createPassKey => 'Create Passkey';
+  String get createPassKey => 'Create passkey';
 
   @override
   String get experienceSaferLogins => 'Experience safer logins';
