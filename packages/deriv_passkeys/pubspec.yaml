@@ -19,7 +19,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: da897013ecd1f993ad4e696c1d0856d7ebf3758c
+      ref: 080fc15331097263c0290d1c0a06b9eed0558c95
   deriv_ui:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
@@ -46,7 +46,7 @@ dependency_overrides:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: da897013ecd1f993ad4e696c1d0856d7ebf3758c
+      ref: 080fc15331097263c0290d1c0a06b9eed0558c95
 
 dev_dependencies:
   flutter_test:
