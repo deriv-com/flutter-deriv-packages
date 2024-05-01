@@ -216,41 +216,9 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
               ),
               SizedBox(
                 width: double.infinity,
-                child: RichText(
+                child: Text(
+                  context.derivPasskeysLocalizations.enhanceSecurity,
                   textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: <InlineSpan>[
-                      TextSpan(
-                          text:
-                              '${context.derivPasskeysLocalizations.enhanceSecurity} '),
-                      WidgetSpan(
-                        alignment: PlaceholderAlignment.middle,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute<Widget>(
-                                builder: (_) => LearnMorePasskeysPage(
-                                  derivPasskeysBloc: widget.derivPasskeysBloc,
-                                  onPageClosed: (BuildContext context) {
-                                    Navigator.pop(context);
-                                  },
-                                  addMorePasskeysNavigationCallback:
-                                      widget.addMorePasskeysNavigationCallback,
-                                  continueTradingNavigationCallback:
-                                      widget.continueTradingNavigationCallback,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            '${context.derivPasskeysLocalizations.here}.',
-                            style: TextStyle(color: context.theme.colors.coral),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
               )
             ],

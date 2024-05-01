@@ -85,8 +85,11 @@ class EffortlessPasskeysPage extends StatelessWidget {
                     child: TextButton(
                       onPressed: () => onPageClosed(context),
                       child: Text(
-                        context.derivPasskeysLocalizations.maybeLater,
-                        style: TextStyle(color: context.theme.colors.coral),
+                        context.derivPasskeysLocalizations.maybeLater
+                            .toUpperCase(),
+                        style: TextStyle(
+                          color: context.theme.colors.coral,
+                        ),
                       ),
                     ),
                   ),
@@ -107,6 +110,9 @@ class EffortlessPasskeysPage extends StatelessWidget {
                               .effortlessLoginWithPasskeys,
                           style: const TextStyle(fontSize: 20),
                         ),
+                        const SizedBox(
+                          height: 24,
+                        ),
                         IconTextRowWidget(
                           assetName: Assets.fingerPrintIcon,
                           text: context.derivPasskeysLocalizations
@@ -118,7 +124,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                         IconTextRowWidget(
                           assetName: Assets.syncIcon,
                           text: context
-                              .derivPasskeysLocalizations.syncAcrossAllDevices,
+                              .derivPasskeysLocalizations.syncAcrossDevices,
                         ),
                         Divider(
                           color: context.theme.colors.hover,
@@ -138,7 +144,10 @@ class EffortlessPasskeysPage extends StatelessWidget {
                               children: <InlineSpan>[
                                 TextSpan(
                                     text:
-                                        '${context.derivPasskeysLocalizations.learnMoreAboutPasskeys} '),
+                                        '${context.derivPasskeysLocalizations.learnMoreAboutPasskeys} ',
+                                    style: TextStyle(
+                                      color: context.theme.colors.general,
+                                    )),
                                 WidgetSpan(
                                   alignment: PlaceholderAlignment.middle,
                                   child: InkWell(

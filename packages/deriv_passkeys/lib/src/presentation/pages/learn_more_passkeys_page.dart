@@ -181,6 +181,8 @@ class LearnMorePasskeysPage extends StatelessWidget {
                               ),
                             ),
                             child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.centerLeft,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[

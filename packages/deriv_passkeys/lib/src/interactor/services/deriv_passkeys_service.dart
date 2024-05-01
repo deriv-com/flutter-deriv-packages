@@ -43,7 +43,7 @@ class DerivPasskeysService {
         "getRegisterOptionsResult: " + getRegisterOptionsResult.toString());
 
     final String options = jsonEncode(getRegisterOptionsResult);
-    print("asdfasdfasdfasdfasfd");
+
     final String? credentials =
         await BaseDerivPasskeysMethodChannel.instance.createCredential(options);
     sendMessage("credentials: " + credentials.toString());
