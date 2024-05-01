@@ -25,9 +25,6 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get ok => 'Ok';
 
   @override
-  String get createPassKey => 'Create passkey';
-
-  @override
   String get experienceSaferLogins => 'Experience safer logins';
 
   @override
@@ -124,7 +121,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'Sync across devices';
 
   @override
-  String get createPasskey => 'Create Passkey';
+  String get createPasskey => 'Create passkey';
 
   @override
   String get unsupportedPlatform => 'Unsupported Platform';

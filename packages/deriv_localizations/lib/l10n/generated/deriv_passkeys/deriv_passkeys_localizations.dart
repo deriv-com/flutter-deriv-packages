@@ -127,12 +127,6 @@ abstract class DerivPasskeysLocalizations {
   /// **'Ok'**
   String get ok;
 
-  /// No description provided for @createPassKey.
-  ///
-  /// In en, this message translates to:
-  /// **'Create passkey'**
-  String get createPassKey;
-
   /// No description provided for @experienceSaferLogins.
   ///
   /// In en, this message translates to:
@@ -328,7 +322,7 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @createPasskey.
   ///
   /// In en, this message translates to:
-  /// **'Create Passkey'**
+  /// **'Create passkey'**
   String get createPasskey;
 
   /// No description provided for @unsupportedPlatform.
