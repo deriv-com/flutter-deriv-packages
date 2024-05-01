@@ -113,17 +113,14 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
               } else if (state is DerivPasskeysErrorState) {
                 String title =
                     context.derivPasskeysLocalizations.unexpectedError;
-                String content = context
-                    .derivPasskeysLocalizations.unexpectedErrorDescription;
+                String content = state.message;
 
                 if (state.errorCode == 'PasskeysOff') {
-                  // title =
-                  //     context.derivPasskeysLocalizations.passkeysOffErrorTitle;
+                  title =
+                      context.derivPasskeysLocalizations.passkeysOffErrorTitle;
                   content = '';
-                } else {
-                  widget.derivPasskeysBloc
-                      .add(const DerivPasskeysGetPasskeysListEvent());
                 }
+
                 showAlertDialog(
                   context: context,
                   title: title,
@@ -160,7 +157,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                               },
                               child: Text(
                                 context
-                                    .derivPasskeysLocalizations.createPassKey,
+                                    .derivPasskeysLocalizations.createPasskey,
                                 style: TextStyle(
                                   color: context.theme.colors.prominent,
                                 ),
