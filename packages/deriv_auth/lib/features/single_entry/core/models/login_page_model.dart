@@ -17,6 +17,7 @@ class LoginPageModel {
     this.isSocialAuthEnabled = true,
     this.authErrorStateHandler,
     this.onLoginError,
+    this.onLoginTapped,
   });
 
   /// Extension of base [AuthErrorStateHandler]. If not provided, base implementation will be used.
@@ -55,4 +56,8 @@ class LoginPageModel {
 
   /// Callback for web view error.
   final Function(String) onWebViewError;
+
+  /// Callback to be called when login button is tapped.
+  /// Give access to email and password.
+  final Function(String email, String password)? onLoginTapped;
 }

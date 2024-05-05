@@ -24,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) => DerivLoginLayout(
+        onLoginTapped: AuthData().data.loginPageModel.onLoginTapped,
         welcomeLabel: AuthData().data.loginPageModel.welcomeLabel,
         greetingLabel: AuthData().data.loginPageModel.greetingLabel,
         onLoggedIn: AuthData().data.loginPageModel.onLoggedIn,
