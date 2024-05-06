@@ -86,11 +86,12 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   }
 
   @override
-  Future<void> tokenLogin(String token) async {
+  Future<void> tokenLogin(String token, {List<String>? tokenList}) async {
     emit(DerivAuthLoadingState());
 
     await _tokenLoginRequest(
       token,
+      tokenList: tokenList,
       accounts: await authService.getLatestAccounts(),
     );
   }
@@ -126,10 +127,11 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   Future<void> _tokenLoginRequest(
     String token, {
     required List<AccountModel> accounts,
+    List<String>? tokenList,
   }) async {
     try {
-      final AuthorizeEntity authorizeEntity =
-          await authService.login(token, accounts: accounts);
+      final AuthorizeEntity authorizeEntity = await authService.login(token,
+          accounts: accounts, tokenList: tokenList);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
@@ -152,6 +154,9 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   Future<void> authorizeDefaultAccount() async {
     emit(DerivAuthLoadingState());
 
+    List<String> tokenList = <String>[];
+    final List<AccountModel> accountList =
+        await authService.getLatestAccounts();
     final String? defaultAccountToken =
         (await authService.getDefaultAccount())?.token;
 
@@ -159,11 +164,18 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       emit(DerivAuthLoggedOutState());
 
       return;
+    } else {
+      tokenList = accountList
+          .where((AccountModel account) =>
+              account.token != null && defaultAccountToken != account.token)
+          .map((AccountModel account) => account.token!)
+          .toList();
     }
 
     await _tokenLoginRequest(
       defaultAccountToken,
-      accounts: await authService.getLatestAccounts(),
+      accounts: accountList,
+      tokenList: tokenList,
     );
   }
 

@@ -59,14 +59,11 @@ class DerivAuthService extends BaseAuthService {
           _filterSupportedAccounts(_response.accounts);
 
       final String? _defaultAccountToken = _supportedAccounts.first.token;
-      final List<String> _tokenList = <String>[];
-
-      for (int i = 0; i < _supportedAccounts.length; i++) {
-        print(_supportedAccounts[i].token);
-        if (i != 0 && _supportedAccounts[i].token != null) {
-          _tokenList.add(_supportedAccounts[i].token!);
-        }
-      }
+      final List<String> _tokenList = _supportedAccounts
+          .sublist(1)
+          .where((AccountModel account) => account.token != null)
+          .map((AccountModel account) => account.token!)
+          .toList();
 
       if (_defaultAccountToken != null) {
         return login(
@@ -104,10 +101,6 @@ class DerivAuthService extends BaseAuthService {
     String? refreshToken,
   }) async {
     try {
-      if (tokenList?.isNotEmpty ?? false) {
-        print(
-            '------------------ RUNNING MULTI TOKEN AUTHORIZATION ------------------');
-      }
       final AuthorizeEntity? responseAuthorizeEntity =
           (await authRepository.authorize(token, tokenList: tokenList))
               .authorize;

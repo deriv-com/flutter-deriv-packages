@@ -27,7 +27,7 @@ abstract class DerivAuthIO {
   });
 
   /// Log user in with [token] after reset password or sign up.
-  Future<void> tokenLogin(String token);
+  Future<void> tokenLogin(String token, {List<String>? tokenList});
 
   /// Log user out.
   Future<void> logout();
