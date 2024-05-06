@@ -1,3 +1,7 @@
+## 6.4.2
+
+ - Update a dependency to the latest release.
+
 ## 6.4.1
 
  - **FIX**(deriv_auth): Update settings page navigation in auth flow with callback ([#567](https://github.com/regentmarkets/flutter-deriv-packages/issues/567)). ([53857baf](https://github.com/regentmarkets/flutter-deriv-packages/commit/53857baf66ecc870e8a1452663c564b8ee57837a))

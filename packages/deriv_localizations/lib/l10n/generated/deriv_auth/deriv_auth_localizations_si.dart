@@ -270,4 +270,7 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'අවලංගු යෙදුම් හැඳුනු';
+
+  @override
+  String get labelLanguage => 'Language';
 }

@@ -95,7 +95,7 @@
   "informInvalid2FACode": "The code you entered is invalid. Check and try again.",
   "informFailedAuthentication": "Your email or password may be incorrect. Did you sign up with a social account? Check and try again.",
   "informDeactivatedAccount": "Your account is deactivated.",
-   "informFailedAuthorization": "Authorization failed.",
+  "informFailedAuthorization": "Authorization failed.",
   "informInvalidResidence": "Invalid residence.",
   "informInvalidCredentials": "Invalid credentials.",
   "informMissingOtp": "Missing one-time password.",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "invalid endpoint",
   "labelApplicationID": "Application ID",
   "semanticApplicationID": "Application ID",
-  "warnInvalidApplicationID": "invalid application ID"
+  "warnInvalidApplicationID": "invalid application ID",
+  "labelLanguage": "Language"
 }

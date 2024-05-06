@@ -270,4 +270,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'mã đăng ký không hợp lệ';
+
+  @override
+  String get labelLanguage => 'Language';
 }

@@ -270,4 +270,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'kitambulisho cha programu halali';
+
+  @override
+  String get labelLanguage => 'Language';
 }

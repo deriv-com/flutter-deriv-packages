@@ -270,4 +270,7 @@ class DerivAuthLocalizationsEs extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'ID de aplicación no válido';
+
+  @override
+  String get labelLanguage => 'Language';
 }
