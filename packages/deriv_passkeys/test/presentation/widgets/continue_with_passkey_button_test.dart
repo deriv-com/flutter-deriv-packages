@@ -17,15 +17,13 @@ class _TestPage extends StatelessWidget {
   const _TestPage();
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+  Widget build(BuildContext context) => const MaterialApp(
+        localizationsDelegates: <LocalizationsDelegate<dynamic>>[
           DerivPasskeysLocalizations.delegate,
         ],
-        locale: const Locale('en'),
+        locale: Locale('en'),
         home: Scaffold(
-          body: ContinueWithPasskeyButton(
-            derivPasskeysBloc: context.read<DerivPasskeysBloc>(),
-          ),
+          body: ContinueWithPasskeyButton(),
         ),
       );
 }
