@@ -17,7 +17,6 @@ import 'package:flutter_svg/svg.dart';
 class ManagePasskeysPage extends StatefulWidget {
   /// Creates a [ManagePasskeysPage].
   const ManagePasskeysPage({
-    required this.derivPasskeysBloc,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
     super.key,
@@ -25,9 +24,6 @@ class ManagePasskeysPage extends StatefulWidget {
 
   /// The route name for the manage passkeys page.
   static const String routeName = 'manage_passkeys_page';
-
-  /// The bloc to handle the passkey state
-  final DerivPasskeysBloc derivPasskeysBloc;
 
   /// Callback to be called when the user wants to add more passkeys.
   final void Function(BuildContext context) addMorePasskeysNavigationCallback;
@@ -43,7 +39,9 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
   @override
   void initState() {
     super.initState();
-    widget.derivPasskeysBloc.add(const DerivPasskeysGetPasskeysListEvent());
+    context
+        .read<DerivPasskeysBloc>()
+        .add(const DerivPasskeysGetPasskeysListEvent());
   }
 
   @override
@@ -65,7 +63,6 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                   context,
                   MaterialPageRoute<Widget>(
                       builder: (BuildContext context) => LearnMorePasskeysPage(
-                            derivPasskeysBloc: widget.derivPasskeysBloc,
                             onPageClosed: (BuildContext context) {
                               Navigator.pop(context);
                             },
@@ -80,98 +77,92 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
           ],
         ),
         body: BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
-            bloc: widget.derivPasskeysBloc,
             listener: (BuildContext context, DerivPasskeysState state) {
-              if (state is DerivPasskeysCreatedSuccessfullyState) {
-                String platformName =
-                    context.derivPasskeysLocalizations.unsupportedPlatform;
-                //get if device is android or ios
-                if (Platform.isIOS) {
-                  platformName = 'IOS';
-                }
-                if (Platform.isAndroid) {
-                  platformName = 'Android';
-                }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<Widget>(
-                      builder: (BuildContext context) => PasskeyCreatedPage(
-                            platformName: platformName,
-                            onPageClose: (BuildContext context) {
-                              Navigator.pop(context);
-                            },
-                            derivPasskeysBloc: widget.derivPasskeysBloc,
-                            bottomCallToAction: PasskeysCreatedCallToAction(
-                              derivPasskeysBloc: widget.derivPasskeysBloc,
-                              addMorePasskeysNavigationCallback:
-                                  widget.addMorePasskeysNavigationCallback,
-                              continueTradingNavigationCallback:
-                                  widget.continueTradingNavigationCallback,
-                            ),
-                          )),
-                );
-              } else if (state is DerivPasskeysErrorState) {
-                String title =
-                    context.derivPasskeysLocalizations.unexpectedError;
-                String content = state.message;
-
-                if (state.errorCode == 'PasskeysOff') {
-                  title =
-                      context.derivPasskeysLocalizations.passkeysOffErrorTitle;
-                  content = '';
-                }
-
-                showAlertDialog(
-                  context: context,
-                  title: title,
-                  content: Text(
-                    content,
-                  ),
-                  positiveActionLabel: context.derivPasskeysLocalizations.ok,
-                  onPositiveActionPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                );
-              }
-            },
-            builder: (BuildContext context, DerivPasskeysState state) {
-              if (state is DerivPasskeysLoadedState) {
-                return SafeArea(
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        _buildDerivPasskeysLoadedContent(
-                          context,
-                          state,
+          if (state is DerivPasskeysCreatedSuccessfullyState) {
+            String platformName =
+                context.derivPasskeysLocalizations.unsupportedPlatform;
+            //get if device is android or ios
+            if (Platform.isIOS) {
+              platformName = 'IOS';
+            }
+            if (Platform.isAndroid) {
+              platformName = 'Android';
+            }
+            Navigator.push(
+              context,
+              MaterialPageRoute<Widget>(
+                  builder: (BuildContext context) => PasskeyCreatedPage(
+                        platformName: platformName,
+                        onPageClose: (BuildContext context) {
+                          Navigator.pop(context);
+                        },
+                        bottomCallToAction: PasskeysCreatedCallToAction(
+                          addMorePasskeysNavigationCallback:
+                              widget.addMorePasskeysNavigationCallback,
+                          continueTradingNavigationCallback:
+                              widget.continueTradingNavigationCallback,
                         ),
-                        Container(
-                          width: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: PrimaryButton(
-                              onPressed: () {
-                                widget.derivPasskeysBloc
-                                    .add(DerivPasskeysCreateCredentialEvent());
-                              },
-                              child: Text(
-                                context
-                                    .derivPasskeysLocalizations.createPasskey,
-                                style: TextStyle(
-                                  color: context.theme.colors.prominent,
-                                ),
-                              ),
+                      )),
+            );
+          } else if (state is DerivPasskeysErrorState) {
+            String title = context.derivPasskeysLocalizations.unexpectedError;
+            String content = state.message;
+
+            if (state.errorCode == 'PasskeysOff') {
+              title = context.derivPasskeysLocalizations.passkeysOffErrorTitle;
+              content = '';
+            }
+
+            showAlertDialog(
+              context: context,
+              title: title,
+              content: Text(
+                content,
+              ),
+              positiveActionLabel: context.derivPasskeysLocalizations.ok,
+              onPositiveActionPressed: () {
+                Navigator.of(context).pop();
+              },
+            );
+          }
+        }, builder: (BuildContext context, DerivPasskeysState state) {
+          if (state is DerivPasskeysLoadedState) {
+            return SafeArea(
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildDerivPasskeysLoadedContent(
+                      context,
+                      state,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: PrimaryButton(
+                          onPressed: () {
+                            context
+                                .read<DerivPasskeysBloc>()
+                                .add(DerivPasskeysCreateCredentialEvent());
+                          },
+                          child: Text(
+                            context.derivPasskeysLocalizations.createPasskey,
+                            style: TextStyle(
+                              color: context.theme.colors.prominent,
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              }
-              return const SizedBox();
-            }),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }
+          return const SizedBox();
+        }),
       );
 
   Widget _buildDerivPasskeysListContent(

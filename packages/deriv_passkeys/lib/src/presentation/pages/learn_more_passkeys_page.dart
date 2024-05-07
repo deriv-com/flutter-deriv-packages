@@ -17,15 +17,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class LearnMorePasskeysPage extends StatelessWidget {
   /// Creates a [LearnMorePasskeysPage].
   const LearnMorePasskeysPage({
-    required this.derivPasskeysBloc,
     required this.onPageClosed,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
     super.key,
   });
-
-  /// The bloc to handle the passkey state
-  final DerivPasskeysBloc derivPasskeysBloc;
 
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onPageClosed;
@@ -39,7 +35,6 @@ class LearnMorePasskeysPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       BlocListener<DerivPasskeysBloc, DerivPasskeysState>(
-        bloc: derivPasskeysBloc,
         listener: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysCreatedSuccessfullyState) {
             String platformName =
@@ -57,9 +52,7 @@ class LearnMorePasskeysPage extends StatelessWidget {
                   builder: (BuildContext context) => PasskeyCreatedPage(
                         platformName: platformName,
                         onPageClose: onPageClosed,
-                        derivPasskeysBloc: derivPasskeysBloc,
                         bottomCallToAction: PasskeysCreatedCallToAction(
-                          derivPasskeysBloc: derivPasskeysBloc,
                           addMorePasskeysNavigationCallback:
                               addMorePasskeysNavigationCallback,
                           continueTradingNavigationCallback:
@@ -251,7 +244,8 @@ class LearnMorePasskeysPage extends StatelessWidget {
                       left: 24, right: 24, bottom: 24, top: 16),
                   child: PrimaryButton(
                     onPressed: () {
-                      derivPasskeysBloc
+                      context
+                          .read<DerivPasskeysBloc>()
                           .add(DerivPasskeysCreateCredentialEvent());
                     },
                     child: Text(

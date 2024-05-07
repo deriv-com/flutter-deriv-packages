@@ -25,7 +25,6 @@ class _TestPage extends StatelessWidget {
         ],
         locale: const Locale('en'),
         home: LearnMorePasskeysPage(
-          derivPasskeysBloc: context.read<DerivPasskeysBloc>(),
           onPageClosed: (BuildContext context) {
             Navigator.pop(context);
           },

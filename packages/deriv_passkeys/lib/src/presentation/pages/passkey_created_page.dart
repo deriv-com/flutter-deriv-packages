@@ -1,4 +1,3 @@
-import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -11,13 +10,9 @@ class PasskeyCreatedPage extends StatelessWidget {
   const PasskeyCreatedPage({
     required this.platformName,
     required this.onPageClose,
-    required this.derivPasskeysBloc,
     required this.bottomCallToAction,
     super.key,
   });
-
-  /// The bloc to handle the passkey state
-  final DerivPasskeysBloc derivPasskeysBloc;
 
   /// The name of the platform.
   final String platformName;

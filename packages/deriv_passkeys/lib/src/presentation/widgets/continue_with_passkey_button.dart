@@ -11,17 +11,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ContinueWithPasskeyButton extends StatelessWidget {
   /// constructs a [ContinueWithPasskeyButton]
   const ContinueWithPasskeyButton({
-    required this.derivPasskeysBloc,
     super.key,
   });
-
-  /// The bloc to handle the passkey state
-  final DerivPasskeysBloc derivPasskeysBloc;
 
   @override
   Widget build(BuildContext context) =>
       BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
-        bloc: derivPasskeysBloc,
         listener: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysErrorState) {
             if (state is NoCredentialErrorState) {
@@ -111,7 +106,9 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                     ),
             ),
             onTap: () async {
-              derivPasskeysBloc.add(DerivPasskeysVerifyCredentialEvent());
+              context
+                  .read<DerivPasskeysBloc>()
+                  .add(DerivPasskeysVerifyCredentialEvent());
             },
           );
         },

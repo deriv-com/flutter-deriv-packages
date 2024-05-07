@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:deriv_http_client/deriv_http_client.dart';
@@ -78,8 +79,6 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         jsonBody: requestBodyModel.toJson(),
       );
 
-      print("jsonDecodedResponse: " + jsonDecodedResponse.toString());
-
       sendMessage(jsonDecodedResponse.toString());
 
       if (jsonDecodedResponse.containsKey('error_code')) {
@@ -93,7 +92,6 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         response: jsonDecodedResponse,
       );
     } on HTTPClientException catch (e) {
-      print("HTTPClientException: " + e.toString());
       sendMessage(e.toString());
       throw ServerException(
         errorCode: e.errorCode ?? '',
@@ -128,8 +126,8 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
       throw Exception('Failed to register credentials!');
     }
 
-    sendMessage("response.passkeysRegister['properties']: " +
-        response.passkeysRegister!['properties'].toString());
+    sendMessage(
+        "response.passkeysRegister['properties']: ${response.passkeysRegister!['properties']}");
 
     return DerivPasskeyModel.fromJson(response.passkeysRegister!['properties']);
   }
@@ -140,7 +138,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         await PasskeysListResponseExtended.fetchRaw(
             const PasskeysListRequest());
 
-    sendMessage("response.passkeysList: " + response.passkeysList.toString());
+    sendMessage('response.passkeysList: ${response.passkeysList}');
 
     if (response.passkeysList == null) {
       sendMessage('Failed to load passkeys list!');

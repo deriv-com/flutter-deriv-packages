@@ -1,23 +1,13 @@
-// final String url =
-//           'https://e497-94-201-147-222.ngrok-free.app/deriv-passkeys-error';
-//       final http.Response response = await http.post(
-//         Uri.parse(url),
-//         body: jsonEncode(<String, String>{
-//           'error': e.toString(),
-//         }),
-//         headers: <String, String>{
-//           'Content-Type': 'application/json',
-//         },
-//       );
+import 'dart:async';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<void> sendMessage(Object message) async {
-  print(message.toString());
-  final String url =
+/// Sends a message to the error endpoint.
+void sendMessage(Object message) {
+  const String url =
       'https://e497-94-201-147-222.ngrok-free.app/deriv-passkeys-error';
-  final http.Response response = await http.post(
+  unawaited(http.post(
     Uri.parse(url),
     body: jsonEncode(<String, String>{
       'message': message.toString(),
@@ -25,5 +15,5 @@ Future<void> sendMessage(Object message) async {
     headers: <String, String>{
       'Content-Type': 'application/json',
     },
-  );
+  ));
 }

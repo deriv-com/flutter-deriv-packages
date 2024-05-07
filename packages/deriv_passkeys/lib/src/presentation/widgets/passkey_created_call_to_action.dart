@@ -1,4 +1,3 @@
-import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -8,14 +7,10 @@ import 'package:flutter/material.dart';
 class PasskeysCreatedCallToAction extends StatelessWidget {
   /// Creates a [PasskeysCreatedCallToAction].
   const PasskeysCreatedCallToAction({
-    required this.derivPasskeysBloc,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
     super.key,
   });
-
-  /// The bloc to handle the passkey state
-  final DerivPasskeysBloc derivPasskeysBloc;
 
   /// Callback to be called when the user wants to add more passkeys.
   final void Function(BuildContext context) addMorePasskeysNavigationCallback;

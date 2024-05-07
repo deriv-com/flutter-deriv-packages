@@ -18,7 +18,6 @@ class EffortlessPasskeysPage extends StatelessWidget {
   /// Creates a [EffortlessPasskeysPage].
   const EffortlessPasskeysPage({
     required this.onPageClosed,
-    required this.derivPasskeysBloc,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
     super.key,
@@ -26,9 +25,6 @@ class EffortlessPasskeysPage extends StatelessWidget {
 
   /// The route name for the effortless passkeys page.
   static const String routeName = 'effortless_passkeys_page';
-
-  /// The bloc to handle the passkey state
-  final DerivPasskeysBloc derivPasskeysBloc;
 
   /// Callback to be called when the user wants to add more passkeys.
   final void Function(BuildContext context) addMorePasskeysNavigationCallback;
@@ -44,7 +40,6 @@ class EffortlessPasskeysPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       BlocListener<DerivPasskeysBloc, DerivPasskeysState>(
-        bloc: derivPasskeysBloc,
         listener: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysCreatedSuccessfullyState) {
             String platformName =
@@ -61,9 +56,7 @@ class EffortlessPasskeysPage extends StatelessWidget {
                   builder: (BuildContext context) => PasskeyCreatedPage(
                         platformName: platformName,
                         onPageClose: onPageClosed,
-                        derivPasskeysBloc: derivPasskeysBloc,
                         bottomCallToAction: PasskeysCreatedCallToAction(
-                          derivPasskeysBloc: derivPasskeysBloc,
                           addMorePasskeysNavigationCallback:
                               addMorePasskeysNavigationCallback,
                           continueTradingNavigationCallback:
@@ -156,8 +149,6 @@ class EffortlessPasskeysPage extends StatelessWidget {
                                         context,
                                         MaterialPageRoute<Widget>(
                                           builder: (_) => LearnMorePasskeysPage(
-                                            derivPasskeysBloc:
-                                                derivPasskeysBloc,
                                             onPageClosed:
                                                 (BuildContext context) {
                                               Navigator.pop(context);
@@ -191,7 +182,8 @@ class EffortlessPasskeysPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: PrimaryButton(
                       onPressed: () {
-                        derivPasskeysBloc
+                        context
+                            .read<DerivPasskeysBloc>()
                             .add(DerivPasskeysCreateCredentialEvent());
                       },
                       child: Text(
