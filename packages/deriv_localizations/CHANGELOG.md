@@ -1,3 +1,7 @@
+## 1.3.0
+
+ - **FEAT**(deriv_localization): Update localization string for deriv_auth ([#571](https://github.com/regentmarkets/flutter-deriv-packages/issues/571)). ([d2d76902](https://github.com/regentmarkets/flutter-deriv-packages/commit/d2d769023b651419270842d450a56a4bbd264327))
+
 ## 1.2.0
 
  - **FEAT**(deriv_localizations): [UPM-856] Adding deriv passkeys localizations. ([#544](https://github.com/regentmarkets/flutter-deriv-packages/issues/544)). ([9a3b42e2](https://github.com/regentmarkets/flutter-deriv-packages/commit/9a3b42e2468c9586eae4eb03ba8a7b2712f44de2))

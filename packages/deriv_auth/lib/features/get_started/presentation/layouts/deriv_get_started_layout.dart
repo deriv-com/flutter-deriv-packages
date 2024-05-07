@@ -41,7 +41,7 @@ class DerivGetStartedLayout extends StatefulWidget {
   final VoidCallback onSignupTapped;
 
   /// Navigation to be called when screen is tapped seven times.
-  final VoidCallback onTapNavigation;
+  final Function(BuildContext context) onTapNavigation;
 
   @override
   State<DerivGetStartedLayout> createState() => _DerivGetStartedLayoutState();
