@@ -1,5 +1,6 @@
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:flutter/foundation.dart' show VoidCallback;
+import 'package:flutter/material.dart';
 
 /// Sign-up page model
 class SignupPageModel {
@@ -40,7 +41,7 @@ class SignupPageModel {
   final bool isSocialAuthEnabled;
 
   /// Social auth state handler.
-  final Function(SocialAuthState) socialAuthStateHandler;
+  final Function(BuildContext, SocialAuthState) socialAuthStateHandler;
 
   /// Redirect URL for social auth.
   final String redirectURL;

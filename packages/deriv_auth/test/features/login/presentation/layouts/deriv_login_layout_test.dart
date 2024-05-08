@@ -60,7 +60,8 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivLoginLayout(
-            socialAuthStateHandler: (SocialAuthState state) {},
+            socialAuthStateHandler:
+                (BuildContext context, SocialAuthState state) {},
             redirectURL: 'deriv://example',
             onWebViewError: (String error) {},
             welcomeLabel: welcomeLabel,
@@ -97,7 +98,8 @@ void main() {
             BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
           ],
           child: DerivLoginLayout(
-            socialAuthStateHandler: (SocialAuthState state) {},
+            socialAuthStateHandler:
+                (BuildContext context, SocialAuthState state) {},
             redirectURL: 'deriv://example',
             onWebViewError: (String error) {},
             welcomeLabel: welcomeLabel,
@@ -136,7 +138,8 @@ void main() {
               BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
             ],
             child: DerivLoginLayout(
-              socialAuthStateHandler: (SocialAuthState state) {},
+              socialAuthStateHandler:
+                  (BuildContext context, SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               welcomeLabel: welcomeLabel,
@@ -169,7 +172,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -215,7 +219,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -253,7 +258,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -290,7 +296,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -323,7 +330,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -371,7 +379,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -415,7 +424,8 @@ void main() {
           BlocProvider<SocialAuthCubit>.value(value: socialAuthCubit),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {
             onSocialAuthHandlerCalled = true;
           },
           redirectURL: 'deriv://example',

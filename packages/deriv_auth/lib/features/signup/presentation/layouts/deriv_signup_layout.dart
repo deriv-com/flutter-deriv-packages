@@ -63,7 +63,7 @@ class DerivSignupLayout extends StatefulWidget {
   final bool isSocialAuthEnabled;
 
   /// Social auth state handler.
-  final Function(SocialAuthState) socialAuthStateHandler;
+  final Function(BuildContext, SocialAuthState) socialAuthStateHandler;
 
   /// Redirect URL for social auth.
   final String redirectURL;
