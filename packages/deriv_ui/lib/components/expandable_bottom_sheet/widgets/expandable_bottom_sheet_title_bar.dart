@@ -2,10 +2,13 @@ part of 'expandable_bottom_sheet.dart';
 
 class _ExpandableBottomSheetTitleBar extends StatelessWidget {
   const _ExpandableBottomSheetTitleBar(
-      {required this.labelContractDetails, Key? key})
+      {required this.labelContractDetails, this.togglerKey, Key? key})
       : super(key: key);
 
   final String labelContractDetails;
+
+  /// key for Bottomsheet toggler
+  final Key? togglerKey;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
                     heightFactor: 1 - animationController.value,
                     child: Opacity(
                       opacity: 1 - animationController.value,
-                      child: const _ExpandableBottomSheetToggler(),
+                      child: _ExpandableBottomSheetToggler(key: togglerKey),
                     ),
                   ),
                 Align(
@@ -69,7 +72,7 @@ class _ExpandableBottomSheetTitleBar extends StatelessWidget {
             Column(
               children: <Widget>[
                 if (expandableBottomSheetProvider.showToggler)
-                  const _ExpandableBottomSheetToggler(),
+                  _ExpandableBottomSheetToggler(key: togglerKey),
                 const _ExpandableBottomSheetTitle(),
               ],
             ),

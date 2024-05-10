@@ -47,6 +47,7 @@ class ExpandableBottomSheet extends StatefulWidget {
     this.onClose,
     this.onToggle,
     this.onDismiss,
+    this.togglerKey,
     Key? key,
   }) : super(key: key);
 
@@ -137,6 +138,9 @@ class ExpandableBottomSheet extends StatefulWidget {
   /// [onDismiss] callback
   /// This callback will be called on expandable bottom sheet dismiss
   final VoidCallback? onDismiss;
+
+  /// Sets the UI automation key for bottomsheet toggler.
+  final Key? togglerKey;
 
   /// Default value for animation duration of bottom sheet in milliseconds.
   static const int _defaultChangeStateDuration = 350;
@@ -244,6 +248,7 @@ class _ExpandableBottomSheetState extends State<ExpandableBottomSheet>
                 children: <Widget>[
                   _ExpandableBottomSheetTitleBar(
                     labelContractDetails: widget.labelContractDetails,
+                    togglerKey: widget.togglerKey,
                   ),
                   _ExpandableBottomSheetUpperContent(
                     onHeightCalculated: (double height) =>
