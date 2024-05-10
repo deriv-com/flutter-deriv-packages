@@ -11,8 +11,8 @@ class LanguageSelectorWidget extends StatelessWidget {
     required this.languageItem,
     required this.onPressed,
     this.package,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   /// [LanguageModel] to show as button.
   final LanguageModel languageItem;
