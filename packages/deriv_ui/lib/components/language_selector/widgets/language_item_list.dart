@@ -43,6 +43,7 @@ class _LanguageItemListState extends State<LanguageItemList> {
               .map((LanguageModel item) => LanguageSelectorItem(
                   package: widget.package,
                   item: item,
+                  key: ValueKey<String>(item.code),
                   isSelected: widget.selectedItem != null &&
                       widget.selectedItem?.code == item.code,
                   onPressed: (LanguageModel item) {

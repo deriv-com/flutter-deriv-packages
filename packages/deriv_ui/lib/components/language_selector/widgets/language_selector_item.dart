@@ -12,8 +12,8 @@ class LanguageSelectorItem extends StatelessWidget {
     required this.item,
     required this.onPressed,
     this.package,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   /// Whether the item is selected or not.
   final bool isSelected;
@@ -32,49 +32,60 @@ class LanguageSelectorItem extends StatelessWidget {
         ignoring: isSelected,
         child: TextButton(
           onPressed: () => onPressed(item),
-          style: ButtonStyle(
-            padding: MaterialStateProperty.all(EdgeInsets.zero),
-            minimumSize: MaterialStateProperty.all(
-                const Size(double.infinity, ThemeProvider.iconSize58)),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
-            )),
-            overlayColor: MaterialStateProperty.all(context.theme.colors.hover),
-          ),
+          style: _assignButtonStyle(context),
           child: Container(
             padding: const EdgeInsets.symmetric(
-                horizontal: ThemeProvider.margin16, vertical: 20),
-            decoration: BoxDecoration(
-              color:
-                  isSelected ? context.theme.colors.hover : Colors.transparent,
-              borderRadius: const BorderRadius.all(
-                  Radius.circular(ThemeProvider.borderRadius08)),
+              horizontal: ThemeProvider.margin16,
+              vertical: 20,
             ),
+            decoration: _assignDecoration(context),
             child: Row(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(
-                    right: ThemeProvider.margin16,
-                  ),
-                  child: Image(
-                    image: AssetImage(
-                      item.flag,
-                      package: package,
-                    ),
-                    width: ThemeProvider.margin24,
-                  ),
+                  padding: const EdgeInsets.only(right: ThemeProvider.margin16),
+                  child: _buildFlag(context),
                 ),
                 Text(
                   item.name,
-                  style: isSelected
-                      ? context.theme.textStyle(textStyle: TextStyles.body2)
-                      : context.theme
-                          .textStyle(textStyle: TextStyles.body1)
-                          .copyWith(color: context.theme.colors.lessProminent),
+                  style: _assignNameStyle(context),
                 ),
               ],
             ),
           ),
         ),
       );
+
+  ButtonStyle _assignButtonStyle(BuildContext context) => ButtonStyle(
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
+        minimumSize: MaterialStateProperty.all(
+          const Size(double.infinity, ThemeProvider.iconSize58),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
+          ),
+        ),
+        overlayColor: MaterialStateProperty.all(context.theme.colors.hover),
+      );
+
+  BoxDecoration _assignDecoration(BuildContext context) => BoxDecoration(
+        color: isSelected ? context.theme.colors.hover : Colors.transparent,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(ThemeProvider.borderRadius08),
+        ),
+      );
+
+  Widget _buildFlag(BuildContext context) => Image(
+        image: AssetImage(
+          item.flag,
+          package: package,
+        ),
+        width: ThemeProvider.margin24,
+      );
+
+  TextStyle _assignNameStyle(BuildContext context) => isSelected
+      ? context.theme.textStyle(textStyle: TextStyles.body2)
+      : context.theme
+          .textStyle(textStyle: TextStyles.body1)
+          .copyWith(color: context.theme.colors.lessProminent);
 }
