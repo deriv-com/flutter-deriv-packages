@@ -24,7 +24,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.7+2
+      ref: deriv_ui-v0.0.7+4
   deriv_http_client:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
