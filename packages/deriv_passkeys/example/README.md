@@ -1,16 +1,8 @@
 # passkeys_poc
 
-A new Flutter project.
+Passkeys POC is a simple Flutter app that demonstrates how to use the `deriv_passkeys` package to authenticate a user in a Deriv app using the passkeys authentication method.
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To make the example app work, you need to fill in the `appId` and `endpoint` in the `connectionInfo` object. Open the file `lib/main.dart` and locate the following code:

@@ -31,8 +31,8 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         connectionInfo: PasskeysConnectionInfoEntity(
-          appId: '23789',
-          endpoint: 'qa163.deriv.dev',
+          appId: '',
+          endpoint: '',
         ),
         getJwtToken: () {
           return Future.value('');
