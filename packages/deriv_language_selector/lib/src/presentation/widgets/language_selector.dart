@@ -109,8 +109,11 @@ class LanguageSelector extends StatelessWidget {
       );
 
   LanguageItemList _buildLanguageBottomSheet(
-          BuildContext context, LanguageState state) =>
+    BuildContext context,
+    LanguageState state,
+  ) =>
       LanguageItemList(
+        key: WidgetKeys.languageSelectorBottomSheetKey,
         package: usePackageFlags ? 'deriv_language_selector' : null,
         items: state.activeLanguages
           ..sort(

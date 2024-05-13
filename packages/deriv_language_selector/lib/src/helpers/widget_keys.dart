@@ -11,4 +11,10 @@ class WidgetKeys {
   /// the language selector bottom sheet.
   static const Key languageSelectorBottomSheetTogglerKey =
       ValueKey<String>('language_selector_bottom_sheet_toggler');
+
+  /// Key for [LanguageSelectorBottomSheetWidget] which is used for showing the
+  /// 
+  /// the language selector bottom sheet.
+  static const Key languageSelectorBottomSheetKey =
+      ValueKey<String>('language_selector_bottom_sheet');
 }
