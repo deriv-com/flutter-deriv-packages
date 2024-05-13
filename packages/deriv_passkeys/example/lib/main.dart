@@ -89,9 +89,7 @@ class MyPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ContinueWithPasskeyButton(
-            derivPasskeysBloc: context.read<DerivPasskeysBloc>(),
-          ),
+          const ContinueWithPasskeyButton(),
           SizedBox(
             width: double.infinity,
             child: Padding(

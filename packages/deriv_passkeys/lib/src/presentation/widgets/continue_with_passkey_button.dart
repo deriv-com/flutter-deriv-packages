@@ -46,6 +46,18 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                     context.derivPasskeysLocalizations.passkeysOffErrorTitle;
                 content = state.message;
               }
+              // showDialog<String>(
+              //   context: context,
+              //   builder: (BuildContext context) => PopupAlertDialog(
+              //     title: title,
+              //     content: Text(content),
+              //     positiveButtonLabel: context.derivPasskeysLocalizations.ok,
+              //     onPositiveActionPressed: () {
+              //       Navigator.pop(
+              //           context, context.derivPasskeysLocalizations.ok);
+              //     },
+              //   ),
+              // );
               showAlertDialog(
                 context: context,
                 title: title,

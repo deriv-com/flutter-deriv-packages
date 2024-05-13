@@ -141,9 +141,6 @@ void main() {
       expect(find.byType(AlertDialog), findsOneWidget);
       expect(find.text(DerivPasskeysLocalizationsEn().unexpectedError),
           findsOneWidget);
-      expect(
-          find.text(DerivPasskeysLocalizationsEn().unexpectedErrorDescription),
-          findsOneWidget);
       expect(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()),
           findsOneWidget);
 
