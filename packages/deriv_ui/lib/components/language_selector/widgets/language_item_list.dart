@@ -14,7 +14,8 @@ class LanguageItemList extends StatefulWidget {
     required this.onLanguageSelected,
     this.selectedItem,
     this.package,
-  });
+    Key? key,
+  }) : super(key: key);
 
   /// List of language items
   final List<LanguageModel> items;
