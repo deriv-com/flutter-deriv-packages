@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:deriv_passkeys/src/data/data_sources/temp_send_error_request.dart';
 import 'package:deriv_passkeys/src/domain/base_repositories/base_deriv_passkeys_repository.dart';
 import 'package:deriv_passkeys/src/domain/entities/passkeys_connection_info_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
@@ -39,13 +38,10 @@ class DerivPasskeysService {
 
     getRegisterOptionsResult['user'] = publicKeyCredentialUserEntityJson;
 
-    sendMessage('getRegisterOptionsResult: $getRegisterOptionsResult');
-
     final String options = jsonEncode(getRegisterOptionsResult);
 
     final String? credentials =
         await BaseDerivPasskeysMethodChannel.instance.createCredential(options);
-    sendMessage('credentials: $credentials');
     if (credentials == null) {
       throw PlatformException(
           code: 'null-response',
@@ -75,42 +71,36 @@ class DerivPasskeysService {
     required PasskeysConnectionInfoEntity passkeysConnectionInfoEntity,
     String? userAgent,
   }) async {
-    try {
-      final Map<String, dynamic> getOptionsResult =
-          (await repository.getOptions(
-        passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
-      ))
-              .toJson();
-      final String options = jsonEncode(getOptionsResult);
+    final Map<String, dynamic> getOptionsResult = (await repository.getOptions(
+      passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
+    ))
+        .toJson();
+    final String options = jsonEncode(getOptionsResult);
 
-      final String? response =
-          await BaseDerivPasskeysMethodChannel.instance.getCredential(options);
+    final String? response =
+        await BaseDerivPasskeysMethodChannel.instance.getCredential(options);
 
-      if (response == null) {
-        throw PlatformException(
-            code: 'null-response',
-            message: 'Unable to get response from Passkey.');
-      }
-
-      final Map<String, dynamic> decodedResponse = jsonDecode(response);
-
-      final DerivPasskeysVerifyCredentialsResponseEntity
-          getVerifyCredentialsResult = await repository.verifyCredentials(
-        requestBodyEntity: DerivPasskeysVerifyCredentialsRequestBodyEntity(
-          appId: passkeysConnectionInfoEntity.appId,
-          publicKeyCredential: decodedResponse,
-          type: 'passkeys',
-        ),
-        jwtToken: jwtToken,
-        passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
-        userAgent: userAgent,
-      );
-
-      return getVerifyCredentialsResult;
-    } catch (e) {
-      sendMessage(e);
-      rethrow;
+    if (response == null) {
+      throw PlatformException(
+          code: 'null-response',
+          message: 'Unable to get response from Passkey.');
     }
+
+    final Map<String, dynamic> decodedResponse = jsonDecode(response);
+
+    final DerivPasskeysVerifyCredentialsResponseEntity
+        getVerifyCredentialsResult = await repository.verifyCredentials(
+      requestBodyEntity: DerivPasskeysVerifyCredentialsRequestBodyEntity(
+        appId: passkeysConnectionInfoEntity.appId,
+        publicKeyCredential: decodedResponse,
+        type: 'passkeys',
+      ),
+      jwtToken: jwtToken,
+      passkeysConnectionInfoEntity: passkeysConnectionInfoEntity,
+      userAgent: userAgent,
+    );
+
+    return getVerifyCredentialsResult;
   }
 }
 

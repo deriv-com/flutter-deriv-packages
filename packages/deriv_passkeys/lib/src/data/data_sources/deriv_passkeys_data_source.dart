@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:deriv_http_client/deriv_http_client.dart';
-import 'package:deriv_passkeys/src/data/data_sources/temp_send_error_request.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_list_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_options_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_response_extended.dart';
@@ -38,8 +37,6 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
     final http.Response response = await client.get(
       url,
     );
-
-    sendMessage(response.body);
 
     if (response.statusCode == 200) {
       return DerivPasskeysOptionsModel.fromJson(jsonDecode(response.body));
@@ -79,8 +76,6 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         jsonBody: requestBodyModel.toJson(),
       );
 
-      sendMessage(jsonDecodedResponse.toString());
-
       if (jsonDecodedResponse.containsKey('error_code')) {
         throw ServerException(
           errorCode: jsonDecodedResponse['error_code'],
@@ -92,7 +87,6 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         response: jsonDecodedResponse,
       );
     } on HTTPClientException catch (e) {
-      sendMessage(e.toString());
       throw ServerException(
         errorCode: e.errorCode ?? '',
         message: e.message,
@@ -107,7 +101,6 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
             const PasskeysRegisterOptionsRequest());
 
     if (response.passkeysRegisterOptions == null) {
-      sendMessage('Failed to load register options!');
       throw Exception('Failed to load register options!');
     }
 
@@ -122,12 +115,8 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         await PasskeysRegisterResponseExtended.fetchRaw(request);
 
     if (response.passkeysRegister == null) {
-      sendMessage('Failed to register credentials!');
       throw Exception('Failed to register credentials!');
     }
-
-    sendMessage(
-        "response.passkeysRegister['properties']: ${response.passkeysRegister!['properties']}");
 
     return DerivPasskeyModel.fromJson(response.passkeysRegister!['properties']);
   }
@@ -138,10 +127,7 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
         await PasskeysListResponseExtended.fetchRaw(
             const PasskeysListRequest());
 
-    sendMessage('response.passkeysList: ${response.passkeysList}');
-
     if (response.passkeysList == null) {
-      sendMessage('Failed to load passkeys list!');
       throw Exception('Failed to load passkeys list!');
     }
 
