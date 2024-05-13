@@ -152,4 +152,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
 
   @override
   String get passkeysOffErrorTitle => 'The Passkeys service is unavailable';
+
+  @override
+  String get never => 'Never';
 }
