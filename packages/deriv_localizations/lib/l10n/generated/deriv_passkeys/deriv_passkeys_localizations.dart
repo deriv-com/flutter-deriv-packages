@@ -59,15 +59,18 @@ import 'deriv_passkeys_localizations_en.dart';
 /// be consistent with the languages listed in the DerivPasskeysLocalizations.supportedLocales
 /// property.
 abstract class DerivPasskeysLocalizations {
-  DerivPasskeysLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  DerivPasskeysLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static DerivPasskeysLocalizations of(BuildContext context) {
-    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations)!;
+    return Localizations.of<DerivPasskeysLocalizations>(
+        context, DerivPasskeysLocalizations)!;
   }
 
-  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate = _DerivPasskeysLocalizationsDelegate();
+  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate =
+      _DerivPasskeysLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -79,7 +82,8 @@ abstract class DerivPasskeysLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -87,9 +91,7 @@ abstract class DerivPasskeysLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('en')
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
 
   /// No description provided for @passkeyCreatedSuccessTitle.
   ///
@@ -127,12 +129,6 @@ abstract class DerivPasskeysLocalizations {
   /// **'Ok'**
   String get ok;
 
-  /// No description provided for @createPassKey.
-  ///
-  /// In en, this message translates to:
-  /// **'Create Passkey'**
-  String get createPassKey;
-
   /// No description provided for @experienceSaferLogins.
   ///
   /// In en, this message translates to:
@@ -142,7 +138,7 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @enhanceSecurity.
   ///
   /// In en, this message translates to:
-  /// **'To enhance your security, tap Create passkey'**
+  /// **'Enhanced security is just a tap away.'**
   String get enhanceSecurity;
 
   /// No description provided for @here.
@@ -163,11 +159,17 @@ abstract class DerivPasskeysLocalizations {
   /// **'What are passkeys?'**
   String get whatArePasskeys;
 
-  /// No description provided for @whatArePasskeysDescription.
+  /// No description provided for @whatArePasskeysDescriptionPoint1.
   ///
   /// In en, this message translates to:
-  /// **'Passkeys are a security measure that lets you log in the same way you unlock your device: with a fingerprint, a face scan, or a screen lock PIN.'**
-  String get whatArePasskeysDescription;
+  /// **'Secure alternative to passwords.'**
+  String get whatArePasskeysDescriptionPoint1;
+
+  /// No description provided for @whatArePasskeysDescriptionPoint2.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock your account like your phone - with biometrics, face scan or PIN.'**
+  String get whatArePasskeysDescriptionPoint2;
 
   /// No description provided for @whyPasskeys.
   ///
@@ -175,11 +177,17 @@ abstract class DerivPasskeysLocalizations {
   /// **'Why passkeys?'**
   String get whyPasskeys;
 
-  /// No description provided for @whyPasskeysDescription.
+  /// No description provided for @whyPasskeysDescription1.
   ///
   /// In en, this message translates to:
-  /// **'Passkeys are an added layer of security that protects your account against unauthorised access and phishing attacks.'**
-  String get whyPasskeysDescription;
+  /// **'Extra security layer.'**
+  String get whyPasskeysDescription1;
+
+  /// No description provided for @whyPasskeysDescription2.
+  ///
+  /// In en, this message translates to:
+  /// **'Shields against unauthorised access and phishing.'**
+  String get whyPasskeysDescription2;
 
   /// No description provided for @howToCreatePasskey.
   ///
@@ -187,11 +195,17 @@ abstract class DerivPasskeysLocalizations {
   /// **'How to create a passkey?'**
   String get howToCreatePasskey;
 
-  /// No description provided for @howToCreatePasskeyDescription.
+  /// No description provided for @howToCreatePasskeyDescription1.
   ///
   /// In en, this message translates to:
-  /// **'Go to ‘Account Settings’ to set up your passkey. Each device can only save one passkey; however, iOS users may still see the \"Create passkey\" button due to iOS’s ability to save passkeys on other devices.'**
-  String get howToCreatePasskeyDescription;
+  /// **'Go to ‘Account Settings’ on Deriv.'**
+  String get howToCreatePasskeyDescription1;
+
+  /// No description provided for @howToCreatePasskeyDescription2.
+  ///
+  /// In en, this message translates to:
+  /// **'You can create one passkey per device.'**
+  String get howToCreatePasskeyDescription2;
 
   /// No description provided for @whereArePasskeysSaved.
   ///
@@ -199,11 +213,17 @@ abstract class DerivPasskeysLocalizations {
   /// **'Where are passkeys saved?'**
   String get whereArePasskeysSaved;
 
-  /// No description provided for @whereArePasskeysSavedDescription.
+  /// No description provided for @whereArePasskeysSavedDescriptionAndroid.
   ///
   /// In en, this message translates to:
-  /// **'Passkeys are saved in your Google password manager for Android devices and in iCloud keychain on iOS devices to help you sign in on other devices.'**
-  String get whereArePasskeysSavedDescription;
+  /// **'Android: Google password manager.'**
+  String get whereArePasskeysSavedDescriptionAndroid;
+
+  /// No description provided for @whereArePasskeysSavedDescriptionIOS.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS: iCloud keychain.'**
+  String get whereArePasskeysSavedDescriptionIOS;
 
   /// No description provided for @whatHappensIfEmailChanged.
   ///
@@ -211,11 +231,17 @@ abstract class DerivPasskeysLocalizations {
   /// **'What happens if my Deriv account email is changed?'**
   String get whatHappensIfEmailChanged;
 
-  /// No description provided for @whatHappensIfEmailChangedDescription.
+  /// No description provided for @whatHappensIfEmailChangedDescription1.
   ///
   /// In en, this message translates to:
-  /// **'Even if you change your email address, you can still continue to log in to your Deriv account with the same passkey.'**
-  String get whatHappensIfEmailChangedDescription;
+  /// **'No problem! Your passkey still works.'**
+  String get whatHappensIfEmailChangedDescription1;
+
+  /// No description provided for @whatHappensIfEmailChangedDescription2.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to Deriv with your existing passkey.'**
+  String get whatHappensIfEmailChangedDescription2;
 
   /// No description provided for @tips.
   ///
@@ -289,16 +315,16 @@ abstract class DerivPasskeysLocalizations {
   /// **'Enhanced security with biometrics or screen lock'**
   String get useYourBiometrics;
 
-  /// No description provided for @syncAcrossAllDevices.
+  /// No description provided for @syncAcrossDevices.
   ///
   /// In en, this message translates to:
-  /// **'Sync across all devices'**
-  String get syncAcrossAllDevices;
+  /// **'Sync across devices'**
+  String get syncAcrossDevices;
 
   /// No description provided for @createPasskey.
   ///
   /// In en, this message translates to:
-  /// **'Create Passkey'**
+  /// **'Create passkey'**
   String get createPasskey;
 
   /// No description provided for @unsupportedPlatform.
@@ -330,35 +356,66 @@ abstract class DerivPasskeysLocalizations {
   /// In en, this message translates to:
   /// **'Revoke'**
   String get revoke;
+
+  /// No description provided for @continueTradingButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Trading'**
+  String get continueTradingButtonText;
+
+  /// No description provided for @addMorePasskeysButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Add More Passkeys'**
+  String get addMorePasskeysButtonText;
+
+  /// No description provided for @unableToSetupPasskey.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to setup passkey'**
+  String get unableToSetupPasskey;
+
+  /// No description provided for @unableToSetupPasskeyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We encountered an issue while setting up your passkey. The process might have been interrupted, or the session timed out. Please try again.'**
+  String get unableToSetupPasskeyDescription;
+
+  /// No description provided for @passkeysOffErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The Passkeys service is unavailable'**
+  String get passkeysOffErrorTitle;
 }
 
-class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
+class _DerivPasskeysLocalizationsDelegate
+    extends LocalizationsDelegate<DerivPasskeysLocalizations> {
   const _DerivPasskeysLocalizationsDelegate();
 
   @override
   Future<DerivPasskeysLocalizations> load(Locale locale) {
-    return SynchronousFuture<DerivPasskeysLocalizations>(lookupDerivPasskeysLocalizations(locale));
+    return SynchronousFuture<DerivPasskeysLocalizations>(
+        lookupDerivPasskeysLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivPasskeysLocalizationsDelegate old) => false;
 }
 
 DerivPasskeysLocalizations lookupDerivPasskeysLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return DerivPasskeysLocalizationsEn();
+    case 'en':
+      return DerivPasskeysLocalizationsEn();
   }
 
   throw FlutterError(
-    'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }
