@@ -270,4 +270,7 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => '無效的應用程式 ID';
+
+  @override
+  String get labelLanguage => 'Language';
 }

@@ -270,4 +270,7 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'geçersiz başvuru ID';
+
+  @override
+  String get labelLanguage => 'Language';
 }

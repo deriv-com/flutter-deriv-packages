@@ -270,4 +270,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'ID da aplicação inválido';
+
+  @override
+  String get labelLanguage => 'Language';
 }

@@ -648,6 +648,12 @@ abstract class DerivAuthLocalizations {
   /// In en, this message translates to:
   /// **'invalid application ID'**
   String get warnInvalidApplicationID;
+
+  /// No description provided for @labelLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get labelLanguage;
 }
 
 class _DerivAuthLocalizationsDelegate
