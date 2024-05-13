@@ -5,6 +5,7 @@ import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.dart';
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
 import 'package:deriv_passkeys/src/presentation/states/bloc/deriv_passkeys_bloc.dart';
+import 'package:deriv_passkeys/src/presentation/utils/handle_errors_utils.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/passkey_created_call_to_action.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/passkey_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -95,25 +96,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
                       )),
             );
           } else if (state is DerivPasskeysErrorState) {
-            String title = context.derivPasskeysLocalizations.unexpectedError;
-            String content = state.message;
-
-            if (state.errorCode == 'PasskeysOff') {
-              title = context.derivPasskeysLocalizations.passkeysOffErrorTitle;
-              content = '';
-            }
-
-            showAlertDialog(
-              context: context,
-              title: title,
-              content: Text(
-                content,
-              ),
-              positiveActionLabel: context.derivPasskeysLocalizations.ok,
-              onPositiveActionPressed: () {
-                Navigator.of(context).pop();
-              },
-            );
+            handlePasskeysError(context, state);
           }
         }, builder: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysLoadedState) {

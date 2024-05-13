@@ -23,7 +23,7 @@ class PasskeyWidget extends StatefulWidget {
 
 class _PasskeyWidgetState extends State<PasskeyWidget> {
   String _lastUsed() {
-    String lastUsed = 'Never';
+    String lastUsed = context.derivPasskeysLocalizations.never;
     if (widget.passkey.lastUsed != null) {
       lastUsed = formattedDate(dateTimeFromTimestamp(widget.passkey.lastUsed!));
     }
