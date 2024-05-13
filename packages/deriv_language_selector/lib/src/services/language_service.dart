@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:deriv_language_selector/deriv_language_selector.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -9,22 +11,32 @@ class LanguageService implements BaseLanguageService {
     required this.languageRepository,
     required this.languageDataSource,
     this.supportedLanguages,
-  });
+  }) {
+    _languages = _generateLanguages(
+      <LanguageEntity>[],
+      supportedLanguages ?? defaultLanguages,
+    );
+  }
 
-  /// Instantance of [BaseLanguageRepository].
+  /// Instance of [BaseLanguageRepository].
   final BaseLanguageRepository languageRepository;
 
-  /// Instantance of [BaseLanguageDataSource].
+  /// Instance of [BaseLanguageDataSource].
   final BaseLanguageDataSource languageDataSource;
 
   /// List of supported languages.
   final List<LanguageEntity>? supportedLanguages;
 
-  List<LanguageModel> _languages =
-      _generateLanguages(<LanguageEntity>[], defaultLanguages);
+  late List<LanguageModel> _languages;
 
   /// Default language of the app.
-  LanguageModel get defaultLanguage => _languages.first;
+  LanguageModel get defaultLanguage => _languages.firstWhere(
+        (LanguageModel language) => language.code == platformLanguage,
+        orElse: () => _languages.first,
+      );
+
+  /// System/Device language code.
+  String get platformLanguage => Platform.localeName.split('_').first;
 
   /// List of active languages.
   List<LanguageModel> get languages => _languages;
@@ -34,10 +46,12 @@ class LanguageService implements BaseLanguageService {
     final String? code = await languageDataSource.getLanguage();
 
     if (code == null) {
-      return _languages.first;
+      return defaultLanguage;
     } else {
-      return _languages
-          .firstWhere((LanguageModel element) => element.code == code);
+      return _languages.firstWhere(
+        (LanguageModel element) => element.code == code,
+        orElse: () => defaultLanguage,
+      );
     }
   }
 
@@ -49,17 +63,17 @@ class LanguageService implements BaseLanguageService {
     final List<String> activeLanguages =
         (await languageRepository.getSupportedLanguagesFromServer(
               onLanguageFetched: (List<String> value) {
-                _setLanguges(value,
+                _setLanguages(value,
                     localLanguages); // useful for stream (refer to Deriv Go's getSupportedLanguagesFromServer method)
               },
             )) ??
             <String>[];
 
-    _setLanguges(activeLanguages, localLanguages);
+    _setLanguages(activeLanguages, localLanguages);
   }
 
   /// Set the active languages.
-  void _setLanguges(
+  void _setLanguages(
       List<String> activeLanguages, List<LanguageEntity> localLanguages) {
     _languages = _generateLanguages(
         localLanguages
@@ -84,15 +98,25 @@ class LanguageService implements BaseLanguageService {
   static List<LanguageModel> _generateLanguages(
     List<LanguageEntity> activeLanguages,
     List<LanguageEntity> localLanguages,
-  ) =>
-      localLanguages
-          .where((LanguageEntity language) =>
-              activeLanguages.isEmpty ||
-              activeLanguages
-                  .where((LanguageEntity element) =>
-                      element.locale == language.locale)
-                  .isNotEmpty)
-          .map((LanguageEntity activeLanguage) => activeLanguage.toModel(
-              'assets/icons/flags/ic_flag_${activeLanguage.locale.languageCode}.png'))
-          .toList();
+  ) {
+    // Local/scoped function to convert a LanguageEntity to a LanguageModel.
+    LanguageModel convertToModel(LanguageEntity language) => language.toModel(
+        'assets/icons/flags/ic_flag_${language.locale.languageCode}.png');
+
+    // If there are no active languages, convert all local languages to models.
+    if (activeLanguages.isEmpty) {
+      return localLanguages.map(convertToModel).toList();
+    }
+
+    // Prepare a set of active languages based on locale for efficient lookup.
+    final Set<Locale> activeLanguagesSet = activeLanguages
+        .map((LanguageEntity language) => language.locale)
+        .toSet();
+
+    return localLanguages
+        .where((LanguageEntity language) =>
+            activeLanguagesSet.contains(language.locale))
+        .map(convertToModel)
+        .toList();
+  }
 }

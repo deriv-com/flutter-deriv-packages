@@ -270,4 +270,7 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'অবৈধ অ্যাপ্লিকেশন আইডি';
+
+  @override
+  String get labelLanguage => 'Language';
 }

@@ -22,6 +22,7 @@ Future<String?> performPassThroughAuthentication({
   required String endpoint,
   required String appId,
   required String appToken,
+  required String platform,
   HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
@@ -43,6 +44,7 @@ Future<String?> performPassThroughAuthentication({
     urlParams: UrlParamsModel(
       redirectUrl: redirectPath,
       selectedAccount: defaultAccount ?? '',
+      platform: platform,
       action: action,
       code: code,
     ),

@@ -68,18 +68,25 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _buildSocialAuthButton(SocialAuthProvider.apple),
+              _buildSocialAuthButton(SocialAuthProvider.apple,
+                  key: const Key('social_auth_button_apple')),
               const SizedBox(width: ThemeProvider.margin24),
-              _buildSocialAuthButton(SocialAuthProvider.google),
+              _buildSocialAuthButton(SocialAuthProvider.google,
+                  key: const Key('social_auth_button_google')),
               const SizedBox(width: ThemeProvider.margin24),
-              _buildSocialAuthButton(SocialAuthProvider.facebook),
+              _buildSocialAuthButton(SocialAuthProvider.facebook,
+                  key: const Key('social_auth_button_facebook')),
             ],
           ),
         ),
       );
 
-  Widget _buildSocialAuthButton(SocialAuthProvider socialAuthProvider) =>
+  Widget _buildSocialAuthButton(
+    SocialAuthProvider socialAuthProvider, {
+    Key? key,
+  }) =>
       IconButton(
+        key: key,
         padding: EdgeInsets.zero,
         iconSize: ThemeProvider.iconSize40,
         icon: Opacity(

@@ -67,7 +67,7 @@ void main() {
             greetingLabel: greetingLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
-            onLoggedIn: (_) {},
+            onLoggedIn: (BuildContext context, _) {},
             onSocialAuthButtonPressed: (SocialAuthDto p0) {},
             onLoginError: (_) {},
           ),
@@ -104,7 +104,7 @@ void main() {
             greetingLabel: greetingLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
-            onLoggedIn: (_) {},
+            onLoggedIn: (BuildContext context, _) {},
             onSocialAuthButtonPressed: (_) {},
             onLoginError: (_) {},
           ),
@@ -143,7 +143,7 @@ void main() {
               greetingLabel: greetingLabel,
               onResetPassTapped: () {},
               onSignupTapped: () {},
-              onLoggedIn: (_) {},
+              onLoggedIn: (BuildContext context, _) {},
               onSocialAuthButtonPressed: (_) {},
               onLoginError: (_) {},
             ),
@@ -178,7 +178,7 @@ void main() {
           onSignupTapped: () {
             onSignupTappedCalled = true;
           },
-          onLoggedIn: (_) {},
+          onLoggedIn: (BuildContext context, _) {},
           onSocialAuthButtonPressed: (_) {},
           onLoginError: (_) {},
         ),
@@ -222,7 +222,7 @@ void main() {
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoggedIn: (_) {
+          onLoggedIn: (BuildContext context, _) {
             onLoggedInCalled = true;
           },
           onSocialAuthButtonPressed: (_) {},
@@ -263,7 +263,7 @@ void main() {
           onLoginError: (_) {
             onLoginErrorCalled = true;
           },
-          onLoggedIn: (_) {},
+          onLoggedIn: (BuildContext context, _) {},
           onSocialAuthButtonPressed: (_) {},
         ),
       ));
@@ -298,7 +298,7 @@ void main() {
           onResetPassTapped: () {},
           onSignupTapped: () {},
           onLoginError: (_) {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (BuildContext context, _) {},
           onSocialAuthButtonPressed: (_) {},
         ),
       ));
@@ -332,7 +332,7 @@ void main() {
             onResetPassTappedCalled = true;
           },
           onSignupTapped: () {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (BuildContext context, _) {},
           onSocialAuthButtonPressed: (_) {},
           onLoginError: (_) {},
         ),
@@ -378,7 +378,7 @@ void main() {
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (BuildContext context, _) {},
           onSocialAuthButtonPressed: (_) {
             onSocialAuthButtonPressedCalled = true;
           },
@@ -424,7 +424,7 @@ void main() {
           greetingLabel: greetingLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (BuildContext context, _) {},
           onSocialAuthButtonPressed: (_) {},
           onLoginError: (_) {},
         ),
