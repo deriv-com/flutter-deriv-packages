@@ -1,5 +1,4 @@
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_ui/components/language_selector/widgets/widget_keys.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +25,7 @@ class LanguageSelectorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => TextButton(
-        key: WidgetKeys.languageSelectorButtonKey,
+        key: key,
         clipBehavior: Clip.antiAlias,
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
