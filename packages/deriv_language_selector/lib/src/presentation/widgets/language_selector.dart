@@ -87,25 +87,31 @@ class LanguageSelector extends StatelessWidget {
   final bool usePackageFlags;
 
   @override
-  Widget build(BuildContext context) =>
-      BlocBuilder<LanguageCubit, LanguageState>(
-        bloc: BlocProvider.of<LanguageCubit>(context),
-        builder: (BuildContext context, LanguageState state) => isBottomSheet!
-            ? _buildLanguageBottomSheet(context, state)
-            : LanguageSelectorWidget(
-                package: usePackageFlags ? 'deriv_language_selector' : null,
-                languageItem: state.language,
-                key: WidgetKeys.languageSelectorButtonKey,
-                onPressed: () {
-                  showLanguageBottomSheet != null
-                      ? showLanguageBottomSheet!.call(
-                          _buildLanguageBottomSheet(context, state),
-                          context,
-                        )
-                      : showExpandableLanguageBottomSheet(
-                          context: context,
-                          bottomsheetTitle: bottomsheetTitle!);
-                }),
+  Widget build(BuildContext context) => Scaffold(
+        body: SafeArea(
+          child: BlocBuilder<LanguageCubit, LanguageState>(
+            bloc: BlocProvider.of<LanguageCubit>(context),
+            builder: (BuildContext context, LanguageState state) =>
+                isBottomSheet!
+                    ? _buildLanguageBottomSheet(context, state)
+                    : LanguageSelectorWidget(
+                        package:
+                            usePackageFlags ? 'deriv_language_selector' : null,
+                        languageItem: state.language,
+                        key: WidgetKeys.languageSelectorButtonKey,
+                        onPressed: () {
+                          showLanguageBottomSheet != null
+                              ? showLanguageBottomSheet!.call(
+                                  _buildLanguageBottomSheet(context, state),
+                                  context,
+                                )
+                              : showExpandableLanguageBottomSheet(
+                                  context: context,
+                                  bottomsheetTitle: bottomsheetTitle!);
+                        },
+                      ),
+          ),
+        ),
       );
 
   LanguageItemList _buildLanguageBottomSheet(
