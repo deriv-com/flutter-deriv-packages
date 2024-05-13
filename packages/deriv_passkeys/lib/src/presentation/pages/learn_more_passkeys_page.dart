@@ -4,6 +4,7 @@ import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
+import 'package:deriv_passkeys/src/presentation/utils/platform_utils.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/passkey_created_call_to_action.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/section_title_and_content.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/unordered_list_widget.dart';
@@ -37,20 +38,11 @@ class LearnMorePasskeysPage extends StatelessWidget {
       BlocListener<DerivPasskeysBloc, DerivPasskeysState>(
         listener: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysCreatedSuccessfullyState) {
-            String platformName =
-                context.derivPasskeysLocalizations.unsupportedPlatform;
-            if (Platform.isIOS) {
-              platformName = 'IOS';
-            }
-            if (Platform.isAndroid) {
-              platformName = 'Android';
-            }
             Navigator.pop(context);
             Navigator.pushReplacement(
               context,
               MaterialPageRoute<Widget>(
                   builder: (BuildContext context) => PasskeyCreatedPage(
-                        platformName: platformName,
                         onPageClose: onPageClosed,
                         bottomCallToAction: PasskeysCreatedCallToAction(
                           addMorePasskeysNavigationCallback:

@@ -79,20 +79,10 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
         body: BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
             listener: (BuildContext context, DerivPasskeysState state) {
           if (state is DerivPasskeysCreatedSuccessfullyState) {
-            String platformName =
-                context.derivPasskeysLocalizations.unsupportedPlatform;
-            //get if device is android or ios
-            if (Platform.isIOS) {
-              platformName = 'IOS';
-            }
-            if (Platform.isAndroid) {
-              platformName = 'Android';
-            }
             Navigator.push(
               context,
               MaterialPageRoute<Widget>(
                   builder: (BuildContext context) => PasskeyCreatedPage(
-                        platformName: platformName,
                         onPageClose: (BuildContext context) {
                           Navigator.pop(context);
                         },
