@@ -1,4 +1,5 @@
 import 'package:deriv_language_selector/deriv_language_selector.dart';
+import 'package:deriv_language_selector/src/helpers/widget_keys.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +17,7 @@ void showExpandableLanguageBottomSheet({
       builder: (BuildContext innerContext) => BlocProvider<LanguageCubit>.value(
         value: BlocProvider.of<LanguageCubit>(context),
         child: ExpandableBottomSheet(
+          togglerKey: WidgetKeys.languageSelectorBottomSheetTogglerKey,
           title: bottomsheetTitle,
           upperContent: LanguageSelector.bottomSheet(
             usePackageFlags: usePackageFlags,

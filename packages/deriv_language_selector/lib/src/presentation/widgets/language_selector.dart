@@ -1,4 +1,5 @@
 import 'package:deriv_language_selector/deriv_language_selector.dart';
+import 'package:deriv_language_selector/src/helpers/widget_keys.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -94,6 +95,7 @@ class LanguageSelector extends StatelessWidget {
             : LanguageSelectorWidget(
                 package: usePackageFlags ? 'deriv_language_selector' : null,
                 languageItem: state.language,
+                key: WidgetKeys.languageSelectorButtonKey,
                 onPressed: () {
                   showLanguageBottomSheet != null
                       ? showLanguageBottomSheet!.call(
