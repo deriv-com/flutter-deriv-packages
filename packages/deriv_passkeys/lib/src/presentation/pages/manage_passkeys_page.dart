@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.dart';

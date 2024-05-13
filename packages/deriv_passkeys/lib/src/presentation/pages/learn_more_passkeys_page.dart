@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
-import 'package:deriv_passkeys/src/presentation/utils/handle_errors_utils.dart';
-import 'package:deriv_passkeys/src/presentation/utils/platform_utils.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/passkey_created_call_to_action.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/section_title_and_content.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/unordered_list_widget.dart';

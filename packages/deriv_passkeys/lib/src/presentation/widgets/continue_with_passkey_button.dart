@@ -1,4 +1,3 @@
-import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/states/bloc/deriv_passkeys_bloc.dart';
 import 'package:deriv_passkeys/src/presentation/utils/handle_errors_utils.dart';
