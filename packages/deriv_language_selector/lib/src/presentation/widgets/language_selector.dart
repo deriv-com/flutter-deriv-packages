@@ -94,21 +94,25 @@ class LanguageSelector extends StatelessWidget {
             builder: (BuildContext context, LanguageState state) =>
                 isBottomSheet!
                     ? _buildLanguageBottomSheet(context, state)
-                    : LanguageSelectorWidget(
-                        package:
-                            usePackageFlags ? 'deriv_language_selector' : null,
-                        languageItem: state.language,
-                        key: WidgetKeys.languageSelectorButtonKey,
-                        onPressed: () {
-                          showLanguageBottomSheet != null
-                              ? showLanguageBottomSheet!.call(
-                                  _buildLanguageBottomSheet(context, state),
-                                  context,
-                                )
-                              : showExpandableLanguageBottomSheet(
-                                  context: context,
-                                  bottomsheetTitle: bottomsheetTitle!);
-                        },
+                    : SizedBox.fromSize(
+                        size: const Size.square(60),
+                        child: LanguageSelectorWidget(
+                          package: usePackageFlags
+                              ? 'deriv_language_selector'
+                              : null,
+                          languageItem: state.language,
+                          key: WidgetKeys.languageSelectorButtonKey,
+                          onPressed: () {
+                            showLanguageBottomSheet != null
+                                ? showLanguageBottomSheet!.call(
+                                    _buildLanguageBottomSheet(context, state),
+                                    context,
+                                  )
+                                : showExpandableLanguageBottomSheet(
+                                    context: context,
+                                    bottomsheetTitle: bottomsheetTitle!);
+                          },
+                        ),
                       ),
           ),
         ),
