@@ -155,4 +155,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
 
   @override
   String get never => 'Never';
+
+  @override
+  String get unable_to_process_your_request => 'Unable to process your request';
 }
