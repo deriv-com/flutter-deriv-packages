@@ -37,10 +37,6 @@ void handlePasskeysError(BuildContext context, DerivPasskeysErrorState state) {
           .unable_to_process_your_request_description;
     }
 
-    print("title: $title");
-    print("content: $content");
-    print("code: ${state.errorCode}");
-
     showDialog<String>(
       context: context,
       builder: (BuildContext context) => PopupAlertDialog(
