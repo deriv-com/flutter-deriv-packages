@@ -89,11 +89,8 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         passkeysList.add(derivPasskeyEntity);
         emit(DerivPasskeysLoadedState(passkeysList));
       }).catchError((Object error) {
-        if (error is CanceledPlatformException) {
-          emit(DerivPasskeysLoadedState(passkeysList));
-          return;
-        }
         emit(const DerivPasskeysErrorState('Error creating passkey'));
+        emit(DerivPasskeysLoadedState(passkeysList));
       });
     });
 
