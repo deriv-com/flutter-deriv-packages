@@ -89,7 +89,16 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         passkeysList.add(derivPasskeyEntity);
         emit(DerivPasskeysLoadedState(passkeysList));
       }).catchError((Object error) {
-        emit(const DerivPasskeysErrorState('Error creating passkey'));
+        if (error is ServerException) {
+          emit(
+            DerivPasskeysErrorState(
+              error.message,
+              errorCode: error.errorCode,
+            ),
+          );
+        } else {
+          emit(const DerivPasskeysErrorState('Error creating passkey'));
+        }
         emit(DerivPasskeysLoadedState(passkeysList));
       });
     });
@@ -105,7 +114,16 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         passkeysList = _passkeysList;
         emit(DerivPasskeysLoadedState(passkeysList));
       }).catchError((Object error) {
-        emit(DerivPasskeysErrorState(error.toString()));
+        if (error is ServerException) {
+          emit(
+            DerivPasskeysErrorState(
+              error.message,
+              errorCode: error.errorCode,
+            ),
+          );
+        } else {
+          emit(DerivPasskeysErrorState(error.toString()));
+        }
       });
     });
 

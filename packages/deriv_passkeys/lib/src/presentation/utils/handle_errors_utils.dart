@@ -31,10 +31,15 @@ void handlePasskeysError(BuildContext context, DerivPasskeysErrorState state) {
       content = state.message;
     }
 
-    if (state.errorCode == 'PASSKEYS_OFF') {
-      title = context.derivPasskeysLocalizations.passkeysOffErrorTitle;
-      content = state.message;
+    if (state.errorCode == 'PASSKEYS_OFF' || state.errorCode == 'PasskeysOff') {
+      title = context.derivPasskeysLocalizations.unable_to_process_your_request;
+      content = context.derivPasskeysLocalizations
+          .unable_to_process_your_request_description;
     }
+
+    print("title: $title");
+    print("content: $content");
+    print("code: ${state.errorCode}");
 
     showDialog<String>(
       context: context,

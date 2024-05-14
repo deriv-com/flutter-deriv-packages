@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:deriv_http_client/deriv_http_client.dart';
+import 'package:flutter_deriv_api/api/exceptions/base_api_exception.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_list_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_options_response_extended.dart';
 import 'package:flutter_deriv_api/api/response/passkeys_register_response_extended.dart';
@@ -96,46 +97,68 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
 
   @override
   Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions() async {
-    final PasskeysRegisterOptionsReceive response =
-        await PasskeysRegisterOptionsResponseExtended.fetchRaw(
-            const PasskeysRegisterOptionsRequest());
+    try {
+      final PasskeysRegisterOptionsReceive response =
+          await PasskeysRegisterOptionsResponseExtended.fetchRaw(
+              const PasskeysRegisterOptionsRequest());
 
-    if (response.passkeysRegisterOptions == null) {
-      throw Exception('Failed to load register options!');
+      if (response.passkeysRegisterOptions == null) {
+        throw Exception('Failed to load register options!');
+      }
+
+      return DerivPasskeysRegisterOptionsModel(
+          options: response.passkeysRegisterOptions!['publicKey']);
+    } on BaseAPIException catch (e) {
+      throw ServerException(
+        errorCode: e.code ?? '',
+        message: e.message ?? '',
+      );
     }
-
-    return DerivPasskeysRegisterOptionsModel(
-        options: response.passkeysRegisterOptions!['publicKey']);
   }
 
   @override
   Future<DerivPasskeyModel> registerCredentials(
       PasskeysRegisterRequest request) async {
-    final PasskeysRegisterReceive response =
-        await PasskeysRegisterResponseExtended.fetchRaw(request);
+    try {
+      final PasskeysRegisterReceive response =
+          await PasskeysRegisterResponseExtended.fetchRaw(request);
 
-    if (response.passkeysRegister == null) {
-      throw Exception('Failed to register credentials!');
+      if (response.passkeysRegister == null) {
+        throw Exception('Failed to register credentials!');
+      }
+
+      return DerivPasskeyModel.fromJson(
+          response.passkeysRegister!['properties']);
+    } on BaseAPIException catch (e) {
+      throw ServerException(
+        errorCode: e.code ?? '',
+        message: e.message ?? '',
+      );
     }
-
-    return DerivPasskeyModel.fromJson(response.passkeysRegister!['properties']);
   }
 
   @override
   Future<List<DerivPasskeyModel>> getPasskeysList() async {
-    final PasskeysListReceive response =
-        await PasskeysListResponseExtended.fetchRaw(
-            const PasskeysListRequest());
+    try {
+      final PasskeysListReceive response =
+          await PasskeysListResponseExtended.fetchRaw(
+              const PasskeysListRequest());
 
-    if (response.passkeysList == null) {
-      throw Exception('Failed to load passkeys list!');
+      if (response.passkeysList == null) {
+        throw Exception('Failed to load passkeys list!');
+      }
+
+      final List<DerivPasskeyModel> passkeys = <DerivPasskeyModel>[];
+      for (final Map<String, dynamic> passkey in response.passkeysList!) {
+        passkeys.add(DerivPasskeyModel.fromJson(passkey));
+      }
+
+      return passkeys;
+    } on BaseAPIException catch (e) {
+      throw ServerException(
+        errorCode: e.code ?? '',
+        message: e.message ?? '',
+      );
     }
-
-    final List<DerivPasskeyModel> passkeys = <DerivPasskeyModel>[];
-    for (final Map<String, dynamic> passkey in response.passkeysList!) {
-      passkeys.add(DerivPasskeyModel.fromJson(passkey));
-    }
-
-    return passkeys;
   }
 }
