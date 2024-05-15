@@ -1,4 +1,4 @@
-import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:deriv_auth/features/signup/presentation/layouts/deriv_signup_layout.dart';
 import 'package:example/core/example_auth_error_state_handler.dart';
 import 'package:example/features/login/pages/login_page.dart';
 import 'package:example/features/signup/pages/verify_email_page.dart';
@@ -35,5 +35,8 @@ class _SignupPageState extends State<SignupPage> {
             builder: (context) => const LoginPage(),
           ),
         ),
+        socialAuthStateHandler: (SocialAuthState) {},
+        redirectURL: '',
+        onWebViewError: (String) {},
       );
 }

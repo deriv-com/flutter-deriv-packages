@@ -1,5 +1,5 @@
 import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
-import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:deriv_auth/features/login/presentation/layouts/deriv_login_layout.dart';
 import 'package:example/core/example_auth_error_state_handler.dart';
 import 'package:example/features/home/pages/home_page.dart';
 import 'package:example/features/reset_pass/pages/reset_pass_page.dart';
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       welcomeLabel: 'Welcome back!',
       greetingLabel:
           'Log in to your Deriv account to start trading and investing.',
-      onLoggedIn: (_) => Navigator.pushReplacement(
+      onLoggedIn: (_, __) => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => const HomePage(),
@@ -48,6 +48,9 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       onSocialAuthButtonPressed: (_) {},
+      socialAuthStateHandler: (SocialAuthState) {},
+      redirectURL: '',
+      onWebViewError: (String) {},
     );
   }
 }
