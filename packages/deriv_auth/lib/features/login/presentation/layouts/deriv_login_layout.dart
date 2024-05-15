@@ -30,6 +30,7 @@ class DerivLoginLayout extends StatefulWidget {
     this.passwordTextFieldKey,
     this.forgotPasswordButtonKey,
     this.loginButtonKey,
+    this.twoFactorAuthNavigation,
     Key? key,
   }) : super(key: key);
 
@@ -94,6 +95,9 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Widget key for login button button.
   final Key? loginButtonKey;
+
+  /// 2FA flow navigation
+  final Function? twoFactorAuthNavigation;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -326,6 +330,12 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   void _onAuthState(BuildContext context, DerivAuthState state) {
     if (state is DerivAuthErrorState) {
       widget.onLoginError?.call(state);
+
+      // Handling the 2FA Flow in case of missing OTP scanario
+      if (state.type == AuthErrorType.missingOtp &&
+          widget.twoFactorAuthNavigation != null) {
+        widget.twoFactorAuthNavigation!(context);
+      }
 
       authErrorStateMapper(
         authErrorState: state,

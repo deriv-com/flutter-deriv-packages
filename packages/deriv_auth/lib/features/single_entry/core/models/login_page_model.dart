@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 /// LoginPageModel class
 class LoginPageModel {
   /// Initializes [LoginPageModel].
-  const LoginPageModel({
-    required this.onLoggedIn,
-    required this.onSocialAuthButtonPressed,
-    required this.welcomeLabel,
-    required this.greetingLabel,
-    required this.socialAuthStateHandler,
-    required this.redirectURL,
-    required this.onWebViewError,
-    this.isForgotPasswordEnabled = true,
-    this.isCreateAccountEnabled = true,
-    this.isSocialAuthEnabled = true,
-    this.authErrorStateHandler,
-    this.onLoginError,
-    this.onLoginTapped,
-  });
+  const LoginPageModel(
+      {required this.onLoggedIn,
+      required this.onSocialAuthButtonPressed,
+      required this.welcomeLabel,
+      required this.greetingLabel,
+      required this.socialAuthStateHandler,
+      required this.redirectURL,
+      required this.onWebViewError,
+      this.isForgotPasswordEnabled = true,
+      this.isCreateAccountEnabled = true,
+      this.isSocialAuthEnabled = true,
+      this.authErrorStateHandler,
+      this.onLoginError,
+      this.onLoginTapped,
+      this.twoFactorAuthNavigation});
 
   /// Extension of base [AuthErrorStateHandler]. If not provided, base implementation will be used.
   final AuthErrorStateHandler? authErrorStateHandler;
@@ -60,4 +60,7 @@ class LoginPageModel {
   /// Callback to be called when login button is tapped.
   /// Give access to email and password.
   final Function(String email, String password)? onLoginTapped;
+
+  /// 2FA flow navigation
+  final Function(BuildContext context)? twoFactorAuthNavigation;
 }
