@@ -11,10 +11,10 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   @override
-  Widget build(BuildContext context) => DerivSettingLayout(
-        updateFlavorConfigs: _updateFlavorConfig(),
+  Widget build(BuildContext context) => const DerivSettingLayout(
         appLabel: 'appLabel',
         saveValues: _saveValues,
+        updateFlavorConfigs: _updateFlavorConfig,
       );
 }
 
@@ -23,6 +23,7 @@ _saveValues({required String appId, required String endpoint}) {
   logger.log('endpoint is $endpoint');
 }
 
-Future<void> _updateFlavorConfig() async {
+Future<void> _updateFlavorConfig(
+    {required String endpoint, required String appId}) async {
   logger.log('Flavor CONFIG is updated');
 }

@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
       welcomeLabel: 'Welcome back!',
       greetingLabel:
           'Log in to your Deriv account to start trading and investing.',
-      onLoggedIn: (_) => Navigator.pushReplacement(
+      onLoggedIn: (_,__) => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => const HomePage(),

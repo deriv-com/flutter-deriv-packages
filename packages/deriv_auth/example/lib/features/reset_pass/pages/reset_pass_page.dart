@@ -41,7 +41,10 @@ class _ResetPassPageState extends State<ResetPassPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-        value: cubit, child: DerivResetPassLayout(onResetPassError: (_) {}));
+        value: cubit,
+        child: DerivResetPassLayout(
+            onResetPassError: (
+                {String? error, required bool isLinkExpired}) {}));
   }
 
   @override
