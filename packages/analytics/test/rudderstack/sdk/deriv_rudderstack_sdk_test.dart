@@ -4,7 +4,6 @@ import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rudder_sdk_flutter/RudderController.dart';
-import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 
 class MockRudderController extends Mock implements RudderController {}
 
@@ -35,23 +34,20 @@ void main() {
 
     test('track calls rudderClient.track', () async {
       const String eventName = 'test_event_name';
-      const Map<String, dynamic> properties = {'action': 'open'};
 
-      // Convert properties to RudderProperty
-      final rudderProperties = RudderProperty.fromMap(properties);
-
-      final bool result = await derivRudderstack.track(
-        eventName: eventName,
-        properties: rudderProperties, // Pass RudderProperty directly
-      );
+      final bool result = await derivRudderstack.track(eventName: eventName);
 
       expect(result, isTrue);
-      // Verify that the track method is called with the correct parameters
-      verify(() => mockRudderController.track(
-          eventName,
-          properties: rudderProperties, // Pass RudderProperty directly
-          options: null // Assuming options is not used in this case
-      )).called(1);
+      verify(() => mockRudderController.track(eventName)).called(1);
+    });
+
+    test('track calls rudderClient.track', () async {
+      const String eventName = 'test_event_name';
+
+      final bool result = await derivRudderstack.track(eventName: eventName);
+
+      expect(result, isTrue);
+      verify(() => mockRudderController.track(eventName)).called(1);
     });
 
     test('screen calls rudderClient.screen', () async {

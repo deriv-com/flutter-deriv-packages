@@ -1,6 +1,6 @@
-import 'package:deriv_auth/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_ui/deriv_ui.dart';
+import 'package:deriv_ui/presentation/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 
 /// Success pass change page layout.
@@ -14,7 +14,7 @@ class DerivSuccessPassChangeLayout extends StatelessWidget {
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
           title: Text(
-            context.derivAuthLocalization.labelResetPassword,
+            context.localization.labelResetPassword,
             style: TextStyles.title,
           ),
         ),
@@ -37,14 +37,14 @@ class DerivSuccessPassChangeLayout extends StatelessWidget {
                   height: ThemeProvider.margin16,
                 ),
                 Text(
-                  context.derivAuthLocalization.informYourPassHasBeenReset,
+                  context.localization.informYourPassHasBeenReset,
                   style: TextStyles.title,
                 ),
                 const SizedBox(
                   height: ThemeProvider.margin08,
                 ),
                 Text(
-                  context.derivAuthLocalization.informRedirectLogin,
+                  context.localization.informRedirectLogin,
                   textAlign: TextAlign.center,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,

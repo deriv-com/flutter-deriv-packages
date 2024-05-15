@@ -1,5 +1,4 @@
-import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/signup/presentation/layouts/deriv_signup_layout.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:example/core/example_auth_error_state_handler.dart';
 import 'package:example/features/login/pages/login_page.dart';
 import 'package:example/features/signup/pages/verify_email_page.dart';
@@ -15,14 +14,11 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) => DerivSignupLayout(
-        socialAuthStateHandler: (_) => {},
-        redirectURL: 'deriv://example',
-        onWebViewError: (String error) {},
         authErrorStateHandler: ExampleAuthErrorStateHandler(context: context),
         signupPageLabel: 'Start trading with Deriv',
         signupPageDescription:
             'Join over 1 million traders worldwide who loves trading at Deriv.',
-        onSocialAuthButtonPressed: (SocialAuthDto socialAuthDto) {},
+        onSocialAuthButtonPressed: (_) {},
         onSingupError: (_) {},
         onSingupEmailSent: (email) {
           Navigator.pushReplacement(

@@ -1,9 +1,8 @@
-import 'package:deriv_auth/features/signup/presentation/layouts/deriv_verification_done_layout.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol_finders/patrol_finders.dart';
-
-import '../../../../pump_app.dart';
+import '../../../pump_app.dart';
 
 void main() {
   group('DerivVerificationDoneLayout', () {

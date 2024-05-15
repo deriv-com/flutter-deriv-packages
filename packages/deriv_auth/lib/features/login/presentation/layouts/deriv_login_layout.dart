@@ -1,6 +1,12 @@
 import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
+import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_divider.dart';
+import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -13,23 +19,13 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onResetPassTapped,
     required this.onSignupTapped,
     required this.onLoggedIn,
+    required this.onSocialAuthButtonPressed,
     required this.welcomeLabel,
     required this.greetingLabel,
-    required this.socialAuthStateHandler,
-    required this.redirectURL,
-    required this.onWebViewError,
-    this.onSocialAuthButtonPressed,
-    this.isForgotPasswordEnabled = true,
-    this.isCreateAccountEnabled = true,
     this.isSocialAuthEnabled = true,
     this.authErrorStateHandler,
     this.onLoginError,
     this.onLoginTapped,
-    this.titleKey,
-    this.emailTextFieldKey,
-    this.passwordTextFieldKey,
-    this.forgotPasswordButtonKey,
-    this.loginButtonKey,
     Key? key,
   }) : super(key: key);
 
@@ -46,15 +42,13 @@ class DerivLoginLayout extends StatefulWidget {
   final Function(DerivAuthErrorState)? onLoginError;
 
   /// Callback to be called when user is logged in.
-  final Function(BuildContext, DerivAuthLoggedInState) onLoggedIn;
+  final Function(DerivAuthLoggedInState) onLoggedIn;
 
   /// Callback to be called when social auth button is tapped.
-  /// Give access to [SocialAuthDto] for 2FA.
-  final SocialAuthCallback? onSocialAuthButtonPressed;
+  final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
 
   /// Callback to be called when login button is tapped.
-  /// Give access to email and password.
-  final Function(String email, String password)? onLoginTapped;
+  final VoidCallback? onLoginTapped;
 
   /// Welcome text to be displayed on login page.
   final String welcomeLabel;
@@ -64,36 +58,6 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
-
-  /// Whether to display forgot password section.
-  final bool isForgotPasswordEnabled;
-
-  /// Whether to display create account section.
-  final bool isCreateAccountEnabled;
-
-  /// Social auth state handler.
-  final Function(SocialAuthState) socialAuthStateHandler;
-
-  /// Redirect URL for social auth.
-  final String redirectURL;
-
-  /// Callback for web view error.
-  final Function(String) onWebViewError;
-
-  /// Widget key for title.
-  final Key? titleKey;
-
-  /// Widget key for email text box.
-  final Key? emailTextFieldKey;
-
-  /// Widget key for password text box.
-  final Key? passwordTextFieldKey;
-
-  /// Widget key for forgot password button.
-  final Key? forgotPasswordButtonKey;
-
-  /// Widget key for login button button.
-  final Key? loginButtonKey;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -122,8 +86,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
           appBar: AppBar(
             elevation: ThemeProvider.zeroMargin,
             title: Text(
-              context.derivAuthLocalization.labelLogIn,
-              key: widget.titleKey,
+              context.localization.labelLogIn,
               style: TextStyles.title,
             ),
             backgroundColor: context.theme.colors.secondary,
@@ -149,30 +112,24 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       ..._buildTextFields(
                           isEnabled: state is! DerivAuthLoadingState),
                       const SizedBox(height: ThemeProvider.margin24),
-                      widget.isForgotPasswordEnabled
-                          ? _buildForgotPassButton()
-                          : const SizedBox(),
+                      _buildForgotPassButton(),
                       const SizedBox(height: ThemeProvider.margin24),
                       _buildLoginButton(),
                       const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthDivider(
-                        label: context.derivAuthLocalization.informLoginOptions,
+                        label: context.localization.informLoginOptions,
                         isVisible: widget.isSocialAuthEnabled,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthPanel(
-                        socialAuthStateHandler: widget.socialAuthStateHandler,
-                        redirectURL: widget.redirectURL,
-                        onPressed: widget.onSocialAuthButtonPressed,
+                        onSocialAuthButtonPressed:
+                            widget.onSocialAuthButtonPressed,
                         isVisible: widget.isSocialAuthEnabled,
-                        onWebViewError: widget.onWebViewError,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
-                      widget.isCreateAccountEnabled
-                          ? _buildFooterSection()
-                          : const SizedBox(),
+                      _buildFooterSection(),
                     ],
                   ),
                 ),
@@ -202,11 +159,10 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
 
   List<Widget> _buildTextFields({required bool isEnabled}) => <Widget>[
         BaseTextField(
-          key: widget.emailTextFieldKey,
           semanticLabel: SemanticsLabels.loginEmailFieldSemantic,
           controller: _emailController,
           focusNode: _emailFocusNode,
-          labelText: context.derivAuthLocalization.labelEmail,
+          labelText: context.localization.labelEmail,
           borderColor: context.theme.colors.hover,
           focusedBorderColor: context.theme.colors.blue,
           keyboardType: TextInputType.emailAddress,
@@ -218,11 +174,10 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
         ),
         const SizedBox(height: ThemeProvider.margin32),
         BaseTextField(
-          key: widget.passwordTextFieldKey,
           semanticLabel: SemanticsLabels.loginPasswordFieldSemantic,
           controller: _passwordController,
           focusNode: _passwordFocusNode,
-          labelText: context.derivAuthLocalization.labelPassword,
+          labelText: context.localization.labelPassword,
           obscureText: !_isPasswordVisible,
           enabled: isEnabled,
           suffixIcon: IconButton(
@@ -246,10 +201,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   Widget _buildForgotPassButton() => Align(
         alignment: Alignment.centerRight,
         child: InkWell(
-          key: widget.forgotPasswordButtonKey,
           onTap: widget.onResetPassTapped,
           child: Text(
-            context.derivAuthLocalization.actionForgotPassword,
+            context.localization.actionForgotPassword,
             style: context.theme.textStyle(
               textStyle: TextStyles.body2,
               color: context.theme.colors.coral,
@@ -261,7 +215,6 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
   Widget _buildLoginButton() => BlocBuilder<DerivAuthCubit, DerivAuthState>(
         bloc: authCubit,
         builder: (BuildContext context, DerivAuthState state) => ElevatedButton(
-          key: widget.loginButtonKey,
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(
               context.theme.colors.coral.withOpacity(
@@ -283,7 +236,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                     width: ThemeProvider.iconSize16,
                   )
                 : Text(
-                    context.derivAuthLocalization.actionLogin,
+                    context.localization.actionLogin,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body2,
                       color: context.theme.colors.prominent.withOpacity(
@@ -300,7 +253,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              context.derivAuthLocalization.labelDontHaveAnAccountYet,
+              context.localization.labelDontHaveAnAccountYet,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
                 color: context.theme.colors.general,
@@ -311,7 +264,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
               child: Padding(
                 padding: const EdgeInsets.all(ThemeProvider.margin04),
                 child: Text(
-                  context.derivAuthLocalization.actionCreateANewAccount,
+                  context.localization.actionCreateANewAccount,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.coral,
@@ -335,20 +288,19 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
     }
 
     if (state is DerivAuthLoggedInState) {
-      widget.onLoggedIn.call(context, state);
+      widget.onLoggedIn.call(state);
     }
   }
 
   bool _isFormValid() =>
-      _getEmailValue().isValidEmail &&
-      _passwordController.text.isValidLoginPasswordLength;
+      _getEmailValue().isNotEmpty && _passwordController.text.isNotEmpty;
 
   String? _emailValidator(String? input) {
     if (_getEmailValue().isValidEmail) {
       return null;
     }
 
-    return context.derivAuthLocalization.informInvalidEmailFormat;
+    return context.localization.informInvalidEmailFormat;
   }
 
   String? _passwordValidator(String? input) {
@@ -356,14 +308,11 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
       return null;
     }
 
-    return context.derivAuthLocalization.warnPasswordLength;
+    return context.localization.warnPasswordLength;
   }
 
   Future<void> _onLoginTapped() async {
-    widget.onLoginTapped?.call(
-      _getEmailValue(),
-      _passwordController.text,
-    );
+    widget.onLoginTapped?.call();
 
     _emailFocusNode.unfocus();
     _passwordFocusNode.unfocus();

@@ -1,15 +1,7 @@
-include: package:flutter_lints/flutter.yaml
-
 analyzer:
   exclude:
-    - example/**
-
-  errors:
-    todo: ignore
-    missing_required_param: warning
-    missing_return: warning
-    # https://github.com/flutter/flutter/pull/24528
-    sdk_version_async_exported_from_core: ignore
+    - lib/generated/**
+    - lib/src/core/helpers/assets.dart
 
   language:
     strict-raw-types: true
@@ -53,22 +45,26 @@ linter:
     - cancel_subscriptions
     - cascade_invocations
     - close_sinks
+    # - comment_references
     - constant_identifier_names
     - control_flow_in_finally
     - curly_braces_in_flow_control_structures
+    # - directives_ordering
     - empty_catches
     - empty_constructor_bodies
     - empty_statements
+    - exhaustive_cases
     - file_names
     - flutter_style_todos
     - hash_and_equals
     - implementation_imports
+    - collection_methods_unrelated_type
     - join_return_with_assignment
     - library_names
     - library_prefixes
-    - collection_methods_unrelated_type
     - no_adjacent_strings_in_list
     - no_duplicate_case_values
+    - no_leading_underscores_for_local_identifiers
     - non_constant_identifier_names
     - null_closures
     - only_throw_errors

@@ -33,7 +33,6 @@ class BaseTextField extends StatefulWidget {
     this.onChanged,
     this.onTap,
     this.semanticLabel,
-    this.autofocus = false,
     Key? key,
   }) : super(key: key);
 
@@ -118,9 +117,6 @@ class BaseTextField extends StatefulWidget {
   /// Semantic label.
   final String? semanticLabel;
 
-  /// Autofocus.
-  final bool autofocus;
-
   @override
   _BaseTextFieldState createState() => _BaseTextFieldState();
 }
@@ -128,15 +124,12 @@ class BaseTextField extends StatefulWidget {
 class _BaseTextFieldState extends State<BaseTextField> {
   GlobalKey<FormFieldState<String>>? _formFieldKey;
   bool _hasError = false;
-  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
 
     widget.focusNode?.addListener(() => setState(() {}));
-
-    _focusNode = widget.focusNode ?? FocusNode();
 
     _formFieldKey = widget.formFieldKey ??
         (widget.validator == null ? null : GlobalKey<FormFieldState<String>>());
@@ -148,9 +141,8 @@ class _BaseTextFieldState extends State<BaseTextField> {
         label: widget.semanticLabel,
         child: TextFormField(
           key: _formFieldKey,
-          autofocus: widget.autofocus,
           controller: widget.controller,
-          focusNode: _focusNode,
+          focusNode: widget.focusNode,
           initialValue: widget.initialValue,
           keyboardType: widget.keyboardType,
           maxLength: widget.maxLength,
@@ -206,7 +198,7 @@ class _BaseTextFieldState extends State<BaseTextField> {
         ),
       );
 
-  bool _hasFocus() => _focusNode.hasFocus;
+  bool _hasFocus() => widget.focusNode?.hasFocus ?? false;
 
   Color _getTextFieldColor() => widget.enabled && _hasFocus()
       ? widget.focusedTextColor ?? context.theme.colors.prominent

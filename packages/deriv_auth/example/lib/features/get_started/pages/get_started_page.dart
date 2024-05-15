@@ -1,7 +1,5 @@
-import 'package:deriv_auth/features/get_started/models/deriv_get_started_slide_model.dart';
-import 'package:deriv_auth/features/get_started/presentation/layouts/deriv_get_started_layout.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:example/features/login/pages/login_page.dart';
-import 'package:example/features/settings/pages/settings_page.dart';
 import 'package:example/features/signup/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -32,13 +30,6 @@ class GetStartedPage extends StatelessWidget {
             builder: (context) => const SignupPage(),
           ),
         ),
-        onTapNavigation: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (BuildContext context) => const SettingsPage(),
-            ),
-          );
-        },
+        onTapNavigation: () {},
       );
 }

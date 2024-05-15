@@ -2,15 +2,15 @@
 
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_ui/deriv_ui.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:deriv_ui/presentation/widgets/base_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol_finders/patrol_finders.dart';
-
-import '../../../../mocks.dart';
-import '../../../../pump_app.dart';
+import '../../../mocks.dart';
+import '../../../pump_app.dart';
 
 void main() {
   group('Deriv2FALayout', () {
@@ -34,8 +34,7 @@ void main() {
         settle: false,
         BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
-          child: Deriv2FALayout.systemLogin(
-              email: mockEmail, password: mockPassword),
+          child: Deriv2FALayout(email: mockEmail, password: mockPassword),
         ),
       );
 
@@ -63,7 +62,7 @@ void main() {
       await $.pumpApp(
         BlocProvider<DerivAuthCubit>.value(
           value: authCubit,
-          child: Deriv2FALayout.systemLogin(
+          child: Deriv2FALayout(
             email: mockEmail,
             password: mockPassword,
           ),

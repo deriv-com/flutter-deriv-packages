@@ -1,8 +1,16 @@
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
+import 'package:deriv_auth_ui/src/core/states/auth_state_listener.dart';
+import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_divider.dart';
+import 'package:deriv_auth_ui/src/features/login/widgets/deriv_social_auth_panel.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:deriv_auth_ui/src/core/states/auth_error_state_handler.dart';
 
 /// It offers creating demo accounts via email and third-party providers.
 /// It Also provides optional referral code section which can be disabled
@@ -10,16 +18,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DerivSignupLayout extends StatefulWidget {
   /// Initializes [DerivSignupLayout].
   const DerivSignupLayout({
+    required this.onSocialAuthButtonPressed,
     required this.onSingupError,
     required this.onSingupEmailSent,
     required this.onSignupPressed,
     required this.onLoginTapped,
     required this.signupPageLabel,
     required this.signupPageDescription,
-    required this.socialAuthStateHandler,
-    required this.redirectURL,
-    required this.onWebViewError,
-    this.onSocialAuthButtonPressed,
     this.isSocialAuthEnabled = true,
     this.authErrorStateHandler,
     this.enableReferralSection = true,
@@ -27,9 +32,8 @@ class DerivSignupLayout extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  /// Callback to be called when social auth button is tapped.
-  /// Give access to [SocialAuthDto] for 2FA.
-  final SocialAuthCallback? onSocialAuthButtonPressed;
+  /// Callback to be called when social auth button is pressed.
+  final void Function(SocialAuthProvider) onSocialAuthButtonPressed;
 
   /// Callback to be called when signup error occurs.
   final Function(DerivSignupErrorState) onSingupError;
@@ -62,15 +66,6 @@ class DerivSignupLayout extends StatefulWidget {
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
 
-  /// Social auth state handler.
-  final Function(SocialAuthState) socialAuthStateHandler;
-
-  /// Redirect URL for social auth.
-  final String redirectURL;
-
-  /// Callback for web view error.
-  final Function(String) onWebViewError;
-
   @override
   State<DerivSignupLayout> createState() => _DerivSignupLayoutState();
 }
@@ -95,8 +90,8 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
         backgroundColor: context.theme.colors.primary,
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
-          title: Text(context.derivAuthLocalization.labelSignUp,
-              style: TextStyles.title),
+          title:
+              Text(context.localization.labelSignUp, style: TextStyles.title),
           backgroundColor: context.theme.colors.secondary,
         ),
         body: DerivAuthStateListener(
@@ -124,18 +119,16 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                       _buildSignUpButton(),
                       const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthDivider(
-                        label: context.derivAuthLocalization.labelOrSignUpWith,
+                        label: context.localization.labelOrSignUpWith,
                         isVisible: widget.isSocialAuthEnabled,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
                       DerivSocialAuthPanel(
                         isEnabled: !isReferralEnabled,
+                        onSocialAuthButtonPressed:
+                            widget.onSocialAuthButtonPressed,
                         isVisible: widget.isSocialAuthEnabled,
-                        socialAuthStateHandler: widget.socialAuthStateHandler,
-                        redirectURL: widget.redirectURL,
-                        onWebViewError: widget.onWebViewError,
-                        onPressed: widget.onSocialAuthButtonPressed,
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
@@ -165,17 +158,16 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
             Row(
               children: <Widget>[
                 InfoIconButton(
-                  dialogTitle:
-                      context.derivAuthLocalization.labelReferralInfoTitle,
+                  dialogTitle: context.localization.labelReferralInfoTitle,
                   dialogDescription:
-                      context.derivAuthLocalization.infoReferralInfoDescription,
-                  positiveActionLabel: context.derivAuthLocalization.actionOk,
+                      context.localization.infoReferralInfoDescription,
+                  positiveActionLabel: context.localization.actionOk,
                   iconSize: ThemeProvider.iconSize24,
                 ),
                 const SizedBox(width: ThemeProvider.margin08),
                 Expanded(
                   child: Text(
-                    context.derivAuthLocalization.labelGotReferralCode,
+                    context.localization.labelGotReferralCode,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body1,
                       color: context.theme.colors.prominent,
@@ -230,7 +222,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                       }
                     },
                     focusNode: referralFocusNode,
-                    labelText: context.derivAuthLocalization.labelReferralCode,
+                    labelText: context.localization.labelReferralCode,
                     borderColor: context.theme.colors.hover,
                     focusedBorderColor: context.theme.colors.blue,
                     textInputAction: TextInputAction.done,
@@ -263,7 +255,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              context.derivAuthLocalization.labelHaveAccount,
+              context.localization.labelHaveAccount,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body1,
                 color: context.theme.colors.general,
@@ -274,7 +266,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
               child: Padding(
                 padding: const EdgeInsets.all(ThemeProvider.margin04),
                 child: Text(
-                  context.derivAuthLocalization.actionLogin,
+                  context.localization.actionLogin,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.coral,
@@ -290,7 +282,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
         semanticLabel: SemanticsLabels.signupEmailFieldSemantic,
         controller: emailController,
         focusNode: emailFocusNode,
-        labelText: context.derivAuthLocalization.labelEmail,
+        labelText: context.localization.labelEmail,
         borderColor: context.theme.colors.hover,
         focusedBorderColor: context.theme.colors.blue,
         keyboardType: TextInputType.emailAddress,
@@ -318,7 +310,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
                     width: ThemeProvider.iconSize16,
                   )
                 : Text(
-                    context.derivAuthLocalization.actionCreateAccount,
+                    context.localization.actionCreateAccount,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body2,
                       color: context.theme.colors.prominent,
@@ -348,7 +340,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
       return null;
     }
 
-    return context.derivAuthLocalization.informInvalidEmailFormat;
+    return context.localization.informInvalidEmailFormat;
   }
 
   String? _referralValidator(String? input) {
@@ -356,7 +348,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
       return null;
     }
 
-    return context.derivAuthLocalization.informInvalidReferralCode;
+    return context.localization.informInvalidReferralCode;
   }
 
   Future<void> _onSignupTapped() async {

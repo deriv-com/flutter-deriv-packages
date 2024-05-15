@@ -1,5 +1,5 @@
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/reset_password/presentation/layouts/deriv_success_pass_change_layout.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:example/features/get_started/pages/get_started_page.dart';
 import 'package:example/features/login/pages/login_page.dart';
 import 'package:flutter/material.dart';

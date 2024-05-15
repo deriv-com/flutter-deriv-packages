@@ -1,6 +1,6 @@
 name: deriv_ui
 description: A new Flutter package project.
-version: 0.0.7+4
+version: 0.0.1+2
 publish_to: none
 
 environment:
@@ -10,25 +10,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
 
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v2.4.0
+      ref: deriv_theme-v2.1.0
 
   deriv_web_view:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_web_view
-      ref: deriv_web_view-v0.2.2+1
+      ref: deriv_web_view-v0.0.1
 
-  flutter_svg: ^2.0.7
-  intl: ^0.18.0
-  decimal: ^2.3.2
-  cupertino_icons: ^1.0.2
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -41,8 +36,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-  generate: true
-  uses-material-design: true
   # To add assets to your package, add an assets section, like this:
   assets:
     - assets/icons/

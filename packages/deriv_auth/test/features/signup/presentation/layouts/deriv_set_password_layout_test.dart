@@ -1,15 +1,15 @@
 // ignore_for_file: always_specify_types
 
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:patrol_finders/patrol_finders.dart';
-
-import '../../../../mocks.dart';
-import '../../../../pump_app.dart';
+import '../../../mocks.dart';
+import '../../../pump_app.dart';
 
 void main() {
   late MockAuthCubit authCubit;
@@ -83,7 +83,7 @@ void main() {
         (PatrolTester $) async {
       final mockAuthState = DerivAuthErrorState(
         isSocialLogin: false,
-        message: 'Authorization failed.',
+        message: 'error',
         type: AuthErrorType.failedAuthorization,
       );
 

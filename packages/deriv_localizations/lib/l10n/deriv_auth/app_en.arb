@@ -27,10 +27,10 @@
   "labelDontHaveAnAccountYet": "Don’t have an account yet?",
   "actionCreateANewAccount": "Create a new account",
   "informInvalidEmailFormat": "Enter a valid email address",
-  "warnPasswordLength": "You should enter 6-25 characters.",
-  "labelResetPassword": "Reset password",
+  "warnPasswordLength": "You should enter 8-25 characters.",
+  "labelResetPassword": "Reset Password",
   "labelChooseNewPass": "Choose a new password",
-  "labelCreatePass": "Password",
+  "labelCreatePass": "Create a password",
   "informYourPassHasBeenReset": "Your password has been reset",
   "informRedirectLogin": "You’ll need to log in with your new password. Hang on, we’re redirecting you.",
   "actionResetPass": "Reset my password",
@@ -95,7 +95,7 @@
   "informInvalid2FACode": "The code you entered is invalid. Check and try again.",
   "informFailedAuthentication": "Your email or password may be incorrect. Did you sign up with a social account? Check and try again.",
   "informDeactivatedAccount": "Your account is deactivated.",
-  "informFailedAuthorization": "Authorization failed.",
+   "informFailedAuthorization": "Authorization failed.",
   "informInvalidResidence": "Invalid residence.",
   "informInvalidCredentials": "Invalid credentials.",
   "informMissingOtp": "Missing one-time password.",
@@ -112,6 +112,5 @@
   "warnInvalidEndpoint": "invalid endpoint",
   "labelApplicationID": "Application ID",
   "semanticApplicationID": "Application ID",
-  "warnInvalidApplicationID": "invalid application ID",
-  "labelLanguage": "Language"
+  "warnInvalidApplicationID": "invalid application ID"
 }

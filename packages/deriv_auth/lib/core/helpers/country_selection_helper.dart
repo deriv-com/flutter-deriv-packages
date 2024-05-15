@@ -1,4 +1,4 @@
-import 'package:deriv_auth/core/extensions/extensions.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 /// Returns `true` if the country is not in the [notAllowedCountryCodes] set,
@@ -32,7 +32,7 @@ String getCountryConsentMessage(
   }
 
   final Map<String, String> consentMessages = <String, String>{
-    'br': context.derivAuthLocalization.labelCountryConsentBrazil,
+    'br': context.localization.labelCountryConsentBrazil,
     // Add more countries and consent messages here.
   };
 

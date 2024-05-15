@@ -6,28 +6,20 @@ import 'package:deriv_http_client/deriv_http_client.dart';
 
 /// Deriv Implementation of a [BaseTokenService].
 class DerivTokenService implements BaseTokenService {
-  /// Create a [DerivTokenService] instance.
-  DerivTokenService([this.client]);
-
-  /// The client to make the http request.
-  final BaseHttpClient? client;
-
   @override
   Future<GetTokensResponseModel> getUserTokens({
     required GetTokensRequestModel request,
+    required BaseHttpClient client,
     required String jwtToken,
     required AuthConnectionInfo connectionInfo,
-    BaseHttpClient? httpClient,
     String? userAgent,
   }) async {
     /// Extract login url from connection info.
     final String baseUrl = 'https://${connectionInfo.endpoint}/oauth2/api/v1';
     final String loginUrl = '$baseUrl/login';
 
-    final BaseHttpClient httpClient = client ?? HttpClient();
-
     /// Call API.
-    final Map<String, dynamic> jsonResponse = await httpClient.post(
+    final Map<String, dynamic> jsonResponse = await client.post(
       url: loginUrl,
       jsonBody:
           request.copyWith(appId: int.parse(connectionInfo.appId)).toJson(),

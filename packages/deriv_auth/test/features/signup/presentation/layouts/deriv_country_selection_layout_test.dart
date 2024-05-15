@@ -1,11 +1,9 @@
-import 'package:deriv_auth/features/signup/models/deriv_residence_model.dart';
-import 'package:deriv_auth/features/signup/presentation/layouts/deriv_country_selection_layout.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol_finders/patrol_finders.dart';
-
-import '../../../../pump_app.dart';
+import '../../../pump_app.dart';
 
 void main() {
   group('DerivCountrySelectionLayout', () {

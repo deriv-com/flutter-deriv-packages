@@ -3,10 +3,9 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:deriv_auth/core/extensions/context_extension.dart';
-import 'package:deriv_auth/core/helpers/semantic_labels.dart';
-import 'package:deriv_auth/features/get_started/models/deriv_get_started_slide_model.dart';
-import 'package:deriv_language_selector/deriv_language_selector.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
+import 'package:deriv_auth_ui/src/features/get_started/models/deriv_get_started_slide_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +41,7 @@ class DerivGetStartedLayout extends StatefulWidget {
   final VoidCallback onSignupTapped;
 
   /// Navigation to be called when screen is tapped seven times.
-  final Function(BuildContext context) onTapNavigation;
+  final VoidCallback onTapNavigation;
 
   @override
   State<DerivGetStartedLayout> createState() => _DerivGetStartedLayoutState();
@@ -111,17 +110,6 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
         title: AppSettingGestureDetector(
             onTapNavigation: widget.onTapNavigation,
             child: SvgPicture.asset(widget.appLogoIconPath)),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: ThemeProvider.margin16,
-              vertical: ThemeProvider.margin08,
-            ),
-            child: LanguageSelector.button(
-              bottomsheetTitle: context.derivAuthLocalization.labelLanguage,
-            ),
-          ),
-        ],
       );
 
   Timer _buildNewScrollTimer() => Timer.periodic(
@@ -159,7 +147,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               onPressed: widget.onSignupTapped,
               child: Center(
                 child: Text(
-                  context.derivAuthLocalization.actionGetAFreeAccount,
+                  context.localization.actionGetAFreeAccount,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent,
@@ -175,7 +163,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               onPressed: widget.onLoginTapped,
               child: Center(
                 child: Text(
-                  context.derivAuthLocalization.actionLogin,
+                  context.localization.actionLogin,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent,

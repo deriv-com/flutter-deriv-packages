@@ -1,7 +1,10 @@
-import 'package:deriv_auth/core/helpers/assets.dart';
-import 'package:deriv_auth/core/states/auth_state_listener.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/signup/presentation/widgets/password_policy_checker_widget.dart';
+import 'package:deriv_auth_ui/deriv_auth_ui.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
+import 'package:deriv_auth_ui/src/core/states/auth_state_listener.dart';
+import 'package:deriv_auth_ui/src/features/signup/widgets/password_policy_checker_widget.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -94,10 +97,10 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const SizedBox(height: ThemeProvider.margin96),
-              SvgPicture.asset(Assets.passwordIcon, package: 'deriv_auth'),
+              SvgPicture.asset(Assets.passwordIcon, package: 'deriv_auth_ui'),
               const SizedBox(height: ThemeProvider.margin16),
               Text(
-                context.derivAuthLocalization.labelKeepPassword,
+                context.localization.labelKeepPassword,
                 style: TextStyles.title,
                 textAlign: TextAlign.center,
               ),
@@ -140,7 +143,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
         focusNode: _passwordFocusNode,
         controller: _passwordTextController,
         obscureText: !_isPasswordVisible,
-        labelText: context.derivAuthLocalization.labelCreatePassword,
+        labelText: context.localization.labelCreatePassword,
         labelColor: context.theme.colors.disabled,
         focusedLabelColor: context.theme.colors.blue,
         suffixIcon: IconButton(
@@ -166,7 +169,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
                   strokeWidth: 3,
                 )
               : Text(
-                  context.derivAuthLocalization.actionStartTrading,
+                  context.localization.actionStartTrading,
                   style: TextStyles.button
                       .copyWith(color: context.theme.colors.prominent),
                 ),
@@ -181,7 +184,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
         onPressed: widget.onPreviousPressed,
         child: Center(
           child: Text(
-            context.derivAuthLocalization.actionPrevious,
+            context.localization.actionPrevious,
             style: context.theme.textStyle(
               textStyle: TextStyles.button,
             ),

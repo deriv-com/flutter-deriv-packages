@@ -1,8 +1,10 @@
 import 'dart:async';
 
-import 'package:deriv_auth/core/helpers/assets.dart';
-import 'package:deriv_auth/core/helpers/semantic_labels.dart';
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth_ui/src/core/extensions/context_extension.dart';
+import 'package:deriv_auth_ui/src/core/extensions/string_extension.dart';
+import 'package:deriv_auth_ui/src/core/helpers/assets.dart';
+import 'package:deriv_auth_ui/src/core/helpers/semantic_labels.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +20,7 @@ class DerivResetPassLayout extends StatefulWidget {
   }) : super(key: key);
 
   /// Callback to be called when reset pass fails.
-  final ResetPassErrorCallback onResetPassError;
+  final Function(String?) onResetPassError;
 
   @override
   State<DerivResetPassLayout> createState() => _DerivResetPassLayoutState();
@@ -44,7 +46,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
         appBar: AppBar(
           elevation: ThemeProvider.zeroMargin,
           title: Text(
-            context.derivAuthLocalization.labelResetPassword,
+            context.localization.labelResetPassword,
             style: TextStyles.title,
           ),
         ),
@@ -57,10 +59,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
                 curve: Curves.easeInOut,
               );
             } else if (state is DerivResetPassErrorState) {
-              widget.onResetPassError(
-                error: state.errorMessage,
-                isLinkExpired: state.isLinkExpired,
-              );
+              widget.onResetPassError(state.errorMessage);
             }
           },
           child: PageView(
@@ -83,16 +82,16 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
               Assets.mailIcon,
               width: ThemeProvider.iconSize96,
               height: ThemeProvider.iconSize96,
-              package: 'deriv_auth',
+              package: 'deriv_auth_ui',
             ),
             const SizedBox(height: ThemeProvider.margin24),
             Text(
-              context.derivAuthLocalization.labelCheckEmail,
+              context.localization.labelCheckEmail,
               style: TextStyles.title,
             ),
             const SizedBox(height: ThemeProvider.margin08),
             Text(
-              context.derivAuthLocalization
+              context.localization
                   .informSendResetPasswordEmail(_emailController.text),
               textAlign: TextAlign.center,
               style: context.theme.textStyle(
@@ -117,19 +116,18 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
                 Assets.resetPassIcon,
                 width: ThemeProvider.iconSize96,
                 height: ThemeProvider.iconSize96,
-                package: 'deriv_auth',
+                package: 'deriv_auth_ui',
               ),
               const SizedBox(height: ThemeProvider.margin16),
               Text(
-                context.derivAuthLocalization.labelResetPassword,
+                context.localization.labelResetPassword,
                 style: TextStyles.title,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: ThemeProvider.margin08),
               Center(
                 child: Text(
-                  context.derivAuthLocalization.informResetPassByEmail,
-                  textAlign: TextAlign.center,
+                  context.localization.informResetPassByEmail,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body1,
                     color: context.theme.colors.general,
@@ -141,7 +139,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
                 semanticLabel: SemanticsLabels.resetPasswordEmailFieldSemantic,
                 controller: _emailController,
                 focusNode: _emailFocusNode,
-                labelText: context.derivAuthLocalization.labelEmail,
+                labelText: context.localization.labelEmail,
                 keyboardType: TextInputType.emailAddress,
                 borderColor: context.theme.colors.hover,
                 validator: _emailValidator,
@@ -177,7 +175,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
                     width: ThemeProvider.margin16,
                   )
                 : Text(
-                    context.derivAuthLocalization.actionResetPass,
+                    context.localization.actionResetPass,
                     style: context.theme.textStyle(
                       textStyle: TextStyles.body2,
                       color: context.theme.colors.prominent.withOpacity(
@@ -213,7 +211,7 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
       return null;
     }
 
-    return context.derivAuthLocalization.informInvalidEmailFormat;
+    return context.localization.informInvalidEmailFormat;
   }
 
   String _getEmailValue() => _emailController.text.trim();
