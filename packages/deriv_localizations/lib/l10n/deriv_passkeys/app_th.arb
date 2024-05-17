@@ -56,7 +56,7 @@
   "unableToSetupPasskey": "ไม่สามารถตั้งค่า Passkey ได้",
   "unableToSetupPasskeyDescription": "เราพบปัญหาขณะตั้งค่า Passkey ของคุณ กระบวนการอาจถูกขัดจังหวะหรือเซสชั่นหมดเวลา โปรดลองอีกครั้ง",
   "passkeysOffErrorTitle": "บริการ Passkey ไม่พร้อมใช้งาน",
-  "never": "ไม่เคยมีเลย",
+  "never": "ไม่เคย",
   "unable_to_process_your_request": "ไม่สามารถประมวลผลคำขอของคุณได้",
-  "unable_to_process_your_request_description": "เรากำลังประสบปัญหาชั่วคราวในการประมวลผลคำขอของคุณโปรดลองอีกครั้งในภายหลัง"
+  "unable_to_process_your_request_description": "เรากำลังประสบปัญหาชั่วคราวในการประมวลผลคำขอของคุณ โปรดลองอีกครั้งในภายหลัง"
 }
