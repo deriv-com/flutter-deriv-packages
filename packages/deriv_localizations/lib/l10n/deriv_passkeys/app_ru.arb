@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "Больше passkeys",
   "unableToSetupPasskey": "Невозможно настроить passkey",
   "unableToSetupPasskeyDescription": "Мы столкнулись с проблемой при настройке вашего passkey. Возможно, процесс был прерван, или сессия завершилась по таймеру. Пожалуйста, попробуйте еще раз.",
-  "passkeysOffErrorTitle": "Служба Passkeys недоступна"
+  "passkeysOffErrorTitle": "Служба Passkeys недоступна",
+  "never": "Никогда",
+  "unable_to_process_your_request": "Не удалось обработать ваш запрос",
+  "unable_to_process_your_request_description": "При обработке вашего запроса возникла временная проблема. Пожалуйста, повторите попытку позже."
 }
