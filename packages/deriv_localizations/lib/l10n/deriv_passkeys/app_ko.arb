@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "더 많은 Passkeys",
   "unableToSetupPasskey": "Passkey를 설정할 수 없습니다",
   "unableToSetupPasskeyDescription": "Passkey를 설정하는 동안 문제가 발생했습니다. 프로세스가 중단되었거나 세션 시간이 초과되었을 수 있습니다. 다시 시도해 주시기 바랍니다.",
-  "passkeysOffErrorTitle": "Passkeys 서비스를 이용할 수 없습니다"
+  "passkeysOffErrorTitle": "Passkeys 서비스를 이용할 수 없습니다",
+  "never": "절대 안 돼",
+  "unable_to_process_your_request": "요청을 처리할 수 없습니다",
+  "unable_to_process_your_request_description": "요청을 처리하는 동안 일시적인 문제가 발생했습니다.나중에 다시 시도하세요."
 }
