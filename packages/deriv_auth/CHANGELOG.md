@@ -1,3 +1,7 @@
+## 6.5.0
+
+ - **FEAT**(deriv_auth): Add language selector in auth package ([#576](https://github.com/regentmarkets/flutter-deriv-packages/issues/576)). ([cd3768ef](https://github.com/regentmarkets/flutter-deriv-packages/commit/cd3768ef2b6bd7420e7957277461e95e78eee545))
+
 ## 6.4.3
 
  - Update a dependency to the latest release.

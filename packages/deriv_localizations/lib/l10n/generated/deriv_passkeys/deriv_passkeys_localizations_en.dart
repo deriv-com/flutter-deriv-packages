@@ -152,4 +152,13 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
 
   @override
   String get passkeysOffErrorTitle => 'The Passkeys service is unavailable';
+
+  @override
+  String get never => 'Never';
+
+  @override
+  String get unable_to_process_your_request => 'Unable to process your request';
+
+  @override
+  String get unable_to_process_your_request_description => 'We’re experiencing a temporary issue in processing your request. Please try again later.';
 }
