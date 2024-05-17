@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "আরও Passkeys",
   "unableToSetupPasskey": "Passkey সেটআপ করতে অক্ষম",
   "unableToSetupPasskeyDescription": "আপনার Passkey সেট আপ করার সময় আমরা একটি সমস্যার মুখোমুখি হয়েছি। প্রক্রিয়াটি বাধা দেওয়া হতে পারে, বা সেশনের সময় শেষ হতে পারে। দয়া করে আবার চেষ্টা করুন।",
-  "passkeysOffErrorTitle": "Passkeys পরিষেবাটি উপলব্ধ নয়"
+  "passkeysOffErrorTitle": "Passkeys পরিষেবাটি উপলব্ধ নয়",
+  "never": "কখনই",
+  "unable_to_process_your_request": "আপনার অনুরোধ প্রক্রিয়া করতে অক্ষম",
+  "unable_to_process_your_request_description": "আমরা আপনার অনুরোধ প্রক্রিয়াকরণে একটি অস্থায়ী সমস্যা অনুভব করছি। দয়া করে পরে আবার চেষ্টা করুন।"
 }
