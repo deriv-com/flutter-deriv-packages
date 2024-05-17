@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "තවත් passkeys එක් කරන්න",
   "unableToSetupPasskey": "Passkey සැකසීමට නොහැකි විය",
   "unableToSetupPasskeyDescription": "ඔබගේ passkey සැකසීමේදී අපට ගැටලුවක් ඇති විය. ක්රියාවලියට බාධා ඇති විය හැකිය, නැතහොත් සැසිය කාලය අවසන් විය හැකිය. කරුණාකර නැවත උත්සාහ කරන්න.",
-  "passkeysOffErrorTitle": "Passkeys සේවාව ලබා ගත නොහැක"
+  "passkeysOffErrorTitle": "Passkeys සේවාව ලබා ගත නොහැක",
+  "never": "කවදාවත්",
+  "unable_to_process_your_request": "ඔබගේ ඉල්ලීම සැකසීමට නොහැකි විය",
+  "unable_to_process_your_request_description": "ඔබගේ ඉල්ලීම සැකසීමේදී අපට තාවකාලික ගැටළුවක් අත්විඳිනවා. කරුණාකර පසුව නැවත උත්සාහ කරන්න."
 }
