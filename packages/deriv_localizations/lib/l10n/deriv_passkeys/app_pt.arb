@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "Adicionar Mais Passkeys",
   "unableToSetupPasskey": "Não é possível configurar a passkey",
   "unableToSetupPasskeyDescription": "Encontramos um problema ao configurar sua passkey. O processo pode ter sido interrompido ou a sessão expirou. Por favor, tente novamente.",
-  "passkeysOffErrorTitle": "O serviço de Passkeys não está disponível"
+  "passkeysOffErrorTitle": "O serviço de Passkeys não está disponível",
+  "never": "Nunca",
+  "unable_to_process_your_request": "Não foi possível processar sua solicitação",
+  "unable_to_process_your_request_description": "Estamos enfrentando um problema temporário no processamento de sua solicitação. Por favor, tente novamente mais tarde."
 }
