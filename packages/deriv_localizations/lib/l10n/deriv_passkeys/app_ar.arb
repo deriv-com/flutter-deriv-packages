@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "أضف المزيد من Passkeys",
   "unableToSetupPasskey": "تعذر إعداد مفتاح Passkey",
   "unableToSetupPasskeyDescription": "لقد واجهنا مشكلة أثناء إعداد Passkey الخاص بك. ربما تمت مقاطعة العملية، أو ربما انتهت مهلة الجلسة. يرجى المحاولة مرة أخرى.",
-  "passkeysOffErrorTitle": "خدمة Passkeys غير متوفرة"
+  "passkeysOffErrorTitle": "خدمة Passkeys غير متوفرة",
+  "never": "أبداً",
+  "unable_to_process_your_request": "غير قادر على معالجة طلبك",
+  "unable_to_process_your_request_description": "نحن نواجه مشكلة مؤقتة في معالجة طلبك. يرجى المحاولة مرة أخرى لاحقًا."
 }
