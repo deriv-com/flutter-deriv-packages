@@ -198,6 +198,7 @@ void main() {
         derivPasskeysBloc.stream,
         emitsInOrder(<TypeMatcher<DerivPasskeysState>>[
           isA<DerivPasskeysLoadingState>(),
+          isA<DerivPasskeysErrorState>(),
           isA<DerivPasskeysLoadedState>(),
         ]),
       );

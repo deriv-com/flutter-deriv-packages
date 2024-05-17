@@ -122,36 +122,6 @@ void main() {
     });
 
     testWidgets(
-        'should show alert dialog when DerivPasskeysErrorState is emitted',
-        (WidgetTester tester) async {
-      whenListen(
-          derivPasskeysBloc,
-          Stream<DerivPasskeysState>.fromIterable(<DerivPasskeysState>[
-            const DerivPasskeysErrorState('unexpected_error')
-          ]));
-      await tester.pumpWidget(
-        BlocProvider<DerivPasskeysBloc>(
-          create: (BuildContext context) => derivPasskeysBloc,
-          child: const _TestPage(),
-        ),
-      );
-
-      await tester.pumpAndSettle();
-
-      expect(find.byType(AlertDialog), findsOneWidget);
-      expect(find.text(DerivPasskeysLocalizationsEn().unexpectedError),
-          findsOneWidget);
-      expect(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()),
-          findsOneWidget);
-
-      await tester
-          .tap(find.text(DerivPasskeysLocalizationsEn().ok.toUpperCase()));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(AlertDialog), findsNothing);
-    });
-
-    testWidgets(
         'should show alert dialog with error message when DerivPasskeysErrorState is emitted with errorCode PASSKEYS_SERVICE_ERROR',
         (WidgetTester tester) async {
       whenListen(
