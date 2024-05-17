@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "Ongeza passkeys nyingine",
   "unableToSetupPasskey": "Haiwezi kuanzisha kifungu cha passkey",
   "unableToSetupPasskeyDescription": "Tulikutana na shida wakati wa kuanzisha passkey lako. Utaratibu huo unaweza kuingiliwa, au kikao kimekamilika. Tafadhali jaribu tena.",
-  "passkeysOffErrorTitle": "Huduma ya Passkeys haipatikani"
+  "passkeysOffErrorTitle": "Huduma ya Passkeys haipatikani",
+  "never": "Kamwe",
+  "unable_to_process_your_request": "Haiwezi kushughulikia ombi lako",
+  "unable_to_process_your_request_description": "Tunapata shida ya muda katika kusindika ombi lako. Tafadhali jaribu tena baadaye."
 }
