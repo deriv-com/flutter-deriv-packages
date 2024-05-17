@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "Daha fazla passkeys",
   "unableToSetupPasskey": "Passkey ayarlanamıyor",
   "unableToSetupPasskeyDescription": "Passkey ayarlarken bir sorunla karşılaştık. İşlem yarıda kesilmiş veya oturum zaman aşımına uğramış olabilir. Lütfen tekrar deneyin.",
-  "passkeysOffErrorTitle": "Passkeys hizmeti kullanılamıyor"
+  "passkeysOffErrorTitle": "Passkeys hizmeti kullanılamıyor",
+  "never": "Asla",
+  "unable_to_process_your_request": "Talebiniz işleme alınamıyor",
+  "unable_to_process_your_request_description": "Talebinizin işlenmesinde geçici bir sorun yaşıyoruz. Lütfen daha sonra tekrar deneyin."
 }
