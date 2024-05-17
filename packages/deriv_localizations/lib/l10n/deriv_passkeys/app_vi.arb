@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "Thêm nhiều Passkeys",
   "unableToSetupPasskey": "Không thể thiết lập passkey",
   "unableToSetupPasskeyDescription": "Chúng tôi gặp sự cố khi thiết lập passkey của bạn. Quá trình có thể đã bị gián đoạn hoặc phiên đã hết thời gian. Vui lòng thử lại.",
-  "passkeysOffErrorTitle": "Dịch vụ Passkeys không khả dụng"
+  "passkeysOffErrorTitle": "Dịch vụ Passkeys không khả dụng",
+  "never": "Không bao giờ",
+  "unable_to_process_your_request": "Không thể xử lý yêu cầu của bạn",
+  "unable_to_process_your_request_description": "Chúng tôi đang gặp sự cố tạm thời trong quá trình xử lý yêu cầu của bạn. Vui lòng thử lại sau."
 }
