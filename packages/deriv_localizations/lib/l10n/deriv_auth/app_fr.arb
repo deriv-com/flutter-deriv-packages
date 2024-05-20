@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "Si vous avez des questions, contactez-nous par ",
   "labelLiveChat": "Chat en direct",
-  "actionGetAFreeAccount": "Créer un compte gratuit",
+  "actionSignUpForFree": "Inscrivez-vous gratuitement",
   "actionLogin": "Connexion",
   "labelTwoFactorAuth": "Authentification à deux facteurs",
   "informEnterTwoFactorAuthCode": "Saisissez le code à 6 chiffres qui s'affiche sur l'application d'authentification de votre téléphone.",
