@@ -13,7 +13,7 @@
   "actionOk": "හරි",
   "warnNotAvailableCountries": "ඔබට කිසියම් ප්රශ්නයක් ඇත්නම්, අප අමතන්න ",
   "labelLiveChat": "සජීවී කතාබස්",
-  "actionGetAFreeAccount": "නොමිලේ ගිණුමක් ලබා ගන්න",
+  "actionSignUpForFree": "නොමිලේ ලියාපදිංචි වන්න",
   "actionLogin": "පුරනය වන්න",
   "labelTwoFactorAuth": "ද්වි-සාධක සත්‍යාපනය",
   "informEnterTwoFactorAuthCode": "ඔබේ දුරකථනයේ සත්යාපන යෙදුමෙන් ඉලක්කම් 6 ක කේතය ඇතුළත් කරන්න.",
