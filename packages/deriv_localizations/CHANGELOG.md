@@ -1,3 +1,7 @@
+## 1.3.2
+
+ - **REFACTOR**(deriv_localizations): Updating deriv localizations for passkeys package ([#581](https://github.com/regentmarkets/flutter-deriv-packages/issues/581)). ([0bf743c3](https://github.com/regentmarkets/flutter-deriv-packages/commit/0bf743c3b7a65f70935b32b68b7062ed07a1ae72))
+
 ## 1.3.1
 
  - **REFACTOR**(deriv_localizations): [UPM-925] Updating passkeys strings in deriv localizations ([#568](https://github.com/regentmarkets/flutter-deriv-packages/issues/568)). ([3c8cabd1](https://github.com/regentmarkets/flutter-deriv-packages/commit/3c8cabd11fdfd302f129ed8a53e73c0c7e3fd7b5))
