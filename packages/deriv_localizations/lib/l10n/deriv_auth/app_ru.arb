@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "Если у Вас возникли вопросы, свяжитесь с нами по ",
   "labelLiveChat": "Чат",
-  "actionGetAFreeAccount": "Получите бесплатный счет",
+  "actionSignUpForFree": "Зарегистрируйтесь бесплатно",
   "actionLogin": "Вход",
   "labelTwoFactorAuth": "Двухфакторная аутентификация",
   "informEnterTwoFactorAuthCode": "Введите 6-значный код из приложения аутентификатора на Вашем телефоне.",
