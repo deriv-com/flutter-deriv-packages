@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "หากคุณมีคำถามใดๆ โปรดติดต่อเราผ่านทาง ",
   "labelLiveChat": "แชทสด",
-  "actionGetAFreeAccount": "รับบัญชีฟรี 1 บัญชี",
+  "actionSignUpForFree": "ลงทะเบียนฟรี",
   "actionLogin": "เข้าสู่ระบบ",
   "labelTwoFactorAuth": "ระบบยืนยันตัวตนสองขั้นตอน",
   "informEnterTwoFactorAuthCode": "ป้อนรหัส 6 หลักจากแอปตรวจสอบสิทธิ์บนโทรศัพท์ของคุณ",
