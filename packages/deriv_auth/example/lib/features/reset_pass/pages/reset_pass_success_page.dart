@@ -1,7 +1,6 @@
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/reset_password/presentation/layouts/deriv_success_pass_change_layout.dart';
-import 'package:example/features/get_started/pages/get_started_page.dart';
-import 'package:example/features/login/pages/login_page.dart';
+import 'package:deriv_auth/features/single_entry/features/get_started/pages/get_started_page.dart';
+import 'package:deriv_auth/features/single_entry/features/login/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

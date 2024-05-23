@@ -1,8 +1,6 @@
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/signup/presentation/layouts/deriv_signup_layout.dart';
-import 'package:example/core/example_auth_error_state_handler.dart';
-import 'package:example/features/login/pages/login_page.dart';
-import 'package:example/features/signup/pages/verify_email_page.dart';
+import 'package:deriv_auth/features/single_entry/features/login/pages/login_page.dart';
+import 'package:deriv_auth/features/single_entry/features/signup/pages/verify_email_page.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
@@ -18,7 +16,7 @@ class _SignupPageState extends State<SignupPage> {
         socialAuthStateHandler: (_) => {},
         redirectURL: 'deriv://example',
         onWebViewError: (String error) {},
-        authErrorStateHandler: ExampleAuthErrorStateHandler(context: context),
+        authErrorStateHandler: AuthErrorStateHandler(context: context),
         signupPageLabel: 'Start trading with Deriv',
         signupPageDescription:
             'Join over 1 million traders worldwide who loves trading at Deriv.',

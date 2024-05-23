@@ -28,8 +28,6 @@ AuthEntryPage(
                 ),
                 loginPageModel: LoginPageModel(
                   welcomeLabel: 'Welcome back testing!',
-                  greetingLabel:
-                      'Log in to your Deriv account to start trading and investing.',
                   onLoggedIn: (_) => HomePageRoute().go(context),
                   authErrorStateHandler:
                       AuthErrorStateHandler(context: context),

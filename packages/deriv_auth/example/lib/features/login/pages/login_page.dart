@@ -1,10 +1,7 @@
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/auth/cubit/deriv_auth_cubit.dart';
-import 'package:deriv_auth/features/login/presentation/layouts/deriv_login_layout.dart';
-import 'package:example/core/example_auth_error_state_handler.dart';
-import 'package:example/features/home/pages/home_page.dart';
-import 'package:example/features/reset_pass/pages/reset_pass_page.dart';
-import 'package:example/features/signup/pages/signup_page.dart';
+import 'package:deriv_auth/features/single_entry/features/home/pages/home_page.dart';
+import 'package:deriv_auth/features/single_entry/features/reset_pass/pages/reset_pass_page.dart';
+import 'package:deriv_auth/features/single_entry/features/signup/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,19 +22,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return DerivLoginLayout(
-      socialAuthStateHandler: (_){},
+      socialAuthStateHandler: (_) {},
       redirectURL: 'deriv://example',
       onWebViewError: (String error) {},
       welcomeLabel: 'Welcome back!',
-      greetingLabel:
-          'Log in to your Deriv account to start trading and investing.',
-      onLoggedIn: (_) => Navigator.pushReplacement(
+      onLoggedIn: (DerivAuthLoggedInState state) => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => const HomePage(),
         ),
       ),
-      authErrorStateHandler: ExampleAuthErrorStateHandler(context: context),
+      authErrorStateHandler: AuthErrorStateHandler(context: context),
       onLoginError: (_) {},
       onResetPassTapped: () => Navigator.push(
         context,

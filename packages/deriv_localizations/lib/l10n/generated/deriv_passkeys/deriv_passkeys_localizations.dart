@@ -386,6 +386,24 @@ abstract class DerivPasskeysLocalizations {
   /// In en, this message translates to:
   /// **'The Passkeys service is unavailable'**
   String get passkeysOffErrorTitle;
+
+  /// No description provided for @never.
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get never;
+
+  /// No description provided for @unable_to_process_your_request.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to process your request'**
+  String get unable_to_process_your_request;
+
+  /// No description provided for @unable_to_process_your_request_description.
+  ///
+  /// In en, this message translates to:
+  /// **'We’re experiencing a temporary issue in processing your request. Please try again later.'**
+  String get unable_to_process_your_request_description;
 }
 
 class _DerivPasskeysLocalizationsDelegate

@@ -55,5 +55,8 @@
   "addMorePasskeysButtonText": "Add More Passkeys",
   "unableToSetupPasskey": "Unable to setup passkey",
   "unableToSetupPasskeyDescription": "We encountered an issue while setting up your passkey. The process might have been interrupted, or the session timed out. Please try again.",
-  "passkeysOffErrorTitle": "The Passkeys service is unavailable"
+  "passkeysOffErrorTitle": "The Passkeys service is unavailable",
+  "never": "Never",
+  "unable_to_process_your_request": "Unable to process your request",
+  "unable_to_process_your_request_description": "We’re experiencing a temporary issue in processing your request. Please try again later."
 }

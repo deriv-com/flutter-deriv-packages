@@ -1,6 +1,6 @@
 import 'package:deriv_auth/features/signup/models/deriv_residence_model.dart';
 import 'package:deriv_auth/features/signup/presentation/layouts/deriv_country_selection_layout.dart';
-import 'package:example/features/signup/pages/set_password_page.dart';
+import 'package:deriv_auth/features/single_entry/features/signup/pages/set_password_page.dart';
 import 'package:flutter/material.dart';
 
 class CountrySelectionPage extends StatelessWidget {

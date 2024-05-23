@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
+import 'package:deriv_auth/features/single_entry/core/auth_data.dart';
+import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,6 @@ class DerivLoginLayout extends StatefulWidget {
     required this.onSignupTapped,
     required this.onLoggedIn,
     required this.welcomeLabel,
-    required this.greetingLabel,
     required this.socialAuthStateHandler,
     required this.redirectURL,
     required this.onWebViewError,
@@ -46,7 +47,7 @@ class DerivLoginLayout extends StatefulWidget {
   final Function(DerivAuthErrorState)? onLoginError;
 
   /// Callback to be called when user is logged in.
-  final Function(BuildContext, DerivAuthLoggedInState) onLoggedIn;
+  final Function(DerivAuthLoggedInState) onLoggedIn;
 
   /// Callback to be called when social auth button is tapped.
   /// Give access to [SocialAuthDto] for 2FA.
@@ -58,9 +59,6 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Welcome text to be displayed on login page.
   final String welcomeLabel;
-
-  /// Greeting text to be displayed on login page.
-  final String greetingLabel;
 
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
@@ -144,8 +142,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       ..._buildTopSection(),
-                      const SizedBox(height: ThemeProvider.margin24),
-                      const SizedBox(height: ThemeProvider.margin24),
+                      const SizedBox(height: ThemeProvider.margin14),
                       ..._buildTextFields(
                           isEnabled: state is! DerivAuthLoadingState),
                       const SizedBox(height: ThemeProvider.margin24),
@@ -161,6 +158,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
+                      const ContinueWithPasskeyButton(),
                       DerivSocialAuthPanel(
                         socialAuthStateHandler: widget.socialAuthStateHandler,
                         redirectURL: widget.redirectURL,
@@ -186,16 +184,8 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
         Text(
           widget.welcomeLabel,
           style: context.theme.textStyle(
-            textStyle: TextStyles.title,
+            textStyle: TextStyles.subheading,
             color: context.theme.colors.prominent,
-          ),
-        ),
-        const SizedBox(height: ThemeProvider.margin08),
-        Text(
-          widget.greetingLabel,
-          style: context.theme.textStyle(
-            textStyle: TextStyles.body1,
-            color: context.theme.colors.general,
           ),
         ),
       ];
@@ -335,7 +325,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
     }
 
     if (state is DerivAuthLoggedInState) {
-      widget.onLoggedIn.call(context, state);
+      widget.onLoggedIn(state);
     }
   }
 

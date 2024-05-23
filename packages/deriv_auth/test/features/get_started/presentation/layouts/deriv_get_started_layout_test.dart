@@ -5,7 +5,6 @@ import 'package:deriv_auth/features/get_started/models/deriv_get_started_slide_m
 import 'package:deriv_auth/features/get_started/presentation/layouts/deriv_get_started_layout.dart';
 import 'package:deriv_language_selector/deriv_language_selector.dart';
 import 'package:deriv_localizations/l10n/generated/deriv_auth/deriv_auth_localizations.dart';
-import 'package:deriv_localizations/l10n/generated/deriv_auth/deriv_auth_localizations_ar.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,7 +75,7 @@ void main() {
         ),
       ));
 
-      await $.tap($(SecondaryButton));
+      await $(SecondaryButton).tap();
 
       expect(loginTapped, isTrue);
     });
@@ -107,7 +106,7 @@ void main() {
         ),
       );
 
-      await $.tap($(PrimaryButton));
+      await $(PrimaryButton).tap();
 
       expect(signupTapped, isTrue);
     });
