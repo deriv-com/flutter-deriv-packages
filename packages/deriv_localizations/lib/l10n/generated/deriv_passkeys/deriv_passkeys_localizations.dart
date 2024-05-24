@@ -5,7 +5,23 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'deriv_passkeys_localizations_ar.dart';
+import 'deriv_passkeys_localizations_bn.dart';
+import 'deriv_passkeys_localizations_de.dart';
 import 'deriv_passkeys_localizations_en.dart';
+import 'deriv_passkeys_localizations_es.dart';
+import 'deriv_passkeys_localizations_fr.dart';
+import 'deriv_passkeys_localizations_it.dart';
+import 'deriv_passkeys_localizations_ko.dart';
+import 'deriv_passkeys_localizations_pl.dart';
+import 'deriv_passkeys_localizations_pt.dart';
+import 'deriv_passkeys_localizations_ru.dart';
+import 'deriv_passkeys_localizations_si.dart';
+import 'deriv_passkeys_localizations_sw.dart';
+import 'deriv_passkeys_localizations_th.dart';
+import 'deriv_passkeys_localizations_tr.dart';
+import 'deriv_passkeys_localizations_vi.dart';
+import 'deriv_passkeys_localizations_zh.dart';
 
 /// Callers can lookup localized strings with an instance of DerivPasskeysLocalizations
 /// returned by `DerivPasskeysLocalizations.of(context)`.
@@ -59,18 +75,15 @@ import 'deriv_passkeys_localizations_en.dart';
 /// be consistent with the languages listed in the DerivPasskeysLocalizations.supportedLocales
 /// property.
 abstract class DerivPasskeysLocalizations {
-  DerivPasskeysLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  DerivPasskeysLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static DerivPasskeysLocalizations of(BuildContext context) {
-    return Localizations.of<DerivPasskeysLocalizations>(
-        context, DerivPasskeysLocalizations)!;
+    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations)!;
   }
 
-  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate =
-      _DerivPasskeysLocalizationsDelegate();
+  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate = _DerivPasskeysLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,8 +95,7 @@ abstract class DerivPasskeysLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -91,7 +103,25 @@ abstract class DerivPasskeysLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
+    Locale('bn'),
+    Locale('de'),
+    Locale('en'),
+    Locale('es'),
+    Locale('fr'),
+    Locale('it'),
+    Locale('ko'),
+    Locale('pl'),
+    Locale('pt'),
+    Locale('ru'),
+    Locale('si'),
+    Locale('sw'),
+    Locale('th'),
+    Locale('tr'),
+    Locale('vi'),
+    Locale('zh')
+  ];
 
   /// No description provided for @passkeyCreatedSuccessTitle.
   ///
@@ -406,34 +436,49 @@ abstract class DerivPasskeysLocalizations {
   String get unable_to_process_your_request_description;
 }
 
-class _DerivPasskeysLocalizationsDelegate
-    extends LocalizationsDelegate<DerivPasskeysLocalizations> {
+class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
   const _DerivPasskeysLocalizationsDelegate();
 
   @override
   Future<DerivPasskeysLocalizations> load(Locale locale) {
-    return SynchronousFuture<DerivPasskeysLocalizations>(
-        lookupDerivPasskeysLocalizations(locale));
+    return SynchronousFuture<DerivPasskeysLocalizations>(lookupDerivPasskeysLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'ko', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivPasskeysLocalizationsDelegate old) => false;
 }
 
 DerivPasskeysLocalizations lookupDerivPasskeysLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return DerivPasskeysLocalizationsEn();
+    case 'ar': return DerivPasskeysLocalizationsAr();
+    case 'bn': return DerivPasskeysLocalizationsBn();
+    case 'de': return DerivPasskeysLocalizationsDe();
+    case 'en': return DerivPasskeysLocalizationsEn();
+    case 'es': return DerivPasskeysLocalizationsEs();
+    case 'fr': return DerivPasskeysLocalizationsFr();
+    case 'it': return DerivPasskeysLocalizationsIt();
+    case 'ko': return DerivPasskeysLocalizationsKo();
+    case 'pl': return DerivPasskeysLocalizationsPl();
+    case 'pt': return DerivPasskeysLocalizationsPt();
+    case 'ru': return DerivPasskeysLocalizationsRu();
+    case 'si': return DerivPasskeysLocalizationsSi();
+    case 'sw': return DerivPasskeysLocalizationsSw();
+    case 'th': return DerivPasskeysLocalizationsTh();
+    case 'tr': return DerivPasskeysLocalizationsTr();
+    case 'vi': return DerivPasskeysLocalizationsVi();
+    case 'zh': return DerivPasskeysLocalizationsZh();
   }
 
   throw FlutterError(
-      'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

@@ -22,7 +22,7 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get labelLiveChat => 'دردشة مباشرة';
 
   @override
-  String get actionGetAFreeAccount => 'احصل على حساب مجاني';
+  String get actionSignUpForFree => 'قم بالتسجيل مجانًا';
 
   @override
   String get actionLogin => 'تسجيل دخول';
@@ -64,7 +64,7 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'أدخل عنوان بريد إلكتروني صالح';
 
   @override
-  String get warnPasswordLength => 'يجب إدخال 6-25 حرفًا.';
+  String get warnPasswordLength => 'يجب إدخال 8-25 حرفًا.';
 
   @override
   String get labelResetPassword => 'إعادة تعيين كلمة المرور';
@@ -272,5 +272,5 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get warnInvalidApplicationID => 'معرف تطبيق غير صالح';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => 'اللغة';
 }
