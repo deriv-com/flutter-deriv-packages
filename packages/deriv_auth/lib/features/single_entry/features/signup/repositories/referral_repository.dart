@@ -4,5 +4,5 @@ import 'package:deriv_auth/core/services/referral/base_referral_code_service.dar
 class ReferralRepository implements BaseReferralCodeService {
   @override
   Future<String> getReferralToken(String referralCode) =>
-      Future.value('${referralCode}Token');
+      Future<String>.value('${referralCode}Token');
 }

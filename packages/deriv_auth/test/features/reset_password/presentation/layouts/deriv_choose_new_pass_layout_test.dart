@@ -1,7 +1,6 @@
 // ignore_for_file: always_specify_types
 
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/reset_password/presentation/layouts/deriv_choose_new_pass_layout.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

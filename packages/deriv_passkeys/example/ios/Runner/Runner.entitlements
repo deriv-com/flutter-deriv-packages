@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>webcredentials:qa163.deriv.dev</string>
+		<string>applinks:qa163.deriv.dev</string>
+		<string>applinks:pro-7837426045311437779.frontendapi.corbado.io</string>
+		<string>webcredentials:pro-7837426045311437779.frontendapi.corbado.io</string>
+		<string>webcredentials:24be-94-207-97-237.ngrok-free.app</string>
+		<string>applinks:24be-94-207-97-237.ngrok-free.app</string>
+	</array>
+</dict>
+</plist>

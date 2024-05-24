@@ -1,4 +1,3 @@
-import 'package:deriv_auth/core/helpers/helpers.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:test/test.dart';
 

@@ -25,13 +25,15 @@ class GetStartedPage extends StatelessWidget {
             builder: (BuildContext context) => const SignupPage(),
           ),
         ),
-        onTapNavigation: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute<Widget>(
-              builder: (BuildContext context) => const SettingsPage(),
-            ),
-          );
-        },
+        onTapNavigation:
+            AuthData().data.settingPageModel.settingsPageNavigation ??
+                (BuildContext context) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<Widget>(
+                      builder: (BuildContext context) => const SettingsPage(),
+                    ),
+                  );
+                },
       );
 }
