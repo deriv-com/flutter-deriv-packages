@@ -1,3 +1,7 @@
+## 6.6.1
+
+ - **REFACTOR**(deriv_auth): update localization ([#594](https://github.com/regentmarkets/flutter-deriv-packages/issues/594)). ([5204c74f](https://github.com/regentmarkets/flutter-deriv-packages/commit/5204c74f609d946ea797e766e6bb652d82f76930))
+
 ## 6.6.0
 
  - **REFACTOR**(deriv_auth): replaced deriv_localizations commit hash ref with tag ref. ([572aa5fd](https://github.com/regentmarkets/flutter-deriv-packages/commit/572aa5fd54241d09b9993b102c0eceb117594821))

@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-05-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.6.1`](#deriv_auth---v661)
+ - [`deriv_live_chat` - `v0.0.1+2`](#deriv_live_chat---v0012)
+ - [`deriv_localizations` - `v1.4.1`](#deriv_localizations---v141)
+ - [`deriv_passkeys` - `v0.0.1+2`](#deriv_passkeys---v0012)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.1+2`
+
+---
+
+#### `deriv_auth` - `v6.6.1`
+
+ - **REFACTOR**(deriv_auth): update localization ([#594](https://github.com/regentmarkets/flutter-deriv-packages/issues/594)). ([5204c74f](https://github.com/regentmarkets/flutter-deriv-packages/commit/5204c74f609d946ea797e766e6bb652d82f76930))
+
+#### `deriv_live_chat` - `v0.0.1+2`
+
+ - **REFACTOR**(deriv_live_chat): Glitch_while_clicking_on_live_chat_icon_IOS ([#585](https://github.com/regentmarkets/flutter-deriv-packages/issues/585)). ([957faa3f](https://github.com/regentmarkets/flutter-deriv-packages/commit/957faa3fb16be0174e5e529cbcc068de31cc7bb3))
+
+#### `deriv_localizations` - `v1.4.1`
+
+ - **REFACTOR**(deriv_auth): update localization ([#594](https://github.com/regentmarkets/flutter-deriv-packages/issues/594)). ([5204c74f](https://github.com/regentmarkets/flutter-deriv-packages/commit/5204c74f609d946ea797e766e6bb652d82f76930))
+
+
 ## 2024-05-20
 
 ### Changes
