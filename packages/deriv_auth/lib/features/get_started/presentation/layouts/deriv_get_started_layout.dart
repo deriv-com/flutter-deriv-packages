@@ -159,7 +159,7 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
               onPressed: widget.onSignupTapped,
               child: Center(
                 child: Text(
-                  context.derivAuthLocalization.actionGetAFreeAccount,
+                  context.derivAuthLocalization.actionSignUpForFree,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
                     color: context.theme.colors.prominent,
