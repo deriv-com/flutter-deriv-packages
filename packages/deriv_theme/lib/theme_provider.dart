@@ -124,6 +124,8 @@ class ThemeProvider {
 
   static const double iconSize48 = Dimens.iconSize48;
 
+  static const double iconSize58 = Dimens.iconSize58;
+
   static const double iconSize64 = Dimens.iconSize64;
 
   static const double iconSize72 = Dimens.iconSize72;

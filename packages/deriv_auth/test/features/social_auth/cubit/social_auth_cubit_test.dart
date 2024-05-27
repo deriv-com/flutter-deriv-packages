@@ -1,6 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/social_auth/services/base_social_web_view_service.dart';
 import 'package:deriv_http_client/deriv_http_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

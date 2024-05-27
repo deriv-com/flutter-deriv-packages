@@ -4,6 +4,7 @@ import 'dart:developer' as logger;
 import 'package:crypto/crypto.dart';
 
 import 'package:deriv_http_client/deriv_http_client.dart';
+import 'package:deriv_web_view/deriv_web_view.dart';
 
 import 'package:deriv_web_view/models/app_authorization_challenge_request_model.dart';
 import 'package:deriv_web_view/models/app_authorization_challenge_response_model.dart';
@@ -21,12 +22,14 @@ Future<String?> performPassThroughAuthentication({
   required String endpoint,
   required String appId,
   required String appToken,
+  required String platform,
+  HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
 }) async {
   final url = getPtaLoginUrl(host: endpoint);
 
-  final BaseHttpClient client = ProxyAwareHttpClient(url);
+  final BaseHttpClient client = await getHttpClient?.call(url) ?? HttpClient();
 
   final String jwtToken = await getJwtToken(
     endpoint: endpoint,
@@ -41,6 +44,7 @@ Future<String?> performPassThroughAuthentication({
     urlParams: UrlParamsModel(
       redirectUrl: redirectPath,
       selectedAccount: defaultAccount ?? '',
+      platform: platform,
       action: action,
       code: code,
     ),

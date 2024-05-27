@@ -22,7 +22,7 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get labelLiveChat => 'Canlı sohbet';
 
   @override
-  String get actionGetAFreeAccount => 'Ücretsiz bir hesap edinin';
+  String get actionSignUpForFree => 'Ücretsiz Üye Olun';
 
   @override
   String get actionLogin => 'Giriş yap';
@@ -64,7 +64,7 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Geçerli bir e-posta adresi girin';
 
   @override
-  String get warnPasswordLength => '8-25 arası karakter girmelisiniz.';
+  String get warnPasswordLength => '6-25 arası karakter girmelisiniz.';
 
   @override
   String get labelResetPassword => 'Şifreyi sıfırla';
@@ -254,13 +254,13 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get labelDeveloper => 'Geliştirici';
 
   @override
-  String get labelEndpoint => 'Endpoint';
+  String get labelEndpoint => 'Bitiş noktası';
 
   @override
   String get semanticEndpoint => 'Bitiş noktası';
 
   @override
-  String get warnInvalidEndpoint => 'geçersiz endpoint';
+  String get warnInvalidEndpoint => 'geçersiz bitiş noktası';
 
   @override
   String get labelApplicationID => 'Başvuru ID';
@@ -270,4 +270,7 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'geçersiz başvuru ID';
+
+  @override
+  String get labelLanguage => 'Dil';
 }

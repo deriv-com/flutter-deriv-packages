@@ -401,7 +401,7 @@ class _NumberPadState extends State<NumberPad> {
         break;
 
       default:
-        if (_isInputValid(controller, text)) {
+        if (_isInputValid(context, controller, text)) {
           _setNewAmount(controller, text);
         }
     }
@@ -456,6 +456,14 @@ class _NumberPadState extends State<NumberPad> {
     if (onValidate == null) {
       return null;
     } else {
+      if (ExchangeNotifier.of(context) != null) {
+        final String? amountInString =
+            ExchangeNotifier.of(context)?.finalAmount() != 0.0
+                ? ExchangeNotifier.of(context)?.finalAmount().toString()
+                : '';
+        final RichText? richText = onValidate(amountInString ?? '')?.text;
+        return richText;
+      }
       final RichText? richText =
           onValidate(_firstInputController?.text ?? '')?.text;
       return richText;
@@ -580,7 +588,11 @@ class _NumberPadState extends State<NumberPad> {
     setState(() {});
   }
 
-  bool _isInputValid(TextEditingController controller, String input) {
+  bool _isInputValid(
+    BuildContext context,
+    TextEditingController controller,
+    String input,
+  ) {
     /// Increment maxInputLength by 1 because it counts the symbol one character
     final String currentText = controller.text;
     if (currentText.length >= (widget.maxInputLength + 1)) {
@@ -591,11 +603,15 @@ class _NumberPadState extends State<NumberPad> {
       return false;
     } else if (!hasValidPrecision(
         value: '$currentText$input',
-        validDecimalNumber: _formatter.maximumFractionDigits)) {
+        validDecimalNumber: _getDecimalNumber(context))) {
       return false;
     }
     return true;
   }
+
+  int _getDecimalNumber(BuildContext ctx) =>
+      ExchangeNotifier.of(ctx)?.activeNumberFormat.maximumFractionDigits ??
+      _formatter.maximumFractionDigits;
 
   TextEditingController? _getFocusedInput() {
     if (widget.numberPadType == NumberPadWidgetType.singleInput) {

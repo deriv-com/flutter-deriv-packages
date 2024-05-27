@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import 'package:intl/intl.dart';
 
 /// This class is used to provide [ExchangeController] to the widget tree.
 class ExchangeNotifier extends InheritedNotifier<ExchangeController> {
@@ -70,6 +71,9 @@ class ExchangeController extends ChangeNotifier {
       _secondaryCurrency = CurrencyDetail(0, _secondaryCurrency.currencyType);
     }
   }
+
+  /// This will return the current currency formatter that is in use.
+  NumberFormat get activeNumberFormat => primaryCurrency.formatter;
 
   /// This will interchange the currency, amount from textField to switcher and vice-versa.
   void swap() {

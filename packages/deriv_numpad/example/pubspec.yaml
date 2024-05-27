@@ -11,7 +11,10 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   deriv_numpad:
-    path: ../
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_numpad
+      ref: deriv_numpad-v1.1.1
   flutter:
     sdk: flutter
   intl: ^0.18.0

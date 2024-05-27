@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "Jeśli mają Państwo jakiekolwiek pytania, prosimy o kontakt ",
   "labelLiveChat": "Czat na żywo",
-  "actionGetAFreeAccount": "Proszę założyć darmowe konto",
+  "actionSignUpForFree": "Zarejestruj się za darmo",
   "actionLogin": "Zaloguj",
   "labelTwoFactorAuth": "Uwierzytelnianie dwuskładnikowe",
   "informEnterTwoFactorAuthCode": "Proszę wprowadzić 6-cyfrowy kod z aplikacji uwierzytelniającej w telefonie.",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "nieprawidłowy punkt końcowy",
   "labelApplicationID": "ID aplikacji",
   "semanticApplicationID": "ID aplikacji",
-  "warnInvalidApplicationID": "nieprawidłowe ID aplikacji"
+  "warnInvalidApplicationID": "nieprawidłowe ID aplikacji",
+  "labelLanguage": "Język"
 }

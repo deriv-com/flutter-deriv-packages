@@ -1,3 +1,33 @@
+## 0.0.7+4
+
+ - **FIX**(deriv_ui): add specific formatter for crypto and fiat currency ([#569](https://github.com/regentmarkets/flutter-deriv-packages/issues/569)). ([711abee1](https://github.com/regentmarkets/flutter-deriv-packages/commit/711abee199278b7f0fd7463de6f480d561e99d67))
+
+## 0.0.7+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.7+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.7+1
+
+ - **REFACTOR**(deriv_ui): update theme deps. ([db4c4bc2](https://github.com/regentmarkets/flutter-deriv-packages/commit/db4c4bc2a6d4f042ab624f781ea0dc5e837ed860))
+
+## 0.0.7
+
+ - **FIX**(deriv_ui): update deriv_theme ([#525](https://github.com/regentmarkets/flutter-deriv-packages/issues/525)). ([304a5b59](https://github.com/regentmarkets/flutter-deriv-packages/commit/304a5b59d1603196ae37f53a682db8de69bedcf0))
+ - **FIX**(deriv_ui): update theme dependency ([#522](https://github.com/regentmarkets/flutter-deriv-packages/issues/522)). ([d00e3edf](https://github.com/regentmarkets/flutter-deriv-packages/commit/d00e3edfe08e861401c501b2ac1944a9d7af11f2))
+ - **FEAT**(deriv_ui): add language selector component ([#509](https://github.com/regentmarkets/flutter-deriv-packages/issues/509)). ([bff66151](https://github.com/regentmarkets/flutter-deriv-packages/commit/bff661513f330d014154657fbf170b75512dc180))
+
+## 0.0.6+7
+
+ - Update a dependency to the latest release.
+
+## 0.0.6+6
+
+ - **FIX**(deriv_ui): validating secondary currency instead of main currency in numpad. ([37154fb4](https://github.com/regentmarkets/flutter-deriv-packages/commit/37154fb4c7b9171ae6a1caf0e9d7dad58b63f9be))
+
 ## 0.0.6+5
 
  - **REFACTOR**(deriv_ui): remove example and android folder ([#503](https://github.com/regentmarkets/flutter-deriv-packages/issues/503)). ([8c90e199](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c90e1995a3a04c945923cb0f8f0e7480cde03b7))

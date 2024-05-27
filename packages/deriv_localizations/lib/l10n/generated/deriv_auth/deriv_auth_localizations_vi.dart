@@ -22,7 +22,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get labelLiveChat => 'Live chat';
 
   @override
-  String get actionGetAFreeAccount => 'Nhận tài khoản miễn phí';
+  String get actionSignUpForFree => 'Đăng ký miễn phí';
 
   @override
   String get actionLogin => 'Đăng nhập';
@@ -270,4 +270,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'mã đăng ký không hợp lệ';
+
+  @override
+  String get labelLanguage => 'Ngôn ngữ';
 }

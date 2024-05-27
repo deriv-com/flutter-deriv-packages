@@ -153,11 +153,11 @@ abstract class DerivAuthLocalizations {
   /// **'Live chat'**
   String get labelLiveChat;
 
-  /// No description provided for @actionGetAFreeAccount.
+  /// No description provided for @actionSignUpForFree.
   ///
   /// In en, this message translates to:
-  /// **'Get a free account'**
-  String get actionGetAFreeAccount;
+  /// **'Sign up for free'**
+  String get actionSignUpForFree;
 
   /// No description provided for @actionLogin.
   ///
@@ -240,7 +240,7 @@ abstract class DerivAuthLocalizations {
   /// No description provided for @warnPasswordLength.
   ///
   /// In en, this message translates to:
-  /// **'You should enter 8-25 characters.'**
+  /// **'You should enter 6-25 characters.'**
   String get warnPasswordLength;
 
   /// No description provided for @labelResetPassword.
@@ -644,6 +644,12 @@ abstract class DerivAuthLocalizations {
   /// In en, this message translates to:
   /// **'invalid application ID'**
   String get warnInvalidApplicationID;
+
+  /// No description provided for @labelLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get labelLanguage;
 }
 
 class _DerivAuthLocalizationsDelegate extends LocalizationsDelegate<DerivAuthLocalizations> {

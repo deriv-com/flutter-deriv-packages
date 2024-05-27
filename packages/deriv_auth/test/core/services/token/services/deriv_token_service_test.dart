@@ -26,7 +26,7 @@ void main() {
 
   setUpAll(() {
     _client = MockHttpClient();
-    _tokenService = DerivTokenService();
+    _tokenService = DerivTokenService(_client);
     _jwtToken = 'jwtToken';
     _connectionInfo = MockConnectionInfo();
 

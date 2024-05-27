@@ -22,7 +22,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get labelLiveChat => 'Mazungumzo mubashara';
 
   @override
-  String get actionGetAFreeAccount => 'Pata akaunti ya bure';
+  String get actionSignUpForFree => 'Jisajili bila malipo';
 
   @override
   String get actionLogin => 'Ingia';
@@ -270,4 +270,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'kitambulisho cha programu halali';
+
+  @override
+  String get labelLanguage => 'Lugha';
 }

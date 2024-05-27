@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// Setting page model
 class SettingPageModel {
   /// Constructor [SettingPageModel]
@@ -7,6 +9,7 @@ class SettingPageModel {
     required this.endpoint,
     required this.saveValues,
     required this.updateFlavorConfigs,
+    this.settingsPageNavigation,
   });
 
   /// Setting page App label
@@ -24,4 +27,7 @@ class SettingPageModel {
   /// Update flavor configurations
   final Function({required String endpoint, required String appId})
       updateFlavorConfigs;
+
+  /// Settings page navigation
+  final Function(BuildContext context)? settingsPageNavigation;
 }

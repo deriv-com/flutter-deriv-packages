@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "If you have any questions, contact us via ",
   "labelLiveChat": "Live chat",
-  "actionGetAFreeAccount": "Get a free account",
+  "actionSignUpForFree": "Sign up for free",
   "actionLogin": "Log in",
   "labelTwoFactorAuth": "Two-factor authentication",
   "informEnterTwoFactorAuthCode": "Enter the 6-digit code from the authenticator app on your phone.",
@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Don’t have an account yet?",
   "actionCreateANewAccount": "Create a new account",
   "informInvalidEmailFormat": "Enter a valid email address",
-  "warnPasswordLength": "You should enter 8-25 characters.",
+  "warnPasswordLength": "You should enter 6-25 characters.",
   "labelResetPassword": "Reset password",
   "labelChooseNewPass": "Choose a new password",
   "labelCreatePass": "Password",
@@ -95,7 +95,7 @@
   "informInvalid2FACode": "The code you entered is invalid. Check and try again.",
   "informFailedAuthentication": "Your email or password may be incorrect. Did you sign up with a social account? Check and try again.",
   "informDeactivatedAccount": "Your account is deactivated.",
-   "informFailedAuthorization": "Authorization failed.",
+  "informFailedAuthorization": "Authorization failed.",
   "informInvalidResidence": "Invalid residence.",
   "informInvalidCredentials": "Invalid credentials.",
   "informMissingOtp": "Missing one-time password.",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "invalid endpoint",
   "labelApplicationID": "Application ID",
   "semanticApplicationID": "Application ID",
-  "warnInvalidApplicationID": "invalid application ID"
+  "warnInvalidApplicationID": "invalid application ID",
+  "labelLanguage": "Language"
 }

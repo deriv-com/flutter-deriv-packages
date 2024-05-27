@@ -22,7 +22,7 @@ class DerivAuthLocalizationsEs extends DerivAuthLocalizations {
   String get labelLiveChat => 'Live Chat';
 
   @override
-  String get actionGetAFreeAccount => 'Obtener una cuenta gratuita';
+  String get actionSignUpForFree => 'Regístrate gratis';
 
   @override
   String get actionLogin => 'Iniciar sesión';
@@ -270,4 +270,7 @@ class DerivAuthLocalizationsEs extends DerivAuthLocalizations {
 
   @override
   String get warnInvalidApplicationID => 'ID de aplicación no válido';
+
+  @override
+  String get labelLanguage => 'Idioma';
 }

@@ -25,3 +25,9 @@ extension RegexExtension on String {
   /// Signup valid Password Regex.
   bool get isValidSignupPassword => validPasswordRegex.hasMatch(this);
 }
+
+/// Extension methods for capitalizing [String].
+extension Capitalize on String {
+  /// Capitalize the first letter of the string.
+  String get capitalize => '${this[0].toUpperCase()}${substring(1)}';
+}

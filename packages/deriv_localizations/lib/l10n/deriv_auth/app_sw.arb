@@ -13,7 +13,7 @@
   "actionOk": "SAWA",
   "warnNotAvailableCountries": "Ikiwa una maswali yoyote, wasiliana nasi kupitia ",
   "labelLiveChat": "Mazungumzo mubashara",
-  "actionGetAFreeAccount": "Pata akaunti ya bure",
+  "actionSignUpForFree": "Jisajili bila malipo",
   "actionLogin": "Ingia",
   "labelTwoFactorAuth": "Uthibitishaji-wa hatua mbili",
   "informEnterTwoFactorAuthCode": "Ingiza nambari ya tarakimu 6 kutoka kwa programu ya uthibitishaji kwenye simu yako.",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "hatua ya mwisho halali",
   "labelApplicationID": "Kitambulisho cha programu",
   "semanticApplicationID": "Kitambulisho cha programu",
-  "warnInvalidApplicationID": "kitambulisho cha programu halali"
+  "warnInvalidApplicationID": "kitambulisho cha programu halali",
+  "labelLanguage": "Lugha"
 }
