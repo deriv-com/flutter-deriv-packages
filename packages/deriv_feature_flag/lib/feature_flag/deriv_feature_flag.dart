@@ -46,6 +46,21 @@ class DerivFeatureFlag {
         defaultValue: defaultValue,
       );
 
+  /// Returns the value of a boolean feature flag.
+  bool getBoolFeatureValue(String key, {bool defaultValue = false}) =>
+      (FeatureFlagRepository.getInstance().getFeatureValue(key) as bool?) ??
+      defaultValue;
+
+  /// Returns the value of a String feature flag.
+  String getStringFeatureValue(String key, {String defaultValue = ''}) =>
+      (FeatureFlagRepository.getInstance().getFeatureValue(key) as String?) ??
+      defaultValue;
+
+  /// Returns the value of a num feature flag.
+  num getNumFeatureValue(String key, {num defaultValue = 0}) =>
+      (FeatureFlagRepository.getInstance().getFeatureValue(key) as num?) ??
+      defaultValue;
+
   /// only for testing purposes.
   @visibleForTesting
   bool isFeatureOnTest(FeatureFlagRepository featureFlagRepository, String key,
