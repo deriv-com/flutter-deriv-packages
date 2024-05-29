@@ -1,8 +1,6 @@
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_passkeys/src/data/models/deriv_passkey_model.dart';
 import 'package:deriv_passkeys/src/data/platform/deriv_passkeys_method_channel.dart';
-import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
-import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_verify_credentials_response_entity.dart';
 import 'package:deriv_passkeys/src/domain/platform/base_deriv_passkeys_method_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';

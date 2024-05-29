@@ -1,5 +1,4 @@
 import 'package:deriv_passkeys/deriv_passkeys.dart';
-import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_verify_credentials_response_entity.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockDerivPasskeysService extends Mock implements DerivPasskeysService {}

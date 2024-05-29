@@ -61,7 +61,8 @@ class EffortlessPasskeysPage extends StatelessWidget {
         child: Scaffold(
           body: SafeArea(
             child: LayoutBuilder(
-                builder: (_, constraints) => SingleChildScrollView(
+                builder: (_, BoxConstraints constraints) =>
+                    SingleChildScrollView(
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
                             minWidth: constraints.maxWidth,
