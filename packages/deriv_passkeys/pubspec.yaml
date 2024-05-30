@@ -22,9 +22,9 @@ dependencies:
       ref: deriv_localizations-v1.4.1
   deriv_ui:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:emad-deriv/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.7+4
+      ref: emad/add-language-parameter_to-webview-package
   deriv_http_client:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
