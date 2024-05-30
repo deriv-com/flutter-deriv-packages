@@ -104,6 +104,7 @@ class DerivAuthService extends BaseAuthService {
       if (tokenList != null && tokenList.isNotEmpty) {
         print(
             '------------------------ RUNNING MULTI TOKEN AUTH ------------------------');
+        print(token);
         for (int i = 0; i < accounts.length; i++) {
           print(
               '${accounts[i].accountId} (${accounts[i].currency}): ${accounts[i].token}');
