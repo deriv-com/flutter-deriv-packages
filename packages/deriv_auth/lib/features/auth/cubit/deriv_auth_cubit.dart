@@ -88,7 +88,15 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
   @override
   Future<void> tokenLogin(String token, {List<String>? tokenList}) async {
     emit(DerivAuthLoadingState());
-
+    if (tokenList == null) {
+      final List<AccountModel> accountList =
+          await authService.getLatestAccounts();
+      tokenList = accountList
+          .where((AccountModel account) =>
+              account.token != null && token != account.token)
+          .map((AccountModel account) => account.token!)
+          .toList();
+    }
     await _tokenLoginRequest(
       token,
       tokenList: tokenList,
