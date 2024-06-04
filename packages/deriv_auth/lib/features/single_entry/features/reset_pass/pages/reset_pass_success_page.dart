@@ -28,11 +28,14 @@ class _ResetPassSuccessPageState extends State<ResetPassSuccessPage> {
       ],
     ).then(
       (_) {
-        Navigator.of(context).push(
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => const LoginPage(),
-          ),
-        );
+        Navigator.of(context).popUntil(
+            (route) => route.isFirst == const LoginPage().runtimeType);
+
+        // Navigator.of(context).push(
+        //   MaterialPageRoute<void>(
+        //     builder: (BuildContext context) => const LoginPage(),
+        //   ),
+        // );
       },
     );
   }
