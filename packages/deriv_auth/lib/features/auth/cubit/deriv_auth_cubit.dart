@@ -87,6 +87,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Future<void> tokenLogin(String token, {List<String>? tokenList}) async {
+    print('-------------------- RUNNING TOKEN LOGIN ---------------------');
     emit(DerivAuthLoadingState());
     if (tokenList == null) {
       final List<AccountModel> accountList =
@@ -114,6 +115,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
         request: request,
         userAgent: userAgent,
       );
+
+      ///TODO (John): Check if this has to be reset for every account change
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
