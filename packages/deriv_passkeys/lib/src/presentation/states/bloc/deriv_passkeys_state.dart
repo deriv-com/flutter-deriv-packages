@@ -17,7 +17,7 @@ class DerivPasskeysLoadedState extends DerivPasskeysState {
     required this.isSupported,
   });
 
-  ///
+  /// Flag to check device support for passkeys.
   final bool isSupported;
 
   /// The passkeys list.

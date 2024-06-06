@@ -160,7 +160,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
     });
   }
 
-  ///
+  /// Flag to check device support for passkeys.
   late final bool _isSupported;
 
   /// The list of passkeys.
