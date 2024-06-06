@@ -183,4 +183,97 @@ class DerivRudderstackEvents {
       }),
     );
   }
+
+  /// Tracks when the real signup form opened.
+  void logOpenRealSignUp() {
+    DerivRudderstack().track(
+      eventName: 'ce_real_account_signup_form',
+      properties: RudderProperty.fromMap(<String, dynamic>{
+        'action': 'open',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'real_signup_derivgo'
+      }),
+    );
+  }
+
+  /// Tracks when the user presses the next button
+  /// and the step is successfully passed.
+  void logStepPassedRealSignUp(
+      [String? stepNum,
+      String? stepCodename,
+      List<Map<String, dynamic>>? userChoice]) {
+    DerivRudderstack().track(
+      eventName: 'ce_real_account_signup_form',
+      properties: RudderProperty.fromMap(<String, dynamic>{
+        'action': 'step_passed',
+        'step_codename': stepCodename,
+        'step_num': stepNum,
+        'user_choise': userChoice,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'real_signup_derivgo'
+      }),
+    );
+  }
+
+  /// Tracks when user tap the 'previous' button and go to previous screen.
+  void logStepBackRealSignUp(String stepCodeName) {
+    DerivRudderstack().track(
+      eventName: 'ce_real_account_signup_form',
+      properties: RudderProperty.fromMap(<String, dynamic>{
+        'action': 'step_back',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'real_signup_derivgo'
+      }),
+    );
+  }
+
+  /// Tracks if the user presses the close button on the signup form.
+  void logCloseRealSignUp() {
+    DerivRudderstack().track(
+      eventName: 'ce_real_account_signup_form',
+      properties: RudderProperty.fromMap(<String, dynamic>{
+        'action': 'close',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'real_signup_derivgo'
+      }),
+    );
+  }
+
+  /// Tracks if any logical error has happened on the form,
+  /// validation error for instance.
+  void logValidationErrorDuringRealSignUp() {
+    DerivRudderstack().track(
+      eventName: 'ce_real_account_signup_form',
+      properties: RudderProperty.fromMap(<String, dynamic>{
+        'action': 'real_signup_error',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'real_signup_derivgo'
+      }),
+    );
+  }
+
+  /// Tracks system error has happened,
+  /// like no connection to the server and etc.
+  void logOtherErrorRealSignUp() {
+    DerivRudderstack().track(
+      eventName: 'ce_real_account_signup_form',
+      properties: RudderProperty.fromMap(<String, dynamic>{
+        'action': 'real_signup_error',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'real_signup_derivgo'
+      }),
+    );
+  }
+
+  /// Tracks when the signup flow is finished.
+  void logRealSignUpFinished() {
+    DerivRudderstack().track(
+      eventName: 'ce_real_account_signup_form',
+      properties: RudderProperty.fromMap(<String, dynamic>{
+        'action': 'real_signup_finished',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'real_signup_derivgo'
+      }),
+    );
+  }
 }
