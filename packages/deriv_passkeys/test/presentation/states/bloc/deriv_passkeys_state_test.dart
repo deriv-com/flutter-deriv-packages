@@ -5,7 +5,10 @@ void main() {
   group('DerivPasskeysLoadedState', () {
     test('props should contain passkeysList', () {
       final List<DerivPasskeyEntity> passkeysList = <DerivPasskeyEntity>[];
-      final DerivPasskeysState state = DerivPasskeysLoadedState(passkeysList);
+      final DerivPasskeysState state = DerivPasskeysLoadedState(
+        passkeysList,
+        isSupported: false,
+      );
       expect(state.props, contains(passkeysList));
     });
   });

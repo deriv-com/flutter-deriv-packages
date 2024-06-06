@@ -12,7 +12,13 @@ abstract class DerivPasskeysState extends Equatable {
 /// [DerivPasskeysLoadedState] represents the loaded state within the DerivPasskeys flow.
 class DerivPasskeysLoadedState extends DerivPasskeysState {
   /// Creates a [DerivPasskeysLoadedState].
-  const DerivPasskeysLoadedState(this.passkeysList);
+  const DerivPasskeysLoadedState(
+    this.passkeysList, {
+    required this.isSupported,
+  });
+
+  ///
+  final bool isSupported;
 
   /// The passkeys list.
   final List<DerivPasskeyEntity> passkeysList;

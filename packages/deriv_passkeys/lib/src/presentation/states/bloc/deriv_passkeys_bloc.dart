@@ -58,7 +58,10 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         );
       }).catchError((Object error) {
         if (error is CanceledPlatformException) {
-          emit(DerivPasskeysLoadedState(passkeysList));
+          emit(DerivPasskeysLoadedState(
+            passkeysList,
+            isSupported: _isSupported,
+          ));
         } else if (error is NoCredentialPlatformException) {
           emit(const NoCredentialErrorState());
         } else if (error is ServerException) {
@@ -87,7 +90,10 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         emit(DerivPasskeysCreatedSuccessfullyState());
         final DerivPasskeyEntity derivPasskeyEntity = credential;
         passkeysList.add(derivPasskeyEntity);
-        emit(DerivPasskeysLoadedState(passkeysList));
+        emit(DerivPasskeysLoadedState(
+          passkeysList,
+          isSupported: _isSupported,
+        ));
       }).catchError((Object error) {
         if (error is ServerException) {
           emit(
@@ -99,7 +105,10 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         } else {
           emit(const DerivPasskeysErrorState('Error creating passkey'));
         }
-        emit(DerivPasskeysLoadedState(passkeysList));
+        emit(DerivPasskeysLoadedState(
+          passkeysList,
+          isSupported: _isSupported,
+        ));
       });
     });
 
@@ -112,7 +121,10 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
           .getPasskeysList()
           .then((List<DerivPasskeyEntity> _passkeysList) {
         passkeysList = _passkeysList;
-        emit(DerivPasskeysLoadedState(passkeysList));
+        emit(DerivPasskeysLoadedState(
+          passkeysList,
+          isSupported: _isSupported,
+        ));
       }).catchError((Object error) {
         if (error is ServerException) {
           emit(
@@ -139,12 +151,17 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
 
     derivPasskeysService.isSupported().then((bool isSupported) {
       if (isSupported) {
+        _isSupported = true;
         add(const SetDerivPasskeysInitializedEvent());
       } else {
+        _isSupported = false;
         add(const SetDerivPasskeysNotSupportedEvent());
       }
     });
   }
+
+  ///
+  late final bool _isSupported;
 
   /// The list of passkeys.
   List<DerivPasskeyEntity> passkeysList = <DerivPasskeyEntity>[];

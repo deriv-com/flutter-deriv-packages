@@ -1,6 +1,6 @@
 import AuthenticationServices
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 public class PublicKeyCredentialRequestOptions: NSObject {
     
     enum OptionError: Error {
@@ -173,7 +173,7 @@ public class PublicKeyCredentialRequestOptions: NSObject {
     }
 }
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 extension PublicKeyCredentialRequestOptions.OptionError: CustomStringConvertible {
     var description: String {
         switch self {
@@ -185,14 +185,14 @@ extension PublicKeyCredentialRequestOptions.OptionError: CustomStringConvertible
     }
 }
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 extension PublicKeyCredentialRequestOptions.OptionError: LocalizedError {
     private var errorDescription: String {
         return self.description
     }
 }
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 extension String {    
     var base64urlDecoded: Data? {
         var base64 = self.replacingOccurrences(of: "-", with: "+").replacingOccurrences(of: "_", with: "/")
