@@ -1,5 +1,5 @@
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
-import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
+import 'package:deriv_passkeys/src/core/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
 import 'package:deriv_passkeys/src/presentation/utils/date_time_utils.dart';
 import 'package:deriv_theme/deriv_theme.dart';
