@@ -1,3 +1,7 @@
+## 0.0.1+4
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
 ## 0.0.1+3
 
  - **REFACTOR**(deriv_passkeys): Update exception handling in DerivPasskeysPlugin. ([5d218724](https://github.com/regentmarkets/flutter-deriv-packages/commit/5d218724ffd2cf71dc58238fda97e8413abfee8a))

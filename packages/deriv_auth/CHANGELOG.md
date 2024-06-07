@@ -1,3 +1,7 @@
+## 6.6.3
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
 ## 6.6.2
 
  - Update a dependency to the latest release.

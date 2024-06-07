@@ -4,8 +4,8 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'deriv_passkeys'
-  s.version          = '0.0.1'
-  s.summary          = 'A new Flutter project.'
+  s.version          = '1.0.0'
+  s.summary          = 'Deriv Passkeys for iOS.'
   s.description      = <<-DESC
 A new Flutter project.
                        DESC
