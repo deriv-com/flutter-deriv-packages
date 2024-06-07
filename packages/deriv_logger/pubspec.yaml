@@ -9,6 +9,11 @@ dependencies:
   flutter:
     sdk: flutter
   logger: ^2.3.0
+  colored_json: ^1.1.2
+  flutter_deriv_api:
+    git:
+      url: git@github.com:sagar-deriv/flutter-deriv-api.git
+      ref: e8ec5ec722cc044602e34787dc22ca516ecafc1f
 
 dev_dependencies:
   flutter_test:
