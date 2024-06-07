@@ -390,13 +390,13 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @continueTradingButtonText.
   ///
   /// In en, this message translates to:
-  /// **'Continue Trading'**
+  /// **'Continue trading'**
   String get continueTradingButtonText;
 
   /// No description provided for @addMorePasskeysButtonText.
   ///
   /// In en, this message translates to:
-  /// **'Add More Passkeys'**
+  /// **'Add more passkeys'**
   String get addMorePasskeysButtonText;
 
   /// No description provided for @unableToSetupPasskey.
