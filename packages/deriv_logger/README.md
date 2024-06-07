@@ -11,29 +11,58 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A debugging package that prints console and network logs in the UI.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- preetify terminal logs
+- prints terminal logs in UI
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the package to your pubspec.yaml file
+
+```yaml
+deriv_logger:
+  git:
+    url: git@github.com:regentmarkets/flutter-deriv-packages.git
+    path: packages/deriv_logger
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+#### Initialize the App Logger
 
 ```dart
-const like = 'sample';
+AppLogger.initialize();
 ```
 
-## Additional information
+#### View console logs in UI (Optional)
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+In order to enable this, Root widget under `MaterialApp` should be wrapped with DebugOverlay widget.
+
+```dart
+DebugOverlay(
+    builder: (_) => SplashPage(),
+    enabled: true,
+    ),
+```
+
+#### Use its methods
+
+```dart
+/// Log for information
+AppLogger.i('Log message', title: 'Title of logs');
+
+/// Log for error
+AppLogger.e('Log message', title: 'Title of logs');
+
+/// Log for fatal
+AppLogger.f('Log message', title: 'Title of logs');
+
+/// Log for success
+AppLogger.s('Log message', title: 'Title of logs');
+
+/// Log for warning
+AppLogger.w('Log message', title: 'Title of logs');
+```
