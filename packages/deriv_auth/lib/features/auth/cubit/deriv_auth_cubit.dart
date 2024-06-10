@@ -87,7 +87,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Future<void> tokenLogin(String token, {List<String>? tokenList}) async {
-    print('-------------------- RUNNING TOKEN LOGIN ---------------------');
     emit(DerivAuthLoadingState());
     if (tokenList == null) {
       final List<AccountModel> accountList =
