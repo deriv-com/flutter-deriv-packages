@@ -57,7 +57,7 @@ class DerivRudderstackEvents {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
       properties: RudderProperty.fromMap(<String, dynamic>{
-        'action': 'tab_referral_toggle',
+        'action': 'tap_referral_toggle',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
       }),
