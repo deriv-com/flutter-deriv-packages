@@ -22,7 +22,7 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get labelLiveChat => '即時聊天';
 
   @override
-  String get actionGetAFreeAccount => '獲取免費帳戶';
+  String get actionSignUpForFree => '免費註冊';
 
   @override
   String get actionLogin => '登入';
@@ -272,5 +272,5 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get warnInvalidApplicationID => '無效的應用程式 ID';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => '語言';
 }

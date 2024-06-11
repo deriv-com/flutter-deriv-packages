@@ -1,3 +1,7 @@
+## 0.1.1
+
+ - **FEAT**(deriv_feature_flag): Add a methods to retrieve values for feature flag types other than boolean ([#513](https://github.com/regentmarkets/flutter-deriv-packages/issues/513)). ([dd30f341](https://github.com/regentmarkets/flutter-deriv-packages/commit/dd30f3419b8d0ca887b4cfc58280db4bc4738076))
+
 ## 0.1.0+1
 
  - **FIX**(deriv_feature_flag): remove env dependancy ([#477](https://github.com/regentmarkets/flutter-deriv-packages/issues/477)). ([c62b20eb](https://github.com/regentmarkets/flutter-deriv-packages/commit/c62b20eb88cf1397ecf4437a7854ff19187d7662))

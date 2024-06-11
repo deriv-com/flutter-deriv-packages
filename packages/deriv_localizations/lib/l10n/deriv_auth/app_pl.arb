@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "Jeśli mają Państwo jakiekolwiek pytania, prosimy o kontakt ",
   "labelLiveChat": "Czat na żywo",
-  "actionGetAFreeAccount": "Proszę założyć darmowe konto",
+  "actionSignUpForFree": "Zarejestruj się za darmo",
   "actionLogin": "Zaloguj",
   "labelTwoFactorAuth": "Uwierzytelnianie dwuskładnikowe",
   "informEnterTwoFactorAuthCode": "Proszę wprowadzić 6-cyfrowy kod z aplikacji uwierzytelniającej w telefonie.",
@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Nie mają Państwo jeszcze konta?",
   "actionCreateANewAccount": "Załóż nowe konto",
   "informInvalidEmailFormat": "Proszę wprowadzić prawidłowy adres e-mail",
-  "warnPasswordLength": "Należy wprowadzić 6-25 znaków.",
+  "warnPasswordLength": "Wprowadź od 8 do 25 znaków.",
   "labelResetPassword": "Zresetuj hasło",
   "labelChooseNewPass": "Wybierz nowe hasło",
   "labelCreatePass": "Hasło",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "nieprawidłowy punkt końcowy",
   "labelApplicationID": "ID aplikacji",
   "semanticApplicationID": "ID aplikacji",
-  "warnInvalidApplicationID": "nieprawidłowe ID aplikacji"
+  "warnInvalidApplicationID": "nieprawidłowe ID aplikacji",
+  "labelLanguage": "Język"
 }

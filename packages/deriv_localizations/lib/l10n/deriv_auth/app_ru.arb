@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "Если у Вас возникли вопросы, свяжитесь с нами по ",
   "labelLiveChat": "Чат",
-  "actionGetAFreeAccount": "Получите бесплатный счет",
+  "actionSignUpForFree": "Зарегистрируйтесь бесплатно",
   "actionLogin": "Вход",
   "labelTwoFactorAuth": "Двухфакторная аутентификация",
   "informEnterTwoFactorAuthCode": "Введите 6-значный код из приложения аутентификатора на Вашем телефоне.",
@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "У Вас еще нет учетной записи?",
   "actionCreateANewAccount": "Откройте новый счет",
   "informInvalidEmailFormat": "Введите действительный адрес электронной почты",
-  "warnPasswordLength": "Вы должны ввести 6-25 символов.",
+  "warnPasswordLength": "Вы должны ввести 8-25 символов.",
   "labelResetPassword": "Сбросить пароль",
   "labelChooseNewPass": "Выберите новый пароль",
   "labelCreatePass": "Пароль",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "неверная конечная точка",
   "labelApplicationID": "ID приложения",
   "semanticApplicationID": "ID приложения",
-  "warnInvalidApplicationID": "неверный ID приложения"
+  "warnInvalidApplicationID": "неверный ID приложения",
+  "labelLanguage": "Язык"
 }

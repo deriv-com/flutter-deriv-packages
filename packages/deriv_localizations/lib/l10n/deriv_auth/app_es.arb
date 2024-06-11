@@ -13,7 +13,7 @@
   "actionOk": "Aceptar",
   "warnNotAvailableCountries": "Si tiene alguna pregunta, póngase en contacto con nosotros a través de ",
   "labelLiveChat": "Live Chat",
-  "actionGetAFreeAccount": "Obtener una cuenta gratuita",
+  "actionSignUpForFree": "Regístrate gratis",
   "actionLogin": "Iniciar sesión",
   "labelTwoFactorAuth": "Autenticación de dos factores",
   "informEnterTwoFactorAuthCode": "Introduzca el código de 6 dígitos de la aplicación autenticadora de su teléfono.",
@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "¿Aún no tiene una cuenta?",
   "actionCreateANewAccount": "Crear una cuenta nueva",
   "informInvalidEmailFormat": "Introduzca una dirección de correo electrónico válida",
-  "warnPasswordLength": "Debería ingresar de 6 - 25 caracteres.",
+  "warnPasswordLength": "Debería ingresar de 8 a 25 caracteres.",
   "labelResetPassword": "Restablecer contraseña",
   "labelChooseNewPass": "Elija una contraseña nueva",
   "labelCreatePass": "Contraseña",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "punto final no válido",
   "labelApplicationID": "ID de aplicación",
   "semanticApplicationID": "ID de aplicación",
-  "warnInvalidApplicationID": "ID de aplicación no válido"
+  "warnInvalidApplicationID": "ID de aplicación no válido",
+  "labelLanguage": "Idioma"
 }

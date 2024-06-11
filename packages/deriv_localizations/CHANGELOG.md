@@ -1,3 +1,19 @@
+## 1.4.1
+
+ - **REFACTOR**(deriv_auth): update localization ([#594](https://github.com/regentmarkets/flutter-deriv-packages/issues/594)). ([5204c74f](https://github.com/regentmarkets/flutter-deriv-packages/commit/5204c74f609d946ea797e766e6bb652d82f76930))
+
+## 1.4.0
+
+ - **FEAT**(deriv_passkeys): [UPM-547] Deriv passkeys package ([#425](https://github.com/regentmarkets/flutter-deriv-packages/issues/425)). ([c5509175](https://github.com/regentmarkets/flutter-deriv-packages/commit/c5509175edb6a94122cce6fe6f63a43d44904dc9))
+
+## 1.3.2
+
+ - **REFACTOR**(deriv_localizations): Updating deriv localizations for passkeys package ([#581](https://github.com/regentmarkets/flutter-deriv-packages/issues/581)). ([0bf743c3](https://github.com/regentmarkets/flutter-deriv-packages/commit/0bf743c3b7a65f70935b32b68b7062ed07a1ae72))
+
+## 1.3.1
+
+ - **REFACTOR**(deriv_localizations): [UPM-925] Updating passkeys strings in deriv localizations ([#568](https://github.com/regentmarkets/flutter-deriv-packages/issues/568)). ([3c8cabd1](https://github.com/regentmarkets/flutter-deriv-packages/commit/3c8cabd11fdfd302f129ed8a53e73c0c7e3fd7b5))
+
 ## 1.3.0
 
  - **FEAT**(deriv_localization): Update localization string for deriv_auth ([#571](https://github.com/regentmarkets/flutter-deriv-packages/issues/571)). ([d2d76902](https://github.com/regentmarkets/flutter-deriv-packages/commit/d2d769023b651419270842d450a56a4bbd264327))

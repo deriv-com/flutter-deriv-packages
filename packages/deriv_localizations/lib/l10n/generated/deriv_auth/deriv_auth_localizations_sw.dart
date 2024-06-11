@@ -22,7 +22,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get labelLiveChat => 'Mazungumzo mubashara';
 
   @override
-  String get actionGetAFreeAccount => 'Pata akaunti ya bure';
+  String get actionSignUpForFree => 'Jisajili bila malipo';
 
   @override
   String get actionLogin => 'Ingia';
@@ -64,7 +64,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Ingiza anwani halali ya barua pepe';
 
   @override
-  String get warnPasswordLength => 'Unapaswa kuingiza herufi 6-25.';
+  String get warnPasswordLength => 'Unapaswa kuingiza mchanganyiko wa tarakimu 8-25.';
 
   @override
   String get labelResetPassword => 'Rudisha nenosiri';
@@ -272,5 +272,5 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get warnInvalidApplicationID => 'kitambulisho cha programu halali';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => 'Lugha';
 }

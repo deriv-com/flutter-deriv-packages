@@ -13,7 +13,7 @@
   "actionOk": "حسنا",
   "warnNotAvailableCountries": "إذا كانت لديك أي أسئلة، فاتصل بنا عبر ",
   "labelLiveChat": "دردشة مباشرة",
-  "actionGetAFreeAccount": "احصل على حساب مجاني",
+  "actionSignUpForFree": "قم بالتسجيل مجانًا",
   "actionLogin": "تسجيل دخول",
   "labelTwoFactorAuth": "المصادقة الثنائية (2FA)",
   "informEnterTwoFactorAuthCode": "أدخل الرمز المكون من 6 أرقام من تطبيق المصادقة على هاتفك.",
@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "ليس لديك حساب حتى الآن؟",
   "actionCreateANewAccount": "إنشاء حساب جديد",
   "informInvalidEmailFormat": "أدخل عنوان بريد إلكتروني صالح",
-  "warnPasswordLength": "يجب إدخال 6-25 حرفًا.",
+  "warnPasswordLength": "يجب إدخال 8-25 حرفًا.",
   "labelResetPassword": "إعادة تعيين كلمة المرور",
   "labelChooseNewPass": "اختر كلمة مرور جديدة",
   "labelCreatePass": "كلمة المرور",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "نقطة نهاية غير صالحة",
   "labelApplicationID": "معرف التطبيق",
   "semanticApplicationID": "معرف التطبيق",
-  "warnInvalidApplicationID": "معرف تطبيق غير صالح"
+  "warnInvalidApplicationID": "معرف تطبيق غير صالح",
+  "labelLanguage": "اللغة"
 }

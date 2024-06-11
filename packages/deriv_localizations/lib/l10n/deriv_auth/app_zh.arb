@@ -13,7 +13,7 @@
   "actionOk": "确定",
   "warnNotAvailableCountries": "如果有任何疑問，請通過以下方式與我們聯繫 ",
   "labelLiveChat": "即時聊天",
-  "actionGetAFreeAccount": "獲取免費帳戶",
+  "actionSignUpForFree": "免費註冊",
   "actionLogin": "登入",
   "labelTwoFactorAuth": "雙因素身份驗證",
   "informEnterTwoFactorAuthCode": "在手機的驗證器應用程式中輸入 6 位數代碼。",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "無效的端點",
   "labelApplicationID": "應用程式 ID",
   "semanticApplicationID": "應用程式 ID",
-  "warnInvalidApplicationID": "無效的應用程式 ID"
+  "warnInvalidApplicationID": "無效的應用程式 ID",
+  "labelLanguage": "語言"
 }

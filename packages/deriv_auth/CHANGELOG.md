@@ -1,3 +1,73 @@
+## 6.6.4
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
+## 6.6.3
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
+## 6.6.2
+
+ - Update a dependency to the latest release.
+
+## 6.6.1
+
+ - **REFACTOR**(deriv_auth): update localization ([#594](https://github.com/regentmarkets/flutter-deriv-packages/issues/594)). ([5204c74f](https://github.com/regentmarkets/flutter-deriv-packages/commit/5204c74f609d946ea797e766e6bb652d82f76930))
+
+## 6.6.0
+
+ - **REFACTOR**(deriv_auth): replaced deriv_localizations commit hash ref with tag ref. ([572aa5fd](https://github.com/regentmarkets/flutter-deriv-packages/commit/572aa5fd54241d09b9993b102c0eceb117594821))
+ - **REFACTOR**(deriv_passkeys): updated deriv_passkeys and deriv_localizations. ([d6eccdca](https://github.com/regentmarkets/flutter-deriv-packages/commit/d6eccdcaf9fa37784ae3f9fb2bd13a98e874aae0))
+ - **REFACTOR**: update deriv_passkeys. ([cd545c74](https://github.com/regentmarkets/flutter-deriv-packages/commit/cd545c74f7076010d7153d74c20288b2b8db016b))
+ - **REFACTOR**: update deriv_passkeys. ([41fa9ed8](https://github.com/regentmarkets/flutter-deriv-packages/commit/41fa9ed899462b0eeef34fa3971ffe82e937ce91))
+ - **REFACTOR**(deriv_auth): Updated deriv_localizations. ([4d43e258](https://github.com/regentmarkets/flutter-deriv-packages/commit/4d43e258d72e71da6c53f1bf2b241f95d4ba4c67))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys and deriv_localizations versions. ([a3acdf1a](https://github.com/regentmarkets/flutter-deriv-packages/commit/a3acdf1ad34bdbba464d866273e165709d908159))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys commit hash. ([ed0f0057](https://github.com/regentmarkets/flutter-deriv-packages/commit/ed0f005785991a0c166edaf4f93e03922826ee91))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys commit hash. ([82de1610](https://github.com/regentmarkets/flutter-deriv-packages/commit/82de161098d7cd698dcf465a4ad4a2cdac1fdd75))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys commit hash. ([dcda848b](https://github.com/regentmarkets/flutter-deriv-packages/commit/dcda848bb014f72e138e907c84c258be1a7c5c63))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys commit hash. ([87ff83bb](https://github.com/regentmarkets/flutter-deriv-packages/commit/87ff83bbc8050c3893186b86003345ca3ed739bd))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys commit hash. ([608dcf4b](https://github.com/regentmarkets/flutter-deriv-packages/commit/608dcf4b812945efa605ae5c553afa06e6a9f8db))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys commit hash. ([6a2708eb](https://github.com/regentmarkets/flutter-deriv-packages/commit/6a2708eb6cb8a3b343fd8688a27ab038fd3c1acb))
+ - **REFACTOR**(deriv_auth): updated deriv_ui. ([294ca423](https://github.com/regentmarkets/flutter-deriv-packages/commit/294ca42318568fd876f531856b61d0930efb05b8))
+ - **REFACTOR**(deriv_passkeys): removed context parameter from onLoggedIn callback. ([02f390b2](https://github.com/regentmarkets/flutter-deriv-packages/commit/02f390b2cb4736993f876fe60f6513490682837a))
+ - **REFACTOR**(deriv_auth): updated deriv_passkeys and deriv_localizations versions. ([14b85c22](https://github.com/regentmarkets/flutter-deriv-packages/commit/14b85c22c7edbd8046eb9f2feef68aa49aff8df2))
+ - **REFACTOR**(deriv_auth): new deriv_passkeys commit hash ref. ([7bb5f71b](https://github.com/regentmarkets/flutter-deriv-packages/commit/7bb5f71b4a3c364b3ee4455fe1c97b8ac5e83dea))
+ - **REFACTOR**(deriv_auth): updated passkeys dependencies. ([d966d9f2](https://github.com/regentmarkets/flutter-deriv-packages/commit/d966d9f28a743d652dd14174827da5e20a697664))
+ - **REFACTOR**(deriv_auth): integrating deriv_passkeys. ([45cbbb6c](https://github.com/regentmarkets/flutter-deriv-packages/commit/45cbbb6c20274e84e4f932057d0816a3b4dc581c))
+ - **REFACTOR**(deriv_auth): fixing deriv_passkeys dependencies. ([ac5dd589](https://github.com/regentmarkets/flutter-deriv-packages/commit/ac5dd5895caf6f2f2e60b2906a38f6ac27bfc11a))
+ - **REFACTOR**(deriv_auth): linked onLoggedIn function in login_page. ([1e5ba631](https://github.com/regentmarkets/flutter-deriv-packages/commit/1e5ba63165ff214ec44e589daddb9566ec47b94a))
+ - **REFACTOR**(deriv_auth): added context to onLoggedIn. ([c93046ab](https://github.com/regentmarkets/flutter-deriv-packages/commit/c93046abadefeb4af75cb0a2996f69a37415b33e))
+ - **REFACTOR**(deriv_auth): updated flutter_deriv_api. ([c3187ba8](https://github.com/regentmarkets/flutter-deriv-packages/commit/c3187ba85494198bb3b11e568ad50ff714b69cfa))
+ - **REFACTOR**(deriv_auth): updated `deriv_http_client`. ([c12a9ee4](https://github.com/regentmarkets/flutter-deriv-packages/commit/c12a9ee43fcc321a9f2ca404215a4f15069e4a71))
+ - **FIX**(deriv_auth): fixed onPressed error. ([a3cce1fb](https://github.com/regentmarkets/flutter-deriv-packages/commit/a3cce1fb5884592d0329e67de4a5a6ca9b55f694))
+ - **FIX**(deriv_auth): calling onLoggedIn correctly. ([5c19f3ae](https://github.com/regentmarkets/flutter-deriv-packages/commit/5c19f3aee610bd3ff9e9c25edae4a558ae8a97b8))
+ - **FIX**(deriv_auth): fixed deriv_passkeys dependency. ([607eca12](https://github.com/regentmarkets/flutter-deriv-packages/commit/607eca127e5a394dbb58abe82a5d5d4b4f811156))
+ - **FEAT**(deriv_auth): single entry ([#420](https://github.com/regentmarkets/flutter-deriv-packages/issues/420)). ([e594c05b](https://github.com/regentmarkets/flutter-deriv-packages/commit/e594c05b87c05d189913a7de8b9e1e4e6d03b76a))
+ - **FEAT**(deriv_passkeys): connected passkeys functionality with deriv auth. ([7333af28](https://github.com/regentmarkets/flutter-deriv-packages/commit/7333af283e3e5e00970a2dd49930f243d7f1f558))
+ - **FEAT**(deriv_auth): added deriv_passkeys to deriv_auth. ([e96c8127](https://github.com/regentmarkets/flutter-deriv-packages/commit/e96c81278999fa2dfae57e6adf5785bb82a51fe3))
+ - **FEAT**(deriv_auth): single entry reset password and merge conflicts. ([f7930d66](https://github.com/regentmarkets/flutter-deriv-packages/commit/f7930d66880d2d091959646dd928e79189ce5704))
+ - **FEAT**(deriv_auith): single entry setting page. ([dc29784f](https://github.com/regentmarkets/flutter-deriv-packages/commit/dc29784f2f74c34a7a5bf9910b4041adca591e74))
+ - **FEAT**(deriv_auth): single entry signup page. ([f38cc253](https://github.com/regentmarkets/flutter-deriv-packages/commit/f38cc253209afdf3573e3a85fe8ec0cd7082c5d5))
+ - **FEAT**(deriv_auth): single entry login and reset pass added. ([573a4a78](https://github.com/regentmarkets/flutter-deriv-packages/commit/573a4a787a6aa518537f2678c19a748cebcf0fb4))
+ - **FEAT**(deriv_auth): adding login page to single entry. ([5ce30c3b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5ce30c3b0fbd84ad3a4cc191d0c7949ec9691ef5))
+ - **FEAT**(deriv_auth): single entry. ([c1e0067b](https://github.com/regentmarkets/flutter-deriv-packages/commit/c1e0067b7bbaf94cfd13f342cd05aaa8f65ba497))
+
+## 6.5.2
+
+ - Update a dependency to the latest release.
+
+## 6.5.1
+
+ - Update a dependency to the latest release.
+
+## 6.5.0
+
+ - **FEAT**(deriv_auth): Add language selector in auth package ([#576](https://github.com/regentmarkets/flutter-deriv-packages/issues/576)). ([cd3768ef](https://github.com/regentmarkets/flutter-deriv-packages/commit/cd3768ef2b6bd7420e7957277461e95e78eee545))
+
+## 6.4.3
+
+ - Update a dependency to the latest release.
+
 ## 6.4.2
 
  - Update a dependency to the latest release.

@@ -1,6 +1,5 @@
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -65,18 +64,22 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
           listener: (BuildContext context, SocialAuthState state) {
             widget.socialAuthStateHandler(state);
           },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildSocialAuthButton(SocialAuthProvider.apple,
-                  key: const Key('social_auth_button_apple')),
-              const SizedBox(width: ThemeProvider.margin24),
-              _buildSocialAuthButton(SocialAuthProvider.google,
-                  key: const Key('social_auth_button_google')),
-              const SizedBox(width: ThemeProvider.margin24),
-              _buildSocialAuthButton(SocialAuthProvider.facebook,
-                  key: const Key('social_auth_button_facebook')),
-            ],
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const SizedBox(height: ThemeProvider.margin08),
+                _buildSocialAuthButton(SocialAuthProvider.google,
+                    key: const Key('social_auth_button_google')),
+                const SizedBox(height: ThemeProvider.margin08),
+                _buildSocialAuthButton(SocialAuthProvider.facebook,
+                    key: const Key('social_auth_button_facebook')),
+                const SizedBox(height: ThemeProvider.margin08),
+                _buildSocialAuthButton(SocialAuthProvider.apple,
+                    key: const Key('social_auth_button_apple')),
+              ],
+            ),
           ),
         ),
       );
@@ -85,18 +88,38 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
     SocialAuthProvider socialAuthProvider, {
     Key? key,
   }) =>
-      IconButton(
+      InkWell(
         key: key,
-        padding: EdgeInsets.zero,
-        iconSize: ThemeProvider.iconSize40,
-        icon: Opacity(
-          opacity: getOpacity(isEnabled: widget.isEnabled),
-          child: SvgPicture.asset(
-            _getSocialMediaIcon(socialAuthProvider),
-            package: 'deriv_auth',
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 12,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+              color: context.theme.colors.active,
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SvgPicture.asset(
+                _getSocialMediaIcon(socialAuthProvider),
+                package: 'deriv_auth',
+              ),
+              const SizedBox(width: 8),
+              Text(
+                socialAuthProvider.name.capitalize,
+                style: context.theme.textStyle(
+                  textStyle: TextStyles.body2,
+                  color: context.theme.colors.prominent,
+                ),
+              ),
+            ],
           ),
         ),
-        onPressed: widget.isEnabled
+        onTap: widget.isEnabled
             ? () async {
                 final List<SocialAuthProviderModel>? socialAuthProviders =
                     await _socialAuthCubit.getSocialAuthProviders();
