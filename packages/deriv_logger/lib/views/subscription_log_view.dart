@@ -20,7 +20,7 @@ class SubscriptionLogsView extends StatelessWidget {
         animation: networkLogsController,
         builder: (BuildContext context, _) => SafeArea(
           child: Scaffold(
-            appBar: AppBar(title: const Text('Network logs')),
+            appBar: AppBar(title: const Text('Subscription logs')),
             backgroundColor: theme.backgroundColor,
             body: networkLogsController.logs.isEmpty
                 ? Center(

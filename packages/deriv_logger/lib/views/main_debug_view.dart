@@ -66,7 +66,7 @@ class _MainDebugViewState extends State<MainDebugView> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.lightbulb_outline_sharp),
-              label: 'Network Logs',
+              label: 'Subscriptions Logs',
             ),
           ],
         ),

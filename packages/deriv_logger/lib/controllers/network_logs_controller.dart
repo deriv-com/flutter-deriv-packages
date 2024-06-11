@@ -69,20 +69,22 @@ class NetworkLogsController extends ChangeNotifier {
         time: DateTime.fromMillisecondsSinceEpoch(payload.timeStamp),
       ));
     } else {
-      final SubscriptionLogVM vm = SubscriptionLogVM(
+      final body = payload.body;
+
+      if (body is Map) {
+        body.remove('echo_req');
+      }
+
+      final NetworkLogVM vm = NetworkLogVM(
         title: payload.method,
         type: NetworkLogType.response,
-        body: _getReadableBody(payload.body),
+        body: _getReadableBody(body),
         time: DateTime.fromMillisecondsSinceEpoch(payload.timeStamp),
       );
       final SubscriptionLogVM existingLog = _subscriptionLogs.firstWhere(
           (log) =>
               jsonDecode(log.body)['req_id'] == jsonDecode(vm.body)['req_id']);
-      if (existingLog != null) {
-        existingLog.payloads = [...existingLog.payloads, vm];
-      } else {
-        _subscriptionLogs.add(vm);
-      }
+      existingLog.payloads = [...existingLog.payloads, vm];
     }
     notifyListeners();
   }
