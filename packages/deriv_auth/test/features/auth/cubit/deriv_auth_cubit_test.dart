@@ -287,8 +287,9 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() => service.login(any(), accounts: any(named: 'accounts')))
-            .thenThrow(DerivAuthException(
+        when(() => service.login(any(),
+            accounts: any(named: 'accounts'),
+            tokenList: any(named: 'tokenList'))).thenThrow(DerivAuthException(
           message: 'message',
           type: AuthErrorType.invalidToken,
         ));
