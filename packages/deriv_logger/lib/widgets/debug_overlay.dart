@@ -1,5 +1,6 @@
 import 'package:deriv_logger/controllers/controllers.dart';
 import 'package:deriv_logger/deriv_logger.dart';
+import 'package:deriv_logger/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_deriv_api/services/connection/api_manager/binary_api.dart';
