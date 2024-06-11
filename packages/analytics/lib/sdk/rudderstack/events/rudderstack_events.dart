@@ -258,7 +258,7 @@ class DerivRudderstackEvents {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
       properties: RudderProperty.fromMap(<String, dynamic>{
-        'action': 'real_signup_error',
+        'action': 'other_error',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
       }),
