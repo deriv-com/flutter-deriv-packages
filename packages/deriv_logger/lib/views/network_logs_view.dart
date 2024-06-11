@@ -86,7 +86,10 @@ class _NetworkLogUI extends StatelessWidget {
                   if (logVM.pair != null) ...[
                     Text('RESPONSE:', style: theme.bodyTextStyle),
                     const SizedBox(height: 8.0),
-                    ColoredJson(data: logVM.pair!.body)
+                    ColoredJson(
+                      data: logVM.pair!.body,
+                      stringColor: logVM.hasError ? Colors.red : Colors.green,
+                    )
                   ],
                 ],
               ),
@@ -109,17 +112,7 @@ class _Title extends StatelessWidget {
   Widget build(BuildContext context) => Row(
         children: <Widget>[
           const SizedBox(width: 4.0),
-          logVM.hasResponse
-              ? const Icon(
-                  Icons.circle,
-                  color: Colors.green,
-                  size: 18,
-                )
-              : const Icon(
-                  Icons.circle_outlined,
-                  color: Colors.blueGrey,
-                  size: 18,
-                ),
+          _buildLogIcon(),
           const SizedBox(width: 8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,4 +134,26 @@ class _Title extends StatelessWidget {
           ),
         ],
       );
+
+  Widget _buildLogIcon() {
+    if (!logVM.hasResponse) {
+      return const Icon(
+        Icons.circle_outlined,
+        color: Colors.blueGrey,
+        size: 18,
+      );
+    } else if (logVM.hasResponse && logVM.hasError) {
+      return const Icon(
+        Icons.warning_amber,
+        color: Colors.red,
+        size: 18,
+      );
+    } else {
+      return const Icon(
+        Icons.check_rounded,
+        color: Colors.green,
+        size: 18,
+      );
+    }
+  }
 }

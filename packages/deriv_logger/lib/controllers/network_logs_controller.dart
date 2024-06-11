@@ -161,6 +161,12 @@ class CallLogVM extends NetworkLogVM {
   String get getTimeString => pair != null
       ? '${pair!.time.difference(time).inMilliseconds.toString()} ms'
       : '-';
+
+  bool get hasError => pair != null && jsonDecode(pair!.body)['error'] != null;
+
+  @override
+  Color get getColor =>
+      hasError ? Colors.redAccent[400] ?? Colors.red : super.getColor;
 }
 
 class SubscriptionLogVM extends NetworkLogVM {
