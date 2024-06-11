@@ -134,6 +134,8 @@ class NetworkLogVM {
       isRequest ? Colors.deepPurple[300] ?? Colors.deepPurple : Colors.green;
 
   String get methodValue => jsonDecode(body)[title]?.toString() ?? '';
+
+  bool get hasError => jsonDecode(body)['error'] != null;
 }
 
 /// Type of network log.
@@ -162,6 +164,7 @@ class CallLogVM extends NetworkLogVM {
       ? '${pair!.time.difference(time).inMilliseconds.toString()} ms'
       : '-';
 
+  @override
   bool get hasError => pair != null && jsonDecode(pair!.body)['error'] != null;
 
   @override
@@ -181,4 +184,8 @@ class SubscriptionLogVM extends NetworkLogVM {
   });
 
   List<NetworkLogVM> get getPayloads => payloads.reversed.toList();
+
+  @override
+  Color get getColor =>
+      hasError ? Colors.redAccent[400] ?? Colors.red : super.getColor;
 }
