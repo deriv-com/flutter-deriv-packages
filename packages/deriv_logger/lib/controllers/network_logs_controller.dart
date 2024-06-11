@@ -70,14 +70,16 @@ class NetworkLogsController extends ChangeNotifier {
       ));
     } else {
       final SubscriptionLogVM vm = SubscriptionLogVM(
+        title: payload.method,
         type: NetworkLogType.response,
         body: _getReadableBody(payload.body),
         time: DateTime.fromMillisecondsSinceEpoch(payload.timeStamp),
       );
-      final SubscriptionLogVM log = _subscriptionLogs.firstWhere((element) =>
-          jsonDecode(element.body)['reqId'] == jsonDecode(vm.body)['reqId']);
-      if (log != null) {
-        log.payloads = [...log.payloads, vm];
+      final SubscriptionLogVM existingLog = _subscriptionLogs.firstWhere(
+          (log) =>
+              jsonDecode(log.body)['req_id'] == jsonDecode(vm.body)['req_id']);
+      if (existingLog != null) {
+        existingLog.payloads = [...existingLog.payloads, vm];
       } else {
         _subscriptionLogs.add(vm);
       }
@@ -130,6 +132,8 @@ class NetworkLogVM {
 
   Color get getColor =>
       isRequest ? Colors.deepPurple[300] ?? Colors.deepPurple : Colors.green;
+
+  String get methodValue => jsonDecode(body)[title]?.toString() ?? '';
 }
 
 /// Type of network log.
@@ -157,8 +161,6 @@ class CallLogVM extends NetworkLogVM {
   String get getTimeString => pair != null
       ? '${pair!.time.difference(time).inMilliseconds.toString()} ms'
       : '-';
-
-  String get methodValue => jsonDecode(body)[title]?.toString() ?? '';
 }
 
 class SubscriptionLogVM extends NetworkLogVM {

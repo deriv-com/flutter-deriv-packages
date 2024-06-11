@@ -42,6 +42,10 @@ class _MainDebugViewState extends State<MainDebugView> {
         networkLogsController: widget.networkLogsController,
         theme: widget.theme,
       ),
+      SubscriptionLogsView(
+        networkLogsController: widget.networkLogsController,
+        theme: widget.theme,
+      ),
     ];
   }
 
@@ -58,6 +62,10 @@ class _MainDebugViewState extends State<MainDebugView> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.light_mode_sharp),
+              label: 'Network Logs',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.lightbulb_outline_sharp),
               label: 'Network Logs',
             ),
           ],
