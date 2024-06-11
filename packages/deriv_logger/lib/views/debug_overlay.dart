@@ -46,7 +46,8 @@ class _DebugOverlayState extends State<DebugOverlay> {
 
     if (widget.binaryAPI != null) {
       _networkLogsController = NetworkLogsController(
-        widget.binaryAPI!.callHistory!,
+        exposure: widget.binaryAPI!.callHistory!,
+        subscriptionExposure: widget.binaryAPI!.subscriptionHistory!,
       );
     }
     consoleLogsController.initialize();

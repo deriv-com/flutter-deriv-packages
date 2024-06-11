@@ -45,6 +45,7 @@ class NetworkLogsView extends StatelessWidget {
                     separatorBuilder: (_, __) => const SizedBox(height: 12),
                     itemBuilder: (_, int index) => _NetworkLogUI(
                       logVM: networkLogsController.logs[index],
+                      theme: theme,
                     ),
                   ),
           ),
@@ -55,42 +56,39 @@ class NetworkLogsView extends StatelessWidget {
 class _NetworkLogUI extends StatelessWidget {
   const _NetworkLogUI({
     required this.logVM,
+    required this.theme,
   });
 
-  final NetworkLogVM logVM;
+  final CallLogVM logVM;
+  final DebugOverlayTheme theme;
 
   @override
   Widget build(BuildContext context) => ExpansionTile(
+        tilePadding: const EdgeInsets.all(0),
+        iconColor: Colors.black,
         backgroundColor: logVM.getColor.withOpacity(0.1),
         collapsedBackgroundColor: logVM.getColor.withOpacity(0.1),
-        title: ListTile(
-          leading: logVM.isRequest
-              ? Icon(
-                  Icons.keyboard_double_arrow_up_outlined,
-                  color: Colors.deepPurple[300],
-                )
-              : const Icon(
-                  Icons.keyboard_double_arrow_down,
-                  color: Colors.green,
-                ),
-          title: Text(
-            logVM.title,
-            style: const TextStyle(
-              color: Colors.black,
-            ),
-          ),
-          subtitle: Text(
-            logVM.getTimeString,
-            style: const TextStyle(color: Colors.black, fontSize: 12),
-          ),
+        title: _Title(
+          logVM: logVM,
+          theme: theme,
         ),
         children: <Widget>[
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: const EdgeInsets.only(left: 8),
-              child: ColoredJson(
-                data: logVM.body,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('REQUEST:', style: theme.bodyTextStyle),
+                  const SizedBox(height: 8.0),
+                  ColoredJson(data: logVM.body),
+                  if (logVM.pair != null) ...[
+                    Text('RESPONSE:', style: theme.bodyTextStyle),
+                    const SizedBox(height: 8.0),
+                    ColoredJson(data: logVM.pair!.body)
+                  ],
+                ],
               ),
             ),
           ),
@@ -101,43 +99,38 @@ class _NetworkLogUI extends StatelessWidget {
 class _Title extends StatelessWidget {
   const _Title({
     required this.logVM,
+    required this.theme,
   });
 
-  final NetworkLogVM logVM;
+  final CallLogVM logVM;
+  final DebugOverlayTheme theme;
 
   @override
   Widget build(BuildContext context) => Row(
         children: <Widget>[
-          logVM.isRequest
+          const SizedBox(width: 4.0),
+          logVM.hasResponse
               ? const Icon(
-                  Icons.keyboard_double_arrow_up_outlined,
-                  color: Colors.red,
+                  Icons.circle,
+                  color: Colors.green,
+                  size: 18,
                 )
               : const Icon(
-                  Icons.keyboard_double_arrow_down,
-                  color: Colors.green,
-                ),
-          logVM.isRequest
-              ? const Text(
-                  'REQUEST:',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                )
-              : const Text(
-                  'RESPONSE:',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                  Icons.circle_outlined,
+                  color: Colors.blueGrey,
+                  size: 18,
                 ),
           const SizedBox(width: 8),
-          Text(
-            logVM.title,
-            style: const TextStyle(
-              color: Colors.black,
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(logVM.title, style: theme.bodyTextStyle),
+              const SizedBox(height: 4.0),
+              Text(logVM.methodValue, style: theme.subtitleTextStyle)
+            ],
           ),
-          const SizedBox(width: 8),
+          const Spacer(),
           Text(
             logVM.getTimeString,
             style: const TextStyle(
