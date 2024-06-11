@@ -46,6 +46,7 @@ class DerivAuthService extends BaseAuthService {
     Function? onInvalidJwtToken,
   }) async {
     try {
+      List<String> _tokenList = <String>[];
       final String jwtToken = await jwtService.getJwtToken();
 
       final GetTokensResponseModel _response = await tokenService.getUserTokens(
@@ -59,12 +60,13 @@ class DerivAuthService extends BaseAuthService {
           _filterSupportedAccounts(_response.accounts);
 
       final String? _defaultAccountToken = _supportedAccounts.first.token;
-      final List<String> _tokenList = _supportedAccounts
-          .sublist(1)
-          .where((AccountModel account) => account.token != null)
-          .map((AccountModel account) => account.token!)
-          .toList();
-
+      if (_supportedAccounts.isNotEmpty && _defaultAccountToken != null) {
+        _tokenList = _supportedAccounts
+            .sublist(1)
+            .where((AccountModel account) => account.token != null)
+            .map((AccountModel account) => account.token!)
+            .toList();
+      }
       if (_defaultAccountToken != null) {
         return login(
           _defaultAccountToken,
