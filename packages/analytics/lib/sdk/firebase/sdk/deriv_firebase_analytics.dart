@@ -48,7 +48,12 @@ class DerivFirebaseAnalytics implements BaseAnalytics<FirebaseConfiguration> {
   /// Successfully, otherwise, a false is returned.
   Future<bool> setCurrentScreen({required String screenName}) async =>
       _execute(() async {
-        await _firebaseAnalytics.setCurrentScreen(screenName: screenName);
+        await _firebaseAnalytics.logScreenView(screenName: screenName);
+      });
+
+  /// Logs the standard app open event.
+  Future<bool> logAppOpen() async => _execute(() async {
+        await _firebaseAnalytics.logAppOpen();
       });
 
   /// Logs the standard login event.
