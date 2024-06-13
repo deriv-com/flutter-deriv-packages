@@ -75,7 +75,7 @@ class _NumberPadSingleTextField extends StatelessWidget {
 
                   return numPadProvider != null
                       ? Padding(
-                          padding: EdgeInsets.only(left: padding),
+                          padding: EdgeInsets.only(end: padding),
                           child: _NumberPadTextField(
                             controller: numPadProvider.firstInputController,
                             textStyle: TextStyles.display1,
