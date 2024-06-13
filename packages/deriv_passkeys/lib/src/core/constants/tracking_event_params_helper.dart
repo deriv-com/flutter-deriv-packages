@@ -1,24 +1,14 @@
 import 'package:deriv_passkeys/src/core/constants/analytics_actions_enums.dart';
 import 'package:flutter/foundation.dart';
 
+/// Platform type string.
 String _platform = defaultTargetPlatform == TargetPlatform.android
     ? 'Android'
     : defaultTargetPlatform == TargetPlatform.iOS
         ? 'IOS'
         : 'other';
 
-// /// `TODO` - create docs
-// Map<String, dynamic> getTrackingParams<T>(T eventName) =>
-//     switch (eventName.runtimeType) {
-//       EffortlessPageActions => getEffortlessFlowTrackingParams(eventName),
-//       LearnMorePageActions => getLearnMoreFlowTrackingParams(eventName),
-//       CreatePasskeyFlowActions => getCreatePasskeyTrackingParams(eventName),
-//       RenamePasskeyFlowActions => getRenamePasskeyTrackingParams(eventName),
-//       ManagePasskeysPageActions => getManagePasskeysTrackingParams(eventName),
-//       _ => throw Exception('Invalid event name'),
-//     };
-
-///
+/// Function to get all the Effortless page params.
 Map<String, dynamic> getEffortlessLoginTrackingParams<T>(T eventName) =>
     switch (eventName) {
       EffortlessPageActions.openEffortlessLoginPage => <String, dynamic>{
@@ -45,7 +35,7 @@ Map<String, dynamic> getEffortlessLoginTrackingParams<T>(T eventName) =>
       _ => throw Exception('Invalid event name'),
     };
 
-///
+/// Function to get all the Learn More page params.
 Map<String, dynamic> getLearnMoreTrackingParams<T>(
   T eventName,
   String mainFormName,
@@ -68,7 +58,7 @@ Map<String, dynamic> getLearnMoreTrackingParams<T>(
       _ => throw Exception('Invalid event name'),
     };
 
-///
+/// Function to get all the Manage passkeys page params.
 Map<String, dynamic> getManagePasskeysTrackingParams<T>(T eventName) =>
     switch (eventName) {
       ManagePasskeysPageActions.openManagePasskeysPage => <String, dynamic>{
@@ -88,7 +78,7 @@ Map<String, dynamic> getManagePasskeysTrackingParams<T>(T eventName) =>
       _ => throw Exception('Invalid event name'),
     };
 
-///
+/// Function to get all the Create passkey page params.
 Map<String, dynamic> getCreatePasskeyTrackingParams<T>(
   T eventName, {
   String? mainFormName,
@@ -140,7 +130,7 @@ Map<String, dynamic> getCreatePasskeyTrackingParams<T>(
       _ => throw Exception('Invalid event name'),
     };
 
-///
+/// Function to get all the Rename passkey page params.
 Map<String, dynamic> getRenamePasskeyTrackingParams<T>(T eventName) =>
     switch (eventName) {
       RenamePasskeyFlowActions.renamePasskey => <String, dynamic>{

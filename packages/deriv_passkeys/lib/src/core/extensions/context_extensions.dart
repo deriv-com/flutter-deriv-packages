@@ -5,5 +5,5 @@ import 'package:flutter/widgets.dart';
 extension ContextExtension on BuildContext {
   /// Get derivPasskeysLocalizations.
   DerivPasskeysLocalizations get derivPasskeysLocalizations =>
-      DerivPasskeysLocalizations.of(this)!;
+      DerivPasskeysLocalizations.of(this);
 }

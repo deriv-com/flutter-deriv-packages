@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:deriv_passkeys/src/data/repositories/passkey_analytics_repository.dart';
 import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/domain/entities/passkeys_connection_info_entity.dart';
@@ -147,7 +148,10 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
     });
 
     /// Initialize the analytics repository.
-    AnalyticsRepository.init(connectionInfo.appId);
+    AnalyticsRepository.init(
+      connectionInfo.appId,
+      derivRudderstack: DerivRudderstack(),
+    );
   }
 
   /// The list of passkeys.

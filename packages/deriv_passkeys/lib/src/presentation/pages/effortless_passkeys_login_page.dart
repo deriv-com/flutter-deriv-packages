@@ -38,8 +38,6 @@ class EffortlessPasskeysPage extends StatelessWidget
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onPageClosed;
 
-  ///
-
   @override
   Widget build(BuildContext context) => PopScope(
         onPopInvoked: (_) => trackCloseEffortlessLoginPage(),

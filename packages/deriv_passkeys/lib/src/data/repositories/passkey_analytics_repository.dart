@@ -2,12 +2,14 @@ import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:deriv_passkeys/src/core/constants/analytics_actions_enums.dart';
 import 'package:deriv_passkeys/src/core/constants/tracking_event_params_helper.dart';
 import 'package:deriv_passkeys/src/domain/base_repositories/base_passkey_analytics_repository.dart';
-import 'package:flutter/foundation.dart';
 
 /// [AnalyticsRepository] is an implementation of [BasePasskeyAnalyticsRepository].
 class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
   /// Constructor for [AnalyticsRepository].
-  AnalyticsRepository._(this._appId);
+  AnalyticsRepository._(
+    this._appId, {
+    required this.derivRudderstack,
+  });
 
   static AnalyticsRepository? _instance;
 
@@ -15,16 +17,20 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
   static AnalyticsRepository get instance =>
       _instance ??= throw Exception('AnalyticsRepository is not initialized');
 
+  /// Instance of [DerivRudderstack].
+  final DerivRudderstack derivRudderstack;
+
   /// Initialize [AnalyticsRepository].
-  static void init(String appId) => _instance = AnalyticsRepository._(appId);
+  static void init(
+    String appId, {
+    required DerivRudderstack derivRudderstack,
+  }) =>
+      _instance =
+          AnalyticsRepository._(appId, derivRudderstack: derivRudderstack);
 
   String? _mainFormName;
 
   String? _subFormName;
-
-  ///
-  @visibleForTesting
-  static void initForTesting(AnalyticsRepository repo) => _instance = repo;
 
   /// Deriv client app ID.
   final String _appId;
@@ -40,7 +46,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -54,7 +60,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -68,7 +74,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -85,7 +91,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -104,7 +110,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -121,7 +127,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -135,7 +141,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -151,7 +157,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -167,7 +173,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -184,7 +190,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -200,7 +206,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -216,7 +222,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -230,7 +236,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -244,7 +250,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
@@ -258,14 +264,17 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
 
     _addAppName(trackingData);
 
-    DerivRudderstack().track(
+    derivRudderstack.track(
       eventName: trackingData['event_name'],
       properties: trackingData['params'],
     );
   }
 
   void _addAppName(Map<String, dynamic> data) {
-    /// TODO - fix this please.
-    data['params']['form_name'] += _appId == '123' ? 'deriv' : 'derivx';
+    data['params']['form_name'] += _appId == '23789'
+        ? 'derivgo'
+        : _appId == '1408'
+            ? 'p2p'
+            : 'unsupported';
   }
 }

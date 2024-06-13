@@ -10,7 +10,7 @@ enum EffortlessPageActions {
   maybeLater,
 }
 
-///
+/// The list of actions that can be performed on the Learn more page.
 enum LearnMorePageActions {
   /// The user opened the learn more page.
   openLearnMorePage,
@@ -19,7 +19,7 @@ enum LearnMorePageActions {
   closeLearnMorePage,
 }
 
-///
+/// The list of actions that can be performed on the Create passkey page.
 enum CreatePasskeyFlowActions {
   /// The user pressed the create passkey button.
   createPasskey,
@@ -37,7 +37,7 @@ enum CreatePasskeyFlowActions {
   addMorePasskeys,
 }
 
-///
+/// The list of actions that can be performed on the Rename passkey page.
 enum RenamePasskeyFlowActions {
   /// The user presses the rename passkey button.
   renamePasskey,
