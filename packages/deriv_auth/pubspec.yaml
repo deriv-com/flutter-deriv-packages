@@ -84,7 +84,6 @@ dev_dependencies:
   patrol_finders: ^1.0.0
 
 flutter:
-  uses-material-design: true
   assets:
     - assets/icons/
     - assets/images/
