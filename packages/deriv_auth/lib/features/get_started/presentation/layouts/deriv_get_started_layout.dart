@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:deriv_auth/core/analytics/service/auth_tracking_mixin.dart';
 import 'package:deriv_auth/core/extensions/context_extension.dart';
 import 'package:deriv_auth/core/helpers/semantic_labels.dart';
 import 'package:deriv_auth/features/get_started/models/deriv_get_started_slide_model.dart';
@@ -48,7 +49,8 @@ class DerivGetStartedLayout extends StatefulWidget {
   State<DerivGetStartedLayout> createState() => _DerivGetStartedLayoutState();
 }
 
-class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
+class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout>
+    with AuthTrackingMixin {
   static const Duration _autoScrollInterval = Duration(seconds: 4);
   static const Duration _scrollAnimationDuration = Duration(seconds: 1);
   static const Alignment _slideImageAlignment = Alignment.center;
@@ -172,7 +174,10 @@ class _DerivGetStartedLayoutState extends State<DerivGetStartedLayout> {
             explicitChildNodes: true,
             label: SemanticsLabels.starterPageLoginButtonSemantic,
             child: SecondaryButton(
-              onPressed: widget.onLoginTapped,
+              onPressed: () {
+                trackUserOpenedLoginForm();
+                widget.onLoginTapped();
+              },
               child: Center(
                 child: Text(
                   context.derivAuthLocalization.actionLogin,
