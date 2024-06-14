@@ -64,6 +64,15 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'You can create one passkey per device.';
 
   @override
+  String get p2pHowToCreatePasskey => 'How to create passkey?';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+
+  @override
   String get whereArePasskeysSaved => 'Where are passkeys saved?';
 
   @override
@@ -139,10 +148,10 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get revoke => 'Revoke';
 
   @override
-  String get continueTradingButtonText => 'Continue Trading';
+  String get continueTradingButtonText => 'Continue trading';
 
   @override
-  String get addMorePasskeysButtonText => 'Add More Passkeys';
+  String get addMorePasskeysButtonText => 'Add more passkeys';
 
   @override
   String get unableToSetupPasskey => 'Unable to setup passkey';
