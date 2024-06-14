@@ -79,8 +79,8 @@ abstract class DerivPasskeysLocalizations {
 
   final String localeName;
 
-  static DerivPasskeysLocalizations? of(BuildContext context) {
-    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations);
+  static DerivPasskeysLocalizations of(BuildContext context) {
+    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations)!;
   }
 
   static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate = _DerivPasskeysLocalizationsDelegate();
