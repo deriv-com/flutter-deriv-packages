@@ -16,6 +16,7 @@ void main() {
     late final AnalyticsMixinObject analyticsMixin;
 
     setUpAll(() {
+      analyticsMixin = AnalyticsMixinObject();
       mockRudderStack = MockDerivRudderstack();
 
       AnalyticsRepository.init(
@@ -30,12 +31,9 @@ void main() {
       ).thenAnswer(
         (_) => Future<bool>.value(true),
       );
-      analyticsMixin = AnalyticsMixinObject();
     });
 
     test('Analytics mixin has a AnalyticsRepository parameter.', () {
-      final AnalyticsMixinObject analyticsMixin = AnalyticsMixinObject();
-
       expect(
         analyticsMixin.analyticsRepository,
         AnalyticsRepository.instance,
