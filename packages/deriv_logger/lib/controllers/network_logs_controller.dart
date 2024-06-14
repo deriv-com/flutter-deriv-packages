@@ -18,11 +18,21 @@ class NetworkLogsController extends ChangeNotifier {
         .listen((NetworkPayload payload) => addToSubscriptionLog(payload));
   }
 
+  final TextEditingController _searchController = TextEditingController();
+
+  TextEditingController get searchController => _searchController;
+
   final List<CallLogVM> _callLogs = <CallLogVM>[];
   final List<SubscriptionLogVM> _subscriptionLogs = <SubscriptionLogVM>[];
 
   /// List of network logs like request and response.
-  List<CallLogVM> get logs => _callLogs.reversed.toList();
+  List<CallLogVM> get logs => _searchController.text.isEmpty
+      ? _callLogs.reversed.toList()
+      : _callLogs
+          .where((log) =>
+              log.title.contains(_searchController.text.trim()) ||
+              log.body.contains(_searchController.text.trim()))
+          .toList();
 
   /// List of network logs like request and response.
   List<SubscriptionLogVM> get subscriptionLogs =>
@@ -101,6 +111,10 @@ class NetworkLogsController extends ChangeNotifier {
   }
 
   bool isRequest(NetworkPayload log) => log.direction == 'SENT';
+
+  void searchLogs(String value) {
+    notifyListeners();
+  }
 }
 
 /// View model for Network log

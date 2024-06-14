@@ -23,31 +23,56 @@ class NetworkLogsView extends StatelessWidget {
         animation: networkLogsController,
         builder: (BuildContext context, _) => SafeArea(
           child: Scaffold(
-            appBar: AppBar(title: const Text('Network logs')),
-            floatingActionButton: networkLogsController.logs.isEmpty
-                ? const SizedBox()
-                : FloatingActionButton(
-                    onPressed: () => networkLogsController.clearLogs(),
-                    child: const Icon(Icons.delete),
-                  ),
+            appBar: AppBar(
+              title: const Text('Network logs'),
+              actions: [
+                IconButton(
+                  onPressed: () => networkLogsController.clearLogs(),
+                  icon: const Icon(Icons.delete),
+                ),
+              ],
+            ),
             backgroundColor: theme.backgroundColor,
-            body: networkLogsController.logs.isEmpty
-                ? Center(
-                    child: Text(
-                      'No logs available!',
-                      style: theme.bodyTextStyle,
+            body: Column(
+              children: [
+                Expanded(
+                  child: networkLogsController.logs.isEmpty
+                      ? Center(
+                          child: Text(
+                            'No logs available!',
+                            style: theme.bodyTextStyle,
+                          ),
+                        )
+                      : ListView.separated(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: networkLogsController.logs.length,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(height: 12),
+                          itemBuilder: (_, int index) => _NetworkLogUI(
+                            logVM: networkLogsController.logs[index],
+                            theme: theme,
+                          ),
+                        ),
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Colors.deepPurple[100]),
+                  child: TextField(
+                    style: theme.bodyTextStyle.copyWith(color: Colors.black),
+                    decoration: InputDecoration(
+                      hintText: 'Search for api name...',
+                      hintStyle:
+                          theme.bodyTextStyle.copyWith(color: Colors.black),
+                      border: InputBorder.none,
                     ),
-                  )
-                : ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: networkLogsController.logs.length,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
-                    itemBuilder: (_, int index) => _NetworkLogUI(
-                      logVM: networkLogsController.logs[index],
-                      theme: theme,
-                    ),
+                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                    controller: networkLogsController.searchController,
+                    onChanged: (value) =>
+                        networkLogsController.searchLogs(value),
                   ),
+                ),
+              ],
+            ),
           ),
         ),
       );
