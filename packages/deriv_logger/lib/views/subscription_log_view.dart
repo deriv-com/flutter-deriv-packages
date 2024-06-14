@@ -144,12 +144,7 @@ class SubscriptionLogDetail extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                constraints: const BoxConstraints(maxHeight: 200),
-                child: SingleChildScrollView(
-                  child: ColoredJson(data: logVM.body),
-                ),
-              ),
+              _RequestUI(logVM),
               Expanded(
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
@@ -165,6 +160,43 @@ class SubscriptionLogDetail extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _RequestUI extends StatelessWidget {
+  const _RequestUI(this.log);
+
+  final SubscriptionLogVM log;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.blueGrey.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Request',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          const Divider(thickness: 0.2, height: 12, color: Colors.black38),
+          Container(
+            constraints: const BoxConstraints(maxHeight: 200),
+            width: double.infinity,
+            child: SingleChildScrollView(
+              child: ColoredJson(
+                data: log.body,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
