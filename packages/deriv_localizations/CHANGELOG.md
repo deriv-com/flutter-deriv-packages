@@ -1,3 +1,7 @@
+## 1.4.3
+
+ - **REFACTOR**(deriv_localizations): Update p2p strings for passkeys ([#615](https://github.com/regentmarkets/flutter-deriv-packages/issues/615)). ([5fd85af2](https://github.com/regentmarkets/flutter-deriv-packages/commit/5fd85af24394ea68b8b0a7abc854b9c33b791c26))
+
 ## 1.4.2
 
  - **FIX**(deriv-localization): fix passkey button strings ([#606](https://github.com/regentmarkets/flutter-deriv-packages/issues/606)). ([ed2a7ea9](https://github.com/regentmarkets/flutter-deriv-packages/commit/ed2a7ea958e34aa027ecb9ef6919f04fd5c7d5f1))

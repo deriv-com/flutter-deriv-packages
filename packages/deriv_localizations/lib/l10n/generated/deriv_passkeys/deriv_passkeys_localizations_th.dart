@@ -64,6 +64,15 @@ class DerivPasskeysLocalizationsTh extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'คุณสามารถสร้างหนึ่ง Passkey ต่ออุปกรณ์';
 
   @override
+  String get p2pHowToCreatePasskey => 'How to create passkey?';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+
+  @override
   String get whereArePasskeysSaved => 'Passkey จะถูกบันทึกไว้ที่ไหน?';
 
   @override
@@ -139,7 +148,7 @@ class DerivPasskeysLocalizationsTh extends DerivPasskeysLocalizations {
   String get revoke => 'เพิกถอน';
 
   @override
-  String get continueTradingButtonText => 'ทำการเทรดต่อไป';
+  String get continueTradingButtonText => 'ดำเนินการเทรดต่อ';
 
   @override
   String get addMorePasskeysButtonText => 'เพิ่มจำนวน Passkey';

@@ -1,3 +1,7 @@
+## 6.6.6
+
+ - **REFACTOR**(deriv_auth): added a flag to allow hiding passkeys button ([#612](https://github.com/regentmarkets/flutter-deriv-packages/issues/612)). ([a4026a9d](https://github.com/regentmarkets/flutter-deriv-packages/commit/a4026a9d8164abc1c66beb327d48610d8ce30dde))
+
 ## 6.6.5
 
  - Update a dependency to the latest release.
