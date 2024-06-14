@@ -31,7 +31,7 @@ void main() {
 
       expect(find.text('Passkey'), findsOneWidget);
       expect(find.textContaining('Device'), findsOneWidget);
-      expect(find.textContaining('December 1st, 2021'), findsOneWidget);
+      expect(find.textContaining('November 30th, 2021'), findsOneWidget);
     });
   });
 }
