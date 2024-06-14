@@ -22,7 +22,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get labelLiveChat => 'Чат';
 
   @override
-  String get actionGetAFreeAccount => 'Получите бесплатный счет';
+  String get actionSignUpForFree => 'Зарегистрируйтесь бесплатно';
 
   @override
   String get actionLogin => 'Вход';
@@ -64,7 +64,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Введите действительный адрес электронной почты';
 
   @override
-  String get warnPasswordLength => 'Вы должны ввести 6-25 символов.';
+  String get warnPasswordLength => 'Вы должны ввести 8-25 символов.';
 
   @override
   String get labelResetPassword => 'Сбросить пароль';
@@ -272,5 +272,5 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get warnInvalidApplicationID => 'неверный ID приложения';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => 'Язык';
 }

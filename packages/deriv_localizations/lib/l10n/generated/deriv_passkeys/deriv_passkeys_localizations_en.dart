@@ -139,10 +139,10 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get revoke => 'Revoke';
 
   @override
-  String get continueTradingButtonText => 'Continue Trading';
+  String get continueTradingButtonText => 'Continue trading';
 
   @override
-  String get addMorePasskeysButtonText => 'Add More Passkeys';
+  String get addMorePasskeysButtonText => 'Add more passkeys';
 
   @override
   String get unableToSetupPasskey => 'Unable to setup passkey';

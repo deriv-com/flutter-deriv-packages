@@ -1,5 +1,4 @@
 import 'package:deriv_passkeys/deriv_passkeys.dart';
-import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

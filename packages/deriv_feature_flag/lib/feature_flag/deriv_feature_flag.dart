@@ -4,11 +4,15 @@ import 'package:deriv_feature_flag/growthbook/deriv_growth_book.dart';
 import 'package:flutter/material.dart';
 
 class DerivFeatureFlag {
-  /// Initilize the FeatureFlag service for the whole app.
+  /// Initializes the FeatureFlag service for the whole app.
   Future<void> initialize(FeatureFlagConfig featureFlagConfig) async {
     final DerivGrowthBook derivGrowthBook = DerivGrowthBook(
       featureFlagConfig: featureFlagConfig,
     );
+    // TODO(Ramin): FeatureFlagRepository should be non-singleton or another way
+    //  to be able to send different attributes during one app run session.
+    //  Since sending attributes happens in the initialization and if during one
+    //  app run session we might want to send different attributes (e.g. country)
     await FeatureFlagRepository.getInstance()
         .setup(derivGrowthBook: derivGrowthBook);
   }
@@ -31,6 +35,31 @@ class DerivFeatureFlag {
         key,
         defaultValue: defaultValue,
       );
+
+  /// Returns the value of a feature flag.
+  ///
+  /// The returned value, depending on the feature flag, can be a boolean,
+  /// string, num, or a Map.
+  dynamic getFeatureFlagValue(String key, {dynamic defaultValue = false}) =>
+      FeatureFlagRepository.getInstance().getFeatureValue(
+        key,
+        defaultValue: defaultValue,
+      );
+
+  /// Returns the value of a boolean feature flag.
+  bool getBoolFeatureValue(String key, {bool defaultValue = false}) =>
+      (FeatureFlagRepository.getInstance().getFeatureValue(key) as bool?) ??
+      defaultValue;
+
+  /// Returns the value of a String feature flag.
+  String getStringFeatureValue(String key, {String defaultValue = ''}) =>
+      (FeatureFlagRepository.getInstance().getFeatureValue(key) as String?) ??
+      defaultValue;
+
+  /// Returns the value of a num feature flag.
+  num getNumFeatureValue(String key, {num defaultValue = 0}) =>
+      (FeatureFlagRepository.getInstance().getFeatureValue(key) as num?) ??
+      defaultValue;
 
   /// only for testing purposes.
   @visibleForTesting

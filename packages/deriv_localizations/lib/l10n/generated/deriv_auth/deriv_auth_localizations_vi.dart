@@ -22,7 +22,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get labelLiveChat => 'Live chat';
 
   @override
-  String get actionGetAFreeAccount => 'Nhận tài khoản miễn phí';
+  String get actionSignUpForFree => 'Đăng ký miễn phí';
 
   @override
   String get actionLogin => 'Đăng nhập';
@@ -64,7 +64,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Nhập địa chỉ email hợp lệ';
 
   @override
-  String get warnPasswordLength => 'Bạn nên nhập vào 6-25 ký tự.';
+  String get warnPasswordLength => 'Bạn nên nhập từ 8-25 ký tự.';
 
   @override
   String get labelResetPassword => 'Đặt lại mật khẩu';
@@ -272,5 +272,5 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get warnInvalidApplicationID => 'mã đăng ký không hợp lệ';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => 'Ngôn ngữ';
 }

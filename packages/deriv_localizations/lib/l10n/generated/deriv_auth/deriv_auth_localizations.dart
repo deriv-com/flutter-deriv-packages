@@ -75,18 +75,15 @@ import 'deriv_auth_localizations_zh.dart';
 /// be consistent with the languages listed in the DerivAuthLocalizations.supportedLocales
 /// property.
 abstract class DerivAuthLocalizations {
-  DerivAuthLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  DerivAuthLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static DerivAuthLocalizations of(BuildContext context) {
-    return Localizations.of<DerivAuthLocalizations>(
-        context, DerivAuthLocalizations)!;
+    return Localizations.of<DerivAuthLocalizations>(context, DerivAuthLocalizations)!;
   }
 
-  static const LocalizationsDelegate<DerivAuthLocalizations> delegate =
-      _DerivAuthLocalizationsDelegate();
+  static const LocalizationsDelegate<DerivAuthLocalizations> delegate = _DerivAuthLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -98,8 +95,7 @@ abstract class DerivAuthLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -157,11 +153,11 @@ abstract class DerivAuthLocalizations {
   /// **'Live chat'**
   String get labelLiveChat;
 
-  /// No description provided for @actionGetAFreeAccount.
+  /// No description provided for @actionSignUpForFree.
   ///
   /// In en, this message translates to:
-  /// **'Get a free account'**
-  String get actionGetAFreeAccount;
+  /// **'Sign up for free'**
+  String get actionSignUpForFree;
 
   /// No description provided for @actionLogin.
   ///
@@ -656,83 +652,49 @@ abstract class DerivAuthLocalizations {
   String get labelLanguage;
 }
 
-class _DerivAuthLocalizationsDelegate
-    extends LocalizationsDelegate<DerivAuthLocalizations> {
+class _DerivAuthLocalizationsDelegate extends LocalizationsDelegate<DerivAuthLocalizations> {
   const _DerivAuthLocalizationsDelegate();
 
   @override
   Future<DerivAuthLocalizations> load(Locale locale) {
-    return SynchronousFuture<DerivAuthLocalizations>(
-        lookupDerivAuthLocalizations(locale));
+    return SynchronousFuture<DerivAuthLocalizations>(lookupDerivAuthLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>[
-        'ar',
-        'bn',
-        'de',
-        'en',
-        'es',
-        'fr',
-        'it',
-        'ko',
-        'pl',
-        'pt',
-        'ru',
-        'si',
-        'sw',
-        'th',
-        'tr',
-        'vi',
-        'zh'
-      ].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'ko', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivAuthLocalizationsDelegate old) => false;
 }
 
 DerivAuthLocalizations lookupDerivAuthLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return DerivAuthLocalizationsAr();
-    case 'bn':
-      return DerivAuthLocalizationsBn();
-    case 'de':
-      return DerivAuthLocalizationsDe();
-    case 'en':
-      return DerivAuthLocalizationsEn();
-    case 'es':
-      return DerivAuthLocalizationsEs();
-    case 'fr':
-      return DerivAuthLocalizationsFr();
-    case 'it':
-      return DerivAuthLocalizationsIt();
-    case 'ko':
-      return DerivAuthLocalizationsKo();
-    case 'pl':
-      return DerivAuthLocalizationsPl();
-    case 'pt':
-      return DerivAuthLocalizationsPt();
-    case 'ru':
-      return DerivAuthLocalizationsRu();
-    case 'si':
-      return DerivAuthLocalizationsSi();
-    case 'sw':
-      return DerivAuthLocalizationsSw();
-    case 'th':
-      return DerivAuthLocalizationsTh();
-    case 'tr':
-      return DerivAuthLocalizationsTr();
-    case 'vi':
-      return DerivAuthLocalizationsVi();
-    case 'zh':
-      return DerivAuthLocalizationsZh();
+    case 'ar': return DerivAuthLocalizationsAr();
+    case 'bn': return DerivAuthLocalizationsBn();
+    case 'de': return DerivAuthLocalizationsDe();
+    case 'en': return DerivAuthLocalizationsEn();
+    case 'es': return DerivAuthLocalizationsEs();
+    case 'fr': return DerivAuthLocalizationsFr();
+    case 'it': return DerivAuthLocalizationsIt();
+    case 'ko': return DerivAuthLocalizationsKo();
+    case 'pl': return DerivAuthLocalizationsPl();
+    case 'pt': return DerivAuthLocalizationsPt();
+    case 'ru': return DerivAuthLocalizationsRu();
+    case 'si': return DerivAuthLocalizationsSi();
+    case 'sw': return DerivAuthLocalizationsSw();
+    case 'th': return DerivAuthLocalizationsTh();
+    case 'tr': return DerivAuthLocalizationsTr();
+    case 'vi': return DerivAuthLocalizationsVi();
+    case 'zh': return DerivAuthLocalizationsZh();
   }
 
   throw FlutterError(
-      'DerivAuthLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'DerivAuthLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

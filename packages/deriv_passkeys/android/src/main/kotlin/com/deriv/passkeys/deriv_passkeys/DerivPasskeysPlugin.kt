@@ -18,6 +18,8 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import androidx.credentials.exceptions.NoCredentialException
+import androidx.credentials.exceptions.GetCredentialCancellationException
 
 /// DerivPasskeysPlugin is a Flutter plugin that provides a way to create and get credentials using the WebAuthn API.
 class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, ViewModel() {
@@ -108,9 +110,9 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
                 result.success(credential)
               }
               else if (e != null) {
-                var exceptionType = e.javaClass.kotlin.simpleName
+                var exceptionType = e.javaClass.simpleName
                 if (e is CreatePublicKeyCredentialDomException) {
-                    exceptionType = "$exceptionType(${e.domError.javaClass.kotlin.simpleName ?: "DomError"})"
+                    exceptionType = "$exceptionType(${e.domError.javaClass.simpleName ?: "DomError"})"
                 }
                 result.error(exceptionType ?: "Exception", e.message ?: "Exception occurred", null)
               }
@@ -118,9 +120,9 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
                 result.error("Error", "Unknown error", null)
               }
             }
-          } catch (e: Exception) {
-            result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
-          }
+            } catch (e: Exception) {
+            result.error(e.javaClass.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
+            }
           } ?: run {
             result.error("InvalidParameterException", "Options not found", null)
           }
@@ -134,14 +136,14 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
                 result.success(credential)
               }
               else if (e != null) {
-                result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
+                result.error(e.javaClass.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
               }
               else {
                 result.error("Error", "Unknown error", null)
               }
             }
           } catch (e: Exception) {
-            result.error(e.javaClass.kotlin.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
+            result.error(e.javaClass.simpleName ?: "Exception", e.message ?: "Exception occurred", null)
           }
           } ?: run {
             result.error("InvalidParameterException", "Options not found", null)

@@ -1,4 +1,3 @@
-import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
 import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/exceptions/server_exceptions.dart';
 import 'package:flutter_test/flutter_test.dart';
