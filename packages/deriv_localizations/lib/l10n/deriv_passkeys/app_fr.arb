@@ -52,7 +52,7 @@
   "rename": "Renommer",
   "revoke": "Révoquer",
   "continueTradingButtonText": "Poursuivre les opérations de trading",
-  "addMorePasskeysButtonText": "Ajouter d'autres Passkeys",
+  "addMorePasskeysButtonText": "Ajouter plus de Passkeys",
   "unableToSetupPasskey": "Impossible de configurer la Passkey",
   "unableToSetupPasskeyDescription": "Nous avons rencontré un problème lors de l'établissement de votre Passkey. Il se peut que le processus ait été interrompu ou que la session ait expiré. Veuillez réessayer.",
   "passkeysOffErrorTitle": "Le service Passkeys est indisponible",

@@ -51,7 +51,7 @@
   "lastUsed": "ใช้ครั้งล่าสุด",
   "rename": "เปลี่ยนชื่อ",
   "revoke": "เพิกถอน",
-  "continueTradingButtonText": "ทำการเทรดต่อไป",
+  "continueTradingButtonText": "ดำเนินการเทรดต่อ",
   "addMorePasskeysButtonText": "เพิ่มจำนวน Passkey",
   "unableToSetupPasskey": "ไม่สามารถตั้งค่า Passkey ได้",
   "unableToSetupPasskeyDescription": "เราพบปัญหาขณะตั้งค่า Passkey ของคุณ กระบวนการอาจถูกขัดจังหวะหรือเซสชั่นหมดเวลา โปรดลองอีกครั้ง",

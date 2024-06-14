@@ -51,7 +51,7 @@
   "lastUsed": "Utilizado por última vez",
   "rename": "Renombrar",
   "revoke": "Revocar",
-  "continueTradingButtonText": "Seguir operando",
+  "continueTradingButtonText": "Continúe operando",
   "addMorePasskeysButtonText": "Añadir más Passkeys",
   "unableToSetupPasskey": "No se puede configurar la passkey",
   "unableToSetupPasskeyDescription": "Hemos encontrado un problema al configurar su passkey. Es posible que el proceso se haya interrumpido o que la sesión haya expirado. Por favor, inténtelo de nuevo.",

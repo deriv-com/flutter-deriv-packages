@@ -22,7 +22,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get labelLiveChat => 'Live chat';
 
   @override
-  String get actionSignUpForFree => 'Cadastre-se gratuitamente';
+  String get actionSignUpForFree => 'Registe-se gratuitamente';
 
   @override
   String get actionLogin => 'Iniciar sessão';

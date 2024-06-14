@@ -52,7 +52,7 @@
   "rename": "إعادة تسمية",
   "revoke": "إلغاء",
   "continueTradingButtonText": "استمر في التداول",
-  "addMorePasskeysButtonText": "أضف المزيد من Passkeys",
+  "addMorePasskeysButtonText": "أضف المزيد من passkeys",
   "unableToSetupPasskey": "تعذر إعداد مفتاح Passkey",
   "unableToSetupPasskeyDescription": "لقد واجهنا مشكلة أثناء إعداد Passkey الخاص بك. ربما تمت مقاطعة العملية، أو ربما انتهت مهلة الجلسة. يرجى المحاولة مرة أخرى.",
   "passkeysOffErrorTitle": "خدمة Passkeys غير متوفرة",

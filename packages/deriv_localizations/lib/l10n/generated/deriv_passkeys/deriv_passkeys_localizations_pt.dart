@@ -64,6 +64,15 @@ class DerivPasskeysLocalizationsPt extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'Pode criar uma passkey por dispositivo.';
 
   @override
+  String get p2pHowToCreatePasskey => 'How to create passkey?';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+
+  @override
   String get whereArePasskeysSaved => 'Onde são guardadas as chaves de acesso?';
 
   @override
@@ -121,7 +130,7 @@ class DerivPasskeysLocalizationsPt extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'Sincronizar entre dispositivos';
 
   @override
-  String get createPasskey => 'Crie passkey';
+  String get createPasskey => 'Criar passkey';
 
   @override
   String get unsupportedPlatform => 'Plataforma não suportada';
@@ -139,16 +148,16 @@ class DerivPasskeysLocalizationsPt extends DerivPasskeysLocalizations {
   String get revoke => 'Revogar';
 
   @override
-  String get continueTradingButtonText => 'Continue a negociar';
+  String get continueTradingButtonText => 'Continuar a negociar';
 
   @override
-  String get addMorePasskeysButtonText => 'Adicionar Mais Passkeys';
+  String get addMorePasskeysButtonText => 'Adicionar mais passkeys';
 
   @override
   String get unableToSetupPasskey => 'Não é possível configurar a passkey';
 
   @override
-  String get unableToSetupPasskeyDescription => 'Encontramos um problema ao configurar sua passkey. O processo pode ter sido interrompido ou a sessão expirou. Por favor, tente novamente.';
+  String get unableToSetupPasskeyDescription => 'Houve um problema ao configurar a sua passkey. O processo pode ter sido interrompido ou a sessão expirou. Por favor, tente novamente.';
 
   @override
   String get passkeysOffErrorTitle => 'O serviço de Passkeys não está disponível';
@@ -157,8 +166,8 @@ class DerivPasskeysLocalizationsPt extends DerivPasskeysLocalizations {
   String get never => 'Nunca';
 
   @override
-  String get unable_to_process_your_request => 'Não foi possível processar sua solicitação';
+  String get unable_to_process_your_request => 'Não foi possível completar o processamento do seu pedido';
 
   @override
-  String get unable_to_process_your_request_description => 'Estamos enfrentando um problema temporário no processamento de sua solicitação. Por favor, tente novamente mais tarde.';
+  String get unable_to_process_your_request_description => 'Surgiu um problema temporário no processamento do seu pedido. Por favor, tente novamente mais tarde.';
 }

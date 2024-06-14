@@ -52,7 +52,7 @@
   "rename": "Đổi tên",
   "revoke": "Thu hồi",
   "continueTradingButtonText": "Tiếp tục giao dịch",
-  "addMorePasskeysButtonText": "Thêm nhiều Passkeys",
+  "addMorePasskeysButtonText": "Thêm passkeys",
   "unableToSetupPasskey": "Không thể thiết lập passkey",
   "unableToSetupPasskeyDescription": "Chúng tôi gặp sự cố khi thiết lập passkey của bạn. Quá trình có thể đã bị gián đoạn hoặc phiên đã hết thời gian. Vui lòng thử lại.",
   "passkeysOffErrorTitle": "Dịch vụ Passkeys không khả dụng",

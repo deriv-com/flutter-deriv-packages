@@ -64,6 +64,15 @@ class DerivPasskeysLocalizationsKo extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => '기기당 하나의 Passkey를 만들 수 있습니다.';
 
   @override
+  String get p2pHowToCreatePasskey => 'How to create passkey?';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+
+  @override
   String get whereArePasskeysSaved => 'Passkeys는 어디에 저장되나요?';
 
   @override
@@ -142,7 +151,7 @@ class DerivPasskeysLocalizationsKo extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => '계속 거래하기';
 
   @override
-  String get addMorePasskeysButtonText => '더 많은 Passkeys';
+  String get addMorePasskeysButtonText => '더 많은 passkeys';
 
   @override
   String get unableToSetupPasskey => 'Passkey를 설정할 수 없습니다';

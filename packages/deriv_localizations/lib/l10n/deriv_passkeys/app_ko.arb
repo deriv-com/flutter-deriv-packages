@@ -52,7 +52,7 @@
   "rename": "이름 변경",
   "revoke": "철회",
   "continueTradingButtonText": "계속 거래하기",
-  "addMorePasskeysButtonText": "더 많은 Passkeys",
+  "addMorePasskeysButtonText": "더 많은 passkeys",
   "unableToSetupPasskey": "Passkey를 설정할 수 없습니다",
   "unableToSetupPasskeyDescription": "Passkey를 설정하는 동안 문제가 발생했습니다. 프로세스가 중단되었거나 세션 시간이 초과되었을 수 있습니다. 다시 시도해 주시기 바랍니다.",
   "passkeysOffErrorTitle": "Passkeys 서비스를 이용할 수 없습니다",
