@@ -25,8 +25,10 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
     String appId, {
     required DerivRudderstack derivRudderstack,
   }) =>
-      _instance =
-          AnalyticsRepository._(appId, derivRudderstack: derivRudderstack);
+      _instance = AnalyticsRepository._(
+        appId,
+        derivRudderstack: derivRudderstack,
+      );
 
   String? _mainFormName;
 
@@ -84,7 +86,7 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
   void trackOpenLearnMorePage() {
     final Map<String, dynamic> trackingData = getLearnMoreTrackingParams(
       LearnMorePageActions.openLearnMorePage,
-      _mainFormName!,
+      _mainFormName ?? 'testing_main_form',
     );
 
     _subFormName = 'passkey_info';
@@ -101,12 +103,16 @@ class AnalyticsRepository extends BasePasskeyAnalyticsRepository {
   void trackCloseLearnMorePage() {
     final Map<String, dynamic> trackingData = getLearnMoreTrackingParams(
       LearnMorePageActions.closeLearnMorePage,
-      _mainFormName!,
+      _mainFormName ?? 'testing_main_form',
     );
 
-    _subFormName = _mainFormName!.contains('account_settings')
-        ? 'passkey_main'
-        : 'passkey_effortless';
+    if (_mainFormName == null) {
+      _mainFormName = 'testing_main_form';
+    } else {
+      _subFormName = _mainFormName!.contains('account_settings')
+          ? 'passkey_main'
+          : 'passkey_effortless';
+    }
 
     _addAppName(trackingData);
 
