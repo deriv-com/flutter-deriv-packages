@@ -79,8 +79,8 @@ abstract class DerivPasskeysLocalizations {
 
   final String localeName;
 
-  static DerivPasskeysLocalizations of(BuildContext context) {
-    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations)!;
+  static DerivPasskeysLocalizations? of(BuildContext context) {
+    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations);
   }
 
   static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate = _DerivPasskeysLocalizationsDelegate();
@@ -236,6 +236,24 @@ abstract class DerivPasskeysLocalizations {
   /// In en, this message translates to:
   /// **'You can create one passkey per device.'**
   String get howToCreatePasskeyDescription2;
+
+  /// No description provided for @p2pHowToCreatePasskey.
+  ///
+  /// In en, this message translates to:
+  /// **'How to create passkey?'**
+  String get p2pHowToCreatePasskey;
+
+  /// No description provided for @p2pHowToCreatePasskeyDescription1.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to \'Profile\' in your Deriv P2P app.'**
+  String get p2pHowToCreatePasskeyDescription1;
+
+  /// No description provided for @p2pHowToCreatePasskeyDescription2.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap \'Passkeys\' to create your passkey.'**
+  String get p2pHowToCreatePasskeyDescription2;
 
   /// No description provided for @whereArePasskeysSaved.
   ///
