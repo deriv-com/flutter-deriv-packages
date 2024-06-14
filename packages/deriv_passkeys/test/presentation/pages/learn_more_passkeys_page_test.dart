@@ -43,6 +43,9 @@ void main() {
       when(() => derivPasskeysBloc.state).thenReturn(
         DerivPasskeysInitializedState(),
       );
+      when(() => derivPasskeysBloc.isDp2p).thenReturn(
+        false,
+      );
     });
 
     testWidgets('renders page correctly', (WidgetTester tester) async {
