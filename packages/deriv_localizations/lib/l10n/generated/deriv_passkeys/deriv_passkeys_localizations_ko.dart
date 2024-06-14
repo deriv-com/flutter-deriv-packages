@@ -67,10 +67,10 @@ class DerivPasskeysLocalizationsKo extends DerivPasskeysLocalizations {
   String get p2pHowToCreatePasskey => 'How to create passkey?';
 
   @override
-  String get p2pHowToCreatePasskeyDescription1 => 'Go to \'Profile\' in your Deriv P2P app.';
+  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'Tap \'Passkeys\' to create your passkey.';
+  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
 
   @override
   String get whereArePasskeysSaved => 'Passkeys는 어디에 저장되나요?';
