@@ -3,6 +3,103 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-06-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.4.4`](#deriv_localizations---v144)
+ - [`deriv_auth` - `v6.6.7`](#deriv_auth---v667)
+ - [`deriv_passkeys` - `v0.0.1+8`](#deriv_passkeys---v0018)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.6.7`
+ - `deriv_passkeys` - `v0.0.1+8`
+
+---
+
+#### `deriv_localizations` - `v1.4.4`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#617](https://github.com/regentmarkets/flutter-deriv-packages/issues/617)). ([1d5e5f14](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d5e5f141640aa00546dcbb31d2db8eb9a994452))
+
+
+## 2024-06-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.6.6`](#deriv_auth---v666)
+ - [`deriv_localizations` - `v1.4.3`](#deriv_localizations---v143)
+ - [`deriv_passkeys` - `v0.0.1+7`](#deriv_passkeys---v0017)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.1+7`
+
+---
+
+#### `deriv_auth` - `v6.6.6`
+
+ - **REFACTOR**(deriv_auth): added a flag to allow hiding passkeys button ([#612](https://github.com/regentmarkets/flutter-deriv-packages/issues/612)). ([a4026a9d](https://github.com/regentmarkets/flutter-deriv-packages/commit/a4026a9d8164abc1c66beb327d48610d8ce30dde))
+
+#### `deriv_localizations` - `v1.4.3`
+
+ - **REFACTOR**(deriv_localizations): Update p2p strings for passkeys ([#615](https://github.com/regentmarkets/flutter-deriv-packages/issues/615)). ([5fd85af2](https://github.com/regentmarkets/flutter-deriv-packages/commit/5fd85af24394ea68b8b0a7abc854b9c33b791c26))
+
+
+## 2024-06-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`analytics` - `v2.0.0`](#analytics---v200)
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.4.2`](#deriv_localizations---v142)
+ - [`deriv_auth` - `v6.6.5`](#deriv_auth---v665)
+ - [`deriv_passkeys` - `v0.0.1+6`](#deriv_passkeys---v0016)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.6.5`
+ - `deriv_passkeys` - `v0.0.1+6`
+
+---
+
+#### `analytics` - `v2.0.0`
+
+ - **BREAKING** **REFACTOR**(analytics): added logAppOpen event ([#610](https://github.com/regentmarkets/flutter-deriv-packages/issues/610)). ([74f8d9c3](https://github.com/regentmarkets/flutter-deriv-packages/commit/74f8d9c3a7311ec7abb1cfe76c3f6f190fbcb81a))
+
+#### `deriv_localizations` - `v1.4.2`
+
+ - **FIX**(deriv-localization): fix passkey button strings ([#606](https://github.com/regentmarkets/flutter-deriv-packages/issues/606)). ([ed2a7ea9](https://github.com/regentmarkets/flutter-deriv-packages/commit/ed2a7ea958e34aa027ecb9ef6919f04fd5c7d5f1))
+
+
 ## 2024-06-07
 
 ### Changes

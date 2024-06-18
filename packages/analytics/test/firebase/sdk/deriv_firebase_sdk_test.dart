@@ -31,14 +31,23 @@ void main() {
     test('should return correct NavigatorObserver', () async {
       const String screenName = 'test_screen_name';
 
-      when(() => mockFirebaseAnalytics.setCurrentScreen(screenName: screenName))
+      when(() => mockFirebaseAnalytics.logScreenView(screenName: screenName))
           .thenAnswer((_) async => true);
 
       await derivFirebaseAnalytics.setCurrentScreen(screenName: screenName);
 
       verify(() =>
-              mockFirebaseAnalytics.setCurrentScreen(screenName: screenName))
+              mockFirebaseAnalytics.logScreenView(screenName: screenName))
           .called(1);
+    });
+
+    test('should call logAppOpen', () async {
+      when(() => mockFirebaseAnalytics.logAppOpen())
+          .thenAnswer((_) async => true);
+
+      await derivFirebaseAnalytics.logAppOpen();
+
+      verify(() => mockFirebaseAnalytics.logAppOpen()).called(1);
     });
 
     test('should call logLogin with correct parameters', () async {

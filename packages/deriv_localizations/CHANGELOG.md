@@ -1,3 +1,15 @@
+## 1.4.4
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#617](https://github.com/regentmarkets/flutter-deriv-packages/issues/617)). ([1d5e5f14](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d5e5f141640aa00546dcbb31d2db8eb9a994452))
+
+## 1.4.3
+
+ - **REFACTOR**(deriv_localizations): Update p2p strings for passkeys ([#615](https://github.com/regentmarkets/flutter-deriv-packages/issues/615)). ([5fd85af2](https://github.com/regentmarkets/flutter-deriv-packages/commit/5fd85af24394ea68b8b0a7abc854b9c33b791c26))
+
+## 1.4.2
+
+ - **FIX**(deriv-localization): fix passkey button strings ([#606](https://github.com/regentmarkets/flutter-deriv-packages/issues/606)). ([ed2a7ea9](https://github.com/regentmarkets/flutter-deriv-packages/commit/ed2a7ea958e34aa027ecb9ef6919f04fd5c7d5f1))
+
 ## 1.4.1
 
  - **REFACTOR**(deriv_auth): update localization ([#594](https://github.com/regentmarkets/flutter-deriv-packages/issues/594)). ([5204c74f](https://github.com/regentmarkets/flutter-deriv-packages/commit/5204c74f609d946ea797e766e6bb652d82f76930))

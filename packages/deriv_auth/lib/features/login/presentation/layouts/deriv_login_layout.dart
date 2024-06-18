@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:deriv_auth/deriv_auth.dart';
-import 'package:deriv_auth/features/single_entry/core/auth_data.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -23,6 +22,7 @@ class DerivLoginLayout extends StatefulWidget {
     this.isForgotPasswordEnabled = true,
     this.isCreateAccountEnabled = true,
     this.isSocialAuthEnabled = true,
+    this.isPasskeysEnabled = true,
     this.authErrorStateHandler,
     this.onLoginError,
     this.onLoginTapped,
@@ -68,6 +68,9 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Whether to display create account section.
   final bool isCreateAccountEnabled;
+
+  /// Whether to display passkey button.
+  final bool isPasskeysEnabled;
 
   /// Social auth state handler.
   final Function(SocialAuthState) socialAuthStateHandler;
@@ -158,7 +161,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       ),
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
-                      const ContinueWithPasskeyButton(),
+                      widget.isPasskeysEnabled
+                          ? const ContinueWithPasskeyButton()
+                          : const SizedBox.shrink(),
                       DerivSocialAuthPanel(
                         socialAuthStateHandler: widget.socialAuthStateHandler,
                         redirectURL: widget.redirectURL,
