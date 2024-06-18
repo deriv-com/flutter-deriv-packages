@@ -14,13 +14,13 @@ public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
 
     switch call.method {
     case "isPlatformSupported":
-      if #available(iOS 15.0, *) {
+      if #available(iOS 16.0, *) {
         result(true)
       } else {
         result(false)
       }
     case "createCredential":
-      if #available(iOS 15.0, *) {
+      if #available(iOS 16.0, *) {
         let derivPasskeysManager = DerivPasskeysManager()
         if let args = call.arguments as? [String: Any], let options = args["options"] as? String {
           derivPasskeysManager.createCredential(options) { credential, error in
@@ -43,7 +43,7 @@ public class DerivPasskeysPlugin: NSObject, FlutterPlugin {
             details: nil))
       }
     case "getCredential":
-      if #available(iOS 15.0, *) {
+      if #available(iOS 16.0, *) {
         let derivPasskeysManager = DerivPasskeysManager()
         if let args = call.arguments as? [String: Any], let options = args["options"] as? String {
           derivPasskeysManager.getCredential(options) { credential, error in

@@ -1,3 +1,9 @@
+## 2.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(analytics): added logAppOpen event ([#610](https://github.com/regentmarkets/flutter-deriv-packages/issues/610)). ([74f8d9c3](https://github.com/regentmarkets/flutter-deriv-packages/commit/74f8d9c3a7311ec7abb1cfe76c3f6f190fbcb81a))
+
 ## 1.0.2
 
  - **REVERT**(analytics): versioning and CHANGELOG. ([81a3a0df](https://github.com/regentmarkets/flutter-deriv-packages/commit/81a3a0df27208bd200009415855c6cb944d016e3))

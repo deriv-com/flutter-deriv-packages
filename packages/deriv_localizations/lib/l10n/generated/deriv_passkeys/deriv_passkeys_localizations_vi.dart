@@ -64,6 +64,15 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'Bạn có thể tạo một passkey cho mỗi thiết bị.';
 
   @override
+  String get p2pHowToCreatePasskey => 'Làm thế nào để tạo mật khẩu?';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => 'Chuyển đến \'Hồ sơ\' trong ứng dụng Deriv P2P của bạn.';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => 'Nhấn vào \'Phím mật khẩu\' để tạo mật khẩu của bạn.';
+
+  @override
   String get whereArePasskeysSaved => 'Passkeys được lưu ở đâu?';
 
   @override
@@ -142,7 +151,7 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'Tiếp tục giao dịch';
 
   @override
-  String get addMorePasskeysButtonText => 'Thêm nhiều Passkeys';
+  String get addMorePasskeysButtonText => 'Thêm passkeys';
 
   @override
   String get unableToSetupPasskey => 'Không thể thiết lập passkey';

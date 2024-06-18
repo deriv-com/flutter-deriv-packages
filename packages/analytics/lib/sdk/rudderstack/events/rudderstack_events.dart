@@ -1,6 +1,5 @@
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
-import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 
 /// Class which hold events which should be monitored.
 class DerivRudderstackEvents {
@@ -18,9 +17,10 @@ class DerivRudderstackEvents {
   void logAppOpened() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'open',
         'form_source': 'mobile_derivgo',
+
         'form_name': 'common_events_derivgo'
       }),
     );
@@ -30,11 +30,11 @@ class DerivRudderstackEvents {
   void logUserTappedLoginButton() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'go_to_login',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -42,13 +42,13 @@ class DerivRudderstackEvents {
   void logAppGetFreeAccount(String slideName) {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'get_free_account',
         'form_source': 'mobile_derivgo',
         'getstarted_slide_name':
             '${slideName.substring(slideName.indexOf('.') + 1, slideName.length)}',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -60,7 +60,7 @@ class DerivRudderstackEvents {
         'action': 'tap_referral_toggle',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -68,11 +68,11 @@ class DerivRudderstackEvents {
   void logTryAgainReferralCode() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'try_again_referral_code',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -80,12 +80,12 @@ class DerivRudderstackEvents {
   void logEmailConfirmationSent() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'email_confirmation_sent',
         'signup_provider': 'email',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -93,12 +93,12 @@ class DerivRudderstackEvents {
   void logEmailConfirmed() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'email_confirmed',
         'signup_provider': 'email',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -106,12 +106,12 @@ class DerivRudderstackEvents {
   void logSignupContinued() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'signup_continued',
         'signup_provider': 'email',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -119,12 +119,12 @@ class DerivRudderstackEvents {
   void logCountrySelectionPageOpened() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'country_selection_screen_opened',
         'signup_provider': 'email',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -132,12 +132,12 @@ class DerivRudderstackEvents {
   void logSetPasswordPageOpened() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'password_screen_opened',
         'signup_provider': 'email',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -145,12 +145,12 @@ class DerivRudderstackEvents {
   void logSignUpDone(String signupProvider) {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'signup_done',
         'signup_provider': '$signupProvider',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -159,14 +159,14 @@ class DerivRudderstackEvents {
       [bool? isToggleOn, String? referralCode]) {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'started',
         'signup_provider': '$signupProvider',
         'referral_toggle_mode': '${isToggleOn ?? false} ',
         'referral_code': '$referralCode',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -174,13 +174,13 @@ class DerivRudderstackEvents {
   void logSignUpFlowError(String? errorText, [String? signupProvider]) {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'signup_flow_error',
         'signup_provider': '$signupProvider',
         'error_message': '$errorText',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
-      }),
+      },
     );
   }
 

@@ -3,11 +3,10 @@ description: This packages contains all localizations for the deriv packages
 
 publish_to: 'none'
 
-version: 1.4.1
+version: 1.4.4
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
-
 
 dependencies:
   flutter:
@@ -17,17 +16,10 @@ dependencies:
     sdk: flutter
   intl: ^0.18.0
 
-
-
-  cupertino_icons: ^1.0.2
-
 dev_dependencies:
   flutter_test:
-    sdk: flutter 
-
-
+    sdk: flutter
   flutter_lints: ^2.0.0
-
 
 flutter:
   uses-material-design: true

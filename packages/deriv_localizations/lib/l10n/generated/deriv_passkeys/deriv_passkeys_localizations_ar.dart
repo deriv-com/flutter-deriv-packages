@@ -64,6 +64,15 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'يمكنك إنشاء Passkey واحد لكل جهاز.';
 
   @override
+  String get p2pHowToCreatePasskey => 'كيفية إنشاء مفتاح مرور؟';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => 'انتقل إلى «الملف الشخصي» في تطبيق Deriv P2P الخاص بك.';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => 'انقر فوق «مفاتيح المرور» لإنشاء مفتاح المرور الخاص بك.';
+
+  @override
   String get whereArePasskeysSaved => 'أين يتم حفظ passkeys؟';
 
   @override
@@ -142,7 +151,7 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'استمر في التداول';
 
   @override
-  String get addMorePasskeysButtonText => 'أضف المزيد من Passkeys';
+  String get addMorePasskeysButtonText => 'أضف المزيد من passkeys';
 
   @override
   String get unableToSetupPasskey => 'تعذر إعداد مفتاح Passkey';
