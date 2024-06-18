@@ -21,7 +21,7 @@ class DerivRudderstackEvents {
       properties: RudderProperty.fromMap(<String, dynamic>{
         'action': 'open',
         'form_source': 'mobile_derivgo',
-        'form_name': 'virtual_signup_derivgo'
+        'form_name': 'common_events_derivgo'
       }),
     );
   }
@@ -189,7 +189,7 @@ class DerivRudderstackEvents {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
       properties: RudderProperty.fromMap(<String, dynamic>{
-        'action': 'open',
+        'action': 'open_real_sign_up',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
       }),
@@ -201,14 +201,14 @@ class DerivRudderstackEvents {
   void logStepPassedRealSignUp(
       [String? stepNum,
       String? stepCodename,
-      List<Map<String, dynamic>>? userChoice]) {
+      Map<String, dynamic>? userChoice]) {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
       properties: RudderProperty.fromMap(<String, dynamic>{
         'action': 'step_passed',
         'step_codename': stepCodename,
         'step_num': stepNum,
-        'user_choise': userChoice,
+        'user_choice': userChoice,
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
       }),
@@ -254,13 +254,14 @@ class DerivRudderstackEvents {
 
   /// Tracks system error has happened,
   /// like no connection to the server and etc.
-  void logOtherErrorRealSignUp() {
+  void logError(String error) {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
       properties: RudderProperty.fromMap(<String, dynamic>{
         'action': 'other_error',
+        'error_message': error,
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'common_events_derivgo'
       }),
     );
   }
