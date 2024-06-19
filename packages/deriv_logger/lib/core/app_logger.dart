@@ -162,6 +162,7 @@ class LogDetails {
     required this.logLevel,
     this.stackTrace,
   });
+
   final DateTime time;
   final String title;
   final dynamic message;
