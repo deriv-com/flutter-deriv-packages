@@ -40,6 +40,9 @@ class CurrencyDetail {
   bool get isStableCurrency =>
       stableCurrencies.contains(currencyType.toUpperCase());
 
+  /// This will give the final amount to do processing based on what type of currency it is like fiat or crypto currency.
+  double get finalAmount => double.parse(formatter.format(amount));
+
   /// Amount that is used to display for user.
   String get displayAmount {
     if (amount == 0.0) {
@@ -54,9 +57,9 @@ class CurrencyDetail {
   /// This will give a specific currency formatter based on what type of currency it is like fiat or crypto currency.
   NumberFormat get formatter {
     if (isFiat || isStableCurrency) {
-      return NumberFormat.decimalPattern()..maximumFractionDigits = 2;
+      return NumberFormat('#0.##', 'en_US');
     } else {
-      return NumberFormat.decimalPattern()..maximumFractionDigits = 8;
+      return NumberFormat('#0.########', 'en_US');
     }
   }
 
