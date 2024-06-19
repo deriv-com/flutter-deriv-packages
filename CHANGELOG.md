@@ -15,6 +15,36 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_localizations` - `v1.4.4`](#deriv_localizations---v144)
+ - [`deriv_auth` - `v6.6.7`](#deriv_auth---v667)
+ - [`deriv_passkeys` - `v0.0.1+8`](#deriv_passkeys---v0018)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.6.7`
+ - `deriv_passkeys` - `v0.0.1+8`
+
+---
+
+#### `deriv_localizations` - `v1.4.4`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#617](https://github.com/regentmarkets/flutter-deriv-packages/issues/617)). ([1d5e5f14](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d5e5f141640aa00546dcbb31d2db8eb9a994452))
+
+
+## 2024-06-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_auth` - `v6.6.6`](#deriv_auth---v666)
  - [`deriv_localizations` - `v1.4.3`](#deriv_localizations---v143)
  - [`deriv_passkeys` - `v0.0.1+7`](#deriv_passkeys---v0017)

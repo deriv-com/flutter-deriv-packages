@@ -64,13 +64,13 @@ class DerivPasskeysLocalizationsKo extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => '기기당 하나의 Passkey를 만들 수 있습니다.';
 
   @override
-  String get p2pHowToCreatePasskey => 'How to create passkey?';
+  String get p2pHowToCreatePasskey => '암호 키는 어떻게 만드나요?';
 
   @override
-  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+  String get p2pHowToCreatePasskeyDescription1 => 'Deriv P2P 앱에서 \'프로필\'로 이동합니다.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+  String get p2pHowToCreatePasskeyDescription2 => '\'암호\'를 눌러 암호를 생성합니다.';
 
   @override
   String get whereArePasskeysSaved => 'Passkeys는 어디에 저장되나요?';

@@ -64,13 +64,13 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'Cihaz başına bir passkey oluşturabilirsiniz.';
 
   @override
-  String get p2pHowToCreatePasskey => 'How to create passkey?';
+  String get p2pHowToCreatePasskey => 'Parola nasıl oluşturulur?';
 
   @override
-  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+  String get p2pHowToCreatePasskeyDescription1 => 'Deriv P2P uygulamanızdaki \'Profil\' bölümüne gidin.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+  String get p2pHowToCreatePasskeyDescription2 => 'Parola anahtarınızı oluşturmak için \'Parola Tuşları\'na dokunun.';
 
   @override
   String get whereArePasskeysSaved => 'Passkeys nereye kaydedilir?';
