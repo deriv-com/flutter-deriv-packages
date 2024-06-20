@@ -69,7 +69,7 @@ class DerivFirebaseAnalytics implements BaseAnalytics<FirebaseConfiguration> {
   /// Logs a custom Flutter Analytics event with the given [name] and event [parameters].
   Future<bool> logEvent({
     required String name,
-    Map<String, dynamic>? parameters,
+    Map<String, Object>? parameters,
   }) async =>
       _execute(() async {
         await _firebaseAnalytics.logEvent(
