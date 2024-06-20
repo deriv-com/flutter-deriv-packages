@@ -1,6 +1,5 @@
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
-import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 
 /// Class which hold events which should be monitored.
 class DerivRudderstackEvents {
