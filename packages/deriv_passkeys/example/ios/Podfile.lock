@@ -2,7 +2,7 @@ PODS:
   - connectivity_plus (0.0.1):
     - Flutter
     - ReachabilitySwift
-  - deriv_passkeys (0.0.1):
+  - deriv_passkeys (1.0.0):
     - Flutter
   - device_info_plus (0.0.1):
     - Flutter
@@ -68,7 +68,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   connectivity_plus: bf0076dd84a130856aa636df1c71ccaff908fa1d
-  deriv_passkeys: fadd039a48bae6f15ba8b955481a0f8f2b5bdede
+  deriv_passkeys: beeafb308b654fcbec61b567697c2b21c797037d
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_deriv_api: 9e29abd7cc5091b72303f9c8be549618415f1437

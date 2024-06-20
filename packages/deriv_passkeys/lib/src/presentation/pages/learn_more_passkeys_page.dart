@@ -111,13 +111,22 @@ class LearnMorePasskeysPage extends StatelessWidget {
                             ),
                           ),
                           SectionTitleAndContent(
-                            title: context
-                                .derivPasskeysLocalizations.howToCreatePasskey,
+                            title: context.read<DerivPasskeysBloc>().isDp2p
+                                ? context.derivPasskeysLocalizations
+                                    .p2pHowToCreatePasskey
+                                : context.derivPasskeysLocalizations
+                                    .howToCreatePasskey,
                             texts: <String>[
-                              context.derivPasskeysLocalizations
-                                  .howToCreatePasskeyDescription1,
-                              context.derivPasskeysLocalizations
-                                  .howToCreatePasskeyDescription2
+                              context.read<DerivPasskeysBloc>().isDp2p
+                                  ? context.derivPasskeysLocalizations
+                                      .p2pHowToCreatePasskeyDescription1
+                                  : context.derivPasskeysLocalizations
+                                      .howToCreatePasskeyDescription1,
+                              context.read<DerivPasskeysBloc>().isDp2p
+                                  ? context.derivPasskeysLocalizations
+                                      .p2pHowToCreatePasskeyDescription2
+                                  : context.derivPasskeysLocalizations
+                                      .howToCreatePasskeyDescription2
                             ],
                           ),
                           Padding(
