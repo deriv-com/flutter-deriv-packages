@@ -35,8 +35,11 @@ class LearnMorePasskeysPage extends StatelessWidget
   final void Function(BuildContext context) continueTradingNavigationCallback;
 
   @override
-  Widget build(BuildContext context) => PopScope(
-        onPopInvoked: (_) => trackCloseLearnMorePage(),
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async {
+          trackCloseLearnMorePage();
+          return true;
+        },
         child: BlocListener<DerivPasskeysBloc, DerivPasskeysState>(
           listener: (BuildContext context, DerivPasskeysState state) {
             if (state is DerivPasskeysCreatedSuccessfullyState) {

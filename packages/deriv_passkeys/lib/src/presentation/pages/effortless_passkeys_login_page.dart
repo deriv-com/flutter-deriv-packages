@@ -39,8 +39,11 @@ class EffortlessPasskeysPage extends StatelessWidget
   final void Function(BuildContext context) onPageClosed;
 
   @override
-  Widget build(BuildContext context) => PopScope(
-        onPopInvoked: (_) => trackCloseEffortlessLoginPage(),
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async {
+          trackCloseEffortlessLoginPage();
+          return true;
+        },
         child: BlocListener<DerivPasskeysBloc, DerivPasskeysState>(
           listener: (BuildContext context, DerivPasskeysState state) {
             if (state is DerivPasskeysCreatedSuccessfullyState) {

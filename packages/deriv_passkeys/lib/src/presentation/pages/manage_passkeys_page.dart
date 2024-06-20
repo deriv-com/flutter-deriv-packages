@@ -47,8 +47,11 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage>
   }
 
   @override
-  Widget build(BuildContext context) => PopScope(
-        onPopInvoked: (_) => trackCloseManagePasskeysPage(),
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async {
+          trackCloseManagePasskeysPage();
+          return true;
+        },
         child: Scaffold(
           backgroundColor: context.theme.colors.primary,
           appBar: AppBar(
