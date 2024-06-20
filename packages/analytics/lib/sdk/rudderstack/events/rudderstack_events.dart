@@ -1,5 +1,6 @@
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
+import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 
 /// Class which hold events which should be monitored.
 class DerivRudderstackEvents {
@@ -20,9 +21,8 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'open',
         'form_source': 'mobile_derivgo',
-
         'form_name': 'common_events_derivgo'
-      }),
+      },
     );
   }
 
@@ -56,7 +56,7 @@ class DerivRudderstackEvents {
   void logReferralToggleSwitched() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'tap_referral_toggle',
         'form_source': 'mobile_derivgo',
         'form_name': 'virtual_signup_derivgo'
@@ -188,11 +188,11 @@ class DerivRudderstackEvents {
   void logOpenRealSignUp() {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'open_real_sign_up',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -204,14 +204,14 @@ class DerivRudderstackEvents {
       Map<String, dynamic>? userChoice]) {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: {
         'action': 'step_passed',
         'step_codename': stepCodename,
         'step_num': stepNum,
         'user_choice': userChoice,
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -219,11 +219,11 @@ class DerivRudderstackEvents {
   void logStepBackRealSignUp(String stepCodeName) {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'step_back',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -231,11 +231,11 @@ class DerivRudderstackEvents {
   void logCloseRealSignUp() {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'close',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -244,11 +244,11 @@ class DerivRudderstackEvents {
   void logValidationErrorDuringRealSignUp() {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'real_signup_error',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
-      }),
+      },
     );
   }
 
@@ -257,12 +257,12 @@ class DerivRudderstackEvents {
   void logError(String error) {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'other_error',
         'error_message': error,
         'form_source': 'mobile_derivgo',
         'form_name': 'common_events_derivgo'
-      }),
+      },
     );
   }
 
@@ -270,11 +270,11 @@ class DerivRudderstackEvents {
   void logRealSignUpFinished() {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: RudderProperty.fromMap(<String, dynamic>{
+      properties: <String, dynamic>{
         'action': 'real_signup_finished',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
-      }),
+      },
     );
   }
 }
