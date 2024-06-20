@@ -54,6 +54,9 @@ void main() {
         'test',
         derivRudderstack: derivRudderstack,
       );
+      when(() => derivPasskeysBloc.isDp2p).thenReturn(
+        false,
+      );
     });
 
     testWidgets('renders page correctly', (WidgetTester tester) async {

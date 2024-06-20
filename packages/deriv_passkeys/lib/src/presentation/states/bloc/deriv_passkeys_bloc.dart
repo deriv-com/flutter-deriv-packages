@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkeys_verify_credentials_response_entity.dart';
 
 part 'deriv_passkeys_state.dart';
+
 part 'deriv_passkeys_event.dart';
 
 /// [DerivPasskeysBloc] handles the state within the DerivPasskeys flow.
@@ -19,7 +20,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
   /// Creates a [DerivPasskeysBloc].
   DerivPasskeysBloc({
     required DerivPasskeysService derivPasskeysService,
-    required PasskeysConnectionInfoEntity connectionInfo,
+    required this.connectionInfo,
     required Future<String> Function() getJwtToken,
   }) : super(DerivPasskeysLoadingState()) {
     on<SetDerivPasskeysInitializedEvent>(
@@ -48,7 +49,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
       await derivPasskeysService
           .verifyCredential(
         jwtToken: jwtToken,
-        passkeysConnectionInfoEntity: connectionInfo,
+        passkeysConnectionInfoEntity: passkeysConnectionInfo ?? connectionInfo,
         userAgent: WebSocket.userAgent,
       )
           .then((DerivPasskeysVerifyCredentialsResponseEntity
@@ -154,6 +155,16 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
     );
   }
 
+  /// Passkeys connection info entity.
+  final PasskeysConnectionInfoEntity connectionInfo;
+
   /// The list of passkeys.
   List<DerivPasskeyEntity> passkeysList = <DerivPasskeyEntity>[];
+
+  /// Passkeys info entity which can be used to assign new changes to the
+  /// connection info at anytime.
+  PasskeysConnectionInfoEntity? passkeysConnectionInfo;
+
+  /// Determines whether the app is DP2P or not.
+  bool get isDp2p => connectionInfo.appId == '1408';
 }

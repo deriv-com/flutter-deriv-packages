@@ -117,13 +117,22 @@ class LearnMorePasskeysPage extends StatelessWidget
                               ),
                             ),
                             SectionTitleAndContent(
-                              title: context.derivPasskeysLocalizations
-                                  .howToCreatePasskey,
+                              title: context.read<DerivPasskeysBloc>().isDp2p
+                                  ? context.derivPasskeysLocalizations
+                                      .p2pHowToCreatePasskey
+                                  : context.derivPasskeysLocalizations
+                                      .howToCreatePasskey,
                               texts: <String>[
-                                context.derivPasskeysLocalizations
-                                    .howToCreatePasskeyDescription1,
-                                context.derivPasskeysLocalizations
-                                    .howToCreatePasskeyDescription2
+                                context.read<DerivPasskeysBloc>().isDp2p
+                                    ? context.derivPasskeysLocalizations
+                                        .p2pHowToCreatePasskeyDescription1
+                                    : context.derivPasskeysLocalizations
+                                        .howToCreatePasskeyDescription1,
+                                context.read<DerivPasskeysBloc>().isDp2p
+                                    ? context.derivPasskeysLocalizations
+                                        .p2pHowToCreatePasskeyDescription2
+                                    : context.derivPasskeysLocalizations
+                                        .howToCreatePasskeyDescription2
                               ],
                             ),
                             Padding(
@@ -240,7 +249,6 @@ class LearnMorePasskeysPage extends StatelessWidget
                         left: 24, right: 24, bottom: 24, top: 16),
                     child: PrimaryButton(
                       onPressed: () {
-                        trackCreatePasskey();
                         context
                             .read<DerivPasskeysBloc>()
                             .add(DerivPasskeysCreateCredentialEvent());
