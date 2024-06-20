@@ -43,3 +43,4 @@ scripts:
       ignore:
         # Ignore until we have a proper test.
         - "deriv_feature_flag"
+        - "deriv_auth"
