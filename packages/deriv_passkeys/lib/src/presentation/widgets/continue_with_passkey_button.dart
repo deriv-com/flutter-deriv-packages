@@ -28,6 +28,7 @@ class ContinueWithPasskeyButton extends StatelessWidget {
           }
 
           return InkWell(
+            key: const Key('continueWithPasskeysButtonKey'),
             child: Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
