@@ -12,6 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  analytics:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/analytics
+      ref: analytics-v2.0.0
+
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git

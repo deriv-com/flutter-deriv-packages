@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:deriv_auth/core/analytics/service/auth_tracking_mixin.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -100,7 +101,8 @@ class DerivLoginLayout extends StatefulWidget {
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
 }
 
-class _DerivLoginLayoutState extends State<DerivLoginLayout> {
+class _DerivLoginLayoutState extends State<DerivLoginLayout>
+    with AuthTrackingMixin {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController();
@@ -162,7 +164,9 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout> {
                       if (widget.isSocialAuthEnabled)
                         const SizedBox(height: ThemeProvider.margin24),
                       widget.isPasskeysEnabled
-                          ? const ContinueWithPasskeyButton()
+                          ? ContinueWithPasskeyButton(
+                              onTap: trackLoginWithPasskey,
+                            )
                           : const SizedBox.shrink(),
                       DerivSocialAuthPanel(
                         socialAuthStateHandler: widget.socialAuthStateHandler,

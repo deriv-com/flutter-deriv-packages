@@ -1,9 +1,10 @@
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
 
-///
+/// Mixin for tracking user authentication actions.
 mixin AuthTrackingMixin {
-  final AuthTrackingRepository _repository = AuthTrackingRepository.instance;
+  late final AuthTrackingRepository _repository =
+      AuthTrackingRepository.instance;
 
   /// Track user opened login form.
   void trackUserOpenedLoginForm() => _repository.trackUserOpenedLoginForm();
