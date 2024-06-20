@@ -1,4 +1,4 @@
-import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
+import 'package:deriv_passkeys/src/core/extensions/context_extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';

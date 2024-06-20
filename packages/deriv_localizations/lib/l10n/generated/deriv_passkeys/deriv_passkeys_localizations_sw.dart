@@ -64,13 +64,13 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'Unaweza kuunda passkey moja kwa kila kifaa.';
 
   @override
-  String get p2pHowToCreatePasskey => 'How to create passkey?';
+  String get p2pHowToCreatePasskey => 'Jinsi ya kuunda passkey?';
 
   @override
-  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+  String get p2pHowToCreatePasskeyDescription1 => 'Nenda kwenye \'Profaili\' katika programu yako ya Deriv P2P.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+  String get p2pHowToCreatePasskeyDescription2 => 'Gonga \'Passkeys\' ili kuunda nenosiri lako.';
 
   @override
   String get whereArePasskeysSaved => 'Passkeys zimehifadhiwa wapi?';

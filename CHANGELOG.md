@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-06-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_logger` - `v0.0.2`](#deriv_logger---v002)
+ - [`update_checker` - `v1.3.0`](#update_checker---v130)
+
+---
+
+#### `deriv_logger` - `v0.0.2`
+
+ - **FEAT**(deriv_logger): add ability to print prettified logs in console and UI ([#608](https://github.com/regentmarkets/flutter-deriv-packages/issues/608)). ([5a91c24b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5a91c24bde607ff37940edf18f8dfac67d3fc4fa))
+
+#### `update_checker` - `v1.3.0`
+
+ - **FEAT**(deriv_logger): add ability to print prettified logs in console and UI ([#608](https://github.com/regentmarkets/flutter-deriv-packages/issues/608)). ([5a91c24b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5a91c24bde607ff37940edf18f8dfac67d3fc4fa))
+
+
+## 2024-06-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.4.4`](#deriv_localizations---v144)
+ - [`deriv_auth` - `v6.6.7`](#deriv_auth---v667)
+ - [`deriv_passkeys` - `v0.0.1+8`](#deriv_passkeys---v0018)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.6.7`
+ - `deriv_passkeys` - `v0.0.1+8`
+
+---
+
+#### `deriv_localizations` - `v1.4.4`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#617](https://github.com/regentmarkets/flutter-deriv-packages/issues/617)). ([1d5e5f14](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d5e5f141640aa00546dcbb31d2db8eb9a994452))
+
+
 ## 2024-06-14
 
 ### Changes
