@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-06-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_logger` - `v0.0.2`](#deriv_logger---v002)
+ - [`update_checker` - `v1.3.0`](#update_checker---v130)
+
+---
+
+#### `deriv_logger` - `v0.0.2`
+
+ - **FEAT**(deriv_logger): add ability to print prettified logs in console and UI ([#608](https://github.com/regentmarkets/flutter-deriv-packages/issues/608)). ([5a91c24b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5a91c24bde607ff37940edf18f8dfac67d3fc4fa))
+
+#### `update_checker` - `v1.3.0`
+
+ - **FEAT**(deriv_logger): add ability to print prettified logs in console and UI ([#608](https://github.com/regentmarkets/flutter-deriv-packages/issues/608)). ([5a91c24b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5a91c24bde607ff37940edf18f8dfac67d3fc4fa))
+
+
 ## 2024-06-14
 
 ### Changes
