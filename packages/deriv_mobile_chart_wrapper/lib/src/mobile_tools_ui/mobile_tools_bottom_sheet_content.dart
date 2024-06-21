@@ -1,5 +1,6 @@
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/chips_list.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
@@ -24,13 +25,27 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) => Column(
         children: <Widget>[
           _buildHeader(context),
-          ChipsList(items: <CustomChip>[
-            CustomChip(title: 'Active'),
-            CustomChip(title: 'All'),
-            CustomChip(title: 'Momentum'),
-            CustomChip(title: 'Volatility'),
-            CustomChip(title: 'Moving average'),
+          const ChipsList(items: <CustomChip>[
+            CustomChip(title: 'Active', value: 'Active'),
+            CustomChip(title: 'All', value: 'All'),
+            CustomChip(title: 'Momentum', value: 'Momentum'),
+            CustomChip(title: 'Volatility', value: 'Volatility'),
+            CustomChip(title: 'Moving average', value: 'Moving average'),
           ]),
+          Expanded(
+            child: ListView.builder(
+              itemCount: indicators.length,
+              itemBuilder: (_, index) {
+                final IndicatorItemModel indicator = indicators[index];
+
+                return IndicatorListItem(
+                  iconAssetPath: indicator.icon,
+                  title: indicator.title,
+                  onInfoIconTapped: () {},
+                );
+              },
+            ),
+          ),
         ],
       );
 
