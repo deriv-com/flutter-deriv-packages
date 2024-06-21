@@ -1,6 +1,7 @@
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 /// List item widget to show an indicator.
 class IndicatorListItem extends StatelessWidget {
@@ -33,10 +34,11 @@ class IndicatorListItem extends StatelessWidget {
       padding: const EdgeInsets.all(ThemeProvider.margin16),
       child: Row(
         children: [
-          Image.asset(
+          SvgPicture.asset(
             iconAssetPath,
             width: ThemeProvider.margin24,
             height: ThemeProvider.margin24,
+            package: 'deriv_mobile_chart_wrapper',
           ),
           const SizedBox(width: Dimens.margin08),
           Text(

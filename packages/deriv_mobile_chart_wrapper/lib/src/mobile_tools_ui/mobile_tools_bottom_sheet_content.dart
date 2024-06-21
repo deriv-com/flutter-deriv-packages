@@ -22,7 +22,9 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) => Column(
+  Widget build(BuildContext context) {
+    print('########## ${macdIcon}');
+    return Column(
         children: <Widget>[
           _buildHeader(context),
           const ChipsList(items: <CustomChip>[
@@ -48,6 +50,7 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
           ),
         ],
       );
+  }
 
   Widget _buildHeader(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(vertical: Dimens.margin16),
