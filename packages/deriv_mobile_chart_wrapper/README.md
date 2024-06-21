@@ -1,39 +1,18 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A wrapper package around package _**deriv_chart**_ to implement any functionality specific to mobile and can be wrapped around the main chart package.
+Since the main [chart package](https://github.com/regentmarkets/flutter-chart) is used in both mobile app and the web platform, for any feature that is specific to mobile, to keep the size of the main chart package small, we implement it in this package.
 
 ## Features
+Menu and interfaces to add/remove indicators and drawing tools.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Dependencies
+- [deriv_theme](https://github.com/regentmarkets/flutter-deriv-packages/tree/master/packages/deriv_theme)
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+## Get started
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+dependencies:
+  deriv_mobile_chart_wrapper:
+    git:
+      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      path: packages/deriv_mobile_chart_wrapper
+      ref: [latest_version]
+```
