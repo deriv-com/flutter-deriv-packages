@@ -169,35 +169,10 @@ public class DerivPasskeysManager{
     }
     
     @available(iOS 16.0, *)
-    private func getPresentationContextProvider() throws -> ASAuthorizationControllerPresentationContextProviding {
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene})
-            .compactMap({$0})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
-        guard var topController = keyWindow?.rootViewController else {
-            throw PluginError.notFound("Root view controller")
-        }
-        while let presentedViewController = topController.presentedViewController {
-            topController = presentedViewController
-        }
-        if let nav = topController as? UINavigationController {
-            topController = nav.visibleViewController ?? topController
-        }
-        guard let contextProvider = topController as? ASAuthorizationControllerPresentationContextProviding else {
-            throw PluginError.notFound("Presentation context provider")
-        }
-        return contextProvider
-    }
-    
-    @available(iOS 16.0, *)
     private func requestCredential(_ authorizationRequests: [ASAuthorizationRequest]) throws -> ASAuthorizationCredential {
         let authController = ASAuthorizationController(authorizationRequests: authorizationRequests)
         let authCtrlDelete = AuthCtrlDelegate()
-        let contextProvider = try getPresentationContextProvider()
         authController.delegate = authCtrlDelete
-        authController.presentationContextProvider = contextProvider
         authController.performRequests()
         
         let result = try authCtrlDelete.getResult()

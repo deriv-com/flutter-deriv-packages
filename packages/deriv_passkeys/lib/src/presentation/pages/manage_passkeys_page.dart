@@ -1,5 +1,6 @@
-import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
+import 'package:deriv_passkeys/src/core/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
+import 'package:deriv_passkeys/src/presentation/mixins/passkey_event_tracking_mixin.dart';
 import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.dart';
 import 'package:deriv_passkeys/src/presentation/pages/passkey_created_page.dart';
 import 'package:deriv_passkeys/src/presentation/states/bloc/deriv_passkeys_bloc.dart';
@@ -34,110 +35,137 @@ class ManagePasskeysPage extends StatefulWidget {
   State<ManagePasskeysPage> createState() => _ManagePasskeysPageState();
 }
 
-class _ManagePasskeysPageState extends State<ManagePasskeysPage> {
+class _ManagePasskeysPageState extends State<ManagePasskeysPage>
+    with PasskeyEventTrackingMixin {
   @override
   void initState() {
     super.initState();
+    trackOpenManagePasskeysPage();
     context
         .read<DerivPasskeysBloc>()
         .add(const DerivPasskeysGetPasskeysListEvent());
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        backgroundColor: context.theme.colors.primary,
-        appBar: AppBar(
-          title: const Text('Passkeys', style: TextStyle(fontSize: 20)),
-          actions: <Widget>[
-            InkWell(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: SvgPicture.asset(
-                  Assets.learnMorePasskeysIcon,
-                  package: 'deriv_passkeys',
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async {
+          trackCloseManagePasskeysPage();
+          return true;
+        },
+        child: Scaffold(
+          backgroundColor: context.theme.colors.primary,
+          appBar: AppBar(
+            title: const Text('Passkeys', style: TextStyle(fontSize: 20)),
+            actions: <Widget>[
+              InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: SvgPicture.asset(
+                    Assets.learnMorePasskeysIcon,
+                    package: 'deriv_passkeys',
+                  ),
                 ),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<Widget>(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<Widget>(
                       builder: (BuildContext context) => LearnMorePasskeysPage(
-                            onPageClosed: (BuildContext context) {
-                              Navigator.pop(context);
-                            },
-                            addMorePasskeysNavigationCallback:
-                                widget.addMorePasskeysNavigationCallback,
-                            continueTradingNavigationCallback:
-                                widget.continueTradingNavigationCallback,
-                          )),
-                );
-              },
-            ),
-          ],
-        ),
-        body: BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
-            listener: (BuildContext context, DerivPasskeysState state) {
-          if (state is DerivPasskeysCreatedSuccessfullyState) {
-            Navigator.push(
-              context,
-              MaterialPageRoute<Widget>(
-                  builder: (BuildContext context) => PasskeyCreatedPage(
-                        onPageClose: (BuildContext context) {
+                        onPageClosed: (BuildContext context) {
                           Navigator.pop(context);
                         },
-                        bottomCallToAction: PasskeysCreatedCallToAction(
-                          addMorePasskeysNavigationCallback:
-                              widget.addMorePasskeysNavigationCallback,
-                          continueTradingNavigationCallback:
-                              widget.continueTradingNavigationCallback,
-                        ),
-                      )),
-            );
-          } else if (state is DerivPasskeysErrorState) {
-            handlePasskeysError(context, state);
-          }
-        }, builder: (BuildContext context, DerivPasskeysState state) {
-          if (state is DerivPasskeysLoadedState) {
-            return SafeArea(
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _buildDerivPasskeysLoadedContent(
-                      context,
-                      state,
+                        addMorePasskeysNavigationCallback:
+                            (BuildContext context) {
+                          trackAddMorePasskeys();
+                          widget.addMorePasskeysNavigationCallback(context);
+                        },
+                        continueTradingNavigationCallback:
+                            (BuildContext context) {
+                          trackContinueTrading();
+                          widget.continueTradingNavigationCallback(context);
+                        },
+                      ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: PrimaryButton(
-                          onPressed: () {
-                            context
-                                .read<DerivPasskeysBloc>()
-                                .add(DerivPasskeysCreateCredentialEvent());
-                          },
-                          child: Text(
-                            context.derivPasskeysLocalizations.createPasskey,
-                            style: TextStyle(
-                              color: context.theme.colors.prominent,
+                  );
+                },
+              ),
+            ],
+          ),
+          body: BlocConsumer<DerivPasskeysBloc, DerivPasskeysState>(
+              listener: (BuildContext context, DerivPasskeysState state) {
+            if (state is DerivPasskeysCreatedSuccessfullyState) {
+              trackCreatePasskeySuccess();
+              Navigator.push(
+                context,
+                MaterialPageRoute<Widget>(
+                  builder: (BuildContext context) => PasskeyCreatedPage(
+                    onPageClose: (BuildContext context) {
+                      Navigator.pop(context);
+                    },
+                    bottomCallToAction: PasskeysCreatedCallToAction(
+                      addMorePasskeysNavigationCallback:
+                          (BuildContext context) {
+                        trackAddMorePasskeys();
+                        widget.addMorePasskeysNavigationCallback(context);
+                      },
+                      continueTradingNavigationCallback:
+                          (BuildContext context) {
+                        trackContinueTrading();
+                        widget.continueTradingNavigationCallback(context);
+                      },
+                    ),
+                  ),
+                ),
+              );
+            } else if (state is DerivPasskeysErrorState) {
+              trackPasskeyError('${state.errorCode}: ${state.message}');
+              handlePasskeysError(context, state);
+            }
+          }, builder: (BuildContext context, DerivPasskeysState state) {
+            if (state is DerivPasskeysLoadedState) {
+              return SafeArea(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      _buildDerivPasskeysLoadedContent(
+                        context,
+                        state,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: PrimaryButton(
+                            onPressed: () {
+                              trackCreatePasskey();
+                              context
+                                  .read<DerivPasskeysBloc>()
+                                  .add(DerivPasskeysCreateCredentialEvent());
+                            },
+                            child: Text(
+                              context.derivPasskeysLocalizations.createPasskey,
+                              style: TextStyle(
+                                color: context.theme.colors.prominent,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }
-          return const SizedBox();
-        }),
+              );
+            }
+            return const SizedBox();
+          }),
+        ),
       );
 
   Widget _buildDerivPasskeysListContent(
-          BuildContext context, DerivPasskeysLoadedState state) =>
+    BuildContext context,
+    DerivPasskeysLoadedState state,
+  ) =>
       Expanded(
         child: Padding(
           padding: const EdgeInsets.all(24),
