@@ -5,6 +5,6 @@ import 'package:flutter/material.dart';
 extension ContextExtension on BuildContext {
   /// Get derivPasskeysLocalizations.
   DerivMobileChartWrapperLocalizations
-      get derivMobileChartWrapperLocalizations =>
+      get mobileChartWrapperLocalizations =>
           DerivMobileChartWrapperLocalizations.of(this);
 }
