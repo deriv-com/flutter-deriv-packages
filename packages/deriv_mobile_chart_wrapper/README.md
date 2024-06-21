@@ -6,6 +6,8 @@ Menu and interfaces to add/remove indicators and drawing tools.
 
 ## Dependencies
 - [deriv_theme](https://github.com/regentmarkets/flutter-deriv-packages/tree/master/packages/deriv_theme)
+- [deriv_localizations](https://github.com/regentmarkets/flutter-deriv-packages/tree/master/packages/deriv_localizations)
+- [deriv_ui](https://github.com/regentmarkets/flutter-deriv-packages/tree/master/packages/deriv_ui)
 
 ## Get started
 ```
