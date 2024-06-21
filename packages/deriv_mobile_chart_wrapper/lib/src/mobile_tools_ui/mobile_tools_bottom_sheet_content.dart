@@ -17,16 +17,28 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
   static const List<IndicatorItemModel> indicators = [
     IndicatorItemModel(title: 'MACD', icon: macdIcon),
     IndicatorItemModel(title: 'Relative Strength Index (RSI)', icon: rsiIcon),
-    IndicatorItemModel(title: 'Moving Average', icon: movingAverageIcon),
     IndicatorItemModel(title: 'Bollinger Bands', icon: bollingerBandsIcon),
+    IndicatorItemModel(title: 'Moving Average', icon: movingAverageIcon),
   ];
 
   @override
   Widget build(BuildContext context) => Column(
         children: <Widget>[
           _buildHeader(context),
-          _buildChipsList(),
-          Expanded(child: _buildIndicatorsList()),
+          Expanded(
+            child: Ink(
+              color: context.theme.colors.primary,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(ThemeProvider.margin16),
+                    child: _buildChipsList(),
+                  ),
+                  Expanded(child: _buildIndicatorsList()),
+                ],
+              ),
+            ),
+          ),
         ],
       );
 
@@ -48,27 +60,22 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
   Widget _buildChipsList() {
     return const ChipsList(items: <CustomChip>[
       CustomChip(
-        title: 'Active',
         value: 'Active',
         borderRadius: ThemeProvider.margin40,
       ),
       CustomChip(
-        title: 'All',
         value: 'All',
         borderRadius: ThemeProvider.margin40,
       ),
       CustomChip(
-        title: 'Momentum',
         value: 'Momentum',
         borderRadius: ThemeProvider.margin40,
       ),
       CustomChip(
-        title: 'Volatility',
         value: 'Volatility',
         borderRadius: ThemeProvider.margin40,
       ),
       CustomChip(
-        title: 'Moving average',
         value: 'Moving average',
         borderRadius: ThemeProvider.margin40,
       ),
