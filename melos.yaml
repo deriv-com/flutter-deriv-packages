@@ -36,6 +36,7 @@ scripts:
     description: Run flutter test for all packages.
     run: flutter test --coverage
     exec:
+      concurrency: 6
       failFast: true
     packageFilters:
       dirExists:
