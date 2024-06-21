@@ -2,7 +2,7 @@
 
 
 # Directories containing ARB files
-feature_dirs=("deriv_auth" "deriv_passkeys")
+feature_dirs=("deriv_auth" "deriv_passkeys", "deriv_mobile_chart_wrapper")
 
 # Base localization directory
 base_l10n_dir="lib/l10n"
