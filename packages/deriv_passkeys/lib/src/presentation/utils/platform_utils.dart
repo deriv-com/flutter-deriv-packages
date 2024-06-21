@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
+import 'package:deriv_passkeys/src/core/extensions/context_extensions.dart';
 import 'package:flutter/widgets.dart';
 
 /// Returns the platform name.

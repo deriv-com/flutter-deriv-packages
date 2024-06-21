@@ -89,7 +89,9 @@ class MyPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const ContinueWithPasskeyButton(),
+          ContinueWithPasskeyButton(
+            onTap: () {},
+          ),
           SizedBox(
             width: double.infinity,
             child: Padding(

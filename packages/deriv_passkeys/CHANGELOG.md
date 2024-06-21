@@ -1,3 +1,25 @@
+## 0.0.2
+
+ - **REFACTOR**(deriv_passkeys): Removed deprecated linter rules ([#625](https://github.com/regentmarkets/flutter-deriv-packages/issues/625)). ([2fdc28f2](https://github.com/regentmarkets/flutter-deriv-packages/commit/2fdc28f20b8efe2ddc3a9a261c40b533307f25e3))
+ - **FEAT**(deriv_passkeys): add user tracking events. ([#607](https://github.com/regentmarkets/flutter-deriv-packages/issues/607)). ([d86b51e2](https://github.com/regentmarkets/flutter-deriv-packages/commit/d86b51e2fe4ca4d18768d0ba17567a388a8d360d))
+
+## 0.0.1+8
+
+ - Update a dependency to the latest release.
+
+## 0.0.1+7
+
+ - Update a dependency to the latest release.
+
+## 0.0.1+6
+
+ - Update a dependency to the latest release.
+
+## 0.0.1+5
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+ - **FIX**(deriv_passkeys): Increased iOS support to 16 ([#601](https://github.com/regentmarkets/flutter-deriv-packages/issues/601)). ([b136424f](https://github.com/regentmarkets/flutter-deriv-packages/commit/b136424f144454727d670c3076074ed0e7197ae0))
+
 ## 0.0.1+4
 
  - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))

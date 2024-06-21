@@ -3,8 +3,10 @@ import 'package:mocktail/mocktail.dart';
 
 class MockDerivPasskeysService extends Mock implements DerivPasskeysService {}
 
-class MockPasskeysConnectionInfoEntity extends Mock
-    implements PasskeysConnectionInfoEntity {}
+class MockPasskeysConnectionInfoEntity extends PasskeysConnectionInfoEntity {
+  MockPasskeysConnectionInfoEntity(
+      {required super.endpoint, required super.appId});
+}
 
 late DerivPasskeysBloc derivPasskeysBloc;
 late MockDerivPasskeysService mockDerivPasskeysService;
@@ -12,7 +14,10 @@ late MockPasskeysConnectionInfoEntity mockPasskeysConnectionInfoEntity;
 
 void setupDerivPasskeysBloc() {
   mockDerivPasskeysService = MockDerivPasskeysService();
-  mockPasskeysConnectionInfoEntity = MockPasskeysConnectionInfoEntity();
+  mockPasskeysConnectionInfoEntity = MockPasskeysConnectionInfoEntity(
+    appId: 'appId',
+    endpoint: '',
+  );
   when(() => mockDerivPasskeysService.isSupported())
       .thenAnswer((_) async => true);
   derivPasskeysBloc = DerivPasskeysBloc(

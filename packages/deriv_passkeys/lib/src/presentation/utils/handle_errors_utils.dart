@@ -1,6 +1,6 @@
 //handlePasskeysError
 import 'package:deriv_passkeys/deriv_passkeys.dart';
-import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
+import 'package:deriv_passkeys/src/core/extensions/context_extensions.dart';
 import 'package:deriv_ui/widgets/popup_alert_dialog.dart';
 import 'package:flutter/material.dart';
 

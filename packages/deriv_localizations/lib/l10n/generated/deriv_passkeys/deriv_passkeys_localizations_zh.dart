@@ -64,6 +64,15 @@ class DerivPasskeysLocalizationsZh extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => '可以為每個裝置建立一個金鑰。';
 
   @override
+  String get p2pHowToCreatePasskey => '如何建立密碼？';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => '在您的 Deriv P2P 應用程序中轉到「個人資料」。';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => '點擊「密碼」以建立您的密碼。';
+
+  @override
   String get whereArePasskeysSaved => '金鑰儲存在哪裡？';
 
   @override
