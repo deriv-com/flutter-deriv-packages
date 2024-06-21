@@ -25,31 +25,51 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     print('########## ${macdIcon}');
     return Column(
-        children: <Widget>[
-          _buildHeader(context),
-          const ChipsList(items: <CustomChip>[
-            CustomChip(title: 'Active', value: 'Active'),
-            CustomChip(title: 'All', value: 'All'),
-            CustomChip(title: 'Momentum', value: 'Momentum'),
-            CustomChip(title: 'Volatility', value: 'Volatility'),
-            CustomChip(title: 'Moving average', value: 'Moving average'),
-          ]),
-          Expanded(
-            child: ListView.builder(
-              itemCount: indicators.length,
-              itemBuilder: (_, index) {
-                final IndicatorItemModel indicator = indicators[index];
-
-                return IndicatorListItem(
-                  iconAssetPath: indicator.icon,
-                  title: indicator.title,
-                  onInfoIconTapped: () {},
-                );
-              },
-            ),
+      children: <Widget>[
+        _buildHeader(context),
+        const ChipsList(items: <CustomChip>[
+          CustomChip(
+            title: 'Active',
+            value: 'Active',
+            borderRadius: ThemeProvider.margin40,
           ),
-        ],
-      );
+          CustomChip(
+            title: 'All',
+            value: 'All',
+            borderRadius: ThemeProvider.margin40,
+          ),
+          CustomChip(
+            title: 'Momentum',
+            value: 'Momentum',
+            borderRadius: ThemeProvider.margin40,
+          ),
+          CustomChip(
+            title: 'Volatility',
+            value: 'Volatility',
+            borderRadius: ThemeProvider.margin40,
+          ),
+          CustomChip(
+            title: 'Moving average',
+            value: 'Moving average',
+            borderRadius: ThemeProvider.margin40,
+          ),
+        ]),
+        Expanded(
+          child: ListView.builder(
+            itemCount: indicators.length,
+            itemBuilder: (_, index) {
+              final IndicatorItemModel indicator = indicators[index];
+
+              return IndicatorListItem(
+                iconAssetPath: indicator.icon,
+                title: indicator.title,
+                onInfoIconTapped: () {},
+              );
+            },
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildHeader(BuildContext context) => Container(
