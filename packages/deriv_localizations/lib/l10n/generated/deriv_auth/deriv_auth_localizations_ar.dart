@@ -25,6 +25,9 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'قم بالتسجيل مجانًا';
 
   @override
+  String get actionGetAFreeAccount => 'Get a free account';
+
+  @override
   String get actionLogin => 'تسجيل دخول';
 
   @override

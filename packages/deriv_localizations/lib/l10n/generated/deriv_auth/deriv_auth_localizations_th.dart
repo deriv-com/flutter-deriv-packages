@@ -25,6 +25,9 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'ลงทะเบียนได้ฟรี';
 
   @override
+  String get actionGetAFreeAccount => 'Get a free account';
+
+  @override
   String get actionLogin => 'เข้าสู่ระบบ';
 
   @override

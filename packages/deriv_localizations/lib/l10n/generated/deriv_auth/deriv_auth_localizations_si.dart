@@ -25,6 +25,9 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'නොමිලේ ලියාපදිංචි වන්න';
 
   @override
+  String get actionGetAFreeAccount => 'Get a free account';
+
+  @override
   String get actionLogin => 'පුරනය වන්න';
 
   @override

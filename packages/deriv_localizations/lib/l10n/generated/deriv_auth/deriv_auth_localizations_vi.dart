@@ -25,6 +25,9 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'Đăng ký miễn phí';
 
   @override
+  String get actionGetAFreeAccount => 'Get a free account';
+
+  @override
   String get actionLogin => 'Đăng nhập';
 
   @override

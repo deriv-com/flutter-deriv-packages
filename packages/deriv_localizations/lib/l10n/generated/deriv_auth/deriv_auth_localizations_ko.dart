@@ -25,6 +25,9 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get actionSignUpForFree => '무료로 가입하기';
 
   @override
+  String get actionGetAFreeAccount => 'Get a free account';
+
+  @override
   String get actionLogin => '로그인';
 
   @override
