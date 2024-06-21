@@ -125,6 +125,9 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
+
+      trackLoginFinished();
+
       emit(DerivAuthLoggedInState(
         DerivAuthModel(
           authorizeEntity: authorizeEntity,
