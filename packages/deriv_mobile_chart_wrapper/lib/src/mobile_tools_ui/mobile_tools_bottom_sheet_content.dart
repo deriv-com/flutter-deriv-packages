@@ -22,54 +22,57 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    print('########## ${macdIcon}');
-    return Column(
-      children: <Widget>[
-        _buildHeader(context),
-        const ChipsList(items: <CustomChip>[
-          CustomChip(
-            title: 'Active',
-            value: 'Active',
-            borderRadius: ThemeProvider.margin40,
-          ),
-          CustomChip(
-            title: 'All',
-            value: 'All',
-            borderRadius: ThemeProvider.margin40,
-          ),
-          CustomChip(
-            title: 'Momentum',
-            value: 'Momentum',
-            borderRadius: ThemeProvider.margin40,
-          ),
-          CustomChip(
-            title: 'Volatility',
-            value: 'Volatility',
-            borderRadius: ThemeProvider.margin40,
-          ),
-          CustomChip(
-            title: 'Moving average',
-            value: 'Moving average',
-            borderRadius: ThemeProvider.margin40,
-          ),
-        ]),
-        Expanded(
-          child: ListView.builder(
-            itemCount: indicators.length,
-            itemBuilder: (_, index) {
-              final IndicatorItemModel indicator = indicators[index];
+  Widget build(BuildContext context) => Column(
+        children: <Widget>[
+          _buildHeader(context),
+          _buildChipsList(),
+          Expanded(child: _buildIndicatorsList()),
+        ],
+      );
 
-              return IndicatorListItem(
-                iconAssetPath: indicator.icon,
-                title: indicator.title,
-                onInfoIconTapped: () {},
-              );
-            },
-          ),
-        ),
-      ],
+  Widget _buildIndicatorsList() {
+    return ListView.builder(
+      itemCount: indicators.length,
+      itemBuilder: (_, index) {
+        final IndicatorItemModel indicator = indicators[index];
+
+        return IndicatorListItem(
+          iconAssetPath: indicator.icon,
+          title: indicator.title,
+          onInfoIconTapped: () {},
+        );
+      },
     );
+  }
+
+  Widget _buildChipsList() {
+    return const ChipsList(items: <CustomChip>[
+      CustomChip(
+        title: 'Active',
+        value: 'Active',
+        borderRadius: ThemeProvider.margin40,
+      ),
+      CustomChip(
+        title: 'All',
+        value: 'All',
+        borderRadius: ThemeProvider.margin40,
+      ),
+      CustomChip(
+        title: 'Momentum',
+        value: 'Momentum',
+        borderRadius: ThemeProvider.margin40,
+      ),
+      CustomChip(
+        title: 'Volatility',
+        value: 'Volatility',
+        borderRadius: ThemeProvider.margin40,
+      ),
+      CustomChip(
+        title: 'Moving average',
+        value: 'Moving average',
+        borderRadius: ThemeProvider.margin40,
+      ),
+    ]);
   }
 
   Widget _buildHeader(BuildContext context) => Container(
