@@ -30,10 +30,8 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
               color: context.theme.colors.primary,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(ThemeProvider.margin16),
-                    child: _buildChipsList(),
-                  ),
+                  const SizedBox(height: ThemeProvider.margin16),
+                  _buildChipsList(),
                   Expanded(child: _buildIndicatorsList()),
                 ],
               ),
@@ -65,28 +63,16 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
       onNotification: (OverscrollNotification notification) {
         return true;
       },
-      child: const ChipsList(items: <CustomChip>[
-        CustomChip(
-          value: 'Active',
-          borderRadius: ThemeProvider.margin40,
-        ),
-        CustomChip(
-          value: 'All',
-          borderRadius: ThemeProvider.margin40,
-        ),
-        CustomChip(
-          value: 'Momentum',
-          borderRadius: ThemeProvider.margin40,
-        ),
-        CustomChip(
-          value: 'Volatility',
-          borderRadius: ThemeProvider.margin40,
-        ),
-        CustomChip(
-          value: 'Moving average',
-          borderRadius: ThemeProvider.margin40,
-        ),
-      ]),
+      child: const ChipsList(
+        isHorizontalPaddingEnabled: true,
+        items: <CustomChip>[
+          // Dummy list, later real data will populate here.
+          CustomChip(
+            value: 'Active',
+            borderRadius: ThemeProvider.margin40,
+          ),
+        ],
+      ),
     );
   }
 
