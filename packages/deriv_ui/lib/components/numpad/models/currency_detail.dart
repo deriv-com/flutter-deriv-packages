@@ -20,7 +20,7 @@ class CurrencyDetail {
   ];
 
   /// Available stable coin currency that Deriv supports.
-  static List<String> stableCurrencies = <String>[
+  static List<String> stableCryptoCurrencies = <String>[
     'USDC',
     'USDT',
     'TUSDT',
@@ -37,11 +37,11 @@ class CurrencyDetail {
   bool get isFiat => fiatCurrencies.contains(currencyType);
 
   /// This will check if the currency is stable coin currency(USDC,tUSDT,eUSDT) or not.
-  bool get isStableCurrency =>
-      stableCurrencies.contains(currencyType.toUpperCase());
+  bool get isStableCryptoCurrency =>
+      stableCryptoCurrencies.contains(currencyType.toUpperCase());
 
-  /// This will give the final amount to do processing based on what type of currency it is like fiat or crypto currency.
-  double get finalAmount => double.parse(formatter.format(amount));
+  /// This will give the formatted amount to do processing based on type of currency it is like fiat or crypto currency.
+  double get formattedAmount => double.parse(formatter.format(amount));
 
   /// Amount that is used to display for user.
   String get displayAmount {
@@ -49,14 +49,14 @@ class CurrencyDetail {
       return '';
     }
 
-    return isFiat || isStableCurrency
+    return isFiat || isStableCryptoCurrency
         ? amount.toStringAsFixed(2)
         : amount.toStringAsFixed(8);
   }
 
   /// This will give a specific currency formatter based on what type of currency it is like fiat or crypto currency.
   NumberFormat get formatter {
-    if (isFiat || isStableCurrency) {
+    if (isFiat || isStableCryptoCurrency) {
       return NumberFormat('#0.##', 'en_US');
     } else {
       return NumberFormat('#0.########', 'en_US');
