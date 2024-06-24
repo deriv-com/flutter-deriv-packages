@@ -15,7 +15,7 @@ class MobileChartWrapper extends StatefulWidget {
   const MobileChartWrapper({
     required this.mainSeries,
     required this.granularity,
-    required this.activeSymbol,
+    this.toolsStoreKey = 'default',
     this.toolsController,
     this.markerSeries,
     this.controller,
@@ -54,8 +54,11 @@ class MobileChartWrapper extends StatefulWidget {
   /// Open position marker series.
   final MarkerSeries? markerSeries;
 
-  /// Current active symbol.
-  final String activeSymbol;
+  /// The key which is used to store selected indicators/tools.
+  ///
+  /// When you pass the same key that was passed before when user selected some
+  /// tools, by passing the same key, the tools will be restored.
+  final String toolsStoreKey;
 
   /// Chart's controller
   final ChartController? controller;
@@ -173,7 +176,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
   void didUpdateWidget(covariant MobileChartWrapper oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (widget.activeSymbol != oldWidget.activeSymbol) {
+    if (widget.toolsStoreKey != oldWidget.toolsStoreKey) {
       loadSavedIndicatorsAndDrawingTools();
     }
   }
@@ -192,7 +195,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         createAddOn: (Map<String, dynamic> map) =>
             IndicatorConfig.fromJson(map),
         onEditCallback: (_) => _showIndicatorsSheet(_indicatorsRepo!),
-        sharedPrefKey: widget.activeSymbol,
+        sharedPrefKey: widget.toolsStoreKey,
       );
     }
 
@@ -211,7 +214,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         .asMap()
         .forEach((int index, AddOnsRepository<AddOnConfig> element) {
       try {
-        element.loadFromPrefs(prefs, widget.activeSymbol);
+        element.loadFromPrefs(prefs, widget.toolsStoreKey);
       } on Exception {
         // ignore: unawaited_futures
         showDialog<void>(
@@ -254,12 +257,12 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
             AddOnsRepository<IndicatorConfig>(
               createAddOn: (Map<String, dynamic> map) =>
                   IndicatorConfig.fromJson(map),
-              sharedPrefKey: widget.activeSymbol,
+              sharedPrefKey: widget.toolsStoreKey,
             ),
         drawingToolsRepo: AddOnsRepository<DrawingToolConfig>(
           createAddOn: (Map<String, dynamic> map) =>
               DrawingToolConfig.fromJson(map),
-          sharedPrefKey: widget.activeSymbol,
+          sharedPrefKey: widget.toolsStoreKey,
         ),
         controller: widget.controller,
         mainSeries: widget.mainSeries,
@@ -272,6 +275,6 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         opacity: widget.opacity,
         chartAxisConfig: widget.chartAxisConfig,
         annotations: widget.annotations,
-        activeSymbol: widget.activeSymbol,
+        activeSymbol: widget.toolsStoreKey,
       );
 }
