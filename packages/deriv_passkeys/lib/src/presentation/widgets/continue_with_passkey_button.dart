@@ -11,8 +11,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ContinueWithPasskeyButton extends StatelessWidget {
   /// constructs a [ContinueWithPasskeyButton]
   const ContinueWithPasskeyButton({
+    required this.onTap,
     super.key,
   });
+
+  /// Function to handle on tap event.
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) =>
@@ -71,6 +75,7 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                     ),
             ),
             onTap: () async {
+              onTap();
               context
                   .read<DerivPasskeysBloc>()
                   .add(DerivPasskeysVerifyCredentialEvent());

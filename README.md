@@ -44,7 +44,7 @@ deriv_ui:
 | [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                | [v0.2.2+1](./packages/deriv_web_view/CHANGELOG.md)                  |
 | [deriv_widgetbook](./packages/deriv_widgetbook)                           |Storybook for Deriv UI Widgets and Components                                                                           | [v0.0.2+6](./packages/deriv_widgetbook/CHANGELOG.md)              |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        | [v1.0.0+1](./packages/form_builder/CHANGELOG.md)                  |
-| [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           | [v1.2.2](./packages/update_checker/CHANGELOG.md)                  |
+| [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           | [v1.3.0](./packages/update_checker/CHANGELOG.md)                  |
 | [deriv_feature_flag](./packages/deriv_feature_flag)                       | A package to provide feature flag functionality for apps.                                                              | [v0.1.1](./packages/deriv_feature_flag/CHANGELOG.md)            |
 
 ## Environment Setup

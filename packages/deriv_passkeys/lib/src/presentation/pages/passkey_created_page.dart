@@ -1,18 +1,22 @@
-import 'package:deriv_passkeys/src/extensions/context_extensions.dart';
+import 'package:deriv_passkeys/src/core/extensions/context_extensions.dart';
 import 'package:deriv_passkeys/src/presentation/constants/assets.dart';
+import 'package:deriv_passkeys/src/presentation/mixins/passkey_event_tracking_mixin.dart';
 import 'package:deriv_passkeys/src/presentation/utils/platform_utils.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// A stateless widget to build the passkey created successfully page.
-class PasskeyCreatedPage extends StatelessWidget {
+class PasskeyCreatedPage extends StatelessWidget
+    with PasskeyEventTrackingMixin {
   /// Creates a [PasskeyCreatedPage].
-  const PasskeyCreatedPage({
+  PasskeyCreatedPage({
     required this.onPageClose,
     required this.bottomCallToAction,
     super.key,
-  });
+  }) {
+    trackCreatePasskeySuccess();
+  }
 
   /// A callback function that will be called when the user clicks on the 'Continue' button.
   final void Function(BuildContext context) onPageClose;

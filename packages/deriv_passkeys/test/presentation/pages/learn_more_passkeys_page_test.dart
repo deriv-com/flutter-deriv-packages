@@ -1,7 +1,8 @@
-import 'package:bloc_test/bloc_test.dart';
+import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:deriv_localizations/l10n/generated/deriv_passkeys/deriv_passkeys_localizations.dart';
 import 'package:deriv_localizations/l10n/generated/deriv_passkeys/deriv_passkeys_localizations_en.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
+import 'package:deriv_passkeys/src/data/repositories/passkey_analytics_repository.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/section_title_and_content.dart';
 import 'package:deriv_passkeys/src/presentation/widgets/unordered_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:deriv_passkeys/src/presentation/pages/learn_more_passkeys_page.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDerivPasskeysBloc
-    extends MockBloc<DerivPasskeysEvent, DerivPasskeysState>
-    implements DerivPasskeysBloc {}
+import '../states/bloc/deriv_passkeys_bloc_setup.dart';
+
+final class MockDerivRudderstack extends Mock implements DerivRudderstack {}
 
 class _TestPage extends StatelessWidget {
   const _TestPage();
@@ -35,16 +36,23 @@ class _TestPage extends StatelessWidget {
 }
 
 void main() {
+  late MockDerivRudderstack derivRudderstack;
   group('LearnMorePasskeysPage', () {
-    late MockDerivPasskeysBloc derivPasskeysBloc;
     setUp(() {
-      derivPasskeysBloc = MockDerivPasskeysBloc();
+      setupDerivPasskeysBloc();
 
-      when(() => derivPasskeysBloc.state).thenReturn(
-        DerivPasskeysInitializedState(),
+      derivRudderstack = MockDerivRudderstack();
+
+      when(() => derivRudderstack.track(
+            eventName: any(named: 'eventName'),
+            properties: any(named: 'properties'),
+          )).thenAnswer(
+        (_) => Future<bool>.value(true),
       );
-      when(() => derivPasskeysBloc.isDp2p).thenReturn(
-        false,
+
+      AnalyticsRepository.init(
+        'test',
+        derivRudderstack: derivRudderstack,
       );
     });
 
