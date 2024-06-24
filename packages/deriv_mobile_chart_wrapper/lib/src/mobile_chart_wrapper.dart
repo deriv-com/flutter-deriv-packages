@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'mobile_tools_ui/chart_bottom_sheet.dart';
 import 'mobile_tools_ui/mobile_tools_bottom_sheet_content.dart';
+import 'mobile_tools_ui/tools_controller.dart';
 
 /// The mobile version wrapper around the [Chart] which handles adding/removing
 /// indicators and drawing tools to the chart.
