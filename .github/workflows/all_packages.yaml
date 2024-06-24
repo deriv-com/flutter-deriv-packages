@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+           token: ${{ secrets.PAT }}
 
       - name: Setup Flutter
         uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
@@ -30,16 +32,7 @@ jobs:
       - name: Set SSH Key
         uses: webfactory/ssh-agent@fd34b8dee206fe74b288a5e61bc95fba2f1911eb
         with:
-          ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
-
-      - name: Set up SSH for repo2
-        run: |
-          echo "${{ secrets.SSH_CHART_PRIVATE_KEY }}" > ~/.ssh/id_rsa_repo2
-          chmod 600 ~/.ssh/id_rsa_repo2
-          echo "Host repo2.github.com" >> ~/.ssh/config
-          echo "  HostName github.com" >> ~/.ssh/config
-          echo "  IdentityFile ~/.ssh/id_rsa_repo2" >> ~/.ssh/config
-          echo "  User git" >> ~/.ssh/config
+          ssh-private-key: ${{secrets.SSH_CHART_PRIVATE_KEY}}
 
       - name: Install Melos and run pub get
         uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
