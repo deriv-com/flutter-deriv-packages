@@ -1,3 +1,4 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:update_checker/src/repositories/base_firebase.dart';
@@ -43,6 +44,19 @@ class _UpdateCheckerState extends State<UpdateChecker> {
   @override
   void initState() {
     super.initState();
+    // Configure fetch settings
+    FirebaseRemoteConfig.instance.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 10),
+      // Default fetch timeout
+
+      // As google set a limit of 5 call per hour for each device,
+      // we set the minimumFetchInterval to 15 minutes
+      // to avoid Throttling error,
+      // check: https://firebase.google.com/docs/remote-config/get-started?platform=ios#throttling
+      minimumFetchInterval:
+          const Duration(minutes: 15), // Minimum fetch interval set to 0
+    ));
+
     _updateBloc = UpdateBloc(firebaseRepository: widget.firebaseRepository);
     _updateBloc.add(UpdateFetchEvent());
   }
