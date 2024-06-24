@@ -31,7 +31,7 @@ class ChipsList extends StatelessWidget {
   final double horizontalPadding;
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) => SizedBox(
         height: ThemeProvider.margin36,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,

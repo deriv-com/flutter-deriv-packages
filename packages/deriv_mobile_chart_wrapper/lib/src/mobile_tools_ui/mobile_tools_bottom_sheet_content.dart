@@ -58,28 +58,36 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
   }
 
   Widget _buildChipsList() {
-    return const ChipsList(items: <CustomChip>[
-      CustomChip(
-        value: 'Active',
-        borderRadius: ThemeProvider.margin40,
-      ),
-      CustomChip(
-        value: 'All',
-        borderRadius: ThemeProvider.margin40,
-      ),
-      CustomChip(
-        value: 'Momentum',
-        borderRadius: ThemeProvider.margin40,
-      ),
-      CustomChip(
-        value: 'Volatility',
-        borderRadius: ThemeProvider.margin40,
-      ),
-      CustomChip(
-        value: 'Moving average',
-        borderRadius: ThemeProvider.margin40,
-      ),
-    ]);
+    // Overscroll behaviour of horizontal chips list sometimes triggers
+    // BottomSheet top <-> bottom dragging. That's why we're capturing the
+    // overscroll here so it doesn't propagate up to the BottomSheet.
+    return NotificationListener<OverscrollNotification>(
+      onNotification: (OverscrollNotification notification) {
+        return true;
+      },
+      child: const ChipsList(items: <CustomChip>[
+        CustomChip(
+          value: 'Active',
+          borderRadius: ThemeProvider.margin40,
+        ),
+        CustomChip(
+          value: 'All',
+          borderRadius: ThemeProvider.margin40,
+        ),
+        CustomChip(
+          value: 'Momentum',
+          borderRadius: ThemeProvider.margin40,
+        ),
+        CustomChip(
+          value: 'Volatility',
+          borderRadius: ThemeProvider.margin40,
+        ),
+        CustomChip(
+          value: 'Moving average',
+          borderRadius: ThemeProvider.margin40,
+        ),
+      ]),
+    );
   }
 
   Widget _buildHeader(BuildContext context) => Container(
