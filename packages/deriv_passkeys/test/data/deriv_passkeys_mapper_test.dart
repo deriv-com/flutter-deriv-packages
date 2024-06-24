@@ -106,7 +106,8 @@ void main() {
             <String, dynamic>{
               'token': '',
             }
-          ]
+          ],
+          'refresh_token': 'refresh_token',
         },
       );
 
