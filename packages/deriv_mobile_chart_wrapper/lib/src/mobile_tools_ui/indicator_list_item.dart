@@ -34,20 +34,9 @@ class IndicatorListItem extends StatelessWidget {
       padding: const EdgeInsets.all(ThemeProvider.margin16),
       child: Row(
         children: [
-          SvgPicture.asset(
-            iconAssetPath,
-            width: ThemeProvider.margin24,
-            height: ThemeProvider.margin24,
-            package: 'deriv_mobile_chart_wrapper',
-          ),
+          _buildIndicatorIcon(),
           const SizedBox(width: Dimens.margin08),
-          Text(
-            title,
-            style: context.themeProvider.textStyle(
-              textStyle: TextStyles.body1,
-              color: context.themeProvider.colors.general,
-            ),
-          ),
+          _buildIndicatorTitle(context),
           const Spacer(),
           IconButton(
             icon: const Icon(Icons.info_outline),
@@ -58,4 +47,19 @@ class IndicatorListItem extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildIndicatorIcon() => SvgPicture.asset(
+        iconAssetPath,
+        width: ThemeProvider.margin24,
+        height: ThemeProvider.margin24,
+        package: 'deriv_mobile_chart_wrapper',
+      );
+
+  Widget _buildIndicatorTitle(BuildContext context) => Text(
+        title,
+        style: context.themeProvider.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.themeProvider.colors.general,
+        ),
+      );
 }
