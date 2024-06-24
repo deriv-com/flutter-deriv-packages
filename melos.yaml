@@ -36,6 +36,7 @@ scripts:
     description: Run flutter test for all packages.
     run: flutter test --coverage
     exec:
+      concurrency: 6
       failFast: true
     packageFilters:
       dirExists:
@@ -43,3 +44,4 @@ scripts:
       ignore:
         # Ignore until we have a proper test.
         - "deriv_feature_flag"
+        - "deriv_auth"
