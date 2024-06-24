@@ -25,9 +25,6 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'বিনামূল্যে সাইন আপ করুন';
 
   @override
-  String get actionGetAFreeAccount => 'Get a free account';
-
-  @override
   String get actionLogin => 'লগ ইন';
 
   @override

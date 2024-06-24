@@ -25,9 +25,6 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'Зарегистрируйтесь бесплатно';
 
   @override
-  String get actionGetAFreeAccount => 'Get a free account';
-
-  @override
   String get actionLogin => 'Вход';
 
   @override

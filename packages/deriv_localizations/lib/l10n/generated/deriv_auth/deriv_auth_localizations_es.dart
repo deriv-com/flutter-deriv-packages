@@ -25,9 +25,6 @@ class DerivAuthLocalizationsEs extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'Regístrate gratis';
 
   @override
-  String get actionGetAFreeAccount => 'Get a free account';
-
-  @override
   String get actionLogin => 'Iniciar sesión';
 
   @override

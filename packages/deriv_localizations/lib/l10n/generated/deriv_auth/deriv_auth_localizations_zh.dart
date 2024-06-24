@@ -25,9 +25,6 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get actionSignUpForFree => '免費註冊';
 
   @override
-  String get actionGetAFreeAccount => 'Get a free account';
-
-  @override
   String get actionLogin => '登入';
 
   @override

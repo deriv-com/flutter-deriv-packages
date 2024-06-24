@@ -159,12 +159,6 @@ abstract class DerivAuthLocalizations {
   /// **'Sign up for free'**
   String get actionSignUpForFree;
 
-  /// No description provided for @actionGetAFreeAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'Get a free account'**
-  String get actionGetAFreeAccount;
-
   /// No description provided for @actionLogin.
   ///
   /// In en, this message translates to:
