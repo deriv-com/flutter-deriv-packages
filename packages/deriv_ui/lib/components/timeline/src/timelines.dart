@@ -39,8 +39,7 @@ class Timeline extends BoxScrollView {
   /// are planning to change child order at a
   /// later time, consider using [Timeline] or [Timeline.custom].
   factory Timeline.tileBuilder({
-    Key? key,
-    required TimelineTileBuilder builder,
+    required TimelineTileBuilder builder, Key? key,
     Axis? scrollDirection,
     bool reverse = false,
     ScrollController? controller,
@@ -124,7 +123,7 @@ class Timeline extends BoxScrollView {
         ScrollViewKeyboardDismissBehavior.manual,
     String? restorationId,
     Clip clipBehavior = Clip.hardEdge,
-    TimelineThemeData? theme,
+    this.theme,
   })  : childrenDelegate = SliverChildListDelegate(
           children,
           addAutomaticKeepAlives: addAutomaticKeepAlives,
@@ -133,7 +132,6 @@ class Timeline extends BoxScrollView {
         ),
         assert(scrollDirection == null || theme == null,
             'Cannot provide both a scrollDirection and a theme.'),
-        this.theme = theme,
         super(
           key: key,
           scrollDirection: scrollDirection ?? theme?.direction ?? Axis.vertical,
@@ -183,7 +181,7 @@ class Timeline extends BoxScrollView {
   /// are planning to change child order at a
   /// later time, consider using [Timeline] or [Timeline.custom].
   Timeline.builder({
-    Key? key,
+    required IndexedWidgetBuilder itemBuilder, required int itemCount, Key? key,
     Axis? scrollDirection,
     bool reverse = false,
     ScrollController? controller,
@@ -192,8 +190,6 @@ class Timeline extends BoxScrollView {
     bool shrinkWrap = false,
     EdgeInsetsGeometry? padding,
     this.itemExtent,
-    required IndexedWidgetBuilder itemBuilder,
-    required int itemCount,
     bool addAutomaticKeepAlives = true,
     bool addRepaintBoundaries = true,
     bool addSemanticIndexes = true,
@@ -204,7 +200,7 @@ class Timeline extends BoxScrollView {
         ScrollViewKeyboardDismissBehavior.manual,
     String? restorationId,
     Clip clipBehavior = Clip.hardEdge,
-    TimelineThemeData? theme,
+    this.theme,
   })  : assert(itemCount >= 0),
         assert(semanticChildCount == null || semanticChildCount <= itemCount),
         assert(scrollDirection == null || theme == null,
@@ -216,7 +212,6 @@ class Timeline extends BoxScrollView {
           addRepaintBoundaries: addRepaintBoundaries,
           addSemanticIndexes: addSemanticIndexes,
         ),
-        this.theme = theme,
         super(
           key: key,
           scrollDirection: scrollDirection ?? theme?.direction ?? Axis.vertical,
@@ -243,7 +238,7 @@ class Timeline extends BoxScrollView {
   ///
   ///  * This works similarly to [ListView.custom].
   Timeline.custom({
-    Key? key,
+    required this.childrenDelegate, Key? key,
     Axis? scrollDirection,
     bool reverse = false,
     ScrollController? controller,
@@ -252,7 +247,6 @@ class Timeline extends BoxScrollView {
     bool shrinkWrap = false,
     EdgeInsetsGeometry? padding,
     this.itemExtent,
-    required this.childrenDelegate,
     double? cacheExtent,
     int? semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -260,10 +254,9 @@ class Timeline extends BoxScrollView {
         ScrollViewKeyboardDismissBehavior.manual,
     String? restorationId,
     Clip clipBehavior = Clip.hardEdge,
-    TimelineThemeData? theme,
+    this.theme,
   })  : assert(scrollDirection == null || theme == null,
             'Cannot provide both a scrollDirection and a theme.'),
-        this.theme = theme,
         super(
           key: key,
           scrollDirection: scrollDirection ?? theme?.direction ?? Axis.vertical,
@@ -317,7 +310,7 @@ class Timeline extends BoxScrollView {
       result = SliverList(delegate: childrenDelegate);
     }
 
-    var theme;
+    TimelineThemeData? theme;
     if (this.theme != null) {
       theme = this.theme;
     } else if (scrollDirection != TimelineTheme.of(context).direction) {
@@ -340,7 +333,6 @@ class Timeline extends BoxScrollView {
 class FixedTimeline extends StatelessWidget {
   /// Creates a timeline flex layout.
   factory FixedTimeline.tileBuilder({
-    Key? key,
     required TimelineTileBuilder builder,
     TimelineThemeData? theme,
     Axis? direction,
@@ -348,23 +340,22 @@ class FixedTimeline extends StatelessWidget {
     TextDirection? textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,
     Clip clipBehavior = Clip.none,
-  }) {
-    // TODO: how remove Builders?
-    return FixedTimeline(
-      children: [
-        for (int i = 0; i < builder.itemCount; i++)
-          Builder(
-            builder: (context) => builder.build(context, i),
-          ),
-      ],
-      theme: theme,
-      direction: direction,
-      mainAxisSize: mainAxisSize,
-      textDirection: textDirection,
-      verticalDirection: verticalDirection,
-      clipBehavior: clipBehavior,
-    );
-  }
+  }) =>
+      // TODO: how remove Builders?
+      FixedTimeline(
+        children: <Widget>[
+          for (int i = 0; i < builder.itemCount; i++)
+            Builder(
+              builder: (BuildContext context) => builder.build(context, i),
+            ),
+        ],
+        theme: theme,
+        direction: direction,
+        mainAxisSize: mainAxisSize,
+        textDirection: textDirection,
+        verticalDirection: verticalDirection,
+        clipBehavior: clipBehavior,
+      );
 
   /// Creates a timeline flex layout.
   ///
@@ -383,7 +374,7 @@ class FixedTimeline extends StatelessWidget {
     this.textDirection,
     this.verticalDirection = VerticalDirection.down,
     this.clipBehavior = Clip.none,
-    this.children = const [],
+    this.children = const <Widget>[],
   })  : assert(direction == null || theme == null,
             'Cannot provide both a direction and a theme.'),
         super(key: key);
@@ -459,9 +450,10 @@ class FixedTimeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final direction = this.direction ?? this.theme?.direction ?? Axis.vertical;
+    final Axis direction =
+        this.direction ?? this.theme?.direction ?? Axis.vertical;
 
-    Widget result = Flex(
+    final Widget result = Flex(
       direction: direction,
       children: children,
       mainAxisSize: mainAxisSize,
@@ -470,7 +462,7 @@ class FixedTimeline extends StatelessWidget {
       clipBehavior: clipBehavior,
     );
 
-    var theme;
+    TimelineThemeData? theme;
     if (this.direction != null) {
       if (direction != TimelineTheme.of(context).direction) {
         theme = TimelineTheme.of(context).copyWith(direction: this.direction);

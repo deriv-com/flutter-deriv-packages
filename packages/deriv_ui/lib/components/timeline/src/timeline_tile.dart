@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'indicator_theme.dart';
 import 'timeline_node.dart';
 import 'timeline_theme.dart';
@@ -26,9 +24,9 @@ enum TimelineNodeAlign {
 /// The [node] is displayed between the two.
 class TimelineTile extends StatelessWidget {
   const TimelineTile({
+    required this.node,
     Key? key,
     this.direction,
-    required this.node,
     this.nodeAlign = TimelineNodeAlign.basic,
     this.nodePosition,
     this.contents,
@@ -92,23 +90,29 @@ class TimelineTile extends StatelessWidget {
   final double? crossAxisExtent;
 
   double _getEffectiveNodePosition(BuildContext context) {
-    if (nodeAlign == TimelineNodeAlign.start) return 0.0;
-    if (nodeAlign == TimelineNodeAlign.end) return 1.0;
-    var nodePosition = this.nodePosition;
-    nodePosition ??= (node is TimelineTileNode)
+    if (nodeAlign == TimelineNodeAlign.start) {
+      return 0;
+    }
+    if (nodeAlign == TimelineNodeAlign.end) {
+      return 1;
+    }
+    double? nodePosition = this.nodePosition;
+    return nodePosition ??= (node is TimelineTileNode)
         ? (node as TimelineTileNode).getEffectivePosition(context)
         : TimelineTheme.of(context).nodePosition;
-    return nodePosition;
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: reduce direction check
-    final direction = this.direction ?? TimelineTheme.of(context).direction;
-    final nodeFlex = _getEffectiveNodePosition(context) * kFlexMultiplier;
+    final Axis direction =
+        this.direction ?? TimelineTheme.of(context).direction;
+    final double nodeFlex =
+        _getEffectiveNodePosition(context) * kFlexMultiplier;
 
-    var minNodeExtent = TimelineTheme.of(context).indicatorTheme.size ?? 0.0;
-    var items = [
+    final double minNodeExtent =
+        TimelineTheme.of(context).indicatorTheme.size ?? 0.0;
+    final List<Widget> items = <Widget>[
       if (nodeFlex > 0)
         Expanded(
           flex: nodeFlex.toInt(),
@@ -116,7 +120,7 @@ class TimelineTile extends StatelessWidget {
             alignment: direction == Axis.vertical
                 ? AlignmentDirectional.centerEnd
                 : Alignment.bottomCenter,
-            child: oppositeContents ?? SizedBox.shrink(),
+            child: oppositeContents ?? const SizedBox.shrink(),
           ),
         ),
       ConstrainedBox(
@@ -133,12 +137,12 @@ class TimelineTile extends StatelessWidget {
             alignment: direction == Axis.vertical
                 ? AlignmentDirectional.centerStart
                 : Alignment.topCenter,
-            child: contents ?? SizedBox.shrink(),
+            child: contents ?? const SizedBox.shrink(),
           ),
         ),
     ];
 
-    var result;
+    Widget result;
     switch (direction) {
       case Axis.vertical:
         result = Row(

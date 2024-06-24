@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'indicator_theme.dart';
 import 'timeline_theme.dart';
 
@@ -10,11 +9,10 @@ mixin PositionedIndicator on Widget {
   /// is also null, then this defaults to [TimelineThemeData.indicatorPosition].
   /// {@endtemplate}
   double? get position;
-  double getEffectivePosition(BuildContext context) {
-    return position ??
-        IndicatorTheme.of(context).position ??
-        TimelineTheme.of(context).indicatorPosition;
-  }
+  double getEffectivePosition(BuildContext context) =>
+      position ??
+      IndicatorTheme.of(context).position ??
+      TimelineTheme.of(context).indicatorPosition;
 }
 
 /// Abstract class for predefined indicator widgets.
@@ -44,7 +42,6 @@ abstract class Indicator extends StatelessWidget
   ///
   /// * [DotIndicator],  exactly the same.
   factory Indicator.dot({
-    Key? key,
     double? size,
     Color? color,
     double? position,
@@ -65,7 +62,6 @@ abstract class Indicator extends StatelessWidget
   ///
   /// * [OutlinedDotIndicator], exactly the same.
   factory Indicator.outlined({
-    Key? key,
     double? size,
     Color? color,
     Color? backgroundColor,
@@ -88,7 +84,6 @@ abstract class Indicator extends StatelessWidget
   ///
   /// * [ContainerIndicator], this is created without child.
   factory Indicator.transparent({
-    Key? key,
     double? size,
     double? position,
   }) =>
@@ -103,7 +98,6 @@ abstract class Indicator extends StatelessWidget
   ///
   /// * [OutlinedDotIndicator], exactly the same.
   factory Indicator.widget({
-    Key? key,
     double? size,
     double? position,
     Widget? child,
@@ -164,7 +158,7 @@ class ContainerIndicator extends Indicator {
 
   @override
   Widget build(BuildContext context) {
-    final size = getEffectiveSize(context);
+    final double? size = getEffectiveSize(context);
     return Container(
       width: size,
       height: size,
@@ -202,8 +196,8 @@ class DotIndicator extends Indicator {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveSize = getEffectiveSize(context);
-    final effectiveColor = getEffectiveColor(context);
+    final double? effectiveSize = getEffectiveSize(context);
+    final Color effectiveColor = getEffectiveColor(context);
     return Center(
       child: Container(
         width: effectiveSize ?? ((child == null) ? 15.0 : null),
@@ -255,16 +249,14 @@ class OutlinedDotIndicator extends Indicator {
   final Widget? child;
 
   @override
-  Widget build(BuildContext context) {
-    return DotIndicator(
-      size: size,
-      color: backgroundColor ?? Colors.transparent,
-      position: position,
-      border: Border.all(
-        color: color ?? getEffectiveColor(context),
-        width: borderWidth,
-      ),
-      child: child,
-    );
-  }
+  Widget build(BuildContext context) => DotIndicator(
+        size: size,
+        color: backgroundColor ?? Colors.transparent,
+        position: position,
+        border: Border.all(
+          color: color ?? getEffectiveColor(context),
+          width: borderWidth,
+        ),
+        child: child,
+      );
 }

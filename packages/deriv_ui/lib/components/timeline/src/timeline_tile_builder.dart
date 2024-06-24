@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'connectors.dart';
 import 'indicators.dart';
 import 'timeline_node.dart';
@@ -201,30 +200,29 @@ class TimelineTileBuilder {
     bool addAutomaticKeepAlives = true,
     bool addRepaintBoundaries = true,
     bool addSemanticIndexes = true,
-  }) {
-    return TimelineTileBuilder(
-      itemCount: itemCount,
-      contentsAlign: contentsAlign,
-      contentsBuilder: contentsBuilder,
-      oppositeContentsBuilder: oppositeContentsBuilder,
-      indicatorBuilder: indicatorBuilder,
-      startConnectorBuilder: _createConnectedStartConnectorBuilder(
-        connectionDirection: connectionDirection,
-        firstConnectorBuilder: firstConnectorBuilder,
-        connectorBuilder: connectorBuilder,
-      ),
-      endConnectorBuilder: _createConnectedEndConnectorBuilder(
-        connectionDirection: connectionDirection,
-        lastConnectorBuilder: lastConnectorBuilder,
-        connectorBuilder: connectorBuilder,
+  }) =>
+      TimelineTileBuilder(
         itemCount: itemCount,
-      ),
-      itemExtent: itemExtent,
-      itemExtentBuilder: itemExtentBuilder,
-      nodePositionBuilder: nodePositionBuilder,
-      indicatorPositionBuilder: indicatorPositionBuilder,
-    );
-  }
+        contentsAlign: contentsAlign,
+        contentsBuilder: contentsBuilder,
+        oppositeContentsBuilder: oppositeContentsBuilder,
+        indicatorBuilder: indicatorBuilder,
+        startConnectorBuilder: _createConnectedStartConnectorBuilder(
+          connectionDirection: connectionDirection,
+          firstConnectorBuilder: firstConnectorBuilder,
+          connectorBuilder: connectorBuilder,
+        ),
+        endConnectorBuilder: _createConnectedEndConnectorBuilder(
+          connectionDirection: connectionDirection,
+          lastConnectorBuilder: lastConnectorBuilder,
+          connectorBuilder: connectorBuilder,
+          itemCount: itemCount,
+        ),
+        itemExtent: itemExtent,
+        itemExtentBuilder: itemExtentBuilder,
+        nodePositionBuilder: nodePositionBuilder,
+        indicatorPositionBuilder: indicatorPositionBuilder,
+      );
 
   /// Create a connected tile builder, which builds tiles using each style.
   ///
@@ -248,35 +246,37 @@ class TimelineTileBuilder {
     IndexedValueBuilder<double>? itemExtentBuilder,
     IndexedValueBuilder<double>? nodePositionBuilder,
     IndexedValueBuilder<double>? indicatorPositionBuilder,
-  }) {
-    return TimelineTileBuilder(
-      itemCount: itemCount,
-      contentsAlign: contentsAlign,
-      contentsBuilder: contentsBuilder,
-      oppositeContentsBuilder: oppositeContentsBuilder,
-      indicatorBuilder: (context, index) => _createStyledIndicatorBuilder(
-          indicatorStyleBuilder?.call(context, index))(context),
-      startConnectorBuilder: _createConnectedStartConnectorBuilder(
-        connectionDirection: connectionDirection,
-        firstConnectorBuilder: (context) =>
-            _createStyledConnectorBuilder(firstConnectorStyle)(context),
-        connectorBuilder: (context, index, __) => _createStyledConnectorBuilder(
-            connectorStyleBuilder?.call(context, index))(context),
-      ),
-      endConnectorBuilder: _createConnectedEndConnectorBuilder(
-        connectionDirection: connectionDirection,
-        lastConnectorBuilder: (context) =>
-            _createStyledConnectorBuilder(lastConnectorStyle)(context),
-        connectorBuilder: (context, index, __) => _createStyledConnectorBuilder(
-            connectorStyleBuilder?.call(context, index))(context),
+  }) =>
+      TimelineTileBuilder(
         itemCount: itemCount,
-      ),
-      itemExtent: itemExtent,
-      itemExtentBuilder: itemExtentBuilder,
-      nodePositionBuilder: nodePositionBuilder,
-      indicatorPositionBuilder: indicatorPositionBuilder,
-    );
-  }
+        contentsAlign: contentsAlign,
+        contentsBuilder: contentsBuilder,
+        oppositeContentsBuilder: oppositeContentsBuilder,
+        indicatorBuilder: (BuildContext context, int index) =>
+            _createStyledIndicatorBuilder(
+                indicatorStyleBuilder?.call(context, index))(context),
+        startConnectorBuilder: _createConnectedStartConnectorBuilder(
+          connectionDirection: connectionDirection,
+          firstConnectorBuilder: (BuildContext context) =>
+              _createStyledConnectorBuilder(firstConnectorStyle)(context),
+          connectorBuilder: (BuildContext context, int index, __) =>
+              _createStyledConnectorBuilder(
+                  connectorStyleBuilder?.call(context, index))(context),
+        ),
+        endConnectorBuilder: _createConnectedEndConnectorBuilder(
+          connectionDirection: connectionDirection,
+          lastConnectorBuilder: (BuildContext context) =>
+              _createStyledConnectorBuilder(lastConnectorStyle)(context),
+          connectorBuilder: (BuildContext context, int index, __) =>
+              _createStyledConnectorBuilder(
+                  connectorStyleBuilder?.call(context, index))(context),
+          itemCount: itemCount,
+        ),
+        itemExtent: itemExtent,
+        itemExtentBuilder: itemExtentBuilder,
+        nodePositionBuilder: nodePositionBuilder,
+        indicatorPositionBuilder: indicatorPositionBuilder,
+      );
 
   /// Create a tile builder, which builds tiles using each style.
   ///
@@ -303,24 +303,23 @@ class TimelineTileBuilder {
     bool addAutomaticKeepAlives = true,
     bool addRepaintBoundaries = true,
     bool addSemanticIndexes = true,
-  }) {
-    return TimelineTileBuilder(
-      itemCount: itemCount,
-      contentsAlign: contentsAlign,
-      contentsBuilder: contentsBuilder,
-      oppositeContentsBuilder: oppositeContentsBuilder,
-      indicatorBuilder: (context, index) =>
-          _createStyledIndicatorBuilder(indicatorStyle)(context),
-      startConnectorBuilder: (context, _) =>
-          _createStyledConnectorBuilder(connectorStyle)(context),
-      endConnectorBuilder: (context, _) =>
-          _createStyledConnectorBuilder(connectorStyle)(context),
-      itemExtent: itemExtent,
-      itemExtentBuilder: itemExtentBuilder,
-      nodePositionBuilder: nodePositionBuilder,
-      indicatorPositionBuilder: indicatorPositionBuilder,
-    );
-  }
+  }) =>
+      TimelineTileBuilder(
+        itemCount: itemCount,
+        contentsAlign: contentsAlign,
+        contentsBuilder: contentsBuilder,
+        oppositeContentsBuilder: oppositeContentsBuilder,
+        indicatorBuilder: (BuildContext context, int index) =>
+            _createStyledIndicatorBuilder(indicatorStyle)(context),
+        startConnectorBuilder: (BuildContext context, _) =>
+            _createStyledConnectorBuilder(connectorStyle)(context),
+        endConnectorBuilder: (BuildContext context, _) =>
+            _createStyledConnectorBuilder(connectorStyle)(context),
+        itemExtent: itemExtent,
+        itemExtentBuilder: itemExtentBuilder,
+        nodePositionBuilder: nodePositionBuilder,
+        indicatorPositionBuilder: indicatorPositionBuilder,
+      );
 
   /// Create a tile builder, which builds tiles using each component builder.
   ///
@@ -350,20 +349,22 @@ class TimelineTileBuilder {
       'Cannot provide both a itemExtent and a itemExtentBuilder.',
     );
 
-    final effectiveContentsBuilder = _createAlignedContentsBuilder(
+    final NullableIndexedWidgetBuilder effectiveContentsBuilder =
+        _createAlignedContentsBuilder(
       align: contentsAlign,
       contentsBuilder: contentsBuilder,
       oppositeContentsBuilder: oppositeContentsBuilder,
     );
-    final effectiveOppositeContentsBuilder = _createAlignedContentsBuilder(
+    final NullableIndexedWidgetBuilder effectiveOppositeContentsBuilder =
+        _createAlignedContentsBuilder(
       align: contentsAlign,
       contentsBuilder: oppositeContentsBuilder,
       oppositeContentsBuilder: contentsBuilder,
     );
 
     return TimelineTileBuilder._(
-      (context, index) {
-        final tile = TimelineTile(
+      (BuildContext context, int index) {
+        final TimelineTile tile = TimelineTile(
           mainAxisExtent: itemExtent ?? itemExtentBuilder?.call(context, index),
           node: TimelineNode(
             indicator: indicatorBuilder?.call(context, index) ??
@@ -378,7 +379,7 @@ class TimelineTileBuilder {
           oppositeContents: effectiveOppositeContentsBuilder(context, index),
         );
 
-        final theme = themeBuilder?.call(context, index);
+        final TimelineThemeData? theme = themeBuilder?.call(context, index);
         if (theme != null) {
           return TimelineTheme(
             data: theme,
@@ -400,16 +401,14 @@ class TimelineTileBuilder {
   final IndexedWidgetBuilder _builder;
   final int itemCount;
 
-  Widget build(BuildContext context, int index) {
-    return _builder(context, index);
-  }
+  Widget build(BuildContext context, int index) => _builder(context, index);
 
   static NullableIndexedWidgetBuilder _createConnectedStartConnectorBuilder({
     ConnectionDirection? connectionDirection,
     WidgetBuilder? firstConnectorBuilder,
     ConnectedConnectorBuilder? connectorBuilder,
   }) =>
-      (context, index) {
+      (BuildContext context, int index) {
         if (index == 0) {
           if (firstConnectorBuilder != null) {
             return firstConnectorBuilder.call(context);
@@ -427,12 +426,12 @@ class TimelineTileBuilder {
       };
 
   static NullableIndexedWidgetBuilder _createConnectedEndConnectorBuilder({
+    required int itemCount,
     ConnectionDirection? connectionDirection,
     WidgetBuilder? lastConnectorBuilder,
     ConnectedConnectorBuilder? connectorBuilder,
-    required int itemCount,
   }) =>
-      (context, index) {
+      (BuildContext context, int index) {
         if (index == itemCount - 1) {
           if (lastConnectorBuilder != null) {
             return lastConnectorBuilder.call(context);
@@ -452,53 +451,50 @@ class TimelineTileBuilder {
     required ContentsAlign align,
     NullableIndexedWidgetBuilder? contentsBuilder,
     NullableIndexedWidgetBuilder? oppositeContentsBuilder,
-  }) {
-    return (context, index) {
-      switch (align) {
-        case ContentsAlign.alternating:
-          if (index.isOdd) {
+  }) =>
+      (BuildContext context, int index) {
+        switch (align) {
+          case ContentsAlign.alternating:
+            if (index.isOdd) {
+              return oppositeContentsBuilder?.call(context, index);
+            }
+
+            return contentsBuilder?.call(context, index);
+          case ContentsAlign.reverse:
             return oppositeContentsBuilder?.call(context, index);
-          }
+          case ContentsAlign.basic:
+          default:
+            return contentsBuilder?.call(context, index);
+        }
+      };
 
-          return contentsBuilder?.call(context, index);
-        case ContentsAlign.reverse:
-          return oppositeContentsBuilder?.call(context, index);
-        case ContentsAlign.basic:
-        default:
-          return contentsBuilder?.call(context, index);
-      }
-    };
-  }
+  static WidgetBuilder _createStyledIndicatorBuilder(IndicatorStyle? style) =>
+      (_) {
+        switch (style) {
+          case IndicatorStyle.dot:
+            return Indicator.dot();
+          case IndicatorStyle.outlined:
+            return Indicator.outlined();
+          case IndicatorStyle.container:
+            return Indicator.widget();
+          case IndicatorStyle.transparent:
+          default:
+            return Indicator.transparent();
+        }
+      };
 
-  static WidgetBuilder _createStyledIndicatorBuilder(IndicatorStyle? style) {
-    return (_) {
-      switch (style) {
-        case IndicatorStyle.dot:
-          return Indicator.dot();
-        case IndicatorStyle.outlined:
-          return Indicator.outlined();
-        case IndicatorStyle.container:
-          return Indicator.widget();
-        case IndicatorStyle.transparent:
-        default:
-          return Indicator.transparent();
-      }
-    };
-  }
-
-  static WidgetBuilder _createStyledConnectorBuilder(ConnectorStyle? style) {
-    return (_) {
-      switch (style) {
-        case ConnectorStyle.solidLine:
-          return Connector.solidLine();
-        case ConnectorStyle.dashedLine:
-          return Connector.dashedLine();
-        case ConnectorStyle.transparent:
-        default:
-          return Connector.transparent();
-      }
-    };
-  }
+  static WidgetBuilder _createStyledConnectorBuilder(ConnectorStyle? style) =>
+      (_) {
+        switch (style) {
+          case ConnectorStyle.solidLine:
+            return Connector.solidLine();
+          case ConnectorStyle.dashedLine:
+            return Connector.dashedLine();
+          case ConnectorStyle.transparent:
+          default:
+            return Connector.transparent();
+        }
+      };
 }
 
 int _kDefaultSemanticIndexCallback(Widget _, int localIndex) => localIndex;

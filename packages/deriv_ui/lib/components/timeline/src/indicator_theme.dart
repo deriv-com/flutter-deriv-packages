@@ -1,9 +1,7 @@
 import 'dart:ui' show lerpDouble;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'indicators.dart';
 import 'timeline_node.dart';
 import 'timeline_theme.dart';
@@ -54,13 +52,12 @@ class IndicatorThemeData with Diagnosticable {
     Color? color,
     double? size,
     double? position,
-  }) {
-    return IndicatorThemeData(
-      color: color ?? this.color,
-      size: size ?? this.size,
-      position: position ?? this.position,
-    );
-  }
+  }) =>
+      IndicatorThemeData(
+        color: color ?? this.color,
+        size: size ?? this.size,
+        position: position ?? this.position,
+      );
 
   /// Linearly interpolate between two Indicator themes.
   ///
@@ -68,21 +65,24 @@ class IndicatorThemeData with Diagnosticable {
   ///
   /// {@macro dart.ui.shadow.lerp}
   static IndicatorThemeData lerp(
-      IndicatorThemeData? a, IndicatorThemeData? b, double t) {
-    return IndicatorThemeData(
-      color: Color.lerp(a?.color, b?.color, t),
-      size: lerpDouble(a?.size, b?.size, t),
-      position: lerpDouble(a?.position, b?.position, t),
-    );
-  }
+          IndicatorThemeData? a, IndicatorThemeData? b, double t) =>
+      IndicatorThemeData(
+        color: Color.lerp(a?.color, b?.color, t),
+        size: lerpDouble(a?.size, b?.size, t),
+        position: lerpDouble(a?.position, b?.position, t),
+      );
 
   @override
-  int get hashCode => hashValues(color, size, position);
+  int get hashCode => Object.hash(color, size, position);
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other.runtimeType != runtimeType) return false;
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other.runtimeType != runtimeType) {
+      return false;
+    }
     return other is IndicatorThemeData &&
         other.color == color &&
         other.size == size &&
@@ -107,9 +107,9 @@ class IndicatorTheme extends InheritedTheme {
   /// Creates an indicator theme that controls the color and size for
   /// [DotIndicator]s, indicators inside [TimelineNode]s.
   const IndicatorTheme({
-    Key? key,
     required this.data,
     required Widget child,
+    Key? key,
   }) : super(key: key, child: child);
 
   /// The properties for descendant [DotIndicator]s, indicators inside
@@ -127,14 +127,14 @@ class IndicatorTheme extends InheritedTheme {
   ///  IndicatorThemeData theme = IndicatorTheme.of(context);
   /// ```
   static IndicatorThemeData of(BuildContext context) {
-    final indicatorTheme =
+    final IndicatorTheme? indicatorTheme =
         context.dependOnInheritedWidgetOfExactType<IndicatorTheme>();
     return indicatorTheme?.data ?? TimelineTheme.of(context).indicatorTheme;
   }
 
   @override
   Widget wrap(BuildContext context, Widget child) {
-    final ancestorTheme =
+    final IndicatorTheme? ancestorTheme =
         context.findAncestorWidgetOfExactType<IndicatorTheme>();
     return identical(this, ancestorTheme)
         ? child
@@ -160,11 +160,10 @@ mixin ThemedIndicatorComponent on PositionedIndicator {
   /// will default to blue.
   /// {@endtemplate}
   Color? get color;
-  Color getEffectiveColor(BuildContext context) {
-    return color ??
-        IndicatorTheme.of(context).color ??
-        TimelineTheme.of(context).color;
-  }
+  Color getEffectiveColor(BuildContext context) =>
+      color ??
+      IndicatorTheme.of(context).color ??
+      TimelineTheme.of(context).color;
 
   /// {@template timelines.indicator.size}
   /// Indicators occupy a square with width and height equal to size.
@@ -174,7 +173,6 @@ mixin ThemedIndicatorComponent on PositionedIndicator {
   /// defaults to own child size(0.0).
   /// {@endtemplate}
   double? get size;
-  double? getEffectiveSize(BuildContext context) {
-    return size ?? IndicatorTheme.of(context).size;
-  }
+  double? getEffectiveSize(BuildContext context) =>
+      size ?? IndicatorTheme.of(context).size;
 }

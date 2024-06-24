@@ -1,9 +1,7 @@
 import 'dart:ui' show lerpDouble;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'connectors.dart';
 import 'timeline_node.dart';
 import 'timeline_theme.dart';
@@ -57,14 +55,13 @@ class ConnectorThemeData with Diagnosticable {
     double? space,
     double? thickness,
     double? indent,
-  }) {
-    return ConnectorThemeData(
-      color: color ?? this.color,
-      space: space ?? this.space,
-      thickness: thickness ?? this.thickness,
-      indent: indent ?? this.indent,
-    );
-  }
+  }) =>
+      ConnectorThemeData(
+        color: color ?? this.color,
+        space: space ?? this.space,
+        thickness: thickness ?? this.thickness,
+        indent: indent ?? this.indent,
+      );
 
   /// Linearly interpolate between two Connector themes.
   ///
@@ -72,29 +69,30 @@ class ConnectorThemeData with Diagnosticable {
   ///
   /// {@macro dart.ui.shadow.lerp}
   static ConnectorThemeData lerp(
-      ConnectorThemeData? a, ConnectorThemeData? b, double t) {
-    return ConnectorThemeData(
-      color: Color.lerp(a?.color, b?.color, t),
-      space: lerpDouble(a?.space, b?.space, t),
-      thickness: lerpDouble(a?.thickness, b?.thickness, t),
-      indent: lerpDouble(a?.indent, b?.indent, t),
-    );
-  }
+          ConnectorThemeData? a, ConnectorThemeData? b, double t) =>
+      ConnectorThemeData(
+        color: Color.lerp(a?.color, b?.color, t),
+        space: lerpDouble(a?.space, b?.space, t),
+        thickness: lerpDouble(a?.thickness, b?.thickness, t),
+        indent: lerpDouble(a?.indent, b?.indent, t),
+      );
 
   @override
-  int get hashCode {
-    return hashValues(
-      color,
-      space,
-      thickness,
-      indent,
-    );
-  }
+  int get hashCode => Object.hash(
+        color,
+        space,
+        thickness,
+        indent,
+      );
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other.runtimeType != runtimeType) return false;
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other.runtimeType != runtimeType) {
+      return false;
+    }
     return other is ConnectorThemeData &&
         other.color == color &&
         other.space == space &&
@@ -119,9 +117,9 @@ class ConnectorTheme extends InheritedTheme {
   /// Creates a connector theme that controls the configurations for
   /// [SolidLineConnector]s, connectors inside [TimelineNode]s.
   const ConnectorTheme({
-    Key? key,
     required this.data,
     required Widget child,
+    Key? key,
   }) : super(key: key, child: child);
 
   /// The properties for descendant [SolidLineConnector]s, connectors inside
@@ -140,14 +138,14 @@ class ConnectorTheme extends InheritedTheme {
   /// ConnectorThemeData theme = ConnectorTheme.of(context);
   /// ```
   static ConnectorThemeData of(BuildContext context) {
-    final connectorTheme =
+    final ConnectorTheme? connectorTheme =
         context.dependOnInheritedWidgetOfExactType<ConnectorTheme>();
     return connectorTheme?.data ?? TimelineTheme.of(context).connectorTheme;
   }
 
   @override
   Widget wrap(BuildContext context, Widget child) {
-    final ancestorTheme =
+    final ConnectorTheme? ancestorTheme =
         context.findAncestorWidgetOfExactType<ConnectorTheme>();
     return identical(this, ancestorTheme)
         ? child
@@ -170,42 +168,36 @@ mixin ThemedConnectorComponent on Widget {
   /// If this is null, then the [TimelineThemeData.direction] is used.
   /// {@endtemplate}
   Axis? get direction;
-  Axis getEffectiveDirection(BuildContext context) {
-    return direction ?? TimelineTheme.of(context).direction;
-  }
+  Axis getEffectiveDirection(BuildContext context) =>
+      direction ?? TimelineTheme.of(context).direction;
 
   /// {@template timelines.connector.thickness}
   /// If this is null, then the [ConnectorThemeData.thickness] is used which
   /// defaults to 2.0.
   /// {@endtemplate}
   double? get thickness;
-  double getEffectiveThickness(BuildContext context) {
-    return thickness ?? ConnectorTheme.of(context).thickness ?? 2.0;
-  }
+  double getEffectiveThickness(BuildContext context) =>
+      thickness ?? ConnectorTheme.of(context).thickness ?? 2.0;
 
   /// {@template timelines.connector.space}
   /// If this is null, then the [ConnectorThemeData.space] is used. If that is
   /// also null, then this defaults to double.infinity.
   /// {@endtemplate}
   double? get space;
-  double? getEffectiveSpace(BuildContext context) {
-    return space ?? ConnectorTheme.of(context).space;
-  }
+  double? getEffectiveSpace(BuildContext context) =>
+      space ?? ConnectorTheme.of(context).space;
 
   double? get indent;
-  double getEffectiveIndent(BuildContext context) {
-    return indent ?? ConnectorTheme.of(context).indent ?? 0.0;
-  }
+  double getEffectiveIndent(BuildContext context) =>
+      indent ?? ConnectorTheme.of(context).indent ?? 0.0;
 
   double? get endIndent;
-  double getEffectiveEndIndent(BuildContext context) {
-    return endIndent ?? ConnectorTheme.of(context).indent ?? 0.0;
-  }
+  double getEffectiveEndIndent(BuildContext context) =>
+      endIndent ?? ConnectorTheme.of(context).indent ?? 0.0;
 
   Color? get color;
-  Color getEffectiveColor(BuildContext context) {
-    return color ??
-        ConnectorTheme.of(context).color ??
-        TimelineTheme.of(context).color;
-  }
+  Color getEffectiveColor(BuildContext context) =>
+      color ??
+      ConnectorTheme.of(context).color ??
+      TimelineTheme.of(context).color;
 }

@@ -1,9 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'connector_theme.dart';
 import 'indicator_theme.dart';
 import 'timelines.dart';
@@ -25,9 +22,9 @@ class TimelineTheme extends StatelessWidget {
   ///
   /// The [data] and [child] arguments must not be null.
   const TimelineTheme({
-    Key? key,
     required this.data,
     required this.child,
+    Key? key,
   }) : super(key: key);
 
   /// Specifies the direction for descendant widgets.
@@ -43,7 +40,7 @@ class TimelineTheme extends StatelessWidget {
   /// The data from the closest [TimelineTheme] instance that encloses the given
   /// context.
   ///
-  /// Defaults to [new ThemeData.fallback] if there is no [Theme] in the given
+  /// Defaults to [ThemeData.fallback] if there is no [Theme] in the given
   /// build context.
   ///
   /// When the [TimelineTheme] is actually created in the same `build` function
@@ -74,21 +71,19 @@ class TimelineTheme extends StatelessWidget {
   /// }
   /// ```
   static TimelineThemeData of(BuildContext context) {
-    final inheritedTheme =
+    final _InheritedTheme? inheritedTheme =
         context.dependOnInheritedWidgetOfExactType<_InheritedTheme>();
     return inheritedTheme?.theme.data ?? _kFallbackTheme;
   }
 
   @override
-  Widget build(BuildContext context) {
-    return _InheritedTheme(
-      theme: this,
-      child: IndicatorTheme(
-        data: data.indicatorTheme,
-        child: child,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => _InheritedTheme(
+        theme: this,
+        child: IndicatorTheme(
+          data: data.indicatorTheme,
+          child: child,
+        ),
+      );
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -100,16 +95,16 @@ class TimelineTheme extends StatelessWidget {
 
 class _InheritedTheme extends InheritedTheme {
   const _InheritedTheme({
-    Key? key,
     required this.theme,
     required Widget child,
+    Key? key,
   }) : super(key: key, child: child);
 
   final TimelineTheme theme;
 
   @override
   Widget wrap(BuildContext context, Widget child) {
-    final ancestorTheme =
+    final _InheritedTheme? ancestorTheme =
         context.findAncestorWidgetOfExactType<_InheritedTheme>();
     return identical(this, ancestorTheme)
         ? child
@@ -192,8 +187,8 @@ class TimelineThemeData with Diagnosticable {
     nodePosition ??= 0.5;
     nodeItemOverlap ??= false;
     indicatorPosition ??= 0.5;
-    indicatorTheme ??= IndicatorThemeData();
-    connectorTheme ??= ConnectorThemeData();
+    indicatorTheme ??= const IndicatorThemeData();
+    connectorTheme ??= const ConnectorThemeData();
     return TimelineThemeData.raw(
       direction: direction,
       color: color,
@@ -205,7 +200,7 @@ class TimelineThemeData with Diagnosticable {
     );
   }
 
-  /// The default direction theme. Same as [new TimelineThemeData.vertical].
+  /// The default direction theme. Same as [TimelineThemeData.vertical].
   ///
   /// This is used by [TimelineTheme.of] when no theme has been specified.
   factory TimelineThemeData.fallback() => TimelineThemeData.vertical();
@@ -215,7 +210,7 @@ class TimelineThemeData with Diagnosticable {
   ///
   /// This will rarely be used directly. It is used by [lerp] to create
   /// intermediate themes based on two themes created with the
-  /// [new TimelineThemeData] constructor.
+  /// [TimelineThemeData] constructor.
   const TimelineThemeData.raw({
     required this.direction,
     required this.color,
@@ -277,17 +272,16 @@ class TimelineThemeData with Diagnosticable {
     double? indicatorPosition,
     IndicatorThemeData? indicatorTheme,
     ConnectorThemeData? connectorTheme,
-  }) {
-    return TimelineThemeData.raw(
-      direction: direction ?? this.direction,
-      color: color ?? this.color,
-      nodePosition: nodePosition ?? this.nodePosition,
-      nodeItemOverlap: nodeItemOverlap ?? this.nodeItemOverlap,
-      indicatorPosition: indicatorPosition ?? this.indicatorPosition,
-      indicatorTheme: indicatorTheme ?? this.indicatorTheme,
-      connectorTheme: connectorTheme ?? this.connectorTheme,
-    );
-  }
+  }) =>
+      TimelineThemeData.raw(
+        direction: direction ?? this.direction,
+        color: color ?? this.color,
+        nodePosition: nodePosition ?? this.nodePosition,
+        nodeItemOverlap: nodeItemOverlap ?? this.nodeItemOverlap,
+        indicatorPosition: indicatorPosition ?? this.indicatorPosition,
+        indicatorTheme: indicatorTheme ?? this.indicatorTheme,
+        connectorTheme: connectorTheme ?? this.connectorTheme,
+      );
 
   /// Linearly interpolate between two themes.
   ///
@@ -295,27 +289,28 @@ class TimelineThemeData with Diagnosticable {
   ///
   /// {@macro dart.ui.shadow.lerp}
   static TimelineThemeData lerp(
-      TimelineThemeData a, TimelineThemeData b, double t) {
-    // Warning: make sure these properties are in the exact same order as in
-    // hashValues() and in the raw constructor and in the order of fields in
-    // the class and in the lerp() method.
-    return TimelineThemeData.raw(
-      direction: t < 0.5 ? a.direction : b.direction,
-      color: Color.lerp(a.color, b.color, t)!,
-      nodePosition: lerpDouble(a.nodePosition, b.nodePosition, t)!,
-      nodeItemOverlap: t < 0.5 ? a.nodeItemOverlap : b.nodeItemOverlap,
-      indicatorPosition:
-          lerpDouble(a.indicatorPosition, b.indicatorPosition, t)!,
-      indicatorTheme:
-          IndicatorThemeData.lerp(a.indicatorTheme, b.indicatorTheme, t),
-      connectorTheme:
-          ConnectorThemeData.lerp(a.connectorTheme, b.connectorTheme, t),
-    );
-  }
+          TimelineThemeData a, TimelineThemeData b, double t) =>
+      // Warning: make sure these properties are in the exact same order as in
+      // hashValues() and in the raw constructor and in the order of fields in
+      // the class and in the lerp() method.
+      TimelineThemeData.raw(
+        direction: t < 0.5 ? a.direction : b.direction,
+        color: Color.lerp(a.color, b.color, t)!,
+        nodePosition: lerpDouble(a.nodePosition, b.nodePosition, t)!,
+        nodeItemOverlap: t < 0.5 ? a.nodeItemOverlap : b.nodeItemOverlap,
+        indicatorPosition:
+            lerpDouble(a.indicatorPosition, b.indicatorPosition, t)!,
+        indicatorTheme:
+            IndicatorThemeData.lerp(a.indicatorTheme, b.indicatorTheme, t),
+        connectorTheme:
+            ConnectorThemeData.lerp(a.connectorTheme, b.connectorTheme, t),
+      );
 
   @override
   bool operator ==(Object other) {
-    if (other.runtimeType != runtimeType) return false;
+    if (other.runtimeType != runtimeType) {
+      return false;
+    }
     // Warning: make sure these properties are in the exact same order as in
     // hashValues() and in the raw constructor and in the order of fields in
     // the class and in the lerp() method.
@@ -334,7 +329,7 @@ class TimelineThemeData with Diagnosticable {
     // Warning: For the sanity of the reader, please make sure these properties
     // are in the exact same order as in operator == and in the raw constructor
     // and in the order of fields in the class and in the lerp() method.
-    final values = <Object>[
+    final List<Object> values = <Object>[
       direction,
       color,
       nodePosition,
@@ -343,13 +338,13 @@ class TimelineThemeData with Diagnosticable {
       indicatorTheme,
       connectorTheme,
     ];
-    return hashList(values);
+    return Object.hashAll(values);
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    final defaultData = TimelineThemeData.fallback();
+    final TimelineThemeData defaultData = TimelineThemeData.fallback();
     properties
       ..add(DiagnosticsProperty<Axis>('direction', direction,
           defaultValue: defaultData.direction, level: DiagnosticLevel.debug))

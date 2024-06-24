@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
 import 'connectors.dart';
 import 'indicators.dart';
 import 'timeline_theme.dart';
@@ -12,9 +10,8 @@ mixin TimelineTileNode on Widget {
   /// If this is null, then the [TimelineThemeData.nodePosition] is used.
   /// {@endtemplate}
   double? get position;
-  double getEffectivePosition(BuildContext context) {
-    return position ?? TimelineTheme.of(context).nodePosition;
-  }
+  double getEffectivePosition(BuildContext context) =>
+      position ?? TimelineTheme.of(context).nodePosition;
 }
 
 /// A widget that displays indicator and two connectors.
@@ -114,36 +111,37 @@ class TimelineNode extends StatelessWidget with TimelineTileNode {
   final bool? overlap;
 
   double _getEffectiveIndicatorPosition(BuildContext context) {
-    var indicatorPosition = this.indicatorPosition;
-    indicatorPosition ??= (indicator is PositionedIndicator)
+    double? indicatorPosition = this.indicatorPosition;
+    return indicatorPosition ??= (indicator is PositionedIndicator)
         ? (indicator as PositionedIndicator).getEffectivePosition(context)
         : TimelineTheme.of(context).indicatorPosition;
-    return indicatorPosition;
   }
 
   bool _getEffectiveOverlap(BuildContext context) {
-    var overlap = this.overlap ?? TimelineTheme.of(context).nodeItemOverlap;
+    final bool overlap =
+        this.overlap ?? TimelineTheme.of(context).nodeItemOverlap;
     return overlap;
   }
 
   @override
   Widget build(BuildContext context) {
-    final direction = this.direction ?? TimelineTheme.of(context).direction;
-    final overlap = _getEffectiveOverlap(context);
-    // TODO: support both flex and logical pixel
-    final indicatorFlex = _getEffectiveIndicatorPosition(context);
+    final Axis direction =
+        this.direction ?? TimelineTheme.of(context).direction;
+    final bool overlap = _getEffectiveOverlap(context);
+    //TODO: support both flex and logical pixel
+    final double indicatorFlex = _getEffectiveIndicatorPosition(context);
     Widget line = indicator;
-    final lineItems = [
+    final List<Widget> lineItems = [
       if (indicatorFlex > 0)
         Flexible(
           flex: (indicatorFlex * kFlexMultiplier).toInt(),
-          child: startConnector ?? TransparentConnector(),
+          child: startConnector ?? const TransparentConnector(),
         ),
       if (!overlap) indicator,
       if (indicatorFlex < 1)
         Flexible(
           flex: ((1 - indicatorFlex) * kFlexMultiplier).toInt(),
-          child: endConnector ?? TransparentConnector(),
+          child: endConnector ?? const TransparentConnector(),
         ),
     ];
 
@@ -165,16 +163,16 @@ class TimelineNode extends StatelessWidget with TimelineTileNode {
     Widget result;
     if (overlap) {
       Widget positionedIndicator = indicator;
-      final positionedIndicatorItems = [
+      final List<Widget> positionedIndicatorItems = <Widget>[
         if (indicatorFlex > 0)
           Flexible(
             flex: (indicatorFlex * kFlexMultiplier).toInt(),
-            child: TransparentConnector(),
+            child: const TransparentConnector(),
           ),
         indicator,
         Flexible(
           flex: ((1 - indicatorFlex) * kFlexMultiplier).toInt(),
-          child: TransparentConnector(),
+          child: const TransparentConnector(),
         ),
       ];
 
@@ -195,7 +193,7 @@ class TimelineNode extends StatelessWidget with TimelineTileNode {
 
       result = Stack(
         alignment: Alignment.center,
-        children: [
+        children: <Widget>[
           line,
           positionedIndicator,
         ],

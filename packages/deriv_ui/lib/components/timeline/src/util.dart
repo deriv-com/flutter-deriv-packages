@@ -1,1 +1,2 @@
-const kFlexMultiplier = 1000.0;
+
+const double kFlexMultiplier = 1000;

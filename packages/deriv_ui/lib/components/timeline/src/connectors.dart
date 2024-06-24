@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'connector_theme.dart';
 import 'line_painter.dart';
 import 'timelines.dart';
@@ -43,17 +41,16 @@ abstract class Connector extends StatelessWidget with ThemedConnectorComponent {
     double? indent,
     double? endIndent,
     Color? color,
-  }) {
-    return SolidLineConnector(
-      key: key,
-      direction: direction,
-      thickness: thickness,
-      space: space,
-      indent: indent,
-      endIndent: endIndent,
-      color: color,
-    );
-  }
+  }) =>
+      SolidLineConnector(
+        key: key,
+        direction: direction,
+        thickness: thickness,
+        space: space,
+        indent: indent,
+        endIndent: endIndent,
+        color: color,
+      );
 
   /// Creates a dashed line connector.
   ///
@@ -71,20 +68,19 @@ abstract class Connector extends StatelessWidget with ThemedConnectorComponent {
     double? endIndent,
     Color? color,
     Color? gapColor,
-  }) {
-    return DashedLineConnector(
-      key: key,
-      direction: direction,
-      thickness: thickness,
-      dash: dash,
-      gap: gap,
-      space: space,
-      indent: indent,
-      endIndent: endIndent,
-      color: color,
-      gapColor: gapColor,
-    );
-  }
+  }) =>
+      DashedLineConnector(
+        key: key,
+        direction: direction,
+        thickness: thickness,
+        dash: dash,
+        gap: gap,
+        space: space,
+        indent: indent,
+        endIndent: endIndent,
+        color: color,
+        gapColor: gapColor,
+      );
 
   /// Creates a dashed transparent connector.
   ///
@@ -97,15 +93,14 @@ abstract class Connector extends StatelessWidget with ThemedConnectorComponent {
     double? indent,
     double? endIndent,
     double? space,
-  }) {
-    return TransparentConnector(
-      key: key,
-      direction: direction,
-      indent: indent,
-      endIndent: endIndent,
-      space: space,
-    );
-  }
+  }) =>
+      TransparentConnector(
+        key: key,
+        direction: direction,
+        indent: indent,
+        endIndent: endIndent,
+        space: space,
+      );
 
   /// {@macro timelines.direction}
   ///
@@ -170,6 +165,7 @@ class SolidLineConnector extends Connector {
     Color? color,
   }) : super(
           key: key,
+          direction: direction,
           thickness: thickness,
           space: space,
           indent: indent,
@@ -179,12 +175,12 @@ class SolidLineConnector extends Connector {
 
   @override
   Widget build(BuildContext context) {
-    final direction = getEffectiveDirection(context);
-    final thickness = getEffectiveThickness(context);
-    final color = getEffectiveColor(context);
-    final space = getEffectiveSpace(context);
-    final indent = getEffectiveIndent(context);
-    final endIndent = getEffectiveEndIndent(context);
+    final Axis direction = getEffectiveDirection(context);
+    final double thickness = getEffectiveThickness(context);
+    final Color color = getEffectiveColor(context);
+    final double? space = getEffectiveSpace(context);
+    final double indent = getEffectiveIndent(context);
+    final double endIndent = getEffectiveEndIndent(context);
 
     switch (direction) {
       case Axis.vertical:
@@ -234,6 +230,7 @@ class DecoratedLineConnector extends Connector {
     this.decoration,
   }) : super(
           key: key,
+          direction: direction,
           thickness: thickness,
           space: space,
           indent: indent,
@@ -247,12 +244,12 @@ class DecoratedLineConnector extends Connector {
 
   @override
   Widget build(BuildContext context) {
-    final direction = getEffectiveDirection(context);
-    final thickness = getEffectiveThickness(context);
-    final space = getEffectiveSpace(context);
-    final indent = getEffectiveIndent(context);
-    final endIndent = getEffectiveEndIndent(context);
-    final color = decoration == null ? getEffectiveColor(context) : null;
+    final Axis direction = getEffectiveDirection(context);
+    final double thickness = getEffectiveThickness(context);
+    final double? space = getEffectiveSpace(context);
+    final double indent = getEffectiveIndent(context);
+    final double endIndent = getEffectiveEndIndent(context);
+    final Color? color = decoration == null ? getEffectiveColor(context) : null;
 
     switch (direction) {
       case Axis.vertical:
@@ -336,7 +333,7 @@ class DashedLineConnector extends Connector {
 
   @override
   Widget build(BuildContext context) {
-    final direction = getEffectiveDirection(context);
+    final Axis direction = getEffectiveDirection(context);
     return _ConnectorIndent(
       direction: direction,
       indent: getEffectiveIndent(context),
@@ -379,15 +376,13 @@ class TransparentConnector extends Connector {
         );
 
   @override
-  Widget build(BuildContext context) {
-    return _ConnectorIndent(
-      direction: getEffectiveDirection(context),
-      indent: getEffectiveIndent(context),
-      endIndent: getEffectiveEndIndent(context),
-      space: getEffectiveSpace(context),
-      child: Container(),
-    );
-  }
+  Widget build(BuildContext context) => _ConnectorIndent(
+        direction: getEffectiveDirection(context),
+        indent: getEffectiveIndent(context),
+        endIndent: getEffectiveEndIndent(context),
+        space: getEffectiveSpace(context),
+        child: Container(),
+      );
 }
 
 /// Apply indent to [child].
@@ -397,13 +392,13 @@ class _ConnectorIndent extends StatelessWidget {
   /// The [direction]and [child] must be null. And [space], [indent] and
   /// [endIndent] must be null or non-negative.
   const _ConnectorIndent({
-    Key? key,
     required this.direction,
     required this.space,
+    required this.child,
+    Key? key,
     this.indent,
     this.endIndent,
-    required this.child,
-  })   : assert(space == null || space >= 0),
+  })  : assert(space == null || space >= 0),
         assert(indent == null || indent >= 0),
         assert(endIndent == null || endIndent >= 0),
         super(key: key);
@@ -429,24 +424,22 @@ class _ConnectorIndent extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: direction == Axis.vertical ? space : null,
-      height: direction == Axis.vertical ? null : space,
-      child: Center(
-        child: Padding(
-          padding: direction == Axis.vertical
-              ? EdgeInsetsDirectional.only(
-                  top: indent ?? 0,
-                  bottom: endIndent ?? 0,
-                )
-              : EdgeInsetsDirectional.only(
-                  start: indent ?? 0,
-                  end: endIndent ?? 0,
-                ),
-          child: child,
+  Widget build(BuildContext context) => SizedBox(
+        width: direction == Axis.vertical ? space : null,
+        height: direction == Axis.vertical ? null : space,
+        child: Center(
+          child: Padding(
+            padding: direction == Axis.vertical
+                ? EdgeInsetsDirectional.only(
+                    top: indent ?? 0,
+                    bottom: endIndent ?? 0,
+                  )
+                : EdgeInsetsDirectional.only(
+                    start: indent ?? 0,
+                    end: endIndent ?? 0,
+                  ),
+            child: child,
+          ),
         ),
-      ),
-    );
-  }
+      );
 }
