@@ -7,10 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'mobile_tools_ui/chart_bottom_sheet.dart';
 import 'mobile_tools_ui/mobile_tools_bottom_sheet_content.dart';
 
-/// The mobile version wrapper around the [Chart] which handles adding
-/// indicators to the chart.
+/// The mobile version wrapper around the [Chart] which handles adding/removing
+/// indicators and drawing tools to the chart.
 class MobileChartWrapper extends StatefulWidget {
-  /// Initializes
+  /// Initializes [MobileChartWrapper].
   const MobileChartWrapper({
     required this.mainSeries,
     required this.granularity,
@@ -238,7 +238,6 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: ChartBottomSheet(
           child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.4,
-            // TODO(Ramin): replace with the new indicators list widget.
             child: const MobileToolsBottomSheetContent(),
           ),
         ),

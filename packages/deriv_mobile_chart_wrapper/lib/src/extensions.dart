@@ -2,9 +2,9 @@ import 'package:deriv_localizations/l10n/generated/deriv_mobile_chart_wrapper/de
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
-/// Extension for [BuildContext]
+/// Extension for [BuildContext].
 extension ContextExtension on BuildContext {
-  /// Get derivPasskeysLocalizations.
+  /// Get DerivMobileChartWrapperLocalizations.
   DerivMobileChartWrapperLocalizations get mobileChartWrapperLocalizations =>
       DerivMobileChartWrapperLocalizations.of(this);
 

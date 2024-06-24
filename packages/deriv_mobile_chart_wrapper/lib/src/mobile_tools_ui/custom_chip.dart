@@ -11,6 +11,7 @@ typedef LabelBuilder = String Function(String? value, String? title);
 /// Will be called to get the content that needs to be shown inside chips.
 typedef LabelWidgetBuilder = Widget Function(String? value, String? title);
 
+// TODO(Ramin): Add to deriv_ui package.
 /// A Custom chip with a disabled and enabled design based on [isSelected].
 class CustomChip extends StatelessWidget {
   /// Initializes a [CustomChip] widget.
