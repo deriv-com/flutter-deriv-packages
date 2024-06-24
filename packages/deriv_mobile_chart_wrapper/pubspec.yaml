@@ -11,10 +11,9 @@ dependencies:
     sdk: flutter
 
   deriv_chart:
-    path: ../../../flutter-chart
-  #    git:
-  #      url: git@github.com:ramin-deriv/flutter-chart.git
-  #      ref: ramin/test_indicators_on_chart_package
+    git:
+      url: git@github.com:regentmarkets/flutter-chart.git
+      ref: dev
 
   deriv_theme:
     git:
@@ -54,6 +53,7 @@ flutter:
     - assets/icons/ic_rsi.svg
     - assets/icons/ic_bollinger_bands.svg
     - assets/icons/ic_moving_average.svg
+    - assets/icons/ic_indicators_menu.svg
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages
