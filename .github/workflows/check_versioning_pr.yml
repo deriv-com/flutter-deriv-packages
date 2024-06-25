@@ -29,7 +29,7 @@ jobs:
               per_page: 100
             });
 
-            const existingPR = pullRequests.find(pr => pr.title === 'chore(version)');
+            const existingPR = pullRequests.find(pr => pr.title === 'chore(version): bump version and update changelog');
 
             if (existingPR) {
               core.setFailed(`A pull request titled 'chore(version)' already exists: #${existingPR.number}`);
