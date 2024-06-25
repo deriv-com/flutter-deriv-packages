@@ -81,3 +81,4 @@ If you'd like to run any other command on all packages, you can configure it in 
 $ melos exec --\
     your command here
 ```
+
