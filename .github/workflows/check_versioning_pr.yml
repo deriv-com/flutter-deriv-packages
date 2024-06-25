@@ -1,0 +1,45 @@
+name: Check PR with Title "chore(version)"
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+
+jobs:
+  check-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Check if PR with title chore(version) exists
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: pullRequests } = await github.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+
+            const prTitlePattern = /^chore\(\d+\.\d+\.\d+\)$/;
+            const existingPR = pullRequests.find(pr => prTitlePattern.test(pr.title));
+
+            if (existingPR) {
+              core.setOutput('exists', 'true');
+              console.log(`PR with title "${existingPR.title}" already exists: ${existingPR.html_url}`);
+            } else {
+              core.setOutput('exists', 'false');
+              console.log('No PR with title matching "chore(version)" exists.');
+            }
+
+      - name: Fail if PR exists
+        if: steps.check-pr.outputs.exists == 'true'
+        run: |
+          echo "A PR with the title 'chore(version)' already exists. Exiting."
+          exit 1
