@@ -1,3 +1,8 @@
+## 6.7.0
+
+ - **FIX**(deriv_web_view): update deriv ui version in deriv auth ([#639](https://github.com/regentmarkets/flutter-deriv-packages/issues/639)). ([11b46a9f](https://github.com/regentmarkets/flutter-deriv-packages/commit/11b46a9f7bd00482d3cac7820cf4cd5d61da0cad))
+ - **FEAT**(deriv_auth): add log in user tracking events. ([#620](https://github.com/regentmarkets/flutter-deriv-packages/issues/620)). ([ae9556cf](https://github.com/regentmarkets/flutter-deriv-packages/commit/ae9556cf3af98196bb22e351d9a8eccbf534889c))
+
 ## 6.6.9
 
  - Update a dependency to the latest release.

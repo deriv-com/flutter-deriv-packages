@@ -1,3 +1,8 @@
+## 0.2.2+2
+
+ - **FIX**(deriv_web_view): update deriv web view readme file ([#637](https://github.com/regentmarkets/flutter-deriv-packages/issues/637)). ([b0b66dad](https://github.com/regentmarkets/flutter-deriv-packages/commit/b0b66dadb6cb1b30dc3ad759f2eee031673b6bbf))
+ - **FIX**(deriv_webview): add language parameter to needed classes ([#600](https://github.com/regentmarkets/flutter-deriv-packages/issues/600)). ([9b857999](https://github.com/regentmarkets/flutter-deriv-packages/commit/9b857999f479486830671f8b8e8b7fc26dcd769b))
+
 ## 0.2.2+1
 
  - **FIX**(deriv_web_view): update PTA model ([#557](https://github.com/regentmarkets/flutter-deriv-packages/issues/557)). ([49583f82](https://github.com/regentmarkets/flutter-deriv-packages/commit/49583f823fdac9c3ec3a85529fad9ab9f6784c67))
