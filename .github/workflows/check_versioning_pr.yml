@@ -21,7 +21,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { data: pullRequests } = await github.pulls.list({
+            const github = require('@actions/github');
+            const core = require('@actions/core');
+
+            const { data: pullRequests } = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open'
