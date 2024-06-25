@@ -35,6 +35,8 @@ jobs:
             } else {
               console.log("No pull request titled 'chore(version)' found.");
             }
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Fail if PR exists
         if: steps.check-pr.outputs.exists == 'true'
