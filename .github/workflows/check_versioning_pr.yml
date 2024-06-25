@@ -21,29 +21,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const github = require('@actions/github');
-            const core = require('@actions/core');
+            pr_list = github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+              });
 
-            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-
-            const { owner, repo } = github.context.repo;
-
-            const { data: pullRequests } = await octokit.rest.pulls.list({
-              owner,
-              repo,
-              state: 'open'
-            });
-
-            const prTitlePattern = /^chore\(\d+\.\d+\.\d+\)$/;
-            const existingPR = pullRequests.find(pr => prTitlePattern.test(pr.title));
-
-            if (existingPR) {
-              core.setOutput('exists', 'true');
-              console.log(`PR with title "${existingPR.title}" already exists: ${existingPR.html_url}`);
-            } else {
-              core.setOutput('exists', 'false');
-              console.log('No PR with title matching "chore(version)" exists.');
-            }
+            echo "$pr_list"
 
       - name: Fail if PR exists
         if: steps.check-pr.outputs.exists == 'true'
