@@ -20,6 +20,7 @@ jobs:
       - name: Check if PR with title chore(version) exists
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.PAT }}
           script: |
             const { data: pullRequests } = await github.rest.pulls.list({
               owner: context.repo.owner,
@@ -35,8 +36,6 @@ jobs:
             } else {
               console.log("No pull request titled 'chore(version)' found.");
             }
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Fail if PR exists
         if: steps.check-pr.outputs.exists == 'true'
