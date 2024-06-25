@@ -118,9 +118,9 @@ class ExchangeController extends ChangeNotifier {
   ///  what user send by default in primaryCurrency when coming to numpad.)
   double finalAmount() {
     if (_exchangeRate.baseCurrency == primaryCurrency.currencyType) {
-      return primaryCurrency.amount;
+      return primaryCurrency.formattedAmount;
     } else {
-      return secondaryCurrency.amount;
+      return secondaryCurrency.formattedAmount;
     }
   }
 }

@@ -1,3 +1,7 @@
+## 0.0.2+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.2
 
  - **REFACTOR**(deriv_passkeys): Removed deprecated linter rules ([#625](https://github.com/regentmarkets/flutter-deriv-packages/issues/625)). ([2fdc28f2](https://github.com/regentmarkets/flutter-deriv-packages/commit/2fdc28f20b8efe2ddc3a9a261c40b533307f25e3))

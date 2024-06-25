@@ -1,3 +1,7 @@
+## 0.0.7+7
+
+ - **REFACTOR**(deriv_ui): [DERG-3500] return inputted amount based on the formatter in numpad ([#624](https://github.com/regentmarkets/flutter-deriv-packages/issues/624)). ([fdf4df19](https://github.com/regentmarkets/flutter-deriv-packages/commit/fdf4df1979ddb8710dba8925ef779cca25d60615))
+
 ## 0.0.7+6
 
  - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
