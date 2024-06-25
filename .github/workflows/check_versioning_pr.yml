@@ -21,12 +21,20 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            pr_list = github.rest.pulls.list({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-              });
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
 
-            echo "$pr_list"
+            const existingPR = pullRequests.find(pr => pr.title === 'chore(version)');
+
+            if (existingPR) {
+              core.setFailed(`A pull request titled 'chore(version)' already exists: #${existingPR.number}`);
+            } else {
+              console.log("No pull request titled 'chore(version)' found.");
+            }
 
       - name: Fail if PR exists
         if: steps.check-pr.outputs.exists == 'true'
