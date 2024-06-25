@@ -54,6 +54,7 @@ class AuthTrackingRepository implements AuthUserTrackingInterface {
     final Map<String, dynamic> data = getUserTrackingData(
       LoginAction.loginError,
       _appId,
+      provider: _loginProvider,
       errorMessage: errorMessage,
     );
 

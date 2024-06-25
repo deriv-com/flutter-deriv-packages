@@ -133,7 +133,6 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
             centerTitle: false,
           ),
           body: BlocConsumer<DerivAuthCubit, DerivAuthState>(
-            bloc: authCubit,
             listener: _onAuthState,
             builder: (BuildContext context, DerivAuthState state) => Form(
               key: _formKey,
