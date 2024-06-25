@@ -1,12 +1,9 @@
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/chips_list.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:flutter/material.dart';
-
-import 'custom_chip.dart';
 
 /// Bottom sheet content to show the list of support tools (indicators/ drawing
 /// tools) for the mobile version.
@@ -63,16 +60,8 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
       onNotification: (OverscrollNotification notification) {
         return true;
       },
-      child: const ChipsList(
-        isHorizontalPaddingEnabled: true,
-        items: <CustomChip>[
-          // Dummy list, later real data will populate here.
-          CustomChip(
-            value: 'Active',
-            borderRadius: ThemeProvider.margin40,
-          ),
-        ],
-      ),
+      // TODO(Ramin): add chips list.
+      child: const Placeholder(),
     );
   }
 
