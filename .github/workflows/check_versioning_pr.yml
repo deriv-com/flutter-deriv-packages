@@ -1,13 +1,12 @@
-name: Check PR with Title "chore(version)"
+name: versioning_pr_exists
 
 on:
   pull_request:
-    types: [opened, edited, reopened]
+    types: [opened, edited, reopened, synchronize]
 
 jobs:
-  check-pr:
+  check-version-pr:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -32,13 +31,13 @@ jobs:
             const existingPR = pullRequests.find(pr => pr.title === 'chore(version): bump version and update changelog');
 
             if (existingPR) {
-              core.setFailed(`A pull request titled 'chore(version)' already exists: #${existingPR.number}`);
+              core.setFailed(`Version bump pull request exists. Please merge that pr first to pass the check.: #${existingPR.number}`);
             } else {
-              console.log("No pull request titled 'chore(version)' found.");
+              console.log("No version bump pull request found.");
             }
 
       - name: Fail if PR exists
         if: steps.check-pr.outputs.exists == 'true'
         run: |
-          echo "A PR with the title 'chore(version)' already exists. Exiting."
+          echo "Version bump pull request exists. Please merge that pr first to pass the check."
           exit 1
