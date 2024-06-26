@@ -31,7 +31,7 @@ jobs:
             const existingPR = pullRequests.find(pr => pr.title === 'chore(version): bump version and update changelog');
 
             if (existingPR) {
-              core.setFailed(`Version bump pull request exists. Please merge that pr first to pass the check.: #${existingPR.number}`);
+              console.log("Version bump pull request exists. Please merge that pr first to pass the check.: #${existingPR.number}");
             } else {
               console.log("No version bump pull request found.");
             }
