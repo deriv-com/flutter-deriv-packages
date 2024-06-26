@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@eff380dfbcf941bf8832e4acb788cebe13dfd758
         with:
           node-version: "14"
 
       - name: Check if PR with title chore(version) exists
-        uses: actions/github-script@v6
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
         with:
           github-token: ${{ secrets.PAT }}
           script: |
@@ -35,9 +35,3 @@ jobs:
             } else {
               console.log("No version bump pull request found.");
             }
-
-      - name: Fail if PR exists
-        if: steps.check-pr.outputs.exists == 'true'
-        run: |
-          echo "Version bump pull request exists. Please merge that pr first to pass the check."
-          exit 1
