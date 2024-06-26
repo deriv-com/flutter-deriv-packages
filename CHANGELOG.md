@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-06-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_passkeys` - `v0.0.2+4`](#deriv_passkeys---v0024)
+ - [`deriv_auth` - `v6.7.2`](#deriv_auth---v672)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.2`
+
+---
+
+#### `deriv_passkeys` - `v0.0.2+4`
+
+ - **FIX**(deriv_passkeys): fix passkeys success button styles ([#629](https://github.com/regentmarkets/flutter-deriv-packages/issues/629)). ([d1fb8590](https://github.com/regentmarkets/flutter-deriv-packages/commit/d1fb8590eb5eb55f9bd9db3a255f33cf152f364d))
+
+
 ## 2024-06-25
 
 ### Changes

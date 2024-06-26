@@ -1,3 +1,7 @@
+## 6.7.2
+
+ - Update a dependency to the latest release.
+
 ## 6.7.1
 
  - **FIX**(deriv_auth): Fix login provider null issue ([#641](https://github.com/regentmarkets/flutter-deriv-packages/issues/641)). ([e4181541](https://github.com/regentmarkets/flutter-deriv-packages/commit/e41815416eb76b3724481f8a0b980e943311ebeb))
