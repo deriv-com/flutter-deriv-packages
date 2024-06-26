@@ -15,6 +15,36 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_localizations` - `v1.5.0`](#deriv_localizations---v150)
+ - [`deriv_auth` - `v6.7.3`](#deriv_auth---v673)
+ - [`deriv_passkeys` - `v0.0.2+5`](#deriv_passkeys---v0025)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.3`
+ - `deriv_passkeys` - `v0.0.2+5`
+
+---
+
+#### `deriv_localizations` - `v1.5.0`
+
+ - **FEAT**(deriv_localizations): add localization for deriv mobile chart wrapper package ([#627](https://github.com/regentmarkets/flutter-deriv-packages/issues/627)). ([33f5e3a1](https://github.com/regentmarkets/flutter-deriv-packages/commit/33f5e3a1bc0765cb8559b5a39e300b8c088aa705))
+
+
+## 2024-06-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_passkeys` - `v0.0.2+4`](#deriv_passkeys---v0024)
  - [`deriv_auth` - `v6.7.2`](#deriv_auth---v672)
 
