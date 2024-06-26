@@ -661,7 +661,7 @@ class _NumpadWithExchange extends NumberPad {
     NumberPadCloseCallback? onClose,
   }) : super(
           numberPadType: NumberPadWidgetType.singleInput,
-          formatter: NumberFormat.decimalPattern()..maximumFractionDigits = 8,
+          formatter: primaryCurrency.formatter,
           label: label,
           firstInputTitle: title,
           onClose: onClose,

@@ -1,3 +1,7 @@
+## 1.4.0
+
+ - **FEAT**(update_checker): add the ability to change the key from the app side ([#628](https://github.com/regentmarkets/flutter-deriv-packages/issues/628)). ([b18609a0](https://github.com/regentmarkets/flutter-deriv-packages/commit/b18609a00533aaab6d6962eb89f323e2f560df8b))
+
 ## 1.3.0
 
  - **FEAT**(deriv_logger): add ability to print prettified logs in console and UI ([#608](https://github.com/regentmarkets/flutter-deriv-packages/issues/608)). ([5a91c24b](https://github.com/regentmarkets/flutter-deriv-packages/commit/5a91c24bde607ff37940edf18f8dfac67d3fc4fa))

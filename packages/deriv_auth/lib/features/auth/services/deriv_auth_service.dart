@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
-
 import 'package:deriv_auth/core/connection_info.dart';
+
 import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/extensions/extensions.dart';

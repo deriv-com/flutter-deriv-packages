@@ -1,4 +1,7 @@
+import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:bloc/bloc.dart';
+import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
+import 'package:deriv_auth/core/analytics/service/auth_tracking_mixin.dart';
 
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
@@ -9,17 +12,27 @@ import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
+import 'package:deriv_auth/features/auth/services/deriv_auth_service.dart';
 import 'package:deriv_auth/features/social_auth/models/social_auth_dto.dart';
 
 part 'deriv_auth_state.dart';
 
 /// This Cubit is the single source of truth for user login status,
 /// and it is responsible for all login functionality.
-class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
+class DerivAuthCubit extends Cubit<DerivAuthState>
+    with AuthTrackingMixin
+    implements DerivAuthIO {
   /// Initialize a [DerivAuthCubit].
   DerivAuthCubit({
     required this.authService,
-  }) : super(DerivAuthLoadingState());
+  }) : super(DerivAuthLoadingState()) {
+    AuthTrackingRepository.init(
+      authService is DerivAuthService
+          ? (authService as DerivAuthService).connectionInfo.appId
+          : (throw Exception('Connection Info is not provided.')),
+      derivRudderstack: DerivRudderstack(),
+    );
+  }
 
   /// [BaseAuthService] handles all login logic of cubit.
   final BaseAuthService authService;
@@ -33,6 +46,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
     String? otp,
     String? userAgent,
   }) async {
+    trackLoginWithEmailAndPassword();
+
     emit(DerivAuthLoadingState());
 
     await _loginRequest(
@@ -110,6 +125,9 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
+
+      trackLoginFinished();
+
       emit(DerivAuthLoggedInState(
         DerivAuthModel(
           authorizeEntity: authorizeEntity,
@@ -135,6 +153,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
+
+      trackLoginFinished();
 
       emit(
         DerivAuthLoggedInState(
@@ -204,4 +224,15 @@ class DerivAuthCubit extends Cubit<DerivAuthState> implements DerivAuthIO {
 
   @override
   Stream<DerivAuthState> get output => stream;
+
+  @override
+  void onChange(Change<DerivAuthState> change) {
+    if (change.nextState is DerivAuthErrorState) {
+      trackError(
+        (change.nextState as DerivAuthErrorState).message,
+      );
+    }
+
+    super.onChange(change);
+  }
 }

@@ -21,28 +21,25 @@ class PasskeysCreatedCallToAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Expanded(
-              child: SecondaryButton(
-                onPressed: () => addMorePasskeysNavigationCallback(context),
-                child: Text(
-                  context.derivPasskeysLocalizations.addMorePasskeysButtonText,
-                  style: TextStyle(
-                    color: context.theme.colors.prominent,
-                  ),
+            SecondaryButton(
+              onPressed: () => addMorePasskeysNavigationCallback(context),
+              child: Text(
+                context.derivPasskeysLocalizations.addMorePasskeysButtonText,
+                style: TextStyle(
+                  color: context.theme.colors.prominent,
                 ),
               ),
             ),
             const SizedBox(width: 16),
-            Expanded(
-              child: PrimaryButton(
-                onPressed: () => continueTradingNavigationCallback(context),
-                child: Text(
-                  context.derivPasskeysLocalizations.continueTradingButtonText,
-                  style: TextStyle(
-                    color: context.theme.colors.prominent,
-                  ),
+            PrimaryButton(
+              onPressed: () => continueTradingNavigationCallback(context),
+              child: Text(
+                context.derivPasskeysLocalizations.continueTradingButtonText,
+                style: TextStyle(
+                  color: context.theme.colors.prominent,
                 ),
               ),
             ),

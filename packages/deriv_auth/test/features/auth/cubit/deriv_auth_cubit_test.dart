@@ -1,4 +1,6 @@
+import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
@@ -16,11 +18,28 @@ import '../mocked_data/mocked_auth_models.dart';
 
 class MockAuthService extends Mock implements BaseAuthService {}
 
+class MockDerivRudderStack extends Mock implements DerivRudderstack {}
+
 void main() {
+  late final MockDerivRudderStack mockDerivRudderstack;
+
   late final DerivAuthCubit authCubit;
   late final MockAuthService service;
 
   setUpAll(() async {
+    mockDerivRudderstack = MockDerivRudderStack();
+
+    AuthTrackingRepository.init(
+      'test',
+      derivRudderstack: mockDerivRudderstack,
+    );
+
+    when(() => mockDerivRudderstack.track(
+        eventName: any(named: 'eventName'),
+        properties: any(named: 'properties'))).thenAnswer(
+      (_) => Future<bool>.value(true),
+    );
+
     service = MockAuthService();
     authCubit = DerivAuthCubit(authService: service);
   });
