@@ -1,3 +1,4 @@
+import 'package:deriv_auth/core/analytics/service/auth_tracking_mixin.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,8 @@ class DerivSocialAuthPanel extends StatefulWidget {
   State<DerivSocialAuthPanel> createState() => _DerivSocialAuthPanelState();
 }
 
-class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
+class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel>
+    with AuthTrackingMixin {
   late SocialAuthCubit _socialAuthCubit;
 
   @override
@@ -121,6 +123,19 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel> {
         ),
         onTap: widget.isEnabled
             ? () async {
+                switch (socialAuthProvider) {
+                  case SocialAuthProvider.google:
+                    trackLoginWithGoogle();
+                    break;
+                  case SocialAuthProvider.facebook:
+                    trackLoginWithFacebook();
+                    break;
+                  case SocialAuthProvider.apple:
+                    trackLoginWithApple();
+                    break;
+                  default:
+                    break;
+                }
                 final List<SocialAuthProviderModel>? socialAuthProviders =
                     await _socialAuthCubit.getSocialAuthProviders();
 
