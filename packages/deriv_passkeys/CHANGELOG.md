@@ -1,3 +1,7 @@
+## 0.0.2+4
+
+ - **FIX**(deriv_passkeys): fix passkeys success button styles ([#629](https://github.com/regentmarkets/flutter-deriv-packages/issues/629)). ([d1fb8590](https://github.com/regentmarkets/flutter-deriv-packages/commit/d1fb8590eb5eb55f9bd9db3a255f33cf152f364d))
+
 ## 0.0.2+3
 
  - Update a dependency to the latest release.
