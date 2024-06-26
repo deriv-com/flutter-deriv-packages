@@ -61,7 +61,7 @@ class MobileToolsBottomSheetContent extends StatelessWidget {
         return true;
       },
       // TODO(Ramin): add chips list.
-      child: const Placeholder(),
+      child: const SizedBox.shrink(),
     );
   }
 

@@ -36,6 +36,7 @@ dependencies:
   provider: ^6.0.5
   flutter_svg: ^2.0.9
   shared_preferences: ^2.1.0
+  mockito: ^5.4.2
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  uses-material-design: true
 
   assets:
     - assets/icons/ic_macd.svg
