@@ -1,0 +1,43 @@
+name: versioning_pr_exists
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  check-version-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Check if PR with title chore(version) exists
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            const existingPR = pullRequests.find(pr => pr.title === 'chore(version): bump version and update changelog');
+
+            if (existingPR) {
+              core.setFailed(`Version bump pull request exists. Please merge that pr first to pass the check.: #${existingPR.number}`);
+            } else {
+              console.log("No version bump pull request found.");
+            }
+
+      - name: Fail if PR exists
+        if: steps.check-pr.outputs.exists == 'true'
+        run: |
+          echo "Version bump pull request exists. Please merge that pr first to pass the check."
+          exit 1
