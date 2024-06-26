@@ -16,28 +16,13 @@ class MockAddOnsRepository<T extends AddOnConfig> extends Mock
 
 void main() {
   group('MobileChartWrapper Tests', () {
-    late MockAddOnsRepository<IndicatorConfig> mockIndicatorsRepo;
-    late DataSeries<Tick> mockMainSeries;
-
     setUp(() {
-      mockIndicatorsRepo = MockAddOnsRepository<IndicatorConfig>();
-      mockMainSeries = LineSeries([]);
       SharedPreferences.setMockInitialValues({});
     });
 
     testWidgets('MobileChartWrapper initializes correctly',
         (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Material(
-            child: MobileChartWrapper(
-              mainSeries: mockMainSeries,
-              granularity: 60,
-              toolsController: ToolsController(),
-            ),
-          ),
-        ),
-      );
+      await tester.pumpWidget(_TestWidget(toolsController: ToolsController()));
 
       // Verify initial state
       expect(find.byType(MobileChartWrapper), findsOneWidget);
@@ -47,15 +32,7 @@ void main() {
         (WidgetTester tester) async {
       final mockToolsController = MockToolsController();
       await tester.pumpWidget(
-        MaterialApp(
-          home: Material(
-            child: MobileChartWrapper(
-              mainSeries: mockMainSeries,
-              granularity: 60,
-              toolsController: mockToolsController,
-            ),
-          ),
-        ),
+        _TestWidget(toolsController: mockToolsController),
       );
 
       // Verify callback is set
@@ -67,17 +44,8 @@ void main() {
       final toolsController = ToolsController();
 
       await tester.pumpWidget(
-        MaterialApp(
-          localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-            DerivMobileChartWrapperLocalizations.delegate,
-          ],
-          home: Material(
-            child: MobileChartWrapper(
-              mainSeries: mockMainSeries,
-              granularity: 60,
-              toolsController: toolsController,
-            ),
-          ),
+        _TestWidget(
+          toolsController: toolsController,
         ),
       );
 
@@ -88,6 +56,27 @@ void main() {
       // Verify the bottom sheet is displayed
       expect(find.byType(MobileToolsBottomSheetContent), findsOneWidget);
     });
-
   });
+}
+
+class _TestWidget extends StatelessWidget {
+  const _TestWidget({required this.toolsController});
+
+  final ToolsController toolsController;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+        DerivMobileChartWrapperLocalizations.delegate,
+      ],
+      home: Material(
+        child: MobileChartWrapper(
+          mainSeries: LineSeries([]),
+          granularity: 60,
+          toolsController: toolsController,
+        ),
+      ),
+    );
+  }
 }
