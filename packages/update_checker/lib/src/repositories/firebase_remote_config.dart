@@ -5,9 +5,11 @@ import 'package:update_checker/src/repositories/base_firebase.dart';
 /// the firebase database.
 class FirebaseRemoteConfigRepository implements BaseFirebase {
   /// Initializes the Firebase Database repository
-  const FirebaseRemoteConfigRepository();
+  FirebaseRemoteConfigRepository(
+      {String versionControlKey = 'app_version_control'})
+      : _versionControlKey = versionControlKey;
 
-  static const String _versionControlKey = 'app_version_control';
+  late final String _versionControlKey;
 
   /// Fetches the update information from the database.
   @override
