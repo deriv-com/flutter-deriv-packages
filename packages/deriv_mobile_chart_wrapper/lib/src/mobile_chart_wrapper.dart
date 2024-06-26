@@ -241,7 +241,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         value: indicatorsRepo,
         child: ChartBottomSheet(
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.5,
             child: const MobileToolsBottomSheetContent(),
           ),
         ),
