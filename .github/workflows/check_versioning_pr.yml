@@ -35,3 +35,11 @@ jobs:
             } else {
               console.log("No version bump pull request found.");
             }
+
+      - name: Fail if PR exists
+        if: steps.check-pr.outputs.exists == 'true'
+        uses: marocchino/sticky-pull-request-comment@4b7290acd5c5b99ef9995db30e52150e705d2475
+        with:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          message: |
+            **Merge Is BLOCKED : we still have a chore(version) pr open, please merge that pr first **
