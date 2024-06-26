@@ -8,10 +8,10 @@ final class DerivPasskeysVerifyCredentialsResponseEntity extends Equatable {
     required this.refreshToken,
   });
 
-  /// contains the token from the REST API to verify credentials.
+  /// App token from the REST API to verify credentials.
   final String token;
 
-  /// contains the refresh token from the REST API to verify credentials.
+  /// Refresh token from the REST API to verify credentials.
   final String refreshToken;
 
   @override
