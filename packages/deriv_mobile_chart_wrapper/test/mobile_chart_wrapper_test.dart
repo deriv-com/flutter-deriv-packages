@@ -2,7 +2,6 @@ import 'package:deriv_localizations/l10n/generated/deriv_mobile_chart_wrapper/de
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/mobile_tools_bottom_sheet_content.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 
@@ -16,16 +15,12 @@ class MockAddOnsRepository<T extends AddOnConfig> extends Mock
 
 void main() {
   group('MobileChartWrapper Tests', () {
-    setUp(() {
-      SharedPreferences.setMockInitialValues({});
-    });
-
     testWidgets('MobileChartWrapper initializes correctly',
         (WidgetTester tester) async {
       await tester.pumpWidget(_TestWidget(toolsController: ToolsController()));
 
       // Verify initial state
-      expect(find.byType(MobileChartWrapper), findsOneWidget);
+      expect(find.byType(DerivChart), findsOneWidget);
     });
 
     testWidgets('ToolsController showIndicatorsToolsMenu callback is set',
