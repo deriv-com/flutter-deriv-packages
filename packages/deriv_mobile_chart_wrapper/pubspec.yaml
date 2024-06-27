@@ -25,7 +25,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: 209255e2fb2bba37315ba518d772298e2c425fb2
+      ref: deriv_localizations-v1.5.1
 
   deriv_ui:
     git:
