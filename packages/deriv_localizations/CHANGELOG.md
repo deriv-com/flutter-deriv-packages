@@ -1,3 +1,7 @@
+## 1.5.1
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#648](https://github.com/regentmarkets/flutter-deriv-packages/issues/648)). ([c925c22a](https://github.com/regentmarkets/flutter-deriv-packages/commit/c925c22a97e6e13568fefa0d86d993985093617c))
+
 ## 1.5.0
 
  - **FEAT**(deriv_localizations): add localization for deriv mobile chart wrapper package ([#627](https://github.com/regentmarkets/flutter-deriv-packages/issues/627)). ([33f5e3a1](https://github.com/regentmarkets/flutter-deriv-packages/commit/33f5e3a1bc0765cb8559b5a39e300b8c088aa705))
