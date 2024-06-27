@@ -103,11 +103,15 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
   }
 
   @override
-  Future<void> tokenLogin(String token) async {
+  Future<void> tokenLogin(
+    String token, [
+    String? refreshToken,
+  ]) async {
     emit(DerivAuthLoadingState());
 
     await _tokenLoginRequest(
       token,
+      refreshToken: refreshToken,
       accounts: await authService.getLatestAccounts(),
     );
   }
@@ -145,11 +149,15 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
 
   Future<void> _tokenLoginRequest(
     String token, {
+    String? refreshToken,
     required List<AccountModel> accounts,
   }) async {
     try {
-      final AuthorizeEntity authorizeEntity =
-          await authService.login(token, accounts: accounts);
+      final AuthorizeEntity authorizeEntity = await authService.login(
+        token,
+        refreshToken: refreshToken,
+        accounts: accounts,
+      );
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
