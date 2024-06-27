@@ -64,13 +64,13 @@ class DerivPasskeysLocalizationsTh extends DerivPasskeysLocalizations {
   String get howToCreatePasskeyDescription2 => 'คุณสามารถสร้างหนึ่ง Passkey ต่ออุปกรณ์';
 
   @override
-  String get p2pHowToCreatePasskey => 'วิธีการสร้างรหัสผ่าน';
+  String get p2pHowToCreatePasskey => 'จะสร้าง Passkey ได้อย่างไร?';
 
   @override
   String get p2pHowToCreatePasskeyDescription1 => 'ไปที่ \'โปรไฟล์\' ในแอป Deriv P2P ของคุณ';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'แตะ \'รหัสผ่าน\' เพื่อสร้างรหัสผ่านของคุณ';
+  String get p2pHowToCreatePasskeyDescription2 => 'แตะ \'Passkeys\' เพื่อสร้าง Passkey ของคุณ';
 
   @override
   String get whereArePasskeysSaved => 'Passkey จะถูกบันทึกไว้ที่ไหน?';
