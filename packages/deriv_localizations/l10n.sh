@@ -2,7 +2,7 @@
 
 
 # Directories containing ARB files
-feature_dirs=("deriv_auth" "deriv_passkeys")
+feature_dirs=("deriv_auth" "deriv_passkeys" "deriv_mobile_chart_wrapper")
 
 # Base localization directory
 base_l10n_dir="lib/l10n"
@@ -29,14 +29,23 @@ done
 
 ls $base_l10n_dir/generated
 
-echo "Localization generation complete."
-
-
 # Add the generated localization files to Git
 git add "$base_l10n_dir/generated"
 
+# Create deriv_localizations.dart barrel file under lib folder.
+localizations_file="lib/deriv_localizations.dart"
+echo "// Generated file for exporting localization classes" > $localizations_file
+
+for dir in "${feature_dirs[@]}"; do
+    echo "export 'l10n/generated/$dir/${dir}_localizations.dart';" >> $localizations_file
+done
+
+echo "Created deriv_localizations.dart barrel file with exports."
+
+# Add and commit the deriv_localizations.dart barrel file to Git
+git add $localizations_file
+
 # Commit the changes
 git commit -m "Update localizations"
-
 
 echo "Localization generation complete."
