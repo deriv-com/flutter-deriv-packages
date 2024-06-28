@@ -40,13 +40,11 @@ jobs:
             }
 
       - name: Delete PR if comment exists
-        uses: maheshrayas/action-pr-comment-delete@cefd9316fb977aaa4eec927507bc7b4a7e6cfe6a
+        uses: izhangzhihao/delete-comment@master
         with:
-          github_token: "${{ secrets.PAT }}"
-          org: regentmarkets
-          repo: flutter-deriv-packages
-          user: "mobile-apps-deriv"
-          issue: "${{github.event.number}}"
+          github_token: ${{ secrets.PAT }}
+          delete_user_name: mobile-apps-deriv
+          issue_number: ${{ github.event.number }}
 
       - name: Comment if PR exists
         if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
