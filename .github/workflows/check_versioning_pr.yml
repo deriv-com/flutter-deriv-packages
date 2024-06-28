@@ -1,0 +1,61 @@
+name: versioning_pr_exists
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  check-version-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - name: Set up Node.js
+        uses: actions/setup-node@eff380dfbcf941bf8832e4acb788cebe13dfd758
+        with:
+          node-version: "14"
+
+      - name: Check if PR with title chore(version) exists
+        id: check-pr
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            const existingPR = pullRequests.find(pr => pr.title === 'chore(version): bump version and update changelog');
+
+            if (existingPR) {
+              core.setOutput("VERSIONING_PR_EXISTS", true);
+              console.log("Version bump pull request exists. Please merge that pr first to pass the check.: #${existingPR.number}");
+            } else {
+              core.setOutput("VERSIONING_PR_EXISTS", false);
+              console.log("No version bump pull request found.");
+            }
+
+      - name: Delete comment if exists
+        uses: izhangzhihao/delete-comment@d075704468e1cf74e60944d9f335351213c34d85
+        with:
+          github_token: ${{ secrets.PAT }}
+          delete_user_name: mobile-apps-deriv
+          issue_number: ${{ github.event.number }}
+
+      - name: Comment if versioning PR exists
+        if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
+        uses: marocchino/sticky-pull-request-comment@4b7290acd5c5b99ef9995db30e52150e705d2475
+        with:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          message: |
+            **Merge Is BLOCKED : we still have a chore(version) pr open, please merge that pr first **
+
+      - name: Fail if versioning PR exists
+        if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
+        run: |
+          echo "A PR with the title 'chore(version)' already exists. Exiting."
+          exit 1

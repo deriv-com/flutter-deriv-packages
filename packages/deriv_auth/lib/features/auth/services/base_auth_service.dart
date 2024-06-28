@@ -5,6 +5,9 @@ import 'package:deriv_auth/core/services/token/models/login_request.dart';
 
 /// Interface to define all authentication-related functionality.
 abstract class BaseAuthService {
+  /// Constructor for [BaseAuthService].
+  BaseAuthService();
+
   /// Function before logging user in.
   Future<AuthorizeEntity> onLoginRequest({
     required GetTokensRequestModel request,

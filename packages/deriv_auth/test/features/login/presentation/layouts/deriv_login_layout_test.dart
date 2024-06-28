@@ -1,4 +1,6 @@
+import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_passkeys/deriv_passkeys.dart';
@@ -18,8 +20,11 @@ class MockDerivPasskeysBloc
     extends MockBloc<DerivPasskeysEvent, DerivPasskeysState>
     implements DerivPasskeysBloc {}
 
+class MockDerivRudderStackService extends Mock implements DerivRudderstack {}
+
 void main() {
   group('DerivLoginLayout', () {
+    late MockDerivRudderStackService mockDerivRudderstack;
     late MockAuthCubit authCubit;
     late MockSocialAuthCubit socialAuthCubit;
     late MockDerivPasskeysBloc derivPasskeysBloc;
@@ -27,9 +32,22 @@ void main() {
     const String welcomeLabel = 'Welcome Back';
 
     setUpAll(() {
+      mockDerivRudderstack = MockDerivRudderStackService();
       authCubit = MockAuthCubit();
       socialAuthCubit = MockSocialAuthCubit();
       derivPasskeysBloc = MockDerivPasskeysBloc();
+
+      AuthTrackingRepository.init(
+        'test',
+        derivRudderstack: mockDerivRudderstack,
+      );
+
+      when(() => mockDerivRudderstack.track(
+            eventName: any(named: 'eventName'),
+            properties: any(named: 'properties'),
+          )).thenAnswer(
+        (_) => Future<bool>.value(true),
+      );
 
       when(() => derivPasskeysBloc.state).thenReturn(
         DerivPasskeysInitializedState(),

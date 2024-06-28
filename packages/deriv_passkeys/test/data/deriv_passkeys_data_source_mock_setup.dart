@@ -99,7 +99,8 @@ const DerivPasskeysVerifyCredentialsResponseModel
       <String, dynamic>{
         'token': 'token',
       },
-    ]
+    ],
+    'refresh_token': 'refresh_token',
   },
 );
 
