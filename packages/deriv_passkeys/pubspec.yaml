@@ -1,6 +1,6 @@
 name: deriv_passkeys
 description: Deriv Passkeys Flutter Plugin
-version: 0.0.2+6
+version: 0.0.2+7
 publish_to: "none"
 
 environment:

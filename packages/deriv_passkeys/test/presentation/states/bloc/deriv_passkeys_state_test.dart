@@ -34,8 +34,11 @@ void main() {
   group('DerivPasskeysCredentialVerifiedState', () {
     test('props should contain token', () {
       const String token = 'example_token';
-      const DerivPasskeysState state =
-          DerivPasskeysCredentialVerifiedState(token: token);
+      const String refreshToken = 'example_refresh_token';
+      const DerivPasskeysState state = DerivPasskeysCredentialVerifiedState(
+        token: token,
+        refreshToken: refreshToken,
+      );
       expect(state.props, contains(token));
     });
   });
