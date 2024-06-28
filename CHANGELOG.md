@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_mobile_chart_wrapper` - `v0.0.2`](#deriv_mobile_chart_wrapper---v002)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.2`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DERG-2498] create deriv_mobile_chart_wrapper package ([#626](https://github.com/regentmarkets/flutter-deriv-packages/issues/626)). ([01aec1ed](https://github.com/regentmarkets/flutter-deriv-packages/commit/01aec1edbd8f02e21951918ec86f00fb28ef2c58))
+
+
+## 2024-06-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`analytics` - `v2.1.0`](#analytics---v210)
  - [`deriv_auth` - `v6.7.6`](#deriv_auth---v676)
  - [`deriv_passkeys` - `v0.0.2+8`](#deriv_passkeys---v0028)
