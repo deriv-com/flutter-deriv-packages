@@ -47,6 +47,15 @@ jobs:
           message: |
             **Merge Is BLOCKED : we still have a chore(version) pr open, please merge that pr first **
 
+      - name: Delete PR if comment exists
+        uses: maheshrayas/action-pr-comment-delete@cefd9316fb977aaa4eec927507bc7b4a7e6cfe6a
+        with:
+          github_token: "${{ secrets.PAT }}"
+          org: regentmarkets
+          repo: flutter-deriv-packages
+          user: "mobile-apps-deriv"
+          issue: "${{github.event.number}}"
+
       - name: Fail if PR exists
         if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
         run: |
