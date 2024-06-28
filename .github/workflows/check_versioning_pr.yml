@@ -31,11 +31,11 @@ jobs:
 
             const existingPR = pullRequests.find(pr => pr.title === 'chore(version): bump version and update changelog');
 
-            echo -e "VERSIONING_PR_EXISTS=$existingPR" >> "$GITHUB_OUTPUT"
-
             if (existingPR) {
+              core.setOutput("VERSIONING_PR_EXISTS", true);
               console.log("Version bump pull request exists. Please merge that pr first to pass the check.: #${existingPR.number}");
             } else {
+              core.setOutput("VERSIONING_PR_EXISTS", false);
               console.log("No version bump pull request found.");
             }
 
