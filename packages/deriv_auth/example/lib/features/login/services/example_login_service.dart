@@ -24,6 +24,7 @@ class ExampleLoginService extends BaseAuthService {
   Future<AuthorizeEntity> login(
     String token, {
     required List<AccountModel> accounts,
+    List<String>? tokenList,
     String? signupProvider,
     String? refreshToken,
   }) async =>
