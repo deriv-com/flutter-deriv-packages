@@ -40,7 +40,7 @@ jobs:
             }
 
       - name: Delete PR if comment exists
-        uses: izhangzhihao/delete-comment@master
+        uses: izhangzhihao/delete-comment@d075704468e1cf74e60944d9f335351213c34d85
         with:
           github_token: ${{ secrets.PAT }}
           delete_user_name: mobile-apps-deriv
