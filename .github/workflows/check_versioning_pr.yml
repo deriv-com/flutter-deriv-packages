@@ -39,14 +39,14 @@ jobs:
               console.log("No version bump pull request found.");
             }
 
-      - name: Delete PR if comment exists
+      - name: Delete comment if exists
         uses: izhangzhihao/delete-comment@d075704468e1cf74e60944d9f335351213c34d85
         with:
           github_token: ${{ secrets.PAT }}
           delete_user_name: mobile-apps-deriv
           issue_number: ${{ github.event.number }}
 
-      - name: Comment if PR exists
+      - name: Comment if versioning PR exists
         if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
         uses: marocchino/sticky-pull-request-comment@4b7290acd5c5b99ef9995db30e52150e705d2475
         with:
@@ -54,7 +54,7 @@ jobs:
           message: |
             **Merge Is BLOCKED : we still have a chore(version) pr open, please merge that pr first **
 
-      - name: Fail if PR exists
+      - name: Fail if versioning PR exists
         if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
         run: |
           echo "A PR with the title 'chore(version)' already exists. Exiting."
