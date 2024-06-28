@@ -1,3 +1,35 @@
+## 0.0.2+8
+
+ - Update a dependency to the latest release.
+
+## 0.0.2+7
+
+ - **FIX**(deriv_passkeys): Fix_logout_issue_by_fetching_refresh_token ([#630](https://github.com/regentmarkets/flutter-deriv-packages/issues/630)). ([282278ae](https://github.com/regentmarkets/flutter-deriv-packages/commit/282278aeb27256eaa37660f58eff704d27e92c93))
+
+## 0.0.2+6
+
+ - Update a dependency to the latest release.
+
+## 0.0.2+5
+
+ - Update a dependency to the latest release.
+
+## 0.0.2+4
+
+ - **FIX**(deriv_passkeys): fix passkeys success button styles ([#629](https://github.com/regentmarkets/flutter-deriv-packages/issues/629)). ([d1fb8590](https://github.com/regentmarkets/flutter-deriv-packages/commit/d1fb8590eb5eb55f9bd9db3a255f33cf152f364d))
+
+## 0.0.2+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.2+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.2+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.2
 
  - **REFACTOR**(deriv_passkeys): Removed deprecated linter rules ([#625](https://github.com/regentmarkets/flutter-deriv-packages/issues/625)). ([2fdc28f2](https://github.com/regentmarkets/flutter-deriv-packages/commit/2fdc28f20b8efe2ddc3a9a261c40b533307f25e3))
