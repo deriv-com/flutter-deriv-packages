@@ -57,6 +57,8 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
         emit(
           DerivPasskeysCredentialVerifiedState(
             token: derivPasskeysVerifyCredentialsResponseEntity.token,
+            refreshToken:
+                derivPasskeysVerifyCredentialsResponseEntity.refreshToken,
           ),
         );
       }).catchError((Object error) {
