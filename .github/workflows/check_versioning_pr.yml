@@ -17,6 +17,7 @@ jobs:
           node-version: "14"
 
       - name: Check if PR with title chore(version) exists
+        id: check-pr
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
         with:
           github-token: ${{ secrets.PAT }}
@@ -30,16 +31,24 @@ jobs:
 
             const existingPR = pullRequests.find(pr => pr.title === 'chore(version): bump version and update changelog');
 
+            echo -e "VERSIONING_PR_EXISTS=$existingPR" >> "$GITHUB_OUTPUT"
+
             if (existingPR) {
               console.log("Version bump pull request exists. Please merge that pr first to pass the check.: #${existingPR.number}");
             } else {
               console.log("No version bump pull request found.");
             }
 
-      - name: Fail if PR exists
-        if: steps.check-pr.outputs.exists == 'true'
+      - name: Comment if PR exists
+        if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
         uses: marocchino/sticky-pull-request-comment@4b7290acd5c5b99ef9995db30e52150e705d2475
         with:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           message: |
             **Merge Is BLOCKED : we still have a chore(version) pr open, please merge that pr first **
+
+      - name: Fail if PR exists
+        if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
+        run: |
+          echo "A PR with the title 'chore(version)' already exists. Exiting."
+          exit 1
