@@ -39,14 +39,6 @@ jobs:
               console.log("No version bump pull request found.");
             }
 
-      - name: Comment if PR exists
-        if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
-        uses: marocchino/sticky-pull-request-comment@4b7290acd5c5b99ef9995db30e52150e705d2475
-        with:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-          message: |
-            **Merge Is BLOCKED : we still have a chore(version) pr open, please merge that pr first **
-
       - name: Delete PR if comment exists
         uses: maheshrayas/action-pr-comment-delete@cefd9316fb977aaa4eec927507bc7b4a7e6cfe6a
         with:
@@ -55,6 +47,14 @@ jobs:
           repo: flutter-deriv-packages
           user: "mobile-apps-deriv"
           issue: "${{github.event.number}}"
+
+      - name: Comment if PR exists
+        if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
+        uses: marocchino/sticky-pull-request-comment@4b7290acd5c5b99ef9995db30e52150e705d2475
+        with:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          message: |
+            **Merge Is BLOCKED : we still have a chore(version) pr open, please merge that pr first **
 
       - name: Fail if PR exists
         if: ${{ contains(steps.check-pr.outputs.VERSIONING_PR_EXISTS, 'true') }}
