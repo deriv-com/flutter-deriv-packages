@@ -135,12 +135,12 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
         userAgent: userAgent,
       );
 
-      ///TODO (John): Check if this has to be reset for every account change
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
 
-      trackLoginFinished();
+      ///TODO (John): Uncomment this when the tracking is ready
+      // trackLoginFinished();
 
       emit(DerivAuthLoggedInState(
         DerivAuthModel(
@@ -169,7 +169,8 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
 
-      trackLoginFinished();
+      ///TODO (John): Uncomment this when the tracking is ready
+      // trackLoginFinished();
 
       emit(
         DerivAuthLoggedInState(
