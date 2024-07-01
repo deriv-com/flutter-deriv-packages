@@ -1,3 +1,7 @@
+## 6.7.7
+
+ - **REFACTOR**(deriv_passkeys): update deriv api dependency ([#656](https://github.com/regentmarkets/flutter-deriv-packages/issues/656)). ([3425078b](https://github.com/regentmarkets/flutter-deriv-packages/commit/3425078b52baac4f387504c9d41063bda1dba249))
+
 ## 6.7.6
 
  - Update a dependency to the latest release.

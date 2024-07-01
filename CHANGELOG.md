@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-01
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.7.7`](#deriv_auth---v677)
+ - [`deriv_passkeys` - `v0.0.2+9`](#deriv_passkeys---v0029)
+
+---
+
+#### `deriv_auth` - `v6.7.7`
+
+ - **REFACTOR**(deriv_passkeys): update deriv api dependency ([#656](https://github.com/regentmarkets/flutter-deriv-packages/issues/656)). ([3425078b](https://github.com/regentmarkets/flutter-deriv-packages/commit/3425078b52baac4f387504c9d41063bda1dba249))
+
+#### `deriv_passkeys` - `v0.0.2+9`
+
+ - **REFACTOR**(deriv_passkeys): update deriv api dependency ([#656](https://github.com/regentmarkets/flutter-deriv-packages/issues/656)). ([3425078b](https://github.com/regentmarkets/flutter-deriv-packages/commit/3425078b52baac4f387504c9d41063bda1dba249))
+
+
 ## 2024-06-28
 
 ### Changes

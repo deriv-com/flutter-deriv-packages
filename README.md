@@ -2,9 +2,19 @@
 
 This repository contains private packages & plugins that are used by the company's products built in Flutter.
 
+### <span style="color:green">GIT HOOK</span>
+
+<span style="color:orange">Please run the below command to have the git hook installed.</span></br>
+<span style="color:orange">This Hook will check for Semantic versioning commit convention</span></br>
+
+```BASH
+curl --fail -o $HOME/.git/hooks/commit-msg https://raw.githubusercontent.com/regentmarkets/flutter-deriv-packages/master/githooks/commit-msg \
+  && chmod +x $HOME/.git/hooks/commit-msg
+```
+
 ## Using the packages
 
-Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v6.7.6)`. To use the package, add the following to your pubspec.yaml file:
+Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v6.7.7)`. To use the package, add the following to your pubspec.yaml file:
 
 
 ```yaml
@@ -20,7 +30,7 @@ deriv_ui:
 | Name                                                                      | Description                                                                                                            | Version                                                           |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase' and 'Segment'.                                           | [v2.1.0](./packages/analytics/CHANGELOG.md)                       |
-| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v6.7.6 ](./packages/deriv_auth/CHANGELOG.md)                     |
+| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v6.7.7 ](./packages/deriv_auth/CHANGELOG.md)                     |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                       | [v0.0.1+1](./packages/deriv_banner/CHANGELOG.md)                  |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)                       | Provides some tools to manage blocs.                                                                                   | [v0.0.1](./packages/deriv_bloc_manager/CHANGELOG.md)              |
 | [deriv_datadog](./packages/deriv_datadog)                                 | A package that helps you monitor the performance and user interactions of your Flutter app by sending data to Datadog. | [v0.0.1](./packages/deriv_datadog/CHANGELOG.md)                   |

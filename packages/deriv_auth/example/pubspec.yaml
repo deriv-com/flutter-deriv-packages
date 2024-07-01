@@ -19,6 +19,12 @@ dependencies:
   http: ^0.13.6
   device_preview: ^1.1.0
 
+dependency_overrides:
+  flutter_deriv_api:
+    git:
+      url: git@github.com:deriv-com/flutter-deriv-api.git
+      ref: v1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
