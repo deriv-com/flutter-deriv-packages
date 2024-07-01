@@ -28,7 +28,7 @@
   "howToCreatePasskeyDescription2": "Sie können einen Passkey pro Gerät erstellen.",
   "p2pHowToCreatePasskey": "Wie erstelle ich einen Passkey?",
   "p2pHowToCreatePasskeyDescription1": "Gehen Sie in Ihrer Deriv P2P-App zu „Profil“.",
-  "p2pHowToCreatePasskeyDescription2": "Tippen Sie auf „Hauptschlüssel“, um Ihren Hauptschlüssel zu erstellen.",
+  "p2pHowToCreatePasskeyDescription2": "Tippen Sie auf „Passkeys“, um Ihren Passkey zu erstellen.",
   "whereArePasskeysSaved": "Wo werden die Passkeys gespeichert?",
   "whereArePasskeysSavedDescriptionAndroid": "Android: Google Passwort-Manager.",
   "whereArePasskeysSavedDescriptionIOS": "iOS: iCloud-Schlüsselbund.",
