@@ -2,6 +2,16 @@
 
 This repository contains private packages & plugins that are used by the company's products built in Flutter.
 
+### <span style="color:green">GIT HOOK</span>
+
+<span style="color:orange">Please run the below command to have the git hook installed.</span></br>
+<span style="color:orange">This Hook will check for Semantic versioning commit convention</span></br>
+
+```BASH
+curl --fail -o $HOME/.git/hooks/commit-msg https://raw.githubusercontent.com/regentmarkets/flutter-deriv-packages/master/githooks/commit-msg \
+  && chmod +x $HOME/.git/hooks/commit-msg
+```
+
 ## Using the packages
 
 Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v6.7.7)`. To use the package, add the following to your pubspec.yaml file:
