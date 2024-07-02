@@ -72,7 +72,7 @@ dependencies:
   package_info_plus: ^4.2.0
   crypto: ^3.0.2
   http: ^0.13.5
-  uni_links2: ^0.6.0+2
+  app_links: ^6.1.3
 
 dependency_overrides:
   deriv_ui:

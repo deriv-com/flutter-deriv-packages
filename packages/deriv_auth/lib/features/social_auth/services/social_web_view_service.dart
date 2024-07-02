@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:app_links/app_links.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_web_view/web_view.dart';
 import 'package:flutter_deriv_api/helpers/miscellaneous_helper.dart';
-import 'package:uni_links2/uni_links.dart';
 
 /// Service to handle social auth web view.
 final class SocialAuthWebViewService implements BaseSocialWebViewService {
@@ -36,7 +36,7 @@ final class SocialAuthWebViewService implements BaseSocialWebViewService {
   }
 
   void _setupLinkStream(SocialAuthUriHandler uriHandler) {
-    _uriLinkStream = uriLinkStream.listen(
+    _uriLinkStream = AppLinks().uriLinkStream.listen(
       (Uri? uri) {
         _uriLinkStream?.cancel();
 
