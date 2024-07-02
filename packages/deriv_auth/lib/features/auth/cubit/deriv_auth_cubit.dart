@@ -12,7 +12,6 @@ import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
-import 'package:deriv_auth/features/auth/services/deriv_auth_service.dart';
 import 'package:deriv_auth/features/social_auth/models/social_auth_dto.dart';
 
 part 'deriv_auth_state.dart';
@@ -27,9 +26,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required this.authService,
   }) : super(DerivAuthLoadingState()) {
     AuthTrackingRepository.init(
-      authService is DerivAuthService
-          ? (authService as DerivAuthService).connectionInfo.appId
-          : (throw Exception('Connection Info is not provided.')),
+      authService.connectionInfo.appId,
       derivRudderstack: DerivRudderstack(),
     );
   }
