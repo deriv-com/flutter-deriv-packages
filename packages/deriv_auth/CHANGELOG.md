@@ -1,3 +1,11 @@
+## 6.7.9
+
+ - **REFACTOR**(deriv_auth): Replace uni_links2 with app_links ([#664](https://github.com/regentmarkets/flutter-deriv-packages/issues/664)). ([f99554bc](https://github.com/regentmarkets/flutter-deriv-packages/commit/f99554bc134b7fe7fe0b3f5bf7555728868176c9))
+
+## 6.7.8
+
+ - **FIX**(deriv_auth): fix_error_when_initializing_mock_auth_service ([#660](https://github.com/regentmarkets/flutter-deriv-packages/issues/660)). ([30aa969f](https://github.com/regentmarkets/flutter-deriv-packages/commit/30aa969f7ed3f083ab1610518eded103d0aa2eb7))
+
 ## 6.7.7
 
  - **REFACTOR**(deriv_passkeys): update deriv api dependency ([#656](https://github.com/regentmarkets/flutter-deriv-packages/issues/656)). ([3425078b](https://github.com/regentmarkets/flutter-deriv-packages/commit/3425078b52baac4f387504c9d41063bda1dba249))

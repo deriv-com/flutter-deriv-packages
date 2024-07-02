@@ -1,6 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:deriv_auth/core/connection_info.dart';
-
 import 'package:deriv_auth/core/constants/constants.dart';
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/extensions/extensions.dart';
@@ -8,11 +6,8 @@ import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
-import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
-import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
-import 'package:deriv_auth/features/auth/repository/base_auth_repository.dart';
 import 'package:deriv_http_client/deriv_http_client.dart';
 
 import 'base_auth_service.dart';
@@ -21,23 +16,11 @@ import 'base_auth_service.dart';
 class DerivAuthService extends BaseAuthService {
   /// Initializes a [DerivAuthService] class.
   DerivAuthService({
-    required this.authRepository,
-    required this.jwtService,
-    required this.connectionInfo,
-    required this.tokenService,
+    required super.authRepository,
+    required super.jwtService,
+    required super.connectionInfo,
+    required super.tokenService,
   });
-
-  /// Client connection info.
-  final AuthConnectionInfo connectionInfo;
-
-  /// Interface for all jwtRelated functions.
-  final BaseJwtService jwtService;
-
-  /// Interface of all client related functions.
-  final BaseAuthRepository authRepository;
-
-  /// Token service.
-  final BaseTokenService tokenService;
 
   @override
   Future<AuthorizeEntity> onLoginRequest({

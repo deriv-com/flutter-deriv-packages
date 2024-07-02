@@ -1,12 +1,33 @@
+import 'package:deriv_auth/core/connection_info.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
+import 'package:deriv_auth/core/services/jwt/services/base_jwt_service.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
+import 'package:deriv_auth/core/services/token/services/base_token_service.dart';
+import 'package:deriv_auth/features/auth/repository/base_auth_repository.dart';
 
 /// Interface to define all authentication-related functionality.
 abstract class BaseAuthService {
   /// Constructor for [BaseAuthService].
-  BaseAuthService();
+  BaseAuthService({
+    required this.connectionInfo,
+    required this.jwtService,
+    required this.authRepository,
+    required this.tokenService,
+  });
+
+  /// Client connection info.
+  final AuthConnectionInfo connectionInfo;
+
+  /// Interface for all jwtRelated functions.
+  final BaseJwtService jwtService;
+
+  /// Interface of all client related functions.
+  final BaseAuthRepository authRepository;
+
+  /// Token service.
+  final BaseTokenService tokenService;
 
   /// Function before logging user in.
   Future<AuthorizeEntity> onLoginRequest({

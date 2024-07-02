@@ -10,15 +10,17 @@ class ExampleLoginRepository implements BaseAuthRepository {
       Future.value(const AuthorizeResponseEntity());
 
   @override
-  Future<AccountModel?> getDefaultAccount() => Future.value(AccountModel(
-        accountId: "accountId",
-      ));
+  Future<AccountModel?> getDefaultAccount() => Future.value(
+        AccountModel(
+          accountId: "accountId",
+        ),
+      );
 
   @override
   Future<List<AccountModel>> getLatestAccounts() => Future.value([
         AccountModel(
           accountId: "accountId",
-        )
+        ),
       ]);
 
   @override
@@ -35,5 +37,7 @@ class ExampleLoginRepository implements BaseAuthRepository {
 
   @override
   Future<LandingCompanyEntity> getLandingCompany(String? countryCode) =>
-      Future.value(const LandingCompanyEntity());
+      Future.value(
+        const LandingCompanyEntity(),
+      );
 }
