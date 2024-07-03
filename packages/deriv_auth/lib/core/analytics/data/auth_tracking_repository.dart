@@ -38,11 +38,15 @@ class AuthTrackingRepository implements AuthUserTrackingInterface {
 
   @override
   void trackUserOpenedLoginForm() {
+    if (_loginProvider == null) {
+      return;
+    }
+
     final Map<String, dynamic> data = getUserTrackingData(
       LoginAction.openLoginForm,
       _appId,
+      provider: _loginProvider!,
     );
-
     _derivRudderstack.track(
       eventName: data['event'] as String,
       properties: data['properties'] as Map<String, dynamic>,
@@ -51,10 +55,14 @@ class AuthTrackingRepository implements AuthUserTrackingInterface {
 
   @override
   void trackError(String errorMessage) {
+    if (_loginProvider == null) {
+      return;
+    }
+
     final Map<String, dynamic> data = getUserTrackingData(
       LoginAction.loginError,
       _appId,
-      provider: _loginProvider,
+      provider: _loginProvider!,
       errorMessage: errorMessage,
     );
 
@@ -107,7 +115,7 @@ class AuthTrackingRepository implements AuthUserTrackingInterface {
     final Map<String, dynamic> data = getUserTrackingData(
       LoginAction.startLogin,
       _appId,
-      provider: _loginProvider,
+      provider: _loginProvider!,
     );
 
     _derivRudderstack.track(
@@ -118,10 +126,14 @@ class AuthTrackingRepository implements AuthUserTrackingInterface {
 
   @override
   void trackLoginFinished() {
+    if (_loginProvider == null) {
+      return;
+    }
+
     final Map<String, dynamic> data = getUserTrackingData(
       LoginAction.finishLogin,
       _appId,
-      provider: _loginProvider,
+      provider: _loginProvider!,
     );
 
     _derivRudderstack.track(

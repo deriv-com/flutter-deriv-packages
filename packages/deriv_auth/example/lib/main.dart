@@ -36,6 +36,15 @@ class MyApp extends StatelessWidget {
           create: (context) => DerivAuthCubit(
             authService: ExampleLoginService(
               authRepository: ExampleLoginRepository(),
+              jwtService: DerivJwtService(
+                repository: DerivJwtRepository(
+                  client: HttpClient(),
+                  connectionInfo: DerivAuthConnectionInfo(),
+                  appToken: 'test_app_token',
+                ),
+              ),
+              connectionInfo: DerivAuthConnectionInfo(),
+              tokenService: DerivTokenService(),
             ),
           ),
         ),
