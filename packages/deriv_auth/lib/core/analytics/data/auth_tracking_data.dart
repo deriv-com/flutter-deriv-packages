@@ -4,7 +4,7 @@ import 'package:deriv_auth/core/analytics/enums.dart';
 Map<String, dynamic> getUserTrackingData(
   LoginAction action,
   String appId, {
-  LoginProvider? provider,
+  required LoginProvider provider,
   String? errorMessage,
 }) =>
     switch (action) {
