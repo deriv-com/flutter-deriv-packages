@@ -9,7 +9,7 @@ This repository contains private packages & plugins that are used by the company
 2- Run the command below.</br>
 
 ```BASH
-curl --fail -o $HOME/.git/hooks/commit-msg $HOME/Downloads/commit-msg \
+cp $HOME/Downloads/commit-msg $HOME/.git/hooks/commit-msg \
   && chmod +x $HOME/.git/hooks/commit-msg
 ```
 
