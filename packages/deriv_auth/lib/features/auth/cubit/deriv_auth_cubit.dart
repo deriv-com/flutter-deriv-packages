@@ -107,15 +107,17 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       final List<AccountModel> accountList =
           await authService.getLatestAccounts();
       accountTokens = accountList
-          .where((AccountModel account) =>
-              account.token != null && token != account.token)
+          .where((AccountModel account) => account.token != null)
           .map((AccountModel account) => account.token!)
           .toList();
     } else {
       accountTokens = tokenList;
     }
+    if (!accountTokens.contains(token)) {
+      accountTokens.add(token);
+    }
     await _tokenLoginRequest(
-      token,
+      'MULTI',
       tokenList: accountTokens,
       accounts: await authService.getLatestAccounts(),
     );
@@ -202,14 +204,16 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       return;
     } else {
       tokenList = accountList
-          .where((AccountModel account) =>
-              account.token != null && defaultAccountToken != account.token)
+          .where((AccountModel account) => account.token != null)
           .map((AccountModel account) => account.token!)
           .toList();
-    }
 
+      if (!tokenList.contains(defaultAccountToken)) {
+        tokenList.add(defaultAccountToken);
+      }
+    }
     await _tokenLoginRequest(
-      defaultAccountToken,
+      'MULTI',
       accounts: accountList,
       tokenList: tokenList,
     );
