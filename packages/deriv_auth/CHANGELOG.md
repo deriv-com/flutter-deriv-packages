@@ -1,3 +1,7 @@
+## 6.7.10
+
+ - **FIX**(deriv_auth): minor change in readme file ([#669](https://github.com/regentmarkets/flutter-deriv-packages/issues/669)). ([b29d222c](https://github.com/regentmarkets/flutter-deriv-packages/commit/b29d222ce219d0664e3cafb6c302cd1041749905))
+
 ## 6.7.9
 
  - **REFACTOR**(deriv_auth): Replace uni_links2 with app_links ([#664](https://github.com/regentmarkets/flutter-deriv-packages/issues/664)). ([f99554bc](https://github.com/regentmarkets/flutter-deriv-packages/commit/f99554bc134b7fe7fe0b3f5bf7555728868176c9))

@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.2+1`](#deriv_mobile_chart_wrapper---v0021)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.2+1`
+
+ - **FIX**(deriv_mobile_chart_wrapper): update readme file ([#672](https://github.com/regentmarkets/flutter-deriv-packages/issues/672)). ([13e6b3f3](https://github.com/regentmarkets/flutter-deriv-packages/commit/13e6b3f35ba863098fd9785daaa8ccc7cb23b388))
+
+
+## 2024-07-03
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.7.10`](#deriv_auth---v6710)
+
+---
+
+#### `deriv_auth` - `v6.7.10`
+
+ - **FIX**(deriv_auth): minor change in readme file ([#669](https://github.com/regentmarkets/flutter-deriv-packages/issues/669)). ([b29d222c](https://github.com/regentmarkets/flutter-deriv-packages/commit/b29d222ce219d0664e3cafb6c302cd1041749905))
+
+
 ## 2024-07-02
 
 ### Changes
