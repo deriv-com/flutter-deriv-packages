@@ -27,13 +27,21 @@ abstract class DerivAuthIO {
   });
 
   /// Log user in with [token] after reset password or sign up.
-  Future<void> tokenLogin(String token, {List<String>? tokenList});
+  @deprecated
+  Future<void> tokenLogin(String token);
+
+  /// Log user in with multi token authorization after reset password or sign up.
+  Future<void> multiTokenLogin(String? token);
 
   /// Log user out.
   Future<void> logout();
 
   /// Log default user in.
+  @deprecated
   Future<void> authorizeDefaultAccount();
+
+  /// Log default user in using multi authorization.
+  Future<void> multiAuthorizeDefaultAccount();
 
   /// Deriv auth output.
   Stream<DerivAuthState> get output;

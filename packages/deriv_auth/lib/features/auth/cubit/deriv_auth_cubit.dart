@@ -100,25 +100,32 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
   }
 
   @override
-  Future<void> tokenLogin(String token, {List<String>? tokenList}) async {
+  Future<void> multiTokenLogin(String? token) async {
     emit(DerivAuthLoadingState());
-    List<String> accountTokens = <String>[];
-    if (tokenList == null) {
-      final List<AccountModel> accountList =
-          await authService.getLatestAccounts();
-      accountTokens = accountList
-          .where((AccountModel account) => account.token != null)
-          .map((AccountModel account) => account.token!)
-          .toList();
-    } else {
-      accountTokens = tokenList;
-    }
-    if (!accountTokens.contains(token)) {
-      accountTokens.add(token);
+
+    final List<AccountModel> accountList =
+        await authService.getLatestAccounts();
+    final List<String> tokenList = accountList
+        .where((AccountModel account) => account.token != null)
+        .map((AccountModel account) => account.token!)
+        .toList();
+
+    if (token != null && !tokenList.contains(token)) {
+      tokenList.add(token);
     }
     await _tokenLoginRequest(
       'MULTI',
-      tokenList: accountTokens,
+      tokenList: tokenList,
+      accounts: accountList,
+    );
+  }
+
+  @override
+  Future<void> tokenLogin(String token) async {
+    emit(DerivAuthLoadingState());
+
+    await _tokenLoginRequest(
+      token,
       accounts: await authService.getLatestAccounts(),
     );
   }
@@ -189,7 +196,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
   }
 
   @override
-  Future<void> authorizeDefaultAccount() async {
+  Future<void> multiAuthorizeDefaultAccount() async {
     emit(DerivAuthLoadingState());
 
     List<String> tokenList = <String>[];
@@ -216,6 +223,25 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       'MULTI',
       accounts: accountList,
       tokenList: tokenList,
+    );
+  }
+
+  @override
+  Future<void> authorizeDefaultAccount() async {
+    emit(DerivAuthLoadingState());
+
+    final String? defaultAccountToken =
+        (await authService.getDefaultAccount())?.token;
+
+    if (defaultAccountToken == null) {
+      emit(DerivAuthLoggedOutState());
+
+      return;
+    }
+
+    await _tokenLoginRequest(
+      defaultAccountToken,
+      accounts: await authService.getLatestAccounts(),
     );
   }
 

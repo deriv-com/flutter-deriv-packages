@@ -91,11 +91,9 @@ void main() {
         when(() => service.getLandingCompany(any())).thenAnswer((_) =>
             Future<LandingCompanyEntity>.value(const LandingCompanyEntity()));
 
-        when(() => service
-            .login(any(),
-                accounts: any(named: 'accounts'),
-                tokenList: <String>[])).thenAnswer(
-            (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+        when(() => service.login(any(), accounts: any(named: 'accounts')))
+            .thenAnswer((_) =>
+                Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
@@ -269,11 +267,9 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() => service
-            .login(any(),
-                accounts: any(named: 'accounts'),
-                tokenList: <String>[])).thenAnswer(
-            (_) => Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
+        when(() => service.login(any(), accounts: any(named: 'accounts')))
+            .thenAnswer((_) =>
+                Future<AuthorizeEntity>.value(mockedValidAuthorizeEntity));
 
         final List<TypeMatcher<DerivAuthState>> expectedResponse =
             <TypeMatcher<DerivAuthState>>[
@@ -289,11 +285,10 @@ void main() {
           emitsInOrder(expectedResponse),
         );
 
-        authCubit.tokenLogin(_token, tokenList: <String>[]);
+        authCubit.tokenLogin(_token);
 
         verify(
-          () => service.login(any(),
-              accounts: any(named: 'accounts'), tokenList: <String>[]),
+          () => service.login(any(), accounts: any(named: 'accounts')),
         ).called(1);
       });
 
@@ -306,9 +301,10 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() => service.login(any(),
-            accounts: any(named: 'accounts'),
-            tokenList: any(named: 'tokenList'))).thenThrow(DerivAuthException(
+        when(() => service.login(
+              any(),
+              accounts: any(named: 'accounts'),
+            )).thenThrow(DerivAuthException(
           message: 'message',
           type: AuthErrorType.invalidToken,
         ));
@@ -327,8 +323,10 @@ void main() {
         authCubit.tokenLogin(_token);
 
         verify(
-          () => service.login(any(),
-              accounts: any(named: 'accounts'), tokenList: <String>[]),
+          () => service.login(
+            any(),
+            accounts: any(named: 'accounts'),
+          ),
         ).called(1);
       });
 
