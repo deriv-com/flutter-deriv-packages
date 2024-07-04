@@ -164,7 +164,7 @@ Map<String, dynamic> _getLoginErrorTrackingData(
           'event': 'login_flow_error',
           'properties': <String, dynamic>{
             'app_id': appId,
-            'login_provider': 'deafult_token',
+            'login_provider': 'default_token',
             'error_message': errorMessage,
           },
         },
