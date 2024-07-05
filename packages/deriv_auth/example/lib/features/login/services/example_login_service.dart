@@ -2,22 +2,23 @@ import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
-import 'package:deriv_auth/features/auth/repository/base_auth_repository.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 
 /// `DerivGO` implementation of [BaseAuthService].
 class ExampleLoginService extends BaseAuthService {
   /// Initializes a [ExampleLoginService] class.
   ExampleLoginService({
-    required this.authRepository,
+    required super.authRepository,
+    required super.jwtService,
+    required super.connectionInfo,
+    required super.tokenService,
   });
 
-  /// Interface of all client related functions.
-  final BaseAuthRepository authRepository;
-
   @override
-  Future<AuthorizeEntity> onLoginRequest(
-          {required GetTokensRequestModel request, String? userAgent}) async =>
+  Future<AuthorizeEntity> onLoginRequest({
+    required GetTokensRequestModel request,
+    String? userAgent,
+  }) async =>
       const AuthorizeEntity();
 
   @override
