@@ -7,6 +7,7 @@ class IconTextRowWidget extends StatelessWidget {
   const IconTextRowWidget({
     required this.assetName,
     required this.text,
+    this.textKey,
   });
 
   /// The name of the asset to display.
@@ -14,6 +15,9 @@ class IconTextRowWidget extends StatelessWidget {
 
   /// The text to display.
   final String text;
+
+  /// Key for text value
+  final Key? textKey;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -23,7 +27,7 @@ class IconTextRowWidget extends StatelessWidget {
             package: 'deriv_passkeys',
           ),
           const SizedBox(width: 8),
-          Expanded(child: Text(text)),
+          Expanded(child: Text(text, key: textKey)),
         ],
       );
 }

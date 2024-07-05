@@ -91,6 +91,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: TextButton(
+                                      key: const ValueKey<String>(
+                                          'passkey_login_maybe_later'),
                                       onPressed: () {
                                         trackMaybeLater();
                                         onPageClosed(context);
@@ -121,6 +123,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                         Text(
                                           context.derivPasskeysLocalizations
                                               .effortlessLoginWithPasskeys,
+                                          key: const ValueKey<String>(
+                                              'passkey_login_effortless_login'),
                                           style: const TextStyle(fontSize: 20),
                                         ),
                                         const SizedBox(
@@ -131,6 +135,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .noNeedToRememberPassword,
+                                          textKey: const ValueKey<String>(
+                                              'passkey_login_no_need'),
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -140,6 +146,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .syncAcrossDevices,
+                                          textKey: const ValueKey<String>(
+                                              'passkey_login_sync'),
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -149,6 +157,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .useYourBiometrics,
+                                          textKey: const ValueKey<String>(
+                                              'passkey_login_biometrics'),
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -202,6 +212,9 @@ class EffortlessPasskeysPage extends StatelessWidget
                                                       style: TextStyle(
                                                           color: context.theme
                                                               .colors.coral),
+                                                      key: const ValueKey<
+                                                              String>(
+                                                          'passkey_login_here_rich_text'),
                                                     ),
                                                   ),
                                                 ),
@@ -218,6 +231,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: PrimaryButton(
+                                      key: const ValueKey<String>(
+                                          'passkey_login_create_button'),
                                       onPressed: () {
                                         trackCreatePasskey();
                                         context.read<DerivPasskeysBloc>().add(
