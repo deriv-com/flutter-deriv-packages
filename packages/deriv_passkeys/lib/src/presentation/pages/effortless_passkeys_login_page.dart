@@ -177,7 +177,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                                                           .middle,
                                                   child: InkWell(
                                                     key: effortlessPasskeysPageKeys
-                                                        ?.hyperLinkInkWellKey,
+                                                        ?.hyperlinkInkWellKey,
                                                     onTap: () {
                                                       Navigator.push(
                                                         context,
@@ -227,7 +227,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                                     padding: const EdgeInsets.all(16),
                                     child: PrimaryButton(
                                       key: effortlessPasskeysPageKeys
-                                          ?.createPassKeyButtonKey,
+                                          ?.createPasskeyButtonKey,
                                       onPressed: () {
                                         trackCreatePasskey();
                                         context.read<DerivPasskeysBloc>().add(
@@ -258,16 +258,16 @@ class EffortlessPasskeysPage extends StatelessWidget
 class EffortlessPasskeysPageKeys {
   /// Constructs [EffortlessPasskeysPageKeys].
   EffortlessPasskeysPageKeys({
-    this.createPassKeyButtonKey,
-    this.hyperLinkInkWellKey,
+    this.createPasskeyButtonKey,
+    this.hyperlinkInkWellKey,
     this.maybeLaterTextButtonKey,
   });
 
   /// Key for create passkey button widget.
-  final Key? createPassKeyButtonKey;
+  final Key? createPasskeyButtonKey;
 
   /// Key for hyper link ink well widget.
-  final Key? hyperLinkInkWellKey;
+  final Key? hyperlinkInkWellKey;
 
   /// Key for maybe later text button widget.
   final Key? maybeLaterTextButtonKey;
