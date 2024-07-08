@@ -65,17 +65,24 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
       final String url =
           'https://${passkeysConnectionInfoModel.endpoint}/oauth2/api/v1/passkeys/login/verify';
 
+      print('DerivPasskeysDataSource: url -> $url');
+
       final Map<String, String> headers = <String, String>{
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $jwtToken',
         'User-Agent': userAgent ?? 'Dart/3.0 (dart:io)',
         'accept': 'application/json'
       };
+
+      print('DerivPasskeysDataSource: headers -> $headers');
+
       final Map<String, dynamic> jsonDecodedResponse = await client.post(
         url: url,
         headers: headers,
         jsonBody: requestBodyModel.toJson(),
       );
+
+      print('DerivPasskeysDataSource: jsonDecodedResponse -> $jsonDecodedResponse');
 
       if (jsonDecodedResponse.containsKey('error_code')) {
         throw ServerException(

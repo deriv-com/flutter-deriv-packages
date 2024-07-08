@@ -44,6 +44,7 @@ class MethodChannelDerivPasskeys extends BaseDerivPasskeysMethodChannel {
       methodChannel.invokeMethod<String>(
           'getCredential', <String, String>{'options': options}).catchError(
         (Object error) {
+          print('MethodChannelDerivPasskeys: error -> $error');
           if (error is PlatformException) {
             if (error.code == '1001' ||
                 error.code == 'GetCredentialCancellationException') {

@@ -67,6 +67,7 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
         val credential = result.credential as PublicKeyCredential
         callback(credential.authenticationResponseJson, null)
       } catch (e: Exception) {
+        System.out.println("getCredential exception -> $e -> ${e.message}" )
         callback(null, e)
       }
     }

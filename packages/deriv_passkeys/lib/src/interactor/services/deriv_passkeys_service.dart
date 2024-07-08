@@ -77,8 +77,12 @@ class DerivPasskeysService {
         .toJson();
     final String options = jsonEncode(getOptionsResult);
 
+    print('DerivPasskeysService: options -> $options');
+
     final String? response =
         await BaseDerivPasskeysMethodChannel.instance.getCredential(options);
+
+    print('DerivPasskeysService: response -> $response');
 
     if (response == null) {
       throw PlatformException(
@@ -87,6 +91,7 @@ class DerivPasskeysService {
     }
 
     final Map<String, dynamic> decodedResponse = jsonDecode(response);
+    print('DerivPasskeysService: decodedResponse -> $decodedResponse');
 
     final DerivPasskeysVerifyCredentialsResponseEntity
         getVerifyCredentialsResult = await repository.verifyCredentials(
@@ -100,6 +105,12 @@ class DerivPasskeysService {
       userAgent: userAgent,
     );
 
+    print('DerivPasskeysService: appId -> ${passkeysConnectionInfoEntity.appId}');
+    print('DerivPasskeysService: publicKeyCredential -> $decodedResponse');
+    print('DerivPasskeysService: jwtToken -> $jwtToken');
+    print('DerivPasskeysService: passkeysConnectionInfoEntity -> $passkeysConnectionInfoEntity');
+    print('DerivPasskeysService: userAgent -> $userAgent');
+    print('DerivPasskeysService: getVerifyCredentialsResult -> $getVerifyCredentialsResult');
     return getVerifyCredentialsResult;
   }
 }
