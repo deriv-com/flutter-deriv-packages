@@ -21,6 +21,9 @@ class EffortlessPasskeysPage extends StatelessWidget
     required this.onPageClosed,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.createPassKeyButtonKey,
+    this.hyperLinkInkWellKey,
+    this.maybeLaterTextButtonKey,
     super.key,
   }) {
     trackOpenEffortlessLoginPage();
@@ -37,6 +40,15 @@ class EffortlessPasskeysPage extends StatelessWidget
 
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onPageClosed;
+
+  /// Key for create passkey button widget.
+  final Key? createPassKeyButtonKey;
+
+  /// Key for hyper link ink well widget.
+  final Key? hyperLinkInkWellKey;
+
+  /// Key for maybe later text button widget..
+  final Key? maybeLaterTextButtonKey;
 
   @override
   Widget build(BuildContext context) => WillPopScope(
@@ -91,6 +103,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: TextButton(
+                                      key: maybeLaterTextButtonKey,
                                       onPressed: () {
                                         trackMaybeLater();
                                         onPageClosed(context);
@@ -170,6 +183,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                                                       PlaceholderAlignment
                                                           .middle,
                                                   child: InkWell(
+                                                    key: hyperLinkInkWellKey,
                                                     onTap: () {
                                                       Navigator.push(
                                                         context,
@@ -218,6 +232,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: PrimaryButton(
+                                      key: createPassKeyButtonKey,
                                       onPressed: () {
                                         trackCreatePasskey();
                                         context.read<DerivPasskeysBloc>().add(
