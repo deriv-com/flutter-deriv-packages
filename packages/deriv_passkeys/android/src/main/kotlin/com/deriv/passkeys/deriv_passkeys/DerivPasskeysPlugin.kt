@@ -59,15 +59,20 @@ class DerivPasskeysPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, View
     )
     viewModelScope.launch {
       try {
+        println("Started")
         val credentialManager = CredentialManager.create(activity)
+        println("Credential Manager called with request: ${listOf(getPublicKeyCredentialOption)}")
         val result = credentialManager.getCredential(
           context = activity,
           request = GetCredentialRequest(listOf(getPublicKeyCredentialOption)),
         )
+        println("Credential Manager results: $result")
         val credential = result.credential as PublicKeyCredential
+        println("Credential json: ${credential.authenticationResponseJson}")
+        println("Credential: $credential")
         callback(credential.authenticationResponseJson, null)
       } catch (e: Exception) {
-        System.out.println("getCredential exception -> $e -> ${e.message}" )
+        println("getCredential exception -> $e -> ${e.message}" )
         callback(null, e)
       }
     }
