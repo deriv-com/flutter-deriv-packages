@@ -1,80 +1,79 @@
 import 'package:colored_json/colored_json.dart';
 import 'package:deriv_logger/controllers/controllers.dart';
 import 'package:deriv_logger/views/logger_theme.dart';
+import 'package:deriv_logger/widgets/controller_provider.dart';
 import 'package:flutter/material.dart';
 
 /// The view for network logs that will be displayed in the debug overlay.
 class NetworkLogsView extends StatelessWidget {
   /// Creates a new instance of the NetworkLogsView.
   const NetworkLogsView({
-    required this.controller,
     required this.theme,
     super.key,
   });
-
-  /// Controller for networklogs.
-  final CallLogController controller;
 
   /// theme
   final DebugOverlayTheme theme;
 
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-        animation: controller,
-        builder: (BuildContext context, _) => SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              title: const Text('Network logs'),
-              actions: [
-                IconButton(
-                  onPressed: () => controller.clearLogs(),
-                  icon: const Icon(Icons.delete),
-                ),
-              ],
-            ),
-            backgroundColor: theme.backgroundColor,
-            body: Column(
-              children: [
-                Expanded(
-                  child: controller.logs.isEmpty
-                      ? Center(
-                          child: Text(
-                            'No logs available!',
-                            style: theme.bodyTextStyle,
-                          ),
-                        )
-                      : ListView.separated(
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: controller.logs.length,
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(height: 12),
-                          itemBuilder: (_, int index) => _NetworkLogUI(
-                            logVM: controller.logs[index],
-                            theme: theme,
-                          ),
+  Widget build(BuildContext context) {
+    final controller = ControllerProvider.of(context)!.callLogController!;
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (BuildContext context, _) => SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Network logs'),
+            actions: [
+              IconButton(
+                onPressed: () => controller.clearLogs(),
+                icon: const Icon(Icons.delete),
+              ),
+            ],
+          ),
+          backgroundColor: theme.backgroundColor,
+          body: Column(
+            children: [
+              Expanded(
+                child: controller.logs.isEmpty
+                    ? Center(
+                        child: Text(
+                          'No logs available!',
+                          style: theme.bodyTextStyle,
                         ),
-                ),
-                Container(
-                  decoration: BoxDecoration(color: Colors.deepPurple[100]),
-                  child: TextField(
-                    style: theme.bodyTextStyle.copyWith(color: Colors.black),
-                    decoration: InputDecoration(
-                      hintText: 'Search for api name...',
-                      hintStyle:
-                          theme.bodyTextStyle.copyWith(color: Colors.black),
-                      border: InputBorder.none,
-                    ),
-                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                    controller: controller.searchController,
-                    onChanged: (value) => controller.searchLogs(value),
+                      )
+                    : ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: controller.logs.length,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        separatorBuilder: (_, __) => const SizedBox(height: 12),
+                        itemBuilder: (_, int index) => _NetworkLogUI(
+                          logVM: controller.logs[index],
+                          theme: theme,
+                        ),
+                      ),
+              ),
+              Container(
+                decoration: BoxDecoration(color: Colors.deepPurple[100]),
+                child: TextField(
+                  style: theme.bodyTextStyle.copyWith(color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Search for api name...',
+                    hintStyle:
+                        theme.bodyTextStyle.copyWith(color: Colors.black),
+                    border: InputBorder.none,
                   ),
+                  onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                  controller: controller.searchController,
+                  onChanged: (value) => controller.searchLogs(value),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _NetworkLogUI extends StatelessWidget {

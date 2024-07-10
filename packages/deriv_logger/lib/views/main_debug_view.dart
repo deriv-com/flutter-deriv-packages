@@ -1,28 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../controllers/controllers.dart';
 import 'views.dart';
 
 /// Main view for Debug feature.
 class MainDebugView extends StatefulWidget {
   /// Creates a new instance of the DebugView.
-  const MainDebugView({
-    required this.theme,
-    required this.consoleLogsController,
-    required this.callLogController,
-    required this.subscriptionLogController,
-    super.key,
-  });
-
-  /// controller for terminal logs.
-  final ConsoleLogController consoleLogsController;
-
-  /// Controller for network logs.
-  final CallLogController callLogController;
-  final SubscriptionLogController subscriptionLogController;
+  const MainDebugView({required this.theme, super.key});
 
   /// Theme for debug view.
   final DebugOverlayTheme theme;
+
   @override
   State<MainDebugView> createState() => _MainDebugViewState();
 }
@@ -36,18 +23,9 @@ class _MainDebugViewState extends State<MainDebugView> {
     super.initState();
 
     _views = <Widget>[
-      ConsoleLogsView(
-        consoleLogsController: widget.consoleLogsController,
-        theme: widget.theme,
-      ),
-      NetworkLogsView(
-        controller: widget.callLogController,
-        theme: widget.theme,
-      ),
-      SubscriptionLogsView(
-        contoller: widget.subscriptionLogController,
-        theme: widget.theme,
-      ),
+      ConsoleLogsView(theme: widget.theme),
+      NetworkLogsView(theme: widget.theme),
+      SubscriptionLogsView(theme: widget.theme),
     ];
   }
 

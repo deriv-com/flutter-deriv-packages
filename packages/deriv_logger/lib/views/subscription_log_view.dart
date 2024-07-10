@@ -1,58 +1,58 @@
 import 'package:colored_json/colored_json.dart';
 import 'package:deriv_logger/controllers/controllers.dart';
 import 'package:deriv_logger/views/logger_theme.dart';
+import 'package:deriv_logger/widgets/controller_provider.dart';
 import 'package:flutter/material.dart';
 
 class SubscriptionLogsView extends StatelessWidget {
   const SubscriptionLogsView({
-    required this.contoller,
     required this.theme,
     super.key,
   });
 
-  /// Controller for networklogs.
-  final SubscriptionLogController contoller;
-
   /// theme
   final DebugOverlayTheme theme;
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-        animation: contoller,
-        builder: (BuildContext context, _) => SafeArea(
-          child: Scaffold(
-            appBar: AppBar(title: const Text('Subscription logs')),
-            backgroundColor: theme.backgroundColor,
-            body: contoller.logs.isEmpty
-                ? Center(
-                    child: Text(
-                      'No logs available!',
-                      style: theme.bodyTextStyle,
-                    ),
-                  )
-                : ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: contoller.logs.length,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
-                    itemBuilder: (_, int index) => InkWell(
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => SubscriptionLogDetail(
-                            networkLogsController: contoller,
-                            logVM: contoller.logs[index],
-                            theme: theme,
-                          ),
+  Widget build(BuildContext context) {
+    var controller = ControllerProvider.of(context)!.subscriptionLogController!;
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (BuildContext context, _) => SafeArea(
+        child: Scaffold(
+          appBar: AppBar(title: const Text('Subscription logs')),
+          backgroundColor: theme.backgroundColor,
+          body: controller.logs.isEmpty
+              ? Center(
+                  child: Text(
+                    'No logs available!',
+                    style: theme.bodyTextStyle,
+                  ),
+                )
+              : ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: controller.logs.length,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  separatorBuilder: (_, __) => const SizedBox(height: 12),
+                  itemBuilder: (_, int index) => InkWell(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => SubscriptionLogDetail(
+                          networkLogsController: controller,
+                          logVM: controller.logs[index],
+                          theme: theme,
                         ),
                       ),
-                      child: _NetworkLogUI(
-                        logVM: contoller.logs[index],
-                        theme: theme,
-                      ),
+                    ),
+                    child: _NetworkLogUI(
+                      logVM: controller.logs[index],
+                      theme: theme,
                     ),
                   ),
-          ),
+                ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _NetworkLogUI extends StatelessWidget {

@@ -1,6 +1,7 @@
 import 'package:deriv_logger/controllers/controllers.dart';
 import 'package:deriv_logger/deriv_logger.dart';
 import 'package:deriv_logger/services/network_service.dart';
+import 'package:deriv_logger/widgets/controller_provider.dart';
 import 'package:deriv_logger/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -81,19 +82,16 @@ class _DebugOverlayState extends State<DebugOverlay> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
       ),
-      builder: (BuildContext ctx) => FractionallySizedBox(
-        heightFactor: 0.9,
-        child: widget.callEmitter != null
-            ? MainDebugView(
-                theme: theme,
-                consoleLogsController: consoleLogsController,
-                callLogController: _callLogController,
-                subscriptionLogController: _subscriptionLogController,
-              )
-            : ConsoleLogsView(
-                theme: theme,
-                consoleLogsController: consoleLogsController,
-              ),
+      builder: (BuildContext ctx) => ControllerProvider(
+        consoleLogController: consoleLogsController,
+        callLogController: _callLogController,
+        subscriptionLogController: _subscriptionLogController,
+        child: FractionallySizedBox(
+          heightFactor: 0.9,
+          child: widget.callEmitter != null
+              ? MainDebugView(theme: theme)
+              : ConsoleLogsView(theme: theme),
+        ),
       ),
     );
   }
