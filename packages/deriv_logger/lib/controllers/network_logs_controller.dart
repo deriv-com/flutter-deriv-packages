@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:deriv_logger/services/network_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_deriv_api/services/interfaces/call_history_provider.dart';
 
 /// The controller for network logs that is responsible for managing the logs
 class NetworkLogsController extends ChangeNotifier {
@@ -10,12 +10,13 @@ class NetworkLogsController extends ChangeNotifier {
   /// For eg: sending request for exchange_rate and getting a response for it.
   /// [subscriptionExposure] is a provider for subscription call.
   NetworkLogsController({
-    required CallHistoryProvider exposure,
-    required CallHistoryProvider subscriptionExposure,
+    NetworkLogEmitter? exposure,
+    NetworkLogEmitter? subscriptionExposure,
   }) {
-    exposure.stream.listen((NetworkPayload payload) => addToCallLog(payload));
-    subscriptionExposure.stream
-        .listen((NetworkPayload payload) => addToSubscriptionLog(payload));
+    exposure?.stream
+        .listen((NetworkLogPayload payload) => addToCallLog(payload));
+    subscriptionExposure?.stream
+        .listen((NetworkLogPayload payload) => addToSubscriptionLog(payload));
   }
 
   final TextEditingController _searchController = TextEditingController();
@@ -39,7 +40,7 @@ class NetworkLogsController extends ChangeNotifier {
       _subscriptionLogs.reversed.toList();
 
   /// Add new log to the log list.
-  void addToCallLog(NetworkPayload log) {
+  void addToCallLog(NetworkLogPayload log) {
     if (isRequest(log)) {
       final CallLogVM vm = CallLogVM(
         type: NetworkLogType.request,
@@ -70,7 +71,7 @@ class NetworkLogsController extends ChangeNotifier {
     }
   }
 
-  void addToSubscriptionLog(NetworkPayload payload) {
+  void addToSubscriptionLog(NetworkLogPayload payload) {
     if (isRequest(payload)) {
       _subscriptionLogs.add(SubscriptionLogVM(
         type: NetworkLogType.request,
@@ -110,7 +111,7 @@ class NetworkLogsController extends ChangeNotifier {
     return encoder.convert(message);
   }
 
-  bool isRequest(NetworkPayload log) => log.direction == 'SENT';
+  bool isRequest(NetworkLogPayload log) => log.direction == LogDirection.sent;
 
   void searchLogs(String value) {
     notifyListeners();
