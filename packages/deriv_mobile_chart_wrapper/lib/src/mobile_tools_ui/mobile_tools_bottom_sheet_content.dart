@@ -1,3 +1,4 @@
+import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/core_widgets/core_widgets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
@@ -7,6 +8,7 @@ import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../core_widgets/no_glow_scroll_behavior.dart';
 
@@ -21,21 +23,25 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
       category: IndicatorCategory.momentum,
       title: 'MACD',
       icon: macdIcon,
+      config: MACDIndicatorConfig(),
     ),
     IndicatorItemModel(
       category: IndicatorCategory.momentum,
       title: 'Relative Strength Index (RSI)',
       icon: rsiIcon,
+      config: RSIIndicatorConfig(),
     ),
     IndicatorItemModel(
       category: IndicatorCategory.volatility,
       title: 'Bollinger Bands',
       icon: bollingerBandsIcon,
+      config: BollingerBandsIndicatorConfig(),
     ),
     IndicatorItemModel(
       category: IndicatorCategory.movingAverages,
       title: 'Moving Average',
       icon: movingAverageIcon,
+      config: MAIndicatorConfig(),
     ),
   ];
 
@@ -76,6 +82,14 @@ class _MobileToolsBottomSheetContentState
     return MobileToolsBottomSheetContent.indicators;
   }
 
+  late AddOnsRepository<IndicatorConfig> indicatorsRepo;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    indicatorsRepo = Provider.of<AddOnsRepository<IndicatorConfig>>(context);
+  }
+
   @override
   Widget build(BuildContext context) => Column(
         children: <Widget>[
@@ -104,10 +118,21 @@ class _MobileToolsBottomSheetContentState
         return IndicatorListItem(
           iconAssetPath: indicator.icon,
           title: indicator.title,
+          count: _getIndicatorCount(indicator),
           onInfoIconTapped: () {},
+          onTap: () {
+            indicatorsRepo.add(indicator.config);
+          },
         );
       },
     );
+  }
+
+  /// Returns the number of active indicators for specified [indicator].
+  int _getIndicatorCount(IndicatorItemModel indicator) {
+    return indicatorsRepo.items
+        .where((item) => item.runtimeType == indicator.config.runtimeType)
+        .length;
   }
 
   Widget _buildChipsList() {
