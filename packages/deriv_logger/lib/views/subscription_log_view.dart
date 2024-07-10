@@ -1,28 +1,28 @@
 import 'package:colored_json/colored_json.dart';
-import 'package:deriv_logger/controllers/network_logs_controller.dart';
+import 'package:deriv_logger/controllers/controllers.dart';
 import 'package:deriv_logger/views/logger_theme.dart';
 import 'package:flutter/material.dart';
 
 class SubscriptionLogsView extends StatelessWidget {
   const SubscriptionLogsView({
-    required this.networkLogsController,
+    required this.contoller,
     required this.theme,
     super.key,
   });
 
   /// Controller for networklogs.
-  final NetworkLogsController networkLogsController;
+  final SubscriptionLogController contoller;
 
   /// theme
   final DebugOverlayTheme theme;
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-        animation: networkLogsController,
+        animation: contoller,
         builder: (BuildContext context, _) => SafeArea(
           child: Scaffold(
             appBar: AppBar(title: const Text('Subscription logs')),
             backgroundColor: theme.backgroundColor,
-            body: networkLogsController.logs.isEmpty
+            body: contoller.logs.isEmpty
                 ? Center(
                     child: Text(
                       'No logs available!',
@@ -31,22 +31,21 @@ class SubscriptionLogsView extends StatelessWidget {
                   )
                 : ListView.separated(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: networkLogsController.subscriptionLogs.length,
+                    itemCount: contoller.logs.length,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     separatorBuilder: (_, __) => const SizedBox(height: 12),
                     itemBuilder: (_, int index) => InkWell(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => SubscriptionLogDetail(
-                            networkLogsController: networkLogsController,
-                            logVM:
-                                networkLogsController.subscriptionLogs[index],
+                            networkLogsController: contoller,
+                            logVM: contoller.logs[index],
                             theme: theme,
                           ),
                         ),
                       ),
                       child: _NetworkLogUI(
-                        logVM: networkLogsController.subscriptionLogs[index],
+                        logVM: contoller.logs[index],
                         theme: theme,
                       ),
                     ),

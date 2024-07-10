@@ -1,5 +1,5 @@
 import 'package:colored_json/colored_json.dart';
-import 'package:deriv_logger/controllers/network_logs_controller.dart';
+import 'package:deriv_logger/controllers/controllers.dart';
 import 'package:deriv_logger/views/logger_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -7,27 +7,27 @@ import 'package:flutter/material.dart';
 class NetworkLogsView extends StatelessWidget {
   /// Creates a new instance of the NetworkLogsView.
   const NetworkLogsView({
-    required this.networkLogsController,
+    required this.controller,
     required this.theme,
     super.key,
   });
 
   /// Controller for networklogs.
-  final NetworkLogsController networkLogsController;
+  final CallLogController controller;
 
   /// theme
   final DebugOverlayTheme theme;
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-        animation: networkLogsController,
+        animation: controller,
         builder: (BuildContext context, _) => SafeArea(
           child: Scaffold(
             appBar: AppBar(
               title: const Text('Network logs'),
               actions: [
                 IconButton(
-                  onPressed: () => networkLogsController.clearLogs(),
+                  onPressed: () => controller.clearLogs(),
                   icon: const Icon(Icons.delete),
                 ),
               ],
@@ -36,7 +36,7 @@ class NetworkLogsView extends StatelessWidget {
             body: Column(
               children: [
                 Expanded(
-                  child: networkLogsController.logs.isEmpty
+                  child: controller.logs.isEmpty
                       ? Center(
                           child: Text(
                             'No logs available!',
@@ -45,12 +45,12 @@ class NetworkLogsView extends StatelessWidget {
                         )
                       : ListView.separated(
                           physics: const BouncingScrollPhysics(),
-                          itemCount: networkLogsController.logs.length,
+                          itemCount: controller.logs.length,
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           separatorBuilder: (_, __) =>
                               const SizedBox(height: 12),
                           itemBuilder: (_, int index) => _NetworkLogUI(
-                            logVM: networkLogsController.logs[index],
+                            logVM: controller.logs[index],
                             theme: theme,
                           ),
                         ),
@@ -66,9 +66,8 @@ class NetworkLogsView extends StatelessWidget {
                       border: InputBorder.none,
                     ),
                     onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                    controller: networkLogsController.searchController,
-                    onChanged: (value) =>
-                        networkLogsController.searchLogs(value),
+                    controller: controller.searchController,
+                    onChanged: (value) => controller.searchLogs(value),
                   ),
                 ),
               ],

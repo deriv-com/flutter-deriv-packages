@@ -36,7 +36,8 @@ class DebugOverlay extends StatefulWidget {
 
 class _DebugOverlayState extends State<DebugOverlay> {
   final ConsoleLogController consoleLogsController = ConsoleLogController();
-  late final NetworkLogsController _networkLogsController;
+  late final CallLogController _callLogController;
+  late final SubscriptionLogController _subscriptionLogController;
 
   @override
   void initState() {
@@ -47,9 +48,9 @@ class _DebugOverlayState extends State<DebugOverlay> {
           (Duration timeStamp) => _insertOverlay(context));
     }
 
-    _networkLogsController = NetworkLogsController(
-      exposure: widget.callEmitter,
-      subscriptionExposure: widget.subscriptionEmitter,
+    _callLogController = CallLogController(callEmitter: widget.callEmitter);
+    _subscriptionLogController = SubscriptionLogController(
+      subscriptionEmitter: widget.subscriptionEmitter,
     );
 
     consoleLogsController.initialize();
@@ -86,7 +87,8 @@ class _DebugOverlayState extends State<DebugOverlay> {
             ? MainDebugView(
                 theme: theme,
                 consoleLogsController: consoleLogsController,
-                networkLogsController: _networkLogsController,
+                callLogController: _callLogController,
+                subscriptionLogController: _subscriptionLogController,
               )
             : ConsoleLogsView(
                 theme: theme,

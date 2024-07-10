@@ -9,7 +9,8 @@ class MainDebugView extends StatefulWidget {
   const MainDebugView({
     required this.theme,
     required this.consoleLogsController,
-    required this.networkLogsController,
+    required this.callLogController,
+    required this.subscriptionLogController,
     super.key,
   });
 
@@ -17,7 +18,8 @@ class MainDebugView extends StatefulWidget {
   final ConsoleLogController consoleLogsController;
 
   /// Controller for network logs.
-  final NetworkLogsController networkLogsController;
+  final CallLogController callLogController;
+  final SubscriptionLogController subscriptionLogController;
 
   /// Theme for debug view.
   final DebugOverlayTheme theme;
@@ -39,11 +41,11 @@ class _MainDebugViewState extends State<MainDebugView> {
         theme: widget.theme,
       ),
       NetworkLogsView(
-        networkLogsController: widget.networkLogsController,
+        controller: widget.callLogController,
         theme: widget.theme,
       ),
       SubscriptionLogsView(
-        networkLogsController: widget.networkLogsController,
+        contoller: widget.subscriptionLogController,
         theme: widget.theme,
       ),
     ];
