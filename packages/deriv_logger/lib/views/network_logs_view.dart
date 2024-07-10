@@ -18,8 +18,8 @@ class NetworkLogsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = ControllerProvider.of(context)!.callLogController!;
-    return AnimatedBuilder(
-      animation: controller,
+    return ListenableBuilder(
+      listenable: controller,
       builder: (BuildContext context, _) => SafeArea(
         child: Scaffold(
           appBar: AppBar(
