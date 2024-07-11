@@ -37,6 +37,7 @@ class CallLogController extends NetworkLogsController {
             json.decode(element.body)['req_id'] ==
             json.decode(vm.body)['req_id'],
       );
+      // ignore: unnecessary_null_comparison
       if (request != null) {
         request.pair = vm;
       } else {
@@ -47,7 +48,6 @@ class CallLogController extends NetworkLogsController {
   }
 
   /// List of network logs like request and response.
-
   List<CallLogVM> get logs => _searchController.text.isEmpty
       ? _callLogs.reversed.toList()
       : _callLogs
@@ -62,8 +62,6 @@ class CallLogController extends NetworkLogsController {
     notifyListeners();
   }
 }
-
-
 
 class CallLogVM extends NetworkLogVM {
   CallLogVM? pair;
