@@ -1,3 +1,7 @@
+## 6.7.12
+
+ - Update a dependency to the latest release.
+
 ## 6.7.10
 
  - **FIX**(deriv_auth): minor change in readme file ([#669](https://github.com/regentmarkets/flutter-deriv-packages/issues/669)). ([b29d222c](https://github.com/regentmarkets/flutter-deriv-packages/commit/b29d222ce219d0664e3cafb6c302cd1041749905))

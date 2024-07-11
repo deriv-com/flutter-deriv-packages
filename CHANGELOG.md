@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_passkeys` - `v0.0.3`](#deriv_passkeys---v003)
+ - [`deriv_auth` - `v6.7.12`](#deriv_auth---v6712)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.12`
+
+---
+
+#### `deriv_passkeys` - `v0.0.3`
+
+ - **FEAT**(deriv_passkeys): [P2PS-3072] add keys to deriv passkey package effortless passkeys login page ([#677](https://github.com/regentmarkets/flutter-deriv-packages/issues/677)). ([39472704](https://github.com/regentmarkets/flutter-deriv-packages/commit/39472704a3d264bc5f64ba2ae75e29134f890590))
+
+
 ## 2024-07-04
 
 ### Changes
