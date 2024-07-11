@@ -2,11 +2,14 @@ import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/core_widgets/core_widgets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
+import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -101,7 +104,10 @@ class _MobileToolsBottomSheetContentState
                 children: [
                   const SizedBox(height: ThemeProvider.margin16),
                   _buildChipsList(),
-                  Expanded(child: _buildIndicatorsList()),
+                  Expanded(
+                      child: _selectedChip == IndicatorTabLabel.active
+                          ? _buildActiveIndicatorsList()
+                          : _buildIndicatorsList()),
                 ],
               ),
             ),
@@ -125,6 +131,66 @@ class _MobileToolsBottomSheetContentState
           },
         );
       },
+    );
+  }
+
+  Widget _buildActiveIndicatorsList() {
+    return Padding(
+      padding: const EdgeInsets.only(
+          left: ThemeProvider.margin16,
+          right: ThemeProvider.margin16,
+          top: ThemeProvider.margin16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: ThemeProvider.margin16),
+            child: Row(
+              children: [
+                Text(
+                  'Up to 3 active indicators allowed.',
+                  style: context.themeProvider.textStyle(
+                    textStyle: TextStyles.overline,
+                    color: context.themeProvider.colors.general,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                const Spacer(),
+                SecondaryButton(
+                    child: Center(
+                      child: Text(
+                        'Delete all',
+                        style: context.themeProvider.textStyle(
+                          textStyle: TextStyles.caption,
+                          color: context.themeProvider.colors.prominent,
+                        ),
+                      ),
+                    ),
+                    onPressed: () {})
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.separated(
+              itemCount: indicatorsRepo.items.length,
+              separatorBuilder: (_, __) =>
+                  const SizedBox(height: ThemeProvider.margin08),
+              itemBuilder: (_, index) {
+                final IndicatorConfig indicatorConfig =
+                    indicatorsRepo.items[index];
+                return ActiveIndicatorListItem(
+                  iconAssetPath: getIndicatorIconPath(indicatorConfig),
+                  title: getIndicatorAbbrevation(indicatorConfig),
+                  // TODO(behnam-deriv): Get this string from indicator config.
+                  subtitle: '(12, 26, 9)',
+                  onTapSetting: () {},
+                  onTapDelete: () {},
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 
