@@ -21,6 +21,7 @@ class EffortlessPasskeysPage extends StatelessWidget
     required this.onPageClosed,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.effortlessPasskeysPageKeys,
     super.key,
   }) {
     trackOpenEffortlessLoginPage();
@@ -37,6 +38,9 @@ class EffortlessPasskeysPage extends StatelessWidget
 
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onPageClosed;
+
+  /// Pass an object of keys to assign to specific widget in this page.
+  final EffortlessPasskeysPageKeys? effortlessPasskeysPageKeys;
 
   @override
   Widget build(BuildContext context) => WillPopScope(
@@ -91,8 +95,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: TextButton(
-                                      key: const ValueKey<String>(
-                                          'passkey_login_maybe_later'),
+                                      key: effortlessPasskeysPageKeys
+                                          ?.maybeLaterTextButtonKey,
                                       onPressed: () {
                                         trackMaybeLater();
                                         onPageClosed(context);
@@ -180,6 +184,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                                       PlaceholderAlignment
                                                           .middle,
                                                   child: InkWell(
+                                                    key: effortlessPasskeysPageKeys
+                                                        ?.hyperlinkInkWellKey,
                                                     onTap: () {
                                                       Navigator.push(
                                                         context,
@@ -231,8 +237,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: PrimaryButton(
-                                      key: const ValueKey<String>(
-                                          'passkey_login_create_button'),
+                                      key: effortlessPasskeysPageKeys
+                                          ?.createPasskeyButtonKey,
                                       onPressed: () {
                                         trackCreatePasskey();
                                         context.read<DerivPasskeysBloc>().add(
@@ -257,4 +263,23 @@ class EffortlessPasskeysPage extends StatelessWidget
           ),
         ),
       );
+}
+
+/// A class that allows users to pass keys to [EffortlessPasskeysPage].
+class EffortlessPasskeysPageKeys {
+  /// Constructs [EffortlessPasskeysPageKeys].
+  EffortlessPasskeysPageKeys({
+    this.createPasskeyButtonKey,
+    this.hyperlinkInkWellKey,
+    this.maybeLaterTextButtonKey,
+  });
+
+  /// Key for create passkey button widget.
+  final Key? createPasskeyButtonKey;
+
+  /// Key for hyper link ink well widget.
+  final Key? hyperlinkInkWellKey;
+
+  /// Key for maybe later text button widget.
+  final Key? maybeLaterTextButtonKey;
 }

@@ -1,3 +1,7 @@
+## 0.0.3
+
+ - **FEAT**(deriv_passkeys): [P2PS-3072] add keys to deriv passkey package effortless passkeys login page ([#677](https://github.com/regentmarkets/flutter-deriv-packages/issues/677)). ([39472704](https://github.com/regentmarkets/flutter-deriv-packages/commit/39472704a3d264bc5f64ba2ae75e29134f890590))
+
 ## 0.0.2+9
 
  - **REFACTOR**(deriv_passkeys): update deriv api dependency ([#656](https://github.com/regentmarkets/flutter-deriv-packages/issues/656)). ([3425078b](https://github.com/regentmarkets/flutter-deriv-packages/commit/3425078b52baac4f387504c9d41063bda1dba249))
