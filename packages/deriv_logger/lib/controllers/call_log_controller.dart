@@ -10,9 +10,10 @@ class CallLogController extends NetworkLogsController {
   }) : super(emitter: callEmitter);
 
   final TextEditingController _searchController = TextEditingController();
-
-  TextEditingController get searchController => _searchController;
   final List<CallLogVM> _callLogs = <CallLogVM>[];
+
+  /// Search controller for searching logs.
+  TextEditingController get searchController => _searchController;
 
   @override
   void incomingLog(NetworkLogPayload log) {

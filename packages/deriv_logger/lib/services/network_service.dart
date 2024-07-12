@@ -1,4 +1,6 @@
 abstract interface class NetworkLogEmitter {
+  /// A Stream of network logs.
+  /// Logs are displayed in UI based on this stream and [NetworkPayload].
   Stream<NetworkLogPayload> get stream;
 }
 

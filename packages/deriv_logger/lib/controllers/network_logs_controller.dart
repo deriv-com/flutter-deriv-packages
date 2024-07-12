@@ -9,15 +9,19 @@ abstract class NetworkLogsController extends ChangeNotifier {
     emitter?.stream.listen(incomingLog);
   }
 
+  /// Incoming log from the stream.
   void incomingLog(NetworkLogPayload log);
 
+  /// converts raw message to readable json format.
   String getReadableBody(Object message) {
     const JsonEncoder encoder = JsonEncoder.withIndent('  ');
     return encoder.convert(message);
   }
 
+  /// Checks if payload is request.
   bool isRequest(NetworkLogPayload log) => log.direction == LogDirection.sent;
 
+  /// It will trigger the rebuild of the widget.
   void searchLogs(String value) {
     notifyListeners();
   }

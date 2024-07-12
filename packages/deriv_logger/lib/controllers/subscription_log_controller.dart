@@ -4,7 +4,9 @@ import 'package:deriv_logger/controllers/network_logs_controller.dart';
 import 'package:deriv_logger/services/network_service.dart';
 import 'package:flutter/material.dart';
 
+/// Controller for handling subscription logs.
 class SubscriptionLogController extends NetworkLogsController {
+  /// Constructor for SubscriptionLogController.
   SubscriptionLogController({
     NetworkLogEmitter? subscriptionEmitter,
   }) : super(emitter: subscriptionEmitter);

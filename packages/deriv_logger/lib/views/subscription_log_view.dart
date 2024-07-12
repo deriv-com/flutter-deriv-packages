@@ -4,7 +4,10 @@ import 'package:deriv_logger/views/logger_theme.dart';
 import 'package:deriv_logger/widgets/controller_provider.dart';
 import 'package:flutter/material.dart';
 
+/// This widget is used to display the subscription logs with request payload and
+/// all the responses.
 class SubscriptionLogsView extends StatelessWidget {
+  /// Constructor for SubscriptionLogsView.
   const SubscriptionLogsView({
     required this.theme,
     super.key,
