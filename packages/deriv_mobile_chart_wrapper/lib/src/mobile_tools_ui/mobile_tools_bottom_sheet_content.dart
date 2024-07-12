@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../core_widgets/info_banner.dart';
 import '../core_widgets/no_glow_scroll_behavior.dart';
 
 /// Bottom sheet content to show the list of support tools (indicators/ drawing
@@ -86,6 +87,9 @@ class _MobileToolsBottomSheetContentState
     return MobileToolsBottomSheetContent.indicators;
   }
 
+  /// Returns `true` if the limit of active indicators is reached.
+  bool get isLimitReached => indicatorsRepo.items.length >= 3;
+
   late AddOnsRepository<IndicatorConfig> indicatorsRepo;
 
   @override
@@ -106,6 +110,9 @@ class _MobileToolsBottomSheetContentState
                   const SizedBox(height: ThemeProvider.margin16),
                   _buildChipsList(),
                   const SizedBox(height: ThemeProvider.margin16),
+                  if (isLimitReached &&
+                      _selectedChip != IndicatorTabLabel.active)
+                    _buildLimitInfoBanner(),
                   Expanded(
                       child: _selectedChip == IndicatorTabLabel.active
                           ? _buildIndicatorsActiveTab()
@@ -162,14 +169,17 @@ class _MobileToolsBottomSheetContentState
       itemBuilder: (_, index) {
         final IndicatorItemModel indicator = filteredIndicators[index];
 
-        return IndicatorListItem(
-          iconAssetPath: indicator.icon,
-          title: indicator.title,
-          count: _getIndicatorCount(indicator),
-          onInfoIconTapped: () {},
-          onTap: () {
-            indicatorsRepo.add(indicator.config);
-          },
+        return Interaction(
+          isEnabled: !isLimitReached,
+          child: IndicatorListItem(
+            iconAssetPath: indicator.icon,
+            title: indicator.title,
+            count: _getIndicatorCount(indicator),
+            onInfoIconTapped: () {},
+            onTap: () {
+              indicatorsRepo.add(indicator.config);
+            },
+          ),
         );
       },
     );
@@ -241,7 +251,7 @@ class _MobileToolsBottomSheetContentState
                   'You have no active indicators yet.',
                   style: context.themeProvider.textStyle(
                     textStyle: TextStyles.body1,
-                    color: context.themeProvider.colors.lessProminent,
+                    color: const Color(0xFF999999),
                   ),
                 ),
               ],
@@ -270,6 +280,12 @@ class _MobileToolsBottomSheetContentState
     );
   }
 
+  Widget _buildLimitInfoBanner() {
+    return const InfoBanner(
+      message: 'You\'ve added the maximum number of active indicators.',
+    );
+  }
+
   /// Returns the number of active indicators for specified [indicator].
   int _getIndicatorCount(IndicatorItemModel indicator) {
     return indicatorsRepo.items
@@ -292,6 +308,8 @@ class _MobileToolsBottomSheetContentState
           horizontalPadding: Dimens.margin16,
           items: [
             CustomChip(
+              labelBuilder: (_, __) =>
+                  IndicatorTabLabel.activeCount(indicatorsRepo.items.length),
               value: IndicatorTabLabel.active,
               onTap: _onChipTapped,
               isSelected: _selectedChip == IndicatorTabLabel.active,

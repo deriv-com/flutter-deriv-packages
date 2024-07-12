@@ -37,6 +37,7 @@ class IndicatorListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.translucent,
       child: Padding(
         padding: const EdgeInsets.all(ThemeProvider.margin16),
         child: Row(
