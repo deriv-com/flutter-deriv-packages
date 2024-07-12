@@ -11,6 +11,7 @@ import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../core_widgets/no_glow_scroll_behavior.dart';
@@ -104,9 +105,10 @@ class _MobileToolsBottomSheetContentState
                 children: [
                   const SizedBox(height: ThemeProvider.margin16),
                   _buildChipsList(),
+                  const SizedBox(height: ThemeProvider.margin16),
                   Expanded(
                       child: _selectedChip == IndicatorTabLabel.active
-                          ? _buildActiveIndicatorsList()
+                          ? _buildIndicatorsActiveTab()
                           : _buildIndicatorsList()),
                 ],
               ),
@@ -114,6 +116,45 @@ class _MobileToolsBottomSheetContentState
           ),
         ],
       );
+
+  Widget _buildActiveTabHeader() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: ThemeProvider.margin16,
+      ),
+      child: Row(
+        children: [
+          Text(
+            'Up to 3 active indicators allowed.',
+            style: context.themeProvider.textStyle(
+              textStyle: TextStyles.caption,
+              color: context.themeProvider.colors.general,
+            ),
+            textAlign: TextAlign.start,
+          ),
+          const Spacer(),
+          Visibility(
+            visible: indicatorsRepo.items.isNotEmpty,
+            maintainSize: true,
+            maintainState: true,
+            maintainAnimation: true,
+            child: SecondaryButton(
+              child: Center(
+                child: Text(
+                  'Delete all',
+                  style: context.themeProvider.textStyle(
+                    textStyle: TextStyles.caption,
+                    color: context.themeProvider.colors.prominent,
+                  ),
+                ),
+              ),
+              onPressed: () {},
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _buildIndicatorsList() {
     return ListView.builder(
@@ -134,42 +175,29 @@ class _MobileToolsBottomSheetContentState
     );
   }
 
+  Widget _buildIndicatorsActiveTab() {
+    return Column(
+      children: [
+        _buildActiveTabHeader(),
+        const SizedBox(height: ThemeProvider.margin16),
+        Expanded(
+          child: indicatorsRepo.items.isEmpty
+              ? _buildIndicatorEmptyState()
+              : _buildActiveIndicatorsList(),
+        ),
+      ],
+    );
+  }
+
   Widget _buildActiveIndicatorsList() {
     return Padding(
       padding: const EdgeInsets.only(
-          left: ThemeProvider.margin16,
-          right: ThemeProvider.margin16,
-          top: ThemeProvider.margin16),
+        left: ThemeProvider.margin16,
+        right: ThemeProvider.margin16,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: ThemeProvider.margin16),
-            child: Row(
-              children: [
-                Text(
-                  'Up to 3 active indicators allowed.',
-                  style: context.themeProvider.textStyle(
-                    textStyle: TextStyles.overline,
-                    color: context.themeProvider.colors.general,
-                  ),
-                  textAlign: TextAlign.start,
-                ),
-                const Spacer(),
-                SecondaryButton(
-                    child: Center(
-                      child: Text(
-                        'Delete all',
-                        style: context.themeProvider.textStyle(
-                          textStyle: TextStyles.caption,
-                          color: context.themeProvider.colors.prominent,
-                        ),
-                      ),
-                    ),
-                    onPressed: () {})
-              ],
-            ),
-          ),
           Expanded(
             child: ListView.separated(
               itemCount: indicatorsRepo.items.length,
@@ -191,6 +219,54 @@ class _MobileToolsBottomSheetContentState
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildIndicatorEmptyState() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Expanded(
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(
+                  emptyStateIndicatorsIcon,
+                  height: Dimens.iconSize48,
+                  package: 'deriv_mobile_chart_wrapper',
+                ),
+                const SizedBox(height: ThemeProvider.margin08),
+                Text(
+                  'You have no active indicators yet.',
+                  style: context.themeProvider.textStyle(
+                    textStyle: TextStyles.body1,
+                    color: context.themeProvider.colors.lessProminent,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          color: context.theme.colors.secondary,
+          padding: const EdgeInsets.all(ThemeProvider.margin16),
+          child: PrimaryButton(
+            child: Text(
+              'Add indicator',
+              style: context.theme.textStyle(
+                textStyle: TextStyles.body2,
+                color: context.theme.colors.prominent,
+              ),
+            ),
+            onPressed: () {
+              setState(() {
+                _selectedChip = IndicatorTabLabel.all;
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 
