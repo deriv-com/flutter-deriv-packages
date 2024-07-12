@@ -51,6 +51,7 @@ class DerivPasskeysMapper {
               DerivPasskeysVerifyCredentialsResponseModel model) =>
           DerivPasskeysVerifyCredentialsResponseEntity(
             token: (model.response['tokens'] as List<dynamic>).first['token'],
+            refreshToken: model.response['refresh_token'] as String,
           );
 
   /// Maps [ConnectionInfoEntity] to [PasskeysConnectionInfoModel].

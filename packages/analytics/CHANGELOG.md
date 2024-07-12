@@ -1,3 +1,7 @@
+## 2.1.0
+
+ - **FEAT**(analytics): ilya/DERG-2409/Add_tracking_to_real_account_sign_up_on_Deriv_Go ([#603](https://github.com/regentmarkets/flutter-deriv-packages/issues/603)). ([9ada725d](https://github.com/regentmarkets/flutter-deriv-packages/commit/9ada725ded271e2b94cffed622eff2e75539cb55))
+
 ## 2.0.0
 
 > Note: This release has breaking changes.

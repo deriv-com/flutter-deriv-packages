@@ -31,7 +31,10 @@ void setupDerivPasskeysBloc() {
 
 void setupSuccessDerivPasskeysVerifyCredentialEvent() {
   const DerivPasskeysVerifyCredentialsResponseEntity mockResponseEntity =
-      DerivPasskeysVerifyCredentialsResponseEntity(token: 'token');
+      DerivPasskeysVerifyCredentialsResponseEntity(
+    token: 'token',
+    refreshToken: 'refresh_token',
+  );
 
   when(() => mockDerivPasskeysService.verifyCredential(
         jwtToken: any(named: 'jwtToken'),
