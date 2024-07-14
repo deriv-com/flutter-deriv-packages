@@ -42,17 +42,14 @@ class DerivAuthService extends BaseAuthService {
       final List<AccountModel> _supportedAccounts =
           _filterSupportedAccounts(_response.accounts);
 
-      final String? _defaultAccountToken = _supportedAccounts.first.token;
-      if (_supportedAccounts.isNotEmpty && _defaultAccountToken != null) {
+      if (_supportedAccounts.isNotEmpty) {
         _tokenList = _supportedAccounts
-            .sublist(1)
             .where((AccountModel account) => account.token != null)
             .map((AccountModel account) => account.token!)
             .toList();
-      }
-      if (_defaultAccountToken != null) {
+
         return login(
-          _defaultAccountToken,
+          'MULTI',
           tokenList: _tokenList.isEmpty ? null : _tokenList,
           accounts: _supportedAccounts,
           signupProvider: request.signupProvider,

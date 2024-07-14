@@ -41,7 +41,7 @@ abstract class DerivAuthIO {
   Future<void> authorizeDefaultAccount();
 
   /// Log default user in using multi authorization.
-  Future<void> multiAuthorizeDefaultAccount();
+  Future<void> multiAuthorizeAccounts();
 
   /// Deriv auth output.
   Stream<DerivAuthState> get output;
