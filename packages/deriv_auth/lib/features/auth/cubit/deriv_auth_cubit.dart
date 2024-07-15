@@ -146,7 +146,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
 
       ///TODO (John): Uncomment this when the tracking is ready
-      // trackLoginFinished();
+      trackLoginFinished();
 
       emit(DerivAuthLoggedInState(
         DerivAuthModel(
@@ -176,7 +176,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
 
       ///TODO (John): Uncomment this when the tracking is ready
-      // trackLoginFinished();
+      trackLoginFinished();
 
       emit(
         DerivAuthLoggedInState(
