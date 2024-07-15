@@ -287,7 +287,7 @@ class DerivRudderstackEvents {
   /// actionTriggerType: Action trigger type (e.g. trade_page_cta, back_to_trade_page, assets_choice, trade_type_choice)
   void logTradePageOpened({
     required String tradeType,
-    required String asset,
+    required String market,
     required String chartType,
     required String actionTriggerType,
   }) {
@@ -296,7 +296,7 @@ class DerivRudderstackEvents {
         properties: <String, dynamic>{
           'action': 'open_trade_page',
           'form_name': 'ce_deriv_go_trade_form',
-          'asset': asset,
+          'market_name': market,
           'trade_type_name': tradeType,
           'chart_type_name': chartType,
           'action_trigger_type': actionTriggerType,
@@ -310,7 +310,7 @@ class DerivRudderstackEvents {
   /// actionTriggerType: Action trigger type (e.g. chart_double_click, bigchart_switcher_cta, chart_types_settings_cta)
   void logBigChartPageOpened({
     required String tradeType,
-    required String asset,
+    required String market,
     required String chartType,
     required String actionTriggerType,
   }) {
@@ -319,7 +319,7 @@ class DerivRudderstackEvents {
         properties: <String, dynamic>{
           'action': 'open_big_chart',
           'form_name': 'ce_deriv_go_trade_form',
-          'asset_type': asset,
+          'market_name': market,
           'trade_type_name': tradeType,
           'chart_type_name': chartType,
           'action_trigger_type': actionTriggerType,
@@ -332,7 +332,7 @@ class DerivRudderstackEvents {
   /// chartType: Chart type name (e.g. 'area', 'candle', 'worm')
   /// currentPage: Current page name (e.g. 'trade_page', 'big_chart_page')
   void logContractBought({
-    required String asset,
+    required String market,
     required String chartType,
     required String tradeType,
     required String currentPage,
@@ -342,7 +342,7 @@ class DerivRudderstackEvents {
         properties: <String, dynamic>{
           'action': 'run_contract',
           'form_name': 'ce_deriv_go_trade_form',
-          'asset': asset,
+          'market_name': market,
           'chart_type_name': chartType,
           'trade_type_name': tradeType,
           'subform_name': currentPage,
