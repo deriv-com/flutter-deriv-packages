@@ -145,7 +145,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
 
-      ///TODO (John): Uncomment this when the tracking is ready
       trackLoginFinished();
 
       emit(DerivAuthLoggedInState(
@@ -175,7 +174,6 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
 
-      ///TODO (John): Uncomment this when the tracking is ready
       trackLoginFinished();
 
       emit(
