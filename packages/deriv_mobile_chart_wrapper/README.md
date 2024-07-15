@@ -11,6 +11,7 @@ Menu and interfaces to add/remove indicators and drawing tools.
 - [deriv_ui](https://github.com/regentmarkets/flutter-deriv-packages/tree/master/packages/deriv_ui)
 
 ## Get started
+Adding the depedency:
 ```
 dependencies:
   deriv_mobile_chart_wrapper:
