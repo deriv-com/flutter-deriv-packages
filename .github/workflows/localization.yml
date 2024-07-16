@@ -25,7 +25,7 @@ jobs:
           channel: "stable"
           flutter-version: "3.10.2"
           cache: true
-      
+
       - name: Setup Config
         run: |
           git config --global user.name 'mobile-apps-deriv'
@@ -38,11 +38,11 @@ jobs:
           ./l10n.sh
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-        
 
       - name: Create Pull Request.
         uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
         with:
           token: ${{ secrets.PAT }}
           title: "refactor(deriv_localizations): Crowdin Localization Generated"
+          branch: create-pull-request/localisation
           base: master
