@@ -14,6 +14,8 @@ class SignupPageModel {
     required this.socialAuthStateHandler,
     required this.redirectURL,
     required this.onWebViewError,
+    required this.handleFlowFromPackage,
+    required this.residences,
     this.onSignupPressed,
     this.onSocialAuthButtonPressed,
     this.affiliateToken,
@@ -52,4 +54,10 @@ class SignupPageModel {
   /// Callback to be called when social auth button is tapped.
   /// Give access to [SocialAuthDto] for 2FA.
   final SocialAuthCallback? onSocialAuthButtonPressed;
+
+  /// Handle flow from package
+  final bool handleFlowFromPackage;
+
+  /// List of residences to be shown.
+  final Future<List<DerivResidenceModel>> residences;
 }
