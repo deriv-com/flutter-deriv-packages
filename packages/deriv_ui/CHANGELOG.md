@@ -1,3 +1,7 @@
+## 0.0.8+1
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#686](https://github.com/regentmarkets/flutter-deriv-packages/issues/686)). ([a0a6df21](https://github.com/regentmarkets/flutter-deriv-packages/commit/a0a6df21cbc6681b923ec3e060752de20ddad32b))
+
 ## 0.0.8
 
  - **FEAT**(deriv_ui): [DERG 2450] Added Timeline Widget to Deriv UI ([#631](https://github.com/regentmarkets/flutter-deriv-packages/issues/631)). ([e34d78b3](https://github.com/regentmarkets/flutter-deriv-packages/commit/e34d78b303358cb5f91abab14a2a042ce3650b0f))

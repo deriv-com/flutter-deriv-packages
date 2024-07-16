@@ -1,6 +1,6 @@
 name: deriv_mobile_chart_wrapper
 description: A new Flutter package project.
-version: 0.0.2+2
+version: 0.0.2+3
 homepage:
 
 environment:
@@ -31,7 +31,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.8
+      ref: deriv_ui-v0.0.8+1
 
   provider: ^6.0.5
   flutter_svg: ^2.0.9
