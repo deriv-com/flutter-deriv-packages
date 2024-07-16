@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_passkeys` - `v0.0.3+4`](#deriv_passkeys---v0034)
+ - [`deriv_auth` - `v6.7.16`](#deriv_auth---v6716)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.16`
+
+---
+
+#### `deriv_passkeys` - `v0.0.3+4`
+
+ - **FIX**(deriv_passkeys): fix some missing keys in passkey login page ([#692](https://github.com/regentmarkets/flutter-deriv-packages/issues/692)). ([d944a1c3](https://github.com/regentmarkets/flutter-deriv-packages/commit/d944a1c37f127f35143d9920532f76bc3487ebd4))
+
+
+## 2024-07-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_auth` - `v6.7.15`](#deriv_auth---v6715)
  - [`deriv_language_selector` - `v0.0.2+9`](#deriv_language_selector---v0029)
  - [`deriv_mobile_chart_wrapper` - `v0.0.2+3`](#deriv_mobile_chart_wrapper---v0023)
