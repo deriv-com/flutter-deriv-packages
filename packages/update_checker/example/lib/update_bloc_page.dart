@@ -10,7 +10,7 @@ class UpdateBlocPage extends StatefulWidget {
 
 class _UpdateBlocPageState extends State<UpdateBlocPage> {
   final UpdateBloc updateBloc =
-      UpdateBloc(firebaseRepository: const FirebaseRemoteConfigRepository());
+      UpdateBloc(firebaseRepository: FirebaseRemoteConfigRepository());
 
   @override
   Widget build(BuildContext context) => Scaffold(

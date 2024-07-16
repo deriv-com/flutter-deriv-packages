@@ -127,6 +127,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                         Text(
                                           context.derivPasskeysLocalizations
                                               .effortlessLoginWithPasskeys,
+                                          key: effortlessPasskeysPageKeys
+                                              ?.loginWithPasskeyTextKey,
                                           style: const TextStyle(fontSize: 20),
                                         ),
                                         const SizedBox(
@@ -137,6 +139,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .noNeedToRememberPassword,
+                                          textKey: effortlessPasskeysPageKeys
+                                              ?.noNeedToRememberPasswordRowKey,
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -146,6 +150,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .syncAcrossDevices,
+                                          textKey: effortlessPasskeysPageKeys
+                                              ?.syncAcrossDevicesRowKey,
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -155,6 +161,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .useYourBiometrics,
+                                          textKey: effortlessPasskeysPageKeys
+                                              ?.useBiometricsRowKey,
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -210,6 +218,9 @@ class EffortlessPasskeysPage extends StatelessWidget
                                                       style: TextStyle(
                                                           color: context.theme
                                                               .colors.coral),
+                                                      key:
+                                                          effortlessPasskeysPageKeys
+                                                              ?.hereRichTextKey,
                                                     ),
                                                   ),
                                                 ),
@@ -261,6 +272,11 @@ class EffortlessPasskeysPageKeys {
     this.createPasskeyButtonKey,
     this.hyperlinkInkWellKey,
     this.maybeLaterTextButtonKey,
+    this.loginWithPasskeyTextKey,
+    this.noNeedToRememberPasswordRowKey,
+    this.syncAcrossDevicesRowKey,
+    this.useBiometricsRowKey,
+    this.hereRichTextKey,
   });
 
   /// Key for create passkey button widget.
@@ -271,4 +287,19 @@ class EffortlessPasskeysPageKeys {
 
   /// Key for maybe later text button widget.
   final Key? maybeLaterTextButtonKey;
+
+  /// Key for login with passkey text widget.
+  final Key? loginWithPasskeyTextKey;
+
+  /// Key for no need to remember password row widget.
+  final Key? noNeedToRememberPasswordRowKey;
+
+  /// Key for sync across devices row widget.
+  final Key? syncAcrossDevicesRowKey;
+
+  /// Key for use biometrics row widget.
+  final Key? useBiometricsRowKey;
+
+  /// Key for here rich text widget.
+  final Key? hereRichTextKey;
 }
