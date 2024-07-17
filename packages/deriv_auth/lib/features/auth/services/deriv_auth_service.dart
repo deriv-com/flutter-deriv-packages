@@ -86,20 +86,23 @@ class DerivAuthService extends BaseAuthService {
           responseAuthorizeEntity!.copyWith(
         signupProvider: signupProvider,
         refreshToken: refreshToken,
-        accountList: responseAuthorizeEntity.accountList
-            ?.map(
-              (AccountListItem accountListItem) => accountListItem.copyWith(
-                token: accounts
-                        .where(
-                          (AccountModel element) =>
-                              element.accountId == accountListItem.loginid,
-                        )
-                        .firstOrNull
-                        ?.token ??
-                    token,
-              ),
-            )
-            .toList(),
+        accountList: responseAuthorizeEntity.accountList?.map(
+          (AccountListItem accountListItem) {
+            final AccountModel? account = accounts.firstWhereOrNull(
+              (AccountModel element) =>
+                  element.accountId == accountListItem.loginid,
+            );
+
+            if (account?.token == null) {
+              throw DerivAuthException(
+                message: 'Login is Expired',
+                type: AuthErrorType.expiredAccount,
+              );
+            }
+
+            return accountListItem.copyWith(token: account!.token);
+          },
+        ).toList(),
       );
 
       await authRepository.onLogin(_enhancedAuthorizeEntity);

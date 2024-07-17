@@ -1,3 +1,27 @@
+## 0.0.3+5
+
+ - **REFACTOR**(version): updated the version of flutter deriv api ([#694](https://github.com/regentmarkets/flutter-deriv-packages/issues/694)). ([eac7e8cb](https://github.com/regentmarkets/flutter-deriv-packages/commit/eac7e8cba4e9310d30296e07a47731f08d4d7342))
+
+## 0.0.3+4
+
+ - **FIX**(deriv_passkeys): fix some missing keys in passkey login page ([#692](https://github.com/regentmarkets/flutter-deriv-packages/issues/692)). ([d944a1c3](https://github.com/regentmarkets/flutter-deriv-packages/commit/d944a1c37f127f35143d9920532f76bc3487ebd4))
+
+## 0.0.3+3
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#686](https://github.com/regentmarkets/flutter-deriv-packages/issues/686)). ([a0a6df21](https://github.com/regentmarkets/flutter-deriv-packages/commit/a0a6df21cbc6681b923ec3e060752de20ddad32b))
+
+## 0.0.3+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+1
+
+ - **FIX**(deriv_passkeys): add keys to passkey login page ([#676](https://github.com/regentmarkets/flutter-deriv-packages/issues/676)). ([aa84a46d](https://github.com/regentmarkets/flutter-deriv-packages/commit/aa84a46dfb9cd22a335276c1ae0063ffee7852ef))
+
+## 0.0.3
+
+ - **FEAT**(deriv_passkeys): [P2PS-3072] add keys to deriv passkey package effortless passkeys login page ([#677](https://github.com/regentmarkets/flutter-deriv-packages/issues/677)). ([39472704](https://github.com/regentmarkets/flutter-deriv-packages/commit/39472704a3d264bc5f64ba2ae75e29134f890590))
+
 ## 0.0.2+9
 
  - **REFACTOR**(deriv_passkeys): update deriv api dependency ([#656](https://github.com/regentmarkets/flutter-deriv-packages/issues/656)). ([3425078b](https://github.com/regentmarkets/flutter-deriv-packages/commit/3425078b52baac4f387504c9d41063bda1dba249))

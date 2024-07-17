@@ -1,3 +1,27 @@
+## 6.7.17
+
+ - **REFACTOR**(version): updated the version of flutter deriv api ([#694](https://github.com/regentmarkets/flutter-deriv-packages/issues/694)). ([eac7e8cb](https://github.com/regentmarkets/flutter-deriv-packages/commit/eac7e8cba4e9310d30296e07a47731f08d4d7342))
+
+## 6.7.16
+
+ - Update a dependency to the latest release.
+
+## 6.7.15
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#686](https://github.com/regentmarkets/flutter-deriv-packages/issues/686)). ([a0a6df21](https://github.com/regentmarkets/flutter-deriv-packages/commit/a0a6df21cbc6681b923ec3e060752de20ddad32b))
+
+## 6.7.14
+
+ - Update a dependency to the latest release.
+
+## 6.7.13
+
+ - Update a dependency to the latest release.
+
+## 6.7.12
+
+ - Update a dependency to the latest release.
+
 ## 6.7.10
 
  - **FIX**(deriv_auth): minor change in readme file ([#669](https://github.com/regentmarkets/flutter-deriv-packages/issues/669)). ([b29d222c](https://github.com/regentmarkets/flutter-deriv-packages/commit/b29d222ce219d0664e3cafb6c302cd1041749905))
