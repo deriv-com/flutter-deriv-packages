@@ -10,7 +10,7 @@ class UpdateCheckerPage extends StatelessWidget {
         ),
         body: Builder(
           builder: (BuildContext context) => UpdateChecker(
-            firebaseRepository: const FirebaseRemoteConfigRepository(),
+            firebaseRepository: FirebaseRemoteConfigRepository(),
             onNotAvailable: () => _showSnackBar(
               context,
               'Update not available',
