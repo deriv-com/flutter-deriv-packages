@@ -13,7 +13,7 @@
   "actionOk": "Okay",
   "warnNotAvailableCountries": "Wenn Sie Fragen haben, kontaktieren Sie uns über ",
   "labelLiveChat": "Live-chat",
-  "actionGetAFreeAccount": "Ein kostenloses Konto erhalten",
+  "actionSignUpForFree": "Melde dich kostenlos an",
   "actionLogin": "Anmelden",
   "labelTwoFactorAuth": "Zwei-Faktor-Authentifizierung",
   "informEnterTwoFactorAuthCode": "Geben Sie den 6-stelligen Code aus der Authentifizierungs-App auf Ihrem Telefon ein.",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "Ungültiger Endpunkt",
   "labelApplicationID": "Anwendungs-ID",
   "semanticApplicationID": "Anwendungs-ID",
-  "warnInvalidApplicationID": "ungültige Anwendungs-ID"
+  "warnInvalidApplicationID": "ungültige Anwendungs-ID",
+  "labelLanguage": "Sprache"
 }

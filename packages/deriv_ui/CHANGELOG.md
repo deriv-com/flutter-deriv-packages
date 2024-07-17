@@ -1,3 +1,35 @@
+## 0.0.8+1
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#686](https://github.com/regentmarkets/flutter-deriv-packages/issues/686)). ([a0a6df21](https://github.com/regentmarkets/flutter-deriv-packages/commit/a0a6df21cbc6681b923ec3e060752de20ddad32b))
+
+## 0.0.8
+
+ - **FEAT**(deriv_ui): [DERG 2450] Added Timeline Widget to Deriv UI ([#631](https://github.com/regentmarkets/flutter-deriv-packages/issues/631)). ([e34d78b3](https://github.com/regentmarkets/flutter-deriv-packages/commit/e34d78b303358cb5f91abab14a2a042ce3650b0f))
+
+## 0.0.7+9
+
+ - Update a dependency to the latest release.
+
+## 0.0.7+8
+
+ - Update a dependency to the latest release.
+
+## 0.0.7+7
+
+ - **REFACTOR**(deriv_ui): [DERG-3500] return inputted amount based on the formatter in numpad ([#624](https://github.com/regentmarkets/flutter-deriv-packages/issues/624)). ([fdf4df19](https://github.com/regentmarkets/flutter-deriv-packages/commit/fdf4df1979ddb8710dba8925ef779cca25d60615))
+
+## 0.0.7+6
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
+## 0.0.7+5
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
+## 0.0.7+4
+
+ - **FIX**(deriv_ui): add specific formatter for crypto and fiat currency ([#569](https://github.com/regentmarkets/flutter-deriv-packages/issues/569)). ([711abee1](https://github.com/regentmarkets/flutter-deriv-packages/commit/711abee199278b7f0fd7463de6f480d561e99d67))
+
 ## 0.0.7+3
 
  - Update a dependency to the latest release.

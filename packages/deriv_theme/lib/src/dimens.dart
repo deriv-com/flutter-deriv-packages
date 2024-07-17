@@ -148,11 +148,17 @@ class Dimens {
   /// Small icon 16x16.
   static const double iconSize16 = 16;
 
+  /// Small icon 18x18.
+  static const double iconSize18 = 18;
+
   /// Medium icon.
   static const double iconSize24 = 24;
 
   /// Large icon.
   static const double iconSize32 = 32;
+
+  /// Size 36 icon.
+  static const double iconSize36 = 36;
 
   /// Size 40 icon.
   static const double iconSize40 = 40;

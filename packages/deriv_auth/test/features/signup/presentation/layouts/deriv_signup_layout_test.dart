@@ -1,3 +1,5 @@
+import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
+import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +13,11 @@ import '../../../../mocks.dart';
 import '../../../../pump_app.dart';
 import '../../../social_auth/mocks/mock_social_provider_model.dart';
 
+class MockDerivRudderStack extends Mock implements DerivRudderstack {}
+
 void main() {
   group('DerivSignupLayout', () {
+    late final MockDerivRudderStack mockDerivRudderstack;
     late MockSignupCubit signupCubit;
     late MockAuthCubit authCubit;
     late MockSocialAuthCubit socialAuthCubit;
@@ -24,6 +29,19 @@ void main() {
       signupCubit = MockSignupCubit();
       authCubit = MockAuthCubit();
       socialAuthCubit = MockSocialAuthCubit();
+
+      mockDerivRudderstack = MockDerivRudderStack();
+
+      AuthTrackingRepository.init(
+        'test',
+        derivRudderstack: mockDerivRudderstack,
+      );
+
+      when(() => mockDerivRudderstack.track(
+          eventName: any(named: 'eventName'),
+          properties: any(named: 'properties'))).thenAnswer(
+        (_) => Future<bool>.value(true),
+      );
 
       registerFallbackValue(SocialAuthProvider.google);
 

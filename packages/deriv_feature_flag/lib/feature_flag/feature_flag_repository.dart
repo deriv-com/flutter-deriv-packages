@@ -26,6 +26,13 @@ class FeatureFlagRepository {
   bool isFeatureOn(String key, {bool defaultValue = false}) =>
       _growthBookSDK.feature(key).on ?? defaultValue;
 
+  /// Returns the value of a feature flag.
+  ///
+  /// The returned value, depending on the feature flag, can be a boolean,
+  /// string, num, or a Map.
+  dynamic getFeatureValue(String key, {dynamic defaultValue = false}) =>
+      _growthBookSDK.feature(key).value ?? defaultValue;
+
   @visibleForTesting
   GrowthBookSDK get growthBookSDK => _growthBookSDK;
 }

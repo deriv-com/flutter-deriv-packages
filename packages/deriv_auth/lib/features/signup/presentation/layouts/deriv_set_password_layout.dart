@@ -1,5 +1,4 @@
 import 'package:deriv_auth/core/helpers/assets.dart';
-import 'package:deriv_auth/core/states/auth_state_listener.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/features/signup/presentation/widgets/password_policy_checker_widget.dart';
 import 'package:deriv_auth/features/single_entry/core/auth_data.dart';
@@ -150,7 +149,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
 
   void _onAuthState(BuildContext context, DerivAuthState state) {
     if (state is DerivAuthLoggedInState) {
-      AuthData().data.loginPageModel.onLoggedIn.call(context, state);
+      AuthData().data.loginPageModel.onLoggedIn.call(state);
     }
   }
 

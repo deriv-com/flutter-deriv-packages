@@ -99,6 +99,7 @@ DerivAuthCubit(
 
 Some usage examples:
 
+
 - First, start by getting the `DerivAuthCubit` instance.
 
   ```dart

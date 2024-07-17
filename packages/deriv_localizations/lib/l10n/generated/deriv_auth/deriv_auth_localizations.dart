@@ -153,11 +153,11 @@ abstract class DerivAuthLocalizations {
   /// **'Live chat'**
   String get labelLiveChat;
 
-  /// No description provided for @actionGetAFreeAccount.
+  /// No description provided for @actionSignUpForFree.
   ///
   /// In en, this message translates to:
-  /// **'Get a free account'**
-  String get actionGetAFreeAccount;
+  /// **'Sign up for free'**
+  String get actionSignUpForFree;
 
   /// No description provided for @actionLogin.
   ///

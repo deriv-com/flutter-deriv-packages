@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 /// Extension methods for [BuildContext].
 extension ContextExtension on BuildContext {
-  /// Gets [DerivAuthUILocalization].
+  /// Gets [DerivAuthLocalizations].
   DerivAuthLocalizations get derivAuthLocalization =>
-      DerivAuthLocalizations.of(this);
+      DerivAuthLocalizations.of(this)!;
 }

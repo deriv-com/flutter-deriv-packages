@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'deriv_live_chat'
-  s.version          = '0.0.1'
+  s.version          = '0.0.1+1'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC
 A new flutter plugin project.

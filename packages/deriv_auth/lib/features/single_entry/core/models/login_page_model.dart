@@ -27,7 +27,7 @@ class LoginPageModel {
   final Function(DerivAuthErrorState)? onLoginError;
 
   /// Callback to be called when user is logged in.
-  final Function(BuildContext, DerivAuthLoggedInState) onLoggedIn;
+  final Function(DerivAuthLoggedInState) onLoggedIn;
 
   /// Callback to be called when social auth button is tapped.
   /// Give access to [SocialAuthDto] for 2FA.
@@ -35,9 +35,6 @@ class LoginPageModel {
 
   /// Welcome text to be displayed on login page.
   final String welcomeLabel;
-
-  /// Greeting text to be displayed on login page.
-  final String greetingLabel;
 
   /// Whether to display social auth buttons.
   final bool isSocialAuthEnabled;
@@ -63,4 +60,7 @@ class LoginPageModel {
 
   /// 2FA flow navigation
   final Function(BuildContext context)? twoFactorAuthNavigation;
+
+  /// Greeting label string for login page
+  final String greetingLabel;
 }
