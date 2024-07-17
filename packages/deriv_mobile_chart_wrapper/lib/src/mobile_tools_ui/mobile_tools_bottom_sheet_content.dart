@@ -219,10 +219,10 @@ class _MobileToolsBottomSheetContentState
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
                   title: getIndicatorAbbrevation(indicatorConfig),
-                  // TODO(behnam-deriv): Get this string from indicator config.
-                  subtitle: '(12, 26, 9)',
+                  // TODO(Ramin): use indicatorConfig.configSummary here.
+                  subtitle: '',
                   onTapSetting: () {},
-                  onTapDelete: () {},
+                  onTapDelete: () => indicatorsRepo.removeAt(index),
                 );
               },
             ),

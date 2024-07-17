@@ -62,7 +62,7 @@ class ActiveIndicatorListItem extends StatelessWidget {
               icon: const Icon(Icons.settings_outlined),
             ),
             IconButton(
-              onPressed: onTapSetting,
+              onPressed: onTapDelete,
               color: context.themeProvider.colors.prominent,
               icon: const Icon(Icons.delete_outline),
             ),
