@@ -1,3 +1,7 @@
+## 0.0.3
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add Indicator bottom sheet and categories_ ([#683](https://github.com/regentmarkets/flutter-deriv-packages/issues/683)). ([a32c7ed0](https://github.com/regentmarkets/flutter-deriv-packages/commit/a32c7ed0f61e1c9965cc7d92f12e64eacb0faf52))
+
 ## 0.0.2+4
 
  - Update a dependency to the latest release.

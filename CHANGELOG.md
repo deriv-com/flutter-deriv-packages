@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_mobile_chart_wrapper` - `v0.0.3`](#deriv_mobile_chart_wrapper---v003)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.3`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add Indicator bottom sheet and categories_ ([#683](https://github.com/regentmarkets/flutter-deriv-packages/issues/683)). ([a32c7ed0](https://github.com/regentmarkets/flutter-deriv-packages/commit/a32c7ed0f61e1c9965cc7d92f12e64eacb0faf52))
+
+
+## 2024-07-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_localizations` - `v1.5.2`](#deriv_localizations---v152)
  - [`deriv_auth` - `v6.7.18`](#deriv_auth---v6718)
  - [`deriv_mobile_chart_wrapper` - `v0.0.2+4`](#deriv_mobile_chart_wrapper---v0024)
