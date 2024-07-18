@@ -25,6 +25,7 @@ enum IndicatorTabLabel {
     }
   }
 
+  /// Defines each tab label is equivalent to which [IndicatorCategory].
   IndicatorCategory? get toIndicatorCategory {
     switch (this) {
       case IndicatorTabLabel.momentum:
