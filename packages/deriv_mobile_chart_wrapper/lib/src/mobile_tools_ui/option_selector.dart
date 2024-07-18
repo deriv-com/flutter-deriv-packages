@@ -41,6 +41,7 @@ class _OptionSelectorState extends State<OptionSelector> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.label,
@@ -49,8 +50,9 @@ class _OptionSelectorState extends State<OptionSelector> {
             color: context.theme.colors.general,
           ),
         ),
-        const SizedBox(height: 2),
-        Flexible(
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 48,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
@@ -89,7 +91,6 @@ class _OptionSelectableItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
