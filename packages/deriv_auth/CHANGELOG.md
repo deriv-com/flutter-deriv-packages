@@ -1,3 +1,7 @@
+## 6.7.18
+
+ - Update a dependency to the latest release.
+
 ## 6.7.17
 
  - **REFACTOR**(version): updated the version of flutter deriv api ([#694](https://github.com/regentmarkets/flutter-deriv-packages/issues/694)). ([eac7e8cb](https://github.com/regentmarkets/flutter-deriv-packages/commit/eac7e8cba4e9310d30296e07a47731f08d4d7342))
