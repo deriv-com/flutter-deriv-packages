@@ -2,13 +2,13 @@ import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/core_widgets/core_widgets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
+import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,17 +57,17 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
 
 class _MobileToolsBottomSheetContentState
     extends State<MobileToolsBottomSheetContent> {
-  IndicatorTabLabel? _selectedChip = IndicatorTabLabel.all;
+  IndicatorTabLabel _selectedChip = IndicatorTabLabel.all;
 
   List<IndicatorItemModel> get filteredIndicators {
-    return _selectedChip == null || _selectedChip == IndicatorTabLabel.all
+    return _selectedChip == IndicatorTabLabel.all
         ? MobileToolsBottomSheetContent.indicators
         : MobileToolsBottomSheetContent.indicators
             .where(
               // TODO(Ramin): Check if we can only have one enum to use for
               //  labels and indicators' model category.
               (indicator) =>
-                  indicator.category == _selectedChip?.toIndicatorCategory,
+                  indicator.category == _selectedChip.toIndicatorCategory,
             )
             .toList();
   }
@@ -319,7 +319,7 @@ class _MobileToolsBottomSheetContentState
   }
 
   void _onChipTapped(IndicatorTabLabel? value, String? title) =>
-      setState(() => _selectedChip = value);
+      setState(() => _selectedChip = value ?? IndicatorTabLabel.all);
 
   Widget _buildHeader(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(vertical: Dimens.margin16),
