@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:flutter/material.dart';
 
 import 'custom_chip.dart';
 
@@ -33,20 +33,14 @@ class ChipsList extends StatelessWidget {
   Widget build(BuildContext context) => SizedBox(
         height: ThemeProvider.margin36,
         child: ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
           scrollDirection: Axis.horizontal,
           itemCount: items.length,
-          itemBuilder: (_, int index) {
-            final double leftPadding =
-                index == 0 ? horizontalPadding : ThemeProvider.zeroMargin;
-            final double rightPadding = index == items.length - 1
-                ? horizontalPadding
-                : ThemeProvider.margin08;
-
-            return Padding(
-              padding: EdgeInsets.only(left: leftPadding, right: rightPadding),
-              child: items[index],
-            );
-          },
+          itemBuilder: (_, int index) => Padding(
+            padding: const EdgeInsets.only(
+                left: ThemeProvider.zeroMargin, right: ThemeProvider.margin08),
+            child: items[index],
+          ),
         ),
       );
 }
