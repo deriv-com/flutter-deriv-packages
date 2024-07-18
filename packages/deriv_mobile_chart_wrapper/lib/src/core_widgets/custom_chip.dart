@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 
 ///  The type of function to be passed to [CustomChip]'s `onTap` property.
-typedef OnTapCustomChip = void Function(String? value, String? title);
+typedef OnTapCustomChip<T> = void Function(T? value, String? title);
 
 /// Will be called to get the content that needs to be shown inside chips.
-typedef LabelBuilder = String Function(String? value, String? title);
+typedef LabelBuilder<T> = String Function(T? value, String? title);
 
 /// Will be called to get the content that needs to be shown inside chips.
-typedef LabelWidgetBuilder = Widget Function(String? value, String? title);
+typedef LabelWidgetBuilder<T> = Widget Function(T? value, String? title);
 
 /// A Custom chip with a disabled and enabled design based on [isSelected].
-class CustomChip extends StatelessWidget {
+class CustomChip<T> extends StatelessWidget {
   /// Initializes a [CustomChip] widget.
   const CustomChip({
     this.value,
@@ -38,17 +38,17 @@ class CustomChip extends StatelessWidget {
   final String? title;
 
   /// The value text to be shown inside of the chip.
-  final String? value;
+  final T? value;
 
   /// To get the content to be shown inside chips.
-  final LabelBuilder? labelBuilder;
+  final LabelBuilder<T>? labelBuilder;
 
   /// To get the widget to be shown inside chips.
-  final LabelWidgetBuilder? labelWidgetBuilder;
+  final LabelWidgetBuilder<T>? labelWidgetBuilder;
 
   /// Called when a custom chip is tapped.
   /// Pass [onTap] as null to disable the functionality of the chips.
-  final OnTapCustomChip? onTap;
+  final OnTapCustomChip<T>? onTap;
 
   /// The border radius of chips container.
   final double borderRadius;

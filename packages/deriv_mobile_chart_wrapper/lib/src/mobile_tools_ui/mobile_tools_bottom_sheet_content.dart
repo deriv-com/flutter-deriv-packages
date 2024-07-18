@@ -57,34 +57,19 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
 
 class _MobileToolsBottomSheetContentState
     extends State<MobileToolsBottomSheetContent> {
-  String? _selectedChip = IndicatorTabLabel.all;
+  IndicatorTabLabel? _selectedChip = IndicatorTabLabel.all;
 
   List<IndicatorItemModel> get filteredIndicators {
-    if (_selectedChip == IndicatorTabLabel.momentum) {
-      // Filter momentum indicators
-      return MobileToolsBottomSheetContent.indicators
-          .where(
-              (indicator) => indicator.category == IndicatorCategory.momentum)
-          .toList();
-    }
-
-    if (_selectedChip == IndicatorTabLabel.volatility) {
-      // Filter volatility indicators
-      return MobileToolsBottomSheetContent.indicators
-          .where(
-              (indicator) => indicator.category == IndicatorCategory.volatility)
-          .toList();
-    }
-    // Filter moving averages indicators
-    if (_selectedChip == IndicatorTabLabel.movingAverages) {
-      return MobileToolsBottomSheetContent.indicators
-          .where((indicator) =>
-              indicator.category == IndicatorCategory.movingAverages)
-          .toList();
-    }
-
-    // Otherwise return All indicators
-    return MobileToolsBottomSheetContent.indicators;
+    return _selectedChip == null || _selectedChip == IndicatorTabLabel.all
+        ? MobileToolsBottomSheetContent.indicators
+        : MobileToolsBottomSheetContent.indicators
+            .where(
+              // TODO(Ramin): Check if we can only have one enum to use for
+              //  labels and indicators' model category.
+              (indicator) =>
+                  indicator.category == _selectedChip?.toIndicatorCategory,
+            )
+            .toList();
   }
 
   /// Returns `true` if the limit of active indicators is reached.
@@ -307,50 +292,34 @@ class _MobileToolsBottomSheetContentState
           isHorizontalPaddingEnabled: true,
           horizontalPadding: Dimens.margin16,
           items: [
-            CustomChip(
-              labelBuilder: (_, __) =>
-                  IndicatorTabLabel.activeCount(indicatorsRepo.items.length),
-              value: IndicatorTabLabel.active,
-              onTap: _onChipTapped,
-              isSelected: _selectedChip == IndicatorTabLabel.active,
-              borderRadius: ThemeProvider.margin40,
-            ),
-            CustomChip(
-              value: IndicatorTabLabel.all,
-              onTap: _onChipTapped,
-              isSelected: _selectedChip == IndicatorTabLabel.all,
-              borderRadius: ThemeProvider.margin40,
-            ),
-            CustomChip(
-              // title: 'Momentum',
-              value: IndicatorTabLabel.momentum,
-              onTap: _onChipTapped,
-              isSelected: _selectedChip == IndicatorTabLabel.momentum,
-              borderRadius: ThemeProvider.margin40,
-            ),
-            CustomChip(
-              value: IndicatorTabLabel.volatility,
-              onTap: _onChipTapped,
-              isSelected: _selectedChip == IndicatorTabLabel.volatility,
-              borderRadius: ThemeProvider.margin40,
-            ),
-            CustomChip(
-              value: IndicatorTabLabel.movingAverages,
-              onTap: _onChipTapped,
-              isSelected: _selectedChip == IndicatorTabLabel.movingAverages,
-              borderRadius: ThemeProvider.margin40,
-            ),
+            ...IndicatorTabLabel.values
+                .map<CustomChip>((tabLabel) => tabLabel ==
+                        IndicatorTabLabel.active
+                    ? CustomChip<IndicatorTabLabel>(
+                        labelBuilder: (_, __) => IndicatorTabLabel.activeCount(
+                          indicatorsRepo.items.length,
+                        ),
+                        value: IndicatorTabLabel.active,
+                        onTap: _onChipTapped,
+                        isSelected: _selectedChip == IndicatorTabLabel.active,
+                        borderRadius: ThemeProvider.margin40,
+                      )
+                    : CustomChip<IndicatorTabLabel>(
+                        value: tabLabel,
+                        labelBuilder: (_, __) => tabLabel.title,
+                        onTap: _onChipTapped,
+                        isSelected: _selectedChip == tabLabel,
+                        borderRadius: ThemeProvider.margin40,
+                      ))
+                .toList(),
           ],
         ),
       ),
     );
   }
 
-  void _onChipTapped(String? value, String? title) {
-    setState(() {
-      _selectedChip = value;
-    });
-  }
+  void _onChipTapped(IndicatorTabLabel? value, String? title) =>
+      setState(() => _selectedChip = value);
 
   Widget _buildHeader(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(vertical: Dimens.margin16),
