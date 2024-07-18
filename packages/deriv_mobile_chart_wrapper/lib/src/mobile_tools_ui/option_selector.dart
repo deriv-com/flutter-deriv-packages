@@ -107,7 +107,9 @@ class _OptionSelectableItem extends StatelessWidget {
             option,
             style: context.theme.textStyle(
               textStyle: TextStyles.body2,
-              color: context.theme.colors.prominent,
+              color: isSelected
+                  ? context.theme.colors.prominent
+                  : context.theme.colors.general,
             ),
           ),
         ),
