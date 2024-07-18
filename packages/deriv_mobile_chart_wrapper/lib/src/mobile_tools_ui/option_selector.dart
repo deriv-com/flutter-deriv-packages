@@ -40,6 +40,7 @@ class _OptionSelectorState extends State<OptionSelector> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           widget.label,
@@ -49,27 +50,30 @@ class _OptionSelectorState extends State<OptionSelector> {
           ),
         ),
         const SizedBox(height: 2),
-        ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: widget.options.length,
-          itemBuilder: (context, index) {
-            final isSelected = index == _selectedIndex;
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedIndex = index;
-                });
-                widget.onOptionSelected(widget.options[index]);
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: _OptionSelectableItem(
-                  isSelected: isSelected,
-                  option: widget.options[index],
+        Flexible(
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: widget.options.length,
+            itemBuilder: (context, index) {
+              final isSelected = index == _selectedIndex;
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                  widget.onOptionSelected(widget.options[index]);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: _OptionSelectableItem(
+                    isSelected: isSelected,
+                    option: widget.options[index],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ],
     );
