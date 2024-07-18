@@ -2,7 +2,9 @@ import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 
 /// Returns abbreviation name of the indicator for the given [config].
-String getIndicatorAbbrevation(IndicatorConfig config) {
+String getIndicatorAbbreviation(IndicatorConfig config) {
+  // TODO(Ramin): use config.shortTitle after updating to the new version of
+  // chart package.
   switch (config.runtimeType) {
     case MACDIndicatorConfig:
       return 'MACD';

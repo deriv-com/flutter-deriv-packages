@@ -3,14 +3,17 @@ import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+/// List item for the active indicator list.
 class ActiveIndicatorListItem extends StatelessWidget {
-  const ActiveIndicatorListItem(
-      {required this.iconAssetPath,
-      required this.title,
-      required this.subtitle,
-      required this.onTapSetting,
-      required this.onTapDelete,
-      super.key});
+  /// Initializes the active indicator list item.
+  const ActiveIndicatorListItem({
+    required this.iconAssetPath,
+    required this.title,
+    required this.subtitle,
+    required this.onTapSetting,
+    required this.onTapDelete,
+    super.key,
+  });
 
   /// The path to the SVG icon asset.
   final String iconAssetPath;

@@ -218,7 +218,7 @@ class _MobileToolsBottomSheetContentState
                     indicatorsRepo.items[index];
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
-                  title: getIndicatorAbbrevation(indicatorConfig),
+                  title: getIndicatorAbbreviation(indicatorConfig),
                   // TODO(Ramin): use indicatorConfig.configSummary here.
                   subtitle: '',
                   onTapSetting: () {},
