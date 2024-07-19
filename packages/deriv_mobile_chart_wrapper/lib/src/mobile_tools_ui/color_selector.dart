@@ -1,54 +1,23 @@
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/chart_bottom_sheet.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/colours_palettes.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
-class ColorSelector extends StatefulWidget {
+class ColorSelector extends StatelessWidget {
   const ColorSelector({
     required this.title,
-    required this.initialColor,
-    this.onColorChange,
+    required this.color,
+    this.onTap,
     super.key,
   });
 
   final String title;
 
-  final Color initialColor;
+  final Color color;
 
-  final Function(Color)? onColorChange;
-
-  @override
-  State<ColorSelector> createState() => _ColorSelectorState();
-}
-
-class _ColorSelectorState extends State<ColorSelector> {
-  late Color _color;
-
-  @override
-  void initState() {
-    super.initState();
-    _color = widget.initialColor;
-  }
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (_) => ChartBottomSheet(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: ColoursPalettes(onColorSelected: (color) {
-                  setState(() {
-                    _color = color;
-                    widget.onColorChange?.call(color);
-                  });
-                  Navigator.pop(context);
-                }),
-              ),
-            ),
-          );
-        },
+        onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
@@ -58,14 +27,14 @@ class _ColorSelectorState extends State<ColorSelector> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(widget.title, style: TextStyles.caption),
+              Text(title, style: TextStyles.caption),
               Row(
                 children: <Widget>[
                   Container(
                     width: ThemeProvider.margin24,
                     height: ThemeProvider.margin24,
                     decoration: BoxDecoration(
-                      color: _color,
+                      color: color,
                       borderRadius: BorderRadius.circular(
                         ThemeProvider.borderRadius04,
                       ),
