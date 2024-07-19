@@ -62,8 +62,8 @@ class _ColorSelectorState extends State<ColorSelector> {
               Row(
                 children: <Widget>[
                   Container(
-                    width: 24,
-                    height: 24,
+                    width: ThemeProvider.margin24,
+                    height: ThemeProvider.margin24,
                     decoration: BoxDecoration(
                       color: _color,
                       borderRadius: BorderRadius.circular(
