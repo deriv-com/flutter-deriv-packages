@@ -61,7 +61,9 @@ class OptionSelector extends StatelessWidget {
               onOptionSelected(index);
             },
             child: Padding(
-              padding: const EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.only(
+                right: ThemeProvider.margin08,
+              ),
               child: _OptionSelectableItem(
                 isSelected: isSelected,
                 option: options[index],
@@ -84,7 +86,9 @@ class _OptionSelectableItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(
+          ThemeProvider.borderRadius08,
+        ),
         border: Border.all(
           color: isSelected
               ? context.theme.colors.blue
@@ -93,7 +97,10 @@ class _OptionSelectableItem extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        padding: const EdgeInsets.symmetric(
+          horizontal: ThemeProvider.margin16,
+          vertical: ThemeProvider.margin14,
+        ),
         child: Center(
           child: Text(
             option,
