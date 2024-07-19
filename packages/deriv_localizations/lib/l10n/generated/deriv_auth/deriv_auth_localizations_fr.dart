@@ -25,7 +25,7 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get actionSignUpForFree => 'Inscrivez-vous gratuitement';
 
   @override
-  String get actionLogin => 'Connexion';
+  String get actionLogin => 'Se connecter';
 
   @override
   String get labelTwoFactorAuth => 'Authentification à deux facteurs';
@@ -40,7 +40,7 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get actionProceed => 'Continuer';
 
   @override
-  String get labelLogIn => 'Connexion';
+  String get labelLogIn => 'Se connecter';
 
   @override
   String get informLoginOptions => 'Ou connectez-vous avec';

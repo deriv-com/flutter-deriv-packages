@@ -237,12 +237,15 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
     // outside.
     showModalBottomSheet(
       context: context,
-      builder: (_) => ChangeNotifierProvider<Repository<IndicatorConfig>>.value(
+      builder: (_) =>
+          ChangeNotifierProvider<AddOnsRepository<IndicatorConfig>>.value(
         value: indicatorsRepo,
-        child: ChartBottomSheet(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            child: const MobileToolsBottomSheetContent(),
+        child: SafeArea(
+          child: ChartBottomSheet(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: const MobileToolsBottomSheetContent(),
+            ),
           ),
         ),
       ),

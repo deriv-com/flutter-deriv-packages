@@ -1,6 +1,6 @@
 name: deriv_mobile_chart_wrapper
 description: A new Flutter package project.
-version: 0.0.2+3
+version: 0.0.3
 homepage:
 
 environment:
@@ -25,7 +25,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: deriv_localizations-v1.5.1
+      ref: deriv_localizations-v1.5.2
 
   deriv_ui:
     git:
@@ -56,6 +56,7 @@ flutter:
     - assets/icons/ic_bollinger_bands.svg
     - assets/icons/ic_moving_average.svg
     - assets/icons/ic_indicators_menu.svg
+    - assets/icons/ic_indicators_empty_state.svg
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages
