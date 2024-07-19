@@ -2,7 +2,7 @@ import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
 /// A widget that allows users to select an option from a list of options.
-class OptionSelector extends StatefulWidget {
+class OptionSelector extends StatelessWidget {
   const OptionSelector({
     super.key,
     required this.label,
@@ -18,24 +18,11 @@ class OptionSelector extends StatefulWidget {
   final List<String> options;
 
   /// Callback function to be called when an option is selected.
-  /// The selected option will be passed as a parameter.
-  final ValueSetter<String> onOptionSelected;
+  /// The selected index will be passed as a parameter.
+  final ValueSetter<int> onOptionSelected;
 
   /// The index of the currently selected option.
   final int selectedIndex;
-
-  @override
-  State<OptionSelector> createState() => _OptionSelectorState();
-}
-
-class _OptionSelectorState extends State<OptionSelector> {
-  late int _selectedIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedIndex = widget.selectedIndex;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +31,7 @@ class _OptionSelectorState extends State<OptionSelector> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.label,
+          label,
           style: context.theme.textStyle(
             textStyle: TextStyles.caption,
             color: context.theme.colors.general,
@@ -56,21 +43,18 @@ class _OptionSelectorState extends State<OptionSelector> {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: widget.options.length,
+            itemCount: options.length,
             itemBuilder: (context, index) {
-              final isSelected = index == _selectedIndex;
+              final isSelected = index == selectedIndex;
               return GestureDetector(
                 onTap: () {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                  widget.onOptionSelected(widget.options[index]);
+                  onOptionSelected(index);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: _OptionSelectableItem(
                     isSelected: isSelected,
-                    option: widget.options[index],
+                    option: options[index],
                   ),
                 ),
               );
