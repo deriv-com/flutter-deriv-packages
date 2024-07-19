@@ -131,6 +131,7 @@ class _MobileToolsBottomSheetContentState
             maintainState: true,
             maintainAnimation: true,
             child: SecondaryButton(
+              onPressed: indicatorsRepo.clear,
               child: Center(
                 child: Text(
                   'Delete all',
@@ -140,7 +141,6 @@ class _MobileToolsBottomSheetContentState
                   ),
                 ),
               ),
-              onPressed: () {},
             ),
           ),
         ],
