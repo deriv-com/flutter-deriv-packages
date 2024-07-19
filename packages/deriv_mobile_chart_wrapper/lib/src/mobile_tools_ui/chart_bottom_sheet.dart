@@ -1,4 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +11,7 @@ class ChartBottomSheet extends StatefulWidget {
   const ChartBottomSheet({
     required this.child,
     this.theme,
+    this.title,
     Key? key,
   }) : super(key: key);
 
@@ -18,6 +20,8 @@ class ChartBottomSheet extends StatefulWidget {
 
   /// The theme of the chart which the bottom sheet is being placed inside.
   final ChartTheme? theme;
+
+  final String? title;
 
   @override
   _ChartBottomSheetState createState() => _ChartBottomSheetState();
@@ -51,7 +55,15 @@ class _ChartBottomSheetState extends State<ChartBottomSheet> {
               child: Column(
                 children: <Widget>[
                   _buildTopHandle(),
-                  Expanded(child: widget.child),
+                  if (widget.title != null) _buildTitle(context, widget.title!),
+                  Expanded(
+                    child: Ink(
+                      color: widget.title != null
+                          ? _theme.base08Color
+                          : _theme.base07Color,
+                      child: widget.child,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -70,6 +82,18 @@ class _ChartBottomSheetState extends State<ChartBottomSheet> {
               color: _theme.base05Color,
               borderRadius: BorderRadius.circular(_theme.borderRadius04Chart),
             ),
+          ),
+        ),
+      );
+
+  Widget _buildTitle(BuildContext context, String title) => Container(
+        padding: const EdgeInsets.symmetric(vertical: Dimens.margin16),
+        alignment: Alignment.center,
+        child: Text(
+          title,
+          style: DerivThemeProvider.getTheme(context).textStyle(
+            textStyle: TextStyles.subheading,
+            color: DerivThemeProvider.getTheme(context).colors.prominent,
           ),
         ),
       );
