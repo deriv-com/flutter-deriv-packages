@@ -31,7 +31,7 @@ class OptionSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildTitle(context),
-        const SizedBox(height: 8),
+        const SizedBox(height: ThemeProvider.margin08),
         _buildItemsHorizontalList(context),
       ],
     );
