@@ -95,8 +95,6 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: TextButton(
-                                      key: effortlessPasskeysPageKeys
-                                          ?.maybeLaterTextButtonKey,
                                       onPressed: () {
                                         trackMaybeLater();
                                         onPageClosed(context);
@@ -105,6 +103,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                         context.derivPasskeysLocalizations
                                             .maybeLater
                                             .toUpperCase(),
+                                        key: effortlessPasskeysPageKeys
+                                            ?.maybeLaterTextButtonKey,
                                         style: TextStyle(
                                           color: context.theme.colors.coral,
                                         ),
@@ -237,8 +237,6 @@ class EffortlessPasskeysPage extends StatelessWidget
                                   child: Padding(
                                     padding: const EdgeInsets.all(16),
                                     child: PrimaryButton(
-                                      key: effortlessPasskeysPageKeys
-                                          ?.createPasskeyButtonKey,
                                       onPressed: () {
                                         trackCreatePasskey();
                                         context.read<DerivPasskeysBloc>().add(
@@ -247,6 +245,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                       child: Text(
                                         context.derivPasskeysLocalizations
                                             .createPasskey,
+                                        key: effortlessPasskeysPageKeys
+                                            ?.createPasskeyButtonKey,
                                         style: TextStyle(
                                           color: context.theme.colors.prominent,
                                         ),

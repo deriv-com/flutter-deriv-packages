@@ -1,6 +1,6 @@
 name: deriv_logger
 description: A debugging tool for deriv applications.
-version: 0.0.2
+version: 0.0.3
 
 environment:
   sdk: ">=3.0.2 <4.0.0"
@@ -9,6 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   logger: ^2.3.0
+  colored_json: ^1.1.2
 
 dev_dependencies:
   flutter_test:

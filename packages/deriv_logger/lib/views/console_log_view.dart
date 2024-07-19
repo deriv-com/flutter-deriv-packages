@@ -1,5 +1,6 @@
 import 'package:deriv_logger/controllers/logger_controller.dart';
 import 'package:deriv_logger/views/logger_theme.dart';
+import 'package:deriv_logger/widgets/controller_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,50 +8,49 @@ import 'package:flutter/services.dart';
 class ConsoleLogsView extends StatelessWidget {
   /// Creates a new instance of the ConsoleLogsView.
   const ConsoleLogsView({
-    required this.consoleLogsController,
     required this.theme,
     super.key,
   });
-
-  /// The console log controller.
-  final ConsoleLogController consoleLogsController;
 
   /// theme
   final DebugOverlayTheme theme;
 
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-        animation: consoleLogsController,
-        builder: (BuildContext context, _) => SafeArea(
-          child: Scaffold(
-            appBar: AppBar(title: const Text('Console logs')),
-            floatingActionButton: consoleLogsController.logs.isEmpty
-                ? const SizedBox()
-                : FloatingActionButton(
-                    onPressed: () => consoleLogsController.clearLogs(),
-                    child: const Icon(Icons.delete),
+  Widget build(BuildContext context) {
+    var controller = ControllerProvider.of(context)!.consoleLogController;
+    return ListenableBuilder(
+      listenable: controller,
+      builder: (BuildContext context, _) => SafeArea(
+        child: Scaffold(
+          appBar: AppBar(title: const Text('Console logs')),
+          floatingActionButton: controller.logs.isEmpty
+              ? const SizedBox()
+              : FloatingActionButton(
+                  onPressed: () => controller.clearLogs(),
+                  child: const Icon(Icons.delete),
+                ),
+          backgroundColor: theme.backgroundColor,
+          body: controller.logs.isEmpty
+              ? Center(
+                  child: Text(
+                    'No logs available!',
+                    style: theme.bodyTextStyle,
                   ),
-            backgroundColor: theme.backgroundColor,
-            body: consoleLogsController.logs.isEmpty
-                ? Center(
-                    child: Text(
-                      'No logs available!',
-                      style: theme.bodyTextStyle,
-                    ),
-                  )
-                : ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: consoleLogsController.logs.length,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
-                    itemBuilder: (_, int index) => ConsoleLogCard(
-                      log: consoleLogsController.logs[index],
-                      theme: theme,
-                    ),
+                )
+              : ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: controller.logs.length,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  separatorBuilder: (_, __) => const SizedBox(height: 12),
+                  itemBuilder: (_, int index) => ConsoleLogCard(
+                    log: controller.logs[index],
+                    theme: theme,
                   ),
-          ),
+                ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 /// Log item UI.
