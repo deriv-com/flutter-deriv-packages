@@ -30,38 +30,46 @@ class OptionSelector extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: context.theme.textStyle(
-            textStyle: TextStyles.caption,
-            color: context.theme.colors.general,
-          ),
-        ),
+        _buildTitle(context),
         const SizedBox(height: 8),
-        SizedBox(
-          height: 48,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: options.length,
-            itemBuilder: (context, index) {
-              final isSelected = index == selectedIndex;
-              return GestureDetector(
-                onTap: () {
-                  onOptionSelected(index);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: _OptionSelectableItem(
-                    isSelected: isSelected,
-                    option: options[index],
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
+        _buildItemsHorizontalList(context),
       ],
+    );
+  }
+
+  _buildTitle(BuildContext context) {
+    return Text(
+      label,
+      style: context.theme.textStyle(
+        textStyle: TextStyles.caption,
+        color: context.theme.colors.general,
+      ),
+    );
+  }
+
+  _buildItemsHorizontalList(BuildContext context) {
+    return SizedBox(
+      height: 48,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: options.length,
+        itemBuilder: (context, index) {
+          final isSelected = index == selectedIndex;
+          return GestureDetector(
+            onTap: () {
+              onOptionSelected(index);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: _OptionSelectableItem(
+                isSelected: isSelected,
+                option: options[index],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
