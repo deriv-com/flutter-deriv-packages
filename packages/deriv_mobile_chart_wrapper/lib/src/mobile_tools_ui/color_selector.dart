@@ -36,7 +36,6 @@ class _ColorSelectorState extends State<ColorSelector> {
           showModalBottomSheet(
             context: context,
             builder: (_) => ChartBottomSheet(
-              title: widget.title,
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,
                 child: ColoursPalettes(onColorSelected: (color) {
