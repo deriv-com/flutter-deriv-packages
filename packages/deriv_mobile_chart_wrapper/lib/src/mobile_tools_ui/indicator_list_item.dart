@@ -1,3 +1,4 @@
+import 'package:deriv_mobile_chart_wrapper/src/core_widgets/deriv_badge.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class IndicatorListItem extends StatelessWidget {
   const IndicatorListItem({
     required this.iconAssetPath,
     required this.title,
+    required this.onTap,
     required this.onInfoIconTapped,
     this.count = 0,
     super.key,
@@ -20,6 +22,9 @@ class IndicatorListItem extends StatelessWidget {
   /// The title of the indicator.
   final String title;
 
+  /// The callback which will be called when the indicator item is tapped.
+  final VoidCallback onTap;
+
   /// The callback which will be called when the info icon is tapped.
   final VoidCallback onInfoIconTapped;
 
@@ -30,20 +35,26 @@ class IndicatorListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(ThemeProvider.margin16),
-      child: Row(
-        children: [
-          _buildIndicatorIcon(),
-          const SizedBox(width: Dimens.margin08),
-          _buildIndicatorTitle(context),
-          const Spacer(),
-          IconButton(
-            icon: const Icon(Icons.info_outline),
-            color: context.themeProvider.colors.prominent,
-            onPressed: onInfoIconTapped,
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.translucent,
+      child: Padding(
+        padding: const EdgeInsets.all(ThemeProvider.margin16),
+        child: Row(
+          children: [
+            _buildIndicatorIcon(),
+            const SizedBox(width: Dimens.margin08),
+            _buildIndicatorTitle(context),
+            const SizedBox(width: Dimens.margin08),
+            _buildIndicatorBadge(count),
+            const Spacer(),
+            IconButton(
+              icon: const Icon(Icons.info_outline),
+              color: context.themeProvider.colors.prominent,
+              onPressed: onInfoIconTapped,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -62,4 +73,11 @@ class IndicatorListItem extends StatelessWidget {
           color: context.themeProvider.colors.general,
         ),
       );
+
+  Widget _buildIndicatorBadge(int count) {
+    return DerivBadge(
+      count: count,
+      enabled: count > 0,
+    );
+  }
 }
