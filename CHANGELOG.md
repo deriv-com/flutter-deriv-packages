@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_logger` - `v0.0.3`](#deriv_logger---v003)
+ - [`deriv_mobile_chart_wrapper` - `v0.0.4`](#deriv_mobile_chart_wrapper---v004)
+
+---
+
+#### `deriv_logger` - `v0.0.3`
+
+ - **FEAT**(deriv_logger): [DERG-2590] Add ability to inspect incoming and outgoing network payloads in UI ([#685](https://github.com/regentmarkets/flutter-deriv-packages/issues/685)). ([4cd38b2a](https://github.com/regentmarkets/flutter-deriv-packages/commit/4cd38b2a34288d049333c7cf0cbeb41b671ebc7c))
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.4`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#686](https://github.com/regentmarkets/flutter-deriv-packages/issues/686)). ([a0a6df21](https://github.com/regentmarkets/flutter-deriv-packages/commit/a0a6df21cbc6681b923ec3e060752de20ddad32b))
+ - **FIX**(deriv_mobile_chart_wrapper): update readme file ([#672](https://github.com/regentmarkets/flutter-deriv-packages/issues/672)). ([13e6b3f3](https://github.com/regentmarkets/flutter-deriv-packages/commit/13e6b3f35ba863098fd9785daaa8ccc7cb23b388))
+ - **FEAT**(deriv_mobile_chart_wrapper): Add Indicator bottom sheet and categories_ ([#683](https://github.com/regentmarkets/flutter-deriv-packages/issues/683)). ([a32c7ed0](https://github.com/regentmarkets/flutter-deriv-packages/commit/a32c7ed0f61e1c9965cc7d92f12e64eacb0faf52))
+
+
 ## 2024-07-18
 
 ### Changes
