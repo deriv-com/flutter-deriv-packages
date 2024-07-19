@@ -43,6 +43,7 @@ class _ColorSelectorState extends State<ColorSelector> {
                     _color = color;
                     widget.onColorChange?.call(color);
                   });
+                  Navigator.pop(context);
                 }),
               ),
             ),
