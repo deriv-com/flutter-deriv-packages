@@ -158,11 +158,16 @@ class _MobileToolsBottomSheetContentState
           isEnabled: !isLimitReached,
           child: IndicatorListItem(
             iconAssetPath: indicator.icon,
-            title: indicator.title,
+            title: '${indicator.config.title}'
+                ' ${indicator.config.number > 0 ? indicator.config.number : ''}',
             count: _getIndicatorCount(indicator),
             onInfoIconTapped: () {},
             onTap: () {
-              indicatorsRepo.add(indicator.config);
+              indicatorsRepo.add(
+                indicator.config.copyWith(
+                  number: indicatorsRepo.getNumberForNewAddOn(indicator.config),
+                ),
+              );
             },
           ),
         );
