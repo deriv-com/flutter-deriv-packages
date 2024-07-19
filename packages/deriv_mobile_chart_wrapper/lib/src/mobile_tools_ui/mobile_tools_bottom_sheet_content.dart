@@ -158,8 +158,7 @@ class _MobileToolsBottomSheetContentState
           isEnabled: !isLimitReached,
           child: IndicatorListItem(
             iconAssetPath: indicator.icon,
-            title: '${indicator.config.title}'
-                ' ${indicator.config.number > 0 ? indicator.config.number : ''}',
+            title: indicator.title,
             count: _getIndicatorCount(indicator),
             onInfoIconTapped: () {},
             onTap: () {
@@ -208,9 +207,9 @@ class _MobileToolsBottomSheetContentState
                     indicatorsRepo.items[index];
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
-                  title: getIndicatorAbbreviation(indicatorConfig),
-                  // TODO(Ramin): use indicatorConfig.configSummary here.
-                  subtitle: '',
+                  title: '${indicatorConfig.shortTitle}'
+                      ' ${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                  subtitle: '(${indicatorConfig.configSummary})',
                   onTapSetting: () {},
                   onTapDelete: () => indicatorsRepo.removeAt(index),
                 );
