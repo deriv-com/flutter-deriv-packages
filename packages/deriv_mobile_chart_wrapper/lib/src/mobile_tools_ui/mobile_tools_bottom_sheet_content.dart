@@ -1,6 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
-import 'package:deriv_mobile_chart_wrapper/src/core_widgets/core_widgets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
@@ -14,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../core_widgets/info_banner.dart';
 import '../core_widgets/no_glow_scroll_behavior.dart';
 
 /// Bottom sheet content to show the list of support tools (indicators/ drawing
