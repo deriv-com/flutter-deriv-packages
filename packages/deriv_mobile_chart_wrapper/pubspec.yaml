@@ -12,8 +12,8 @@ dependencies:
 
   deriv_chart:
     git:
-      url: git@github.com:ramin-deriv/flutter-chart.git
-      ref: ramin/test_different_impl_bottom_indicators_for_mobile_3
+      url: git@github.com:regentmarkets/flutter-chart.git
+      ref: dev
 
   deriv_theme:
     git:
