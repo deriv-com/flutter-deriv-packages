@@ -1,11 +1,14 @@
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
+import 'chart_bottom_sheet.dart';
+import 'colours_palettes.dart';
+
 class ColorSelector extends StatelessWidget {
   const ColorSelector({
     required this.title,
     required this.color,
-    this.onTap,
+    this.onColorChanged,
     super.key,
   });
 
@@ -13,11 +16,23 @@ class ColorSelector extends StatelessWidget {
 
   final Color color;
 
-  final Function()? onTap;
+  final Function(Color)? onColorChanged;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
+        onTap: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (_) => ChartBottomSheet(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: ColoursPalettes(onColorSelected: (color) {
+                  onColorChanged?.call(color);
+                }),
+              ),
+            ),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
