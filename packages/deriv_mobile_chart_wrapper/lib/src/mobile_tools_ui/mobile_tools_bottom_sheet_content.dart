@@ -207,8 +207,8 @@ class _MobileToolsBottomSheetContentState
                     indicatorsRepo.items[index];
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
-                  title: '${indicatorConfig.shortTitle}'
-                      ' ${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                  title: '${getIndicatorAbbreviation(indicatorConfig)} '
+                      '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
                   subtitle: '(${indicatorConfig.configSummary})',
                   onTapSetting: () {},
                   onTapDelete: () => indicatorsRepo.removeAt(index),
