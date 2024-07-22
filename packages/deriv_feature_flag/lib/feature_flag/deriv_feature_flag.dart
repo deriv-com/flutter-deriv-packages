@@ -10,10 +10,11 @@ class DerivFeatureFlag {
       featureFlagConfig: featureFlagConfig,
     );
     _featureFlagRepository = FeatureFlagRepository(derivGrowthBook);
+    _initialize();
   }
 
   /// Initializes the FeatureFlag service for the whole app.
-  Future<void> initialize() async {
+  Future<void> _initialize() async {
     await _featureFlagRepository.setup();
   }
 
