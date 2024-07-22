@@ -1,13 +1,15 @@
 export 'app_setting_gesture_detector.dart';
+export 'badge/deriv_badge.dart';
+export 'badge/picture_badge.dart';
 export 'base_text_field.dart';
 export 'custom_alert_dialog.dart';
 export 'custom_checkbox.dart';
 export 'custom_image.dart';
 export 'fullscreen_message.dart';
+export 'info_banner.dart';
 export 'info_icon_button.dart';
 export 'interaction.dart';
 export 'loading_indicator.dart';
-export 'picture_badge.dart';
 export 'popup_alert_dialog.dart';
 export 'primary_button.dart';
 export 'secondary_button.dart';
