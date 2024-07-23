@@ -1,8 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'custom_draggable_sheet.dart';
 
 /// Bottom sheet container used in chart library.
 class ChartBottomSheet extends StatefulWidget {
@@ -11,6 +10,13 @@ class ChartBottomSheet extends StatefulWidget {
     required this.child,
     this.theme,
     Key? key,
+    required this.title,
+    this.showBackButton = false,
+    this.hasActionButton = false,
+    this.actionButtonLabel,
+    this.onActionButtonPressed,
+    this.padding,
+    this.height,
   }) : super(key: key);
 
   /// Body of bottom sheet container.
@@ -18,6 +24,27 @@ class ChartBottomSheet extends StatefulWidget {
 
   /// The theme of the chart which the bottom sheet is being placed inside.
   final ChartTheme? theme;
+
+  /// Title of the bottom sheet.
+  final String title;
+
+  /// Whether to show back button in the header.
+  final bool showBackButton;
+
+  /// Whether to show action button at the bottom of the sheet.
+  final bool hasActionButton;
+
+  /// Label of the action button.
+  final String? actionButtonLabel;
+
+  /// Callback when the action button is pressed.
+  final VoidCallback? onActionButtonPressed;
+
+  /// Height of the bottom sheet.
+  final double? height;
+
+  /// Padding of the bottom sheet content.
+  final EdgeInsetsGeometry? padding;
 
   @override
   _ChartBottomSheetState createState() => _ChartBottomSheetState();
@@ -29,7 +56,6 @@ class _ChartBottomSheetState extends State<ChartBottomSheet> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
     _theme = widget.theme ??
         (Theme.of(context).brightness == Brightness.dark
             ? ChartDefaultDarkTheme()
@@ -37,40 +63,17 @@ class _ChartBottomSheetState extends State<ChartBottomSheet> {
   }
 
   @override
-  Widget build(BuildContext context) => CustomDraggableSheet(
-        child: Provider<ChartTheme>.value(
-          value: _theme,
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(_theme.borderRadius24Chart),
-              topRight: Radius.circular(_theme.borderRadius24Chart),
-            ),
-            child: Material(
-              elevation: 8,
-              color: _theme.base07Color,
-              child: Column(
-                children: <Widget>[
-                  _buildTopHandle(),
-                  Expanded(child: widget.child),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-
-  Widget _buildTopHandle() => Container(
-        padding: EdgeInsets.symmetric(vertical: _theme.margin08Chart),
-        width: double.infinity,
-        child: Center(
-          child: Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: _theme.base05Color,
-              borderRadius: BorderRadius.circular(_theme.borderRadius04Chart),
-            ),
-          ),
+  Widget build(BuildContext context) => Provider<ChartTheme>.value(
+        value: _theme,
+        child: DerivBottomSheet(
+          title: widget.title,
+          color: _theme.base07Color,
+          showBackButton: widget.showBackButton,
+          hasActionButton: widget.hasActionButton,
+          actionButtonLabel: widget.actionButtonLabel,
+          onActionButtonPressed: widget.onActionButtonPressed,
+          padding: widget.padding,
+          child: widget.child,
         ),
       );
 }

@@ -7,6 +7,7 @@ class IndicatorItemModel {
   /// Initializes an indicator item model.
   const IndicatorItemModel({
     required this.title,
+    required this.description,
     required this.icon,
     required this.category,
     required this.config,
@@ -14,6 +15,9 @@ class IndicatorItemModel {
 
   /// The title.
   final String title;
+
+  /// The description of the indicator.
+  final String description;
 
   /// The path to the SVG icon.
   final String icon;

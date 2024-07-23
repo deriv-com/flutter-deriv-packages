@@ -1,11 +1,10 @@
-import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/core_widgets/core_widgets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -23,33 +22,6 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
   /// Initializes the bottom sheet content.
   const MobileToolsBottomSheetContent({super.key});
 
-  static const List<IndicatorItemModel> indicators = [
-    IndicatorItemModel(
-      category: IndicatorCategory.momentum,
-      title: 'MACD',
-      icon: macdIcon,
-      config: MACDIndicatorConfig(),
-    ),
-    IndicatorItemModel(
-      category: IndicatorCategory.momentum,
-      title: 'Relative Strength Index (RSI)',
-      icon: rsiIcon,
-      config: RSIIndicatorConfig(),
-    ),
-    IndicatorItemModel(
-      category: IndicatorCategory.volatility,
-      title: 'Bollinger Bands',
-      icon: bollingerBandsIcon,
-      config: BollingerBandsIndicatorConfig(),
-    ),
-    IndicatorItemModel(
-      category: IndicatorCategory.movingAverages,
-      title: 'Moving Average',
-      icon: movingAverageIcon,
-      config: MAIndicatorConfig(),
-    ),
-  ];
-
   @override
   State<MobileToolsBottomSheetContent> createState() =>
       _MobileToolsBottomSheetContentState();
@@ -58,19 +30,6 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
 class _MobileToolsBottomSheetContentState
     extends State<MobileToolsBottomSheetContent> {
   IndicatorTabLabel _selectedChip = IndicatorTabLabel.all;
-
-  List<IndicatorItemModel> get filteredIndicators {
-    return _selectedChip == IndicatorTabLabel.all
-        ? MobileToolsBottomSheetContent.indicators
-        : MobileToolsBottomSheetContent.indicators
-            .where(
-              // TODO(Ramin): Check if we can only have one enum to use for
-              //  labels and indicators' model category.
-              (indicator) =>
-                  indicator.category == _selectedChip.toIndicatorCategory,
-            )
-            .toList();
-  }
 
   /// Returns `true` if the limit of active indicators is reached.
   bool get isLimitReached => indicatorsRepo.items.length >= 3;
@@ -84,30 +43,77 @@ class _MobileToolsBottomSheetContentState
   }
 
   @override
-  Widget build(BuildContext context) => Column(
-        children: <Widget>[
-          _buildHeader(context),
-          Expanded(
-            child: Ink(
-              color: context.theme.colors.primary,
-              child: Column(
-                children: [
-                  const SizedBox(height: ThemeProvider.margin16),
-                  _buildChipsList(),
-                  const SizedBox(height: ThemeProvider.margin16),
-                  if (isLimitReached &&
-                      _selectedChip != IndicatorTabLabel.active)
-                    _buildLimitInfoBanner(),
-                  Expanded(
-                      child: _selectedChip == IndicatorTabLabel.active
-                          ? _buildIndicatorsActiveTab()
-                          : _buildIndicatorsList()),
-                ],
-              ),
+  Widget build(BuildContext context) {
+    List<IndicatorItemModel> indicators = [
+      IndicatorItemModel(
+        category: IndicatorCategory.momentum,
+        title: context.mobileChartWrapperLocalizations.labelMACD,
+        icon: macdIcon,
+        config: const MACDIndicatorConfig(),
+        description: context.mobileChartWrapperLocalizations.infoMACD,
+      ),
+      IndicatorItemModel(
+        category: IndicatorCategory.momentum,
+        title:
+            context.mobileChartWrapperLocalizations.labelRelativeStrengthIndex,
+        icon: rsiIcon,
+        config: const RSIIndicatorConfig(),
+        description: context.mobileChartWrapperLocalizations.infoRSI,
+      ),
+      IndicatorItemModel(
+        category: IndicatorCategory.volatility,
+        title: context.mobileChartWrapperLocalizations.labelBollingerBands,
+        icon: bollingerBandsIcon,
+        config: const BollingerBandsIndicatorConfig(),
+        description: context.mobileChartWrapperLocalizations.infoBB,
+      ),
+      IndicatorItemModel(
+        category: IndicatorCategory.movingAverages,
+        title: context.mobileChartWrapperLocalizations.labelMovingAverage,
+        icon: movingAverageIcon,
+        config: const MAIndicatorConfig(),
+        description: context.mobileChartWrapperLocalizations.infoMA,
+      ),
+    ];
+
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: Ink(
+            color: context.theme.colors.primary,
+            child: Column(
+              children: [
+                const SizedBox(height: ThemeProvider.margin16),
+                _buildChipsList(),
+                const SizedBox(height: ThemeProvider.margin16),
+                if (isLimitReached && _selectedChip != IndicatorTabLabel.active)
+                  _buildLimitInfoBanner(),
+                Expanded(
+                    child: _selectedChip == IndicatorTabLabel.active
+                        ? _buildIndicatorsActiveTab()
+                        : _buildIndicatorsList(
+                            getFilteredIndicators(indicators))),
+              ],
             ),
           ),
-        ],
-      );
+        ),
+      ],
+    );
+  }
+
+  List<IndicatorItemModel> getFilteredIndicators(
+      List<IndicatorItemModel> indicators) {
+    return _selectedChip == IndicatorTabLabel.all
+        ? indicators
+        : indicators
+            .where(
+              //TODO(Ramin): Check if we can only have one enum to use for
+              //  labels and indicators' model category.
+              (indicator) =>
+                  indicator.category == _selectedChip.toIndicatorCategory,
+            )
+            .toList();
+  }
 
   Widget _buildActiveTabHeader() {
     return Padding(
@@ -117,7 +123,7 @@ class _MobileToolsBottomSheetContentState
       child: Row(
         children: [
           Text(
-            'Up to 3 active indicators allowed.',
+            context.mobileChartWrapperLocalizations.infoUpto3indicatorsAllowed,
             style: context.themeProvider.textStyle(
               textStyle: TextStyles.caption,
               color: context.themeProvider.colors.general,
@@ -133,7 +139,7 @@ class _MobileToolsBottomSheetContentState
             child: SecondaryButton(
               child: Center(
                 child: Text(
-                  'Delete all',
+                  context.mobileChartWrapperLocalizations.labelDeleteAll,
                   style: context.themeProvider.textStyle(
                     textStyle: TextStyles.caption,
                     color: context.themeProvider.colors.prominent,
@@ -148,7 +154,7 @@ class _MobileToolsBottomSheetContentState
     );
   }
 
-  Widget _buildIndicatorsList() {
+  Widget _buildIndicatorsList(List<IndicatorItemModel> filteredIndicators) {
     return ListView.builder(
       itemCount: filteredIndicators.length,
       itemBuilder: (_, index) {
@@ -160,7 +166,21 @@ class _MobileToolsBottomSheetContentState
             iconAssetPath: indicator.icon,
             title: indicator.title,
             count: _getIndicatorCount(indicator),
-            onInfoIconTapped: () {},
+            onInfoIconTapped: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => ChartBottomSheet(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  title: indicator.title,
+                  showBackButton: true,
+                  hasActionButton: true,
+                  actionButtonLabel: context.mobileChartWrapperLocalizations
+                      .infoAddSelectedIndicator(indicator.title),
+                  onActionButtonPressed: () {},
+                  child: Text(indicator.description),
+                ),
+              );
+            },
             onTap: () {
               indicatorsRepo.add(indicator.config);
             },
@@ -233,7 +253,8 @@ class _MobileToolsBottomSheetContentState
                 ),
                 const SizedBox(height: ThemeProvider.margin08),
                 Text(
-                  'You have no active indicators yet.',
+                  context
+                      .mobileChartWrapperLocalizations.infoNoActiveIndicators,
                   style: context.themeProvider.textStyle(
                     textStyle: TextStyles.body1,
                     color: const Color(0xFF999999),
@@ -248,7 +269,7 @@ class _MobileToolsBottomSheetContentState
           padding: const EdgeInsets.all(ThemeProvider.margin16),
           child: PrimaryButton(
             child: Text(
-              'Add indicator',
+              context.mobileChartWrapperLocalizations.infoAddIndicator,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
                 color: context.theme.colors.prominent,
@@ -266,8 +287,9 @@ class _MobileToolsBottomSheetContentState
   }
 
   Widget _buildLimitInfoBanner() {
-    return const InfoBanner(
-      message: 'You\'ve added the maximum number of active indicators.',
+    return InfoBanner(
+      message: context
+          .mobileChartWrapperLocalizations.infoMaximumActiveIndicatorsAdded,
     );
   }
 
@@ -320,16 +342,4 @@ class _MobileToolsBottomSheetContentState
 
   void _onChipTapped(IndicatorTabLabel? value, String? title) =>
       setState(() => _selectedChip = value ?? IndicatorTabLabel.all);
-
-  Widget _buildHeader(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(vertical: Dimens.margin16),
-        alignment: Alignment.center,
-        child: Text(
-          context.mobileChartWrapperLocalizations.labelIndicators,
-          style: DerivThemeProvider.getTheme(context).textStyle(
-            textStyle: TextStyles.subheading,
-            color: DerivThemeProvider.getTheme(context).colors.prominent,
-          ),
-        ),
-      );
 }

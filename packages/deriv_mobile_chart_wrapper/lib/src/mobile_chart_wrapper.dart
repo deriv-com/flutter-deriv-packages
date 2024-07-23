@@ -1,4 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -242,10 +243,9 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         value: indicatorsRepo,
         child: SafeArea(
           child: ChartBottomSheet(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
-              child: const MobileToolsBottomSheetContent(),
-            ),
+            title: context.mobileChartWrapperLocalizations.labelIndicators,
+            padding: EdgeInsets.zero,
+            child: const MobileToolsBottomSheetContent(),
           ),
         ),
       ),
