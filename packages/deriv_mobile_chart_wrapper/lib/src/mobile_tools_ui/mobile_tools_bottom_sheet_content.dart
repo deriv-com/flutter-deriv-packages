@@ -177,7 +177,17 @@ class _MobileToolsBottomSheetContentState
                   actionButtonLabel: context.mobileChartWrapperLocalizations
                       .infoAddSelectedIndicator(indicator.title),
                   onActionButtonPressed: () {},
-                  child: Text(indicator.description),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: ThemeProvider.margin16),
+                    child: Text(
+                      indicator.description,
+                      style: context.theme.textStyle(
+                        textStyle: TextStyles.body1,
+                        color: context.theme.colors.general,
+                      ),
+                    ),
+                  ),
                 ),
               );
             },
