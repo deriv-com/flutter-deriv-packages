@@ -6,6 +6,7 @@ export 'custom_alert_dialog.dart';
 export 'custom_checkbox.dart';
 export 'custom_image.dart';
 export 'fullscreen_message.dart';
+export 'glowing_container.dart';
 export 'info_banner.dart';
 export 'info_icon_button.dart';
 export 'interaction.dart';
