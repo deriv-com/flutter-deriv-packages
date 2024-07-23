@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 
 import '../core_widgets/info_banner.dart';
 import '../core_widgets/no_glow_scroll_behavior.dart';
+import 'indicator_description_bottom_sheet.dart';
 
 /// Bottom sheet content to show the list of support tools (indicators/ drawing
 /// tools) for the mobile version.
@@ -48,6 +49,7 @@ class _MobileToolsBottomSheetContentState
       IndicatorItemModel(
         category: IndicatorCategory.momentum,
         title: context.mobileChartWrapperLocalizations.labelMACD,
+        subtitle: context.mobileChartWrapperLocalizations.labelMACD,
         icon: macdIcon,
         config: const MACDIndicatorConfig(),
         description: context.mobileChartWrapperLocalizations.infoMACD,
@@ -56,6 +58,7 @@ class _MobileToolsBottomSheetContentState
         category: IndicatorCategory.momentum,
         title:
             context.mobileChartWrapperLocalizations.labelRelativeStrengthIndex,
+        subtitle: context.mobileChartWrapperLocalizations.labelRSI,
         icon: rsiIcon,
         config: const RSIIndicatorConfig(),
         description: context.mobileChartWrapperLocalizations.infoRSI,
@@ -63,6 +66,7 @@ class _MobileToolsBottomSheetContentState
       IndicatorItemModel(
         category: IndicatorCategory.volatility,
         title: context.mobileChartWrapperLocalizations.labelBollingerBands,
+        subtitle: context.mobileChartWrapperLocalizations.labelBB,
         icon: bollingerBandsIcon,
         config: const BollingerBandsIndicatorConfig(),
         description: context.mobileChartWrapperLocalizations.infoBB,
@@ -70,6 +74,7 @@ class _MobileToolsBottomSheetContentState
       IndicatorItemModel(
         category: IndicatorCategory.movingAverages,
         title: context.mobileChartWrapperLocalizations.labelMovingAverage,
+        subtitle: context.mobileChartWrapperLocalizations.labelMA,
         icon: movingAverageIcon,
         config: const MAIndicatorConfig(),
         description: context.mobileChartWrapperLocalizations.infoMA,
@@ -169,25 +174,13 @@ class _MobileToolsBottomSheetContentState
             onInfoIconTapped: () {
               showModalBottomSheet(
                 context: context,
-                builder: (context) => ChartBottomSheet(
-                  height: MediaQuery.of(context).size.height * 0.6,
-                  title: indicator.title,
-                  showBackButton: true,
-                  hasActionButton: true,
-                  actionButtonLabel: context.mobileChartWrapperLocalizations
-                      .infoAddSelectedIndicator(indicator.title),
-                  onActionButtonPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: ThemeProvider.margin16),
-                    child: Text(
-                      indicator.description,
-                      style: context.theme.textStyle(
-                        textStyle: TextStyles.body1,
-                        color: context.theme.colors.general,
-                      ),
-                    ),
-                  ),
+                barrierColor: Colors.transparent,
+                builder: (context) => IndicatorBottomSheet(
+                  indicator: indicator,
+                  onAddIndicatorPressed: () {
+                    indicatorsRepo.add(indicator.config);
+                    Navigator.of(context).pop();
+                  },
                 ),
               );
             },

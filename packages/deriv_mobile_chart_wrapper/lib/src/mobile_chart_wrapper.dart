@@ -244,7 +244,6 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: SafeArea(
           child: ChartBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelIndicators,
-            padding: EdgeInsets.zero,
             child: const MobileToolsBottomSheetContent(),
           ),
         ),

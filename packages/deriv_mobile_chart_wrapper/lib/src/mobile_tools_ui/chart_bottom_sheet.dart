@@ -15,7 +15,6 @@ class ChartBottomSheet extends StatefulWidget {
     this.hasActionButton = false,
     this.actionButtonLabel,
     this.onActionButtonPressed,
-    this.padding,
     this.height,
   }) : super(key: key);
 
@@ -42,9 +41,6 @@ class ChartBottomSheet extends StatefulWidget {
 
   /// Height of the bottom sheet.
   final double? height;
-
-  /// Padding of the bottom sheet content.
-  final EdgeInsetsGeometry? padding;
 
   @override
   _ChartBottomSheetState createState() => _ChartBottomSheetState();
@@ -73,7 +69,6 @@ class _ChartBottomSheetState extends State<ChartBottomSheet> {
           hasActionButton: widget.hasActionButton,
           actionButtonLabel: widget.actionButtonLabel,
           onActionButtonPressed: widget.onActionButtonPressed,
-          padding: widget.padding,
           child: widget.child,
         ),
       );

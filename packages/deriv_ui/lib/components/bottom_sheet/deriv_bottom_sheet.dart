@@ -14,7 +14,6 @@ class DerivBottomSheet extends StatefulWidget {
     this.hasActionButton = false,
     this.actionButtonLabel,
     this.onActionButtonPressed,
-    this.padding,
     this.height,
     this.color,
   }) : super(key: key);
@@ -39,9 +38,6 @@ class DerivBottomSheet extends StatefulWidget {
 
   /// Height of the bottom sheet.
   final double? height;
-
-  /// Padding of the bottom sheet content.
-  final EdgeInsetsGeometry? padding;
 
   /// Color of the bottom sheet.
   final Color? color;
@@ -69,22 +65,16 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
             child: Material(
               elevation: 8,
               color: widget.color ?? context.theme.colors.secondary,
-              child: Padding(
-                padding: widget.padding ??
-                    const EdgeInsets.symmetric(
-                      horizontal: ThemeProvider.margin16,
-                    ),
-                child: Column(
-                  children: <Widget>[
-                    _buildTopHandle(),
-                    _buildHeader(
-                      context: context,
-                      title: widget.title,
-                    ),
-                    Expanded(child: widget.child),
-                    if (widget.hasActionButton) _buildActionButton(context)
-                  ],
-                ),
+              child: Column(
+                children: <Widget>[
+                  _buildTopHandle(),
+                  _buildHeader(
+                    context: context,
+                    title: widget.title,
+                  ),
+                  Expanded(child: widget.child),
+                  if (widget.hasActionButton) _buildActionButton(context)
+                ],
               ),
             ),
           ),
@@ -110,6 +100,7 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
       Container(
         padding: const EdgeInsets.symmetric(
           vertical: ThemeProvider.margin16,
+          horizontal: ThemeProvider.margin16,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -139,6 +130,7 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
   Widget _buildActionButton(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(
           vertical: ThemeProvider.margin16,
+          horizontal: ThemeProvider.margin20,
         ),
         child: PrimaryButton(
           onPressed: widget.onActionButtonPressed,
