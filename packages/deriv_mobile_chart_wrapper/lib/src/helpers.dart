@@ -1,19 +1,21 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
+import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:flutter/material.dart';
 
 /// Returns abbreviation name of the indicator for the given [config].
-String getIndicatorAbbreviation(IndicatorConfig config) {
+String getIndicatorAbbreviation(IndicatorConfig config, BuildContext context) {
   // TODO(Ramin): use config.shortTitle after updating to the new version of
   // chart package.
   switch (config.runtimeType) {
     case MACDIndicatorConfig:
-      return 'MACD';
+      return context.mobileChartWrapperLocalizations.labelMACD;
     case RSIIndicatorConfig:
-      return 'RSI';
+      return context.mobileChartWrapperLocalizations.labelRSI;
     case BollingerBandsIndicatorConfig:
-      return 'BB';
+      return context.mobileChartWrapperLocalizations.labelBB;
     case MAIndicatorConfig:
-      return 'MA';
+      return context.mobileChartWrapperLocalizations.labelMA;
     default:
       return '';
   }
