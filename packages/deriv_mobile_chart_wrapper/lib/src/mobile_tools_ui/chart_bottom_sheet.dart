@@ -67,6 +67,7 @@ class _ChartBottomSheetState extends State<ChartBottomSheet> {
         value: _theme,
         child: DerivBottomSheet(
           title: widget.title,
+          height: widget.height,
           color: _theme.base07Color,
           showBackButton: widget.showBackButton,
           hasActionButton: widget.hasActionButton,
