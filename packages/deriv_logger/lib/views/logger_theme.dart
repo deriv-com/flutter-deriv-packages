@@ -20,7 +20,7 @@ class DebugOverlayTheme {
       fontFamily: 'Monospace',
     ),
     this.subtitleTextStyle = const TextStyle(
-      color: Colors.black,
+      color: Colors.black54,
       fontSize: 12,
       fontWeight: FontWeight.w400,
       fontFamily: 'Monospace',

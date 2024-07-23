@@ -77,13 +77,6 @@ jobs:
         run: bash readme.sh
         working-directory: ./scripts
 
-      - name: Create Pull Request on updated changelog and pubspec file.
-        uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
-        with:
-          token: ${{ secrets.PAT }}
-          title: "chore(version): bump version and update changelog"
-          base: master
-
       - name: Send Slack Notification
         uses: ./.github/actions/send_slack_notifications
         if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
@@ -91,3 +84,10 @@ jobs:
           SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
           PR_TITLE: ${{ github.event.pull_request.title }}
           TAGS: ${{ steps.new-tags.outputs.NEW_TAGS }}
+
+      - name: Create Pull Request on updated changelog and pubspec file.
+        uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
+        with:
+          token: ${{ secrets.PAT }}
+          title: "chore(version): bump version and update changelog"
+          base: master
