@@ -30,9 +30,9 @@ dependencies:
 
   deriv_ui:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:emad-deriv/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.8+1
+      ref: emad/move-widgets-to-deriv-ui
 
   deriv_http_client:
     git:
