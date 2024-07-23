@@ -55,9 +55,9 @@ dependencies:
 
   deriv_passkeys:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:emad-deriv/flutter-deriv-packages.git
       path: packages/deriv_passkeys
-      ref: deriv_passkeys-v0.0.3+7
+      ref: emad/move-widgets-to-deriv-ui
 
   deriv_language_selector:
     git:
