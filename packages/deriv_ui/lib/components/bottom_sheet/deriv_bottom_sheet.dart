@@ -114,7 +114,12 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            if (widget.showBackButton) const Icon(Icons.arrow_back_outlined),
+            if (widget.showBackButton)
+              GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: const Icon(
+                    Icons.arrow_back_outlined,
+                  )),
             Expanded(
               child: Text(
                 title,
