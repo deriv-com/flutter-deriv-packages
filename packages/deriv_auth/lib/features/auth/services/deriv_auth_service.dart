@@ -27,6 +27,7 @@ class DerivAuthService extends BaseAuthService {
     required GetTokensRequestModel request,
     String? userAgent,
     Function? onInvalidJwtToken,
+    bool? useMultiToken,
   }) async {
     try {
       List<String> _tokenList = <String>[];
@@ -42,24 +43,42 @@ class DerivAuthService extends BaseAuthService {
       final List<AccountModel> _supportedAccounts =
           _filterSupportedAccounts(_response.accounts);
 
-      if (_supportedAccounts.isNotEmpty) {
-        _tokenList = _supportedAccounts
-            .where((AccountModel account) => account.token != null)
-            .map((AccountModel account) => account.token!)
-            .toList();
+      if (useMultiToken == null || useMultiToken == false) {
+        final String? _defaultAccountToken = _supportedAccounts.first.token;
 
-        return login(
-          'MULTI',
-          tokenList: _tokenList.isEmpty ? null : _tokenList,
-          accounts: _supportedAccounts,
-          signupProvider: request.signupProvider,
-          refreshToken: _response.refreshToken,
-        );
+        if (_defaultAccountToken != null) {
+          return login(
+            _defaultAccountToken,
+            accounts: _supportedAccounts,
+            signupProvider: request.signupProvider,
+            refreshToken: _response.refreshToken,
+          );
+        } else {
+          throw DerivAuthException(
+            message: accountUnavailableError,
+            type: AuthErrorType.accountUnavailable,
+          );
+        }
       } else {
-        throw DerivAuthException(
-          message: accountUnavailableError,
-          type: AuthErrorType.accountUnavailable,
-        );
+        if (_supportedAccounts.isNotEmpty) {
+          _tokenList = _supportedAccounts
+              .where((AccountModel account) => account.token != null)
+              .map((AccountModel account) => account.token!)
+              .toList();
+
+          return login(
+            'MULTI',
+            tokenList: _tokenList.isEmpty ? null : _tokenList,
+            accounts: _supportedAccounts,
+            signupProvider: request.signupProvider,
+            refreshToken: _response.refreshToken,
+          );
+        } else {
+          throw DerivAuthException(
+            message: accountUnavailableError,
+            type: AuthErrorType.accountUnavailable,
+          );
+        }
       }
     } on HTTPClientException catch (error) {
       if (error.errorCode == invalidJwtTokenError) {

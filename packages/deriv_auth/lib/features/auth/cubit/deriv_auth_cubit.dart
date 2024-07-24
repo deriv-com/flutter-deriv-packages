@@ -42,6 +42,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required String password,
     String? otp,
     String? userAgent,
+    bool? useMultiToken,
   }) async {
     trackLoginWithEmailAndPassword();
 
@@ -56,6 +57,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       ),
       isSocialLogin: false,
       userAgent: userAgent,
+      useMultiToken: useMultiToken,
     );
   }
 
@@ -65,6 +67,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     final String? signupProvider,
     String? otp,
     String? userAgent,
+    bool? useMultiToken,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -77,6 +80,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       ),
       isSocialLogin: true,
       userAgent: userAgent,
+      useMultiToken: useMultiToken,
     );
   }
 
@@ -85,6 +89,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required SocialAuthDto socialAuthDto,
     String? otp,
     String? userAgent,
+    bool? useMultiToken,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -96,6 +101,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       ),
       isSocialLogin: true,
       userAgent: userAgent,
+      useMultiToken: useMultiToken,
     );
   }
 
@@ -134,11 +140,13 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required GetTokensRequestModel request,
     required bool isSocialLogin,
     String? userAgent,
+    bool? useMultiToken,
   }) async {
     try {
       final AuthorizeEntity authorizeEntity = await authService.onLoginRequest(
         request: request,
         userAgent: userAgent,
+        useMultiToken: useMultiToken,
       );
 
       final LandingCompanyEntity landingCompanyEntity =

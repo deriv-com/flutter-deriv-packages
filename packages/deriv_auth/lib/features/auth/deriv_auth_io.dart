@@ -9,6 +9,7 @@ abstract class DerivAuthIO {
     required String email,
     required String password,
     String? otp,
+    bool? useMultiToken,
   });
 
   /// Social login/signup with [oneAllConnectionToken] using one-all service.
@@ -18,12 +19,14 @@ abstract class DerivAuthIO {
   Future<void> socialLogin({
     required String oneAllConnectionToken,
     String? otp,
+    bool? useMultiToken,
   });
 
   /// Social login/signup using custom in-house service.
   Future<void> socialAuth({
     required SocialAuthDto socialAuthDto,
     String? otp,
+    bool? useMultiToken,
   });
 
   /// Log user in with [token] after reset password or sign up.
