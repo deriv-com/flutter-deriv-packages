@@ -194,7 +194,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
   }
 
   @override
-  Future<void> multiAuthorizeAccounts() async {
+  Future<void> multiAuthorizeAllAccounts() async {
     emit(DerivAuthLoadingState());
 
     List<String> tokenList = <String>[];

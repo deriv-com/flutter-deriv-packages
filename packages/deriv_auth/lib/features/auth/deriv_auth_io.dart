@@ -42,8 +42,8 @@ abstract class DerivAuthIO {
   @deprecated
   Future<void> authorizeDefaultAccount();
 
-  /// Log default user in using multi authorization.
-  Future<void> multiAuthorizeAccounts();
+  /// Uses multi authorization for all user accounts.
+  Future<void> multiAuthorizeAllAccounts();
 
   /// Deriv auth output.
   Stream<DerivAuthState> get output;
