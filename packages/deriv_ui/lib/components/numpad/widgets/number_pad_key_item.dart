@@ -6,7 +6,7 @@ class _NumberPadKey extends StatefulWidget {
     required this.ignoring,
     required this.index,
     required this.actionOK,
-    this.disableDot = false,
+    this.isDotDisabled = false,
   });
 
   final Function(BuildContext, TextEditingController, String) onPressed;
@@ -17,7 +17,7 @@ class _NumberPadKey extends StatefulWidget {
 
   final String actionOK;
 
-  final bool disableDot;
+  final bool isDotDisabled;
 
   @override
   _NumberPadKeyState createState() => _NumberPadKeyState();
@@ -139,5 +139,5 @@ class _NumberPadKeyState extends State<_NumberPadKey> {
   bool _isIgnoring() =>
       (_keyboardContent[widget.index] == applyValuesInput &&
           !widget.ignoring) ||
-      (_keyboardContent[widget.index] == point && widget.disableDot);
+      (_keyboardContent[widget.index] == point && widget.isDotDisabled);
 }
