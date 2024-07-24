@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v2.2.0`](#analytics---v220)
+ - [`deriv_auth` - `v6.7.20`](#deriv_auth---v6720)
+ - [`deriv_passkeys` - `v0.0.3+8`](#deriv_passkeys---v0038)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.20`
+ - `deriv_passkeys` - `v0.0.3+8`
+
+---
+
+#### `analytics` - `v2.2.0`
+
+ - **FEAT**(analytics): add trade page events to rudderstack events ([#691](https://github.com/regentmarkets/flutter-deriv-packages/issues/691)). ([b9e2b098](https://github.com/regentmarkets/flutter-deriv-packages/commit/b9e2b098fb76ea4f8f5f633c062a6cd20f4db6f0))
+
+
 ## 2024-07-23
 
 ### Changes
