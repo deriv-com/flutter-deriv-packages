@@ -30,8 +30,10 @@ abstract class DerivAuthIO {
   @deprecated
   Future<void> tokenLogin(String token);
 
-  /// Log user in with multi token authorization after reset password or sign up.
-  Future<void> multiTokenLogin(String? token);
+  /// Log user in with multi token authorization
+  /// Add [token] to the list of authorized tokens.
+  /// And authorize the user with the new list of tokens.
+  Future<void> multiTokenAuthorize(String? token);
 
   /// Log user out.
   Future<void> logout();
