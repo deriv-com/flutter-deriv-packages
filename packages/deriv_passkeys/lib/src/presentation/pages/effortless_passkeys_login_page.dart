@@ -21,6 +21,7 @@ class EffortlessPasskeysPage extends StatelessWidget
     required this.onPageClosed,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.effortlessPasskeysPageKeys,
     super.key,
   }) {
     trackOpenEffortlessLoginPage();
@@ -37,6 +38,9 @@ class EffortlessPasskeysPage extends StatelessWidget
 
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onPageClosed;
+
+  /// Pass an object of keys to assign to specific widget in this page.
+  final EffortlessPasskeysPageKeys? effortlessPasskeysPageKeys;
 
   @override
   Widget build(BuildContext context) => WillPopScope(
@@ -99,6 +103,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                         context.derivPasskeysLocalizations
                                             .maybeLater
                                             .toUpperCase(),
+                                        key: effortlessPasskeysPageKeys
+                                            ?.maybeLaterTextButtonKey,
                                         style: TextStyle(
                                           color: context.theme.colors.coral,
                                         ),
@@ -121,6 +127,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                         Text(
                                           context.derivPasskeysLocalizations
                                               .effortlessLoginWithPasskeys,
+                                          key: effortlessPasskeysPageKeys
+                                              ?.loginWithPasskeyTextKey,
                                           style: const TextStyle(fontSize: 20),
                                         ),
                                         const SizedBox(
@@ -131,6 +139,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .noNeedToRememberPassword,
+                                          textKey: effortlessPasskeysPageKeys
+                                              ?.noNeedToRememberPasswordRowKey,
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -140,6 +150,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .syncAcrossDevices,
+                                          textKey: effortlessPasskeysPageKeys
+                                              ?.syncAcrossDevicesRowKey,
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -149,6 +161,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                           text: context
                                               .derivPasskeysLocalizations
                                               .useYourBiometrics,
+                                          textKey: effortlessPasskeysPageKeys
+                                              ?.useBiometricsRowKey,
                                         ),
                                         Divider(
                                           color: context.theme.colors.hover,
@@ -170,6 +184,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                                       PlaceholderAlignment
                                                           .middle,
                                                   child: InkWell(
+                                                    key: effortlessPasskeysPageKeys
+                                                        ?.hyperlinkInkWellKey,
                                                     onTap: () {
                                                       Navigator.push(
                                                         context,
@@ -202,6 +218,9 @@ class EffortlessPasskeysPage extends StatelessWidget
                                                       style: TextStyle(
                                                           color: context.theme
                                                               .colors.coral),
+                                                      key:
+                                                          effortlessPasskeysPageKeys
+                                                              ?.hereRichTextKey,
                                                     ),
                                                   ),
                                                 ),
@@ -226,6 +245,8 @@ class EffortlessPasskeysPage extends StatelessWidget
                                       child: Text(
                                         context.derivPasskeysLocalizations
                                             .createPasskey,
+                                        key: effortlessPasskeysPageKeys
+                                            ?.createPasskeyButtonKey,
                                         style: TextStyle(
                                           color: context.theme.colors.prominent,
                                         ),
@@ -242,4 +263,43 @@ class EffortlessPasskeysPage extends StatelessWidget
           ),
         ),
       );
+}
+
+/// A class that allows users to pass keys to [EffortlessPasskeysPage].
+class EffortlessPasskeysPageKeys {
+  /// Constructs [EffortlessPasskeysPageKeys].
+  EffortlessPasskeysPageKeys({
+    this.createPasskeyButtonKey,
+    this.hyperlinkInkWellKey,
+    this.maybeLaterTextButtonKey,
+    this.loginWithPasskeyTextKey,
+    this.noNeedToRememberPasswordRowKey,
+    this.syncAcrossDevicesRowKey,
+    this.useBiometricsRowKey,
+    this.hereRichTextKey,
+  });
+
+  /// Key for create passkey button widget.
+  final Key? createPasskeyButtonKey;
+
+  /// Key for hyper link ink well widget.
+  final Key? hyperlinkInkWellKey;
+
+  /// Key for maybe later text button widget.
+  final Key? maybeLaterTextButtonKey;
+
+  /// Key for login with passkey text widget.
+  final Key? loginWithPasskeyTextKey;
+
+  /// Key for no need to remember password row widget.
+  final Key? noNeedToRememberPasswordRowKey;
+
+  /// Key for sync across devices row widget.
+  final Key? syncAcrossDevicesRowKey;
+
+  /// Key for use biometrics row widget.
+  final Key? useBiometricsRowKey;
+
+  /// Key for here rich text widget.
+  final Key? hereRichTextKey;
 }
