@@ -1,3 +1,7 @@
+## 0.0.4+2
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): Ramin/integrate with new version of chart package ([#702](https://github.com/regentmarkets/flutter-deriv-packages/issues/702)). ([b4a38374](https://github.com/regentmarkets/flutter-deriv-packages/commit/b4a38374dd47e8bde9c1bdc02e93ad78a1e64bd1))
+
 ## 0.0.4+1
 
  - Update a dependency to the latest release.

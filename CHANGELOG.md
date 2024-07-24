@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.4+2`](#deriv_mobile_chart_wrapper---v0042)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.4+2`
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): Ramin/integrate with new version of chart package ([#702](https://github.com/regentmarkets/flutter-deriv-packages/issues/702)). ([b4a38374](https://github.com/regentmarkets/flutter-deriv-packages/commit/b4a38374dd47e8bde9c1bdc02e93ad78a1e64bd1))
+
+
 ## 2024-07-20
 
 ### Changes

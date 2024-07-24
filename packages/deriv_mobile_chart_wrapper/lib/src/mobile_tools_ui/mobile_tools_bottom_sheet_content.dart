@@ -131,6 +131,7 @@ class _MobileToolsBottomSheetContentState
             maintainState: true,
             maintainAnimation: true,
             child: SecondaryButton(
+              onPressed: indicatorsRepo.clear,
               child: Center(
                 child: Text(
                   'Delete all',
@@ -140,7 +141,6 @@ class _MobileToolsBottomSheetContentState
                   ),
                 ),
               ),
-              onPressed: () {},
             ),
           ),
         ],
@@ -162,7 +162,11 @@ class _MobileToolsBottomSheetContentState
             count: _getIndicatorCount(indicator),
             onInfoIconTapped: () {},
             onTap: () {
-              indicatorsRepo.add(indicator.config);
+              indicatorsRepo.add(
+                indicator.config.copyWith(
+                  number: indicatorsRepo.getNumberForNewAddOn(indicator.config),
+                ),
+              );
             },
           ),
         );
@@ -203,9 +207,9 @@ class _MobileToolsBottomSheetContentState
                     indicatorsRepo.items[index];
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
-                  title: getIndicatorAbbreviation(indicatorConfig),
-                  // TODO(Ramin): use indicatorConfig.configSummary here.
-                  subtitle: '',
+                  title: '${getIndicatorAbbreviation(indicatorConfig)} '
+                      '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                  subtitle: '(${indicatorConfig.configSummary})',
                   onTapSetting: () {},
                   onTapDelete: () => indicatorsRepo.removeAt(index),
                 );
