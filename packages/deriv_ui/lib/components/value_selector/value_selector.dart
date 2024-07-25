@@ -3,11 +3,11 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-/// Stake value selector widget.
+/// value selector widget.
 class ValueSelector extends StatelessWidget {
-  /// Shows stake selector widget and updates the stake [value] based on the
+  /// Shows selector widget and updates the [value] based on the
   /// user's increase or decrease action.
-  /// Both [onChange], and [value] arguments are required.
+  /// [onChange], [numberPadSubmitLabel], and [value] arguments are required.
   const ValueSelector({
     required this.value,
     required this.onChange,
@@ -16,7 +16,6 @@ class ValueSelector extends StatelessWidget {
     this.isEnabled = true,
     this.unselectedValue,
     this.withError = false,
-    this.showValueAsNegative = false,
     this.backgroundColor,
     this.dialogDescription,
     this.numberPadHeaderLeading,
@@ -35,10 +34,10 @@ class ValueSelector extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  /// The value of the selected stake.
+  /// The value of the selected input.
   final double value;
 
-  /// The callback function to update a change of the stake value.
+  /// The callback function to update a change of the value.
   final Function(double? value)? onChange;
 
   /// Enables marquee.
@@ -50,17 +49,13 @@ class ValueSelector extends StatelessWidget {
   /// The disabled state placeholder text that is shown instead of the value.
   final String? unselectedValue;
 
-  /// Determines if there is an error with stake.
+  /// Determines if there is an error with value.
   ///
   /// This default to false.
   final bool withError;
 
   /// Background color of the widget.
   final Color? backgroundColor;
-
-  /// Whether or not the value shown on the stake selector should have a `-` in
-  /// front. Mainly used for parameters such as `Stop Loss`.
-  final bool showValueAsNegative;
 
   /// Description text of the dialog box shown when the [InfoIconButton]
   /// present on the [NumberPad] is pressed.
@@ -175,7 +170,7 @@ class ValueSelector extends StatelessWidget {
                               ),
                             ),
                             onTap: () =>
-                                _showAndHandleStakeSelection(context, value),
+                                _showAndHandleValueSelection(context, value),
                           ),
                         ),
                         IconButton(
@@ -249,10 +244,10 @@ class ValueSelector extends StatelessWidget {
     return _formatter.format(value);
   }
 
-  // Shows the stake num pad and handles on closed callback.
-  void _showAndHandleStakeSelection(
+  // Shows the num pad and handles on closed callback.
+  void _showAndHandleValueSelection(
     BuildContext context,
-    double selectedStakeValue,
+    double selectedValue,
   ) {
     showModalBottomSheet<void>(
       isScrollControlled: true,
@@ -266,8 +261,7 @@ class ValueSelector extends StatelessWidget {
         formatter: formatter ?? NumberFormat(),
         numberPadType: NumberPadWidgetType.singleInput,
         firstInputTitle: label ?? '',
-        firstInputInitialValue:
-            selectedStakeValue == 0 ? null : selectedStakeValue,
+        firstInputInitialValue: selectedValue == 0 ? null : selectedValue,
         onClose: (
           NumberPadWidgetType type,
           NumberPadCloseType closeType,
