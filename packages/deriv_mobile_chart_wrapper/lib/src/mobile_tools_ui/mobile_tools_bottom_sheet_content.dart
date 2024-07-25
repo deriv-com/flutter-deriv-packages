@@ -37,15 +37,12 @@ class _MobileToolsBottomSheetContentState
 
   late AddOnsRepository<IndicatorConfig> indicatorsRepo;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    indicatorsRepo = Provider.of<AddOnsRepository<IndicatorConfig>>(context);
-  }
+  late List<IndicatorItemModel> indicators;
 
   @override
-  Widget build(BuildContext context) {
-    List<IndicatorItemModel> indicators = [
+  void initState() {
+    super.initState();
+    indicators = [
       IndicatorItemModel(
         category: IndicatorCategory.momentum,
         title: context.mobileChartWrapperLocalizations.labelMACD,
@@ -80,7 +77,16 @@ class _MobileToolsBottomSheetContentState
         description: context.mobileChartWrapperLocalizations.infoMA,
       ),
     ];
+  }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    indicatorsRepo = Provider.of<AddOnsRepository<IndicatorConfig>>(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Expanded(
