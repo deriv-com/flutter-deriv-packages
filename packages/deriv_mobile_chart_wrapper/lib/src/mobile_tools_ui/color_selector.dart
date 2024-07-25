@@ -23,6 +23,7 @@ class ColorSelector extends StatelessWidget {
         onTap: () {
           showModalBottomSheet(
             context: context,
+            isScrollControlled: true,
             builder: (_) => ChartBottomSheet(
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,
@@ -42,7 +43,11 @@ class ColorSelector extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(title, style: TextStyles.caption),
+              Text(title,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.caption,
+                    color: context.theme.colors.general,
+                  )),
               Row(
                 children: <Widget>[
                   Container(

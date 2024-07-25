@@ -8,6 +8,7 @@ import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/bb_settings_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import 'package:provider/provider.dart';
 
 import '../core_widgets/info_banner.dart';
 import '../core_widgets/no_glow_scroll_behavior.dart';
+import 'indicator_settings_bottom_sheet.dart';
 
 /// Bottom sheet content to show the list of support tools (indicators/ drawing
 /// tools) for the mobile version.
@@ -210,7 +212,15 @@ class _MobileToolsBottomSheetContentState
                   title: '${getIndicatorAbbreviation(indicatorConfig)} '
                       '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
                   subtitle: '(${indicatorConfig.configSummary})',
-                  onTapSetting: () {},
+                  onTapSetting: () {
+                    showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        barrierColor: Colors.transparent,
+                        builder: (context) {
+                          return const BollingerBandsSettingsPage();
+                        });
+                  },
                   onTapDelete: () => indicatorsRepo.removeAt(index),
                 );
               },
