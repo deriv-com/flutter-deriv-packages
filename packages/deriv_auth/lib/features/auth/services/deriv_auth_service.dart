@@ -44,7 +44,9 @@ class DerivAuthService extends BaseAuthService {
           _filterSupportedAccounts(_response.accounts);
 
       if (useMultiToken == false) {
-        final String? _defaultAccountToken = _supportedAccounts.first.token;
+        final String? _defaultAccountToken = _supportedAccounts.isNotEmpty
+            ? _supportedAccounts.first.token
+            : null;
 
         if (_defaultAccountToken != null) {
           return login(
