@@ -10,10 +10,8 @@ class ValueSelector extends StatelessWidget {
   /// Both [onChange], and [value] arguments are required.
   const ValueSelector({
     required this.value,
-    required this.currencySymbol,
-    required this.currencyFractionalDigits,
     required this.onChange,
-    required this.numberPadTitle,
+    required this.numberPadSubmitLabel,
     this.enableMarquee = true,
     this.isEnabled = true,
     this.unselectedValue,
@@ -22,6 +20,14 @@ class ValueSelector extends StatelessWidget {
     this.backgroundColor,
     this.dialogDescription,
     this.numberPadHeaderLeading,
+    this.formatter,
+    this.maximum,
+    this.showMaximumSubtitle = false,
+    this.maximumSubtitle,
+    this.minimum,
+    this.showMinimumSubtitle = false,
+    this.minimumSubtitle,
+    this.label,
     this.amountInputKey,
     this.decreaseButtonKey,
     this.increaseButtonKey,
@@ -30,16 +36,10 @@ class ValueSelector extends StatelessWidget {
   }) : super(key: key);
 
   /// The value of the selected stake.
-  final double? value;
-
-  /// The currency symbol
-  final String? currencySymbol;
+  final double value;
 
   /// The callback function to update a change of the stake value.
   final Function(double? value)? onChange;
-
-  /// Currency fractional digits number.
-  final int? currencyFractionalDigits;
 
   /// Enables marquee.
   final bool enableMarquee;
@@ -68,11 +68,35 @@ class ValueSelector extends StatelessWidget {
   /// If not set or set to `null`, the [InfoIconButton] will be hidden.
   final String? dialogDescription;
 
-  /// The title text displayed on the head of the [NumberPad].
-  final String numberPadTitle;
-
   /// Leading widget on the header of the [NumberPad] of this [ValueSelector].
   final Widget? numberPadHeaderLeading;
+
+  /// Minimum range value
+  final double? minimum;
+
+  /// Maximum range value
+  final double? maximum;
+
+  /// Should the minimum range subtitle be displayed
+  final bool showMinimumSubtitle;
+
+  /// Should the maximum range subtitle be displayed
+  final bool showMaximumSubtitle;
+
+  /// Maximum range subtitle
+  final String? maximumSubtitle;
+
+  /// Minimum range subtitle
+  final String? minimumSubtitle;
+
+  /// number formatter
+  final NumberFormat? formatter;
+
+  /// Label of the value selector.
+  final String? label;
+
+  /// Number pad submit button label.
+  final String numberPadSubmitLabel;
 
   /// Key for the amount input field.
   final Key? amountInputKey;
@@ -88,8 +112,6 @@ class ValueSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double? selectedStakeValue = value;
-    final bool isUSDAccount = currencySymbol == 'USD';
     final Color disabledColor = context.theme.colors.lessProminent
         .withOpacity(getOpacity(isEnabled: false));
 
@@ -100,92 +122,87 @@ class ValueSelector extends StatelessWidget {
         child: Material(
           type: MaterialType.transparency,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              if (label != null)
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: ThemeProvider.margin08),
+                  child: Text(label!, style: TextStyles.caption),
+                ),
               Ink(
                 height: 40,
                 decoration: BoxDecoration(
                   color: backgroundColor ?? context.theme.colors.secondary,
                   borderRadius:
-                  BorderRadius.circular(ThemeProvider.borderRadius04),
+                      BorderRadius.circular(ThemeProvider.borderRadius04),
                   border: withError
                       ? Border.all(color: context.theme.colors.danger)
                       : null,
                 ),
                 child: Stack(
                   children: <Widget>[
-                    if (currencySymbol != null && currencySymbol!.isEmpty)
-                      const Center(child: LoadingIndicator()),
-                    if (currencySymbol != null &&
-                        currencySymbol!.isNotEmpty &&
-                        selectedStakeValue != null)
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          IconButton(
-                            key: decreaseButtonKey,
-                            icon: const Icon(Icons.remove),
-                            color: !isEnabled ? disabledColor : null,
-                            onPressed:
-                            _decrement(selectedStakeValue, isUSDAccount) <=
-                                0
-                                ? null
-                                : () {
-                              final double newValue = _decrement(
-                                  selectedStakeValue!, isUSDAccount);
-
-                              if (newValue > 0) {
-                                selectedStakeValue = newValue;
-                                onChange?.call(newValue);
-                              }
-                            },
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.30,
-                            child: InkWell(
-                              key: amountInputKey,
-                              borderRadius: BorderRadius.circular(
-                                ThemeProvider.borderRadius04,
-                              ),
-                              child: Center(
-                                child: Marquee(
-                                  enabled: enableMarquee,
-                                  child: Text(
-                                    _getStakeLabel(
-                                      selectedValue: selectedStakeValue!,
-                                      unselectedValue: unselectedValue,
-                                    ),
-                                    key: amountInputTextFieldKey,
-                                    style: context.theme.textStyle(
-                                      textStyle: TextStyles.body2,
-                                      color: isEnabled ? null : disabledColor,
-                                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        IconButton(
+                          key: decreaseButtonKey,
+                          icon: const Icon(Icons.remove),
+                          color: !isEnabled ? disabledColor : null,
+                          onPressed: () {
+                            final double decreasedValue = _decrement(value);
+                            onChange?.call(decreasedValue);
+                          },
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.30,
+                          child: InkWell(
+                            key: amountInputKey,
+                            borderRadius: BorderRadius.circular(
+                              ThemeProvider.borderRadius04,
+                            ),
+                            child: Center(
+                              child: Marquee(
+                                enabled: enableMarquee,
+                                child: Text(
+                                  _getFormattedValue(value),
+                                  key: amountInputTextFieldKey,
+                                  style: context.theme.textStyle(
+                                    textStyle: TextStyles.body2,
+                                    color: isEnabled ? null : disabledColor,
                                   ),
                                 ),
                               ),
-                              onTap: () => _showAndHandleStakeSelection(
-                                context,
-                                selectedStakeValue!,
-                              ),
                             ),
+                            onTap: () =>
+                                _showAndHandleStakeSelection(context, value),
                           ),
-                          IconButton(
-                            key: increaseButtonKey,
-                            icon: const Icon(Icons.add),
-                            color: !isEnabled ? disabledColor : null,
-                            onPressed: () {
-                              selectedStakeValue = isUSDAccount
-                                  ? selectedStakeValue! + 1
-                                  : double.parse(
-                                  _increment(selectedStakeValue!));
-
-                              onChange?.call(selectedStakeValue!);
-                            },
-                          ),
-                        ],
-                      ),
+                        ),
+                        IconButton(
+                          key: increaseButtonKey,
+                          icon: const Icon(Icons.add),
+                          color: !isEnabled ? disabledColor : null,
+                          onPressed: () {
+                            final double increasedValue = _increment(value);
+                            onChange?.call(increasedValue);
+                          },
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
+              if (_shouldShowRange())
+                Padding(
+                  padding: const EdgeInsets.only(top: ThemeProvider.margin16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      _buildMinimumRangeText(context),
+                      _buildMaximumRangeText(context),
+                    ],
+                  ),
+                )
             ],
           ),
         ),
@@ -193,45 +210,69 @@ class ValueSelector extends StatelessWidget {
     );
   }
 
-  /// Gets the text that should be displayed on this [ValueSelector].
-  String _getStakeLabel({
-    required double selectedValue,
-    String? unselectedValue,
-  }) {
-    String stake = _getStake(selectedValue);
-    if (!isEnabled) {
-      stake = unselectedValue ?? _getStake(selectedValue);
-    }
-    if (showValueAsNegative && selectedValue > 0) {
-      stake = '-$stake';
-    }
+  bool _shouldShowRange() =>
+      (minimum != null && showMinimumSubtitle) ||
+      (maximum != null && showMaximumSubtitle);
 
-    return stake;
+  Widget _buildMinimumRangeText(BuildContext context) {
+    String minimumText = '';
+    if (minimum != null && showMinimumSubtitle) {
+      minimumText =
+          '${minimumSubtitle ?? 'Min range'}: ${_getFormattedValue(minimum!)}';
+    }
+    return Text(
+      minimumText,
+      style: context.theme.textStyle(
+        textStyle: TextStyles.caption,
+        color: context.theme.colors.lessProminent,
+      ),
+    );
+  }
+
+  Widget _buildMaximumRangeText(BuildContext context) {
+    String maximumText = '';
+    if (maximum != null && showMaximumSubtitle) {
+      maximumText =
+          '${maximumSubtitle ?? 'Max range'}: ${_getFormattedValue(maximum!)}';
+    }
+    return Text(
+      maximumText,
+      style: context.theme.textStyle(
+        textStyle: TextStyles.caption,
+        color: context.theme.colors.lessProminent,
+      ),
+    );
+  }
+
+  String _getFormattedValue(double value) {
+    final NumberFormat _formatter = formatter ?? NumberFormat('#,###');
+    return _formatter.format(value);
   }
 
   // Shows the stake num pad and handles on closed callback.
   void _showAndHandleStakeSelection(
-      BuildContext context,
-      double selectedStakeValue,
-      ) {
+    BuildContext context,
+    double selectedStakeValue,
+  ) {
     showModalBottomSheet<void>(
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) => NumberPad(
-        label: NumberPadLabel(actionOK: 'OK'),
+        firstInputMinimumValue: minimum,
+        firstInputMaximumValue: maximum != null ? maximum! : double.maxFinite,
+        label: NumberPadLabel(actionOK: numberPadSubmitLabel),
         headerLeading: numberPadHeaderLeading,
         dialogDescription: dialogDescription,
-        currency: currencySymbol,
-        formatter: NumberFormat(),
+        formatter: formatter ?? NumberFormat(),
         numberPadType: NumberPadWidgetType.singleInput,
-        firstInputTitle: numberPadTitle,
+        firstInputTitle: label ?? '',
         firstInputInitialValue:
-        selectedStakeValue == 0 ? null : selectedStakeValue,
+            selectedStakeValue == 0 ? null : selectedStakeValue,
         onClose: (
-            NumberPadWidgetType type,
-            NumberPadCloseType closeType,
-            NumberPadData result,
-            ) async {
+          NumberPadWidgetType type,
+          NumberPadCloseType closeType,
+          NumberPadData result,
+        ) async {
           if (closeType == NumberPadCloseType.pressOK) {
             onChange?.call(result.firstInputValue);
           }
@@ -240,75 +281,17 @@ class ValueSelector extends StatelessWidget {
     );
   }
 
-  String _increment(double value) {
-    final int lengthOfDecimalPart = getFractionalDigitsLength(value);
-    final double incrementedValue = value + _modifyBy(lengthOfDecimalPart);
-
-    return incrementedValue
-        .toStringAsFixed(lengthOfDecimalPart == 0 ? 2 : lengthOfDecimalPart);
-  }
-
-  double _decrement(double value, bool isUSDAccount) {
-    if (isUSDAccount) {
-      return value - 1;
+  double _increment(double value) {
+    if (value == maximum) {
+      return value;
     }
-    final int lengthOfDecimalPart = getFractionalDigitsLength(value);
-    final double decrementedValue = value - _modifyBy(lengthOfDecimalPart);
-    return double.parse(decrementedValue
-        .toStringAsFixed(lengthOfDecimalPart == 0 ? 2 : lengthOfDecimalPart));
+    return value + 1;
   }
 
-  double _modifyBy(int length) =>
-      double.parse('${'0.'.padRight(1 + length, '0')}1');
-
-  String _getStake(double? selectedStakeValue) =>
-      '${selectedStakeValue?.toStringAsFixed(
-        currencySymbol == 'USD'
-            ? getCurrencyFractionalDigits(currencyFractionalDigits)
-            : getFractionalDigitsLength(selectedStakeValue),
-      )} ${getStringWithMappedCurrencyName(currencySymbol ?? '')}';
+  double _decrement(double value) {
+    if (value == minimum) {
+      return value;
+    }
+    return value - 1;
+  }
 }
-
-/*
-/// Stake selector balance section widget.
-class StakeSelectorBalanceSection extends StatelessWidget {
-  /// Initializes a new [StakeSelectorBalanceSection].
-  const StakeSelectorBalanceSection({super.key});
-
-  @override
-  Widget build(BuildContext context) =>
-      BlocBuilder<AccountsCubit, AccountsState>(
-        bloc: BlocManager.instance.fetch<AccountsCubit>(),
-        builder: (_, AccountsState state) {
-          if (state is AccountsLoadedState) {
-            return Container(
-              width: double.infinity,
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    _buildBalanceText(context, state),
-                  ],
-                ),
-              ),
-            );
-          }
-          return const SizedBox.shrink();
-        },
-      );
-
-  Text _buildBalanceText(BuildContext context, AccountsLoadedState state) =>
-      Text(
-        '${context.localization.labelBalance}: ${getFormattedCurrencyValue(
-          value: state.currentAccount?.balance,
-          currency: state.currentAccount!.currency!,
-        ) ?? ''}',
-        key: WidgetKeys.balanceSetOrderSection,
-        style: context.theme.textStyle(
-          textStyle: TextStyles.caption,
-          color: context.theme.colors.lessProminent,
-        ),
-      );
-}
-*/
