@@ -62,28 +62,51 @@ class BollingerBandsSettingsPage extends StatelessWidget {
                   ],
                 ),
               )),
+          const SizedBox(
+            height: ThemeProvider.margin24,
+          ),
           GlowingContainer(
-              child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  Text(context.mobileChartWrapperLocalizations.labelChannelFill,
-                      style: context.theme.textStyle(
-                        textStyle: TextStyles.caption,
-                        color: context.theme.colors.general,
-                      )),
-                  const Spacer(),
-                  AbsorbPointer(
-                    child: Switch(
-                      activeColor: context.theme.colors.coral,
-                      value: false,
-                      onChanged: (bool isExpanded) {},
+              child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: ThemeProvider.margin16,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(
+                  height: ThemeProvider.margin08,
+                ),
+                Row(
+                  children: [
+                    Text(
+                        context
+                            .mobileChartWrapperLocalizations.labelChannelFill,
+                        style: context.theme.textStyle(
+                          textStyle: TextStyles.caption,
+                          color: context.theme.colors.general,
+                        )),
+                    const Spacer(),
+                    AbsorbPointer(
+                      child: Switch(
+                        activeColor: context.theme.colors.coral,
+                        value: false,
+                        onChanged: (bool isExpanded) {},
+                      ),
                     ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: ThemeProvider.margin16,
                   ),
-                ],
-              ),
-            ],
+                  child: ColorSelector(
+                    title:
+                        context.mobileChartWrapperLocalizations.labelFillColor,
+                    color: const Color(0xFFFFFFFF),
+                  ),
+                ),
+              ],
+            ),
           ))
         ],
       ),
