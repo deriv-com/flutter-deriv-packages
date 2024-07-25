@@ -64,8 +64,8 @@ class DerivAuthService extends BaseAuthService {
       } else {
         if (_supportedAccounts.isNotEmpty) {
           _tokenList = _supportedAccounts
-              .where((AccountModel account) => account.token != null)
-              .map((AccountModel account) => account.token!)
+              .map<String?>((AccountModel account) => account.token)
+              .whereNotNull()
               .toList();
 
           return login(
