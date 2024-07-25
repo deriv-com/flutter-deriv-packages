@@ -1,3 +1,7 @@
+## 0.0.9
+
+ - **FEAT**(deriv_ui): add the ability to disable the dot button. ([#706](https://github.com/regentmarkets/flutter-deriv-packages/issues/706)). ([44db38e5](https://github.com/regentmarkets/flutter-deriv-packages/commit/44db38e5daa0c0941ada4eb698d7317a97209093))
+
 ## 0.0.8+1
 
  - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#686](https://github.com/regentmarkets/flutter-deriv-packages/issues/686)). ([a0a6df21](https://github.com/regentmarkets/flutter-deriv-packages/commit/a0a6df21cbc6681b923ec3e060752de20ddad32b))

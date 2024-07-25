@@ -148,6 +148,7 @@ class _MobileToolsBottomSheetContentState
             maintainState: true,
             maintainAnimation: true,
             child: SecondaryButton(
+              onPressed: indicatorsRepo.clear,
               child: Center(
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelDeleteAll,
@@ -157,7 +158,6 @@ class _MobileToolsBottomSheetContentState
                   ),
                 ),
               ),
-              onPressed: () {},
             ),
           ),
         ],
@@ -191,7 +191,11 @@ class _MobileToolsBottomSheetContentState
               );
             },
             onTap: () {
-              indicatorsRepo.add(indicator.config);
+              indicatorsRepo.add(
+                indicator.config.copyWith(
+                  number: indicatorsRepo.getNumberForNewAddOn(indicator.config),
+                ),
+              );
             },
           ),
         );
@@ -232,12 +236,12 @@ class _MobileToolsBottomSheetContentState
                     indicatorsRepo.items[index];
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
-                  title: getIndicatorAbbreviation(
+                  title: '${getIndicatorAbbreviation(
                     indicatorConfig,
                     context,
-                  ),
-                  // TODO(Ramin): use indicatorConfig.configSummary here.
-                  subtitle: '',
+                  )} '
+                      '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                  subtitle: '(${indicatorConfig.configSummary})',
                   onTapSetting: () {},
                   onTapDelete: () => indicatorsRepo.removeAt(index),
                 );

@@ -2,30 +2,22 @@ import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:deriv_ui/widgets/widgets.dart';
 
 import '../core/core.dart';
 import '../models/models.dart';
 
 part 'number_pad_animated_message.dart';
-
 part 'number_pad_double_textfields.dart';
-
 part 'number_pad_key_item.dart';
-
 part 'number_pad_keypad.dart';
-
 part 'number_pad_message.dart';
-
 part 'number_pad_provider.dart';
-
 part 'number_pad_single_text_title.dart';
-
 part 'number_pad_single_textfield.dart';
-
 part 'number_pad_text_field.dart';
 
 /// A function that is called when the user pressed any button from the keypad.
@@ -103,6 +95,7 @@ class NumberPad extends StatefulWidget {
     this.currentFocus = NumberPadInputFocus.firstInputField,
     this.dialogDescription,
     this.headerLeading,
+    this.isDotDisabled = false,
     Key? key,
   }) : super(key: key);
 
@@ -228,6 +221,9 @@ class NumberPad extends StatefulWidget {
   /// If not set, the [InfoIconButton] will not be displayed.
   final String? dialogDescription;
 
+  /// The flag to disable the dot button on the keypad.
+  final bool isDotDisabled;
+
   /// The leading widget on the header of this [NumberPad].
   final Widget? headerLeading;
 
@@ -299,6 +295,7 @@ class _NumberPadState extends State<NumberPad> {
         isSecondInputInRange: _isSecondInputInRange,
         isFirstInputInRange: _isFirstInputInRange,
         isAllInputsValid: _isAllInputsValid,
+        isDotDisabled: widget.isDotDisabled,
         child: Builder(
           builder: (BuildContext context) => WillPopScope(
             onWillPop: () async {
