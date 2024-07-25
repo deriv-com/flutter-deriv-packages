@@ -27,7 +27,7 @@ class DerivAuthService extends BaseAuthService {
     required GetTokensRequestModel request,
     String? userAgent,
     Function? onInvalidJwtToken,
-    bool? useMultiToken,
+    bool useMultiToken = false,
   }) async {
     try {
       List<String> _tokenList = <String>[];
@@ -43,7 +43,7 @@ class DerivAuthService extends BaseAuthService {
       final List<AccountModel> _supportedAccounts =
           _filterSupportedAccounts(_response.accounts);
 
-      if (useMultiToken == null || useMultiToken == false) {
+      if (useMultiToken == false) {
         final String? _defaultAccountToken = _supportedAccounts.first.token;
 
         if (_defaultAccountToken != null) {

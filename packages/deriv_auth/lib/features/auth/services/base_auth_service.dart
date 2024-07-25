@@ -33,7 +33,7 @@ abstract class BaseAuthService {
   Future<AuthorizeEntity> onLoginRequest({
     required GetTokensRequestModel request,
     String? userAgent,
-    bool? useMultiToken,
+    bool useMultiToken = false,
   });
 
   /// Log in a user with [token].

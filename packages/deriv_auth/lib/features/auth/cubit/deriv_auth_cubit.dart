@@ -42,7 +42,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required String password,
     String? otp,
     String? userAgent,
-    bool? useMultiToken,
+    bool useMultiToken = false,
   }) async {
     trackLoginWithEmailAndPassword();
 
@@ -67,7 +67,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     final String? signupProvider,
     String? otp,
     String? userAgent,
-    bool? useMultiToken,
+    bool useMultiToken = false,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -89,7 +89,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required SocialAuthDto socialAuthDto,
     String? otp,
     String? userAgent,
-    bool? useMultiToken,
+    bool useMultiToken = false,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -140,7 +140,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required GetTokensRequestModel request,
     required bool isSocialLogin,
     String? userAgent,
-    bool? useMultiToken,
+    bool useMultiToken = false,
   }) async {
     try {
       final AuthorizeEntity authorizeEntity = await authService.onLoginRequest(

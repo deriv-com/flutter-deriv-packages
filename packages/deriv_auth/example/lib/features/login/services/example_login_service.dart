@@ -18,7 +18,7 @@ class ExampleLoginService extends BaseAuthService {
   Future<AuthorizeEntity> onLoginRequest({
     required GetTokensRequestModel request,
     String? userAgent,
-    bool? useMultiToken,
+    bool useMultiToken = false,
   }) async =>
       const AuthorizeEntity();
 
