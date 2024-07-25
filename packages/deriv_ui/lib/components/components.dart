@@ -7,3 +7,4 @@ export 'grouped_list_view/grouped_list_view.dart';
 export 'language_selector/language_selector.dart';
 export 'numpad/numpad.dart';
 export 'option_selector/option_selector.dart';
+export 'value_selector/value_selector.dart';
