@@ -4,8 +4,8 @@ import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart'
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
-class IndicatorBottomSheet extends StatelessWidget {
-  const IndicatorBottomSheet({
+class IndicatorDescriptionBottomSheet extends StatelessWidget {
+  const IndicatorDescriptionBottomSheet({
     super.key,
     required this.indicator,
     required this.onAddIndicatorPressed,

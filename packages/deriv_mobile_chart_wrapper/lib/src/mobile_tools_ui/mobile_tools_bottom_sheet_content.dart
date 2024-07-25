@@ -40,8 +40,9 @@ class _MobileToolsBottomSheetContentState
   late List<IndicatorItemModel> indicators;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    indicatorsRepo = Provider.of<AddOnsRepository<IndicatorConfig>>(context);
     indicators = [
       IndicatorItemModel(
         category: IndicatorCategory.momentum,
@@ -77,12 +78,6 @@ class _MobileToolsBottomSheetContentState
         description: context.mobileChartWrapperLocalizations.infoMA,
       ),
     ];
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    indicatorsRepo = Provider.of<AddOnsRepository<IndicatorConfig>>(context);
   }
 
   @override
@@ -181,7 +176,7 @@ class _MobileToolsBottomSheetContentState
               showModalBottomSheet(
                 context: context,
                 barrierColor: Colors.transparent,
-                builder: (context) => IndicatorBottomSheet(
+                builder: (context) => IndicatorDescriptionBottomSheet(
                   indicator: indicator,
                   onAddIndicatorPressed: () {
                     indicatorsRepo.add(indicator.config);
