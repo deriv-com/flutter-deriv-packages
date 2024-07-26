@@ -38,7 +38,7 @@ class ChipsList extends StatelessWidget {
           itemCount: items.length,
           itemBuilder: (_, int index) => Padding(
             padding: const EdgeInsets.only(
-                left: ThemeProvider.zeroMargin, right: ThemeProvider.margin08),
+                right: ThemeProvider.margin08),
             child: items[index],
           ),
         ),

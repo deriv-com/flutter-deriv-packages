@@ -1,5 +1,4 @@
 import 'package:deriv_localizations/l10n/generated/deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper_localizations.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/mobile_tools_bottom_sheet_content.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter/material.dart';
