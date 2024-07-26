@@ -1,3 +1,7 @@
+## 2.2.0
+
+ - **FEAT**(analytics): add trade page events to rudderstack events ([#691](https://github.com/regentmarkets/flutter-deriv-packages/issues/691)). ([b9e2b098](https://github.com/regentmarkets/flutter-deriv-packages/commit/b9e2b098fb76ea4f8f5f633c062a6cd20f4db6f0))
+
 ## 2.1.0
 
  - **FEAT**(analytics): ilya/DERG-2409/Add_tracking_to_real_account_sign_up_on_Deriv_Go ([#603](https://github.com/regentmarkets/flutter-deriv-packages/issues/603)). ([9ada725d](https://github.com/regentmarkets/flutter-deriv-packages/commit/9ada725ded271e2b94cffed622eff2e75539cb55))

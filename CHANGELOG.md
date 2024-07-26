@@ -3,6 +3,93 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.9`](#deriv_ui---v009)
+ - [`deriv_auth` - `v6.7.21`](#deriv_auth---v6721)
+ - [`deriv_mobile_chart_wrapper` - `v0.0.4+3`](#deriv_mobile_chart_wrapper---v0043)
+ - [`deriv_passkeys` - `v0.0.3+9`](#deriv_passkeys---v0039)
+ - [`deriv_language_selector` - `v0.0.2+10`](#deriv_language_selector---v00210)
+ - [`deriv_widgetbook` - `v0.0.2+12`](#deriv_widgetbook---v00212)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.21`
+ - `deriv_mobile_chart_wrapper` - `v0.0.4+3`
+ - `deriv_passkeys` - `v0.0.3+9`
+ - `deriv_language_selector` - `v0.0.2+10`
+ - `deriv_widgetbook` - `v0.0.2+12`
+
+---
+
+#### `deriv_ui` - `v0.0.9`
+
+ - **FEAT**(deriv_ui): add the ability to disable the dot button. ([#706](https://github.com/regentmarkets/flutter-deriv-packages/issues/706)). ([44db38e5](https://github.com/regentmarkets/flutter-deriv-packages/commit/44db38e5daa0c0941ada4eb698d7317a97209093))
+
+
+## 2024-07-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v2.2.0`](#analytics---v220)
+ - [`deriv_auth` - `v6.7.20`](#deriv_auth---v6720)
+ - [`deriv_passkeys` - `v0.0.3+8`](#deriv_passkeys---v0038)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.20`
+ - `deriv_passkeys` - `v0.0.3+8`
+
+---
+
+#### `analytics` - `v2.2.0`
+
+ - **FEAT**(analytics): add trade page events to rudderstack events ([#691](https://github.com/regentmarkets/flutter-deriv-packages/issues/691)). ([b9e2b098](https://github.com/regentmarkets/flutter-deriv-packages/commit/b9e2b098fb76ea4f8f5f633c062a6cd20f4db6f0))
+
+
+## 2024-07-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.4+2`](#deriv_mobile_chart_wrapper---v0042)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.4+2`
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): Ramin/integrate with new version of chart package ([#702](https://github.com/regentmarkets/flutter-deriv-packages/issues/702)). ([b4a38374](https://github.com/regentmarkets/flutter-deriv-packages/commit/b4a38374dd47e8bde9c1bdc02e93ad78a1e64bd1))
+
+
 ## 2024-07-20
 
 ### Changes
