@@ -13,6 +13,7 @@ class DerivRudderstackEvents {
     );
   }
 
+  /// --------- ce_virtual_signup_form ---------------
   /// Captures app_open event when the app is opened.
   void logAppOpened() {
     DerivRudderstack().track(
@@ -275,5 +276,76 @@ class DerivRudderstackEvents {
         'form_name': 'real_signup_derivgo'
       },
     );
+  }
+
+  /// --------- ce_deriv_go_trade_form ---------------
+  /// Tracks when user opens trade page
+  ///
+  /// tradeType: Trade type name (e.g. 'Multipliers', 'Accumulators')
+  /// asset: Asset name (e.g. 'EURUSD', 'BTCUSD')
+  /// chartType: Chart type name (e.g. 'area', 'candle', 'worm')
+  /// actionTriggerType: Action trigger type (e.g. trade_page_cta, back_to_trade_page, assets_choice, trade_type_choice)
+  void logTradePageOpened({
+    required String tradeType,
+    required String market,
+    required String chartType,
+    required String actionTriggerType,
+  }) {
+    DerivRudderstack().track(
+        eventName: 'ce_deriv_go_trade_form',
+        properties: <String, dynamic>{
+          'action': 'open_trade_page',
+          'form_name': 'ce_deriv_go_trade_form',
+          'market_name': market,
+          'trade_type_name': tradeType,
+          'chart_type_name': chartType,
+          'action_trigger_type': actionTriggerType,
+        });
+  }
+
+  /// Tracks when user opens big chart page
+  /// tradeType: Trade type name (e.g. 'Multipliers', 'Accumulators')
+  /// asset: Asset name (e.g. 'EURUSD', 'BTCUSD')
+  /// chartType: Chart type name (e.g. 'area', 'candle', 'worm')
+  /// actionTriggerType: Action trigger type (e.g. chart_double_click, bigchart_switcher_cta, chart_types_settings_cta)
+  void logBigChartPageOpened({
+    required String tradeType,
+    required String market,
+    required String chartType,
+    required String actionTriggerType,
+  }) {
+    DerivRudderstack().track(
+        eventName: 'ce_deriv_go_trade_form',
+        properties: <String, dynamic>{
+          'action': 'open_big_chart',
+          'form_name': 'ce_deriv_go_trade_form',
+          'market_name': market,
+          'trade_type_name': tradeType,
+          'chart_type_name': chartType,
+          'action_trigger_type': actionTriggerType,
+        });
+  }
+
+  /// Tracks when user buys a contract
+  /// tradeType: Trade type name (e.g. 'Multipliers', 'Accumulators')
+  /// asset: Asset name (e.g. 'EURUSD', 'BTCUSD')
+  /// chartType: Chart type name (e.g. 'area', 'candle', 'worm')
+  /// currentPage: Current page name (e.g. 'trade_page', 'big_chart_page')
+  void logContractBought({
+    required String market,
+    required String chartType,
+    required String tradeType,
+    required String currentPage,
+  }) {
+    DerivRudderstack().track(
+        eventName: 'ce_deriv_go_trade_form',
+        properties: <String, dynamic>{
+          'action': 'run_contract',
+          'form_name': 'ce_deriv_go_trade_form',
+          'market_name': market,
+          'chart_type_name': chartType,
+          'trade_type_name': tradeType,
+          'subform_name': currentPage,
+        });
   }
 }

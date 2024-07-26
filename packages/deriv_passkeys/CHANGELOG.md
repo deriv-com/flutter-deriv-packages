@@ -1,3 +1,23 @@
+## 0.0.3+10
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+9
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+8
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+7
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+6
+
+ - Update a dependency to the latest release.
+
 ## 0.0.3+5
 
  - **REFACTOR**(version): updated the version of flutter deriv api ([#694](https://github.com/regentmarkets/flutter-deriv-packages/issues/694)). ([eac7e8cb](https://github.com/regentmarkets/flutter-deriv-packages/commit/eac7e8cba4e9310d30296e07a47731f08d4d7342))

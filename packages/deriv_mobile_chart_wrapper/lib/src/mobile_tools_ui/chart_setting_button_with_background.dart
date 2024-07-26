@@ -29,11 +29,11 @@ class ChartSettingButtonWithBackground extends StatelessWidget {
           borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
           child: InkWell(
             borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
+            onTap: onTap,
             child: Padding(
               padding: const EdgeInsets.all(ThemeProvider.margin08),
               child: child,
             ),
-            onTap: onTap,
           ),
         ),
       );
