@@ -1,7 +1,7 @@
-import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
 class IndicatorDescriptionBottomSheet extends StatelessWidget {
@@ -16,8 +16,7 @@ class IndicatorDescriptionBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChartBottomSheet(
-      height: MediaQuery.of(context).size.height * 0.55,
+    return DerivBottomSheet(
       title: indicator.title,
       showBackButton: true,
       hasActionButton: true,

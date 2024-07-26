@@ -83,6 +83,7 @@ class _MobileToolsBottomSheetContentState
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Expanded(
           child: Ink(

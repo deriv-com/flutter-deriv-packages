@@ -1,7 +1,7 @@
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
-import 'chart_bottom_sheet.dart';
 import 'colours_palettes.dart';
 
 class ColorSelector extends StatelessWidget {
@@ -23,7 +23,7 @@ class ColorSelector extends StatelessWidget {
         onTap: () {
           showModalBottomSheet(
             context: context,
-            builder: (_) => ChartBottomSheet(
+            builder: (_) => DerivBottomSheet(
               title: title,
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,

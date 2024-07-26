@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'mobile_tools_ui/chart_bottom_sheet.dart';
 import 'mobile_tools_ui/mobile_tools_bottom_sheet_content.dart';
 import 'mobile_tools_ui/tools_controller.dart';
 
@@ -242,7 +241,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
           ChangeNotifierProvider<AddOnsRepository<IndicatorConfig>>.value(
         value: indicatorsRepo,
         child: SafeArea(
-          child: ChartBottomSheet(
+          child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelIndicators,
             child: const MobileToolsBottomSheetContent(),
           ),
