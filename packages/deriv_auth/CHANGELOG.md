@@ -1,3 +1,7 @@
+## 6.7.22
+
+ - Update a dependency to the latest release.
+
 ## 6.7.21
 
  - Update a dependency to the latest release.

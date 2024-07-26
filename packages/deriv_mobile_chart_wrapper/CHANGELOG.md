@@ -1,3 +1,7 @@
+## 0.0.4+4
+
+ - **FIX**(deriv_mobile_chart_wrapper): move core widgets from chart wrapper to deriv ui ([#712](https://github.com/regentmarkets/flutter-deriv-packages/issues/712)). ([d870e2c9](https://github.com/regentmarkets/flutter-deriv-packages/commit/d870e2c93f1157fae1692f836fc9c5bee85b8e21))
+
 ## 0.0.4+3
 
  - Update a dependency to the latest release.

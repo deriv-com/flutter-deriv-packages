@@ -1,3 +1,7 @@
+## 0.0.9+1
+
+ - **FIX**(deriv_mobile_chart_wrapper): move core widgets from chart wrapper to deriv ui ([#712](https://github.com/regentmarkets/flutter-deriv-packages/issues/712)). ([d870e2c9](https://github.com/regentmarkets/flutter-deriv-packages/commit/d870e2c93f1157fae1692f836fc9c5bee85b8e21))
+
 ## 0.0.9
 
  - **FEAT**(deriv_ui): add the ability to disable the dot button. ([#706](https://github.com/regentmarkets/flutter-deriv-packages/issues/706)). ([44db38e5](https://github.com/regentmarkets/flutter-deriv-packages/commit/44db38e5daa0c0941ada4eb698d7317a97209093))
