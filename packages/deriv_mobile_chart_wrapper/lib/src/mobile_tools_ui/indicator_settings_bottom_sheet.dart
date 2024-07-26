@@ -11,6 +11,10 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
     this.theme,
     required this.settings,
     required this.indicator,
+    required this.onApply,
+    required this.onReset,
+    required this.onTapInfo,
+    required this.onTapDelete,
   });
 
   /// The theme of the chart which the bottom sheet is being placed inside.
@@ -21,6 +25,18 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
 
   /// The indicator name.
   final String indicator;
+
+  /// The callback when the apply button is pressed.
+  final VoidCallback onApply;
+
+  /// The callback when the reset button is pressed.
+  final VoidCallback onReset;
+
+  /// The callback when the info button is pressed.
+  final VoidCallback onTapInfo;
+
+  /// The callback when the delete button is pressed.
+  final VoidCallback onTapDelete;
 
   @override
   State<IndicatorSettingsBottomSheet> createState() =>
@@ -85,8 +101,8 @@ class _IndicatorSettingsBottomSheetState
         width: double.infinity,
         child: Center(
           child: Container(
-            width: 40,
-            height: 4,
+            width: ThemeProvider.margin40,
+            height: ThemeProvider.margin04,
             decoration: BoxDecoration(
               color: _theme.base05Color,
               borderRadius: BorderRadius.circular(_theme.borderRadius04Chart),
@@ -100,8 +116,13 @@ class _IndicatorSettingsBottomSheetState
         child: Row(
           children: [
             /// make it downward
-            const Icon(
-              Icons.keyboard_arrow_down_rounded,
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: const Icon(
+                Icons.keyboard_arrow_down_rounded,
+              ),
             ),
             const SizedBox(
               width: ThemeProvider.margin16,
@@ -117,13 +138,13 @@ class _IndicatorSettingsBottomSheetState
             IconButton(
               icon: const Icon(Icons.info_outline),
               color: context.theme.colors.prominent,
-              onPressed: () {},
+              onPressed: widget.onTapInfo,
             ),
             const SizedBox(
-              width: ThemeProvider.margin24,
+              width: ThemeProvider.margin12,
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: widget.onTapDelete,
               color: context.theme.colors.prominent,
               icon: const Icon(Icons.delete_outline),
             ),
@@ -139,7 +160,7 @@ class _IndicatorSettingsBottomSheetState
           children: [
             Expanded(
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: widget.onReset,
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelReset,
                   style: context.theme.textStyle(
@@ -154,7 +175,7 @@ class _IndicatorSettingsBottomSheetState
             ),
             Expanded(
               child: PrimaryButton(
-                  onPressed: () {},
+                  onPressed: widget.onApply,
                   child: Text(
                     context.mobileChartWrapperLocalizations.labelApply,
                     style: context.theme.textStyle(

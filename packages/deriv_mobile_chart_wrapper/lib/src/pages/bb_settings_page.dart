@@ -110,6 +110,10 @@ class BollingerBandsSettingsPage extends StatelessWidget {
           ))
         ],
       ),
+      onApply: () {},
+      onReset: () {},
+      onTapDelete: () {},
+      onTapInfo: () {},
     );
   }
 }
