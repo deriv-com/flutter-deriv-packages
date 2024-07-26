@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:flutter/material.dart';
 
 /// A [Container] with borders that change color from green to `base06` when
 /// [selected] is set to `true`.
@@ -13,6 +13,7 @@ class GlowingContainer extends StatelessWidget {
     this.selected = false,
     this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
+    this.borderRadius = ThemeProvider.borderRadius08,
     Key? key,
   }) : super(key: key);
 
@@ -32,6 +33,11 @@ class GlowingContainer extends StatelessWidget {
   /// Container margin.
   final EdgeInsetsGeometry margin;
 
+  /// Widget border radius
+  ///
+  /// default is 8;
+  final double borderRadius;
+
   @override
   Widget build(BuildContext context) => selected
       ? TweenAnimationBuilder<Color?>(
@@ -48,7 +54,7 @@ class GlowingContainer extends StatelessWidget {
 
   Widget _buildContainer(Color color) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
+          borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(color: color),
         ),
         margin: margin,
