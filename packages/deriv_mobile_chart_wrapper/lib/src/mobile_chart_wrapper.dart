@@ -1,10 +1,10 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'mobile_tools_ui/chart_bottom_sheet.dart';
 import 'mobile_tools_ui/mobile_tools_bottom_sheet_content.dart';
 import 'mobile_tools_ui/tools_controller.dart';
 
@@ -241,11 +241,9 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
           ChangeNotifierProvider<AddOnsRepository<IndicatorConfig>>.value(
         value: indicatorsRepo,
         child: SafeArea(
-          child: ChartBottomSheet(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
-              child: const MobileToolsBottomSheetContent(),
-            ),
+          child: DerivBottomSheet(
+            title: context.mobileChartWrapperLocalizations.labelIndicators,
+            child: const MobileToolsBottomSheetContent(),
           ),
         ),
       ),

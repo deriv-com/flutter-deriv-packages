@@ -1,3 +1,19 @@
+## 0.0.6
+
+ - **FEAT**(deriv_mobile_chart_wrapper): update the chart package to get the new icons. ([#688](https://github.com/regentmarkets/flutter-deriv-packages/issues/688)). ([849afe72](https://github.com/regentmarkets/flutter-deriv-packages/commit/849afe72a4a52230de3d06ca1194ecf017f34e11))
+
+## 0.0.5
+
+ - **FEAT**(deriv_ui): add deriv bottom sheet. feat(deriv_mobile_chart_wrapper): add indicator description ([#713](https://github.com/regentmarkets/flutter-deriv-packages/issues/713)). ([50cfbe20](https://github.com/regentmarkets/flutter-deriv-packages/commit/50cfbe2008076a073331e555228b98a11a35f2ed))
+
+## 0.0.4+4
+
+ - **FIX**(deriv_mobile_chart_wrapper): move core widgets from chart wrapper to deriv ui ([#712](https://github.com/regentmarkets/flutter-deriv-packages/issues/712)). ([d870e2c9](https://github.com/regentmarkets/flutter-deriv-packages/commit/d870e2c93f1157fae1692f836fc9c5bee85b8e21))
+
+## 0.0.4+3
+
+ - Update a dependency to the latest release.
+
 ## 0.0.4+2
 
  - **REFACTOR**(deriv_mobile_chart_wrapper): Ramin/integrate with new version of chart package ([#702](https://github.com/regentmarkets/flutter-deriv-packages/issues/702)). ([b4a38374](https://github.com/regentmarkets/flutter-deriv-packages/commit/b4a38374dd47e8bde9c1bdc02e93ad78a1e64bd1))
