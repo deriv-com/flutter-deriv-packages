@@ -1,8 +1,8 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/glowing_container.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_bottom_sheet.dart';
 import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
 class BollingerBandsSettingsPage extends StatelessWidget {
@@ -16,7 +16,7 @@ class BollingerBandsSettingsPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           GlowingContainer(
-              radius: ThemeProvider.borderRadius04,
+              borderRadius: ThemeProvider.borderRadius04,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: ThemeProvider.margin16),
