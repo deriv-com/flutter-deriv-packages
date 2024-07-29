@@ -154,11 +154,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
   }
 
   Future<void> _onSignupState(DerivSignupState state) async {
-    if (state is DerivSignupErrorState) {
-      //TODO Handle state
-    } else if (state is DerivSignupDoneState) {
-      //TODO Handle state
-
+    if (state is DerivSignupDoneState) {
       await context.read<DerivAuthCubit>().tokenLogin(
             state.account?.token ?? 'invalid_token',
           );
