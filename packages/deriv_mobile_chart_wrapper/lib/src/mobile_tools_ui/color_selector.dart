@@ -55,7 +55,15 @@ class ColorSelector extends StatefulWidget {
 }
 
 class _ColorSelectorState extends State<ColorSelector> {
-  int? selectedColorIndex;
+  int? _selectedColorIndex;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    setState(() {
+      _selectedColorIndex = widget.selectedColorIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -69,7 +77,7 @@ class _ColorSelectorState extends State<ColorSelector> {
                 hasActionButton: true,
                 actionButtonLabel:
                     context.mobileChartWrapperLocalizations.labelOK,
-                onActionButtonPressed: selectedColorIndex == null
+                onActionButtonPressed: _selectedColorIndex == null
                     ? null
                     : () {
                         Navigator.of(context).pop();
@@ -78,12 +86,12 @@ class _ColorSelectorState extends State<ColorSelector> {
                   child: ColoursGrid(
                     onColorSelected: (int index) {
                       state(() {
-                        selectedColorIndex = index;
+                        _selectedColorIndex = index;
                       });
                       widget.onColorChanged(index);
                     },
                     colors: widget.colors,
-                    selectedColorIndex: selectedColorIndex,
+                    selectedColorIndex: _selectedColorIndex,
                   ),
                 ),
               );
@@ -105,10 +113,10 @@ class _ColorSelectorState extends State<ColorSelector> {
                   Container(
                     width: ThemeProvider.margin24,
                     height: ThemeProvider.margin24,
-                    decoration: selectedColorIndex == null
+                    decoration: _selectedColorIndex == null
                         ? null
                         : BoxDecoration(
-                            color: widget.colors[selectedColorIndex!],
+                            color: widget.colors[_selectedColorIndex!],
                             borderRadius: BorderRadius.circular(
                               ThemeProvider.borderRadius04,
                             ),
@@ -122,12 +130,4 @@ class _ColorSelectorState extends State<ColorSelector> {
           ),
         ),
       );
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setState(() {
-      selectedColorIndex = widget.selectedColorIndex;
-    });
-  }
 }
