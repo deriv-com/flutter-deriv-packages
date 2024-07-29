@@ -16,30 +16,28 @@ class IndicatorDescriptionBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return DerivBottomSheet(
       height: MediaQuery.of(context).size.height * 0.55,
-      child: DerivBottomSheet(
-        title: indicator.title,
-        showBackButton: true,
-        hasActionButton: true,
-        actionButtonLabel:
-            context.mobileChartWrapperLocalizations.infoAddSelectedIndicator(
-          indicator.subtitle,
-        ),
-        onActionButtonPressed: onAddIndicatorPressed,
-        child: ColoredBox(
-          color: context.theme.colors.primary,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: ThemeProvider.margin16,
-              horizontal: ThemeProvider.margin16,
-            ),
-            child: Text(
-              indicator.description,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.body1,
-                color: context.theme.colors.general,
-              ),
+      title: indicator.title,
+      showBackButton: true,
+      hasActionButton: true,
+      actionButtonLabel:
+          context.mobileChartWrapperLocalizations.infoAddSelectedIndicator(
+        indicator.subtitle,
+      ),
+      onActionButtonPressed: onAddIndicatorPressed,
+      child: ColoredBox(
+        color: context.theme.colors.primary,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: ThemeProvider.margin16,
+            horizontal: ThemeProvider.margin16,
+          ),
+          child: Text(
+            indicator.description,
+            style: context.theme.textStyle(
+              textStyle: TextStyles.body1,
+              color: context.theme.colors.general,
             ),
           ),
         ),
