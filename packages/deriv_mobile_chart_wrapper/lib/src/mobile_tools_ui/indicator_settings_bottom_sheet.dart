@@ -61,7 +61,7 @@ class _IndicatorSettingsBottomSheetState
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.9,
+        height: MediaQuery.of(context).size.height,
         child: Provider<ChartTheme>.value(
           value: _theme,
           child: ClipRRect(
