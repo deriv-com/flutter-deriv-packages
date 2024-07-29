@@ -64,6 +64,7 @@ class _ColorSelectorState extends State<ColorSelector> {
             context: context,
             builder: (_) => StatefulBuilder(builder: (context, state) {
               return DerivBottomSheet(
+                height: MediaQuery.of(context).size.height * 0.38,
                 title: widget.title,
                 hasActionButton: true,
                 actionButtonLabel:
@@ -74,7 +75,6 @@ class _ColorSelectorState extends State<ColorSelector> {
                         Navigator.of(context).pop();
                       },
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.5,
                   child: ColoursGrid(
                     onColorSelected: (int index) {
                       state(() {
