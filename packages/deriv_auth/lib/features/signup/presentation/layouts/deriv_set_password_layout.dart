@@ -149,7 +149,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
 
   void _onAuthState(BuildContext context, DerivAuthState state) {
     if (state is DerivAuthLoggedInState) {
-      AuthData().data.loginPageModel.onLoggedIn.call(state);
+      AuthData().data.loginPageModel.onLoggedIn.call(context, state);
     }
   }
 

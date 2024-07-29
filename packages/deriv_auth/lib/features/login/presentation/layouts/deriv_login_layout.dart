@@ -49,7 +49,7 @@ class DerivLoginLayout extends StatefulWidget {
   final Function(DerivAuthErrorState)? onLoginError;
 
   /// Callback to be called when user is logged in.
-  final Function(DerivAuthLoggedInState) onLoggedIn;
+  final Function(BuildContext, DerivAuthLoggedInState) onLoggedIn;
 
   /// Callback to be called when social auth button is tapped.
   /// Give access to [SocialAuthDto] for 2FA.
@@ -343,7 +343,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
     }
 
     if (state is DerivAuthLoggedInState) {
-      widget.onLoggedIn(state);
+      widget.onLoggedIn(context, state);
     }
   }
 
