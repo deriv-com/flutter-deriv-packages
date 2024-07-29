@@ -123,7 +123,11 @@ class ValueSelector extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.only(bottom: ThemeProvider.margin08),
-                  child: Text(label!, style: TextStyles.caption),
+                  child: Text(label!,
+                      style: context.theme.textStyle(
+                        textStyle: TextStyles.caption,
+                        color: context.theme.colors.general,
+                      )),
                 ),
               Ink(
                 height: 40,
@@ -240,6 +244,7 @@ class ValueSelector extends StatelessWidget {
   }
 
   String _getFormattedValue(double value) {
+    // ignore: no_leading_underscores_for_local_identifiers
     final NumberFormat _formatter = formatter ?? NumberFormat('#,###');
     return _formatter.format(value);
   }
