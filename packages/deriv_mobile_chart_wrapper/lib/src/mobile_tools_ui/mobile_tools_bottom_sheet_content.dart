@@ -243,7 +243,7 @@ class _MobileToolsBottomSheetContentState
                         isScrollControlled: true,
                         barrierColor: Colors.transparent,
                         builder: (context) {
-                          return const BollingerBandsSettingsPage();
+                          return _getSettingsPage(indicatorConfig);
                         });
                   },
                   onTapDelete: () => indicatorsRepo.removeAt(index),
@@ -254,6 +254,15 @@ class _MobileToolsBottomSheetContentState
         ],
       ),
     );
+  }
+
+  Widget _getSettingsPage(IndicatorConfig indicatorConfig) {
+    switch (indicatorConfig.runtimeType) {
+      case BollingerBandsIndicatorConfig:
+        return const BollingerBandsSettingsPage();
+      default:
+        return const SizedBox();
+    }
   }
 
   Widget _buildIndicatorEmptyState() {

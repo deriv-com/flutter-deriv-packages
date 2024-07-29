@@ -1,5 +1,6 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/helpers/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_bottom_sheet.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -18,10 +19,10 @@ class _BollingerBandsSettingsPageState
   late List<String> _sourceOptions;
   late List<String> _movingAverageTypeOptions;
 
-  final Color _bollingerBandTopColor = const Color(0xFFFFFFFF);
-  final Color _bollingerBandMedianColor = const Color(0xFFFFFFFF);
-  final Color _bollingerBandBottomColor = const Color(0xFFFFFFFF);
-  final Color _fillColor = const Color(0xFFFFFFFF);
+  int _bollingerBandTopIndex = 0;
+  int _bollingerBandMedianIndex = 0;
+  int _bollingerBandBottomIndex = 0;
+  int _fillColorIndex = 0;
   bool _isChannelFillEnabled = true;
   double? _period = 14;
   double? _standardDeviations = 14;
@@ -31,29 +32,9 @@ class _BollingerBandsSettingsPageState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _sourceOptions = [
-      context.mobileChartWrapperLocalizations.labelClose,
-      context.mobileChartWrapperLocalizations.labelOpen,
-      context.mobileChartWrapperLocalizations.labelHigh,
-      context.mobileChartWrapperLocalizations.labelLow,
-      context.mobileChartWrapperLocalizations.labelHl2,
-      context.mobileChartWrapperLocalizations.labelHlcc4,
-      context.mobileChartWrapperLocalizations.labelOhlc4,
-    ];
 
-    _movingAverageTypeOptions = [
-      context.mobileChartWrapperLocalizations.labelSimple,
-      context.mobileChartWrapperLocalizations.labelExponential,
-      context.mobileChartWrapperLocalizations.labelWeighted,
-      context.mobileChartWrapperLocalizations.labelHull,
-      context.mobileChartWrapperLocalizations.labelZeroLag,
-      context.mobileChartWrapperLocalizations.labelTimeSeries,
-      context.mobileChartWrapperLocalizations.labelWellesWilder,
-      context.mobileChartWrapperLocalizations.labelVariable,
-      context.mobileChartWrapperLocalizations.labelTriangular,
-      context.mobileChartWrapperLocalizations.label2Exponential,
-      context.mobileChartWrapperLocalizations.label3Exponential,
-    ];
+    _sourceOptions = getSourcesOptions(context);
+    _movingAverageTypeOptions = getMAOptions(context);
   }
 
   @override
@@ -98,7 +79,13 @@ class _BollingerBandsSettingsPageState
               child: ColorSelector(
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsTop,
-                color: _bollingerBandTopColor,
+                colors: availableColors,
+                selectedColorIndex: _bollingerBandTopIndex,
+                onColorChanged: (index) {
+                  setState(() {
+                    _bollingerBandTopIndex = index;
+                  });
+                },
               ),
             ),
             Padding(
@@ -108,7 +95,13 @@ class _BollingerBandsSettingsPageState
               child: ColorSelector(
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsMedian,
-                color: _bollingerBandMedianColor,
+                colors: availableColors,
+                selectedColorIndex: _bollingerBandMedianIndex,
+                onColorChanged: (index) {
+                  setState(() {
+                    _bollingerBandMedianIndex = index;
+                  });
+                },
               ),
             ),
             Padding(
@@ -118,7 +111,13 @@ class _BollingerBandsSettingsPageState
               child: ColorSelector(
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsBottom,
-                color: _bollingerBandBottomColor,
+                colors: availableColors,
+                selectedColorIndex: _bollingerBandBottomIndex,
+                onColorChanged: (index) {
+                  setState(() {
+                    _bollingerBandBottomIndex = index;
+                  });
+                },
               ),
             ),
             const SizedBox(
@@ -151,7 +150,6 @@ class _BollingerBandsSettingsPageState
                   activeColor: context.theme.colors.coral,
                   value: _isChannelFillEnabled,
                   onChanged: (bool isEnabled) {
-                    print(isEnabled);
                     setState(() {
                       _isChannelFillEnabled = isEnabled;
                     });
@@ -165,7 +163,13 @@ class _BollingerBandsSettingsPageState
               ),
               child: ColorSelector(
                 title: context.mobileChartWrapperLocalizations.labelFillColor,
-                color: _fillColor,
+                colors: availableColors,
+                selectedColorIndex: _fillColorIndex,
+                onColorChanged: (index) {
+                  setState(() {
+                    _fillColorIndex = index;
+                  });
+                },
               ),
             ),
           ],
