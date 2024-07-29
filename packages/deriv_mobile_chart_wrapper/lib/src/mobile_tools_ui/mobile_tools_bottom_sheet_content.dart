@@ -6,6 +6,7 @@ import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/ma_settings_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -236,7 +237,15 @@ class _MobileToolsBottomSheetContentState
                   )} '
                       '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
                   subtitle: '(${indicatorConfig.configSummary})',
-                  onTapSetting: () {},
+                  onTapSetting: () {
+                    showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        barrierColor: Colors.transparent,
+                        builder: (context) {
+                          return _getSettingsPage(indicatorConfig);
+                        });
+                  },
                   onTapDelete: () => indicatorsRepo.removeAt(index),
                 );
               },
@@ -245,6 +254,16 @@ class _MobileToolsBottomSheetContentState
         ],
       ),
     );
+  }
+
+  Widget _getSettingsPage(IndicatorConfig indicatorConfig) {
+    switch (indicatorConfig.runtimeType) {
+      case MAIndicatorConfig:
+        return const MASettingsPage();
+
+      default:
+        return const SizedBox();
+    }
   }
 
   Widget _buildIndicatorEmptyState() {
