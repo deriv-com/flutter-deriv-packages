@@ -66,26 +66,24 @@ class _BollingerBandsSettingsPageState
       borderRadius: ThemeProvider.borderRadius04,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
-        child: ListView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(
-              height: ThemeProvider.margin16,
-            ),
-            ColorSelector(
-              title: context
-                  .mobileChartWrapperLocalizations.labelBollingerBandsTop,
-              colors: availableColors,
-              selectedColorIndex: _bollingerBandTopIndex,
-              onColorChanged: (index) {
-                setState(() {
-                  _bollingerBandTopIndex = index;
-                });
-              },
-            ),
-            const SizedBox(
-              height: ThemeProvider.margin16,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: ThemeProvider.margin16,
+              ),
+              child: ColorSelector(
+                title: context
+                    .mobileChartWrapperLocalizations.labelBollingerBandsTop,
+                colors: availableColors,
+                selectedColorIndex: _bollingerBandTopIndex,
+                onColorChanged: (index) {
+                  setState(() {
+                    _bollingerBandTopIndex = index;
+                  });
+                },
+              ),
             ),
             ColorSelector(
               title: context
@@ -98,22 +96,21 @@ class _BollingerBandsSettingsPageState
                 });
               },
             ),
-            const SizedBox(
-              height: ThemeProvider.margin16,
-            ),
-            ColorSelector(
-              title: context
-                  .mobileChartWrapperLocalizations.labelBollingerBandsBottom,
-              colors: availableColors,
-              selectedColorIndex: _bollingerBandBottomIndex,
-              onColorChanged: (index) {
-                setState(() {
-                  _bollingerBandBottomIndex = index;
-                });
-              },
-            ),
-            const SizedBox(
-              height: ThemeProvider.margin16,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: ThemeProvider.margin16,
+              ),
+              child: ColorSelector(
+                title: context
+                    .mobileChartWrapperLocalizations.labelBollingerBandsBottom,
+                colors: availableColors,
+                selectedColorIndex: _bollingerBandBottomIndex,
+                onColorChanged: (index) {
+                  setState(() {
+                    _bollingerBandBottomIndex = index;
+                  });
+                },
+              ),
             ),
           ],
         ),

@@ -177,9 +177,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
         padding: const EdgeInsets.symmetric(
           horizontal: ThemeProvider.margin16,
         ),
-        child: ListView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(
               height: ThemeProvider.margin16,
@@ -194,21 +193,21 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                 });
               },
             ),
-            const SizedBox(
-              height: ThemeProvider.margin16,
-            ),
-            ColorSelector(
-              title: context.mobileChartWrapperLocalizations.labelDecreasingBar,
-              colors: availableColors,
-              selectedColorIndex: _decreasingBarColorIndex,
-              onColorChanged: (index) {
-                setState(() {
-                  _decreasingBarColorIndex = index;
-                });
-              },
-            ),
-            const SizedBox(
-              height: ThemeProvider.margin16,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: ThemeProvider.margin16,
+              ),
+              child: ColorSelector(
+                title:
+                    context.mobileChartWrapperLocalizations.labelDecreasingBar,
+                colors: availableColors,
+                selectedColorIndex: _decreasingBarColorIndex,
+                onColorChanged: (index) {
+                  setState(() {
+                    _decreasingBarColorIndex = index;
+                  });
+                },
+              ),
             ),
           ],
         ),
