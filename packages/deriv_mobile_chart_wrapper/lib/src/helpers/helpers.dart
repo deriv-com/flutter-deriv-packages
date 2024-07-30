@@ -39,17 +39,3 @@ List<String> getTypesOptions(BuildContext context) => [
       context.mobileChartWrapperLocalizations.label2Exponential,
       context.mobileChartWrapperLocalizations.label3Exponential,
     ];
-
-List<String> getMAOptions(BuildContext context) => [
-      context.mobileChartWrapperLocalizations.labelSimple,
-      context.mobileChartWrapperLocalizations.labelExponential,
-      context.mobileChartWrapperLocalizations.labelWeighted,
-      context.mobileChartWrapperLocalizations.labelHull,
-      context.mobileChartWrapperLocalizations.labelZeroLag,
-      context.mobileChartWrapperLocalizations.labelTimeSeries,
-      context.mobileChartWrapperLocalizations.labelWellesWilder,
-      context.mobileChartWrapperLocalizations.labelVariable,
-      context.mobileChartWrapperLocalizations.labelTriangular,
-      context.mobileChartWrapperLocalizations.label2Exponential,
-      context.mobileChartWrapperLocalizations.label3Exponential,
-    ];
