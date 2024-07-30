@@ -1,15 +1,16 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:flutter/material.dart';
 
 /// The base class for the indicator setting page.
-abstract class BaseIndicatorSettingPage<T extends IndicatorConfig> {
+abstract class BaseIndicatorSettingPage<T extends IndicatorConfig>
+    extends StatefulWidget {
   /// Initializes the indicator setting page.
-  BaseIndicatorSettingPage(
-      {required this.initialConfig, required this.onConfigUpdated});
+  const BaseIndicatorSettingPage(
+      {super.key, required this.initialConfig, required this.onConfigUpdated});
 
   /// The initial configuration of the indicator.
-  T initialConfig;
-
+  final T initialConfig;
 
   /// The callback function to be called when the configuration is updated.
-  void Function(T config) onConfigUpdated;
+  final void Function(T config) onConfigUpdated;
 }
