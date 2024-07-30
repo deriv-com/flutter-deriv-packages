@@ -36,3 +36,14 @@ String getIndicatorIconPath(IndicatorConfig config) {
       return '';
   }
 }
+
+Map<String, String> getSourcesOptions(BuildContext context) => {
+      'close': context.mobileChartWrapperLocalizations.labelClose,
+      'open': context.mobileChartWrapperLocalizations.labelOpen,
+      'high': context.mobileChartWrapperLocalizations.labelHigh,
+      'low': context.mobileChartWrapperLocalizations.labelLow,
+      'Hl/2': context.mobileChartWrapperLocalizations.labelHl2,
+      'HlC/3': context.mobileChartWrapperLocalizations.labelHlc3,
+      'HlCC/4': context.mobileChartWrapperLocalizations.labelHlcc4,
+      'OHlc/4': context.mobileChartWrapperLocalizations.labelOhlc4,
+    };
