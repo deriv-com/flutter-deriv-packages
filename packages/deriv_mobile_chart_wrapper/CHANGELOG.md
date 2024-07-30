@@ -1,3 +1,11 @@
+## 0.0.6+2
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): change back the chart dependency to dev ([#722](https://github.com/regentmarkets/flutter-deriv-packages/issues/722)). ([d09d364b](https://github.com/regentmarkets/flutter-deriv-packages/commit/d09d364b61589cdfe16fbd0f7254827e9a8d5157))
+
+## 0.0.6+1
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): Improve colour selector. ([#724](https://github.com/regentmarkets/flutter-deriv-packages/issues/724)). ([a752dd8e](https://github.com/regentmarkets/flutter-deriv-packages/commit/a752dd8ed66d70878959418679ff2b9a7e28db25))
+
 ## 0.0.6
 
  - **FEAT**(deriv_mobile_chart_wrapper): update the chart package to get the new icons. ([#688](https://github.com/regentmarkets/flutter-deriv-packages/issues/688)). ([849afe72](https://github.com/regentmarkets/flutter-deriv-packages/commit/849afe72a4a52230de3d06ca1194ecf017f34e11))
