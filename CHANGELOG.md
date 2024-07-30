@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.6+2`](#deriv_mobile_chart_wrapper---v0062)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.6+2`
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): change back the chart dependency to dev ([#722](https://github.com/regentmarkets/flutter-deriv-packages/issues/722)). ([d09d364b](https://github.com/regentmarkets/flutter-deriv-packages/commit/d09d364b61589cdfe16fbd0f7254827e9a8d5157))
+
+
+## 2024-07-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.6+1`](#deriv_mobile_chart_wrapper---v0061)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.6+1`
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): Improve colour selector. ([#724](https://github.com/regentmarkets/flutter-deriv-packages/issues/724)). ([a752dd8e](https://github.com/regentmarkets/flutter-deriv-packages/commit/a752dd8ed66d70878959418679ff2b9a7e28db25))
+
+
 ## 2024-07-26
 
 ### Changes
