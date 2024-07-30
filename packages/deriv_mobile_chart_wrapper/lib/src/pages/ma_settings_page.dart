@@ -17,8 +17,7 @@ class _MASettingsPageState extends State<MASettingsPage> {
   late List<String> _sourceOptions;
   late List<String> _typeOptions;
 
-
-  int _MALineColorIndex = 0;
+  int _maLineColorIndex = 0;
 
   double? _period = 14;
   double? _offset = 0;
@@ -40,16 +39,15 @@ class _MASettingsPageState extends State<MASettingsPage> {
       settings: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildTheFirstSection(context),
+          _buildMAColorSelectionSection(context),
           const SizedBox(
             height: ThemeProvider.margin24,
           ),
-          _theSecondSection(),
+          _buildPeriodAndOffsetSection(),
           const SizedBox(
             height: ThemeProvider.margin24,
           ),
-          _buildTheThirdSection(),
-
+          _buildSourceAndTypeSection(),
         ],
       ),
       onApply: () {},
@@ -59,124 +57,123 @@ class _MASettingsPageState extends State<MASettingsPage> {
     );
   }
 
-  _buildTheFirstSection(BuildContext context) =>
-      Padding(
+  Widget _buildMAColorSelectionSection(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(
           vertical: ThemeProvider.margin08,
         ),
         child: ColorSelector(
           title: context.mobileChartWrapperLocalizations.labelMALine,
           colors: availableColors,
-          selectedColorIndex: _MALineColorIndex,
+          selectedColorIndex: _maLineColorIndex,
           onColorChanged: (index) {
             setState(() {
-              _MALineColorIndex = index;
+              _maLineColorIndex = index;
             });
           },
         ),
       );
 
-  _theSecondSection() =>
-      GlowingContainer(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: ThemeProvider.margin16,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(
-                  height: ThemeProvider.margin16,
-                ),
-                ValueSelector(
-                  value: _period ?? 0,
-                  backgroundColor: context.theme.colors.active,
-                  onChange: (value) {
-                    setState(() {
-                      _period = value;
-                    });
-                  },
-                  label: context.mobileChartWrapperLocalizations.labelPeriod,
-                  numberPadSubmitLabel:
-                  context.mobileChartWrapperLocalizations.labelOK,
-                  showMaximumSubtitle: true,
-                  maximumSubtitle:
-                  context.mobileChartWrapperLocalizations.labelMaxRange,
-                  maximum: 100,
-                  showMinimumSubtitle: true,
-                  minimumSubtitle:
-                  context.mobileChartWrapperLocalizations.labelMinRange,
-                  minimum: 1,
-                ),
-                const SizedBox(
-                  height: ThemeProvider.margin16,
-                ),
-                ValueSelector(
-                  value: _offset ?? 0,
-                  backgroundColor: context.theme.colors.active,
-                  onChange: (value) {
-                    setState(() {
-                      _offset = value;
-                    });
-                  },
-                  label: context.mobileChartWrapperLocalizations.labelOffset,
-                  numberPadSubmitLabel:
-                  context.mobileChartWrapperLocalizations.labelOK,
-                  showMaximumSubtitle: true,
-                  maximumSubtitle:
-                  context.mobileChartWrapperLocalizations.labelMaxRange,
-                  maximum: 100,
-                  showMinimumSubtitle: true,
-                  minimumSubtitle:
-                  context.mobileChartWrapperLocalizations.labelMinRange,
-                  minimum: 1,
-                ),
-                const SizedBox(
-                  height: ThemeProvider.margin16,
-                ),
-              ],
-            ),
-          ));
+  Widget _buildPeriodAndOffsetSection() => GlowingContainer(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: ThemeProvider.margin16,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: ThemeProvider.margin16,
+              ),
+              ValueSelector(
+                value: _period ?? 0,
+                backgroundColor: context.theme.colors.active,
+                onChange: (value) {
+                  setState(() {
+                    _period = value;
+                  });
+                },
+                label: context.mobileChartWrapperLocalizations.labelPeriod,
+                numberPadSubmitLabel:
+                    context.mobileChartWrapperLocalizations.labelOK,
+                showMaximumSubtitle: true,
+                maximumSubtitle:
+                    context.mobileChartWrapperLocalizations.labelMaxRange,
+                maximum: 100,
+                showMinimumSubtitle: true,
+                minimumSubtitle:
+                    context.mobileChartWrapperLocalizations.labelMinRange,
+                minimum: 1,
+              ),
+              const SizedBox(
+                height: ThemeProvider.margin16,
+              ),
+              ValueSelector(
+                value: _offset ?? 0,
+                backgroundColor: context.theme.colors.active,
+                onChange: (value) {
+                  setState(() {
+                    _offset = value;
+                  });
+                },
+                label: context.mobileChartWrapperLocalizations.labelOffset,
+                numberPadSubmitLabel:
+                    context.mobileChartWrapperLocalizations.labelOK,
+                showMaximumSubtitle: true,
+                maximumSubtitle:
+                    context.mobileChartWrapperLocalizations.labelMaxRange,
+                maximum: 100,
+                showMinimumSubtitle: true,
+                minimumSubtitle:
+                    context.mobileChartWrapperLocalizations.labelMinRange,
+                minimum: 1,
+              ),
+              const SizedBox(
+                height: ThemeProvider.margin16,
+              ),
+            ],
+          ),
+        ),
+      );
 
-  _buildTheThirdSection() =>
-      GlowingContainer(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: ThemeProvider.margin16,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(
-                  height: ThemeProvider.margin16,
-                ),
-                OptionSelector(
-                  label: context.mobileChartWrapperLocalizations.labelSource,
-                  options: _sourceOptions,
-                  selectedIndex: _sourceIndex,
-                  onOptionSelected: (index) {
-                    setState(() {
-                      _sourceIndex = index;
-                    });
-                  },
-                ),
-                const SizedBox(
-                  height: ThemeProvider.margin16,
-                ),
-                OptionSelector(
-                  label: context.mobileChartWrapperLocalizations.labelType,
-                  options: _typeOptions,
-                  selectedIndex: _typeIndex,
-                  onOptionSelected: (index) {
-                    setState(() {
-                      _typeIndex = index;
-                    });
-                  },
-                ),
-                const SizedBox(
-                  height: ThemeProvider.margin16,
-                ),
-              ],
-            ),
-          ));
+  Widget _buildSourceAndTypeSection() => GlowingContainer(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: ThemeProvider.margin16,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: ThemeProvider.margin16,
+              ),
+              OptionSelector(
+                label: context.mobileChartWrapperLocalizations.labelSource,
+                options: _sourceOptions,
+                selectedIndex: _sourceIndex,
+                onOptionSelected: (index) {
+                  setState(() {
+                    _sourceIndex = index;
+                  });
+                },
+              ),
+              const SizedBox(
+                height: ThemeProvider.margin16,
+              ),
+              OptionSelector(
+                label: context.mobileChartWrapperLocalizations.labelType,
+                options: _typeOptions,
+                selectedIndex: _typeIndex,
+                onOptionSelected: (index) {
+                  setState(() {
+                    _typeIndex = index;
+                  });
+                },
+              ),
+              const SizedBox(
+                height: ThemeProvider.margin16,
+              ),
+            ],
+          ),
+        ),
+      );
 }
