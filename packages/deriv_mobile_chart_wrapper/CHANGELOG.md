@@ -1,3 +1,7 @@
+## 0.0.7+2
+
+ - **FIX**(deriv_mobile_chart_wraper): change from index to color in the on change callback ([#735](https://github.com/regentmarkets/flutter-deriv-packages/issues/735)). ([d1470d8c](https://github.com/regentmarkets/flutter-deriv-packages/commit/d1470d8c7ebb23f11531227a9fbb31bbcc068043))
+
 ## 0.0.7+1
 
  - **FIX**(deriv_mobile_chart_wraper): improve color selector ([#732](https://github.com/regentmarkets/flutter-deriv-packages/issues/732)). ([45968888](https://github.com/regentmarkets/flutter-deriv-packages/commit/45968888edac04db08bafe44d6e8de87f447d6c5))

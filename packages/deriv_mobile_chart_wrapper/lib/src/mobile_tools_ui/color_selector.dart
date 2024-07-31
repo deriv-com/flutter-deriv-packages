@@ -33,7 +33,7 @@ class ColorSelector extends StatefulWidget {
 
   final List<Color> colors;
 
-  final void Function(int index) onColorChanged;
+  final void Function(Color selectedColor) onColorChanged;
 
   @override
   State<ColorSelector> createState() => _ColorSelectorState();
@@ -73,7 +73,7 @@ class _ColorSelectorState extends State<ColorSelector> {
                       state(() {
                         _selectedColor = widget.colors[index];
                       });
-                      widget.onColorChanged(index);
+                      widget.onColorChanged(widget.colors[index]);
                     },
                     colors: widget.colors,
                     selectedColor: _selectedColor,
