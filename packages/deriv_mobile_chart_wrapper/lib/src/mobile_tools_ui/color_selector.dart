@@ -5,22 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'colours_grid.dart';
 
-/// example of how to use the ColorSelector widget:
-///
-/// Center(
-///       child: ColorSelector(
-///          colors:
-///         selectedColorIndex: selectedColorIndex,
-///         onColorChanged: (int index) {
-///           setState(() {
-///             selectedColorIndex = index;
-///           });
-///           print('Selected color index: $index');
-///         },
-///         title: 'Color Selector',
-///       ),
-///     );
-///
+/// A widget that allows the user to select a color from a list of colors.
 class ColorSelector extends StatefulWidget {
   ColorSelector({
     this.colors = const [
