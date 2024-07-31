@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_mobile_chart_wrapper` - `v0.0.7+1`](#deriv_mobile_chart_wrapper---v0071)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.7+1`
+
+ - **FIX**(deriv_mobile_chart_wraper): improve color selector ([#732](https://github.com/regentmarkets/flutter-deriv-packages/issues/732)). ([45968888](https://github.com/regentmarkets/flutter-deriv-packages/commit/45968888edac04db08bafe44d6e8de87f447d6c5))
+
+
+## 2024-07-31
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_mobile_chart_wrapper` - `v0.0.7`](#deriv_mobile_chart_wrapper---v007)
 
 ---
