@@ -9,20 +9,7 @@ import 'colours_grid.dart';
 ///
 /// Center(
 ///       child: ColorSelector(
-///          colors: const [
-///           Color(0xFFFFFFFF), // White
-///           Color(0xFFF39230), // Orange
-///           Color(0xFFEF6B53), // Deep Orange
-///           Color(0xFFD73737), // Red
-///           Color(0xFF03BFF0), // Light Blue
-///           Color(0xFF3271B4), // Blue
-///           Color(0xFF2FBCB5), // Teal
-///           Color(0xFF8EC648), // Light Green
-///           Color(0xFF48A25C), // Green
-///           Color(0xFFFFF224), // Yellow
-///           Color(0xFFEE6EA9), // Pink
-///           Color(0xFF853289), // Purple
-///         ],
+///          colors:
 ///         selectedColorIndex: selectedColorIndex,
 ///         onColorChanged: (int index) {
 ///           setState(() {
@@ -36,15 +23,28 @@ import 'colours_grid.dart';
 ///
 class ColorSelector extends StatefulWidget {
   ColorSelector({
-    required this.colors,
+    this.colors = const [
+      Color(0xFFFFFFFF), // White
+      Color(0xFFF39230), // Orange
+      Color(0xFFEF6B53), // Deep Orange
+      Color(0xFFD73737), // Red
+      Color(0xFF03BFF0), // Light Blue
+      Color(0xFF3271B4), // Blue
+      Color(0xFF2FBCB5), // Teal
+      Color(0xFF8EC648), // Light Green
+      Color(0xFF48A25C), // Green
+      Color(0xFFFFF224), // Yellow
+      Color(0xFFEE6EA9), // Pink
+      Color(0xFF853289), // Purple
+    ],
     required this.title,
-    this.selectedColorIndex,
+    this.selectedColor,
     required this.onColorChanged,
-  }) : super(key: ValueKey(selectedColorIndex));
+  }) : super(key: ValueKey(selectedColor));
 
   final String title;
 
-  final int? selectedColorIndex;
+  final Color? selectedColor;
 
   final List<Color> colors;
 
@@ -55,13 +55,13 @@ class ColorSelector extends StatefulWidget {
 }
 
 class _ColorSelectorState extends State<ColorSelector> {
-  int? _selectedColorIndex;
+  Color? _selectedColor;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     setState(() {
-      _selectedColorIndex = widget.selectedColorIndex;
+      _selectedColor = widget.selectedColor;
     });
   }
 
@@ -77,7 +77,7 @@ class _ColorSelectorState extends State<ColorSelector> {
                 hasActionButton: true,
                 actionButtonLabel:
                     context.mobileChartWrapperLocalizations.labelOK,
-                onActionButtonPressed: _selectedColorIndex == null
+                onActionButtonPressed: _selectedColor == null
                     ? null
                     : () {
                         Navigator.of(context).pop();
@@ -86,12 +86,12 @@ class _ColorSelectorState extends State<ColorSelector> {
                   child: ColoursGrid(
                     onColorSelected: (int index) {
                       state(() {
-                        _selectedColorIndex = index;
+                        _selectedColor = widget.colors[index];
                       });
                       widget.onColorChanged(index);
                     },
                     colors: widget.colors,
-                    selectedColorIndex: _selectedColorIndex,
+                    selectedColor: _selectedColor,
                   ),
                 ),
               );
@@ -113,10 +113,10 @@ class _ColorSelectorState extends State<ColorSelector> {
                   Container(
                     width: ThemeProvider.margin24,
                     height: ThemeProvider.margin24,
-                    decoration: _selectedColorIndex == null
+                    decoration: _selectedColor == null
                         ? null
                         : BoxDecoration(
-                            color: widget.colors[_selectedColorIndex!],
+                            color: _selectedColor,
                             borderRadius: BorderRadius.circular(
                               ThemeProvider.borderRadius04,
                             ),
