@@ -1,17 +1,20 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:deriv_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 /// RSI indicator settings page.
-class RSISettingPage extends StatefulWidget {
+class RSISettingPage extends BaseIndicatorSettingPage<RSIIndicatorConfig> {
   /// Initializes [RSISettingPage].
-  const RSISettingPage({required this.rsiConfig, super.key});
-
-  final RSIIndicatorConfig rsiConfig;
+  const RSISettingPage({
+    required super.initialConfig,
+    required super.onConfigUpdated,
+    super.key,
+  });
 
   @override
   State<RSISettingPage> createState() => _RSISettingPageState();
@@ -24,7 +27,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
   @override
   void initState() {
     super.initState();
-    _indicatorConfig = widget.rsiConfig;
+    _indicatorConfig = widget.initialConfig;
   }
 
   @override
@@ -58,8 +61,8 @@ class _RSISettingPageState extends State<RSISettingPage> {
           children: [
             ColorSelector(
               title: context.mobileChartWrapperLocalizations.labelRSILine,
-              color: _indicatorConfig.lineStyle.color,
-              onColorChanged: (color) {
+              selectedColor: _indicatorConfig.lineStyle.color,
+              onColorChanged: (Color color) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
                     lineStyle: _indicatorConfig.lineStyle.copyWith(
@@ -67,6 +70,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                     ),
                   );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(height: ThemeProvider.margin16),
@@ -84,6 +88,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                   _indicatorConfig =
                       _indicatorConfig.copyWith(period: value!.toInt());
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
               value: _indicatorConfig.period.toDouble(),
             ),
@@ -99,6 +104,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                         fieldType:
                             getSourcesOptions(context).keys.toList()[index]);
                   });
+                  widget.onConfigUpdated(_indicatorConfig);
                 })
           ],
         ),
@@ -110,6 +116,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
             _indicatorConfig =
                 _indicatorConfig.copyWith(showZones: !isExpanded);
           });
+          widget.onConfigUpdated(_indicatorConfig);
         },
         children: [
           GlowingExpansionPanel(
@@ -158,6 +165,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                       .copyWith(overboughtValue: value),
                 );
               });
+              widget.onConfigUpdated(_indicatorConfig);
             },
             numberPadSubmitLabel:
                 context.mobileChartWrapperLocalizations.labelOK,
@@ -165,7 +173,8 @@ class _RSISettingPageState extends State<RSISettingPage> {
           const SizedBox(height: ThemeProvider.margin16),
           ColorSelector(
             title: context.mobileChartWrapperLocalizations.labelOverboughtLine,
-            color: _indicatorConfig.oscillatorLinesConfig.overboughtStyle.color,
+            selectedColor:
+                _indicatorConfig.oscillatorLinesConfig.overboughtStyle.color,
             onColorChanged: (color) {
               setState(() {
                 _indicatorConfig = _indicatorConfig.copyWith(
@@ -177,6 +186,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                   ),
                 );
               });
+              widget.onConfigUpdated(_indicatorConfig);
             },
           ),
         ],
@@ -203,6 +213,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                       .copyWith(oversoldValue: value),
                 );
               });
+              widget.onConfigUpdated(_indicatorConfig);
             },
             numberPadSubmitLabel:
                 context.mobileChartWrapperLocalizations.labelOK,
@@ -210,7 +221,8 @@ class _RSISettingPageState extends State<RSISettingPage> {
           const SizedBox(height: ThemeProvider.margin16),
           ColorSelector(
             title: context.mobileChartWrapperLocalizations.labelOversoldLine,
-            color: _indicatorConfig.oscillatorLinesConfig.oversoldStyle.color,
+            selectedColor:
+                _indicatorConfig.oscillatorLinesConfig.oversoldStyle.color,
             onColorChanged: (color) {
               setState(() {
                 _indicatorConfig = _indicatorConfig.copyWith(
@@ -222,6 +234,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                   ),
                 );
               });
+              widget.onConfigUpdated(_indicatorConfig);
             },
           ),
         ],
