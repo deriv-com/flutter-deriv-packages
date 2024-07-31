@@ -27,7 +27,7 @@
   "labelDelete": "Löschen",
   "labelDeleteAll": "Alle löschen",
   "infoUpto3indicatorsAllowed": "Bis zu 3 aktive Indikatoren erlaubt.",
-  "infoNoActiveIndicators": "Sie haben noch keine aktiven Indikatoren.",
+  "infoNoActiveIndicators": "Keine aktiven Indikatoren.",
   "labelReset": "Zurücksetzen",
   "labelApply": "Anwenden",
   "labelOK": "OK",
