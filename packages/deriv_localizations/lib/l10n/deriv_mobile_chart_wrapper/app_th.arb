@@ -27,7 +27,7 @@
   "labelDelete": "ลบ",
   "labelDeleteAll": "ลบทั้งหมด",
   "infoUpto3indicatorsAllowed": "อนุญาตให้ใช้ตัวบ่งชี้ที่ใช้งานอยู่สูงสุด 3 ตัว",
-  "infoNoActiveIndicators": "คุณยังไม่มีตัวบ่งชี้ที่ใช้งานอยู่",
+  "infoNoActiveIndicators": "ไม่มีตัวบ่งชี้ที่ใช้งานอยู่",
   "labelReset": "รีเซ็ท",
   "labelApply": "ใช้งาน",
   "labelOK": "OK",
