@@ -1,3 +1,7 @@
+## 0.0.7
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add the base setting page. ([#730](https://github.com/regentmarkets/flutter-deriv-packages/issues/730)). ([71bd6164](https://github.com/regentmarkets/flutter-deriv-packages/commit/71bd616447f68ec7eaf26ab9ecb40882d7dde0d7))
+
 ## 0.0.6+2
 
  - **REFACTOR**(deriv_mobile_chart_wrapper): change back the chart dependency to dev ([#722](https://github.com/regentmarkets/flutter-deriv-packages/issues/722)). ([d09d364b](https://github.com/regentmarkets/flutter-deriv-packages/commit/d09d364b61589cdfe16fbd0f7254827e9a8d5157))

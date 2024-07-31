@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-31
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.7`](#deriv_mobile_chart_wrapper---v007)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.7`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add the base setting page. ([#730](https://github.com/regentmarkets/flutter-deriv-packages/issues/730)). ([71bd6164](https://github.com/regentmarkets/flutter-deriv-packages/commit/71bd616447f68ec7eaf26ab9ecb40882d7dde0d7))
+
+
 ## 2024-07-29
 
 ### Changes
