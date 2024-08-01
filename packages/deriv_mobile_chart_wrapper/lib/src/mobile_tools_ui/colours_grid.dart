@@ -8,12 +8,12 @@ class ColoursGrid extends StatelessWidget {
   const ColoursGrid(
       {super.key,
       required this.colors,
-      this.selectedColorIndex,
+      this.selectedColor,
       required this.onColorSelected});
 
   final List<Color> colors;
 
-  final int? selectedColorIndex;
+  final Color? selectedColor;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class ColoursGrid extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                border: selectedColorIndex == index
+                border: selectedColor == colors[index]
                     ? Border.all(color: context.theme.colors.blue, width: 1)
                     : null,
               ),
