@@ -2,12 +2,18 @@ import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_bottom_sheet.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
-class BollingerBandsSettingsPage extends StatefulWidget {
-  const BollingerBandsSettingsPage({super.key});
+class BollingerBandsSettingsPage
+    extends BaseIndicatorSettingPage<BollingerBandsIndicatorConfig> {
+  const BollingerBandsSettingsPage({
+    super.key,
+    required super.initialConfig,
+    required super.onConfigUpdated,
+  });
 
   @override
   State<BollingerBandsSettingsPage> createState() =>
@@ -16,18 +22,15 @@ class BollingerBandsSettingsPage extends StatefulWidget {
 
 class _BollingerBandsSettingsPageState
     extends State<BollingerBandsSettingsPage> {
-  late List<String> _sourceOptions;
-  late List<String> _movingAverageTypeOptions;
+  late Map<String, String> _sourceOptions;
+  late Map<MovingAverageType, String> _movingAverageTypeOptions;
+  late BollingerBandsIndicatorConfig _indicatorConfig;
 
-  int _bollingerBandTopIndex = 0;
-  int _bollingerBandMedianIndex = 0;
-  int _bollingerBandBottomIndex = 0;
-  int _fillColorIndex = 0;
-  bool _isChannelFillEnabled = true;
-  double? _period = 14;
-  double? _standardDeviations = 14;
-  int _sourceIndex = 0;
-  int _movingAverageTypeIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    _indicatorConfig = widget.initialConfig;
+  }
 
   @override
   void didChangeDependencies() {
@@ -77,10 +80,14 @@ class _BollingerBandsSettingsPageState
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsTop,
                 colors: availableColors,
-                selectedColorIndex: _bollingerBandTopIndex,
+                selectedColorIndex: availableColors.indexOf(
+                  _indicatorConfig.upperLineStyle.color,
+                ),
                 onColorChanged: (index) {
                   setState(() {
-                    _bollingerBandTopIndex = index;
+                    _indicatorConfig.upperLineStyle.copyWith(
+                      color: availableColors[index],
+                    );
                   });
                 },
               ),
@@ -89,10 +96,14 @@ class _BollingerBandsSettingsPageState
               title: context
                   .mobileChartWrapperLocalizations.labelBollingerBandsMedian,
               colors: availableColors,
-              selectedColorIndex: _bollingerBandMedianIndex,
+              selectedColorIndex: availableColors.indexOf(
+                _indicatorConfig.middleLineStyle.color,
+              ),
               onColorChanged: (index) {
                 setState(() {
-                  _bollingerBandMedianIndex = index;
+                  _indicatorConfig.middleLineStyle.copyWith(
+                    color: availableColors[index],
+                  );
                 });
               },
             ),
@@ -104,10 +115,14 @@ class _BollingerBandsSettingsPageState
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsBottom,
                 colors: availableColors,
-                selectedColorIndex: _bollingerBandBottomIndex,
+                selectedColorIndex: availableColors.indexOf(
+                  _indicatorConfig.lowerLineStyle.color,
+                ),
                 onColorChanged: (index) {
                   setState(() {
-                    _bollingerBandBottomIndex = index;
+                    _indicatorConfig.lowerLineStyle.copyWith(
+                      color: availableColors[index],
+                    );
                   });
                 },
               ),
@@ -137,10 +152,12 @@ class _BollingerBandsSettingsPageState
                 const Spacer(),
                 Switch(
                   activeColor: context.theme.colors.coral,
-                  value: _isChannelFillEnabled,
+                  value: _indicatorConfig.showChannelFill,
                   onChanged: (bool isEnabled) {
                     setState(() {
-                      _isChannelFillEnabled = isEnabled;
+                      _indicatorConfig.copyWith(
+                        showChannelFill: isEnabled,
+                      );
                     });
                   },
                 ),
@@ -153,10 +170,14 @@ class _BollingerBandsSettingsPageState
               child: ColorSelector(
                 title: context.mobileChartWrapperLocalizations.labelFillColor,
                 colors: availableColors,
-                selectedColorIndex: _fillColorIndex,
+                selectedColorIndex: availableColors.indexOf(
+                  _indicatorConfig.fillColor,
+                ),
                 onColorChanged: (index) {
                   setState(() {
-                    _fillColorIndex = index;
+                    _indicatorConfig.copyWith(
+                      fillColor: availableColors[index],
+                    );
                   });
                 },
               ),
@@ -177,11 +198,13 @@ class _BollingerBandsSettingsPageState
               height: ThemeProvider.margin16,
             ),
             ValueSelector(
-              value: _period ?? 0,
+              value: _indicatorConfig.period.toDouble(),
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _period = value;
+                  _indicatorConfig.copyWith(
+                    period: value?.toInt(),
+                  );
                 });
               },
               label: context.mobileChartWrapperLocalizations.labelPeriod,
@@ -200,11 +223,11 @@ class _BollingerBandsSettingsPageState
               height: ThemeProvider.margin16,
             ),
             ValueSelector(
-              value: _standardDeviations ?? 0,
+              value: _indicatorConfig.standardDeviation,
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _standardDeviations = value;
+                  _indicatorConfig.copyWith(standardDeviation: value);
                 });
               },
               label: context
@@ -225,11 +248,15 @@ class _BollingerBandsSettingsPageState
             ),
             OptionSelector(
               label: context.mobileChartWrapperLocalizations.labelSource,
-              options: _sourceOptions,
-              selectedIndex: _sourceIndex,
+              options: _sourceOptions.entries.map((e) => e.value).toList(),
+              selectedIndex: _sourceOptions.keys.toList().indexOf(
+                    _indicatorConfig.fieldType,
+                  ),
               onOptionSelected: (index) {
                 setState(() {
-                  _sourceIndex = index;
+                  _indicatorConfig.copyWith(
+                    fieldType: _sourceOptions.keys.toList()[index],
+                  );
                 });
               },
             ),
@@ -239,11 +266,18 @@ class _BollingerBandsSettingsPageState
             OptionSelector(
               label: context
                   .mobileChartWrapperLocalizations.labelMovingAverageType,
-              options: _movingAverageTypeOptions,
-              selectedIndex: _movingAverageTypeIndex,
+              options: _movingAverageTypeOptions.entries
+                  .map((e) => e.value)
+                  .toList(),
+              selectedIndex: _movingAverageTypeOptions.keys.toList().indexOf(
+                    _indicatorConfig.movingAverageType,
+                  ),
               onOptionSelected: (index) {
                 setState(() {
-                  _movingAverageTypeIndex = index;
+                  _indicatorConfig.copyWith(
+                    movingAverageType:
+                        _movingAverageTypeOptions.keys.toList()[index],
+                  );
                 });
               },
             ),

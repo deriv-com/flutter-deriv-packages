@@ -260,7 +260,10 @@ class _MobileToolsBottomSheetContentState
   Widget _getSettingsPage(IndicatorConfig indicatorConfig) {
     switch (indicatorConfig.runtimeType) {
       case BollingerBandsIndicatorConfig:
-        return const BollingerBandsSettingsPage();
+        return BollingerBandsSettingsPage(
+          initialConfig: indicatorConfig as BollingerBandsIndicatorConfig,
+          onConfigUpdated: (config) {},
+        );
       case MACDIndicatorConfig:
         return const MACDSettingsPage();
       default:
