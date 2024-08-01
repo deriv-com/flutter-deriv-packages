@@ -58,6 +58,7 @@ class _BollingerBandsSettingsPageState
           _buildThirdSection(context),
         ],
       ),
+      isResetEnabled: true,
       onApply: () {},
       onReset: () {},
       onTapDelete: () {},
@@ -79,14 +80,11 @@ class _BollingerBandsSettingsPageState
               child: ColorSelector(
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsTop,
-                colors: availableColors,
-                selectedColorIndex: availableColors.indexOf(
-                  _indicatorConfig.upperLineStyle.color,
-                ),
-                onColorChanged: (index) {
+                selectedColor: _indicatorConfig.upperLineStyle.color,
+                onColorChanged: (selectedColor) {
                   setState(() {
                     _indicatorConfig.upperLineStyle.copyWith(
-                      color: availableColors[index],
+                      color: selectedColor,
                     );
                   });
                 },
@@ -95,14 +93,11 @@ class _BollingerBandsSettingsPageState
             ColorSelector(
               title: context
                   .mobileChartWrapperLocalizations.labelBollingerBandsMedian,
-              colors: availableColors,
-              selectedColorIndex: availableColors.indexOf(
-                _indicatorConfig.middleLineStyle.color,
-              ),
-              onColorChanged: (index) {
+              selectedColor: _indicatorConfig.middleLineStyle.color,
+              onColorChanged: (selectedColor) {
                 setState(() {
                   _indicatorConfig.middleLineStyle.copyWith(
-                    color: availableColors[index],
+                    color: selectedColor,
                   );
                 });
               },
@@ -115,13 +110,11 @@ class _BollingerBandsSettingsPageState
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsBottom,
                 colors: availableColors,
-                selectedColorIndex: availableColors.indexOf(
-                  _indicatorConfig.lowerLineStyle.color,
-                ),
-                onColorChanged: (index) {
+                selectedColor: _indicatorConfig.lowerLineStyle.color,
+                onColorChanged: (selectedColor) {
                   setState(() {
                     _indicatorConfig.lowerLineStyle.copyWith(
-                      color: availableColors[index],
+                      color: selectedColor,
                     );
                   });
                 },
@@ -170,13 +163,11 @@ class _BollingerBandsSettingsPageState
               child: ColorSelector(
                 title: context.mobileChartWrapperLocalizations.labelFillColor,
                 colors: availableColors,
-                selectedColorIndex: availableColors.indexOf(
-                  _indicatorConfig.fillColor,
-                ),
-                onColorChanged: (index) {
+                selectedColor: _indicatorConfig.fillColor,
+                onColorChanged: (selectedColor) {
                   setState(() {
                     _indicatorConfig.copyWith(
-                      fillColor: availableColors[index],
+                      fillColor: selectedColor,
                     );
                   });
                 },
