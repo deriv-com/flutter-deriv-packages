@@ -100,7 +100,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                 onOptionSelected: (index) {
                   setState(() {
                     _selectedSourceIndex = index;
-                    _indicatorConfig.copyWith(
+                    _indicatorConfig = _indicatorConfig.copyWith(
                         fieldType:
                             getSourcesOptions(context).keys.toList()[index]);
                   });
