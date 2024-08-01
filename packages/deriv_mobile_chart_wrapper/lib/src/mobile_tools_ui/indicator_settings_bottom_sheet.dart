@@ -15,6 +15,7 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
     required this.onReset,
     required this.onTapInfo,
     required this.onTapDelete,
+    this.isResetEnabled = false,
   });
 
   /// The theme of the chart which the bottom sheet is being placed inside.
@@ -37,6 +38,8 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
 
   /// The callback when the delete button is pressed.
   final VoidCallback onTapDelete;
+
+  final bool isResetEnabled;
 
   @override
   State<IndicatorSettingsBottomSheet> createState() =>
@@ -61,7 +64,7 @@ class _IndicatorSettingsBottomSheetState
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.9,
+        height: MediaQuery.of(context).size.height,
         child: Provider<ChartTheme>.value(
           value: _theme,
           child: ClipRRect(
@@ -161,11 +164,14 @@ class _IndicatorSettingsBottomSheetState
             Expanded(
               child: SecondaryButton(
                 onPressed: widget.onReset,
+                isEnabled: widget.isResetEnabled,
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelReset,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
-                    color: context.theme.colors.disabled,
+                    color: widget.isResetEnabled
+                        ? context.theme.colors.prominent
+                        : context.theme.colors.active,
                   ),
                 ),
               ),
