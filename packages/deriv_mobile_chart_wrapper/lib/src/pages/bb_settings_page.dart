@@ -1,6 +1,6 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/helpers/helpers.dart';
+import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -106,7 +106,6 @@ class _BollingerBandsSettingsPageState
               child: ColorSelector(
                 title: context
                     .mobileChartWrapperLocalizations.labelBollingerBandsBottom,
-                colors: availableColors,
                 selectedColor: _indicatorConfig.lowerLineStyle.color,
                 onColorChanged: (selectedColor) {
                   setState(() {
@@ -150,7 +149,6 @@ class _BollingerBandsSettingsPageState
                   horizontal: ThemeProvider.margin16),
               child: ColorSelector(
                 title: context.mobileChartWrapperLocalizations.labelFillColor,
-                colors: availableColors,
                 selectedColor: _indicatorConfig.fillColor,
                 onColorChanged: (selectedColor) {
                   setState(() {
