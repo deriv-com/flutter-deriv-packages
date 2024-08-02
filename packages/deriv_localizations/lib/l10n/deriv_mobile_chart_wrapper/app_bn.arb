@@ -79,5 +79,7 @@
   "labelVariable": "পরিবর্তনশীল",
   "labelTriangular": "ত্রিভুজ",
   "label2Exponential": "2-এক্সপোনেন্সিয়াল",
-  "label3Exponential": "3-এক্সপোনেন্সিয়াল"
+  "label3Exponential": "3-এক্সপোনেন্সিয়াল",
+  "warnEnterValueBetweenMinMax": "{min} এবং {max}এর মধ্যে একটি মান লিখুন",
+  "warnRangeMinMax": "রেঞ্জ {min} - {max}"
 }
