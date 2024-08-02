@@ -294,7 +294,7 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// No description provided for @infoNoActiveIndicators.
   ///
   /// In en, this message translates to:
-  /// **'You have no active indicators yet.'**
+  /// **'No active indicators.'**
   String get infoNoActiveIndicators;
 
   /// No description provided for @labelReset.

@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsEs extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Se permiten hasta 3 indicadores activos.';
 
   @override
-  String get infoNoActiveIndicators => 'Aún no tiene indicadores activos.';
+  String get infoNoActiveIndicators => 'No hay indicadores activos.';
 
   @override
   String get labelReset => 'Reinicie';

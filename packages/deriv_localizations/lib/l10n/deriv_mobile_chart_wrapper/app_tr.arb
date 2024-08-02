@@ -27,7 +27,7 @@
   "labelDelete": "Silme",
   "labelDeleteAll": "Tümünü Sil",
   "infoUpto3indicatorsAllowed": "En fazla 3 aktif göstergeye izin verilir.",
-  "infoNoActiveIndicators": "Henüz aktif göstergeniz yok.",
+  "infoNoActiveIndicators": "Aktif gösterge yok.",
   "labelReset": "Sıfırla",
   "labelApply": "Başvurmak",
   "labelOK": "TAMAM.",

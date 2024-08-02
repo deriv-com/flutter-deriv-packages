@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Hadi viashiria 3 vya kazi zinaruhusiwa.';
 
   @override
-  String get infoNoActiveIndicators => 'Huna viashiria vya kazi bado.';
+  String get infoNoActiveIndicators => 'Hakuna viashiria vya kazi.';
 
   @override
   String get labelReset => 'Weka upya';

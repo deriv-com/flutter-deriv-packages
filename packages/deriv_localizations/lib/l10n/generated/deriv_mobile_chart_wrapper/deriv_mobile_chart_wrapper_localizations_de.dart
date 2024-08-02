@@ -26,7 +26,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelMACD => 'MACD';
 
   @override
-  String get labelRelativeStrengthIndex => 'Relative Stärke Index (RSI)';
+  String get labelRelativeStrengthIndex => 'Relative Strength Index (RSI)';
 
   @override
   String get labelRSI => 'RSI';
@@ -47,10 +47,10 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get infoMACD => 'Der MACD ist ein Handelsindikator, der bei der technischen Analyse von Aktienkursen verwendet wird. Er soll Veränderungen in der Stärke, Richtung, Dynamik und Dauer eines Trends bei einem Aktienkurs aufzeigen.';
 
   @override
-  String get infoRSI => 'Der Relative Strength Index (RSI) wurde von J. Welles Wilder veröffentlicht. Der aktuelle Kurs wird als Prozentsatz zwischen 0 und 100 normalisiert. Die flutter_chart_id dieses Oszillators ist irreführend, da sie das Instrument nicht im Verhältnis zu einem anderen Instrument oder einer Reihe von Instrumenten vergleicht, sondern den aktuellen Kurs im Verhältnis zu anderen jüngsten Stücken innerhalb des gewählten Rückblickfensters darstellt.';
+  String get infoRSI => 'Der Relative Strength Index (RSI) wurde von J. Welles Wilder veröffentlicht. Der aktuelle Preis wird als Prozentsatz zwischen 0 und 100 normiert. Die flutter_chart_id dieses Oszillators ist irreführend, da sie das Instrument nicht relativ zu einem anderen Instrument oder einer Gruppe von Instrumenten vergleicht, sondern den aktuellen Preis relativ zu anderen kürzlich beobachteten Werten innerhalb des ausgewählten Betrachtungszeitraums darstellt.';
 
   @override
-  String get infoBB => 'Bollinger Bänder (BB) können verwendet werden, um die Höhe oder Tiefe des Kurses im Vergleich zu früheren Trades zu messen.';
+  String get infoBB => 'Bollinger Bänder (BB) können verwendet werden, um die Höhe oder Tiefe des Kurses im Vergleich zu früheren Handel zu messen.';
 
   @override
   String get infoMA => 'Der gleitende Durchschnitt (MA) hilft dabei, den allgemeinen Markttrend zu erkennen, indem er kurzfristige Kursschwankungen herausfiltert. Anhand historischer Daten berechnet er den Durchschnittspreis über einen bestimmten Zeitraum und zeichnet eine Linie in den Chart ein. Bewegt sich die MA-Linie nach oben, ist dies ein Indikator für einen Aufwärtstrend, bewegt sie sich nach unten, ist dies ein Abwärtstrend. Ein Kaufsignal entsteht, wenn sich der Kurs über die MA-Linie bewegt.';
@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Bis zu 3 aktive Indikatoren erlaubt.';
 
   @override
-  String get infoNoActiveIndicators => 'Sie haben noch keine aktiven Indikatoren.';
+  String get infoNoActiveIndicators => 'Keine aktiven Indikatoren.';
 
   @override
   String get labelReset => 'Zurücksetzen';
@@ -126,10 +126,10 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelOpen => 'Öffnen Sie';
 
   @override
-  String get labelHigh => 'Hoch';
+  String get labelHigh => 'High';
 
   @override
-  String get labelLow => 'Niedrig';
+  String get labelLow => 'Low';
 
   @override
   String get labelHl2 => 'Hl/2';
