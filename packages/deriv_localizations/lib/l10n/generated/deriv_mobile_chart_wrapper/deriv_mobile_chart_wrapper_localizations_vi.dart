@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Cho phép tối đa 3 chỉ số hoạt động.';
 
   @override
-  String get infoNoActiveIndicators => 'Bạn chưa có chỉ số hoạt động.';
+  String get infoNoActiveIndicators => 'Không có chỉ số hoạt động.';
 
   @override
   String get labelReset => 'Đặt lại';

@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'ක්රියාකාරී දර්ශක 3 ක් දක්වා අවසර ඇත.';
 
   @override
-  String get infoNoActiveIndicators => 'ඔබට තවමත් ක්රියාකාරී දර්ශක නොමැත.';
+  String get infoNoActiveIndicators => 'ක්රියාකාරී දර්ශක නොමැත.';
 
   @override
   String get labelReset => 'යළි පිහිටුවන්න';
