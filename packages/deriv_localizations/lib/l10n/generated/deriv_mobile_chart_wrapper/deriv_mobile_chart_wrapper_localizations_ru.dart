@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsRu extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Допускается до 3 активных индикаторов.';
 
   @override
-  String get infoNoActiveIndicators => 'У Вас пока нет активных индикаторов.';
+  String get infoNoActiveIndicators => 'Нет активных индикаторов.';
 
   @override
   String get labelReset => 'Сброс';

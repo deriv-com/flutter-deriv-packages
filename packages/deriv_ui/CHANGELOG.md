@@ -1,3 +1,7 @@
+## 0.0.11
+
+ - **FEAT**(mobile_chart_wrapper): add RSI settings page ([#729](https://github.com/regentmarkets/flutter-deriv-packages/issues/729)). ([7f99cb1e](https://github.com/regentmarkets/flutter-deriv-packages/commit/7f99cb1e9b666b45bf63b9f2bcac6f4f38af26bf))
+
 ## 0.0.10
 
  - **FEAT**(deriv_ui): add deriv bottom sheet. feat(deriv_mobile_chart_wrapper): add indicator description ([#713](https://github.com/regentmarkets/flutter-deriv-packages/issues/713)). ([50cfbe20](https://github.com/regentmarkets/flutter-deriv-packages/commit/50cfbe2008076a073331e555228b98a11a35f2ed))

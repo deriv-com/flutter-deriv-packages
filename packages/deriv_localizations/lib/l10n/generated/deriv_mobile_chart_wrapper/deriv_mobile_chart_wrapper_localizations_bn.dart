@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => '3 টি পর্যন্ত সক্রিয় সূচক অনুমোদিত।';
 
   @override
-  String get infoNoActiveIndicators => 'আপনার এখনও কোনও সক্রিয় সূচক নেই।';
+  String get infoNoActiveIndicators => 'কোন সক্রিয় সূচক নেই।';
 
   @override
   String get labelReset => 'রিসেট করুন';

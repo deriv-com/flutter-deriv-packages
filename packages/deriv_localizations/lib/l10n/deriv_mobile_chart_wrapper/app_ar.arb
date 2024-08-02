@@ -27,7 +27,7 @@
   "labelDelete": "حذف",
   "labelDeleteAll": "حذف الكل",
   "infoUpto3indicatorsAllowed": "يُسمح بحد أقصى 3 مؤشرات نشطة.",
-  "infoNoActiveIndicators": "ليس لديك مؤشرات نشطة حتى الآن.",
+  "infoNoActiveIndicators": "لا توجد مؤشرات نشطة.",
   "labelReset": "إعادة تعيين",
   "labelApply": "قدم طلبك",
   "labelOK": "حسناً",
