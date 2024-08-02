@@ -79,5 +79,7 @@
   "labelVariable": "متغير",
   "labelTriangular": "مثلث الشكل",
   "label2Exponential": "2-الأسي",
-  "label3Exponential": "3-الإكسبونسي"
+  "label3Exponential": "3-الإكسبونسي",
+  "warnEnterValueBetweenMinMax": "أدخل قيمة بين {min} و {max}",
+  "warnRangeMinMax": "النطاق {min} - {max}"
 }
