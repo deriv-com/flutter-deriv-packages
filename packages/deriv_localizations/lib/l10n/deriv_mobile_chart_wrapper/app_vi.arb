@@ -79,5 +79,7 @@
   "labelVariable": "Biến",
   "labelTriangular": "Tam giác",
   "label2Exponential": "2-cấp số nhân",
-  "label3Exponential": "3-cấp số nhân"
+  "label3Exponential": "3-cấp số nhân",
+  "warnEnterValueBetweenMinMax": "Nhập giá trị giữa {min} và {max}",
+  "warnRangeMinMax": "Phạm vi {min} - {max}"
 }
