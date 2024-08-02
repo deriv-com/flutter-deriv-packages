@@ -80,6 +80,6 @@
   "labelTriangular": "Üçgen",
   "label2Exponential": "2-Eksponansiyel",
   "label3Exponential": "3-Eksponansiyel",
-  "warnEnterValueBetweenMinMax": "Enter a value between {min} and {max}",
-  "warnRangeMinMax": "Range {min} - {max}"
+  "warnEnterValueBetweenMinMax": "{min} ile {max}arasında bir değer girin.",
+  "warnRangeMinMax": "Aralık {min} - {max}"
 }
