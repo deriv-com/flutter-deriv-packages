@@ -79,5 +79,7 @@
   "labelVariable": "Variabile",
   "labelTriangular": "Triangolare",
   "label2Exponential": "2-Esponenziale",
-  "label3Exponential": "3-Esponenziale"
+  "label3Exponential": "3-Esponenziale",
+  "warnEnterValueBetweenMinMax": "Inserisca un valore compreso tra {min} e {max}",
+  "warnRangeMinMax": "Gamma {min} - {max}"
 }
