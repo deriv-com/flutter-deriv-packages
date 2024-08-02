@@ -79,5 +79,7 @@
   "labelVariable": "변수",
   "labelTriangular": "삼각형",
   "label2Exponential": "2-지수",
-  "label3Exponential": "3-지수"
+  "label3Exponential": "3-지수",
+  "warnEnterValueBetweenMinMax": "{min} ~ {max}사이의 값을 입력합니다.",
+  "warnRangeMinMax": "범위 {min} - {max}"
 }
