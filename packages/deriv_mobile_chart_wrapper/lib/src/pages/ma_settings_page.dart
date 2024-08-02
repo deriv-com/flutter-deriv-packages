@@ -1,28 +1,30 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/helpers/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_bottom_sheet.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
-class MASettingsPage extends StatefulWidget {
-  const MASettingsPage({super.key});
+import '../helpers.dart';
+
+class MASettingsPage extends BaseIndicatorSettingPage<MAIndicatorConfig> {
+  const MASettingsPage(
+      {super.key,
+      required super.initialConfig,
+      required super.onConfigUpdated});
 
   @override
   State<MASettingsPage> createState() => _MASettingsPageState();
 }
 
 class _MASettingsPageState extends State<MASettingsPage> {
-  late List<String> _sourceOptions;
-  late List<String> _typeOptions;
+  late MAIndicatorConfig _indicatorConfig;
 
-  int _maLineColorIndex = 0;
+  late Map<String, String> _sourceOptions;
+  late Map<MovingAverageType, String> _typeOptions;
 
-  double? _period = 14;
-  double? _offset = 0;
-  int _sourceIndex = 0;
-  int _typeIndex = 0;
+  late int _sourceIndex;
+  late int _typeIndex;
 
   @override
   void didChangeDependencies() {
@@ -30,30 +32,39 @@ class _MASettingsPageState extends State<MASettingsPage> {
 
     _sourceOptions = getSourcesOptions(context);
     _typeOptions = getTypesOptions(context);
+
+    _sourceIndex = getSourcesOptions(context)
+        .keys
+        .toList()
+        .indexOf(_indicatorConfig.fieldType);
+
+    _typeIndex = getTypesOptions(context)
+        .keys
+        .toList()
+        .indexOf(_indicatorConfig.movingAverageType);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _indicatorConfig = widget.initialConfig;
   }
 
   @override
   Widget build(BuildContext context) {
-    return IndicatorSettingsBottomSheet(
-      indicator: context.mobileChartWrapperLocalizations.labelMA,
-      settings: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildMAColorSelectionSection(context),
-          const SizedBox(
-            height: ThemeProvider.margin24,
-          ),
-          _buildPeriodAndOffsetSection(),
-          const SizedBox(
-            height: ThemeProvider.margin24,
-          ),
-          _buildSourceAndTypeSection(),
-        ],
-      ),
-      onApply: () {},
-      onReset: () {},
-      onTapDelete: () {},
-      onTapInfo: () {},
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildMAColorSelectionSection(context),
+        const SizedBox(
+          height: ThemeProvider.margin24,
+        ),
+        _buildPeriodAndOffsetSection(),
+        const SizedBox(
+          height: ThemeProvider.margin24,
+        ),
+        _buildSourceAndTypeSection(),
+      ],
     );
   }
 
@@ -63,12 +74,16 @@ class _MASettingsPageState extends State<MASettingsPage> {
         ),
         child: ColorSelector(
           title: context.mobileChartWrapperLocalizations.labelMALine,
-          colors: availableColors,
-          selectedColorIndex: _maLineColorIndex,
-          onColorChanged: (index) {
+          selectedColor: _indicatorConfig.lineStyle.color,
+          onColorChanged: (color) {
             setState(() {
-              _maLineColorIndex = index;
+              _indicatorConfig = _indicatorConfig.copyWith(
+                lineStyle: _indicatorConfig.lineStyle.copyWith(
+                  color: color,
+                ),
+              );
             });
+            widget.onConfigUpdated(_indicatorConfig);
           },
         ),
       );
@@ -85,11 +100,13 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 height: ThemeProvider.margin16,
               ),
               ValueSelector(
-                value: _period ?? 0,
+                value: _indicatorConfig.period.toDouble(),
                 backgroundColor: context.theme.colors.active,
                 onChange: (value) {
                   setState(() {
-                    _period = value;
+                    _indicatorConfig =
+                        _indicatorConfig.copyWith(period: (value ?? 0).toInt());
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
                 label: context.mobileChartWrapperLocalizations.labelPeriod,
@@ -108,11 +125,13 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 height: ThemeProvider.margin16,
               ),
               ValueSelector(
-                value: _offset ?? 0,
+                value: _indicatorConfig.offset.toDouble(),
                 backgroundColor: context.theme.colors.active,
                 onChange: (value) {
                   setState(() {
-                    _offset = value;
+                    _indicatorConfig =
+                        _indicatorConfig.copyWith(offset: (value ?? 0).toInt());
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
                 label: context.mobileChartWrapperLocalizations.labelOffset,
@@ -148,11 +167,15 @@ class _MASettingsPageState extends State<MASettingsPage> {
               ),
               OptionSelector(
                 label: context.mobileChartWrapperLocalizations.labelSource,
-                options: _sourceOptions,
+                options: _sourceOptions.values.toList(),
                 selectedIndex: _sourceIndex,
                 onOptionSelected: (index) {
                   setState(() {
                     _sourceIndex = index;
+                    _indicatorConfig = _indicatorConfig.copyWith(
+                        fieldType:
+                            getSourcesOptions(context).keys.toList()[index]);
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
               ),
@@ -161,12 +184,15 @@ class _MASettingsPageState extends State<MASettingsPage> {
               ),
               OptionSelector(
                 label: context.mobileChartWrapperLocalizations.labelType,
-                options: _typeOptions,
+                options: _typeOptions.values.toList(),
                 selectedIndex: _typeIndex,
                 onOptionSelected: (index) {
                   setState(() {
-                    _typeIndex = index;
+                    _indicatorConfig = _indicatorConfig.copyWith(
+                        movingAverageType: _typeOptions.keys.toList()[index]);
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
+                  _typeIndex = index;
                 },
               ),
               const SizedBox(
