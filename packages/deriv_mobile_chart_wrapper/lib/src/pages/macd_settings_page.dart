@@ -1,50 +1,44 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/helpers/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_bottom_sheet.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
-class MACDSettingsPage extends StatefulWidget {
-  const MACDSettingsPage({super.key});
+class MACDSettingsPage extends BaseIndicatorSettingPage<MACDIndicatorConfig> {
+  const MACDSettingsPage(
+      {super.key,
+      required super.initialConfig,
+      required super.onConfigUpdated});
 
   @override
   State<MACDSettingsPage> createState() => _MACDSettingsPageState();
 }
 
 class _MACDSettingsPageState extends State<MACDSettingsPage> {
-  int _macdLineColorIndex = 0;
-  int _signalLineColorIndex = 0;
-  int _increasingBarColorIndex = 0;
-  int _decreasingBarColorIndex = 0;
+  late MACDIndicatorConfig _indicatorConfig;
 
-  double? _fastMaPeriod = 14;
-  double? _slowMaPeriod = 14;
-  double? _signalPeriod = 14;
+  @override
+  void initState() {
+    super.initState();
+    _indicatorConfig = widget.initialConfig;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return IndicatorSettingsBottomSheet(
-      indicator: context.mobileChartWrapperLocalizations.labelMACD,
-      settings: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildFirstSection(context),
-          const SizedBox(
-            height: ThemeProvider.margin24,
-          ),
-          _buildSecondSection(context),
-          const SizedBox(
-            height: ThemeProvider.margin24,
-          ),
-          _buildThirdSection(context),
-        ],
-      ),
-      onApply: () {},
-      onReset: () {},
-      onTapDelete: () {},
-      onTapInfo: () {},
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildFirstSection(context),
+        const SizedBox(
+          height: ThemeProvider.margin24,
+        ),
+        _buildSecondSection(context),
+        const SizedBox(
+          height: ThemeProvider.margin24,
+        ),
+        _buildThirdSection(context),
+      ],
     );
   }
 
@@ -60,24 +54,31 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
             ),
             ColorSelector(
               title: context.mobileChartWrapperLocalizations.labelMACDLine,
-              colors: availableColors,
-              selectedColorIndex: _macdLineColorIndex,
-              onColorChanged: (index) {
+              selectedColor: _indicatorConfig.lineStyle.color,
+              onColorChanged: (selectedColor) {
                 setState(() {
-                  _macdLineColorIndex = index;
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    lineStyle: _indicatorConfig.lineStyle.copyWith(
+                      color: selectedColor,
+                    ),
+                  );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
             ),
             ValueSelector(
-              value: _fastMaPeriod ?? 0,
+              value: _indicatorConfig.fastMAPeriod.toDouble(),
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _fastMaPeriod = value;
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    fastMAPeriod: value?.toInt(),
+                  );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelFastMAPeriod,
               numberPadSubmitLabel:
@@ -95,12 +96,15 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               height: ThemeProvider.margin16,
             ),
             ValueSelector(
-              value: _slowMaPeriod ?? 0,
+              value: _indicatorConfig.slowMAPeriod.toDouble(),
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _slowMaPeriod = value;
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    slowMAPeriod: value?.toInt(),
+                  );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelSlowMAPeriod,
               numberPadSubmitLabel:
@@ -134,24 +138,31 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
             ),
             ColorSelector(
               title: context.mobileChartWrapperLocalizations.labelSignalLine,
-              colors: availableColors,
-              selectedColorIndex: _signalLineColorIndex,
+              selectedColor: _indicatorConfig.signalLineStyle.color,
               onColorChanged: (index) {
                 setState(() {
-                  _signalLineColorIndex = index;
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    signalLineStyle: _indicatorConfig.signalLineStyle.copyWith(
+                      color: index,
+                    ),
+                  );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
             ),
             ValueSelector(
-              value: _signalPeriod ?? 0,
+              value: _indicatorConfig.signalPeriod.toDouble(),
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _signalPeriod = value;
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    signalPeriod: value?.toInt(),
+                  );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelSignalPeriod,
               numberPadSubmitLabel:
@@ -185,12 +196,16 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
             ),
             ColorSelector(
               title: context.mobileChartWrapperLocalizations.labelIncreasingBar,
-              colors: availableColors,
-              selectedColorIndex: _increasingBarColorIndex,
-              onColorChanged: (index) {
+              selectedColor: _indicatorConfig.barStyle.positiveColor,
+              onColorChanged: (selectedColor) {
                 setState(() {
-                  _increasingBarColorIndex = index;
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    barStyle: _indicatorConfig.barStyle.copyWith(
+                      positiveColor: selectedColor,
+                    ),
+                  );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             Padding(
@@ -200,12 +215,16 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               child: ColorSelector(
                 title:
                     context.mobileChartWrapperLocalizations.labelDecreasingBar,
-                colors: availableColors,
-                selectedColorIndex: _decreasingBarColorIndex,
+                selectedColor: _indicatorConfig.barStyle.negativeColor,
                 onColorChanged: (index) {
                   setState(() {
-                    _decreasingBarColorIndex = index;
+                    _indicatorConfig = _indicatorConfig.copyWith(
+                      barStyle: _indicatorConfig.barStyle.copyWith(
+                        negativeColor: index,
+                      ),
+                    );
                   });
+                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
