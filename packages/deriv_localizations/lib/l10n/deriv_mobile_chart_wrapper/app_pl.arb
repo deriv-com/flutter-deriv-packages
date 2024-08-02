@@ -27,7 +27,7 @@
   "labelDelete": "Usuń",
   "labelDeleteAll": "Usuń wszystko",
   "infoUpto3indicatorsAllowed": "Dozwolone jest do 3 aktywnych wskaźników.",
-  "infoNoActiveIndicators": "Nie masz jeszcze aktywnych wskaźników.",
+  "infoNoActiveIndicators": "Brak aktywnych wskaźników.",
   "labelReset": "Resetuj",
   "labelApply": "Zastosuj",
   "labelOK": "DOBRZE",

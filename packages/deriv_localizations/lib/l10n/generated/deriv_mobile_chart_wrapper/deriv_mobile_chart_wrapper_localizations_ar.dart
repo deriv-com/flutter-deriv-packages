@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsAr extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'يُسمح بحد أقصى 3 مؤشرات نشطة.';
 
   @override
-  String get infoNoActiveIndicators => 'ليس لديك مؤشرات نشطة حتى الآن.';
+  String get infoNoActiveIndicators => 'لا توجد مؤشرات نشطة.';
 
   @override
   String get labelReset => 'إعادة تعيين';

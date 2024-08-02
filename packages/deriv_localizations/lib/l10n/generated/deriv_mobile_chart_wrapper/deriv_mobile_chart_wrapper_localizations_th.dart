@@ -8,7 +8,7 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
   String get labelIndicators => 'ตัวบ่งชี้';
 
   @override
-  String get labelActive => 'แอคทีฟ';
+  String get labelActive => 'ใช้งานอยู่';
 
   @override
   String get labelAll => 'ทั้งหมด';
@@ -17,7 +17,7 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
   String get labelMomentum => 'โมเมนตัม';
 
   @override
-  String get labelVolatility => 'ความผันผัน';
+  String get labelVolatility => 'ความผันผวน';
 
   @override
   String get labelMovingAverages => 'ค่าเฉลี่ยเคลื่อนที่';
@@ -29,34 +29,34 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
   String get labelRelativeStrengthIndex => 'ดัชนีความแข็งแรงสัมพัทธ์ (RSI)';
 
   @override
-  String get labelRSI => 'อาร์เอสไอ';
+  String get labelRSI => 'RSI';
 
   @override
-  String get labelBollingerBands => 'โบลลิงเกอร์แบนด์ (BB)';
+  String get labelBollingerBands => 'Bollinger Bands (BB)';
 
   @override
-  String get labelBB => 'บีบี';
+  String get labelBB => 'BB';
 
   @override
   String get labelMovingAverage => 'ค่าเฉลี่ยเคลื่อนที่ (MA)';
 
   @override
-  String get labelMA => 'แม่';
+  String get labelMA => 'MA';
 
   @override
-  String get infoMACD => 'MACD เป็นตัวบ่งชี้การซื้อขายที่ใช้ในการวิเคราะห์ทางเทคนิคของราคาหุ้นมันควรจะเปิดเผยการเปลี่ยนแปลงในความแข็งแกร่งทิศทางโมเมนตัมและระยะเวลาของแนวโน้มในราคาหุ้น';
+  String get infoMACD => 'MACD เป็นตัวบ่งชี้ที่ใช้ในการวิเคราะห์ทางเทคนิคของราคาหุ้น มีวัตถุประสงค์เพื่อแสดงการเปลี่ยนแปลงในความแข็งแกร่ง ทิศทาง โมเมนตัม และระยะเวลาของแนวโน้มในราคาหุ้น';
 
   @override
-  String get infoRSI => 'ดัชนีความแข็งแกร่งสัมพัทธ์ (RSI) เผยแพร่โดย เจ เวลเลส ไวลดอร์ราคาปัจจุบันเป็นปกติเป็นเปอร์เซ็นต์ระหว่าง 0 ถึง 100flutter_chart_id ของออสซิลเลเตอร์นี้ทำให้เข้าใจผิดเพราะไม่ได้เปรียบเทียบตราสารที่เกี่ยวข้องกับตราสารอื่น หรือชุดตราสารหนึ่ง แต่เป็นตัวแทนของราคาปัจจุบันเมื่อเทียบกับชิ้นส่วนล่าสุดอื่น ๆ ภายในความยาวหน้าต่างมองย้อนกลับที่เลือก';
+  String get infoRSI => 'ดัชนีความแข็งแรงสัมพัทธ์หรือ Relative Strength Index (RSI) ถูกตีพิมพ์โดย J. Welles Wilder ราคาปัจจุบันถูกแปลงเป็นเปอร์เซ็นต์ระหว่าง 0 ถึง 100 ค่า flutter_chart_id ของตัวบ่งชี้นี้อาจทำให้เข้าใจผิดได้ เนื่องจากไม่ได้เปรียบเทียบตราสารอันหนึ่งกับตราสารอื่นหรือกลุ่มสินทรัพย์อื่น แต่จะแสดงราคาปัจจุบันเทียบกับราคาล่าสุดในช่วงระยะเวลาที่เลือกมองย้อนกลับไป';
 
   @override
-  String get infoBB => 'Bollinger Bands (BB) สามารถใช้เพื่อวัดความสูงหรือต่ำของราคาเมื่อเทียบกับการซื้อขายครั้งก่อน';
+  String get infoBB => 'Bollinger Bands (BB) สามารถใช้วัดความสูงหรือต่ำของราคาเมื่อเทียบกับการซื้อขายก่อนหน้านี้';
 
   @override
-  String get infoMA => 'ค่าเฉลี่ยเคลื่อนที่ (MA) ช่วยระบุแนวโน้มของตลาดโดยรวมโดยการกรองความผันผวนของราคาระยะสั้นการใช้ข้อมูลในอดีตจะคำนวณราคาเฉลี่ยในช่วงเวลาที่เฉพาะเจาะจงและแสดงเส้นบนแผนภูมิหากเส้น MA เคลื่อนไปขึ้นมันเป็นตัวบ่งชี้ของแนวโน้มขาขึ้น เทรนด์ขาลงหากเคลื่อนที่ลงลงสัญญาณการซื้อเกิดขึ้นเมื่อราคาเคลื่อนที่เหนือบรรทัด MA';
+  String get infoMA => 'ค่าเฉลี่ยเคลื่อนที่หรือ Moving Average (MA) ช่วยในการระบุแนวโน้มตลาดโดยรวมโดยการกรองความผันผวนของราคาระยะสั้นออกไป โดยใช้ข้อมูลในอดีตเพื่อคำนวณราคาที่เฉลี่ยในช่วงเวลาที่กำหนดและแสดงเป็นเส้นบนกราฟ หากเส้น MA เคลื่อนที่ขึ้นแสดงถึงแนวโน้มขาขึ้น หากเคลื่อนที่ลงแสดงถึงแนวโน้มขาลง สัญญาณการซื้อเกิดขึ้นเมื่อราคาขยับเหนือเส้น MA';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded => 'คุณได้เพิ่มจำนวนตัวบ่งชี้ที่ใช้งานได้สูงสุดแล้ว';
+  String get infoMaximumActiveIndicatorsAdded => 'คุณได้เพิ่มตัวบ่งชี้ที่ใช้งานอยู่จนถึงจำนวนสูงสุดแล้ว';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -90,22 +90,22 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
   String get labelDeleteAll => 'ลบทั้งหมด';
 
   @override
-  String get infoUpto3indicatorsAllowed => 'อนุญาตให้ใช้ตัวบ่งชี้ที่ใช้งานได้สูงสุด 3 ตัว';
+  String get infoUpto3indicatorsAllowed => 'อนุญาตให้ใช้ตัวบ่งชี้ที่ใช้งานอยู่สูงสุด 3 ตัว';
 
   @override
-  String get infoNoActiveIndicators => 'คุณยังไม่มีตัวบ่งชี้ที่ใช้งานอยู่';
+  String get infoNoActiveIndicators => 'ไม่มีตัวบ่งชี้ที่ใช้งานอยู่';
 
   @override
-  String get labelReset => 'รีเซ็ต';
+  String get labelReset => 'รีเซ็ท';
 
   @override
-  String get labelApply => 'สมัคร';
+  String get labelApply => 'ใช้งาน';
 
   @override
-  String get labelOK => 'โอเค';
+  String get labelOK => 'OK';
 
   @override
-  String get labelRSILine => 'สาย RSI';
+  String get labelRSILine => 'เส้น RSI';
 
   @override
   String get labelPeriod => 'ระยะเวลา';
@@ -120,37 +120,37 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
   String get labelSource => 'แหล่งที่มา';
 
   @override
-  String get labelClose => 'ปิด';
+  String get labelClose => 'Close';
 
   @override
-  String get labelOpen => 'เปิด';
+  String get labelOpen => 'Open';
 
   @override
-  String get labelHigh => 'สูง';
+  String get labelHigh => 'High';
 
   @override
-  String get labelLow => 'ต่ำ';
+  String get labelLow => 'Low';
 
   @override
-  String get labelHl2 => 'เอชเอล/2';
+  String get labelHl2 => 'Hl/2';
 
   @override
-  String get labelHlc3 => 'เอชแอลซี/3';
+  String get labelHlc3 => 'Hlc/3';
 
   @override
-  String get labelHlcc4 => 'เอชลซีซี/4';
+  String get labelHlcc4 => 'Hlcc/4';
 
   @override
-  String get labelOhlc4 => 'โอเอลซี/4';
+  String get labelOhlc4 => 'Ohlc/4';
 
   @override
   String get labelShowZones => 'แสดงโซน';
 
   @override
-  String get labelOverbought => 'ซื้อมากเกินไป';
+  String get labelOverbought => 'การซื้อมากเกินไป';
 
   @override
-  String get labelOversold => 'ขายมากเกินไป';
+  String get labelOversold => 'การขายมากเกินไป';
 
   @override
   String get labelMinSize => 'ขนาดขั้นต่ำ';
@@ -159,91 +159,91 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
   String get labelMaxSize => 'ขนาดสูงสุด';
 
   @override
-  String get labelRange => 'เรนจ์';
+  String get labelRange => 'ช่วง';
 
   @override
-  String get labelOverboughtLine => 'สายซื้อมากเกินไป';
+  String get labelOverboughtLine => 'เส้นการซื้อมากเกินไป';
 
   @override
-  String get labelOversoldLine => 'สายขายมากเกินไป';
+  String get labelOversoldLine => 'เส้นการขายมากเกินไป';
 
   @override
-  String get labelMACDLine => 'สาย MACD';
+  String get labelMACDLine => 'เส้น MACD';
 
   @override
-  String get labelFastMAPeriod => 'ระยะเวลา MA ที่รวดเร็ว';
+  String get labelFastMAPeriod => 'ระยะเวลา MA ที่เร็ว';
 
   @override
-  String get labelSlowMAPeriod => 'ระยะเวลา MA ช้า';
+  String get labelSlowMAPeriod => 'ระยะเวลา MA ที่ช้า';
 
   @override
-  String get labelSignalLine => 'สายสัญญาณ';
+  String get labelSignalLine => 'เส้นสัญญาณ';
 
   @override
   String get labelSignalPeriod => 'ระยะเวลาสัญญาณ';
 
   @override
-  String get labelIncreasingBar => 'แถบเพิ่มขึ้น';
+  String get labelIncreasingBar => 'แถบที่เพิ่มขึ้น';
 
   @override
-  String get labelDecreasingBar => 'แถบลดลง';
+  String get labelDecreasingBar => 'แถบที่ลดลง';
 
   @override
-  String get labelBollingerBandsTop => 'เสื้อแถบโบลลิงเจอร์';
+  String get labelBollingerBandsTop => 'Bollinger Bands อันบน';
 
   @override
-  String get labelBollingerBandsMedian => 'แถบโบลลิงเกอร์เฉลี่ย';
+  String get labelBollingerBandsMedian => 'Bollinger Bands อันกลาง';
 
   @override
-  String get labelBollingerBandsBottom => 'แถบโบลลิงเกอร์ด้านล่าง';
+  String get labelBollingerBandsBottom => 'Bollinger Bands อันล่าง';
 
   @override
-  String get labelChannelFill => 'เติมช่อง';
+  String get labelChannelFill => 'เติม Channel';
 
   @override
   String get labelFillColor => 'เติมสี';
 
   @override
-  String get labelStandardDeviations => 'เบี่ยงเบนมาตรฐาน';
+  String get labelStandardDeviations => 'ค่าเบี่ยงเบนมาตรฐาน';
 
   @override
-  String get labelMovingAverageType => 'ประเภทค่าเฉลี่ยเคลื่อนที่';
+  String get labelMovingAverageType => 'ประเภทค่าเฉลี่ยเคลื่อนที่ (MA)';
 
   @override
-  String get labelMALine => 'สาย MA';
+  String get labelMALine => 'เส้น MA';
 
   @override
-  String get labelOffset => 'ออฟเซต';
+  String get labelOffset => 'ออฟเซ็ท';
 
   @override
   String get labelType => 'ประเภท';
 
   @override
-  String get labelSimple => 'เรียบง่าย';
+  String get labelSimple => 'Simple';
 
   @override
-  String get labelExponential => 'เลขชี้กำลัง';
+  String get labelExponential => 'Exponential';
 
   @override
-  String get labelWeighted => 'ถ่วงน้ำหนัก';
+  String get labelWeighted => 'Weighted';
 
   @override
-  String get labelHull => 'ฮัลล์';
+  String get labelHull => 'Hull';
 
   @override
-  String get labelZeroLag => 'ความล่าช้าเป็นศูนย์';
+  String get labelZeroLag => 'Zero Lag';
 
   @override
-  String get labelTimeSeries => 'ซีรี่ส์เวลา';
+  String get labelTimeSeries => 'ชุดข้อมูลตามลำดับเวลา';
 
   @override
-  String get labelWellesWilder => 'เวลเลส ไวล์เดอร์';
+  String get labelWellesWilder => 'Welles Wilder';
 
   @override
-  String get labelVariable => 'ตัวแปร';
+  String get labelVariable => 'แบบแปรผัน';
 
   @override
-  String get labelTriangular => 'สามเหลี่ยม';
+  String get labelTriangular => 'แบบสามเหลี่ยม';
 
   @override
   String get label2Exponential => '2-เลขชี้กำลัง';

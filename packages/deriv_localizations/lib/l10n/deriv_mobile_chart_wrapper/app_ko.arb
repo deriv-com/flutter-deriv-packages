@@ -27,7 +27,7 @@
   "labelDelete": "삭제",
   "labelDeleteAll": "모두 삭제",
   "infoUpto3indicatorsAllowed": "활성 표시기는 최대 3개까지 허용됩니다.",
-  "infoNoActiveIndicators": "아직 활성화된 지표가 없습니다.",
+  "infoNoActiveIndicators": "활성 표시기가 없습니다.",
   "labelReset": "초기화",
   "labelApply": "신청하기",
   "labelOK": "확인",

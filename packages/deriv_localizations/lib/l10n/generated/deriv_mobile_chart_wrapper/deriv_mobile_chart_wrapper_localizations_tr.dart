@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'En fazla 3 aktif göstergeye izin verilir.';
 
   @override
-  String get infoNoActiveIndicators => 'Henüz aktif göstergeniz yok.';
+  String get infoNoActiveIndicators => 'Aktif gösterge yok.';
 
   @override
   String get labelReset => 'Sıfırla';
