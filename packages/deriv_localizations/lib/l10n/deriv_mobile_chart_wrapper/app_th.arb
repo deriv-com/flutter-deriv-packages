@@ -81,5 +81,5 @@
   "label2Exponential": "2-เลขชี้กำลัง",
   "label3Exponential": "3- เลขชี้กำลัง",
   "warnEnterValueBetweenMinMax": "ป้อนค่าระหว่าง {min} และ {max}",
-  "warnRangeMinMax": "ระยะ {min} - {max}"
+  "warnRangeMinMax": "ช่วง {min} - {max}"
 }
