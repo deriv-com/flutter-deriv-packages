@@ -238,15 +238,7 @@ class _MobileToolsBottomSheetContentState
                   )} '
                       '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
                   subtitle: '(${indicatorConfig.configSummary})',
-                  onTapSetting: () {
-                    showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        barrierColor: Colors.transparent,
-                        builder: (context) {
-                          return _getSettingsPage(indicatorConfig);
-                        });
-                  },
+                  onTapSetting: () {},
                   onTapDelete: () => indicatorsRepo.removeAt(index),
                 );
               },
@@ -255,20 +247,6 @@ class _MobileToolsBottomSheetContentState
         ],
       ),
     );
-  }
-
-  Widget _getSettingsPage(IndicatorConfig indicatorConfig) {
-    switch (indicatorConfig.runtimeType) {
-      case BollingerBandsIndicatorConfig:
-        return BollingerBandsSettingsPage(
-          initialConfig: indicatorConfig as BollingerBandsIndicatorConfig,
-          onConfigUpdated: (config) {},
-        );
-      case MACDIndicatorConfig:
-        return const MACDSettingsPage();
-      default:
-        return const SizedBox();
-    }
   }
 
   Widget _buildIndicatorEmptyState() {
