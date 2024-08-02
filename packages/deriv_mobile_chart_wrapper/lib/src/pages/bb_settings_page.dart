@@ -74,10 +74,13 @@ class _BollingerBandsSettingsPageState
                 selectedColor: _indicatorConfig.upperLineStyle.color,
                 onColorChanged: (selectedColor) {
                   setState(() {
-                    _indicatorConfig.upperLineStyle.copyWith(
-                      color: selectedColor,
+                    _indicatorConfig = _indicatorConfig.copyWith(
+                      upperLineStyle: _indicatorConfig.upperLineStyle.copyWith(
+                        color: selectedColor,
+                      ),
                     );
                   });
+                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
@@ -87,10 +90,13 @@ class _BollingerBandsSettingsPageState
               selectedColor: _indicatorConfig.middleLineStyle.color,
               onColorChanged: (selectedColor) {
                 setState(() {
-                  _indicatorConfig.middleLineStyle.copyWith(
-                    color: selectedColor,
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    middleLineStyle: _indicatorConfig.middleLineStyle.copyWith(
+                      color: selectedColor,
+                    ),
                   );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             Padding(
@@ -104,10 +110,13 @@ class _BollingerBandsSettingsPageState
                 selectedColor: _indicatorConfig.lowerLineStyle.color,
                 onColorChanged: (selectedColor) {
                   setState(() {
-                    _indicatorConfig.lowerLineStyle.copyWith(
-                      color: selectedColor,
+                    _indicatorConfig = _indicatorConfig.copyWith(
+                      lowerLineStyle: _indicatorConfig.lowerLineStyle.copyWith(
+                        color: selectedColor,
+                      ),
                     );
                   });
+                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
@@ -115,58 +124,48 @@ class _BollingerBandsSettingsPageState
         ),
       ));
 
-  _buildSecondSection(BuildContext context) => GlowingContainer(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: ThemeProvider.margin16,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(
-              height: ThemeProvider.margin08,
-            ),
-            Row(
-              children: [
-                Text(context.mobileChartWrapperLocalizations.labelChannelFill,
-                    style: context.theme.textStyle(
-                      textStyle: TextStyles.caption,
-                      color: context.theme.colors.general,
-                    )),
-                const Spacer(),
-                Switch(
-                  activeColor: context.theme.colors.coral,
-                  value: _indicatorConfig.showChannelFill,
-                  onChanged: (bool isEnabled) {
-                    setState(() {
-                      _indicatorConfig.copyWith(
-                        showChannelFill: isEnabled,
-                      );
-                    });
-                  },
-                ),
-              ],
-            ),
-            Padding(
+  GlowingExpansionPanelList _buildSecondSection(BuildContext context) =>
+      GlowingExpansionPanelList(
+        expansionCallback: (index, isExpanded) {
+          setState(() {
+            _indicatorConfig =
+                _indicatorConfig.copyWith(showChannelFill: !isExpanded);
+          });
+          widget.onConfigUpdated(_indicatorConfig);
+        },
+        children: [
+          GlowingExpansionPanel(
+            headerBuilder: (context, isExpanded) {
+              return Padding(
+                padding: const EdgeInsets.all(ThemeProvider.margin16),
+                child: Text(
+                    context.mobileChartWrapperLocalizations.labelChannelFill),
+              );
+            },
+            isExpanded: _indicatorConfig.showChannelFill,
+            shouldGlow: false,
+            body: Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: ThemeProvider.margin16,
-              ),
+                  vertical: ThemeProvider.margin16,
+                  horizontal: ThemeProvider.margin16),
               child: ColorSelector(
                 title: context.mobileChartWrapperLocalizations.labelFillColor,
                 colors: availableColors,
                 selectedColor: _indicatorConfig.fillColor,
                 onColorChanged: (selectedColor) {
                   setState(() {
-                    _indicatorConfig.copyWith(
+                    _indicatorConfig = _indicatorConfig.copyWith(
                       fillColor: selectedColor,
                     );
                   });
+                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
-          ],
-        ),
-      ));
+            backgroundColor: Colors.transparent,
+          ),
+        ],
+      );
 
   _buildThirdSection(BuildContext context) => GlowingContainer(
           child: Padding(
@@ -184,10 +183,11 @@ class _BollingerBandsSettingsPageState
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _indicatorConfig.copyWith(
+                  _indicatorConfig = _indicatorConfig.copyWith(
                     period: value?.toInt(),
                   );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelPeriod,
               numberPadSubmitLabel:
@@ -209,8 +209,10 @@ class _BollingerBandsSettingsPageState
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _indicatorConfig.copyWith(standardDeviation: value);
+                  _indicatorConfig =
+                      _indicatorConfig.copyWith(standardDeviation: value);
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context
                   .mobileChartWrapperLocalizations.labelStandardDeviations,
@@ -236,10 +238,11 @@ class _BollingerBandsSettingsPageState
                   ),
               onOptionSelected: (index) {
                 setState(() {
-                  _indicatorConfig.copyWith(
+                  _indicatorConfig = _indicatorConfig.copyWith(
                     fieldType: _sourceOptions.keys.toList()[index],
                   );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(
@@ -256,11 +259,12 @@ class _BollingerBandsSettingsPageState
                   ),
               onOptionSelected: (index) {
                 setState(() {
-                  _indicatorConfig.copyWith(
+                  _indicatorConfig = _indicatorConfig.copyWith(
                     movingAverageType:
                         _movingAverageTypeOptions.keys.toList()[index],
                   );
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(
