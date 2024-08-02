@@ -79,5 +79,7 @@
   "labelVariable": "විචල්ය",
   "labelTriangular": "ත්රිකෝණාකාර",
   "label2Exponential": "2-එක්ස්පෙන්ෂනල්",
-  "label3Exponential": "3-එක්ස්පෙන්ෂනල්"
+  "label3Exponential": "3-එක්ස්පෙන්ෂනල්",
+  "warnEnterValueBetweenMinMax": "{min} සහ {max}අතර අගයක් ඇතුළත් කරන්න",
+  "warnRangeMinMax": "පරාසය {min} - {max}"
 }
