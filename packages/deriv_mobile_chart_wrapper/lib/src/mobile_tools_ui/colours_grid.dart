@@ -1,32 +1,19 @@
+import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 
-class ColoursPalettes extends StatefulWidget {
-  final ValueChanged<Color> onColorSelected;
+///
+class ColoursGrid extends StatelessWidget {
+  final void Function(int index) onColorSelected;
 
-  const ColoursPalettes({super.key, required this.onColorSelected});
+  const ColoursGrid(
+      {super.key,
+      required this.colors,
+      this.selectedColor,
+      required this.onColorSelected});
 
-  @override
-  ColoursPalettesState createState() => ColoursPalettesState();
-}
+  final List<Color> colors;
 
-class ColoursPalettesState extends State<ColoursPalettes> {
-  final List<Color> colors = [
-    const Color(0xFFFFFFFF), // White
-   const Color(0xFFF39230), // Orange
-   const Color(0xFFEF6B53), // Deep Orange
-   const Color(0xFFD73737), // Red
-   const Color(0xFF03BFF0), // Light Blue
-   const Color(0xFF3271B4), // Blue
-   const Color(0xFF2FBCB5), // Teal
-   const Color(0xFF8EC648), // Light Green
-   const Color(0xFF48A25C), // Green
-   const Color(0xFFFFF224), // Yellow
-   const Color(0xFFEE6EA9), // Pink
-   const Color(0xFF853289), // Purple
-  ];
-
-  final Color borderColor = const Color(0xFF85ACB0);
-  Color? selectedColor;
+  final Color? selectedColor;
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +29,13 @@ class ColoursPalettesState extends State<ColoursPalettes> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              setState(() {
-                selectedColor = colors[index];
-              });
-              widget.onColorSelected(colors[index]);
+              onColorSelected(index);
             },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 border: selectedColor == colors[index]
-                    ? Border.all(color: borderColor, width: 1)
+                    ? Border.all(color: context.theme.colors.blue, width: 1)
                     : null,
               ),
               child: Padding(

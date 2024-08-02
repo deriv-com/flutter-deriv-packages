@@ -19,6 +19,7 @@ class _NumberPadProvider extends InheritedWidget {
     this.secondInputController,
     this.secondInputFocusNode,
     this.firstInputMinimumValue,
+    this.isDotDisabled = false,
   }) : super(child: child);
 
   final TextEditingController? firstInputController;
@@ -45,6 +46,8 @@ class _NumberPadProvider extends InheritedWidget {
   final TextEditingController? Function() focusedInput;
 
   final NumberPadLabel label;
+
+  final bool isDotDisabled;
 
   static _NumberPadProvider? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<_NumberPadProvider>();

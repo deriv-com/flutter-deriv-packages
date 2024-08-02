@@ -7,12 +7,12 @@ extension MinRuleExtensions on FormValidator {
         (dynamic fieldValue) {
           bool hasError = false;
 
-          bool _hasLength() =>
+          bool hasLength() =>
               fieldValue is String || fieldValue is List || fieldValue is Map;
 
           if (fieldValue is num && fieldValue < value) {
             hasError = true;
-          } else if (_hasLength() && fieldValue.length < value) {
+          } else if (hasLength() && fieldValue.length < value) {
             hasError = true;
           }
 

@@ -1,19 +1,21 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
+import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:flutter/material.dart';
 
 /// Returns abbreviation name of the indicator for the given [config].
-String getIndicatorAbbreviation(IndicatorConfig config) {
+String getIndicatorAbbreviation(IndicatorConfig config, BuildContext context) {
   // TODO(Ramin): use config.shortTitle after updating to the new version of
   // chart package.
   switch (config.runtimeType) {
     case MACDIndicatorConfig:
-      return 'MACD';
+      return context.mobileChartWrapperLocalizations.labelMACD;
     case RSIIndicatorConfig:
-      return 'RSI';
+      return context.mobileChartWrapperLocalizations.labelRSI;
     case BollingerBandsIndicatorConfig:
-      return 'BB';
+      return context.mobileChartWrapperLocalizations.labelBB;
     case MAIndicatorConfig:
-      return 'MA';
+      return context.mobileChartWrapperLocalizations.labelMA;
     default:
       return '';
   }
@@ -34,3 +36,14 @@ String getIndicatorIconPath(IndicatorConfig config) {
       return '';
   }
 }
+
+Map<String, String> getSourcesOptions(BuildContext context) => {
+      'close': context.mobileChartWrapperLocalizations.labelClose,
+      'open': context.mobileChartWrapperLocalizations.labelOpen,
+      'high': context.mobileChartWrapperLocalizations.labelHigh,
+      'low': context.mobileChartWrapperLocalizations.labelLow,
+      'Hl/2': context.mobileChartWrapperLocalizations.labelHl2,
+      'HlC/3': context.mobileChartWrapperLocalizations.labelHlc3,
+      'HlCC/4': context.mobileChartWrapperLocalizations.labelHlcc4,
+      'OHlc/4': context.mobileChartWrapperLocalizations.labelOhlc4,
+    };
