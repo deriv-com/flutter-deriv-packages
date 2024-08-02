@@ -29,20 +29,20 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildFirstSection(context),
+        _buildMALineSection(context),
         const SizedBox(
           height: ThemeProvider.margin24,
         ),
-        _buildSecondSection(context),
+        _buildSignalSection(context),
         const SizedBox(
           height: ThemeProvider.margin24,
         ),
-        _buildThirdSection(context),
+        _buildBarsSection(context),
       ],
     );
   }
 
-  _buildFirstSection(BuildContext context) => GlowingContainer(
+  _buildMALineSection(BuildContext context) => GlowingContainer(
       borderRadius: ThemeProvider.borderRadius04,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
@@ -125,7 +125,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
         ),
       ));
 
-  _buildSecondSection(BuildContext context) => GlowingContainer(
+  _buildSignalSection(BuildContext context) => GlowingContainer(
           child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: ThemeProvider.margin16,
@@ -183,7 +183,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
         ),
       ));
 
-  _buildThirdSection(BuildContext context) => GlowingContainer(
+  _buildBarsSection(BuildContext context) => GlowingContainer(
           child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: ThemeProvider.margin16,

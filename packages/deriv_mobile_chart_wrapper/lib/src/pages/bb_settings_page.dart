@@ -44,20 +44,20 @@ class _BollingerBandsSettingsPageState
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildFirstSection(context),
+        _buildBandsSection(context),
         const SizedBox(
           height: ThemeProvider.margin24,
         ),
-        _buildSecondSection(context),
+        _buildChannelFillSection(context),
         const SizedBox(
           height: ThemeProvider.margin24,
         ),
-        _buildThirdSection(context),
+        _buildPeriodSection(context),
       ],
     );
   }
 
-  _buildFirstSection(BuildContext context) => GlowingContainer(
+  _buildBandsSection(BuildContext context) => GlowingContainer(
       borderRadius: ThemeProvider.borderRadius04,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
@@ -123,7 +123,7 @@ class _BollingerBandsSettingsPageState
         ),
       ));
 
-  GlowingExpansionPanelList _buildSecondSection(BuildContext context) =>
+  GlowingExpansionPanelList _buildChannelFillSection(BuildContext context) =>
       GlowingExpansionPanelList(
         expansionCallback: (index, isExpanded) {
           setState(() {
@@ -165,7 +165,7 @@ class _BollingerBandsSettingsPageState
         ],
       );
 
-  _buildThirdSection(BuildContext context) => GlowingContainer(
+  _buildPeriodSection(BuildContext context) => GlowingContainer(
           child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: ThemeProvider.margin16,
