@@ -82,8 +82,8 @@ class _MASettingsPageState extends State<MASettingsPage> {
                   color: color,
                 ),
               );
+              widget.onConfigUpdated(_indicatorConfig);
             });
-            widget.onConfigUpdated(_indicatorConfig);
           },
         ),
       );
@@ -188,11 +188,11 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 selectedIndex: _typeIndex,
                 onOptionSelected: (index) {
                   setState(() {
+                    _typeIndex = index;
                     _indicatorConfig = _indicatorConfig.copyWith(
                         movingAverageType: _typeOptions.keys.toList()[index]);
                     widget.onConfigUpdated(_indicatorConfig);
                   });
-                  _typeIndex = index;
                 },
               ),
               const SizedBox(
