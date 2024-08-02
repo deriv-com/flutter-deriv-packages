@@ -79,5 +79,7 @@
   "labelVariable": "Zmienna",
   "labelTriangular": "Trójkątne",
   "label2Exponential": "2-wykładniczy",
-  "label3Exponential": "3-wykładniczy"
+  "label3Exponential": "3-wykładniczy",
+  "warnEnterValueBetweenMinMax": "Wprowadź wartość między {min} i {max}",
+  "warnRangeMinMax": "Zakres {min} - {max}"
 }
