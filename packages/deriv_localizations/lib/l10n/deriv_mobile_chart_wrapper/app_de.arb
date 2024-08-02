@@ -79,5 +79,7 @@
   "labelVariable": "Variabel",
   "labelTriangular": "Dreieckig",
   "label2Exponential": "2-Exponential",
-  "label3Exponential": "3-Exponential"
+  "label3Exponential": "3-Exponential",
+  "warnEnterValueBetweenMinMax": "Geben Sie einen Wert zwischen {min} und {max}ein.",
+  "warnRangeMinMax": "Reichweite {min} - {max}"
 }
