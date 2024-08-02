@@ -80,6 +80,6 @@
   "labelTriangular": "Triangular",
   "label2Exponential": "2-Exponencial",
   "label3Exponential": "3-Exponencial",
-  "warnEnterValueBetweenMinMax": "Enter a value between {min} and {max}",
-  "warnRangeMinMax": "Range {min} - {max}"
+  "warnEnterValueBetweenMinMax": "Introduza um valor entre {min} e {max}",
+  "warnRangeMinMax": "Gama {min} - {max}"
 }
