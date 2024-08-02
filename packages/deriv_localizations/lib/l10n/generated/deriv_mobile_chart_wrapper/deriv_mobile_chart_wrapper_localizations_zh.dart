@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => '最多允許 3 個活躍指標。';
 
   @override
-  String get infoNoActiveIndicators => '尚未有活躍指標。';
+  String get infoNoActiveIndicators => '沒有活躍指標。';
 
   @override
   String get labelReset => '重設';
@@ -132,16 +132,16 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get labelLow => 'Low';
 
   @override
-  String get labelHl2 => '高 /2/';
+  String get labelHl2 => 'Hl/2';
 
   @override
-  String get labelHlc3 => '高爾克/3';
+  String get labelHlc3 => 'Hlc/3';
 
   @override
-  String get labelHlcc4 => '高度控制 /4';
+  String get labelHlcc4 => 'Hlcc/4';
 
   @override
-  String get labelOhlc4 => '奧爾克/4';
+  String get labelOhlc4 => 'Ohlc/4';
 
   @override
   String get labelShowZones => '顯示區域';
