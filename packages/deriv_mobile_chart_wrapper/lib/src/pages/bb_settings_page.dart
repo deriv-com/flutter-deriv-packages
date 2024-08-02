@@ -1,7 +1,6 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_bottom_sheet.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -42,27 +41,19 @@ class _BollingerBandsSettingsPageState
 
   @override
   Widget build(BuildContext context) {
-    return IndicatorSettingsBottomSheet(
-      indicator: context.mobileChartWrapperLocalizations.labelBB,
-      settings: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildFirstSection(context),
-          const SizedBox(
-            height: ThemeProvider.margin24,
-          ),
-          _buildSecondSection(context),
-          const SizedBox(
-            height: ThemeProvider.margin24,
-          ),
-          _buildThirdSection(context),
-        ],
-      ),
-      isResetEnabled: true,
-      onApply: () {},
-      onReset: () {},
-      onTapDelete: () {},
-      onTapInfo: () {},
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildFirstSection(context),
+        const SizedBox(
+          height: ThemeProvider.margin24,
+        ),
+        _buildSecondSection(context),
+        const SizedBox(
+          height: ThemeProvider.margin24,
+        ),
+        _buildThirdSection(context),
+      ],
     );
   }
 
