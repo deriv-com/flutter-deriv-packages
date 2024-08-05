@@ -17,6 +17,7 @@ class IndicatorSettingsDescriptionBottomSheet extends StatelessWidget {
       color: context.theme.colors.secondary,
       child: ListView(
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           _buildTopHandle(context),
           _buildTitle(context),
