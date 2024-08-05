@@ -608,6 +608,18 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// In en, this message translates to:
   /// **'3-Exponential'**
   String get label3Exponential;
+
+  /// No description provided for @warnEnterValueBetweenMinMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a value between {min} and {max}'**
+  String warnEnterValueBetweenMinMax(Object max, Object min);
+
+  /// No description provided for @warnRangeMinMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Range {min} - {max}'**
+  String warnRangeMinMax(Object max, Object min);
 }
 
 class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {
