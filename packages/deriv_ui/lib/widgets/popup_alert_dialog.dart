@@ -36,6 +36,8 @@ class PopupAlertDialog extends StatefulWidget {
     this.checkboxMessage,
     this.checkBoxValue,
     this.onCheckboxValueChanged,
+    this.positiveButtonKey,
+    this.negativeButtonKey,
     Key? key,
   }) : super(key: key);
 
@@ -77,6 +79,12 @@ class PopupAlertDialog extends StatefulWidget {
 
   /// Checkbox callback whenever it's value changed.
   final Function({bool? isChecked})? onCheckboxValueChanged;
+
+  /// Positive action button Key.
+  final Key? positiveButtonKey;
+
+  /// Negative action button Key.
+  final Key? negativeButtonKey;
 
   @override
   _PopupAlertDialogState createState() => _PopupAlertDialogState();
@@ -126,7 +134,8 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
                       value: _checkboxValue,
                       onValueChanged: ({bool? isChecked}) {
                         setState(() => _checkboxValue = isChecked);
-                        widget.onCheckboxValueChanged?.call(isChecked: isChecked);
+                        widget.onCheckboxValueChanged
+                            ?.call(isChecked: isChecked);
                       },
                     )
                 ],
@@ -134,6 +143,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
         actions: <Widget>[
           if (widget.negativeButtonLabel != null)
             TextButton(
+              key: widget.negativeButtonKey,
               child: Text(
                 widget.negativeButtonLabel!.toUpperCase(),
                 style: context.theme.textStyle(
@@ -157,6 +167,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
             Visibility(
               visible: !_shouldShowLoadingIndicator,
               child: TextButton(
+                key: widget.positiveButtonKey,
                 child: Text(
                   widget.positiveButtonLabel!.toUpperCase(),
                   style: context.theme.textStyle(

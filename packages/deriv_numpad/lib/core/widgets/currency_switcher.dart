@@ -27,6 +27,7 @@ class CurrencySwitcher extends StatelessWidget {
           borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
         ),
         child: InkWell(
+          key: const ValueKey<String>('numpad_currency_switcher_key'),
           borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
           onTap: onTap,
           child: Padding(
