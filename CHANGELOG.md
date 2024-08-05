@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-08-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.9`](#deriv_mobile_chart_wrapper---v009)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.9`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): add isResetEnabled to indicator bottomsheet ([#737](https://github.com/regentmarkets/flutter-deriv-packages/issues/737)). ([7105c272](https://github.com/regentmarkets/flutter-deriv-packages/commit/7105c272ea8f58b185a2fd899a0c71ccec78655b))
+
+
 ## 2024-08-02
 
 ### Changes

@@ -1,3 +1,7 @@
+## 0.0.9
+
+ - **FEAT**(deriv_mobile_chart_wrapper): add isResetEnabled to indicator bottomsheet ([#737](https://github.com/regentmarkets/flutter-deriv-packages/issues/737)). ([7105c272](https://github.com/regentmarkets/flutter-deriv-packages/commit/7105c272ea8f58b185a2fd899a0c71ccec78655b))
+
 ## 0.0.8+3
 
  - Update a dependency to the latest release.
