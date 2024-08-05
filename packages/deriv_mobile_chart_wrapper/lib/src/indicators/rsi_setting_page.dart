@@ -24,9 +24,6 @@ class _RSISettingPageState extends State<RSISettingPage> {
   int _selectedSourceIndex = 0;
   late RSIIndicatorConfig _indicatorConfig;
 
-  final int _minimumValue = 0;
-  final int _maximumValue = 100;
-
   @override
   void initState() {
     super.initState();
@@ -79,26 +76,13 @@ class _RSISettingPageState extends State<RSISettingPage> {
             const SizedBox(height: ThemeProvider.margin16),
             ValueSelector(
               backgroundColor: context.theme.colors.active.withOpacity(0.4),
-              numberPadLabel: NumberPadLabel(
-                actionOK: context.mobileChartWrapperLocalizations.labelOK,
-                warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
-                    context
-                        .mobileChartWrapperLocalizations
-                        .warnEnterValueBetweenMinMax(
-                            _maximumValue, _minimumValue),
-                warnValueCantBeLessThan: (input, minAmount, currency) => context
-                    .mobileChartWrapperLocalizations
-                    .warnEnterValueBetweenMinMax(_maximumValue, _minimumValue),
-                warnValueShouldBeInRange:
-                    (input, minAmountClear, currentSymbol, maxAmount) => context
-                        .mobileChartWrapperLocalizations
-                        .warnRangeMinMax(_maximumValue, _minimumValue),
-              ),
-              minimum: _minimumValue.toDouble(),
-              maximum: _maximumValue.toDouble(),
+              numberPadSubmitLabel:
+                  context.mobileChartWrapperLocalizations.labelOK,
+              maximum: 100,
+              minimum: 1,
               showMaximumSubtitle: true,
               showMinimumSubtitle: true,
-              title: context.mobileChartWrapperLocalizations.labelPeriod,
+              label: context.mobileChartWrapperLocalizations.labelPeriod,
               onChange: (value) {
                 setState(() {
                   _indicatorConfig =
@@ -163,7 +147,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
   Widget _buildOverboughtSection() => Column(
         children: [
           ValueSelector(
-            title: context.mobileChartWrapperLocalizations.labelOverbought,
+            label: context.mobileChartWrapperLocalizations.labelOverbought,
             backgroundColor: context.theme.colors.active.withOpacity(0.4),
             value: _indicatorConfig.oscillatorLinesConfig.overboughtValue,
             minimum: 1,
@@ -183,21 +167,8 @@ class _RSISettingPageState extends State<RSISettingPage> {
               });
               widget.onConfigUpdated(_indicatorConfig);
             },
-            numberPadLabel: NumberPadLabel(
-              actionOK: context.mobileChartWrapperLocalizations.labelOK,
-              warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
-                  context
-                      .mobileChartWrapperLocalizations
-                      .warnEnterValueBetweenMinMax(
-                          _maximumValue, _minimumValue),
-              warnValueCantBeLessThan: (input, minAmount, currency) => context
-                  .mobileChartWrapperLocalizations
-                  .warnEnterValueBetweenMinMax(_maximumValue, _minimumValue),
-              warnValueShouldBeInRange:
-                  (input, minAmountClear, currentSymbol, maxAmount) => context
-                      .mobileChartWrapperLocalizations
-                      .warnRangeMinMax(_maximumValue, _minimumValue),
-            ),
+            numberPadSubmitLabel:
+                context.mobileChartWrapperLocalizations.labelOK,
           ),
           const SizedBox(height: ThemeProvider.margin16),
           ColorSelector(
@@ -224,7 +195,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
   Widget _buildOverSoldSection() => Column(
         children: [
           ValueSelector(
-            title: context.mobileChartWrapperLocalizations.labelOversold,
+            label: context.mobileChartWrapperLocalizations.labelOversold,
             backgroundColor: context.theme.colors.active.withOpacity(0.4),
             value: _indicatorConfig.oscillatorLinesConfig.oversoldValue,
             minimum: 1,
@@ -244,21 +215,8 @@ class _RSISettingPageState extends State<RSISettingPage> {
               });
               widget.onConfigUpdated(_indicatorConfig);
             },
-            numberPadLabel: NumberPadLabel(
-              actionOK: context.mobileChartWrapperLocalizations.labelOK,
-              warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
-                  context
-                      .mobileChartWrapperLocalizations
-                      .warnEnterValueBetweenMinMax(
-                          _maximumValue, _minimumValue),
-              warnValueCantBeLessThan: (input, minAmount, currency) => context
-                  .mobileChartWrapperLocalizations
-                  .warnEnterValueBetweenMinMax(_maximumValue, _minimumValue),
-              warnValueShouldBeInRange:
-                  (input, minAmountClear, currentSymbol, maxAmount) => context
-                      .mobileChartWrapperLocalizations
-                      .warnRangeMinMax(_maximumValue, _minimumValue),
-            ),
+            numberPadSubmitLabel:
+                context.mobileChartWrapperLocalizations.labelOK,
           ),
           const SizedBox(height: ThemeProvider.margin16),
           ColorSelector(
