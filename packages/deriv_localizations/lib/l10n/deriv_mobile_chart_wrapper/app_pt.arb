@@ -81,5 +81,5 @@
   "label2Exponential": "2-Exponencial",
   "label3Exponential": "3-Exponencial",
   "warnEnterValueBetweenMinMax": "Introduza um valor entre {min} e {max}",
-  "warnRangeMinMax": "Gama {min} - {max}"
+  "warnRangeMinMax": "Intervalo {min} - {max}"
 }
