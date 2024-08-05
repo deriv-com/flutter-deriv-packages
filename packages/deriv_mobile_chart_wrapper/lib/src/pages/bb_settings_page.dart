@@ -79,8 +79,8 @@ class _BollingerBandsSettingsPageState
                         color: selectedColor,
                       ),
                     );
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
-                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
@@ -95,8 +95,8 @@ class _BollingerBandsSettingsPageState
                       color: selectedColor,
                     ),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             Padding(
@@ -114,8 +114,8 @@ class _BollingerBandsSettingsPageState
                         color: selectedColor,
                       ),
                     );
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
-                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
@@ -129,8 +129,8 @@ class _BollingerBandsSettingsPageState
           setState(() {
             _indicatorConfig =
                 _indicatorConfig.copyWith(showChannelFill: !isExpanded);
+            widget.onConfigUpdated(_indicatorConfig);
           });
-          widget.onConfigUpdated(_indicatorConfig);
         },
         children: [
           GlowingExpansionPanel(
@@ -155,8 +155,8 @@ class _BollingerBandsSettingsPageState
                     _indicatorConfig = _indicatorConfig.copyWith(
                       fillColor: selectedColor,
                     );
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
-                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
@@ -184,8 +184,8 @@ class _BollingerBandsSettingsPageState
                   _indicatorConfig = _indicatorConfig.copyWith(
                     period: value?.toInt(),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelPeriod,
               numberPadSubmitLabel:
@@ -209,8 +209,8 @@ class _BollingerBandsSettingsPageState
                 setState(() {
                   _indicatorConfig =
                       _indicatorConfig.copyWith(standardDeviation: value);
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context
                   .mobileChartWrapperLocalizations.labelStandardDeviations,
@@ -239,8 +239,8 @@ class _BollingerBandsSettingsPageState
                   _indicatorConfig = _indicatorConfig.copyWith(
                     fieldType: _sourceOptions.keys.toList()[index],
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(
@@ -261,8 +261,8 @@ class _BollingerBandsSettingsPageState
                     movingAverageType:
                         _movingAverageTypeOptions.keys.toList()[index],
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(

@@ -62,8 +62,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                       color: selectedColor,
                     ),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(
@@ -77,8 +77,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                   _indicatorConfig = _indicatorConfig.copyWith(
                     fastMAPeriod: value?.toInt(),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelFastMAPeriod,
               numberPadSubmitLabel:
@@ -103,8 +103,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                   _indicatorConfig = _indicatorConfig.copyWith(
                     slowMAPeriod: value?.toInt(),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelSlowMAPeriod,
               numberPadSubmitLabel:
@@ -146,8 +146,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                       color: index,
                     ),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             const SizedBox(
@@ -161,8 +161,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                   _indicatorConfig = _indicatorConfig.copyWith(
                     signalPeriod: value?.toInt(),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
               label: context.mobileChartWrapperLocalizations.labelSignalPeriod,
               numberPadSubmitLabel:
@@ -204,8 +204,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                       positiveColor: selectedColor,
                     ),
                   );
+                  widget.onConfigUpdated(_indicatorConfig);
                 });
-                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             Padding(
@@ -223,8 +223,8 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                         negativeColor: index,
                       ),
                     );
+                    widget.onConfigUpdated(_indicatorConfig);
                   });
-                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),
