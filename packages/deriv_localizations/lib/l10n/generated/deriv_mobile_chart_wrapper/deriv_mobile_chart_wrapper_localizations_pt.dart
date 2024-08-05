@@ -250,4 +250,14 @@ class DerivMobileChartWrapperLocalizationsPt extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-Exponencial';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }
