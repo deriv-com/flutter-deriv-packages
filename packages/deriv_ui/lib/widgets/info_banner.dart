@@ -27,7 +27,6 @@ class InfoBanner extends StatelessWidget {
           borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Icon(
               Icons.info_outline,

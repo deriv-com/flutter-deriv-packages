@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => '활성 표시기는 최대 3개까지 허용됩니다.';
 
   @override
-  String get infoNoActiveIndicators => '아직 활성화된 지표가 없습니다.';
+  String get infoNoActiveIndicators => '활성 표시기가 없습니다.';
 
   @override
   String get labelReset => '초기화';
@@ -250,4 +250,14 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-지수';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }

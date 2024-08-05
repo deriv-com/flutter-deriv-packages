@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 /// A widget that allows users to select an option from a list of options.
 class OptionSelector extends StatelessWidget {
+  /// Initializes [OptionSelector]
   const OptionSelector({
-    super.key,
     required this.label,
     required this.options,
     required this.onOptionSelected,
     this.selectedIndex = 0,
+    super.key,
   });
 
   /// The label of the option selector.
@@ -25,37 +26,32 @@ class OptionSelector extends StatelessWidget {
   final int selectedIndex;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context) => Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: <Widget>[
         _buildTitle(context),
         const SizedBox(height: ThemeProvider.margin08),
         _buildItemsHorizontalList(context),
       ],
     );
-  }
 
-  _buildTitle(BuildContext context) {
-    return Text(
+  Text _buildTitle(BuildContext context) => Text(
       label,
       style: context.theme.textStyle(
         textStyle: TextStyles.caption,
         color: context.theme.colors.general,
       ),
     );
-  }
 
-  _buildItemsHorizontalList(BuildContext context) {
-    return SizedBox(
+  SizedBox _buildItemsHorizontalList(BuildContext context) => SizedBox(
       height: 48,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: options.length,
-        itemBuilder: (context, index) {
-          final isSelected = index == selectedIndex;
+        itemBuilder: (BuildContext context, int index) {
+          final bool isSelected = index == selectedIndex;
           return GestureDetector(
             onTap: () {
               onOptionSelected(index);
@@ -73,7 +69,6 @@ class OptionSelector extends StatelessWidget {
         },
       ),
     );
-  }
 }
 
 class _OptionSelectableItem extends StatelessWidget {
@@ -83,8 +78,7 @@ class _OptionSelectableItem extends StatelessWidget {
   final String option;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
           ThemeProvider.borderRadius08,
@@ -93,7 +87,6 @@ class _OptionSelectableItem extends StatelessWidget {
           color: isSelected
               ? context.theme.colors.blue
               : context.theme.colors.active,
-          width: 1,
         ),
       ),
       child: Padding(
@@ -114,5 +107,4 @@ class _OptionSelectableItem extends StatelessWidget {
         ),
       ),
     );
-  }
 }

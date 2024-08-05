@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Jusqu\'à 3 indicateurs actifs sont autorisés.';
 
   @override
-  String get infoNoActiveIndicators => 'Vous n\'avez pas encore d\'indicateurs actifs.';
+  String get infoNoActiveIndicators => 'Aucun indicateur actif.';
 
   @override
   String get labelReset => 'Remise à zéro';
@@ -250,4 +250,14 @@ class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-Exponentiel';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }

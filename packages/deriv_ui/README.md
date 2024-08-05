@@ -29,7 +29,7 @@ Here is the detailed structure of the components included in this package:
 - [Info Icon Button](./lib/widgets/info_icon_button.dart)
 - [Interaction](./lib/widgets/interaction.dart)
 - [Loading Indicator](./lib/widgets/loading_indicator.dart)
-- [Picture Badge](./lib/widgets/picture_badge.dart)
+- [Picture Badge](lib/widgets/badge/picture_badge.dart)
 - [Popup Alert Dialog](./lib/widgets/popup_alert_dialog.dart)
 - [Primary Button](./lib/widgets/primary_button.dart)
 - [Secondary Button](./lib/widgets/secondary_button.dart)
