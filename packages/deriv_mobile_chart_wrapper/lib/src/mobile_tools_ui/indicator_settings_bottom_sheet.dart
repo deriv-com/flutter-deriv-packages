@@ -7,14 +7,14 @@ import 'package:provider/provider.dart';
 
 class IndicatorSettingsBottomSheet extends StatefulWidget {
   const IndicatorSettingsBottomSheet({
-    super.key,
-    this.theme,
     required this.settings,
     required this.indicator,
     required this.onApply,
     required this.onTapInfo,
     required this.onTapDelete,
+    this.theme,
     this.onReset,
+    super.key,
   });
 
   /// The theme of the chart which the bottom sheet is being placed inside.
