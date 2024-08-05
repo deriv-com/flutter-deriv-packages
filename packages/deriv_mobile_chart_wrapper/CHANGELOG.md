@@ -1,3 +1,19 @@
+## 0.0.8+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.8+2
+
+ - **FIX**(deriv_mobile_chart_wrapper): update mistyped value. ([#741](https://github.com/regentmarkets/flutter-deriv-packages/issues/741)). ([f60c782e](https://github.com/regentmarkets/flutter-deriv-packages/commit/f60c782ef8aa39b806fe676d6f17820de749777e))
+
+## 0.0.8+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.8
+
+ - **FEAT**(mobile_chart_wrapper): add RSI settings page ([#729](https://github.com/regentmarkets/flutter-deriv-packages/issues/729)). ([7f99cb1e](https://github.com/regentmarkets/flutter-deriv-packages/commit/7f99cb1e9b666b45bf63b9f2bcac6f4f38af26bf))
+
 ## 0.0.7+2
 
  - **FIX**(deriv_mobile_chart_wraper): change from index to color in the on change callback ([#735](https://github.com/regentmarkets/flutter-deriv-packages/issues/735)). ([d1470d8c](https://github.com/regentmarkets/flutter-deriv-packages/commit/d1470d8c7ebb23f11531227a9fbb31bbcc068043))

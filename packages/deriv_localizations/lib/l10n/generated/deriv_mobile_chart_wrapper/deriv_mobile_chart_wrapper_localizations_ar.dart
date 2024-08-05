@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsAr extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'يُسمح بحد أقصى 3 مؤشرات نشطة.';
 
   @override
-  String get infoNoActiveIndicators => 'ليس لديك مؤشرات نشطة حتى الآن.';
+  String get infoNoActiveIndicators => 'لا توجد مؤشرات نشطة.';
 
   @override
   String get labelReset => 'إعادة تعيين';
@@ -250,4 +250,14 @@ class DerivMobileChartWrapperLocalizationsAr extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-الإكسبونسي';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }
