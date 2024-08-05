@@ -12,9 +12,9 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
     required this.settings,
     required this.indicator,
     required this.onApply,
-    this.onReset,
     required this.onTapInfo,
     required this.onTapDelete,
+    this.onReset,
   });
 
   /// The theme of the chart which the bottom sheet is being placed inside.
