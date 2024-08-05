@@ -45,5 +45,5 @@ Map<String, String> getSourcesOptions(BuildContext context) => {
       'Hl/2': context.mobileChartWrapperLocalizations.labelHl2,
       'HlC/3': context.mobileChartWrapperLocalizations.labelHlc3,
       'HlCC/4': context.mobileChartWrapperLocalizations.labelHlcc4,
-      'OHlc/4': context.mobileChartWrapperLocalizations.labelOhlc4,
+      'OHlC/4': context.mobileChartWrapperLocalizations.labelOhlc4,
     };
