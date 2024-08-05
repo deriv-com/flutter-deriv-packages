@@ -240,8 +240,8 @@ class ValueSelector extends StatelessWidget {
   }
 
   String _getFormattedValue(double value) {
-    final NumberFormat _formatter = formatter ?? NumberFormat('#,###');
-    return _formatter.format(value);
+    final NumberFormat numberFormat = formatter ?? NumberFormat('#,###');
+    return numberFormat.format(value);
   }
 
   // Shows the num pad and handles on closed callback.
