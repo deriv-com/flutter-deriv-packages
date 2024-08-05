@@ -12,10 +12,9 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
     required this.settings,
     required this.indicator,
     required this.onApply,
-    required this.onReset,
+    this.onReset,
     required this.onTapInfo,
     required this.onTapDelete,
-    this.isResetEnabled = false,
   });
 
   /// The theme of the chart which the bottom sheet is being placed inside.
@@ -31,15 +30,13 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
   final VoidCallback onApply;
 
   /// The callback when the reset button is pressed.
-  final VoidCallback onReset;
+  final VoidCallback? onReset;
 
   /// The callback when the info button is pressed.
   final VoidCallback onTapInfo;
 
   /// The callback when the delete button is pressed.
   final VoidCallback onTapDelete;
-
-  final bool isResetEnabled;
 
   @override
   State<IndicatorSettingsBottomSheet> createState() =>
@@ -164,12 +161,12 @@ class _IndicatorSettingsBottomSheetState
             Expanded(
               child: SecondaryButton(
                 onPressed: widget.onReset,
-                isEnabled: widget.isResetEnabled,
+                isEnabled: widget.onReset != null,
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelReset,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
-                    color: widget.isResetEnabled
+                    color: widget.onReset != null
                         ? context.theme.colors.prominent
                         : context.theme.colors.active,
                   ),
