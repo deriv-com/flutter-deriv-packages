@@ -1,3 +1,7 @@
+## 0.0.10+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.10
 
  - **FEAT**(deriv_mobile_chart_wrapper): add description bottomsheet for settings page ([#749](https://github.com/regentmarkets/flutter-deriv-packages/issues/749)). ([6ffd5128](https://github.com/regentmarkets/flutter-deriv-packages/commit/6ffd512845276a0e240ea07ad3aa299a39d16b55))
