@@ -90,7 +90,7 @@ class ValueSelector extends StatelessWidget {
   /// Label of the value selector.
   final String? title;
 
-  /// Number pad labels
+  /// Number pad label
   final NumberPadLabel numberPadLabel;
 
   /// Key for the amount input field.
