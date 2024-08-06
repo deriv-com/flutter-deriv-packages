@@ -18,6 +18,9 @@ class MACDSettingsPage extends BaseIndicatorSettingPage<MACDIndicatorConfig> {
 class _MACDSettingsPageState extends State<MACDSettingsPage> {
   late MACDIndicatorConfig _indicatorConfig;
 
+  final int _minimumValueSelectorInput = 0;
+  final int _maximumValueSelectorInput = 100;
+
   @override
   void initState() {
     super.initState();
@@ -80,9 +83,22 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                   widget.onConfigUpdated(_indicatorConfig);
                 });
               },
-              label: context.mobileChartWrapperLocalizations.labelFastMAPeriod,
-              numberPadSubmitLabel:
-                  context.mobileChartWrapperLocalizations.labelOK,
+              title: context.mobileChartWrapperLocalizations.labelFastMAPeriod,
+              numberPadLabel: NumberPadLabel(
+                actionOK: context.mobileChartWrapperLocalizations.labelOK,
+                warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
+                    context.mobileChartWrapperLocalizations
+                        .warnEnterValueBetweenMinMax(_maximumValueSelectorInput,
+                            _minimumValueSelectorInput),
+                warnValueCantBeLessThan: (input, minAmount, currency) => context
+                    .mobileChartWrapperLocalizations
+                    .warnEnterValueBetweenMinMax(
+                        _maximumValueSelectorInput, _minimumValueSelectorInput),
+                warnValueShouldBeInRange: (input, minAmountClear, currentSymbol,
+                        maxAmount) =>
+                    context.mobileChartWrapperLocalizations.warnRangeMinMax(
+                        _maximumValueSelectorInput, _minimumValueSelectorInput),
+              ),
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
@@ -106,9 +122,22 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                   widget.onConfigUpdated(_indicatorConfig);
                 });
               },
-              label: context.mobileChartWrapperLocalizations.labelSlowMAPeriod,
-              numberPadSubmitLabel:
-                  context.mobileChartWrapperLocalizations.labelOK,
+              title: context.mobileChartWrapperLocalizations.labelSlowMAPeriod,
+              numberPadLabel: NumberPadLabel(
+                actionOK: context.mobileChartWrapperLocalizations.labelOK,
+                warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
+                    context.mobileChartWrapperLocalizations
+                        .warnEnterValueBetweenMinMax(_maximumValueSelectorInput,
+                            _minimumValueSelectorInput),
+                warnValueCantBeLessThan: (input, minAmount, currency) => context
+                    .mobileChartWrapperLocalizations
+                    .warnEnterValueBetweenMinMax(
+                        _maximumValueSelectorInput, _minimumValueSelectorInput),
+                warnValueShouldBeInRange: (input, minAmountClear, currentSymbol,
+                        maxAmount) =>
+                    context.mobileChartWrapperLocalizations.warnRangeMinMax(
+                        _maximumValueSelectorInput, _minimumValueSelectorInput),
+              ),
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
@@ -164,9 +193,22 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                   widget.onConfigUpdated(_indicatorConfig);
                 });
               },
-              label: context.mobileChartWrapperLocalizations.labelSignalPeriod,
-              numberPadSubmitLabel:
-                  context.mobileChartWrapperLocalizations.labelOK,
+              title: context.mobileChartWrapperLocalizations.labelSignalPeriod,
+              numberPadLabel: NumberPadLabel(
+                actionOK: context.mobileChartWrapperLocalizations.labelOK,
+                warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
+                    context.mobileChartWrapperLocalizations
+                        .warnEnterValueBetweenMinMax(_maximumValueSelectorInput,
+                            _minimumValueSelectorInput),
+                warnValueCantBeLessThan: (input, minAmount, currency) => context
+                    .mobileChartWrapperLocalizations
+                    .warnEnterValueBetweenMinMax(
+                        _maximumValueSelectorInput, _minimumValueSelectorInput),
+                warnValueShouldBeInRange: (input, minAmountClear, currentSymbol,
+                        maxAmount) =>
+                    context.mobileChartWrapperLocalizations.warnRangeMinMax(
+                        _maximumValueSelectorInput, _minimumValueSelectorInput),
+              ),
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
