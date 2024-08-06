@@ -1,3 +1,7 @@
+## 0.0.11
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Implement MA setting page. ([#728](https://github.com/regentmarkets/flutter-deriv-packages/issues/728)). ([fa66abe8](https://github.com/regentmarkets/flutter-deriv-packages/commit/fa66abe81af1d016359b7d30b0fa870e8ebda61b))
+
 ## 0.0.10+1
 
  - Update a dependency to the latest release.

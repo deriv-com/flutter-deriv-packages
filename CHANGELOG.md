@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_mobile_chart_wrapper` - `v0.0.11`](#deriv_mobile_chart_wrapper---v0011)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.11`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Implement MA setting page. ([#728](https://github.com/regentmarkets/flutter-deriv-packages/issues/728)). ([fa66abe8](https://github.com/regentmarkets/flutter-deriv-packages/commit/fa66abe81af1d016359b7d30b0fa870e8ebda61b))
+
+
+## 2024-08-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_ui` - `v0.0.12`](#deriv_ui---v0012)
  - [`deriv_mobile_chart_wrapper` - `v0.0.10+1`](#deriv_mobile_chart_wrapper---v00101)
  - [`deriv_language_selector` - `v0.0.2+14`](#deriv_language_selector---v00214)
