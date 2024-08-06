@@ -15,6 +15,59 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_localizations` - `v1.5.5`](#deriv_localizations---v155)
+ - [`deriv_mobile_chart_wrapper` - `v0.0.8+3`](#deriv_mobile_chart_wrapper---v0083)
+ - [`deriv_passkeys` - `v0.0.3+14`](#deriv_passkeys---v00314)
+ - [`deriv_auth` - `v6.7.26`](#deriv_auth---v6726)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.0.8+3`
+ - `deriv_passkeys` - `v0.0.3+14`
+ - `deriv_auth` - `v6.7.26`
+
+---
+
+#### `deriv_localizations` - `v1.5.5`
+
+ - **FIX**(deriv_localizations): update numpad range values ([#742](https://github.com/regentmarkets/flutter-deriv-packages/issues/742)). ([5ad26f52](https://github.com/regentmarkets/flutter-deriv-packages/commit/5ad26f52c897397bc544fe4b23ca805e90cba66a))
+
+
+## 2024-08-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.8+2`](#deriv_mobile_chart_wrapper---v0082)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.8+2`
+
+ - **FIX**(deriv_mobile_chart_wrapper): update mistyped value. ([#741](https://github.com/regentmarkets/flutter-deriv-packages/issues/741)). ([f60c782e](https://github.com/regentmarkets/flutter-deriv-packages/commit/f60c782ef8aa39b806fe676d6f17820de749777e))
+
+
+## 2024-08-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_localizations` - `v1.5.4`](#deriv_localizations---v154)
  - [`deriv_mobile_chart_wrapper` - `v0.0.8+1`](#deriv_mobile_chart_wrapper---v0081)
  - [`deriv_auth` - `v6.7.25`](#deriv_auth---v6725)
