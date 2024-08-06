@@ -27,7 +27,7 @@
   "labelDelete": "মুছে ফেলুন",
   "labelDeleteAll": "সব মুছে ফেলুন",
   "infoUpto3indicatorsAllowed": "3 টি পর্যন্ত সক্রিয় সূচক অনুমোদিত।",
-  "infoNoActiveIndicators": "আপনার এখনও কোনও সক্রিয় সূচক নেই।",
+  "infoNoActiveIndicators": "কোন সক্রিয় সূচক নেই।",
   "labelReset": "রিসেট করুন",
   "labelApply": "আবেদন করুন",
   "labelOK": "ঠিক আছে",
