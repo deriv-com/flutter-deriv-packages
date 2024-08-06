@@ -50,6 +50,9 @@ class _MASettingsPageState extends State<MASettingsPage> {
     _indicatorConfig = widget.initialConfig;
   }
 
+  final int _minimumValueSelectorInput = 0;
+  final int _maximumValueSelectorInput = 100;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -109,9 +112,25 @@ class _MASettingsPageState extends State<MASettingsPage> {
                     widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
-                label: context.mobileChartWrapperLocalizations.labelPeriod,
-                numberPadSubmitLabel:
-                    context.mobileChartWrapperLocalizations.labelOK,
+                title: context.mobileChartWrapperLocalizations.labelPeriod,
+                numberPadLabel: NumberPadLabel(
+                  actionOK: context.mobileChartWrapperLocalizations.labelOK,
+                  warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
+                      context.mobileChartWrapperLocalizations
+                          .warnEnterValueBetweenMinMax(
+                              _maximumValueSelectorInput,
+                              _minimumValueSelectorInput),
+                  warnValueCantBeLessThan: (input, minAmount, currency) =>
+                      context.mobileChartWrapperLocalizations
+                          .warnEnterValueBetweenMinMax(
+                              _maximumValueSelectorInput,
+                              _minimumValueSelectorInput),
+                  warnValueShouldBeInRange: (input, minAmountClear,
+                          currentSymbol, maxAmount) =>
+                      context.mobileChartWrapperLocalizations.warnRangeMinMax(
+                          _maximumValueSelectorInput,
+                          _minimumValueSelectorInput),
+                ),
                 showMaximumSubtitle: true,
                 maximumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMaxRange,
@@ -134,9 +153,25 @@ class _MASettingsPageState extends State<MASettingsPage> {
                     widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
-                label: context.mobileChartWrapperLocalizations.labelOffset,
-                numberPadSubmitLabel:
-                    context.mobileChartWrapperLocalizations.labelOK,
+                title: context.mobileChartWrapperLocalizations.labelOffset,
+                numberPadLabel: NumberPadLabel(
+                  actionOK: context.mobileChartWrapperLocalizations.labelOK,
+                  warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
+                      context.mobileChartWrapperLocalizations
+                          .warnEnterValueBetweenMinMax(
+                              _maximumValueSelectorInput,
+                              _minimumValueSelectorInput),
+                  warnValueCantBeLessThan: (input, minAmount, currency) =>
+                      context.mobileChartWrapperLocalizations
+                          .warnEnterValueBetweenMinMax(
+                              _maximumValueSelectorInput,
+                              _minimumValueSelectorInput),
+                  warnValueShouldBeInRange: (input, minAmountClear,
+                          currentSymbol, maxAmount) =>
+                      context.mobileChartWrapperLocalizations.warnRangeMinMax(
+                          _maximumValueSelectorInput,
+                          _minimumValueSelectorInput),
+                ),
                 showMaximumSubtitle: true,
                 maximumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMaxRange,
