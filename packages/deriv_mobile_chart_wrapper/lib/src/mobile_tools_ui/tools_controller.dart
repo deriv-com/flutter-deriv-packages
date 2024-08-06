@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 
 /// Controller class to show tools menu.
 class ToolsController extends ChangeNotifier {
-  ConfigItemModel? _configItemModel;
-
-  /// Returns config items.
-  ConfigItemModel? get configs => _configItemModel;
-
   /// Initializes the tools controller.
-  ToolsController({this.indicatorsEnabled = true});
+  ToolsController({
+    this.indicatorsEnabled = true,
+  });
 
   /// Whether indicators are enabled or not.
   final bool indicatorsEnabled;
@@ -17,9 +14,15 @@ class ToolsController extends ChangeNotifier {
   /// Called to show indicators tools menu.
   VoidCallback? onShowIndicatorsToolsMenu;
 
+  /// Config items.
+  ConfigItemModel? _configs;
+
+  /// Gets the config items.
+  ConfigItemModel? get configs => _configs;
+
   /// Updates the config items.
   void updateConfigs(ConfigItemModel configItemModel) {
-    _configItemModel = configItemModel;
+    _configs = configItemModel;
     notifyListeners();
   }
 

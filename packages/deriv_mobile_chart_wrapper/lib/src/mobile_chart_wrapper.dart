@@ -170,7 +170,6 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
     super.initState();
 
     _initRepos();
-    _setupController();
   }
 
   @override
@@ -195,7 +194,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
     };
   }
 
-  void _initRepos() {
+  void _initRepos() async {
     if (widget.toolsController?.indicatorsEnabled ?? false) {
       _indicatorsRepo = AddOnsRepository<IndicatorConfig>(
         createAddOn: (Map<String, dynamic> map) =>
@@ -205,7 +204,8 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
       );
     }
 
-    loadSavedIndicatorsAndDrawingTools();
+    await loadSavedIndicatorsAndDrawingTools();
+    _setupController();
   }
 
   Future<void> loadSavedIndicatorsAndDrawingTools() async {

@@ -10,17 +10,10 @@ class IndicatorMenuButton extends StatefulWidget {
   /// Initializes the indicator menu button.
   const IndicatorMenuButton({
     required this.toolsController,
-    required this.onTap,
-    this.initialCount,
     super.key,
   });
 
-  /// The callback function to be called when the button is tapped.
-  final VoidCallback onTap;
-
   final ToolsController toolsController;
-
-  final int? initialCount;
 
   @override
   State<IndicatorMenuButton> createState() => _IndicatorMenuButtonState();
@@ -32,7 +25,8 @@ class _IndicatorMenuButtonState extends State<IndicatorMenuButton> {
   @override
   void initState() {
     super.initState();
-    _count = ValueNotifier<int?>(widget.initialCount);
+    _count = ValueNotifier<int?>(
+        widget.toolsController.configs?.indicatorConfigs.length);
     widget.toolsController.addListener(() {
       _count.value = widget.toolsController.configs?.indicatorConfigs.length;
     });
@@ -46,7 +40,9 @@ class _IndicatorMenuButtonState extends State<IndicatorMenuButton> {
           count: count,
           enabled: count != null,
           child: ChartSettingButtonWithBackground(
-            onTap: widget.onTap,
+            onTap: () {
+              widget.toolsController.showIndicatorsToolsMenu();
+            },
             child: SvgPicture.asset(
               indicatorsMenuIcon,
               width: ThemeProvider.margin18,
