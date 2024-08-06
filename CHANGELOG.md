@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_mobile_chart_wrapper` - `v0.0.10`](#deriv_mobile_chart_wrapper---v0010)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.10`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): add description bottomsheet for settings page ([#749](https://github.com/regentmarkets/flutter-deriv-packages/issues/749)). ([6ffd5128](https://github.com/regentmarkets/flutter-deriv-packages/commit/6ffd512845276a0e240ea07ad3aa299a39d16b55))
+
+
+## 2024-08-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_mobile_chart_wrapper` - `v0.0.9`](#deriv_mobile_chart_wrapper---v009)
 
 ---
