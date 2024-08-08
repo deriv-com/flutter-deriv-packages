@@ -342,7 +342,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
       _passwordController.text.isValidLoginPasswordLength;
 
   String? _emailValidator(String? input) {
-    if (input.isEmpty || _getEmailValue().isValidEmail) {
+    if (input?.isEmpty || _getEmailValue().isValidEmail) {
       return null;
     }
 
@@ -350,7 +350,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
   }
 
   String? _passwordValidator(String? input) {
-    if (input.isEmpty || input?.isValidLoginPasswordLength ?? false) {
+    if (input?.isEmpty || input?.isValidLoginPasswordLength ?? false) {
       return null;
     }
 
