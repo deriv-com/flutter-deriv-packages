@@ -47,7 +47,7 @@ class _AppSettingGestureDetectorState extends State<AppSettingGestureDetector> {
     if (_tapCount == maxTapCount) {
       _tapCount = 0;
 
-      widget.onTapNavigation(context);
+      widget.onTapNavigation();
     } else {
       if (_tapCount == 1) {
         Future<int>.delayed(
