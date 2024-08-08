@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Hadi viashiria 3 vya kazi zinaruhusiwa.';
 
   @override
-  String get infoNoActiveIndicators => 'Huna viashiria vya kazi bado.';
+  String get infoNoActiveIndicators => 'Hakuna viashiria vya kazi.';
 
   @override
   String get labelReset => 'Weka upya';
@@ -250,4 +250,14 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-Mfanyiko';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }

@@ -93,7 +93,7 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Cho phép tối đa 3 chỉ số hoạt động.';
 
   @override
-  String get infoNoActiveIndicators => 'Bạn chưa có chỉ số hoạt động.';
+  String get infoNoActiveIndicators => 'Không có chỉ số hoạt động.';
 
   @override
   String get labelReset => 'Đặt lại';
@@ -250,4 +250,14 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-cấp số nhân';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }
