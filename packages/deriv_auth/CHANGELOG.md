@@ -1,3 +1,11 @@
+## 6.7.29
+
+ - **FIX**(deriv_auth): email text field validation ([#751](https://github.com/regentmarkets/flutter-deriv-packages/issues/751)). ([3e05c3fa](https://github.com/regentmarkets/flutter-deriv-packages/commit/3e05c3fa9315a75d19fbc3727ad9a161617e7fb8))
+
+## 6.7.28
+
+ - Update a dependency to the latest release.
+
 ## 6.7.27
 
  - Update a dependency to the latest release.

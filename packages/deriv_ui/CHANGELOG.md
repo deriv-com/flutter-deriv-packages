@@ -1,3 +1,7 @@
+## 0.0.13
+
+ - **FEAT**(deriv_mobile_chart_wrapper): bolinger and macd settings page ui ([#727](https://github.com/regentmarkets/flutter-deriv-packages/issues/727)). ([4be589cf](https://github.com/regentmarkets/flutter-deriv-packages/commit/4be589cf84c3593cf29438ca6c6e5613f4eafa49))
+
 ## 0.0.12
 
  - **FEAT**(deriv_ui): trigger versioning for PR [#746](https://github.com/regentmarkets/flutter-deriv-packages/issues/746) ([#752](https://github.com/regentmarkets/flutter-deriv-packages/issues/752)). ([50a603d4](https://github.com/regentmarkets/flutter-deriv-packages/commit/50a603d45bd756f42a82584f96adecc097e2e93d))
