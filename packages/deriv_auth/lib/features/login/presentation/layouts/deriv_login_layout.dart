@@ -350,8 +350,8 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
   }
 
   String? _passwordValidator(String? input) {
-    if (_getPasswordValue().isEmpty || input?.isValidLoginPasswordLength ??
-        false) {
+    if (_getPasswordValue().isEmpty ||
+        (input?.isValidLoginPasswordLength ?? false)) {
       return null;
     }
 
