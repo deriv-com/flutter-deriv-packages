@@ -18,7 +18,7 @@ class MACDSettingsPage extends BaseIndicatorSettingPage<MACDIndicatorConfig> {
 class _MACDSettingsPageState extends State<MACDSettingsPage> {
   late MACDIndicatorConfig _indicatorConfig;
 
-  final int _minimumValueSelectorInput = 0;
+  final int _minimumValueSelectorInput = 1;
   final int _maximumValueSelectorInput = 100;
 
   @override
@@ -102,11 +102,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
-              maximum: 100,
+              maximum: _maximumValueSelectorInput.toDouble(),
               showMinimumSubtitle: true,
               minimumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMinRange,
-              minimum: 1,
+              minimum: _minimumValueSelectorInput.toDouble(),
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
@@ -141,11 +141,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
-              maximum: 100,
+              maximum: _maximumValueSelectorInput.toDouble(),
               showMinimumSubtitle: true,
               minimumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMinRange,
-              minimum: 1,
+              minimum: _minimumValueSelectorInput.toDouble(),
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
@@ -212,11 +212,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
-              maximum: 100,
+              maximum: _maximumValueSelectorInput.toDouble(),
               showMinimumSubtitle: true,
               minimumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMinRange,
-              minimum: 1,
+              minimum: _minimumValueSelectorInput.toDouble(),
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
@@ -243,11 +243,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
                     barStyle: _indicatorConfig.barStyle.copyWith(
-                      positiveColor: selectedColor,
-                    ),
+                        positiveColor: selectedColor,
+                        negativeColor: _indicatorConfig.barStyle.negativeColor),
                   );
-                  widget.onConfigUpdated(_indicatorConfig);
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             Padding(
@@ -258,15 +258,16 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                 title:
                     context.mobileChartWrapperLocalizations.labelDecreasingBar,
                 selectedColor: _indicatorConfig.barStyle.negativeColor,
-                onColorChanged: (index) {
+                onColorChanged: (color) {
                   setState(() {
                     _indicatorConfig = _indicatorConfig.copyWith(
                       barStyle: _indicatorConfig.barStyle.copyWith(
-                        negativeColor: index,
+                        negativeColor: color,
+                        positiveColor: _indicatorConfig.barStyle.positiveColor,
                       ),
                     );
-                    widget.onConfigUpdated(_indicatorConfig);
                   });
+                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),

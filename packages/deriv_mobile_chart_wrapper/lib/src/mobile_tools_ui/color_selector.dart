@@ -65,6 +65,7 @@ class _ColorSelectorState extends State<ColorSelector> {
                 onActionButtonPressed: _selectedColor == null
                     ? null
                     : () {
+                        widget.onColorChanged(_selectedColor!);
                         Navigator.of(context).pop();
                       },
                 child: SizedBox(
@@ -73,7 +74,6 @@ class _ColorSelectorState extends State<ColorSelector> {
                       state(() {
                         _selectedColor = widget.colors[index];
                       });
-                      widget.onColorChanged(widget.colors[index]);
                     },
                     colors: widget.colors,
                     selectedColor: _selectedColor,

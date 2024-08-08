@@ -24,7 +24,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
   int _selectedSourceIndex = 0;
   late RSIIndicatorConfig _indicatorConfig;
 
-  final int _minimumValueSelectorInput = 0;
+  final int _minimumValueSelectorInput = 1;
   final int _maximumValueSelectorInput = 100;
 
   @override
@@ -44,16 +44,11 @@ class _RSISettingPageState extends State<RSISettingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(ThemeProvider.margin16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildRSILineSection(),
-            _createZonesSection(),
-          ],
-        ),
-      ),
+    return Column(
+      children: [
+        _buildRSILineSection(),
+        _createZonesSection(),
+      ],
     );
   }
 
@@ -166,8 +161,8 @@ class _RSISettingPageState extends State<RSISettingPage> {
             title: context.mobileChartWrapperLocalizations.labelOverbought,
             backgroundColor: context.theme.colors.active.withOpacity(0.4),
             value: _indicatorConfig.oscillatorLinesConfig.overboughtValue,
-            minimum: 1,
-            maximum: 100,
+            minimum: _minimumValueSelectorInput.toDouble(),
+            maximum: _maximumValueSelectorInput.toDouble(),
             showMaximumSubtitle: true,
             showMinimumSubtitle: true,
             minimumSubtitle:

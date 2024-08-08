@@ -25,7 +25,7 @@ class _BollingerBandsSettingsPageState
   late Map<MovingAverageType, String> _movingAverageTypeOptions;
   late BollingerBandsIndicatorConfig _indicatorConfig;
 
-  final int _minimumValueSelectorInput = 0;
+  final int _minimumValueSelectorInput = 1;
   final int _maximumValueSelectorInput = 100;
 
   @override
@@ -209,11 +209,11 @@ class _BollingerBandsSettingsPageState
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
-              maximum: 100,
+              maximum: _maximumValueSelectorInput.toDouble(),
               showMinimumSubtitle: true,
               minimumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMinRange,
-              minimum: 1,
+              minimum: _minimumValueSelectorInput.toDouble(),
             ),
             const SizedBox(
               height: ThemeProvider.margin16,

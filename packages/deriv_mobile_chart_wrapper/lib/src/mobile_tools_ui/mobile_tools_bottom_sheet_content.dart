@@ -4,9 +4,11 @@ import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_description_bottom_sheet.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/bb_settings_page.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/ma_settings_page.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/macd_settings_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -16,12 +18,18 @@ import 'package:provider/provider.dart';
 
 import '../core_widgets/no_glow_scroll_behavior.dart';
 import 'indicator_description_bottom_sheet.dart';
+import 'indicator_settings_bottom_sheet.dart';
 
 /// Bottom sheet content to show the list of support tools (indicators/ drawing
 /// tools) for the mobile version.
 class MobileToolsBottomSheetContent extends StatefulWidget {
   /// Initializes the bottom sheet content.
-  const MobileToolsBottomSheetContent({super.key});
+  const MobileToolsBottomSheetContent({
+    this.selectedTab = IndicatorTabLabel.all,
+    super.key,
+  });
+
+  final IndicatorTabLabel selectedTab;
 
   @override
   State<MobileToolsBottomSheetContent> createState() =>
@@ -30,7 +38,7 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
 
 class _MobileToolsBottomSheetContentState
     extends State<MobileToolsBottomSheetContent> {
-  IndicatorTabLabel _selectedChip = IndicatorTabLabel.all;
+  late IndicatorTabLabel _selectedChip;
 
   /// Returns `true` if the limit of active indicators is reached.
   bool get isLimitReached => indicatorsRepo.items.length >= 3;
@@ -38,6 +46,15 @@ class _MobileToolsBottomSheetContentState
   late AddOnsRepository<IndicatorConfig> indicatorsRepo;
 
   late List<IndicatorItemModel> indicators;
+
+  late IndicatorConfig _updatedConfig;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _selectedChip = widget.selectedTab;
+  }
 
   @override
   void didChangeDependencies() {
@@ -173,19 +190,7 @@ class _MobileToolsBottomSheetContentState
             iconAssetPath: indicator.icon,
             title: indicator.title,
             count: _getIndicatorCount(indicator),
-            onInfoIconTapped: () {
-              showModalBottomSheet(
-                context: context,
-                barrierColor: Colors.transparent,
-                builder: (context) => IndicatorDescriptionBottomSheet(
-                  indicator: indicator,
-                  onAddIndicatorPressed: () {
-                    indicatorsRepo.add(indicator.config);
-                    Navigator.of(context).pop();
-                  },
-                ),
-              );
-            },
+            onInfoIconTapped: () => _showIndicatorInfoBottomSheet(indicator),
             onTap: () {
               indicatorsRepo.add(
                 indicator.config.copyWith(
@@ -228,8 +233,8 @@ class _MobileToolsBottomSheetContentState
               separatorBuilder: (_, __) =>
                   const SizedBox(height: ThemeProvider.margin08),
               itemBuilder: (_, index) {
-                final IndicatorConfig indicatorConfig =
-                    indicatorsRepo.items[index];
+                IndicatorConfig indicatorConfig = indicatorsRepo.items[index];
+
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
                   title: '${getIndicatorAbbreviation(
@@ -238,7 +243,44 @@ class _MobileToolsBottomSheetContentState
                   )} '
                       '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
                   subtitle: '(${indicatorConfig.configSummary})',
-                  onTapSetting: () {},
+                  onTapSetting: () {
+                    _updatedConfig = indicatorConfig;
+                    showDerivModalBottomSheet(
+                      context,
+                      (context) => IndicatorSettingsBottomSheet(
+                        indicator: '${getIndicatorAbbreviation(
+                          indicatorConfig,
+                          context,
+                        )} ${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                        settings: _getConfigSettingPage(indicatorConfig),
+                        onApply: () {
+                          indicatorsRepo.updateAt(index, _updatedConfig);
+                          Navigator.pop(context);
+                        },
+                        onReset: () {
+                          setState(() {});
+                        },
+                        onTapDelete: () {
+                          indicatorsRepo.removeAt(index);
+                          Navigator.pop(context);
+                        },
+                        onTapInfo: () {
+                          final IndicatorItemModel indicatorModel =
+                              indicators.firstWhere((element) =>
+                                  element.config.runtimeType ==
+                                  indicatorConfig.runtimeType);
+
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return IndicatorSettingsDescriptionBottomSheet(
+                                    indicator: indicatorModel);
+                              });
+                        },
+                      ),
+                      showDragHandle: false,
+                    );
+                  },
                   onTapDelete: () => indicatorsRepo.removeAt(index),
                 );
               },
@@ -247,6 +289,33 @@ class _MobileToolsBottomSheetContentState
         ],
       ),
     );
+  }
+
+  void _onConfigUpdated(IndicatorConfig config) {
+    _updatedConfig = config;
+  }
+
+  Widget _getConfigSettingPage(IndicatorConfig config) {
+    if (config is RSIIndicatorConfig) {
+      return RSISettingPage(
+          initialConfig: config, onConfigUpdated: _onConfigUpdated);
+    } else if (config is BollingerBandsIndicatorConfig) {
+      return BollingerBandsSettingsPage(
+        initialConfig: config,
+        onConfigUpdated: _onConfigUpdated,
+      );
+    } else if (config is MACDIndicatorConfig) {
+      return MACDSettingsPage(
+        initialConfig: config,
+        onConfigUpdated: _onConfigUpdated,
+      );
+    } else if (config is MAIndicatorConfig) {
+      return MASettingsPage(
+        initialConfig: config,
+        onConfigUpdated: _onConfigUpdated,
+      );
+    }
+    return const SizedBox();
   }
 
   Widget _buildIndicatorEmptyState() {
@@ -348,6 +417,19 @@ class _MobileToolsBottomSheetContentState
                 .toList(),
           ],
         ),
+      ),
+    );
+  }
+
+  void _showIndicatorInfoBottomSheet(IndicatorItemModel indicator) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => IndicatorDescriptionBottomSheet(
+        indicator: indicator,
+        onAddIndicatorPressed: () {
+          indicatorsRepo.add(indicator.config);
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

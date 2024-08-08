@@ -50,8 +50,11 @@ class _MASettingsPageState extends State<MASettingsPage> {
     _indicatorConfig = widget.initialConfig;
   }
 
-  final int _minimumValueSelectorInput = 0;
-  final int _maximumValueSelectorInput = 100;
+  final int _minimumPeriodValue = 1;
+  final int _maximumPeriodValue = 100;
+
+  final int _minimumOffsetValue = 0;
+  final int _maximumOffsetValue = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -118,27 +121,24 @@ class _MASettingsPageState extends State<MASettingsPage> {
                   warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumPeriodValue, _minimumPeriodValue),
                   warnValueCantBeLessThan: (input, minAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumPeriodValue, _minimumPeriodValue),
                   warnValueShouldBeInRange: (input, minAmountClear,
                           currentSymbol, maxAmount) =>
                       context.mobileChartWrapperLocalizations.warnRangeMinMax(
-                          _maximumValueSelectorInput,
-                          _minimumValueSelectorInput),
+                          _maximumPeriodValue, _minimumPeriodValue),
                 ),
                 showMaximumSubtitle: true,
                 maximumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMaxRange,
-                maximum: 100,
+                maximum: _maximumPeriodValue.toDouble(),
                 showMinimumSubtitle: true,
                 minimumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMinRange,
-                minimum: 1,
+                minimum: _minimumPeriodValue.toDouble(),
               ),
               const SizedBox(
                 height: ThemeProvider.margin16,
@@ -159,27 +159,24 @@ class _MASettingsPageState extends State<MASettingsPage> {
                   warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumOffsetValue, _minimumOffsetValue),
                   warnValueCantBeLessThan: (input, minAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumOffsetValue, _minimumOffsetValue),
                   warnValueShouldBeInRange: (input, minAmountClear,
                           currentSymbol, maxAmount) =>
                       context.mobileChartWrapperLocalizations.warnRangeMinMax(
-                          _maximumValueSelectorInput,
-                          _minimumValueSelectorInput),
+                          _maximumOffsetValue, _minimumOffsetValue),
                 ),
                 showMaximumSubtitle: true,
                 maximumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMaxRange,
-                maximum: 100,
+                maximum: _maximumOffsetValue.toDouble(),
                 showMinimumSubtitle: true,
                 minimumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMinRange,
-                minimum: 1,
+                minimum: _minimumOffsetValue.toDouble(),
               ),
               const SizedBox(
                 height: ThemeProvider.margin16,

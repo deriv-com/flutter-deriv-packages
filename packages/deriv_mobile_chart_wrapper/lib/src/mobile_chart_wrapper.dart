@@ -1,5 +1,6 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -243,7 +244,11 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: SafeArea(
           child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelIndicators,
-            child: const MobileToolsBottomSheetContent(),
+            child: MobileToolsBottomSheetContent(
+              selectedTab: indicatorsRepo.items.isEmpty
+                  ? IndicatorTabLabel.all
+                  : IndicatorTabLabel.active,
+            ),
           ),
         ),
       ),
