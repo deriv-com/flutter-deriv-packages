@@ -55,7 +55,7 @@ class SignupPageModel {
   /// Give access to [SocialAuthDto] for 2FA.
   final SocialAuthCallback? onSocialAuthButtonPressed;
 
-  /// Handle flow from package
+  /// Handle flow from package.
   final bool handleFlowFromPackage;
 
   /// List of residences to be shown.

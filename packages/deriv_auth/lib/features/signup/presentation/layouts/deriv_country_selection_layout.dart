@@ -1,3 +1,4 @@
+import 'package:analytics/core/logger.dart';
 import 'package:deriv_auth/core/extensions/context_extension.dart';
 import 'package:deriv_auth/core/helpers/assets.dart';
 import 'package:deriv_auth/core/helpers/country_selection_helper.dart';
@@ -12,6 +13,7 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'dart:developer';
 
 /// Allows user to select a country from list
 class DerivCountrySelectionLayout extends StatefulWidget {
@@ -52,7 +54,7 @@ class _DerivCountrySelectionLayoutState
 
   late TextEditingController _textController;
 
-  DerivCountrySelectionCubit? _countrySelectionCubit;
+  late DerivCountrySelectionCubit _countrySelectionCubit;
   @override
   void initState() {
     super.initState();
@@ -68,14 +70,12 @@ class _DerivCountrySelectionLayoutState
       final List<DerivResidenceModel> residencesList = await widget.residences;
 
       setState(
-        () {
-          _countrySelectionCubit = DerivCountrySelectionCubit(
-            Future<List<DerivResidenceModel>>.value(residencesList),
-          )..fetchResidenceCountries();
-        },
+        () => _countrySelectionCubit = DerivCountrySelectionCubit(
+          Future<List<DerivResidenceModel>>.value(residencesList),
+        )..fetchResidenceCountries(),
       );
     } on Exception catch (error) {
-      print('Error fetching residences: $error');
+      log('Error fetching residences: $error');
     }
   }
 
@@ -214,7 +214,7 @@ class _DerivCountrySelectionLayoutState
           countries: countries,
           onChanged: (int index) => setState(
             () {
-              _countrySelectionCubit!.changeSelectedCountry(
+              _countrySelectionCubit.changeSelectedCountry(
                 selectedCountry: countries[index],
               );
             },
@@ -242,7 +242,7 @@ class _DerivCountrySelectionLayoutState
             contentsVerticalAlignment: CrossAxisAlignment.start,
             value: state.agreedToTerms,
             onValueChanged: ({bool? isChecked}) =>
-                _countrySelectionCubit!.updateCountryConsentStatus(
+                _countrySelectionCubit.updateCountryConsentStatus(
               agreedToTerms: isChecked,
             ),
             message: countryConsentMessage ??
@@ -310,7 +310,7 @@ class _DerivCountrySelectionLayoutState
   void dispose() {
     _focusNode.dispose();
 
-    _countrySelectionCubit!.close();
+    _countrySelectionCubit.close();
 
     super.dispose();
   }
