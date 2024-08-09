@@ -13,6 +13,8 @@ Future<void> showAlertDialog({
   Widget? content,
   String? positiveActionLabel,
   String? negativeButtonLabel,
+  Key? positiveButtonKey,
+  Key? negativeButtonKey,
   bool dismissible = true,
   bool showLoadingIndicator = true,
   bool useRootNavigator = true,
@@ -25,6 +27,8 @@ Future<void> showAlertDialog({
     showLoadingIndicator: showLoadingIndicator,
     positiveButtonLabel: positiveActionLabel,
     negativeButtonLabel: negativeButtonLabel,
+    positiveButtonKey: positiveButtonKey,
+    negativeButtonKey: negativeButtonKey,
     onPositiveActionPressed: onPositiveActionPressed,
     onNegativeActionPressed: onNegativeActionPressed,
   );
