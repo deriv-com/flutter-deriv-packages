@@ -36,7 +36,10 @@ class DerivRudderstackEvents {
   /// Tracks system error has happened,
   /// like no connection to the server and etc.
   void logAccountInfo(
-      String? accountType, String? countryResidence, String? language) {
+    String? accountType,
+    String? countryResidence,
+    String? language,
+  ) {
     DerivRudderstack().track(
       eventName: 'account_info',
       properties: <String, dynamic>{
