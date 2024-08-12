@@ -90,7 +90,7 @@ class ValueSelector extends StatelessWidget {
   /// Label of the value selector.
   final String? title;
 
-  /// Number pad labels
+  /// Number pad label
   final NumberPadLabel numberPadLabel;
 
   /// Key for the amount input field.
@@ -123,7 +123,11 @@ class ValueSelector extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.only(bottom: ThemeProvider.margin08),
-                  child: Text(title!, style: TextStyles.caption),
+                  child: Text(title!,
+                      style: context.theme.textStyle(
+                        textStyle: TextStyles.caption,
+                        color: context.theme.colors.general,
+                      )),
                 ),
               Ink(
                 height: 40,
