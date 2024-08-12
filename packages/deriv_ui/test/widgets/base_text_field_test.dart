@@ -12,6 +12,11 @@ void main() {
       focusNode = FocusNode();
     });
 
+    tearDown(() {
+      controller.dispose();
+      focusNode.dispose();
+    });
+
     testWidgets('renders correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
@@ -78,11 +83,6 @@ void main() {
       await tester.pump();
 
       expect(find.text(errorMessage), findsOneWidget);
-    });
-
-    tearDownAll(() {
-      controller.dispose();
-      focusNode.dispose();
     });
   });
 }
