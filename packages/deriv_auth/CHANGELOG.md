@@ -1,3 +1,7 @@
+## 6.7.31
+
+ - Update a dependency to the latest release.
+
 ## 6.7.30
 
  - **FIX**(deriv_auth): email and password text field validation ([#761](https://github.com/regentmarkets/flutter-deriv-packages/issues/761)). ([c75d00c4](https://github.com/regentmarkets/flutter-deriv-packages/commit/c75d00c4ef105a9a5ff3cdb3a8546ee43d76e997))

@@ -15,6 +15,42 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_ui` - `v0.0.13+2`](#deriv_ui---v00132)
+ - [`deriv_mobile_chart_wrapper` - `v0.0.12+2`](#deriv_mobile_chart_wrapper---v00122)
+ - [`deriv_widgetbook` - `v0.0.2+19`](#deriv_widgetbook---v00219)
+ - [`deriv_passkeys` - `v0.0.3+18`](#deriv_passkeys---v00318)
+ - [`deriv_auth` - `v6.7.31`](#deriv_auth---v6731)
+ - [`deriv_language_selector` - `v0.0.2+17`](#deriv_language_selector---v00217)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.0.12+2`
+ - `deriv_widgetbook` - `v0.0.2+19`
+ - `deriv_passkeys` - `v0.0.3+18`
+ - `deriv_auth` - `v6.7.31`
+ - `deriv_language_selector` - `v0.0.2+17`
+
+---
+
+#### `deriv_ui` - `v0.0.13+2`
+
+ - **FIX**(deriv_auth): focus node issue in BaseTextField ([#765](https://github.com/regentmarkets/flutter-deriv-packages/issues/765)). ([025e1457](https://github.com/regentmarkets/flutter-deriv-packages/commit/025e145799e508db461b64a7535269946c9d7370))
+
+
+## 2024-08-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_auth` - `v6.7.30`](#deriv_auth---v6730)
  - [`deriv_ui` - `v0.0.13+1`](#deriv_ui---v00131)
  - [`deriv_mobile_chart_wrapper` - `v0.0.12+1`](#deriv_mobile_chart_wrapper---v00121)

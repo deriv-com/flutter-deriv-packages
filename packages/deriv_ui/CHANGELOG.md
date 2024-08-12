@@ -1,3 +1,7 @@
+## 0.0.13+2
+
+ - **FIX**(deriv_auth): focus node issue in BaseTextField ([#765](https://github.com/regentmarkets/flutter-deriv-packages/issues/765)). ([025e1457](https://github.com/regentmarkets/flutter-deriv-packages/commit/025e145799e508db461b64a7535269946c9d7370))
+
 ## 0.0.13+1
 
  - **FIX**(deriv_auth): email and password text field validation ([#761](https://github.com/regentmarkets/flutter-deriv-packages/issues/761)). ([c75d00c4](https://github.com/regentmarkets/flutter-deriv-packages/commit/c75d00c4ef105a9a5ff3cdb3a8546ee43d76e997))
