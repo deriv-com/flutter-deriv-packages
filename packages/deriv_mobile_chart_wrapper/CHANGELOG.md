@@ -1,3 +1,7 @@
+## 0.0.12+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.12
 
  - **FEAT**(deriv_mobile_chart_wrapper): bolinger and macd settings page ui ([#727](https://github.com/regentmarkets/flutter-deriv-packages/issues/727)). ([4be589cf](https://github.com/regentmarkets/flutter-deriv-packages/commit/4be589cf84c3593cf29438ca6c6e5613f4eafa49))
