@@ -381,9 +381,6 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
 
   @override
   void dispose() {
-    _emailFocusNode.dispose();
-    _passwordFocusNode.dispose();
-
     _emailController.dispose();
     _passwordController.dispose();
 
