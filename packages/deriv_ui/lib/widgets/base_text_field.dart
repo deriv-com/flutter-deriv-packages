@@ -152,6 +152,9 @@ class _BaseTextFieldState extends State<BaseTextField> {
   @override
   void dispose() {
     _focusNode.removeListener(_onFocusChange);
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
     super.dispose();
   }
 
