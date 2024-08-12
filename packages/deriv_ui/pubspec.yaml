@@ -1,6 +1,6 @@
 name: deriv_ui
 description: A new Flutter package project.
-version: 0.0.13
+version: 0.0.13+1
 publish_to: none
 
 environment:
