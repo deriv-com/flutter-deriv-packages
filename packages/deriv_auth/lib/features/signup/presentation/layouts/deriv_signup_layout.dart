@@ -344,7 +344,7 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
       _referralValidator(referralController.text) == null;
 
   String? _emailValidator(String? input) {
-    if (email.isValidEmail) {
+    if (email.isEmpty || email.isValidEmail) {
       return null;
     }
 
