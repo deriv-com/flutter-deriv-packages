@@ -1,4 +1,5 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:deriv_mobile_chart_wrapper/src/core_widgets/setting_page_action_buttons.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -6,10 +7,13 @@ import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
 class MACDSettingsPage extends BaseIndicatorSettingPage<MACDIndicatorConfig> {
-  const MACDSettingsPage(
-      {super.key,
-      required super.initialConfig,
-      required super.onConfigUpdated});
+  const MACDSettingsPage({
+    required super.initialConfig,
+    required super.onConfigUpdated,
+    required super.onApply,
+    super.onReset,
+    super.key,
+  });
 
   @override
   State<MACDSettingsPage> createState() => _MACDSettingsPageState();
@@ -32,18 +36,37 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildMALineSection(context),
-        const SizedBox(
-          height: ThemeProvider.margin24,
+        _buildSettingSection(),
+        SettingActionButtons(
+          onApply: widget.onApply,
+          onReset: () {
+            setState(() {
+              _indicatorConfig = const MACDIndicatorConfig();
+            });
+            widget.onConfigUpdated(_indicatorConfig);
+          },
         ),
-        _buildSignalSection(context),
-        const SizedBox(
-          height: ThemeProvider.margin24,
-        ),
-        _buildBarsSection(context),
       ],
     );
   }
+
+  Widget _buildSettingSection() => Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildMALineSection(context),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildSignalSection(context),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildBarsSection(context),
+            ],
+          ),
+        ),
+      );
 
   _buildMALineSection(BuildContext context) => GlowingContainer(
       borderRadius: ThemeProvider.borderRadius04,

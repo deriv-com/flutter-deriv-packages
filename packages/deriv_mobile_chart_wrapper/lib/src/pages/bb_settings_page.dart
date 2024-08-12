@@ -1,4 +1,5 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:deriv_mobile_chart_wrapper/src/core_widgets/setting_page_action_buttons.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
@@ -9,9 +10,10 @@ import 'package:flutter/material.dart';
 class BollingerBandsSettingsPage
     extends BaseIndicatorSettingPage<BollingerBandsIndicatorConfig> {
   const BollingerBandsSettingsPage({
-    super.key,
     required super.initialConfig,
     required super.onConfigUpdated,
+    required super.onApply,
+    super.key,
   });
 
   @override
@@ -47,18 +49,37 @@ class _BollingerBandsSettingsPageState
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildBandsSection(context),
-        const SizedBox(
-          height: ThemeProvider.margin24,
+        _buildSettingSection(),
+        SettingActionButtons(
+          onApply: widget.onApply,
+          onReset: () {
+            setState(() {
+              _indicatorConfig = const BollingerBandsIndicatorConfig();
+            });
+            widget.onConfigUpdated(_indicatorConfig);
+          },
         ),
-        _buildChannelFillSection(context),
-        const SizedBox(
-          height: ThemeProvider.margin24,
-        ),
-        _buildPeriodSection(context),
       ],
     );
   }
+
+  Widget _buildSettingSection() => Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildBandsSection(context),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildChannelFillSection(context),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildPeriodSection(context),
+            ],
+          ),
+        ),
+      );
 
   _buildBandsSection(BuildContext context) => GlowingContainer(
       borderRadius: ThemeProvider.borderRadius04,

@@ -252,14 +252,7 @@ class _MobileToolsBottomSheetContentState
                           indicatorConfig,
                           context,
                         )} ${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
-                        settings: _getConfigSettingPage(indicatorConfig),
-                        onApply: () {
-                          indicatorsRepo.updateAt(index, _updatedConfig);
-                          Navigator.pop(context);
-                        },
-                        onReset: () {
-                          setState(() {});
-                        },
+                        settings: _getConfigSettingPage(index, indicatorConfig),
                         onTapDelete: () {
                           indicatorsRepo.removeAt(index);
                           Navigator.pop(context);
@@ -295,24 +288,35 @@ class _MobileToolsBottomSheetContentState
     _updatedConfig = config;
   }
 
-  Widget _getConfigSettingPage(IndicatorConfig config) {
-    if (config is RSIIndicatorConfig) {
+  void _onApply(int index, IndicatorConfig config) {
+    indicatorsRepo.updateAt(index, config);
+    Navigator.pop(context);
+  }
+
+  Widget _getConfigSettingPage(int index, IndicatorConfig initialConfig) {
+    if (initialConfig is RSIIndicatorConfig) {
       return RSISettingPage(
-          initialConfig: config, onConfigUpdated: _onConfigUpdated);
-    } else if (config is BollingerBandsIndicatorConfig) {
+        initialConfig: initialConfig,
+        onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
+      );
+    } else if (initialConfig is BollingerBandsIndicatorConfig) {
       return BollingerBandsSettingsPage(
-        initialConfig: config,
+        initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
       );
-    } else if (config is MACDIndicatorConfig) {
+    } else if (initialConfig is MACDIndicatorConfig) {
       return MACDSettingsPage(
-        initialConfig: config,
+        initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
       );
-    } else if (config is MAIndicatorConfig) {
+    } else if (initialConfig is MAIndicatorConfig) {
       return MASettingsPage(
-        initialConfig: config,
+        initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
       );
     }
     return const SizedBox();

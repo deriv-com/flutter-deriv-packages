@@ -1,4 +1,5 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:deriv_mobile_chart_wrapper/src/core_widgets/setting_page_action_buttons.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
@@ -13,6 +14,8 @@ class RSISettingPage extends BaseIndicatorSettingPage<RSIIndicatorConfig> {
   const RSISettingPage({
     required super.initialConfig,
     required super.onConfigUpdated,
+    required super.onApply,
+    super.onReset,
     super.key,
   });
 
@@ -21,7 +24,6 @@ class RSISettingPage extends BaseIndicatorSettingPage<RSIIndicatorConfig> {
 }
 
 class _RSISettingPageState extends State<RSISettingPage> {
-  int _selectedSourceIndex = 0;
   late RSIIndicatorConfig _indicatorConfig;
 
   final int _minimumValueSelectorInput = 1;
@@ -34,23 +36,33 @@ class _RSISettingPageState extends State<RSISettingPage> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _selectedSourceIndex = getSourcesOptions(context)
-        .keys
-        .toList()
-        .indexOf(_indicatorConfig.fieldType);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildRSILineSection(),
-        _createZonesSection(),
+        _buildSettingSection(),
+        SettingActionButtons(
+          onApply: widget.onApply,
+          onReset: () {
+            setState(() {
+              _indicatorConfig = const RSIIndicatorConfig();
+            });
+            widget.onConfigUpdated(_indicatorConfig);
+          },
+        ),
       ],
     );
   }
+
+  Widget _buildSettingSection() => Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildRSILineSection(),
+              _createZonesSection(),
+            ],
+          ),
+        ),
+      );
 
   Widget _buildRSILineSection() => GlowingContainer(
         padding: const EdgeInsets.all(ThemeProvider.margin16),
@@ -107,10 +119,12 @@ class _RSISettingPageState extends State<RSISettingPage> {
             OptionSelector(
                 label: context.mobileChartWrapperLocalizations.labelSource,
                 options: getSourcesOptions(context).values.toList(),
-                selectedIndex: _selectedSourceIndex,
+                selectedIndex: getSourcesOptions(context)
+                    .keys
+                    .toList()
+                    .indexOf(_indicatorConfig.fieldType),
                 onOptionSelected: (index) {
                   setState(() {
-                    _selectedSourceIndex = index;
                     _indicatorConfig = _indicatorConfig.copyWith(
                         fieldType:
                             getSourcesOptions(context).keys.toList()[index]);
