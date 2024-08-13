@@ -22,6 +22,8 @@ class DerivSettingLayout extends StatefulWidget {
     this.stagingApp = 'com.deriv.app.staging',
     this.getAppEnv,
     this.setAppEnv,
+    this.underDevelopmentFeatures,
+    this.productionFeatures,
     Key? key,
   }) : super(key: key);
 
@@ -53,6 +55,12 @@ class DerivSettingLayout extends StatefulWidget {
   /// Sets environment variable
   final Future<void> Function({required bool value})? setAppEnv;
 
+  /// Under development features.
+  final Widget? underDevelopmentFeatures;
+
+  /// Production features.
+  final Widget? productionFeatures;
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -74,7 +82,54 @@ class _SettingsPageState extends State<DerivSettingLayout> {
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
+  Widget build(BuildContext context) =>
+      widget.underDevelopmentFeatures != null ||
+              widget.productionFeatures != null
+          ? DefaultTabController(
+              length: 2,
+              child: WillPopScope(
+                onWillPop: () async {
+                  final String endpoint = _endpointController.text.isNotEmpty
+                      ? _endpointController.text
+                      : defaultEndpoint;
+                  final String appId = _appIdController.text.isNotEmpty
+                      ? _appIdController.text
+                      : defaultAppId;
+                  await Future.wait(<Future<void>>[
+                    await widget.saveValues(endpoint: endpoint, appId: appId),
+                    await widget.updateFlavorConfigs(
+                        endpoint: endpoint, appId: appId),
+                  ]);
+                  return true;
+                },
+                child: Scaffold(
+                  key: const ValueKey<String>('app_settings_page'),
+                  appBar: AppBar(
+                    elevation: ThemeProvider.zeroMargin,
+                    title: Text(widget.appLabel),
+                    leading: const BackButton(
+                      key: ValueKey<String>('app_settings_page_back_button'),
+                    ),
+                    bottom: const TabBar(
+                      tabs: <Widget>[
+                        Text('Under Development'),
+                        Text('Production'),
+                      ],
+                      labelPadding: EdgeInsets.all(ThemeProvider.margin16),
+                    ),
+                  ),
+                  body: TabBarView(
+                    children: <Widget>[
+                      _buildUnderDevelopmentTab(),
+                      _buildProductionTab(),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          : _buildBasicAppSettings();
+
+  Widget _buildBasicAppSettings() => WillPopScope(
         onWillPop: () async {
           final String endpoint = _endpointController.text.isNotEmpty
               ? _endpointController.text
@@ -102,13 +157,42 @@ class _SettingsPageState extends State<DerivSettingLayout> {
               children: <Widget>[
                 _title,
                 const SizedBox(height: ThemeProvider.margin16),
-                _endpoint,
+                _endpointTextInput,
                 const SizedBox(height: ThemeProvider.margin16),
-                _appId,
+                _appIdTextInput,
                 const SizedBox(width: ThemeProvider.margin08),
                 _buildEnvironmentSwitcher,
               ],
             ),
+          ),
+        ),
+      );
+
+  Widget _buildUnderDevelopmentTab() => Column(
+        children: <Widget>[
+          _endpointTextInput,
+          const SizedBox(height: ThemeProvider.margin16),
+          _appIdTextInput,
+          const SizedBox(height: ThemeProvider.margin16),
+          widget.underDevelopmentFeatures != null
+              ? widget.underDevelopmentFeatures!
+              : _buildEmptyPage(),
+        ],
+      );
+
+  Widget _buildProductionTab() => Column(
+        children: <Widget>[
+          widget.productionFeatures != null
+              ? widget.productionFeatures!
+              : _buildEmptyPage()
+        ],
+      );
+
+  Center _buildEmptyPage() => Center(
+        child: Text(
+          'No Under Development Feature Exist.',
+          style: TextStyles.body1.copyWith(
+            color: context.theme.colors.prominent,
           ),
         ),
       );
@@ -163,7 +247,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
         ),
       );
 
-  Widget get _endpoint => _buildTextInputField(
+  Widget get _endpointTextInput => _buildTextInputField(
         label: context.derivAuthLocalization.labelEndpoint,
         semantic: context.derivAuthLocalization.semanticEndpoint,
         controller: _endpointController,
@@ -172,7 +256,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
             : context.derivAuthLocalization.warnInvalidEndpoint,
       );
 
-  Widget get _appId => _buildTextInputField(
+  Widget get _appIdTextInput => _buildTextInputField(
         label: context.derivAuthLocalization.labelApplicationID,
         semantic: context.derivAuthLocalization.semanticApplicationID,
         controller: _appIdController,
