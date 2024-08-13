@@ -232,7 +232,8 @@ class _MobileToolsBottomSheetContentState
               separatorBuilder: (_, __) =>
                   const SizedBox(height: ThemeProvider.margin08),
               itemBuilder: (_, index) {
-                IndicatorConfig indicatorConfig = indicatorsRepo.items[index];
+                final IndicatorConfig indicatorConfig =
+                    indicatorsRepo.items[index];
 
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
@@ -315,7 +316,7 @@ class _MobileToolsBottomSheetContentState
         onApply: () => _onApply(index, _updatedConfig),
       );
     }
-    return const SizedBox();
+    return const SizedBox.shrink();
   }
 
   Widget _buildIndicatorEmptyState() {
