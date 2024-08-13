@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => '이렇게 하면 모든 활성 표시기가 삭제됩니다.';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return '$indicator 표시기 삭제';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override

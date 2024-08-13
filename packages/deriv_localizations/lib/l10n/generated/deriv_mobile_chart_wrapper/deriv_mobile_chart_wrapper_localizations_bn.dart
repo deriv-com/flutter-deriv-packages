@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => 'এটি সমস্ত সক্রিয় সূচক মুছে ফেলবে।';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return '$indicator সূচক মুছুন';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
