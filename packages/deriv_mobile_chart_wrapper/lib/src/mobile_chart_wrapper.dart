@@ -1,7 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -183,16 +183,15 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
   }
 
   void _setupController() {
-    _indicatorsRepo?.addListener(() {
-      widget.toolsController?.updateConfigs(
-          ConfigItemModel(indicatorConfigs: _indicatorsRepo?.items ?? []));
-    });
-
     widget.toolsController?.onShowIndicatorsToolsMenu = () {
       if (_indicatorsRepo != null) {
         _showIndicatorsSheet(_indicatorsRepo!);
       }
     };
+    _indicatorsRepo?.addListener(() {
+      _updateIndicatorsConfig();
+    });
+    _updateIndicatorsConfig();
   }
 
   void _initRepos() async {
@@ -289,4 +288,9 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         annotations: widget.annotations,
         activeSymbol: widget.toolsStoreKey,
       );
+
+  void _updateIndicatorsConfig() {
+    widget.toolsController?.updateConfigs(
+        ConfigItemModel(indicatorConfigs: _indicatorsRepo?.items ?? []));
+  }
 }

@@ -23,6 +23,10 @@ String getIndicatorAbbreviation(IndicatorConfig config, BuildContext context) {
   }
 }
 
+String getIndicatorAbbreviationWithCount(
+        IndicatorConfig config, BuildContext context) =>
+    '${getIndicatorAbbreviation(config, context)} ${config.number > 0 ? config.number : ''}';
+
 /// Returns the path to the icon of the indicator for the given [config].
 String getIndicatorIconPath(IndicatorConfig config) {
   switch (config.runtimeType) {
@@ -105,14 +109,16 @@ Future<void> showResetIndicatorDialog(
 }) {
   return showAlertDialog(
       context: context,
-      title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
-        getIndicatorAbbreviation(config, context),
+      title: context.mobileChartWrapperLocalizations.labelResetIndicator(
+        getIndicatorAbbreviationWithCount(config, context),
       ),
       content: Text(
-        context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+        context.mobileChartWrapperLocalizations.infoResetIndicators(
+          getIndicatorAbbreviationWithCount(config, context),
+        ),
         style: TextStyles.subheading,
       ),
-      positiveActionLabel: context.mobileChartWrapperLocalizations.labelDelete,
+      positiveActionLabel: context.mobileChartWrapperLocalizations.labelReset,
       negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
       showLoadingIndicator: false,
       onPositiveActionPressed: () {

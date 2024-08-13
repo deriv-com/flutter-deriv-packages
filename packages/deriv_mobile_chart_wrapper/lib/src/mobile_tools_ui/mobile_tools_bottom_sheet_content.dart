@@ -237,26 +237,21 @@ class _MobileToolsBottomSheetContentState
 
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
-                  title: '${getIndicatorAbbreviation(
-                    indicatorConfig,
-                    context,
-                  )} '
-                      '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                  title: getIndicatorAbbreviationWithCount(
+                      indicatorConfig, context),
                   subtitle: '(${indicatorConfig.configSummary})',
                   onTapSetting: () {
                     _updatedConfig = indicatorConfig;
                     showDerivModalBottomSheet(
                       context,
                       (context) => IndicatorSettingsBottomSheet(
-                        indicator: '${getIndicatorAbbreviation(
-                          indicatorConfig,
-                          context,
-                        )} ${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                        indicator: getIndicatorAbbreviationWithCount(
+                            indicatorConfig, context),
                         settings: _getConfigSettingPage(index, indicatorConfig),
                         onTapDelete: () async {
                           await _showDeleteIndicatorDialog(
                               indicatorConfig, index);
-                          Navigator.pop(context);
+                          if (context.mounted) Navigator.pop(context);
                         },
                         onTapInfo: () {
                           final IndicatorItemModel indicatorModel =
@@ -447,7 +442,7 @@ class _MobileToolsBottomSheetContentState
       showAlertDialog(
           context: context,
           title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
-            getIndicatorAbbreviation(config, context),
+            getIndicatorAbbreviationWithCount(config, context),
           ),
           content: Text(
             context.mobileChartWrapperLocalizations.infoDeleteIndicator,
