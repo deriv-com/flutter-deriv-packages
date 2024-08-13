@@ -1,6 +1,8 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/utils/popup_dialogs_helper.dart';
 import 'package:flutter/material.dart';
 
 /// Returns abbreviation name of the indicator for the given [config].
@@ -95,3 +97,29 @@ Map<MovingAverageType, String> getMAOptions(BuildContext context) => {
       MovingAverageType.tripleExponential:
           context.mobileChartWrapperLocalizations.label3Exponential,
     };
+
+Future<void> showResetIndicatorDialog(
+  BuildContext context, {
+  required IndicatorConfig config,
+  required Function() onResetPressed,
+}) {
+  return showAlertDialog(
+      context: context,
+      title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
+        getIndicatorAbbreviation(config, context),
+      ),
+      content: Text(
+        context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+        style: TextStyles.subheading,
+      ),
+      positiveActionLabel: context.mobileChartWrapperLocalizations.labelDelete,
+      negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
+      showLoadingIndicator: false,
+      onPositiveActionPressed: () {
+        onResetPressed.call();
+        Navigator.pop(context);
+      },
+      onNegativeActionPressed: () {
+        Navigator.pop(context);
+      });
+}

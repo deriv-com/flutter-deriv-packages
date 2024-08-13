@@ -43,10 +43,13 @@ class _RSISettingPageState extends State<RSISettingPage> {
         SettingActionButtons(
           onApply: widget.onApply,
           onReset: () {
-            setState(() {
-              _indicatorConfig = const RSIIndicatorConfig();
+            showResetIndicatorDialog(context, config: _indicatorConfig,
+                onResetPressed: () {
+              setState(() {
+                _indicatorConfig = const RSIIndicatorConfig();
+              });
+              widget.onConfigUpdated(_indicatorConfig);
             });
-            widget.onConfigUpdated(_indicatorConfig);
           },
         ),
       ],

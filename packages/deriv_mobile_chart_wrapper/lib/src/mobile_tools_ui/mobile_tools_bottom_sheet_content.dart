@@ -161,7 +161,7 @@ class _MobileToolsBottomSheetContentState
             maintainState: true,
             maintainAnimation: true,
             child: SecondaryButton(
-              onPressed: indicatorsRepo.clear,
+              onPressed: _showDeleteAllIndicatorsDialog,
               child: Center(
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelDeleteAll,
@@ -253,8 +253,9 @@ class _MobileToolsBottomSheetContentState
                           context,
                         )} ${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
                         settings: _getConfigSettingPage(index, indicatorConfig),
-                        onTapDelete: () {
-                          indicatorsRepo.removeAt(index);
+                        onTapDelete: () async {
+                          await _showDeleteIndicatorDialog(
+                              indicatorConfig, index);
                           Navigator.pop(context);
                         },
                         onTapInfo: () {
@@ -274,7 +275,8 @@ class _MobileToolsBottomSheetContentState
                       showDragHandle: false,
                     );
                   },
-                  onTapDelete: () => indicatorsRepo.removeAt(index),
+                  onTapDelete: () =>
+                      _showDeleteIndicatorDialog(indicatorConfig, index),
                 );
               },
             ),
@@ -440,4 +442,49 @@ class _MobileToolsBottomSheetContentState
 
   void _onChipTapped(IndicatorTabLabel? value, String? title) =>
       setState(() => _selectedChip = value ?? IndicatorTabLabel.all);
+
+  Future<void> _showDeleteIndicatorDialog(IndicatorConfig config, int index) =>
+      showAlertDialog(
+          context: context,
+          title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
+            getIndicatorAbbreviation(config, context),
+          ),
+          content: Text(
+            context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+            style: TextStyles.subheading,
+          ),
+          positiveActionLabel:
+              context.mobileChartWrapperLocalizations.labelDelete,
+          negativeButtonLabel:
+              context.mobileChartWrapperLocalizations.labelCancel,
+          showLoadingIndicator: false,
+          onPositiveActionPressed: () {
+            indicatorsRepo.removeAt(index);
+            Navigator.pop(context);
+          },
+          onNegativeActionPressed: () {
+            Navigator.pop(context);
+          });
+
+  void _showDeleteAllIndicatorsDialog() {
+    showAlertDialog(
+        context: context,
+        title: context.mobileChartWrapperLocalizations.labelDeleteAllIndicators,
+        content: Text(
+          context.mobileChartWrapperLocalizations.infoDeleteAllIndicators,
+          style: TextStyles.subheading,
+        ),
+        positiveActionLabel:
+            context.mobileChartWrapperLocalizations.labelDeleteAll,
+        negativeButtonLabel:
+            context.mobileChartWrapperLocalizations.labelCancel,
+        showLoadingIndicator: false,
+        onPositiveActionPressed: () {
+          indicatorsRepo.clear();
+          Navigator.pop(context);
+        },
+        onNegativeActionPressed: () {
+          Navigator.pop(context);
+        });
+  }
 }
