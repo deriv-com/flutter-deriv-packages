@@ -3,8 +3,13 @@ import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 
 /// Class which hold events which should be monitored.
 class DerivRudderstackEvents {
-  /// Constructor for [DerivRudderstackEvents].
-  const DerivRudderstackEvents();
+  /// Creates a new [DerivRudderstackEvents] instance.
+  factory DerivRudderstackEvents() => _instance;
+
+  DerivRudderstackEvents._internal();
+
+  static final DerivRudderstackEvents _instance =
+      DerivRudderstackEvents._internal();
 
   ///Set ups Rudderstack connection.
   void setup({required String dataPlaneUrl, required String writeKey}) {
