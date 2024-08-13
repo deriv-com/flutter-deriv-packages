@@ -45,10 +45,13 @@ class _MASettingsPageState extends State<MASettingsPage> {
         SettingActionButtons(
           onApply: widget.onApply,
           onReset: () {
-            setState(() {
-              _indicatorConfig = const MAIndicatorConfig();
-            });
-            widget.onConfigUpdated(_indicatorConfig);
+            showResetIndicatorDialog(context, config: _indicatorConfig,
+                onResetPressed: () {
+                  setState(() {
+                    _indicatorConfig = const MAIndicatorConfig();
+                  });
+                  widget.onConfigUpdated(_indicatorConfig);
+                });
           },
         ),
       ],

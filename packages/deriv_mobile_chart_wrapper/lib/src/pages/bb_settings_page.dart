@@ -53,10 +53,13 @@ class _BollingerBandsSettingsPageState
         SettingActionButtons(
           onApply: widget.onApply,
           onReset: () {
-            setState(() {
-              _indicatorConfig = const BollingerBandsIndicatorConfig();
-            });
-            widget.onConfigUpdated(_indicatorConfig);
+            showResetIndicatorDialog(context, config: _indicatorConfig,
+                onResetPressed: () {
+                  setState(() {
+                    _indicatorConfig = const BollingerBandsIndicatorConfig();
+                  });
+                  widget.onConfigUpdated(_indicatorConfig);
+                });
           },
         ),
       ],
