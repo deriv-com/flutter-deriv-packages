@@ -1,3 +1,7 @@
+## 1.5.6
+
+ - **FIX**(deriv_localizations): add strings for chart indicators ([#768](https://github.com/regentmarkets/flutter-deriv-packages/issues/768)). ([e4d52121](https://github.com/regentmarkets/flutter-deriv-packages/commit/e4d5212170996d14f834cc285f047ae821da7a71))
+
 ## 1.5.5
 
  - **FIX**(deriv_localizations): update numpad range values ([#742](https://github.com/regentmarkets/flutter-deriv-packages/issues/742)). ([5ad26f52](https://github.com/regentmarkets/flutter-deriv-packages/commit/5ad26f52c897397bc544fe4b23ca805e90cba66a))
