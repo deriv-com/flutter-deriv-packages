@@ -13,7 +13,7 @@
   "actionOk": "Ok",
   "warnNotAvailableCountries": "Nếu bạn có bất kỳ câu hỏi nào, hãy liên hệ với chúng tôi qua ",
   "labelLiveChat": "Live chat",
-  "actionGetAFreeAccount": "Nhận tài khoản miễn phí",
+  "actionSignUpForFree": "Đăng ký miễn phí",
   "actionLogin": "Đăng nhập",
   "labelTwoFactorAuth": "Xác thực hai yếu tố",
   "informEnterTwoFactorAuthCode": "Nhập mã gồm 6 chữ số từ ứng dụng xác thực trên điện thoại của bạn.",
@@ -27,7 +27,7 @@
   "labelDontHaveAnAccountYet": "Chưa có tài khoản?",
   "actionCreateANewAccount": "Tạo một tài khoản mới",
   "informInvalidEmailFormat": "Nhập địa chỉ email hợp lệ",
-  "warnPasswordLength": "Bạn nên nhập vào 6-25 ký tự.",
+  "warnPasswordLength": "Bạn nên nhập từ 8-25 ký tự.",
   "labelResetPassword": "Đặt lại mật khẩu",
   "labelChooseNewPass": "Chọn mật khẩu mới",
   "labelCreatePass": "Mật khẩu",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "điểm kết thúc không hợp lệ",
   "labelApplicationID": "Mã đăng ký",
   "semanticApplicationID": "Mã đăng ký",
-  "warnInvalidApplicationID": "mã đăng ký không hợp lệ"
+  "warnInvalidApplicationID": "mã đăng ký không hợp lệ",
+  "labelLanguage": "Ngôn ngữ"
 }

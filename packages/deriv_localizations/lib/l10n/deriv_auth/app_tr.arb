@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "Herhangi bir sorunuz varsa, bizimle şu yolla iletişime geçin ",
   "labelLiveChat": "Canlı sohbet",
-  "actionGetAFreeAccount": "Ücretsiz bir hesap edinin",
+  "actionSignUpForFree": "Ücretsiz Üye Olun",
   "actionLogin": "Giriş yap",
   "labelTwoFactorAuth": "İki faktörlü kimlik doğrulama",
   "informEnterTwoFactorAuthCode": "Telefonunuzdaki kimlik doğrulayıcı uygulamasından 6 haneli kodu girin.",
@@ -107,10 +107,11 @@
   "informConnectionError": "Bağlantı hatası. Lütfen daha sonra tekrar deneyin.",
   "informSwitchAccountError": "Hesap hatası değiştir. Lütfen daha sonra tekrar deneyin.",
   "labelDeveloper": "Geliştirici",
-  "labelEndpoint": "Endpoint",
+  "labelEndpoint": "Bitiş noktası",
   "semanticEndpoint": "Bitiş noktası",
-  "warnInvalidEndpoint": "geçersiz endpoint",
+  "warnInvalidEndpoint": "geçersiz bitiş noktası",
   "labelApplicationID": "Başvuru ID",
   "semanticApplicationID": "Başvuru ID",
-  "warnInvalidApplicationID": "geçersiz başvuru ID"
+  "warnInvalidApplicationID": "geçersiz başvuru ID",
+  "labelLanguage": "Dil"
 }

@@ -26,6 +26,7 @@ Future<String?> performPassThroughAuthentication({
   HttpClientPredicate? getHttpClient,
   String? action,
   String? code,
+  String? languageCode,
 }) async {
   final url = getPtaLoginUrl(host: endpoint);
 
@@ -47,6 +48,7 @@ Future<String?> performPassThroughAuthentication({
       platform: platform,
       action: action,
       code: code,
+      languageCode: languageCode,
     ),
   ).toJson();
 

@@ -1,3 +1,67 @@
+## 0.0.13+2
+
+ - **FIX**(deriv_auth): focus node issue in BaseTextField ([#765](https://github.com/regentmarkets/flutter-deriv-packages/issues/765)). ([025e1457](https://github.com/regentmarkets/flutter-deriv-packages/commit/025e145799e508db461b64a7535269946c9d7370))
+
+## 0.0.13+1
+
+ - **FIX**(deriv_auth): email and password text field validation ([#761](https://github.com/regentmarkets/flutter-deriv-packages/issues/761)). ([c75d00c4](https://github.com/regentmarkets/flutter-deriv-packages/commit/c75d00c4ef105a9a5ff3cdb3a8546ee43d76e997))
+
+## 0.0.13
+
+ - **FEAT**(deriv_mobile_chart_wrapper): bolinger and macd settings page ui ([#727](https://github.com/regentmarkets/flutter-deriv-packages/issues/727)). ([4be589cf](https://github.com/regentmarkets/flutter-deriv-packages/commit/4be589cf84c3593cf29438ca6c6e5613f4eafa49))
+
+## 0.0.12
+
+ - **FEAT**(deriv_ui): trigger versioning for PR [#746](https://github.com/regentmarkets/flutter-deriv-packages/issues/746) ([#752](https://github.com/regentmarkets/flutter-deriv-packages/issues/752)). ([50a603d4](https://github.com/regentmarkets/flutter-deriv-packages/commit/50a603d45bd756f42a82584f96adecc097e2e93d))
+
+## 0.0.11
+
+ - **FEAT**(mobile_chart_wrapper): add RSI settings page ([#729](https://github.com/regentmarkets/flutter-deriv-packages/issues/729)). ([7f99cb1e](https://github.com/regentmarkets/flutter-deriv-packages/commit/7f99cb1e9b666b45bf63b9f2bcac6f4f38af26bf))
+
+## 0.0.10
+
+ - **FEAT**(deriv_ui): add deriv bottom sheet. feat(deriv_mobile_chart_wrapper): add indicator description ([#713](https://github.com/regentmarkets/flutter-deriv-packages/issues/713)). ([50cfbe20](https://github.com/regentmarkets/flutter-deriv-packages/commit/50cfbe2008076a073331e555228b98a11a35f2ed))
+
+## 0.0.9+1
+
+ - **FIX**(deriv_mobile_chart_wrapper): move core widgets from chart wrapper to deriv ui ([#712](https://github.com/regentmarkets/flutter-deriv-packages/issues/712)). ([d870e2c9](https://github.com/regentmarkets/flutter-deriv-packages/commit/d870e2c93f1157fae1692f836fc9c5bee85b8e21))
+
+## 0.0.9
+
+ - **FEAT**(deriv_ui): add the ability to disable the dot button. ([#706](https://github.com/regentmarkets/flutter-deriv-packages/issues/706)). ([44db38e5](https://github.com/regentmarkets/flutter-deriv-packages/commit/44db38e5daa0c0941ada4eb698d7317a97209093))
+
+## 0.0.8+1
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#686](https://github.com/regentmarkets/flutter-deriv-packages/issues/686)). ([a0a6df21](https://github.com/regentmarkets/flutter-deriv-packages/commit/a0a6df21cbc6681b923ec3e060752de20ddad32b))
+
+## 0.0.8
+
+ - **FEAT**(deriv_ui): [DERG 2450] Added Timeline Widget to Deriv UI ([#631](https://github.com/regentmarkets/flutter-deriv-packages/issues/631)). ([e34d78b3](https://github.com/regentmarkets/flutter-deriv-packages/commit/e34d78b303358cb5f91abab14a2a042ce3650b0f))
+
+## 0.0.7+9
+
+ - Update a dependency to the latest release.
+
+## 0.0.7+8
+
+ - Update a dependency to the latest release.
+
+## 0.0.7+7
+
+ - **REFACTOR**(deriv_ui): [DERG-3500] return inputted amount based on the formatter in numpad ([#624](https://github.com/regentmarkets/flutter-deriv-packages/issues/624)). ([fdf4df19](https://github.com/regentmarkets/flutter-deriv-packages/commit/fdf4df1979ddb8710dba8925ef779cca25d60615))
+
+## 0.0.7+6
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
+## 0.0.7+5
+
+ - **REFACTOR**: update dependencies. ([af89e148](https://github.com/regentmarkets/flutter-deriv-packages/commit/af89e148dfecb6dbc8552b2b883cbad4102a56f8))
+
+## 0.0.7+4
+
+ - **FIX**(deriv_ui): add specific formatter for crypto and fiat currency ([#569](https://github.com/regentmarkets/flutter-deriv-packages/issues/569)). ([711abee1](https://github.com/regentmarkets/flutter-deriv-packages/commit/711abee199278b7f0fd7463de6f480d561e99d67))
+
 ## 0.0.7+3
 
  - Update a dependency to the latest release.

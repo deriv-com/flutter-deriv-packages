@@ -22,7 +22,7 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get labelLiveChat => 'লাইভ চ্যাট';
 
   @override
-  String get actionGetAFreeAccount => 'একটি ফ্রি অ্যাকাউন্ট পান';
+  String get actionSignUpForFree => 'বিনামূল্যে সাইন আপ করুন';
 
   @override
   String get actionLogin => 'লগ ইন';
@@ -64,7 +64,7 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'একটি বৈধ ইমেল ঠিকানা লিখুন';
 
   @override
-  String get warnPasswordLength => 'আপনি 6-25 অক্ষর লিখতে হবে।';
+  String get warnPasswordLength => 'আপনার 8-25 অক্ষর লিখতে হবে।';
 
   @override
   String get labelResetPassword => 'পাসওয়ার্ড রিসেট';
@@ -272,5 +272,5 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get warnInvalidApplicationID => 'অবৈধ অ্যাপ্লিকেশন আইডি';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => 'ভাষা';
 }

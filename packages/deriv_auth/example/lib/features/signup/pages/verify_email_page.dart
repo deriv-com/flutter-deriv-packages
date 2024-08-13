@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:deriv_auth/features/signup/presentation/layouts/deriv_email_not_received_layout.dart';
 import 'package:deriv_auth/features/signup/presentation/layouts/deriv_verify_email_layout.dart';
-import 'package:example/features/signup/pages/verification_done_page.dart';
+import 'package:deriv_auth/features/single_entry/features/signup/pages/verification_done_page.dart';
 import 'package:flutter/material.dart';
 
 class VerifyEmailPage extends StatefulWidget {

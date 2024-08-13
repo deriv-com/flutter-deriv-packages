@@ -49,6 +49,7 @@ class _NumberPadKeypadWidgetState extends State<_NumberPadKeypadWidget> {
               index: index,
               ignoring: _NumberPadProvider.of(context)!.isAllInputsValid() &&
                   _noErrorExist(),
+              isDotDisabled: _NumberPadProvider.of(context)!.isDotDisabled,
               onPressed: widget.onKeyPressed,
               actionOK: _NumberPadProvider.of(context)!.label.actionOK,
             );

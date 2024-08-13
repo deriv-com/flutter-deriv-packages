@@ -25,13 +25,10 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get ok => 'Ok';
 
   @override
-  String get createPassKey => 'Create Passkey';
-
-  @override
   String get experienceSaferLogins => 'Experience safer logins';
 
   @override
-  String get enhanceSecurity => 'To enhance your security, tap Create passkey';
+  String get enhanceSecurity => 'Enhanced security is just a tap away.';
 
   @override
   String get here => 'here';
@@ -43,31 +40,55 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get whatArePasskeys => 'What are passkeys?';
 
   @override
-  String get whatArePasskeysDescription => 'Passkeys are a security measure that lets you log in the same way you unlock your device: with a fingerprint, a face scan, or a screen lock PIN.';
+  String get whatArePasskeysDescriptionPoint1 => 'Secure alternative to passwords.';
+
+  @override
+  String get whatArePasskeysDescriptionPoint2 => 'Unlock your account like your phone - with biometrics, face scan or PIN.';
 
   @override
   String get whyPasskeys => 'Why passkeys?';
 
   @override
-  String get whyPasskeysDescription => 'Passkeys are an added layer of security that protects your account against unauthorised access and phishing attacks.';
+  String get whyPasskeysDescription1 => 'Extra security layer.';
+
+  @override
+  String get whyPasskeysDescription2 => 'Shields against unauthorised access and phishing.';
 
   @override
   String get howToCreatePasskey => 'How to create a passkey?';
 
   @override
-  String get howToCreatePasskeyDescription => 'Go to ‘Account Settings’ to set up your passkey. Each device can only save one passkey; however, iOS users may still see the \"Create passkey\" button due to iOS’s ability to save passkeys on other devices.';
+  String get howToCreatePasskeyDescription1 => 'Go to ‘Account Settings’ on Deriv.';
+
+  @override
+  String get howToCreatePasskeyDescription2 => 'You can create one passkey per device.';
+
+  @override
+  String get p2pHowToCreatePasskey => 'How to create passkey?';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+
+  @override
+  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
 
   @override
   String get whereArePasskeysSaved => 'Where are passkeys saved?';
 
   @override
-  String get whereArePasskeysSavedDescription => 'Passkeys are saved in your Google password manager for Android devices and in iCloud keychain on iOS devices to help you sign in on other devices.';
+  String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google password manager.';
+
+  @override
+  String get whereArePasskeysSavedDescriptionIOS => 'iOS: iCloud keychain.';
 
   @override
   String get whatHappensIfEmailChanged => 'What happens if my Deriv account email is changed?';
 
   @override
-  String get whatHappensIfEmailChangedDescription => 'Even if you change your email address, you can still continue to log in to your Deriv account with the same passkey.';
+  String get whatHappensIfEmailChangedDescription1 => 'No problem! Your passkey still works.';
+
+  @override
+  String get whatHappensIfEmailChangedDescription2 => 'Sign in to Deriv with your existing passkey.';
 
   @override
   String get tips => 'Tips';
@@ -106,10 +127,10 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get useYourBiometrics => 'Enhanced security with biometrics or screen lock';
 
   @override
-  String get syncAcrossAllDevices => 'Sync across all devices';
+  String get syncAcrossDevices => 'Sync across devices';
 
   @override
-  String get createPasskey => 'Create Passkey';
+  String get createPasskey => 'Create passkey';
 
   @override
   String get unsupportedPlatform => 'Unsupported Platform';
@@ -125,4 +146,28 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
 
   @override
   String get revoke => 'Revoke';
+
+  @override
+  String get continueTradingButtonText => 'Continue trading';
+
+  @override
+  String get addMorePasskeysButtonText => 'Add more passkeys';
+
+  @override
+  String get unableToSetupPasskey => 'Unable to setup passkey';
+
+  @override
+  String get unableToSetupPasskeyDescription => 'We encountered an issue while setting up your passkey. The process might have been interrupted, or the session timed out. Please try again.';
+
+  @override
+  String get passkeysOffErrorTitle => 'The Passkeys service is unavailable';
+
+  @override
+  String get never => 'Never';
+
+  @override
+  String get unable_to_process_your_request => 'Unable to process your request';
+
+  @override
+  String get unable_to_process_your_request_description => 'We’re experiencing a temporary issue in processing your request. Please try again later.';
 }

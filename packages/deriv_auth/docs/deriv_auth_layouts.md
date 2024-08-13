@@ -26,8 +26,6 @@
             forgotPasswordButtonKey: Key('forgot password button key'),
             loginButtonKey: Key('login button key'),
             welcomeLabel: 'Welcome back!',
-            greetingLabel:
-              'Log in to your Deriv account to start trading and investing.',
             onResetPassTapped: () {
                 // Navigate to reset password page
             },

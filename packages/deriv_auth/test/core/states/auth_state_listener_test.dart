@@ -1,5 +1,4 @@
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
-import 'package:deriv_auth/core/states/auth_state_listener.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

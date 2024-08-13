@@ -13,7 +13,7 @@
   "actionOk": "OK",
   "warnNotAvailableCountries": "หากคุณมีคำถามใดๆ โปรดติดต่อเราผ่านทาง ",
   "labelLiveChat": "แชทสด",
-  "actionGetAFreeAccount": "รับบัญชีฟรี 1 บัญชี",
+  "actionSignUpForFree": "ลงทะเบียนได้ฟรี",
   "actionLogin": "เข้าสู่ระบบ",
   "labelTwoFactorAuth": "ระบบยืนยันตัวตนสองขั้นตอน",
   "informEnterTwoFactorAuthCode": "ป้อนรหัส 6 หลักจากแอปตรวจสอบสิทธิ์บนโทรศัพท์ของคุณ",
@@ -112,5 +112,6 @@
   "warnInvalidEndpoint": "อุปกรณ์ปลายทางไม่ถูกต้อง",
   "labelApplicationID": "รหัสไอดีแอปพลิเคชั่น",
   "semanticApplicationID": "รหัสไอดีแอปพลิเคชั่น",
-  "warnInvalidApplicationID": "รหัสไอดีแอปพลิเคชั่นไม่ถูกต้อง"
+  "warnInvalidApplicationID": "รหัสไอดีแอปพลิเคชั่นไม่ถูกต้อง",
+  "labelLanguage": "ภาษา"
 }

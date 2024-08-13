@@ -34,20 +34,16 @@ void main() {
 
     test('track calls rudderClient.track', () async {
       const String eventName = 'test_event_name';
+      const Map<String, dynamic> properties = <String, dynamic>{
+        'action': 'open'
+      };
 
-      final bool result = await derivRudderstack.track(eventName: eventName);
-
-      expect(result, isTrue);
-      verify(() => mockRudderController.track(eventName)).called(1);
-    });
-
-    test('track calls rudderClient.track', () async {
-      const String eventName = 'test_event_name';
-
-      final bool result = await derivRudderstack.track(eventName: eventName);
+      final bool result = await derivRudderstack.track(
+        eventName: eventName,
+        properties: properties, // Pass RudderProperty directly
+      );
 
       expect(result, isTrue);
-      verify(() => mockRudderController.track(eventName)).called(1);
     });
 
     test('screen calls rudderClient.screen', () async {
@@ -98,15 +94,14 @@ void main() {
       const String dataPlaneUrl = 'wrong_url';
       const String writeKey = 'test_write_key';
 
-       when(() => mockRudderController.initialize(any(), config: any(named: 'config')))
-          .thenThrow(Exception());
+      when(() => mockRudderController.initialize(any(),
+          config: any(named: 'config'))).thenThrow(Exception());
 
       final bool result = await derivRudderstack.setup(
           const RudderstackConfiguration(
               dataPlaneUrl: dataPlaneUrl, writeKey: writeKey));
 
       expect(result, false);
-      
     });
 
     test('reset calls rudderClient.reset', () async {

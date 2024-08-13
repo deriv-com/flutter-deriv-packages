@@ -22,7 +22,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get labelLiveChat => 'แชทสด';
 
   @override
-  String get actionGetAFreeAccount => 'รับบัญชีฟรี 1 บัญชี';
+  String get actionSignUpForFree => 'ลงทะเบียนได้ฟรี';
 
   @override
   String get actionLogin => 'เข้าสู่ระบบ';
@@ -272,5 +272,5 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get warnInvalidApplicationID => 'รหัสไอดีแอปพลิเคชั่นไม่ถูกต้อง';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => 'ภาษา';
 }

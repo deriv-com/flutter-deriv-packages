@@ -1,4 +1,3 @@
-import 'package:deriv_auth/core/states/states.dart';
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
