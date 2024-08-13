@@ -147,6 +147,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
           return true;
         },
         child: Scaffold(
+          key: const ValueKey<String>('app_settings_page'),
           appBar: AppBar(
             elevation: ThemeProvider.zeroMargin,
             title: Text(widget.appLabel),
