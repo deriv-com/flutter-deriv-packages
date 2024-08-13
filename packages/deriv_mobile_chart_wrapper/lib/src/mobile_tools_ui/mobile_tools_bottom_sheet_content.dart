@@ -51,7 +51,6 @@ class _MobileToolsBottomSheetContentState
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _selectedChip = widget.selectedTab;
   }
