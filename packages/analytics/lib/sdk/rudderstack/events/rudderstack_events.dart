@@ -13,15 +13,55 @@ class DerivRudderstackEvents {
     );
   }
 
+  /// --------- common_events ---------------
+  /// Tracks system error has happened,
+  /// like no connection to the server and etc.
+  void logError(String error) {
+    DerivRudderstack().track(
+      eventName: 'error',
+      properties: <String, dynamic>{
+        'action': 'other_error',
+        'error_message': error,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'common_events_derivgo'
+      },
+    );
+  }
+
+  /// Tracks userId.
+  void logIdentifyUser(String userId) {
+    DerivRudderstack().identify(userId: userId);
+  }
+
+  /// Tracks system error has happened,
+  /// like no connection to the server and etc.
+  void logAccountInfo({
+    String? accountType,
+    String? countryResidence,
+    String? language,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'account_info',
+      properties: <String, dynamic>{
+        'action': 'account_info',
+        'account_type': '$accountType',
+        'country_residence': '$countryResidence',
+        'language': '$language',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'common_events_derivgo'
+      },
+    );
+  }
+
   /// --------- ce_virtual_signup_form ---------------
   /// Captures app_open event when the app is opened.
-  void logAppOpened() {
+  void logSignupOpened() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
       properties: <String, dynamic>{
         'action': 'open',
         'form_source': 'mobile_derivgo',
-        'form_name': 'common_events_derivgo'
+        'form_name': 'virtual_signup_derivgo'
       },
     );
   }
@@ -184,6 +224,7 @@ class DerivRudderstackEvents {
     );
   }
 
+  /// --------- ce_real_account_signup_form ---------------
   /// Tracks when the real signup form opened.
   void logOpenRealSignUp() {
     DerivRudderstack().track(
@@ -204,7 +245,7 @@ class DerivRudderstackEvents {
       Map<String, dynamic>? userChoice]) {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: {
+      properties: <String, dynamic>{
         'action': 'step_passed',
         'step_codename': stepCodename,
         'step_num': stepNum,
@@ -248,20 +289,6 @@ class DerivRudderstackEvents {
         'action': 'real_signup_error',
         'form_source': 'mobile_derivgo',
         'form_name': 'real_signup_derivgo'
-      },
-    );
-  }
-
-  /// Tracks system error has happened,
-  /// like no connection to the server and etc.
-  void logError(String error) {
-    DerivRudderstack().track(
-      eventName: 'ce_real_account_signup_form',
-      properties: <String, dynamic>{
-        'action': 'other_error',
-        'error_message': error,
-        'form_source': 'mobile_derivgo',
-        'form_name': 'common_events_derivgo'
       },
     );
   }
