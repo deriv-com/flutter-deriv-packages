@@ -73,7 +73,6 @@ class _IndicatorSettingsBottomSheetState
                     Expanded(
                       child: widget.settings,
                     ),
-                    //_buildActionButtons(),
                   ],
                 ),
               ),
