@@ -15,6 +15,36 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`analytics` - `v2.2.2`](#analytics---v222)
+ - [`deriv_passkeys` - `v0.0.3+21`](#deriv_passkeys---v00321)
+ - [`deriv_auth` - `v6.7.34`](#deriv_auth---v6734)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.3+21`
+ - `deriv_auth` - `v6.7.34`
+
+---
+
+#### `analytics` - `v2.2.2`
+
+ - **REFACTOR**(analytics): Amend virtual n real tracking events ([#771](https://github.com/regentmarkets/flutter-deriv-packages/issues/771)). ([fc8850f0](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc8850f01c1bb0a6805b41b3ff10e2a6e33b6e0f))
+
+
+## 2024-08-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_localizations` - `v1.5.6`](#deriv_localizations---v156)
  - [`deriv_mobile_chart_wrapper` - `v0.0.12+3`](#deriv_mobile_chart_wrapper---v00123)
  - [`deriv_passkeys` - `v0.0.3+20`](#deriv_passkeys---v00320)
