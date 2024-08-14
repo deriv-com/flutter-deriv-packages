@@ -191,14 +191,16 @@ class _SettingsPageState extends State<DerivSettingLayout> {
         ],
       );
 
-  Center _buildEmptyPage() => Center(
-        child: Text(
-          'No Under Development Feature Exist.',
-          style: TextStyles.body1.copyWith(
-            color: context.theme.colors.prominent,
+  Widget _buildEmptyPage() => Expanded(
+    child: Center(
+          child: Text(
+            'No Under Development Feature Exist.',
+            style: TextStyles.body1.copyWith(
+              color: context.theme.colors.prominent,
+            ),
           ),
         ),
-      );
+  );
 
   Widget get _buildEnvironmentSwitcher => widget.setAppEnv != null &&
           widget.getAppEnv != null
