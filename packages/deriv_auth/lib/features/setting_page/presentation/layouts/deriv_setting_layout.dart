@@ -171,6 +171,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
 
   Widget _buildUnderDevelopmentTab() => Column(
         children: <Widget>[
+          const SizedBox(height: ThemeProvider.margin16),
           _endpointTextInput,
           const SizedBox(height: ThemeProvider.margin16),
           _appIdTextInput,
@@ -183,6 +184,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
 
   Widget _buildProductionTab() => Column(
         children: <Widget>[
+          const SizedBox(height: ThemeProvider.margin16),
           widget.productionFeatures != null
               ? widget.productionFeatures!
               : _buildEmptyPage()
@@ -198,41 +200,44 @@ class _SettingsPageState extends State<DerivSettingLayout> {
         ),
       );
 
-  Widget get _buildEnvironmentSwitcher => FutureBuilder<PackageInfo>(
-      future: packageInfo,
-      builder: (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
-        if (snapshot.hasData &&
-            (snapshot.data?.packageName == widget.devApp ||
-                snapshot.data?.packageName == widget.stagingApp)) {
-          return Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
-            child: Row(
-              children: <Widget>[
-                const Text('Production environment'),
-                const SizedBox(width: ThemeProvider.margin08),
-                FutureBuilder<bool>(
-                    future: widget.getAppEnv,
-                    builder:
-                        (BuildContext context, AsyncSnapshot<bool?> snapshot) {
-                      if (snapshot.hasData && widget.setAppEnv != null) {
-                        return Switch(
-                          value: snapshot.data ?? false,
-                          onChanged: (bool val) {
-                            setState(() {
-                              widget.setAppEnv!(value: val);
-                            });
-                          },
-                        );
-                      }
-                      return const SizedBox.shrink();
-                    })
-              ],
-            ),
-          );
-        }
-        return const SizedBox.shrink();
-      });
+  Widget get _buildEnvironmentSwitcher => widget.setAppEnv != null &&
+          widget.getAppEnv != null
+      ? FutureBuilder<PackageInfo>(
+          future: packageInfo,
+          builder: (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
+            if (snapshot.hasData &&
+                (snapshot.data?.packageName == widget.devApp ||
+                    snapshot.data?.packageName == widget.stagingApp)) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: ThemeProvider.margin16),
+                child: Row(
+                  children: <Widget>[
+                    const Text('Production environment'),
+                    const SizedBox(width: ThemeProvider.margin08),
+                    FutureBuilder<bool>(
+                        future: widget.getAppEnv,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<bool?> snapshot) {
+                          if (snapshot.hasData) {
+                            return Switch(
+                              value: snapshot.data ?? false,
+                              onChanged: (bool val) {
+                                setState(() {
+                                  widget.setAppEnv!(value: val);
+                                });
+                              },
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        })
+                  ],
+                ),
+              );
+            }
+            return const SizedBox.shrink();
+          })
+      : const SizedBox.shrink();
 
   Widget get _title => Padding(
         padding: const EdgeInsets.only(
