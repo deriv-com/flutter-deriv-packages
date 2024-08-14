@@ -26,6 +26,7 @@ class PopupAlertDialog extends StatefulWidget {
   ///
   const PopupAlertDialog({
     this.title,
+    this.titleKey,
     this.content,
     this.showLoadingIndicator = false,
     this.positiveButtonLabel,
@@ -43,6 +44,9 @@ class PopupAlertDialog extends StatefulWidget {
 
   /// The title of the popup alert dialog.
   final String? title;
+
+  /// The title key of the popup alert dialog.
+  final Key? titleKey;
 
   /// The content of the popup alert dialog.
   final Widget? content;
@@ -120,6 +124,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
             : Text(
                 widget.title!,
                 style: context.theme.textStyle(textStyle: TextStyles.title),
+                key: widget.titleKey,
               ),
         content: widget.content == null
             ? null
