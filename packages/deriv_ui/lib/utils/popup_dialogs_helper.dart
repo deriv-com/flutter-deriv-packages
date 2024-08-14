@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 Future<void> showAlertDialog({
   required BuildContext context,
   String? title,
+  Key? titleKey,
   Widget? content,
   String? positiveActionLabel,
   String? negativeButtonLabel,
@@ -23,6 +24,7 @@ Future<void> showAlertDialog({
 }) async {
   final PopupAlertDialog popupAlertDialog = PopupAlertDialog(
     title: title,
+    titleKey: titleKey,
     content: content,
     showLoadingIndicator: showLoadingIndicator,
     positiveButtonLabel: positiveActionLabel,
