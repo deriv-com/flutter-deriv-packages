@@ -114,6 +114,7 @@ void main() {
         (PatrolTester $) async {
       final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
       const String invalidEmail = 'invalid-email';
+      const String password = '123456';
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
@@ -145,7 +146,16 @@ void main() {
       final PatrolFinder emailField = $(BaseTextField).first;
       // final emailField = $(BaseTextField).$('Email'); --> this doesn't work
 
+      final PatrolFinder passwordField = $(BaseTextField).last;
+
       await $.enterText(emailField, invalidEmail);
+
+      await $.pumpAndSettle();
+
+      await $.enterText(passwordField, password);
+
+      // Allow time for validation to trigger
+      await $.pumpAndSettle(duration: const Duration(seconds: 1));
 
       expect($(Text).$('Enter a valid email address'), findsOneWidget);
     });

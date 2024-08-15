@@ -351,22 +351,11 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
       _getEmailValue().isValidEmail &&
       _passwordController.text.isValidLoginPasswordLength;
 
-  String? _emailValidator(String? input) {
-    if (_getEmailValue().isEmpty || _getEmailValue().isValidEmail) {
-      return null;
-    }
+  String? _emailValidator(String? input) => emailValidator(
+      _getEmailValue(), context.derivAuthLocalization.informInvalidEmailFormat);
 
-    return context.derivAuthLocalization.informInvalidEmailFormat;
-  }
-
-  String? _passwordValidator(String? input) {
-    if (_getPasswordValue().isEmpty ||
-        (input?.isValidLoginPasswordLength ?? false)) {
-      return null;
-    }
-
-    return context.derivAuthLocalization.warnPasswordLength;
-  }
+  String? _passwordValidator(String? input) => passwordValidator(
+      _getPasswordValue(), context.derivAuthLocalization.warnPasswordLength);
 
   Future<void> _onLoginTapped() async {
     widget.onLoginTapped?.call(
