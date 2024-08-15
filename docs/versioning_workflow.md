@@ -1,6 +1,6 @@
 ## Versioning workflow
 
-We have setup an automated workflow for semantic versioning the package after any change on the package. 
+We have setup an automated workflow for semantic versioning of the package after any change on the package. 
 
 ### Pre-requisites for versioning
 
@@ -8,8 +8,11 @@ We have setup an automated workflow for semantic versioning the package after an
 ```
 feat(package_name): add new feature
 ```
-- If we are ```squash and merging``` or ```creating merge commit```, the commit message should be same as PR title which has followed  convention.
-- If we are ```rebase and merging```, the commit messages on the PR should follow convention.
+- If we are ```squash and merging``` or ```creating merge commit```, the commit message should be same as PR title which has followed the convention.
+
+- If we are ```rebase and merging```, the commit messages on the PR should follow the convention.
+
+**Note**: ```Squash and merging``` PRs is preferred because of having clean history in master. Learn more [here](https://wikijs.deriv.cloud/en/Mobile/Github-Contributions#squashing-and-merging).
 
 For commit message rules please refer [GIT_RULES.md](../.github/GIT_RULES.md). 
 
