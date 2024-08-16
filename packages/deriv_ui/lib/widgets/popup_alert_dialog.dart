@@ -148,9 +148,9 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
         actions: <Widget>[
           if (widget.negativeButtonLabel != null)
             TextButton(
-              key: widget.negativeButtonKey,
               child: Text(
                 widget.negativeButtonLabel!.toUpperCase(),
+                key: widget.negativeButtonKey,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.button,
                   color: context.theme.colors.coral,
@@ -172,9 +172,9 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
             Visibility(
               visible: !_shouldShowLoadingIndicator,
               child: TextButton(
-                key: widget.positiveButtonKey,
                 child: Text(
                   widget.positiveButtonLabel!.toUpperCase(),
+                  key: widget.positiveButtonKey,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.button,
                     color: context.theme.colors.coral,
