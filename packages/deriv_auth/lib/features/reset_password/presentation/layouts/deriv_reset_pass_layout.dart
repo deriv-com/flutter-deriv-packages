@@ -208,13 +208,8 @@ class _DerivResetPassLayoutState extends State<DerivResetPassLayout> {
   bool _isFormValid() =>
       _getEmailValue().isNotEmpty && _getEmailValue().isValidEmail;
 
-  String? _emailValidator(String? input) {
-    if (_getEmailValue().isValidEmail) {
-      return null;
-    }
-
-    return context.derivAuthLocalization.informInvalidEmailFormat;
-  }
+  String? _emailValidator(String? input) => emailValidator(
+      _getEmailValue(), context.derivAuthLocalization.informInvalidEmailFormat);
 
   String _getEmailValue() => _emailController.text.trim();
 

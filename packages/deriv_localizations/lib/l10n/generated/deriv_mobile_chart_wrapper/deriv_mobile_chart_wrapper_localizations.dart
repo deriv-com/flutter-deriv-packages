@@ -255,11 +255,23 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// **'This will delete all active indicators.'**
   String get infoDeleteAllIndicators;
 
+  /// No description provided for @infoResetIndicators.
+  ///
+  /// In en, this message translates to:
+  /// **'This will reset the {indicator} indicator to its default settings.'**
+  String infoResetIndicators(Object indicator);
+
   /// No description provided for @labelDeleteIndicator.
   ///
   /// In en, this message translates to:
   /// **'Delete {indicator} indicator'**
   String labelDeleteIndicator(Object indicator);
+
+  /// No description provided for @labelResetIndicator.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset {indicator} indicator'**
+  String labelResetIndicator(Object indicator);
 
   /// No description provided for @infoDeleteIndicator.
   ///
@@ -608,6 +620,18 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// In en, this message translates to:
   /// **'3-Exponential'**
   String get label3Exponential;
+
+  /// No description provided for @warnEnterValueBetweenMinMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a value between {min} and {max}'**
+  String warnEnterValueBetweenMinMax(Object max, Object min);
+
+  /// No description provided for @warnRangeMinMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Range {min} - {max}'**
+  String warnRangeMinMax(Object max, Object min);
 }
 
 class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {

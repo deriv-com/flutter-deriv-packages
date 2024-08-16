@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => '這將刪除所有活躍指標。';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return '刪除 $indicator 指標';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
@@ -250,4 +260,14 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-指數式';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }
