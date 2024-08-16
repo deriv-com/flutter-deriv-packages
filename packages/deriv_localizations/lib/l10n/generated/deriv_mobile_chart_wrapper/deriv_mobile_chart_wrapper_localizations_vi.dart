@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => 'Điều này sẽ xóa tất cả các chỉ số hoạt động.';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return 'Xóa chỉ báo $indicator';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
@@ -250,4 +260,14 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-cấp số nhân';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }

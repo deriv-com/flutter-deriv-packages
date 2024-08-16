@@ -1,3 +1,11 @@
+## 2.2.2
+
+ - **REFACTOR**(analytics): Amend virtual n real tracking events ([#771](https://github.com/regentmarkets/flutter-deriv-packages/issues/771)). ([fc8850f0](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc8850f01c1bb0a6805b41b3ff10e2a6e33b6e0f))
+
+## 2.2.1
+
+ - **FIX**(analytics): ilya/TRHM-945/Amend_Virtual_n_Real_Tracking_Events ([#762](https://github.com/regentmarkets/flutter-deriv-packages/issues/762)). ([cbba6688](https://github.com/regentmarkets/flutter-deriv-packages/commit/cbba668827d72c971d1100ecafee5719d4617639))
+
 ## 2.2.0
 
  - **FEAT**(analytics): add trade page events to rudderstack events ([#691](https://github.com/regentmarkets/flutter-deriv-packages/issues/691)). ([b9e2b098](https://github.com/regentmarkets/flutter-deriv-packages/commit/b9e2b098fb76ea4f8f5f633c062a6cd20f4db6f0))

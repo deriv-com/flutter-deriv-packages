@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => 'Hii itafuta viashiria vyote vya kazi.';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return 'Futa kiashiria cha $indicator';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
@@ -250,4 +260,14 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-Mfanyiko';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }
