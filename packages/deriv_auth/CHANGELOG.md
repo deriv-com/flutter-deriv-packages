@@ -1,3 +1,7 @@
+## 6.7.37
+
+ - Update a dependency to the latest release.
+
 ## 6.7.36
 
  - **FIX**(deriv_auth): validation_enhancement ([#775](https://github.com/regentmarkets/flutter-deriv-packages/issues/775)). ([fc4bbb1f](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc4bbb1f9384334dced645e8213b8b5dade8f05d))
