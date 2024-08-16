@@ -12,7 +12,7 @@ part 'language_state.dart';
 /// {@endtemplate}
 class LanguageCubit extends Cubit<LanguageState> {
   /// {@macro language_cubit}
-  LanguageCubit( {
+  LanguageCubit({
     required this.languageService,
     required this.onLanguageChanged,
   }) : super(LanguageLoadedState(
