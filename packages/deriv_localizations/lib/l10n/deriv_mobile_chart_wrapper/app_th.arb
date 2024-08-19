@@ -21,7 +21,7 @@
   "infoAddIndicator": "เพิ่มตัวบ่งชี้",
   "labelDeleteAllIndicators": "ลบตัวบ่งชี้ทั้งหมด",
   "infoDeleteAllIndicators": "สิ่งนี้จะลบตัวบ่งชี้ที่ใช้งานอยู่ทั้งหมด",
-  "infoResetIndicators": "สิ่งนี้จะรีเซ็ตตัวบ่งชี้ {indicator} เป็นการตั้งค่าเริ่มต้น",
+  "infoResetIndicators": "สิ่งนี้จะรีเซ็ตตัวบ่งชี้ {indicator} ไปเป็นตามค่าเริ่มต้นของมัน",
   "labelDeleteIndicator": "ลบตัวบ่งชี้ {indicator}",
   "labelResetIndicator": "รีเซ็ตตัวบ่งชี้ {indicator}",
   "infoDeleteIndicator": "คุณแน่ใจหรือไม่ว่าต้องการลบตัวบ่งชี้นี้?",
