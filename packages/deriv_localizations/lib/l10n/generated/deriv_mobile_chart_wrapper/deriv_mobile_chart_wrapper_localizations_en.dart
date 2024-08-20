@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsEn extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => 'This will delete all active indicators.';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return 'Delete $indicator indicator';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
@@ -93,7 +103,7 @@ class DerivMobileChartWrapperLocalizationsEn extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'Up to 3 active indicators allowed.';
 
   @override
-  String get infoNoActiveIndicators => 'You have no active indicators yet.';
+  String get infoNoActiveIndicators => 'No active indicators.';
 
   @override
   String get labelReset => 'Reset';
@@ -250,4 +260,14 @@ class DerivMobileChartWrapperLocalizationsEn extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-Exponential';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }

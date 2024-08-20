@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => '這將刪除所有活躍指標。';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return '刪除 $indicator 指標';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
@@ -93,7 +103,7 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => '最多允許 3 個活躍指標。';
 
   @override
-  String get infoNoActiveIndicators => '尚未有活躍指標。';
+  String get infoNoActiveIndicators => '沒有活躍指標。';
 
   @override
   String get labelReset => '重設';
@@ -132,16 +142,16 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get labelLow => 'Low';
 
   @override
-  String get labelHl2 => '高 /2/';
+  String get labelHl2 => 'Hl/2';
 
   @override
-  String get labelHlc3 => '高爾克/3';
+  String get labelHlc3 => 'Hlc/3';
 
   @override
-  String get labelHlcc4 => '高度控制 /4';
+  String get labelHlcc4 => 'Hlcc/4';
 
   @override
-  String get labelOhlc4 => '奧爾克/4';
+  String get labelOhlc4 => 'Ohlc/4';
 
   @override
   String get labelShowZones => '顯示區域';
@@ -250,4 +260,14 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-指數式';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }

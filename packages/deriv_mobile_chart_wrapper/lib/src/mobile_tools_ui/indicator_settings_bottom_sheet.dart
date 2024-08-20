@@ -7,14 +7,14 @@ import 'package:provider/provider.dart';
 
 class IndicatorSettingsBottomSheet extends StatefulWidget {
   const IndicatorSettingsBottomSheet({
-    super.key,
-    this.theme,
     required this.settings,
     required this.indicator,
     required this.onApply,
-    required this.onReset,
     required this.onTapInfo,
     required this.onTapDelete,
+    this.theme,
+    this.onReset,
+    super.key,
   });
 
   /// The theme of the chart which the bottom sheet is being placed inside.
@@ -30,7 +30,7 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
   final VoidCallback onApply;
 
   /// The callback when the reset button is pressed.
-  final VoidCallback onReset;
+  final VoidCallback? onReset;
 
   /// The callback when the info button is pressed.
   final VoidCallback onTapInfo;
@@ -61,7 +61,7 @@ class _IndicatorSettingsBottomSheetState
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.9,
+        height: MediaQuery.of(context).size.height,
         child: Provider<ChartTheme>.value(
           value: _theme,
           child: ClipRRect(
@@ -161,11 +161,14 @@ class _IndicatorSettingsBottomSheetState
             Expanded(
               child: SecondaryButton(
                 onPressed: widget.onReset,
+                isEnabled: widget.onReset != null,
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelReset,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.body2,
-                    color: context.theme.colors.disabled,
+                    color: widget.onReset != null
+                        ? context.theme.colors.prominent
+                        : context.theme.colors.active,
                   ),
                 ),
               ),

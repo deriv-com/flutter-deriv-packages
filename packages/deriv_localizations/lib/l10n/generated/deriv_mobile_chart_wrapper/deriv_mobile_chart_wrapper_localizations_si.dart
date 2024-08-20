@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => 'මෙය සියලුම ක්රියාකාරී දර්ශක මකා දමනු ඇත.';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return '$indicator දර්ශකය මකන්න';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
@@ -93,7 +103,7 @@ class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLoca
   String get infoUpto3indicatorsAllowed => 'ක්රියාකාරී දර්ශක 3 ක් දක්වා අවසර ඇත.';
 
   @override
-  String get infoNoActiveIndicators => 'ඔබට තවමත් ක්රියාකාරී දර්ශක නොමැත.';
+  String get infoNoActiveIndicators => 'ක්රියාකාරී දර්ශක නොමැත.';
 
   @override
   String get labelReset => 'යළි පිහිටුවන්න';
@@ -250,4 +260,14 @@ class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLoca
 
   @override
   String get label3Exponential => '3-එක්ස්පෙන්ෂනල්';
+
+  @override
+  String warnEnterValueBetweenMinMax(Object max, Object min) {
+    return 'Enter a value between $min and $max';
+  }
+
+  @override
+  String warnRangeMinMax(Object max, Object min) {
+    return 'Range $min - $max';
+  }
 }

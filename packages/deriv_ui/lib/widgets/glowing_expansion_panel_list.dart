@@ -152,17 +152,17 @@ class GlowingExpansionPanel extends ExpansionPanel {
   GlowingExpansionPanel({
     required ExpansionPanelHeaderBuilder headerBuilder,
     required Widget body,
-    required Color backgroundColor,
     required this.shouldGlow,
+    Color backgroundColor = Colors.transparent,
     this.key,
     bool isExpanded = false,
   }) : super(
-          headerBuilder: headerBuilder,
-          body: body,
-          isExpanded: isExpanded,
-          backgroundColor: backgroundColor,
-          canTapOnHeader: true,
-        );
+    headerBuilder: headerBuilder,
+    body: body,
+    isExpanded: isExpanded,
+    backgroundColor: backgroundColor,
+    canTapOnHeader: true,
+  );
 
   /// Whether or not this [GlowingExpansionPanel] should glow.
   final bool shouldGlow;
