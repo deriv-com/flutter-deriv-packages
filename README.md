@@ -15,7 +15,7 @@ cp $HOME/Downloads/commit-msg $HOME/.git/hooks/commit-msg \
 
 ## Using the packages
 
-Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v6.7.35)`. To use the package, add the following to your pubspec.yaml file:
+Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v6.7.37)`. To use the package, add the following to your pubspec.yaml file:
 
 ```yaml
 deriv_ui:
@@ -30,7 +30,7 @@ deriv_ui:
 | Name                                                                      | Description                                                                                                            | Version                                                           |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase',  'Rudderstack' and 'Datadog'.                                           | [v2.2.2](./packages/analytics/CHANGELOG.md)                       |                                        | [v2.2.2](./packages/analytics/CHANGELOG.md)                       |
-| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v6.7.35 ](./packages/deriv_auth/CHANGELOG.md)                     |
+| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v6.7.37 ](./packages/deriv_auth/CHANGELOG.md)                     |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                       | [v0.0.1+1](./packages/deriv_banner/CHANGELOG.md)                  |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)                       | Provides some tools to manage blocs.                                                                                   | [v0.0.1](./packages/deriv_bloc_manager/CHANGELOG.md)              |
 | [deriv_datadog](./packages/deriv_datadog)                                 | A package that helps you monitor the performance and user interactions of your Flutter app by sending data to Datadog. | [v0.0.1](./packages/deriv_datadog/CHANGELOG.md)                   |
@@ -40,8 +40,8 @@ deriv_ui:
 | [deriv_expandable_bottom_sheet](./packages/deriv_expandable_bottom_sheet) | A widget that helps to display an expandable bottom sheet.                                                             | [v0.0.1+6](./packages/deriv_expandable_bottom_sheet/CHANGELOG.md) |
 | [deriv_http_client](./packages/deriv_http_client)                         | A package that provides a wrapper for http package.                                                                    | [v2.0.0](./packages/deriv_http_client/CHANGELOG.md)               |
 | [deriv_lint](./packages/deriv_lint)                                       | A Dart package that provides lint rules for Dart and Flutter.                                                          | [v1.0.0](./packages/deriv_lint/CHANGELOG.md)                      |
-| [deriv_live_chat](./packages/deriv_live_chat)                             | A plugin for live chat SDK support to dart.                                                                            | [v0.0.1+2](./packages/deriv_live_chat/CHANGELOG.md)               |
-| [deriv_language_selector](./packages/deriv_language_selector)             | A package to handle language change of the app.                                                                        | [v0.0.2+18](./packages/deriv_language_selector/CHANGELOG.md)       |
+| [deriv_live_chat](./packages/deriv_live_chat)                             | A plugin for live chat SDK support to dart.                                                                            | [v0.0.1+3](./packages/deriv_live_chat/CHANGELOG.md)               |
+| [deriv_language_selector](./packages/deriv_language_selector)             | A package to handle language change of the app.                                                                        | [v0.0.3](./packages/deriv_language_selector/CHANGELOG.md)       |
 | [deriv_localizations](./packages/deriv_localizations)                     | A Package that contains the localization arb(coming from Crowdin) and dart generated files for flutter_deriv_packages. | [v1.5.6](./packages/deriv_localizations/CHANGELOG.md)             |
 | [deriv_numpad](./packages/deriv_numpad)                                   | Number Pad Widget for number input.                                                                                    | [v1.1.5](./packages/deriv_numpad/CHANGELOG.md)                    |
 | [deriv_rudderstack](./packages/deriv_rudderstack)                         | A plugin that add RudderStack SDK support to Flutter.                                                                  | [v1.1.0](./packages/deriv_rudderstack/CHANGELOG.md)               |
@@ -56,7 +56,7 @@ deriv_ui:
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                        | [v1.0.0+1](./packages/form_builder/CHANGELOG.md)                  |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                           | [v1.5.1](./packages/update_checker/CHANGELOG.md)                  |
 | [deriv_feature_flag](./packages/deriv_feature_flag)                       | A package to provide feature flag functionality for apps.                                                              | [v0.1.1](./packages/deriv_feature_flag/CHANGELOG.md)              |
-| [deriv_mobile_chart_wrapper](./packages/deriv_mobile_chart_wrapper)       | A wrapper package around package _**deriv_chart**_ to implement any functionality specific to mobile and can be wrapped around the main chart package.                                                    | [v0.0.12+3](./packages/deriv_mobile_chart_wrapper/CHANGELOG.md)              |
+| [deriv_mobile_chart_wrapper](./packages/deriv_mobile_chart_wrapper)       | A wrapper package around package _**deriv_chart**_ to implement any functionality specific to mobile and can be wrapped around the main chart package.                                                    | [v0.0.12+4](./packages/deriv_mobile_chart_wrapper/CHANGELOG.md)              |
 
 
 ## Environment Setup

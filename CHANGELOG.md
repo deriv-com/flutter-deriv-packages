@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-08-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_live_chat` - `v0.0.1+3`](#deriv_live_chat---v0013)
+
+---
+
+#### `deriv_live_chat` - `v0.0.1+3`
+
+ - **FIX**(deriv_live_chat): Clear the session completely on a clear callback. ([#780](https://github.com/regentmarkets/flutter-deriv-packages/issues/780)). ([3b80c767](https://github.com/regentmarkets/flutter-deriv-packages/commit/3b80c76702956fcb4868b7fa8a75f3fa9e852209))
+
+
+## 2024-08-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_language_selector` - `v0.0.3`](#deriv_language_selector---v003)
+ - [`deriv_auth` - `v6.7.37`](#deriv_auth---v6737)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.37`
+
+---
+
+#### `deriv_language_selector` - `v0.0.3`
+
+ - **FEAT**(deriv_language_selector): Add a callback for language change. ([#778](https://github.com/regentmarkets/flutter-deriv-packages/issues/778)). ([21f6b8de](https://github.com/regentmarkets/flutter-deriv-packages/commit/21f6b8dee167ee1234bb1ee0a22b766305d5660a))
+
+
+## 2024-08-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.7.36`](#deriv_auth---v6736)
+
+---
+
+#### `deriv_auth` - `v6.7.36`
+
+ - **FIX**(deriv_auth): validation_enhancement ([#775](https://github.com/regentmarkets/flutter-deriv-packages/issues/775)). ([fc4bbb1f](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc4bbb1f9384334dced645e8213b8b5dade8f05d))
+
+
 ## 2024-08-14
 
 ### Changes
