@@ -38,7 +38,7 @@ class DerivPasskeysCredentialVerifiedState extends DerivPasskeysState {
     required this.refreshToken,
   });
 
-  /// App token from the response.
+  /// List of accounts from the response.
   final List<AccountEntity> accounts;
 
   /// Refresh token from the response.
