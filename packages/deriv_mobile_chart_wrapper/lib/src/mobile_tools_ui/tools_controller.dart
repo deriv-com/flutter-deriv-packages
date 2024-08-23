@@ -11,6 +11,7 @@ class ToolsController {
   /// Whether indicators are enabled or not.
   final bool indicatorsEnabled;
 
+  /// Whether drawing tools are enabled or not.
   final bool drawingToolsEnabled;
 
   /// Called to show indicators tools menu.
