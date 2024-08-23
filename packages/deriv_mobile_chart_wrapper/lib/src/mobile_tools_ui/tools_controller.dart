@@ -3,7 +3,10 @@ import 'dart:ui';
 /// Controller class to show tools menu.
 class ToolsController {
   /// Initializes the tools controller.
-  ToolsController({this.indicatorsEnabled = true, this.drawingToolsEnabled = true});
+  ToolsController({
+    this.indicatorsEnabled = true,
+    this.drawingToolsEnabled = true,
+  });
 
   /// Whether indicators are enabled or not.
   final bool indicatorsEnabled;
