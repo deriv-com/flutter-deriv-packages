@@ -1,12 +1,15 @@
 import 'package:deriv_localizations/l10n/generated/deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper_localizations.dart';
+import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter/material.dart';
-import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 
 class MockToolsController extends Mock implements ToolsController {
   @override
   bool get indicatorsEnabled => true;
+
+  @override
+  bool get drawingToolsEnabled => true;
 }
 
 class MockAddOnsRepository<T extends AddOnConfig> extends Mock
