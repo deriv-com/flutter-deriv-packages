@@ -185,7 +185,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         _showIndicatorsSheet(_indicatorsRepo!);
       }
     };
-    widget.toolsController?.onShowIndicatorsToolsMenu = () {
+    widget.toolsController?.onShowDrawingToolsMenu = () {
       if (_drawingToolsRepo != null) {
         _showDrawingToolsSheet(_drawingToolsRepo!);
       }
