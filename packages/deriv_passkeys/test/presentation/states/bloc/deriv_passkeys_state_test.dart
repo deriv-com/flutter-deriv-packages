@@ -42,7 +42,14 @@ void main() {
         ],
         refreshToken: refreshToken,
       );
-      expect(state.props, contains(token));
+      expect(
+          state.props,
+          containsAll(<Object?>[
+            <AccountEntity>[
+              const AccountEntity(loginId: 'example_login_id', token: token),
+            ],
+            refreshToken
+          ]));
     });
   });
 
