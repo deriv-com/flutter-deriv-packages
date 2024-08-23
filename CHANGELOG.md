@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-08-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_theme` - `v2.5.0`](#deriv_theme---v250)
+ - [`deriv_widgetbook` - `v0.0.2+21`](#deriv_widgetbook---v00221)
+ - [`deriv_numpad` - `v1.1.6`](#deriv_numpad---v116)
+ - [`deriv_ui` - `v0.0.13+4`](#deriv_ui---v00134)
+ - [`deriv_mobile_chart_wrapper` - `v0.0.12+5`](#deriv_mobile_chart_wrapper---v00125)
+ - [`deriv_date_range_picker` - `v0.0.1+7`](#deriv_date_range_picker---v0017)
+ - [`deriv_passkeys` - `v0.0.3+23`](#deriv_passkeys---v00323)
+ - [`deriv_auth` - `v6.7.38`](#deriv_auth---v6738)
+ - [`deriv_expandable_bottom_sheet` - `v0.0.1+7`](#deriv_expandable_bottom_sheet---v0017)
+ - [`deriv_language_selector` - `v0.0.3+1`](#deriv_language_selector---v0031)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_widgetbook` - `v0.0.2+21`
+ - `deriv_numpad` - `v1.1.6`
+ - `deriv_ui` - `v0.0.13+4`
+ - `deriv_mobile_chart_wrapper` - `v0.0.12+5`
+ - `deriv_date_range_picker` - `v0.0.1+7`
+ - `deriv_passkeys` - `v0.0.3+23`
+ - `deriv_auth` - `v6.7.38`
+ - `deriv_expandable_bottom_sheet` - `v0.0.1+7`
+ - `deriv_language_selector` - `v0.0.3+1`
+
+---
+
+#### `deriv_theme` - `v2.5.0`
+
+ - **FEAT**(deriv_theme): add IDV status badge colors. ([#777](https://github.com/regentmarkets/flutter-deriv-packages/issues/777)). ([d292701f](https://github.com/regentmarkets/flutter-deriv-packages/commit/d292701f00c1f8122a06d77860cdb528712aa694))
+
+
 ## 2024-08-16
 
 ### Changes

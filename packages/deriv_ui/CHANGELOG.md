@@ -1,3 +1,7 @@
+## 0.0.13+4
+
+ - Update a dependency to the latest release.
+
 ## 0.0.13+3
 
  - **REFACTOR**(deriv_auth): Update_single_entry_feature ([#577](https://github.com/regentmarkets/flutter-deriv-packages/issues/577)). ([462d7bd6](https://github.com/regentmarkets/flutter-deriv-packages/commit/462d7bd6bdf60536fa632be3b95fae0ba377f142))

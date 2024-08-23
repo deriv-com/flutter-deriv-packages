@@ -1,3 +1,7 @@
+## 0.0.3+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.3
 
  - **FEAT**(deriv_language_selector): Add a callback for language change. ([#778](https://github.com/regentmarkets/flutter-deriv-packages/issues/778)). ([21f6b8de](https://github.com/regentmarkets/flutter-deriv-packages/commit/21f6b8dee167ee1234bb1ee0a22b766305d5660a))
