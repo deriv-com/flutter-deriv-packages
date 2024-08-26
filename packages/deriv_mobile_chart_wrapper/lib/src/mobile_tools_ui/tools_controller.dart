@@ -6,13 +6,20 @@ class ToolsController extends ChangeNotifier {
   /// Initializes the tools controller.
   ToolsController({
     this.indicatorsEnabled = true,
+    this.drawingToolsEnabled = true,
   });
 
   /// Whether indicators are enabled or not.
   final bool indicatorsEnabled;
 
+  /// Whether drawing tools are enabled or not.
+  final bool drawingToolsEnabled;
+
   /// Called to show indicators tools menu.
   VoidCallback? onShowIndicatorsToolsMenu;
+
+  /// Called to show drawing tools menu.
+  VoidCallback? onShowDrawingToolsMenu;
 
   /// Config items.
   ConfigItemModel? _configs;
@@ -30,7 +37,5 @@ class ToolsController extends ChangeNotifier {
   void showIndicatorsToolsMenu() => onShowIndicatorsToolsMenu?.call();
 
   /// Shows drawing tools menu.
-  void showDrawingToolsMenu() {
-    // TODO(Ramin): Call the callback for drawing tools.
-  }
+  void showDrawingToolsMenu() => onShowDrawingToolsMenu?.call();
 }
