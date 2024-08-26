@@ -325,8 +325,7 @@ class _MobileToolsBottomSheetContentState
       children: [
         Expanded(
           child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            child: ListView(
               children: [
                 SvgPicture.asset(
                   emptyStateIndicatorsIcon,
@@ -410,7 +409,7 @@ class _MobileToolsBottomSheetContentState
                       )
                     : CustomChip<IndicatorTabLabel>(
                         value: tabLabel,
-                        labelBuilder: (_, __) => tabLabel.title,
+                        labelBuilder: (_, __) => tabLabel.getTitle(context),
                         onTap: _onChipTapped,
                         isSelected: _selectedChip == tabLabel,
                         borderRadius: ThemeProvider.margin40,

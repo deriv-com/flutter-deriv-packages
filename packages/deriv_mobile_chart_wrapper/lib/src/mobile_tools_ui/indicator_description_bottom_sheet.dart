@@ -27,16 +27,18 @@ class IndicatorDescriptionBottomSheet extends StatelessWidget {
       onActionButtonPressed: onAddIndicatorPressed,
       child: ColoredBox(
         color: context.theme.colors.primary,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: ThemeProvider.margin16,
-            horizontal: ThemeProvider.margin16,
-          ),
-          child: Text(
-            indicator.description,
-            style: context.theme.textStyle(
-              textStyle: TextStyles.body1,
-              color: context.theme.colors.general,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: ThemeProvider.margin16,
+              horizontal: ThemeProvider.margin16,
+            ),
+            child: Text(
+              indicator.description,
+              style: context.theme.textStyle(
+                textStyle: TextStyles.body1,
+                color: context.theme.colors.general,
+              ),
             ),
           ),
         ),
