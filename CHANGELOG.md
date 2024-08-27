@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-08-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.0.14`](#deriv_ui---v0014)
+ - [`deriv_mobile_chart_wrapper` - `v0.0.13+1`](#deriv_mobile_chart_wrapper---v00131)
+ - [`deriv_widgetbook` - `v0.0.2+23`](#deriv_widgetbook---v00223)
+ - [`deriv_passkeys` - `v0.0.3+25`](#deriv_passkeys---v00325)
+ - [`deriv_auth` - `v6.7.40`](#deriv_auth---v6740)
+ - [`deriv_language_selector` - `v0.0.3+3`](#deriv_language_selector---v0033)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.0.13+1`
+ - `deriv_widgetbook` - `v0.0.2+23`
+ - `deriv_passkeys` - `v0.0.3+25`
+ - `deriv_auth` - `v6.7.40`
+ - `deriv_language_selector` - `v0.0.3+3`
+
+---
+
+#### `deriv_ui` - `v0.0.14`
+
+ - **FEAT**: [DRGO-126] Add onDispose method to deriv bottomsheet and add key to bottmsheet handle ([#787](https://github.com/regentmarkets/flutter-deriv-packages/issues/787)). ([3d39f310](https://github.com/regentmarkets/flutter-deriv-packages/commit/3d39f3107d4c76b94d2db8228e2b55e4e4f90a47))
+
+
 ## 2024-08-23
 
 ### Changes

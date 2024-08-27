@@ -1,3 +1,7 @@
+## 0.0.13+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.13
 
  - **FEAT**(deriv_mobile_chart_wrapper): add drawing tools repo to chart wrapper ([#784](https://github.com/regentmarkets/flutter-deriv-packages/issues/784)). ([8df713c9](https://github.com/regentmarkets/flutter-deriv-packages/commit/8df713c958299820b94190f4f1a665efcfa8401b))
