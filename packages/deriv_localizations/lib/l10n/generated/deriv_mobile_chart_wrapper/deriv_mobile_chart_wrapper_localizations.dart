@@ -255,11 +255,23 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// **'This will delete all active indicators.'**
   String get infoDeleteAllIndicators;
 
+  /// No description provided for @infoResetIndicators.
+  ///
+  /// In en, this message translates to:
+  /// **'This will reset the {indicator} indicator to its default settings.'**
+  String infoResetIndicators(Object indicator);
+
   /// No description provided for @labelDeleteIndicator.
   ///
   /// In en, this message translates to:
   /// **'Delete {indicator} indicator'**
   String labelDeleteIndicator(Object indicator);
+
+  /// No description provided for @labelResetIndicator.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset {indicator} indicator'**
+  String labelResetIndicator(Object indicator);
 
   /// No description provided for @infoDeleteIndicator.
   ///

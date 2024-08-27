@@ -1,3 +1,55 @@
+## 6.7.39
+
+ - Update a dependency to the latest release.
+
+## 6.7.38
+
+ - Update a dependency to the latest release.
+
+## 6.7.37
+
+ - Update a dependency to the latest release.
+
+## 6.7.36
+
+ - **FIX**(deriv_auth): validation_enhancement ([#775](https://github.com/regentmarkets/flutter-deriv-packages/issues/775)). ([fc4bbb1f](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc4bbb1f9384334dced645e8213b8b5dade8f05d))
+
+## 6.7.35
+
+ - **REFACTOR**(deriv_auth): Update_single_entry_feature ([#577](https://github.com/regentmarkets/flutter-deriv-packages/issues/577)). ([462d7bd6](https://github.com/regentmarkets/flutter-deriv-packages/commit/462d7bd6bdf60536fa632be3b95fae0ba377f142))
+
+## 6.7.34
+
+ - Update a dependency to the latest release.
+
+## 6.7.33
+
+ - Update a dependency to the latest release.
+
+## 6.7.32
+
+ - Update a dependency to the latest release.
+
+## 6.7.31
+
+ - Update a dependency to the latest release.
+
+## 6.7.30
+
+ - **FIX**(deriv_auth): email and password text field validation ([#761](https://github.com/regentmarkets/flutter-deriv-packages/issues/761)). ([c75d00c4](https://github.com/regentmarkets/flutter-deriv-packages/commit/c75d00c4ef105a9a5ff3cdb3a8546ee43d76e997))
+
+## 6.7.29
+
+ - **FIX**(deriv_auth): email text field validation ([#751](https://github.com/regentmarkets/flutter-deriv-packages/issues/751)). ([3e05c3fa](https://github.com/regentmarkets/flutter-deriv-packages/commit/3e05c3fa9315a75d19fbc3727ad9a161617e7fb8))
+
+## 6.7.28
+
+ - Update a dependency to the latest release.
+
+## 6.7.27
+
+ - Update a dependency to the latest release.
+
 ## 6.7.26
 
  - Update a dependency to the latest release.
