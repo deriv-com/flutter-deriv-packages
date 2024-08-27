@@ -58,6 +58,7 @@ flutter:
     - assets/icons/ic_moving_average.svg
     - assets/icons/ic_indicators_menu.svg
     - assets/icons/ic_indicators_empty_state.svg
+    - assets/icons/ic_drawing_tool.svg
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages

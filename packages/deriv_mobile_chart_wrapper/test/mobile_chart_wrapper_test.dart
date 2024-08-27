@@ -53,6 +53,17 @@ void main() {
       // Verify the bottom sheet is displayed
       expect(find.byType(MobileToolsBottomSheetContent), findsOneWidget);
     });
+
+    testWidgets('ToolsController showDrawingToolsMenu callback is set',
+        (WidgetTester tester) async {
+      final mockToolsController = MockToolsController();
+      await tester.pumpWidget(
+        _TestWidget(toolsController: mockToolsController),
+      );
+
+      // Verify callback is set
+      verify(mockToolsController.onShowDrawingToolsMenu = any).called(1);
+    });
   });
 }
 
