@@ -15,6 +15,42 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_ui` - `v0.0.15`](#deriv_ui---v0015)
+ - [`deriv_mobile_chart_wrapper` - `v0.0.13+2`](#deriv_mobile_chart_wrapper---v00132)
+ - [`deriv_widgetbook` - `v0.0.2+24`](#deriv_widgetbook---v00224)
+ - [`deriv_passkeys` - `v0.0.3+26`](#deriv_passkeys---v00326)
+ - [`deriv_auth` - `v6.7.41`](#deriv_auth---v6741)
+ - [`deriv_language_selector` - `v0.0.3+4`](#deriv_language_selector---v0034)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.0.13+2`
+ - `deriv_widgetbook` - `v0.0.2+24`
+ - `deriv_passkeys` - `v0.0.3+26`
+ - `deriv_auth` - `v6.7.41`
+ - `deriv_language_selector` - `v0.0.3+4`
+
+---
+
+#### `deriv_ui` - `v0.0.15`
+
+ - **FEAT**(Deriv_UI): [TRHM-618] added keys to deriv UI package ([#748](https://github.com/regentmarkets/flutter-deriv-packages/issues/748)). ([6e6e13b9](https://github.com/regentmarkets/flutter-deriv-packages/commit/6e6e13b9a87b8edaa4c10fcfe7ca2697afc7f601))
+
+
+## 2024-08-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_ui` - `v0.0.14`](#deriv_ui---v0014)
  - [`deriv_mobile_chart_wrapper` - `v0.0.13+1`](#deriv_mobile_chart_wrapper---v00131)
  - [`deriv_widgetbook` - `v0.0.2+23`](#deriv_widgetbook---v00223)

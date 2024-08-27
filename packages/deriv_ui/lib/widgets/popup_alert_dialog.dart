@@ -26,6 +26,7 @@ class PopupAlertDialog extends StatefulWidget {
   ///
   const PopupAlertDialog({
     this.title,
+    this.titleKey,
     this.content,
     this.showLoadingIndicator = false,
     this.positiveButtonLabel,
@@ -36,11 +37,16 @@ class PopupAlertDialog extends StatefulWidget {
     this.checkboxMessage,
     this.checkBoxValue,
     this.onCheckboxValueChanged,
+    this.positiveButtonKey,
+    this.negativeButtonKey,
     Key? key,
   }) : super(key: key);
 
   /// The title of the popup alert dialog.
   final String? title;
+
+  /// The title key of the popup alert dialog.
+  final Key? titleKey;
 
   /// The content of the popup alert dialog.
   final Widget? content;
@@ -78,6 +84,12 @@ class PopupAlertDialog extends StatefulWidget {
   /// Checkbox callback whenever it's value changed.
   final Function({bool? isChecked})? onCheckboxValueChanged;
 
+  /// Positive action button Key.
+  final Key? positiveButtonKey;
+
+  /// Negative action button Key.
+  final Key? negativeButtonKey;
+
   @override
   _PopupAlertDialogState createState() => _PopupAlertDialogState();
 }
@@ -112,6 +124,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
             : Text(
                 widget.title!,
                 style: context.theme.textStyle(textStyle: TextStyles.title),
+                key: widget.titleKey,
               ),
         content: widget.content == null
             ? null
@@ -126,7 +139,8 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
                       value: _checkboxValue,
                       onValueChanged: ({bool? isChecked}) {
                         setState(() => _checkboxValue = isChecked);
-                        widget.onCheckboxValueChanged?.call(isChecked: isChecked);
+                        widget.onCheckboxValueChanged
+                            ?.call(isChecked: isChecked);
                       },
                     )
                 ],
@@ -136,6 +150,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
             TextButton(
               child: Text(
                 widget.negativeButtonLabel!.toUpperCase(),
+                key: widget.negativeButtonKey,
                 style: context.theme.textStyle(
                   textStyle: TextStyles.button,
                   color: context.theme.colors.coral,
@@ -159,6 +174,7 @@ class _PopupAlertDialogState extends State<PopupAlertDialog> {
               child: TextButton(
                 child: Text(
                   widget.positiveButtonLabel!.toUpperCase(),
+                  key: widget.positiveButtonKey,
                   style: context.theme.textStyle(
                     textStyle: TextStyles.button,
                     color: context.theme.colors.coral,

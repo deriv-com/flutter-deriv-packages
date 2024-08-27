@@ -1,3 +1,7 @@
+## 0.0.15
+
+ - **FEAT**(Deriv_UI): [TRHM-618] added keys to deriv UI package ([#748](https://github.com/regentmarkets/flutter-deriv-packages/issues/748)). ([6e6e13b9](https://github.com/regentmarkets/flutter-deriv-packages/commit/6e6e13b9a87b8edaa4c10fcfe7ca2697afc7f601))
+
 ## 0.0.14
 
  - **FEAT**: [DRGO-126] Add onDispose method to deriv bottomsheet and add key to bottmsheet handle ([#787](https://github.com/regentmarkets/flutter-deriv-packages/issues/787)). ([3d39f310](https://github.com/regentmarkets/flutter-deriv-packages/commit/3d39f3107d4c76b94d2db8228e2b55e4e4f90a47))
