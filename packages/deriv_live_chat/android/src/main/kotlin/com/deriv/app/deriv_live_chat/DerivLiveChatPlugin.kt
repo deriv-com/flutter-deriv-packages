@@ -94,6 +94,10 @@ class DerivLiveChatPlugin : FlutterPlugin, MethodCallHandler,
             chatWindowView = null
 
             result.success(null)
+        } else if (call.method.equals("reload_live_chat_view")) {
+            chatWindowView?.reload()
+            chatWindowView = null
+            result.success(null)
         } else {
             result.notImplemented()
         }

@@ -37,6 +37,10 @@ class DerivLiveChat {
   static Future<void> clearChatView() async =>
       _liveChatMethodChannel.invokeMethod<dynamic>('clear_live_chat_view');
 
+  /// Reload chat window by invoking method channel.
+  static Future<void> reloadChatView() async =>
+      _liveChatMethodChannel.invokeMethod<dynamic>('reload_live_chat_view');
+
   /// Here we are receiving events stream.
   static Stream<dynamic>? get onEventReceived =>
       _liveChatEventChannel.receiveBroadcastStream();
