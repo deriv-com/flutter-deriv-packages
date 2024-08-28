@@ -18,11 +18,16 @@ class ColoursGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+        vertical: 16.0,
+      ),
       child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 6,
-          crossAxisSpacing: 10,
+          crossAxisSpacing: 4,
           mainAxisSpacing: 10,
         ),
         itemCount: colors.length,
