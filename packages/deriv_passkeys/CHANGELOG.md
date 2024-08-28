@@ -1,3 +1,55 @@
+## 0.0.3+27
+
+ - **REFACTOR**(deriv_passkeys): replace token with account entity ([#785](https://github.com/regentmarkets/flutter-deriv-packages/issues/785)). ([600d7e44](https://github.com/regentmarkets/flutter-deriv-packages/commit/600d7e44c4318501d180640e5a9c21f5357f6022))
+
+## 0.0.3+26
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+25
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+24
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+23
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+22
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+21
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+20
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+19
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+18
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+17
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+16
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+15
+
+ - Update a dependency to the latest release.
+
 ## 0.0.3+14
 
  - Update a dependency to the latest release.

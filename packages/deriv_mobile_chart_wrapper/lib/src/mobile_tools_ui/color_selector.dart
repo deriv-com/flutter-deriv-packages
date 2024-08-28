@@ -92,7 +92,11 @@ class _ColorSelectorState extends State<ColorSelector> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(widget.title, style: TextStyles.caption),
+              Text(widget.title,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.caption,
+                    color: context.theme.colors.general,
+                  )),
               Row(
                 children: <Widget>[
                   Container(

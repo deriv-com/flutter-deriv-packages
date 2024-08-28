@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsRu extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => 'Это удалит все активные индикаторы.';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return 'Индикатор удаления $indicator';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
