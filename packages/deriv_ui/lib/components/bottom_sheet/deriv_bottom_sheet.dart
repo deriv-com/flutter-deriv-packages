@@ -16,6 +16,8 @@ class DerivBottomSheet extends StatefulWidget {
     this.onActionButtonPressed,
     this.height,
     this.color,
+    this.onDispose,
+    this.topHandleKey,
   }) : super(key: key);
 
   /// Body of bottom sheet container.
@@ -41,6 +43,12 @@ class DerivBottomSheet extends StatefulWidget {
 
   /// Color of the bottom sheet.
   final Color? color;
+
+  /// Callback when the sheet is disposed.
+  final Function? onDispose;
+
+  /// Key for bottom sheet top handle.
+  final Key? topHandleKey;
 
   @override
   _DerivBottomSheetState createState() => _DerivBottomSheetState();
@@ -78,10 +86,12 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
               ),
             ),
           ),
+          onDispose: widget.onDispose,
         ),
       );
 
   Widget _buildTopHandle() => Container(
+        key: widget.topHandleKey,
         padding: const EdgeInsets.symmetric(vertical: ThemeProvider.margin08),
         width: double.infinity,
         child: Center(

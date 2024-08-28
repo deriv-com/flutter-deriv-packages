@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => '這將刪除所有活躍指標。';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return '刪除 $indicator 指標';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override

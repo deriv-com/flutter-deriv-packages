@@ -15,6 +15,7 @@ class CustomDraggableSheet extends StatefulWidget {
     Key? key,
     this.animationDuration = const Duration(milliseconds: 100),
     this.introAnimationDuration = const Duration(milliseconds: 300),
+    this.onDispose,
   }) : super(key: key);
 
   /// The sheet that was popped-up inside a [BottomSheet] throw calling
@@ -26,6 +27,9 @@ class CustomDraggableSheet extends StatefulWidget {
 
   /// The duration of the starting animation.
   final Duration introAnimationDuration;
+
+  /// Callback when the sheet is disposed.
+  final Function? onDispose;
 
   @override
   _CustomDraggableSheetState createState() => _CustomDraggableSheetState();
@@ -85,6 +89,9 @@ class _CustomDraggableSheetState extends State<CustomDraggableSheet>
 
   @override
   void dispose() {
+    if (widget.onDispose != null) {
+      widget.onDispose!();
+    }
     _animationController.dispose();
     super.dispose();
   }

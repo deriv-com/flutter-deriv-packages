@@ -1,3 +1,39 @@
+## 0.0.13+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.13+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.13
+
+ - **FEAT**(deriv_mobile_chart_wrapper): add drawing tools repo to chart wrapper ([#784](https://github.com/regentmarkets/flutter-deriv-packages/issues/784)). ([8df713c9](https://github.com/regentmarkets/flutter-deriv-packages/commit/8df713c958299820b94190f4f1a665efcfa8401b))
+
+## 0.0.12+5
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+4
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.12
+
+ - **FEAT**(deriv_mobile_chart_wrapper): bolinger and macd settings page ui ([#727](https://github.com/regentmarkets/flutter-deriv-packages/issues/727)). ([4be589cf](https://github.com/regentmarkets/flutter-deriv-packages/commit/4be589cf84c3593cf29438ca6c6e5613f4eafa49))
+
 ## 0.0.11
 
  - **FEAT**(deriv_mobile_chart_wrapper): Implement MA setting page. ([#728](https://github.com/regentmarkets/flutter-deriv-packages/issues/728)). ([fa66abe8](https://github.com/regentmarkets/flutter-deriv-packages/commit/fa66abe81af1d016359b7d30b0fa870e8ebda61b))

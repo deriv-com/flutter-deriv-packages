@@ -1,6 +1,6 @@
 name: deriv_passkeys
 description: Deriv Passkeys Flutter Plugin
-version: 0.0.3+15
+version: 0.0.3+27
 publish_to: "none"
 
 environment:
@@ -14,25 +14,25 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/analytics
-      ref: analytics-v2.2.0
+      ref: analytics-v2.2.2
 
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v2.5.0
+      ref: deriv_theme-v2.6.0
 
   deriv_localizations:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: deriv_localizations-v1.5.5
+      ref: deriv_localizations-v1.5.6
 
   deriv_ui:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.12
+      ref: deriv_ui-v0.0.15
 
   deriv_http_client:
     git:
