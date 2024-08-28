@@ -67,6 +67,16 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
                   title: widget.title,
                 ),
                 Flexible(child: widget.child),
+                if (widget.hasActionButton)
+                  ColoredBox(
+                    color: context.theme.colors.primary,
+                    child: Divider(
+                      indent: 0,
+                      height: 0,
+                      color: context.theme.colors.active,
+                      thickness: 1,
+                    ),
+                  ),
                 if (widget.hasActionButton) _buildActionButton(context)
               ],
             ),
@@ -120,19 +130,22 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
         ),
       );
 
-  Widget _buildActionButton(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: ThemeProvider.margin16,
-          horizontal: ThemeProvider.margin20,
-        ),
-        child: PrimaryButton(
-          onPressed: widget.onActionButtonPressed,
-          child: Center(
-            child: Text(
-              widget.actionButtonLabel!,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.body2,
-                color: context.theme.colors.prominent,
+  Widget _buildActionButton(BuildContext context) => ColoredBox(
+        color: context.theme.colors.primary,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: ThemeProvider.margin16,
+            horizontal: ThemeProvider.margin20,
+          ),
+          child: PrimaryButton(
+            onPressed: widget.onActionButtonPressed,
+            child: Center(
+              child: Text(
+                widget.actionButtonLabel!,
+                style: context.theme.textStyle(
+                  textStyle: TextStyles.body2,
+                  color: context.theme.colors.prominent,
+                ),
               ),
             ),
           ),
