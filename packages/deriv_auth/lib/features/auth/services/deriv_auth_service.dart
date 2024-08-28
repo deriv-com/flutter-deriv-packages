@@ -110,6 +110,12 @@ class DerivAuthService extends BaseAuthService {
 
       _checkAuthorizeValidity(responseAuthorizeEntity);
 
+      /// If the token is 'MULTI' then the last token in the list will be used
+      /// as the token for the account as this is the most recently added token.
+      /// Else we can used the provided token.
+      final String _token =
+          token.compareTo('MULTI') == 0 ? tokenList?.last ?? '' : token;
+
       final AuthorizeEntity _enhancedAuthorizeEntity =
           responseAuthorizeEntity!.copyWith(
         signupProvider: signupProvider,
@@ -124,7 +130,7 @@ class DerivAuthService extends BaseAuthService {
                         )
                         .firstOrNull
                         ?.token ??
-                    token,
+                    _token,
               ),
             )
             .toList(),
