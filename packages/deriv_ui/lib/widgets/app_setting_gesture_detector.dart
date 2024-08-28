@@ -18,7 +18,7 @@ class AppSettingGestureDetector extends StatefulWidget {
 
   /// Child widget for [AppSettingGestureDetector].
   final Widget child;
-  
+
   /// The navigation Function after the clicks
   final Function onTapNavigation;
 
