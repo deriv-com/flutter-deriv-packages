@@ -14,7 +14,6 @@ class DerivBottomSheet extends StatefulWidget {
     this.hasActionButton = false,
     this.actionButtonLabel,
     this.onActionButtonPressed,
-    this.height,
     this.color,
   }) : super(key: key);
 
@@ -36,9 +35,6 @@ class DerivBottomSheet extends StatefulWidget {
   /// Callback when the action button is pressed.
   final VoidCallback? onActionButtonPressed;
 
-  /// Height of the bottom sheet.
-  final double? height;
-
   /// Color of the bottom sheet.
   final Color? color;
 
@@ -53,29 +49,26 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
   }
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-        height: widget.height?.toDouble() ??
-            MediaQuery.of(context).size.height * 0.5,
-        child: CustomDraggableSheet(
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24),
-              topRight: Radius.circular(24),
-            ),
-            child: Material(
-              elevation: 8,
-              color: widget.color ?? context.theme.colors.secondary,
-              child: Column(
-                children: <Widget>[
-                  _buildTopHandle(),
-                  _buildHeader(
-                    context: context,
-                    title: widget.title,
-                  ),
-                  Expanded(child: widget.child),
-                  if (widget.hasActionButton) _buildActionButton(context)
-                ],
-              ),
+  Widget build(BuildContext context) => CustomDraggableSheet(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
+          ),
+          child: Material(
+            elevation: 8,
+            color: widget.color ?? context.theme.colors.secondary,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                _buildTopHandle(),
+                _buildHeader(
+                  context: context,
+                  title: widget.title,
+                ),
+                Flexible(child: widget.child),
+                if (widget.hasActionButton) _buildActionButton(context)
+              ],
             ),
           ),
         ),
