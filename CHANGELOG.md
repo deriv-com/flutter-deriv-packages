@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-08-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_live_chat` - `v0.0.2`](#deriv_live_chat---v002)
+
+---
+
+#### `deriv_live_chat` - `v0.0.2`
+
+ - **FEAT**(deriv_live_chat): Add reloadChatView method ([#791](https://github.com/regentmarkets/flutter-deriv-packages/issues/791)). ([f180cc56](https://github.com/regentmarkets/flutter-deriv-packages/commit/f180cc5602801c1a3e81a247053c1b8c9121a532))
+
+
 ## 2024-08-27
 
 ### Changes
