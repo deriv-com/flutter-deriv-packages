@@ -63,7 +63,7 @@ class DerivSignupLayout extends StatefulWidget {
   final bool isSocialAuthEnabled;
 
   /// Social auth state handler.
-  final Function(BuildContext, SocialAuthState) socialAuthStateHandler;
+  final Function(SocialAuthState) socialAuthStateHandler;
 
   /// Redirect URL for social auth.
   final String redirectURL;
@@ -88,7 +88,6 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
   bool isReferralEnabled = false;
 
   String get referralCode => referralController.text.trim();
-
   String get email => emailController.text.trim();
 
   @override
@@ -344,8 +343,13 @@ class _DerivSignupLayoutState extends State<DerivSignupLayout> {
       _emailValidator(emailController.text) == null &&
       _referralValidator(referralController.text) == null;
 
-  String? _emailValidator(String? input) => emailValidator(
-      email, context.derivAuthLocalization.informInvalidEmailFormat);
+  String? _emailValidator(String? input) {
+    if (email.isEmpty || email.isValidEmail) {
+      return null;
+    }
+
+    return context.derivAuthLocalization.informInvalidEmailFormat;
+  }
 
   String? _referralValidator(String? input) {
     if (referralCode.isNotEmpty || !isReferralEnabled) {

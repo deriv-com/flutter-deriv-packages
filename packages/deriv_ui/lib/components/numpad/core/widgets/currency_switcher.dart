@@ -20,7 +20,6 @@ class CurrencySwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        key: const ValueKey<String>('numpad_currency_switcher_button_key'),
         decoration: BoxDecoration(
           border: Border.all(
             color: context.theme.colors.general,
@@ -40,16 +39,8 @@ class CurrencySwitcher extends StatelessWidget {
               children: <Widget>[
                 currencyDetail.displayAmount.isEmpty
                     ? const SizedBox.shrink()
-                    : _CurrencyText(
-                        message: '${currencyDetail.displayAmount} ',
-                        textKey: const ValueKey<String>(
-                            'numpad_currency_switcher_amount_value_key'),
-                      ),
-                _CurrencyText(
-                  message: currencyDetail.displayCurrency,
-                  textKey: ValueKey<String>(
-                      'numpad_currency_switcher_${currencyDetail.displayCurrency.toLowerCase()}_currency_key'),
-                ),
+                    : _CurrencyText('${currencyDetail.displayAmount} '),
+                _CurrencyText(currencyDetail.displayCurrency),
                 const SizedBox(width: ThemeProvider.margin04),
                 SvgPicture.asset(
                   swapIcon,
@@ -69,15 +60,13 @@ class CurrencySwitcher extends StatelessWidget {
 }
 
 class _CurrencyText extends StatelessWidget {
-  const _CurrencyText({required this.message, this.textKey});
+  const _CurrencyText(this.message);
 
   final String message;
-  final Key? textKey;
 
   @override
   Widget build(BuildContext context) => Text(
         message,
-        key: textKey,
         style: context.theme.textStyle(
           textStyle: TextStyles.body1,
           color: context.theme.colors.general,

@@ -29,7 +29,7 @@ void main() {
       when(() => mockLanguageService.reconnectToServerWithNewLanguage(any()))
           .thenAnswer((_) async {});
 
-      languageCubit = LanguageCubit(languageService: mockLanguageService, onLanguageChanged: (_) {});
+      languageCubit = LanguageCubit(languageService: mockLanguageService);
     });
 
     blocTest<LanguageCubit, LanguageState>(

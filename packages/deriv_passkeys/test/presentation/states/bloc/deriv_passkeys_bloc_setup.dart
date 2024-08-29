@@ -1,5 +1,4 @@
 import 'package:deriv_passkeys/deriv_passkeys.dart';
-import 'package:deriv_passkeys/src/domain/entities/account_entity.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockDerivPasskeysService extends Mock implements DerivPasskeysService {}
@@ -33,9 +32,7 @@ void setupDerivPasskeysBloc() {
 void setupSuccessDerivPasskeysVerifyCredentialEvent() {
   const DerivPasskeysVerifyCredentialsResponseEntity mockResponseEntity =
       DerivPasskeysVerifyCredentialsResponseEntity(
-    accounts: <AccountEntity>[
-      AccountEntity(loginId: 'VRTC1234', token: 'token'),
-    ],
+    token: 'token',
     refreshToken: 'refresh_token',
   );
 

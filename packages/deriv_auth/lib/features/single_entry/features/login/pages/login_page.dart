@@ -24,7 +24,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) => DerivLoginLayout(
-        onLoginTapped: AuthData().data.loginPageModel.onLoginTapped,
         welcomeLabel: AuthData().data.loginPageModel.welcomeLabel,
         onLoggedIn: AuthData().data.loginPageModel.onLoggedIn,
         authErrorStateHandler:
@@ -48,7 +47,5 @@ class _LoginPageState extends State<LoginPage> {
             AuthData().data.loginPageModel.socialAuthStateHandler,
         redirectURL: AuthData().data.loginPageModel.redirectURL,
         onWebViewError: AuthData().data.loginPageModel.onWebViewError,
-        twoFactorAuthNavigation:
-            AuthData().data.loginPageModel.twoFactorAuthNavigation,
       );
 }

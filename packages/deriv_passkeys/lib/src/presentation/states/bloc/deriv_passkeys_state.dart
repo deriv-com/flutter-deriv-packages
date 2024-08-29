@@ -34,18 +34,18 @@ class DerivPasskeysCreatedSuccessfullyState extends DerivPasskeysState {}
 class DerivPasskeysCredentialVerifiedState extends DerivPasskeysState {
   /// Creates a [DerivPasskeysCredentialVerifiedState].
   const DerivPasskeysCredentialVerifiedState({
-    required this.accounts,
+    required this.token,
     required this.refreshToken,
   });
 
-  /// List of accounts from the response.
-  final List<AccountEntity> accounts;
+  /// App token from the response.
+  final String token;
 
   /// Refresh token from the response.
   final String refreshToken;
 
   @override
-  List<Object?> get props => <Object?>[accounts, refreshToken];
+  List<Object?> get props => <Object?>[token, refreshToken];
 }
 
 /// [DerivPasskeysNotSupportedState] represents the not supported state within the DerivPasskeys flow.

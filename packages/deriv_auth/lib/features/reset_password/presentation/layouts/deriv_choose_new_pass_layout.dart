@@ -188,11 +188,13 @@ class _DerivChooseNewPassLayoutState extends State<DerivChooseNewPassLayout> {
     }
   }
 
-  String _getPasswordValue() => _passController.text.trim();
+  String? _passwordValidator(String? input) {
+    if (input?.isValidSignupPassword ?? false) {
+      return null;
+    }
 
-  String? _passwordValidator(String? input) => passwordValidator(
-      _getPasswordValue(),
-      context.derivAuthLocalization.informInvalidPasswordFormat);
+    return context.derivAuthLocalization.informInvalidPasswordFormat;
+  }
 
   bool isFormValid() => _passwordValidator(_passController.text) == null;
 

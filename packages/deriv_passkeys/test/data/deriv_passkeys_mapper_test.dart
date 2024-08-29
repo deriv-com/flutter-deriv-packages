@@ -104,7 +104,6 @@ void main() {
         response: <String, dynamic>{
           'tokens': <dynamic>[
             <String, dynamic>{
-              'loginid': '',
               'token': '',
             }
           ],

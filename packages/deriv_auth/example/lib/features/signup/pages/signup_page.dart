@@ -13,7 +13,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) => DerivSignupLayout(
-        socialAuthStateHandler: (context, _) => {},
+        socialAuthStateHandler: (_) => {},
         redirectURL: 'deriv://example',
         onWebViewError: (String error) {},
         authErrorStateHandler: AuthErrorStateHandler(context: context),

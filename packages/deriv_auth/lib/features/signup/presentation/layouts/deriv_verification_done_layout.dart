@@ -1,8 +1,5 @@
 import 'package:deriv_auth/core/extensions/context_extension.dart';
 import 'package:deriv_auth/core/helpers/assets.dart';
-import 'package:deriv_auth/features/signup/models/deriv_residence_model.dart';
-import 'package:deriv_auth/features/signup/presentation/layouts/deriv_country_selection_layout.dart';
-import 'package:deriv_auth/features/single_entry/core/auth_data.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +12,6 @@ class DerivVerificationDoneLayout extends StatelessWidget {
     required this.verificationCode,
     required this.onContinuePressed,
     this.affiliateToken,
-    this.residences,
     Key? key,
   }) : super(key: key);
 
@@ -27,9 +23,6 @@ class DerivVerificationDoneLayout extends StatelessWidget {
 
   /// Callback to be called when continue button is tapped.
   final VoidCallback onContinuePressed;
-
-  /// List of residences to be shown.
-  final Future<List<DerivResidenceModel>>? residences;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -84,28 +77,7 @@ class DerivVerificationDoneLayout extends StatelessWidget {
       );
 
   Widget _buildContinueButton(BuildContext context) => PrimaryButton(
-        onPressed: AuthData().data.signupPageModel.handleFlowFromPackage
-            ? () async {
-                final List<DerivResidenceModel> residencesList =
-                    await residences!;
-
-                // Navigate to the new page once the residences are loaded
-                await Navigator.pushReplacement<BuildContext,
-                    Route<DerivCountrySelectionLayout>>(
-                  context,
-                  MaterialPageRoute<BuildContext>(
-                    builder: (BuildContext context) =>
-                        DerivCountrySelectionLayout(
-                      affiliateToken: affiliateToken,
-                      verificationCode: verificationCode,
-                      onNextPressed: () {},
-                      residences: Future<List<DerivResidenceModel>>.value(
-                          residencesList),
-                    ),
-                  ),
-                );
-              }
-            : onContinuePressed,
+        onPressed: onContinuePressed,
         child: Center(
           child: Text(
             context.derivAuthLocalization.actionContinue,

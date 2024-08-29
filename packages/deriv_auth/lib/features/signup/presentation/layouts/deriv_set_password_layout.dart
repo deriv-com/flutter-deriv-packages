@@ -1,7 +1,6 @@
 import 'package:deriv_auth/core/helpers/assets.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_auth/features/signup/presentation/widgets/password_policy_checker_widget.dart';
-import 'package:deriv_auth/features/single_entry/core/auth_data.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,6 @@ class DerivSetPasswordLayout extends StatefulWidget {
     this.authErrorStateHandler,
     this.utmModel,
     this.onAuthError,
-    this.affiliateToken,
     Key? key,
   }) : super(key: key);
 
@@ -43,9 +41,6 @@ class DerivSetPasswordLayout extends StatefulWidget {
 
   /// Callback to be called when previous button is tapped.
   final VoidCallback onPreviousPressed;
-
-  /// Affiliate token.
-  final String? affiliateToken;
 
   @override
   State<DerivSetPasswordLayout> createState() => _DerivSetPasswordLayoutState();
@@ -129,37 +124,16 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
           children: <Widget>[
             Expanded(child: _buildPreviousButton()),
             const SizedBox(width: ThemeProvider.margin08),
-            BlocConsumer<DerivAuthCubit, DerivAuthState>(
-              listener: _onAuthState,
-              builder: (BuildContext context, DerivAuthState state) => Expanded(
-                child: BlocConsumer<DerivSignupCubit, DerivSignupState>(
-                  listener:
-                      AuthData().data.signupPageModel.handleFlowFromPackage
-                          ? (BuildContext context, DerivSignupState state) =>
-                              _onSignupState(state)
-                          : widget.onDerivSignupState,
-                  builder: (BuildContext context, DerivSignupState state) =>
-                      _buildStartTradingButton(state),
-                ),
+            Expanded(
+              child: BlocConsumer<DerivSignupCubit, DerivSignupState>(
+                listener: widget.onDerivSignupState,
+                builder: (BuildContext context, DerivSignupState state) =>
+                    _buildStartTradingButton(state),
               ),
             ),
           ],
         ),
       );
-
-  void _onAuthState(BuildContext context, DerivAuthState state) {
-    if (state is DerivAuthLoggedInState) {
-      AuthData().data.loginPageModel.onLoggedIn.call(context, state);
-    }
-  }
-
-  Future<void> _onSignupState(DerivSignupState state) async {
-    if (state is DerivSignupDoneState) {
-      await context.read<DerivAuthCubit>().tokenLogin(
-            state.account?.token ?? 'invalid_token',
-          );
-    }
-  }
 
   Widget _buildPasswordInput() => BaseTextField(
         focusNode: _passwordFocusNode,
@@ -203,23 +177,7 @@ class _DerivSetPasswordLayoutState extends State<DerivSetPasswordLayout> {
       );
 
   Widget _buildPreviousButton() => SecondaryButton(
-        onPressed: AuthData().data.signupPageModel.handleFlowFromPackage
-            ? () {
-                Navigator.pushReplacement<BuildContext,
-                    Route<DerivCountrySelectionLayout>>(
-                  context,
-                  MaterialPageRoute<BuildContext>(
-                    builder: (BuildContext context) =>
-                        DerivCountrySelectionLayout(
-                      affiliateToken: widget.affiliateToken,
-                      onNextPressed: () {},
-                      verificationCode: widget.verificationCode!,
-                      residences: AuthData().data.signupPageModel.residences,
-                    ),
-                  ),
-                );
-              }
-            : widget.onPreviousPressed,
+        onPressed: widget.onPreviousPressed,
         child: Center(
           child: Text(
             context.derivAuthLocalization.actionPrevious,
