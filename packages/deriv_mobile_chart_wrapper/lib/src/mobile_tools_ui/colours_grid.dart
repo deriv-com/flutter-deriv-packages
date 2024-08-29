@@ -30,6 +30,7 @@ class ColoursGrid extends StatelessWidget {
           crossAxisSpacing: 4,
           mainAxisSpacing: 10,
         ),
+        padding: const EdgeInsets.all(0),
         itemCount: colors.length,
         itemBuilder: (context, index) {
           return GestureDetector(
