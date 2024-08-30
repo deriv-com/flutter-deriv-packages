@@ -25,11 +25,13 @@ class _IndicatorMenuButtonState extends State<IndicatorMenuButton> {
   @override
   void initState() {
     super.initState();
-    _count = ValueNotifier<int?>(
-        widget.toolsController.configs?.indicatorConfigs.length);
-    widget.toolsController.addListener(() {
-      _count.value = widget.toolsController.configs?.indicatorConfigs.length;
-    });
+
+    /// temp remove until indicator wireup done
+    // _count = ValueNotifier<int?>(
+    //     widget.toolsController.configs?.indicatorConfigs.length);
+    // widget.toolsController.addListener(() {
+    //   _count.value = widget.toolsController.configs?.indicatorConfigs.length;
+    // });
   }
 
   @override
