@@ -90,13 +90,14 @@ void main() {
             BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
           ],
           child: DerivLoginLayout(
-            socialAuthStateHandler: (SocialAuthState state) {},
+            socialAuthStateHandler:
+                (BuildContext context, SocialAuthState state) {},
             redirectURL: 'deriv://example',
             onWebViewError: (String error) {},
             welcomeLabel: welcomeLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
-            onLoggedIn: (_) {},
+            onLoggedIn: (context, _) {},
             onSocialAuthButtonPressed: (SocialAuthDto p0) {},
             onLoginError: (_) {},
           ),
@@ -113,6 +114,7 @@ void main() {
         (PatrolTester $) async {
       final DerivAuthLoggedOutState mockAuthState = DerivAuthLoggedOutState();
       const String invalidEmail = 'invalid-email';
+      const String password = '123456';
 
       when(() => authCubit.state).thenAnswer((_) => mockAuthState);
 
@@ -127,13 +129,14 @@ void main() {
             BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
           ],
           child: DerivLoginLayout(
-            socialAuthStateHandler: (SocialAuthState state) {},
+            socialAuthStateHandler:
+                (BuildContext context, SocialAuthState state) {},
             redirectURL: 'deriv://example',
             onWebViewError: (String error) {},
             welcomeLabel: welcomeLabel,
             onResetPassTapped: () {},
             onSignupTapped: () {},
-            onLoggedIn: (_) {},
+            onLoggedIn: (context, _) {},
             onSocialAuthButtonPressed: (_) {},
             onLoginError: (_) {},
           ),
@@ -143,7 +146,16 @@ void main() {
       final PatrolFinder emailField = $(BaseTextField).first;
       // final emailField = $(BaseTextField).$('Email'); --> this doesn't work
 
+      final PatrolFinder passwordField = $(BaseTextField).last;
+
       await $.enterText(emailField, invalidEmail);
+
+      await $.pumpAndSettle();
+
+      await $.enterText(passwordField, password);
+
+      // Allow time for validation to trigger
+      await $.pumpAndSettle(duration: const Duration(seconds: 1));
 
       expect($(Text).$('Enter a valid email address'), findsOneWidget);
     });
@@ -166,13 +178,14 @@ void main() {
               BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
             ],
             child: DerivLoginLayout(
-              socialAuthStateHandler: (SocialAuthState state) {},
+              socialAuthStateHandler:
+                  (BuildContext context, SocialAuthState state) {},
               redirectURL: 'deriv://example',
               onWebViewError: (String error) {},
               welcomeLabel: welcomeLabel,
               onResetPassTapped: () {},
               onSignupTapped: () {},
-              onLoggedIn: (_) {},
+              onLoggedIn: (context, _) {},
               onSocialAuthButtonPressed: (_) {},
               onLoginError: (_) {},
             ),
@@ -199,7 +212,8 @@ void main() {
           BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -207,7 +221,7 @@ void main() {
           onSignupTapped: () {
             onSignupTappedCalled = true;
           },
-          onLoggedIn: (_) {},
+          onLoggedIn: (context, _) {},
           onSocialAuthButtonPressed: (_) {},
           onLoginError: (_) {},
         ),
@@ -245,13 +259,14 @@ void main() {
           BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoggedIn: (_) {
+          onLoggedIn: (context, _) {
             onLoggedInCalled = true;
           },
           onSocialAuthButtonPressed: (_) {},
@@ -283,7 +298,8 @@ void main() {
           BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -292,7 +308,7 @@ void main() {
           onLoginError: (_) {
             onLoginErrorCalled = true;
           },
-          onLoggedIn: (_) {},
+          onLoggedIn: (context, _) {},
           onSocialAuthButtonPressed: (_) {},
         ),
       ));
@@ -320,14 +336,15 @@ void main() {
           BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
           onLoginError: (_) {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (context, _) {},
           onSocialAuthButtonPressed: (_) {},
         ),
       ));
@@ -353,7 +370,8 @@ void main() {
           BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
@@ -361,7 +379,7 @@ void main() {
             onResetPassTappedCalled = true;
           },
           onSignupTapped: () {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (context, _) {},
           onSocialAuthButtonPressed: (_) {},
           onLoginError: (_) {},
         ),
@@ -401,13 +419,14 @@ void main() {
           BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {},
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {},
           redirectURL: 'deriv://example',
           onWebViewError: (String error) {},
           welcomeLabel: welcomeLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (context, _) {},
           onSocialAuthButtonPressed: (_) {
             onSocialAuthButtonPressedCalled = true;
           },
@@ -445,7 +464,8 @@ void main() {
           BlocProvider<DerivPasskeysBloc>.value(value: derivPasskeysBloc),
         ],
         child: DerivLoginLayout(
-          socialAuthStateHandler: (SocialAuthState state) {
+          socialAuthStateHandler:
+              (BuildContext context, SocialAuthState state) {
             onSocialAuthHandlerCalled = true;
           },
           redirectURL: 'deriv://example',
@@ -453,7 +473,7 @@ void main() {
           welcomeLabel: welcomeLabel,
           onResetPassTapped: () {},
           onSignupTapped: () {},
-          onLoggedIn: (_) {},
+          onLoggedIn: (context, _) {},
           onSocialAuthButtonPressed: (_) {},
           onLoginError: (_) {},
         ),

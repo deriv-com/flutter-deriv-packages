@@ -1,6 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
@@ -162,9 +161,7 @@ class MobileChartWrapper extends StatefulWidget {
 /// The state of the [MobileChartWrapper].
 class MobileChartWrapperState extends State<MobileChartWrapper> {
   AddOnsRepository<IndicatorConfig>? _indicatorsRepo;
-
-  // TODO(Ramin): Add AddOnsRepository<DrawingToolsConfig>? and DrawingTools
-  //  for drawing tools.
+  AddOnsRepository<DrawingToolConfig>? _drawingToolsRepo;
 
   @override
   void initState() {
@@ -188,10 +185,11 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         _showIndicatorsSheet(_indicatorsRepo!);
       }
     };
-    _indicatorsRepo?.addListener(() {
-      _updateIndicatorsConfig();
-    });
-    _updateIndicatorsConfig();
+    widget.toolsController?.onShowDrawingToolsMenu = () {
+      if (_drawingToolsRepo != null) {
+        _showDrawingToolsSheet(_drawingToolsRepo!);
+      }
+    };
   }
 
   void _initRepos() async {
@@ -204,8 +202,16 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
       );
     }
 
-    await loadSavedIndicatorsAndDrawingTools();
-    _setupController();
+    if (widget.toolsController?.drawingToolsEnabled ?? false) {
+      _drawingToolsRepo = AddOnsRepository<DrawingToolConfig>(
+        createAddOn: (Map<String, dynamic> map) =>
+            DrawingToolConfig.fromJson(map),
+        onEditCallback: (_) => _showDrawingToolsSheet(_drawingToolsRepo!),
+        sharedPrefKey: widget.toolsStoreKey,
+      );
+    }
+
+    loadSavedIndicatorsAndDrawingTools();
   }
 
   Future<void> loadSavedIndicatorsAndDrawingTools() async {
@@ -213,7 +219,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
     final List<AddOnsRepository<AddOnConfig>> stateRepos =
         <AddOnsRepository<AddOnConfig>>[
       if (_indicatorsRepo != null) _indicatorsRepo!,
-      // TODO(Ramin): add drawing tools repo here.
+      if (_drawingToolsRepo != null) _drawingToolsRepo!,
     ];
 
     stateRepos
@@ -260,6 +266,11 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
     );
   }
 
+  void _showDrawingToolsSheet(
+      AddOnsRepository<DrawingToolConfig> drawingToolsRepo) {
+    ///Todo(osama): Implement the drawing tools sheet.
+  }
+
   @override
   Widget build(BuildContext context) =>
       // TODO(Ramin): Check if we can consider using Chart widget directly.
@@ -270,11 +281,12 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
                   IndicatorConfig.fromJson(map),
               sharedPrefKey: widget.toolsStoreKey,
             ),
-        drawingToolsRepo: AddOnsRepository<DrawingToolConfig>(
-          createAddOn: (Map<String, dynamic> map) =>
-              DrawingToolConfig.fromJson(map),
-          sharedPrefKey: widget.toolsStoreKey,
-        ),
+        drawingToolsRepo: _drawingToolsRepo ??
+            AddOnsRepository<DrawingToolConfig>(
+              createAddOn: (Map<String, dynamic> map) =>
+                  DrawingToolConfig.fromJson(map),
+              sharedPrefKey: widget.toolsStoreKey,
+            ),
         controller: widget.controller,
         mainSeries: widget.mainSeries,
         markerSeries: widget.markerSeries,
@@ -288,9 +300,4 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         annotations: widget.annotations,
         activeSymbol: widget.toolsStoreKey,
       );
-
-  void _updateIndicatorsConfig() {
-    widget.toolsController?.updateConfigs(
-        ConfigItemModel(indicatorConfigs: _indicatorsRepo?.items ?? []));
-  }
 }

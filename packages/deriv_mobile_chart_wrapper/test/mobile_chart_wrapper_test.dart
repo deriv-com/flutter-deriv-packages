@@ -8,6 +8,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MockToolsController extends Mock implements ToolsController {
   @override
   bool get indicatorsEnabled => true;
+
+  @override
+  bool get drawingToolsEnabled => true;
 }
 
 class MockAddOnsRepository<T extends AddOnConfig> extends Mock
