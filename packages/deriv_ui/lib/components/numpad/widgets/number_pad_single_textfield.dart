@@ -32,10 +32,11 @@ class _NumberPadSingleTextField extends StatelessWidget {
     final _NumberPadProvider? numPadProvider = _NumberPadProvider.of(context);
     final ExchangeController? exchangeProvider = ExchangeNotifier.of(context);
 
+    final String labelText = exchangeProvider?.primaryCurrency.currencyType ??
+        numPadProvider?.currency ??
+        '';
     final Size labelSize = getTextSize(
-      exchangeProvider?.primaryCurrency.currencyType ??
-          numPadProvider?.currency ??
-          '',
+      labelText,
       TextStyles.headlineNormal,
       context,
     );
@@ -75,21 +76,25 @@ class _NumberPadSingleTextField extends StatelessWidget {
 
                   return numPadProvider != null
                       ? Padding(
-                          padding: EdgeInsets.only(left: padding),
+                          padding: EdgeInsets.only(
+                            left: padding,
+                            right: margin,
+                          ),
                           child: _NumberPadTextField(
                             controller: numPadProvider.firstInputController,
                             textStyle: TextStyles.display1,
                             focusNode: numPadProvider.firstInputFocusNode,
                             inputValidator: numPadProvider.isFirstInputInRange,
                             textAlign: TextAlign.center,
-                            suffixIcon: Text(
-                              exchangeProvider?.primaryCurrency.currencyType ??
-                                  numPadProvider.currency,
-                              style: context.theme.textStyle(
-                                textStyle: TextStyles.headlineNormal,
-                                color: context.theme.colors.disabled,
-                              ),
-                            ),
+                            suffixIcon: labelText.isNotEmpty
+                                ? Text(
+                                    labelText,
+                                    style: context.theme.textStyle(
+                                      textStyle: TextStyles.headlineNormal,
+                                      color: context.theme.colors.disabled,
+                                    ),
+                                  )
+                                : null,
                           ),
                         )
                       : const SizedBox.shrink();
