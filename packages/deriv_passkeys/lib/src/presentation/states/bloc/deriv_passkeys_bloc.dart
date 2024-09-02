@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:deriv_passkeys/src/data/repositories/passkey_analytics_repository.dart';
+import 'package:deriv_passkeys/src/domain/entities/account_entity.dart';
 import 'package:deriv_passkeys/src/exceptions/platform_exceptions.dart';
 import 'package:deriv_passkeys/src/domain/entities/passkeys_connection_info_entity.dart';
 import 'package:deriv_passkeys/src/domain/entities/deriv_passkey_entity.dart';
@@ -56,7 +57,7 @@ class DerivPasskeysBloc extends Bloc<DerivPasskeysEvent, DerivPasskeysState> {
               derivPasskeysVerifyCredentialsResponseEntity) {
         emit(
           DerivPasskeysCredentialVerifiedState(
-            token: derivPasskeysVerifyCredentialsResponseEntity.token,
+            accounts: derivPasskeysVerifyCredentialsResponseEntity.accounts,
             refreshToken:
                 derivPasskeysVerifyCredentialsResponseEntity.refreshToken,
           ),
