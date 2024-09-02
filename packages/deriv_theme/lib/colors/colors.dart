@@ -105,5 +105,21 @@ class Colors {
 
   Color get badgeTextColor => _fetchColor('badgeTextColor');
 
+  Color get solidGreen => _fetchColor('solidGreen');
+
+  Color get opacityGreen => _fetchColor('opacityGreen');
+
+  Color get solidRed => _fetchColor('solidRed');
+
+  Color get opacityRed => _fetchColor('opacityRed');
+
+  Color get solidBlue => _fetchColor('solidBlue');
+
+  Color get opacityBlue => _fetchColor('opacityBlue');
+
+  Color get solidOrange => _fetchColor('solidOrange');
+
+  Color get opacityOrange => _fetchColor('opacityOrange');
+
   Color _fetchColor(String name) => (isDark ? dark[name] : light[name])!;
 }
