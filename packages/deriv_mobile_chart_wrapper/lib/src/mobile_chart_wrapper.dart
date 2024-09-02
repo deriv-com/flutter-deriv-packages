@@ -1,5 +1,6 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools_bottom_sheet_content.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -264,7 +265,21 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
 
   void _showDrawingToolsSheet(
       AddOnsRepository<DrawingToolConfig> drawingToolsRepo) {
-    ///Todo(osama): Implement the drawing tools sheet.
+    // Show indicators menu as modal bottom sheet so it's dismissible by tapping
+    // outside.
+    showModalBottomSheet(
+      context: context,
+      builder: (_) =>
+      ChangeNotifierProvider<AddOnsRepository<DrawingToolConfig>>.value(
+        value: drawingToolsRepo,
+        child: SafeArea(
+          child: DerivBottomSheet(
+            title: 'Drawing tools',
+            child: const DrawingToolsBottomSheetContent(),
+          ),
+        ),
+      ),
+    );
   }
 
   @override

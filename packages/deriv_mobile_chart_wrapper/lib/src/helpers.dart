@@ -37,6 +37,22 @@ String getIndicatorIconPath(IndicatorConfig config) {
   }
 }
 
+/// Returns the path to the icon of the drawing tool for the given [config].
+String getDrawingToolIconPath(DrawingToolConfig config) {
+  switch (config.runtimeType) {
+    case LineDrawingToolConfig:
+      return lineIcon;
+    case RSIIndicatorConfig:
+      return rsiIcon;
+    case BollingerBandsIndicatorConfig:
+      return bollingerBandsIcon;
+    case MAIndicatorConfig:
+      return movingAverageIcon;
+    default:
+      return '';
+  }
+}
+
 Map<String, String> getSourcesOptions(BuildContext context) => {
       'close': context.mobileChartWrapperLocalizations.labelClose,
       'open': context.mobileChartWrapperLocalizations.labelOpen,
