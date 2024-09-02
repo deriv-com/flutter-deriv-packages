@@ -7,6 +7,7 @@ import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:deriv_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 /// RSI indicator settings page.
 class RSISettingPage extends BaseIndicatorSettingPage<RSIIndicatorConfig> {
@@ -180,6 +181,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
             value: _indicatorConfig.oscillatorLinesConfig.overboughtValue,
             minimum: _minimumValueSelectorInput.toDouble(),
             maximum: _maximumValueSelectorInput.toDouble(),
+            formatter: NumberFormat(),
             showMaximumSubtitle: true,
             showMinimumSubtitle: true,
             minimumSubtitle:
@@ -239,6 +241,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
             title: context.mobileChartWrapperLocalizations.labelOversold,
             backgroundColor: context.theme.colors.active.withOpacity(0.4),
             value: _indicatorConfig.oscillatorLinesConfig.oversoldValue,
+            formatter: NumberFormat(),
             minimum: 1,
             maximum: 100,
             showMaximumSubtitle: true,
