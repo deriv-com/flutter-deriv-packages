@@ -112,7 +112,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig =
-                      _indicatorConfig.copyWith(period: value!.toInt());
+                      _indicatorConfig.copyWith(period: value?.floor());
                 });
                 widget.onConfigUpdated(_indicatorConfig);
               },

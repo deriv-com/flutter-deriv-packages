@@ -209,7 +209,7 @@ class _BollingerBandsSettingsPageState
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    period: value?.toInt(),
+                    period: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
