@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_mobile_chart_wrapper` - `v0.0.14`](#deriv_mobile_chart_wrapper---v0014)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.14`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Created a new icon button widget for drawing tools ([#792](https://github.com/regentmarkets/flutter-deriv-packages/issues/792)). ([fe1a19c1](https://github.com/regentmarkets/flutter-deriv-packages/commit/fe1a19c10ea88323911a5507ad37b25ba71aedaa))
+
+
+## 2024-09-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_app_performance` - `v0.0.1+1`](#deriv_app_performance---v0011)
 
 ---
