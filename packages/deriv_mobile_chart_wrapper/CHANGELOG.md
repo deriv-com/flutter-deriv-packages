@@ -1,3 +1,7 @@
+## 0.0.14
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Created a new icon button widget for drawing tools ([#792](https://github.com/regentmarkets/flutter-deriv-packages/issues/792)). ([fe1a19c1](https://github.com/regentmarkets/flutter-deriv-packages/commit/fe1a19c10ea88323911a5507ad37b25ba71aedaa))
+
 ## 0.0.13+3
 
  - Update a dependency to the latest release.
