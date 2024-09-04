@@ -14,7 +14,9 @@ abstract class BaseAuthRepository {
   Future<void> onLogin(AuthorizeEntity authorizeEntity);
 
   /// Log user out.
-  Future<void> logout();
+  Future<void> logout({
+    String? loginId,
+  });
 
   /// Functionality on user logs out.
   Future<void> onLogout();
