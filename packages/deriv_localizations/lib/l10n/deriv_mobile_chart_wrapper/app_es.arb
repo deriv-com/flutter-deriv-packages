@@ -84,10 +84,10 @@
   "label3Exponential": "3-Exponencial",
   "warnEnterValueBetweenMinMax": "Introduzca un valor entre {min} y {max}",
   "warnRangeMinMax": "Gama {min} - {max}",
-  "labelDrawingTools": "Drawing tools",
+  "labelDrawingTools": "Herramientas de dibujo",
   "labelTools": "Herramientas",
   "labelLine": "Línea",
   "labelRay": "Rayo",
-  "informTapToSetFirstPoint": "Tap to set first point",
+  "informTapToSetFirstPoint": "Pulsa para establecer el primer punto",
   "informTapToSetFinalPoint": "Pulsa para establecer el punto final"
 }
