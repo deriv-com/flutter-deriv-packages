@@ -75,15 +75,18 @@ import 'deriv_mobile_chart_wrapper_localizations_zh.dart';
 /// be consistent with the languages listed in the DerivMobileChartWrapperLocalizations.supportedLocales
 /// property.
 abstract class DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  DerivMobileChartWrapperLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static DerivMobileChartWrapperLocalizations of(BuildContext context) {
-    return Localizations.of<DerivMobileChartWrapperLocalizations>(context, DerivMobileChartWrapperLocalizations)!;
+    return Localizations.of<DerivMobileChartWrapperLocalizations>(
+        context, DerivMobileChartWrapperLocalizations)!;
   }
 
-  static const LocalizationsDelegate<DerivMobileChartWrapperLocalizations> delegate = _DerivMobileChartWrapperLocalizationsDelegate();
+  static const LocalizationsDelegate<DerivMobileChartWrapperLocalizations>
+      delegate = _DerivMobileChartWrapperLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -95,7 +98,8 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -632,51 +636,122 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// In en, this message translates to:
   /// **'Range {min} - {max}'**
   String warnRangeMinMax(Object max, Object min);
+
+  /// No description provided for @labelDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Drawing tools'**
+  String get labelDrawingTools;
+
+  /// No description provided for @labelTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get labelTools;
+
+  /// No description provided for @labelLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Line'**
+  String get labelLine;
+
+  /// No description provided for @labelRay.
+  ///
+  /// In en, this message translates to:
+  /// **'Ray'**
+  String get labelRay;
+
+  /// No description provided for @informTapToSetFirstPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to set first point'**
+  String get informTapToSetFirstPoint;
+
+  /// No description provided for @informTapToSetFinalPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to set final point'**
+  String get informTapToSetFinalPoint;
 }
 
-class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {
+class _DerivMobileChartWrapperLocalizationsDelegate
+    extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {
   const _DerivMobileChartWrapperLocalizationsDelegate();
 
   @override
   Future<DerivMobileChartWrapperLocalizations> load(Locale locale) {
-    return SynchronousFuture<DerivMobileChartWrapperLocalizations>(lookupDerivMobileChartWrapperLocalizations(locale));
+    return SynchronousFuture<DerivMobileChartWrapperLocalizations>(
+        lookupDerivMobileChartWrapperLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'ko', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+        'ar',
+        'bn',
+        'de',
+        'en',
+        'es',
+        'fr',
+        'it',
+        'ko',
+        'pl',
+        'pt',
+        'ru',
+        'si',
+        'sw',
+        'th',
+        'tr',
+        'vi',
+        'zh'
+      ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivMobileChartWrapperLocalizationsDelegate old) => false;
 }
 
-DerivMobileChartWrapperLocalizations lookupDerivMobileChartWrapperLocalizations(Locale locale) {
-
-
+DerivMobileChartWrapperLocalizations lookupDerivMobileChartWrapperLocalizations(
+    Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return DerivMobileChartWrapperLocalizationsAr();
-    case 'bn': return DerivMobileChartWrapperLocalizationsBn();
-    case 'de': return DerivMobileChartWrapperLocalizationsDe();
-    case 'en': return DerivMobileChartWrapperLocalizationsEn();
-    case 'es': return DerivMobileChartWrapperLocalizationsEs();
-    case 'fr': return DerivMobileChartWrapperLocalizationsFr();
-    case 'it': return DerivMobileChartWrapperLocalizationsIt();
-    case 'ko': return DerivMobileChartWrapperLocalizationsKo();
-    case 'pl': return DerivMobileChartWrapperLocalizationsPl();
-    case 'pt': return DerivMobileChartWrapperLocalizationsPt();
-    case 'ru': return DerivMobileChartWrapperLocalizationsRu();
-    case 'si': return DerivMobileChartWrapperLocalizationsSi();
-    case 'sw': return DerivMobileChartWrapperLocalizationsSw();
-    case 'th': return DerivMobileChartWrapperLocalizationsTh();
-    case 'tr': return DerivMobileChartWrapperLocalizationsTr();
-    case 'vi': return DerivMobileChartWrapperLocalizationsVi();
-    case 'zh': return DerivMobileChartWrapperLocalizationsZh();
+    case 'ar':
+      return DerivMobileChartWrapperLocalizationsAr();
+    case 'bn':
+      return DerivMobileChartWrapperLocalizationsBn();
+    case 'de':
+      return DerivMobileChartWrapperLocalizationsDe();
+    case 'en':
+      return DerivMobileChartWrapperLocalizationsEn();
+    case 'es':
+      return DerivMobileChartWrapperLocalizationsEs();
+    case 'fr':
+      return DerivMobileChartWrapperLocalizationsFr();
+    case 'it':
+      return DerivMobileChartWrapperLocalizationsIt();
+    case 'ko':
+      return DerivMobileChartWrapperLocalizationsKo();
+    case 'pl':
+      return DerivMobileChartWrapperLocalizationsPl();
+    case 'pt':
+      return DerivMobileChartWrapperLocalizationsPt();
+    case 'ru':
+      return DerivMobileChartWrapperLocalizationsRu();
+    case 'si':
+      return DerivMobileChartWrapperLocalizationsSi();
+    case 'sw':
+      return DerivMobileChartWrapperLocalizationsSw();
+    case 'th':
+      return DerivMobileChartWrapperLocalizationsTh();
+    case 'tr':
+      return DerivMobileChartWrapperLocalizationsTr();
+    case 'vi':
+      return DerivMobileChartWrapperLocalizationsVi();
+    case 'zh':
+      return DerivMobileChartWrapperLocalizationsZh();
   }
 
   throw FlutterError(
-    'DerivMobileChartWrapperLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'DerivMobileChartWrapperLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }
