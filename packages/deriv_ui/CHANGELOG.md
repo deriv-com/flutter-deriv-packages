@@ -1,3 +1,7 @@
+## 0.0.15+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.15
 
  - **FEAT**(Deriv_UI): [TRHM-618] added keys to deriv UI package ([#748](https://github.com/regentmarkets/flutter-deriv-packages/issues/748)). ([6e6e13b9](https://github.com/regentmarkets/flutter-deriv-packages/commit/6e6e13b9a87b8edaa4c10fcfe7ca2697afc7f601))
