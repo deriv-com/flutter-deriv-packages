@@ -83,5 +83,11 @@
   "label2Exponential": "2-এক্সপোনেন্সিয়াল",
   "label3Exponential": "3-এক্সপোনেন্সিয়াল",
   "warnEnterValueBetweenMinMax": "{min} এবং {max}এর মধ্যে একটি মান লিখুন",
-  "warnRangeMinMax": "রেঞ্জ {min} - {max}"
+  "warnRangeMinMax": "রেঞ্জ {min} - {max}",
+  "labelDrawingTools": "অঙ্কন টুলস",
+  "labelTools": "সরঞ্জাম",
+  "labelLine": "লাইন",
+  "labelRay": "রশ্মি",
+  "informTapToSetFirstPoint": "প্রথম পয়েন্ট সেট করতে আলতো চাপুন",
+  "informTapToSetFinalPoint": "চূড়ান্ত পয়েন্ট সেট করতে ট্যাপ করুন"
 }
