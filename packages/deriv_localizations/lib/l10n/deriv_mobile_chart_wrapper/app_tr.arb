@@ -83,5 +83,11 @@
   "label2Exponential": "2-Eksponansiyel",
   "label3Exponential": "3-Eksponansiyel",
   "warnEnterValueBetweenMinMax": "{min} ile {max}arasında bir değer girin.",
-  "warnRangeMinMax": "Aralık {min} - {max}"
+  "warnRangeMinMax": "Aralık {min} - {max}",
+  "labelDrawingTools": "Çizim araçları",
+  "labelTools": "Araçlar",
+  "labelLine": "Çizgi",
+  "labelRay": "ışın",
+  "informTapToSetFirstPoint": "İlk noktayı ayarlamak için dokunun",
+  "informTapToSetFinalPoint": "Son noktayı ayarlamak için dokunun"
 }
