@@ -83,5 +83,11 @@
   "label2Exponential": "2-Exponential",
   "label3Exponential": "3-Mfanyiko",
   "warnEnterValueBetweenMinMax": "Ingiza thamani kati ya {min} na {max}",
-  "warnRangeMinMax": "Kiwango cha {min} - {max}"
+  "warnRangeMinMax": "Kiwango cha {min} - {max}",
+  "labelDrawingTools": "Zana za kuchora",
+  "labelTools": "Vyombo",
+  "labelLine": "Mstari",
+  "labelRay": "taa",
+  "informTapToSetFirstPoint": "Gonga ili kuweka hatua ya kwanza",
+  "informTapToSetFinalPoint": "Gonga ili kuweka hatua ya mwisho"
 }
