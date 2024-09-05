@@ -83,5 +83,11 @@
   "label2Exponential": "2-cấp số nhân",
   "label3Exponential": "3-cấp số nhân",
   "warnEnterValueBetweenMinMax": "Nhập giá trị giữa {min} và {max}",
-  "warnRangeMinMax": "Phạm vi {min} - {max}"
+  "warnRangeMinMax": "Phạm vi {min} - {max}",
+  "labelDrawingTools": "Công cụ vẽ",
+  "labelTools": "Dụng cụ",
+  "labelLine": "Dòng",
+  "labelRay": "cá đuối",
+  "informTapToSetFirstPoint": "Nhấn để đặt điểm đầu tiên",
+  "informTapToSetFinalPoint": "Nhấn để đặt điểm cuối cùng"
 }
