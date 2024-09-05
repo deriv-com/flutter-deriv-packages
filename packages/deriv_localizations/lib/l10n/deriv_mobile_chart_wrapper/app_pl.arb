@@ -83,5 +83,11 @@
   "label2Exponential": "2-wykładniczy",
   "label3Exponential": "3-wykładniczy",
   "warnEnterValueBetweenMinMax": "Wprowadź wartość między {min} i {max}",
-  "warnRangeMinMax": "Zakres {min} - {max}"
+  "warnRangeMinMax": "Zakres {min} - {max}",
+  "labelDrawingTools": "Narzędzia do rysowania",
+  "labelTools": "Narzędzia",
+  "labelLine": "Linia",
+  "labelRay": "Ray",
+  "informTapToSetFirstPoint": "Stuknij, aby ustawić pierwszy punkt",
+  "informTapToSetFinalPoint": "Stuknij, aby ustawić punkt końcowy"
 }
