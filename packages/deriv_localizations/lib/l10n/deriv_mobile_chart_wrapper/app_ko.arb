@@ -83,5 +83,11 @@
   "label2Exponential": "2-지수",
   "label3Exponential": "3-지수",
   "warnEnterValueBetweenMinMax": "{min} ~ {max}사이의 값을 입력합니다.",
-  "warnRangeMinMax": "범위 {min} - {max}"
+  "warnRangeMinMax": "범위 {min} - {max}",
+  "labelDrawingTools": "드로잉 툴",
+  "labelTools": "도구",
+  "labelLine": "선",
+  "labelRay": "광선",
+  "informTapToSetFirstPoint": "첫 번째 포인트를 설정하려면 누릅니다.",
+  "informTapToSetFinalPoint": "탭하여 최종 지점을 설정합니다."
 }
