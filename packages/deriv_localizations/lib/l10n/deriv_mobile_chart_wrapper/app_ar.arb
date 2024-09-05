@@ -84,10 +84,10 @@
   "label3Exponential": "3-الإكسبونسي",
   "warnEnterValueBetweenMinMax": "أدخل قيمة بين {min} و {max}",
   "warnRangeMinMax": "النطاق {min} - {max}",
-  "labelDrawingTools": "Drawing tools",
+  "labelDrawingTools": "أدوات الرسم",
   "labelTools": "أدوات",
   "labelLine": "خط",
   "labelRay": "شعاع",
-  "informTapToSetFirstPoint": "Tap to set first point",
+  "informTapToSetFirstPoint": "انقر لتعيين النقطة الأولى",
   "informTapToSetFinalPoint": "انقر لتعيين النقطة النهائية"
 }
