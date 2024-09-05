@@ -83,5 +83,11 @@
   "label2Exponential": "2-Esponenziale",
   "label3Exponential": "3-Esponenziale",
   "warnEnterValueBetweenMinMax": "Inserisca un valore compreso tra {min} e {max}",
-  "warnRangeMinMax": "Gamma {min} - {max}"
+  "warnRangeMinMax": "Gamma {min} - {max}",
+  "labelDrawingTools": "Drawing tools",
+  "labelTools": "Utensili",
+  "labelLine": "Linea",
+  "labelRay": "raggio",
+  "informTapToSetFirstPoint": "Tap to set first point",
+  "informTapToSetFinalPoint": "Tocca per impostare il punto finale"
 }
