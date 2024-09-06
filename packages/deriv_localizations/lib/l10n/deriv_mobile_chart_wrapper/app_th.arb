@@ -84,9 +84,9 @@
   "label3Exponential": "3- เลขชี้กำลัง",
   "warnEnterValueBetweenMinMax": "ป้อนค่าระหว่าง {min} และ {max}",
   "warnRangeMinMax": "ช่วง {min} - {max}",
-  "labelDrawingTools": "เครื่องมือวาดภาพ",
+  "labelDrawingTools": "เครื่องมือวาด",
   "labelTools": "เครื่องมือ",
-  "labelLine": "สาย",
+  "labelLine": "เส้น",
   "labelRay": "รังสี",
   "informTapToSetFirstPoint": "แตะเพื่อตั้งค่าจุดแรก",
   "informTapToSetFinalPoint": "แตะเพื่อตั้งค่าจุดสุดท้าย"
