@@ -8,4 +8,3 @@ const String indicatorsMenuIcon = '${iconAssetsFolder}ic_indicators_menu.svg';
 const String emptyStateIndicatorsIcon =
     '${iconAssetsFolder}ic_indicators_empty_state.svg';
 const String drawingToolIcon = '${iconAssetsFolder}ic_drawing_tool.svg';
-
