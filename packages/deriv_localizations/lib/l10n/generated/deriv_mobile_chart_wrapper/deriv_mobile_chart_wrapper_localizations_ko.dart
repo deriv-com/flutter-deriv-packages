@@ -288,4 +288,10 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
 
   @override
   String get informTapToSetFinalPoint => 'Tap to set final point';
+
+  @override
+  String get informNoActiveDrawingTools => 'No active drawing tools.';
+
+  @override
+  String get actionAddDrawingTool => 'Add drawing tool';
 }
