@@ -4,13 +4,9 @@ import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_drawing_tool_list_item.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tool_description_bottom_sheet.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
-import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
-import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
-import 'package:deriv_mobile_chart_wrapper/src/pages/bb_settings_page.dart';
-import 'package:deriv_mobile_chart_wrapper/src/pages/macd_settings_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +14,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../core_widgets/no_glow_scroll_behavior.dart';
-import 'indicator_description_bottom_sheet.dart';
 
 /// Bottom sheet content to show the list of supported drawing tools
 /// for the mobile version.
@@ -32,7 +27,7 @@ class DrawingToolsBottomSheetContent extends StatefulWidget {
 }
 
 class _DrawingToolsBottomSheetContentState
-    extends State<DrawingToolsBottomSheetContent> {
+    extends State<DrawingToolsBottomSheetContent> with SingleTickerProviderStateMixin{
   DrawingToolLabel _selectedTab = DrawingToolLabel.tools;
 
   // /// Returns `true` if the limit of active indicators is reached.
@@ -42,14 +37,23 @@ class _DrawingToolsBottomSheetContentState
 
   late List<DrawingToolItemModel> drawingTools;
 
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _setupTabController();
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     drawingToolsRepo = Provider.of<AddOnsRepository<DrawingToolConfig>>(context);
     drawingTools = [
       DrawingToolItemModel(
-        title: context.mobileChartWrapperLocalizations.labelMACD,
-        icon: macdIcon,
+        title: 'Line',
+        icon: lineIcon,
         config: const LineDrawingToolConfig(),
       ),
     ];
@@ -57,30 +61,32 @@ class _DrawingToolsBottomSheetContentState
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Expanded(
-          child: Ink(
-            color: context.theme.colors.primary,
-            child: Column(
-              children: [
-                const SizedBox(height: ThemeProvider.margin16),
-                _buildTabs(context),
-                const SizedBox(height: ThemeProvider.margin16),
-                // if (isLimitReached && _selectedChip != IndicatorTabLabel.active)
-                //   _buildLimitInfoBanner(),
-                // Expanded(
-                //     child: _selectedChip == IndicatorTabLabel.active
-                //         ? _buildIndicatorsActiveTab()
-                //         : _buildIndicatorsList(
-                //             getFilteredIndicators(indicators))),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
+    print('heeeeeeeeeelllllllllllooooooooooooo drawing tools');
+    return _buildTabs(context);
+    // return Column(
+    //   mainAxisSize: MainAxisSize.min,
+    //   children: <Widget>[
+    //     Expanded(
+    //       child: Ink(
+    //         color: context.theme.colors.primary,
+    //         child: Column(
+    //           children: [
+    //             const SizedBox(height: ThemeProvider.margin16),
+    //             _buildTabs(context),
+    //             const SizedBox(height: ThemeProvider.margin16),
+    //             // if (isLimitReached && _selectedChip != IndicatorTabLabel.active)
+    //             //   _buildLimitInfoBanner(),
+    //             // Expanded(
+    //             //     child: _selectedChip == IndicatorTabLabel.active
+    //             //         ? _buildIndicatorsActiveTab()
+    //             //         : _buildIndicatorsList(
+    //             //             getFilteredIndicators(indicators))),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 
   Widget _buildActiveTabHeader() {
@@ -141,6 +147,7 @@ class _DrawingToolsBottomSheetContentState
               ),
             ),
             TabBar(
+              controller: _tabController,
               indicatorColor: context.theme.colors.danger,
               labelStyle: context.theme.textStyle(
                 textStyle: TextStyles.body2,
@@ -160,8 +167,8 @@ class _DrawingToolsBottomSheetContentState
       ),
       body: TabBarView(
         children: <Widget>[
-          // _buildActiveDrawingToolsTabView(),
-          // _buildAvailableDrawingToolsTabView(),
+          // _buildIndicatorsActiveTab(),
+          _buildDrawingToolsList(drawingTools),
         ],
       ),
     ),
@@ -180,23 +187,10 @@ class _DrawingToolsBottomSheetContentState
 
         return Interaction(
           isEnabled: true,
-          child: IndicatorListItem(
+          child: DrawingToolListItem(
             iconAssetPath: drawingTool.icon,
             title: drawingTool.title,
             count: _getDrawingToolsCount(drawingTool),
-            onInfoIconTapped: () {
-              showModalBottomSheet(
-                context: context,
-                barrierColor: Colors.transparent,
-                builder: (context) => DrawingToolDescriptionBottomSheet(
-                  drawingTool: drawingTool,
-                  onAddDrawingToolPressed: () {
-                    drawingToolsRepo.add(drawingTool.config);
-                    Navigator.of(context).pop();
-                  },
-                ),
-              );
-            },
             onTap: () {
               // drawingToolsRepo.add(
               //   drawingTool.config.copyWith(
@@ -243,7 +237,7 @@ class _DrawingToolsBottomSheetContentState
                 drawingToolsRepo.items[index];
                 return ActiveDrawingToolListItem(
                   iconAssetPath: getDrawingToolIconPath(drawingToolConfig),
-                  title: d,
+                  title: 'dddddd',
                   onTapDelete: () => drawingToolsRepo.removeAt(index),
                 );
               },
@@ -308,5 +302,11 @@ class _DrawingToolsBottomSheetContentState
     return drawingToolsRepo.items
         .where((item) => item.runtimeType == drawingTool.config.runtimeType)
         .length;
+  }
+
+  void _setupTabController() {
+    _tabController = TabController(vsync: this, length: 2)
+      ..addListener(() => setState(() {}));
+
   }
 }
