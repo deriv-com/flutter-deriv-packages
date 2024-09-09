@@ -1,6 +1,6 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools_bottom_sheet_content.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools_selector.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -275,7 +275,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: SafeArea(
           child: DerivBottomSheet(
             title: 'Drawing tools',
-            child: const DrawingToolsBottomSheetContent(),
+            child: const DrawingToolSelector(),
           ),
         ),
       ),

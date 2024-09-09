@@ -260,7 +260,7 @@ class _MobileToolsBottomSheetContentState
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(
-                  emptyStateIndicatorsIcon,
+                  emptyStateDrawingToolsIcon,
                   height: Dimens.iconSize48,
                   package: 'deriv_mobile_chart_wrapper',
                 ),
