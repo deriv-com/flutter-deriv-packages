@@ -98,7 +98,6 @@ class _MobileToolsBottomSheetContentState
 
   @override
   Widget build(BuildContext context) {
-    print('heeeeeeeeeelllllllllllooooooooooooo indicators');
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -332,7 +331,7 @@ class _MobileToolsBottomSheetContentState
             child: ListView(
               children: [
                 SvgPicture.asset(
-                  emptyStateDrawingToolsIcon,
+                  emptyStateIndicatorsIcon,
                   height: Dimens.iconSize48,
                   package: 'deriv_mobile_chart_wrapper',
                 ),

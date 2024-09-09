@@ -3,7 +3,7 @@ import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-/// List item for the active indicator list.
+/// List item for the active drawing tools list.
 class ActiveDrawingToolListItem extends StatelessWidget {
   /// Initializes the active indicator list item.
   const ActiveDrawingToolListItem({

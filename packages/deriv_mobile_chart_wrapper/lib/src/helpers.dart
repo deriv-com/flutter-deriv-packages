@@ -48,12 +48,8 @@ String getDrawingToolIconPath(DrawingToolConfig config) {
   switch (config.runtimeType) {
     case LineDrawingToolConfig:
       return lineIcon;
-    case RSIIndicatorConfig:
+    case RayDrawingToolConfig:
       return rsiIcon;
-    case BollingerBandsIndicatorConfig:
-      return bollingerBandsIcon;
-    case MAIndicatorConfig:
-      return movingAverageIcon;
     default:
       return '';
   }

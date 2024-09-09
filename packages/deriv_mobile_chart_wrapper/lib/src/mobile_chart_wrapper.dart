@@ -276,17 +276,17 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
 
   void _showDrawingToolsSheet(
       AddOnsRepository<DrawingToolConfig> drawingToolsRepo) {
-    // Show indicators menu as modal bottom sheet so it's dismissible by tapping
+    // Show drawing tools menu as modal bottom sheet so it's dismissible by tapping
     // outside.
     showModalBottomSheet(
       context: context,
       builder: (_) =>
       ChangeNotifierProvider<AddOnsRepository<DrawingToolConfig>>.value(
         value: drawingToolsRepo,
-        child: SafeArea(
+        child: const SafeArea(
           child: DerivBottomSheet(
             title: 'Drawing tools',
-            child: const DrawingToolSelector(),
+            child: DrawingToolSelector(),
           ),
         ),
       ),
