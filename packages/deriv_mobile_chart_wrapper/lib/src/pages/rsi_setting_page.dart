@@ -113,7 +113,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig =
-                      _indicatorConfig.copyWith(period: value!.toInt());
+                      _indicatorConfig.copyWith(period: value?.floor());
                 });
                 widget.onConfigUpdated(_indicatorConfig);
               },
@@ -184,6 +184,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
             formatter: NumberFormat(),
             showMaximumSubtitle: true,
             showMinimumSubtitle: true,
+            formatter: NumberFormat(),
             minimumSubtitle:
                 context.mobileChartWrapperLocalizations.labelMinSize,
             maximumSubtitle:
@@ -244,6 +245,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
             formatter: NumberFormat(),
             minimum: 1,
             maximum: 100,
+            formatter: NumberFormat(),
             showMaximumSubtitle: true,
             showMinimumSubtitle: true,
             minimumSubtitle:

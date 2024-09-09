@@ -1,7 +1,7 @@
 name: deriv_mobile_chart_wrapper
 description: A new Flutter package project.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-version: 0.0.13+3
+version: 0.0.15
 homepage:
 
 
@@ -32,7 +32,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.15+1
+      ref: deriv_ui-v0.0.16
 
   provider: ^6.0.5
   flutter_svg: ^2.0.9
@@ -59,6 +59,7 @@ flutter:
     - assets/icons/ic_moving_average.svg
     - assets/icons/ic_indicators_menu.svg
     - assets/icons/ic_indicators_empty_state.svg
+    - assets/icons/ic_drawing_tool.svg
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages
