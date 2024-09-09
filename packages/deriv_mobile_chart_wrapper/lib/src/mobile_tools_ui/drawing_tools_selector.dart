@@ -2,7 +2,9 @@ import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DrawingToolSelector extends StatefulWidget {
@@ -45,32 +47,36 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-
-        TabBar(
-          controller: _tabController,
-          indicatorColor: context.theme.colors.danger,
-          labelStyle: context.theme.textStyle(
-            textStyle: TextStyles.body2,
-            color: context.theme.colors.prominent,
-          ),
-          unselectedLabelStyle: context.theme.textStyle(
-            textStyle: TextStyles.body1,
-            color: context.theme.colors.general,
-          ),
-          tabs: [
-            Tab(text: 'Active (${_activeDrawingTools.length})'),
-            const Tab(text: 'Tools'),
-          ],
-        ),
-        Container(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: context.theme.colors.disabled,
-                width: ThemeProvider.margin02,
+        Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: context.theme.colors.disabled,
+                    width: ThemeProvider.margin02,
+                  ),
+                ),
               ),
             ),
-          ),
+            TabBar(
+              controller: _tabController,
+              indicatorColor: context.theme.colors.danger,
+              labelStyle: context.theme.textStyle(
+                textStyle: TextStyles.body2,
+                color: context.theme.colors.prominent,
+              ),
+              unselectedLabelStyle: context.theme.textStyle(
+                textStyle: TextStyles.body1,
+                color: context.theme.colors.general,
+              ),
+              tabs: [
+                Tab(text: 'Active (${_activeDrawingTools.length})'),
+                const Tab(text: 'Tools'),
+              ],
+            ),
+          ],
         ),
         Expanded(
           child: Ink(
@@ -92,30 +98,56 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     if (_activeDrawingTools.isEmpty) {
       return _buildDrawingToolEmptyState();
     } else {
-      return ListView(
-        children: _activeDrawingTools
-            .map(
-              (option) => ListTile(
-            leading: const Icon(Icons.line_axis),
-            title: Text(option),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.settings),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.delete),
-                ),
-              ],
-            ),
-          ),
-        )
-            .toList(),
-      );
+      return _buildActiveDrawingToolsList();
     }
+  }
+
+  Widget _buildActiveDrawingToolsList() {
+    return Column(
+      children: <Widget>[
+        _buildActiveTabHeader(),
+        Expanded(
+          child: ListView(
+            children: _activeDrawingTools
+                .map(
+                  (option) => Card(
+                    margin: EdgeInsets.zero,
+                    color: context.themeProvider.colors.secondary,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(ThemeProvider.borderRadius08),
+                      ),
+                    ),
+                    child: ListTile(
+                      leading: SvgPicture.asset(
+                        lineIcon,
+                        height: Dimens.iconSize24,
+                        package: 'deriv_mobile_chart_wrapper',
+                      ),
+                      title: Text(option),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            color: context.themeProvider.colors.prominent,
+                            icon: const Icon(Icons.settings_outlined),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            color: context.themeProvider.colors.prominent,
+                            icon: const Icon(Icons.delete_outline),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildDrawingToolListTab(BuildContext context) {
@@ -133,13 +165,20 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
               Text(toolItem),
               if (selectedToolItems.isNotEmpty) ...[
                 const SizedBox(width: 8),
-                Badge.count(count: count),
+                _buildIndicatorBadge(count),
               ],
             ],
           ),
           onTap: () => _onToolSelection(toolItem),
         );
       }).toList(),
+    );
+  }
+
+  Widget _buildIndicatorBadge(int count) {
+    return DerivBadge(
+      count: count,
+      enabled: count > 0,
     );
   }
 
@@ -153,7 +192,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(
-                  emptyStateIndicatorsIcon,
+                  emptyStateDrawingToolsIcon,
                   height: Dimens.iconSize48,
                   package: 'deriv_mobile_chart_wrapper',
                 ),
@@ -174,7 +213,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           padding: const EdgeInsets.all(ThemeProvider.margin16),
           child: PrimaryButton(
             child: Text(
-              context.mobileChartWrapperLocalizations.infoAddIndicator,
+              'Add drawing tool',
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
                 color: context.theme.colors.prominent,
@@ -189,5 +228,60 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
         ),
       ],
     );
+  }
+
+  Widget _buildActiveTabHeader() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: ThemeProvider.margin16,
+        vertical: ThemeProvider.margin16,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Visibility(
+            visible: _activeDrawingTools.isNotEmpty,
+            maintainSize: true,
+            maintainState: true,
+            maintainAnimation: true,
+            child: SecondaryButton(
+              onPressed: _showDeleteAllIndicatorsDialog,
+              child: Center(
+                child: Text(
+                  context.mobileChartWrapperLocalizations.labelDeleteAll,
+                  style: context.themeProvider.textStyle(
+                    textStyle: TextStyles.caption,
+                    color: context.themeProvider.colors.prominent,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showDeleteAllIndicatorsDialog() {
+    showAlertDialog(
+        context: context,
+        title: context.mobileChartWrapperLocalizations.labelDeleteAllIndicators,
+        content: Text(
+          context.mobileChartWrapperLocalizations.infoDeleteAllIndicators,
+          style: TextStyles.subheading,
+        ),
+        positiveActionLabel:
+            context.mobileChartWrapperLocalizations.labelDeleteAll,
+        negativeButtonLabel:
+            context.mobileChartWrapperLocalizations.labelCancel,
+        showLoadingIndicator: false,
+        onPositiveActionPressed: () {
+          _activeDrawingTools.clear();
+          setState(() {});
+          Navigator.pop(context);
+        },
+        onNegativeActionPressed: () {
+          Navigator.pop(context);
+        });
   }
 }
