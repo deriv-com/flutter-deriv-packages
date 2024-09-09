@@ -187,9 +187,10 @@ class ValueSelector extends StatelessWidget {
                           onPressed: _isBiggerThanMaximum(value)
                               ? null
                               : () {
-                            final double increasedValue = _increment(value);
-                            onChange?.call(increasedValue);
-                          },
+                                  final double increasedValue =
+                                      _increment(value);
+                                  onChange?.call(increasedValue);
+                                },
                         ),
                       ],
                     ),
@@ -298,19 +299,9 @@ class ValueSelector extends StatelessWidget {
     return value - 1;
   }
 
-  bool _isLowerThanMinimum(double value) {
-    if (minimum != null && value <= minimum!) {
-      return true;
-    }
+  bool _isLowerThanMinimum(double value) =>
+      minimum != null && value - minimum! < 1;
 
-    return false;
-  }
-
-  bool _isBiggerThanMaximum(double value) {
-    if (maximum != null && value >= maximum!) {
-      return true;
-    }
-
-    return false;
-  }
+  bool _isBiggerThanMaximum(double value) =>
+      maximum != null && maximum! - value < 1;
 }
