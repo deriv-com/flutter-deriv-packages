@@ -55,11 +55,11 @@ class _BollingerBandsSettingsPageState
           onReset: () {
             showResetIndicatorDialog(context, config: _indicatorConfig,
                 onResetPressed: () {
-                  setState(() {
-                    _indicatorConfig = const BollingerBandsIndicatorConfig();
-                  });
-                  widget.onConfigUpdated(_indicatorConfig);
-                });
+              setState(() {
+                _indicatorConfig = const BollingerBandsIndicatorConfig();
+              });
+              widget.onConfigUpdated(_indicatorConfig);
+            });
           },
         ),
       ],
@@ -209,7 +209,7 @@ class _BollingerBandsSettingsPageState
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    period: value?.toInt(),
+                    period: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
@@ -247,8 +247,9 @@ class _BollingerBandsSettingsPageState
               backgroundColor: context.theme.colors.active,
               onChange: (value) {
                 setState(() {
-                  _indicatorConfig =
-                      _indicatorConfig.copyWith(standardDeviation: value);
+                  _indicatorConfig = _indicatorConfig.copyWith(
+                    standardDeviation: value?.floorToDouble(),
+                  );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
               },

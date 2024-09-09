@@ -145,15 +145,18 @@ class _MobileToolsBottomSheetContentState
       ),
       child: Row(
         children: [
-          Text(
-            context.mobileChartWrapperLocalizations.infoUpto3indicatorsAllowed,
-            style: context.themeProvider.textStyle(
-              textStyle: TextStyles.caption,
-              color: context.themeProvider.colors.general,
+          Expanded(
+            child: Text(
+              context.mobileChartWrapperLocalizations.infoUpto3indicatorsAllowed,
+              style: context.themeProvider.textStyle(
+                textStyle: TextStyles.caption,
+                color: context.themeProvider.colors.general,
+              ),
+              textAlign: TextAlign.start,
+              maxLines: 3,
             ),
-            textAlign: TextAlign.start,
           ),
-          const Spacer(),
+          const SizedBox(width: ThemeProvider.margin16),
           Visibility(
             visible: indicatorsRepo.items.isNotEmpty,
             maintainSize: true,

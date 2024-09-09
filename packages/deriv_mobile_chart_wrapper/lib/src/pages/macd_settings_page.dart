@@ -105,7 +105,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    fastMAPeriod: value?.toInt(),
+                    fastMAPeriod: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
@@ -144,7 +144,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    slowMAPeriod: value?.toInt(),
+                    slowMAPeriod: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
@@ -215,7 +215,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    signalPeriod: value?.toInt(),
+                    signalPeriod: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });

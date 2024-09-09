@@ -47,11 +47,11 @@ class _MASettingsPageState extends State<MASettingsPage> {
           onReset: () {
             showResetIndicatorDialog(context, config: _indicatorConfig,
                 onResetPressed: () {
-                  setState(() {
-                    _indicatorConfig = const MAIndicatorConfig();
-                  });
-                  widget.onConfigUpdated(_indicatorConfig);
-                });
+              setState(() {
+                _indicatorConfig = const MAIndicatorConfig();
+              });
+              widget.onConfigUpdated(_indicatorConfig);
+            });
           },
         ),
       ],
@@ -113,7 +113,7 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 onChange: (value) {
                   setState(() {
                     _indicatorConfig =
-                        _indicatorConfig.copyWith(period: (value ?? 0).toInt());
+                        _indicatorConfig.copyWith(period: value?.floor());
                     widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
@@ -151,7 +151,7 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 onChange: (value) {
                   setState(() {
                     _indicatorConfig =
-                        _indicatorConfig.copyWith(offset: (value ?? 0).toInt());
+                        _indicatorConfig.copyWith(offset: value?.floor());
                     widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
