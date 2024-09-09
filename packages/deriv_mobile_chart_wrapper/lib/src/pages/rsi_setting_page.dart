@@ -184,7 +184,6 @@ class _RSISettingPageState extends State<RSISettingPage> {
             formatter: NumberFormat(),
             showMaximumSubtitle: true,
             showMinimumSubtitle: true,
-            formatter: NumberFormat(),
             minimumSubtitle:
                 context.mobileChartWrapperLocalizations.labelMinSize,
             maximumSubtitle:
@@ -245,7 +244,6 @@ class _RSISettingPageState extends State<RSISettingPage> {
             formatter: NumberFormat(),
             minimum: 1,
             maximum: 100,
-            formatter: NumberFormat(),
             showMaximumSubtitle: true,
             showMinimumSubtitle: true,
             minimumSubtitle:
