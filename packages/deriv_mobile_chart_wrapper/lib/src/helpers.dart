@@ -1,6 +1,8 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_ui/utils/popup_dialogs_helper.dart';
 import 'package:flutter/material.dart';
 
 /// Returns abbreviation name of the indicator for the given [config].
@@ -20,6 +22,10 @@ String getIndicatorAbbreviation(IndicatorConfig config, BuildContext context) {
       return '';
   }
 }
+
+String getIndicatorAbbreviationWithCount(
+        IndicatorConfig config, BuildContext context) =>
+    '${getIndicatorAbbreviation(config, context)} ${config.number > 0 ? config.number : ''}';
 
 /// Returns the path to the icon of the indicator for the given [config].
 String getIndicatorIconPath(IndicatorConfig config) {
@@ -95,3 +101,31 @@ Map<MovingAverageType, String> getMAOptions(BuildContext context) => {
       MovingAverageType.tripleExponential:
           context.mobileChartWrapperLocalizations.label3Exponential,
     };
+
+Future<void> showResetIndicatorDialog(
+  BuildContext context, {
+  required IndicatorConfig config,
+  required Function() onResetPressed,
+}) {
+  return showAlertDialog(
+      context: context,
+      title: context.mobileChartWrapperLocalizations.labelResetIndicator(
+        getIndicatorAbbreviationWithCount(config, context),
+      ),
+      content: Text(
+        context.mobileChartWrapperLocalizations.infoResetIndicators(
+          getIndicatorAbbreviationWithCount(config, context),
+        ),
+        style: TextStyles.subheading,
+      ),
+      positiveActionLabel: context.mobileChartWrapperLocalizations.labelReset,
+      negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
+      showLoadingIndicator: false,
+      onPositiveActionPressed: () {
+        onResetPressed.call();
+        Navigator.pop(context);
+      },
+      onNegativeActionPressed: () {
+        Navigator.pop(context);
+      });
+}

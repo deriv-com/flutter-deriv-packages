@@ -1,7 +1,5 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
-import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,11 +7,9 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
   const IndicatorSettingsBottomSheet({
     required this.settings,
     required this.indicator,
-    required this.onApply,
     required this.onTapInfo,
     required this.onTapDelete,
     this.theme,
-    this.onReset,
     super.key,
   });
 
@@ -25,12 +21,6 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
 
   /// The indicator name.
   final String indicator;
-
-  /// The callback when the apply button is pressed.
-  final VoidCallback onApply;
-
-  /// The callback when the reset button is pressed.
-  final VoidCallback? onReset;
 
   /// The callback when the info button is pressed.
   final VoidCallback onTapInfo;
@@ -81,11 +71,8 @@ class _IndicatorSettingsBottomSheetState
                     _buildTopHandle(),
                     _buildHeader(),
                     Expanded(
-                      child: SingleChildScrollView(
-                        child: widget.settings,
-                      ),
+                      child: widget.settings,
                     ),
-                    _buildActionButtons(),
                   ],
                 ),
               ),
@@ -148,45 +135,6 @@ class _IndicatorSettingsBottomSheetState
               color: context.theme.colors.prominent,
               icon: const Icon(Icons.delete_outline),
             ),
-          ],
-        ),
-      );
-
-  Widget _buildActionButtons() => Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: ThemeProvider.margin16,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: SecondaryButton(
-                onPressed: widget.onReset,
-                isEnabled: widget.onReset != null,
-                child: Text(
-                  context.mobileChartWrapperLocalizations.labelReset,
-                  style: context.theme.textStyle(
-                    textStyle: TextStyles.body2,
-                    color: widget.onReset != null
-                        ? context.theme.colors.prominent
-                        : context.theme.colors.active,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: ThemeProvider.margin08,
-            ),
-            Expanded(
-              child: PrimaryButton(
-                  onPressed: widget.onApply,
-                  child: Text(
-                    context.mobileChartWrapperLocalizations.labelApply,
-                    style: context.theme.textStyle(
-                      textStyle: TextStyles.body2,
-                      color: context.theme.colors.prominent,
-                    ),
-                  )),
-            )
           ],
         ),
       );
