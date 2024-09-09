@@ -1,5 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools_selector.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
@@ -191,9 +193,13 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         _showDrawingToolsSheet(_drawingToolsRepo!);
       }
     };
+    _indicatorsRepo?.addListener(() {
+      _updateIndicatorsConfig();
+    });
+    _updateIndicatorsConfig();
   }
 
-  void _initRepos() {
+  void _initRepos() async {
     if (widget.toolsController?.indicatorsEnabled ?? false) {
       _indicatorsRepo = AddOnsRepository<IndicatorConfig>(
         createAddOn: (Map<String, dynamic> map) =>
@@ -212,7 +218,8 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
       );
     }
 
-    loadSavedIndicatorsAndDrawingTools();
+    await loadSavedIndicatorsAndDrawingTools();
+    _setupController();
   }
 
   Future<void> loadSavedIndicatorsAndDrawingTools() async {
@@ -256,7 +263,11 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: SafeArea(
           child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelIndicators,
-            child: const MobileToolsBottomSheetContent(),
+            child: MobileToolsBottomSheetContent(
+              selectedTab: indicatorsRepo.items.isEmpty
+                  ? IndicatorTabLabel.all
+                  : IndicatorTabLabel.active,
+            ),
           ),
         ),
       ),
@@ -311,4 +322,9 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         annotations: widget.annotations,
         activeSymbol: widget.toolsStoreKey,
       );
+
+  void _updateIndicatorsConfig() {
+    widget.toolsController?.updateConfigs(
+        ConfigItemModel(indicatorConfigs: _indicatorsRepo?.items ?? []));
+  }
 }
