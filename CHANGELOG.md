@@ -11,6 +11,44 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0`](#deriv_mobile_chart_wrapper---v010)
+ - [`deriv_ui` - `v0.1.0`](#deriv_ui---v010)
+
+Packages with other changes:
+
+ - [`deriv_language_selector` - `v0.0.3+7`](#deriv_language_selector---v0037)
+ - [`deriv_widgetbook` - `v0.0.2+27`](#deriv_widgetbook---v00227)
+ - [`deriv_passkeys` - `v0.0.4+1`](#deriv_passkeys---v0041)
+ - [`deriv_auth` - `v6.7.45`](#deriv_auth---v6745)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_language_selector` - `v0.0.3+7`
+ - `deriv_widgetbook` - `v0.0.2+27`
+ - `deriv_passkeys` - `v0.0.4+1`
+ - `deriv_auth` - `v6.7.45`
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.0`
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+#### `deriv_ui` - `v0.1.0`
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+
+## 2024-09-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - There are no breaking changes in this release.
 
 Packages with other changes:

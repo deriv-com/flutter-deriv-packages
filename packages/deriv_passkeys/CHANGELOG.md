@@ -1,3 +1,7 @@
+## 0.0.4+1
+
+ - Update a dependency to the latest release.
+
 ## 0.0.4
 
  - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
