@@ -193,10 +193,16 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         _showDrawingToolsSheet(_drawingToolsRepo!);
       }
     };
+
     _indicatorsRepo?.addListener(() {
-      _updateIndicatorsConfig();
+      _updateConfigs();
     });
-    _updateIndicatorsConfig();
+
+    _drawingToolsRepo?.addListener(() {
+      _updateConfigs();
+    });
+
+    _updateConfigs();
   }
 
   void _initRepos() async {
@@ -332,8 +338,10 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         activeSymbol: widget.toolsStoreKey,
       );
 
-  void _updateIndicatorsConfig() {
-    widget.toolsController?.updateConfigs(
-        ConfigItemModel(indicatorConfigs: _indicatorsRepo?.items ?? []));
+  void _updateConfigs() {
+    widget.toolsController?.updateConfigs(ConfigItemModel(
+      indicatorConfigs: _indicatorsRepo?.items ?? [],
+      drawingToolConfigs: _drawingToolsRepo?.items ?? [],
+    ));
   }
 }

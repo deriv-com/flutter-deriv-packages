@@ -22,30 +22,32 @@ class DrawingToolIconButton extends StatefulWidget {
 }
 
 class _DrawingToolIconButtonState extends State<DrawingToolIconButton> {
-  /// No.of active drawing tools.
-  /// This is used to show the count badge on the icon.
-  /// The default value is 0. If the value is 0, the badge will not be shown.
-  int _noOfActiveDrawingTools = 0;
+  final ValueNotifier<int?> _activeDrawingToolsCountNotifier =
+      ValueNotifier<int?>(0);
 
   @override
   void initState() {
     super.initState();
-
-    /// TODO(aliakbar-deriv): Implement the logic to get the no of active
-    /// drawing tools.
-    _noOfActiveDrawingTools = 2;
+    widget.toolsController.addListener(() {
+      _activeDrawingToolsCountNotifier.value =
+          widget.toolsController.activeDrawingToolsCount;
+    });
   }
 
   @override
-  Widget build(BuildContext context) => DerivBadge(
-        count: _noOfActiveDrawingTools,
-        child: ChartSettingButtonWithBackground(
-          onTap: () => widget.toolsController.showDrawingToolsMenu(),
-          child: SvgPicture.asset(
-            drawingToolIcon,
-            width: ThemeProvider.margin18,
-            height: ThemeProvider.margin18,
-            package: 'deriv_mobile_chart_wrapper',
+  Widget build(BuildContext context) => ValueListenableBuilder(
+        valueListenable: _activeDrawingToolsCountNotifier,
+        builder: (BuildContext context, int? value, Widget? child) =>
+            DerivBadge(
+          count: value ?? 0,
+          child: ChartSettingButtonWithBackground(
+            onTap: () => widget.toolsController.showDrawingToolsMenu(),
+            child: SvgPicture.asset(
+              drawingToolIcon,
+              width: ThemeProvider.margin18,
+              height: ThemeProvider.margin18,
+              package: 'deriv_mobile_chart_wrapper',
+            ),
           ),
         ),
       );
