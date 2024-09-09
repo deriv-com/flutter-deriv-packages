@@ -25,9 +25,10 @@ class IndicatorDescriptionBottomSheet extends StatelessWidget {
         indicator.subtitle,
       ),
       onActionButtonPressed: onAddIndicatorPressed,
-      child: ColoredBox(
-        color: context.theme.colors.primary,
-        child: SingleChildScrollView(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: ColoredBox(
+          color: context.theme.colors.primary,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: ThemeProvider.margin16,
