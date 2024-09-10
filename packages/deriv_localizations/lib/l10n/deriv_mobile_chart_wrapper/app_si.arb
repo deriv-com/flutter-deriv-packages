@@ -89,5 +89,7 @@
   "labelLine": "රේඛාව",
   "labelRay": "රේ",
   "informTapToSetFirstPoint": "පළමු ලක්ෂ්යය සැකසීමට තට්ටු කරන්න",
-  "informTapToSetFinalPoint": "අවසාන ලක්ෂ්යය සැකසීමට තට්ටු කරන්න"
+  "informTapToSetFinalPoint": "අවසාන ලක්ෂ්යය සැකසීමට තට්ටු කරන්න",
+  "informNoActiveDrawingTools": "ක්රියාකාරී ඇඳීමේ මෙවලම් නොමැත.",
+  "actionAddDrawingTool": "ඇඳීමේ මෙවලම එක් කරන්න"
 }
