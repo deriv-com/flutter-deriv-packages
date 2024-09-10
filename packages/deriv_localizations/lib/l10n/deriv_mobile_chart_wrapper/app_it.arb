@@ -89,5 +89,7 @@
   "labelLine": "Linea",
   "labelRay": "raggio",
   "informTapToSetFirstPoint": "Tocca per impostare il primo punto",
-  "informTapToSetFinalPoint": "Tocca per impostare il punto finale"
+  "informTapToSetFinalPoint": "Tocca per impostare il punto finale",
+  "informNoActiveDrawingTools": "Nessuno strumento di disegno attivo.",
+  "actionAddDrawingTool": "Aggiungi strumento di disegno"
 }
