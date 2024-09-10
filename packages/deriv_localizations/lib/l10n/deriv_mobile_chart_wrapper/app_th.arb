@@ -89,5 +89,7 @@
   "labelLine": "เส้น",
   "labelRay": "รังสี",
   "informTapToSetFirstPoint": "แตะเพื่อตั้งค่าจุดแรก",
-  "informTapToSetFinalPoint": "แตะเพื่อตั้งค่าจุดสุดท้าย"
+  "informTapToSetFinalPoint": "แตะเพื่อตั้งค่าจุดสุดท้าย",
+  "informNoActiveDrawingTools": "ไม่มีเครื่องมือวาดภาพที่ใช้งานอยู่",
+  "actionAddDrawingTool": "เพิ่มเครื่องมือวาดภาพ"
 }
