@@ -1,4 +1,5 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:deriv_mobile_chart_wrapper/src/core_widgets/setting_page_action_buttons.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -8,10 +9,13 @@ import 'package:flutter/material.dart';
 import '../helpers.dart';
 
 class MASettingsPage extends BaseIndicatorSettingPage<MAIndicatorConfig> {
-  const MASettingsPage(
-      {super.key,
-      required super.initialConfig,
-      required super.onConfigUpdated});
+  const MASettingsPage({
+    required super.initialConfig,
+    required super.onConfigUpdated,
+    required super.onApply,
+    super.onReset,
+    super.key,
+  });
 
   @override
   State<MASettingsPage> createState() => _MASettingsPageState();
@@ -20,56 +24,57 @@ class MASettingsPage extends BaseIndicatorSettingPage<MAIndicatorConfig> {
 class _MASettingsPageState extends State<MASettingsPage> {
   late MAIndicatorConfig _indicatorConfig;
 
-  late Map<String, String> _sourceOptions;
-  late Map<MovingAverageType, String> _typeOptions;
-
-  late int _sourceIndex;
-  late int _typeIndex;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    _sourceOptions = getSourcesOptions(context);
-    _typeOptions = getTypesOptions(context);
-
-    _sourceIndex = getSourcesOptions(context)
-        .keys
-        .toList()
-        .indexOf(_indicatorConfig.fieldType);
-
-    _typeIndex = getTypesOptions(context)
-        .keys
-        .toList()
-        .indexOf(_indicatorConfig.movingAverageType);
-  }
-
   @override
   void initState() {
     super.initState();
     _indicatorConfig = widget.initialConfig;
   }
 
-  final int _minimumValueSelectorInput = 0;
-  final int _maximumValueSelectorInput = 100;
+  final int _minimumPeriodValue = 1;
+  final int _maximumPeriodValue = 100;
+
+  final int _minimumOffsetValue = 0;
+  final int _maximumOffsetValue = 100;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildMAColorSelectionSection(context),
-        const SizedBox(
-          height: ThemeProvider.margin24,
+        _buildSettingSection(),
+        SettingActionButtons(
+          onApply: widget.onApply,
+          onReset: () {
+            showResetIndicatorDialog(context, config: _indicatorConfig,
+                onResetPressed: () {
+                  setState(() {
+                    _indicatorConfig = const MAIndicatorConfig();
+                  });
+                  widget.onConfigUpdated(_indicatorConfig);
+                });
+          },
         ),
-        _buildPeriodAndOffsetSection(),
-        const SizedBox(
-          height: ThemeProvider.margin24,
-        ),
-        _buildSourceAndTypeSection(),
       ],
     );
   }
+
+  Widget _buildSettingSection() => Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildMAColorSelectionSection(context),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildPeriodAndOffsetSection(),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildSourceAndTypeSection(),
+            ],
+          ),
+        ),
+      );
 
   Widget _buildMAColorSelectionSection(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(
@@ -108,7 +113,7 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 onChange: (value) {
                   setState(() {
                     _indicatorConfig =
-                        _indicatorConfig.copyWith(period: (value ?? 0).toInt());
+                        _indicatorConfig.copyWith(period: value?.floor());
                     widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
@@ -118,27 +123,24 @@ class _MASettingsPageState extends State<MASettingsPage> {
                   warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumPeriodValue, _minimumPeriodValue),
                   warnValueCantBeLessThan: (input, minAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumPeriodValue, _minimumPeriodValue),
                   warnValueShouldBeInRange: (input, minAmountClear,
                           currentSymbol, maxAmount) =>
                       context.mobileChartWrapperLocalizations.warnRangeMinMax(
-                          _maximumValueSelectorInput,
-                          _minimumValueSelectorInput),
+                          _maximumPeriodValue, _minimumPeriodValue),
                 ),
                 showMaximumSubtitle: true,
                 maximumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMaxRange,
-                maximum: 100,
+                maximum: _maximumPeriodValue.toDouble(),
                 showMinimumSubtitle: true,
                 minimumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMinRange,
-                minimum: 1,
+                minimum: _minimumPeriodValue.toDouble(),
               ),
               const SizedBox(
                 height: ThemeProvider.margin16,
@@ -149,7 +151,7 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 onChange: (value) {
                   setState(() {
                     _indicatorConfig =
-                        _indicatorConfig.copyWith(offset: (value ?? 0).toInt());
+                        _indicatorConfig.copyWith(offset: value?.floor());
                     widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
@@ -159,27 +161,24 @@ class _MASettingsPageState extends State<MASettingsPage> {
                   warnValueCantBeGreaterThan: (input, maxAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumOffsetValue, _minimumOffsetValue),
                   warnValueCantBeLessThan: (input, minAmount, currency) =>
                       context.mobileChartWrapperLocalizations
                           .warnEnterValueBetweenMinMax(
-                              _maximumValueSelectorInput,
-                              _minimumValueSelectorInput),
+                              _maximumOffsetValue, _minimumOffsetValue),
                   warnValueShouldBeInRange: (input, minAmountClear,
                           currentSymbol, maxAmount) =>
                       context.mobileChartWrapperLocalizations.warnRangeMinMax(
-                          _maximumValueSelectorInput,
-                          _minimumValueSelectorInput),
+                          _maximumOffsetValue, _minimumOffsetValue),
                 ),
                 showMaximumSubtitle: true,
                 maximumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMaxRange,
-                maximum: 100,
+                maximum: _maximumOffsetValue.toDouble(),
                 showMinimumSubtitle: true,
                 minimumSubtitle:
                     context.mobileChartWrapperLocalizations.labelMinRange,
-                minimum: 1,
+                minimum: _minimumOffsetValue.toDouble(),
               ),
               const SizedBox(
                 height: ThemeProvider.margin16,
@@ -202,11 +201,13 @@ class _MASettingsPageState extends State<MASettingsPage> {
               ),
               OptionSelector(
                 label: context.mobileChartWrapperLocalizations.labelSource,
-                options: _sourceOptions.values.toList(),
-                selectedIndex: _sourceIndex,
+                options: getSourcesOptions(context).values.toList(),
+                selectedIndex: getSourcesOptions(context)
+                    .keys
+                    .toList()
+                    .indexOf(_indicatorConfig.fieldType),
                 onOptionSelected: (index) {
                   setState(() {
-                    _sourceIndex = index;
                     _indicatorConfig = _indicatorConfig.copyWith(
                         fieldType:
                             getSourcesOptions(context).keys.toList()[index]);
@@ -219,13 +220,16 @@ class _MASettingsPageState extends State<MASettingsPage> {
               ),
               OptionSelector(
                 label: context.mobileChartWrapperLocalizations.labelType,
-                options: _typeOptions.values.toList(),
-                selectedIndex: _typeIndex,
+                options: getTypesOptions(context).values.toList(),
+                selectedIndex: getTypesOptions(context)
+                    .keys
+                    .toList()
+                    .indexOf(_indicatorConfig.movingAverageType),
                 onOptionSelected: (index) {
                   setState(() {
-                    _typeIndex = index;
                     _indicatorConfig = _indicatorConfig.copyWith(
-                        movingAverageType: _typeOptions.keys.toList()[index]);
+                        movingAverageType:
+                            getTypesOptions(context).keys.toList()[index]);
                     widget.onConfigUpdated(_indicatorConfig);
                   });
                 },
