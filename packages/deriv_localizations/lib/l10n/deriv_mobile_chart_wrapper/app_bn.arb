@@ -89,5 +89,7 @@
   "labelLine": "লাইন",
   "labelRay": "রশ্মি",
   "informTapToSetFirstPoint": "প্রথম পয়েন্ট সেট করতে আলতো চাপুন",
-  "informTapToSetFinalPoint": "চূড়ান্ত পয়েন্ট সেট করতে ট্যাপ করুন"
+  "informTapToSetFinalPoint": "চূড়ান্ত পয়েন্ট সেট করতে ট্যাপ করুন",
+  "informNoActiveDrawingTools": "সক্রিয় অঙ্কন সরঞ্জাম নেই।",
+  "actionAddDrawingTool": "অঙ্কন টুল যোগ করুন"
 }
