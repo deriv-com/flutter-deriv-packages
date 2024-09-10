@@ -89,5 +89,7 @@
   "labelLine": "Dòng",
   "labelRay": "cá đuối",
   "informTapToSetFirstPoint": "Nhấn để đặt điểm đầu tiên",
-  "informTapToSetFinalPoint": "Nhấn để đặt điểm cuối cùng"
+  "informTapToSetFinalPoint": "Nhấn để đặt điểm cuối cùng",
+  "informNoActiveDrawingTools": "Không có công cụ vẽ hoạt động.",
+  "actionAddDrawingTool": "Thêm công cụ vẽ"
 }
