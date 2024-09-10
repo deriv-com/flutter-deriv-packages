@@ -1,3 +1,17 @@
+## 0.1.0+1
+
+ - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
+
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+## 0.0.15
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
 ## 0.0.14
 
  - **FEAT**(deriv_mobile_chart_wrapper): Created a new icon button widget for drawing tools ([#792](https://github.com/regentmarkets/flutter-deriv-packages/issues/792)). ([fe1a19c1](https://github.com/regentmarkets/flutter-deriv-packages/commit/fe1a19c10ea88323911a5507ad37b25ba71aedaa))
