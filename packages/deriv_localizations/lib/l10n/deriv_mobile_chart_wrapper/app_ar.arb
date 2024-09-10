@@ -89,5 +89,7 @@
   "labelLine": "خط",
   "labelRay": "شعاع",
   "informTapToSetFirstPoint": "انقر لتعيين النقطة الأولى",
-  "informTapToSetFinalPoint": "انقر لتعيين النقطة النهائية"
+  "informTapToSetFinalPoint": "انقر لتعيين النقطة النهائية",
+  "informNoActiveDrawingTools": "لا توجد أدوات رسم نشطة.",
+  "actionAddDrawingTool": "إضافة أداة رسم"
 }
