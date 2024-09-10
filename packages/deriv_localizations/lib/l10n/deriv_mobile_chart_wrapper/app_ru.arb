@@ -89,5 +89,7 @@
   "labelLine": "Линия",
   "labelRay": "Рэй",
   "informTapToSetFirstPoint": "Нажмите, чтобы установить первую точку",
-  "informTapToSetFinalPoint": "Нажмите, чтобы установить конечную точку"
+  "informTapToSetFinalPoint": "Нажмите, чтобы установить конечную точку",
+  "informNoActiveDrawingTools": "Нет активных инструментов рисования.",
+  "actionAddDrawingTool": "Добавить инструмент для рисования"
 }
