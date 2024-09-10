@@ -89,5 +89,7 @@
   "labelLine": "Mstari",
   "labelRay": "taa",
   "informTapToSetFirstPoint": "Gonga ili kuweka hatua ya kwanza",
-  "informTapToSetFinalPoint": "Gonga ili kuweka hatua ya mwisho"
+  "informTapToSetFinalPoint": "Gonga ili kuweka hatua ya mwisho",
+  "informNoActiveDrawingTools": "Hakuna zana zinazofaa za kuchora.",
+  "actionAddDrawingTool": "Ongeza zana ya kuchora"
 }
