@@ -1,5 +1,7 @@
+import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,8 +19,9 @@ class DrawingToolSelector extends StatefulWidget {
 class _DrawingToolSelectorState extends State<DrawingToolSelector>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final List<String> _activeDrawingTools = [];
-  final List<String> _drawingTools = ['Line', 'Ray'];
+  final List<DrawingToolItemModel> _activeDrawingTools = [];
+
+  late List<DrawingToolItemModel> _drawingTools;
 
   @override
   void initState() {
@@ -27,12 +30,29 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _drawingTools = [
+      DrawingToolItemModel(
+        title: 'Line', //context.mobileChartWrapperLocalizations.labelLine,
+        icon: lineIcon,
+        config: const LineDrawingToolConfig(),
+      ),
+      DrawingToolItemModel(
+        title: 'Ray', //context.mobileChartWrapperLocalizations.labelRay,
+        icon: macdIcon,
+        config: const RayDrawingToolConfig(),
+      ),
+    ];
+  }
+
+  @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
   }
 
-  void _onToolSelection(String selectedTool) {
+  void _onToolSelection(DrawingToolItemModel selectedTool) {
     setState(() {
       if (_activeDrawingTools.contains(selectedTool)) {
         _activeDrawingTools.remove(selectedTool);
@@ -74,6 +94,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
               tabs: [
                 Tab(text: 'Active (${_activeDrawingTools.length})'),
                 const Tab(text: 'Tools'),
+                //context.mobileChartWrapperLocalizations.labelTools
               ],
             ),
           ],
@@ -111,7 +132,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
             children: _activeDrawingTools
                 .map(
                   (option) => Card(
-                    margin: EdgeInsets.zero,
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
                     color: context.themeProvider.colors.secondary,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
@@ -120,11 +141,11 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                     ),
                     child: ListTile(
                       leading: SvgPicture.asset(
-                        lineIcon,
+                        option.icon,
                         height: Dimens.iconSize24,
                         package: 'deriv_mobile_chart_wrapper',
                       ),
-                      title: Text(option),
+                      title: Text(option.title),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -153,16 +174,21 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   Widget _buildDrawingToolListTab(BuildContext context) {
     return ListView(
       children: _drawingTools.map((toolItem) {
-        final List<String> selectedToolItems = _activeDrawingTools
-            .where((String activeToolItem) => activeToolItem == toolItem)
+        final List<DrawingToolItemModel> selectedToolItems = _activeDrawingTools
+            .where((DrawingToolItemModel activeToolItem) =>
+                activeToolItem == toolItem)
             .toList();
         final count = selectedToolItems.length;
 
         return ListTile(
-          leading: const Icon(Icons.line_axis),
+          leading: SvgPicture.asset(
+            toolItem.icon,
+            height: Dimens.iconSize24,
+            package: 'deriv_mobile_chart_wrapper',
+          ),
           title: Row(
             children: <Widget>[
-              Text(toolItem),
+              Text(toolItem.title),
               if (selectedToolItems.isNotEmpty) ...[
                 const SizedBox(width: 8),
                 _buildIndicatorBadge(count),
@@ -199,6 +225,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                 const SizedBox(height: ThemeProvider.margin08),
                 Text(
                   'No active drawing tools',
+                  //context.mobileChartWrapperLocalizations.infoNoActiveDrawingTools
                   style: context.themeProvider.textStyle(
                     textStyle: TextStyles.body1,
                     color: const Color(0xFF999999),
@@ -214,6 +241,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           child: PrimaryButton(
             child: Text(
               'Add drawing tool',
+              //context.mobileChartWrapperLocalizations.infoAddDrawingTool
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
                 color: context.theme.colors.prominent,

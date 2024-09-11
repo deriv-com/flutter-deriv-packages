@@ -285,7 +285,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         value: drawingToolsRepo,
         child: const SafeArea(
           child: DerivBottomSheet(
-            title: 'Drawing tools',
+            title: 'Drawing tools', //context.mobileChartWrapperLocalizations.labelDrawingTools
             child: DrawingToolSelector(),
           ),
         ),

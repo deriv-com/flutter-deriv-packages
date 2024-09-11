@@ -35,16 +35,19 @@ class DrawingToolListItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.translucent,
-      child: Padding(
-        padding: const EdgeInsets.all(ThemeProvider.margin16),
-        child: Row(
-          children: [
-            _buildDrawingToolIcon(),
-            const SizedBox(width: Dimens.margin08),
-            _buildDrawingToolTitle(context),
-            const SizedBox(width: Dimens.margin08),
-            _buildDrawingToolBadge(count),
-          ],
+      child: Container(
+        margin: ,
+        child: Padding(
+          padding: const EdgeInsets.all(ThemeProvider.margin16),
+          child: Row(
+            children: [
+              _buildDrawingToolIcon(),
+              const SizedBox(width: Dimens.margin08),
+              _buildDrawingToolTitle(context),
+              const SizedBox(width: Dimens.margin08),
+              _buildDrawingToolBadge(count),
+            ],
+          ),
         ),
       ),
     );
