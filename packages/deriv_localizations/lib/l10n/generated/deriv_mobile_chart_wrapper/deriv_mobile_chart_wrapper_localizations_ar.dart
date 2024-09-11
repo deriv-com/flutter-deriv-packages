@@ -270,4 +270,28 @@ class DerivMobileChartWrapperLocalizationsAr extends DerivMobileChartWrapperLoca
   String warnRangeMinMax(Object max, Object min) {
     return 'Range $min - $max';
   }
+
+  @override
+  String get labelDrawingTools => 'Drawing tools';
+
+  @override
+  String get labelTools => 'Tools';
+
+  @override
+  String get labelLine => 'Line';
+
+  @override
+  String get labelRay => 'Ray';
+
+  @override
+  String get informTapToSetFirstPoint => 'Tap to set first point';
+
+  @override
+  String get informTapToSetFinalPoint => 'Tap to set final point';
+
+  @override
+  String get informNoActiveDrawingTools => 'No active drawing tools.';
+
+  @override
+  String get actionAddDrawingTool => 'Add drawing tool';
 }
