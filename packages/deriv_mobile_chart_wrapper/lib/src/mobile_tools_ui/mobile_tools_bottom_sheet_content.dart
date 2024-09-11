@@ -147,7 +147,8 @@ class _MobileToolsBottomSheetContentState
         children: [
           Expanded(
             child: Text(
-              context.mobileChartWrapperLocalizations.infoUpto3indicatorsAllowed,
+              context
+                  .mobileChartWrapperLocalizations.infoUpto3indicatorsAllowed,
               style: context.themeProvider.textStyle(
                 textStyle: TextStyles.caption,
                 color: context.themeProvider.colors.general,
@@ -343,6 +344,7 @@ class _MobileToolsBottomSheetContentState
                     textStyle: TextStyles.body1,
                     color: const Color(0xFF999999),
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),

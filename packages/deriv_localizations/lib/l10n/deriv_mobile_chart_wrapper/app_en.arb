@@ -89,5 +89,7 @@
   "labelLine": "Line",
   "labelRay": "Ray",
   "informTapToSetFirstPoint": "Tap to set first point",
-  "informTapToSetFinalPoint": "Tap to set final point"
+  "informTapToSetFinalPoint": "Tap to set final point",
+  "informNoActiveDrawingTools": "No active drawing tools.",
+  "actionAddDrawingTool": "Add drawing tool"
 }
