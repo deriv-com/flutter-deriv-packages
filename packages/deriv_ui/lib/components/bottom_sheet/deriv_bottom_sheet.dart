@@ -90,6 +90,7 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
             ),
           ),
         ),
+        onDispose: widget.onDispose,
       );
 
   Widget _buildTopHandle() => Container(
@@ -160,12 +161,4 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
           ),
         ),
       );
-
-  @override
-  void dispose() {
-    super.dispose();
-    if (widget.onDispose != null) {
-      widget.onDispose!();
-    }
-  }
 }
