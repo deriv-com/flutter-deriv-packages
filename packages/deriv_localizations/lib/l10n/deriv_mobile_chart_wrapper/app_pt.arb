@@ -90,6 +90,6 @@
   "labelRay": "Linha de raio",
   "informTapToSetFirstPoint": "Toque para definir o primeiro ponto",
   "informTapToSetFinalPoint": "Toque para definir o ponto final",
-  "informNoActiveDrawingTools": "Sem ferramentas de desenho activas.",
+  "informNoActiveDrawingTools": "Não existem ferramentas de desenho ativas.",
   "actionAddDrawingTool": "Adicionar ferramenta de desenho"
 }
