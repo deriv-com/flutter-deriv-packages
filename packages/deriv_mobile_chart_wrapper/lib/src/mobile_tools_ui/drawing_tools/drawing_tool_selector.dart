@@ -1,4 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,8 +56,11 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
         TabBar(
           controller: _tabController,
           tabs: [
-            Tab(text: 'Active (${drawingToolsRepo.items.length})'),
-            const Tab(text: 'Tools'),
+            Tab(
+              text: '${context.mobileChartWrapperLocalizations.labelActive} '
+                  '(${drawingToolsRepo.items.length})',
+            ),
+            Tab(text: context.mobileChartWrapperLocalizations.labelTools),
           ],
         ),
         Expanded(
@@ -86,13 +90,20 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     if (activeDrawingTools.isEmpty) {
       return Column(
         children: <Widget>[
-          const Expanded(
-            child: Center(child: Text('No active drawing tools.')),
+          Expanded(
+            child: Center(
+              child: Text(
+                context
+                    .mobileChartWrapperLocalizations.informNoActiveDrawingTools,
+              ),
+            ),
           ),
           const SizedBox(height: 16),
           PrimaryButton(
             onPressed: () => _tabController.animateTo(1),
-            child: const Text('Add drawing tool'),
+            child: Text(
+              context.mobileChartWrapperLocalizations.actionAddDrawingTool,
+            ),
           ),
         ],
       );
@@ -164,9 +175,9 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   }) {
     switch (drawingTool) {
       case LineDrawingToolConfig():
-        return 'Line';
+        return context.mobileChartWrapperLocalizations.labelLine;
       case RayDrawingToolConfig():
-        return 'Ray';
+        return context.mobileChartWrapperLocalizations.labelRay;
       default:
         return '-';
     }

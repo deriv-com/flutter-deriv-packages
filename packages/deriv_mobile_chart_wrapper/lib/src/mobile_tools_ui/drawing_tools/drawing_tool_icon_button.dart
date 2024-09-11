@@ -37,8 +37,7 @@ class _DrawingToolIconButtonState extends State<DrawingToolIconButton> {
   @override
   Widget build(BuildContext context) => ValueListenableBuilder(
         valueListenable: _activeDrawingToolsCountNotifier,
-        builder: (BuildContext context, int? value, Widget? child) =>
-            DerivBadge(
+        builder: (_, int? value, __) => DerivBadge(
           count: value ?? 0,
           child: ChartSettingButtonWithBackground(
             onTap: () => widget.toolsController.showDrawingToolsMenu(),
