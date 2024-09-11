@@ -380,4 +380,155 @@ class DerivRudderstackEvents {
           'subform_name': currentPage,
         });
   }
+
+  ///User clicks the "Get real account" button
+  void logGetRealAccountClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_get_real_account',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'button',
+          'location': 'top-right',
+          'label': 'Get real account',
+        });
+  }
+
+  ///User clicks the chat icon in the top menu bar
+  void logChatClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_chat',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'icon',
+          'location': 'top-right',
+          'label': 'Chat'
+        });
+  }
+
+  ///User clicks the notifications icon in the top menu bar
+  void logNotificationsClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_notifications',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'icon',
+          'location': 'top-right',
+          'label': 'Notifications'
+        });
+  }
+
+  ///User selects the "Accumulators" trade type
+  void logAccumulatorsClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_accumulators',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'trade_type',
+          'label': 'Accumulators',
+          'description':
+              'Amplify potential profits with up to 5% compounding growth per tick.'
+        });
+  }
+
+  ///User selects the "Multipliers" trade type
+  void logMultipliersClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_multipliers',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'trade_type',
+          'label': 'Multipliers',
+          'description':
+              'Multipliers let you trade with leverage and limit your risk to your stake.'
+        });
+  }
+
+  ///User selects the "Deriv X" option for CFDs
+  void logDerivXClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_deriv_x',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'CFD_option',
+          'label': 'Deriv X',
+          'description': 'CFDs on a customisable trading platform.'
+        });
+  }
+
+  ///User clicks the "Hub" button in bottom navigation
+  void logBottomNavHubClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_bottom_nav_hub',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'bottom_nav',
+          'label': 'Hub'
+        });
+  }
+
+  ///User clicks the "Markets" button in bottom navigation
+  void logBottomNavMarketsClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_bottom_nav_markets',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'bottom_nav',
+          'label': 'Markets'
+        });
+  }
+
+  ///User clicks the "Trade" button in bottom navigation
+  void logBottomNavTradeClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_bottom_nav_trade',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'bottom_nav',
+          'label': 'Trade'
+        });
+  }
+
+  ///User clicks the "Positions" button in bottom navigation
+  void logBottomNavPositionsClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_bottom_nav_positions',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'bottom_nav',
+          'label': 'Positions'
+        });
+  }
+
+  ///User clicks the "Account" button in bottom navigation
+  void logBottomNavAccountClicked() {
+    DerivRudderstack().track(
+        eventName: 'ce_traders_hub_home_page',
+        properties: <String, dynamic>{
+          'action': 'click_bottom_nav_account',
+          'form_name': 'ce_traders_hub_home_page',
+          'form_source': 'mobile_derivgo',
+          'element': 'bottom_nav',
+          'label': 'Account'
+        });
+  }
 }
