@@ -1,8 +1,8 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tools_selector.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools_selector.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -164,13 +164,13 @@ class MobileChartWrapper extends StatefulWidget {
 class MobileChartWrapperState extends State<MobileChartWrapper> {
   AddOnsRepository<IndicatorConfig>? _indicatorsRepo;
   AddOnsRepository<DrawingToolConfig>? _drawingToolsRepo;
+  final DrawingTools _drawingTools = DrawingTools();
 
   @override
   void initState() {
     super.initState();
 
     _initRepos();
-    _setupController();
   }
 
   @override
@@ -193,10 +193,16 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         _showDrawingToolsSheet(_drawingToolsRepo!);
       }
     };
+
     _indicatorsRepo?.addListener(() {
-      _updateIndicatorsConfig();
+      _updateConfigs();
     });
-    _updateIndicatorsConfig();
+
+    _drawingToolsRepo?.addListener(() {
+      _updateConfigs();
+    });
+
+    _updateConfigs();
   }
 
   void _initRepos() async {
@@ -276,17 +282,25 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
 
   void _showDrawingToolsSheet(
       AddOnsRepository<DrawingToolConfig> drawingToolsRepo) {
-    // Show drawing tools menu as modal bottom sheet so it's dismissible by tapping
-    // outside.
+    setState(() {
+      _drawingTools
+        ..init()
+        ..drawingToolsRepo = drawingToolsRepo;
+    });
     showModalBottomSheet(
       context: context,
       builder: (_) =>
-      ChangeNotifierProvider<AddOnsRepository<DrawingToolConfig>>.value(
+          ChangeNotifierProvider<AddOnsRepository<DrawingToolConfig>>.value(
         value: drawingToolsRepo,
-        child: const SafeArea(
+        child: SafeArea(
           child: DerivBottomSheet(
-            title: 'Drawing tools', //context.mobileChartWrapperLocalizations.labelDrawingTools
-            child: DrawingToolSelector(),
+            title: context.mobileChartWrapperLocalizations.labelDrawingTools,
+            child: DrawingToolSelector(
+              onSelection: (DrawingToolConfig selectedDrawingTool) {
+                _drawingTools.onDrawingToolSelection(selectedDrawingTool);
+                Navigator.of(context).pop();
+              },
+            ),
           ),
         ),
       ),
@@ -309,6 +323,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
                   DrawingToolConfig.fromJson(map),
               sharedPrefKey: widget.toolsStoreKey,
             ),
+        drawingTools: _drawingTools,
         controller: widget.controller,
         mainSeries: widget.mainSeries,
         markerSeries: widget.markerSeries,
@@ -323,8 +338,10 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         activeSymbol: widget.toolsStoreKey,
       );
 
-  void _updateIndicatorsConfig() {
-    widget.toolsController?.updateConfigs(
-        ConfigItemModel(indicatorConfigs: _indicatorsRepo?.items ?? []));
+  void _updateConfigs() {
+    widget.toolsController?.updateConfigs(ConfigItemModel(
+      indicatorConfigs: _indicatorsRepo?.items ?? [],
+      drawingToolConfigs: _drawingToolsRepo?.items ?? [],
+    ));
   }
 }

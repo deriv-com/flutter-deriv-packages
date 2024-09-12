@@ -1,8 +1,8 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_drawing_tool_list_item.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tool_list_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_list_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -12,7 +12,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DrawingToolSelector extends StatefulWidget {
-  const DrawingToolSelector({super.key});
+  const DrawingToolSelector({
+    required this.onSelection,
+    super.key,
+  });
+
+  /// Drawing tools selection callback.
+  final void Function(DrawingToolConfig drawingToolConfig)? onSelection;
 
   @override
   State<DrawingToolSelector> createState() => _DrawingToolSelectorState();
