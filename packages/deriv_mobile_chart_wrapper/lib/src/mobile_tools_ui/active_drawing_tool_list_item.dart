@@ -9,6 +9,7 @@ class ActiveDrawingToolListItem extends StatelessWidget {
   const ActiveDrawingToolListItem({
     required this.iconAssetPath,
     required this.title,
+    required this.onTapSettings,
     required this.onTapDelete,
     super.key,
   });
@@ -18,6 +19,10 @@ class ActiveDrawingToolListItem extends StatelessWidget {
 
   /// The title of the drawing tool.
   final String title;
+
+  /// The callback which will be called when the
+  /// drawing tool settings button is tapped.
+  final VoidCallback onTapSettings;
 
   /// The callback which will be called when the
   /// drawing tool delete button is tapped.
@@ -34,22 +39,26 @@ class ActiveDrawingToolListItem extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        title: Row(
-          children: [
-            SvgPicture.asset(
-              iconAssetPath,
-              width: ThemeProvider.margin24,
-              height: ThemeProvider.margin24,
-              package: 'deriv_mobile_chart_wrapper',
-            ),
-            const SizedBox(width: ThemeProvider.margin08),
-            Text(title),
-          ],
+        leading: SvgPicture.asset(
+          iconAssetPath,
+          height: Dimens.iconSize24,
+          package: 'deriv_mobile_chart_wrapper',
         ),
-        trailing: IconButton(
-          onPressed: onTapDelete,
-          color: context.themeProvider.colors.prominent,
-          icon: const Icon(Icons.delete_outline),
+        title: Text(title),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              onPressed: () {},
+              color: context.themeProvider.colors.prominent,
+              icon: const Icon(Icons.settings_outlined),
+            ),
+            IconButton(
+              onPressed: () {},
+              color: context.themeProvider.colors.prominent,
+              icon: const Icon(Icons.delete_outline),
+            ),
+          ],
         ),
       ),
     );

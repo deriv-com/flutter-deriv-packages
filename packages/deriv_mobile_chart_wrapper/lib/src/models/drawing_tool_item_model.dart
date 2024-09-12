@@ -1,7 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
 
-import '../enums.dart';
-
 /// Model class to keep the information of an drawing tool item.
 class DrawingToolItemModel {
   /// Initializes a drawing tool item model.

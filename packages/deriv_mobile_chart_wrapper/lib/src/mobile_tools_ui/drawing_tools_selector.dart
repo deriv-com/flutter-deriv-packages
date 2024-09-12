@@ -1,6 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -132,36 +133,22 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           child: ListView(
             children: _activeDrawingTools
                 .map(
-                  (option) => Card(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                  (tool) => Card(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: ThemeProvider.margin16,
+                      vertical: ThemeProvider.margin08,
+                    ),
                     color: context.themeProvider.colors.secondary,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(ThemeProvider.borderRadius08),
                       ),
                     ),
-                    child: ListTile(
-                      leading: SvgPicture.asset(
-                        option.icon,
-                        height: Dimens.iconSize24,
-                        package: 'deriv_mobile_chart_wrapper',
-                      ),
-                      title: Text(option.title),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            color: context.themeProvider.colors.prominent,
-                            icon: const Icon(Icons.settings_outlined),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            color: context.themeProvider.colors.prominent,
-                            icon: const Icon(Icons.delete_outline),
-                          ),
-                        ],
-                      ),
+                    child: ActiveDrawingToolListItem(
+                      iconAssetPath: tool.icon,
+                      title: tool.title,
+                      onTapDelete: () {},
+                      onTapSettings: () {},
                     ),
                   ),
                 )
@@ -241,9 +228,11 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
 
   Widget _buildActiveTabHeader() {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: ThemeProvider.margin16,
-        vertical: ThemeProvider.margin16,
+      padding: const EdgeInsets.only(
+        top: ThemeProvider.margin16,
+        bottom: ThemeProvider.margin08,
+        left: ThemeProvider.margin16,
+        right: ThemeProvider.margin16,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

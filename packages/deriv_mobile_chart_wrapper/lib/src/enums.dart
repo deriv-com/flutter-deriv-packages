@@ -4,8 +4,3 @@ enum IndicatorCategory {
   volatility,
   movingAverages,
 }
-
-enum DrawingToolLabel {
-  active,
-  tools,
-}
