@@ -294,7 +294,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         value: drawingToolsRepo,
         child: SafeArea(
           child: DerivBottomSheet(
-            title: "Drawing tools",
+            title: context.mobileChartWrapperLocalizations.labelDrawingTools,
             child: DrawingToolSelector(
               onSelection: (DrawingToolConfig selectedDrawingTool) {
                 _drawingTools.onDrawingToolSelection(selectedDrawingTool);
