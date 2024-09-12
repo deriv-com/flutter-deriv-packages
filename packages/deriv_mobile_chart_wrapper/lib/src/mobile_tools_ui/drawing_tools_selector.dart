@@ -179,38 +179,13 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
             .where((DrawingToolItemModel activeToolItem) =>
                 activeToolItem == toolItem)
             .toList();
-        final count = selectedToolItems.length;
-
-        // return ListTile(
-        //   leading: SvgPicture.asset(
-        //     toolItem.icon,
-        //     height: Dimens.iconSize24,
-        //     package: 'deriv_mobile_chart_wrapper',
-        //   ),
-        //   title: Row(
-        //     children: <Widget>[
-        //       Text(toolItem.title),
-        //       if (selectedToolItems.isNotEmpty) ...[
-        //         const SizedBox(width: 8),
-        //         _buildDrawingToolBadge(count),
-        //       ],
-        //     ],
-        //   ),
-        //   onTap: () => _onToolSelection(toolItem),
-        // );
         return DrawingToolListItem(
           iconAssetPath: toolItem.icon,
           title: toolItem.title,
+          count: selectedToolItems.length,
           onTap: () => _onToolSelection(toolItem),
         );
       }).toList(),
-    );
-  }
-
-  Widget _buildDrawingToolBadge(int count) {
-    return DerivBadge(
-      count: count,
-      enabled: count > 0,
     );
   }
 
@@ -279,7 +254,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
             maintainState: true,
             maintainAnimation: true,
             child: SecondaryButton(
-              onPressed: _showDeleteAllIndicatorsDialog,
+              onPressed: _showDeleteAllDrawingToolsDialog,
               child: Center(
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelDeleteAll,
@@ -296,7 +271,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     );
   }
 
-  void _showDeleteAllIndicatorsDialog() {
+  void _showDeleteAllDrawingToolsDialog() {
     showAlertDialog(
         context: context,
         title: context.mobileChartWrapperLocalizations.labelDeleteAllIndicators,
