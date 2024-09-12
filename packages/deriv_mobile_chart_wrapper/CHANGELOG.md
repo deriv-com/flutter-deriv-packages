@@ -1,3 +1,11 @@
+## 0.1.0+3
+
+ - **FIX**(deriv_mobile_chart_wrapper): fix text alignment ([#816](https://github.com/regentmarkets/flutter-deriv-packages/issues/816)). ([8fd35364](https://github.com/regentmarkets/flutter-deriv-packages/commit/8fd35364760d7bc1b101f9414a2d9d340a1b5a32))
+
+## 0.1.0+2
+
+ - Update a dependency to the latest release.
+
 ## 0.1.0+1
 
  - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
