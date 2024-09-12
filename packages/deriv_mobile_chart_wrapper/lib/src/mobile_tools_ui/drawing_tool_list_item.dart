@@ -35,8 +35,6 @@ class DrawingToolListItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.translucent,
-      child: Container(
-        margin: ,
         child: Padding(
           padding: const EdgeInsets.all(ThemeProvider.margin16),
           child: Row(
@@ -49,7 +47,6 @@ class DrawingToolListItem extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 

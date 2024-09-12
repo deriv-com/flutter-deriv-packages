@@ -1,6 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -33,15 +34,15 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   void didChangeDependencies() {
     super.didChangeDependencies();
     _drawingTools = [
-      DrawingToolItemModel(
+      const DrawingToolItemModel(
         title: 'Line', //context.mobileChartWrapperLocalizations.labelLine,
         icon: lineIcon,
-        config: const LineDrawingToolConfig(),
+        config: LineDrawingToolConfig(),
       ),
-      DrawingToolItemModel(
+      const DrawingToolItemModel(
         title: 'Ray', //context.mobileChartWrapperLocalizations.labelRay,
         icon: macdIcon,
-        config: const RayDrawingToolConfig(),
+        config: RayDrawingToolConfig(),
       ),
     ];
   }
@@ -180,28 +181,33 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
             .toList();
         final count = selectedToolItems.length;
 
-        return ListTile(
-          leading: SvgPicture.asset(
-            toolItem.icon,
-            height: Dimens.iconSize24,
-            package: 'deriv_mobile_chart_wrapper',
-          ),
-          title: Row(
-            children: <Widget>[
-              Text(toolItem.title),
-              if (selectedToolItems.isNotEmpty) ...[
-                const SizedBox(width: 8),
-                _buildIndicatorBadge(count),
-              ],
-            ],
-          ),
+        // return ListTile(
+        //   leading: SvgPicture.asset(
+        //     toolItem.icon,
+        //     height: Dimens.iconSize24,
+        //     package: 'deriv_mobile_chart_wrapper',
+        //   ),
+        //   title: Row(
+        //     children: <Widget>[
+        //       Text(toolItem.title),
+        //       if (selectedToolItems.isNotEmpty) ...[
+        //         const SizedBox(width: 8),
+        //         _buildDrawingToolBadge(count),
+        //       ],
+        //     ],
+        //   ),
+        //   onTap: () => _onToolSelection(toolItem),
+        // );
+        return DrawingToolListItem(
+          iconAssetPath: toolItem.icon,
+          title: toolItem.title,
           onTap: () => _onToolSelection(toolItem),
         );
       }).toList(),
     );
   }
 
-  Widget _buildIndicatorBadge(int count) {
+  Widget _buildDrawingToolBadge(int count) {
     return DerivBadge(
       count: count,
       enabled: count > 0,
