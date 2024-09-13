@@ -1,3 +1,7 @@
+## 0.1.0+2
+
+ - **FIX**(deriv-ui): [DRGO-126]call the passed onDispose method inside dispose method ([#819](https://github.com/regentmarkets/flutter-deriv-packages/issues/819)). ([2e29a1ee](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e29a1eeb7dbb5c77bc04e1e7f7ee12081a1fd2d))
+
 ## 0.1.0+1
 
  - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
