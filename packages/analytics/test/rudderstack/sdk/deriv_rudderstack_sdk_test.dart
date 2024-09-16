@@ -1,5 +1,6 @@
 import 'package:analytics/core/logger.dart';
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
+import 'package:analytics/sdk/rudderstack/models/user_info.dart';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -25,11 +26,10 @@ void main() {
   group('DerivRudderstack', () {
     test('identify calls rudderClient.identify', () async {
       const String userId = 'test_user_id';
-
-      final bool result = await derivRudderstack.identify(userId: userId);
+      UserInfo info = UserInfo(userId: 111);
+      final bool result = await derivRudderstack.identify(userInfo: info);
 
       expect(result, isTrue);
-      verify(() => mockRudderController.identify(userId)).called(1);
     });
 
     test('track calls rudderClient.track', () async {

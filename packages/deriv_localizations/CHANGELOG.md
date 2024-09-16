@@ -1,3 +1,7 @@
+## 1.6.0
+
+ - **FEAT**(deriv_localizations): Update localizations generated file to get the new strings ([#808](https://github.com/regentmarkets/flutter-deriv-packages/issues/808)). ([28ae98bc](https://github.com/regentmarkets/flutter-deriv-packages/commit/28ae98bcd78ab725c3f35d6a88175c0e85be4c94))
+
 ## 1.5.6
 
  - **FIX**(deriv_localizations): add strings for chart indicators ([#768](https://github.com/regentmarkets/flutter-deriv-packages/issues/768)). ([e4d52121](https://github.com/regentmarkets/flutter-deriv-packages/commit/e4d5212170996d14f834cc285f047ae821da7a71))

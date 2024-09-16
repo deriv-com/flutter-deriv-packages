@@ -632,6 +632,54 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// In en, this message translates to:
   /// **'Range {min} - {max}'**
   String warnRangeMinMax(Object max, Object min);
+
+  /// No description provided for @labelDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Drawing tools'**
+  String get labelDrawingTools;
+
+  /// No description provided for @labelTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get labelTools;
+
+  /// No description provided for @labelLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Line'**
+  String get labelLine;
+
+  /// No description provided for @labelRay.
+  ///
+  /// In en, this message translates to:
+  /// **'Ray'**
+  String get labelRay;
+
+  /// No description provided for @informTapToSetFirstPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to set first point'**
+  String get informTapToSetFirstPoint;
+
+  /// No description provided for @informTapToSetFinalPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to set final point'**
+  String get informTapToSetFinalPoint;
+
+  /// No description provided for @informNoActiveDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'No active drawing tools.'**
+  String get informNoActiveDrawingTools;
+
+  /// No description provided for @actionAddDrawingTool.
+  ///
+  /// In en, this message translates to:
+  /// **'Add drawing tool'**
+  String get actionAddDrawingTool;
 }
 
 class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {

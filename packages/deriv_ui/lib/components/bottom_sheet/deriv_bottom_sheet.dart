@@ -90,6 +90,7 @@ class _DerivBottomSheetState extends State<DerivBottomSheet> {
             ),
           ),
         ),
+        onDispose: widget.onDispose,
       );
 
   Widget _buildTopHandle() => Container(
