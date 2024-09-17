@@ -7,47 +7,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// Drawing tool Icon button.
-class DrawingToolIconButton extends StatefulWidget {
+class DrawingToolIconButton extends StatelessWidget {
   /// Initializes a new instance of [DrawingToolIconButton].
   const DrawingToolIconButton({
     required this.toolsController,
     Key? key,
   }) : super(key: key);
 
-  /// On tap callback.
+  /// Tools controller.
   final ToolsController toolsController;
 
   @override
-  State<DrawingToolIconButton> createState() => _DrawingToolIconButtonState();
-}
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: toolsController,
+        builder: (_, __) {
+          final activeDrawingToolsCount =
+              toolsController.activeDrawingToolsCount;
 
-class _DrawingToolIconButtonState extends State<DrawingToolIconButton> {
-  final ValueNotifier<int?> _activeDrawingToolsCountNotifier =
-      ValueNotifier<int?>(0);
-
-  @override
-  void initState() {
-    super.initState();
-    widget.toolsController.addListener(() {
-      _activeDrawingToolsCountNotifier.value =
-          widget.toolsController.activeDrawingToolsCount;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) => ValueListenableBuilder(
-        valueListenable: _activeDrawingToolsCountNotifier,
-        builder: (_, int? value, __) => DerivBadge(
-          count: value ?? 0,
-          child: ChartSettingButtonWithBackground(
-            onTap: () => widget.toolsController.showDrawingToolsMenu(),
-            child: SvgPicture.asset(
-              drawingToolIcon,
-              width: ThemeProvider.margin18,
-              height: ThemeProvider.margin18,
-              package: 'deriv_mobile_chart_wrapper',
+          return DerivBadge(
+            count: activeDrawingToolsCount,
+            child: ChartSettingButtonWithBackground(
+              onTap: toolsController.showDrawingToolsMenu,
+              child: SvgPicture.asset(
+                drawingToolIcon,
+                width: ThemeProvider.iconSize18,
+                height: ThemeProvider.iconSize18,
+                package: 'deriv_mobile_chart_wrapper',
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
 }

@@ -12,6 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+/// Drawing tools selector widget. It allows users to select a drawing tool,
+/// view active drawing tools, configure drawing tools, and delete all drawing
+/// tools.
 class DrawingToolsSelector extends StatefulWidget {
   const DrawingToolsSelector({
     required this.onDrawingToolSelected,

@@ -62,6 +62,7 @@ flutter:
     - assets/icons/ic_drawing_tool.svg
     - assets/icons/ic_drawing_tools_empty_state.svg
     - assets/icons/ic_line.svg
+    - assets/icons/ic_close_filled.svg
 #
 # For details regarding assets in packages, see
 # https://flutter.dev/assets-and-images/#from-packages
