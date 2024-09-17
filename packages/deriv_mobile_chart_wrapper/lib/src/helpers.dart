@@ -27,6 +27,22 @@ String getIndicatorAbbreviationWithCount(
         IndicatorConfig config, BuildContext context) =>
     '${getIndicatorAbbreviation(config, context)} ${config.number > 0 ? config.number : ''}';
 
+String getDrawingToolTitleWithCount(
+    DrawingToolConfig config, BuildContext context) =>
+    '${getDrawingToolTitle(config, context)} ${config.number > 0 ? config.number : ''}';
+
+/// Returns title name of the drawing tool for the given [config].
+String getDrawingToolTitle(DrawingToolConfig config, BuildContext context) {
+  switch (config.runtimeType) {
+    case LineDrawingToolConfig:
+      return context.mobileChartWrapperLocalizations.labelLine;
+    case RayDrawingToolConfig:
+      return context.mobileChartWrapperLocalizations.labelRay;
+    default:
+      return '';
+  }
+}
+
 /// Returns the path to the icon of the indicator for the given [config].
 String getIndicatorIconPath(IndicatorConfig config) {
   switch (config.runtimeType) {

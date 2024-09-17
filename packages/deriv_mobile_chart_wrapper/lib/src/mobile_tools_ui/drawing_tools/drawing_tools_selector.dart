@@ -1,6 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class DrawingToolSelector extends StatefulWidget {
   const DrawingToolSelector({
@@ -31,6 +33,8 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
 
   late List<DrawingToolItemModel> _drawingTools;
 
+  late AddOnsRepository<DrawingToolConfig> drawingToolsRepo;
+
   @override
   void initState() {
     super.initState();
@@ -40,6 +44,8 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    drawingToolsRepo =
+        Provider.of<AddOnsRepository<DrawingToolConfig>>(context);
     _drawingTools = [
       const DrawingToolItemModel(
         title: 'Line', //context.mobileChartWrapperLocalizations.labelLine,
@@ -58,16 +64,6 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   void dispose() {
     _tabController.dispose();
     super.dispose();
-  }
-
-  void _onToolSelection(DrawingToolItemModel selectedTool) {
-    setState(() {
-      if (_activeDrawingTools.contains(selectedTool)) {
-        _activeDrawingTools.remove(selectedTool);
-      } else {
-        _activeDrawingTools.add(selectedTool);
-      }
-    });
   }
 
   @override
@@ -89,6 +85,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
               ),
             ),
             TabBar(
+              key: const ValueKey('TabBar'),
               controller: _tabController,
               indicatorColor: context.theme.colors.danger,
               labelStyle: context.theme.textStyle(
@@ -124,7 +121,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   }
 
   Widget _buildActiveDrawingToolsTab(BuildContext context) {
-    if (_activeDrawingTools.isEmpty) {
+    if (drawingToolsRepo.items.isEmpty) {
       return _buildDrawingToolEmptyState();
     } else {
       return _buildActiveDrawingToolsList();
@@ -136,49 +133,58 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
       children: <Widget>[
         _buildActiveTabHeader(),
         Expanded(
-          child: ListView(
-            children: _activeDrawingTools
-                .map(
-                  (tool) => Card(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: ThemeProvider.margin16,
-                      vertical: ThemeProvider.margin08,
-                    ),
-                    color: context.themeProvider.colors.secondary,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(ThemeProvider.borderRadius08),
-                      ),
-                    ),
-                    child: ActiveDrawingToolListItem(
-                      iconAssetPath: tool.icon,
-                      title: tool.title,
-                      onTapDelete: () {},
-                      onTapSettings: () {},
-                    ),
-                  ),
-                )
-                .toList(),
+          child: ListView.separated(
+            itemCount: drawingToolsRepo.items.length,
+            separatorBuilder: (_, __) =>
+                const SizedBox(height: ThemeProvider.margin08),
+            itemBuilder: (_, index) {
+              final DrawingToolConfig drawingToolConfig =
+                  drawingToolsRepo.items[index];
+
+              return ActiveDrawingToolListItem(
+                key: ValueKey(drawingToolConfig.hashCode + index),
+                iconAssetPath: getDrawingToolIconPath(drawingToolConfig),
+                title: getDrawingToolTitleWithCount(drawingToolConfig, context),
+                onTapDelete: () {},
+                onTapSettings: () {},
+              );
+            },
           ),
         ),
       ],
     );
   }
 
+  /// Returns the number of active drawing tools for specified [drawingTool].
+  int _getDrawingToolCount(DrawingToolItemModel drawingTool) {
+    return drawingToolsRepo.items
+        .where((item) => item.runtimeType == drawingTool.config.runtimeType)
+        .length;
+  }
+
   Widget _buildDrawingToolListTab(BuildContext context) {
-    return ListView(
-      children: _drawingTools.map((toolItem) {
-        final List<DrawingToolItemModel> selectedToolItems = _activeDrawingTools
-            .where((DrawingToolItemModel activeToolItem) =>
-                activeToolItem == toolItem)
-            .toList();
-        return DrawingToolListItem(
-          iconAssetPath: toolItem.icon,
-          title: toolItem.title,
-          count: selectedToolItems.length,
-          onTap: () => _onToolSelection(toolItem),
+    return ListView.builder(
+      itemCount: _drawingTools.length,
+      itemBuilder: (_, index) {
+        final DrawingToolItemModel tool = _drawingTools[index];
+
+        return Interaction(
+          isEnabled: true,
+          child: DrawingToolListItem(
+            key: ValueKey('${tool.title}-$index'),
+            iconAssetPath: tool.icon,
+            title: tool.title,
+            count: _getDrawingToolCount(tool),
+            onTap: () {
+              drawingToolsRepo.add(
+                tool.config.copyWith(
+                  number: drawingToolsRepo.getNumberForNewAddOn(tool.config),
+                ),
+              );
+            },
+          ),
         );
-      }).toList(),
+      },
     );
   }
 
@@ -244,7 +250,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Visibility(
-            visible: _activeDrawingTools.isNotEmpty,
+            visible: drawingToolsRepo.items.isNotEmpty,
             maintainSize: true,
             maintainState: true,
             maintainAnimation: true,
@@ -266,6 +272,36 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     );
   }
 
+  /// Returns the path to the icon of the drawing tool for the given [config].
+  String getDrawingToolIconPath(DrawingToolConfig config) {
+    switch (config.runtimeType) {
+      case LineDrawingToolConfig:
+        return lineIcon;
+      case RayDrawingToolConfig:
+        return rsiIcon;
+      default:
+        return '';
+    }
+  }
+
+  // Future<void> _showDeleteIndicatorDialog(int index) => showAlertDialog(
+  //     context: context,
+  //     title: 'delete',
+  //     content: Text(
+  //       context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+  //       style: TextStyles.subheading,
+  //     ),
+  //     positiveActionLabel: context.mobileChartWrapperLocalizations.labelDelete,
+  //     negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
+  //     showLoadingIndicator: false,
+  //     onPositiveActionPressed: () {
+  //       drawingToolsRepo.removeAt(index);
+  //       Navigator.pop(context);
+  //     },
+  //     onNegativeActionPressed: () {
+  //       Navigator.pop(context);
+  //     });
+
   void _showDeleteAllDrawingToolsDialog() {
     showAlertDialog(
         context: context,
@@ -280,7 +316,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
             context.mobileChartWrapperLocalizations.labelCancel,
         showLoadingIndicator: false,
         onPositiveActionPressed: () {
-          _activeDrawingTools.clear();
+          drawingToolsRepo.clear();
           setState(() {});
           Navigator.pop(context);
         },
