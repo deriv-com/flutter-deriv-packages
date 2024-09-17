@@ -49,12 +49,12 @@ class ActiveDrawingToolListItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: onTapSettings,
               color: context.themeProvider.colors.prominent,
               icon: const Icon(Icons.settings_outlined),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: onTapDelete,
               color: context.themeProvider.colors.prominent,
               icon: const Icon(Icons.delete_outline),
             ),

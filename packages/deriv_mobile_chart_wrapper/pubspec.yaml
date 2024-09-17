@@ -13,9 +13,7 @@ dependencies:
     sdk: flutter
 
   deriv_chart:
-    git:
-      url: git@github.com:regentmarkets/flutter-chart.git
-      ref: dev
+    path: /Users/illyatsai/flutter-chart
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git

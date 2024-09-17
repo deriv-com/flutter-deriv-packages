@@ -97,7 +97,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                 color: context.theme.colors.general,
               ),
               tabs: [
-                Tab(text: 'Active (${_activeDrawingTools.length})'),
+                Tab(text: 'Active (${drawingToolsRepo.items.length})'),
                 const Tab(text: 'Tools'),
                 //context.mobileChartWrapperLocalizations.labelTools
               ],
@@ -142,10 +142,11 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                   drawingToolsRepo.items[index];
 
               return ActiveDrawingToolListItem(
-                key: ValueKey(drawingToolConfig.hashCode + index),
                 iconAssetPath: getDrawingToolIconPath(drawingToolConfig),
-                title: getDrawingToolTitleWithCount(drawingToolConfig, context),
-                onTapDelete: () {},
+                title:  getDrawingToolTitleWithCount(drawingToolConfig, context), //'${getDrawingToolTitle(drawingToolConfig, context)} $index',
+                onTapDelete: () async {
+                  await _showDeleteDrawingToolDialog(drawingToolConfig ,index);
+                },
                 onTapSettings: () {},
               );
             },
@@ -205,7 +206,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                 const SizedBox(height: ThemeProvider.margin08),
                 Text(
                   'No active drawing tools',
-                  //context.mobileChartWrapperLocalizations.infoNoActiveDrawingTools
+                  //context.mobileChartWrapperLocalizations.actionNoActiveDrawingTools
                   style: context.themeProvider.textStyle(
                     textStyle: TextStyles.body1,
                     color: const Color(0xFF999999),
@@ -221,7 +222,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           child: PrimaryButton(
             child: Text(
               'Add drawing tool',
-              //context.mobileChartWrapperLocalizations.infoAddDrawingTool
+              //context.mobileChartWrapperLocalizations.informAddDrawingTool
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
                 color: context.theme.colors.prominent,
@@ -284,23 +285,23 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     }
   }
 
-  // Future<void> _showDeleteIndicatorDialog(int index) => showAlertDialog(
-  //     context: context,
-  //     title: 'delete',
-  //     content: Text(
-  //       context.mobileChartWrapperLocalizations.infoDeleteIndicator,
-  //       style: TextStyles.subheading,
-  //     ),
-  //     positiveActionLabel: context.mobileChartWrapperLocalizations.labelDelete,
-  //     negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
-  //     showLoadingIndicator: false,
-  //     onPositiveActionPressed: () {
-  //       drawingToolsRepo.removeAt(index);
-  //       Navigator.pop(context);
-  //     },
-  //     onNegativeActionPressed: () {
-  //       Navigator.pop(context);
-  //     });
+  Future<void> _showDeleteDrawingToolDialog(DrawingToolConfig config, int index) => showAlertDialog(
+      context: context,
+      title: 'delete',
+      content: Text(
+        context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+        style: TextStyles.subheading,
+      ),
+      positiveActionLabel: context.mobileChartWrapperLocalizations.labelDelete,
+      negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
+      showLoadingIndicator: false,
+      onPositiveActionPressed: () {
+        drawingToolsRepo.removeAt(index);
+        Navigator.pop(context);
+      },
+      onNegativeActionPressed: () {
+        Navigator.pop(context);
+      });
 
   void _showDeleteAllDrawingToolsDialog() {
     showAlertDialog(
