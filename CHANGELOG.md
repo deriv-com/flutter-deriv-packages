@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.1.0+2`](#deriv_ui---v0102)
+ - [`deriv_language_selector` - `v0.0.3+9`](#deriv_language_selector---v0039)
+ - [`deriv_widgetbook` - `v0.0.2+29`](#deriv_widgetbook---v00229)
+ - [`deriv_passkeys` - `v0.0.4+4`](#deriv_passkeys---v0044)
+ - [`deriv_auth` - `v6.7.48`](#deriv_auth---v6748)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0+4`](#deriv_mobile_chart_wrapper---v0104)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_language_selector` - `v0.0.3+9`
+ - `deriv_widgetbook` - `v0.0.2+29`
+ - `deriv_passkeys` - `v0.0.4+4`
+ - `deriv_auth` - `v6.7.48`
+ - `deriv_mobile_chart_wrapper` - `v0.1.0+4`
+
+---
+
+#### `deriv_ui` - `v0.1.0+2`
+
+ - **FIX**(deriv-ui): [DRGO-126]call the passed onDispose method inside dispose method ([#819](https://github.com/regentmarkets/flutter-deriv-packages/issues/819)). ([2e29a1ee](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e29a1eeb7dbb5c77bc04e1e7f7ee12081a1fd2d))
+
+
 ## 2024-09-11
 
 ### Changes
