@@ -24,7 +24,6 @@ class DrawingToolListItem extends StatelessWidget {
   /// The callback which will be called when the drawing tool item is tapped.
   final VoidCallback onTap;
 
-
   /// Number of added drawing tools of this type.
   ///
   /// It will show in the item if it's greater than 0.
@@ -35,35 +34,35 @@ class DrawingToolListItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.translucent,
-        child: Padding(
-          padding: const EdgeInsets.all(ThemeProvider.margin16),
-          child: Row(
-            children: [
-              _buildDrawingToolIcon(),
-              const SizedBox(width: Dimens.margin08),
-              _buildDrawingToolTitle(context),
-              const SizedBox(width: Dimens.margin08),
-              _buildDrawingToolBadge(count),
-            ],
-          ),
+      child: Padding(
+        padding: const EdgeInsets.all(ThemeProvider.margin16),
+        child: Row(
+          children: [
+            _buildDrawingToolIcon(),
+            const SizedBox(width: Dimens.margin08),
+            _buildDrawingToolTitle(context),
+            const SizedBox(width: Dimens.margin08),
+            _buildDrawingToolBadge(count),
+          ],
         ),
+      ),
     );
   }
 
   Widget _buildDrawingToolIcon() => SvgPicture.asset(
-    iconAssetPath,
-    width: ThemeProvider.margin24,
-    height: ThemeProvider.margin24,
-    package: 'deriv_mobile_chart_wrapper',
-  );
+        iconAssetPath,
+        width: ThemeProvider.margin24,
+        height: ThemeProvider.margin24,
+        package: 'deriv_mobile_chart_wrapper',
+      );
 
   Widget _buildDrawingToolTitle(BuildContext context) => Text(
-    title,
-    style: context.themeProvider.textStyle(
-      textStyle: TextStyles.body1,
-      color: context.themeProvider.colors.general,
-    ),
-  );
+        title,
+        style: context.themeProvider.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.themeProvider.colors.general,
+        ),
+      );
 
   Widget _buildDrawingToolBadge(int count) {
     return DerivBadge(

@@ -1,6 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
@@ -29,7 +30,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   late TabController _tabController;
   final List<DrawingToolItemModel> _activeDrawingTools = [];
 
-  late List<DrawingToolItemModel> _drawingTools;
+  late final List<DrawingToolItemModel> _drawingTools;
 
   @override
   void initState() {
@@ -40,18 +41,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _drawingTools = [
-      const DrawingToolItemModel(
-        title: 'Line', //context.mobileChartWrapperLocalizations.labelLine,
-        icon: lineIcon,
-        config: LineDrawingToolConfig(),
-      ),
-      const DrawingToolItemModel(
-        title: 'Ray', //context.mobileChartWrapperLocalizations.labelRay,
-        icon: macdIcon,
-        config: RayDrawingToolConfig(),
-      ),
-    ];
+    _drawingTools = getDrawingToolsList(context);
   }
 
   @override
@@ -198,8 +188,8 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                 ),
                 const SizedBox(height: ThemeProvider.margin08),
                 Text(
-                  'No active drawing tools',
-                  //context.mobileChartWrapperLocalizations.infoNoActiveDrawingTools
+                  context.mobileChartWrapperLocalizations
+                      .informNoActiveDrawingTools,
                   style: context.themeProvider.textStyle(
                     textStyle: TextStyles.body1,
                     color: const Color(0xFF999999),
@@ -214,8 +204,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           padding: const EdgeInsets.all(ThemeProvider.margin16),
           child: PrimaryButton(
             child: Text(
-              'Add drawing tool',
-              //context.mobileChartWrapperLocalizations.infoAddDrawingTool
+              context.mobileChartWrapperLocalizations.actionAddDrawingTool,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
                 color: context.theme.colors.prominent,
