@@ -30,7 +30,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   late TabController _tabController;
   final List<DrawingToolItemModel> _activeDrawingTools = [];
 
-  late final List<DrawingToolItemModel> _drawingTools;
+  late List<DrawingToolItemModel> _drawingTools;
 
   @override
   void initState() {
@@ -90,9 +90,10 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                 color: context.theme.colors.general,
               ),
               tabs: [
-                Tab(text: 'Active (${_activeDrawingTools.length})'),
-                const Tab(text: 'Tools'),
-                //context.mobileChartWrapperLocalizations.labelTools
+                Tab(
+                    text:
+                        '${context.mobileChartWrapperLocalizations.labelActive} (${_activeDrawingTools.length})'),
+                Tab(text: context.mobileChartWrapperLocalizations.labelTools),
               ],
             ),
           ],
