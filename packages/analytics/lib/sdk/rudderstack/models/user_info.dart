@@ -1,6 +1,6 @@
-/// User info model.
+/// User Info model.
 class UserInfo {
-  /// Constructor for UserInfo model.
+  /// Constructor for User Info model.
   UserInfo({
     required this.userId,
     this.countryResidence,
