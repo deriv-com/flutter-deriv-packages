@@ -1,6 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/utils/popup_dialogs_helper.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,35 @@ String getIndicatorIconPath(IndicatorConfig config) {
     default:
       return '';
   }
+}
+
+/// Returns the path to the icon of the drawing tool
+/// for the given [drawingToolType].
+String getDrawingToolIconPath(Type drawingToolType) {
+  switch (drawingToolType) {
+    case LineDrawingToolConfig:
+      return lineIcon;
+    case RayDrawingToolConfig:
+      return rsiIcon;
+    default:
+      return '';
+  }
+}
+
+List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
+  List<DrawingToolItemModel> drawingTools = [
+    DrawingToolItemModel(
+      title: context.mobileChartWrapperLocalizations.labelLine,
+      icon: lineIcon,
+      config: const LineDrawingToolConfig(),
+    ),
+    DrawingToolItemModel(
+      title: context.mobileChartWrapperLocalizations.labelRay,
+      icon: macdIcon,
+      config: const RayDrawingToolConfig(),
+    ),
+  ];
+  return drawingTools;
 }
 
 Map<String, String> getSourcesOptions(BuildContext context) => {

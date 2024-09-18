@@ -287,6 +287,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         ..init()
         ..drawingToolsRepo = drawingToolsRepo;
     });
+
     showModalBottomSheet(
       context: context,
       builder: (_) =>
