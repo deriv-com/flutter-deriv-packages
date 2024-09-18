@@ -29,7 +29,6 @@ class DrawingToolSelector extends StatefulWidget {
 class _DrawingToolSelectorState extends State<DrawingToolSelector>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final List<DrawingToolItemModel> _activeDrawingTools = [];
 
   late List<DrawingToolItemModel> _drawingTools;
 
@@ -85,7 +84,6 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
               ),
             ),
             TabBar(
-              key: const ValueKey('TabBar'),
               controller: _tabController,
               indicatorColor: context.theme.colors.danger,
               labelStyle: context.theme.textStyle(
@@ -140,12 +138,15 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
             itemBuilder: (_, index) {
               final DrawingToolConfig drawingToolConfig =
                   drawingToolsRepo.items[index];
-
+              print('indexxxxxx $index');
+              print('drawingToolConfig.number ${drawingToolConfig.number}');
+              print('drawingToolConfig.number ${drawingToolConfig}');
               return ActiveDrawingToolListItem(
                 iconAssetPath: getDrawingToolIconPath(drawingToolConfig),
-                title:  getDrawingToolTitleWithCount(drawingToolConfig, context), //'${getDrawingToolTitle(drawingToolConfig, context)} $index',
+                title: getDrawingToolTitleWithCount(drawingToolConfig, context),
+                //'${getDrawingToolTitle(drawingToolConfig, context)} $index',
                 onTapDelete: () async {
-                  await _showDeleteDrawingToolDialog(drawingToolConfig ,index);
+                  await _showDeleteDrawingToolDialog(drawingToolConfig, index);
                 },
                 onTapSettings: () {},
               );
@@ -285,23 +286,27 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     }
   }
 
-  Future<void> _showDeleteDrawingToolDialog(DrawingToolConfig config, int index) => showAlertDialog(
-      context: context,
-      title: 'delete',
-      content: Text(
-        context.mobileChartWrapperLocalizations.infoDeleteIndicator,
-        style: TextStyles.subheading,
-      ),
-      positiveActionLabel: context.mobileChartWrapperLocalizations.labelDelete,
-      negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
-      showLoadingIndicator: false,
-      onPositiveActionPressed: () {
-        drawingToolsRepo.removeAt(index);
-        Navigator.pop(context);
-      },
-      onNegativeActionPressed: () {
-        Navigator.pop(context);
-      });
+  Future<void> _showDeleteDrawingToolDialog(
+          DrawingToolConfig config, int index) =>
+      showAlertDialog(
+          context: context,
+          title: 'delete',
+          content: Text(
+            context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+            style: TextStyles.subheading,
+          ),
+          positiveActionLabel:
+              context.mobileChartWrapperLocalizations.labelDelete,
+          negativeButtonLabel:
+              context.mobileChartWrapperLocalizations.labelCancel,
+          showLoadingIndicator: false,
+          onPositiveActionPressed: () {
+            drawingToolsRepo.removeAt(index);
+            Navigator.pop(context);
+          },
+          onNegativeActionPressed: () {
+            Navigator.pop(context);
+          });
 
   void _showDeleteAllDrawingToolsDialog() {
     showAlertDialog(
