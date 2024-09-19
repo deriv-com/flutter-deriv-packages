@@ -43,6 +43,8 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    drawingToolsRepo =
+        Provider.of<AddOnsRepository<DrawingToolConfig>>(context);
     _drawingTools = getDrawingToolsList(context);
   }
 
@@ -84,7 +86,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
               tabs: [
                 Tab(
                     text:
-                        '${context.mobileChartWrapperLocalizations.labelActive} (${_activeDrawingTools.length})'),
+                        '${context.mobileChartWrapperLocalizations.labelActive} (${drawingToolsRepo.items.length})'),
                 Tab(text: context.mobileChartWrapperLocalizations.labelTools),
               ],
             ),
@@ -229,11 +231,9 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
 
   Widget _buildActiveTabHeader() {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: ThemeProvider.margin16,
-        bottom: ThemeProvider.margin08,
-        left: ThemeProvider.margin16,
-        right: ThemeProvider.margin16,
+      padding: const EdgeInsets.symmetric(
+        vertical: ThemeProvider.margin08,
+        horizontal: ThemeProvider.margin16,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

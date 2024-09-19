@@ -1,6 +1,7 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/utils/popup_dialogs_helper.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ String getIndicatorAbbreviationWithCount(
     '${getIndicatorAbbreviation(config, context)} ${config.number > 0 ? config.number : ''}';
 
 String getDrawingToolTitleWithCount(
-    DrawingToolConfig config, BuildContext context) =>
+        DrawingToolConfig config, BuildContext context) =>
     '${getDrawingToolTitle(config, context)} ${config.number > 0 ? config.number : ''}';
 
 /// Returns title name of the drawing tool for the given [config].
