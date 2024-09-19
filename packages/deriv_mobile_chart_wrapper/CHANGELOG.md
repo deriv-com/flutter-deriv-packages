@@ -1,3 +1,7 @@
+## 0.1.1
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-74] Add drawing tools bottom sheet UI ([#815](https://github.com/regentmarkets/flutter-deriv-packages/issues/815)). ([ebd9ab92](https://github.com/regentmarkets/flutter-deriv-packages/commit/ebd9ab92707630df3bc185aab5a503399df786b4))
+
 ## 0.1.0+4
 
  - Update a dependency to the latest release.
