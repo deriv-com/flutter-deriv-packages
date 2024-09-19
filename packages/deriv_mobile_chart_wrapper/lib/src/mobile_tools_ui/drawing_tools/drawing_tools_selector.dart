@@ -46,15 +46,15 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
     drawingToolsRepo =
         Provider.of<AddOnsRepository<DrawingToolConfig>>(context);
     _drawingTools = [
-      const DrawingToolItemModel(
-        title: 'Line', //context.mobileChartWrapperLocalizations.labelLine,
+      DrawingToolItemModel(
+        title: context.mobileChartWrapperLocalizations.labelLine,
         icon: lineIcon,
-        config: LineDrawingToolConfig(),
+        config: const LineDrawingToolConfig(),
       ),
-      const DrawingToolItemModel(
-        title: 'Ray', //context.mobileChartWrapperLocalizations.labelRay,
+      DrawingToolItemModel(
+        title: context.mobileChartWrapperLocalizations.labelRay,
         icon: macdIcon,
-        config: RayDrawingToolConfig(),
+        config: const RayDrawingToolConfig(),
       ),
     ];
   }
@@ -323,7 +323,6 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
         showLoadingIndicator: false,
         onPositiveActionPressed: () {
           drawingToolsRepo.clear();
-          setState(() {});
           Navigator.pop(context);
         },
         onNegativeActionPressed: () {
