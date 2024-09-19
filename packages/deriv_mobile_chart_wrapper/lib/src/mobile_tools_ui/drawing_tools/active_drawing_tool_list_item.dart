@@ -41,7 +41,7 @@ class ActiveDrawingToolListItem extends StatelessWidget {
       child: ListTile(
         leading: SvgPicture.asset(
           iconAssetPath,
-          height: Dimens.iconSize24,
+          height: ThemeProvider.iconSize24,
           package: 'deriv_mobile_chart_wrapper',
         ),
         title: Text(title),

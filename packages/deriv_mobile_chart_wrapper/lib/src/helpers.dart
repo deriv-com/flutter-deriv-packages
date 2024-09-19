@@ -59,9 +59,10 @@ String getIndicatorIconPath(IndicatorConfig config) {
   }
 }
 
-/// Returns the path to the icon of the drawing tool for the given [config].
-String getDrawingToolIconPath(DrawingToolConfig config) {
-  switch (config.runtimeType) {
+/// Returns the path to the icon of the drawing tool
+/// for the given [drawingToolType].
+String getDrawingToolIconPath(Type drawingToolType) {
+  switch (drawingToolType) {
     case LineDrawingToolConfig:
       return lineIcon;
     case RayDrawingToolConfig:
@@ -69,6 +70,22 @@ String getDrawingToolIconPath(DrawingToolConfig config) {
     default:
       return '';
   }
+}
+
+List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
+  List<DrawingToolItemModel> drawingTools = [
+    DrawingToolItemModel(
+      title: context.mobileChartWrapperLocalizations.labelLine,
+      icon: lineIcon,
+      config: const LineDrawingToolConfig(),
+    ),
+    DrawingToolItemModel(
+      title: context.mobileChartWrapperLocalizations.labelRay,
+      icon: macdIcon,
+      config: const RayDrawingToolConfig(),
+    ),
+  ];
+  return drawingTools;
 }
 
 Map<String, String> getSourcesOptions(BuildContext context) => {

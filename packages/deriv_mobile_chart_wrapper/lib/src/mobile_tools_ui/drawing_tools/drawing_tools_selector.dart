@@ -43,20 +43,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    drawingToolsRepo =
-        Provider.of<AddOnsRepository<DrawingToolConfig>>(context);
-    _drawingTools = [
-      DrawingToolItemModel(
-        title: context.mobileChartWrapperLocalizations.labelLine,
-        icon: lineIcon,
-        config: const LineDrawingToolConfig(),
-      ),
-      DrawingToolItemModel(
-        title: context.mobileChartWrapperLocalizations.labelRay,
-        icon: macdIcon,
-        config: const RayDrawingToolConfig(),
-      ),
-    ];
+    _drawingTools = getDrawingToolsList(context);
   }
 
   @override
@@ -95,9 +82,10 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                 color: context.theme.colors.general,
               ),
               tabs: [
-                Tab(text: 'Active (${drawingToolsRepo.items.length})'),
-                const Tab(text: 'Tools'),
-                //context.mobileChartWrapperLocalizations.labelTools
+                Tab(
+                    text:
+                        '${context.mobileChartWrapperLocalizations.labelActive} (${_activeDrawingTools.length})'),
+                Tab(text: context.mobileChartWrapperLocalizations.labelTools),
               ],
             ),
           ],
@@ -206,8 +194,8 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
                 ),
                 const SizedBox(height: ThemeProvider.margin08),
                 Text(
-                  'No active drawing tools',
-                  //context.mobileChartWrapperLocalizations.actionNoActiveDrawingTools
+                  context.mobileChartWrapperLocalizations
+                      .informNoActiveDrawingTools,
                   style: context.themeProvider.textStyle(
                     textStyle: TextStyles.body1,
                     color: const Color(0xFF999999),
@@ -222,8 +210,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           padding: const EdgeInsets.all(ThemeProvider.margin16),
           child: PrimaryButton(
             child: Text(
-              'Add drawing tool',
-              //context.mobileChartWrapperLocalizations.informAddDrawingTool
+              context.mobileChartWrapperLocalizations.actionAddDrawingTool,
               style: context.theme.textStyle(
                 textStyle: TextStyles.body2,
                 color: context.theme.colors.prominent,
