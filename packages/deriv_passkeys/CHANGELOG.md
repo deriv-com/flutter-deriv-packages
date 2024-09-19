@@ -1,3 +1,27 @@
+## 0.0.4+4
+
+ - Update a dependency to the latest release.
+
+## 0.0.4+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.4+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.4+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.4
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
+## 0.0.3+28
+
+ - Update a dependency to the latest release.
+
 ## 0.0.3+27
 
  - **REFACTOR**(deriv_passkeys): replace token with account entity ([#785](https://github.com/regentmarkets/flutter-deriv-packages/issues/785)). ([600d7e44](https://github.com/regentmarkets/flutter-deriv-packages/commit/600d7e44c4318501d180640e5a9c21f5357f6022))

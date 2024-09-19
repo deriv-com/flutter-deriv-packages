@@ -148,10 +148,13 @@ class ValueSelector extends StatelessWidget {
                           key: decreaseButtonKey,
                           icon: const Icon(Icons.remove),
                           color: !isEnabled ? disabledColor : null,
-                          onPressed: () {
-                            final double decreasedValue = _decrement(value);
-                            onChange?.call(decreasedValue);
-                          },
+                          onPressed: _isLowerThanMinimum(value)
+                              ? null
+                              : () {
+                                  final double decreasedValue =
+                                      _decrement(value);
+                                  onChange?.call(decreasedValue);
+                                },
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.30,
@@ -181,10 +184,13 @@ class ValueSelector extends StatelessWidget {
                           key: increaseButtonKey,
                           icon: const Icon(Icons.add),
                           color: !isEnabled ? disabledColor : null,
-                          onPressed: () {
-                            final double increasedValue = _increment(value);
-                            onChange?.call(increasedValue);
-                          },
+                          onPressed: _isBiggerThanMaximum(value)
+                              ? null
+                              : () {
+                                  final double increasedValue =
+                                      _increment(value);
+                                  onChange?.call(increasedValue);
+                                },
                         ),
                       ],
                     ),
@@ -292,4 +298,10 @@ class ValueSelector extends StatelessWidget {
     }
     return value - 1;
   }
+
+  bool _isLowerThanMinimum(double value) =>
+      minimum != null && value - minimum! < 1;
+
+  bool _isBiggerThanMaximum(double value) =>
+      maximum != null && maximum! - value < 1;
 }

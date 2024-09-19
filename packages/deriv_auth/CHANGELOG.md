@@ -1,3 +1,27 @@
+## 6.7.48
+
+ - Update a dependency to the latest release.
+
+## 6.7.47
+
+ - Update a dependency to the latest release.
+
+## 6.7.46
+
+ - Update a dependency to the latest release.
+
+## 6.7.45
+
+ - Update a dependency to the latest release.
+
+## 6.7.44
+
+ - Update a dependency to the latest release.
+
+## 6.7.43
+
+ - Update a dependency to the latest release.
+
 ## 6.7.42
 
  - Update a dependency to the latest release.
