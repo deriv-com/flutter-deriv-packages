@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.1`](#deriv_mobile_chart_wrapper---v011)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.1`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-74] Add drawing tools bottom sheet UI ([#815](https://github.com/regentmarkets/flutter-deriv-packages/issues/815)). ([ebd9ab92](https://github.com/regentmarkets/flutter-deriv-packages/commit/ebd9ab92707630df3bc185aab5a503399df786b4))
+
+
 ## 2024-09-13
 
 ### Changes
