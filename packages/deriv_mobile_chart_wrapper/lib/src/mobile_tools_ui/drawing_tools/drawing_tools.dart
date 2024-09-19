@@ -1,2 +1,4 @@
 export 'drawing_tool_icon_button.dart';
-export 'drawing_tool_selector.dart';
+export 'active_drawing_tool_item.dart';
+export 'drawing_tool_item.dart';
+export 'drawing_tools_selector.dart';

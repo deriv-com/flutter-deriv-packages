@@ -57,12 +57,15 @@ String getDrawingToolIconPath(Type drawingToolType) {
   }
 }
 
+/// Returns the list of drawing tools available for the chart.
 List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
-  List<DrawingToolItemModel> drawingTools = [
+  List<DrawingToolItemModel> drawingTools = <DrawingToolItemModel>[
     DrawingToolItemModel(
       title: context.mobileChartWrapperLocalizations.labelLine,
       icon: lineIcon,
-      config: const LineDrawingToolConfig(),
+      config: const LineDrawingToolConfig(
+        lineStyle: LineStyle(thickness: 0.9, color: BrandColors.coral),
+      ),
     ),
     DrawingToolItemModel(
       title: context.mobileChartWrapperLocalizations.labelRay,
@@ -70,6 +73,7 @@ List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
       config: const RayDrawingToolConfig(),
     ),
   ];
+
   return drawingTools;
 }
 

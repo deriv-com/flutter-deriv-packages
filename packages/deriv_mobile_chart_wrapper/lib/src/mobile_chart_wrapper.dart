@@ -1,6 +1,6 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_selector.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tools_selector.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_ui/components/components.dart';
@@ -296,8 +296,8 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: SafeArea(
           child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelDrawingTools,
-            child: DrawingToolSelector(
-              onSelection: (DrawingToolConfig selectedDrawingTool) {
+            child: DrawingToolsSelector(
+              onDrawingToolSelected: (DrawingToolConfig selectedDrawingTool) {
                 _drawingTools.onDrawingToolSelection(selectedDrawingTool);
                 Navigator.of(context).pop();
               },
