@@ -302,6 +302,7 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           showLoadingIndicator: false,
           onPositiveActionPressed: () {
             drawingToolsRepo.removeAt(index);
+            _revampToolsNumbers(config, index);
             Navigator.pop(context);
           },
           onNegativeActionPressed: () {
@@ -328,5 +329,18 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
         onNegativeActionPressed: () {
           Navigator.pop(context);
         });
+  }
+
+  void _revampToolsNumbers(DrawingToolConfig config, int index) {
+    for (int i = index; i < drawingToolsRepo.items.length; i++) {
+      DrawingToolConfig toolConfig = drawingToolsRepo.items[i];
+      if (toolConfig.number != 0 &&
+          toolConfig.runtimeType == config.runtimeType) {
+        toolConfig = toolConfig.copyWith(
+          number: toolConfig.number - 1,
+        );
+        drawingToolsRepo.updateAt(i, toolConfig);
+      }
+    }
   }
 }
