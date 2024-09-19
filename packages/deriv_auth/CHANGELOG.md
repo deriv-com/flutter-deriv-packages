@@ -1,3 +1,7 @@
+## 6.7.49
+
+ - **FIX**(deriv_auth): unassigned token for account created on web ([#756](https://github.com/regentmarkets/flutter-deriv-packages/issues/756)). ([abbb8905](https://github.com/regentmarkets/flutter-deriv-packages/commit/abbb8905263517c32c1e990fdc9dbfd2fb38ae9b))
+
 ## 6.7.48
 
  - Update a dependency to the latest release.

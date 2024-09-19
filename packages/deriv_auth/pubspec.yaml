@@ -1,6 +1,6 @@
 name: deriv_auth
 description: Provides deriv authentication functionalities for dart/flutter apps.
-version: 6.7.48
+version: 6.7.49
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
