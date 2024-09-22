@@ -110,30 +110,14 @@ class DerivAuthService extends BaseAuthService {
 
       _checkAuthorizeValidity(responseAuthorizeEntity);
 
-      /// If the token is 'MULTI' then the last token in the list will be used
-      /// as the token for the account as this is the most recently added token.
-      /// Else we can used the provided token.
-      final String _token =
-          token.compareTo('MULTI') == 0 ? tokenList?.last ?? '' : token;
-
       final AuthorizeEntity _enhancedAuthorizeEntity =
           responseAuthorizeEntity!.copyWith(
         signupProvider: signupProvider,
         refreshToken: refreshToken,
-        accountList: responseAuthorizeEntity.accountList
-            ?.map(
-              (AccountListItem accountListItem) => accountListItem.copyWith(
-                token: accounts
-                        .where(
-                          (AccountModel element) =>
-                              element.accountId == accountListItem.loginid,
-                        )
-                        .firstOrNull
-                        ?.token ??
-                    _token,
-              ),
-            )
-            .toList(),
+        accountList: _getAccountListWithToken(
+          responseAuthorizeEntity.accountList,
+          accounts,
+        ),
       );
 
       await authRepository.onLogin(_enhancedAuthorizeEntity);
@@ -148,6 +132,28 @@ class DerivAuthService extends BaseAuthService {
       );
     }
   }
+
+  List<AccountListItem>? _getAccountListWithToken(
+    List<AccountListItem>? accountListItems,
+    List<AccountModel> accounts,
+  ) =>
+      accountListItems?.map(
+        (AccountListItem accountListItem) {
+          final AccountModel? account = accounts.firstWhereOrNull(
+            (AccountModel element) =>
+                element.accountId == accountListItem.loginid,
+          );
+
+          if (account == null) {
+            throw DerivAuthException(
+              message: 'Login is Expired',
+              type: AuthErrorType.expiredAccount,
+            );
+          }
+
+          return accountListItem.copyWith(token: account.token);
+        },
+      ).toList();
 
   @override
   Future<AccountModel?> getDefaultAccount() =>

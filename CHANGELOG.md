@@ -3,6 +3,135 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.2`](#deriv_mobile_chart_wrapper---v012)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.2`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-81] Functionality to add dots for drawing tool. ([#810](https://github.com/regentmarkets/flutter-deriv-packages/issues/810)). ([05d5c85f](https://github.com/regentmarkets/flutter-deriv-packages/commit/05d5c85f9b5c204ec54eb3828b262fe7c0293ac0))
+
+
+## 2024-09-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v2.3.0`](#analytics---v230)
+ - [`deriv_passkeys` - `v0.0.4+5`](#deriv_passkeys---v0045)
+ - [`deriv_auth` - `v6.7.50`](#deriv_auth---v6750)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.4+5`
+ - `deriv_auth` - `v6.7.50`
+
+---
+
+#### `analytics` - `v2.3.0`
+
+ - **FEAT**(analytics): Amend tracking events Rudderstack ([#821](https://github.com/regentmarkets/flutter-deriv-packages/issues/821)). ([bd197376](https://github.com/regentmarkets/flutter-deriv-packages/commit/bd197376cf450ec375a9759c9511563a253a0c64))
+
+
+## 2024-09-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.7.49`](#deriv_auth---v6749)
+
+---
+
+#### `deriv_auth` - `v6.7.49`
+
+ - **FIX**(deriv_auth): unassigned token for account created on web ([#756](https://github.com/regentmarkets/flutter-deriv-packages/issues/756)). ([abbb8905](https://github.com/regentmarkets/flutter-deriv-packages/commit/abbb8905263517c32c1e990fdc9dbfd2fb38ae9b))
+
+
+## 2024-09-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.1`](#deriv_mobile_chart_wrapper---v011)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.1`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-74] Add drawing tools bottom sheet UI ([#815](https://github.com/regentmarkets/flutter-deriv-packages/issues/815)). ([ebd9ab92](https://github.com/regentmarkets/flutter-deriv-packages/commit/ebd9ab92707630df3bc185aab5a503399df786b4))
+
+
+## 2024-09-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.1.0+2`](#deriv_ui---v0102)
+ - [`deriv_language_selector` - `v0.0.3+9`](#deriv_language_selector---v0039)
+ - [`deriv_widgetbook` - `v0.0.2+29`](#deriv_widgetbook---v00229)
+ - [`deriv_passkeys` - `v0.0.4+4`](#deriv_passkeys---v0044)
+ - [`deriv_auth` - `v6.7.48`](#deriv_auth---v6748)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0+4`](#deriv_mobile_chart_wrapper---v0104)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_language_selector` - `v0.0.3+9`
+ - `deriv_widgetbook` - `v0.0.2+29`
+ - `deriv_passkeys` - `v0.0.4+4`
+ - `deriv_auth` - `v6.7.48`
+ - `deriv_mobile_chart_wrapper` - `v0.1.0+4`
+
+---
+
+#### `deriv_ui` - `v0.1.0+2`
+
+ - **FIX**(deriv-ui): [DRGO-126]call the passed onDispose method inside dispose method ([#819](https://github.com/regentmarkets/flutter-deriv-packages/issues/819)). ([2e29a1ee](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e29a1eeb7dbb5c77bc04e1e7f7ee12081a1fd2d))
+
+
 ## 2024-09-11
 
 ### Changes
