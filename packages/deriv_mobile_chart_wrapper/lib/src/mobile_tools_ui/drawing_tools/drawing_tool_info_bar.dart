@@ -64,44 +64,54 @@ class DrawingToolInfoBar extends StatelessWidget
       ),
       child: Row(
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(ThemeProvider.margin04),
-            decoration: BoxDecoration(
-              color: context.theme.colors.lessProminent,
-              borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
-            ),
-            child: Text(
-              '${infoBarData.step} of ${infoBarData.totalSteps}',
-              style: context.theme.textStyle(textStyle: TextStyles.caption),
-            ),
-          ),
+          _buildStepIndicator(context, infoBarData),
           const SizedBox(width: ThemeProvider.margin08),
-          Expanded(
-            child: Text(
-              infoBarData.title,
-              style: context.theme.textStyle(textStyle: TextStyles.body1),
-              textAlign: TextAlign.center,
-            ),
-          ),
+          _buildTitle(context, title: infoBarData.title),
           const SizedBox(width: ThemeProvider.margin08),
-          GestureDetector(
-            child: SvgPicture.asset(
-              closeFilledIcon,
-              width: ThemeProvider.iconSize24,
-              height: ThemeProvider.iconSize24,
-              package: 'deriv_mobile_chart_wrapper',
-            ),
-            onTap: () {
-              toolsController.drawingToolsData?.init();
-              toolsController
-                  .updateDrawingToolsData(toolsController.drawingToolsData);
-              onClosed?.call();
-            },
-          ),
+          _buildCloseButton(context),
         ],
       ),
     );
   }
+
+  Widget _buildStepIndicator(
+    BuildContext context,
+    DrawingToolInfoBarModel infoBarData,
+  ) =>
+      Container(
+        padding: const EdgeInsets.all(ThemeProvider.margin04),
+        decoration: BoxDecoration(
+          color: context.theme.colors.lessProminent,
+          borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
+        ),
+        child: Text(
+          '${infoBarData.step} of ${infoBarData.totalSteps}',
+          style: context.theme.textStyle(textStyle: TextStyles.caption),
+        ),
+      );
+
+  Widget _buildTitle(BuildContext context, {required String title}) => Expanded(
+        child: Text(
+          title,
+          style: context.theme.textStyle(textStyle: TextStyles.body1),
+          textAlign: TextAlign.center,
+        ),
+      );
+
+  Widget _buildCloseButton(BuildContext context) => GestureDetector(
+        child: SvgPicture.asset(
+          closeFilledIcon,
+          width: ThemeProvider.iconSize24,
+          height: ThemeProvider.iconSize24,
+          package: 'deriv_mobile_chart_wrapper',
+        ),
+        onTap: () {
+          toolsController.drawingToolsData?.init();
+          toolsController
+              .updateDrawingToolsData(toolsController.drawingToolsData);
+          onClosed?.call();
+        },
+      );
 
   DrawingToolInfoBarModel _getInfoBarData(
     BuildContext context, {

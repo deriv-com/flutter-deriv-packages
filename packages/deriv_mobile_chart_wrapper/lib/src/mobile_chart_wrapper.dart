@@ -343,7 +343,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
     super.dispose();
   }
 
-  /// Update the configs in the tool controller.
+  /// Update the configs in the tools controller.
   void _updateConfigs() {
     widget.toolsController?.updateConfigs(ConfigItemModel(
       indicatorConfigs: _indicatorsRepo?.items ?? [],
