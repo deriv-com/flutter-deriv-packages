@@ -1,19 +1,21 @@
 name: deriv_mobile_chart_wrapper
 description: A new Flutter package project.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-version: 0.1.1
+version: 0.1.2
 homepage:
 
-
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.3.3 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   deriv_chart:
-    path: /Users/illyatsai/flutter-chart
+    git:
+      url: git@github.com:regentmarkets/flutter-chart.git
+      ref: dev
+
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git

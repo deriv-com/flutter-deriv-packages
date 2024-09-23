@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// List item for the active drawing tools list.
-class ActiveDrawingToolListItem extends StatelessWidget {
+class ActiveDrawingToolItem extends StatelessWidget {
   /// Initializes the active indicator list item.
-  const ActiveDrawingToolListItem({
+  const ActiveDrawingToolItem({
     required this.iconAssetPath,
     required this.title,
     required this.onTapSettings,
@@ -22,11 +22,11 @@ class ActiveDrawingToolListItem extends StatelessWidget {
 
   /// The callback which will be called when the
   /// drawing tool settings button is tapped.
-  final VoidCallback onTapSettings;
+  final VoidCallback? onTapSettings;
 
   /// The callback which will be called when the
   /// drawing tool delete button is tapped.
-  final VoidCallback onTapDelete;
+  final VoidCallback? onTapDelete;
 
   @override
   Widget build(BuildContext context) {

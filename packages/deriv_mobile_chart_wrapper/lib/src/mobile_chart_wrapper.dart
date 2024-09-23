@@ -287,6 +287,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         ..init()
         ..drawingToolsRepo = drawingToolsRepo;
     });
+
     showModalBottomSheet(
       context: context,
       builder: (_) =>
@@ -295,8 +296,8 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: SafeArea(
           child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelDrawingTools,
-            child: DrawingToolSelector(
-              onSelection: (DrawingToolConfig selectedDrawingTool) {
+            child: DrawingToolsSelector(
+              onDrawingToolSelected: (DrawingToolConfig selectedDrawingTool) {
                 _drawingTools.onDrawingToolSelection(selectedDrawingTool);
                 Navigator.of(context).pop();
               },

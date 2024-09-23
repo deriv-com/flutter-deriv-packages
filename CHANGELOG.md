@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.2`](#deriv_mobile_chart_wrapper---v012)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.2`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-81] Functionality to add dots for drawing tool. ([#810](https://github.com/regentmarkets/flutter-deriv-packages/issues/810)). ([05d5c85f](https://github.com/regentmarkets/flutter-deriv-packages/commit/05d5c85f9b5c204ec54eb3828b262fe7c0293ac0))
+
+
 ## 2024-09-19
 
 ### Changes

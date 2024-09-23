@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// List item widget to show a drawing tool.
-class DrawingToolListItem extends StatelessWidget {
+class DrawingToolItem extends StatelessWidget {
   /// Constructor of the widget
-  const DrawingToolListItem({
+  const DrawingToolItem({
     required this.iconAssetPath,
     required this.title,
     required this.onTap,

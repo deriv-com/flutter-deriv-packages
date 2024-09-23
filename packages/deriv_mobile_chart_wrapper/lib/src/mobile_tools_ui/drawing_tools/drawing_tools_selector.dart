@@ -1,32 +1,32 @@
+import 'package:collection/collection.dart';
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_list_item.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_list_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-class DrawingToolSelector extends StatefulWidget {
-  const DrawingToolSelector({
-    required this.onSelection,
+class DrawingToolsSelector extends StatefulWidget {
+  const DrawingToolsSelector({
+    required this.onDrawingToolSelected,
     super.key,
   });
 
   /// Drawing tools selection callback.
-  final void Function(DrawingToolConfig drawingToolConfig)? onSelection;
+  final void Function(DrawingToolConfig drawingToolConfig)?
+      onDrawingToolSelected;
 
   @override
-  State<DrawingToolSelector> createState() => _DrawingToolSelectorState();
+  State<DrawingToolsSelector> createState() => _DrawingToolsSelectorState();
 }
 
-class _DrawingToolSelectorState extends State<DrawingToolSelector>
+class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -43,8 +43,10 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    drawingToolsRepo =
-        Provider.of<AddOnsRepository<DrawingToolConfig>>(context);
+
+    drawingToolsRepo = Provider.of<AddOnsRepository<DrawingToolConfig>>(
+      context,
+    );
     _drawingTools = getDrawingToolsList(context);
   }
 
@@ -55,249 +57,238 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: context.theme.colors.disabled,
-                    width: ThemeProvider.margin02,
-                  ),
+  Widget build(BuildContext context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          _buildTabBar(context),
+          Expanded(
+            child: Ink(
+              color: context.theme.colors.primary,
+              child: TabBarView(
+                controller: _tabController,
+                children: <Widget>[
+                  _buildActiveDrawingToolsTab(context),
+                  _buildDrawingToolListTab(context),
+                ],
+              ),
+            ),
+          ),
+        ],
+      );
+
+  Widget _buildTabBar(BuildContext context) => Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: context.theme.colors.disabled,
+                  width: ThemeProvider.margin02,
                 ),
               ),
             ),
-            TabBar(
-              controller: _tabController,
-              indicatorColor: context.theme.colors.danger,
-              labelStyle: context.theme.textStyle(
-                textStyle: TextStyles.body2,
-                color: context.theme.colors.prominent,
-              ),
-              unselectedLabelStyle: context.theme.textStyle(
-                textStyle: TextStyles.body1,
-                color: context.theme.colors.general,
-              ),
-              tabs: [
-                Tab(
-                    text:
-                        '${context.mobileChartWrapperLocalizations.labelActive} (${drawingToolsRepo.items.length})'),
-                Tab(text: context.mobileChartWrapperLocalizations.labelTools),
-              ],
-            ),
-          ],
-        ),
-        Expanded(
-          child: Ink(
-            color: context.theme.colors.primary,
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                _buildActiveDrawingToolsTab(context),
-                _buildDrawingToolListTab(context),
-              ],
-            ),
           ),
-        ),
-      ],
-    );
-  }
+          TabBar(
+            controller: _tabController,
+            indicatorColor: context.theme.colors.danger,
+            labelStyle: context.theme.textStyle(
+              textStyle: TextStyles.body2,
+              color: context.theme.colors.prominent,
+            ),
+            unselectedLabelStyle: context.theme.textStyle(
+              textStyle: TextStyles.body1,
+              color: context.theme.colors.general,
+            ),
+            tabs: [
+              Tab(
+                  text: '${context.mobileChartWrapperLocalizations.labelActive}'
+                      ' (${drawingToolsRepo.items.length})'),
+              Tab(text: context.mobileChartWrapperLocalizations.labelTools),
+            ],
+          ),
+        ],
+      );
 
   Widget _buildActiveDrawingToolsTab(BuildContext context) {
-    if (drawingToolsRepo.items.isEmpty) {
-      return _buildDrawingToolEmptyState();
+    final List<DrawingToolConfig> activeDrawingTools = drawingToolsRepo.items;
+
+    if (activeDrawingTools.isEmpty) {
+      return _buildEmptyActiveDrawingTools();
     } else {
-      return _buildActiveDrawingToolsList();
+      return _buildActiveDrawingToolsList(activeDrawingTools);
     }
   }
 
-  Widget _buildActiveDrawingToolsList() {
-    return Column(
-      children: <Widget>[
-        _buildActiveTabHeader(),
-        Expanded(
-          child: ListView.separated(
-            itemCount: drawingToolsRepo.items.length,
-            separatorBuilder: (_, __) =>
-                const SizedBox(height: ThemeProvider.margin08),
-            itemBuilder: (_, index) {
-              final DrawingToolConfig drawingToolConfig =
-                  drawingToolsRepo.items[index];
-              print('indexxxxxx $index');
-              print('drawingToolConfig.number ${drawingToolConfig.number}');
-              print('drawingToolConfig.number ${drawingToolConfig}');
-              return ActiveDrawingToolListItem(
-                iconAssetPath: getDrawingToolIconPath(drawingToolConfig),
-                title: getDrawingToolTitleWithCount(drawingToolConfig, context),
-                //'${getDrawingToolTitle(drawingToolConfig, context)} $index',
-                onTapDelete: () async {
-                  await _showDeleteDrawingToolDialog(drawingToolConfig, index);
-                },
-                onTapSettings: () {},
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
-
-  /// Returns the number of active drawing tools for specified [drawingTool].
-  int _getDrawingToolCount(DrawingToolItemModel drawingTool) {
-    return drawingToolsRepo.items
-        .where((item) => item.runtimeType == drawingTool.config.runtimeType)
-        .length;
-  }
-
   Widget _buildDrawingToolListTab(BuildContext context) {
+    final activeDrawingTools = drawingToolsRepo.items;
+    final toolCounts = _computeToolCounts(activeDrawingTools);
+
     return ListView.builder(
       itemCount: _drawingTools.length,
-      itemBuilder: (_, index) {
-        final DrawingToolItemModel tool = _drawingTools[index];
+      itemBuilder: (context, index) {
+        final toolItem = _drawingTools[index];
+        final count = toolCounts[toolItem.config.runtimeType] ?? 0;
 
-        return Interaction(
-          isEnabled: true,
-          child: DrawingToolListItem(
-            key: ValueKey('${tool.title}-$index'),
-            iconAssetPath: tool.icon,
-            title: tool.title,
-            count: _getDrawingToolCount(tool),
-            onTap: () {
-              drawingToolsRepo.add(
-                tool.config.copyWith(
-                  number: drawingToolsRepo.getNumberForNewAddOn(tool.config),
-                ),
-              );
-            },
-          ),
+        return DrawingToolItem(
+          iconAssetPath: toolItem.icon,
+          title: toolItem.title,
+          count: count,
+          onTap: () => widget.onDrawingToolSelected?.call(toolItem.config),
         );
       },
     );
   }
 
-  Widget _buildDrawingToolEmptyState() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Expanded(
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset(
-                  emptyStateDrawingToolsIcon,
-                  height: Dimens.iconSize48,
-                  package: 'deriv_mobile_chart_wrapper',
-                ),
-                const SizedBox(height: ThemeProvider.margin08),
-                Text(
-                  context.mobileChartWrapperLocalizations
-                      .informNoActiveDrawingTools,
-                  style: context.themeProvider.textStyle(
-                    textStyle: TextStyles.body1,
-                    color: const Color(0xFF999999),
+  Widget _buildEmptyActiveDrawingTools() => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                    emptyStateDrawingToolsIcon,
+                    height: Dimens.iconSize48,
+                    package: 'deriv_mobile_chart_wrapper',
                   ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          color: context.theme.colors.secondary,
-          padding: const EdgeInsets.all(ThemeProvider.margin16),
-          child: PrimaryButton(
-            child: Text(
-              context.mobileChartWrapperLocalizations.actionAddDrawingTool,
-              style: context.theme.textStyle(
-                textStyle: TextStyles.body2,
-                color: context.theme.colors.prominent,
+                  const SizedBox(height: ThemeProvider.margin08),
+                  Text(
+                    context.mobileChartWrapperLocalizations
+                        .informNoActiveDrawingTools,
+                    style: context.themeProvider.textStyle(
+                      textStyle: TextStyles.body1,
+                      color: context.theme.colors.lessProminent,
+                    ),
+                  ),
+                ],
               ),
             ),
-            onPressed: () {
-              setState(() {
-                _tabController.animateTo(1);
-              });
-            },
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildActiveTabHeader() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: ThemeProvider.margin08,
-        horizontal: ThemeProvider.margin16,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Visibility(
-            visible: drawingToolsRepo.items.isNotEmpty,
-            maintainSize: true,
-            maintainState: true,
-            maintainAnimation: true,
-            child: SecondaryButton(
-              onPressed: _showDeleteAllDrawingToolsDialog,
-              child: Center(
-                child: Text(
-                  context.mobileChartWrapperLocalizations.labelDeleteAll,
-                  style: context.themeProvider.textStyle(
-                    textStyle: TextStyles.caption,
-                    color: context.themeProvider.colors.prominent,
-                  ),
+          Container(
+            color: context.theme.colors.secondary,
+            padding: const EdgeInsets.all(ThemeProvider.margin16),
+            child: PrimaryButton(
+              child: Text(
+                context.mobileChartWrapperLocalizations.actionAddDrawingTool,
+                style: context.theme.textStyle(
+                  textStyle: TextStyles.body2,
+                  color: context.theme.colors.prominent,
                 ),
               ),
+              onPressed: () => _tabController.animateTo(1),
             ),
           ),
         ],
-      ),
-    );
-  }
+      );
 
-  /// Returns the path to the icon of the drawing tool for the given [config].
-  String getDrawingToolIconPath(DrawingToolConfig config) {
-    switch (config.runtimeType) {
-      case LineDrawingToolConfig:
-        return lineIcon;
-      case RayDrawingToolConfig:
-        return rsiIcon;
-      default:
-        return '';
-    }
-  }
+  Widget _buildActiveDrawingToolsList(
+    List<DrawingToolConfig> activeDrawingTools,
+  ) =>
+      Column(
+        children: <Widget>[
+          _buildActiveDrawingToolsActionBar(activeDrawingTools),
+          Expanded(
+            child: ListView.builder(
+              itemCount: activeDrawingTools.length,
+              itemBuilder: (BuildContext context, int index) {
+                final activeDrawingToolItem = activeDrawingTools[index];
+                final DrawingToolItemModel? drawingToolItem =
+                    _drawingTools.firstWhereOrNull((element) =>
+                        element.config.runtimeType ==
+                        activeDrawingToolItem.runtimeType);
 
-  Future<void> _showDeleteDrawingToolDialog(
-          DrawingToolConfig config, int index) =>
-      showAlertDialog(
-          context: context,
-          title: 'delete',
-          content: Text(
-            context.mobileChartWrapperLocalizations.infoDeleteIndicator,
-            style: TextStyles.subheading,
+                if (drawingToolItem != null) {
+                  return _buildActiveDrawingToolItem(
+                    context,
+                    toolIcon: drawingToolItem.icon,
+                    title: drawingToolItem.title,
+                    onTapDelete: () => drawingToolsRepo.removeAt(index),
+                    onTapSettings: () {},
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              },
+            ),
           ),
-          positiveActionLabel:
-              context.mobileChartWrapperLocalizations.labelDelete,
-          negativeButtonLabel:
-              context.mobileChartWrapperLocalizations.labelCancel,
-          showLoadingIndicator: false,
-          onPositiveActionPressed: () {
-            drawingToolsRepo.removeAt(index);
-            _revampToolsNumbers(config, index);
-            Navigator.pop(context);
-          },
-          onNegativeActionPressed: () {
-            Navigator.pop(context);
-          });
+        ],
+      );
 
-  void _showDeleteAllDrawingToolsDialog() {
-    showAlertDialog(
+  Widget _buildActiveDrawingToolsActionBar(
+    List<DrawingToolConfig> activeDrawingTools,
+  ) =>
+      Padding(
+        padding: const EdgeInsets.only(
+          top: ThemeProvider.margin16,
+          bottom: ThemeProvider.margin08,
+          left: ThemeProvider.margin16,
+          right: ThemeProvider.margin16,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Visibility(
+              visible: activeDrawingTools.isNotEmpty,
+              maintainSize: true,
+              maintainState: true,
+              maintainAnimation: true,
+              child: SecondaryButton(
+                onPressed: _showDeleteAllDrawingToolsDialog,
+                child: Center(
+                  child: Text(
+                    context.mobileChartWrapperLocalizations.labelDeleteAll,
+                    style: context.themeProvider.textStyle(
+                      textStyle: TextStyles.caption,
+                      color: context.themeProvider.colors.prominent,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+
+  Widget _buildActiveDrawingToolItem(
+    BuildContext context, {
+    required String toolIcon,
+    required String title,
+    required VoidCallback? onTapDelete,
+    required VoidCallback? onTapSettings,
+  }) =>
+      Card(
+        margin: const EdgeInsets.symmetric(
+          horizontal: ThemeProvider.margin16,
+          vertical: ThemeProvider.margin08,
+        ),
+        color: context.themeProvider.colors.secondary,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(ThemeProvider.borderRadius08),
+          ),
+        ),
+        child: ActiveDrawingToolItem(
+          iconAssetPath: toolIcon,
+          title: title,
+          onTapDelete: onTapDelete,
+          onTapSettings: onTapSettings,
+        ),
+      );
+
+  Map<Type, int> _computeToolCounts(
+    List<DrawingToolConfig> activeDrawingTools,
+  ) =>
+      activeDrawingTools.fold(
+        <Type, int>{},
+        (counts, tool) {
+          counts[tool.runtimeType] = (counts[tool.runtimeType] ?? 0) + 1;
+          return counts;
+        },
+      );
+
+  void _showDeleteAllDrawingToolsDialog() => showAlertDialog(
         context: context,
         title: context.mobileChartWrapperLocalizations.labelDeleteAllIndicators,
         content: Text(
@@ -313,21 +304,6 @@ class _DrawingToolSelectorState extends State<DrawingToolSelector>
           drawingToolsRepo.clear();
           Navigator.pop(context);
         },
-        onNegativeActionPressed: () {
-          Navigator.pop(context);
-        });
-  }
-
-  void _revampToolsNumbers(DrawingToolConfig config, int index) {
-    for (int i = index; i < drawingToolsRepo.items.length; i++) {
-      DrawingToolConfig toolConfig = drawingToolsRepo.items[i];
-      if (toolConfig.number != 0 &&
-          toolConfig.runtimeType == config.runtimeType) {
-        toolConfig = toolConfig.copyWith(
-          number: toolConfig.number - 1,
-        );
-        drawingToolsRepo.updateAt(i, toolConfig);
-      }
-    }
-  }
+        onNegativeActionPressed: () => Navigator.pop(context),
+      );
 }

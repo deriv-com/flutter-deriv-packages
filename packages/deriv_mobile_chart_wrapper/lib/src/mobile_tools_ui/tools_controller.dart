@@ -1,3 +1,4 @@
+import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
 import 'package:flutter/material.dart';
 
@@ -38,4 +39,12 @@ class ToolsController extends ChangeNotifier {
 
   /// Shows drawing tools menu.
   void showDrawingToolsMenu() => onShowDrawingToolsMenu?.call();
+
+  /// Returns the count of active drawing tools.
+  int get activeDrawingToolsCount =>
+      _configs?.drawingToolConfigs
+          .where((DrawingToolConfig config) =>
+              config.drawingData?.isDrawingFinished ?? false)
+          .length ??
+      0;
 }
