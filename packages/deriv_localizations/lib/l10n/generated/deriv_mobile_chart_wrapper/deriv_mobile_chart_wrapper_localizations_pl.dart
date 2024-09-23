@@ -294,4 +294,13 @@ class DerivMobileChartWrapperLocalizationsPl extends DerivMobileChartWrapperLoca
 
   @override
   String get actionAddDrawingTool => 'Add drawing tool';
+
+  @override
+  String get labelOf => 'of';
+
+  @override
+  String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
+
+  @override
+  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
 }

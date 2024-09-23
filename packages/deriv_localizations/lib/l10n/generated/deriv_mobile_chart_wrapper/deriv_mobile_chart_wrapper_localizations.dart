@@ -680,6 +680,24 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// In en, this message translates to:
   /// **'Add drawing tool'**
   String get actionAddDrawingTool;
+
+  /// No description provided for @labelOf.
+  ///
+  /// In en, this message translates to:
+  /// **'of'**
+  String get labelOf;
+
+  /// No description provided for @labelDeleteAllDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all drawing tools'**
+  String get labelDeleteAllDrawingTools;
+
+  /// No description provided for @informDeleteAllDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'This will delete all active drawing tools.'**
+  String get informDeleteAllDrawingTools;
 }
 
 class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {
