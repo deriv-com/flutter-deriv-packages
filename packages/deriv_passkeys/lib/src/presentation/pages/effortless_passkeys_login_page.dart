@@ -49,9 +49,9 @@ class EffortlessPasskeysPage extends StatelessWidget
           return true;
         },
         child: BlocListener<DerivPasskeysBloc, DerivPasskeysState>(
-          listener: (BuildContext context, DerivPasskeysState state) {
+          listener: (BuildContext context, DerivPasskeysState state) async {
             if (state is DerivPasskeysCreatedSuccessfullyState) {
-              Navigator.pushReplacement(
+              await Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
                     builder: (BuildContext context) => PasskeyCreatedPage(
