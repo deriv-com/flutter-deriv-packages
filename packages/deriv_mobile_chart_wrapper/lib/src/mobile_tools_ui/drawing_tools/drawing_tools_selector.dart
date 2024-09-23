@@ -291,11 +291,13 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
         },
       );
 
+  // TODO(aliakbar-deriv): Update the title and content texts of the dialog
+  //  once it is available in the deriv_localization package.
   void _showDeleteAllDrawingToolsDialog() => showAlertDialog(
         context: context,
-        title: context.mobileChartWrapperLocalizations.labelDeleteAllIndicators,
+        title: 'Delete all drawing tools',
         content: Text(
-          context.mobileChartWrapperLocalizations.infoDeleteAllIndicators,
+          'This will delete all active drawing tools.',
           style: TextStyles.subheading,
         ),
         positiveActionLabel:
