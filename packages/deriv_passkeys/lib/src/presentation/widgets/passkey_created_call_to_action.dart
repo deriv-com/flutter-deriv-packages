@@ -9,6 +9,7 @@ class PasskeysCreatedCallToAction extends StatelessWidget {
   const PasskeysCreatedCallToAction({
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.onPassKeyFlowFinished,
     super.key,
   });
 
@@ -17,6 +18,8 @@ class PasskeysCreatedCallToAction extends StatelessWidget {
 
   /// Callback to be called when the user wants to continue trading.
   final void Function(BuildContext context) continueTradingNavigationCallback;
+
+  final void Function()? onPassKeyFlowFinished;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -35,7 +38,12 @@ class PasskeysCreatedCallToAction extends StatelessWidget {
             ),
             const SizedBox(width: 16),
             PrimaryButton(
-              onPressed: () => continueTradingNavigationCallback(context),
+              onPressed: () {
+                continueTradingNavigationCallback(context);
+                if (onPassKeyFlowFinished != null) {
+                  onPassKeyFlowFinished!();
+                }
+              },
               child: Text(
                 context.derivPasskeysLocalizations.continueTradingButtonText,
                 style: TextStyle(

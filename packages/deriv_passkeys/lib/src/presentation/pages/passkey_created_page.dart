@@ -13,6 +13,7 @@ class PasskeyCreatedPage extends StatelessWidget
   PasskeyCreatedPage({
     required this.onPageClose,
     required this.bottomCallToAction,
+    this.onPassKeyFlowFinished,
     super.key,
   }) {
     trackCreatePasskeySuccess();
@@ -20,6 +21,8 @@ class PasskeyCreatedPage extends StatelessWidget
 
   /// A callback function that will be called when the user clicks on the 'Continue' button.
   final void Function(BuildContext context) onPageClose;
+
+  final void Function()? onPassKeyFlowFinished;
 
   /// The widget to be displayed at the bottom of the page.
   final Widget bottomCallToAction;
@@ -29,7 +32,12 @@ class PasskeyCreatedPage extends StatelessWidget
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.close),
-            onPressed: () => onPageClose(context),
+            onPressed: () {
+              onPageClose(context);
+              if (onPassKeyFlowFinished != null) {
+                onPassKeyFlowFinished!();
+              }
+            },
           ),
         ),
         body: SafeArea(

@@ -21,6 +21,7 @@ class EffortlessPasskeysPage extends StatelessWidget
     required this.onPageClosed,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.onPassKeyFlowFinished,
     this.effortlessPasskeysPageKeys,
     super.key,
   }) {
@@ -38,6 +39,8 @@ class EffortlessPasskeysPage extends StatelessWidget
 
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onPageClosed;
+
+  final void Function()? onPassKeyFlowFinished;
 
   /// Pass an object of keys to assign to specific widget in this page.
   final EffortlessPasskeysPageKeys? effortlessPasskeysPageKeys;
@@ -98,6 +101,9 @@ class EffortlessPasskeysPage extends StatelessWidget
                                       onPressed: () {
                                         trackMaybeLater();
                                         onPageClosed(context);
+                                        if (onPassKeyFlowFinished != null) {
+                                          onPassKeyFlowFinished!();
+                                        }
                                       },
                                       child: Text(
                                         context.derivPasskeysLocalizations
@@ -115,7 +121,9 @@ class EffortlessPasskeysPage extends StatelessWidget
                                 Expanded(
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 24, vertical: 96),
+                                      horizontal: 24,
+                                      vertical: 96,
+                                    ),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
