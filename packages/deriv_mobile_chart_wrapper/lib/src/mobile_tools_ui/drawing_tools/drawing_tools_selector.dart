@@ -4,7 +4,9 @@ import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -119,14 +121,11 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
     if (activeDrawingTools.isEmpty) {
       return _buildEmptyActiveDrawingTools();
     } else {
-      return _buildActiveDrawingToolsList(activeDrawingTools);
+      return _buildActiveDrawingToolsList();
     }
   }
 
   Widget _buildDrawingToolListTab(BuildContext context) {
-    final activeDrawingTools = drawingToolsRepo.items;
-    final toolCounts = _computeToolCounts(activeDrawingTools);
-
     return ListView.builder(
       itemCount: _drawingTools.length,
       itemBuilder: (_, index) {
@@ -145,12 +144,18 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
                   number: drawingToolsRepo.getNumberForNewAddOn(tool.config),
                 ),
               );
-              widget.onDrawingToolSelected?.call(toolItem.config);
+              widget.onDrawingToolSelected?.call(tool.config);
             },
           ),
         );
       },
     );
+  }
+
+  int _getDrawingToolCount(DrawingToolItemModel drawingTool) {
+    return drawingToolsRepo.items
+        .where((item) => item.runtimeType == drawingTool.config.runtimeType)
+        .length;
   }
 
   Widget _buildEmptyActiveDrawingTools() => Column(
@@ -199,17 +204,18 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
   Widget _buildActiveDrawingToolsList() {
     return Column(
       children: <Widget>[
-        _buildActiveTabHeader(),
+        _buildActiveDrawingToolsActionBar(),
         Expanded(
           child: ListView.separated(
             itemCount: drawingToolsRepo.items.length,
             separatorBuilder: (_, __) =>
-            const SizedBox(height: ThemeProvider.margin08),
+                const SizedBox(height: ThemeProvider.margin08),
             itemBuilder: (_, index) {
               final DrawingToolConfig drawingToolConfig =
-              drawingToolsRepo.items[index];
+                  drawingToolsRepo.items[index];
               return ActiveDrawingToolListItem(
-                iconAssetPath: getDrawingToolIconPath(drawingToolConfig),
+                iconAssetPath:
+                    getDrawingToolIconPath(drawingToolConfig.runtimeType),
                 title: getDrawingToolTitleWithCount(drawingToolConfig, context),
                 //'${getDrawingToolTitle(drawingToolConfig, context)} $index',
                 onTapDelete: () async {
@@ -227,10 +233,7 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
     );
   }
 
-  Widget _buildActiveDrawingToolsActionBar(
-    List<DrawingToolConfig> activeDrawingTools,
-  ) =>
-      Padding(
+  Widget _buildActiveDrawingToolsActionBar() => Padding(
         padding: const EdgeInsets.only(
           top: ThemeProvider.margin16,
           bottom: ThemeProvider.margin08,
@@ -241,7 +244,7 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Visibility(
-              visible: activeDrawingTools.isNotEmpty,
+              visible: drawingToolsRepo.items.isNotEmpty,
               maintainSize: true,
               maintainState: true,
               maintainAnimation: true,
@@ -265,27 +268,25 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
   // TODO(aliakbar-deriv): Update the title and content texts of the dialog
   //  once it is available in the deriv_localization package.
   void _showDeleteAllDrawingToolsDialog() => showAlertDialog(
-        context: context,
-        title: 'Delete all drawing tools',
-        content: Text(
-          'This will delete all active drawing tools.',
-          style: TextStyles.subheading,
-        ),
-        positiveActionLabel:
-            context.mobileChartWrapperLocalizations.labelDeleteAll,
-        negativeButtonLabel:
-            context.mobileChartWrapperLocalizations.labelCancel,
-        showLoadingIndicator: false,
-        onPositiveActionPressed: () {
-          drawingToolsRepo.clear();
-          Navigator.of(context)
-            ..pop()
-            ..pop();
-        },
-        onNegativeActionPressed: () {
-          Navigator.pop(context);
-        });
-  }
+      context: context,
+      title: 'Delete all drawing tools',
+      content: Text(
+        'This will delete all active drawing tools.',
+        style: TextStyles.subheading,
+      ),
+      positiveActionLabel:
+          context.mobileChartWrapperLocalizations.labelDeleteAll,
+      negativeButtonLabel: context.mobileChartWrapperLocalizations.labelCancel,
+      showLoadingIndicator: false,
+      onPositiveActionPressed: () {
+        drawingToolsRepo.clear();
+        Navigator.of(context)
+          ..pop()
+          ..pop();
+      },
+      onNegativeActionPressed: () {
+        Navigator.pop(context);
+      });
 
   void _revampToolsNumbers(DrawingToolConfig config, int index) {
     for (int i = index; i < drawingToolsRepo.items.length; i++) {
