@@ -217,12 +217,12 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
                 iconAssetPath:
                     getDrawingToolIconPath(drawingToolConfig.runtimeType),
                 title: getDrawingToolTitleWithCount(drawingToolConfig, context),
-                //'${getDrawingToolTitle(drawingToolConfig, context)} $index',
                 onTapDelete: () async {
                   drawingToolsRepo.removeAt(index);
                   _revampToolsNumbers(drawingToolConfig, index);
-                  if (drawingToolsRepo.items.length == 0)
+                  if (drawingToolsRepo.items.isEmpty) {
                     Navigator.pop(context);
+                  }
                 },
                 onTapSettings: () {},
               );
