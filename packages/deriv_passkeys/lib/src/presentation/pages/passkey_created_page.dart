@@ -35,7 +35,7 @@ class PasskeyCreatedPage extends StatelessWidget
             onPressed: () {
               onPageClose(context);
               if (onPassKeyFlowFinished != null) {
-                onPassKeyFlowFinished!();
+                onPassKeyFlowFinished!.call();
               }
             },
           ),

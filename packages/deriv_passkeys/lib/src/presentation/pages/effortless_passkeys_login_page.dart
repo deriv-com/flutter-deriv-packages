@@ -102,7 +102,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                                         trackMaybeLater();
                                         onPageClosed(context);
                                         if (onPassKeyFlowFinished != null) {
-                                          onPassKeyFlowFinished!();
+                                          onPassKeyFlowFinished!.call();
                                         }
                                       },
                                       child: Text(

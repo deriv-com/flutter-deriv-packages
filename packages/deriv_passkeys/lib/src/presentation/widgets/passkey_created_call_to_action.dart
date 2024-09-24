@@ -41,7 +41,7 @@ class PasskeysCreatedCallToAction extends StatelessWidget {
               onPressed: () {
                 continueTradingNavigationCallback(context);
                 if (onPassKeyFlowFinished != null) {
-                  onPassKeyFlowFinished!();
+                  onPassKeyFlowFinished!.call();
                 }
               },
               child: Text(
