@@ -206,8 +206,15 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
                   return _buildActiveDrawingToolItem(
                     context,
                     toolIcon: drawingToolItem.icon,
-                    title: drawingToolItem.title,
-                    onTapDelete: () => drawingToolsRepo.removeAt(index),
+                    title: getDrawingToolTitleWithCount(
+                        activeDrawingToolItem, context),
+                    onTapDelete: () {
+                      drawingToolsRepo.removeAt(index);
+                      _revampToolsNumbers(activeDrawingToolItem, index);
+                      if (drawingToolsRepo.items.isEmpty) {
+                        Navigator.pop(context);
+                      }
+                    },
                     onTapSettings: () {},
                   );
                 } else {
@@ -307,8 +314,23 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
         showLoadingIndicator: false,
         onPositiveActionPressed: () {
           drawingToolsRepo.clear();
-          Navigator.pop(context);
+          Navigator.of(context)
+            ..pop()
+            ..pop();
         },
         onNegativeActionPressed: () => Navigator.pop(context),
       );
+
+  void _revampToolsNumbers(DrawingToolConfig config, int index) {
+    for (int i = index; i < drawingToolsRepo.items.length; i++) {
+      DrawingToolConfig toolConfig = drawingToolsRepo.items[i];
+      if (toolConfig.number != 0 &&
+          toolConfig.runtimeType == config.runtimeType) {
+        toolConfig = toolConfig.copyWith(
+          number: toolConfig.number - 1,
+        );
+        drawingToolsRepo.updateAt(i, toolConfig);
+      }
+    }
+  }
 }

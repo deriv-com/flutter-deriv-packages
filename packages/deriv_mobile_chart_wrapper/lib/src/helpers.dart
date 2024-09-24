@@ -77,6 +77,21 @@ List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
   return drawingTools;
 }
 
+String getDrawingToolTitleWithCount(
+        DrawingToolConfig config, BuildContext context) =>
+    '${getDrawingToolTitle(config, context)} ${config.number > 0 ? config.number : ''}';
+
+String getDrawingToolTitle(DrawingToolConfig config, BuildContext context) {
+  switch (config.runtimeType) {
+    case LineDrawingToolConfig:
+      return context.mobileChartWrapperLocalizations.labelLine;
+    case RayDrawingToolConfig:
+      return context.mobileChartWrapperLocalizations.labelRay;
+    default:
+      return '';
+  }
+}
+
 Map<String, String> getSourcesOptions(BuildContext context) => {
       'close': context.mobileChartWrapperLocalizations.labelClose,
       'open': context.mobileChartWrapperLocalizations.labelOpen,
