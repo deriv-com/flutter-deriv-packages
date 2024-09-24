@@ -1,11 +1,8 @@
-import 'package:collection/collection.dart';
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_list_item.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
@@ -139,11 +136,6 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
             title: tool.title,
             count: _getDrawingToolCount(tool),
             onTap: () {
-              drawingToolsRepo.add(
-                tool.config.copyWith(
-                  number: drawingToolsRepo.getNumberForNewAddOn(tool.config),
-                ),
-              );
               widget.onDrawingToolSelected?.call(tool.config);
             },
           ),
