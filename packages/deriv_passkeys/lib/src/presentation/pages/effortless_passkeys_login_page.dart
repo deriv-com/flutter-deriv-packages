@@ -58,6 +58,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                 context,
                 MaterialPageRoute<Widget>(
                     builder: (BuildContext context) => PasskeyCreatedPage(
+                          onPassKeyFlowFinished: onPassKeyFlowFinished,
                           onPageClose: (BuildContext context) {
                             onPageClosed(context);
                           },
@@ -72,6 +73,7 @@ class EffortlessPasskeysPage extends StatelessWidget
                               trackContinueTrading();
                               continueTradingNavigationCallback(context);
                             },
+                            onPassKeyFlowFinished: onPassKeyFlowFinished,
                           ),
                         )),
               );
