@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:encrypt/encrypt.dart';
 
 import 'base_cipher.dart';
+import 'helper.dart';
 
 /// A cipher class that encrypts and decrypts strings.
 class Cipher extends BaseCipher {
@@ -14,11 +15,11 @@ class Cipher extends BaseCipher {
   static final Cipher _instance = Cipher._();
 
   @override
-  String encrypt({required String message, required String key}) {
+  String encrypt({required String message, required List<List<int>> key}) {
     assert(message.isNotEmpty);
-    assert(key.length == 32);
+    assert(convert2DIntListToString(key).length == 32);
 
-    final Key keyBytes = Key.fromUtf8(key);
+    final Key keyBytes = Key.fromUtf8(convert2DIntListToString(key));
     final IV iv = IV.fromLength(16);
     final Encrypter encrypter = Encrypter(AES(keyBytes));
 
@@ -26,11 +27,11 @@ class Cipher extends BaseCipher {
   }
 
   @override
-  String decrypt({required String message, required String key}) {
+  String decrypt({required String message, required List<List<int>> key}) {
     assert(message.isNotEmpty);
-    assert(key.length == 32);
+    assert(convert2DIntListToString(key).length == 32);
 
-    final Key keyBytes = Key.fromUtf8(key);
+    final Key keyBytes = Key.fromUtf8(convert2DIntListToString(key));
     final IV iv = IV.fromLength(16);
     final Encrypter encrypter = Encrypter(AES(keyBytes));
 
