@@ -27,3 +27,6 @@
 .dart_tool/
 .packages
 build/
+
+
+lib/string_to_int_array.dart
