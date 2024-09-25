@@ -120,8 +120,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage>
                           (BuildContext context) {
                         trackContinueTrading();
                         widget.continueTradingNavigationCallback(context);
-                      },
-                      onExitPasskeysFlow: () {
+
                         if (widget.onExitPasskeysFlow != null) {
                           widget.onExitPasskeysFlow!.call();
                         }

@@ -73,8 +73,10 @@ class EffortlessPasskeysPage extends StatelessWidget
                           (BuildContext context) {
                         trackContinueTrading();
                         continueTradingNavigationCallback(context);
+                        if (onExitPasskeysFlow != null) {
+                          onExitPasskeysFlow!.call();
+                        }
                       },
-                      onExitPasskeysFlow: onExitPasskeysFlow,
                     ),
                   ),
                 ),
