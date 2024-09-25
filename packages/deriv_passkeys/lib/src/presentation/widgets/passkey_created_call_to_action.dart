@@ -35,9 +35,7 @@ class PasskeysCreatedCallToAction extends StatelessWidget {
             ),
             const SizedBox(width: 16),
             PrimaryButton(
-              onPressed: () {
-                continueTradingNavigationCallback(context);
-              },
+              onPressed: () => continueTradingNavigationCallback(context),
               child: Text(
                 context.derivPasskeysLocalizations.continueTradingButtonText,
                 style: TextStyle(
