@@ -82,12 +82,16 @@ class DerivAuthService extends BaseAuthService {
 
       _checkAuthorizeValidity(responseAuthorizeEntity);
 
+      final List<AccountListItem> _filteredAccounts =
+          _filterSupportedAccountsFromAuthorizeResponse(
+              responseAuthorizeEntity?.accountList ?? <AccountListItem>[]);
+
       final AuthorizeEntity _enhancedAuthorizeEntity =
           responseAuthorizeEntity!.copyWith(
         signupProvider: signupProvider,
         refreshToken: refreshToken,
         accountList: _getAccountListWithToken(
-          responseAuthorizeEntity.accountList,
+          _filteredAccounts,
           accounts,
         ),
       );
@@ -147,6 +151,22 @@ class DerivAuthService extends BaseAuthService {
   List<AccountModel> _filterSupportedAccounts(List<AccountModel> accounts) {
     final List<AccountModel> supportedAccounts =
         accounts.where((AccountModel account) => account.isSupported).toList();
+
+    if (supportedAccounts.isEmpty) {
+      throw DerivAuthException(
+        message: notAvailableCountryMessage,
+        type: AuthErrorType.unsupportedCountry,
+      );
+    }
+
+    return supportedAccounts;
+  }
+
+  List<AccountListItem> _filterSupportedAccountsFromAuthorizeResponse(
+      List<AccountListItem> accounts) {
+    final List<AccountListItem> supportedAccounts = accounts
+        .where((AccountListItem account) => account.isSupported)
+        .toList();
 
     if (supportedAccounts.isEmpty) {
       throw DerivAuthException(

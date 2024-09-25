@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.3`](#deriv_mobile_chart_wrapper---v013)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.3`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-73] Added line drawing guide banner ([#826](https://github.com/regentmarkets/flutter-deriv-packages/issues/826)). ([b2b018ec](https://github.com/regentmarkets/flutter-deriv-packages/commit/b2b018ec78d9f2de0dcc71b2a76f1343581f4f03))
+
+
 ## 2024-09-20
 
 ### Changes

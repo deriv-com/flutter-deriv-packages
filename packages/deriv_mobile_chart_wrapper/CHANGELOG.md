@@ -1,3 +1,7 @@
+## 0.1.3
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-73] Added line drawing guide banner ([#826](https://github.com/regentmarkets/flutter-deriv-packages/issues/826)). ([b2b018ec](https://github.com/regentmarkets/flutter-deriv-packages/commit/b2b018ec78d9f2de0dcc71b2a76f1343581f4f03))
+
 ## 0.1.2
 
  - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-81] Functionality to add dots for drawing tool. ([#810](https://github.com/regentmarkets/flutter-deriv-packages/issues/810)). ([05d5c85f](https://github.com/regentmarkets/flutter-deriv-packages/commit/05d5c85f9b5c204ec54eb3828b262fe7c0293ac0))

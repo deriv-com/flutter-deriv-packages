@@ -194,15 +194,11 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
       }
     };
 
-    _indicatorsRepo?.addListener(() {
-      _updateConfigs();
-    });
-
-    _drawingToolsRepo?.addListener(() {
-      _updateConfigs();
-    });
-
     _updateConfigs();
+    _updateDrawingTools();
+
+    _indicatorsRepo?.addListener(_updateConfigs);
+    _drawingToolsRepo?.addListener(_updateConfigs);
   }
 
   void _initRepos() async {
@@ -299,6 +295,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
             child: DrawingToolsSelector(
               onDrawingToolSelected: (DrawingToolConfig selectedDrawingTool) {
                 _drawingTools.onDrawingToolSelection(selectedDrawingTool);
+                _updateDrawingTools();
                 Navigator.of(context).pop();
               },
             ),
@@ -339,10 +336,23 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         activeSymbol: widget.toolsStoreKey,
       );
 
+  @override
+  void dispose() {
+    _indicatorsRepo?.removeListener(_updateConfigs);
+    _drawingToolsRepo?.removeListener(_updateConfigs);
+    super.dispose();
+  }
+
+  /// Update the configs in the tools controller.
   void _updateConfigs() {
     widget.toolsController?.updateConfigs(ConfigItemModel(
       indicatorConfigs: _indicatorsRepo?.items ?? [],
       drawingToolConfigs: _drawingToolsRepo?.items ?? [],
     ));
+  }
+
+  /// Update the drawing tools data in the tool controller.
+  void _updateDrawingTools() {
+    widget.toolsController?.updateDrawingToolsData(_drawingTools);
   }
 }
