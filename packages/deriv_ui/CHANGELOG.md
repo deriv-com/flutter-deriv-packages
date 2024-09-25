@@ -1,3 +1,7 @@
+## 0.1.0+3
+
+ - Update a dependency to the latest release.
+
 ## 0.1.0+2
 
  - **FIX**(deriv-ui): [DRGO-126]call the passed onDispose method inside dispose method ([#819](https://github.com/regentmarkets/flutter-deriv-packages/issues/819)). ([2e29a1ee](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e29a1eeb7dbb5c77bc04e1e7f7ee12081a1fd2d))

@@ -14,3 +14,4 @@ const String lineIcon = '${iconAssetsFolder}ic_line.svg';
 const String emptyStateDrawingToolsIcon =
     '${iconAssetsFolder}ic_drawing_tools_empty_state.svg';
 const String drawingToolIcon = '${iconAssetsFolder}ic_drawing_tool.svg';
+const String closeFilledIcon = '${iconAssetsFolder}ic_close_filled.svg';
