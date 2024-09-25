@@ -13,7 +13,7 @@ class PasskeyCreatedPage extends StatelessWidget
   PasskeyCreatedPage({
     required this.onPageClose,
     required this.bottomCallToAction,
-    this.onPassKeyFlowFinished,
+    this.onExitPasskeysFlow,
     super.key,
   }) {
     trackCreatePasskeySuccess();
@@ -22,7 +22,8 @@ class PasskeyCreatedPage extends StatelessWidget
   /// A callback function that will be called when the user clicks on the 'Continue' button.
   final void Function(BuildContext context) onPageClose;
 
-  final void Function()? onPassKeyFlowFinished;
+  /// Callback to be called when user exits the passkey flow and continues working with the app.
+  final void Function()? onExitPasskeysFlow;
 
   /// The widget to be displayed at the bottom of the page.
   final Widget bottomCallToAction;
@@ -34,8 +35,8 @@ class PasskeyCreatedPage extends StatelessWidget
             icon: const Icon(Icons.close),
             onPressed: () {
               onPageClose(context);
-              if (onPassKeyFlowFinished != null) {
-                onPassKeyFlowFinished!.call();
+              if (onExitPasskeysFlow != null) {
+                onExitPasskeysFlow!.call();
               }
             },
           ),
