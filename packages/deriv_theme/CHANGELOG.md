@@ -1,3 +1,7 @@
+## 2.7.1
+
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+
 ## 2.7.0
 
  - **FEAT**(deriv_theme): add IDV colors to theme class. ([#796](https://github.com/regentmarkets/flutter-deriv-packages/issues/796)). ([50f48bda](https://github.com/regentmarkets/flutter-deriv-packages/commit/50f48bda345f75e01bf083a1c3233755951dd25c))

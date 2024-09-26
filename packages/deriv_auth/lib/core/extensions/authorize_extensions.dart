@@ -19,4 +19,7 @@ extension AccountListItemExtension on AccountListItem {
       loginid!.toUpperCase().contains('CR') ||
       loginid!.toUpperCase().contains('VRTC') ||
       loginid!.toUpperCase().contains('VRW');
+
+  /// checks if [AccountListItem] is disabled or not.
+  bool get isNotDisabled => !isDisabled!;
 }
