@@ -51,6 +51,8 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
       context,
     );
     _drawingTools = getDrawingToolsList(context);
+
+    _tabController.index = drawingToolsRepo.items.isEmpty ? 1 : 0;
   }
 
   @override
