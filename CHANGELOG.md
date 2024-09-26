@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.8.0`](#deriv_auth---v680)
+ - [`deriv_passkeys` - `v0.0.5`](#deriv_passkeys---v005)
+
+---
+
+#### `deriv_auth` - `v6.8.0`
+
+ - **FIX**: [86c0e0nez] add disability check while filtering accounts ([#837](https://github.com/regentmarkets/flutter-deriv-packages/issues/837)). ([e64dfa54](https://github.com/regentmarkets/flutter-deriv-packages/commit/e64dfa54d774e79c3c88f63f3112c7eb0c0cb6b8))
+ - **FEAT**(deriv_auth): [DERG-1396] akhil/1396/multi_user_level_authentication_poc_master ([#574](https://github.com/regentmarkets/flutter-deriv-packages/issues/574)). ([97ac8004](https://github.com/regentmarkets/flutter-deriv-packages/commit/97ac8004370762ed38ed0608e64699a020406b8e))
+
+#### `deriv_passkeys` - `v0.0.5`
+
+ - **FEAT**(deriv_auth): [DERG-1396] akhil/1396/multi_user_level_authentication_poc_master ([#574](https://github.com/regentmarkets/flutter-deriv-packages/issues/574)). ([97ac8004](https://github.com/regentmarkets/flutter-deriv-packages/commit/97ac8004370762ed38ed0608e64699a020406b8e))
+
+
 ## 2024-09-25
 
 ### Changes
