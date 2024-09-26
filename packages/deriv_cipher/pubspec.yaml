@@ -1,5 +1,5 @@
-name: deriv_env
-description: A package to load and store environment variables.
+name: deriv_cipher
+description:  Deriv cipher library.
 
 version: 0.0.1+2
 
