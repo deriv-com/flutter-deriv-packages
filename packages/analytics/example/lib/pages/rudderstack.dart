@@ -1,3 +1,4 @@
+import 'package:analytics/sdk/rudderstack/models/user_info.dart';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,6 @@ class _RudderStackState extends State<RudderStack> {
   @override
   void initState() {
     super.initState();
-
-    
   }
 
   @override
@@ -65,8 +64,8 @@ class _RudderStackState extends State<RudderStack> {
           onTap: () async {
             await DerivRudderstack()
                 .setContext(token: 'xxx-xxxx-xxxx-xxxxx-xxxx-test');
-            final bool result =
-                await DerivRudderstack().identify(userId: '998');
+            final bool result = await DerivRudderstack()
+                .identify(userInfo: UserInfo(userId: 988));
             _showSnackBar(context, result);
           },
         ),
@@ -81,9 +80,8 @@ class _RudderStackState extends State<RudderStack> {
               )),
             ),
             onTap: () async {
-              final bool result = await DerivRudderstack().track(
-                  eventName: 'Application Opened'
-                  );
+              final bool result = await DerivRudderstack()
+                  .track(eventName: 'Application Opened');
 
               _showSnackBar(context, result);
             }),
@@ -98,9 +96,8 @@ class _RudderStackState extends State<RudderStack> {
               )),
             ),
             onTap: () async {
-              final bool result = await DerivRudderstack().screen(
-                  screenName: 'main'
-              );
+              final bool result =
+                  await DerivRudderstack().screen(screenName: 'main');
 
               _showSnackBar(context, result);
             }),
@@ -115,9 +112,8 @@ class _RudderStackState extends State<RudderStack> {
               )),
             ),
             onTap: () async {
-              final bool result = await DerivRudderstack().group(
-                  groupId: 'Group-id-test'
-              );
+              final bool result =
+                  await DerivRudderstack().group(groupId: 'Group-id-test');
               _showSnackBar(context, result);
             }),
         InkWell(
