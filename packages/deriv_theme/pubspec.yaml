@@ -1,6 +1,6 @@
 name: deriv_theme
 description: A flutter package that contains the theme used by deriv products
-version: 2.7.0
+version: 2.7.1
 
 homepage: https://deriv.com/
 publish_to: "none"
