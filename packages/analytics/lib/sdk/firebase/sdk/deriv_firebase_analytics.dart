@@ -74,7 +74,7 @@ class DerivFirebaseAnalytics implements BaseAnalytics<FirebaseConfiguration> {
       _execute(() async {
         await _firebaseAnalytics.logEvent(
           name: name,
-          parameters: parameters,
+          parameters: parameters as Map<String, Object>,
         );
       });
 
