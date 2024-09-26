@@ -90,12 +90,12 @@ enum RumUserActionType {
 }
 
 /// A mapper class to map [RumUserActionType] to [datadog.RumUserActionType].
-Map<RumUserActionType, datadog.RumActionType> rumUserActionTypeMapper =
-    <RumUserActionType, datadog.RumActionType>{
-  RumUserActionType.tap: datadog.RumActionType.tap,
-  RumUserActionType.scroll: datadog.RumActionType.scroll,
-  RumUserActionType.swipe: datadog.RumActionType.swipe,
-  RumUserActionType.custom: datadog.RumActionType.custom,
+Map<RumUserActionType, datadog.RumUserActionType> rumUserActionTypeMapper =
+    <RumUserActionType, datadog.RumUserActionType>{
+  RumUserActionType.tap: datadog.RumUserActionType.tap,
+  RumUserActionType.scroll: datadog.RumUserActionType.scroll,
+  RumUserActionType.swipe: datadog.RumUserActionType.swipe,
+  RumUserActionType.custom: datadog.RumUserActionType.custom,
 };
 
 /// Extension on [RumUserActionType].
@@ -103,6 +103,6 @@ extension RumUserActionTypeExtension on RumUserActionType {
   /// The consent getter method is an extension to the [datadog.RumUserActionType]
   /// enum that returns the corresponding [datadog.RumUserActionType] value for
   /// the given [RumUserActionType] value.
-  datadog.RumActionType get rumUserActionType =>
+  datadog.RumUserActionType get rumUserActionType =>
       rumUserActionTypeMapper[this]!;
 }
