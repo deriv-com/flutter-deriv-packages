@@ -36,8 +36,7 @@ void main() {
 
       await derivFirebaseAnalytics.setCurrentScreen(screenName: screenName);
 
-      verify(() =>
-              mockFirebaseAnalytics.logScreenView(screenName: screenName))
+      verify(() => mockFirebaseAnalytics.logScreenView(screenName: screenName))
           .called(1);
     });
 

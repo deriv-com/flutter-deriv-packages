@@ -10,12 +10,11 @@ environment:
   flutter: ">=3.10.0"
 
 dependencies:
-
   firebase_analytics: ^10.6.2
   firebase_core: ^2.20.0
   rudder_sdk_flutter: ^2.6.0
   datadog_flutter_plugin: ^1.6.2
-  
+
   flutter:
     sdk: flutter
 
@@ -23,5 +22,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.1
-
-flutter:
