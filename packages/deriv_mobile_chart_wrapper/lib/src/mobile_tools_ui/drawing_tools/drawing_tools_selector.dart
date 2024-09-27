@@ -12,6 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+/// Drawing tools selector widget. It allows users to select a drawing tool,
+/// view active drawing tools, configure drawing tools, and delete all drawing
+/// tools.
 class DrawingToolsSelector extends StatefulWidget {
   const DrawingToolsSelector({
     required this.onDrawingToolSelected,
@@ -288,11 +291,13 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
         },
       );
 
+  // TODO(aliakbar-deriv): Update the title and content texts of the dialog
+  //  once it is available in the deriv_localization package.
   void _showDeleteAllDrawingToolsDialog() => showAlertDialog(
         context: context,
-        title: context.mobileChartWrapperLocalizations.labelDeleteAllIndicators,
+        title: 'Delete all drawing tools',
         content: Text(
-          context.mobileChartWrapperLocalizations.infoDeleteAllIndicators,
+          'This will delete all active drawing tools.',
           style: TextStyles.subheading,
         ),
         positiveActionLabel:
