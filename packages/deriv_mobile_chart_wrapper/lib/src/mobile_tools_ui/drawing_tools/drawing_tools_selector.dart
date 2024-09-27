@@ -52,7 +52,11 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
     );
     _drawingTools = getDrawingToolsList(context);
 
-    _tabController.index = drawingToolsRepo.items.isEmpty ? 1 : 0;
+    // Only change the tab index if the active drawing tools list is empty and 
+    // the current tab is not the same 1st index tab.
+    if (drawingToolsRepo.items.isEmpty && _tabController.index != 1) {
+      _tabController.index = 1;
+    }
   }
 
   @override
