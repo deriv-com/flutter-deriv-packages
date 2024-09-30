@@ -19,6 +19,7 @@ class ManagePasskeysPage extends StatefulWidget {
   const ManagePasskeysPage({
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.onExitPasskeysFlow,
     super.key,
   });
 
@@ -30,6 +31,9 @@ class ManagePasskeysPage extends StatefulWidget {
 
   /// Callback to be called when the user wants to continue trading.
   final void Function(BuildContext context) continueTradingNavigationCallback;
+
+  /// Callback to be called when user exits the passkey flow and continues working with the app.
+  final void Function()? onExitPasskeysFlow;
 
   @override
   State<ManagePasskeysPage> createState() => _ManagePasskeysPageState();
@@ -98,6 +102,11 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage>
                 context,
                 MaterialPageRoute<Widget>(
                   builder: (BuildContext context) => PasskeyCreatedPage(
+                    onExitPasskeysFlow: () {
+                      if (widget.onExitPasskeysFlow != null) {
+                        widget.onExitPasskeysFlow!.call();
+                      }
+                    },
                     onPageClose: (BuildContext context) {
                       Navigator.pop(context);
                     },
@@ -111,6 +120,10 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage>
                           (BuildContext context) {
                         trackContinueTrading();
                         widget.continueTradingNavigationCallback(context);
+
+                        if (widget.onExitPasskeysFlow != null) {
+                          widget.onExitPasskeysFlow!.call();
+                        }
                       },
                     ),
                   ),

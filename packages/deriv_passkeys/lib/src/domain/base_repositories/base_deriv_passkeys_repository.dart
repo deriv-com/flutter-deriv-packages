@@ -24,12 +24,16 @@ abstract base class BaseDerivPasskeysRepository {
   });
 
   /// Get options for registration with DerivPasskeys.
-  Future<DerivPasskeysRegisterOptionsEntity> getRegisterOptions();
+  Future<DerivPasskeysRegisterOptionsEntity> getRegisterOptions({
+    String? loginId,
+  });
 
   /// Register credentials with DerivPasskeys.
   Future<DerivPasskeyEntity> registerCredentials(
-      DerivPasskeysRegisterCredentialsEntity entity);
+    DerivPasskeysRegisterCredentialsEntity entity, {
+    String? loginId,
+  });
 
   /// Get passkeys list.
-  Future<List<DerivPasskeyEntity>> getPasskeysList();
+  Future<List<DerivPasskeyEntity>> getPasskeysList({String? loginId});
 }

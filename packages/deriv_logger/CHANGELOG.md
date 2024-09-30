@@ -1,3 +1,7 @@
+## 0.0.3+1
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
 ## 0.0.3
 
  - **FEAT**(deriv_logger): [DERG-2590] Add ability to inspect incoming and outgoing network payloads in UI ([#685](https://github.com/regentmarkets/flutter-deriv-packages/issues/685)). ([4cd38b2a](https://github.com/regentmarkets/flutter-deriv-packages/commit/4cd38b2a34288d049333c7cf0cbeb41b671ebc7c))
