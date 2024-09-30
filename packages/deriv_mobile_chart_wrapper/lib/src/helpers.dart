@@ -81,7 +81,10 @@ String getDrawingToolTitleWithCount(
         DrawingToolConfig config, BuildContext context) =>
     '${getDrawingToolTitle(config, context)} ${config.number > 0 ? config.number : ''}';
 
-String getDrawingToolTitle(DrawingToolConfig config, BuildContext context) {
+String getDrawingToolTitle(
+  BuildContext context,
+  DrawingToolConfig config,
+) {
   switch (config.runtimeType) {
     case LineDrawingToolConfig:
       return context.mobileChartWrapperLocalizations.labelLine;
