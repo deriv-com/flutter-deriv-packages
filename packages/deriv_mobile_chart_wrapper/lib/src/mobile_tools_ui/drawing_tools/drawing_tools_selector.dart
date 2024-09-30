@@ -1,10 +1,8 @@
 import 'package:collection/collection.dart';
-import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_item.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -209,8 +207,10 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
                     title: getDrawingToolTitleWithCount(
                         activeDrawingToolItem, context),
                     onTapDelete: () {
-                      drawingToolsRepo.removeAt(index);
-                      _revampToolsNumbers(activeDrawingToolItem, index);
+                      drawingToolsRepo.revampDrawingToolsNumbers(
+                        drawingToolItem.config,
+                        index,
+                      );
                       if (drawingToolsRepo.items.isEmpty) {
                         Navigator.pop(context);
                       }
@@ -320,17 +320,4 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
         },
         onNegativeActionPressed: () => Navigator.pop(context),
       );
-
-  void _revampToolsNumbers(DrawingToolConfig config, int index) {
-    for (int i = index; i < drawingToolsRepo.items.length; i++) {
-      DrawingToolConfig toolConfig = drawingToolsRepo.items[i];
-      if (toolConfig.number != 0 &&
-          toolConfig.runtimeType == config.runtimeType) {
-        toolConfig = toolConfig.copyWith(
-          number: toolConfig.number - 1,
-        );
-        drawingToolsRepo.updateAt(i, toolConfig);
-      }
-    }
-  }
 }
