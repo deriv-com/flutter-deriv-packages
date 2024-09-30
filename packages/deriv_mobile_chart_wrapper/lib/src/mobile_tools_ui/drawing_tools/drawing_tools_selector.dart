@@ -207,6 +207,7 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
                     title: getDrawingToolTitleWithCount(
                         activeDrawingToolItem, context),
                     onTapDelete: () {
+                      drawingToolsRepo.removeAt(index);
                       drawingToolsRepo.revampDrawingToolsNumbers(
                         drawingToolItem.config,
                         index,
