@@ -78,8 +78,13 @@ List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
 }
 
 String getDrawingToolTitleWithCount(
-        DrawingToolConfig config, BuildContext context) =>
-    '${getDrawingToolTitle(config, context)} ${config.number > 0 ? config.number : ''}';
+  BuildContext context,
+  DrawingToolConfig config,
+) =>
+    '${getDrawingToolTitle(
+      context,
+      config,
+    )} ${config.number > 0 ? config.number : ''}';
 
 String getDrawingToolTitle(
   BuildContext context,
