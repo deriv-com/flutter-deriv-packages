@@ -1,6 +1,8 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
+import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/utils/popup_dialogs_helper.dart';
@@ -140,6 +142,7 @@ Future<void> showResetIndicatorDialog(
   BuildContext context, {
   required IndicatorConfig config,
   required Function() onResetPressed,
+  IndicatorEventService? indicatorEventService,
 }) {
   return showAlertDialog(
       context: context,
@@ -158,8 +161,31 @@ Future<void> showResetIndicatorDialog(
       onPositiveActionPressed: () {
         onResetPressed.call();
         Navigator.pop(context);
+        indicatorEventService?.logResetIndicatorSettings(
+          config.title,
+          getIndicatorCategoryTitle(config.title),
+        );
       },
       onNegativeActionPressed: () {
         Navigator.pop(context);
       });
+}
+
+String getIndicatorCategoryTitle(String indicatorTitle) {
+  switch (indicatorTitle) {
+    case 'MACD':
+      return IndicatorCategory.momentum.name;
+
+    case 'RSI':
+      return IndicatorCategory.momentum.name;
+
+    case 'BB':
+      return IndicatorCategory.volatility.name;
+
+    case 'MA':
+      return IndicatorCategory.movingAverages.name;
+
+    default:
+      return '';
+  }
 }

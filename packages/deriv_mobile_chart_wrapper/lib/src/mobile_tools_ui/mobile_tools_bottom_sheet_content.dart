@@ -3,6 +3,7 @@ import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
+import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_description_bottom_sheet.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
@@ -26,10 +27,13 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
   /// Initializes the bottom sheet content.
   const MobileToolsBottomSheetContent({
     this.selectedTab = IndicatorTabLabel.all,
+    this.indicatorEventService,
     super.key,
   });
 
   final IndicatorTabLabel selectedTab;
+
+  final IndicatorEventService? indicatorEventService;
 
   @override
   State<MobileToolsBottomSheetContent> createState() =>
@@ -112,10 +116,12 @@ class _MobileToolsBottomSheetContentState
                 if (isLimitReached && _selectedChip != IndicatorTabLabel.active)
                   _buildLimitInfoBanner(),
                 Expanded(
-                    child: _selectedChip == IndicatorTabLabel.active
-                        ? _buildIndicatorsActiveTab()
-                        : _buildIndicatorsList(
-                            getFilteredIndicators(indicators))),
+                  child: _selectedChip == IndicatorTabLabel.active
+                      ? _buildIndicatorsActiveTab()
+                      : _buildIndicatorsList(
+                          getFilteredIndicators(indicators),
+                        ),
+                ),
               ],
             ),
           ),
@@ -200,6 +206,10 @@ class _MobileToolsBottomSheetContentState
                   number: indicatorsRepo.getNumberForNewAddOn(indicator.config),
                 ),
               );
+              widget.indicatorEventService?.logAddIndicatorByClickIndicatorType(
+                indicator.title,
+                indicator.category.name,
+              );
             },
           ),
         );
@@ -250,11 +260,25 @@ class _MobileToolsBottomSheetContentState
                       context,
                       (context) => IndicatorSettingsBottomSheet(
                         indicator: getIndicatorAbbreviationWithCount(
-                            indicatorConfig, context),
+                          indicatorConfig,
+                          context,
+                        ),
                         settings: _getConfigSettingPage(index, indicatorConfig),
                         onTapDelete: () async {
                           await _showDeleteIndicatorDialog(
-                              indicatorConfig, index);
+                            indicatorConfig,
+                            index,
+                          ).then((isIndicatorRemoved) {
+                            if (isIndicatorRemoved) {
+                              widget.indicatorEventService
+                                  ?.logDeleteActiveIndicatorFromSettings(
+                                indicatorConfig.title,
+                                getIndicatorCategoryTitle(
+                                  indicatorConfig.title,
+                                ),
+                              );
+                            }
+                          });
                           if (context.mounted) Navigator.pop(context);
                         },
                         onTapInfo: () {
@@ -267,7 +291,8 @@ class _MobileToolsBottomSheetContentState
                               context: context,
                               builder: (context) {
                                 return IndicatorSettingsDescriptionBottomSheet(
-                                    indicator: indicatorModel);
+                                  indicator: indicatorModel,
+                                );
                               });
                         },
                       ),
@@ -275,7 +300,15 @@ class _MobileToolsBottomSheetContentState
                     );
                   },
                   onTapDelete: () =>
-                      _showDeleteIndicatorDialog(indicatorConfig, index),
+                      _showDeleteIndicatorDialog(indicatorConfig, index)
+                          .then((isIndicatorRemoved) {
+                    if (isIndicatorRemoved) {
+                      widget.indicatorEventService?.logDeleteActiveIndicator(
+                        indicatorConfig.title,
+                        getIndicatorCategoryTitle(indicatorConfig.title),
+                      );
+                    }
+                  }),
                 );
               },
             ),
@@ -292,6 +325,10 @@ class _MobileToolsBottomSheetContentState
   void _onApply(int index, IndicatorConfig config) {
     indicatorsRepo.updateAt(index, config);
     Navigator.pop(context);
+    widget.indicatorEventService?.logEditIndicatorSettings(
+      config.title,
+      getIndicatorCategoryTitle(config.title),
+    );
   }
 
   Widget _getConfigSettingPage(int index, IndicatorConfig initialConfig) {
@@ -427,6 +464,10 @@ class _MobileToolsBottomSheetContentState
   }
 
   void _showIndicatorInfoBottomSheet(IndicatorItemModel indicator) {
+    widget.indicatorEventService?.logClickIndicatorInfo(
+      indicator.title,
+      indicator.category.name,
+    );
     showModalBottomSheet(
       context: context,
       builder: (context) => IndicatorDescriptionBottomSheet(
@@ -434,6 +475,11 @@ class _MobileToolsBottomSheetContentState
         onAddIndicatorPressed: () {
           indicatorsRepo.add(indicator.config);
           Navigator.of(context).pop();
+          widget.indicatorEventService
+              ?.logAddIndicatorByClickAddOnIndicatorInfo(
+            indicator.title,
+            indicator.category.name,
+          );
         },
       ),
     );
@@ -442,28 +488,35 @@ class _MobileToolsBottomSheetContentState
   void _onChipTapped(IndicatorTabLabel? value, String? title) =>
       setState(() => _selectedChip = value ?? IndicatorTabLabel.all);
 
-  Future<void> _showDeleteIndicatorDialog(IndicatorConfig config, int index) =>
-      showAlertDialog(
-          context: context,
-          title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
-            getIndicatorAbbreviationWithCount(config, context),
-          ),
-          content: Text(
-            context.mobileChartWrapperLocalizations.infoDeleteIndicator,
-            style: TextStyles.subheading,
-          ),
-          positiveActionLabel:
-              context.mobileChartWrapperLocalizations.labelDelete,
-          negativeButtonLabel:
-              context.mobileChartWrapperLocalizations.labelCancel,
-          showLoadingIndicator: false,
-          onPositiveActionPressed: () {
-            indicatorsRepo.removeAt(index);
-            Navigator.pop(context);
-          },
-          onNegativeActionPressed: () {
-            Navigator.pop(context);
-          });
+  Future<bool> _showDeleteIndicatorDialog(
+    IndicatorConfig config,
+    int index,
+  ) async {
+    bool isIndicatorRemoved = false;
+    await showAlertDialog(
+        context: context,
+        title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
+          getIndicatorAbbreviationWithCount(config, context),
+        ),
+        content: Text(
+          context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+          style: TextStyles.subheading,
+        ),
+        positiveActionLabel:
+            context.mobileChartWrapperLocalizations.labelDelete,
+        negativeButtonLabel:
+            context.mobileChartWrapperLocalizations.labelCancel,
+        showLoadingIndicator: false,
+        onPositiveActionPressed: () {
+          indicatorsRepo.removeAt(index);
+          Navigator.pop(context, true);
+          isIndicatorRemoved = true;
+        },
+        onNegativeActionPressed: () {
+          Navigator.pop(context, false);
+        });
+    return isIndicatorRemoved;
+  }
 
   void _showDeleteAllIndicatorsDialog() {
     showAlertDialog(
@@ -481,9 +534,16 @@ class _MobileToolsBottomSheetContentState
         onPositiveActionPressed: () {
           indicatorsRepo.clear();
           Navigator.pop(context);
+          widget.indicatorEventService?.logCleanAllActiveIndicator();
         },
         onNegativeActionPressed: () {
           Navigator.pop(context);
         });
+  }
+
+  @override
+  void dispose() {
+    widget.indicatorEventService?.logCloseIndicatorTypesBottomSheet();
+    super.dispose();
   }
 }

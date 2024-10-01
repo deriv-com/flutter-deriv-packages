@@ -43,11 +43,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
           onReset: () {
             showResetIndicatorDialog(context, config: _indicatorConfig,
                 onResetPressed: () {
-                  setState(() {
-                    _indicatorConfig = const MACDIndicatorConfig();
-                  });
-                  widget.onConfigUpdated(_indicatorConfig);
-                });
+              setState(() {
+                _indicatorConfig = const MACDIndicatorConfig();
+              });
+              widget.onConfigUpdated(_indicatorConfig);
+            });
           },
         ),
       ],

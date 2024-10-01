@@ -14,6 +14,7 @@ class MASettingsPage extends BaseIndicatorSettingPage<MAIndicatorConfig> {
     required super.onConfigUpdated,
     required super.onApply,
     super.onReset,
+
     super.key,
   });
 
@@ -47,11 +48,13 @@ class _MASettingsPageState extends State<MASettingsPage> {
           onReset: () {
             showResetIndicatorDialog(context, config: _indicatorConfig,
                 onResetPressed: () {
-                  setState(() {
-                    _indicatorConfig = const MAIndicatorConfig();
-                  });
-                  widget.onConfigUpdated(_indicatorConfig);
-                });
+              setState(() {
+                _indicatorConfig = const MAIndicatorConfig();
+              });
+              widget.onConfigUpdated(_indicatorConfig);
+            });
+
+
           },
         ),
       ],
