@@ -412,11 +412,11 @@ class DerivRudderstackEvents {
     );
   }
 
-  /// Track when user clicks on indicator type.
+  /// Track when user clicks on indicator type to add the indicator.
   ///
   ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
   ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
-  void logClickIndicatorType(
+  void logAddIndicatorByClickIndicatorType(
     String indicatorTypeName,
     String categoryName,
   ) {
@@ -427,6 +427,26 @@ class DerivRudderstackEvents {
         'indicator_type_name': indicatorTypeName,
         'indicators_category_name': categoryName,
         'subform_name': 'indicators_type',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+  /// Track when user clicks on indicator info `Add` button to add the indicator.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logAddIndicatorByClickAddOnIndicatorInfo(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'add_active',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'subform_name': 'indicators_info',
         'form_name': 'indicators_types_form_derivgo',
         'form_source': 'mobile_derivgo',
       },
