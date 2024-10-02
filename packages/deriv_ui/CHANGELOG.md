@@ -1,3 +1,7 @@
+## 0.1.0+4
+
+ - **REFACTOR**(deriv_ui): update intl version ([#847](https://github.com/regentmarkets/flutter-deriv-packages/issues/847)). ([cee558af](https://github.com/regentmarkets/flutter-deriv-packages/commit/cee558afd16aeecb8888fed8baa6da569269f3e3))
+
 ## 0.1.0+3
 
  - Update a dependency to the latest release.
