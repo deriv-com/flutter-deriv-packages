@@ -43,7 +43,7 @@ dependencies:
   flutter_deriv_api:
     git:
       url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: v1.2.0
+      ref: 96a9d6659ac57523f0e80ced6513fd13c7c8c81e
 
   flutter_svg: ^2.0.9
   plugin_platform_interface: ^2.0.2
