@@ -18,6 +18,7 @@ class ExampleLoginService extends BaseAuthService {
   Future<AuthorizeEntity> onLoginRequest({
     required GetTokensRequestModel request,
     String? userAgent,
+    bool useMultiToken = false,
   }) async =>
       const AuthorizeEntity();
 
@@ -25,6 +26,7 @@ class ExampleLoginService extends BaseAuthService {
   Future<AuthorizeEntity> login(
     String token, {
     required List<AccountModel> accounts,
+    List<String>? tokenList,
     String? signupProvider,
     String? refreshToken,
   }) async =>
