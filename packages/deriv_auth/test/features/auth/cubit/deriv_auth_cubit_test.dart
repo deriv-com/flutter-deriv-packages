@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
@@ -51,7 +52,10 @@ void main() {
         expect(authCubit.output, isA<Stream<DerivAuthState>>());
       });
 
-      test('should emit [AuthLoggedOutState] for the first app start.', () {
+      test('should emit [AuthLoggedOutState] for the first app start.',
+          () async {
+        when(() => service.getLatestAccounts()).thenAnswer(
+            (_) => Future<List<AccountModel>>.value(<AccountModel>[]));
         when(() => service.getDefaultAccount())
             .thenAnswer((_) => Future<AccountModel?>.value());
 
@@ -61,20 +65,22 @@ void main() {
           isA<DerivAuthLoggedOutState>(),
         ];
 
-        expectLater(
+        unawaited(expectLater(
           authCubit.stream,
           emitsInOrder(expectedResponse),
-        );
+        ));
 
-        authCubit.authorizeDefaultAccount();
+        await authCubit.authorizeDefaultAccount();
 
+        verify(() => service.getLatestAccounts()).called(1);
         verify(() => service.getDefaultAccount()).called(1);
         verifyNever(
           () => service.login(any(), accounts: any(named: 'accounts')),
         );
       });
 
-      test('should emit [AuthLoggedInState] if there is default account.', () {
+      test('should emit [AuthLoggedInState] if there is default account.',
+          () async {
         when(() => service.getDefaultAccount())
             .thenAnswer((_) => Future<AccountModel?>.value(mockedAccountModel));
 
@@ -95,12 +101,12 @@ void main() {
           isA<DerivAuthLoggedInState>(),
         ];
 
-        expectLater(
+        unawaited(expectLater(
           authCubit.stream,
           emitsInOrder(expectedResponse),
-        );
+        ));
 
-        authCubit.authorizeDefaultAccount();
+        await authCubit.authorizeDefaultAccount();
 
         verify(() => service.getDefaultAccount()).called(1);
       });
@@ -295,8 +301,10 @@ void main() {
             Future<List<AccountModel>>.value(
                 <AccountModel>[mockedAccountModel]));
 
-        when(() => service.login(any(), accounts: any(named: 'accounts')))
-            .thenThrow(DerivAuthException(
+        when(() => service.login(
+              any(),
+              accounts: any(named: 'accounts'),
+            )).thenThrow(DerivAuthException(
           message: 'message',
           type: AuthErrorType.invalidToken,
         ));
@@ -315,7 +323,10 @@ void main() {
         authCubit.tokenLogin(_token);
 
         verify(
-          () => service.login(any(), accounts: any(named: 'accounts')),
+          () => service.login(
+            any(),
+            accounts: any(named: 'accounts'),
+          ),
         ).called(1);
       });
 
