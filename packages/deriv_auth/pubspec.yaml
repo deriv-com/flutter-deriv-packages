@@ -38,8 +38,8 @@ dependencies:
 
   flutter_deriv_api:
     git:
-      url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: 96a9d6659ac57523f0e80ced6513fd13c7c8c81e
+      url: git@github.com:ramin-deriv/flutter-deriv-api.git
+      ref: ramin/update_dependencies
 
   deriv_web_view:
     git:
