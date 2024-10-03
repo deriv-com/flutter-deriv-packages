@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:deriv_feature_flag/feature_flag/feature_flag_config.dart';
 import 'package:deriv_feature_flag/feature_flag/feature_flag_repository.dart';
 import 'package:deriv_feature_flag/growthbook/deriv_growth_book.dart';
