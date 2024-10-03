@@ -1,4 +1,6 @@
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
+import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:flutter/material.dart';
 
 /// An enum to define label of indicators chip.
 enum IndicatorTabLabel {
@@ -10,18 +12,18 @@ enum IndicatorTabLabel {
 
   static String activeCount(int count) => 'Active ($count)';
 
-  String get title {
+  String getTitle(BuildContext context) {
     switch (this) {
       case IndicatorTabLabel.active:
-        return 'Active';
+        return context.mobileChartWrapperLocalizations.labelActive;
       case IndicatorTabLabel.all:
-        return 'All';
+        return context.mobileChartWrapperLocalizations.labelAll;
       case IndicatorTabLabel.momentum:
-        return 'Momentum';
+        return context.mobileChartWrapperLocalizations.labelMomentum;
       case IndicatorTabLabel.volatility:
-        return 'Volatility';
+        return context.mobileChartWrapperLocalizations.labelVolatility;
       case IndicatorTabLabel.movingAverages:
-        return 'Moving averages';
+        return context.mobileChartWrapperLocalizations.labelMovingAverages;
     }
   }
 

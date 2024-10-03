@@ -3,6 +3,515 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.6.1`](#deriv_localizations---v161)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.3+3`](#deriv_mobile_chart_wrapper---v0133)
+ - [`deriv_auth` - `v6.8.3`](#deriv_auth---v683)
+ - [`deriv_passkeys` - `v0.0.5+3`](#deriv_passkeys---v0053)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.1.3+3`
+ - `deriv_auth` - `v6.8.3`
+ - `deriv_passkeys` - `v0.0.5+3`
+
+---
+
+#### `deriv_localizations` - `v1.6.1`
+
+ - **REFACTOR**(deriv_localizations): update intl version ([#849](https://github.com/regentmarkets/flutter-deriv-packages/issues/849)). ([0adb30fc](https://github.com/regentmarkets/flutter-deriv-packages/commit/0adb30fcdcba69f4bd71ede781a7db7490976827))
+
+
+## 2024-10-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.1.0+4`](#deriv_ui---v0104)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.3+2`](#deriv_mobile_chart_wrapper---v0132)
+ - [`deriv_widgetbook` - `v0.0.2+31`](#deriv_widgetbook---v00231)
+ - [`deriv_language_selector` - `v0.0.3+11`](#deriv_language_selector---v00311)
+ - [`deriv_passkeys` - `v0.0.5+2`](#deriv_passkeys---v0052)
+ - [`deriv_auth` - `v6.8.2`](#deriv_auth---v682)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.1.3+2`
+ - `deriv_widgetbook` - `v0.0.2+31`
+ - `deriv_language_selector` - `v0.0.3+11`
+ - `deriv_passkeys` - `v0.0.5+2`
+ - `deriv_auth` - `v6.8.2`
+
+---
+
+#### `deriv_ui` - `v0.1.0+4`
+
+ - **REFACTOR**(deriv_ui): update intl version ([#847](https://github.com/regentmarkets/flutter-deriv-packages/issues/847)). ([cee558af](https://github.com/regentmarkets/flutter-deriv-packages/commit/cee558afd16aeecb8888fed8baa6da569269f3e3))
+
+
+## 2024-09-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.8.1`](#deriv_auth---v681)
+ - [`deriv_logger` - `v0.0.3+1`](#deriv_logger---v0031)
+ - [`deriv_passkeys` - `v0.0.5+1`](#deriv_passkeys---v0051)
+
+---
+
+#### `deriv_auth` - `v6.8.1`
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+#### `deriv_logger` - `v0.0.3+1`
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+#### `deriv_passkeys` - `v0.0.5+1`
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+
+## 2024-09-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.8.0`](#deriv_auth---v680)
+ - [`deriv_passkeys` - `v0.0.5`](#deriv_passkeys---v005)
+
+---
+
+#### `deriv_auth` - `v6.8.0`
+
+ - **FIX**: [86c0e0nez] add disability check while filtering accounts ([#837](https://github.com/regentmarkets/flutter-deriv-packages/issues/837)). ([e64dfa54](https://github.com/regentmarkets/flutter-deriv-packages/commit/e64dfa54d774e79c3c88f63f3112c7eb0c0cb6b8))
+ - **FEAT**(deriv_auth): [DERG-1396] akhil/1396/multi_user_level_authentication_poc_master ([#574](https://github.com/regentmarkets/flutter-deriv-packages/issues/574)). ([97ac8004](https://github.com/regentmarkets/flutter-deriv-packages/commit/97ac8004370762ed38ed0608e64699a020406b8e))
+
+#### `deriv_passkeys` - `v0.0.5`
+
+ - **FEAT**(deriv_auth): [DERG-1396] akhil/1396/multi_user_level_authentication_poc_master ([#574](https://github.com/regentmarkets/flutter-deriv-packages/issues/574)). ([97ac8004](https://github.com/regentmarkets/flutter-deriv-packages/commit/97ac8004370762ed38ed0608e64699a020406b8e))
+
+
+## 2024-09-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.7.51`](#deriv_auth---v6751)
+ - [`deriv_passkeys` - `v0.0.4+6`](#deriv_passkeys---v0046)
+ - [`deriv_rudderstack` - `v1.1.1`](#deriv_rudderstack---v111)
+ - [`deriv_theme` - `v2.7.1`](#deriv_theme---v271)
+ - [`update_checker` - `v1.5.2`](#update_checker---v152)
+ - [`deriv_ui` - `v0.1.0+3`](#deriv_ui---v0103)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.3+1`](#deriv_mobile_chart_wrapper---v0131)
+ - [`deriv_widgetbook` - `v0.0.2+30`](#deriv_widgetbook---v00230)
+ - [`deriv_expandable_bottom_sheet` - `v0.0.1+10`](#deriv_expandable_bottom_sheet---v00110)
+ - [`deriv_date_range_picker` - `v0.0.1+10`](#deriv_date_range_picker---v00110)
+ - [`deriv_numpad` - `v1.1.9`](#deriv_numpad---v119)
+ - [`deriv_language_selector` - `v0.0.3+10`](#deriv_language_selector---v00310)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_ui` - `v0.1.0+3`
+ - `deriv_mobile_chart_wrapper` - `v0.1.3+1`
+ - `deriv_widgetbook` - `v0.0.2+30`
+ - `deriv_expandable_bottom_sheet` - `v0.0.1+10`
+ - `deriv_date_range_picker` - `v0.0.1+10`
+ - `deriv_numpad` - `v1.1.9`
+ - `deriv_language_selector` - `v0.0.3+10`
+
+---
+
+#### `deriv_auth` - `v6.7.51`
+
+ - **FIX**: [86c0e0nez] add disability check while filtering accounts ([#837](https://github.com/regentmarkets/flutter-deriv-packages/issues/837)). ([e64dfa54](https://github.com/regentmarkets/flutter-deriv-packages/commit/e64dfa54d774e79c3c88f63f3112c7eb0c0cb6b8))
+ - **FIX**: [86c0e0nez] filter supported accounts while logging in ([#833](https://github.com/regentmarkets/flutter-deriv-packages/issues/833)). ([534e982c](https://github.com/regentmarkets/flutter-deriv-packages/commit/534e982c809b5e0e9380366a3f32a05f1ef2cf10))
+
+#### `deriv_passkeys` - `v0.0.4+6`
+
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+
+#### `deriv_rudderstack` - `v1.1.1`
+
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+
+#### `deriv_theme` - `v2.7.1`
+
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+
+#### `update_checker` - `v1.5.2`
+
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+
+
+## 2024-09-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.3`](#deriv_mobile_chart_wrapper---v013)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.3`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-73] Added line drawing guide banner ([#826](https://github.com/regentmarkets/flutter-deriv-packages/issues/826)). ([b2b018ec](https://github.com/regentmarkets/flutter-deriv-packages/commit/b2b018ec78d9f2de0dcc71b2a76f1343581f4f03))
+
+
+## 2024-09-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.2`](#deriv_mobile_chart_wrapper---v012)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.2`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-81] Functionality to add dots for drawing tool. ([#810](https://github.com/regentmarkets/flutter-deriv-packages/issues/810)). ([05d5c85f](https://github.com/regentmarkets/flutter-deriv-packages/commit/05d5c85f9b5c204ec54eb3828b262fe7c0293ac0))
+
+
+## 2024-09-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v2.3.0`](#analytics---v230)
+ - [`deriv_passkeys` - `v0.0.4+5`](#deriv_passkeys---v0045)
+ - [`deriv_auth` - `v6.7.50`](#deriv_auth---v6750)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.4+5`
+ - `deriv_auth` - `v6.7.50`
+
+---
+
+#### `analytics` - `v2.3.0`
+
+ - **FEAT**(analytics): Amend tracking events Rudderstack ([#821](https://github.com/regentmarkets/flutter-deriv-packages/issues/821)). ([bd197376](https://github.com/regentmarkets/flutter-deriv-packages/commit/bd197376cf450ec375a9759c9511563a253a0c64))
+
+
+## 2024-09-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.7.49`](#deriv_auth---v6749)
+
+---
+
+#### `deriv_auth` - `v6.7.49`
+
+ - **FIX**(deriv_auth): unassigned token for account created on web ([#756](https://github.com/regentmarkets/flutter-deriv-packages/issues/756)). ([abbb8905](https://github.com/regentmarkets/flutter-deriv-packages/commit/abbb8905263517c32c1e990fdc9dbfd2fb38ae9b))
+
+
+## 2024-09-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.1`](#deriv_mobile_chart_wrapper---v011)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.1`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-74] Add drawing tools bottom sheet UI ([#815](https://github.com/regentmarkets/flutter-deriv-packages/issues/815)). ([ebd9ab92](https://github.com/regentmarkets/flutter-deriv-packages/commit/ebd9ab92707630df3bc185aab5a503399df786b4))
+
+
+## 2024-09-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.1.0+2`](#deriv_ui---v0102)
+ - [`deriv_language_selector` - `v0.0.3+9`](#deriv_language_selector---v0039)
+ - [`deriv_widgetbook` - `v0.0.2+29`](#deriv_widgetbook---v00229)
+ - [`deriv_passkeys` - `v0.0.4+4`](#deriv_passkeys---v0044)
+ - [`deriv_auth` - `v6.7.48`](#deriv_auth---v6748)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0+4`](#deriv_mobile_chart_wrapper---v0104)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_language_selector` - `v0.0.3+9`
+ - `deriv_widgetbook` - `v0.0.2+29`
+ - `deriv_passkeys` - `v0.0.4+4`
+ - `deriv_auth` - `v6.7.48`
+ - `deriv_mobile_chart_wrapper` - `v0.1.0+4`
+
+---
+
+#### `deriv_ui` - `v0.1.0+2`
+
+ - **FIX**(deriv-ui): [DRGO-126]call the passed onDispose method inside dispose method ([#819](https://github.com/regentmarkets/flutter-deriv-packages/issues/819)). ([2e29a1ee](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e29a1eeb7dbb5c77bc04e1e7f7ee12081a1fd2d))
+
+
+## 2024-09-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0+3`](#deriv_mobile_chart_wrapper---v0103)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.0+3`
+
+ - **FIX**(deriv_mobile_chart_wrapper): fix text alignment ([#816](https://github.com/regentmarkets/flutter-deriv-packages/issues/816)). ([8fd35364](https://github.com/regentmarkets/flutter-deriv-packages/commit/8fd35364760d7bc1b101f9414a2d9d340a1b5a32))
+
+
+## 2024-09-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.6.0`](#deriv_localizations---v160)
+ - [`deriv_passkeys` - `v0.0.4+3`](#deriv_passkeys---v0043)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0+2`](#deriv_mobile_chart_wrapper---v0102)
+ - [`deriv_auth` - `v6.7.47`](#deriv_auth---v6747)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.4+3`
+ - `deriv_mobile_chart_wrapper` - `v0.1.0+2`
+ - `deriv_auth` - `v6.7.47`
+
+---
+
+#### `deriv_localizations` - `v1.6.0`
+
+ - **FEAT**(deriv_localizations): Update localizations generated file to get the new strings ([#808](https://github.com/regentmarkets/flutter-deriv-packages/issues/808)). ([28ae98bc](https://github.com/regentmarkets/flutter-deriv-packages/commit/28ae98bcd78ab725c3f35d6a88175c0e85be4c94))
+
+
+## 2024-09-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0+1`](#deriv_mobile_chart_wrapper---v0101)
+ - [`deriv_ui` - `v0.1.0+1`](#deriv_ui---v0101)
+ - [`deriv_language_selector` - `v0.0.3+8`](#deriv_language_selector---v0038)
+ - [`deriv_widgetbook` - `v0.0.2+28`](#deriv_widgetbook---v00228)
+ - [`deriv_passkeys` - `v0.0.4+2`](#deriv_passkeys---v0042)
+ - [`deriv_auth` - `v6.7.46`](#deriv_auth---v6746)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_language_selector` - `v0.0.3+8`
+ - `deriv_widgetbook` - `v0.0.2+28`
+ - `deriv_passkeys` - `v0.0.4+2`
+ - `deriv_auth` - `v6.7.46`
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.0+1`
+
+ - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
+
+#### `deriv_ui` - `v0.1.0+1`
+
+ - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
+
+
+## 2024-09-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.0`](#deriv_mobile_chart_wrapper---v010)
+ - [`deriv_ui` - `v0.1.0`](#deriv_ui---v010)
+
+Packages with other changes:
+
+ - [`deriv_language_selector` - `v0.0.3+7`](#deriv_language_selector---v0037)
+ - [`deriv_widgetbook` - `v0.0.2+27`](#deriv_widgetbook---v00227)
+ - [`deriv_passkeys` - `v0.0.4+1`](#deriv_passkeys---v0041)
+ - [`deriv_auth` - `v6.7.45`](#deriv_auth---v6745)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_language_selector` - `v0.0.3+7`
+ - `deriv_widgetbook` - `v0.0.2+27`
+ - `deriv_passkeys` - `v0.0.4+1`
+ - `deriv_auth` - `v6.7.45`
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.0`
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+#### `deriv_ui` - `v0.1.0`
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+
+## 2024-09-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.0.15`](#deriv_mobile_chart_wrapper---v0015)
+ - [`deriv_passkeys` - `v0.0.4`](#deriv_passkeys---v004)
+ - [`deriv_ui` - `v0.0.16`](#deriv_ui---v0016)
+ - [`deriv_auth` - `v6.7.44`](#deriv_auth---v6744)
+ - [`deriv_language_selector` - `v0.0.3+6`](#deriv_language_selector---v0036)
+ - [`deriv_widgetbook` - `v0.0.2+26`](#deriv_widgetbook---v00226)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v6.7.44`
+ - `deriv_language_selector` - `v0.0.3+6`
+ - `deriv_widgetbook` - `v0.0.2+26`
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.0.15`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
+#### `deriv_passkeys` - `v0.0.4`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
+#### `deriv_ui` - `v0.0.16`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
+
 ## 2024-09-02
 
 ### Changes

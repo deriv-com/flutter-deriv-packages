@@ -12,17 +12,23 @@ class IndicatorSettingsDescriptionBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 8,
-      color: context.theme.colors.secondary,
-      child: ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          _buildTopHandle(context),
-          _buildTitle(context),
-          _buildDescription(context),
-        ],
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(ThemeProvider.borderRadius16),
+        topRight: Radius.circular(ThemeProvider.borderRadius16),
+      ),
+      child: Material(
+        elevation: 8,
+        color: context.theme.colors.secondary,
+        child: ListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            _buildTopHandle(context),
+            _buildTitle(context),
+            _buildDescription(context),
+          ],
+        ),
       ),
     );
   }

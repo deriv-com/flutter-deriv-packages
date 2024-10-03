@@ -3,6 +3,7 @@ import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MockToolsController extends Mock implements ToolsController {
   @override
@@ -17,6 +18,9 @@ class MockAddOnsRepository<T extends AddOnConfig> extends Mock
 
 void main() {
   group('MobileChartWrapper Tests', () {
+    SharedPreferences.setMockInitialValues({
+      'default': dynamic,
+    });
     testWidgets('MobileChartWrapper initializes correctly',
         (WidgetTester tester) async {
       await tester.pumpWidget(_TestWidget(toolsController: ToolsController()));

@@ -1,5 +1,8 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tools_selector.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
+import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -161,13 +164,13 @@ class MobileChartWrapper extends StatefulWidget {
 class MobileChartWrapperState extends State<MobileChartWrapper> {
   AddOnsRepository<IndicatorConfig>? _indicatorsRepo;
   AddOnsRepository<DrawingToolConfig>? _drawingToolsRepo;
+  final DrawingTools _drawingTools = DrawingTools();
 
   @override
   void initState() {
     super.initState();
 
     _initRepos();
-    _setupController();
   }
 
   @override
@@ -190,9 +193,15 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         _showDrawingToolsSheet(_drawingToolsRepo!);
       }
     };
+
+    _updateConfigs();
+    _updateDrawingTools();
+
+    _indicatorsRepo?.addListener(_updateConfigs);
+    _drawingToolsRepo?.addListener(_updateConfigs);
   }
 
-  void _initRepos() {
+  void _initRepos() async {
     if (widget.toolsController?.indicatorsEnabled ?? false) {
       _indicatorsRepo = AddOnsRepository<IndicatorConfig>(
         createAddOn: (Map<String, dynamic> map) =>
@@ -211,7 +220,8 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
       );
     }
 
-    loadSavedIndicatorsAndDrawingTools();
+    await loadSavedIndicatorsAndDrawingTools();
+    _setupController();
   }
 
   Future<void> loadSavedIndicatorsAndDrawingTools() async {
@@ -255,7 +265,11 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         child: SafeArea(
           child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelIndicators,
-            child: const MobileToolsBottomSheetContent(),
+            child: MobileToolsBottomSheetContent(
+              selectedTab: indicatorsRepo.items.isEmpty
+                  ? IndicatorTabLabel.all
+                  : IndicatorTabLabel.active,
+            ),
           ),
         ),
       ),
@@ -264,7 +278,31 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
 
   void _showDrawingToolsSheet(
       AddOnsRepository<DrawingToolConfig> drawingToolsRepo) {
-    ///Todo(osama): Implement the drawing tools sheet.
+    setState(() {
+      _drawingTools
+        ..init()
+        ..drawingToolsRepo = drawingToolsRepo;
+    });
+
+    showModalBottomSheet(
+      context: context,
+      builder: (_) =>
+          ChangeNotifierProvider<AddOnsRepository<DrawingToolConfig>>.value(
+        value: drawingToolsRepo,
+        child: SafeArea(
+          child: DerivBottomSheet(
+            title: context.mobileChartWrapperLocalizations.labelDrawingTools,
+            child: DrawingToolsSelector(
+              onDrawingToolSelected: (DrawingToolConfig selectedDrawingTool) {
+                _drawingTools.onDrawingToolSelection(selectedDrawingTool);
+                _updateDrawingTools();
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -283,6 +321,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
                   DrawingToolConfig.fromJson(map),
               sharedPrefKey: widget.toolsStoreKey,
             ),
+        drawingTools: _drawingTools,
         controller: widget.controller,
         mainSeries: widget.mainSeries,
         markerSeries: widget.markerSeries,
@@ -296,4 +335,24 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         annotations: widget.annotations,
         activeSymbol: widget.toolsStoreKey,
       );
+
+  @override
+  void dispose() {
+    _indicatorsRepo?.removeListener(_updateConfigs);
+    _drawingToolsRepo?.removeListener(_updateConfigs);
+    super.dispose();
+  }
+
+  /// Update the configs in the tools controller.
+  void _updateConfigs() {
+    widget.toolsController?.updateConfigs(ConfigItemModel(
+      indicatorConfigs: _indicatorsRepo?.items ?? [],
+      drawingToolConfigs: _drawingToolsRepo?.items ?? [],
+    ));
+  }
+
+  /// Update the drawing tools data in the tool controller.
+  void _updateDrawingTools() {
+    widget.toolsController?.updateDrawingToolsData(_drawingTools);
+  }
 }

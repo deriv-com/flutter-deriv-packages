@@ -96,11 +96,14 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
   }
 
   @override
-  Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions() async {
+  Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions({
+    String? loginId,
+  }) async {
     try {
       final PasskeysRegisterOptionsReceive response =
           await PasskeysRegisterOptionsResponseExtended.fetchRaw(
-              const PasskeysRegisterOptionsRequest());
+        PasskeysRegisterOptionsRequest(loginid: loginId),
+      );
 
       if (response.passkeysRegisterOptions == null) {
         throw Exception('Failed to load register options!');
@@ -138,11 +141,12 @@ class DerivPasskeysDataSource extends BaseDerivPasskeysDataSource {
   }
 
   @override
-  Future<List<DerivPasskeyModel>> getPasskeysList() async {
+  Future<List<DerivPasskeyModel>> getPasskeysList({String? loginId}) async {
     try {
       final PasskeysListReceive response =
           await PasskeysListResponseExtended.fetchRaw(
-              const PasskeysListRequest());
+        PasskeysListRequest(loginid: loginId),
+      );
 
       if (response.passkeysList == null) {
         throw Exception('Failed to load passkeys list!');

@@ -1,15 +1,20 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:deriv_mobile_chart_wrapper/src/core_widgets/setting_page_action_buttons.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/base_setting_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 
 class MACDSettingsPage extends BaseIndicatorSettingPage<MACDIndicatorConfig> {
-  const MACDSettingsPage(
-      {super.key,
-      required super.initialConfig,
-      required super.onConfigUpdated});
+  const MACDSettingsPage({
+    required super.initialConfig,
+    required super.onConfigUpdated,
+    required super.onApply,
+    super.onReset,
+    super.key,
+  });
 
   @override
   State<MACDSettingsPage> createState() => _MACDSettingsPageState();
@@ -18,7 +23,7 @@ class MACDSettingsPage extends BaseIndicatorSettingPage<MACDIndicatorConfig> {
 class _MACDSettingsPageState extends State<MACDSettingsPage> {
   late MACDIndicatorConfig _indicatorConfig;
 
-  final int _minimumValueSelectorInput = 0;
+  final int _minimumValueSelectorInput = 1;
   final int _maximumValueSelectorInput = 100;
 
   @override
@@ -32,18 +37,40 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildMALineSection(context),
-        const SizedBox(
-          height: ThemeProvider.margin24,
+        _buildSettingSection(),
+        SettingActionButtons(
+          onApply: widget.onApply,
+          onReset: () {
+            showResetIndicatorDialog(context, config: _indicatorConfig,
+                onResetPressed: () {
+                  setState(() {
+                    _indicatorConfig = const MACDIndicatorConfig();
+                  });
+                  widget.onConfigUpdated(_indicatorConfig);
+                });
+          },
         ),
-        _buildSignalSection(context),
-        const SizedBox(
-          height: ThemeProvider.margin24,
-        ),
-        _buildBarsSection(context),
       ],
     );
   }
+
+  Widget _buildSettingSection() => Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildMALineSection(context),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildSignalSection(context),
+              const SizedBox(
+                height: ThemeProvider.margin24,
+              ),
+              _buildBarsSection(context),
+            ],
+          ),
+        ),
+      );
 
   _buildMALineSection(BuildContext context) => GlowingContainer(
       borderRadius: ThemeProvider.borderRadius04,
@@ -78,7 +105,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    fastMAPeriod: value?.toInt(),
+                    fastMAPeriod: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
@@ -102,11 +129,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
-              maximum: 100,
+              maximum: _maximumValueSelectorInput.toDouble(),
               showMinimumSubtitle: true,
               minimumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMinRange,
-              minimum: 1,
+              minimum: _minimumValueSelectorInput.toDouble(),
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
@@ -117,7 +144,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    slowMAPeriod: value?.toInt(),
+                    slowMAPeriod: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
@@ -141,11 +168,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
-              maximum: 100,
+              maximum: _maximumValueSelectorInput.toDouble(),
               showMinimumSubtitle: true,
               minimumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMinRange,
-              minimum: 1,
+              minimum: _minimumValueSelectorInput.toDouble(),
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
@@ -188,7 +215,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               onChange: (value) {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
-                    signalPeriod: value?.toInt(),
+                    signalPeriod: value?.floor(),
                   );
                   widget.onConfigUpdated(_indicatorConfig);
                 });
@@ -212,11 +239,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
               showMaximumSubtitle: true,
               maximumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMaxRange,
-              maximum: 100,
+              maximum: _maximumValueSelectorInput.toDouble(),
               showMinimumSubtitle: true,
               minimumSubtitle:
                   context.mobileChartWrapperLocalizations.labelMinRange,
-              minimum: 1,
+              minimum: _minimumValueSelectorInput.toDouble(),
             ),
             const SizedBox(
               height: ThemeProvider.margin16,
@@ -243,11 +270,11 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                 setState(() {
                   _indicatorConfig = _indicatorConfig.copyWith(
                     barStyle: _indicatorConfig.barStyle.copyWith(
-                      positiveColor: selectedColor,
-                    ),
+                        positiveColor: selectedColor,
+                        negativeColor: _indicatorConfig.barStyle.negativeColor),
                   );
-                  widget.onConfigUpdated(_indicatorConfig);
                 });
+                widget.onConfigUpdated(_indicatorConfig);
               },
             ),
             Padding(
@@ -258,15 +285,16 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                 title:
                     context.mobileChartWrapperLocalizations.labelDecreasingBar,
                 selectedColor: _indicatorConfig.barStyle.negativeColor,
-                onColorChanged: (index) {
+                onColorChanged: (color) {
                   setState(() {
                     _indicatorConfig = _indicatorConfig.copyWith(
                       barStyle: _indicatorConfig.barStyle.copyWith(
-                        negativeColor: index,
+                        negativeColor: color,
+                        positiveColor: _indicatorConfig.barStyle.positiveColor,
                       ),
                     );
-                    widget.onConfigUpdated(_indicatorConfig);
                   });
+                  widget.onConfigUpdated(_indicatorConfig);
                 },
               ),
             ),

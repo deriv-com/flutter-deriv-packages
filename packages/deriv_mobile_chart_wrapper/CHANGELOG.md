@@ -1,3 +1,53 @@
+## 0.1.3+3
+
+ - Update a dependency to the latest release.
+
+## 0.1.3+2
+
+ - Update a dependency to the latest release.
+
+## 0.1.3+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.3
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-73] Added line drawing guide banner ([#826](https://github.com/regentmarkets/flutter-deriv-packages/issues/826)). ([b2b018ec](https://github.com/regentmarkets/flutter-deriv-packages/commit/b2b018ec78d9f2de0dcc71b2a76f1343581f4f03))
+
+## 0.1.2
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-81] Functionality to add dots for drawing tool. ([#810](https://github.com/regentmarkets/flutter-deriv-packages/issues/810)). ([05d5c85f](https://github.com/regentmarkets/flutter-deriv-packages/commit/05d5c85f9b5c204ec54eb3828b262fe7c0293ac0))
+
+## 0.1.1
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-74] Add drawing tools bottom sheet UI ([#815](https://github.com/regentmarkets/flutter-deriv-packages/issues/815)). ([ebd9ab92](https://github.com/regentmarkets/flutter-deriv-packages/commit/ebd9ab92707630df3bc185aab5a503399df786b4))
+
+## 0.1.0+4
+
+ - Update a dependency to the latest release.
+
+## 0.1.0+3
+
+ - **FIX**(deriv_mobile_chart_wrapper): fix text alignment ([#816](https://github.com/regentmarkets/flutter-deriv-packages/issues/816)). ([8fd35364](https://github.com/regentmarkets/flutter-deriv-packages/commit/8fd35364760d7bc1b101f9414a2d9d340a1b5a32))
+
+## 0.1.0+2
+
+ - Update a dependency to the latest release.
+
+## 0.1.0+1
+
+ - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
+
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+## 0.0.15
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
 ## 0.0.14
 
  - **FEAT**(deriv_mobile_chart_wrapper): Created a new icon button widget for drawing tools ([#792](https://github.com/regentmarkets/flutter-deriv-packages/issues/792)). ([fe1a19c1](https://github.com/regentmarkets/flutter-deriv-packages/commit/fe1a19c10ea88323911a5507ad37b25ba71aedaa))

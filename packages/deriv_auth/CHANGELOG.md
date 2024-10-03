@@ -1,3 +1,53 @@
+## 6.8.3
+
+ - Update a dependency to the latest release.
+
+## 6.8.2
+
+ - Update a dependency to the latest release.
+
+## 6.8.1
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+## 6.8.0
+
+ - **FIX**: [86c0e0nez] add disability check while filtering accounts ([#837](https://github.com/regentmarkets/flutter-deriv-packages/issues/837)). ([e64dfa54](https://github.com/regentmarkets/flutter-deriv-packages/commit/e64dfa54d774e79c3c88f63f3112c7eb0c0cb6b8))
+ - **FEAT**(deriv_auth): [DERG-1396] akhil/1396/multi_user_level_authentication_poc_master ([#574](https://github.com/regentmarkets/flutter-deriv-packages/issues/574)). ([97ac8004](https://github.com/regentmarkets/flutter-deriv-packages/commit/97ac8004370762ed38ed0608e64699a020406b8e))
+
+## 6.7.51
+
+ - **FIX**: [86c0e0nez] add disability check while filtering accounts ([#837](https://github.com/regentmarkets/flutter-deriv-packages/issues/837)). ([e64dfa54](https://github.com/regentmarkets/flutter-deriv-packages/commit/e64dfa54d774e79c3c88f63f3112c7eb0c0cb6b8))
+ - **FIX**: [86c0e0nez] filter supported accounts while logging in ([#833](https://github.com/regentmarkets/flutter-deriv-packages/issues/833)). ([534e982c](https://github.com/regentmarkets/flutter-deriv-packages/commit/534e982c809b5e0e9380366a3f32a05f1ef2cf10))
+
+## 6.7.50
+
+ - Update a dependency to the latest release.
+
+## 6.7.49
+
+ - **FIX**(deriv_auth): unassigned token for account created on web ([#756](https://github.com/regentmarkets/flutter-deriv-packages/issues/756)). ([abbb8905](https://github.com/regentmarkets/flutter-deriv-packages/commit/abbb8905263517c32c1e990fdc9dbfd2fb38ae9b))
+
+## 6.7.48
+
+ - Update a dependency to the latest release.
+
+## 6.7.47
+
+ - Update a dependency to the latest release.
+
+## 6.7.46
+
+ - Update a dependency to the latest release.
+
+## 6.7.45
+
+ - Update a dependency to the latest release.
+
+## 6.7.44
+
+ - Update a dependency to the latest release.
+
 ## 6.7.43
 
  - Update a dependency to the latest release.

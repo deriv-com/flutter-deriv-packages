@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:app_links/app_links.dart';
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:deriv_web_view/web_view.dart';
