@@ -20,9 +20,7 @@ class _SettingsPageState extends State<SettingsPage> {
         saveValues: AuthData().data.settingPageModel.saveValues,
         appId: AuthData().data.settingPageModel.appId.call(),
         endpoint: AuthData().data.settingPageModel.endpoint.call(),
-        underDevelopmentFeatures:
-            AuthData().data.settingPageModel.underDevelopmentFeatures,
-        productionFeatures: AuthData().data.settingPageModel.productionFeatures,
+        features: AuthData().data.settingPageModel.features,
         setAppEnv: AuthData().data.settingPageModel.setAppEnv,
         getAppEnv: AuthData().data.settingPageModel.getAppEnv,
       );

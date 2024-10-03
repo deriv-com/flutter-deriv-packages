@@ -12,8 +12,7 @@ class SettingPageModel {
     this.settingsPageNavigation,
     this.getAppEnv,
     this.setAppEnv,
-    this.underDevelopmentFeatures,
-    this.productionFeatures,
+    this.features,
   });
 
   /// Setting page App label
@@ -41,9 +40,6 @@ class SettingPageModel {
   /// Sets environment variable
   final Future<void> Function({required bool value})? setAppEnv;
 
-  /// Under development features.
-  final Widget? underDevelopmentFeatures;
-
-  /// Production features.
-  final Widget? productionFeatures;
+  /// Feature flag widget that should be listed in the setting page.
+  final Widget? features;
 }
