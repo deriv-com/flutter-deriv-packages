@@ -57,7 +57,7 @@
   "labelMACDLine": "MACD line",
   "labelFastMAPeriod": "Fast MA period",
   "labelSlowMAPeriod": "Slow MA period",
-  "labelSignalLine": "Signal line", 
+  "labelSignalLine": "Signal line",
   "labelSignalPeriod": "Signal period",
   "labelIncreasingBar": "Increasing bar",
   "labelDecreasingBar": "Decreasing bar",
@@ -72,7 +72,7 @@
   "labelOffset": "Offset",
   "labelType": "Type",
   "labelSimple": "Simple",
-  "labelExponential": "Exponential", 
+  "labelExponential": "Exponential",
   "labelWeighted": "Weighted",
   "labelHull": "Hull",
   "labelZeroLag": "Zero Lag",
@@ -83,5 +83,13 @@
   "label2Exponential": "2-Exponential",
   "label3Exponential": "3-Exponential",
   "warnEnterValueBetweenMinMax": "Enter a value between {min} and {max}",
-  "warnRangeMinMax": "Range {min} - {max}"
+  "warnRangeMinMax": "Range {min} - {max}",
+  "labelDrawingTools": "Drawing tools",
+  "labelTools": "Tools",
+  "labelLine": "Line",
+  "labelRay": "Ray",
+  "informTapToSetFirstPoint": "Tap to set first point",
+  "informTapToSetFinalPoint": "Tap to set final point",
+  "informNoActiveDrawingTools": "No active drawing tools.",
+  "actionAddDrawingTool": "Add drawing tool"
 }

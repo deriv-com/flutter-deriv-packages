@@ -20,6 +20,7 @@ class LearnMorePasskeysPage extends StatelessWidget
     required this.onPageClosed,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.onExitPasskeysFlow,
     super.key,
   }) {
     trackOpenLearnMorePage();
@@ -34,6 +35,9 @@ class LearnMorePasskeysPage extends StatelessWidget
   /// Callback to be called when the user wants to continue trading.
   final void Function(BuildContext context) continueTradingNavigationCallback;
 
+  /// Callback to be called when user exits the passkey flow and continues working with the app.
+  final void Function()? onExitPasskeysFlow;
+
   @override
   Widget build(BuildContext context) => WillPopScope(
         onWillPop: () async {
@@ -47,15 +51,22 @@ class LearnMorePasskeysPage extends StatelessWidget
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute<Widget>(
-                    builder: (BuildContext context) => PasskeyCreatedPage(
-                          onPageClose: onPageClosed,
-                          bottomCallToAction: PasskeysCreatedCallToAction(
-                            addMorePasskeysNavigationCallback:
-                                addMorePasskeysNavigationCallback,
-                            continueTradingNavigationCallback:
-                                continueTradingNavigationCallback,
-                          ),
-                        )),
+                  builder: (BuildContext context) => PasskeyCreatedPage(
+                    onPageClose: onPageClosed,
+                    onExitPasskeysFlow: onExitPasskeysFlow,
+                    bottomCallToAction: PasskeysCreatedCallToAction(
+                      addMorePasskeysNavigationCallback:
+                          addMorePasskeysNavigationCallback,
+                      continueTradingNavigationCallback:
+                          (BuildContext context) {
+                        continueTradingNavigationCallback(context);
+                        if (onExitPasskeysFlow != null) {
+                          onExitPasskeysFlow!.call();
+                        }
+                      },
+                    ),
+                  ),
+                ),
               );
             }
           },

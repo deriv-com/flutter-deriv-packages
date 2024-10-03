@@ -4,9 +4,11 @@ import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
+import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_description_bottom_sheet.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/bb_settings_page.dart';
+import 'package:deriv_mobile_chart_wrapper/src/pages/ma_settings_page.dart';
 import 'package:deriv_mobile_chart_wrapper/src/pages/macd_settings_page.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -16,12 +18,18 @@ import 'package:provider/provider.dart';
 
 import '../core_widgets/no_glow_scroll_behavior.dart';
 import 'indicator_description_bottom_sheet.dart';
+import 'indicator_settings_bottom_sheet.dart';
 
 /// Bottom sheet content to show the list of support tools (indicators/ drawing
 /// tools) for the mobile version.
 class MobileToolsBottomSheetContent extends StatefulWidget {
   /// Initializes the bottom sheet content.
-  const MobileToolsBottomSheetContent({super.key});
+  const MobileToolsBottomSheetContent({
+    this.selectedTab = IndicatorTabLabel.all,
+    super.key,
+  });
+
+  final IndicatorTabLabel selectedTab;
 
   @override
   State<MobileToolsBottomSheetContent> createState() =>
@@ -30,7 +38,7 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
 
 class _MobileToolsBottomSheetContentState
     extends State<MobileToolsBottomSheetContent> {
-  IndicatorTabLabel _selectedChip = IndicatorTabLabel.all;
+  late IndicatorTabLabel _selectedChip;
 
   /// Returns `true` if the limit of active indicators is reached.
   bool get isLimitReached => indicatorsRepo.items.length >= 3;
@@ -38,6 +46,14 @@ class _MobileToolsBottomSheetContentState
   late AddOnsRepository<IndicatorConfig> indicatorsRepo;
 
   late List<IndicatorItemModel> indicators;
+
+  late IndicatorConfig _updatedConfig;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedChip = widget.selectedTab;
+  }
 
   @override
   void didChangeDependencies() {
@@ -129,22 +145,26 @@ class _MobileToolsBottomSheetContentState
       ),
       child: Row(
         children: [
-          Text(
-            context.mobileChartWrapperLocalizations.infoUpto3indicatorsAllowed,
-            style: context.themeProvider.textStyle(
-              textStyle: TextStyles.caption,
-              color: context.themeProvider.colors.general,
+          Expanded(
+            child: Text(
+              context
+                  .mobileChartWrapperLocalizations.infoUpto3indicatorsAllowed,
+              style: context.themeProvider.textStyle(
+                textStyle: TextStyles.caption,
+                color: context.themeProvider.colors.general,
+              ),
+              textAlign: TextAlign.start,
+              maxLines: 3,
             ),
-            textAlign: TextAlign.start,
           ),
-          const Spacer(),
+          const SizedBox(width: ThemeProvider.margin16),
           Visibility(
             visible: indicatorsRepo.items.isNotEmpty,
             maintainSize: true,
             maintainState: true,
             maintainAnimation: true,
             child: SecondaryButton(
-              onPressed: indicatorsRepo.clear,
+              onPressed: _showDeleteAllIndicatorsDialog,
               child: Center(
                 child: Text(
                   context.mobileChartWrapperLocalizations.labelDeleteAll,
@@ -173,19 +193,7 @@ class _MobileToolsBottomSheetContentState
             iconAssetPath: indicator.icon,
             title: indicator.title,
             count: _getIndicatorCount(indicator),
-            onInfoIconTapped: () {
-              showModalBottomSheet(
-                context: context,
-                barrierColor: Colors.transparent,
-                builder: (context) => IndicatorDescriptionBottomSheet(
-                  indicator: indicator,
-                  onAddIndicatorPressed: () {
-                    indicatorsRepo.add(indicator.config);
-                    Navigator.of(context).pop();
-                  },
-                ),
-              );
-            },
+            onInfoIconTapped: () => _showIndicatorInfoBottomSheet(indicator),
             onTap: () {
               indicatorsRepo.add(
                 indicator.config.copyWith(
@@ -230,16 +238,44 @@ class _MobileToolsBottomSheetContentState
               itemBuilder: (_, index) {
                 final IndicatorConfig indicatorConfig =
                     indicatorsRepo.items[index];
+
                 return ActiveIndicatorListItem(
                   iconAssetPath: getIndicatorIconPath(indicatorConfig),
-                  title: '${getIndicatorAbbreviation(
-                    indicatorConfig,
-                    context,
-                  )} '
-                      '${indicatorConfig.number > 0 ? indicatorConfig.number : ''}',
+                  title: getIndicatorAbbreviationWithCount(
+                      indicatorConfig, context),
                   subtitle: '(${indicatorConfig.configSummary})',
-                  onTapSetting: () {},
-                  onTapDelete: () => indicatorsRepo.removeAt(index),
+                  onTapSetting: () {
+                    _updatedConfig = indicatorConfig;
+                    showDerivModalBottomSheet(
+                      context,
+                      (context) => IndicatorSettingsBottomSheet(
+                        indicator: getIndicatorAbbreviationWithCount(
+                            indicatorConfig, context),
+                        settings: _getConfigSettingPage(index, indicatorConfig),
+                        onTapDelete: () async {
+                          await _showDeleteIndicatorDialog(
+                              indicatorConfig, index);
+                          if (context.mounted) Navigator.pop(context);
+                        },
+                        onTapInfo: () {
+                          final IndicatorItemModel indicatorModel =
+                              indicators.firstWhere((element) =>
+                                  element.config.runtimeType ==
+                                  indicatorConfig.runtimeType);
+
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return IndicatorSettingsDescriptionBottomSheet(
+                                    indicator: indicatorModel);
+                              });
+                        },
+                      ),
+                      showDragHandle: false,
+                    );
+                  },
+                  onTapDelete: () =>
+                      _showDeleteIndicatorDialog(indicatorConfig, index),
                 );
               },
             ),
@@ -249,14 +285,51 @@ class _MobileToolsBottomSheetContentState
     );
   }
 
+  void _onConfigUpdated(IndicatorConfig config) {
+    _updatedConfig = config;
+  }
+
+  void _onApply(int index, IndicatorConfig config) {
+    indicatorsRepo.updateAt(index, config);
+    Navigator.pop(context);
+  }
+
+  Widget _getConfigSettingPage(int index, IndicatorConfig initialConfig) {
+    if (initialConfig is RSIIndicatorConfig) {
+      return RSISettingPage(
+        initialConfig: initialConfig,
+        onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
+      );
+    } else if (initialConfig is BollingerBandsIndicatorConfig) {
+      return BollingerBandsSettingsPage(
+        initialConfig: initialConfig,
+        onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
+      );
+    } else if (initialConfig is MACDIndicatorConfig) {
+      return MACDSettingsPage(
+        initialConfig: initialConfig,
+        onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
+      );
+    } else if (initialConfig is MAIndicatorConfig) {
+      return MASettingsPage(
+        initialConfig: initialConfig,
+        onConfigUpdated: _onConfigUpdated,
+        onApply: () => _onApply(index, _updatedConfig),
+      );
+    }
+    return const SizedBox.shrink();
+  }
+
   Widget _buildIndicatorEmptyState() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
           child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            child: ListView(
               children: [
                 SvgPicture.asset(
                   emptyStateIndicatorsIcon,
@@ -271,6 +344,7 @@ class _MobileToolsBottomSheetContentState
                     textStyle: TextStyles.body1,
                     color: const Color(0xFF999999),
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
@@ -340,7 +414,7 @@ class _MobileToolsBottomSheetContentState
                       )
                     : CustomChip<IndicatorTabLabel>(
                         value: tabLabel,
-                        labelBuilder: (_, __) => tabLabel.title,
+                        labelBuilder: (_, __) => tabLabel.getTitle(context),
                         onTap: _onChipTapped,
                         isSelected: _selectedChip == tabLabel,
                         borderRadius: ThemeProvider.margin40,
@@ -352,6 +426,64 @@ class _MobileToolsBottomSheetContentState
     );
   }
 
+  void _showIndicatorInfoBottomSheet(IndicatorItemModel indicator) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => IndicatorDescriptionBottomSheet(
+        indicator: indicator,
+        onAddIndicatorPressed: () {
+          indicatorsRepo.add(indicator.config);
+          Navigator.of(context).pop();
+        },
+      ),
+    );
+  }
+
   void _onChipTapped(IndicatorTabLabel? value, String? title) =>
       setState(() => _selectedChip = value ?? IndicatorTabLabel.all);
+
+  Future<void> _showDeleteIndicatorDialog(IndicatorConfig config, int index) =>
+      showAlertDialog(
+          context: context,
+          title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
+            getIndicatorAbbreviationWithCount(config, context),
+          ),
+          content: Text(
+            context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+            style: TextStyles.subheading,
+          ),
+          positiveActionLabel:
+              context.mobileChartWrapperLocalizations.labelDelete,
+          negativeButtonLabel:
+              context.mobileChartWrapperLocalizations.labelCancel,
+          showLoadingIndicator: false,
+          onPositiveActionPressed: () {
+            indicatorsRepo.removeAt(index);
+            Navigator.pop(context);
+          },
+          onNegativeActionPressed: () {
+            Navigator.pop(context);
+          });
+
+  void _showDeleteAllIndicatorsDialog() {
+    showAlertDialog(
+        context: context,
+        title: context.mobileChartWrapperLocalizations.labelDeleteAllIndicators,
+        content: Text(
+          context.mobileChartWrapperLocalizations.infoDeleteAllIndicators,
+          style: TextStyles.subheading,
+        ),
+        positiveActionLabel:
+            context.mobileChartWrapperLocalizations.labelDeleteAll,
+        negativeButtonLabel:
+            context.mobileChartWrapperLocalizations.labelCancel,
+        showLoadingIndicator: false,
+        onPositiveActionPressed: () {
+          indicatorsRepo.clear();
+          Navigator.pop(context);
+        },
+        onNegativeActionPressed: () {
+          Navigator.pop(context);
+        });
+  }
 }

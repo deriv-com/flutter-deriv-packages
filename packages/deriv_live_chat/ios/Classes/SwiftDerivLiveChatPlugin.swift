@@ -60,6 +60,9 @@ public class SwiftDerivLiveChatPlugin: NSObject, FlutterPlugin, LiveChatDelegate
             case "clear_live_chat_view":
                 LiveChat.clearSession()
                 result(nil)
+            case "reload_live_chat_view":
+                 LiveChat.dismissChat()
+                 result(nil)
 
             default:
                 result(FlutterMethodNotImplemented)

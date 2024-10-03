@@ -27,7 +27,7 @@ class AppPerformance {
   void disable() => _firebasePerformance.setPerformanceCollectionEnabled(false);
 
   /// Starts tracing the App Performance.
-  void startTracing({required String traceName}) {
+  Trace? startTracing({required String traceName}) {
     if (_traceMap.containsKey(traceName)) {
       stopTracing(traceName: traceName);
     }
@@ -36,18 +36,22 @@ class AppPerformance {
       final Trace trace = _createTrace(traceName: traceName);
       _traceMap[traceName] = trace;
       trace.start();
+      return trace;
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 
   /// Stops tracing the App Performance.
-  void stopTracing({required String traceName}) {
+  Trace? stopTracing({required String traceName}) {
     try {
       final Trace? retrievedTrace = _traceMap[traceName];
       retrievedTrace?.stop();
+      return retrievedTrace;
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }

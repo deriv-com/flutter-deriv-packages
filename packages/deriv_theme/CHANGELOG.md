@@ -1,3 +1,19 @@
+## 2.7.1
+
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+
+## 2.7.0
+
+ - **FEAT**(deriv_theme): add IDV colors to theme class. ([#796](https://github.com/regentmarkets/flutter-deriv-packages/issues/796)). ([50f48bda](https://github.com/regentmarkets/flutter-deriv-packages/commit/50f48bda345f75e01bf083a1c3233755951dd25c))
+
+## 2.6.0
+
+ - **FEAT**(deriv_theme): add IDV status badge colors. ([#777](https://github.com/regentmarkets/flutter-deriv-packages/issues/777)). ([d292701f](https://github.com/regentmarkets/flutter-deriv-packages/commit/d292701f00c1f8122a06d77860cdb528712aa694))
+
+## 2.5.0
+
+ - **FEAT**(deriv_theme): add IDV status badge colors. ([#777](https://github.com/regentmarkets/flutter-deriv-packages/issues/777)). ([d292701f](https://github.com/regentmarkets/flutter-deriv-packages/commit/d292701f00c1f8122a06d77860cdb528712aa694))
+
 ## 2.4.0
 
  - **FEAT**(deriv_theme): [UPM-856] Add passkeys colors to deriv theme. ([#545](https://github.com/regentmarkets/flutter-deriv-packages/issues/545)). ([09c54bb6](https://github.com/regentmarkets/flutter-deriv-packages/commit/09c54bb6572d5c8ec0454cf41c8ef282b89f2689))

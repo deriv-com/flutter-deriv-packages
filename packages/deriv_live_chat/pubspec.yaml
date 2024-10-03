@@ -1,6 +1,6 @@
 name: deriv_live_chat
 description: A plugin for live chat SDK support to dart.
-version: 0.0.1+2
+version: 0.0.2
 homepage: https://deriv.com/
 publish_to: "none"
 

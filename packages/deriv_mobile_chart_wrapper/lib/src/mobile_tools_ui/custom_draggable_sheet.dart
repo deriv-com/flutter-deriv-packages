@@ -28,7 +28,7 @@ class CustomDraggableSheet extends StatefulWidget {
   final Duration introAnimationDuration;
 
   @override
-  _CustomDraggableSheetState createState() => _CustomDraggableSheetState();
+  State<CustomDraggableSheet> createState() => _CustomDraggableSheetState();
 }
 
 class _CustomDraggableSheetState extends State<CustomDraggableSheet>

@@ -1,3 +1,11 @@
+## 2.3.0
+
+ - **FEAT**(analytics): Amend tracking events Rudderstack ([#821](https://github.com/regentmarkets/flutter-deriv-packages/issues/821)). ([bd197376](https://github.com/regentmarkets/flutter-deriv-packages/commit/bd197376cf450ec375a9759c9511563a253a0c64))
+
+## 2.2.2
+
+ - **REFACTOR**(analytics): Amend virtual n real tracking events ([#771](https://github.com/regentmarkets/flutter-deriv-packages/issues/771)). ([fc8850f0](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc8850f01c1bb0a6805b41b3ff10e2a6e33b6e0f))
+
 ## 2.2.1
 
  - **FIX**(analytics): ilya/TRHM-945/Amend_Virtual_n_Real_Tracking_Events ([#762](https://github.com/regentmarkets/flutter-deriv-packages/issues/762)). ([cbba6688](https://github.com/regentmarkets/flutter-deriv-packages/commit/cbba668827d72c971d1100ecafee5719d4617639))

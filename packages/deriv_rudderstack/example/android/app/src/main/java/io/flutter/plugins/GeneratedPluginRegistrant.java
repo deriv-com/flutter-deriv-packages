@@ -17,7 +17,7 @@ public final class GeneratedPluginRegistrant {
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
     try {
       flutterEngine.getPlugins().add(new com.deriv.deriv_rudderstack.DerivRudderstackPlugin());
-    } catch(Exception e) {
+    } catch (Exception e) {
       Log.e(TAG, "Error registering plugin deriv_rudderstack, com.deriv.deriv_rudderstack.DerivRudderstackPlugin", e);
     }
   }

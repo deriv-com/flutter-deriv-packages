@@ -97,6 +97,7 @@ const DerivPasskeysVerifyCredentialsResponseModel
   response: <String, dynamic>{
     'tokens': <Map<String, dynamic>>[
       <String, dynamic>{
+        'loginid': 'login',
         'token': 'token',
       },
     ],

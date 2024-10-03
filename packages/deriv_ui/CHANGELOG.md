@@ -1,3 +1,53 @@
+## 0.1.0+4
+
+ - **REFACTOR**(deriv_ui): update intl version ([#847](https://github.com/regentmarkets/flutter-deriv-packages/issues/847)). ([cee558af](https://github.com/regentmarkets/flutter-deriv-packages/commit/cee558afd16aeecb8888fed8baa6da569269f3e3))
+
+## 0.1.0+3
+
+ - Update a dependency to the latest release.
+
+## 0.1.0+2
+
+ - **FIX**(deriv-ui): [DRGO-126]call the passed onDispose method inside dispose method ([#819](https://github.com/regentmarkets/flutter-deriv-packages/issues/819)). ([2e29a1ee](https://github.com/regentmarkets/flutter-deriv-packages/commit/2e29a1eeb7dbb5c77bc04e1e7f7ee12081a1fd2d))
+
+## 0.1.0+1
+
+ - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
+
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+## 0.0.16
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
+## 0.0.15+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.15
+
+ - **FEAT**(Deriv_UI): [TRHM-618] added keys to deriv UI package ([#748](https://github.com/regentmarkets/flutter-deriv-packages/issues/748)). ([6e6e13b9](https://github.com/regentmarkets/flutter-deriv-packages/commit/6e6e13b9a87b8edaa4c10fcfe7ca2697afc7f601))
+
+## 0.0.14
+
+ - **FEAT**: [DRGO-126] Add onDispose method to deriv bottomsheet and add key to bottmsheet handle ([#787](https://github.com/regentmarkets/flutter-deriv-packages/issues/787)). ([3d39f310](https://github.com/regentmarkets/flutter-deriv-packages/commit/3d39f3107d4c76b94d2db8228e2b55e4e4f90a47))
+
+## 0.0.13+5
+
+ - Update a dependency to the latest release.
+
+## 0.0.13+4
+
+ - Update a dependency to the latest release.
+
+## 0.0.13+3
+
+ - **REFACTOR**(deriv_auth): Update_single_entry_feature ([#577](https://github.com/regentmarkets/flutter-deriv-packages/issues/577)). ([462d7bd6](https://github.com/regentmarkets/flutter-deriv-packages/commit/462d7bd6bdf60536fa632be3b95fae0ba377f142))
+
 ## 0.0.13+2
 
  - **FIX**(deriv_auth): focus node issue in BaseTextField ([#765](https://github.com/regentmarkets/flutter-deriv-packages/issues/765)). ([025e1457](https://github.com/regentmarkets/flutter-deriv-packages/commit/025e145799e508db461b64a7535269946c9d7370))

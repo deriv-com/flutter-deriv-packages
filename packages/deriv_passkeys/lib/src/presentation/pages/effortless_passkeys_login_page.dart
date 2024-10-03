@@ -21,6 +21,7 @@ class EffortlessPasskeysPage extends StatelessWidget
     required this.onPageClosed,
     required this.addMorePasskeysNavigationCallback,
     required this.continueTradingNavigationCallback,
+    this.onExitPasskeysFlow,
     this.effortlessPasskeysPageKeys,
     super.key,
   }) {
@@ -39,6 +40,9 @@ class EffortlessPasskeysPage extends StatelessWidget
   /// Callback to be called when the flow is complete.
   final void Function(BuildContext context) onPageClosed;
 
+  /// Callback to be called when user exits the passkey flow and continues working with the app.
+  final void Function()? onExitPasskeysFlow;
+
   /// Pass an object of keys to assign to specific widget in this page.
   final EffortlessPasskeysPageKeys? effortlessPasskeysPageKeys;
 
@@ -54,23 +58,28 @@ class EffortlessPasskeysPage extends StatelessWidget
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute<Widget>(
-                    builder: (BuildContext context) => PasskeyCreatedPage(
-                          onPageClose: (BuildContext context) {
-                            onPageClosed(context);
-                          },
-                          bottomCallToAction: PasskeysCreatedCallToAction(
-                            addMorePasskeysNavigationCallback:
-                                (BuildContext context) {
-                              trackAddMorePasskeys();
-                              addMorePasskeysNavigationCallback(context);
-                            },
-                            continueTradingNavigationCallback:
-                                (BuildContext context) {
-                              trackContinueTrading();
-                              continueTradingNavigationCallback(context);
-                            },
-                          ),
-                        )),
+                  builder: (BuildContext context) => PasskeyCreatedPage(
+                    onExitPasskeysFlow: onExitPasskeysFlow,
+                    onPageClose: (BuildContext context) {
+                      onPageClosed(context);
+                    },
+                    bottomCallToAction: PasskeysCreatedCallToAction(
+                      addMorePasskeysNavigationCallback:
+                          (BuildContext context) {
+                        trackAddMorePasskeys();
+                        addMorePasskeysNavigationCallback(context);
+                      },
+                      continueTradingNavigationCallback:
+                          (BuildContext context) {
+                        trackContinueTrading();
+                        continueTradingNavigationCallback(context);
+                        if (onExitPasskeysFlow != null) {
+                          onExitPasskeysFlow!.call();
+                        }
+                      },
+                    ),
+                  ),
+                ),
               );
             } else if (state is DerivPasskeysErrorState) {
               trackPasskeyError('${state.errorCode}: ${state.message}');
@@ -80,185 +89,184 @@ class EffortlessPasskeysPage extends StatelessWidget
           child: Scaffold(
             body: SafeArea(
               child: LayoutBuilder(
-                  builder: (_, BoxConstraints constraints) =>
-                      SingleChildScrollView(
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                              minWidth: constraints.maxWidth,
-                              minHeight: constraints.maxHeight),
-                          child: IntrinsicHeight(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  alignment: Alignment.topRight,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(16),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        trackMaybeLater();
-                                        onPageClosed(context);
-                                      },
-                                      child: Text(
-                                        context.derivPasskeysLocalizations
-                                            .maybeLater
-                                            .toUpperCase(),
-                                        key: effortlessPasskeysPageKeys
-                                            ?.maybeLaterTextButtonKey,
-                                        style: TextStyle(
-                                          color: context.theme.colors.coral,
-                                        ),
-                                      ),
-                                    ),
+                builder: (_, BoxConstraints constraints) =>
+                    SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        minWidth: constraints.maxWidth,
+                        minHeight: constraints.maxHeight),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: TextButton(
+                                onPressed: () {
+                                  trackMaybeLater();
+                                  onPageClosed(context);
+                                  if (onExitPasskeysFlow != null) {
+                                    onExitPasskeysFlow!.call();
+                                  }
+                                },
+                                child: Text(
+                                  context.derivPasskeysLocalizations.maybeLater
+                                      .toUpperCase(),
+                                  key: effortlessPasskeysPageKeys
+                                      ?.maybeLaterTextButtonKey,
+                                  style: TextStyle(
+                                    color: context.theme.colors.coral,
                                   ),
                                 ),
-                                Expanded(
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 24, vertical: 96),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: <Widget>[
-                                        SvgPicture.asset(
-                                          Assets.effortlessPasskeysIcon,
-                                          package: 'deriv_passkeys',
-                                        ),
-                                        Text(
-                                          context.derivPasskeysLocalizations
-                                              .effortlessLoginWithPasskeys,
-                                          key: effortlessPasskeysPageKeys
-                                              ?.loginWithPasskeyTextKey,
-                                          style: const TextStyle(fontSize: 20),
-                                        ),
-                                        const SizedBox(
-                                          height: 24,
-                                        ),
-                                        IconTextRowWidget(
-                                          assetName: Assets.fingerPrintIcon,
-                                          text: context
-                                              .derivPasskeysLocalizations
-                                              .noNeedToRememberPassword,
-                                          textKey: effortlessPasskeysPageKeys
-                                              ?.noNeedToRememberPasswordRowKey,
-                                        ),
-                                        Divider(
-                                          color: context.theme.colors.hover,
-                                        ),
-                                        IconTextRowWidget(
-                                          assetName: Assets.syncIcon,
-                                          text: context
-                                              .derivPasskeysLocalizations
-                                              .syncAcrossDevices,
-                                          textKey: effortlessPasskeysPageKeys
-                                              ?.syncAcrossDevicesRowKey,
-                                        ),
-                                        Divider(
-                                          color: context.theme.colors.hover,
-                                        ),
-                                        IconTextRowWidget(
-                                          assetName: Assets.lockIcon,
-                                          text: context
-                                              .derivPasskeysLocalizations
-                                              .useYourBiometrics,
-                                          textKey: effortlessPasskeysPageKeys
-                                              ?.useBiometricsRowKey,
-                                        ),
-                                        Divider(
-                                          color: context.theme.colors.hover,
-                                        ),
-                                        SizedBox(
-                                          width: double.infinity,
-                                          child: RichText(
-                                            text: TextSpan(
-                                              children: <InlineSpan>[
-                                                TextSpan(
-                                                    text:
-                                                        '${context.derivPasskeysLocalizations.learnMoreAboutPasskeys} ',
-                                                    style: TextStyle(
-                                                      color: context
-                                                          .theme.colors.general,
-                                                    )),
-                                                WidgetSpan(
-                                                  alignment:
-                                                      PlaceholderAlignment
-                                                          .middle,
-                                                  child: InkWell(
-                                                    key: effortlessPasskeysPageKeys
-                                                        ?.hyperlinkInkWellKey,
-                                                    onTap: () {
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute<
-                                                            Widget>(
-                                                          builder: (_) => LearnMorePasskeysPage(
-                                                              onPageClosed:
-                                                                  (BuildContext
-                                                                      context) {
-                                                            Navigator.pop(
-                                                                context);
-                                                          }, addMorePasskeysNavigationCallback:
-                                                                  (BuildContext
-                                                                      context) {
-                                                            trackAddMorePasskeys();
-                                                            addMorePasskeysNavigationCallback(
-                                                                context);
-                                                          }, continueTradingNavigationCallback:
-                                                                  (BuildContext
-                                                                      context) {
-                                                            trackContinueTrading();
-                                                            continueTradingNavigationCallback(
-                                                                context);
-                                                          }),
-                                                        ),
-                                                      );
-                                                    },
-                                                    child: Text(
-                                                      '${context.derivPasskeysLocalizations.here}.',
-                                                      style: TextStyle(
-                                                          color: context.theme
-                                                              .colors.coral),
-                                                      key:
-                                                          effortlessPasskeysPageKeys
-                                                              ?.hereRichTextKey,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(16),
-                                    child: PrimaryButton(
-                                      onPressed: () {
-                                        trackCreatePasskey();
-                                        context.read<DerivPasskeysBloc>().add(
-                                            DerivPasskeysCreateCredentialEvent());
-                                      },
-                                      child: Text(
-                                        context.derivPasskeysLocalizations
-                                            .createPasskey,
-                                        key: effortlessPasskeysPageKeys
-                                            ?.createPasskeyButtonKey,
-                                        style: TextStyle(
-                                          color: context.theme.colors.prominent,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      )),
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 96,
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    Assets.effortlessPasskeysIcon,
+                                    package: 'deriv_passkeys',
+                                  ),
+                                  Text(
+                                    context.derivPasskeysLocalizations
+                                        .effortlessLoginWithPasskeys,
+                                    key: effortlessPasskeysPageKeys
+                                        ?.loginWithPasskeyTextKey,
+                                    style: const TextStyle(fontSize: 20),
+                                  ),
+                                  const SizedBox(
+                                    height: 24,
+                                  ),
+                                  IconTextRowWidget(
+                                    assetName: Assets.fingerPrintIcon,
+                                    text: context.derivPasskeysLocalizations
+                                        .noNeedToRememberPassword,
+                                    textKey: effortlessPasskeysPageKeys
+                                        ?.noNeedToRememberPasswordRowKey,
+                                  ),
+                                  Divider(
+                                    color: context.theme.colors.hover,
+                                  ),
+                                  IconTextRowWidget(
+                                    assetName: Assets.syncIcon,
+                                    text: context.derivPasskeysLocalizations
+                                        .syncAcrossDevices,
+                                    textKey: effortlessPasskeysPageKeys
+                                        ?.syncAcrossDevicesRowKey,
+                                  ),
+                                  Divider(
+                                    color: context.theme.colors.hover,
+                                  ),
+                                  IconTextRowWidget(
+                                    assetName: Assets.lockIcon,
+                                    text: context.derivPasskeysLocalizations
+                                        .useYourBiometrics,
+                                    textKey: effortlessPasskeysPageKeys
+                                        ?.useBiometricsRowKey,
+                                  ),
+                                  Divider(
+                                    color: context.theme.colors.hover,
+                                  ),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: <InlineSpan>[
+                                          TextSpan(
+                                              text:
+                                                  '${context.derivPasskeysLocalizations.learnMoreAboutPasskeys} ',
+                                              style: TextStyle(
+                                                color: context
+                                                    .theme.colors.general,
+                                              )),
+                                          WidgetSpan(
+                                            alignment:
+                                                PlaceholderAlignment.middle,
+                                            child: InkWell(
+                                              key: effortlessPasskeysPageKeys
+                                                  ?.hyperlinkInkWellKey,
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute<Widget>(
+                                                    builder: (_) =>
+                                                        LearnMorePasskeysPage(
+                                                            onPageClosed:
+                                                                (BuildContext
+                                                                    context) {
+                                                      Navigator.pop(context);
+                                                    }, addMorePasskeysNavigationCallback:
+                                                                (BuildContext
+                                                                    context) {
+                                                      trackAddMorePasskeys();
+                                                      addMorePasskeysNavigationCallback(
+                                                          context);
+                                                    }, continueTradingNavigationCallback:
+                                                                (BuildContext
+                                                                    context) {
+                                                      trackContinueTrading();
+                                                      continueTradingNavigationCallback(
+                                                          context);
+                                                    }),
+                                                  ),
+                                                );
+                                              },
+                                              child: Text(
+                                                '${context.derivPasskeysLocalizations.here}.',
+                                                style: TextStyle(
+                                                    color: context
+                                                        .theme.colors.coral),
+                                                key: effortlessPasskeysPageKeys
+                                                    ?.hereRichTextKey,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: PrimaryButton(
+                                onPressed: () {
+                                  trackCreatePasskey();
+                                  context.read<DerivPasskeysBloc>().add(
+                                      DerivPasskeysCreateCredentialEvent());
+                                },
+                                child: Text(
+                                  context
+                                      .derivPasskeysLocalizations.createPasskey,
+                                  key: effortlessPasskeysPageKeys
+                                      ?.createPasskeyButtonKey,
+                                  style: TextStyle(
+                                    color: context.theme.colors.prominent,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

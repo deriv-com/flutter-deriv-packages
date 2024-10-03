@@ -33,7 +33,7 @@ class DerivSocialAuthPanel extends StatefulWidget {
   final bool isVisible;
 
   /// Social auth state handler.
-  final Function(SocialAuthState) socialAuthStateHandler;
+  final Function(BuildContext, SocialAuthState) socialAuthStateHandler;
 
   /// onPressed callback for social auth buttons.
   /// Gives access to the social auth token and dto.
@@ -64,7 +64,7 @@ class _DerivSocialAuthPanelState extends State<DerivSocialAuthPanel>
         visible: widget.isVisible,
         child: BlocListener<SocialAuthCubit, SocialAuthState>(
           listener: (BuildContext context, SocialAuthState state) {
-            widget.socialAuthStateHandler(state);
+            widget.socialAuthStateHandler(context, state);
           },
           child: SizedBox(
             width: double.infinity,

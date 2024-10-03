@@ -1,4 +1,5 @@
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
+import 'package:analytics/sdk/rudderstack/models/user_info.dart';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 
 /// Class which hold events which should be monitored.
@@ -34,8 +35,8 @@ class DerivRudderstackEvents {
   }
 
   /// Tracks userId.
-  void logIdentifyUser(String userId) {
-    DerivRudderstack().identify(userId: userId);
+  void logIdentifyUser({required UserInfo userInfo}) {
+    DerivRudderstack().identify(userInfo: userInfo);
   }
 
   /// Tracks system error has happened,
@@ -187,7 +188,8 @@ class DerivRudderstackEvents {
   }
 
   /// Tracks when user's sign up is finished.
-  void logSignUpDone(String signupProvider) {
+  void logSignUpDone(String signupProvider, [int? userId]) {
+    DerivRudderstack().identify(userInfo: UserInfo(userId: userId ?? 0));
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
       properties: <String, dynamic>{
@@ -200,8 +202,11 @@ class DerivRudderstackEvents {
   }
 
   /// Tracks when user taps 'Create free demo account' or social log in button.
-  void logSignUpPageAction(String signupProvider,
-      [bool? isToggleOn, String? referralCode]) {
+  void logSignUpPageAction(
+    String signupProvider, [
+    bool? isToggleOn,
+    String? referralCode,
+  ]) {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
       properties: <String, dynamic>{
@@ -235,9 +240,9 @@ class DerivRudderstackEvents {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
       properties: <String, dynamic>{
-        'action': 'open_real_sign_up',
+        'action': 'open',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -256,7 +261,7 @@ class DerivRudderstackEvents {
         'step_num': stepNum,
         'user_choice': userChoice,
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -268,7 +273,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'step_back',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -280,7 +285,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'close',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -293,7 +298,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'real_signup_error',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -305,7 +310,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'real_signup_finished',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }

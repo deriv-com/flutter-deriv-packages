@@ -1,14 +1,19 @@
+import 'package:analytics/core/logger.dart';
 import 'package:deriv_auth/core/extensions/context_extension.dart';
 import 'package:deriv_auth/core/helpers/assets.dart';
 import 'package:deriv_auth/core/helpers/country_selection_helper.dart';
 import 'package:deriv_auth/features/signup/cubit/deriv_country_selection_cubit.dart';
+import 'package:deriv_auth/features/signup/cubit/signup_cubit.dart';
 import 'package:deriv_auth/features/signup/models/deriv_residence_model.dart';
+import 'package:deriv_auth/features/signup/presentation/layouts/deriv_set_password_layout.dart';
 import 'package:deriv_auth/features/signup/presentation/widgets/country_selection_list_widget.dart';
+import 'package:deriv_auth/features/single_entry/core/auth_data.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'dart:developer';
 
 /// Allows user to select a country from list
 class DerivCountrySelectionLayout extends StatefulWidget {
@@ -49,16 +54,29 @@ class _DerivCountrySelectionLayoutState
 
   late TextEditingController _textController;
 
-  late final DerivCountrySelectionCubit _countrySelectionCubit;
-
+  late DerivCountrySelectionCubit _countrySelectionCubit;
   @override
   void initState() {
     super.initState();
 
-    _countrySelectionCubit = DerivCountrySelectionCubit(widget.residences)
-      ..fetchResidenceCountries();
-
     _textController = TextEditingController();
+
+    _countrySelectionCubit = DerivCountrySelectionCubit(widget.residences);
+    _initializeResidences();
+  }
+
+  Future<void> _initializeResidences() async {
+    try {
+      final List<DerivResidenceModel> residencesList = await widget.residences;
+
+      setState(
+        () => _countrySelectionCubit = DerivCountrySelectionCubit(
+          Future<List<DerivResidenceModel>>.value(residencesList),
+        )..fetchResidenceCountries(),
+      );
+    } on Exception catch (error) {
+      log('Error fetching residences: $error');
+    }
   }
 
   @override
@@ -154,7 +172,24 @@ class _DerivCountrySelectionLayoutState
             isConsentRequired: state.selectedCountryRequiresConsent,
             agreedToTerms: state.agreedToTerms,
           ),
-          onPressed: widget.onNextPressed,
+          onPressed: AuthData().data.signupPageModel.handleFlowFromPackage
+              ? () {
+                  Navigator.pushReplacement<BuildContext,
+                      Route<DerivSetPasswordLayout>>(
+                    context,
+                    MaterialPageRoute<BuildContext>(
+                      builder: (BuildContext context) => DerivSetPasswordLayout(
+                        onDerivSignupState: (BuildContext BuildContext,
+                            DerivSignupState DerivSignupState) {},
+                        onPreviousPressed: () {},
+                        residence: state.selectedCountry?.code,
+                        verificationCode: widget.verificationCode,
+                        affiliateToken: widget.affiliateToken,
+                      ),
+                    ),
+                  );
+                }
+              : widget.onNextPressed,
           child: Center(
             child: Text(
               context.derivAuthLocalization.actionNext,

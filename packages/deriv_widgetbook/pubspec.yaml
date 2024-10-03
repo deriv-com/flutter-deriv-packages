@@ -1,7 +1,7 @@
 name: deriv_widgetbook
 description: Storybook for Deriv UI widgets and components.
 publish_to: "none"
-version: 0.0.2+19
+version: 0.0.2+31
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -16,12 +16,12 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.0.13+2
+      ref: deriv_ui-v0.1.0+4
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v2.5.0
+      ref: deriv_theme-v2.7.1
   intl: ^0.18.0
   shared_preferences: ^2.2.2
 

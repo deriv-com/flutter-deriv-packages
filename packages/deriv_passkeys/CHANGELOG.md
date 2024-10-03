@@ -1,3 +1,79 @@
+## 0.0.5+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.5+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.5+1
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+## 0.0.5
+
+ - **FEAT**(deriv_auth): [DERG-1396] akhil/1396/multi_user_level_authentication_poc_master ([#574](https://github.com/regentmarkets/flutter-deriv-packages/issues/574)). ([97ac8004](https://github.com/regentmarkets/flutter-deriv-packages/commit/97ac8004370762ed38ed0608e64699a020406b8e))
+
+## 0.0.4+6
+
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+
+## 0.0.4+5
+
+ - Update a dependency to the latest release.
+
+## 0.0.4+4
+
+ - Update a dependency to the latest release.
+
+## 0.0.4+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.4+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.4+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.4
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
+## 0.0.3+28
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+27
+
+ - **REFACTOR**(deriv_passkeys): replace token with account entity ([#785](https://github.com/regentmarkets/flutter-deriv-packages/issues/785)). ([600d7e44](https://github.com/regentmarkets/flutter-deriv-packages/commit/600d7e44c4318501d180640e5a9c21f5357f6022))
+
+## 0.0.3+26
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+25
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+24
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+23
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+22
+
+ - Update a dependency to the latest release.
+
+## 0.0.3+21
+
+ - Update a dependency to the latest release.
+
 ## 0.0.3+20
 
  - Update a dependency to the latest release.

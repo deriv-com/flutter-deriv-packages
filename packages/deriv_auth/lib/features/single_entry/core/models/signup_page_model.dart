@@ -1,5 +1,6 @@
 import 'package:deriv_auth/deriv_auth.dart';
 import 'package:flutter/foundation.dart' show VoidCallback;
+import 'package:flutter/material.dart';
 
 /// Sign-up page model
 class SignupPageModel {
@@ -13,6 +14,8 @@ class SignupPageModel {
     required this.socialAuthStateHandler,
     required this.redirectURL,
     required this.onWebViewError,
+    required this.handleFlowFromPackage,
+    required this.residences,
     this.onSignupPressed,
     this.onSocialAuthButtonPressed,
     this.affiliateToken,
@@ -40,7 +43,7 @@ class SignupPageModel {
   final bool isSocialAuthEnabled;
 
   /// Social auth state handler.
-  final Function(SocialAuthState) socialAuthStateHandler;
+  final Function(BuildContext, SocialAuthState) socialAuthStateHandler;
 
   /// Redirect URL for social auth.
   final String redirectURL;
@@ -51,4 +54,10 @@ class SignupPageModel {
   /// Callback to be called when social auth button is tapped.
   /// Give access to [SocialAuthDto] for 2FA.
   final SocialAuthCallback? onSocialAuthButtonPressed;
+
+  /// Handle flow from package.
+  final bool handleFlowFromPackage;
+
+  /// List of residences to be shown.
+  final Future<List<DerivResidenceModel>> residences;
 }
