@@ -19,17 +19,9 @@ class DerivFeatureFlag {
   }
 
   Map<String, dynamic> features() {
-    Map<String, dynamic> features = {};
-    final List<String> keys =
-        FeatureFlagRepository.getInstance().features.keys.toList();
-
-    final List<GBFeature> values =
-        FeatureFlagRepository.getInstance().features.values.toList();
-
-    for (int i = 0; i < keys.length; i++) {
-      features[keys[i]] = values[i].defaultValue;
-    }
-    return features;
+    return FeatureFlagRepository.getInstance().features.map((key, value) {
+      return MapEntry(key, value.defaultValue);
+    });
   }
 
   /// Only for testing purposes.
