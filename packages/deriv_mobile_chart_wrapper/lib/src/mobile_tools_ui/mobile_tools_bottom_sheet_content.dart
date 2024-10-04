@@ -298,7 +298,13 @@ class _MobileToolsBottomSheetContentState
                                 return IndicatorSettingsDescriptionBottomSheet(
                                   indicator: indicatorModel,
                                 );
-                              });
+                              }).then(
+                            (value) => widget.indicatorEventService
+                                ?.logCloseIndicatorInfo(
+                              indicatorModel.title,
+                              indicatorModel.category.name,
+                            ),
+                          );
                         },
                       ),
                       showDragHandle: false,
@@ -529,12 +535,12 @@ class _MobileToolsBottomSheetContentState
               context.mobileChartWrapperLocalizations.labelCancel,
           showLoadingIndicator: false,
           onPositiveActionPressed: () {
-            indicatorsRepo.removeAt(index);
-            Navigator.pop(context, true);
             widget.indicatorEventService?.logDeleteActiveIndicator(
               config.title,
               getIndicatorCategoryTitle(config.title),
             );
+            indicatorsRepo.removeAt(index);
+            Navigator.pop(context, true);
           },
           onNegativeActionPressed: () {
             Navigator.pop(context, false);

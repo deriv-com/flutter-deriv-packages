@@ -60,7 +60,8 @@ class _BollingerBandsSettingsPageState
                 _indicatorConfig = const BollingerBandsIndicatorConfig();
               });
               widget.onConfigUpdated(_indicatorConfig);
-            }).then((_) => widget.onReset?.call);
+              widget.onReset?.call();
+            });
           },
         ),
       ],

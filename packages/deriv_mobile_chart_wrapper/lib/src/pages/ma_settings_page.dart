@@ -51,7 +51,8 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 _indicatorConfig = const MAIndicatorConfig();
               });
               widget.onConfigUpdated(_indicatorConfig);
-            }).then((_) => widget.onReset?.call);
+              widget.onReset?.call();
+            });
           },
         ),
       ],
