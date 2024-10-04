@@ -540,10 +540,10 @@ class _MobileToolsBottomSheetContentState
               getIndicatorCategoryTitle(config.title),
             );
             indicatorsRepo.removeAt(index);
-            Navigator.pop(context, true);
+            Navigator.pop(context);
           },
           onNegativeActionPressed: () {
-            Navigator.pop(context, false);
+            Navigator.pop(context);
           });
 
   void _showDeleteAllIndicatorsDialog() {
