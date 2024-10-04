@@ -275,6 +275,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
               selectedTab: indicatorsRepo.items.isEmpty
                   ? IndicatorTabLabel.all
                   : IndicatorTabLabel.active,
+              indicatorEventService: widget.indicatorEventService,
             ),
           ),
         ),
