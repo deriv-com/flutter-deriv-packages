@@ -287,6 +287,12 @@ class _MobileToolsBottomSheetContentState
                                   element.config.runtimeType ==
                                   indicatorConfig.runtimeType);
 
+                          widget.indicatorEventService
+                              ?.logOpenIndicatorInfoFromIndicatorSettings(
+                            indicatorModel.title,
+                            indicatorModel.category.name,
+                          );
+
                           showModalBottomSheet(
                               context: context,
                               builder: (context) {
