@@ -199,7 +199,9 @@ class _MobileToolsBottomSheetContentState
             iconAssetPath: indicator.icon,
             title: indicator.title,
             count: _getIndicatorCount(indicator),
-            onInfoIconTapped: () => _showIndicatorInfoBottomSheet(indicator),
+            onInfoIconTapped: () {
+              _showIndicatorInfoBottomSheet(indicator);
+            },
             onTap: () {
               indicatorsRepo.add(
                 indicator.config.copyWith(
@@ -255,6 +257,12 @@ class _MobileToolsBottomSheetContentState
                       indicatorConfig, context),
                   subtitle: '(${indicatorConfig.configSummary})',
                   onTapSetting: () {
+                    widget.indicatorEventService?.logEditIndicatorSettings(
+                      indicatorsRepo.items[index].title,
+                      getIndicatorCategoryTitle(
+                        indicatorsRepo.items[index].title,
+                      ),
+                    );
                     _updatedConfig = indicatorConfig;
                     showDerivModalBottomSheet(
                       context,
@@ -268,17 +276,8 @@ class _MobileToolsBottomSheetContentState
                           await _showDeleteIndicatorDialog(
                             indicatorConfig,
                             index,
-                          ).then((isIndicatorRemoved) {
-                            if (isIndicatorRemoved) {
-                              widget.indicatorEventService
-                                  ?.logDeleteActiveIndicatorFromSettings(
-                                indicatorConfig.title,
-                                getIndicatorCategoryTitle(
-                                  indicatorConfig.title,
-                                ),
-                              );
-                            }
-                          });
+                          );
+
                           if (context.mounted) Navigator.pop(context);
                         },
                         onTapInfo: () {
@@ -306,15 +305,7 @@ class _MobileToolsBottomSheetContentState
                     );
                   },
                   onTapDelete: () =>
-                      _showDeleteIndicatorDialog(indicatorConfig, index)
-                          .then((isIndicatorRemoved) {
-                    if (isIndicatorRemoved) {
-                      widget.indicatorEventService?.logDeleteActiveIndicator(
-                        indicatorConfig.title,
-                        getIndicatorCategoryTitle(indicatorConfig.title),
-                      );
-                    }
-                  }),
+                      _showDeleteIndicatorDialog(indicatorConfig, index),
                 );
               },
             ),
@@ -331,10 +322,6 @@ class _MobileToolsBottomSheetContentState
   void _onApply(int index, IndicatorConfig config) {
     indicatorsRepo.updateAt(index, config);
     Navigator.pop(context);
-    widget.indicatorEventService?.logEditIndicatorSettings(
-      config.title,
-      getIndicatorCategoryTitle(config.title),
-    );
   }
 
   Widget _getConfigSettingPage(int index, IndicatorConfig initialConfig) {
@@ -343,24 +330,48 @@ class _MobileToolsBottomSheetContentState
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
+        onReset: () => widget.indicatorEventService?.logResetIndicatorSettings(
+          initialConfig.title,
+          getIndicatorCategoryTitle(
+            initialConfig.title,
+          ),
+        ),
       );
     } else if (initialConfig is BollingerBandsIndicatorConfig) {
       return BollingerBandsSettingsPage(
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
+        onReset: () => widget.indicatorEventService?.logResetIndicatorSettings(
+          initialConfig.title,
+          getIndicatorCategoryTitle(
+            initialConfig.title,
+          ),
+        ),
       );
     } else if (initialConfig is MACDIndicatorConfig) {
       return MACDSettingsPage(
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
+        onReset: () => widget.indicatorEventService?.logResetIndicatorSettings(
+          initialConfig.title,
+          getIndicatorCategoryTitle(
+            initialConfig.title,
+          ),
+        ),
       );
     } else if (initialConfig is MAIndicatorConfig) {
       return MASettingsPage(
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
+        onReset: () => widget.indicatorEventService?.logResetIndicatorSettings(
+          initialConfig.title,
+          getIndicatorCategoryTitle(
+            initialConfig.title,
+          ),
+        ),
       );
     }
     return const SizedBox.shrink();
@@ -488,41 +499,46 @@ class _MobileToolsBottomSheetContentState
           );
         },
       ),
+    ).then(
+      (_) => widget.indicatorEventService?.logCloseIndicatorInfo(
+        indicator.title,
+        indicator.category.name,
+      ),
     );
   }
 
   void _onChipTapped(IndicatorTabLabel? value, String? title) =>
       setState(() => _selectedChip = value ?? IndicatorTabLabel.all);
 
-  Future<bool> _showDeleteIndicatorDialog(
+  Future<void> _showDeleteIndicatorDialog(
     IndicatorConfig config,
     int index,
-  ) async {
-    bool isIndicatorRemoved = false;
-    await showAlertDialog(
-        context: context,
-        title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
-          getIndicatorAbbreviationWithCount(config, context),
-        ),
-        content: Text(
-          context.mobileChartWrapperLocalizations.infoDeleteIndicator,
-          style: TextStyles.subheading,
-        ),
-        positiveActionLabel:
-            context.mobileChartWrapperLocalizations.labelDelete,
-        negativeButtonLabel:
-            context.mobileChartWrapperLocalizations.labelCancel,
-        showLoadingIndicator: false,
-        onPositiveActionPressed: () {
-          indicatorsRepo.removeAt(index);
-          Navigator.pop(context, true);
-          isIndicatorRemoved = true;
-        },
-        onNegativeActionPressed: () {
-          Navigator.pop(context, false);
-        });
-    return isIndicatorRemoved;
-  }
+  ) =>
+      showAlertDialog(
+          context: context,
+          title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
+            getIndicatorAbbreviationWithCount(config, context),
+          ),
+          content: Text(
+            context.mobileChartWrapperLocalizations.infoDeleteIndicator,
+            style: TextStyles.subheading,
+          ),
+          positiveActionLabel:
+              context.mobileChartWrapperLocalizations.labelDelete,
+          negativeButtonLabel:
+              context.mobileChartWrapperLocalizations.labelCancel,
+          showLoadingIndicator: false,
+          onPositiveActionPressed: () {
+            indicatorsRepo.removeAt(index);
+            Navigator.pop(context, true);
+            widget.indicatorEventService?.logDeleteActiveIndicator(
+              config.title,
+              getIndicatorCategoryTitle(config.title),
+            );
+          },
+          onNegativeActionPressed: () {
+            Navigator.pop(context, false);
+          });
 
   void _showDeleteAllIndicatorsDialog() {
     showAlertDialog(

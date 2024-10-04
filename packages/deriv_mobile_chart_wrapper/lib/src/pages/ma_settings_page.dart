@@ -14,7 +14,6 @@ class MASettingsPage extends BaseIndicatorSettingPage<MAIndicatorConfig> {
     required super.onConfigUpdated,
     required super.onApply,
     super.onReset,
-
     super.key,
   });
 
@@ -52,9 +51,7 @@ class _MASettingsPageState extends State<MASettingsPage> {
                 _indicatorConfig = const MAIndicatorConfig();
               });
               widget.onConfigUpdated(_indicatorConfig);
-            });
-
-
+            }).then((_) => widget.onReset?.call);
           },
         ),
       ],

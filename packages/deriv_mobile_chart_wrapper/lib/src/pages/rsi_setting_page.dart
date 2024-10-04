@@ -50,7 +50,7 @@ class _RSISettingPageState extends State<RSISettingPage> {
                 _indicatorConfig = const RSIIndicatorConfig();
               });
               widget.onConfigUpdated(_indicatorConfig);
-            });
+            }).then((_) => widget.onReset?.call);
           },
         ),
       ],

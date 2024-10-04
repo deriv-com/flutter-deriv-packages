@@ -47,7 +47,7 @@ class _MACDSettingsPageState extends State<MACDSettingsPage> {
                 _indicatorConfig = const MACDIndicatorConfig();
               });
               widget.onConfigUpdated(_indicatorConfig);
-            });
+            }).then((_) => widget.onReset?.call);
           },
         ),
       ],
