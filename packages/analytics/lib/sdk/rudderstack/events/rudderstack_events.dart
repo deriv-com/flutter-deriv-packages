@@ -432,6 +432,7 @@ class DerivRudderstackEvents {
       },
     );
   }
+
   /// Track when user clicks on indicator info `Add` button to add the indicator.
   ///
   ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
@@ -464,7 +465,7 @@ class DerivRudderstackEvents {
     DerivRudderstack().track(
       eventName: 'ce_indicators_types_form',
       properties: <String, dynamic>{
-        'action': 'add_active',
+        'action': 'info_open',
         'indicator_type_name': indicatorTypeName,
         'indicators_category_name': categoryName,
         'subform_name': 'indicators_info',
