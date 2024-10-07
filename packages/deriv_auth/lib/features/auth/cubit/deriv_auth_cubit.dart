@@ -2,7 +2,6 @@ import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
 import 'package:deriv_auth/core/analytics/service/auth_tracking_mixin.dart';
-
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
@@ -293,5 +292,10 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     }
 
     super.onChange(change);
+  }
+
+  /// This function clears the JWT token when needed.
+  void clearJwtToken() {
+    authService.jwtService.clearJwtToken();
   }
 }
