@@ -313,9 +313,7 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
         showLoadingIndicator: false,
         onPositiveActionPressed: () {
           drawingToolsRepo.clear();
-          Navigator.of(context)
-            ..pop()
-            ..pop();
+          Navigator.pop(context);
         },
         onNegativeActionPressed: () => Navigator.pop(context),
       );

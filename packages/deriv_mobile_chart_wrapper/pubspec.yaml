@@ -13,8 +13,8 @@ dependencies:
 
   deriv_chart:
     git:
-      url: git@github.com:ilya-deriv/flutter-chart.git
-      ref: Add_numbering_logic_to_bottom_sheet
+      url: git@github.com:regentmarkets/flutter-chart.git
+      ref: dev
 
   deriv_theme:
     git:
