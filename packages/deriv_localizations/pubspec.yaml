@@ -3,7 +3,7 @@ description: This packages contains all localizations for the deriv packages
 
 publish_to: 'none'
 
-version: 1.6.0
+version: 1.6.1
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
@@ -14,7 +14,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
-  intl: ^0.18.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:

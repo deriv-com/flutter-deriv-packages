@@ -1,3 +1,11 @@
+## 6.8.3
+
+ - Update a dependency to the latest release.
+
+## 6.8.2
+
+ - Update a dependency to the latest release.
+
 ## 6.8.1
 
  - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
