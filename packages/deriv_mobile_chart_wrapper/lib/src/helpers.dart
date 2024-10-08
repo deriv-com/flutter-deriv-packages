@@ -142,7 +142,7 @@ Future<void> showResetIndicatorDialog(
   BuildContext context, {
   required IndicatorConfig config,
   required Function() onResetPressed,
-  IndicatorEventService? indicatorEventService,
+  TrackingEventService? indicatorEventService,
 }) {
   return showAlertDialog(
       context: context,

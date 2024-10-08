@@ -49,7 +49,7 @@ class MobileChartWrapper extends StatefulWidget {
     this.showDataFitButton,
     this.showScrollToLastTickButton,
     this.loadingAnimationColor,
-    this.indicatorEventService,
+    this.trackingEventService,
     Key? key,
   }) : super(key: key);
 
@@ -159,7 +159,7 @@ class MobileChartWrapper extends StatefulWidget {
   final Color? loadingAnimationColor;
 
   /// Indicator event service.
-  final IndicatorEventService? indicatorEventService;
+  final TrackingEventService? trackingEventService;
 
   @override
   MobileChartWrapperState createState() => MobileChartWrapperState();
@@ -262,7 +262,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
   void _showIndicatorsSheet(AddOnsRepository<IndicatorConfig> indicatorsRepo) {
     // Show indicators menu as modal bottom sheet so it's dismissible by tapping
     // outside.
-    widget.indicatorEventService?.logOpenIndicatorTypesBottomSheet();
+    widget.trackingEventService?.logOpenIndicatorTypesBottomSheet();
     showModalBottomSheet(
       context: context,
       builder: (_) =>
@@ -275,7 +275,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
               selectedTab: indicatorsRepo.items.isEmpty
                   ? IndicatorTabLabel.all
                   : IndicatorTabLabel.active,
-              indicatorEventService: widget.indicatorEventService,
+              trackingEventService: widget.trackingEventService,
             ),
           ),
         ),
