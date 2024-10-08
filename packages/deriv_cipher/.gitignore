@@ -29,4 +29,4 @@
 build/
 
 
-lib/string_to_int_array.dart
+**/chipher_helper.*
