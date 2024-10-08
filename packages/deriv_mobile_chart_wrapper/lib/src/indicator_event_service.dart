@@ -1,5 +1,5 @@
 /// Service for logging indicator events.
-abstract class TrackingEventService {
+abstract class ChartEventTracker {
   /// Log when user opens indicator types bottom sheet.
   void logOpenIndicatorTypesBottomSheet();
 

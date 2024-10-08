@@ -27,13 +27,13 @@ class MobileToolsBottomSheetContent extends StatefulWidget {
   /// Initializes the bottom sheet content.
   const MobileToolsBottomSheetContent({
     this.selectedTab = IndicatorTabLabel.all,
-    this.trackingEventService,
+    this.eventTracker,
     super.key,
   });
 
   final IndicatorTabLabel selectedTab;
 
-  final TrackingEventService? trackingEventService;
+  final ChartEventTracker? eventTracker;
 
   @override
   State<MobileToolsBottomSheetContent> createState() =>
@@ -208,7 +208,7 @@ class _MobileToolsBottomSheetContentState
                   number: indicatorsRepo.getNumberForNewAddOn(indicator.config),
                 ),
               );
-              widget.trackingEventService?.logAddIndicatorByClickIndicatorType(
+              widget.eventTracker?.logAddIndicatorByClickIndicatorType(
                 indicator.title,
                 indicator.category.name,
               );
@@ -257,7 +257,7 @@ class _MobileToolsBottomSheetContentState
                       indicatorConfig, context),
                   subtitle: '(${indicatorConfig.configSummary})',
                   onTapSetting: () {
-                    widget.trackingEventService?.logEditIndicatorSettings(
+                    widget.eventTracker?.logEditIndicatorSettings(
                       indicatorsRepo.items[index].title,
                       getIndicatorCategoryTitle(
                         indicatorsRepo.items[index].title,
@@ -286,7 +286,7 @@ class _MobileToolsBottomSheetContentState
                                   element.config.runtimeType ==
                                   indicatorConfig.runtimeType);
 
-                          widget.trackingEventService
+                          widget.eventTracker
                               ?.logOpenIndicatorInfoFromIndicatorSettings(
                             indicatorModel.title,
                             indicatorModel.category.name,
@@ -299,8 +299,8 @@ class _MobileToolsBottomSheetContentState
                                   indicator: indicatorModel,
                                 );
                               }).then(
-                            (value) => widget.trackingEventService
-                                ?.logCloseIndicatorInfo(
+                            (value) =>
+                                widget.eventTracker?.logCloseIndicatorInfo(
                               indicatorModel.title,
                               indicatorModel.category.name,
                             ),
@@ -336,7 +336,7 @@ class _MobileToolsBottomSheetContentState
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
-        onReset: () => widget.trackingEventService?.logResetIndicatorSettings(
+        onReset: () => widget.eventTracker?.logResetIndicatorSettings(
           initialConfig.title,
           getIndicatorCategoryTitle(
             initialConfig.title,
@@ -348,7 +348,7 @@ class _MobileToolsBottomSheetContentState
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
-        onReset: () => widget.trackingEventService?.logResetIndicatorSettings(
+        onReset: () => widget.eventTracker?.logResetIndicatorSettings(
           initialConfig.title,
           getIndicatorCategoryTitle(
             initialConfig.title,
@@ -360,7 +360,7 @@ class _MobileToolsBottomSheetContentState
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
-        onReset: () => widget.trackingEventService?.logResetIndicatorSettings(
+        onReset: () => widget.eventTracker?.logResetIndicatorSettings(
           initialConfig.title,
           getIndicatorCategoryTitle(
             initialConfig.title,
@@ -372,7 +372,7 @@ class _MobileToolsBottomSheetContentState
         initialConfig: initialConfig,
         onConfigUpdated: _onConfigUpdated,
         onApply: () => _onApply(index, _updatedConfig),
-        onReset: () => widget.trackingEventService?.logResetIndicatorSettings(
+        onReset: () => widget.eventTracker?.logResetIndicatorSettings(
           initialConfig.title,
           getIndicatorCategoryTitle(
             initialConfig.title,
@@ -487,7 +487,7 @@ class _MobileToolsBottomSheetContentState
   }
 
   void _showIndicatorInfoBottomSheet(IndicatorItemModel indicator) {
-    widget.trackingEventService?.logClickIndicatorInfo(
+    widget.eventTracker?.logClickIndicatorInfo(
       indicator.title,
       indicator.category.name,
     );
@@ -498,14 +498,14 @@ class _MobileToolsBottomSheetContentState
         onAddIndicatorPressed: () {
           indicatorsRepo.add(indicator.config);
           Navigator.of(context).pop();
-          widget.trackingEventService?.logAddIndicatorByClickAddOnIndicatorInfo(
+          widget.eventTracker?.logAddIndicatorByClickAddOnIndicatorInfo(
             indicator.title,
             indicator.category.name,
           );
         },
       ),
     ).then(
-      (_) => widget.trackingEventService?.logCloseIndicatorInfo(
+      (_) => widget.eventTracker?.logCloseIndicatorInfo(
         indicator.title,
         indicator.category.name,
       ),
@@ -534,7 +534,7 @@ class _MobileToolsBottomSheetContentState
               context.mobileChartWrapperLocalizations.labelCancel,
           showLoadingIndicator: false,
           onPositiveActionPressed: () {
-            widget.trackingEventService?.logDeleteActiveIndicator(
+            widget.eventTracker?.logDeleteActiveIndicator(
               config.title,
               getIndicatorCategoryTitle(config.title),
             );
@@ -561,7 +561,7 @@ class _MobileToolsBottomSheetContentState
         onPositiveActionPressed: () {
           indicatorsRepo.clear();
           Navigator.pop(context);
-          widget.trackingEventService?.logCleanAllActiveIndicator();
+          widget.eventTracker?.logCleanAllActiveIndicator();
         },
         onNegativeActionPressed: () {
           Navigator.pop(context);
@@ -570,7 +570,7 @@ class _MobileToolsBottomSheetContentState
 
   @override
   void dispose() {
-    widget.trackingEventService?.logCloseIndicatorTypesBottomSheet();
+    widget.eventTracker?.logCloseIndicatorTypesBottomSheet();
     super.dispose();
   }
 }
