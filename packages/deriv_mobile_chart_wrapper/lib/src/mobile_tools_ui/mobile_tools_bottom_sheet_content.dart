@@ -209,7 +209,7 @@ class _MobileToolsBottomSheetContentState
                 ),
               );
               widget.eventTracker?.logAddIndicatorByClickIndicatorType(
-                indicator.title,
+                indicator.config.title,
                 indicator.category.name,
               );
             },
@@ -301,7 +301,7 @@ class _MobileToolsBottomSheetContentState
                               }).then(
                             (value) =>
                                 widget.eventTracker?.logCloseIndicatorInfo(
-                              indicatorModel.title,
+                              indicatorModel.config.title,
                               indicatorModel.category.name,
                             ),
                           );
@@ -488,7 +488,7 @@ class _MobileToolsBottomSheetContentState
 
   void _showIndicatorInfoBottomSheet(IndicatorItemModel indicator) {
     widget.eventTracker?.logClickIndicatorInfo(
-      indicator.title,
+      indicator.config.title,
       indicator.category.name,
     );
     showModalBottomSheet(
@@ -506,7 +506,7 @@ class _MobileToolsBottomSheetContentState
       ),
     ).then(
       (_) => widget.eventTracker?.logCloseIndicatorInfo(
-        indicator.title,
+        indicator.config.title,
         indicator.category.name,
       ),
     );

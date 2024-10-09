@@ -142,7 +142,7 @@ Future<void> showResetIndicatorDialog(
   BuildContext context, {
   required IndicatorConfig config,
   required Function() onResetPressed,
-  ChartEventTracker? indicatorEventService,
+  ChartEventTracker? eventTracker,
 }) {
   return showAlertDialog(
       context: context,
@@ -161,7 +161,7 @@ Future<void> showResetIndicatorDialog(
       onPositiveActionPressed: () {
         onResetPressed.call();
         Navigator.pop(context);
-        indicatorEventService?.logResetIndicatorSettings(
+        eventTracker?.logResetIndicatorSettings(
           config.title,
           getIndicatorCategoryTitle(config.title),
         );
@@ -176,13 +176,13 @@ String getIndicatorCategoryTitle(String indicatorTitle) {
     case 'MACD':
       return IndicatorCategory.momentum.name;
 
-    case 'RSI':
+    case 'Relative Strength Index (RSI)':
       return IndicatorCategory.momentum.name;
 
-    case 'BB':
+    case 'Bollinger Bands':
       return IndicatorCategory.volatility.name;
 
-    case 'MA':
+    case 'Moving Average':
       return IndicatorCategory.movingAverages.name;
 
     default:
