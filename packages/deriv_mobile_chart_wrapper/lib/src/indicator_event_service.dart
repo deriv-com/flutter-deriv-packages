@@ -21,12 +21,6 @@ abstract class ChartEventTracker {
     String categoryName,
   );
 
-  /// Log when user clicks on indicator info.
-  void logClickIndicatorInfo(
-    String indicatorTypeName,
-    String categoryName,
-  );
-
   /// Log when user deletes active indicator.
   void logDeleteActiveIndicator(
     String indicatorTitle,

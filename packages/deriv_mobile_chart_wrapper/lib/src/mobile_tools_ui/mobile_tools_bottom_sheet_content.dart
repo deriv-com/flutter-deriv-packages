@@ -276,6 +276,11 @@ class _MobileToolsBottomSheetContentState
                           await _showDeleteIndicatorDialog(
                             indicatorConfig,
                             index,
+                            onDelete: () =>
+                                widget.eventTracker?.logDeleteActiveIndicatorFromSettings(
+                              indicatorConfig.title,
+                              getIndicatorCategoryTitle(indicatorConfig.title),
+                            ),
                           );
 
                           if (context.mounted) Navigator.pop(context);
@@ -310,8 +315,17 @@ class _MobileToolsBottomSheetContentState
                       showDragHandle: false,
                     );
                   },
-                  onTapDelete: () =>
-                      _showDeleteIndicatorDialog(indicatorConfig, index),
+                  onTapDelete: () => _showDeleteIndicatorDialog(
+                    indicatorConfig,
+                    index,
+                    onDelete: () =>
+                        widget.eventTracker?.logDeleteActiveIndicator(
+                      indicatorConfig.title,
+                      getIndicatorCategoryTitle(
+                        indicatorConfig.title,
+                      ),
+                    ),
+                  ),
                 );
               },
             ),
@@ -487,7 +501,7 @@ class _MobileToolsBottomSheetContentState
   }
 
   void _showIndicatorInfoBottomSheet(IndicatorItemModel indicator) {
-    widget.eventTracker?.logClickIndicatorInfo(
+    widget.eventTracker?.logOpenIndicatorInfoFromIndicatorsList(
       indicator.config.title,
       indicator.category.name,
     );
@@ -517,8 +531,9 @@ class _MobileToolsBottomSheetContentState
 
   Future<void> _showDeleteIndicatorDialog(
     IndicatorConfig config,
-    int index,
-  ) =>
+    int index, {
+    VoidCallback? onDelete,
+  }) =>
       showAlertDialog(
           context: context,
           title: context.mobileChartWrapperLocalizations.labelDeleteIndicator(
@@ -534,10 +549,7 @@ class _MobileToolsBottomSheetContentState
               context.mobileChartWrapperLocalizations.labelCancel,
           showLoadingIndicator: false,
           onPositiveActionPressed: () {
-            widget.eventTracker?.logDeleteActiveIndicator(
-              config.title,
-              getIndicatorCategoryTitle(config.title),
-            );
+            onDelete?.call();
             indicatorsRepo.removeAt(index);
             Navigator.pop(context);
           },

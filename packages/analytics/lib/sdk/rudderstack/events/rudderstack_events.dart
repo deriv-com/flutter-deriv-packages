@@ -454,27 +454,6 @@ class DerivRudderstackEvents {
     );
   }
 
-  /// Track when user clicks on indicator info.
-  ///
-  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
-  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
-  void logClickIndicatorInfo(
-    String indicatorTypeName,
-    String categoryName,
-  ) {
-    DerivRudderstack().track(
-      eventName: 'ce_indicators_types_form',
-      properties: <String, dynamic>{
-        'action': 'info_open',
-        'indicator_type_name': indicatorTypeName,
-        'indicators_category_name': categoryName,
-        'subform_name': 'indicators_info',
-        'form_name': 'indicators_types_form_derivgo',
-        'form_source': 'mobile_derivgo',
-      },
-    );
-  }
-
   /// Track when user clicks on clean all active indicator.
   void logCleanAllActiveIndicator() {
     DerivRudderstack().track(
