@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
-  package_info_plus: ^4.2.0
+  package_info_plus: ^8.0.2
   firebase_remote_config: ^4.3.6
 
 dev_dependencies:
