@@ -1,7 +1,7 @@
 name: deriv_http_client
 description: A simple HTTP client for Deriv API services.
 
-version: 2.0.0
+version: 2.0.1
 
 environment:
   sdk: ">=3.0.0"
