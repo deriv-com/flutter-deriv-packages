@@ -15,6 +15,42 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_date_range_picker` - `v0.0.1+11`](#deriv_date_range_picker---v00111)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.3+6`](#deriv_mobile_chart_wrapper---v0136)
+ - [`deriv_numpad` - `v1.1.10`](#deriv_numpad---v1110)
+ - [`deriv_widgetbook` - `v0.0.2+34`](#deriv_widgetbook---v00234)
+
+---
+
+#### `deriv_date_range_picker` - `v0.0.1+11`
+
+ - **FIX**(deriv_date_range_picker): iupgrade intl version ([#859](https://github.com/regentmarkets/flutter-deriv-packages/issues/859)). ([c500b57d](https://github.com/regentmarkets/flutter-deriv-packages/commit/c500b57d1558b10d7d60603d8de36af88db3dfb7))
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.3+6`
+
+ - **FIX**(deriv_date_range_picker): iupgrade intl version ([#859](https://github.com/regentmarkets/flutter-deriv-packages/issues/859)). ([c500b57d](https://github.com/regentmarkets/flutter-deriv-packages/commit/c500b57d1558b10d7d60603d8de36af88db3dfb7))
+
+#### `deriv_numpad` - `v1.1.10`
+
+ - **FIX**(deriv_date_range_picker): iupgrade intl version ([#859](https://github.com/regentmarkets/flutter-deriv-packages/issues/859)). ([c500b57d](https://github.com/regentmarkets/flutter-deriv-packages/commit/c500b57d1558b10d7d60603d8de36af88db3dfb7))
+
+#### `deriv_widgetbook` - `v0.0.2+34`
+
+ - **FIX**(deriv_date_range_picker): iupgrade intl version ([#859](https://github.com/regentmarkets/flutter-deriv-packages/issues/859)). ([c500b57d](https://github.com/regentmarkets/flutter-deriv-packages/commit/c500b57d1558b10d7d60603d8de36af88db3dfb7))
+
+
+## 2024-10-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_http_client` - `v2.0.2`](#deriv_http_client---v202)
  - [`deriv_passkeys` - `v0.0.5+5`](#deriv_passkeys---v0055)
  - [`deriv_web_view` - `v0.2.2+5`](#deriv_web_view---v0225)
