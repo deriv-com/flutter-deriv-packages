@@ -34,11 +34,11 @@ dependencies:
   rxdart: ^0.27.7
   deriv_logger:
     path: ../
-  web_socket_channel: 2.4.0
+  web_socket_channel: ^3.0.1
   flutter_deriv_api:
     git:
       url: git@github.com:deriv-com/flutter-deriv-api.git
-      ref: v1.2.0
+      ref: v1.3.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

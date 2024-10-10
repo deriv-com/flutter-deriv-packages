@@ -38,8 +38,8 @@ dependencies:
 
   flutter_deriv_api:
     git:
-      url: git@github.com:ramin-deriv/flutter-deriv-api.git
-      ref: ramin/update_dependencies
+      url: git@github.com:deriv-com/flutter-deriv-api.git
+      ref: v1.3.0
 
   deriv_web_view:
     git:
@@ -69,17 +69,11 @@ dependencies:
   flutter_svg: ^2.0.7
   smooth_page_indicator: ^1.1.0
   equatable: ^2.0.5
-  package_info_plus: ^4.2.0
+  package_info_plus: ^8.0.2
   crypto: ^3.0.2
   http: ^0.13.5
   app_links: ^3.4.5
-
-dependency_overrides:
-  deriv_ui:
-    git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
-      path: packages/deriv_ui
-      ref: deriv_ui-v0.1.0+4
+  
 
 dev_dependencies:
   mocktail: ^1.0.3
