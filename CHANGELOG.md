@@ -15,6 +15,49 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_http_client` - `v2.0.2`](#deriv_http_client---v202)
+ - [`deriv_passkeys` - `v0.0.5+5`](#deriv_passkeys---v0055)
+ - [`deriv_web_view` - `v0.2.2+5`](#deriv_web_view---v0225)
+ - [`deriv_auth` - `v6.8.5`](#deriv_auth---v685)
+ - [`deriv_ui` - `v0.1.0+6`](#deriv_ui---v0106)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.3+5`](#deriv_mobile_chart_wrapper---v0135)
+ - [`deriv_widgetbook` - `v0.0.2+33`](#deriv_widgetbook---v00233)
+ - [`deriv_language_selector` - `v0.0.3+13`](#deriv_language_selector---v00313)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_web_view` - `v0.2.2+5`
+ - `deriv_auth` - `v6.8.5`
+ - `deriv_ui` - `v0.1.0+6`
+ - `deriv_mobile_chart_wrapper` - `v0.1.3+5`
+ - `deriv_widgetbook` - `v0.0.2+33`
+ - `deriv_language_selector` - `v0.0.3+13`
+
+---
+
+#### `deriv_http_client` - `v2.0.2`
+
+ - **REFACTOR**(deriv_http_client): upgrade flutter_system_proxy dep ([#854](https://github.com/regentmarkets/flutter-deriv-packages/issues/854)). ([30f8bc5d](https://github.com/regentmarkets/flutter-deriv-packages/commit/30f8bc5d87a40b17f344608b855bbd6261b94696))
+
+#### `deriv_passkeys` - `v0.0.5+5`
+
+ - **REFACTOR**(deriv_passkeys): update deriv_api dep ([#856](https://github.com/regentmarkets/flutter-deriv-packages/issues/856)). ([ede54c8c](https://github.com/regentmarkets/flutter-deriv-packages/commit/ede54c8ce7f371189b460fae5f0e3e95f4fb7817))
+
+
+## 2024-10-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_http_client` - `v2.0.1`](#deriv_http_client---v201)
  - [`deriv_web_view` - `v0.2.2+4`](#deriv_web_view---v0224)
  - [`deriv_passkeys` - `v0.0.5+4`](#deriv_passkeys---v0054)
