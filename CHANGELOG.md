@@ -11,6 +11,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - [`deriv_auth` - `v7.0.0`](#deriv_auth---v700)
+ - [`update_checker` - `v2.0.0`](#update_checker---v200)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `deriv_auth` - `v7.0.0`
+
+ - **BREAKING** **FIX**(deriv_auth): [DRGO-1247] update some depedencies ([#858](https://github.com/regentmarkets/flutter-deriv-packages/issues/858)). ([6a511b39](https://github.com/regentmarkets/flutter-deriv-packages/commit/6a511b39e91b95747fe594f40d6214b0da39d2e2))
+
+#### `update_checker` - `v2.0.0`
+
+ - **BREAKING** **FIX**(deriv_auth): [DRGO-1247] update some depedencies ([#858](https://github.com/regentmarkets/flutter-deriv-packages/issues/858)). ([6a511b39](https://github.com/regentmarkets/flutter-deriv-packages/commit/6a511b39e91b95747fe594f40d6214b0da39d2e2))
+
+
+## 2024-10-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - There are no breaking changes in this release.
 
 Packages with other changes:
