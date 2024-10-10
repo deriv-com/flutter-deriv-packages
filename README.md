@@ -15,7 +15,7 @@ cp $HOME/Downloads/commit-msg $HOME/.git/hooks/commit-msg \
 
 ## Using the packages
 
-Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v7.0.0)`. To use the package, add the following to your pubspec.yaml file:
+Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v7.0.1)`. To use the package, add the following to your pubspec.yaml file:
 
 ```yaml
 deriv_ui:
@@ -29,8 +29,8 @@ deriv_ui:
 
 | Name                                                                      | Description                                                                                                            | Version                                                           |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase',  'Rudderstack' and 'Datadog'.                                           | [v2.2.2](./packages/analytics/CHANGELOG.md)                       |                                        | [v2.3.0](./packages/analytics/CHANGELOG.md)                       |
-| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v7.0.0 ](./packages/deriv_auth/CHANGELOG.md)                     |
+| [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase',  'Rudderstack' and 'Datadog'.                                           | [v2.2.2](./packages/analytics/CHANGELOG.md)                       |                                        | [v3.0.0](./packages/analytics/CHANGELOG.md)                       |
+| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                              | [v7.0.1 ](./packages/deriv_auth/CHANGELOG.md)                     |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                       | [v0.0.1+1](./packages/deriv_banner/CHANGELOG.md)                  |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)                       | Provides some tools to manage blocs.                                                                                   | [v0.0.1](./packages/deriv_bloc_manager/CHANGELOG.md)              |
 | [deriv_datadog](./packages/deriv_datadog)                                 | A package that helps you monitor the performance and user interactions of your Flutter app by sending data to Datadog. | [v0.0.1](./packages/deriv_datadog/CHANGELOG.md)                   |

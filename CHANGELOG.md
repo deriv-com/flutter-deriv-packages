@@ -11,6 +11,35 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - [`analytics` - `v3.0.0`](#analytics---v300)
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v7.0.1`](#deriv_auth---v701)
+ - [`deriv_passkeys` - `v0.0.5+6`](#deriv_passkeys---v0056)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v7.0.1`
+ - `deriv_passkeys` - `v0.0.5+6`
+
+---
+
+#### `analytics` - `v3.0.0`
+
+ - **BREAKING** **FEAT**(analytics): [DRGO-1247] Ramin/update for flutter 3.24 ([#838](https://github.com/regentmarkets/flutter-deriv-packages/issues/838)). ([cfdf2d81](https://github.com/regentmarkets/flutter-deriv-packages/commit/cfdf2d812b4d4227f72b434f7db9ea182081ae6b))
+
+
+## 2024-10-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - [`deriv_auth` - `v7.0.0`](#deriv_auth---v700)
  - [`update_checker` - `v2.0.0`](#update_checker---v200)
 
