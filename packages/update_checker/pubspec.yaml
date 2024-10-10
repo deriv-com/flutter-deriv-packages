@@ -1,6 +1,6 @@
 name: update_checker
 description: Check and retrieve update information from the server for the given package.
-version: 1.5.2
+version: 2.0.0
 
 homepage: https://deriv.com/
 publish_to: "none"
@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
-  package_info_plus: ^4.2.0
+  package_info_plus: ^8.0.2
   firebase_remote_config: ^4.3.6
 
 dev_dependencies:

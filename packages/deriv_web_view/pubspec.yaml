@@ -1,7 +1,7 @@
 name: deriv_web_view
 description: Deriv Web View package project.
 
-version: 0.2.2+3
+version: 0.2.2+5
 
 homepage: https://deriv.com/
 publish_to: "none"
@@ -24,7 +24,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_http_client
-      ref: deriv_http_client-v2.0.1
+      ref: deriv_http_client-v2.0.2
 
 dev_dependencies:
   flutter_test:
