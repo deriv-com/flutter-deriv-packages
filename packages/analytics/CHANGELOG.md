@@ -1,3 +1,9 @@
+## 3.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**(analytics): [DRGO-1247] Ramin/update for flutter 3.24 ([#838](https://github.com/regentmarkets/flutter-deriv-packages/issues/838)). ([cfdf2d81](https://github.com/regentmarkets/flutter-deriv-packages/commit/cfdf2d812b4d4227f72b434f7db9ea182081ae6b))
+
 ## 2.3.0
 
  - **FEAT**(analytics): Amend tracking events Rudderstack ([#821](https://github.com/regentmarkets/flutter-deriv-packages/issues/821)). ([bd197376](https://github.com/regentmarkets/flutter-deriv-packages/commit/bd197376cf450ec375a9759c9511563a253a0c64))
