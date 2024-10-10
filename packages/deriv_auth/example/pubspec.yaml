@@ -25,11 +25,6 @@ dependency_overrides:
       url: git@github.com:deriv-com/flutter-deriv-api.git
       ref: v1.3.0
 
-  flutter_system_proxy:
-    git:
-      url: https://github.com/BrowserStackCE/flutter_system_proxy.git
-      ref: v0.1.5
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
