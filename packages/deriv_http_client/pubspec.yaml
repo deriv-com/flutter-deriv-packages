@@ -10,8 +10,8 @@ dependencies:
   http: ^0.13.4
   flutter_system_proxy:
     git:
-      url: git@github.com:BrowserStackCE/flutter_system_proxy.git
-      ref: main
+      url: https://github.com/BrowserStackCE/flutter_system_proxy.git
+      ref: v0.1.5
 
 dev_dependencies:
   lints: ^2.0.0
