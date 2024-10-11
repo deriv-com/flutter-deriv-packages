@@ -1,3 +1,11 @@
+## 0.2.2+5
+
+ - Update a dependency to the latest release.
+
+## 0.2.2+4
+
+ - Update a dependency to the latest release.
+
 ## 0.2.2+3
 
  - **FIX**(deriv_web_view): update deriv web view readme file ([#637](https://github.com/regentmarkets/flutter-deriv-packages/issues/637)). ([b0b66dad](https://github.com/regentmarkets/flutter-deriv-packages/commit/b0b66dadb6cb1b30dc3ad759f2eee031673b6bbf))

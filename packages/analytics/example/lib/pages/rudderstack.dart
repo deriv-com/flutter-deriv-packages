@@ -65,7 +65,7 @@ class _RudderStackState extends State<RudderStack> {
             await DerivRudderstack()
                 .setContext(token: 'xxx-xxxx-xxxx-xxxxx-xxxx-test');
             final bool result = await DerivRudderstack()
-                .identify(userInfo: UserInfo(userId: 998));
+                .identify(userInfo: UserInfo(userId: 988));
             _showSnackBar(context, result);
           },
         ),

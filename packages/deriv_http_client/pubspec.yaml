@@ -1,7 +1,7 @@
 name: deriv_http_client
 description: A simple HTTP client for Deriv API services.
 
-version: 2.0.0
+version: 2.0.2
 
 environment:
   sdk: ">=3.0.0"
@@ -10,8 +10,8 @@ dependencies:
   http: ^0.13.4
   flutter_system_proxy:
     git:
-      url: git@github.com:BrowserStackCE/flutter_system_proxy.git
-      ref: main
+      url: https://github.com/BrowserStackCE/flutter_system_proxy.git
+      ref: v0.1.5
 
 dev_dependencies:
   lints: ^2.0.0

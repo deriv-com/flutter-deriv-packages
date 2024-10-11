@@ -74,7 +74,7 @@ void main() {
 
     test('should call logEvent with correct parameters', () async {
       const String name = 'test_name';
-      const Map<String, dynamic> params = <String, dynamic>{};
+      const Map<String, Object> params = <String, Object>{};
 
       when(() => mockFirebaseAnalytics.logEvent(
             name: name,
