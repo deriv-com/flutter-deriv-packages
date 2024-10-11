@@ -374,7 +374,7 @@ class DerivRudderstackEvents {
     required String tradeType,
     required String currentPage,
     required String ctaName,
-    int? numberOfTrades = 1,
+    int numberOfTrades = 1,
   }) {
     DerivRudderstack().track(
         eventName: 'ce_deriv_go_trade_form',
@@ -397,7 +397,7 @@ class DerivRudderstackEvents {
     required String tradeType,
     required String currentPage,
     required String ctaName,
-    int? numberOfTrades = 1,
+    int numberOfTrades = 1,
   }) {
     DerivRudderstack().track(
         eventName: 'ce_deriv_go_trade_form',
