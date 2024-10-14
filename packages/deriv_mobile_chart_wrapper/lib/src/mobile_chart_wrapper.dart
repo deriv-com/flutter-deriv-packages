@@ -48,7 +48,7 @@ class MobileChartWrapper extends StatefulWidget {
     this.showDataFitButton,
     this.showScrollToLastTickButton,
     this.loadingAnimationColor,
-    this.showIndicators = false,
+    this.showIndicators = true,
     Key? key,
   }) : super(key: key);
 
