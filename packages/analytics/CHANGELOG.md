@@ -1,3 +1,9 @@
+## 4.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**(analytics): add auto trade rudderstack events ([#845](https://github.com/regentmarkets/flutter-deriv-packages/issues/845)). ([8c15aafd](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c15aafda41428c9d19272117b0a5a49b16b4154))
+
 ## 3.0.0
 
 > Note: This release has breaking changes.

@@ -25,8 +25,7 @@ void main() {
 
   group('DerivRudderstack', () {
     test('identify calls rudderClient.identify', () async {
-      const String userId = 'test_user_id';
-      UserInfo info = UserInfo(userId: 111);
+      final UserInfo info = UserInfo(userId: 111);
       final bool result = await derivRudderstack.identify(userInfo: info);
 
       expect(result, isTrue);
