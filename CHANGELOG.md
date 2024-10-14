@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.4`](#deriv_mobile_chart_wrapper---v014)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.4`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): DRGO-896 Add_counting_logic_to_bottom_sheet ([#835](https://github.com/regentmarkets/flutter-deriv-packages/issues/835)). ([2195701d](https://github.com/regentmarkets/flutter-deriv-packages/commit/2195701d6f76e356c7e158a240cf1951ea70047c))
+
+
 ## 2024-10-11
 
 ### Changes
