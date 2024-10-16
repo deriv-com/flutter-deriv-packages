@@ -373,6 +373,8 @@ class DerivRudderstackEvents {
     required String chartType,
     required String tradeType,
     required String currentPage,
+    required String ctaName,
+    int numberOfTrades = 1,
   }) {
     DerivRudderstack().track(
         eventName: 'ce_deriv_go_trade_form',
@@ -383,6 +385,31 @@ class DerivRudderstackEvents {
           'chart_type_name': chartType,
           'trade_type_name': tradeType,
           'subform_name': currentPage,
+          'contract_cta_name': ctaName,
+          'number_of_trades ': numberOfTrades,
+        });
+  }
+
+  /// Tracks when user close a contract.
+  void logContractClosed({
+    required String market,
+    required String chartType,
+    required String tradeType,
+    required String currentPage,
+    required String ctaName,
+    int numberOfTrades = 1,
+  }) {
+    DerivRudderstack().track(
+        eventName: 'ce_deriv_go_trade_form',
+        properties: <String, dynamic>{
+          'action': 'close_contract',
+          'form_name': 'ce_deriv_go_trade_form',
+          'market_name': market,
+          'chart_type_name': chartType,
+          'trade_type_name': tradeType,
+          'subform_name': currentPage,
+          'contract_cta_name': ctaName,
+          'number_of_trades ': numberOfTrades,
         });
   }
 
