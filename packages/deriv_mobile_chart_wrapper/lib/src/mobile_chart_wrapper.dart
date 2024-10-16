@@ -50,6 +50,7 @@ class MobileChartWrapper extends StatefulWidget {
     this.showScrollToLastTickButton,
     this.loadingAnimationColor,
     this.eventTracker,
+    this.showIndicators = true,
     Key? key,
   }) : super(key: key);
 
@@ -160,6 +161,9 @@ class MobileChartWrapper extends StatefulWidget {
 
   /// Indicator event service.
   final ChartEventTracker? eventTracker;
+
+  /// Show indicators flag.
+  final bool showIndicators;
 
   @override
   MobileChartWrapperState createState() => MobileChartWrapperState();
@@ -316,12 +320,13 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
   Widget build(BuildContext context) =>
       // TODO(Ramin): Check if we can consider using Chart widget directly.
       DerivChart(
-        indicatorsRepo: _indicatorsRepo ??
-            AddOnsRepository<IndicatorConfig>(
-              createAddOn: (Map<String, dynamic> map) =>
-                  IndicatorConfig.fromJson(map),
-              sharedPrefKey: widget.toolsStoreKey,
-            ),
+        indicatorsRepo: widget.showIndicators && _indicatorsRepo != null
+            ? _indicatorsRepo
+            : AddOnsRepository<IndicatorConfig>(
+                createAddOn: (Map<String, dynamic> map) =>
+                    IndicatorConfig.fromJson(map),
+                sharedPrefKey: widget.toolsStoreKey,
+              ),
         drawingToolsRepo: _drawingToolsRepo ??
             AddOnsRepository<DrawingToolConfig>(
               createAddOn: (Map<String, dynamic> map) =>
