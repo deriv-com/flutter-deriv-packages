@@ -1,3 +1,25 @@
+## 7.0.2
+
+ - Update a dependency to the latest release.
+
+## 7.0.1
+
+ - Update a dependency to the latest release.
+
+## 7.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FIX**(deriv_auth): [DRGO-1247] update some depedencies ([#858](https://github.com/regentmarkets/flutter-deriv-packages/issues/858)). ([6a511b39](https://github.com/regentmarkets/flutter-deriv-packages/commit/6a511b39e91b95747fe594f40d6214b0da39d2e2))
+
+## 6.8.5
+
+ - Update a dependency to the latest release.
+
+## 6.8.4
+
+ - Update a dependency to the latest release.
+
 ## 6.8.3
 
  - Update a dependency to the latest release.
