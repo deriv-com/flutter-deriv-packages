@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.5`](#deriv_mobile_chart_wrapper---v015)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.5`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add the ability to hide indicators. ([#866](https://github.com/regentmarkets/flutter-deriv-packages/issues/866)). ([2cf1b4f6](https://github.com/regentmarkets/flutter-deriv-packages/commit/2cf1b4f6e255b1058996015513ad39aca4b29b71))
+
+
 ## 2024-10-14
 
 ### Changes
