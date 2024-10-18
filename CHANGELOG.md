@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`deriv_cipher` - `v0.0.2`](#deriv_cipher---v002)
+
+---
+
+#### `deriv_cipher` - `v0.0.2`
+
+ - **FEAT**(deriv_cipher): add cipher package ([#836](https://github.com/regentmarkets/flutter-deriv-packages/issues/836)). ([d64a6473](https://github.com/regentmarkets/flutter-deriv-packages/commit/d64a64736ad3dadb3fd4237e370f5a81f0c6f646))
+
+
+## 2024-10-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`deriv_mobile_chart_wrapper` - `v0.1.5`](#deriv_mobile_chart_wrapper---v015)
 
 ---
