@@ -13,15 +13,34 @@ void showExpandableLanguageBottomSheet({
       context: context,
       isScrollControlled: true,
       useRootNavigator: true,
+      backgroundColor: getDerivBottomSheetBackgroundColor(context),
+      shape: derivBottomSheetBorder,
       builder: (BuildContext innerContext) => BlocProvider<LanguageCubit>.value(
         value: BlocProvider.of<LanguageCubit>(context),
-        child: ExpandableBottomSheet(
-          title: bottomsheetTitle,
-          upperContent: LanguageSelector.bottomSheet(
-            usePackageFlags: usePackageFlags,
-          ),
-          // TODO(sahani): Remove labelContractDetails
-          labelContractDetails: '',
-        ),
+        child: DraggableScrollableSheet(
+            initialChildSize: 0.6, // Start at 60% of screen height
+            minChildSize: 0.6, // Allow shrinking upto 40%
+            maxChildSize:
+                0.95, // Full screen when expanded 95% (since the status bar is there)
+            expand: false,
+            builder: (BuildContext context, ScrollController controller) =>
+                Column(
+                  children: <Widget>[
+                    ...buildDerivBottomSheetHandleWithTitle(
+                        context, bottomsheetTitle),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        controller: controller,
+                        child: Column(
+                          children: <Widget>[
+                            LanguageSelector.bottomSheet(
+                              usePackageFlags: usePackageFlags,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
       ),
     );
