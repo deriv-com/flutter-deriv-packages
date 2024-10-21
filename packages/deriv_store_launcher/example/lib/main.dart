@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
                   packageName: 'com.deriv.dp2p',
                   urlScheme: 'deriv://',
                   appStoreId: '1506901451',
-                  openStore: true,
+                  openStore: false,
                 ),
                 child: const Text('Open DP2P'),
               ),
