@@ -1,3 +1,7 @@
+## 7.0.3
+
+ - **FIX**(deriv_auth): Change the token to token getter for more flexibility ([#852](https://github.com/regentmarkets/flutter-deriv-packages/issues/852)). ([09ab8c56](https://github.com/regentmarkets/flutter-deriv-packages/commit/09ab8c56f6e4616ef8c162ea00d6ccb58e5a0f1f))
+
 ## 7.0.2
 
  - Update a dependency to the latest release.

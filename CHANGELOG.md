@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v7.0.3`](#deriv_auth---v703)
+
+---
+
+#### `deriv_auth` - `v7.0.3`
+
+ - **FIX**(deriv_auth): Change the token to token getter for more flexibility ([#852](https://github.com/regentmarkets/flutter-deriv-packages/issues/852)). ([09ab8c56](https://github.com/regentmarkets/flutter-deriv-packages/commit/09ab8c56f6e4616ef8c162ea00d6ccb58e5a0f1f))
+
+
 ## 2024-10-16
 
 ### Changes
