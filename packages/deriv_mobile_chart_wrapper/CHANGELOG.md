@@ -1,3 +1,7 @@
+## 0.1.5
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add the ability to hide indicators. ([#866](https://github.com/regentmarkets/flutter-deriv-packages/issues/866)). ([2cf1b4f6](https://github.com/regentmarkets/flutter-deriv-packages/commit/2cf1b4f6e255b1058996015513ad39aca4b29b71))
+
 ## 0.1.4
 
  - **FEAT**(deriv_mobile_chart_wrapper): DRGO-896 Add_counting_logic_to_bottom_sheet ([#835](https://github.com/regentmarkets/flutter-deriv-packages/issues/835)). ([2195701d](https://github.com/regentmarkets/flutter-deriv-packages/commit/2195701d6f76e356c7e158a240cf1951ea70047c))

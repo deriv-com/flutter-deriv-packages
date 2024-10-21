@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v7.0.3`](#deriv_auth---v703)
+
+---
+
+#### `deriv_auth` - `v7.0.3`
+
+ - **FIX**(deriv_auth): Change the token to token getter for more flexibility ([#852](https://github.com/regentmarkets/flutter-deriv-packages/issues/852)). ([09ab8c56](https://github.com/regentmarkets/flutter-deriv-packages/commit/09ab8c56f6e4616ef8c162ea00d6ccb58e5a0f1f))
+
+
+## 2024-10-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_cipher` - `v0.0.2`](#deriv_cipher---v002)
+
+---
+
+#### `deriv_cipher` - `v0.0.2`
+
+ - **FEAT**(deriv_cipher): add cipher package ([#836](https://github.com/regentmarkets/flutter-deriv-packages/issues/836)). ([d64a6473](https://github.com/regentmarkets/flutter-deriv-packages/commit/d64a64736ad3dadb3fd4237e370f5a81f0c6f646))
+
+
+## 2024-10-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.5`](#deriv_mobile_chart_wrapper---v015)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.5`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add the ability to hide indicators. ([#866](https://github.com/regentmarkets/flutter-deriv-packages/issues/866)). ([2cf1b4f6](https://github.com/regentmarkets/flutter-deriv-packages/commit/2cf1b4f6e255b1058996015513ad39aca4b29b71))
+
+
 ## 2024-10-14
 
 ### Changes
@@ -319,6 +382,37 @@ Packages with dependency updates only:
 #### `deriv_ui` - `v0.1.0+4`
 
  - **REFACTOR**(deriv_ui): update intl version ([#847](https://github.com/regentmarkets/flutter-deriv-packages/issues/847)). ([cee558af](https://github.com/regentmarkets/flutter-deriv-packages/commit/cee558afd16aeecb8888fed8baa6da569269f3e3))
+
+
+## 2024-09-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v6.8.1`](#deriv_auth---v681)
+ - [`deriv_logger` - `v0.0.3+1`](#deriv_logger---v0031)
+ - [`deriv_passkeys` - `v0.0.5+1`](#deriv_passkeys---v0051)
+
+---
+
+#### `deriv_auth` - `v6.8.1`
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+#### `deriv_logger` - `v0.0.3+1`
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+#### `deriv_passkeys` - `v0.0.5+1`
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
 
 
 ## 2024-09-26
