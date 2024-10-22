@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "แตะเพื่อตั้งค่าจุดแรก",
   "informTapToSetFinalPoint": "แตะเพื่อตั้งค่าจุดสุดท้าย",
   "informNoActiveDrawingTools": "ไม่มีเครื่องมือวาดภาพที่ใช้งานอยู่",
-  "actionAddDrawingTool": "เพิ่มเครื่องมือวาดภาพ"
+  "actionAddDrawingTool": "เพิ่มเครื่องมือวาดภาพ",
+  "labelOf": "ของ",
+  "labelDeleteAllDrawingTools": "ลบเครื่องมือวาดภาพทั้งหมด",
+  "informDeleteAllDrawingTools": "สิ่งนี้จะลบเครื่องมือวาดภาพที่ใช้งานอยู่ทั้งหมด"
 }
