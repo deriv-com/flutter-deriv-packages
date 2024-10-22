@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "Tippe, um den ersten Punkt zu setzen",
   "informTapToSetFinalPoint": "Tippe, um den Endpunkt festzulegen",
   "informNoActiveDrawingTools": "Keine aktiven Zeichenwerkzeuge.",
-  "actionAddDrawingTool": "Zeichentool hinzufügen"
+  "actionAddDrawingTool": "Zeichentool hinzufügen",
+  "labelOf": "of",
+  "labelDeleteAllDrawingTools": "Delete all drawing tools",
+  "informDeleteAllDrawingTools": "This will delete all active drawing tools."
 }
