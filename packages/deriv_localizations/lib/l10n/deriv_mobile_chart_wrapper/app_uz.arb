@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "Tap to set first point",
   "informTapToSetFinalPoint": "Tap to set final point",
   "informNoActiveDrawingTools": "No active drawing tools.",
-  "actionAddDrawingTool": "Add drawing tool"
+  "actionAddDrawingTool": "Add drawing tool",
+  "labelOf": "ning",
+  "labelDeleteAllDrawingTools": "Barcha chizish vositalarini o'chirish",
+  "informDeleteAllDrawingTools": "Bu barcha faol chizish vositalarini o'chirib tashlaydi."
 }
