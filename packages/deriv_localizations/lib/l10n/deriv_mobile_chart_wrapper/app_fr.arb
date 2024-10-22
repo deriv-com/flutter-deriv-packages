@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "Touchez pour définir le premier point",
   "informTapToSetFinalPoint": "Touchez pour définir le point final",
   "informNoActiveDrawingTools": "Aucun outil de dessin actif.",
-  "actionAddDrawingTool": "Ajouter un outil de dessin"
+  "actionAddDrawingTool": "Ajouter un outil de dessin",
+  "labelOf": "of",
+  "labelDeleteAllDrawingTools": "Delete all drawing tools",
+  "informDeleteAllDrawingTools": "This will delete all active drawing tools."
 }
