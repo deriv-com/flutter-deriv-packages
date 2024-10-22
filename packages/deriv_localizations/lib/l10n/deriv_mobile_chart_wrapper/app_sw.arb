@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "Gonga ili kuweka hatua ya kwanza",
   "informTapToSetFinalPoint": "Gonga ili kuweka hatua ya mwisho",
   "informNoActiveDrawingTools": "Hakuna zana zinazofaa za kuchora.",
-  "actionAddDrawingTool": "Ongeza zana ya kuchora"
+  "actionAddDrawingTool": "Ongeza zana ya kuchora",
+  "labelOf": "ya",
+  "labelDeleteAllDrawingTools": "Futa zana zote za kuchora",
+  "informDeleteAllDrawingTools": "Hii itafuta zana zote za kuchora zinazotumika."
 }
