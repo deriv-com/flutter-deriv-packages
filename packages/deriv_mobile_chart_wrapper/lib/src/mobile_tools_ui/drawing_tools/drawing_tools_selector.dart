@@ -1,10 +1,8 @@
 import 'package:collection/collection.dart';
-import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/active_drawing_tool_item.dart';
-import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tool_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
@@ -212,8 +210,16 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
                   return _buildActiveDrawingToolItem(
                     context,
                     toolIcon: drawingToolItem.icon,
-                    title: drawingToolItem.title,
-                    onTapDelete: () => drawingToolsRepo.removeAt(index),
+                    title: getDrawingToolTitleWithCount(
+                      context,
+                      activeDrawingToolItem,
+                    ),
+                    onTapDelete: () {
+                      drawingToolsRepo.removeAt(index);
+                      if (drawingToolsRepo.items.isEmpty) {
+                        Navigator.pop(context);
+                      }
+                    },
                     onTapSettings: () {},
                   );
                 } else {

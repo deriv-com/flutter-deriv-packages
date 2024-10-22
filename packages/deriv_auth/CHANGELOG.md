@@ -1,3 +1,37 @@
+## 7.0.3
+
+ - **FIX**(deriv_auth): Change the token to token getter for more flexibility ([#852](https://github.com/regentmarkets/flutter-deriv-packages/issues/852)). ([09ab8c56](https://github.com/regentmarkets/flutter-deriv-packages/commit/09ab8c56f6e4616ef8c162ea00d6ccb58e5a0f1f))
+
+## 7.0.2
+
+ - Update a dependency to the latest release.
+
+## 7.0.1
+
+ - Update a dependency to the latest release.
+
+## 7.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FIX**(deriv_auth): [DRGO-1247] update some depedencies ([#858](https://github.com/regentmarkets/flutter-deriv-packages/issues/858)). ([6a511b39](https://github.com/regentmarkets/flutter-deriv-packages/commit/6a511b39e91b95747fe594f40d6214b0da39d2e2))
+
+## 6.8.5
+
+ - Update a dependency to the latest release.
+
+## 6.8.4
+
+ - Update a dependency to the latest release.
+
+## 6.8.3
+
+ - Update a dependency to the latest release.
+
+## 6.8.2
+
+ - Update a dependency to the latest release.
+
 ## 6.8.1
 
  - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))

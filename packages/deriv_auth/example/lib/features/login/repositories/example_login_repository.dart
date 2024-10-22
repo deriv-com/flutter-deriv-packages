@@ -24,7 +24,7 @@ class ExampleLoginRepository implements BaseAuthRepository {
       ]);
 
   @override
-  Future<void> logout() => Future.value();
+  Future<void> logout({String? loginId}) => Future.value();
 
   @override
   Future<void> onLogin(AuthorizeEntity authorizeEntity) => Future.value();

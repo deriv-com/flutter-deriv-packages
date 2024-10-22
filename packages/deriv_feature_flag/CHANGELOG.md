@@ -1,3 +1,7 @@
+## 0.1.2
+
+ - **FEAT**(deriv_feature_flag): set attributes ([#874](https://github.com/regentmarkets/flutter-deriv-packages/issues/874)). ([bb92d976](https://github.com/regentmarkets/flutter-deriv-packages/commit/bb92d9764408613905da8451ce97689db09c6991))
+
 ## 0.1.1
 
  - **FEAT**(deriv_feature_flag): Add a methods to retrieve values for feature flag types other than boolean ([#513](https://github.com/regentmarkets/flutter-deriv-packages/issues/513)). ([dd30f341](https://github.com/regentmarkets/flutter-deriv-packages/commit/dd30f3419b8d0ca887b4cfc58280db4bc4738076))
