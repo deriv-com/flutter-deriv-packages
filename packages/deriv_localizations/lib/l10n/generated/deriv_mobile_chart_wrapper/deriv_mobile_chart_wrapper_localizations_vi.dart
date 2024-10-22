@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Thao tác này sẽ đặt lại chỉ báo $indicator về cài đặt mặc định của nó.';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return 'Đặt lại chỉ báo $indicator';
   }
 
   @override
@@ -263,44 +263,44 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return 'Nhập giá trị giữa $min và $max';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'Phạm vi $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Công cụ vẽ';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Dụng cụ';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'Dòng';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'cá đuối';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'Nhấn để đặt điểm đầu tiên';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Nhấn để đặt điểm cuối cùng';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Không có công cụ vẽ hoạt động.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Thêm công cụ vẽ';
 
   @override
-  String get labelOf => 'of';
+  String get labelOf => 'của';
 
   @override
-  String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
+  String get labelDeleteAllDrawingTools => 'Xóa tất cả các công cụ vẽ';
 
   @override
-  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
+  String get informDeleteAllDrawingTools => 'Thao tác này sẽ xóa tất cả các công cụ vẽ đang hoạt động.';
 }
