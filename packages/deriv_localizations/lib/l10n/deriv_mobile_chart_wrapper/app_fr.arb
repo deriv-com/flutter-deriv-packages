@@ -92,7 +92,7 @@
   "informTapToSetFinalPoint": "Touchez pour définir le point final",
   "informNoActiveDrawingTools": "Aucun outil de dessin actif.",
   "actionAddDrawingTool": "Ajouter un outil de dessin",
-  "labelOf": "of",
-  "labelDeleteAllDrawingTools": "Delete all drawing tools",
-  "informDeleteAllDrawingTools": "This will delete all active drawing tools."
+  "labelOf": "de",
+  "labelDeleteAllDrawingTools": "Supprimer tous les outils de dessin",
+  "informDeleteAllDrawingTools": "Cela supprimera tous les outils de dessin actifs."
 }
