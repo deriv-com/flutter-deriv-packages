@@ -1,3 +1,7 @@
+## 1.7.0
+
+ - **FEAT**(deriv_localizations): Update localizations for `deriv_mobile_chart_wrapper` ([#830](https://github.com/regentmarkets/flutter-deriv-packages/issues/830)). ([4adde10d](https://github.com/regentmarkets/flutter-deriv-packages/commit/4adde10d42b8cf9f2540782634c9f8527c17620d))
+
 ## 1.6.1
 
  - **REFACTOR**(deriv_localizations): update intl version ([#849](https://github.com/regentmarkets/flutter-deriv-packages/issues/849)). ([0adb30fc](https://github.com/regentmarkets/flutter-deriv-packages/commit/0adb30fcdcba69f4bd71ede781a7db7490976827))

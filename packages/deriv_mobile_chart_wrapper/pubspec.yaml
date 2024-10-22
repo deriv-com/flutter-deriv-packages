@@ -1,7 +1,7 @@
 name: deriv_mobile_chart_wrapper
 description: A new Flutter package project.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-version: 0.1.6
+version: 0.1.6+1
 homepage:
 
 environment:
@@ -26,7 +26,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: deriv_localizations-v1.6.1
+      ref: deriv_localizations-v1.7.0
 
   deriv_ui:
     git:

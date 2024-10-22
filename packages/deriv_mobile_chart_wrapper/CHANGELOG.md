@@ -1,3 +1,7 @@
+## 0.1.6+1
+
+ - Update a dependency to the latest release.
+
 ## 0.1.6
 
  - **FEAT**(deriv_mobile_chart_wrapper): Update pubspec.yaml ([#877](https://github.com/regentmarkets/flutter-deriv-packages/issues/877)). ([79518161](https://github.com/regentmarkets/flutter-deriv-packages/commit/7951816199178bcdc1eb507b784e713da9f60e8d))
