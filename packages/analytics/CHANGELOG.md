@@ -1,3 +1,27 @@
+## 4.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**(analytics): add auto trade rudderstack events ([#845](https://github.com/regentmarkets/flutter-deriv-packages/issues/845)). ([8c15aafd](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c15aafda41428c9d19272117b0a5a49b16b4154))
+
+## 3.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**(analytics): [DRGO-1247] Ramin/update for flutter 3.24 ([#838](https://github.com/regentmarkets/flutter-deriv-packages/issues/838)). ([cfdf2d81](https://github.com/regentmarkets/flutter-deriv-packages/commit/cfdf2d812b4d4227f72b434f7db9ea182081ae6b))
+
+## 2.3.0
+
+ - **FEAT**(analytics): Amend tracking events Rudderstack ([#821](https://github.com/regentmarkets/flutter-deriv-packages/issues/821)). ([bd197376](https://github.com/regentmarkets/flutter-deriv-packages/commit/bd197376cf450ec375a9759c9511563a253a0c64))
+
+## 2.2.2
+
+ - **REFACTOR**(analytics): Amend virtual n real tracking events ([#771](https://github.com/regentmarkets/flutter-deriv-packages/issues/771)). ([fc8850f0](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc8850f01c1bb0a6805b41b3ff10e2a6e33b6e0f))
+
+## 2.2.1
+
+ - **FIX**(analytics): ilya/TRHM-945/Amend_Virtual_n_Real_Tracking_Events ([#762](https://github.com/regentmarkets/flutter-deriv-packages/issues/762)). ([cbba6688](https://github.com/regentmarkets/flutter-deriv-packages/commit/cbba668827d72c971d1100ecafee5719d4617639))
+
 ## 2.2.0
 
  - **FEAT**(analytics): add trade page events to rudderstack events ([#691](https://github.com/regentmarkets/flutter-deriv-packages/issues/691)). ([b9e2b098](https://github.com/regentmarkets/flutter-deriv-packages/commit/b9e2b098fb76ea4f8f5f633c062a6cd20f4db6f0))

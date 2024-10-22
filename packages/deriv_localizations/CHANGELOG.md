@@ -1,3 +1,19 @@
+## 1.7.0
+
+ - **FEAT**(deriv_localizations): Update localizations for `deriv_mobile_chart_wrapper` ([#830](https://github.com/regentmarkets/flutter-deriv-packages/issues/830)). ([4adde10d](https://github.com/regentmarkets/flutter-deriv-packages/commit/4adde10d42b8cf9f2540782634c9f8527c17620d))
+
+## 1.6.1
+
+ - **REFACTOR**(deriv_localizations): update intl version ([#849](https://github.com/regentmarkets/flutter-deriv-packages/issues/849)). ([0adb30fc](https://github.com/regentmarkets/flutter-deriv-packages/commit/0adb30fcdcba69f4bd71ede781a7db7490976827))
+
+## 1.6.0
+
+ - **FEAT**(deriv_localizations): Update localizations generated file to get the new strings ([#808](https://github.com/regentmarkets/flutter-deriv-packages/issues/808)). ([28ae98bc](https://github.com/regentmarkets/flutter-deriv-packages/commit/28ae98bcd78ab725c3f35d6a88175c0e85be4c94))
+
+## 1.5.6
+
+ - **FIX**(deriv_localizations): add strings for chart indicators ([#768](https://github.com/regentmarkets/flutter-deriv-packages/issues/768)). ([e4d52121](https://github.com/regentmarkets/flutter-deriv-packages/commit/e4d5212170996d14f834cc285f047ae821da7a71))
+
 ## 1.5.5
 
  - **FIX**(deriv_localizations): update numpad range values ([#742](https://github.com/regentmarkets/flutter-deriv-packages/issues/742)). ([5ad26f52](https://github.com/regentmarkets/flutter-deriv-packages/commit/5ad26f52c897397bc544fe4b23ca805e90cba66a))

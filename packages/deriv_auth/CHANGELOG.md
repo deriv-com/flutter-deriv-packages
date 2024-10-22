@@ -1,3 +1,151 @@
+## 7.0.4
+
+ - Update a dependency to the latest release.
+
+## 7.0.3
+
+ - **FIX**(deriv_auth): Change the token to token getter for more flexibility ([#852](https://github.com/regentmarkets/flutter-deriv-packages/issues/852)). ([09ab8c56](https://github.com/regentmarkets/flutter-deriv-packages/commit/09ab8c56f6e4616ef8c162ea00d6ccb58e5a0f1f))
+
+## 7.0.2
+
+ - Update a dependency to the latest release.
+
+## 7.0.1
+
+ - Update a dependency to the latest release.
+
+## 7.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FIX**(deriv_auth): [DRGO-1247] update some depedencies ([#858](https://github.com/regentmarkets/flutter-deriv-packages/issues/858)). ([6a511b39](https://github.com/regentmarkets/flutter-deriv-packages/commit/6a511b39e91b95747fe594f40d6214b0da39d2e2))
+
+## 6.8.5
+
+ - Update a dependency to the latest release.
+
+## 6.8.4
+
+ - Update a dependency to the latest release.
+
+## 6.8.3
+
+ - Update a dependency to the latest release.
+
+## 6.8.2
+
+ - Update a dependency to the latest release.
+
+## 6.8.1
+
+ - **FIX**: Updating Flutter Deriv API version to latest ([#843](https://github.com/regentmarkets/flutter-deriv-packages/issues/843)). ([db461495](https://github.com/regentmarkets/flutter-deriv-packages/commit/db46149557a9a93eb86a6691a8c7831bf709e8f1))
+
+## 6.8.0
+
+ - **FIX**: [86c0e0nez] add disability check while filtering accounts ([#837](https://github.com/regentmarkets/flutter-deriv-packages/issues/837)). ([e64dfa54](https://github.com/regentmarkets/flutter-deriv-packages/commit/e64dfa54d774e79c3c88f63f3112c7eb0c0cb6b8))
+ - **FEAT**(deriv_auth): [DERG-1396] akhil/1396/multi_user_level_authentication_poc_master ([#574](https://github.com/regentmarkets/flutter-deriv-packages/issues/574)). ([97ac8004](https://github.com/regentmarkets/flutter-deriv-packages/commit/97ac8004370762ed38ed0608e64699a020406b8e))
+
+## 6.7.51
+
+ - **FIX**: [86c0e0nez] add disability check while filtering accounts ([#837](https://github.com/regentmarkets/flutter-deriv-packages/issues/837)). ([e64dfa54](https://github.com/regentmarkets/flutter-deriv-packages/commit/e64dfa54d774e79c3c88f63f3112c7eb0c0cb6b8))
+ - **FIX**: [86c0e0nez] filter supported accounts while logging in ([#833](https://github.com/regentmarkets/flutter-deriv-packages/issues/833)). ([534e982c](https://github.com/regentmarkets/flutter-deriv-packages/commit/534e982c809b5e0e9380366a3f32a05f1ef2cf10))
+
+## 6.7.50
+
+ - Update a dependency to the latest release.
+
+## 6.7.49
+
+ - **FIX**(deriv_auth): unassigned token for account created on web ([#756](https://github.com/regentmarkets/flutter-deriv-packages/issues/756)). ([abbb8905](https://github.com/regentmarkets/flutter-deriv-packages/commit/abbb8905263517c32c1e990fdc9dbfd2fb38ae9b))
+
+## 6.7.48
+
+ - Update a dependency to the latest release.
+
+## 6.7.47
+
+ - Update a dependency to the latest release.
+
+## 6.7.46
+
+ - Update a dependency to the latest release.
+
+## 6.7.45
+
+ - Update a dependency to the latest release.
+
+## 6.7.44
+
+ - Update a dependency to the latest release.
+
+## 6.7.43
+
+ - Update a dependency to the latest release.
+
+## 6.7.42
+
+ - Update a dependency to the latest release.
+
+## 6.7.41
+
+ - Update a dependency to the latest release.
+
+## 6.7.40
+
+ - Update a dependency to the latest release.
+
+## 6.7.39
+
+ - Update a dependency to the latest release.
+
+## 6.7.38
+
+ - Update a dependency to the latest release.
+
+## 6.7.37
+
+ - Update a dependency to the latest release.
+
+## 6.7.36
+
+ - **FIX**(deriv_auth): validation_enhancement ([#775](https://github.com/regentmarkets/flutter-deriv-packages/issues/775)). ([fc4bbb1f](https://github.com/regentmarkets/flutter-deriv-packages/commit/fc4bbb1f9384334dced645e8213b8b5dade8f05d))
+
+## 6.7.35
+
+ - **REFACTOR**(deriv_auth): Update_single_entry_feature ([#577](https://github.com/regentmarkets/flutter-deriv-packages/issues/577)). ([462d7bd6](https://github.com/regentmarkets/flutter-deriv-packages/commit/462d7bd6bdf60536fa632be3b95fae0ba377f142))
+
+## 6.7.34
+
+ - Update a dependency to the latest release.
+
+## 6.7.33
+
+ - Update a dependency to the latest release.
+
+## 6.7.32
+
+ - Update a dependency to the latest release.
+
+## 6.7.31
+
+ - Update a dependency to the latest release.
+
+## 6.7.30
+
+ - **FIX**(deriv_auth): email and password text field validation ([#761](https://github.com/regentmarkets/flutter-deriv-packages/issues/761)). ([c75d00c4](https://github.com/regentmarkets/flutter-deriv-packages/commit/c75d00c4ef105a9a5ff3cdb3a8546ee43d76e997))
+
+## 6.7.29
+
+ - **FIX**(deriv_auth): email text field validation ([#751](https://github.com/regentmarkets/flutter-deriv-packages/issues/751)). ([3e05c3fa](https://github.com/regentmarkets/flutter-deriv-packages/commit/3e05c3fa9315a75d19fbc3727ad9a161617e7fb8))
+
+## 6.7.28
+
+ - Update a dependency to the latest release.
+
+## 6.7.27
+
+ - Update a dependency to the latest release.
+
 ## 6.7.26
 
  - Update a dependency to the latest release.

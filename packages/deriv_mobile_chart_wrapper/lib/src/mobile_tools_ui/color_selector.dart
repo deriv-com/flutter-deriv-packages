@@ -56,27 +56,29 @@ class _ColorSelectorState extends State<ColorSelector> {
           showModalBottomSheet(
             context: context,
             builder: (_) => StatefulBuilder(builder: (context, state) {
-              return DerivBottomSheet(
-                height: MediaQuery.of(context).size.height * 0.38,
-                title: widget.title,
-                hasActionButton: true,
-                actionButtonLabel:
-                    context.mobileChartWrapperLocalizations.labelOK,
-                onActionButtonPressed: _selectedColor == null
-                    ? null
-                    : () {
-                        Navigator.of(context).pop();
+              return SafeArea(
+                child: DerivBottomSheet(
+                  title: widget.title,
+                  hasActionButton: true,
+                  actionButtonLabel:
+                      context.mobileChartWrapperLocalizations.labelOK,
+                  onActionButtonPressed: _selectedColor == null
+                      ? null
+                      : () {
+                          widget.onColorChanged(_selectedColor!);
+                          Navigator.of(context).pop();
+                        },
+                  child: ColoredBox(
+                    color: context.theme.colors.primary,
+                    child: ColoursGrid(
+                      onColorSelected: (int index) {
+                        state(() {
+                          _selectedColor = widget.colors[index];
+                        });
                       },
-                child: SizedBox(
-                  child: ColoursGrid(
-                    onColorSelected: (int index) {
-                      state(() {
-                        _selectedColor = widget.colors[index];
-                      });
-                      widget.onColorChanged(widget.colors[index]);
-                    },
-                    colors: widget.colors,
-                    selectedColor: _selectedColor,
+                      colors: widget.colors,
+                      selectedColor: _selectedColor,
+                    ),
                   ),
                 ),
               );
@@ -92,7 +94,11 @@ class _ColorSelectorState extends State<ColorSelector> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(widget.title, style: TextStyles.caption),
+              Text(widget.title,
+                  style: context.theme.textStyle(
+                    textStyle: TextStyles.caption,
+                    color: context.theme.colors.general,
+                  )),
               Row(
                 children: <Widget>[
                   Container(

@@ -73,8 +73,18 @@ class DerivMobileChartWrapperLocalizationsPl extends DerivMobileChartWrapperLoca
   String get infoDeleteAllIndicators => 'Spowoduje to usunięcie wszystkich aktywnych wskaźników.';
 
   @override
+  String infoResetIndicators(Object indicator) {
+    return 'This will reset the $indicator indicator to its default settings.';
+  }
+
+  @override
   String labelDeleteIndicator(Object indicator) {
     return 'Usuń wskaźnik $indicator';
+  }
+
+  @override
+  String labelResetIndicator(Object indicator) {
+    return 'Reset $indicator indicator';
   }
 
   @override
@@ -260,4 +270,37 @@ class DerivMobileChartWrapperLocalizationsPl extends DerivMobileChartWrapperLoca
   String warnRangeMinMax(Object max, Object min) {
     return 'Range $min - $max';
   }
+
+  @override
+  String get labelDrawingTools => 'Drawing tools';
+
+  @override
+  String get labelTools => 'Tools';
+
+  @override
+  String get labelLine => 'Line';
+
+  @override
+  String get labelRay => 'Ray';
+
+  @override
+  String get informTapToSetFirstPoint => 'Tap to set first point';
+
+  @override
+  String get informTapToSetFinalPoint => 'Tap to set final point';
+
+  @override
+  String get informNoActiveDrawingTools => 'No active drawing tools.';
+
+  @override
+  String get actionAddDrawingTool => 'Add drawing tool';
+
+  @override
+  String get labelOf => 'of';
+
+  @override
+  String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
+
+  @override
+  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
 }

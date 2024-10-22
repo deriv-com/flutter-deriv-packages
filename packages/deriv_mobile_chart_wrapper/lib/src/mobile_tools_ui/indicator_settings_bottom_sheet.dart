@@ -1,20 +1,16 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
-import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
-import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class IndicatorSettingsBottomSheet extends StatefulWidget {
   const IndicatorSettingsBottomSheet({
-    super.key,
-    this.theme,
     required this.settings,
     required this.indicator,
-    required this.onApply,
-    required this.onReset,
     required this.onTapInfo,
     required this.onTapDelete,
+    this.theme,
+    super.key,
   });
 
   /// The theme of the chart which the bottom sheet is being placed inside.
@@ -25,12 +21,6 @@ class IndicatorSettingsBottomSheet extends StatefulWidget {
 
   /// The indicator name.
   final String indicator;
-
-  /// The callback when the apply button is pressed.
-  final VoidCallback onApply;
-
-  /// The callback when the reset button is pressed.
-  final VoidCallback onReset;
 
   /// The callback when the info button is pressed.
   final VoidCallback onTapInfo;
@@ -61,7 +51,7 @@ class _IndicatorSettingsBottomSheetState
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.9,
+        height: MediaQuery.of(context).size.height,
         child: Provider<ChartTheme>.value(
           value: _theme,
           child: ClipRRect(
@@ -81,11 +71,8 @@ class _IndicatorSettingsBottomSheetState
                     _buildTopHandle(),
                     _buildHeader(),
                     Expanded(
-                      child: SingleChildScrollView(
-                        child: widget.settings,
-                      ),
+                      child: widget.settings,
                     ),
-                    _buildActionButtons(),
                   ],
                 ),
               ),
@@ -148,42 +135,6 @@ class _IndicatorSettingsBottomSheetState
               color: context.theme.colors.prominent,
               icon: const Icon(Icons.delete_outline),
             ),
-          ],
-        ),
-      );
-
-  Widget _buildActionButtons() => Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: ThemeProvider.margin16,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: SecondaryButton(
-                onPressed: widget.onReset,
-                child: Text(
-                  context.mobileChartWrapperLocalizations.labelReset,
-                  style: context.theme.textStyle(
-                    textStyle: TextStyles.body2,
-                    color: context.theme.colors.disabled,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: ThemeProvider.margin08,
-            ),
-            Expanded(
-              child: PrimaryButton(
-                  onPressed: widget.onApply,
-                  child: Text(
-                    context.mobileChartWrapperLocalizations.labelApply,
-                    style: context.theme.textStyle(
-                      textStyle: TextStyles.body2,
-                      color: context.theme.colors.prominent,
-                    ),
-                  )),
-            )
           ],
         ),
       );

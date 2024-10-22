@@ -1,4 +1,5 @@
 import 'package:deriv_passkeys/deriv_passkeys.dart';
+import 'package:deriv_passkeys/src/domain/entities/account_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -36,10 +37,19 @@ void main() {
       const String token = 'example_token';
       const String refreshToken = 'example_refresh_token';
       const DerivPasskeysState state = DerivPasskeysCredentialVerifiedState(
-        token: token,
+        accounts: <AccountEntity>[
+          AccountEntity(loginId: 'example_login_id', token: token),
+        ],
         refreshToken: refreshToken,
       );
-      expect(state.props, contains(token));
+      expect(
+          state.props,
+          containsAll(<Object?>[
+            <AccountEntity>[
+              const AccountEntity(loginId: 'example_login_id', token: token),
+            ],
+            refreshToken
+          ]));
     });
   });
 

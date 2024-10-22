@@ -255,11 +255,23 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// **'This will delete all active indicators.'**
   String get infoDeleteAllIndicators;
 
+  /// No description provided for @infoResetIndicators.
+  ///
+  /// In en, this message translates to:
+  /// **'This will reset the {indicator} indicator to its default settings.'**
+  String infoResetIndicators(Object indicator);
+
   /// No description provided for @labelDeleteIndicator.
   ///
   /// In en, this message translates to:
   /// **'Delete {indicator} indicator'**
   String labelDeleteIndicator(Object indicator);
+
+  /// No description provided for @labelResetIndicator.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset {indicator} indicator'**
+  String labelResetIndicator(Object indicator);
 
   /// No description provided for @infoDeleteIndicator.
   ///
@@ -620,6 +632,72 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// In en, this message translates to:
   /// **'Range {min} - {max}'**
   String warnRangeMinMax(Object max, Object min);
+
+  /// No description provided for @labelDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Drawing tools'**
+  String get labelDrawingTools;
+
+  /// No description provided for @labelTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get labelTools;
+
+  /// No description provided for @labelLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Line'**
+  String get labelLine;
+
+  /// No description provided for @labelRay.
+  ///
+  /// In en, this message translates to:
+  /// **'Ray'**
+  String get labelRay;
+
+  /// No description provided for @informTapToSetFirstPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to set first point'**
+  String get informTapToSetFirstPoint;
+
+  /// No description provided for @informTapToSetFinalPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to set final point'**
+  String get informTapToSetFinalPoint;
+
+  /// No description provided for @informNoActiveDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'No active drawing tools.'**
+  String get informNoActiveDrawingTools;
+
+  /// No description provided for @actionAddDrawingTool.
+  ///
+  /// In en, this message translates to:
+  /// **'Add drawing tool'**
+  String get actionAddDrawingTool;
+
+  /// No description provided for @labelOf.
+  ///
+  /// In en, this message translates to:
+  /// **'of'**
+  String get labelOf;
+
+  /// No description provided for @labelDeleteAllDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all drawing tools'**
+  String get labelDeleteAllDrawingTools;
+
+  /// No description provided for @informDeleteAllDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'This will delete all active drawing tools.'**
+  String get informDeleteAllDrawingTools;
 }
 
 class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {

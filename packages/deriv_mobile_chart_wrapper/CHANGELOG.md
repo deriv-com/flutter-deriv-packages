@@ -1,3 +1,141 @@
+## 0.1.6+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.6
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Update pubspec.yaml ([#877](https://github.com/regentmarkets/flutter-deriv-packages/issues/877)). ([79518161](https://github.com/regentmarkets/flutter-deriv-packages/commit/7951816199178bcdc1eb507b784e713da9f60e8d))
+
+## 0.1.5
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Add the ability to hide indicators. ([#866](https://github.com/regentmarkets/flutter-deriv-packages/issues/866)). ([2cf1b4f6](https://github.com/regentmarkets/flutter-deriv-packages/commit/2cf1b4f6e255b1058996015513ad39aca4b29b71))
+
+## 0.1.4
+
+ - **FEAT**(deriv_mobile_chart_wrapper): DRGO-896 Add_counting_logic_to_bottom_sheet ([#835](https://github.com/regentmarkets/flutter-deriv-packages/issues/835)). ([2195701d](https://github.com/regentmarkets/flutter-deriv-packages/commit/2195701d6f76e356c7e158a240cf1951ea70047c))
+
+## 0.1.3+6
+
+ - **FIX**(deriv_date_range_picker): iupgrade intl version ([#859](https://github.com/regentmarkets/flutter-deriv-packages/issues/859)). ([c500b57d](https://github.com/regentmarkets/flutter-deriv-packages/commit/c500b57d1558b10d7d60603d8de36af88db3dfb7))
+
+## 0.1.3+5
+
+ - Update a dependency to the latest release.
+
+## 0.1.3+4
+
+ - Update a dependency to the latest release.
+
+## 0.1.3+3
+
+ - Update a dependency to the latest release.
+
+## 0.1.3+2
+
+ - Update a dependency to the latest release.
+
+## 0.1.3+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.3
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-73] Added line drawing guide banner ([#826](https://github.com/regentmarkets/flutter-deriv-packages/issues/826)). ([b2b018ec](https://github.com/regentmarkets/flutter-deriv-packages/commit/b2b018ec78d9f2de0dcc71b2a76f1343581f4f03))
+
+## 0.1.2
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-81] Functionality to add dots for drawing tool. ([#810](https://github.com/regentmarkets/flutter-deriv-packages/issues/810)). ([05d5c85f](https://github.com/regentmarkets/flutter-deriv-packages/commit/05d5c85f9b5c204ec54eb3828b262fe7c0293ac0))
+
+## 0.1.1
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-74] Add drawing tools bottom sheet UI ([#815](https://github.com/regentmarkets/flutter-deriv-packages/issues/815)). ([ebd9ab92](https://github.com/regentmarkets/flutter-deriv-packages/commit/ebd9ab92707630df3bc185aab5a503399df786b4))
+
+## 0.1.0+4
+
+ - Update a dependency to the latest release.
+
+## 0.1.0+3
+
+ - **FIX**(deriv_mobile_chart_wrapper): fix text alignment ([#816](https://github.com/regentmarkets/flutter-deriv-packages/issues/816)). ([8fd35364](https://github.com/regentmarkets/flutter-deriv-packages/commit/8fd35364760d7bc1b101f9414a2d9d340a1b5a32))
+
+## 0.1.0+2
+
+ - Update a dependency to the latest release.
+
+## 0.1.0+1
+
+ - **FIX**(deriv_ui): fix value selector issues. ([#800](https://github.com/regentmarkets/flutter-deriv-packages/issues/800)). ([9c783d58](https://github.com/regentmarkets/flutter-deriv-packages/commit/9c783d58d52e753ede1ee40a9da4ce038ed1c991))
+
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **REFACTOR**(deriv_ui): make deriv bottom sheet height dynamic and fix color selector issues ([#797](https://github.com/regentmarkets/flutter-deriv-packages/issues/797)). ([636a7185](https://github.com/regentmarkets/flutter-deriv-packages/commit/636a7185ae3ce461647f7deb8f62c55acaad3a65))
+
+## 0.0.15
+
+ - **FEAT**(deriv_mobile_chart_wrapper): wire up indicators ([#760](https://github.com/regentmarkets/flutter-deriv-packages/issues/760)). ([4ff1747b](https://github.com/regentmarkets/flutter-deriv-packages/commit/4ff1747b76e168710768be84d851276db5884c29))
+
+## 0.0.14
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Created a new icon button widget for drawing tools ([#792](https://github.com/regentmarkets/flutter-deriv-packages/issues/792)). ([fe1a19c1](https://github.com/regentmarkets/flutter-deriv-packages/commit/fe1a19c10ea88323911a5507ad37b25ba71aedaa))
+
+## 0.0.13+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.13+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.13+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.13
+
+ - **FEAT**(deriv_mobile_chart_wrapper): add drawing tools repo to chart wrapper ([#784](https://github.com/regentmarkets/flutter-deriv-packages/issues/784)). ([8df713c9](https://github.com/regentmarkets/flutter-deriv-packages/commit/8df713c958299820b94190f4f1a665efcfa8401b))
+
+## 0.0.12+5
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+4
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+3
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+2
+
+ - Update a dependency to the latest release.
+
+## 0.0.12+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.12
+
+ - **FEAT**(deriv_mobile_chart_wrapper): bolinger and macd settings page ui ([#727](https://github.com/regentmarkets/flutter-deriv-packages/issues/727)). ([4be589cf](https://github.com/regentmarkets/flutter-deriv-packages/commit/4be589cf84c3593cf29438ca6c6e5613f4eafa49))
+
+## 0.0.11
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Implement MA setting page. ([#728](https://github.com/regentmarkets/flutter-deriv-packages/issues/728)). ([fa66abe8](https://github.com/regentmarkets/flutter-deriv-packages/commit/fa66abe81af1d016359b7d30b0fa870e8ebda61b))
+
+## 0.0.10+1
+
+ - Update a dependency to the latest release.
+
+## 0.0.10
+
+ - **FEAT**(deriv_mobile_chart_wrapper): add description bottomsheet for settings page ([#749](https://github.com/regentmarkets/flutter-deriv-packages/issues/749)). ([6ffd5128](https://github.com/regentmarkets/flutter-deriv-packages/commit/6ffd512845276a0e240ea07ad3aa299a39d16b55))
+
+## 0.0.9
+
+ - **FEAT**(deriv_mobile_chart_wrapper): add isResetEnabled to indicator bottomsheet ([#737](https://github.com/regentmarkets/flutter-deriv-packages/issues/737)). ([7105c272](https://github.com/regentmarkets/flutter-deriv-packages/commit/7105c272ea8f58b185a2fd899a0c71ccec78655b))
+
 ## 0.0.8+3
 
  - Update a dependency to the latest release.

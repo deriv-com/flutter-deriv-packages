@@ -11,7 +11,7 @@ class ValueSelector extends StatelessWidget {
   const ValueSelector({
     required this.value,
     required this.onChange,
-    required this.numberPadSubmitLabel,
+    required this.numberPadLabel,
     this.enableMarquee = true,
     this.isEnabled = true,
     this.unselectedValue,
@@ -26,7 +26,7 @@ class ValueSelector extends StatelessWidget {
     this.minimum,
     this.showMinimumSubtitle = false,
     this.minimumSubtitle,
-    this.label,
+    this.title,
     this.amountInputKey,
     this.decreaseButtonKey,
     this.increaseButtonKey,
@@ -88,10 +88,10 @@ class ValueSelector extends StatelessWidget {
   final NumberFormat? formatter;
 
   /// Label of the value selector.
-  final String? label;
+  final String? title;
 
-  /// Number pad submit button label.
-  final String numberPadSubmitLabel;
+  /// Number pad label
+  final NumberPadLabel numberPadLabel;
 
   /// Key for the amount input field.
   final Key? amountInputKey;
@@ -119,11 +119,15 @@ class ValueSelector extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              if (label != null)
+              if (title != null)
                 Padding(
                   padding:
                       const EdgeInsets.only(bottom: ThemeProvider.margin08),
-                  child: Text(label!, style: TextStyles.caption),
+                  child: Text(title!,
+                      style: context.theme.textStyle(
+                        textStyle: TextStyles.caption,
+                        color: context.theme.colors.general,
+                      )),
                 ),
               Ink(
                 height: 40,
@@ -144,10 +148,13 @@ class ValueSelector extends StatelessWidget {
                           key: decreaseButtonKey,
                           icon: const Icon(Icons.remove),
                           color: !isEnabled ? disabledColor : null,
-                          onPressed: () {
-                            final double decreasedValue = _decrement(value);
-                            onChange?.call(decreasedValue);
-                          },
+                          onPressed: _isLowerThanMinimum(value)
+                              ? null
+                              : () {
+                                  final double decreasedValue =
+                                      _decrement(value);
+                                  onChange?.call(decreasedValue);
+                                },
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.30,
@@ -177,10 +184,13 @@ class ValueSelector extends StatelessWidget {
                           key: increaseButtonKey,
                           icon: const Icon(Icons.add),
                           color: !isEnabled ? disabledColor : null,
-                          onPressed: () {
-                            final double increasedValue = _increment(value);
-                            onChange?.call(increasedValue);
-                          },
+                          onPressed: _isBiggerThanMaximum(value)
+                              ? null
+                              : () {
+                                  final double increasedValue =
+                                      _increment(value);
+                                  onChange?.call(increasedValue);
+                                },
                         ),
                       ],
                     ),
@@ -240,8 +250,8 @@ class ValueSelector extends StatelessWidget {
   }
 
   String _getFormattedValue(double value) {
-    final NumberFormat _formatter = formatter ?? NumberFormat('#,###');
-    return _formatter.format(value);
+    final NumberFormat numberFormat = formatter ?? NumberFormat('#,###');
+    return numberFormat.format(value);
   }
 
   // Shows the num pad and handles on closed callback.
@@ -255,12 +265,12 @@ class ValueSelector extends StatelessWidget {
       builder: (BuildContext context) => NumberPad(
         firstInputMinimumValue: minimum,
         firstInputMaximumValue: maximum != null ? maximum! : double.maxFinite,
-        label: NumberPadLabel(actionOK: numberPadSubmitLabel),
+        label: numberPadLabel,
         headerLeading: numberPadHeaderLeading,
         dialogDescription: dialogDescription,
         formatter: formatter ?? NumberFormat(),
         numberPadType: NumberPadWidgetType.singleInput,
-        firstInputTitle: label ?? '',
+        firstInputTitle: title ?? '',
         firstInputInitialValue: selectedValue == 0 ? null : selectedValue,
         onClose: (
           NumberPadWidgetType type,
@@ -288,4 +298,10 @@ class ValueSelector extends StatelessWidget {
     }
     return value - 1;
   }
+
+  bool _isLowerThanMinimum(double value) =>
+      minimum != null && value - minimum! < 1;
+
+  bool _isBiggerThanMaximum(double value) =>
+      maximum != null && maximum! - value < 1;
 }

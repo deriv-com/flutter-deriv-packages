@@ -32,6 +32,7 @@ class DerivLoginLayout extends StatefulWidget {
     this.passwordTextFieldKey,
     this.forgotPasswordButtonKey,
     this.loginButtonKey,
+    this.twoFactorAuthNavigation,
     Key? key,
   }) : super(key: key);
 
@@ -48,7 +49,7 @@ class DerivLoginLayout extends StatefulWidget {
   final Function(DerivAuthErrorState)? onLoginError;
 
   /// Callback to be called when user is logged in.
-  final Function(DerivAuthLoggedInState) onLoggedIn;
+  final Function(BuildContext, DerivAuthLoggedInState) onLoggedIn;
 
   /// Callback to be called when social auth button is tapped.
   /// Give access to [SocialAuthDto] for 2FA.
@@ -74,7 +75,7 @@ class DerivLoginLayout extends StatefulWidget {
   final bool isPasskeysEnabled;
 
   /// Social auth state handler.
-  final Function(SocialAuthState) socialAuthStateHandler;
+  final Function(BuildContext, SocialAuthState) socialAuthStateHandler;
 
   /// Redirect URL for social auth.
   final String redirectURL;
@@ -96,6 +97,9 @@ class DerivLoginLayout extends StatefulWidget {
 
   /// Widget key for login button button.
   final Key? loginButtonKey;
+
+  /// 2FA flow navigation
+  final Function? twoFactorAuthNavigation;
 
   @override
   State<DerivLoginLayout> createState() => _DerivLoginLayoutState();
@@ -325,6 +329,12 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
     if (state is DerivAuthErrorState) {
       widget.onLoginError?.call(state);
 
+      // Handling the 2FA Flow in case of missing OTP scanario
+      if (state.type == AuthErrorType.missingOtp &&
+          widget.twoFactorAuthNavigation != null) {
+        widget.twoFactorAuthNavigation!(context);
+      }
+
       authErrorStateMapper(
         authErrorState: state,
         authErrorStateHandler: widget.authErrorStateHandler ??
@@ -333,7 +343,7 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
     }
 
     if (state is DerivAuthLoggedInState) {
-      widget.onLoggedIn(state);
+      widget.onLoggedIn(context, state);
     }
   }
 
@@ -341,21 +351,11 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
       _getEmailValue().isValidEmail &&
       _passwordController.text.isValidLoginPasswordLength;
 
-  String? _emailValidator(String? input) {
-    if (_getEmailValue().isValidEmail) {
-      return null;
-    }
+  String? _emailValidator(String? input) => emailValidator(
+      _getEmailValue(), context.derivAuthLocalization.informInvalidEmailFormat);
 
-    return context.derivAuthLocalization.informInvalidEmailFormat;
-  }
-
-  String? _passwordValidator(String? input) {
-    if (input?.isValidLoginPasswordLength ?? false) {
-      return null;
-    }
-
-    return context.derivAuthLocalization.warnPasswordLength;
-  }
+  String? _passwordValidator(String? input) => passwordValidator(
+      _getPasswordValue(), context.derivAuthLocalization.warnPasswordLength);
 
   Future<void> _onLoginTapped() async {
     widget.onLoginTapped?.call(
@@ -378,6 +378,8 @@ class _DerivLoginLayoutState extends State<DerivLoginLayout>
   }
 
   String _getEmailValue() => _emailController.text.trim();
+
+  String _getPasswordValue() => _passwordController.text.trim();
 
   @override
   void dispose() {

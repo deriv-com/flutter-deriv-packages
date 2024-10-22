@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
                 repository: DerivJwtRepository(
                   client: HttpClient(),
                   connectionInfo: DerivAuthConnectionInfo(),
-                  appToken: 'test_app_token',
+                  getAppToken: ()=>'test_app_token',
                 ),
               ),
               connectionInfo: DerivAuthConnectionInfo(),

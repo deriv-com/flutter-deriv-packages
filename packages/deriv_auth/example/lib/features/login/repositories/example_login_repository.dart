@@ -3,7 +3,10 @@ import 'package:deriv_auth/deriv_auth.dart';
 
 class ExampleLoginRepository implements BaseAuthRepository {
   @override
-  Future<AuthorizeResponseEntity> authorize(String? token) =>
+  Future<AuthorizeResponseEntity> authorize(
+    String? token, {
+    List<String>? tokenList,
+  }) =>
       Future.value(const AuthorizeResponseEntity());
 
   @override
@@ -21,7 +24,7 @@ class ExampleLoginRepository implements BaseAuthRepository {
       ]);
 
   @override
-  Future<void> logout() => Future.value();
+  Future<void> logout({String? loginId}) => Future.value();
 
   @override
   Future<void> onLogin(AuthorizeEntity authorizeEntity) => Future.value();

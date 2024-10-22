@@ -27,8 +27,10 @@ class DerivAuthService extends BaseAuthService {
     required GetTokensRequestModel request,
     String? userAgent,
     Function? onInvalidJwtToken,
+    bool useMultiToken = false,
   }) async {
     try {
+      List<String> _tokenList = <String>[];
       final String jwtToken = await jwtService.getJwtToken();
 
       final GetTokensResponseModel _response = await tokenService.getUserTokens(
@@ -41,20 +43,44 @@ class DerivAuthService extends BaseAuthService {
       final List<AccountModel> _supportedAccounts =
           _filterSupportedAccounts(_response.accounts);
 
-      final String? _defaultAccountToken = _supportedAccounts.first.token;
+      if (useMultiToken == false) {
+        final String? _defaultAccountToken = _supportedAccounts.isNotEmpty
+            ? _supportedAccounts.first.token
+            : null;
 
-      if (_defaultAccountToken != null) {
-        return login(
-          _defaultAccountToken,
-          accounts: _supportedAccounts,
-          signupProvider: request.signupProvider,
-          refreshToken: _response.refreshToken,
-        );
+        if (_defaultAccountToken != null) {
+          return login(
+            _defaultAccountToken,
+            accounts: _supportedAccounts,
+            signupProvider: request.signupProvider,
+            refreshToken: _response.refreshToken,
+          );
+        } else {
+          throw DerivAuthException(
+            message: accountUnavailableError,
+            type: AuthErrorType.accountUnavailable,
+          );
+        }
       } else {
-        throw DerivAuthException(
-          message: accountUnavailableError,
-          type: AuthErrorType.accountUnavailable,
-        );
+        if (_supportedAccounts.isNotEmpty) {
+          _tokenList = _supportedAccounts
+              .map<String?>((AccountModel account) => account.token)
+              .whereNotNull()
+              .toList();
+
+          return login(
+            'MULTI',
+            tokenList: _tokenList.isEmpty ? null : _tokenList,
+            accounts: _supportedAccounts,
+            signupProvider: request.signupProvider,
+            refreshToken: _response.refreshToken,
+          );
+        } else {
+          throw DerivAuthException(
+            message: accountUnavailableError,
+            type: AuthErrorType.accountUnavailable,
+          );
+        }
       }
     } on HTTPClientException catch (error) {
       if (error.errorCode == invalidJwtTokenError) {
@@ -73,33 +99,29 @@ class DerivAuthService extends BaseAuthService {
   Future<AuthorizeEntity> login(
     String token, {
     required List<AccountModel> accounts,
+    List<String>? tokenList,
     String? signupProvider,
     String? refreshToken,
   }) async {
     try {
       final AuthorizeEntity? responseAuthorizeEntity =
-          (await authRepository.authorize(token)).authorize;
+          (await authRepository.authorize(token, tokenList: tokenList))
+              .authorize;
 
       _checkAuthorizeValidity(responseAuthorizeEntity);
+
+      final List<AccountListItem> _filteredAccounts =
+          _filterSupportedAccountsFromAuthorizeResponse(
+              responseAuthorizeEntity?.accountList ?? <AccountListItem>[]);
 
       final AuthorizeEntity _enhancedAuthorizeEntity =
           responseAuthorizeEntity!.copyWith(
         signupProvider: signupProvider,
         refreshToken: refreshToken,
-        accountList: responseAuthorizeEntity.accountList
-            ?.map(
-              (AccountListItem accountListItem) => accountListItem.copyWith(
-                token: accounts
-                        .where(
-                          (AccountModel element) =>
-                              element.accountId == accountListItem.loginid,
-                        )
-                        .firstOrNull
-                        ?.token ??
-                    token,
-              ),
-            )
-            .toList(),
+        accountList: _getAccountListWithToken(
+          _filteredAccounts,
+          accounts,
+        ),
       );
 
       await authRepository.onLogin(_enhancedAuthorizeEntity);
@@ -114,6 +136,28 @@ class DerivAuthService extends BaseAuthService {
       );
     }
   }
+
+  List<AccountListItem>? _getAccountListWithToken(
+    List<AccountListItem>? accountListItems,
+    List<AccountModel> accounts,
+  ) =>
+      accountListItems?.map(
+        (AccountListItem accountListItem) {
+          final AccountModel? account = accounts.firstWhereOrNull(
+            (AccountModel element) =>
+                element.accountId == accountListItem.loginid,
+          );
+
+          if (account == null) {
+            throw DerivAuthException(
+              message: 'Login is Expired',
+              type: AuthErrorType.expiredAccount,
+            );
+          }
+
+          return accountListItem.copyWith(token: account.token);
+        },
+      ).toList();
 
   @override
   Future<AccountModel?> getDefaultAccount() =>
@@ -135,6 +179,23 @@ class DerivAuthService extends BaseAuthService {
   List<AccountModel> _filterSupportedAccounts(List<AccountModel> accounts) {
     final List<AccountModel> supportedAccounts =
         accounts.where((AccountModel account) => account.isSupported).toList();
+
+    if (supportedAccounts.isEmpty) {
+      throw DerivAuthException(
+        message: notAvailableCountryMessage,
+        type: AuthErrorType.unsupportedCountry,
+      );
+    }
+
+    return supportedAccounts;
+  }
+
+  List<AccountListItem> _filterSupportedAccountsFromAuthorizeResponse(
+      List<AccountListItem> accounts) {
+    final List<AccountListItem> supportedAccounts = accounts
+        .where((AccountListItem account) =>
+            account.isSupported && account.isNotDisabled)
+        .toList();
 
     if (supportedAccounts.isEmpty) {
       throw DerivAuthException(

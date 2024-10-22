@@ -134,12 +134,28 @@ class _BaseTextFieldState extends State<BaseTextField> {
   void initState() {
     super.initState();
 
-    widget.focusNode?.addListener(() => setState(() {}));
+    _focusNode = widget.focusNode ?? FocusNode();
+    _focusNode.addListener(_onFocusChange);
 
     _focusNode = widget.focusNode ?? FocusNode();
 
     _formFieldKey = widget.formFieldKey ??
         (widget.validator == null ? null : GlobalKey<FormFieldState<String>>());
+  }
+
+  void _onFocusChange() {
+    if (!_focusNode.hasFocus) {
+      _formFieldKey?.currentState?.validate();
+    }
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
+    super.dispose();
   }
 
   @override
@@ -221,7 +237,11 @@ class _BaseTextFieldState extends State<BaseTextField> {
   }
 
   void _onChanged(String input) {
-    _formFieldKey?.currentState?.validate();
+    // Clear the error state when the user starts typing
+    if (_hasError) {
+      setState(() => _hasError = false);
+      _formFieldKey?.currentState?.validate();
+    }
     widget.onChanged?.call(input);
   }
 }

@@ -4,6 +4,7 @@ import 'package:analytics/analytics_route_observer.dart';
 import 'package:analytics/core/logger.dart';
 import 'package:analytics/sdk/base_analytics.dart';
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
+import 'package:analytics/sdk/rudderstack/models/user_info.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 import 'package:rudder_sdk_flutter/RudderController.dart';
@@ -49,8 +50,18 @@ class DerivRudderstack implements BaseAnalytics<RudderstackConfiguration> {
   }
 
   /// Sets the user id for this instance.
-  Future<bool> identify({required String userId}) async =>
-      _execute(() => rudderClient.identify(userId));
+  Future<bool> identify({
+    required UserInfo userInfo,
+  }) async {
+    final RudderTraits traits = RudderTraits()
+      ..put('residence_country', userInfo.countryResidence)
+      ..put('account_type', userInfo.accountType)
+      ..put('user_language', userInfo.language);
+    return _execute(() => rudderClient.identify(
+          userInfo.userId.toString(),
+          traits: traits,
+        ));
+  }
 
   /// Tracks an event with the given [eventName] and [properties].
   Future<bool> track({

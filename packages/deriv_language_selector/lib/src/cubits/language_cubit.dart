@@ -14,6 +14,7 @@ class LanguageCubit extends Cubit<LanguageState> {
   /// {@macro language_cubit}
   LanguageCubit({
     required this.languageService,
+    required this.onLanguageChanged,
   }) : super(LanguageLoadedState(
           language: languageService.defaultLanguage,
           activeLanguages: languageService.languages,
@@ -24,12 +25,16 @@ class LanguageCubit extends Cubit<LanguageState> {
   /// Language service.
   final LanguageService languageService;
 
+  /// Callback function to be called when the language is changed.
+  final void Function(LanguageModel selectedLanguage) onLanguageChanged;
+
   /// Updates the language and emits [LanguageLoadedState].
   Future<void> updateLanguage(
     LanguageModel language,
   ) async {
     await languageService.loadAndSetLanguage(language);
 
+    onLanguageChanged(language);
     emit(LanguageLoadedState(
         language: language, activeLanguages: languageService.languages));
     languageService.reconnectToServerWithNewLanguage(language);

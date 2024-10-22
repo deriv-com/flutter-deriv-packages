@@ -1,10 +1,16 @@
 import 'package:analytics/sdk/rudderstack/core/rudderstack_configuration.dart';
+import 'package:analytics/sdk/rudderstack/models/user_info.dart';
 import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 
 /// Class which hold events which should be monitored.
 class DerivRudderstackEvents {
-  /// Constructor for [DerivRudderstackEvents].
-  const DerivRudderstackEvents();
+  /// Creates a new [DerivRudderstackEvents] instance.
+  factory DerivRudderstackEvents() => _instance;
+
+  DerivRudderstackEvents._internal();
+
+  static final DerivRudderstackEvents _instance =
+      DerivRudderstackEvents._internal();
 
   ///Set ups Rudderstack connection.
   void setup({required String dataPlaneUrl, required String writeKey}) {
@@ -13,15 +19,55 @@ class DerivRudderstackEvents {
     );
   }
 
+  /// --------- common_events ---------------
+  /// Tracks system error has happened,
+  /// like no connection to the server and etc.
+  void logError(String error) {
+    DerivRudderstack().track(
+      eventName: 'error',
+      properties: <String, dynamic>{
+        'action': 'other_error',
+        'error_message': error,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'common_events_derivgo'
+      },
+    );
+  }
+
+  /// Tracks userId.
+  void logIdentifyUser({required UserInfo userInfo}) {
+    DerivRudderstack().identify(userInfo: userInfo);
+  }
+
+  /// Tracks system error has happened,
+  /// like no connection to the server and etc.
+  void logAccountInfo({
+    String? accountType,
+    String? countryResidence,
+    String? language,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'account_info',
+      properties: <String, dynamic>{
+        'action': 'account_info',
+        'account_type': '$accountType',
+        'country_residence': '$countryResidence',
+        'language': '$language',
+        'form_source': 'mobile_derivgo',
+        'form_name': 'common_events_derivgo'
+      },
+    );
+  }
+
   /// --------- ce_virtual_signup_form ---------------
   /// Captures app_open event when the app is opened.
-  void logAppOpened() {
+  void logSignupOpened() {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
       properties: <String, dynamic>{
         'action': 'open',
         'form_source': 'mobile_derivgo',
-        'form_name': 'common_events_derivgo'
+        'form_name': 'virtual_signup_derivgo'
       },
     );
   }
@@ -142,7 +188,8 @@ class DerivRudderstackEvents {
   }
 
   /// Tracks when user's sign up is finished.
-  void logSignUpDone(String signupProvider) {
+  void logSignUpDone(String signupProvider, [int? userId]) {
+    DerivRudderstack().identify(userInfo: UserInfo(userId: userId ?? 0));
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
       properties: <String, dynamic>{
@@ -155,8 +202,11 @@ class DerivRudderstackEvents {
   }
 
   /// Tracks when user taps 'Create free demo account' or social log in button.
-  void logSignUpPageAction(String signupProvider,
-      [bool? isToggleOn, String? referralCode]) {
+  void logSignUpPageAction(
+    String signupProvider, [
+    bool? isToggleOn,
+    String? referralCode,
+  ]) {
     DerivRudderstack().track(
       eventName: 'ce_virtual_signup_form',
       properties: <String, dynamic>{
@@ -184,14 +234,15 @@ class DerivRudderstackEvents {
     );
   }
 
+  /// --------- ce_real_account_signup_form ---------------
   /// Tracks when the real signup form opened.
   void logOpenRealSignUp() {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
       properties: <String, dynamic>{
-        'action': 'open_real_sign_up',
+        'action': 'open',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -204,13 +255,13 @@ class DerivRudderstackEvents {
       Map<String, dynamic>? userChoice]) {
     DerivRudderstack().track(
       eventName: 'ce_real_account_signup_form',
-      properties: {
+      properties: <String, dynamic>{
         'action': 'step_passed',
         'step_codename': stepCodename,
         'step_num': stepNum,
         'user_choice': userChoice,
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -222,7 +273,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'step_back',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -234,7 +285,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'close',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -247,21 +298,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'real_signup_error',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
-      },
-    );
-  }
-
-  /// Tracks system error has happened,
-  /// like no connection to the server and etc.
-  void logError(String error) {
-    DerivRudderstack().track(
-      eventName: 'ce_real_account_signup_form',
-      properties: <String, dynamic>{
-        'action': 'other_error',
-        'error_message': error,
-        'form_source': 'mobile_derivgo',
-        'form_name': 'common_events_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -273,7 +310,7 @@ class DerivRudderstackEvents {
       properties: <String, dynamic>{
         'action': 'real_signup_finished',
         'form_source': 'mobile_derivgo',
-        'form_name': 'real_signup_derivgo'
+        'form_name': 'real_account_signup_derivgo'
       },
     );
   }
@@ -336,6 +373,8 @@ class DerivRudderstackEvents {
     required String chartType,
     required String tradeType,
     required String currentPage,
+    required String ctaName,
+    int numberOfTrades = 1,
   }) {
     DerivRudderstack().track(
         eventName: 'ce_deriv_go_trade_form',
@@ -346,6 +385,31 @@ class DerivRudderstackEvents {
           'chart_type_name': chartType,
           'trade_type_name': tradeType,
           'subform_name': currentPage,
+          'contract_cta_name': ctaName,
+          'number_of_trades ': numberOfTrades,
+        });
+  }
+
+  /// Tracks when user close a contract.
+  void logContractClosed({
+    required String market,
+    required String chartType,
+    required String tradeType,
+    required String currentPage,
+    required String ctaName,
+    int numberOfTrades = 1,
+  }) {
+    DerivRudderstack().track(
+        eventName: 'ce_deriv_go_trade_form',
+        properties: <String, dynamic>{
+          'action': 'close_contract',
+          'form_name': 'ce_deriv_go_trade_form',
+          'market_name': market,
+          'chart_type_name': chartType,
+          'trade_type_name': tradeType,
+          'subform_name': currentPage,
+          'contract_cta_name': ctaName,
+          'number_of_trades ': numberOfTrades,
         });
   }
 }

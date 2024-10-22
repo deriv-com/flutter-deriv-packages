@@ -5,9 +5,11 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('BaseTextField', () {
     late TextEditingController controller;
+    late FocusNode focusNode;
 
     setUpAll(() {
       controller = TextEditingController();
+      focusNode = FocusNode();
     });
 
     testWidgets('renders correctly', (WidgetTester tester) async {
@@ -44,7 +46,7 @@ void main() {
       );
 
       await tester.enterText(find.byType(TextFormField), 'value');
-
+      await tester.pump();
       expect(onChangedCalled, isTrue);
     });
 
@@ -59,6 +61,7 @@ void main() {
             body: BaseTextField(
               labelText: 'label',
               controller: controller,
+              focusNode: focusNode,
               validator: (String? value) =>
                   value == invalidValue ? errorMessage : null,
             ),
@@ -70,7 +73,9 @@ void main() {
 
       await tester.enterText(textField, invalidValue);
 
-      await tester.pumpAndSettle();
+      focusNode.unfocus();
+
+      await tester.pump();
 
       expect(find.text(errorMessage), findsOneWidget);
     });

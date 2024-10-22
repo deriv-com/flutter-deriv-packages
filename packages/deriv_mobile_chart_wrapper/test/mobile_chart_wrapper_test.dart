@@ -1,12 +1,16 @@
 import 'package:deriv_localizations/l10n/generated/deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper_localizations.dart';
+import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter/material.dart';
-import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MockToolsController extends Mock implements ToolsController {
   @override
   bool get indicatorsEnabled => true;
+
+  @override
+  bool get drawingToolsEnabled => true;
 }
 
 class MockAddOnsRepository<T extends AddOnConfig> extends Mock
@@ -14,6 +18,9 @@ class MockAddOnsRepository<T extends AddOnConfig> extends Mock
 
 void main() {
   group('MobileChartWrapper Tests', () {
+    SharedPreferences.setMockInitialValues({
+      'default': dynamic,
+    });
     testWidgets('MobileChartWrapper initializes correctly',
         (WidgetTester tester) async {
       await tester.pumpWidget(_TestWidget(toolsController: ToolsController()));
@@ -49,6 +56,17 @@ void main() {
 
       // Verify the bottom sheet is displayed
       expect(find.byType(MobileToolsBottomSheetContent), findsOneWidget);
+    });
+
+    testWidgets('ToolsController showDrawingToolsMenu callback is set',
+        (WidgetTester tester) async {
+      final mockToolsController = MockToolsController();
+      await tester.pumpWidget(
+        _TestWidget(toolsController: mockToolsController),
+      );
+
+      // Verify callback is set
+      verify(mockToolsController.onShowDrawingToolsMenu = any).called(1);
     });
   });
 }

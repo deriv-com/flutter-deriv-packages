@@ -2,7 +2,6 @@ import 'package:analytics/sdk/rudderstack/sdk/deriv_rudderstack_sdk.dart';
 import 'package:bloc/bloc.dart';
 import 'package:deriv_auth/core/analytics/data/auth_tracking_repository.dart';
 import 'package:deriv_auth/core/analytics/service/auth_tracking_mixin.dart';
-
 import 'package:deriv_auth/core/exceptions/deriv_auth_exception.dart';
 import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
@@ -42,6 +41,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required String password,
     String? otp,
     String? userAgent,
+    bool useMultiToken = false,
   }) async {
     trackLoginWithEmailAndPassword();
 
@@ -56,6 +56,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       ),
       isSocialLogin: false,
       userAgent: userAgent,
+      useMultiToken: useMultiToken,
     );
   }
 
@@ -65,6 +66,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     final String? signupProvider,
     String? otp,
     String? userAgent,
+    bool useMultiToken = false,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -77,6 +79,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       ),
       isSocialLogin: true,
       userAgent: userAgent,
+      useMultiToken: useMultiToken,
     );
   }
 
@@ -85,6 +88,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required SocialAuthDto socialAuthDto,
     String? otp,
     String? userAgent,
+    bool useMultiToken = false,
   }) async {
     emit(DerivAuthLoadingState());
 
@@ -96,6 +100,28 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
       ),
       isSocialLogin: true,
       userAgent: userAgent,
+      useMultiToken: useMultiToken,
+    );
+  }
+
+  @override
+  Future<void> multiTokenAuthorize(String? token) async {
+    emit(DerivAuthLoadingState());
+
+    final List<AccountModel> accountList =
+        await authService.getLatestAccounts();
+    final List<String> tokenList = accountList
+        .where((AccountModel account) => account.token != null)
+        .map((AccountModel account) => account.token!)
+        .toList();
+
+    if (token != null && !tokenList.contains(token)) {
+      tokenList.add(token);
+    }
+    await _tokenLoginRequest(
+      'MULTI',
+      tokenList: tokenList,
+      accounts: accountList,
     );
   }
 
@@ -113,12 +139,15 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     required GetTokensRequestModel request,
     required bool isSocialLogin,
     String? userAgent,
+    bool useMultiToken = false,
   }) async {
     try {
       final AuthorizeEntity authorizeEntity = await authService.onLoginRequest(
         request: request,
         userAgent: userAgent,
+        useMultiToken: useMultiToken,
       );
+
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
@@ -143,10 +172,11 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
   Future<void> _tokenLoginRequest(
     String token, {
     required List<AccountModel> accounts,
+    List<String>? tokenList,
   }) async {
     try {
-      final AuthorizeEntity authorizeEntity =
-          await authService.login(token, accounts: accounts);
+      final AuthorizeEntity authorizeEntity = await authService.login(token,
+          accounts: accounts, tokenList: tokenList);
       final LandingCompanyEntity landingCompanyEntity =
           await authService.getLandingCompany(authorizeEntity.country);
       _isUserMigrated = _checkUserMigrated(authorizeEntity);
@@ -168,6 +198,37 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
         isSocialLogin: false,
       ));
     }
+  }
+
+  @override
+  Future<void> multiAuthorizeAllAccounts() async {
+    emit(DerivAuthLoadingState());
+
+    List<String> tokenList = <String>[];
+    final List<AccountModel> accountList =
+        await authService.getLatestAccounts();
+    final String? defaultAccountToken =
+        (await authService.getDefaultAccount())?.token;
+
+    if (defaultAccountToken == null) {
+      emit(DerivAuthLoggedOutState());
+
+      return;
+    } else {
+      tokenList = accountList
+          .where((AccountModel account) => account.token != null)
+          .map((AccountModel account) => account.token!)
+          .toList();
+
+      if (!tokenList.contains(defaultAccountToken)) {
+        tokenList.add(defaultAccountToken);
+      }
+    }
+    await _tokenLoginRequest(
+      'MULTI',
+      accounts: accountList,
+      tokenList: tokenList,
+    );
   }
 
   @override
@@ -231,5 +292,10 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
     }
 
     super.onChange(change);
+  }
+
+  /// This function clears the JWT token when needed.
+  void clearJwtToken() {
+    authService.jwtService.clearJwtToken();
   }
 }

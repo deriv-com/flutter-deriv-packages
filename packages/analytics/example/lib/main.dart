@@ -7,43 +7,39 @@ import 'package:deriv_env/env.dart';
 import 'package:example/pages/rudderstack.dart';
 import 'package:flutter/material.dart';
 
-
 import 'package:example/pages/first_page.dart';
 import 'package:example/pages/second_page.dart';
 import 'package:example/pages/splash_screen.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
 
   await Env().load();
 
   DerivDatadogConfiguration configuration = DerivDatadogConfiguration(
-      applicationId: Env().get<String>(
-        'DATADOG_APPLICATION_ID',
-      ),
-      clientToken: Env().get<String>(
-        'DATADOG_CLIENT_TOKEN',
-      ),
-      env: Env().get<String>(
-        'DATADOG_ENVIRONMENT',
-      ),
-      serviceName: Env().get<String>(
-        'DATADOG_SERVICE_NAME',
-      ),
-      trackingConsent: TrackingConsent.granted,
-    );
+    applicationId: Env().get<String>(
+      'DATADOG_APPLICATION_ID',
+    ),
+    clientToken: Env().get<String>(
+      'DATADOG_CLIENT_TOKEN',
+    ),
+    env: Env().get<String>(
+      'DATADOG_ENVIRONMENT',
+    ),
+    serviceName: Env().get<String>(
+      'DATADOG_SERVICE_NAME',
+    ),
+    trackingConsent: TrackingConsent.granted,
+  );
 
   DerivDatadog().setup(configuration);
 
   DerivRudderstack().setup(RudderstackConfiguration(
-      dataPlaneUrl: Env().get<String>(
-        'RUDDERSTACK_DATA_PLANE_URL'
-        ),
-      writeKey: Env().get<String>(
-        'RUDDERSTACK_WRITE_KEY',
-      ),
-    ));
+    dataPlaneUrl: Env().get<String>('RUDDERSTACK_DATA_PLANE_URL'),
+    writeKey: Env().get<String>(
+      'RUDDERSTACK_WRITE_KEY',
+    ),
+  ));
 
   runApp(const App());
 }
