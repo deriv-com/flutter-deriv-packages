@@ -28,7 +28,7 @@ void main() {
     _repository = DerivJwtRepository(
       client: _client,
       connectionInfo: _connectionInfo,
-      appToken: 'appToken',
+      getAppToken: ()=> 'appToken',
     );
   });
 

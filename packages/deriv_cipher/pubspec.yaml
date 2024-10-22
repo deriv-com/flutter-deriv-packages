@@ -1,0 +1,24 @@
+name: deriv_cipher
+description: Deriv cipher library.
+
+version: 0.0.2
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: "3.10.2"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  encrypt: 5.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+flutter:
+  assets:
+    - test/.env.test
+    - test/.env.empty.test
