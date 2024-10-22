@@ -1,3 +1,7 @@
+## 0.1.7
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-75] Add_bottom_sheet_landing_logic ([#841](https://github.com/regentmarkets/flutter-deriv-packages/issues/841)). ([5cf2429e](https://github.com/regentmarkets/flutter-deriv-packages/commit/5cf2429e959d9fa7093999bb4c20daf973cf8920))
+
 ## 0.1.6+1
 
  - Update a dependency to the latest release.
