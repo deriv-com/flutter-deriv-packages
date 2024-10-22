@@ -92,7 +92,7 @@
   "informTapToSetFinalPoint": "انقر لتعيين النقطة النهائية",
   "informNoActiveDrawingTools": "لا توجد أدوات رسم نشطة.",
   "actionAddDrawingTool": "إضافة أداة رسم",
-  "labelOf": "of",
-  "labelDeleteAllDrawingTools": "Delete all drawing tools",
-  "informDeleteAllDrawingTools": "This will delete all active drawing tools."
+  "labelOf": "من",
+  "labelDeleteAllDrawingTools": "احذف جميع أدوات الرسم",
+  "informDeleteAllDrawingTools": "سيؤدي هذا إلى حذف جميع أدوات الرسم النشطة."
 }
