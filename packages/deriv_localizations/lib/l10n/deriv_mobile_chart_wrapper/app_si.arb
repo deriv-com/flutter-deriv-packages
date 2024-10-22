@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "පළමු ලක්ෂ්යය සැකසීමට තට්ටු කරන්න",
   "informTapToSetFinalPoint": "අවසාන ලක්ෂ්යය සැකසීමට තට්ටු කරන්න",
   "informNoActiveDrawingTools": "ක්රියාකාරී ඇඳීමේ මෙවලම් නොමැත.",
-  "actionAddDrawingTool": "ඇඳීමේ මෙවලම එක් කරන්න"
+  "actionAddDrawingTool": "ඇඳීමේ මෙවලම එක් කරන්න",
+  "labelOf": "හි",
+  "labelDeleteAllDrawingTools": "සියලුම ඇඳීමේ මෙවලම් මකන්න",
+  "informDeleteAllDrawingTools": "මෙය සියලුම ක්රියාකාරී ඇඳීමේ මෙවලම් මකා දමනු ඇත."
 }
