@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "Nhấn để đặt điểm đầu tiên",
   "informTapToSetFinalPoint": "Nhấn để đặt điểm cuối cùng",
   "informNoActiveDrawingTools": "Không có công cụ vẽ hoạt động.",
-  "actionAddDrawingTool": "Thêm công cụ vẽ"
+  "actionAddDrawingTool": "Thêm công cụ vẽ",
+  "labelOf": "của",
+  "labelDeleteAllDrawingTools": "Xóa tất cả các công cụ vẽ",
+  "informDeleteAllDrawingTools": "Thao tác này sẽ xóa tất cả các công cụ vẽ đang hoạt động."
 }
