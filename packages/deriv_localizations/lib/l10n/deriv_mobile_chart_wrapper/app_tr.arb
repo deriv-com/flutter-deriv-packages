@@ -91,5 +91,8 @@
   "informTapToSetFirstPoint": "İlk noktayı ayarlamak için dokunun",
   "informTapToSetFinalPoint": "Son noktayı ayarlamak için dokunun",
   "informNoActiveDrawingTools": "Etkin çizim aracı yok.",
-  "actionAddDrawingTool": "Çizim aracı ekle"
+  "actionAddDrawingTool": "Çizim aracı ekle",
+  "labelOf": "dan",
+  "labelDeleteAllDrawingTools": "Tüm çizim araçlarını sil",
+  "informDeleteAllDrawingTools": "Bu, tüm aktif çizim araçlarını silecektir."
 }
