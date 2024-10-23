@@ -11,6 +11,7 @@ class LanguageSelectorWidget extends StatelessWidget {
     required this.languageItem,
     required this.onPressed,
     this.package,
+    this.showFlag = true,
     super.key,
   });
 
@@ -22,6 +23,9 @@ class LanguageSelectorWidget extends StatelessWidget {
 
   /// Name of the package where the flag image is located.
   final String? package;
+
+  /// Conditionally display flag icon based on the value
+  final bool showFlag;
 
   @override
   Widget build(BuildContext context) => TextButton(
@@ -44,7 +48,7 @@ class LanguageSelectorWidget extends StatelessWidget {
           children: <Widget>[
             Image(
               image: AssetImage(
-                languageItem.flag,
+                showFlag ? languageItem.flag : languageIcon,
                 package: package,
               ),
               width: ThemeProvider.margin24,
