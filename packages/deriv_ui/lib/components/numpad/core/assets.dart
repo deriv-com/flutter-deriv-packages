@@ -5,3 +5,4 @@
 // Icons
 const String handleIcon = 'assets/icons/ic_handle.svg';
 const String swapIcon = 'assets/icons/ic_currency_swap.svg';
+const String languageIcon = 'assets/icons/ic_language.svg';

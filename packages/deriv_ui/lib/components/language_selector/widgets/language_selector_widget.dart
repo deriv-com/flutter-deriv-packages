@@ -1,6 +1,7 @@
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 /// {@template language_selector_widget}
 /// Acts as a button to choose language. Has locale flag and locale name.
@@ -11,6 +12,7 @@ class LanguageSelectorWidget extends StatelessWidget {
     required this.languageItem,
     required this.onPressed,
     this.package,
+    this.showFlag = true,
     super.key,
   });
 
@@ -22,6 +24,9 @@ class LanguageSelectorWidget extends StatelessWidget {
 
   /// Name of the package where the flag image is located.
   final String? package;
+
+  /// Conditionally display flag icon based on the value
+  final bool showFlag;
 
   @override
   Widget build(BuildContext context) => TextButton(
@@ -42,14 +47,19 @@ class LanguageSelectorWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Image(
-              image: AssetImage(
-                languageItem.flag,
-                package: package,
-              ),
-              width: ThemeProvider.margin24,
-              height: ThemeProvider.margin16,
-            ),
+            showFlag
+                ? Image(
+                    image: AssetImage(
+                      languageItem.flag,
+                      package: package,
+                    ),
+                    width: ThemeProvider.margin24,
+                    height: ThemeProvider.margin16,
+                  )
+                : SvgPicture.asset(
+                    languageIcon,
+                    semanticsLabel: languageItem.code.toUpperCase(),
+                  ),
             const SizedBox(width: ThemeProvider.margin08),
             Text(
               languageItem.code.toUpperCase(),
