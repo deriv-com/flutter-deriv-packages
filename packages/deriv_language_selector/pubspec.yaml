@@ -43,3 +43,4 @@ flutter:
     - assets/icons/flags/ic_flag_ar.png
     - assets/icons/flags/ic_flag_ko.png
     - assets/icons/flags/ic_flag_sw.png
+    - assets/icons/ic_language.svg
