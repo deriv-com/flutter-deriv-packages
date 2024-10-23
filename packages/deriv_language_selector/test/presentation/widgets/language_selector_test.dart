@@ -55,13 +55,14 @@ void main() {
       );
 
       final Finder buttonFinder = find.byType(LanguageSelectorWidget);
-      final Finder bottomsheetFinder = find.byType(ExpandableBottomSheet);
 
       expect(buttonFinder, findsOneWidget);
 
       await tester.tap(buttonFinder);
 
       await tester.pumpAndSettle();
+
+      final Finder bottomsheetFinder = find.byType(LanguageItemList);
 
       expect(bottomsheetFinder, findsOneWidget);
     });
