@@ -1,3 +1,7 @@
+## 0.1.7+2
+
+ - **REFACTOR**: [DRGO-193] Wire up of line drawing tool ([#883](https://github.com/regentmarkets/flutter-deriv-packages/issues/883)). ([a498619c](https://github.com/regentmarkets/flutter-deriv-packages/commit/a498619c2ce6913b26e4dbd1f4d1857064862508))
+
 ## 0.1.7+1
 
  - Update a dependency to the latest release.

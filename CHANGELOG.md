@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.7.2`](#deriv_localizations---v172)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.7+2`](#deriv_mobile_chart_wrapper---v0172)
+ - [`deriv_passkeys` - `v0.0.5+10`](#deriv_passkeys---v00510)
+ - [`deriv_auth` - `v7.0.6`](#deriv_auth---v706)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.5+10`
+ - `deriv_auth` - `v7.0.6`
+
+---
+
+#### `deriv_localizations` - `v1.7.2`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#887](https://github.com/regentmarkets/flutter-deriv-packages/issues/887)). ([ba1b75b8](https://github.com/regentmarkets/flutter-deriv-packages/commit/ba1b75b85e103a46efab2a5224f04a280b282ee1))
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.7+2`
+
+ - **REFACTOR**: [DRGO-193] Wire up of line drawing tool ([#883](https://github.com/regentmarkets/flutter-deriv-packages/issues/883)). ([a498619c](https://github.com/regentmarkets/flutter-deriv-packages/commit/a498619c2ce6913b26e4dbd1f4d1857064862508))
+
+
 ## 2024-10-22
 
 ### Changes
