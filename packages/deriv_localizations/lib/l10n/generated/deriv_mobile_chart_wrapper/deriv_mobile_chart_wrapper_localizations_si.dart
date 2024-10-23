@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'මෙය $indicator දර්ශකය එහි පෙරනිමි සැකසුම් වලට යළි පිහිටුවනු ඇත.';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return '$indicator දර්ශකය නැවත සකසන්න';
   }
 
   @override
@@ -263,44 +263,44 @@ class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return '$min සහ $maxඅතර අගයක් ඇතුළත් කරන්න';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'පරාසය $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'ඇඳීමේ මෙවලම්';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'මෙවලම්';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'රේඛාව';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'රේ';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'පළමු ලක්ෂ්යය සැකසීමට තට්ටු කරන්න';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'අවසාන ලක්ෂ්යය සැකසීමට තට්ටු කරන්න';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'ක්රියාකාරී ඇඳීමේ මෙවලම් නොමැත.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'ඇඳීමේ මෙවලම එක් කරන්න';
 
   @override
-  String get labelOf => 'of';
+  String get labelOf => 'හි';
 
   @override
-  String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
+  String get labelDeleteAllDrawingTools => 'සියලුම ඇඳීමේ මෙවලම් මකන්න';
 
   @override
-  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
+  String get informDeleteAllDrawingTools => 'මෙය සියලුම ක්රියාකාරී ඇඳීමේ මෙවලම් මකා දමනු ඇත.';
 }

@@ -67,11 +67,7 @@ List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
         lineStyle: LineStyle(thickness: 0.9, color: BrandColors.coral),
       ),
     ),
-    DrawingToolItemModel(
-      title: context.mobileChartWrapperLocalizations.labelRay,
-      icon: macdIcon,
-      config: const RayDrawingToolConfig(),
-    ),
+    // Add more drawing tools here.
   ];
 
   return drawingTools;

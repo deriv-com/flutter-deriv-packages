@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Hii itaweka upya kiashiria cha $indicator kwa mipangilio yake ya default.';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return 'Weka upya kiashiria cha $indicator';
   }
 
   @override
@@ -263,44 +263,44 @@ class DerivMobileChartWrapperLocalizationsSw extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return 'Ingiza thamani kati ya $min na $max';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'Kiwango cha $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Zana za kuchora';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Vyombo';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'Mstari';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'taa';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'Gonga ili kuweka hatua ya kwanza';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Gonga ili kuweka hatua ya mwisho';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Hakuna zana zinazofaa za kuchora.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Ongeza zana ya kuchora';
 
   @override
-  String get labelOf => 'of';
+  String get labelOf => 'ya';
 
   @override
-  String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
+  String get labelDeleteAllDrawingTools => 'Futa zana zote za kuchora';
 
   @override
-  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
+  String get informDeleteAllDrawingTools => 'Hii itafuta zana zote za kuchora zinazotumika.';
 }

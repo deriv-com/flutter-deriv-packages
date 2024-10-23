@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Dadurch wird der Indikator $indicator auf seine Standardeinstellungen zurückgesetzt.';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return 'Anzeige $indicator zurücksetzen';
   }
 
   @override
@@ -263,44 +263,44 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return 'Geben Sie einen Wert zwischen $min und ${max}ein.';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'Reichweite $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Werkzeuge zum Zeichnen';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Werkzeuge';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'Linie';
 
   @override
   String get labelRay => 'Ray';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'Tippe, um den ersten Punkt zu setzen';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Tippe, um den Endpunkt festzulegen';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Keine aktiven Zeichenwerkzeuge.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Zeichentool hinzufügen';
 
   @override
-  String get labelOf => 'of';
+  String get labelOf => 'von';
 
   @override
-  String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
+  String get labelDeleteAllDrawingTools => 'Alle Zeichenwerkzeuge löschen';
 
   @override
-  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
+  String get informDeleteAllDrawingTools => 'Dadurch werden alle aktiven Zeichenwerkzeuge gelöscht.';
 }

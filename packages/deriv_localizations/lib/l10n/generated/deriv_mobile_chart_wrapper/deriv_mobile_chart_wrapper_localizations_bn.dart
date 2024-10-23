@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'এটি $indicator সূচকটিকে তার ডিফল্ট সেটিংসে পুনরায় সেট করবে।';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return 'রিসেট $indicator সূচক';
   }
 
   @override
@@ -263,44 +263,44 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return '$min এবং $maxএর মধ্যে একটি মান লিখুন';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'রেঞ্জ $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'অঙ্কন টুলস';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'সরঞ্জাম';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'লাইন';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'রশ্মি';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'প্রথম পয়েন্ট সেট করতে আলতো চাপুন';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'চূড়ান্ত পয়েন্ট সেট করতে ট্যাপ করুন';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'সক্রিয় অঙ্কন সরঞ্জাম নেই।';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'অঙ্কন টুল যোগ করুন';
 
   @override
-  String get labelOf => 'of';
+  String get labelOf => 'এর';
 
   @override
-  String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
+  String get labelDeleteAllDrawingTools => 'সমস্ত অঙ্কন সরঞ্জাম মুছে';
 
   @override
-  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
+  String get informDeleteAllDrawingTools => 'এটি সমস্ত সক্রিয় অঙ্কন সরঞ্জাম মুছে ফেলবে।';
 }
