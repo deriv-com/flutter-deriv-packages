@@ -17,6 +17,7 @@ class IndicatorDescriptionBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DerivBottomSheet(
+      height: MediaQuery.of(context).size.height * 0.55,
       title: indicator.title,
       showBackButton: true,
       hasActionButton: true,
