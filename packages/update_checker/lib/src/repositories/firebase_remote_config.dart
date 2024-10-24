@@ -1,3 +1,5 @@
+import 'dart:developer' as dev;
+
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:update_checker/src/repositories/base_firebase.dart';
 
@@ -19,8 +21,9 @@ class FirebaseRemoteConfigRepository implements BaseFirebase {
     await remoteConfig.ensureInitialized();
     try {
       await remoteConfig.fetchAndActivate();
-    } on Exception catch (_) {
-      // Ignore the exception and continue
+    } on Exception catch (e, s) {
+      // Log the exception and continue
+      dev.log('Error fetching remote config', error: e, stackTrace: s);
     }
 
     final RemoteConfigValue remoteConfigValue =
