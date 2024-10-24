@@ -1,4 +1,3 @@
-import 'package:deriv_logger/deriv_logger.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:update_checker/src/repositories/base_firebase.dart';
 
@@ -20,9 +19,8 @@ class FirebaseRemoteConfigRepository implements BaseFirebase {
     await remoteConfig.ensureInitialized();
     try {
       await remoteConfig.fetchAndActivate();
-    } on Exception catch (e, s) {
-      // Just log the exception and continue
-      AppLogger.e(e.toString(), stackTrace: s);
+    } on Exception catch (_) {
+      // Ignore the exception and continue
     }
 
     final RemoteConfigValue remoteConfigValue =
