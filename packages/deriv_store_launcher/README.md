@@ -45,6 +45,7 @@ To use this plugin, it's necessary to add platform-specific configurations for b
     <string>itms-apps</string>
     <string>derivx</string>
     <string>deriv</string>
+    <string>metatrader-5</string>
 </array>
 ```
 

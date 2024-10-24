@@ -29,6 +29,7 @@
         <string>itms-apps</string>
         <string>derivx</string>
         <string>deriv</string>
+        <string>metatrader-5</string>
     </array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
