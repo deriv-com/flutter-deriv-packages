@@ -61,6 +61,11 @@ class DerivFeatureFlag {
       (FeatureFlagRepository.getInstance().getFeatureValue(key) as num?) ??
       defaultValue;
 
+  /// Set attributes to target specific user.
+  void setAttributes(Map<String, dynamic> attributes) {
+    FeatureFlagRepository.getInstance().setAttributes(attributes);
+  }
+
   /// only for testing purposes.
   @visibleForTesting
   bool isFeatureOnTest(FeatureFlagRepository featureFlagRepository, String key,

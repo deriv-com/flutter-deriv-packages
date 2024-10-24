@@ -12,7 +12,9 @@ import 'deriv_auth_localizations_en.dart';
 import 'deriv_auth_localizations_es.dart';
 import 'deriv_auth_localizations_fr.dart';
 import 'deriv_auth_localizations_it.dart';
+import 'deriv_auth_localizations_km.dart';
 import 'deriv_auth_localizations_ko.dart';
+import 'deriv_auth_localizations_mn.dart';
 import 'deriv_auth_localizations_pl.dart';
 import 'deriv_auth_localizations_pt.dart';
 import 'deriv_auth_localizations_ru.dart';
@@ -20,6 +22,7 @@ import 'deriv_auth_localizations_si.dart';
 import 'deriv_auth_localizations_sw.dart';
 import 'deriv_auth_localizations_th.dart';
 import 'deriv_auth_localizations_tr.dart';
+import 'deriv_auth_localizations_uz.dart';
 import 'deriv_auth_localizations_vi.dart';
 import 'deriv_auth_localizations_zh.dart';
 
@@ -111,7 +114,9 @@ abstract class DerivAuthLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('it'),
+    Locale('km'),
     Locale('ko'),
+    Locale('mn'),
     Locale('pl'),
     Locale('pt'),
     Locale('ru'),
@@ -119,7 +124,10 @@ abstract class DerivAuthLocalizations {
     Locale('sw'),
     Locale('th'),
     Locale('tr'),
+    Locale('uz'),
     Locale('vi'),
+    Locale('zh', 'CN'),
+    Locale('zh', 'TW'),
     Locale('zh')
   ];
 
@@ -661,7 +669,7 @@ class _DerivAuthLocalizationsDelegate extends LocalizationsDelegate<DerivAuthLoc
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'ko', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'km', 'ko', 'mn', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'uz', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivAuthLocalizationsDelegate old) => false;
@@ -669,6 +677,16 @@ class _DerivAuthLocalizationsDelegate extends LocalizationsDelegate<DerivAuthLoc
 
 DerivAuthLocalizations lookupDerivAuthLocalizations(Locale locale) {
 
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'zh': {
+  switch (locale.countryCode) {
+    case 'CN': return DerivAuthLocalizationsZhCn();
+case 'TW': return DerivAuthLocalizationsZhTw();
+   }
+  break;
+   }
+  }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
@@ -679,7 +697,9 @@ DerivAuthLocalizations lookupDerivAuthLocalizations(Locale locale) {
     case 'es': return DerivAuthLocalizationsEs();
     case 'fr': return DerivAuthLocalizationsFr();
     case 'it': return DerivAuthLocalizationsIt();
+    case 'km': return DerivAuthLocalizationsKm();
     case 'ko': return DerivAuthLocalizationsKo();
+    case 'mn': return DerivAuthLocalizationsMn();
     case 'pl': return DerivAuthLocalizationsPl();
     case 'pt': return DerivAuthLocalizationsPt();
     case 'ru': return DerivAuthLocalizationsRu();
@@ -687,6 +707,7 @@ DerivAuthLocalizations lookupDerivAuthLocalizations(Locale locale) {
     case 'sw': return DerivAuthLocalizationsSw();
     case 'th': return DerivAuthLocalizationsTh();
     case 'tr': return DerivAuthLocalizationsTr();
+    case 'uz': return DerivAuthLocalizationsUz();
     case 'vi': return DerivAuthLocalizationsVi();
     case 'zh': return DerivAuthLocalizationsZh();
   }

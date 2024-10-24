@@ -49,6 +49,12 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
       context,
     );
     _drawingTools = getDrawingToolsList(context);
+
+    // Only change the tab index if the active drawing tools list is empty and
+    // the current tab is not the same 1st index tab.
+    if (drawingToolsRepo.items.isEmpty && _tabController.index != 1) {
+      _tabController.index = 1;
+    }
   }
 
   @override
@@ -297,13 +303,12 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
         },
       );
 
-  // TODO(aliakbar-deriv): Update the title and content texts of the dialog
-  //  once it is available in the deriv_localization package.
   void _showDeleteAllDrawingToolsDialog() => showAlertDialog(
         context: context,
-        title: 'Delete all drawing tools',
+        title:
+            context.mobileChartWrapperLocalizations.labelDeleteAllDrawingTools,
         content: Text(
-          'This will delete all active drawing tools.',
+          context.mobileChartWrapperLocalizations.informDeleteAllDrawingTools,
           style: TextStyles.subheading,
         ),
         positiveActionLabel:

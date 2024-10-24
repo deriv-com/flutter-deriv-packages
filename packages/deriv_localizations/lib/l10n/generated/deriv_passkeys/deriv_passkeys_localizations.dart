@@ -12,7 +12,9 @@ import 'deriv_passkeys_localizations_en.dart';
 import 'deriv_passkeys_localizations_es.dart';
 import 'deriv_passkeys_localizations_fr.dart';
 import 'deriv_passkeys_localizations_it.dart';
+import 'deriv_passkeys_localizations_km.dart';
 import 'deriv_passkeys_localizations_ko.dart';
+import 'deriv_passkeys_localizations_mn.dart';
 import 'deriv_passkeys_localizations_pl.dart';
 import 'deriv_passkeys_localizations_pt.dart';
 import 'deriv_passkeys_localizations_ru.dart';
@@ -20,6 +22,7 @@ import 'deriv_passkeys_localizations_si.dart';
 import 'deriv_passkeys_localizations_sw.dart';
 import 'deriv_passkeys_localizations_th.dart';
 import 'deriv_passkeys_localizations_tr.dart';
+import 'deriv_passkeys_localizations_uz.dart';
 import 'deriv_passkeys_localizations_vi.dart';
 import 'deriv_passkeys_localizations_zh.dart';
 
@@ -111,7 +114,9 @@ abstract class DerivPasskeysLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('it'),
+    Locale('km'),
     Locale('ko'),
+    Locale('mn'),
     Locale('pl'),
     Locale('pt'),
     Locale('ru'),
@@ -119,7 +124,10 @@ abstract class DerivPasskeysLocalizations {
     Locale('sw'),
     Locale('th'),
     Locale('tr'),
+    Locale('uz'),
     Locale('vi'),
+    Locale('zh', 'CN'),
+    Locale('zh', 'TW'),
     Locale('zh')
   ];
 
@@ -463,7 +471,7 @@ class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPas
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'ko', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'km', 'ko', 'mn', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'uz', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivPasskeysLocalizationsDelegate old) => false;
@@ -471,6 +479,16 @@ class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPas
 
 DerivPasskeysLocalizations lookupDerivPasskeysLocalizations(Locale locale) {
 
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'zh': {
+  switch (locale.countryCode) {
+    case 'CN': return DerivPasskeysLocalizationsZhCn();
+case 'TW': return DerivPasskeysLocalizationsZhTw();
+   }
+  break;
+   }
+  }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
@@ -481,7 +499,9 @@ DerivPasskeysLocalizations lookupDerivPasskeysLocalizations(Locale locale) {
     case 'es': return DerivPasskeysLocalizationsEs();
     case 'fr': return DerivPasskeysLocalizationsFr();
     case 'it': return DerivPasskeysLocalizationsIt();
+    case 'km': return DerivPasskeysLocalizationsKm();
     case 'ko': return DerivPasskeysLocalizationsKo();
+    case 'mn': return DerivPasskeysLocalizationsMn();
     case 'pl': return DerivPasskeysLocalizationsPl();
     case 'pt': return DerivPasskeysLocalizationsPt();
     case 'ru': return DerivPasskeysLocalizationsRu();
@@ -489,6 +509,7 @@ DerivPasskeysLocalizations lookupDerivPasskeysLocalizations(Locale locale) {
     case 'sw': return DerivPasskeysLocalizationsSw();
     case 'th': return DerivPasskeysLocalizationsTh();
     case 'tr': return DerivPasskeysLocalizationsTr();
+    case 'uz': return DerivPasskeysLocalizationsUz();
     case 'vi': return DerivPasskeysLocalizationsVi();
     case 'zh': return DerivPasskeysLocalizationsZh();
   }

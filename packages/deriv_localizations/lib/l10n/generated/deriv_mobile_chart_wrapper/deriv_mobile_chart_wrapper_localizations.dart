@@ -12,7 +12,9 @@ import 'deriv_mobile_chart_wrapper_localizations_en.dart';
 import 'deriv_mobile_chart_wrapper_localizations_es.dart';
 import 'deriv_mobile_chart_wrapper_localizations_fr.dart';
 import 'deriv_mobile_chart_wrapper_localizations_it.dart';
+import 'deriv_mobile_chart_wrapper_localizations_km.dart';
 import 'deriv_mobile_chart_wrapper_localizations_ko.dart';
+import 'deriv_mobile_chart_wrapper_localizations_mn.dart';
 import 'deriv_mobile_chart_wrapper_localizations_pl.dart';
 import 'deriv_mobile_chart_wrapper_localizations_pt.dart';
 import 'deriv_mobile_chart_wrapper_localizations_ru.dart';
@@ -20,6 +22,7 @@ import 'deriv_mobile_chart_wrapper_localizations_si.dart';
 import 'deriv_mobile_chart_wrapper_localizations_sw.dart';
 import 'deriv_mobile_chart_wrapper_localizations_th.dart';
 import 'deriv_mobile_chart_wrapper_localizations_tr.dart';
+import 'deriv_mobile_chart_wrapper_localizations_uz.dart';
 import 'deriv_mobile_chart_wrapper_localizations_vi.dart';
 import 'deriv_mobile_chart_wrapper_localizations_zh.dart';
 
@@ -111,7 +114,9 @@ abstract class DerivMobileChartWrapperLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('it'),
+    Locale('km'),
     Locale('ko'),
+    Locale('mn'),
     Locale('pl'),
     Locale('pt'),
     Locale('ru'),
@@ -119,7 +124,10 @@ abstract class DerivMobileChartWrapperLocalizations {
     Locale('sw'),
     Locale('th'),
     Locale('tr'),
+    Locale('uz'),
     Locale('vi'),
+    Locale('zh', 'CN'),
+    Locale('zh', 'TW'),
     Locale('zh')
   ];
 
@@ -680,6 +688,24 @@ abstract class DerivMobileChartWrapperLocalizations {
   /// In en, this message translates to:
   /// **'Add drawing tool'**
   String get actionAddDrawingTool;
+
+  /// No description provided for @labelOf.
+  ///
+  /// In en, this message translates to:
+  /// **'of'**
+  String get labelOf;
+
+  /// No description provided for @labelDeleteAllDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all drawing tools'**
+  String get labelDeleteAllDrawingTools;
+
+  /// No description provided for @informDeleteAllDrawingTools.
+  ///
+  /// In en, this message translates to:
+  /// **'This will delete all active drawing tools.'**
+  String get informDeleteAllDrawingTools;
 }
 
 class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegate<DerivMobileChartWrapperLocalizations> {
@@ -691,7 +717,7 @@ class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegat
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'ko', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'km', 'ko', 'mn', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'uz', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivMobileChartWrapperLocalizationsDelegate old) => false;
@@ -699,6 +725,16 @@ class _DerivMobileChartWrapperLocalizationsDelegate extends LocalizationsDelegat
 
 DerivMobileChartWrapperLocalizations lookupDerivMobileChartWrapperLocalizations(Locale locale) {
 
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'zh': {
+  switch (locale.countryCode) {
+    case 'CN': return DerivMobileChartWrapperLocalizationsZhCn();
+case 'TW': return DerivMobileChartWrapperLocalizationsZhTw();
+   }
+  break;
+   }
+  }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
@@ -709,7 +745,9 @@ DerivMobileChartWrapperLocalizations lookupDerivMobileChartWrapperLocalizations(
     case 'es': return DerivMobileChartWrapperLocalizationsEs();
     case 'fr': return DerivMobileChartWrapperLocalizationsFr();
     case 'it': return DerivMobileChartWrapperLocalizationsIt();
+    case 'km': return DerivMobileChartWrapperLocalizationsKm();
     case 'ko': return DerivMobileChartWrapperLocalizationsKo();
+    case 'mn': return DerivMobileChartWrapperLocalizationsMn();
     case 'pl': return DerivMobileChartWrapperLocalizationsPl();
     case 'pt': return DerivMobileChartWrapperLocalizationsPt();
     case 'ru': return DerivMobileChartWrapperLocalizationsRu();
@@ -717,6 +755,7 @@ DerivMobileChartWrapperLocalizations lookupDerivMobileChartWrapperLocalizations(
     case 'sw': return DerivMobileChartWrapperLocalizationsSw();
     case 'th': return DerivMobileChartWrapperLocalizationsTh();
     case 'tr': return DerivMobileChartWrapperLocalizationsTr();
+    case 'uz': return DerivMobileChartWrapperLocalizationsUz();
     case 'vi': return DerivMobileChartWrapperLocalizationsVi();
     case 'zh': return DerivMobileChartWrapperLocalizationsZh();
   }

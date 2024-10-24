@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return '이렇게 하면 $indicator 표시기가 기본 설정으로 재설정됩니다.';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return '$indicator 표시기 재설정';
   }
 
   @override
@@ -263,35 +263,44 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return '$min ~ $max사이의 값을 입력합니다.';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return '범위 $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => '드로잉 툴';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => '도구';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => '선';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => '광선';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => '첫 번째 포인트를 설정하려면 누릅니다.';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => '탭하여 최종 지점을 설정합니다.';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => '활성 드로잉 도구가 없습니다.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => '드로잉 도구 추가';
+
+  @override
+  String get labelOf => '의';
+
+  @override
+  String get labelDeleteAllDrawingTools => '모든 그리기 도구 삭제';
+
+  @override
+  String get informDeleteAllDrawingTools => '이렇게 하면 활성 드로잉 도구가 모두 삭제됩니다.';
 }

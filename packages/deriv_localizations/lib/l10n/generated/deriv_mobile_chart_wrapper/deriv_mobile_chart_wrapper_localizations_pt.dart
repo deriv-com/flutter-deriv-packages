@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsPt extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Esta ação irá repor o indicador $indicator para as suas definições predefinidas.';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsPt extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return 'Repor o indicador $indicator';
   }
 
   @override
@@ -263,35 +263,44 @@ class DerivMobileChartWrapperLocalizationsPt extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return 'Introduza um valor entre $min e $max';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'Intervalo $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Ferramentas de desenho';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Ferramentas';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'Linha';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'Linha de raio';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'Toque para definir o primeiro ponto';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Toque para definir o ponto final';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Não existem ferramentas de desenho ativas.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Adicionar ferramenta de desenho';
+
+  @override
+  String get labelOf => 'de';
+
+  @override
+  String get labelDeleteAllDrawingTools => 'Eliminar todas as ferramentas de desenho';
+
+  @override
+  String get informDeleteAllDrawingTools => 'Isto irá eliminar todas as ferramentas de desenho activas.';
 }
