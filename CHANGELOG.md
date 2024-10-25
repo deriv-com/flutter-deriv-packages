@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.7+4`](#deriv_mobile_chart_wrapper---v0174)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.7+4`
+
+ - **REFACTOR**(mobile_chart_wrapper): [DRGO-1222]update chart version ([#894](https://github.com/regentmarkets/flutter-deriv-packages/issues/894)). ([10f931f2](https://github.com/regentmarkets/flutter-deriv-packages/commit/10f931f25eef529cb5168b15143e3364d04f63ad))
+
+
 ## 2024-10-23
 
 ### Changes
