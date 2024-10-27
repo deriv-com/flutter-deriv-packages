@@ -93,7 +93,7 @@ class LanguageSelector extends StatelessWidget {
             ? _buildLanguageBottomSheet(context, state)
             : LanguageSelectorWidget(
                 package: usePackageFlags ? 'deriv_language_selector' : null,
-                showFlag: false,
+                hideFlag: true,
                 languageItem: state.language,
                 onPressed: () {
                   showLanguageBottomSheet != null
