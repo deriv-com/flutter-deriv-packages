@@ -26,6 +26,17 @@ dependencies:
       path: packages/deriv_http_client
       ref: deriv_http_client-v2.0.2
 
+dependency_overrides:
+  # We've encountered an issue related to package below upon upgrading to flutter 3.22.2 in one of
+  # the projects. In order to resolve the issue, we've to update the proguard-rules.pro
+  # in the package itself. Due to that, we've created a PR based on the master branch of the package
+  # and make use of it as a temporary fix.
+  flutter_inappwebview_android:
+    git:
+      url: git@github.com:weng-deriv/flutter_inappwebview.git
+      path: flutter_inappwebview_android
+      ref: 9f122f2f549fde62fd0fb911eaab87cc9da85903
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
