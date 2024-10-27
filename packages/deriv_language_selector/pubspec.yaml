@@ -14,7 +14,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: 1b620f4ed5b77d22ba78e9f6639bb5ec352c1515
+      ref: f091910608fb3ed2f7c2abb30920fb70b2dd7974
   shared_preferences: ^2.2.2
   flutter_bloc: ^8.1.4
   equatable: ^2.0.5
