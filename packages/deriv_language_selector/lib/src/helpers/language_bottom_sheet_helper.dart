@@ -19,7 +19,7 @@ void showExpandableLanguageBottomSheet({
         value: BlocProvider.of<LanguageCubit>(context),
         child: DraggableScrollableSheet(
             initialChildSize: 0.6, // Start at 60% of screen height
-            minChildSize: 0.6, // Allow shrinking upto 40%
+            minChildSize: 0.6, // Allow shrinking upto 60%
             maxChildSize:
                 0.95, // Full screen when expanded 95% (since the status bar is there)
             expand: false,
