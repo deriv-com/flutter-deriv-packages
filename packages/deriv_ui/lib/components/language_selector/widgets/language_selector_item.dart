@@ -29,34 +29,43 @@ class LanguageSelectorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => IgnorePointer(
-      ignoring: isSelected,
-      child: TextButton(
-        onPressed: () => onPressed(item),
-        style: ButtonStyle(
-          padding: WidgetStateProperty.all(EdgeInsets.zero),
-          shape: WidgetStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
-          )),
-          overlayColor: WidgetStateProperty.all(context.theme.colors.hover),
-        ),
-        child: Container(
-          padding: const EdgeInsets.symmetric(
+        ignoring: isSelected,
+        child: TextButton(
+          onPressed: () => onPressed(item),
+          style: ButtonStyle(
+            padding: WidgetStateProperty.all(EdgeInsets.zero),
+            shape: WidgetStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
+            )),
+            overlayColor: WidgetStateProperty.all(context.theme.colors.hover),
+          ),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
               horizontal: ThemeProvider.margin16,
-              vertical: ThemeProvider.margin18),
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: isSelected ? context.theme.colors.hover : Colors.transparent,
-            borderRadius: const BorderRadius.all(
-                Radius.circular(ThemeProvider.borderRadius08)),
-          ),
-          child: Text(
-            item.name,
-            style: isSelected
-                ? context.theme.textStyle(textStyle: TextStyles.body2)
-                : context.theme
-                    .textStyle(textStyle: TextStyles.body1)
-                    .copyWith(color: context.theme.colors.lessProminent),
+              vertical: ThemeProvider.margin18,
+            ),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color:
+                  isSelected ? context.theme.colors.hover : Colors.transparent,
+              borderRadius: const BorderRadius.all(
+                  Radius.circular(ThemeProvider.borderRadius08)),
+            ),
+            child: Text(
+              item.name,
+              style: isSelected
+                  ? context.theme.textStyle(
+                      textStyle: TextStyles.body2,
+                    )
+                  : context.theme
+                      .textStyle(
+                        textStyle: TextStyles.body1,
+                      )
+                      .copyWith(
+                        color: context.theme.colors.lessProminent,
+                      ),
+            ),
           ),
         ),
-      ));
+      );
 }
