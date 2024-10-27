@@ -12,7 +12,7 @@ class LanguageSelectorWidget extends StatelessWidget {
     required this.languageItem,
     required this.onPressed,
     this.package,
-    this.showFlag = true,
+    this.hideFlag = false,
     super.key,
   });
 
@@ -26,7 +26,7 @@ class LanguageSelectorWidget extends StatelessWidget {
   final String? package;
 
   /// Conditionally display flag icon based on the value
-  final bool showFlag;
+  final bool hideFlag;
 
   @override
   Widget build(BuildContext context) => TextButton(
@@ -47,18 +47,18 @@ class LanguageSelectorWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            showFlag
-                ? Image(
+            hideFlag
+                ? SvgPicture.asset(
+                    languageIcon,
+                    semanticsLabel: languageItem.code.toUpperCase(),
+                  )
+                : Image(
                     image: AssetImage(
                       languageItem.flag,
                       package: package,
                     ),
                     width: ThemeProvider.margin24,
                     height: ThemeProvider.margin16,
-                  )
-                : SvgPicture.asset(
-                    languageIcon,
-                    semanticsLabel: languageItem.code.toUpperCase(),
                   ),
             const SizedBox(width: ThemeProvider.margin08),
             Text(
