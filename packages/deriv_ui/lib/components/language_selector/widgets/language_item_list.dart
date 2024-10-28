@@ -44,8 +44,8 @@ class _LanguageItemListState extends State<LanguageItemList> {
                   package: widget.package,
                   item: item,
                   isSelected: widget.selectedItem != null &&
-                      widget.selectedItem?.name.toLowerCase() ==
-                          item.name.toLowerCase(),
+                      widget.selectedItem?.name.trim().toLowerCase() ==
+                          item.name.trim().toLowerCase(),
                   onPressed: (LanguageModel item) {
                     widget.onLanguageSelected(item);
 
