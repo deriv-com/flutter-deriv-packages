@@ -14,7 +14,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: a73a668b5376782bc9792b48d7fa8c1735b561be
+      ref: 8f4cfa4cd73bbefec35b0fe88ef50281664e8dd8
   
   deriv_theme:
     git:
@@ -51,3 +51,4 @@ flutter:
     - assets/icons/flags/ic_flag_ko.png
     - assets/icons/flags/ic_flag_sw.png
     - assets/icons/ic_language.svg
+  

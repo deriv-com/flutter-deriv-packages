@@ -25,7 +25,7 @@ class LanguageSelector extends StatelessWidget {
   /// ```
   const LanguageSelector.bottomSheet({
     this.usePackageFlags = true,
-    this.hideButtonFlag = false,
+    this.showButtonFlag = false,
     Key? key,
   })  : isBottomSheet = true,
         showLanguageBottomSheet = null,
@@ -62,7 +62,7 @@ class LanguageSelector extends StatelessWidget {
     required this.bottomsheetTitle,
     this.showLanguageBottomSheet,
     this.usePackageFlags = true,
-    this.hideButtonFlag = false,
+    this.showButtonFlag = false,
     Key? key,
   })  : isBottomSheet = false,
         super(key: key);
@@ -87,9 +87,9 @@ class LanguageSelector extends StatelessWidget {
   /// should be [ic_flag_language_code].png.
   final bool usePackageFlags;
 
-  /// In new UI design since we are not using country flags anymore
-  /// this will conditionally display globe icon instead of flag in language selector button
-  final bool hideButtonFlag;
+  /// Since we are not using country flags anymore this will conditionally display
+  /// globe icon instead of flag in language selector button
+  final bool showButtonFlag;
 
   @override
   Widget build(BuildContext context) =>
@@ -99,7 +99,7 @@ class LanguageSelector extends StatelessWidget {
             ? _buildLanguageBottomSheet(context, state)
             : LanguageSelectorWidget(
                 package: usePackageFlags ? 'deriv_language_selector' : null,
-                hideFlag: hideButtonFlag,
+                showFlag: showButtonFlag,
                 languageItem: state.language,
                 onPressed: () {
                   showLanguageBottomSheet != null
