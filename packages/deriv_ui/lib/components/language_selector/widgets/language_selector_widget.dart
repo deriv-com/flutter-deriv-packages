@@ -45,7 +45,7 @@ class LanguageSelectorWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            showFlag && languageItem.flag.isEmpty
+            showFlag && languageItem.flag.isNotEmpty
                 ? Image(
                     image: AssetImage(
                       languageItem.flag,
