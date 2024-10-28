@@ -45,18 +45,18 @@ class LanguageSelectorWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            showFlag || languageItem.flag.isEmpty
-                ? SvgPicture.asset(
-                    languageIcon,
-                    semanticsLabel: languageItem.code.toUpperCase(),
-                  )
-                : Image(
+            showFlag && languageItem.flag.isEmpty
+                ? Image(
                     image: AssetImage(
                       languageItem.flag,
                       package: package,
                     ),
                     width: ThemeProvider.margin24,
                     height: ThemeProvider.margin16,
+                  )
+                : SvgPicture.asset(
+                    languageIcon,
+                    semanticsLabel: languageItem.code.toUpperCase(),
                   ),
             const SizedBox(width: ThemeProvider.margin08),
             Text(
