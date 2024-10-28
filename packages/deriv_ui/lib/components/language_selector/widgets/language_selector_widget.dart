@@ -12,7 +12,7 @@ class LanguageSelectorWidget extends StatelessWidget {
     required this.languageItem,
     required this.onPressed,
     this.package,
-    this.showFlag = false,
+    this.showFlag = true,
     super.key,
   });
 
