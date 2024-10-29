@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'สิ่งนี้จะรีเซ็ตตัวบ่งชี้ $indicator ไปเป็นตามค่าเริ่มต้นของมัน';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return 'รีเซ็ตตัวบ่งชี้ $indicator';
   }
 
   @override
@@ -263,35 +263,44 @@ class DerivMobileChartWrapperLocalizationsTh extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return 'ป้อนค่าระหว่าง $min และ $max';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'ช่วง $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'เครื่องมือวาด';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'เครื่องมือ';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'เส้น';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'รังสี';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'แตะเพื่อตั้งค่าจุดแรก';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'แตะเพื่อตั้งค่าจุดสุดท้าย';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'ไม่มีเครื่องมือวาดภาพที่ใช้งานอยู่';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'เพิ่มเครื่องมือวาดภาพ';
+
+  @override
+  String get labelOf => 'ของ';
+
+  @override
+  String get labelDeleteAllDrawingTools => 'ลบเครื่องมือวาดภาพทั้งหมด';
+
+  @override
+  String get informDeleteAllDrawingTools => 'สิ่งนี้จะลบเครื่องมือวาดภาพที่ใช้งานอยู่ทั้งหมด';
 }

@@ -33,6 +33,11 @@ class FeatureFlagRepository {
   dynamic getFeatureValue(String key, {dynamic defaultValue = false}) =>
       _growthBookSDK.feature(key).value ?? defaultValue;
 
+  /// Set attributes to target specific user.
+  void setAttributes(Map<String, dynamic> attributes) {
+    _growthBookSDK.setAttributes(attributes);
+  }
+
   @visibleForTesting
   GrowthBookSDK get growthBookSDK => _growthBookSDK;
 }

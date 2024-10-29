@@ -85,7 +85,11 @@ class DrawingToolInfoBar extends StatelessWidget
           borderRadius: BorderRadius.circular(ThemeProvider.borderRadius04),
         ),
         child: Text(
-          '${infoBarData.step} of ${infoBarData.totalSteps}',
+          _getStepIndicatorTitle(
+            context,
+            step: infoBarData.step,
+            totalSteps: infoBarData.totalSteps,
+          ),
           style: context.theme.textStyle(textStyle: TextStyles.caption),
         ),
       );
@@ -137,5 +141,14 @@ class DrawingToolInfoBar extends StatelessWidget
 
     // Default case for unsupported drawing tools.
     return DrawingToolInfoBarModel(step: '-', totalSteps: 0, title: '');
+  }
+
+  String _getStepIndicatorTitle(
+    BuildContext context, {
+    required String step,
+    required int totalSteps,
+  }) {
+    return '$step ${context.mobileChartWrapperLocalizations.labelOf} '
+        '$totalSteps';
   }
 }
