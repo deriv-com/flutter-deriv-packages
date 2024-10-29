@@ -374,6 +374,7 @@ class DerivRudderstackEvents {
     required String tradeType,
     required String currentPage,
     required String ctaName,
+    required String contractId,
     int numberOfTrades = 1,
   }) {
     DerivRudderstack().track(
@@ -385,6 +386,7 @@ class DerivRudderstackEvents {
           'chart_type_name': chartType,
           'trade_type_name': tradeType,
           'subform_name': currentPage,
+          'contract_id': contractId,
           'contract_cta_name': ctaName,
           'number_of_trades ': numberOfTrades,
         });
@@ -397,6 +399,7 @@ class DerivRudderstackEvents {
     required String tradeType,
     required String currentPage,
     required String ctaName,
+    required String contractId,
     int numberOfTrades = 1,
   }) {
     DerivRudderstack().track(
@@ -409,6 +412,7 @@ class DerivRudderstackEvents {
           'trade_type_name': tradeType,
           'subform_name': currentPage,
           'contract_cta_name': ctaName,
+          'contract_id': contractId,
           'number_of_trades ': numberOfTrades,
         });
   }
