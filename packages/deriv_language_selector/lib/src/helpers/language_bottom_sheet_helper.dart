@@ -23,59 +23,52 @@ void showExpandableLanguageBottomSheet({
         value: BlocProvider.of<LanguageCubit>(context),
         child: DraggableScrollableSheet(
           initialChildSize: 0.6, // Start at 60% of screen height
-          minChildSize: 0.6, // Allow shrinking upto 60%
+          minChildSize: 0.5, // Allow shrinking upto 50%
           maxChildSize:
               0.95, // Full screen when expanded 95% (since the status bar is there)
           expand: false,
           builder: (BuildContext context, ScrollController controller) =>
-              Column(
-            children: <Widget>[
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: SizedBox(
-                  height: ThemeProvider.margin24,
-                  child: Center(
+              SingleChildScrollView(
+            controller: controller,
+            child: Column(
+              children: <Widget>[
+                Center(
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
                     child: Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: ThemeProvider.margin32,
-                      ),
-                      height: ThemeProvider.margin04,
-                      width: ThemeProvider.margin40,
-                      decoration: BoxDecoration(
-                        color: context.theme.colors.active,
-                        borderRadius: BorderRadius.circular(
-                          ThemeProvider.borderRadius04,
+                      color: context.theme.colors.secondary,
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                          vertical: ThemeProvider.margin12,
+                        ),
+                        height: ThemeProvider.margin04,
+                        width: ThemeProvider.margin40,
+                        decoration: BoxDecoration(
+                          color: context.theme.colors.active,
+                          borderRadius: BorderRadius.circular(
+                              ThemeProvider.borderRadius04),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: ThemeProvider.margin14,
-                ),
-                child: Text(
-                  bottomsheetTitle,
-                  style: context.theme.textStyle(
-                    textStyle: TextStyles.subheading,
-                    color: context.theme.colors.prominent,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: ThemeProvider.margin12,
+                  ),
+                  child: Text(
+                    bottomsheetTitle,
+                    style: context.theme.textStyle(
+                      textStyle: TextStyles.subheading,
+                      color: context.theme.colors.prominent,
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  controller: controller,
-                  child: Column(
-                    children: <Widget>[
-                      LanguageSelector.bottomSheet(
-                        usePackageFlags: usePackageFlags,
-                      ),
-                    ],
-                  ),
+                LanguageSelector.bottomSheet(
+                  usePackageFlags: usePackageFlags,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
