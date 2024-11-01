@@ -1,3 +1,35 @@
+## 0.1.8
+
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+
+## 0.1.7+4
+
+ - **REFACTOR**(mobile_chart_wrapper): [DRGO-1222]update chart version ([#894](https://github.com/regentmarkets/flutter-deriv-packages/issues/894)). ([10f931f2](https://github.com/regentmarkets/flutter-deriv-packages/commit/10f931f25eef529cb5168b15143e3364d04f63ad))
+
+## 0.1.7+3
+
+ - **FIX**(deriv_mobile_chart_wrapper): [DRGO-193] remove unimplemented settings button ([#890](https://github.com/regentmarkets/flutter-deriv-packages/issues/890)). ([095f96aa](https://github.com/regentmarkets/flutter-deriv-packages/commit/095f96aa10723358142f59dd71af29b98202d69f))
+
+## 0.1.7+2
+
+ - **REFACTOR**: [DRGO-193] Wire up of line drawing tool ([#883](https://github.com/regentmarkets/flutter-deriv-packages/issues/883)). ([a498619c](https://github.com/regentmarkets/flutter-deriv-packages/commit/a498619c2ce6913b26e4dbd1f4d1857064862508))
+
+## 0.1.7+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.7
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-75] Add_bottom_sheet_landing_logic ([#841](https://github.com/regentmarkets/flutter-deriv-packages/issues/841)). ([5cf2429e](https://github.com/regentmarkets/flutter-deriv-packages/commit/5cf2429e959d9fa7093999bb4c20daf973cf8920))
+
+## 0.1.6+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.6
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Update pubspec.yaml ([#877](https://github.com/regentmarkets/flutter-deriv-packages/issues/877)). ([79518161](https://github.com/regentmarkets/flutter-deriv-packages/commit/7951816199178bcdc1eb507b784e713da9f60e8d))
+
 ## 0.1.5
 
  - **FEAT**(deriv_mobile_chart_wrapper): Add the ability to hide indicators. ([#866](https://github.com/regentmarkets/flutter-deriv-packages/issues/866)). ([2cf1b4f6](https://github.com/regentmarkets/flutter-deriv-packages/commit/2cf1b4f6e255b1058996015513ad39aca4b29b71))

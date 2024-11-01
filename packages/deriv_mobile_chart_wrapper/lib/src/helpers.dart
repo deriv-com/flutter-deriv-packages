@@ -1,6 +1,8 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
+import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/utils/popup_dialogs_helper.dart';
@@ -67,11 +69,7 @@ List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
         lineStyle: LineStyle(thickness: 0.9, color: BrandColors.coral),
       ),
     ),
-    DrawingToolItemModel(
-      title: context.mobileChartWrapperLocalizations.labelRay,
-      icon: macdIcon,
-      config: const RayDrawingToolConfig(),
-    ),
+    // Add more drawing tools here.
   ];
 
   return drawingTools;
@@ -163,6 +161,7 @@ Future<void> showResetIndicatorDialog(
   BuildContext context, {
   required IndicatorConfig config,
   required Function() onResetPressed,
+  ChartEventTracker? eventTracker,
 }) {
   return showAlertDialog(
       context: context,
@@ -181,8 +180,31 @@ Future<void> showResetIndicatorDialog(
       onPositiveActionPressed: () {
         onResetPressed.call();
         Navigator.pop(context);
+        eventTracker?.logResetIndicatorSettings(
+          config.title,
+          getIndicatorCategoryTitle(config.title),
+        );
       },
       onNegativeActionPressed: () {
         Navigator.pop(context);
       });
+}
+
+String getIndicatorCategoryTitle(String indicatorTitle) {
+  switch (indicatorTitle) {
+    case 'MACD':
+      return IndicatorCategory.momentum.name;
+
+    case 'Relative Strength Index (RSI)':
+      return IndicatorCategory.momentum.name;
+
+    case 'Bollinger Bands':
+      return IndicatorCategory.volatility.name;
+
+    case 'Moving Average':
+      return IndicatorCategory.movingAverages.name;
+
+    default:
+      return '';
+  }
 }

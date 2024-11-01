@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Cela réinitialisera les paramètres par défaut de l\'indicateur $indicator .';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return 'Réinitialiser l\'indicateur $indicator';
   }
 
   @override
@@ -263,35 +263,44 @@ class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return 'Saisissez une valeur comprise entre $min et $max';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'Gamme $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Outils de dessin';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Outils';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'Ligne';
 
   @override
   String get labelRay => 'Ray';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'Touchez pour définir le premier point';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Touchez pour définir le point final';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Aucun outil de dessin actif.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Ajouter un outil de dessin';
+
+  @override
+  String get labelOf => 'de';
+
+  @override
+  String get labelDeleteAllDrawingTools => 'Supprimer tous les outils de dessin';
+
+  @override
+  String get informDeleteAllDrawingTools => 'Cela supprimera tous les outils de dessin actifs.';
 }

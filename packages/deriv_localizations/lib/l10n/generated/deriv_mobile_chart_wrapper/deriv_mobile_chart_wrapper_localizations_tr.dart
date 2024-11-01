@@ -74,7 +74,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Bu, $indicator göstergesini varsayılan ayarlarına sıfırlar.';
   }
 
   @override
@@ -84,7 +84,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return '$indicator göstergesini sıfırla';
   }
 
   @override
@@ -263,35 +263,44 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return '$min ile ${max}arasında bir değer girin.';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'Aralık $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Çizim araçları';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Araçlar';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'Çizgi';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'ışın';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'İlk noktayı ayarlamak için dokunun';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Son noktayı ayarlamak için dokunun';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Etkin çizim aracı yok.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Çizim aracı ekle';
+
+  @override
+  String get labelOf => 'dan';
+
+  @override
+  String get labelDeleteAllDrawingTools => 'Tüm çizim araçlarını sil';
+
+  @override
+  String get informDeleteAllDrawingTools => 'Bu, tüm aktif çizim araçlarını silecektir.';
 }

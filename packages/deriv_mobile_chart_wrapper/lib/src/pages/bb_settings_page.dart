@@ -13,6 +13,7 @@ class BollingerBandsSettingsPage
     required super.initialConfig,
     required super.onConfigUpdated,
     required super.onApply,
+    super.onReset,
     super.key,
   });
 
@@ -55,11 +56,12 @@ class _BollingerBandsSettingsPageState
           onReset: () {
             showResetIndicatorDialog(context, config: _indicatorConfig,
                 onResetPressed: () {
-                  setState(() {
-                    _indicatorConfig = const BollingerBandsIndicatorConfig();
-                  });
-                  widget.onConfigUpdated(_indicatorConfig);
-                });
+              setState(() {
+                _indicatorConfig = const BollingerBandsIndicatorConfig();
+              });
+              widget.onConfigUpdated(_indicatorConfig);
+              widget.onReset?.call();
+            });
           },
         ),
       ],

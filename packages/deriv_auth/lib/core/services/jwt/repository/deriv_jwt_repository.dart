@@ -13,7 +13,7 @@ class DerivJwtRepository implements BaseJwtRepository {
   DerivJwtRepository({
     required this.client,
     required this.connectionInfo,
-    required this.appToken,
+    required this.getAppToken,
   });
 
   /// Http client.
@@ -23,7 +23,7 @@ class DerivJwtRepository implements BaseJwtRepository {
   final AuthConnectionInfo connectionInfo;
 
   /// Private client app token.
-  final String appToken;
+  final String Function() getAppToken;
 
   @override
   Future<String> authorizeApp({
@@ -54,7 +54,7 @@ class DerivJwtRepository implements BaseJwtRepository {
 
     return AppAuthorizationChallengeResponseModel.fromJson(
       jsonResponse,
-      appToken: appToken,
+      appToken: getAppToken(),
     );
   }
 

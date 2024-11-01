@@ -1,5 +1,6 @@
 import 'package:deriv_chart/deriv_chart.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
+import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tools_selector.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/config_item_model.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_tab_label.dart';
@@ -48,6 +49,7 @@ class MobileChartWrapper extends StatefulWidget {
     this.showDataFitButton,
     this.showScrollToLastTickButton,
     this.loadingAnimationColor,
+    this.eventTracker,
     this.showIndicators = true,
     Key? key,
   }) : super(key: key);
@@ -157,6 +159,9 @@ class MobileChartWrapper extends StatefulWidget {
   /// The color of the loading animation.
   final Color? loadingAnimationColor;
 
+  /// Indicator event service.
+  final ChartEventTracker? eventTracker;
+
   /// Show indicators flag.
   final bool showIndicators;
 
@@ -261,6 +266,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
   void _showIndicatorsSheet(AddOnsRepository<IndicatorConfig> indicatorsRepo) {
     // Show indicators menu as modal bottom sheet so it's dismissible by tapping
     // outside.
+    widget.eventTracker?.logOpenIndicatorTypesBottomSheet();
     showModalBottomSheet(
       context: context,
       builder: (_) =>
@@ -273,6 +279,7 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
               selectedTab: indicatorsRepo.items.isEmpty
                   ? IndicatorTabLabel.all
                   : IndicatorTabLabel.active,
+              eventTracker: widget.eventTracker,
             ),
           ),
         ),
