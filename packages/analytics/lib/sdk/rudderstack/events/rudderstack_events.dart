@@ -19,7 +19,7 @@ class DerivRudderstackEvents {
     );
   }
 
-  /// --------- common_events ---------------
+  // --------- common_events ---------------
   /// Tracks system error has happened,
   /// like no connection to the server and etc.
   void logError(String error) {
@@ -59,7 +59,7 @@ class DerivRudderstackEvents {
     );
   }
 
-  /// --------- ce_virtual_signup_form ---------------
+  // --------- ce_virtual_signup_form ---------------
   /// Captures app_open event when the app is opened.
   void logSignupOpened() {
     DerivRudderstack().track(
@@ -234,7 +234,7 @@ class DerivRudderstackEvents {
     );
   }
 
-  /// --------- ce_real_account_signup_form ---------------
+  // --------- ce_real_account_signup_form ---------------
   /// Tracks when the real signup form opened.
   void logOpenRealSignUp() {
     DerivRudderstack().track(
@@ -315,7 +315,7 @@ class DerivRudderstackEvents {
     );
   }
 
-  /// --------- ce_deriv_go_trade_form ---------------
+  // --------- ce_deriv_go_trade_form ---------------
   /// Tracks when user opens trade page
   ///
   /// tradeType: Trade type name (e.g. 'Multipliers', 'Accumulators')
@@ -411,5 +411,230 @@ class DerivRudderstackEvents {
           'contract_cta_name': ctaName,
           'number_of_trades ': numberOfTrades,
         });
+  }
+
+  // ------------ ce_indicators_types_form ---------------
+
+  /// Track when user opens indicators bottom sheet.
+  void logOpenIndicatorTypesBottomSheet() {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'open',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user closes indicators bottom sheet.
+  void logCloseIndicatorTypesBottomSheet() {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'close',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user clicks on indicator type to add the indicator.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logAddIndicatorByClickIndicatorType(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'add_active',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'subform_name': 'indicators_type',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user clicks on indicator info `Add` button to add the indicator.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logAddIndicatorByClickAddOnIndicatorInfo(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'add_active',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'subform_name': 'indicators_info',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user clicks on clean all active indicator.
+  void logCleanAllActiveIndicator() {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'clean_all_active',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user deletes active indicator from active indicators list.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logDeleteActiveIndicator(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'delete_active',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'subform_name': 'indicators_type',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user deletes active indicator from indicator's settings.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logDeleteActiveIndicatorFromSettings(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'delete_active',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'subform_name': 'indicators_settings',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user edits indicator's settings.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logEditIndicatorSettings(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'edit_active',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user resets indicator's settings.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logResetIndicatorSettings(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'reset',
+        'subform_name': 'indicators_settings',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user opens indicator info from indicators list.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logOpenIndicatorInfoFromIndicatorsList(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'info_open',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'subform_name': 'indicators_type',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user opens indicator info from indicator's settings.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logOpenIndicatorInfoFromIndicatorSettings(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'info_open',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'subform_name': 'indicators_settings',
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
+  }
+
+  /// Track when user closes indicator info.
+  ///
+  ///* indicatorTypeName: Indicator type name (e.g. 'MA', 'RSI' , 'MACD' , 'BB')
+  ///* categoryName: Indicator category name (e.g. 'Momentum', 'volatility' , 'moving averages')
+  void logCloseIndicatorInfo(
+    String indicatorTypeName,
+    String categoryName,
+  ) {
+    DerivRudderstack().track(
+      eventName: 'ce_indicators_types_form',
+      properties: <String, dynamic>{
+        'action': 'info_close',
+        'indicator_type_name': indicatorTypeName,
+        'indicators_category_name': categoryName,
+        'form_name': 'indicators_types_form_derivgo',
+        'form_source': 'mobile_derivgo',
+      },
+    );
   }
 }

@@ -1,6 +1,6 @@
 name: analytics
 description: A new Flutter package for collecting and sending analytical information from the app.
-version: 4.0.0
+version: 4.1.0
 
 homepage: https://deriv.com/
 publish_to: "none"

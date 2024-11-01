@@ -1,3 +1,11 @@
+## 3.1.1
+
+ - **FIX**(update_checker): [DRGO-1343] handle "failed to fetch and activate remote config" error ([#871](https://github.com/regentmarkets/flutter-deriv-packages/issues/871)). ([06c68591](https://github.com/regentmarkets/flutter-deriv-packages/commit/06c68591aaa9146789d173f220761efa1eab0d50))
+
+## 3.1.0
+
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+
 ## 3.0.0
 
 > Note: This release has breaking changes.
