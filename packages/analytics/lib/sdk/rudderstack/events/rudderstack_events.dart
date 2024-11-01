@@ -377,6 +377,7 @@ class DerivRudderstackEvents {
     required String contractId,
     required String deviceOrientation,
     int numberOfTrades = 1,
+    bool isAutoTrade = false,
   }) {
     DerivRudderstack().track(
         eventName: 'ce_deriv_go_trade_form',
@@ -391,6 +392,7 @@ class DerivRudderstackEvents {
           'contract_cta_name': ctaName,
           'number_of_trades ': numberOfTrades,
           'device_orientation': deviceOrientation,
+          'is_auto_trade': isAutoTrade,
         });
   }
 
@@ -404,6 +406,7 @@ class DerivRudderstackEvents {
     required String contractId,
     required String deviceOrientation,
     int numberOfTrades = 1,
+    bool isAutoTrade = false,
   }) {
     DerivRudderstack().track(
         eventName: 'ce_deriv_go_trade_form',
@@ -418,6 +421,7 @@ class DerivRudderstackEvents {
           'contract_id': contractId,
           'number_of_trades ': numberOfTrades,
           'device_orientation': deviceOrientation,
+          'is_auto_trade': isAutoTrade,
         });
   }
 
