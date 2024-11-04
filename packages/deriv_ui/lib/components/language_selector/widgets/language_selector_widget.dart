@@ -60,7 +60,7 @@ class LanguageSelectorWidget extends StatelessWidget {
                   ),
             const SizedBox(width: ThemeProvider.margin08),
             Text(
-              languageItem.extendedCode.toUpperCase(),
+              languageItem.languageCode.toUpperCase(),
               style: context.theme.textStyle(
                 textStyle: TextStyles.subheading,
               ),

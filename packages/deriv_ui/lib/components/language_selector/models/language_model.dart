@@ -25,6 +25,6 @@ class LanguageModel {
   /// have sub-variants Example: zh-CN, zh-TW. If there is
   /// any country code, we show an extended version,
   /// otherwise we show just the locale code.
-  String get extendedCode =>
+  String get languageCode =>
       countryCode.isNotEmpty ? '$code-$countryCode' : code;
 }
