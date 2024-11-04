@@ -48,11 +48,12 @@ class ActiveDrawingToolItem extends StatelessWidget {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            IconButton(
-              onPressed: onTapSettings,
-              color: context.themeProvider.colors.prominent,
-              icon: const Icon(Icons.settings_outlined),
-            ),
+            /// TODO: Uncomment this when the settings action is implemented.
+            // IconButton(
+            //   onPressed: onTapSettings,
+            //   color: context.themeProvider.colors.prominent,
+            //   icon: const Icon(Icons.settings_outlined),
+            // ),
             IconButton(
               onPressed: onTapDelete,
               color: context.themeProvider.colors.prominent,

@@ -1,3 +1,7 @@
+## 1.7.2
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#887](https://github.com/regentmarkets/flutter-deriv-packages/issues/887)). ([ba1b75b8](https://github.com/regentmarkets/flutter-deriv-packages/commit/ba1b75b85e103a46efab2a5224f04a280b282ee1))
+
 ## 1.7.1
 
  - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#881](https://github.com/regentmarkets/flutter-deriv-packages/issues/881)). ([ec78f45b](https://github.com/regentmarkets/flutter-deriv-packages/commit/ec78f45b46dfe02e99995c10699289193f145a75))
