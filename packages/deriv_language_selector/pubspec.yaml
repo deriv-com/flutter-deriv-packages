@@ -20,7 +20,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v2.7.1
+      ref: a491c13ced2aadbb4b42ecb868af33c0c2f1ce80
 
   shared_preferences: ^2.2.2
   flutter_bloc: ^8.1.4
