@@ -9,7 +9,6 @@ import 'package:deriv_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 /// RSI indicator settings page.
 class RSISettingPage extends BaseIndicatorSettingPage<RSIIndicatorConfig> {
   /// Initializes [RSISettingPage].
@@ -45,13 +44,17 @@ class _RSISettingPageState extends State<RSISettingPage> {
         SettingActionButtons(
           onApply: widget.onApply,
           onReset: () {
-            showResetIndicatorDialog(context, config: _indicatorConfig,
-                onResetPressed: () {
-              setState(() {
-                _indicatorConfig = const RSIIndicatorConfig();
-              });
-              widget.onConfigUpdated(_indicatorConfig);
-            });
+            showResetIndicatorDialog(
+              context,
+              config: _indicatorConfig,
+              onResetPressed: () {
+                setState(() {
+                  _indicatorConfig = const RSIIndicatorConfig();
+                });
+                widget.onConfigUpdated(_indicatorConfig);
+                widget.onReset?.call();
+              },
+            );
           },
         ),
       ],

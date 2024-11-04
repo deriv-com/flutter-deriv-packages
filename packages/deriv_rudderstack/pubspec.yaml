@@ -1,6 +1,6 @@
 name: deriv_rudderstack
 description: A new Flutter plugin to wrap RudderStack SDK.
-version: 1.1.1
+version: 1.2.0
 
 homepage: https://deriv.com/
 publish_to: "none"

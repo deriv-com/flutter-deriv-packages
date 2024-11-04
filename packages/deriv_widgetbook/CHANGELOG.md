@@ -1,3 +1,7 @@
+## 0.0.2+35
+
+ - Update a dependency to the latest release.
+
 ## 0.0.2+34
 
  - **FIX**(deriv_date_range_picker): iupgrade intl version ([#859](https://github.com/regentmarkets/flutter-deriv-packages/issues/859)). ([c500b57d](https://github.com/regentmarkets/flutter-deriv-packages/commit/c500b57d1558b10d7d60603d8de36af88db3dfb7))
