@@ -1,4 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/src/constants.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tools_selector.dart';
@@ -19,8 +20,8 @@ class MobileChartWrapper extends StatefulWidget {
   const MobileChartWrapper({
     required this.mainSeries,
     required this.granularity,
-    this.indicatorsStoreKey = 'default',
-    this.drawingToolsStoreKey = 'default',
+    this.indicatorsStoreKey = defaultIndicatorsStoreKey,
+    this.drawingToolsStoreKey = defaultDrawingToolsStoreKey,
     this.toolsController,
     this.markerSeries,
     this.controller,
