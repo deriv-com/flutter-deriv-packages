@@ -5,3 +5,9 @@ const Set<Type> drawingToolTypesToShowInfoBar = {
   LineDrawingToolConfig,
   RayDrawingToolConfig,
 };
+
+/// Default key used for indicators if no custom key is provided.
+const String defaultIndicatorsStoreKey = 'default_indicators_store';
+
+/// Default key used for drawing tools if no custom key is provided.
+const String defaultDrawingToolsStoreKey = 'default_drawing_tools_store';

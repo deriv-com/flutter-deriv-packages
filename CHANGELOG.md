@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-11-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.8+1`](#deriv_mobile_chart_wrapper---v0181)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.8+1`
+
+ - **FIX**: [DRGO-1367] Apply Chart Tool Globally for Indicators and Asset-Specific for Drawing Tools ([#900](https://github.com/regentmarkets/flutter-deriv-packages/issues/900)). ([8ea63c8e](https://github.com/regentmarkets/flutter-deriv-packages/commit/8ea63c8e0c3cc73f2420e7b0069b3b60b54bf9b4))
+
+
+## 2024-11-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_store_launcher` - `v0.0.2`](#deriv_store_launcher---v002)
+
+---
+
+#### `deriv_store_launcher` - `v0.0.2`
+
+ - **FEAT**(deriv_store_launcher): [DRGO-1284] Added new functionalities(launch app, ios support, isAppInstalled function) to deriv_store_launcher. ([#875](https://github.com/regentmarkets/flutter-deriv-packages/issues/875)). ([27066759](https://github.com/regentmarkets/flutter-deriv-packages/commit/27066759d5cb1f25e1ed8b942aa28b8e99666054))
+
+
 ## 2024-11-01
 
 ### Changes

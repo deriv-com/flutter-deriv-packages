@@ -1,7 +1,7 @@
 name: deriv_store_launcher
 description: A plugin to lunch app stores base on platform and manufacturer.
 
-version: 0.0.1+1
+version: 0.0.2
 
 homepage: https://deriv.com/
 publish_to: "none"

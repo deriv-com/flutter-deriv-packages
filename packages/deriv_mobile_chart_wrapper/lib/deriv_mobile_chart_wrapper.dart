@@ -6,3 +6,4 @@ export 'package:deriv_chart/deriv_chart.dart';
 export 'src/mobile_tools_ui/color_selector.dart';
 export 'src/pages/rsi_setting_page.dart';
 export 'src/indicator_event_service.dart';
+export 'src/constants.dart';
