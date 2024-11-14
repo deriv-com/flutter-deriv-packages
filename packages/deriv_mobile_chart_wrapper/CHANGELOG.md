@@ -1,3 +1,7 @@
+## 0.1.8+1
+
+ - **FIX**: [DRGO-1367] Apply Chart Tool Globally for Indicators and Asset-Specific for Drawing Tools ([#900](https://github.com/regentmarkets/flutter-deriv-packages/issues/900)). ([8ea63c8e](https://github.com/regentmarkets/flutter-deriv-packages/commit/8ea63c8e0c3cc73f2420e7b0069b3b60b54bf9b4))
+
 ## 0.1.8
 
  - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
