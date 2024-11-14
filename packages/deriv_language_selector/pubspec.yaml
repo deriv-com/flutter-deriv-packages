@@ -27,13 +27,13 @@ dependency_overrides:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: 4e301b9cca210b6c1c07331faa00c09916cc546f
+      ref: e10ad22b4ffd39a189d7b8637b0a6aca2a0797ad
   
   deriv_theme:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: 4e301b9cca210b6c1c07331faa00c09916cc546f
+      ref: e10ad22b4ffd39a189d7b8637b0a6aca2a0797ad
 
   shared_preferences: ^2.2.2
   flutter_bloc: ^8.1.4
