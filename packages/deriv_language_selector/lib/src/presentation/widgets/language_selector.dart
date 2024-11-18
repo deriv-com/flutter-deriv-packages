@@ -119,7 +119,7 @@ class LanguageSelector extends StatelessWidget {
         package: usePackageFlags ? 'deriv_language_selector' : null,
         items: state.activeLanguages
           ..sort((LanguageModel a, LanguageModel b) =>
-              a.code == 'en' ? -1 : a.name.compareTo(b.name)),
+              a.code == 'en' ? -1 : a.code.compareTo(b.code)),
         onLanguageSelected: (LanguageModel language) {
           context.read<LanguageCubit>().updateLanguage(language);
         },
