@@ -60,7 +60,12 @@ String getDrawingToolIconPath(Type drawingToolType) {
 }
 
 /// Returns the list of drawing tools available for the chart.
-List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
+/// [enabledDrawingToolTypes] is the set of drawing tools that are enabled to be
+/// available for the user to draw on the chart.
+List<DrawingToolItemModel> getDrawingToolsList(
+  BuildContext context, {
+  required Set<Type> enabledDrawingToolTypes,
+}) {
   List<DrawingToolItemModel> drawingTools = <DrawingToolItemModel>[
     DrawingToolItemModel(
       title: context.mobileChartWrapperLocalizations.labelLine,
@@ -72,7 +77,12 @@ List<DrawingToolItemModel> getDrawingToolsList(BuildContext context) {
     // Add more drawing tools here.
   ];
 
-  return drawingTools;
+  // Return only enabled drawing tools by filtering the list of all drawing
+  // tools with the enabled drawing tools.
+  return drawingTools
+      .where(
+          (tool) => enabledDrawingToolTypes.contains(tool.config.runtimeType))
+      .toList();
 }
 
 String getDrawingToolTitleWithCount(
