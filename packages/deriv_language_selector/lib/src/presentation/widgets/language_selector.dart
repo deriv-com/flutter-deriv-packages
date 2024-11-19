@@ -113,13 +113,30 @@ class LanguageSelector extends StatelessWidget {
                 }),
       );
 
+  /// Custom sorter function to comply with design requirements.
+  int _languaeSorter(LanguageModel a, LanguageModel b) {
+    // Keep English language always on top.
+    if (a.code == 'en') {
+      return -1;
+    }
+
+    // Kiswahil position correction, since locale `sw` is displayed as Kiswahil
+    // this method provides way of correcting the position on the fly.
+    if (a.code == 'sw' || b.code == 'sw') {
+      final String valA = a.code == 'sw' ? 'ki' : a.code;
+      final String valB = b.code == 'sw' ? 'ki' : b.code;
+
+      return valA == valB ? 0 : valA.compareTo(valB);
+    }
+
+    return a.code.compareTo(b.code);
+  }
+
   LanguageItemList _buildLanguageBottomSheet(
           BuildContext context, LanguageState state) =>
       LanguageItemList(
         package: usePackageFlags ? 'deriv_language_selector' : null,
-        items: state.activeLanguages
-          ..sort((LanguageModel a, LanguageModel b) =>
-              a.code == 'en' ? -1 : a.code.compareTo(b.code)),
+        items: state.activeLanguages..sort(_languaeSorter),
         onLanguageSelected: (LanguageModel language) {
           context.read<LanguageCubit>().updateLanguage(language);
         },
