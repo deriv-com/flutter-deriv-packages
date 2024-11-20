@@ -113,25 +113,26 @@ class LanguageSelector extends StatelessWidget {
                 }),
       );
 
-  LanguageItemList _buildLanguageBottomSheet(
-      BuildContext context, LanguageState state) {
-    final List<LanguageModel> langs = state.activeLanguages;
+  List<LanguageModel> _getSortedLanguages(List<LanguageModel> activeLanguages) {
+    final List<LanguageModel> languages = activeLanguages;
     final int engLangIndex =
-        langs.indexWhere((LanguageModel element) => element.code == 'en');
+        languages.indexWhere((LanguageModel element) => element.code == 'en');
 
     // make sure english language is always on top
     if (engLangIndex != -1 && engLangIndex != 0) {
-      final LanguageModel engLang = langs.removeAt(engLangIndex);
-      langs.insert(0, engLang);
+      final LanguageModel engLang = languages.removeAt(engLangIndex);
+      languages.insert(0, engLang);
     }
-
-    return LanguageItemList(
-      package: usePackageFlags ? 'deriv_language_selector' : null,
-      items: langs,
-      onLanguageSelected: (LanguageModel language) {
-        context.read<LanguageCubit>().updateLanguage(language);
-      },
-      selectedItem: state.language,
-    );
+    return languages;
   }
+
+  LanguageItemList _buildLanguageBottomSheet(
+          BuildContext context, LanguageState state) =>
+      LanguageItemList(
+        package: usePackageFlags ? 'deriv_language_selector' : null,
+        items: _getSortedLanguages(state.activeLanguages),
+        onLanguageSelected: (LanguageModel language) =>
+            context.read<LanguageCubit>().updateLanguage(language),
+        selectedItem: state.language,
+      );
 }
