@@ -61,11 +61,11 @@ const Map<String, Color> darkTheme = <String, Color>{
 
   // IDV
   'solidGreen': Color(0xFF4DBC6B),
-  'opacityGreen': Color(0xFF00883229),
+  'opacityGreen': Color(0xFF008832),
   'solidRed': Color(0xFFFF4D4D),
   'opacityRed': Color(0xFFE6190E),
   'solidBlue': Color(0xFF53B9FF),
-  'opacityBlue': Color(0xFF2C9AFF29),
+  'opacityBlue': Color(0xFF2C9AFF),
   'solidOrange': Color(0xFFF88F54),
-  'opacityOrange': Color(0xFFF55F0A29),
+  'opacityOrange': Color(0xFFF55F0A),
 };
