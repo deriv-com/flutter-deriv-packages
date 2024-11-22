@@ -33,46 +33,37 @@ class LanguageSelectorItem extends StatelessWidget {
         child: TextButton(
           onPressed: () => onPressed(item),
           style: ButtonStyle(
-            padding: MaterialStateProperty.all(EdgeInsets.zero),
-            minimumSize: MaterialStateProperty.all(
-                const Size(double.infinity, ThemeProvider.iconSize58)),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+            padding: WidgetStateProperty.all(EdgeInsets.zero),
+            shape: WidgetStateProperty.all(RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(ThemeProvider.borderRadius08),
             )),
-            overlayColor: MaterialStateProperty.all(context.theme.colors.hover),
+            overlayColor: WidgetStateProperty.all(context.theme.colors.hover),
           ),
           child: Container(
             padding: const EdgeInsets.symmetric(
-                horizontal: ThemeProvider.margin16, vertical: 20),
+              horizontal: ThemeProvider.margin16,
+              vertical: ThemeProvider.margin18,
+            ),
+            width: double.infinity,
             decoration: BoxDecoration(
               color:
                   isSelected ? context.theme.colors.hover : Colors.transparent,
               borderRadius: const BorderRadius.all(
                   Radius.circular(ThemeProvider.borderRadius08)),
             ),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(
-                    right: ThemeProvider.margin16,
-                  ),
-                  child: Image(
-                    image: AssetImage(
-                      item.flag,
-                      package: package,
-                    ),
-                    width: ThemeProvider.margin24,
-                  ),
-                ),
-                Text(
-                  item.name,
-                  style: isSelected
-                      ? context.theme.textStyle(textStyle: TextStyles.body2)
-                      : context.theme
-                          .textStyle(textStyle: TextStyles.body1)
-                          .copyWith(color: context.theme.colors.lessProminent),
-                ),
-              ],
+            child: Text(
+              item.name,
+              style: isSelected
+                  ? context.theme.textStyle(
+                      textStyle: TextStyles.body2,
+                    )
+                  : context.theme
+                      .textStyle(
+                        textStyle: TextStyles.body1,
+                      )
+                      .copyWith(
+                        color: context.theme.colors.lessProminent,
+                      ),
             ),
           ),
         ),
