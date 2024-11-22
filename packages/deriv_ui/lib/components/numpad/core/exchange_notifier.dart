@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../models/models.dart';
 import 'package:intl/intl.dart';
@@ -46,19 +48,24 @@ class ExchangeController extends ChangeNotifier {
 
   /// Exchanged currency
   CurrencyDetail get secondaryCurrency => _secondaryCurrency;
+  StreamSubscription<ExchangeRateModel>? _exchangeRateSubscription;
+
+  Future<void> _onExchangeRateReceived(ExchangeRateModel rate) async {
+    _exchangeRate = rate;
+    if (currencyFieldController.text.isEmpty) {
+      _secondaryCurrency = CurrencyDetail(0, secondaryCurrency.currencyType);
+    } else {
+      _secondaryCurrency = CurrencyDetail(
+          _getExchangedOutput(_primaryCurrency.amount),
+          secondaryCurrency.currencyType);
+    }
+    notifyListeners();
+  }
 
   Future<void> _listenForExchangeRateChange() async {
-    _rateSource.listen((ExchangeRateModel rate) {
-      _exchangeRate = rate;
-      if (currencyFieldController.text.isEmpty) {
-        _secondaryCurrency = CurrencyDetail(0, secondaryCurrency.currencyType);
-      } else {
-        _secondaryCurrency = CurrencyDetail(
-            _getExchangedOutput(_primaryCurrency.amount),
-            secondaryCurrency.currencyType);
-      }
-      notifyListeners();
-    });
+    await _exchangeRateSubscription?.cancel();
+
+    _exchangeRateSubscription = _rateSource.listen(_onExchangeRateReceived);
   }
 
   /// This is called when an amount is changed in textField and immediately converts amount in secondary currency.
@@ -122,6 +129,12 @@ class ExchangeController extends ChangeNotifier {
     } else {
       return secondaryCurrency.formattedAmount;
     }
+  }
+
+  @override
+  void dispose() {
+    _exchangeRateSubscription?.cancel();
+    super.dispose();
   }
 }
 
