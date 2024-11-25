@@ -9,6 +9,17 @@ class ToolsController extends ChangeNotifier {
   ToolsController({
     this.indicatorsEnabled = true,
     this.drawingToolsEnabled = true,
+    this.enabledDrawingToolTypes = const <Type>{
+      ChannelDrawingToolConfig,
+      ContinuousDrawingToolConfig,
+      FibfanDrawingToolConfig,
+      HorizontalDrawingToolConfig,
+      LineDrawingToolConfig,
+      RayDrawingToolConfig,
+      RectangleDrawingToolConfig,
+      TrendDrawingToolConfig,
+      VerticalDrawingToolConfig,
+    },
   });
 
   /// Whether indicators are enabled.
@@ -16,6 +27,10 @@ class ToolsController extends ChangeNotifier {
 
   /// Whether drawing tools are enabled.
   final bool drawingToolsEnabled;
+
+  /// Set of drawing tools that are available to the user to draw on the chart.
+  /// Defaults to all drawing tools.
+  final Set<Type> enabledDrawingToolTypes;
 
   /// Callback to show the indicators tools menu.
   VoidCallback? onShowIndicatorsToolsMenu;

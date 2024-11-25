@@ -1,3 +1,7 @@
+## 0.1.2
+
+ - **FEAT**(deriv_ui): [DRGO-1332] raslan/ Added language UI design revamp [Note: don't squash merge] ([#892](https://github.com/regentmarkets/flutter-deriv-packages/issues/892)). ([afc57318](https://github.com/regentmarkets/flutter-deriv-packages/commit/afc5731813006dfa624162862825847b1cfa18a6))
+
 ## 0.1.1
 
  - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))

@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-11-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.9`](#deriv_mobile_chart_wrapper---v019)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.9`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-1484] Filter Drawing Tools to Show Only Enabled Options ([#905](https://github.com/regentmarkets/flutter-deriv-packages/issues/905)). ([a3fccd72](https://github.com/regentmarkets/flutter-deriv-packages/commit/a3fccd7284b6a56dd1e98942b02b6c29afb87512))
+
+
+## 2024-11-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.1.2`](#deriv_ui---v012)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.8+2`](#deriv_mobile_chart_wrapper---v0182)
+ - [`deriv_passkeys` - `v0.0.5+12`](#deriv_passkeys---v00512)
+ - [`deriv_auth` - `v7.0.8`](#deriv_auth---v708)
+ - [`deriv_language_selector` - `v0.0.3+15`](#deriv_language_selector---v00315)
+ - [`deriv_widgetbook` - `v0.0.2+36`](#deriv_widgetbook---v00236)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.1.8+2`
+ - `deriv_passkeys` - `v0.0.5+12`
+ - `deriv_auth` - `v7.0.8`
+ - `deriv_language_selector` - `v0.0.3+15`
+ - `deriv_widgetbook` - `v0.0.2+36`
+
+---
+
+#### `deriv_ui` - `v0.1.2`
+
+ - **FEAT**(deriv_ui): [DRGO-1332] raslan/ Added language UI design revamp [Note: don't squash merge] ([#892](https://github.com/regentmarkets/flutter-deriv-packages/issues/892)). ([afc57318](https://github.com/regentmarkets/flutter-deriv-packages/commit/afc5731813006dfa624162862825847b1cfa18a6))
+
+
 ## 2024-11-13
 
 ### Changes

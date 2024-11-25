@@ -16,12 +16,16 @@ import 'package:provider/provider.dart';
 class DrawingToolsSelector extends StatefulWidget {
   const DrawingToolsSelector({
     required this.onDrawingToolSelected,
+    required this.enabledDrawingToolTypes,
     super.key,
   });
 
   /// Drawing tools selection callback.
   final void Function(DrawingToolConfig drawingToolConfig)?
       onDrawingToolSelected;
+
+  /// Set of drawing tools that are available to the user to draw on the chart.
+  final Set<Type> enabledDrawingToolTypes;
 
   @override
   State<DrawingToolsSelector> createState() => _DrawingToolsSelectorState();
@@ -48,7 +52,10 @@ class _DrawingToolsSelectorState extends State<DrawingToolsSelector>
     drawingToolsRepo = Provider.of<AddOnsRepository<DrawingToolConfig>>(
       context,
     );
-    _drawingTools = getDrawingToolsList(context);
+    _drawingTools = getDrawingToolsList(
+      context,
+      enabledDrawingToolTypes: widget.enabledDrawingToolTypes,
+    );
 
     // Only change the tab index if the active drawing tools list is empty and
     // the current tab is not the same 1st index tab.
