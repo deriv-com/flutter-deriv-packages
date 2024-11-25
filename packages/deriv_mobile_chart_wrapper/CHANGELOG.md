@@ -1,3 +1,11 @@
+## 0.1.9
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-1484] Filter Drawing Tools to Show Only Enabled Options ([#905](https://github.com/regentmarkets/flutter-deriv-packages/issues/905)). ([a3fccd72](https://github.com/regentmarkets/flutter-deriv-packages/commit/a3fccd7284b6a56dd1e98942b02b6c29afb87512))
+
+## 0.1.8+2
+
+ - Update a dependency to the latest release.
+
 ## 0.1.8+1
 
  - **FIX**: [DRGO-1367] Apply Chart Tool Globally for Indicators and Asset-Specific for Drawing Tools ([#900](https://github.com/regentmarkets/flutter-deriv-packages/issues/900)). ([8ea63c8e](https://github.com/regentmarkets/flutter-deriv-packages/commit/8ea63c8e0c3cc73f2420e7b0069b3b60b54bf9b4))
