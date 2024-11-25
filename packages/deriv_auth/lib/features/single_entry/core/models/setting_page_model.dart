@@ -10,6 +10,9 @@ class SettingPageModel {
     required this.saveValues,
     required this.updateFlavorConfigs,
     this.settingsPageNavigation,
+    this.getAppEnv,
+    this.setAppEnv,
+    this.features,
   });
 
   /// Setting page App label
@@ -30,4 +33,13 @@ class SettingPageModel {
 
   /// Settings page navigation
   final Function(BuildContext context)? settingsPageNavigation;
+
+  /// Gets environment variable
+  final Future<bool>? getAppEnv;
+
+  /// Sets environment variable
+  final Future<void> Function({required bool value})? setAppEnv;
+
+  /// Feature flag widget that should be listed in the setting page.
+  final Widget? features;
 }
