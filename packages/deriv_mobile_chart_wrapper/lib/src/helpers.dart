@@ -71,7 +71,11 @@ List<DrawingToolItemModel> getDrawingToolsList(
       title: context.mobileChartWrapperLocalizations.labelLine,
       icon: lineIcon,
       config: const LineDrawingToolConfig(
-        lineStyle: LineStyle(thickness: 0.9, color: BrandColors.coral),
+        lineStyle: LineStyle(
+          thickness: 0.9,
+          color: BrandColors.coral,
+          markerRadius: 4,
+        ),
       ),
     ),
     // Add more drawing tools here.
