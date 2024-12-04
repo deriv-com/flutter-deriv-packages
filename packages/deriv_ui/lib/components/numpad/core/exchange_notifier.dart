@@ -56,8 +56,9 @@ class ExchangeController extends ChangeNotifier {
       _secondaryCurrency = CurrencyDetail(0, secondaryCurrency.currencyType);
     } else {
       _secondaryCurrency = CurrencyDetail(
-          _getExchangedOutput(_primaryCurrency.amount),
-          secondaryCurrency.currencyType);
+        _getExchangedOutput(_primaryCurrency.amount),
+        secondaryCurrency.currencyType,
+      );
     }
     notifyListeners();
   }
