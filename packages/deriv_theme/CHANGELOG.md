@@ -1,3 +1,9 @@
+## 3.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FIX**(deriv_theme): [DRGO-1517] fix color values ([#906](https://github.com/regentmarkets/flutter-deriv-packages/issues/906)). ([4e43cd4c](https://github.com/regentmarkets/flutter-deriv-packages/commit/4e43cd4c8d8a0f250cab2ffec261cac7af53df03))
+
 ## 2.8.0
 
  - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))

@@ -329,6 +329,8 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
           child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelDrawingTools,
             child: DrawingToolsSelector(
+              enabledDrawingToolTypes:
+                  widget.toolsController?.enabledDrawingToolTypes ?? <Type>{},
               onDrawingToolSelected: (DrawingToolConfig selectedDrawingTool) {
                 _drawingTools.onDrawingToolSelection(selectedDrawingTool);
                 _updateDrawingTools();

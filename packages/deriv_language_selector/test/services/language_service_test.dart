@@ -58,8 +58,9 @@ void main() {
 
       verify(() => mockLanguageDataSource.setLanguage(mockLanguageModel.code))
           .called(1);
-      verify(() => mockLanguageRepository
-          .loadLanguage(Locale(mockLanguageModel.code))).called(1);
+      verify(() => mockLanguageRepository.loadLanguage(
+              Locale(mockLanguageModel.code, mockLanguageModel.countryCode)))
+          .called(1);
     });
 
     test(
@@ -71,7 +72,8 @@ void main() {
       languageService.reconnectToServerWithNewLanguage(mockLanguageModel);
 
       verify(() => mockLanguageRepository.reconnectToServerWithNewLanguage(
-          Locale(mockLanguageModel.code))).called(1);
+              Locale(mockLanguageModel.code, mockLanguageModel.countryCode)))
+          .called(1);
     });
 
     test('.getActiveLanguages sets the active languages', () async {

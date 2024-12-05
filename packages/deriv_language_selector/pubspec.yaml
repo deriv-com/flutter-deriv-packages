@@ -1,6 +1,6 @@
 name: deriv_language_selector
 description: A package to select language for the app. It provides both UI and logic for language selection.
-version: 0.0.3+14
+version: 0.0.4+1
 publish_to: "none"
 
 environment:
@@ -14,7 +14,7 @@ dependencies:
     git:
       url: git@github.com:regentmarkets/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.1.1
+      ref: deriv_ui-v0.1.2+1
   shared_preferences: ^2.2.2
   flutter_bloc: ^8.1.4
   equatable: ^2.0.5
@@ -43,3 +43,4 @@ flutter:
     - assets/icons/flags/ic_flag_ar.png
     - assets/icons/flags/ic_flag_ko.png
     - assets/icons/flags/ic_flag_sw.png
+    - assets/icons/ic_language.svg
