@@ -64,8 +64,6 @@ class ExchangeController extends ChangeNotifier {
   }
 
   Future<void> _listenForExchangeRateChange() async {
-    await _exchangeRateSubscription?.cancel();
-
     _exchangeRateSubscription = _rateSource.listen(_onExchangeRateReceived);
   }
 
