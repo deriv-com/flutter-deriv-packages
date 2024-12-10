@@ -1,3 +1,7 @@
+## 0.1.2+2
+
+ - **FIX**(deriv_ui): [GRWT-1248] Raslan / Added fix for Properly handle `ExcahngeRate` stream subscription ([#909](https://github.com/regentmarkets/flutter-deriv-packages/issues/909)). ([8c170b11](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c170b11cf9d1f55b13ff57edf3410b8d62d68b8))
+
 ## 0.1.2+1
 
  - Update a dependency to the latest release.

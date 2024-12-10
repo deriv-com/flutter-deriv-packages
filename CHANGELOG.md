@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-12-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_ui` - `v0.1.2+2`](#deriv_ui---v0122)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.9+2`](#deriv_mobile_chart_wrapper---v0192)
+ - [`deriv_passkeys` - `v0.0.5+14`](#deriv_passkeys---v00514)
+ - [`deriv_auth` - `v7.0.11`](#deriv_auth---v7011)
+ - [`deriv_widgetbook` - `v0.0.2+38`](#deriv_widgetbook---v00238)
+ - [`deriv_language_selector` - `v0.0.4+2`](#deriv_language_selector---v0042)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.1.9+2`
+ - `deriv_passkeys` - `v0.0.5+14`
+ - `deriv_auth` - `v7.0.11`
+ - `deriv_widgetbook` - `v0.0.2+38`
+ - `deriv_language_selector` - `v0.0.4+2`
+
+---
+
+#### `deriv_ui` - `v0.1.2+2`
+
+ - **FIX**(deriv_ui): [GRWT-1248] Raslan / Added fix for Properly handle `ExcahngeRate` stream subscription ([#909](https://github.com/regentmarkets/flutter-deriv-packages/issues/909)). ([8c170b11](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c170b11cf9d1f55b13ff57edf3410b8d62d68b8))
+
+
 ## 2024-11-25
 
 ### Changes
