@@ -85,14 +85,16 @@ class LanguageService implements BaseLanguageService {
 
   @override
   Future<void> loadAndSetLanguage(LanguageModel language) async {
-    await languageRepository.loadLanguage(Locale(language.code));
+    await languageRepository
+        .loadLanguage(Locale(language.code, language.countryCode));
 
     await languageDataSource.setLanguage(language.code);
   }
 
   @override
   void reconnectToServerWithNewLanguage(LanguageModel language) {
-    languageRepository.reconnectToServerWithNewLanguage(Locale(language.code));
+    languageRepository.reconnectToServerWithNewLanguage(
+        Locale(language.code, language.countryCode));
   }
 
   static List<LanguageModel> _generateLanguages(

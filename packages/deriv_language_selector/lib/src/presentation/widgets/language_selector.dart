@@ -25,6 +25,7 @@ class LanguageSelector extends StatelessWidget {
   /// ```
   const LanguageSelector.bottomSheet({
     this.usePackageFlags = true,
+    this.showButtonFlag = false,
     Key? key,
   })  : isBottomSheet = true,
         showLanguageBottomSheet = null,
@@ -61,6 +62,7 @@ class LanguageSelector extends StatelessWidget {
     required this.bottomsheetTitle,
     this.showLanguageBottomSheet,
     this.usePackageFlags = true,
+    this.showButtonFlag = false,
     Key? key,
   })  : isBottomSheet = false,
         super(key: key);
@@ -85,6 +87,10 @@ class LanguageSelector extends StatelessWidget {
   /// should be [ic_flag_language_code].png.
   final bool usePackageFlags;
 
+  /// Since we are not using country flags anymore this will conditionally display
+  /// globe icon instead of flag in language selector button
+  final bool showButtonFlag;
+
   @override
   Widget build(BuildContext context) =>
       BlocBuilder<LanguageCubit, LanguageState>(
@@ -93,6 +99,7 @@ class LanguageSelector extends StatelessWidget {
             ? _buildLanguageBottomSheet(context, state)
             : LanguageSelectorWidget(
                 package: usePackageFlags ? 'deriv_language_selector' : null,
+                showFlag: showButtonFlag,
                 languageItem: state.language,
                 onPressed: () {
                   showLanguageBottomSheet != null
@@ -106,16 +113,26 @@ class LanguageSelector extends StatelessWidget {
                 }),
       );
 
+  List<LanguageModel> _getSortedLanguages(List<LanguageModel> activeLanguages) {
+    final List<LanguageModel> languages = activeLanguages;
+    final int engLangIndex =
+        languages.indexWhere((LanguageModel element) => element.code == 'en');
+
+    // make sure english language is always on top
+    if (engLangIndex != -1 && engLangIndex != 0) {
+      final LanguageModel engLang = languages.removeAt(engLangIndex);
+      languages.insert(0, engLang);
+    }
+    return languages;
+  }
+
   LanguageItemList _buildLanguageBottomSheet(
           BuildContext context, LanguageState state) =>
       LanguageItemList(
         package: usePackageFlags ? 'deriv_language_selector' : null,
-        items: state.activeLanguages
-          ..sort(
-              (LanguageModel a, LanguageModel b) => a.name.compareTo(b.name)),
-        onLanguageSelected: (LanguageModel language) {
-          context.read<LanguageCubit>().updateLanguage(language);
-        },
+        items: _getSortedLanguages(state.activeLanguages),
+        onLanguageSelected: (LanguageModel language) =>
+            context.read<LanguageCubit>().updateLanguage(language),
         selectedItem: state.language,
       );
 }

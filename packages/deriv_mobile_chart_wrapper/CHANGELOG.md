@@ -1,3 +1,31 @@
+## 0.1.10
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [GRWT-3362] update chart package version ([#919](https://github.com/regentmarkets/flutter-deriv-packages/issues/919)). ([d79b9d5e](https://github.com/regentmarkets/flutter-deriv-packages/commit/d79b9d5e9d7216085e60c49be98a8cd0a7caea18))
+
+## 0.1.9+2
+
+ - Update a dependency to the latest release.
+
+## 0.1.9+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.9
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [DRGO-1484] Filter Drawing Tools to Show Only Enabled Options ([#905](https://github.com/regentmarkets/flutter-deriv-packages/issues/905)). ([a3fccd72](https://github.com/regentmarkets/flutter-deriv-packages/commit/a3fccd7284b6a56dd1e98942b02b6c29afb87512))
+
+## 0.1.8+2
+
+ - Update a dependency to the latest release.
+
+## 0.1.8+1
+
+ - **FIX**: [DRGO-1367] Apply Chart Tool Globally for Indicators and Asset-Specific for Drawing Tools ([#900](https://github.com/regentmarkets/flutter-deriv-packages/issues/900)). ([8ea63c8e](https://github.com/regentmarkets/flutter-deriv-packages/commit/8ea63c8e0c3cc73f2420e7b0069b3b60b54bf9b4))
+
+## 0.1.8
+
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+
 ## 0.1.7+4
 
  - **REFACTOR**(mobile_chart_wrapper): [DRGO-1222]update chart version ([#894](https://github.com/regentmarkets/flutter-deriv-packages/issues/894)). ([10f931f2](https://github.com/regentmarkets/flutter-deriv-packages/commit/10f931f25eef529cb5168b15143e3364d04f63ad))

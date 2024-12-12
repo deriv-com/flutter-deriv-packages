@@ -1,3 +1,19 @@
+## 0.1.2+2
+
+ - **FIX**(deriv_ui): [GRWT-1248] Raslan / Added fix for Properly handle `ExcahngeRate` stream subscription ([#909](https://github.com/regentmarkets/flutter-deriv-packages/issues/909)). ([8c170b11](https://github.com/regentmarkets/flutter-deriv-packages/commit/8c170b11cf9d1f55b13ff57edf3410b8d62d68b8))
+
+## 0.1.2+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.2
+
+ - **FEAT**(deriv_ui): [DRGO-1332] raslan/ Added language UI design revamp [Note: don't squash merge] ([#892](https://github.com/regentmarkets/flutter-deriv-packages/issues/892)). ([afc57318](https://github.com/regentmarkets/flutter-deriv-packages/commit/afc5731813006dfa624162862825847b1cfa18a6))
+
+## 0.1.1
+
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+
 ## 0.1.0+6
 
  - Update a dependency to the latest release.

@@ -1,4 +1,5 @@
 import 'package:deriv_chart/deriv_chart.dart';
+import 'package:deriv_mobile_chart_wrapper/src/constants.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/drawing_tools/drawing_tools_selector.dart';
@@ -19,7 +20,8 @@ class MobileChartWrapper extends StatefulWidget {
   const MobileChartWrapper({
     required this.mainSeries,
     required this.granularity,
-    this.toolsStoreKey = 'default',
+    this.indicatorsStoreKey = defaultIndicatorsStoreKey,
+    this.drawingToolsStoreKey = defaultDrawingToolsStoreKey,
     this.toolsController,
     this.markerSeries,
     this.controller,
@@ -60,11 +62,21 @@ class MobileChartWrapper extends StatefulWidget {
   /// Open position marker series.
   final MarkerSeries? markerSeries;
 
-  /// The key which is used to store selected indicators/tools.
+  /// The key used to store the selected indicators in shared preferences.
+  /// If no key is provided, the default key `'default'` is used.
   ///
-  /// When you pass the same key that was passed before when user selected some
-  /// tools, by passing the same key, the tools will be restored.
-  final String toolsStoreKey;
+  /// By using the same key when selecting indicators, the previously saved
+  /// state will be restored, ensuring the tools are in the same configuration
+  /// as before.
+  final String indicatorsStoreKey;
+
+  /// The key used to store the selected drawing tools in shared preferences.
+  /// If no key is provided, the default key `'default'` is used.
+  ///
+  /// By using the same key when applying drawing tools, the previously applied
+  /// tools state will be restored, ensuring the tools are in the same
+  /// configuration as before.
+  final String drawingToolsStoreKey;
 
   /// Chart's controller
   final ChartController? controller;
@@ -186,8 +198,14 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
   void didUpdateWidget(covariant MobileChartWrapper oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (widget.toolsStoreKey != oldWidget.toolsStoreKey) {
-      loadSavedIndicatorsAndDrawingTools();
+    // Reload indicators if the indicators key has changed
+    if (widget.indicatorsStoreKey != oldWidget.indicatorsStoreKey) {
+      _loadSavedIndicators();
+    }
+
+    // Reload drawing tools if the drawing tools key has changed
+    if (widget.drawingToolsStoreKey != oldWidget.drawingToolsStoreKey) {
+      _loadSavedDrawingTools();
     }
   }
 
@@ -216,8 +234,10 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         createAddOn: (Map<String, dynamic> map) =>
             IndicatorConfig.fromJson(map),
         onEditCallback: (_) => _showIndicatorsSheet(_indicatorsRepo!),
-        sharedPrefKey: widget.toolsStoreKey,
+        sharedPrefKey: widget.indicatorsStoreKey,
       );
+
+      await _loadSavedIndicators();
     }
 
     if (widget.toolsController?.drawingToolsEnabled ?? false) {
@@ -225,42 +245,47 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         createAddOn: (Map<String, dynamic> map) =>
             DrawingToolConfig.fromJson(map),
         onEditCallback: (_) => _showDrawingToolsSheet(_drawingToolsRepo!),
-        sharedPrefKey: widget.toolsStoreKey,
+        sharedPrefKey: widget.drawingToolsStoreKey,
       );
+
+      await _loadSavedDrawingTools();
     }
 
-    await loadSavedIndicatorsAndDrawingTools();
     _setupController();
   }
 
-  Future<void> loadSavedIndicatorsAndDrawingTools() async {
+  Future<void> _loadSavedIndicators() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final List<AddOnsRepository<AddOnConfig>> stateRepos =
-        <AddOnsRepository<AddOnConfig>>[
-      if (_indicatorsRepo != null) _indicatorsRepo!,
-      if (_drawingToolsRepo != null) _drawingToolsRepo!,
-    ];
-
-    stateRepos
-        .asMap()
-        .forEach((int index, AddOnsRepository<AddOnConfig> element) {
+    if (_indicatorsRepo != null) {
       try {
-        element.loadFromPrefs(prefs, widget.toolsStoreKey);
+        _indicatorsRepo!.loadFromPrefs(prefs, widget.indicatorsStoreKey);
       } on Exception {
-        // ignore: unawaited_futures
-        showDialog<void>(
-          context: context,
-          builder: (BuildContext context) => AnimatedPopupDialog(
-            child: Center(
-              child: element is Repository<IndicatorConfig>
-                  // TODO(Ramin): use localization.
-                  ? const Text('Failed loading indicators')
-                  : const Text('Failed loading drawing tools'),
-            ),
-          ),
-        );
+        _showLoadErrorDialog(message: 'Failed loading indicators');
       }
-    });
+    }
+  }
+
+  Future<void> _loadSavedDrawingTools() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (_drawingToolsRepo != null) {
+      try {
+        _drawingToolsRepo!.loadFromPrefs(prefs, widget.drawingToolsStoreKey);
+      } on Exception {
+        _showLoadErrorDialog(message: 'Failed loading drawing tools');
+      }
+    }
+  }
+
+  void _showLoadErrorDialog({required String message}) {
+    // Show error dialog
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) => AnimatedPopupDialog(
+        child: Center(
+          child: Text(message),
+        ),
+      ),
+    );
   }
 
   void _showIndicatorsSheet(AddOnsRepository<IndicatorConfig> indicatorsRepo) {
@@ -304,6 +329,8 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
           child: DerivBottomSheet(
             title: context.mobileChartWrapperLocalizations.labelDrawingTools,
             child: DrawingToolsSelector(
+              enabledDrawingToolTypes:
+                  widget.toolsController?.enabledDrawingToolTypes ?? <Type>{},
               onDrawingToolSelected: (DrawingToolConfig selectedDrawingTool) {
                 _drawingTools.onDrawingToolSelection(selectedDrawingTool);
                 _updateDrawingTools();
@@ -325,13 +352,13 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
             : AddOnsRepository<IndicatorConfig>(
                 createAddOn: (Map<String, dynamic> map) =>
                     IndicatorConfig.fromJson(map),
-                sharedPrefKey: widget.toolsStoreKey,
+                sharedPrefKey: widget.indicatorsStoreKey,
               ),
         drawingToolsRepo: _drawingToolsRepo ??
             AddOnsRepository<DrawingToolConfig>(
               createAddOn: (Map<String, dynamic> map) =>
                   DrawingToolConfig.fromJson(map),
-              sharedPrefKey: widget.toolsStoreKey,
+              sharedPrefKey: widget.drawingToolsStoreKey,
             ),
         drawingTools: _drawingTools,
         controller: widget.controller,
@@ -345,7 +372,11 @@ class MobileChartWrapperState extends State<MobileChartWrapper> {
         opacity: widget.opacity,
         chartAxisConfig: widget.chartAxisConfig,
         annotations: widget.annotations,
-        activeSymbol: widget.toolsStoreKey,
+        // TODO: The 'activeSymbol' property will be deprecated in a future
+        //  release. It is currently irrelevant in the current chart package
+        //  implementation, as the AddOnsRepository is initialized externally
+        //  in the implementation.
+        activeSymbol: 'default',
       );
 
   @override

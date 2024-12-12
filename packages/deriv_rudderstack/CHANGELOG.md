@@ -1,3 +1,11 @@
+## 1.3.0
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [GRWT-3362] update chart package version ([#919](https://github.com/regentmarkets/flutter-deriv-packages/issues/919)). ([d79b9d5e](https://github.com/regentmarkets/flutter-deriv-packages/commit/d79b9d5e9d7216085e60c49be98a8cd0a7caea18))
+
+## 1.2.0
+
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+
 ## 1.1.1
 
  - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/regentmarkets/flutter-deriv-packages/issues/831)). ([444e963e](https://github.com/regentmarkets/flutter-deriv-packages/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))

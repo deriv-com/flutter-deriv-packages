@@ -20,5 +20,6 @@ class LanguageEntity {
         name: name,
         code: locale.languageCode,
         flag: flag,
+        countryCode: locale.countryCode ?? '',
       );
 }
