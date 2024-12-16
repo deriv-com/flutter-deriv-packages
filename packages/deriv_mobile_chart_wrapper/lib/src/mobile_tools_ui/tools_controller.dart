@@ -14,7 +14,7 @@ class ToolsController extends ChangeNotifier {
       ContinuousDrawingToolConfig,
       FibfanDrawingToolConfig,
       HorizontalDrawingToolConfig,
-      LineDrawingToolConfig,
+      LineDrawingToolConfigMobile,
       RayDrawingToolConfig,
       RectangleDrawingToolConfig,
       TrendDrawingToolConfig,
