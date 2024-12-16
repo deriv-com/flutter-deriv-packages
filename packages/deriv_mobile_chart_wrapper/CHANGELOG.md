@@ -1,3 +1,11 @@
+## 0.1.10
+
+ - **FEAT**(deriv_mobile_chart_wrapper): [GRWT-3362] update chart package version ([#919](https://github.com/regentmarkets/flutter-deriv-packages/issues/919)). ([d79b9d5e](https://github.com/regentmarkets/flutter-deriv-packages/commit/d79b9d5e9d7216085e60c49be98a8cd0a7caea18))
+
+## 0.1.9+2
+
+ - Update a dependency to the latest release.
+
 ## 0.1.9+1
 
  - Update a dependency to the latest release.

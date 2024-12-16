@@ -1,3 +1,7 @@
+## 4.1.1
+
+ - **FIX**(analytics): Update rudderstack event for trading ([#898](https://github.com/regentmarkets/flutter-deriv-packages/issues/898)). ([434fc8b4](https://github.com/regentmarkets/flutter-deriv-packages/commit/434fc8b443eb429ad0bff1f5192f35f6489eb488))
+
 ## 4.1.0
 
  - **FEAT**(analytics): Add indicator events ([#846](https://github.com/regentmarkets/flutter-deriv-packages/issues/846)). ([1d30ddc9](https://github.com/regentmarkets/flutter-deriv-packages/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
