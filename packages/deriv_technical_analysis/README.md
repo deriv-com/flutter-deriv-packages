@@ -87,7 +87,24 @@ The package includes a wide range of technical indicators:
 
 ### 1. Create Your Result Class
 
-First, create a class that implements `IndicatorResult`:
+The output of indicators is a generic type, which means you can decide what kind of model class should be created when an indicator calculates the result of an item. This makes it easy to create a list of result items that fits your specific needs. You can define what type of data the list should contain.
+
+With IndicatorDataInput.createResult, you can choose the type of output you want. Each result from the indicator represents a value (like a quote) for a specific item, and your custom model class can include extra properties if needed.
+
+For example, if you want to process or visualize a list of items with a certain data type, you can set it up like below:
+
+```Dart
+class SampleResult implements IndicatorResult {
+  SampleResult(this.quote, this.anotherProperty);
+
+  @override
+  final double quote;  // Required by IndicatorResult
+  
+  final OterPropertyType otherProperty;  // Your custom properties
+}
+```
+
+To start, create a class that implements the IndicatorResult interface:
 
 ```dart
 class SampleResult implements IndicatorResult {
@@ -96,24 +113,13 @@ class SampleResult implements IndicatorResult {
   @override
   final double quote;  // Required by IndicatorResult
   
-  final int anotherProperty;  // Your custom properties
+  final DateTime time;  // Your custom properties
 }
 ```
 
 ### 2. Create Your Input Class
 
-The output of indicators are a generic type. This is to give the consumer of the package the ability to define what model class to be instantiated when an indicator is doing the calculation and wants to create the list of results witl items. You can define the list to contain 
-what type. In IndicatorDataInput.createResult you can define what type of output you need. The result values for each item from the indicator result is the quote for each item, your model class type can have other properties.
-for example the list of items you want to process or visualize on your side has a data type like below
-```Dart
-class MarketData {
-  MarketData(this.time, this.value);
 
-  final DateTime time;
-  final double value;
-}
-```
-If package would give you the result simply as a list of `double`s <double>[]. you would need to convert this list to a list of your own type List<MarketData>. Using the generic type allows you to define when indicators has calculated an item what type to instantiate.
 
 Next, You can implement `IndicatorDataInput` and implemenet `createResult` method:
 
@@ -126,9 +132,11 @@ class SampleInput implements IndicatorDataInput {
 
   @override
   IndicatorResult createResult(int index, double value) => 
-      SampleResult(value, getAnotherProperty(index));
+      SampleResult(value, getDateTimeFromIndex(index));
 }
 ```
+
+If the package only gave you a list of numbers (e.g., <double>[]), you would need to convert it into your own type, such as List<SampleResult>. By using a generic type, the package lets you directly define the output type, so you don’t have to do extra conversions. This way, each result is automatically created as the type you want.
 
 ### 3. Implement OHLC Interface
 
