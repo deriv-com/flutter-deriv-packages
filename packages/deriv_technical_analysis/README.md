@@ -296,15 +296,10 @@ final values = indicator.calculateValues();
 final value = indicator.getValue(5);
 
 // Invalidate cached value if needed
-indicator.invalidate
-(3);
+indicator.invalidate(3);
 
 // Refresh specific value
-indicator.
-refreshValueFor
-(
-5
-);
+indicator.refreshValueFor(5);
 ```
 
 ## Architecture
