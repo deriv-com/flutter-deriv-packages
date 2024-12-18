@@ -138,7 +138,7 @@ class SampleInput implements IndicatorDataInput {
 }
 ```
 
-If the package only gave you a list of numbers (e.g., <double>[]), you would need to convert it into your own type, such as List<SampleResult>. By using a generic type, the package lets you directly define the output type, so you don’t have to do extra conversions. This way, each result is automatically created as the type you want.
+If the package only gave you a list of numbers (e.g., `List<double>`), you would need to convert it into your own type, such as `List<SampleResult>`. By using a generic type, the package lets you directly define the output type, so you don’t have to do extra conversions. This way, each result is automatically created as the type you want.
 
 ### 3. Implement OHLC Interface
 
