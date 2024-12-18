@@ -15,38 +15,7 @@ Requirements:
 - Dart SDK: >=3.0.0 <4.0.0
 - Flutter: >=3.10.1
 
-## Core Concepts
-The package is built around three core interfaces. 
 
-### 1. IndicatorResult
-Represents the output of an indicator calculation:
-```dart
-abstract class IndicatorResult {
-  double get quote;  // The calculated indicator value
-}
-```
-
-### 2. IndicatorOHLC
-Represents price data with Open, High, Low, and Close values:
-```dart
-abstract class IndicatorOHLC {
-  double get open;   // Opening price
-  double get high;   // Highest price
-  double get low;    // Lowest price
-  double get close;  // Closing price
-}
-```
-
-### 3. IndicatorDataInput
-
-
-Manages the input data and result creation:
-```dart
-abstract class IndicatorDataInput {
-  List<IndicatorOHLC> get entries;  // Input data points
-  IndicatorResult createResult(int index, double value);  // Creates result objects
-}
-```
 
 ## Available Indicators
 
@@ -82,6 +51,39 @@ The package includes a wide range of technical indicators:
 - Donchian Channel
 - Gator Oscillator
 - And many more...
+
+## Core Concepts
+The package is built around three core interfaces. 
+
+### 1. IndicatorResult
+Represents the output of an indicator calculation:
+```dart
+abstract class IndicatorResult {
+  double get quote;  // The calculated indicator value
+}
+```
+
+### 2. IndicatorOHLC
+Represents price data with Open, High, Low, and Close values:
+```dart
+abstract class IndicatorOHLC {
+  double get open;   // Opening price
+  double get high;   // Highest price
+  double get low;    // Lowest price
+  double get close;  // Closing price
+}
+```
+
+### 3. IndicatorDataInput
+
+
+Manages the input data and result creation:
+```dart
+abstract class IndicatorDataInput {
+  List<IndicatorOHLC> get entries;  // Input data points
+  IndicatorResult createResult(int index, double value);  // Creates result objects
+}
+```
 
 ## Implementation Guide
 
