@@ -15,43 +15,6 @@ Requirements:
 - Dart SDK: >=3.0.0 <4.0.0
 - Flutter: >=3.10.1
 
-
-
-## Available Indicators
-
-The package includes a wide range of technical indicators:
-
-#### Trend Indicators
-- Moving Averages (SMA, EMA, DEMA, TEMA, TRIMA, WMA, etc.)
-- MACD (Moving Average Convergence Divergence)
-- Parabolic SAR
-- Ichimoku Cloud components
-
-#### Momentum Indicators
-- RSI (Relative Strength Index)
-- Stochastic (Fast, Slow, Smoothed)
-- ROC (Rate of Change)
-- Awesome Oscillator
-- Williams %R
-
-#### Volatility Indicators
-- Bollinger Bands
-- ATR (Average True Range)
-- Standard Deviation
-- Variance
-
-#### Volume Indicators
-- CMF (Chaikin Money Flow)
-- VMA (Volume Moving Average)
-
-#### Other Indicators
-- ADX (Average Directional Index)
-- Aroon (Up, Down, Oscillator)
-- CCI (Commodity Channel Index)
-- Donchian Channel
-- Gator Oscillator
-- And many more...
-
 ## Core Concepts
 The package is built around three core interfaces. 
 
@@ -75,8 +38,6 @@ abstract class IndicatorOHLC {
 ```
 
 ### 3. IndicatorDataInput
-
-
 Manages the input data and result creation:
 ```dart
 abstract class IndicatorDataInput {
@@ -84,6 +45,94 @@ abstract class IndicatorDataInput {
   IndicatorResult createResult(int index, double value);  // Creates result objects
 }
 ```
+
+## Available Indicators
+
+The package includes the following technical indicators:
+
+### Moving Averages
+- Simple Moving Average (SMA)
+- Exponential Moving Average (EMA)
+- Double Exponential Moving Average (DEMA)
+- Triple Exponential Moving Average (TEMA)
+- Triangular Moving Average (TRIMA)
+- Weighted Moving Average (WMA)
+- Modified Moving Average (MMA)
+- Least Squares Moving Average (LSMA)
+- Hull Moving Average (HMA)
+- Variable Moving Average (VMA)
+- Welles Wilder Smoothing Moving Average (WWSMA)
+- Zero-Lag Exponential Moving Average (ZELMA)
+
+### Oscillators
+- Relative Strength Index (RSI)
+- Stochastic
+  - Fast Stochastic
+  - Slow Stochastic
+  - Smoothed Stochastic
+  - Stochastic Momentum Index (SMI)
+- Moving Average Convergence Divergence (MACD)
+  - MACD Line
+  - Signal Line
+  - MACD Histogram
+- Awesome Oscillator
+- Williams %R
+- Rate of Change (ROC)
+- Chande Momentum Oscillator (CMO)
+- Gator Oscillator
+  - Top Oscillator
+  - Bottom Oscillator
+
+### Trend Indicators
+- Average Directional Index (ADX)
+  - ADX Line
+  - Positive Directional Index (+DI)
+  - Negative Directional Index (-DI)
+  - ADX Histogram
+- Parabolic SAR
+- Ichimoku Cloud
+  - Conversion Line (Tenkan-sen)
+  - Base Line (Kijun-sen)
+  - Leading Span A (Senkou Span A)
+  - Leading Span B (Senkou Span B)
+  - Lagging Span (Chikou Span)
+
+### Volatility Indicators
+- Bollinger Bands
+  - Upper Band
+  - Lower Band
+  - Bandwidth
+  - %B (Percent B)
+- Average True Range (ATR)
+- Standard Deviation
+- Variance
+
+### Channel Indicators
+- Donchian Channel
+- Moving Average Envelope
+  - Upper Envelope
+  - Lower Envelope
+
+### Other Indicators
+- Aroon
+  - Aroon Up
+  - Aroon Down
+  - Aroon Oscillator
+- Commodity Channel Index (CCI)
+- Detrended Price Oscillator (DPO)
+- ZigZag
+- Fixed Channel Bands (FCB)
+  - FCB High
+  - FCB Low
+- Bullish/Bearish Pattern Recognition
+
+### Helper Indicators
+- Price Values (Open, High, Low, Close)
+- Various Price Averages (HL2, HLC3, HLCC4, OHLC4)
+- True Range
+- Directional Movement
+- Gain/Loss
+- Mean and Difference calculations
 
 ## Implementation Guide
 
@@ -120,8 +169,6 @@ class SampleResult implements IndicatorResult {
 ```
 
 ### 2. Create Your Input Class
-
-
 
 Next, You can implement `IndicatorDataInput` and implemenet `createResult` method:
 
