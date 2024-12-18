@@ -1,114 +1,262 @@
 # deriv_technical_analysis
 
-A Dart package for Technical Analysis. 
+A comprehensive Dart package for Technical Analysis, providing over 50 technical indicators for financial market analysis.
 
-In order to make the type of indicators result objects defined by user, indicator classes now take generic type. The generic type should be a subclass of `IndicatorResult`. It has `quote` value which is the calculated value of the indicator. Your model class can extend this `IndicatorResult` and add it's own properties.
+## Installation
 
-### Usage
+Add this to your package's `pubspec.yaml` file:
 
-Beside defining a model class for indicators results, one also should be created and extend/implement `IndicatorDataInput`. In this class we pass the indicators input list to calculate the result and implemenate `createResult` which defines how the result model class object is going to be instantiated.
+```yaml
+dependencies:
+  deriv_technical_analysis: ^1.0.0
+```
 
-For example:
+Requirements:
+- Dart SDK: >=3.0.0 <4.0.0
+- Flutter: >=3.10.1
 
+## Core Concepts
+The package is built around three core interfaces. 
+
+### 1. IndicatorResult
+Represents the output of an indicator calculation:
+```dart
+abstract class IndicatorResult {
+  double get quote;  // The calculated indicator value
+}
+```
+
+### 2. IndicatorOHLC
+Represents price data with Open, High, Low, and Close values:
+```dart
+abstract class IndicatorOHLC {
+  double get open;   // Opening price
+  double get high;   // Highest price
+  double get low;    // Lowest price
+  double get close;  // Closing price
+}
+```
+
+### 3. IndicatorDataInput
+
+
+Manages the input data and result creation:
+```dart
+abstract class IndicatorDataInput {
+  List<IndicatorOHLC> get entries;  // Input data points
+  IndicatorResult createResult(int index, double value);  // Creates result objects
+}
+```
+
+## Available Indicators
+
+The package includes a wide range of technical indicators:
+
+#### Trend Indicators
+- Moving Averages (SMA, EMA, DEMA, TEMA, TRIMA, WMA, etc.)
+- MACD (Moving Average Convergence Divergence)
+- Parabolic SAR
+- Ichimoku Cloud components
+
+#### Momentum Indicators
+- RSI (Relative Strength Index)
+- Stochastic (Fast, Slow, Smoothed)
+- ROC (Rate of Change)
+- Awesome Oscillator
+- Williams %R
+
+#### Volatility Indicators
+- Bollinger Bands
+- ATR (Average True Range)
+- Standard Deviation
+- Variance
+
+#### Volume Indicators
+- CMF (Chaikin Money Flow)
+- VMA (Volume Moving Average)
+
+#### Other Indicators
+- ADX (Average Directional Index)
+- Aroon (Up, Down, Oscillator)
+- CCI (Commodity Channel Index)
+- Donchian Channel
+- Gator Oscillator
+- And many more...
+
+## Implementation Guide
+
+### 1. Create Your Result Class
+
+First, create a class that implements `IndicatorResult`:
 
 ```dart
-// Result model class.
 class SampleResult implements IndicatorResult {
   SampleResult(this.quote, this.anotherProperty);
 
   @override
-  final double quote;
+  final double quote;  // Required by IndicatorResult
   
-  final int anotherProperty;
+  final int anotherProperty;  // Your custom properties
 }
+```
 
-/// Input class.
+### 2. Create Your Input Class
+
+The output of indicators are a generic type. This is to give the consumer of the package the ability to define what model class to be instantiated when an indicator is doing the calculation and wants to create the list of results witl items. You can define the list to contain 
+what type. In IndicatorDataInput.createResult you can define what type of output you need. The result values for each item from the indicator result is the quote for each item, your model class type can have other properties.
+for example the list of items you want to process or visualize on your side has a data type like below
+```Dart
+class MarketData {
+  MarketData(this.time, this.value);
+
+  final DateTime time;
+  final double value;
+}
+```
+If package would give you the result simply as a list of `double`s <double>[]. you would need to convert this list to a list of your own type List<MarketData>. Using the generic type allows you to define when indicators has calculated an item what type to instantiate.
+
+Next, You can implement `IndicatorDataInput` and implemenet `createResult` method:
+
+```dart
 class SampleInput implements IndicatorDataInput {
-  MockInput(this.entries);
+  SampleInput(this.entries);
 
   @override
   final List<IndicatorOHLC> entries;
 
   @override
-  IndicatorResult createResult(int? index, double value) => 
-                   SampleResult(value, getAnotherProperty(index));
+  IndicatorResult createResult(int index, double value) => 
+      SampleResult(value, getAnotherProperty(index));
 }
-
 ```
 
+### 3. Implement OHLC Interface
 
-The input data is a list of `IndicatorOHLC`, which has four `open, high, low, close` values. since some indcators are based on these four values and do their calculation based on them. (e.g. `ParabolicSarIndicator`). 
-There are also some other indicators that calculate the value list of input that each item has only one value. (e.g. `SAMIndicator`). These indicators take another indicator and use their result as input. In this way you can combine indicators with each other to create more complex ones. (Some of current indicators are combination of other indicators e.g. `CommodityChannelIndexIndicator`).
-In addition indicators that take their input as `IndicatorOHLC` can also take one value inputs, the you only need to return the single value for all four (`open, high, low, close`) properties.
+You can implement `IndicatorOHLC` for both single-value and OHLC data:
 
-```Dart
-/// A Tick (single value) input element.
+```dart
+// Single value implementation
 class SampleTick implements IndicatorOHLC {
-  const MockTick(this.quote);
+  const SampleTick(this.quote);
 
   final double quote;
 
   @override
   double get close => quote;
-
   @override
   double get high => quote;
-
   @override
   double get low => quote;
-
   @override
   double get open => quote;
 }
 
-/// An OHLC model class
-class SampleOHLC extends SampleTick {
-  const SampleOHLC(this.open, this.close, this.high, this.low)
-      : super(quote: close);
+// Full OHLC implementation
+class SampleOHLC implements IndicatorOHLC {
+  const SampleOHLC(this.open, this.close, this.high, this.low);
 
   @override
   final double close;
-
   @override
   final double high;
-
   @override
   final double low;
-
   @override
   final double open;
 }
 ```
 
-## Using indicators
+## Using Indicators
 
-```Dart
-const List<MockOHLC> input = <MockOHLC>[
-      SampleOHLC(0, 75.1, 74.06, 75.11),
-      SampleOHLC(0, 75.9, 76.030000, 74.640000),
-      SampleOHLC(0, 75.24, 76.269900, 75.060000),
-      SampleOHLC(0, 75.17, 75.280000, 74.500000),
-      SampleOHLC(0, 74.6, 75.310000, 74.540000),
-      SampleOHLC(0, 74.1, 75.467000, 74.010000),
-      SampleOHLC(0, 73.740000, 74.700000, 73.546000),
- ];
-    
-// Instantiating an indicator
-final ParabolicSarIndicator<MockResult> pSar =
-ParabolicSarIndicator<MockResult>(SampleInput(input));
-        
-// Calculating all indicator's results.    
-print(pSar.calculateValues());
-        
-// Calculating and getting result for an index.    
-print(pSar.getValue(0));
-print(pSar.getValue(1));
-    
-// Passing an indicator to another indicator
-final SMAIndicator<MockResult> sma = SMAIndicator<MockResult>(pSar, 3);
-    
+### Basic Usage
 
-print(sma.calculateValues());        
-print(sma.getValue(0));
-print(sma.getValue(1));
+```dart
+// Prepare your data
+final List<SampleOHLC> data = [
+  SampleOHLC(0, 75.1, 74.06, 75.11),
+  SampleOHLC(0, 75.9, 76.03, 74.64),
+  // ... more data points
+];
+
+// Create input
+final input = SampleInput(data);
+
+// Create and use indicator
+final rsi = RSIIndicator<SampleResult>(input);
+final allValues = rsi.calculateValues();
+final specificValue = rsi.getValue(5);
+```
+
+### Chaining Indicators
+
+Indicators can be used as input for other indicators:
+
+```dart
+// Create first indicator
+final macd = MACDIndicator<SampleResult>(input);
+
+// Use MACD as input for SMA
+final sma = SMAIndicator<SampleResult>(macd, 3);
+```
+
+### Performance Optimization
+
+Most indicators extend `CachedIndicator` which provides performance optimizations:
+
+```dart
+// Calculate all values (cached for future use)
+final values = indicator.calculateValues();
+
+// Get specific value (uses cache if available)
+final value = indicator.getValue(5);
+
+// Invalidate cached value if needed
+indicator.invalidate(3);
+
+// Refresh specific value
+indicator.refreshValueFor(5);
+```
+
+## Architecture
+
+The package follows a hierarchical structure:
+
+1. `Indicator<T>`: Base abstract class defining core indicator functionality
+   - Generic type T extends `IndicatorResult`
+   - Handles basic indicator operations
+
+2. `CachedIndicator<T>`: Extends `Indicator<T>` adding caching capabilities
+   - Optimizes performance through value caching
+   - Provides invalidation and refresh mechanisms
+   - Handles batch calculations efficiently
+
+3. Specific Indicators: Extend `CachedIndicator<T>` with specific calculations
+   - Implement technical analysis algorithms
+   - Can be composed with other indicators
+   - Support both single-value and OHLC inputs
+
+## License
+
+```
+MIT License
+
+Copyright (c) 2024 Deriv Group Services Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
