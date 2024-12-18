@@ -12,6 +12,12 @@ import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/features/auth/deriv_auth_io.dart';
 import 'package:deriv_auth/features/auth/services/base_auth_service.dart';
 import 'package:deriv_auth/features/social_auth/models/social_auth_dto.dart';
+import 'package:flutter_deriv_api/api/response/wallet_migration_response_extended.dart'
+    as wallet_migration_response_extended;
+import 'package:flutter_deriv_api/api/response/wallet_migration_response_result.dart'
+    as wallet_migration_response_result;
+import 'package:flutter_deriv_api/basic_api/generated/wallet_migration_send.dart'
+    as wallet_migration_send;
 
 part 'deriv_auth_state.dart';
 
@@ -274,6 +280,36 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
   /// The user is considered  migrated if at least one of their accounts
   /// is [AccountCategoryEnum.wallet]
   bool get isMigratedToWallets => _isUserMigrated;
+
+  /// Check if the user is migrated to wallets or not from server.
+  Future<bool> checkForcedWalletMigrationStatus(String loginId) async {
+    try {
+      final wallet_migration_response_result.WalletMigrationResponse response =
+          await wallet_migration_response_extended
+              .WalletMigrationResponseExtended.fetchWalletMigration(
+        request: wallet_migration_send.WalletMigrationRequest(
+          loginid: loginId,
+          walletMigration: 'state',
+        ),
+      );
+
+      if (response.walletMigration?.state ==
+          wallet_migration_response_result.StateEnum.migrated) {
+        emit(
+          DerivAuthErrorState(
+            message: 'Login Expired',
+            type: AuthErrorType.expiredAccount,
+            isSocialLogin: false,
+          ),
+        );
+      }
+
+      return response.walletMigration?.state ==
+          wallet_migration_response_result.StateEnum.migrated;
+    } on Exception catch (_) {
+      return false;
+    }
+  }
 
   bool _checkUserMigrated(AuthorizeEntity authorizeEntity) =>
       authorizeEntity.accountList?.any((AccountListItem account) =>
