@@ -50,7 +50,7 @@ String getIndicatorIconPath(IndicatorConfig config) {
 /// for the given [drawingToolType].
 String getDrawingToolIconPath(Type drawingToolType) {
   switch (drawingToolType) {
-    case LineDrawingToolConfig:
+    case LineDrawingToolConfigMobile:
       return lineIcon;
     case RayDrawingToolConfig:
       return rsiIcon;
@@ -70,8 +70,12 @@ List<DrawingToolItemModel> getDrawingToolsList(
     DrawingToolItemModel(
       title: context.mobileChartWrapperLocalizations.labelLine,
       icon: lineIcon,
-      config: const LineDrawingToolConfig(
-        lineStyle: LineStyle(thickness: 0.9, color: BrandColors.coral),
+      config: const LineDrawingToolConfigMobile(
+        lineStyle: LineStyle(
+          thickness: 0.9,
+          color: BrandColors.coral,
+          markerRadius: 4,
+        ),
       ),
     ),
     // Add more drawing tools here.
@@ -99,7 +103,7 @@ String getDrawingToolTitle(
   DrawingToolConfig config,
 ) {
   switch (config.runtimeType) {
-    case LineDrawingToolConfig:
+    case LineDrawingToolConfigMobile:
       return context.mobileChartWrapperLocalizations.labelLine;
     case RayDrawingToolConfig:
       return context.mobileChartWrapperLocalizations.labelRay;

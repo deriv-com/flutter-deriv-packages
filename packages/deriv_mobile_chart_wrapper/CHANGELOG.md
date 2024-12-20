@@ -1,3 +1,7 @@
+## 0.1.10+1
+
+ - **FIX**(deriv_mobile_chart_wrapper): [GRWT-3474] Point_Highlight_Enlarges_when_navigating_back_to_same_chart_view ([#918](https://github.com/regentmarkets/flutter-deriv-packages/issues/918)). ([c751b552](https://github.com/regentmarkets/flutter-deriv-packages/commit/c751b552915c91e9386a90143a2291b512cd3dbd))
+
 ## 0.1.10
 
  - **FEAT**(deriv_mobile_chart_wrapper): [GRWT-3362] update chart package version ([#919](https://github.com/regentmarkets/flutter-deriv-packages/issues/919)). ([d79b9d5e](https://github.com/regentmarkets/flutter-deriv-packages/commit/d79b9d5e9d7216085e60c49be98a8cd0a7caea18))

@@ -121,7 +121,7 @@ class DrawingToolInfoBar extends StatelessWidget
     BuildContext context, {
     required DrawingToolConfig drawingTool,
   }) {
-    if (drawingTool is LineDrawingToolConfig ||
+    if (drawingTool is LineDrawingToolConfigMobile ||
         drawingTool is RayDrawingToolConfig) {
       final bool isDrawingToolSelected =
           toolsController.drawingToolsData?.selectedDrawingTool?.drawingData ==
