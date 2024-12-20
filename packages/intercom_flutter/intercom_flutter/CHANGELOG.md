@@ -2,7 +2,7 @@
 
 ## 9.2.2
 
-* Bump Intercom iOS SDK version to 18.2.1
+* Bump Intercom iOS SDK version to 18.2.2
 
 ## 9.2.1
 
