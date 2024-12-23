@@ -27,13 +27,6 @@ jobs:
           flutter-version: "3.24.1"
           cache: true
 
-      - name: Set SSH Key
-        uses: webfactory/ssh-agent@fd34b8dee206fe74b288a5e61bc95fba2f1911eb
-        with:
-          ssh-private-key: |
-                        ${{ secrets.SSH_PRIVATE_KEY }}
-                        ${{ secrets.SSH_CHART_PRIVATE_KEY }}
-
       - name: Install Melos and run pub get
         uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
         with:
