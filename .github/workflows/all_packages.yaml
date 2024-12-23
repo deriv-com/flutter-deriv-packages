@@ -30,7 +30,7 @@ jobs:
       - name: Install Melos and run pub get
         uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
         with:
-          melos-version: "3.0.1"
+          melos-version: "3.2.0"
 
       - name: Run Analyze
         run: melos run analyze
