@@ -7,7 +7,7 @@ Add the following to your `pubspec.yaml`:
 ```
 deriv_expandable_bottom_sheet:
   git:
-    url: https://github.com/deriv-com/flutter-deriv-packages.git
+    url: git@github.com:deriv-com/flutter-deriv-packages.git
     path: packages/deriv_expandable_bottom_sheet
     ref: dev
 ```

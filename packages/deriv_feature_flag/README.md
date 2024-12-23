@@ -10,7 +10,7 @@ This package provides feature flag functionality for mobile applications.
 dependencies:
   deriv_feature_flag:
     git:
-      url: https://github.com/deriv-com/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_feature_flag
       ref: ref
 ```

@@ -25,7 +25,7 @@ To use this package, add `deriv_passkeys` as a dependency in your pubspec.yaml f
 dependencies:
   deriv_passkeys:
     git:
-      url: https://github.com/deriv-com/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_passkeys
       ref: deriv_passkeys-v0.0.1
 ```

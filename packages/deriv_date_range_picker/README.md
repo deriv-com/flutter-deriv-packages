@@ -13,7 +13,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 dependencies:
   deriv_date_range_picker:
     git:
-        url: https://github.com/deriv-com/flutter-deriv-packages.git
+        url: git@github.com:deriv-com/flutter-deriv-packages.git
         path: packages/deriv_date_range_picker
         ref: dev
 ```

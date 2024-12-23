@@ -10,7 +10,7 @@ To use the lints, add a dependency in your `pubspec.yaml`:
 dev_dependencies:
   deriv_lint:
     git:
-      url: https://github.com/deriv-com/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_lint
       ref: dev
 ```
