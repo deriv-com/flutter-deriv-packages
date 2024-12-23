@@ -13,7 +13,7 @@ In order to use the package, add the following to `pubspec.yaml` file. Refer to 
 ```yaml
 deriv_theme:
        git:
-         url: git@github.com:regentmarkets/flutter-deriv-packages.git
+         url: git@github.com:deriv-com/flutter-deriv-packages.git
          path: packages/deriv_theme
          ref: master
 ```

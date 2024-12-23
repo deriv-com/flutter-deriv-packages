@@ -14,7 +14,7 @@ first of all you should add Add `deriv_web_view` dependency to `pubspec.yaml`:
 ```yaml
 deriv_web_view:
   git:
-    url: git@github.com:regentmarkets/flutter-deriv-packages.git
+    url: git@github.com:deriv-com/flutter-deriv-packages.git
     path: packages/deriv_web_view
     ref: dev
 ```

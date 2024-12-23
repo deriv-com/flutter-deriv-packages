@@ -14,25 +14,25 @@ dependencies:
 
   analytics:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/analytics
       ref: analytics-v4.1.1
 
   deriv_theme:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_theme
       ref: deriv_theme-v3.0.0
 
   deriv_ui:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_ui
       ref: deriv_ui-v0.1.2+2
 
   deriv_http_client:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_http_client
       ref: deriv_http_client-v2.0.2
 
@@ -43,25 +43,25 @@ dependencies:
 
   deriv_web_view:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_web_view
       ref: deriv_web_view-v0.2.2+5
 
   deriv_localizations:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_localizations
       ref: deriv_localizations-v1.7.2
 
   deriv_passkeys:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_passkeys
       ref: deriv_passkeys-v0.0.5+15
 
   deriv_language_selector:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_language_selector
       ref: deriv_language_selector-v0.0.4+2
 
@@ -77,7 +77,7 @@ dependencies:
 dependency_overrides:
   deriv_ui:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_ui
       ref: deriv_ui-v0.1.2+2
 

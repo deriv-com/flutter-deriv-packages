@@ -22,7 +22,7 @@ To install the package, add the following to your `pubspec.yaml`:
 dependencies:
   analytics:
        git:
-         url: git@github.com:regentmarkets/flutter-deriv-packages.git
+         url: git@github.com:deriv-com/flutter-deriv-packages.git
          path: packages/analytics
          ref: <master/dev>
 ```

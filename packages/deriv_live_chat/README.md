@@ -24,7 +24,7 @@ In order to use the plugin, add the following to `pubspec.yaml` file. Refer to t
 ```yaml
 deriv_live_chat:
   git:
-    url: git@github.com:regentmarkets/flutter-deriv-packages.git
+    url: git@github.com:deriv-com/flutter-deriv-packages.git
     path: packages/deriv_live_chat
     ref: master
 ```

@@ -18,19 +18,19 @@ dependencies:
 
   deriv_theme:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_theme
       ref: deriv_theme-v3.0.0
 
   deriv_localizations:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_localizations
       ref: deriv_localizations-v1.7.2
 
   deriv_ui:
     git:
-      url: git@github.com:regentmarkets/flutter-deriv-packages.git
+      url: git@github.com:deriv-com/flutter-deriv-packages.git
       path: packages/deriv_ui
       ref: deriv_ui-v0.1.2+2
 
