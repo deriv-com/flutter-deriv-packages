@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 /// User Info model.
-class UserInfo {
+class UserInfo extends Equatable {
   /// Constructor for User Info model.
-  UserInfo({
+  const UserInfo({
     required this.userId,
     this.countryResidence,
     this.language,
@@ -19,4 +21,7 @@ class UserInfo {
 
   /// Account type.
   final String? accountType;
+
+  @override
+  List<Object?> get props => [userId, countryResidence, language, accountType];
 }
