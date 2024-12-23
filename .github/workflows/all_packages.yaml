@@ -31,7 +31,7 @@ jobs:
         uses: webfactory/ssh-agent@fd34b8dee206fe74b288a5e61bc95fba2f1911eb
         with:
           ssh-private-key: |
-                        ${{ secrets.SSH_PRIVATE_KEY_NEW}}
+                        ${{ secrets.SSH_PRIVATE_KEY_NEW }}
                         ${{ secrets.SSH_CHART_PRIVATE_KEY }}
 
       - name: Install Melos and run pub get
