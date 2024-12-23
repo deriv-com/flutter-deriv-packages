@@ -6,10 +6,7 @@ on:
       - master
       - dev
   pull_request_target:
-    types:
-      - opened
-      - synchronize
-      - reopened
+    types: [opened, synchronize, reopened]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -39,7 +36,7 @@ jobs:
       - name: Install Melos and run pub get
         uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
         with:
-          melos-version: "3.0.1"
+          melos-version: "3.2.0"
 
       - name: Run Analyze
         run: melos run analyze
