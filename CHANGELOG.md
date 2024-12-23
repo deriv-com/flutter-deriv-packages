@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-12-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_technical_analysis` - `v1.1.0`](#deriv_technical_analysis---v110)
+
+---
+
+#### `deriv_technical_analysis` - `v1.1.0`
+
+ - **FEAT**(deriv_technical_analysis): [GRWT-3941] Ramin/prepare ta for publish ([#922](https://github.com/regentmarkets/flutter-deriv-packages/issues/922)). ([86a2915d](https://github.com/regentmarkets/flutter-deriv-packages/commit/86a2915dd7ab05ee20978a8f7a801ac28d7bbacc))
+
+
 ## 2024-12-19
 
 ### Changes
