@@ -28,7 +28,7 @@ dependencies:
     git:
       url: https://github.com/deriv-com/flutter-deriv-packages.git
       path: packages/deriv_ui
-      ref: deriv_ui-v0.1.2+2
+      ref: deriv_ui-v0.1.2+4
 
   deriv_http_client:
     git:
