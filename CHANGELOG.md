@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.10+1`](#deriv_mobile_chart_wrapper---v01101)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.10+1`
+
+ - **FIX**(deriv_mobile_chart_wrapper): [GRWT-3474] Point_Highlight_Enlarges_when_navigating_back_to_same_chart_view ([#918](https://github.com/regentmarkets/flutter-deriv-packages/issues/918)). ([c751b552](https://github.com/regentmarkets/flutter-deriv-packages/commit/c751b552915c91e9386a90143a2291b512cd3dbd))
+
+
 ## 2024-12-12
 
 ### Changes
