@@ -1,5 +1,5 @@
 name: flutter_deriv_packages
-repository: https://github.com/regentmarkets/flutter-deriv-packages
+repository: https://github.com/deriv-com/flutter-deriv-packages.git
 
 packages:
   - packages/*
