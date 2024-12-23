@@ -3,5 +3,12 @@ name: deriv_packages_workspace
 environment:
   sdk: ">=2.18.0 <4.0.0"
 
+dependency_overrides:
+  deriv_http_client:
+    git:
+      url: https://github.com/deriv-com/flutter-deriv-packages.git
+      path: packages/deriv_http_client
+      ref: deriv_http_client-v2.0.2
+
 dev_dependencies:
   melos: 3.2.0
