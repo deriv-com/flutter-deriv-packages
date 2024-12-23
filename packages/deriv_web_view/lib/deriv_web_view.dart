@@ -188,7 +188,7 @@ Future<void> openLoggedInWebPage({
   }
 
   final String ptaLoginUrl =
-      getPtaLoginUrl(host: endpoint, token: oneTimeToken);
+    '${getPtaLoginUrl(host: endpoint, token: oneTimeToken)}?lang=$languageCode';
 
   if (inAppBrowser) {
     await openInAppTabActivityWebView(
