@@ -25,7 +25,7 @@ Add the package to your pubspec.yaml file
 ```yaml
 deriv_logger:
   git:
-    url: git@github.com:deriv-com/flutter-deriv-packages.git
+    url: https://github.com/deriv-com/flutter-deriv-packages.git
     path: packages/deriv_logger
 ```
 

@@ -20,7 +20,7 @@ Each package has been released as git tag with convention as **packageName-vVers
 ```yaml
 deriv_ui:
   git:
-    url: git@github.com:deriv-com/flutter-deriv-packages.git
+    url: https://github.com/deriv-com/flutter-deriv-packages.git
     path: packages/deriv_ui
     ref: deriv_ui-v0.1.2+2 #your prefered version
 ```
