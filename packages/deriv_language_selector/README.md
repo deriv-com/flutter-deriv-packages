@@ -19,7 +19,7 @@ To use this package, add `deriv_language_selector` as a dependency in your pubsp
 dependencies:
   deriv_language_selector:
     git:
-      url: git@github.com:deriv-com/flutter-deriv-packages.git
+      url: https://github.com/deriv-com/flutter-deriv-packages.git
       path: packages/deriv_language_selector
       ref: deriv_language_selector-v0.0.1
 ```

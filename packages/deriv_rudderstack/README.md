@@ -23,7 +23,7 @@ In order to use the plugin, add the following to `pubspec.yaml` file. Refer to t
 ```yaml
 deriv_rudderstack:
        git:
-         url: git@github.com:deriv-com/flutter-deriv-packages.git
+         url: https://github.com/deriv-com/flutter-deriv-packages.git
          path: packages/deriv_rudderstack
          ref: master
 ```
