@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-12-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`deriv_app_performance` - `v0.2.0`](#deriv_app_performance---v020)
+
+Packages with other changes:
+
+ - [`deriv_cipher` - `v0.0.3`](#deriv_cipher---v003)
+ - [`deriv_datadog` - `v0.0.1+1`](#deriv_datadog---v0011)
+ - [`deriv_grouped_listview` - `v0.0.3`](#deriv_grouped_listview---v003)
+ - [`deriv_http_client` - `v2.1.0`](#deriv_http_client---v210)
+ - [`deriv_logger` - `v0.0.3+2`](#deriv_logger---v0032)
+ - [`deriv_technical_analysis` - `v1.1.2`](#deriv_technical_analysis---v112)
+
+---
+
+#### `deriv_app_performance` - `v0.2.0`
+
+ - **FIX**(deriv_app_performance): return the trace object on start and stop tracing ([#782](https://github.com/deriv-com/flutter-deriv-packages.git/issues/782)). ([7f146ac7](https://github.com/deriv-com/flutter-deriv-packages.git/commit/7f146ac7a9cc71ca0bb79f5523a4ceb77d2df25b))
+ - **BREAKING** **FIX**(deriv_app_performance): [DRGO-1247] Ramin/update dependencies ([#862](https://github.com/deriv-com/flutter-deriv-packages.git/issues/862)). ([b0e7120b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/b0e7120bd1afc0b3244e14d0c251525005ee67c5))
+
+#### `deriv_cipher` - `v0.0.3`
+
+ - **FEAT**(deriv_cipher): add cipher package ([#836](https://github.com/deriv-com/flutter-deriv-packages.git/issues/836)). ([d64a6473](https://github.com/deriv-com/flutter-deriv-packages.git/commit/d64a64736ad3dadb3fd4237e370f5a81f0c6f646))
+
+#### `deriv_datadog` - `v0.0.1+1`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+ - **FIX**: update dependencies. ([3df2560a](https://github.com/deriv-com/flutter-deriv-packages.git/commit/3df2560ae2e1e7f5918dc632036001a4b6fb14bb))
+
+#### `deriv_grouped_listview` - `v0.0.3`
+
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/deriv-com/flutter-deriv-packages.git/issues/846)). ([1d30ddc9](https://github.com/deriv-com/flutter-deriv-packages.git/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+
+#### `deriv_http_client` - `v2.1.0`
+
+ - **FEAT**(deriv_http_client): Ramin/http client new version ([#932](https://github.com/deriv-com/flutter-deriv-packages.git/issues/932)). ([586d40aa](https://github.com/deriv-com/flutter-deriv-packages.git/commit/586d40aa800281fbadd8153924ff4078a07ae598))
+
+#### `deriv_logger` - `v0.0.3+2`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_technical_analysis` - `v1.1.2`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+
 ## 2024-12-23
 
 ### Changes

@@ -34,7 +34,7 @@ dependencies:
     git:
       url: https://github.com/deriv-com/flutter-deriv-packages.git
       path: packages/deriv_http_client
-      ref: deriv_http_client-v2.0.2
+      ref: deriv_http_client-v2.1.0
 
   flutter_deriv_api:
     git:
