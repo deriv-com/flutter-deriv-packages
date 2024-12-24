@@ -1,3 +1,8 @@
+## 1.1.13
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+ - **FIX**(deriv_date_range_picker): iupgrade intl version ([#859](https://github.com/deriv-com/flutter-deriv-packages.git/issues/859)). ([c500b57d](https://github.com/deriv-com/flutter-deriv-packages.git/commit/c500b57d1558b10d7d60603d8de36af88db3dfb7))
+
 ## 1.1.12
 
  - Update a dependency to the latest release.

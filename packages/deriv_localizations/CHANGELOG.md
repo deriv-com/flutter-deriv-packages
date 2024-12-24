@@ -1,3 +1,9 @@
+## 1.8.0
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#887](https://github.com/deriv-com/flutter-deriv-packages.git/issues/887)). ([ba1b75b8](https://github.com/deriv-com/flutter-deriv-packages.git/commit/ba1b75b85e103a46efab2a5224f04a280b282ee1))
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#881](https://github.com/deriv-com/flutter-deriv-packages.git/issues/881)). ([ec78f45b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/ec78f45b46dfe02e99995c10699289193f145a75))
+ - **FEAT**(deriv_localizations): Update localizations for `deriv_mobile_chart_wrapper` ([#830](https://github.com/deriv-com/flutter-deriv-packages.git/issues/830)). ([4adde10d](https://github.com/deriv-com/flutter-deriv-packages.git/commit/4adde10d42b8cf9f2540782634c9f8527c17620d))
+
 ## 1.7.2
 
  - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#887](https://github.com/regentmarkets/flutter-deriv-packages/issues/887)). ([ba1b75b8](https://github.com/regentmarkets/flutter-deriv-packages/commit/ba1b75b85e103a46efab2a5224f04a280b282ee1))

@@ -1,7 +1,7 @@
 name: deriv_web_view
 description: Deriv Web View package project.
 
-version: 0.2.2+5
+version: 0.2.2+6
 
 homepage: https://deriv.com/
 publish_to: "none"

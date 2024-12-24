@@ -1,3 +1,8 @@
+## 0.0.3
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/deriv-com/flutter-deriv-packages.git/issues/846)). ([1d30ddc9](https://github.com/deriv-com/flutter-deriv-packages.git/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+
 ## 0.0.2+1
 
  - Update a dependency to the latest release.

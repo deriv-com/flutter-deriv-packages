@@ -1,6 +1,6 @@
 name: deriv_lint
 description: A set of lint rules for Dart and Flutter projects.
-version: 1.0.0
+version: 1.0.1
 
 homepage: https://deriv.com/
 publish_to: "none"
