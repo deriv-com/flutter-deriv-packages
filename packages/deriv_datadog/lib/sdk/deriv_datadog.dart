@@ -36,8 +36,8 @@ class DerivDatadog implements BaseDerivDatadog {
     String name, [
     Map<String, Object?> attributes = const <String, Object?>{},
   ]) =>
-      _datadogSDK.rum?.addUserAction(
-        datadog.RumUserActionType.tap,
+      _datadogSDK.rum?.addAction(
+        datadog.RumActionType.tap,
         name,
         attributes,
       );
@@ -47,8 +47,8 @@ class DerivDatadog implements BaseDerivDatadog {
     String name, [
     Map<String, Object?> attributes = const <String, Object?>{},
   ]) =>
-      _datadogSDK.rum?.addUserAction(
-        datadog.RumUserActionType.scroll,
+      _datadogSDK.rum?.addAction(
+        datadog.RumActionType.scroll,
         name,
         attributes,
       );
@@ -58,8 +58,8 @@ class DerivDatadog implements BaseDerivDatadog {
     String name, [
     Map<String, Object?> attributes = const <String, Object?>{},
   ]) {
-    _datadogSDK.rum?.addUserAction(
-      datadog.RumUserActionType.swipe,
+    _datadogSDK.rum?.addAction(
+      datadog.RumActionType.swipe,
       name,
       attributes,
     );
@@ -70,8 +70,8 @@ class DerivDatadog implements BaseDerivDatadog {
     String name, [
     Map<String, Object?> attributes = const <String, Object?>{},
   ]) =>
-      _datadogSDK.rum?.addUserAction(
-        datadog.RumUserActionType.custom,
+      _datadogSDK.rum?.addAction(
+        datadog.RumActionType.custom,
         name,
         attributes,
       );
@@ -92,24 +92,28 @@ class DerivDatadog implements BaseDerivDatadog {
     DerivDatadogConfiguration configuration,
     datadog.AppRunner runner,
   ) async {
-    final datadog.RumConfiguration rumConfiguration = datadog.RumConfiguration(
+    final datadog.DatadogRumConfiguration rumConfiguration =
+        datadog.DatadogRumConfiguration(
       applicationId: configuration.applicationId,
       sessionSamplingRate: configuration.sessionSamplingRate ?? 100,
-      tracingSamplingRate: configuration.tracingSamplingRate ?? 100,
+      traceSampleRate: configuration.tracingSamplingRate ?? 100,
     );
 
-    final datadog.DdSdkConfiguration datadogConfiguration =
-        datadog.DdSdkConfiguration(
+    final datadog.DatadogConfiguration datadogConfiguration =
+        datadog.DatadogConfiguration(
       clientToken: configuration.clientToken,
       env: configuration.env,
-      serviceName: configuration.serviceName,
+      service: configuration.serviceName,
       site: configuration.site?.site ?? DatadogSite.us1.site,
-      trackingConsent: configuration.trackingConsent.consent,
       nativeCrashReportEnabled: configuration.nativeCrashReportEnabled ?? true,
-      loggingConfiguration: datadog.LoggingConfiguration(),
+      loggingConfiguration: datadog.DatadogLoggingConfiguration(),
       rumConfiguration: rumConfiguration,
     );
 
-    await datadog.DatadogSdk.runApp(datadogConfiguration, runner);
+    await datadog.DatadogSdk.runApp(
+      datadogConfiguration,
+      configuration.trackingConsent.consent,
+      runner,
+    );
   }
 }

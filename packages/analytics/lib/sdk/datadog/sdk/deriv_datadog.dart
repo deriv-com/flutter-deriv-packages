@@ -36,23 +36,22 @@ class DerivDatadog implements BaseAnalytics<DerivDatadogConfiguration> {
   @override
   Future<bool> setup(DerivDatadogConfiguration configuration) async {
     try {
-      final datadog.RumConfiguration rumConfiguration =
-          datadog.RumConfiguration(
+      final datadog.DatadogRumConfiguration rumConfiguration =
+          datadog.DatadogRumConfiguration(
         applicationId: configuration.applicationId,
         sessionSamplingRate: configuration.sessionSamplingRate ?? 100,
-        tracingSamplingRate: configuration.tracingSamplingRate ?? 100,
+        traceSampleRate: configuration.tracingSamplingRate ?? 100,
       );
 
-      final datadog.DdSdkConfiguration datadogConfiguration =
-          datadog.DdSdkConfiguration(
+      final datadog.DatadogConfiguration datadogConfiguration =
+          datadog.DatadogConfiguration(
         clientToken: configuration.clientToken,
         env: configuration.env,
-        serviceName: configuration.serviceName,
+        service: configuration.serviceName,
         site: configuration.site?.site ?? DatadogSite.us1.site,
-        trackingConsent: configuration.trackingConsent.consent,
         nativeCrashReportEnabled:
             configuration.nativeCrashReportEnabled ?? true,
-        loggingConfiguration: datadog.LoggingConfiguration(),
+        loggingConfiguration: datadog.DatadogLoggingConfiguration(),
         rumConfiguration: rumConfiguration,
       );
 
@@ -72,7 +71,8 @@ class DerivDatadog implements BaseAnalytics<DerivDatadogConfiguration> {
         return platformOriginalOnError?.call(e, st) ?? false;
       };
 
-      await _datadogSDK.initialize(datadogConfiguration);
+      await _datadogSDK.initialize(
+          datadogConfiguration, configuration.trackingConsent.consent);
       _datadogSDK.updateConfigurationInfo(
           LateConfigurationProperty.trackErrors, true);
       return true;
@@ -101,9 +101,20 @@ class DerivDatadog implements BaseAnalytics<DerivDatadogConfiguration> {
     required String name,
     Map<String, Object?> attributes = const <String, Object?>{},
   }) =>
-      _datadogSDK.rum?.addUserAction(
+      _datadogSDK.rum?.addAction(
         type.rumUserActionType,
         name,
         attributes,
+      );
+
+  /// Logs Source Error
+  void onSourceError(
+    String message, [
+    Map<String, Object?> attributes = const <String, Object?>{},
+  ]) =>
+      _datadogSDK.rum?.addErrorInfo(
+        message,
+        datadog.RumErrorSource.source,
+        attributes: attributes,
       );
 }
