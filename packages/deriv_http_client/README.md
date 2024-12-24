@@ -25,7 +25,7 @@ try {
 
 ```dart
 try {
-  final data = <String, String>{
+  final data = {
     'key1': 'value1',
     'key2': 'value2',
   };
