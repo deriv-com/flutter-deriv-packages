@@ -1,3 +1,8 @@
+## 0.0.5
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+ - **FEAT**(deriv_language_selector): [DRGO-1332] raslan/ Added language UI design revamp for language selector ([#893](https://github.com/deriv-com/flutter-deriv-packages.git/issues/893)). ([80b86d25](https://github.com/deriv-com/flutter-deriv-packages.git/commit/80b86d25c60d41ec36678a18ebb58a2c2cd7db20))
+
 ## 0.0.4+2
 
  - Update a dependency to the latest release.

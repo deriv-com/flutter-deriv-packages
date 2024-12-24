@@ -1,3 +1,7 @@
+## 4.1.2
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
 ## 4.1.1
 
  - **FIX**(analytics): Update rudderstack event for trading ([#898](https://github.com/regentmarkets/flutter-deriv-packages/issues/898)). ([434fc8b4](https://github.com/regentmarkets/flutter-deriv-packages/commit/434fc8b443eb429ad0bff1f5192f35f6489eb488))
