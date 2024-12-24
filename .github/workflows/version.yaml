@@ -1,93 +1,93 @@
-name: version
-
-on:
-  pull_request:
-    types:
-      - closed
-    branches:
-      - master
-
-jobs:
-  version_and_tag:
-    runs-on: ubuntu-latest
-    if: >
-      github.event.pull_request.merged == true && 
-      !startsWith(github.event.pull_request.title, 'chore') && 
-      !startsWith(github.event.pull_request.title, 'ci') && 
-      !startsWith(github.event.pull_request.title, 'add')
-    steps:
-      - name: Git Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
-        with:
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          fetch-depth: 0
-
-      - name: Setup Git User
-        uses: fregante/setup-git-user@77c1b5542f14ab6db4b8462d6857e31deb988b09
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
-        with:
-          channel: "stable"
-          flutter-version: "3.10.2"
-          cache: true
-
-      - name: Setup Melos
-        uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
-        with:
-          melos-version: "3.2.0"
-          run-bootstrap: false
-
-      - name: Create git tag based on version
-        run: melos version --all --yes
-
-      - name: Get new tags
-        id: new-tags
-        run: |
-          local_tags=$(git tag)
-          remote_tags=$(git ls-remote --tags origin | cut -d/ -f3)
-          new_tags=$(comm -23 <(sort <<<"$local_tags") <(sort <<<"$remote_tags"))
-
-          # Format new tags into a single line with '\n' between tags
-          formatted_tags=$(echo -e "$new_tags" | tr '\n' '  ')
-
-          # Append the formatted tags to the file
-          echo -e "NEW_TAGS=$formatted_tags" >> "$GITHUB_OUTPUT"
-        shell: bash
-
-      - name: Push tag
-        id: push-tag
-        run: |
-          output=$(git push --tags 2>&1)
-
-          if [[ $output == *"Everything up-to-date"* ]]; then
-            echo "PUSH_OUTPUT=No package updated" >> $GITHUB_OUTPUT
-          else
-            echo "PUSH_OUTPUT=Packages updated" >> $GITHUB_OUTPUT
-          fi
-        shell: bash
-
-      - name: Make the script files executable
-        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
-        run: chmod +x readme.sh
-        working-directory: ./scripts
-
-      - name: Update README.md
-        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
-        run: bash readme.sh
-        working-directory: ./scripts
-
-      - name: Send Slack Notification
-        uses: ./.github/actions/send_slack_notifications
-        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
-        with:
-          SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          TAGS: ${{ steps.new-tags.outputs.NEW_TAGS }}
-
-      - name: Create Pull Request on updated changelog and pubspec file.
-        uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
-        with:
-          token: ${{ secrets.PAT }}
-          title: "chore(version): bump version and update changelog"
-          base: master
+#name: version
+#
+#on:
+#  pull_request:
+#    types:
+#      - closed
+#    branches:
+#      - master
+#
+#jobs:
+#  version_and_tag:
+#    runs-on: ubuntu-latest
+#    if: >
+#      github.event.pull_request.merged == true &&
+#      !startsWith(github.event.pull_request.title, 'chore') &&
+#      !startsWith(github.event.pull_request.title, 'ci') &&
+#      !startsWith(github.event.pull_request.title, 'add')
+#    steps:
+#      - name: Git Checkout
+#        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+#        with:
+#          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          fetch-depth: 0
+#
+#      - name: Setup Git User
+#        uses: fregante/setup-git-user@77c1b5542f14ab6db4b8462d6857e31deb988b09
+#
+#      - name: Setup Flutter
+#        uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
+#        with:
+#          channel: "stable"
+#          flutter-version: "3.10.2"
+#          cache: true
+#
+#      - name: Setup Melos
+#        uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
+#        with:
+#          melos-version: "3.2.0"
+#          run-bootstrap: false
+#
+#      - name: Create git tag based on version
+#        run: melos version --all --yes
+#
+#      - name: Get new tags
+#        id: new-tags
+#        run: |
+#          local_tags=$(git tag)
+#          remote_tags=$(git ls-remote --tags origin | cut -d/ -f3)
+#          new_tags=$(comm -23 <(sort <<<"$local_tags") <(sort <<<"$remote_tags"))
+#
+#          # Format new tags into a single line with '\n' between tags
+#          formatted_tags=$(echo -e "$new_tags" | tr '\n' '  ')
+#
+#          # Append the formatted tags to the file
+#          echo -e "NEW_TAGS=$formatted_tags" >> "$GITHUB_OUTPUT"
+#        shell: bash
+#
+#      - name: Push tag
+#        id: push-tag
+#        run: |
+#          output=$(git push --tags 2>&1)
+#
+#          if [[ $output == *"Everything up-to-date"* ]]; then
+#            echo "PUSH_OUTPUT=No package updated" >> $GITHUB_OUTPUT
+#          else
+#            echo "PUSH_OUTPUT=Packages updated" >> $GITHUB_OUTPUT
+#          fi
+#        shell: bash
+#
+#      - name: Make the script files executable
+#        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
+#        run: chmod +x readme.sh
+#        working-directory: ./scripts
+#
+#      - name: Update README.md
+#        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
+#        run: bash readme.sh
+#        working-directory: ./scripts
+#
+#      - name: Send Slack Notification
+#        uses: ./.github/actions/send_slack_notifications
+#        if: ${{ contains(steps.push-tag.outputs.PUSH_OUTPUT, 'Packages updated') }}
+#        with:
+#          SLACK_WEBHOOK_PACKAGE_UPDATE: ${{ secrets.SLACK_WEBHOOK_PACKAGE_UPDATE }}
+#          PR_TITLE: ${{ github.event.pull_request.title }}
+#          TAGS: ${{ steps.new-tags.outputs.NEW_TAGS }}
+#
+#      - name: Create Pull Request on updated changelog and pubspec file.
+#        uses: peter-evans/create-pull-request@76c6f5c20e2111bfee3cd30fae52a25e410f5efc
+#        with:
+#          token: ${{ secrets.PAT }}
+#          title: "chore(version): bump version and update changelog"
+#          base: master
