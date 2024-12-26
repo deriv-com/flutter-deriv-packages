@@ -3,6 +3,123 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-12-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v4.2.0`](#analytics---v420)
+ - [`deriv_auth` - `v7.0.13`](#deriv_auth---v7013)
+ - [`deriv_banner` - `v0.0.1+2`](#deriv_banner---v0012)
+ - [`deriv_datadog` - `v0.0.2`](#deriv_datadog---v002)
+ - [`deriv_date_range_picker` - `v0.0.1+14`](#deriv_date_range_picker---v00114)
+ - [`deriv_expandable_bottom_sheet` - `v0.0.2+2`](#deriv_expandable_bottom_sheet---v0022)
+ - [`deriv_feature_flag` - `v0.1.2+1`](#deriv_feature_flag---v0121)
+ - [`deriv_language_selector` - `v0.0.4+3`](#deriv_language_selector---v0043)
+ - [`deriv_lint` - `v1.0.1`](#deriv_lint---v101)
+ - [`deriv_live_chat` - `v0.0.2+1`](#deriv_live_chat---v0021)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.10+2`](#deriv_mobile_chart_wrapper---v01102)
+ - [`deriv_numpad` - `v1.1.13`](#deriv_numpad---v1113)
+ - [`deriv_passkeys` - `v0.0.5+16`](#deriv_passkeys---v00516)
+ - [`deriv_rudderstack` - `v1.3.1`](#deriv_rudderstack---v131)
+ - [`deriv_store_launcher` - `v0.0.2+1`](#deriv_store_launcher---v0021)
+ - [`deriv_theme` - `v3.0.1`](#deriv_theme---v301)
+ - [`deriv_ui` - `v0.1.2+3`](#deriv_ui---v0123)
+ - [`deriv_web_view` - `v0.2.2+6`](#deriv_web_view---v0226)
+ - [`deriv_widgetbook` - `v0.0.2+39`](#deriv_widgetbook---v00239)
+ - [`update_checker` - `v3.1.2`](#update_checker---v312)
+
+---
+
+#### `analytics` - `v4.2.0`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+ - **FEAT**(analytics): Update datadog ([#937](https://github.com/deriv-com/flutter-deriv-packages.git/issues/937)). ([c0259328](https://github.com/deriv-com/flutter-deriv-packages.git/commit/c0259328988f40f605aa4e15ac72440f465c3c85))
+
+#### `deriv_auth` - `v7.0.13`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_banner` - `v0.0.1+2`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_datadog` - `v0.0.2`
+
+ - **FEAT**(analytics): Update datadog ([#937](https://github.com/deriv-com/flutter-deriv-packages.git/issues/937)). ([c0259328](https://github.com/deriv-com/flutter-deriv-packages.git/commit/c0259328988f40f605aa4e15ac72440f465c3c85))
+
+#### `deriv_date_range_picker` - `v0.0.1+14`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_expandable_bottom_sheet` - `v0.0.2+2`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_feature_flag` - `v0.1.2+1`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_language_selector` - `v0.0.4+3`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_lint` - `v1.0.1`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_live_chat` - `v0.0.2+1`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.10+2`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_numpad` - `v1.1.13`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_passkeys` - `v0.0.5+16`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_rudderstack` - `v1.3.1`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_store_launcher` - `v0.0.2+1`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_theme` - `v3.0.1`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_ui` - `v0.1.2+3`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_web_view` - `v0.2.2+6`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `deriv_widgetbook` - `v0.0.2+39`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+#### `update_checker` - `v3.1.2`
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
+
 ## 2024-12-24
 
 ### Changes

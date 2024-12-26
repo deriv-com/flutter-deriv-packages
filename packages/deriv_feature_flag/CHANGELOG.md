@@ -1,3 +1,7 @@
+## 0.1.2+1
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
 ## 0.1.2
 
  - **FEAT**(deriv_feature_flag): set attributes ([#874](https://github.com/regentmarkets/flutter-deriv-packages/issues/874)). ([bb92d976](https://github.com/regentmarkets/flutter-deriv-packages/commit/bb92d9764408613905da8451ce97689db09c6991))

@@ -1,3 +1,7 @@
+## 3.1.2
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
 ## 3.1.1
 
  - **FIX**(update_checker): [DRGO-1343] handle "failed to fetch and activate remote config" error ([#871](https://github.com/regentmarkets/flutter-deriv-packages/issues/871)). ([06c68591](https://github.com/regentmarkets/flutter-deriv-packages/commit/06c68591aaa9146789d173f220761efa1eab0d50))

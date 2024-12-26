@@ -1,3 +1,7 @@
+## 0.1.10+2
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+
 ## 0.1.10+1
 
  - **FIX**(deriv_mobile_chart_wrapper): [GRWT-3474] Point_Highlight_Enlarges_when_navigating_back_to_same_chart_view ([#918](https://github.com/regentmarkets/flutter-deriv-packages/issues/918)). ([c751b552](https://github.com/regentmarkets/flutter-deriv-packages/commit/c751b552915c91e9386a90143a2291b512cd3dbd))

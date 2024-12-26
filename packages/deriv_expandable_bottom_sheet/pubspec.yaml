@@ -1,6 +1,6 @@
 name: deriv_expandable_bottom_sheet
 description: A new Flutter package project.
-version: 0.0.2+1
+version: 0.0.2+2
 publish_to: none
 
 environment:
@@ -15,7 +15,7 @@ dependencies:
     git:
       url: https://github.com/deriv-com/flutter-deriv-packages.git
       path: packages/deriv_theme
-      ref: deriv_theme-v3.0.0
+      ref: deriv_theme-v3.0.1
 
 dev_dependencies:
   flutter_test:
