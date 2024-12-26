@@ -1,6 +1,6 @@
 name: update_checker
 description: Check and retrieve update information from the server for the given package.
-version: 3.1.1
+version: 4.0.0
 
 homepage: https://deriv.com/
 publish_to: "none"

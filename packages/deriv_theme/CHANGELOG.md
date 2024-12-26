@@ -1,3 +1,13 @@
+## 4.0.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
+ - **REFACTOR**(deriv_passkeys): Add call back to call after pass key flow finished ([#831](https://github.com/deriv-com/flutter-deriv-packages.git/issues/831)). ([444e963e](https://github.com/deriv-com/flutter-deriv-packages.git/commit/444e963e949334ae81b170c73c1a35afad7a1e0e))
+ - **FEAT**(analytics): Add indicator events ([#846](https://github.com/deriv-com/flutter-deriv-packages.git/issues/846)). ([1d30ddc9](https://github.com/deriv-com/flutter-deriv-packages.git/commit/1d30ddc9c7510e280cc90fc7e1308b945d5758ed))
+ - **FEAT**(deriv_theme): add IDV colors to theme class. ([#796](https://github.com/deriv-com/flutter-deriv-packages.git/issues/796)). ([50f48bda](https://github.com/deriv-com/flutter-deriv-packages.git/commit/50f48bda345f75e01bf083a1c3233755951dd25c))
+ - **BREAKING** **FIX**(deriv_theme): [DRGO-1517] fix color values ([#906](https://github.com/deriv-com/flutter-deriv-packages.git/issues/906)). ([4e43cd4c](https://github.com/deriv-com/flutter-deriv-packages.git/commit/4e43cd4c8d8a0f250cab2ffec261cac7af53df03))
+
 ## 3.0.0
 
 > Note: This release has breaking changes.
