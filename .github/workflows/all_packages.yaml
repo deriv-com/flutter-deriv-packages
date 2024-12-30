@@ -39,7 +39,8 @@ jobs:
             if [ -d "$d" ]; then
               echo "Running flutter pub get inside $d"
               cd "$d"
-              flutter pub get
+              rm -rf example
+              flutter pub get 
               cd ../..
             fi
           done
