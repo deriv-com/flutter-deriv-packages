@@ -11,18 +11,8 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   deriv_numpad:
-    git:
-      url: https://github.com/deriv-com/flutter-deriv-packages.git
-      path: packages/deriv_numpad
-      ref: deriv_numpad-v1.1.1
-  flutter:
-    sdk: flutter
-  intl: ^0.18.0
-  deriv_theme:
-    git:
-      url: https://github.com/deriv-com/flutter-deriv-packages.git
-      path: packages/deriv_theme
-      ref: deriv_theme-v2.2.0
+    path: .././
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_lints: ^1.0.4
