@@ -35,14 +35,12 @@ abstract class BaseDerivPasskeysDataSource {
   });
 
   /// Get options for registration with DerivPasskeys.
-  Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions({
-    String? loginId,
-  });
+  Future<DerivPasskeysRegisterOptionsModel> getRegisterOptions();
 
   /// Register credentials with DerivPasskeys.
   Future<DerivPasskeyModel> registerCredentials(
       PasskeysRegisterRequest request);
 
   /// Get passkeys list.
-  Future<List<DerivPasskeyModel>> getPasskeysList({String? loginId});
+  Future<List<DerivPasskeyModel>> getPasskeysList();
 }

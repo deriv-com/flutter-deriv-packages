@@ -25,11 +25,9 @@ class DerivPasskeysService {
   }
 
   /// Creates a passkey credential.
-  Future<DerivPasskeyEntity> createCredential({
-    String? loginId,
-  }) async {
+  Future<DerivPasskeyEntity> createCredential() async {
     final Map<String, dynamic> getRegisterOptionsResult =
-        (await repository.getRegisterOptions(loginId: loginId)).options;
+        (await repository.getRegisterOptions()).options;
     final Map<String, String> publicKeyCredentialUserEntityJson =
         <String, String>{
       'id': _base64UrlEncodeString(
@@ -56,17 +54,14 @@ class DerivPasskeysService {
         publicKeyCredential: decodedCredentials,
         name: 'Passkey',
       ),
-      loginId: loginId,
     );
     return getRegisterPasskeysResult;
   }
 
   /// Gets a list of passkeys.
-  Future<List<DerivPasskeyEntity>> getPasskeysList({
-    String? loginId,
-  }) async {
+  Future<List<DerivPasskeyEntity>> getPasskeysList() async {
     final List<DerivPasskeyEntity> getPasskeysListResult =
-        await repository.getPasskeysList(loginId: loginId);
+        await repository.getPasskeysList();
     return getPasskeysListResult;
   }
 

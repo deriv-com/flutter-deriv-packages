@@ -52,31 +52,20 @@ final class DerivPasskeysRepository extends BaseDerivPasskeysRepository {
               dataSource.mapper.mapDerivPasskeysVerifyCredentialsResponseModel);
 
   @override
-  Future<DerivPasskeysRegisterOptionsEntity> getRegisterOptions({
-    String? loginId,
-  }) =>
-      dataSource
-          .getRegisterOptions(loginId: loginId)
-          .then(dataSource.mapper.mapDerivPasskeysRegisterOptionsModel);
+  Future<DerivPasskeysRegisterOptionsEntity> getRegisterOptions() => dataSource
+      .getRegisterOptions()
+      .then(dataSource.mapper.mapDerivPasskeysRegisterOptionsModel);
 
   @override
   Future<DerivPasskeyEntity> registerCredentials(
-    DerivPasskeysRegisterCredentialsEntity entity, {
-    String? loginId,
-  }) =>
+          DerivPasskeysRegisterCredentialsEntity entity) =>
       dataSource
-          .registerCredentials(
-            dataSource.mapper
-                .mapDerivPasskeysRegisterCredentialsEntity(entity)
-                .copyWith(
-                  loginid: loginId,
-                ),
-          )
+          .registerCredentials(dataSource.mapper
+              .mapDerivPasskeysRegisterCredentialsEntity(entity))
           .then(dataSource.mapper.mapDerivPasskeyModel);
 
   @override
-  Future<List<DerivPasskeyEntity>> getPasskeysList({String? loginId}) =>
-      dataSource.getPasskeysList(loginId: loginId).then(
-          (List<DerivPasskeyModel> models) =>
-              models.map(dataSource.mapper.mapDerivPasskeyModel).toList());
+  Future<List<DerivPasskeyEntity>> getPasskeysList() =>
+      dataSource.getPasskeysList().then((List<DerivPasskeyModel> models) =>
+          models.map(dataSource.mapper.mapDerivPasskeyModel).toList());
 }

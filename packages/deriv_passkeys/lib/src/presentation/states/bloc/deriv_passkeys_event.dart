@@ -18,10 +18,7 @@ class DerivPasskeysVerifyCredentialEvent extends DerivPasskeysEvent {}
 /// [DerivPasskeysGetPasskeysListEvent] represents the get passkeys list event within the DerivPasskeys flow.
 class DerivPasskeysGetPasskeysListEvent extends DerivPasskeysEvent {
   /// Creates a [DerivPasskeysGetPasskeysListEvent].
-  const DerivPasskeysGetPasskeysListEvent({this.loginId});
-
-  /// Default account loginId used for multi-token authorization
-  final String? loginId;
+  const DerivPasskeysGetPasskeysListEvent();
 
   @override
   List<Object> get props => <Object>[];

@@ -9,7 +9,6 @@ abstract class DerivAuthIO {
     required String email,
     required String password,
     String? otp,
-    bool useMultiToken = false,
   });
 
   /// Social login/signup with [oneAllConnectionToken] using one-all service.
@@ -19,34 +18,22 @@ abstract class DerivAuthIO {
   Future<void> socialLogin({
     required String oneAllConnectionToken,
     String? otp,
-    bool useMultiToken = false,
   });
 
   /// Social login/signup using custom in-house service.
   Future<void> socialAuth({
     required SocialAuthDto socialAuthDto,
     String? otp,
-    bool useMultiToken = false,
   });
 
   /// Log user in with [token] after reset password or sign up.
-  @deprecated
   Future<void> tokenLogin(String token);
-
-  /// Log user in with multi token authorization
-  /// Add [token] to the list of authorized tokens.
-  /// And authorize the user with the new list of tokens.
-  Future<void> multiTokenAuthorize(String? token);
 
   /// Log user out.
   Future<void> logout();
 
   /// Log default user in.
-  @deprecated
   Future<void> authorizeDefaultAccount();
-
-  /// Uses multi authorization for all user accounts.
-  Future<void> multiAuthorizeAllAccounts();
 
   /// Deriv auth output.
   Stream<DerivAuthState> get output;
