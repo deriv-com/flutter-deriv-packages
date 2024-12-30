@@ -57,7 +57,7 @@ dependencies:
     git:
       url: https://github.com/deriv-com/flutter-deriv-packages.git
       path: packages/deriv_passkeys
-      ref: deriv_passkeys-v0.0.5+17
+      ref: deriv_passkeys_p2p
 
   deriv_language_selector:
     git:
