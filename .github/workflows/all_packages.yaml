@@ -37,10 +37,9 @@ jobs:
         run: |
           for d in packages/* ; do
             if [ -d "$d" ]; then
-              echo "Running flutter analyze inside $d"
+              echo "Running flutter pub get inside $d"
               cd "$d"
               flutter pub get --no-example
-              cd ../..
             fi
           done
 
