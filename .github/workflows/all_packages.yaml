@@ -38,6 +38,8 @@ jobs:
           echo "path: $PATH"
           echo "pwd: $(pwd)"
           echo "ls: $(ls -la)"
+          cd packages
+          echo "ls: $(ls)"
 
       - name: Run Analyze
         run: melos run analyze
