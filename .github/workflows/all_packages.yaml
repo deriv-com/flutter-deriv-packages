@@ -40,6 +40,7 @@ jobs:
               echo "Running flutter pub get inside $d"
               cd "$d"
               flutter pub get
+              cd ../..
             fi
           done
 
