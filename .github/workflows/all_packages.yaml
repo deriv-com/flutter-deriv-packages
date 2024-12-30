@@ -35,13 +35,9 @@ jobs:
 
       - name: Pub get
         run: |
-          for d in packages/* ; do
-            if [ -d "$d" ]; then
-              echo "Running flutter pub get inside $d"
-              cd "$d"
-              flutter pub get --no-example
-            fi
-          done
+          echo "path: $PATH"
+          echo "pwd: $(pwd)"
+          echo "ls: $(ls -la)"
 
       - name: Run Analyze
         run: melos run analyze
