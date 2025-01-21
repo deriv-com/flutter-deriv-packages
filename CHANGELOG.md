@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-01-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.11`](#deriv_mobile_chart_wrapper---v0111)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.11`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Update LICENSE ([#947](https://github.com/deriv-com/flutter-deriv-packages.git/issues/947)). ([6fe70b1b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/6fe70b1b225df00267bc4a41ae8fde3dbb7e04c6))
+ - **FEAT**(deriv_mobile_chart_wrapper): Ramin/make localization more customizable ([#945](https://github.com/deriv-com/flutter-deriv-packages.git/issues/945)). ([416dfa57](https://github.com/deriv-com/flutter-deriv-packages.git/commit/416dfa5726b763a894a4e1f94b50d82ab43ea8ec))
+
+
 ## 2024-12-26
 
 ### Changes

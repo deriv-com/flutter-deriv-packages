@@ -1,3 +1,8 @@
+## 0.1.11
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Update LICENSE ([#947](https://github.com/deriv-com/flutter-deriv-packages.git/issues/947)). ([6fe70b1b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/6fe70b1b225df00267bc4a41ae8fde3dbb7e04c6))
+ - **FEAT**(deriv_mobile_chart_wrapper): Ramin/make localization more customizable ([#945](https://github.com/deriv-com/flutter-deriv-packages.git/issues/945)). ([416dfa57](https://github.com/deriv-com/flutter-deriv-packages.git/commit/416dfa5726b763a894a4e1f94b50d82ab43ea8ec))
+
 ## 0.1.10+2
 
  - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
