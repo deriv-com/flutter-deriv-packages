@@ -15,7 +15,7 @@ cp $HOME/Downloads/commit-msg $HOME/.git/hooks/commit-msg \
 
 ## Using the packages
 
-Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v7.0.13)`. To use the package, add the following to your pubspec.yaml file:
+Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v7.0.14)`. To use the package, add the following to your pubspec.yaml file:
 
 ```yaml
 deriv_ui:
@@ -48,15 +48,15 @@ deriv_ui:
 | [deriv_store_launcher](./packages/deriv_store_launcher)                   | A plugin to launch app stores base on platform and manufacturer.                                                                                      | [v0.0.2+1](./packages/deriv_store_launcher/CHANGELOG.md)          |
 | [deriv_technical_analysis](./packages/deriv_technical_analysis)           | A Dart package for Technical Analysis.                                                                                                                | [v1.1.2](./packages/deriv_technical_analysis/CHANGELOG.md)        |
 | [deriv_theme](./packages/deriv_theme)                                     | A package that contains the theme used by Deriv products.                                                                                             | [v3.0.1](./packages/deriv_theme/CHANGELOG.md)                     |
-| [deriv_ui](./packages/deriv_ui)                                           | A package that contains the UI components used by Deriv products.                                                                                     | [v0.1.2+4](./packages/deriv_ui/CHANGELOG.md)                      |
+| [deriv_ui](./packages/deriv_ui)                                           | A package that contains the UI components used by Deriv products.                                                                                     | [v0.1.2+3](./packages/deriv_ui/CHANGELOG.md)                      |
 | [deriv_utilities](./packages/deriv_utilities)                             | A package that contains the utilities including helper functions, mixins, and extensions.                                                             | [v1.0.0](./packages/deriv_utilities/CHANGELOG.md)                 |
 | [deriv_websocket](./packages/deriv_web_socket_client)                     | A package that provides a easy to use websocket client.                                                                                               | [v1.0.1](./packages/deriv_web_socket_client/CHANGELOG.md)         |
 | [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                                               | [v0.2.2+6](./packages/deriv_web_view/CHANGELOG.md)                |
-| [deriv_widgetbook](./packages/deriv_widgetbook)                           | Storybook for Deriv UI Widgets and Components                                                                                                         | [v0.0.2+39](./packages/deriv_widgetbook/CHANGELOG.md)             |
+| [deriv_widgetbook](./packages/deriv_widgetbook)                           | Storybook for Deriv UI Widgets and Components                                                                                                         | [v0.0.2+40](./packages/deriv_widgetbook/CHANGELOG.md)             |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                                                       | [v1.0.0+1](./packages/form_builder/CHANGELOG.md)                  |
 | [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                                                          | [v3.1.2](./packages/update_checker/CHANGELOG.md)                  |
 | [deriv_feature_flag](./packages/deriv_feature_flag)                       | A package to provide feature flag functionality for apps.                                                                                             | [v0.1.2+1](./packages/deriv_feature_flag/CHANGELOG.md)              |
-| [deriv_mobile_chart_wrapper](./packages/deriv_mobile_chart_wrapper)       | A wrapper package around package _**deriv_chart**_ to implement any functionality specific to mobile and can be wrapped around the main chart package. | [v0.1.10+3](./packages/deriv_mobile_chart_wrapper/CHANGELOG.md)      |
+| [deriv_mobile_chart_wrapper](./packages/deriv_mobile_chart_wrapper)       | A wrapper package around package _**deriv_chart**_ to implement any functionality specific to mobile and can be wrapped around the main chart package. | [v0.1.12](./packages/deriv_mobile_chart_wrapper/CHANGELOG.md)      |
 | [deriv_cipher](./packages/deriv_cipher)       | A package to encrypt and decrypt data using AES encryption.| [v0.0.3](./packages/deriv_cipher/CHANGELOG.md)                    |
 
 
