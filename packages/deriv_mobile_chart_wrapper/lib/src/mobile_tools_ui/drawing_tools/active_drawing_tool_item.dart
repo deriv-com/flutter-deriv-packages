@@ -44,7 +44,7 @@ class ActiveDrawingToolItem extends StatelessWidget {
           height: ThemeProvider.iconSize24,
           package: 'deriv_mobile_chart_wrapper',
         ),
-        title: Text(title),
+        title: _buildTitle(title, context),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -64,4 +64,12 @@ class ActiveDrawingToolItem extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildTitle(String text, BuildContext context) => Text(
+        title,
+        style: context.themeProvider.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.themeProvider.colors.general,
+        ),
+      );
 }

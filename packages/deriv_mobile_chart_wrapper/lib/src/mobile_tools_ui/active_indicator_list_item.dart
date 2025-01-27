@@ -52,10 +52,10 @@ class ActiveIndicatorListItem extends StatelessWidget {
               package: 'deriv_mobile_chart_wrapper',
             ),
             const SizedBox(width: ThemeProvider.margin08),
-            Text(title),
+            _buildTitle(title, context),
           ],
         ),
-        subtitle: Text(subtitle),
+        subtitle: _buildTitle(subtitle, context),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -74,4 +74,12 @@ class ActiveIndicatorListItem extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildTitle(String text, BuildContext context) => Text(
+        title,
+        style: context.themeProvider.textStyle(
+          textStyle: TextStyles.body1,
+          color: context.themeProvider.colors.general,
+        ),
+      );
 }
