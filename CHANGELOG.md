@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-02-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_mobile_chart_wrapper` - `v0.1.13`](#deriv_mobile_chart_wrapper---v0113)
+
+---
+
+#### `deriv_mobile_chart_wrapper` - `v0.1.13`
+
+ - **FEAT**(deriv_mobile_chart_wrapper): update chart package ref ([#953](https://github.com/deriv-com/flutter-deriv-packages.git/issues/953)). ([01815383](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0181538330a02cc9d6dc66ec6b420bb7386987df))
+
+
 ## 2025-01-22
 
 ### Changes
