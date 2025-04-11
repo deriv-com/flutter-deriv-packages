@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for French (`fr`).
 class DerivPasskeysLocalizationsFr extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsFr([String locale = 'fr']) : super(locale);

@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Portuguese (`pt`).
 class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   DerivAuthLocalizationsPt([String locale = 'pt']) : super(locale);
@@ -16,8 +18,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get actionOk => 'OK';
 
   @override
-  String get warnNotAvailableCountries =>
-      'Em caso de dúvidas, contacte-nos via ';
+  String get warnNotAvailableCountries => 'Em caso de dúvidas, contacte-nos via ';
 
   @override
   String get labelLiveChat => 'Live chat';
@@ -32,12 +33,10 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'Autenticação de dois fatores';
 
   @override
-  String get informEnterTwoFactorAuthCode =>
-      'Introduza o código de 6 dígitos da aplicação de autenticação no seu telemóvel.';
+  String get informEnterTwoFactorAuthCode => 'Introduza o código de 6 dígitos da aplicação de autenticação no seu telemóvel.';
 
   @override
-  String get labelTwoFactorAuthenticationCode =>
-      'Código de autenticação de dois fatores (2FA)';
+  String get labelTwoFactorAuthenticationCode => 'Código de autenticação de dois fatores (2FA)';
 
   @override
   String get actionProceed => 'Continuar';
@@ -82,15 +81,13 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => 'A palavra-passe foi alterada';
 
   @override
-  String get informRedirectLogin =>
-      'É necessário iniciar sessão com a sua nova palavra-passe. Aguarde, estamos a reencaminhá-lo.';
+  String get informRedirectLogin => 'É necessário iniciar sessão com a sua nova palavra-passe. Aguarde, estamos a reencaminhá-lo.';
 
   @override
   String get actionResetPass => 'Alterar palavra-passe';
 
   @override
-  String get informInvalidPasswordFormat =>
-      'Introduza um formato de palavra-passe válido';
+  String get informInvalidPasswordFormat => 'Introduza um formato de palavra-passe válido';
 
   @override
   String get labelCheckEmail => 'Verifique seu e-mail';
@@ -101,8 +98,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail =>
-      'Vamos enviar um e-mail com as instruções para alterar a sua palavra-passe.';
+  String get informResetPassByEmail => 'Vamos enviar um e-mail com as instruções para alterar a sua palavra-passe.';
 
   @override
   String get labelSelectCountry => 'Onde é que vive?';
@@ -111,39 +107,31 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get labelChooseCountry => 'Selecionar país';
 
   @override
-  String get warnCountryNotAvailable =>
-      'Infelizmente, a Deriv não está disponível no seu país.';
+  String get warnCountryNotAvailable => 'Infelizmente, a Deriv não está disponível no seu país.';
 
   @override
   String get actionNext => 'Próximo';
 
   @override
-  String get labelEmailIssueHeader =>
-      'Se não receber um e-mail nosso dentro de alguns minutos, é possível que:';
+  String get labelEmailIssueHeader => 'Se não receber um e-mail nosso dentro de alguns minutos, é possível que:';
 
   @override
-  String get labelEmailIssueSpam =>
-      'O e-mail encontre-se na pasta de spam (às vezes os e-mails ficam perdidos aí).';
+  String get labelEmailIssueSpam => 'O e-mail encontre-se na pasta de spam (às vezes os e-mails ficam perdidos aí).';
 
   @override
-  String get labelEmailIssueWrongEmail =>
-      'Acidentalmente, deu-nos outro e-mail (normalmente um e-mail de trabalho ou pessoal, em vez daquele que pretendia).';
+  String get labelEmailIssueWrongEmail => 'Acidentalmente, deu-nos outro e-mail (normalmente um e-mail de trabalho ou pessoal, em vez daquele que pretendia).';
 
   @override
-  String get labelEmailIssueTypo =>
-      'O e-mail que introduziu tinha um erro ou uma gralha (acontece aos melhores).';
+  String get labelEmailIssueTypo => 'O e-mail que introduziu tinha um erro ou uma gralha (acontece aos melhores).';
 
   @override
-  String get labelEmailIssueFirewall =>
-      'Não foi possível enviar um e-mail para este endereço (normalmente devido a firewalls ou filtragem).';
+  String get labelEmailIssueFirewall => 'Não foi possível enviar um e-mail para este endereço (normalmente devido a firewalls ou filtragem).';
 
   @override
-  String get actionReenterEmail =>
-      'Volte a introduzir o seu e-mail e tente novamente';
+  String get actionReenterEmail => 'Volte a introduzir o seu e-mail e tente novamente';
 
   @override
-  String get labelKeepPassword =>
-      'Mantenha a sua conta segura utilizando uma palavra-passe';
+  String get labelKeepPassword => 'Mantenha a sua conta segura utilizando uma palavra-passe';
 
   @override
   String get labelCreatePassword => 'Criar palavra-passe';
@@ -164,8 +152,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'Código de referência de afiliado';
 
   @override
-  String get infoReferralInfoDescription =>
-      'Código alfanumérico fornecido por um afiliado Deriv, aplicável apenas para registos por e-mail.';
+  String get infoReferralInfoDescription => 'Código alfanumérico fornecido por um afiliado Deriv, aplicável apenas para registos por e-mail.';
 
   @override
   String get labelGotReferralCode => 'Tem um código de referência?';
@@ -177,8 +164,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get actionCreateAccount => 'Criar conta demo gratuita';
 
   @override
-  String get informInvalidReferralCode =>
-      'O código de referência que introduziu não é válido. Verifique e tente novamente.';
+  String get informInvalidReferralCode => 'O código de referência que introduziu não é válido. Verifique e tente novamente.';
 
   @override
   String get labelVerifyYourEmail => 'Validar e-mail';
@@ -210,15 +196,13 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get informPasswordPolicyLength => 'Entre 8 a 25 caracteres';
 
   @override
-  String get informPasswordPolicyLowerAndUpper =>
-      'Letras maiúsculas e minúsculas';
+  String get informPasswordPolicyLowerAndUpper => 'Letras maiúsculas e minúsculas';
 
   @override
   String get informPasswordPolicyNumber => 'Pelo menos um número';
 
   @override
-  String get warnPasswordContainsSymbol =>
-      'Utilize símbolos para criar uma palavra-passe forte.';
+  String get warnPasswordContainsSymbol => 'Utilize símbolos para criar uma palavra-passe forte.';
 
   @override
   String get labelReferralCode => 'Código de referência';
@@ -227,12 +211,10 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get actionTryAgain => 'Tente novamente';
 
   @override
-  String get informInvalid2FACode =>
-      'O código que introduziu não é válido. Verifique e tente novamente.';
+  String get informInvalid2FACode => 'O código que introduziu não é válido. Verifique e tente novamente.';
 
   @override
-  String get informFailedAuthentication =>
-      'O e-mail ou a palavra-passe podem estar incorretos. Registou-se através de umas das contas das redes sociais? Verifique e tente novamente.';
+  String get informFailedAuthentication => 'O e-mail ou a palavra-passe podem estar incorretos. Registou-se através de umas das contas das redes sociais? Verifique e tente novamente.';
 
   @override
   String get informDeactivatedAccount => 'A sua conta encontra-se desativada.';
@@ -262,16 +244,13 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get informExpiredAccount => 'A sua conta expirou';
 
   @override
-  String get labelCountryConsentBrazil =>
-      'Venho por este meio confirmar que iniciei o pedido de abertura de conta na Deriv para negociar produtos OTC emitidos e oferecidos exclusivamente fora do Brasil. Estou ciente que a Deriv não é regulada pela CVM e que ao abordar a Deriv, estabeleço uma relação com uma empresa estrangeira.';
+  String get labelCountryConsentBrazil => 'Venho por este meio confirmar que iniciei o pedido de abertura de conta na Deriv para negociar produtos OTC emitidos e oferecidos exclusivamente fora do Brasil. Estou ciente que a Deriv não é regulada pela CVM e que ao abordar a Deriv, estabeleço uma relação com uma empresa estrangeira.';
 
   @override
-  String get informConnectionError =>
-      'Erro de ligação. Por favor, tente novamente mais tarde.';
+  String get informConnectionError => 'Erro de ligação. Por favor, tente novamente mais tarde.';
 
   @override
-  String get informSwitchAccountError =>
-      'Ocorreu um erro durante a troca de conta. Tente novamente mais tarde.';
+  String get informSwitchAccountError => 'Ocorreu um erro durante a troca de conta. Tente novamente mais tarde.';
 
   @override
   String get labelDeveloper => 'Programador';

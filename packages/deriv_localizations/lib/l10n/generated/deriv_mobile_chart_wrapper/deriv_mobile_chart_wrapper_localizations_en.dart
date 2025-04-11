@@ -1,10 +1,10 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
-class DerivMobileChartWrapperLocalizationsEn
-    extends DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizationsEn([String locale = 'en'])
-      : super(locale);
+class DerivMobileChartWrapperLocalizationsEn extends DerivMobileChartWrapperLocalizations {
+  DerivMobileChartWrapperLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
   String get labelIndicators => 'Indicators';
@@ -46,24 +46,19 @@ class DerivMobileChartWrapperLocalizationsEn
   String get labelMA => 'MA';
 
   @override
-  String get infoMACD =>
-      'MACD is a trading indicator used in technical analysis of stock prices. It is supposed to reveal changes in the strength, direction, momentum, and duration of a trend in a stock\'s price.';
+  String get infoMACD => 'MACD is a trading indicator used in technical analysis of stock prices. It is supposed to reveal changes in the strength, direction, momentum, and duration of a trend in a stock\'s price.';
 
   @override
-  String get infoRSI =>
-      'The Relative Strength Index (RSI) was published by J. Welles Wilder. The current price is normalized as a percentage between 0 and 100. The flutter_chart_id of this oscillator is misleading because it does not compare the instrument relative to another instrument or set of instruments, but rather represents the current price relative to other recent pieces within the selected lookback window length.';
+  String get infoRSI => 'The Relative Strength Index (RSI) was published by J. Welles Wilder. The current price is normalized as a percentage between 0 and 100. The flutter_chart_id of this oscillator is misleading because it does not compare the instrument relative to another instrument or set of instruments, but rather represents the current price relative to other recent pieces within the selected lookback window length.';
 
   @override
-  String get infoBB =>
-      'Bollinger Bands (BB) can be used to measure the highness or lowness of the price relative to previous trades.';
+  String get infoBB => 'Bollinger Bands (BB) can be used to measure the highness or lowness of the price relative to previous trades.';
 
   @override
-  String get infoMA =>
-      'The Moving Average (MA) helps to identify the overall market trend by filtering out short-term price fluctuations. Using historical data, it calculates the average price over a specific period and plots a line on the chart. If the MA line moves upwards, it’s an indicator of an uptrend, a downtrend if it moves downwards. A buy signal occurs when the price moves above the MA line.';
+  String get infoMA => 'The Moving Average (MA) helps to identify the overall market trend by filtering out short-term price fluctuations. Using historical data, it calculates the average price over a specific period and plots a line on the chart. If the MA line moves upwards, it’s an indicator of an uptrend, a downtrend if it moves downwards. A buy signal occurs when the price moves above the MA line.';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded =>
-      'You\'ve added the maximum number of active indicators.';
+  String get infoMaximumActiveIndicatorsAdded => 'You\'ve added the maximum number of active indicators.';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -77,8 +72,7 @@ class DerivMobileChartWrapperLocalizationsEn
   String get labelDeleteAllIndicators => 'Delete all indicators';
 
   @override
-  String get infoDeleteAllIndicators =>
-      'This will delete all active indicators.';
+  String get infoDeleteAllIndicators => 'This will delete all active indicators.';
 
   @override
   String infoResetIndicators(Object indicator) {
@@ -96,8 +90,7 @@ class DerivMobileChartWrapperLocalizationsEn
   }
 
   @override
-  String get infoDeleteIndicator =>
-      'Are you sure you want to delete this indicator?';
+  String get infoDeleteIndicator => 'Are you sure you want to delete this indicator?';
 
   @override
   String get labelCancel => 'Cancel';
@@ -311,6 +304,5 @@ class DerivMobileChartWrapperLocalizationsEn
   String get labelDeleteAllDrawingTools => 'Delete all drawing tools';
 
   @override
-  String get informDeleteAllDrawingTools =>
-      'This will delete all active drawing tools.';
+  String get informDeleteAllDrawingTools => 'This will delete all active drawing tools.';
 }

@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Swahili (`sw`).
 class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   DerivAuthLocalizationsSw([String locale = 'sw']) : super(locale);
@@ -16,8 +18,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get actionOk => 'SAWA';
 
   @override
-  String get warnNotAvailableCountries =>
-      'Ikiwa una maswali yoyote, wasiliana nasi kupitia ';
+  String get warnNotAvailableCountries => 'Ikiwa una maswali yoyote, wasiliana nasi kupitia ';
 
   @override
   String get labelLiveChat => 'Mazungumzo mubashara';
@@ -32,8 +33,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'Uthibitishaji-wa hatua mbili';
 
   @override
-  String get informEnterTwoFactorAuthCode =>
-      'Ingiza nambari ya tarakimu 6 kutoka kwa programu ya uthibitishaji kwenye simu yako.';
+  String get informEnterTwoFactorAuthCode => 'Ingiza nambari ya tarakimu 6 kutoka kwa programu ya uthibitishaji kwenye simu yako.';
 
   @override
   String get labelTwoFactorAuthenticationCode => 'Nambari ya 2FA';
@@ -66,8 +66,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get informInvalidEmailFormat => 'Ingiza anwani halali ya barua pepe';
 
   @override
-  String get warnPasswordLength =>
-      'Unapaswa kuingiza mchanganyiko wa tarakimu 8-25.';
+  String get warnPasswordLength => 'Unapaswa kuingiza mchanganyiko wa tarakimu 8-25.';
 
   @override
   String get labelResetPassword => 'Rudisha nenosiri';
@@ -82,15 +81,13 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => 'Nenosiri lako limewekwa upya';
 
   @override
-  String get informRedirectLogin =>
-      'Utahitaji kuingia na nenosiri lako jipya. Endelea, tunakuelekeza.';
+  String get informRedirectLogin => 'Utahitaji kuingia na nenosiri lako jipya. Endelea, tunakuelekeza.';
 
   @override
   String get actionResetPass => 'Weka upya nywila yangu';
 
   @override
-  String get informInvalidPasswordFormat =>
-      'Tafadhali ingiza muundo halali wa nenosiri';
+  String get informInvalidPasswordFormat => 'Tafadhali ingiza muundo halali wa nenosiri';
 
   @override
   String get labelCheckEmail => 'Angalia barua pepe yako';
@@ -101,8 +98,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail =>
-      'Tutakutumia barua pepe yenye maelekezo ya kuweka upya nenosiri lako.';
+  String get informResetPassByEmail => 'Tutakutumia barua pepe yenye maelekezo ya kuweka upya nenosiri lako.';
 
   @override
   String get labelSelectCountry => 'Unaishi wapi?';
@@ -111,35 +107,28 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get labelChooseCountry => 'Chagua nchi';
 
   @override
-  String get warnCountryNotAvailable =>
-      'Kwa bahati mbaya, Deriv haipatikani katika nchi yako.';
+  String get warnCountryNotAvailable => 'Kwa bahati mbaya, Deriv haipatikani katika nchi yako.';
 
   @override
   String get actionNext => 'Ifuatayo';
 
   @override
-  String get labelEmailIssueHeader =>
-      'Ikiwa huoni barua pepe kutoka kwetu ndani ya dakika chache, mambo machache yanaweza kuwa yametokea:';
+  String get labelEmailIssueHeader => 'Ikiwa huoni barua pepe kutoka kwetu ndani ya dakika chache, mambo machache yanaweza kuwa yametokea:';
 
   @override
-  String get labelEmailIssueSpam =>
-      'Barua pepe iko kwenye folda yako ya spam (Wakati mwingine mambo yanapotelea huko).';
+  String get labelEmailIssueSpam => 'Barua pepe iko kwenye folda yako ya spam (Wakati mwingine mambo yanapotelea huko).';
 
   @override
-  String get labelEmailIssueWrongEmail =>
-      'Kwa bahati mbaya ulitupa anwani nyingine ya barua pepe (Labda ya kazi au ya binafsi badala ya ile uliyokusudia).';
+  String get labelEmailIssueWrongEmail => 'Kwa bahati mbaya ulitupa anwani nyingine ya barua pepe (Labda ya kazi au ya binafsi badala ya ile uliyokusudia).';
 
   @override
-  String get labelEmailIssueTypo =>
-      'Anwani ya barua pepe uliyoingiza ilikuwa na makosa (hutokea kwa ubora kwetu sote).';
+  String get labelEmailIssueTypo => 'Anwani ya barua pepe uliyoingiza ilikuwa na makosa (hutokea kwa ubora kwetu sote).';
 
   @override
-  String get labelEmailIssueFirewall =>
-      'Hatuwezi kutoa barua pepe kwa anwani hii (Kawaida kwa sababu ya firewalls au kuchuja).';
+  String get labelEmailIssueFirewall => 'Hatuwezi kutoa barua pepe kwa anwani hii (Kawaida kwa sababu ya firewalls au kuchuja).';
 
   @override
-  String get actionReenterEmail =>
-      'Ingiza tena barua pepe yako na ujaribu tena';
+  String get actionReenterEmail => 'Ingiza tena barua pepe yako na ujaribu tena';
 
   @override
   String get labelKeepPassword => 'Weka akaunti yako salama na nenosiri';
@@ -163,8 +152,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'Nambari ya rufaa ya ushirika';
 
   @override
-  String get infoReferralInfoDescription =>
-      'Nambari ya alfanisi iliyotolewa na mshirika wa Deriv, inayotumika kwa usajili wa barua pepe tu.';
+  String get infoReferralInfoDescription => 'Nambari ya alfanisi iliyotolewa na mshirika wa Deriv, inayotumika kwa usajili wa barua pepe tu.';
 
   @override
   String get labelGotReferralCode => 'Una nambari ya rufaa?';
@@ -176,8 +164,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get actionCreateAccount => 'Unda demo akaunti';
 
   @override
-  String get informInvalidReferralCode =>
-      'Nambari ya rufaa uliyoingiza sio halali. Angalia na jaribu tena.';
+  String get informInvalidReferralCode => 'Nambari ya rufaa uliyoingiza sio halali. Angalia na jaribu tena.';
 
   @override
   String get labelVerifyYourEmail => 'thibitisha barua pepe yako';
@@ -215,8 +202,7 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'Angalau nambari moja';
 
   @override
-  String get warnPasswordContainsSymbol =>
-      'Tumia alama kwa nenosiri yenye nguvu.';
+  String get warnPasswordContainsSymbol => 'Tumia alama kwa nenosiri yenye nguvu.';
 
   @override
   String get labelReferralCode => 'Msimbo wa Rufaa';
@@ -225,12 +211,10 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get actionTryAgain => 'Jaribu tena';
 
   @override
-  String get informInvalid2FACode =>
-      'Nambari uliyoingiza ni halali. Angalia na jaribu tena.';
+  String get informInvalid2FACode => 'Nambari uliyoingiza ni halali. Angalia na jaribu tena.';
 
   @override
-  String get informFailedAuthentication =>
-      'Barua pepe yako au nenosiri inaweza kuwa sahihi. Je! Ulijiandikisha na akaunti ya kijamii? Angalia na jaribu tena.';
+  String get informFailedAuthentication => 'Barua pepe yako au nenosiri inaweza kuwa sahihi. Je! Ulijiandikisha na akaunti ya kijamii? Angalia na jaribu tena.';
 
   @override
   String get informDeactivatedAccount => 'Akaunti yako imezimwa.';
@@ -260,16 +244,13 @@ class DerivAuthLocalizationsSw extends DerivAuthLocalizations {
   String get informExpiredAccount => 'Akaunti yako imekwisha';
 
   @override
-  String get labelCountryConsentBrazil =>
-      'Ninathibitisha kwamba ombi langu la kufungua akaunti na Deriv kufanya biashara ya bidhaa za OTC zilizotolewa na kutolewa tu nje ya Brazil lilianzishwa na mimi. Ninaelewa kikamilifu kwamba Deriv haidhibitiwi na CVM na kwa kukaribia Deriv nina nia ya kuanzisha uhusiano na kampuni ya kigeni.';
+  String get labelCountryConsentBrazil => 'Ninathibitisha kwamba ombi langu la kufungua akaunti na Deriv kufanya biashara ya bidhaa za OTC zilizotolewa na kutolewa tu nje ya Brazil lilianzishwa na mimi. Ninaelewa kikamilifu kwamba Deriv haidhibitiwi na CVM na kwa kukaribia Deriv nina nia ya kuanzisha uhusiano na kampuni ya kigeni.';
 
   @override
-  String get informConnectionError =>
-      'Hitilafu ya unganisho Tafadhali jaribu tena baadaye.';
+  String get informConnectionError => 'Hitilafu ya unganisho Tafadhali jaribu tena baadaye.';
 
   @override
-  String get informSwitchAccountError =>
-      'Badilisha kosa la akaunti. Tafadhali jaribu tena baadaye.';
+  String get informSwitchAccountError => 'Badilisha kosa la akaunti. Tafadhali jaribu tena baadaye.';
 
   @override
   String get labelDeveloper => 'Msanidi programu';

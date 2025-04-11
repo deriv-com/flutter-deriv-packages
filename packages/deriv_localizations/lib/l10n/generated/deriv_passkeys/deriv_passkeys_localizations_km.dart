@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Khmer Central Khmer (`km`).
 class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsKm([String locale = 'km']) : super(locale);

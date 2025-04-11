@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Portuguese (`pt`).
 class DerivPasskeysLocalizationsPt extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsPt([String locale = 'pt']) : super(locale);

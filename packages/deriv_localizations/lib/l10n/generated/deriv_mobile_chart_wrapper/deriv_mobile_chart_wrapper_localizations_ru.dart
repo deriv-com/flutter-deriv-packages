@@ -1,10 +1,10 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Russian (`ru`).
-class DerivMobileChartWrapperLocalizationsRu
-    extends DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizationsRu([String locale = 'ru'])
-      : super(locale);
+class DerivMobileChartWrapperLocalizationsRu extends DerivMobileChartWrapperLocalizations {
+  DerivMobileChartWrapperLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
   String get labelIndicators => 'Индикаторы';
@@ -46,24 +46,19 @@ class DerivMobileChartWrapperLocalizationsRu
   String get labelMA => 'MA';
 
   @override
-  String get infoMACD =>
-      'MACD - это торговый индикатор, используемый в техническом анализе цен на акции. Он призван выявлять изменения в силе, направлении, импульсе и продолжительности тренда в цене акции.';
+  String get infoMACD => 'MACD - это торговый индикатор, используемый в техническом анализе цен на акции. Он призван выявлять изменения в силе, направлении, импульсе и продолжительности тренда в цене акции.';
 
   @override
-  String get infoRSI =>
-      'Индекс относительной силы (RSI) был опубликован Дж. Уэллсом Уайлдером. Текущая цена нормируется в процентах от 0 до 100. Flutter_chart_id этого осциллятора вводит в заблуждение, поскольку он не сравнивает инструмент относительно другого инструмента или набора инструментов, а скорее представляет текущую цену относительно других недавних фигур в пределах выбранной длины окна обратного просмотра.';
+  String get infoRSI => 'Индекс относительной силы (RSI) был опубликован Дж. Уэллсом Уайлдером. Текущая цена нормируется в процентах от 0 до 100. Flutter_chart_id этого осциллятора вводит в заблуждение, поскольку он не сравнивает инструмент относительно другого инструмента или набора инструментов, а скорее представляет текущую цену относительно других недавних фигур в пределах выбранной длины окна обратного просмотра.';
 
   @override
-  String get infoBB =>
-      'Полосы Боллинджера (Bollinger Bands, BB) можно использовать для измерения высоты или низкости цены по отношению к предыдущим сделкам.';
+  String get infoBB => 'Полосы Боллинджера (Bollinger Bands, BB) можно использовать для измерения высоты или низкости цены по отношению к предыдущим сделкам.';
 
   @override
-  String get infoMA =>
-      'Скользящая средняя (MA) помогает определить общую тенденцию рынка, отсеивая краткосрочные колебания цен. Используя исторические данные, она рассчитывает среднюю цену за определенный период и наносит линию на график. Если линия MA движется вверх, это индикатор восходящего тренда, если вниз - нисходящего. Сигнал к покупке возникает, когда цена движется выше линии MA.';
+  String get infoMA => 'Скользящая средняя (MA) помогает определить общую тенденцию рынка, отсеивая краткосрочные колебания цен. Используя исторические данные, она рассчитывает среднюю цену за определенный период и наносит линию на график. Если линия MA движется вверх, это индикатор восходящего тренда, если вниз - нисходящего. Сигнал к покупке возникает, когда цена движется выше линии MA.';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded =>
-      'Вы добавили максимальное количество активных индикаторов.';
+  String get infoMaximumActiveIndicatorsAdded => 'Вы добавили максимальное количество активных индикаторов.';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -95,8 +90,7 @@ class DerivMobileChartWrapperLocalizationsRu
   }
 
   @override
-  String get infoDeleteIndicator =>
-      'Вы уверены, что хотите удалить этот индикатор?';
+  String get infoDeleteIndicator => 'Вы уверены, что хотите удалить этот индикатор?';
 
   @override
   String get labelCancel => 'Отмена';
@@ -108,8 +102,7 @@ class DerivMobileChartWrapperLocalizationsRu
   String get labelDeleteAll => 'Удалить все';
 
   @override
-  String get infoUpto3indicatorsAllowed =>
-      'Допускается до 3 активных индикаторов.';
+  String get infoUpto3indicatorsAllowed => 'Допускается до 3 активных индикаторов.';
 
   @override
   String get infoNoActiveIndicators => 'Нет активных индикаторов.';
@@ -293,16 +286,13 @@ class DerivMobileChartWrapperLocalizationsRu
   String get labelRay => 'Рэй';
 
   @override
-  String get informTapToSetFirstPoint =>
-      'Нажмите, чтобы установить первую точку';
+  String get informTapToSetFirstPoint => 'Нажмите, чтобы установить первую точку';
 
   @override
-  String get informTapToSetFinalPoint =>
-      'Нажмите, чтобы установить конечную точку';
+  String get informTapToSetFinalPoint => 'Нажмите, чтобы установить конечную точку';
 
   @override
-  String get informNoActiveDrawingTools =>
-      'Нет активных инструментов рисования.';
+  String get informNoActiveDrawingTools => 'Нет активных инструментов рисования.';
 
   @override
   String get actionAddDrawingTool => 'Добавить инструмент для рисования';
@@ -314,6 +304,5 @@ class DerivMobileChartWrapperLocalizationsRu
   String get labelDeleteAllDrawingTools => 'Удалить все инструменты рисования';
 
   @override
-  String get informDeleteAllDrawingTools =>
-      'Это приведет к удалению всех активных инструментов рисования.';
+  String get informDeleteAllDrawingTools => 'Это приведет к удалению всех активных инструментов рисования.';
 }

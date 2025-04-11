@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Russian (`ru`).
 class DerivPasskeysLocalizationsRu extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsRu([String locale = 'ru']) : super(locale);

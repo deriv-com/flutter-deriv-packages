@@ -26,6 +26,8 @@ import 'deriv_passkeys_localizations_uz.dart';
 import 'deriv_passkeys_localizations_vi.dart';
 import 'deriv_passkeys_localizations_zh.dart';
 
+// ignore_for_file: type=lint
+
 /// Callers can lookup localized strings with an instance of DerivPasskeysLocalizations
 /// returned by `DerivPasskeysLocalizations.of(context)`.
 ///
@@ -78,18 +80,15 @@ import 'deriv_passkeys_localizations_zh.dart';
 /// be consistent with the languages listed in the DerivPasskeysLocalizations.supportedLocales
 /// property.
 abstract class DerivPasskeysLocalizations {
-  DerivPasskeysLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  DerivPasskeysLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
-  static DerivPasskeysLocalizations of(BuildContext context) {
-    return Localizations.of<DerivPasskeysLocalizations>(
-        context, DerivPasskeysLocalizations)!;
+  static DerivPasskeysLocalizations? of(BuildContext context) {
+    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations);
   }
 
-  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate =
-      _DerivPasskeysLocalizationsDelegate();
+  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate = _DerivPasskeysLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -101,8 +100,7 @@ abstract class DerivPasskeysLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -312,7 +310,7 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @beforeUsingPasskeys.
   ///
   /// In en, this message translates to:
-  /// **'Before using biometrics:'**
+  /// **'Before using biometrics'**
   String get beforeUsingPasskeys;
 
   /// No description provided for @enableScreenLock.
@@ -466,106 +464,62 @@ abstract class DerivPasskeysLocalizations {
   String get unable_to_process_your_request_description;
 }
 
-class _DerivPasskeysLocalizationsDelegate
-    extends LocalizationsDelegate<DerivPasskeysLocalizations> {
+class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
   const _DerivPasskeysLocalizationsDelegate();
 
   @override
   Future<DerivPasskeysLocalizations> load(Locale locale) {
-    return SynchronousFuture<DerivPasskeysLocalizations>(
-        lookupDerivPasskeysLocalizations(locale));
+    return SynchronousFuture<DerivPasskeysLocalizations>(lookupDerivPasskeysLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>[
-        'ar',
-        'bn',
-        'de',
-        'en',
-        'es',
-        'fr',
-        'it',
-        'km',
-        'ko',
-        'mn',
-        'pl',
-        'pt',
-        'ru',
-        'si',
-        'sw',
-        'th',
-        'tr',
-        'uz',
-        'vi',
-        'zh'
-      ].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'km', 'ko', 'mn', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'uz', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivPasskeysLocalizationsDelegate old) => false;
 }
 
 DerivPasskeysLocalizations lookupDerivPasskeysLocalizations(Locale locale) {
+
   // Lookup logic when language+country codes are specified.
   switch (locale.languageCode) {
-    case 'zh':
-      {
-        switch (locale.countryCode) {
-          case 'CN':
-            return DerivPasskeysLocalizationsZhCn();
-          case 'TW':
-            return DerivPasskeysLocalizationsZhTw();
-        }
-        break;
-      }
+    case 'zh': {
+  switch (locale.countryCode) {
+    case 'CN': return DerivPasskeysLocalizationsZhCn();
+case 'TW': return DerivPasskeysLocalizationsZhTw();
+   }
+  break;
+   }
   }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return DerivPasskeysLocalizationsAr();
-    case 'bn':
-      return DerivPasskeysLocalizationsBn();
-    case 'de':
-      return DerivPasskeysLocalizationsDe();
-    case 'en':
-      return DerivPasskeysLocalizationsEn();
-    case 'es':
-      return DerivPasskeysLocalizationsEs();
-    case 'fr':
-      return DerivPasskeysLocalizationsFr();
-    case 'it':
-      return DerivPasskeysLocalizationsIt();
-    case 'km':
-      return DerivPasskeysLocalizationsKm();
-    case 'ko':
-      return DerivPasskeysLocalizationsKo();
-    case 'mn':
-      return DerivPasskeysLocalizationsMn();
-    case 'pl':
-      return DerivPasskeysLocalizationsPl();
-    case 'pt':
-      return DerivPasskeysLocalizationsPt();
-    case 'ru':
-      return DerivPasskeysLocalizationsRu();
-    case 'si':
-      return DerivPasskeysLocalizationsSi();
-    case 'sw':
-      return DerivPasskeysLocalizationsSw();
-    case 'th':
-      return DerivPasskeysLocalizationsTh();
-    case 'tr':
-      return DerivPasskeysLocalizationsTr();
-    case 'uz':
-      return DerivPasskeysLocalizationsUz();
-    case 'vi':
-      return DerivPasskeysLocalizationsVi();
-    case 'zh':
-      return DerivPasskeysLocalizationsZh();
+    case 'ar': return DerivPasskeysLocalizationsAr();
+    case 'bn': return DerivPasskeysLocalizationsBn();
+    case 'de': return DerivPasskeysLocalizationsDe();
+    case 'en': return DerivPasskeysLocalizationsEn();
+    case 'es': return DerivPasskeysLocalizationsEs();
+    case 'fr': return DerivPasskeysLocalizationsFr();
+    case 'it': return DerivPasskeysLocalizationsIt();
+    case 'km': return DerivPasskeysLocalizationsKm();
+    case 'ko': return DerivPasskeysLocalizationsKo();
+    case 'mn': return DerivPasskeysLocalizationsMn();
+    case 'pl': return DerivPasskeysLocalizationsPl();
+    case 'pt': return DerivPasskeysLocalizationsPt();
+    case 'ru': return DerivPasskeysLocalizationsRu();
+    case 'si': return DerivPasskeysLocalizationsSi();
+    case 'sw': return DerivPasskeysLocalizationsSw();
+    case 'th': return DerivPasskeysLocalizationsTh();
+    case 'tr': return DerivPasskeysLocalizationsTr();
+    case 'uz': return DerivPasskeysLocalizationsUz();
+    case 'vi': return DerivPasskeysLocalizationsVi();
+    case 'zh': return DerivPasskeysLocalizationsZh();
   }
 
   throw FlutterError(
-      'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

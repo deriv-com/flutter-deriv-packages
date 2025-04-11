@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Khmer Central Khmer (`km`).
 class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   DerivAuthLocalizationsKm([String locale = 'km']) : super(locale);
@@ -16,8 +18,7 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get actionOk => 'យល់ព្រម';
 
   @override
-  String get warnNotAvailableCountries =>
-      'ប្រសិនបើអ្នកមានសំណួរណាមួយ សូមទាក់ទងមកយើងខ្ញុំតាមរយៈ ';
+  String get warnNotAvailableCountries => 'ប្រសិនបើអ្នកមានសំណួរណាមួយ សូមទាក់ទងមកយើងខ្ញុំតាមរយៈ ';
 
   @override
   String get labelLiveChat => 'ជជែកផ្ទាល់';
@@ -32,8 +33,7 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវពីរកម្រិត';
 
   @override
-  String get informEnterTwoFactorAuthCode =>
-      'បញ្ចូលលេខកូដ 6 ខ្ទង់ពីកម្មវិធីផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៅលើទូរស័ព្ទរបស់អ្នក។';
+  String get informEnterTwoFactorAuthCode => 'បញ្ចូលលេខកូដ 6 ខ្ទង់ពីកម្មវិធីផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៅលើទូរស័ព្ទរបស់អ្នក។';
 
   @override
   String get labelTwoFactorAuthenticationCode => 'លេខកូដ 2FA';
@@ -78,19 +78,16 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get labelCreatePass => 'ពាក្យសម្ងាត់';
 
   @override
-  String get informYourPassHasBeenReset =>
-      'ពាក្យសម្ងាត់របស់អ្នកត្រូវបានកំណត់ឡើងវិញ';
+  String get informYourPassHasBeenReset => 'ពាក្យសម្ងាត់របស់អ្នកត្រូវបានកំណត់ឡើងវិញ';
 
   @override
-  String get informRedirectLogin =>
-      'អ្នកនឹងត្រូវចូលដោយប្រើពាក្យសម្ងាត់ថ្មីរបស់អ្នក។ រង់ចាំបន្តិច យើងកំពុងបញ្ជូនអ្នកឡើងវិញ។';
+  String get informRedirectLogin => 'អ្នកនឹងត្រូវចូលដោយប្រើពាក្យសម្ងាត់ថ្មីរបស់អ្នក។ រង់ចាំបន្តិច យើងកំពុងបញ្ជូនអ្នកឡើងវិញ។';
 
   @override
   String get actionResetPass => 'កំណត់ពាក្យសម្ងាត់របស់ខ្ញុំឡើងវិញ';
 
   @override
-  String get informInvalidPasswordFormat =>
-      'សូមបញ្ចូលទម្រង់ពាក្យសម្ងាត់ត្រឹមត្រូវ';
+  String get informInvalidPasswordFormat => 'សូមបញ្ចូលទម្រង់ពាក្យសម្ងាត់ត្រឹមត្រូវ';
 
   @override
   String get labelCheckEmail => 'ពិនិត្យអ៊ីមែលរបស់អ្នក';
@@ -101,8 +98,7 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail =>
-      'យើងនឹងផ្ញើអ៊ីមែលជូនអ្នកនូវការណែនាំដើម្បីកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញ។';
+  String get informResetPassByEmail => 'យើងនឹងផ្ញើអ៊ីមែលជូនអ្នកនូវការណែនាំដើម្បីកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញ។';
 
   @override
   String get labelSelectCountry => 'តើអ្នករស់នៅឯណា?';
@@ -111,39 +107,31 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get labelChooseCountry => 'ជ្រើសរើសប្រទេស';
 
   @override
-  String get warnCountryNotAvailable =>
-      'ជាអកុសល Deriv មិនមាននៅក្នុងប្រទេសរបស់អ្នកទេ។';
+  String get warnCountryNotAvailable => 'ជាអកុសល Deriv មិនមាននៅក្នុងប្រទេសរបស់អ្នកទេ។';
 
   @override
   String get actionNext => 'បន្ទាប់';
 
   @override
-  String get labelEmailIssueHeader =>
-      'ប្រសិនបើអ្នកមិនឃើញអ៊ីមែលពីយើងក្នុងរយៈពេលពីរបីនាទី អ្វីៗមួយចំនួនអាចនឹងកើតឡើង៖';
+  String get labelEmailIssueHeader => 'ប្រសិនបើអ្នកមិនឃើញអ៊ីមែលពីយើងក្នុងរយៈពេលពីរបីនាទី អ្វីៗមួយចំនួនអាចនឹងកើតឡើង៖';
 
   @override
-  String get labelEmailIssueSpam =>
-      'អ៊ីមែលនេះស្ថិតនៅក្នុងថតឯកសារឥតបានការរបស់អ្នក (ពេលខ្លះរបស់របរបាត់បង់នៅទីនោះ)។';
+  String get labelEmailIssueSpam => 'អ៊ីមែលនេះស្ថិតនៅក្នុងថតឯកសារឥតបានការរបស់អ្នក (ពេលខ្លះរបស់របរបាត់បង់នៅទីនោះ)។';
 
   @override
-  String get labelEmailIssueWrongEmail =>
-      'អ្នកបានផ្តល់អាសយដ្ឋានអ៊ីមែលផ្សេងទៀតដល់យើងដោយចៃដន្យ (ជាធម្មតាជាការងារ ឬផ្ទាល់ខ្លួនជំនួសឱ្យអ្វីដែលអ្នកចង់បាន)។';
+  String get labelEmailIssueWrongEmail => 'អ្នកបានផ្តល់អាសយដ្ឋានអ៊ីមែលផ្សេងទៀតដល់យើងដោយចៃដន្យ (ជាធម្មតាជាការងារ ឬផ្ទាល់ខ្លួនជំនួសឱ្យអ្វីដែលអ្នកចង់បាន)។';
 
   @override
-  String get labelEmailIssueTypo =>
-      'អាសយដ្ឋានអ៊ីមែលដែលអ្នកបានបញ្ចូលមានកំហុស ឬវាយអក្សរខុស (កើតឡើងចំពោះយើងភាគច្រើន)។';
+  String get labelEmailIssueTypo => 'អាសយដ្ឋានអ៊ីមែលដែលអ្នកបានបញ្ចូលមានកំហុស ឬវាយអក្សរខុស (កើតឡើងចំពោះយើងភាគច្រើន)។';
 
   @override
-  String get labelEmailIssueFirewall =>
-      'យើងមិនអាចផ្ញើអ៊ីមែលទៅកាន់អាសយដ្ឋាននេះបានទេ (ជាធម្មតាដោយសារតែជញ្ជាំងភ្លើង ឬការច្រោះ)។';
+  String get labelEmailIssueFirewall => 'យើងមិនអាចផ្ញើអ៊ីមែលទៅកាន់អាសយដ្ឋាននេះបានទេ (ជាធម្មតាដោយសារតែជញ្ជាំងភ្លើង ឬការច្រោះ)។';
 
   @override
-  String get actionReenterEmail =>
-      'បញ្ចូលអ៊ីមែលរបស់អ្នកឡើងវិញ ហើយសាកល្បងម្តងទៀត';
+  String get actionReenterEmail => 'បញ្ចូលអ៊ីមែលរបស់អ្នកឡើងវិញ ហើយសាកល្បងម្តងទៀត';
 
   @override
-  String get labelKeepPassword =>
-      'រក្សាគណនីរបស់អ្នកឱ្យមានសុវត្ថិភាពជាមួយពាក្យសម្ងាត់';
+  String get labelKeepPassword => 'រក្សាគណនីរបស់អ្នកឱ្យមានសុវត្ថិភាពជាមួយពាក្យសម្ងាត់';
 
   @override
   String get labelCreatePassword => 'បង្កើតពាក្យសម្ងាត់';
@@ -164,8 +152,7 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'លេខកូដបញ្ជូនសម្ព័ន្ធ';
 
   @override
-  String get infoReferralInfoDescription =>
-      'លេខកូដអក្សរក្រម និងលេខដែលផ្តល់ដោយសម្ព័ន្ធ Deriv ដែលអាចអនុវត្តបានសម្រាប់ការចុះឈ្មោះតាមអ៊ីមែលតែប៉ុណ្ណោះ។';
+  String get infoReferralInfoDescription => 'លេខកូដអក្សរក្រម និងលេខដែលផ្តល់ដោយសម្ព័ន្ធ Deriv ដែលអាចអនុវត្តបានសម្រាប់ការចុះឈ្មោះតាមអ៊ីមែលតែប៉ុណ្ណោះ។';
 
   @override
   String get labelGotReferralCode => 'មានលេខកូដបញ្ជូនទេ?';
@@ -177,8 +164,7 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get actionCreateAccount => 'បង្កើតគណនីបង្ហាញឥតគិតថ្លៃ';
 
   @override
-  String get informInvalidReferralCode =>
-      'លេខកូដបញ្ជូនដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវ។ ពិនិត្យ និងសាកល្បងម្តងទៀត។';
+  String get informInvalidReferralCode => 'លេខកូដបញ្ជូនដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវ។ ពិនិត្យ និងសាកល្បងម្តងទៀត។';
 
   @override
   String get labelVerifyYourEmail => 'ផ្ទៀងផ្ទាត់អ៊ីមែលរបស់អ្នក';
@@ -216,8 +202,7 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'យ៉ាងហោចណាស់មួយលេខ';
 
   @override
-  String get warnPasswordContainsSymbol =>
-      'ប្រើនិមិត្តសញ្ញាសម្រាប់ពាក្យសម្ងាត់ខ្លាំង។';
+  String get warnPasswordContainsSymbol => 'ប្រើនិមិត្តសញ្ញាសម្រាប់ពាក្យសម្ងាត់ខ្លាំង។';
 
   @override
   String get labelReferralCode => 'លេខកូដបញ្ជូន';
@@ -226,12 +211,10 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get actionTryAgain => 'សាកល្បងម្តងទៀត';
 
   @override
-  String get informInvalid2FACode =>
-      'លេខកូដដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវ។ ពិនិត្យ និងសាកល្បងម្តងទៀត។';
+  String get informInvalid2FACode => 'លេខកូដដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវ។ ពិនិត្យ និងសាកល្បងម្តងទៀត។';
 
   @override
-  String get informFailedAuthentication =>
-      'អ៊ីមែល ឬពាក្យសម្ងាត់របស់អ្នកអាចនឹងមិនត្រឹមត្រូវ។ តើអ្នកបានចុះឈ្មោះជាមួយគណនីសង្គមមែនទេ? ពិនិត្យ និងសាកល្បងម្តងទៀត។';
+  String get informFailedAuthentication => 'អ៊ីមែល ឬពាក្យសម្ងាត់របស់អ្នកអាចនឹងមិនត្រឹមត្រូវ។ តើអ្នកបានចុះឈ្មោះជាមួយគណនីសង្គមមែនទេ? ពិនិត្យ និងសាកល្បងម្តងទៀត។';
 
   @override
   String get informDeactivatedAccount => 'គណនីរបស់អ្នកត្រូវបានអសកម្ម។';
@@ -261,16 +244,13 @@ class DerivAuthLocalizationsKm extends DerivAuthLocalizations {
   String get informExpiredAccount => 'គណនីរបស់អ្នកផុតកំណត់ហើយ';
 
   @override
-  String get labelCountryConsentBrazil =>
-      'ខ្ញុំសូមបញ្ជាក់នៅទីនេះថា សំណើរបស់ខ្ញុំសម្រាប់ការបើកគណនីជាមួយ Deriv ដើម្បីធ្វើពាណិជ្ជកម្មផលិតផល OTC ដែលចេញ និងផ្តល់ជូនផ្តាច់មុខនៅខាងក្រៅប្រទេសប្រេស៊ីល ត្រូវបានផ្តួចផ្តើមដោយខ្ញុំ។ ខ្ញុំយល់ច្បាស់ទាំងស្រុងថា Deriv មិនត្រូវបានគ្រប់គ្រងដោយ CVM ហើយដោយការទាក់ទង Deriv ខ្ញុំមានបំណងបង្កើតទំនាក់ទំនងជាមួយក្រុមហ៊ុនបរទេស។';
+  String get labelCountryConsentBrazil => 'ខ្ញុំសូមបញ្ជាក់នៅទីនេះថា សំណើរបស់ខ្ញុំសម្រាប់ការបើកគណនីជាមួយ Deriv ដើម្បីធ្វើពាណិជ្ជកម្មផលិតផល OTC ដែលចេញ និងផ្តល់ជូនផ្តាច់មុខនៅខាងក្រៅប្រទេសប្រេស៊ីល ត្រូវបានផ្តួចផ្តើមដោយខ្ញុំ។ ខ្ញុំយល់ច្បាស់ទាំងស្រុងថា Deriv មិនត្រូវបានគ្រប់គ្រងដោយ CVM ហើយដោយការទាក់ទង Deriv ខ្ញុំមានបំណងបង្កើតទំនាក់ទំនងជាមួយក្រុមហ៊ុនបរទេស។';
 
   @override
-  String get informConnectionError =>
-      'កំហុសក្នុងការតភ្ជាប់។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។';
+  String get informConnectionError => 'កំហុសក្នុងការតភ្ជាប់។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។';
 
   @override
-  String get informSwitchAccountError =>
-      'កំហុសក្នុងការប្តូរគណនី។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។';
+  String get informSwitchAccountError => 'កំហុសក្នុងការប្តូរគណនី។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។';
 
   @override
   String get labelDeveloper => 'អ្នកអភិវឌ្ឍន៍';

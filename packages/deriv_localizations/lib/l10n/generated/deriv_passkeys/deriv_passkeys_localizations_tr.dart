@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Turkish (`tr`).
 class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsTr([String locale = 'tr']) : super(locale);

@@ -1,10 +1,10 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Arabic (`ar`).
-class DerivMobileChartWrapperLocalizationsAr
-    extends DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizationsAr([String locale = 'ar'])
-      : super(locale);
+class DerivMobileChartWrapperLocalizationsAr extends DerivMobileChartWrapperLocalizations {
+  DerivMobileChartWrapperLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
   String get labelIndicators => 'المؤشرات';
@@ -46,24 +46,19 @@ class DerivMobileChartWrapperLocalizationsAr
   String get labelMA => 'ماجستير';
 
   @override
-  String get infoMACD =>
-      'مؤشر MACD هو مؤشر تداول يستخدم في التحليل الفني لأسعار الأسهم. ومن المفترض أن يكشف عن التغيرات في قوة واتجاه وزخم ومدة الاتجاه في سعر السهم.';
+  String get infoMACD => 'مؤشر MACD هو مؤشر تداول يستخدم في التحليل الفني لأسعار الأسهم. ومن المفترض أن يكشف عن التغيرات في قوة واتجاه وزخم ومدة الاتجاه في سعر السهم.';
 
   @override
-  String get infoRSI =>
-      'تم نشر مؤشر القوة النسبية (RSI) بواسطة J. Welles Wilder. يتم تطبيع السعر الحالي كنسبة مئوية بين 0 و 100. إن معرف flutter_chart_id لهذا المذبذب مضلل لأنه لا يقارن الأداة بالنسبة إلى أداة أخرى أو مجموعة من الأدوات، بل يمثل السعر الحالي بالنسبة إلى القطع الحديثة الأخرى ضمن طول نافذة الاسترجاع المحددة.';
+  String get infoRSI => 'تم نشر مؤشر القوة النسبية (RSI) بواسطة J. Welles Wilder. يتم تطبيع السعر الحالي كنسبة مئوية بين 0 و 100. إن معرف flutter_chart_id لهذا المذبذب مضلل لأنه لا يقارن الأداة بالنسبة إلى أداة أخرى أو مجموعة من الأدوات، بل يمثل السعر الحالي بالنسبة إلى القطع الحديثة الأخرى ضمن طول نافذة الاسترجاع المحددة.';
 
   @override
-  String get infoBB =>
-      'يمكن استخدام مؤشر بولينجر باند (BB) لقياس مدى ارتفاع أو انخفاض السعر بالنسبة للصفقات السابقة.';
+  String get infoBB => 'يمكن استخدام مؤشر بولينجر باند (BB) لقياس مدى ارتفاع أو انخفاض السعر بالنسبة للصفقات السابقة.';
 
   @override
-  String get infoMA =>
-      'يساعد المتوسط المتحرك (MA) على تحديد الاتجاه العام للسوق من خلال تصفية تقلبات الأسعار على المدى القصير. وباستخدام البيانات التاريخية، يحسب المتوسط المتحرك متوسط السعر خلال فترة محددة ويرسم خطًا على الرسم البياني. إذا تحرك خط المتوسط المتحرك المتحرك لأعلى، فهذا مؤشر على وجود اتجاه صعودي، ويكون مؤشرًا على اتجاه هبوطي إذا تحرك لأسفل. وتحدث إشارة الشراء عندما يتحرك السعر فوق خط المتوسط المتحرك.';
+  String get infoMA => 'يساعد المتوسط المتحرك (MA) على تحديد الاتجاه العام للسوق من خلال تصفية تقلبات الأسعار على المدى القصير. وباستخدام البيانات التاريخية، يحسب المتوسط المتحرك متوسط السعر خلال فترة محددة ويرسم خطًا على الرسم البياني. إذا تحرك خط المتوسط المتحرك المتحرك لأعلى، فهذا مؤشر على وجود اتجاه صعودي، ويكون مؤشرًا على اتجاه هبوطي إذا تحرك لأسفل. وتحدث إشارة الشراء عندما يتحرك السعر فوق خط المتوسط المتحرك.';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded =>
-      'لقد أضفت الحد الأقصى لعدد المؤشرات النشطة.';
+  String get infoMaximumActiveIndicatorsAdded => 'لقد أضفت الحد الأقصى لعدد المؤشرات النشطة.';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -77,8 +72,7 @@ class DerivMobileChartWrapperLocalizationsAr
   String get labelDeleteAllIndicators => 'حذف جميع المؤشرات';
 
   @override
-  String get infoDeleteAllIndicators =>
-      'سيؤدي ذلك إلى حذف جميع المؤشرات النشطة.';
+  String get infoDeleteAllIndicators => 'سيؤدي ذلك إلى حذف جميع المؤشرات النشطة.';
 
   @override
   String infoResetIndicators(Object indicator) {
@@ -310,6 +304,5 @@ class DerivMobileChartWrapperLocalizationsAr
   String get labelDeleteAllDrawingTools => 'احذف جميع أدوات الرسم';
 
   @override
-  String get informDeleteAllDrawingTools =>
-      'سيؤدي هذا إلى حذف جميع أدوات الرسم النشطة.';
+  String get informDeleteAllDrawingTools => 'سيؤدي هذا إلى حذف جميع أدوات الرسم النشطة.';
 }

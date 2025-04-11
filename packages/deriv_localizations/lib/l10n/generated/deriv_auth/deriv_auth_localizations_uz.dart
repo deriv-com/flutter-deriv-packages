@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Uzbek (`uz`).
 class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   DerivAuthLocalizationsUz([String locale = 'uz']) : super(locale);
@@ -16,8 +18,7 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get actionOk => 'OK';
 
   @override
-  String get warnNotAvailableCountries =>
-      'If you have any questions, contact us via ';
+  String get warnNotAvailableCountries => 'If you have any questions, contact us via ';
 
   @override
   String get labelLiveChat => 'Live chat';
@@ -32,8 +33,7 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'Two-factor authentication';
 
   @override
-  String get informEnterTwoFactorAuthCode =>
-      'Enter the 6-digit code from the authenticator app on your phone.';
+  String get informEnterTwoFactorAuthCode => 'Enter the 6-digit code from the authenticator app on your phone.';
 
   @override
   String get labelTwoFactorAuthenticationCode => '2FA code';
@@ -81,15 +81,13 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => 'Your password has been reset';
 
   @override
-  String get informRedirectLogin =>
-      'You’ll need to log in with your new password. Hang on, we’re redirecting you.';
+  String get informRedirectLogin => 'You’ll need to log in with your new password. Hang on, we’re redirecting you.';
 
   @override
   String get actionResetPass => 'Reset my password';
 
   @override
-  String get informInvalidPasswordFormat =>
-      'Please enter a valid password format';
+  String get informInvalidPasswordFormat => 'Please enter a valid password format';
 
   @override
   String get labelCheckEmail => 'Check your email';
@@ -100,8 +98,7 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail =>
-      'We\'ll email you instructions to reset your password.';
+  String get informResetPassByEmail => 'We\'ll email you instructions to reset your password.';
 
   @override
   String get labelSelectCountry => 'Where do you live?';
@@ -110,31 +107,25 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get labelChooseCountry => 'Choose country';
 
   @override
-  String get warnCountryNotAvailable =>
-      'Unfortunately, Deriv is not available in your country.';
+  String get warnCountryNotAvailable => 'Unfortunately, Deriv is not available in your country.';
 
   @override
   String get actionNext => 'Next';
 
   @override
-  String get labelEmailIssueHeader =>
-      'If you don\'t see an email from us within a few minutes, a few things could have happened:';
+  String get labelEmailIssueHeader => 'If you don\'t see an email from us within a few minutes, a few things could have happened:';
 
   @override
-  String get labelEmailIssueSpam =>
-      'The email is in your spam folder (Sometimes things get lost there).';
+  String get labelEmailIssueSpam => 'The email is in your spam folder (Sometimes things get lost there).';
 
   @override
-  String get labelEmailIssueWrongEmail =>
-      'You accidentally gave us another email address (Usually a work or a personal one instead of the one you meant).';
+  String get labelEmailIssueWrongEmail => 'You accidentally gave us another email address (Usually a work or a personal one instead of the one you meant).';
 
   @override
-  String get labelEmailIssueTypo =>
-      'The email address you entered had a mistake or typo (happens to the best of us).';
+  String get labelEmailIssueTypo => 'The email address you entered had a mistake or typo (happens to the best of us).';
 
   @override
-  String get labelEmailIssueFirewall =>
-      'We can\'t deliver the email to this address (Usually because of firewalls or filtering).';
+  String get labelEmailIssueFirewall => 'We can\'t deliver the email to this address (Usually because of firewalls or filtering).';
 
   @override
   String get actionReenterEmail => 'Re-enter your email and try again';
@@ -161,8 +152,7 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'Affiliate referral code';
 
   @override
-  String get infoReferralInfoDescription =>
-      'An alphanumeric code provided by a Deriv affiliate, applicable for email sign-ups only.';
+  String get infoReferralInfoDescription => 'An alphanumeric code provided by a Deriv affiliate, applicable for email sign-ups only.';
 
   @override
   String get labelGotReferralCode => 'Got a referral code?';
@@ -174,8 +164,7 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get actionCreateAccount => 'Create free demo account';
 
   @override
-  String get informInvalidReferralCode =>
-      'The referral code you entered is invalid. Check and try again.';
+  String get informInvalidReferralCode => 'The referral code you entered is invalid. Check and try again.';
 
   @override
   String get labelVerifyYourEmail => 'Verify your email';
@@ -207,8 +196,7 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get informPasswordPolicyLength => '8-25 characters';
 
   @override
-  String get informPasswordPolicyLowerAndUpper =>
-      'Upper and lower case letters';
+  String get informPasswordPolicyLowerAndUpper => 'Upper and lower case letters';
 
   @override
   String get informPasswordPolicyNumber => 'At least one number';
@@ -223,12 +211,10 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get actionTryAgain => 'Try Again';
 
   @override
-  String get informInvalid2FACode =>
-      'The code you entered is invalid. Check and try again.';
+  String get informInvalid2FACode => 'The code you entered is invalid. Check and try again.';
 
   @override
-  String get informFailedAuthentication =>
-      'Your email or password may be incorrect. Did you sign up with a social account? Check and try again.';
+  String get informFailedAuthentication => 'Your email or password may be incorrect. Did you sign up with a social account? Check and try again.';
 
   @override
   String get informDeactivatedAccount => 'Your account is deactivated.';
@@ -258,16 +244,13 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   String get informExpiredAccount => 'Your account is expired';
 
   @override
-  String get labelCountryConsentBrazil =>
-      'I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company.';
+  String get labelCountryConsentBrazil => 'I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company.';
 
   @override
-  String get informConnectionError =>
-      'Connection error. Please try again later.';
+  String get informConnectionError => 'Connection error. Please try again later.';
 
   @override
-  String get informSwitchAccountError =>
-      'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'Switch account error. Please try again later.';
 
   @override
   String get labelDeveloper => 'Developer';

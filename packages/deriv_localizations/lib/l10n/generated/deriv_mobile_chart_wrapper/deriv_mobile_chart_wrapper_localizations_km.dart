@@ -1,10 +1,10 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Khmer Central Khmer (`km`).
-class DerivMobileChartWrapperLocalizationsKm
-    extends DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizationsKm([String locale = 'km'])
-      : super(locale);
+class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLocalizations {
+  DerivMobileChartWrapperLocalizationsKm([String locale = 'km']) : super(locale);
 
   @override
   String get labelIndicators => 'សូចនាករ';
@@ -46,24 +46,19 @@ class DerivMobileChartWrapperLocalizationsKm
   String get labelMA => 'MA';
 
   @override
-  String get infoMACD =>
-      'MACD គឺជាសូចនាករជួញដូរដែលត្រូវបានប្រើក្នុងការវិភាគបច្ចេកទេសនៃតម្លៃភាគហ៊ុន។ វាត្រូវបានគេសន្មត់ថាដើម្បីបង្ហាញពីការផ្លាស់ប្តូរកម្លាំង ទិសដៅ សន្ទុះ និងរយៈពេលនៃនិន្នាការក្នុងតម្លៃភាគហ៊ុន។';
+  String get infoMACD => 'MACD គឺជាសូចនាករជួញដូរដែលត្រូវបានប្រើក្នុងការវិភាគបច្ចេកទេសនៃតម្លៃភាគហ៊ុន។ វាត្រូវបានគេសន្មត់ថាដើម្បីបង្ហាញពីការផ្លាស់ប្តូរកម្លាំង ទិសដៅ សន្ទុះ និងរយៈពេលនៃនិន្នាការក្នុងតម្លៃភាគហ៊ុន។';
 
   @override
-  String get infoRSI =>
-      'សន្ទស្សន៍កម្លាំងទាក់ទង (RSI) ត្រូវបានបោះពុម្ពផ្សាយដោយ J. Welles Wilder ។ តម្លៃបច្ចុប្បន្នត្រូវបានធ្វើឱ្យមានលក្ខណៈធម្មតាជាភាគរយរវាង 0 និង 100 ។ flutter_chart_id នៃលំយោលនេះគឺជាការបំភាន់ពីព្រោះវាមិនប្រៀបធៀបឧបករណ៍ទាក់ទងទៅនឹងឧបករណ៍ផ្សេងទៀត ឬសំណុំនៃឧបករណ៍នោះទេ ប៉ុន្តែផ្ទុយទៅវិញតំណាងឱ្យតម្លៃបច្ចុប្បន្នទាក់ទងទៅនឹងបំណែកថ្មីៗផ្សេងទៀតនៅក្នុងប្រវែងបង្អួចមើលត្រឡប់មកវិញដែលបានជ្រើសរើស។';
+  String get infoRSI => 'សន្ទស្សន៍កម្លាំងទាក់ទង (RSI) ត្រូវបានបោះពុម្ពផ្សាយដោយ J. Welles Wilder ។ តម្លៃបច្ចុប្បន្នត្រូវបានធ្វើឱ្យមានលក្ខណៈធម្មតាជាភាគរយរវាង 0 និង 100 ។ flutter_chart_id នៃលំយោលនេះគឺជាការបំភាន់ពីព្រោះវាមិនប្រៀបធៀបឧបករណ៍ទាក់ទងទៅនឹងឧបករណ៍ផ្សេងទៀត ឬសំណុំនៃឧបករណ៍នោះទេ ប៉ុន្តែផ្ទុយទៅវិញតំណាងឱ្យតម្លៃបច្ចុប្បន្នទាក់ទងទៅនឹងបំណែកថ្មីៗផ្សេងទៀតនៅក្នុងប្រវែងបង្អួចមើលត្រឡប់មកវិញដែលបានជ្រើសរើស។';
 
   @override
-  String get infoBB =>
-      'ក្រុមតន្រ្តី Bollinger (BB) អាចត្រូវបានប្រើដើម្បីវាស់ស្ទង់កម្ពស់ ឬកម្រិតទាបនៃតម្លៃទាក់ទងទៅនឹងការជួញដូរពីមុន។';
+  String get infoBB => 'ក្រុមតន្រ្តី Bollinger (BB) អាចត្រូវបានប្រើដើម្បីវាស់ស្ទង់កម្ពស់ ឬកម្រិតទាបនៃតម្លៃទាក់ទងទៅនឹងការជួញដូរពីមុន។';
 
   @override
-  String get infoMA =>
-      'មធ្យមភាគចល័ត (MA) ជួយកំណត់អត្តសញ្ញាណនិន្នាការទីផ្សារទូទៅដោយការច្រោះការប្រងប្រួលតម្លៃរយៈពេលខ្លី។ ដោយប្រើទិន្នន័យប្រវត្តិសាស្ត្រ វាគណនាតម្លៃជាមធ្យមក្នុងរយៈពេលជាក់លាក់មួយ ហើយគូសបន្ទាត់នៅលើតារាង។ ប្រសិនបើបន្ទាត់ MA ផ្លាស់ទីឡើងលើ វាជាសូចនាករនៃនិន្នាការឡើងលើ និន្នាការធ្លាក់ចុះ ប្រសិនបើវាផ្លាស់ទីចុះក្រោម។ សញ្ញាទិញកើតឡើងនៅពេលដែលតម្លៃផ្លាស់ទីខ្ពស់ជាងបន្ទាត់ MA ។';
+  String get infoMA => 'មធ្យមភាគចល័ត (MA) ជួយកំណត់អត្តសញ្ញាណនិន្នាការទីផ្សារទូទៅដោយការច្រោះការប្រងប្រួលតម្លៃរយៈពេលខ្លី។ ដោយប្រើទិន្នន័យប្រវត្តិសាស្ត្រ វាគណនាតម្លៃជាមធ្យមក្នុងរយៈពេលជាក់លាក់មួយ ហើយគូសបន្ទាត់នៅលើតារាង។ ប្រសិនបើបន្ទាត់ MA ផ្លាស់ទីឡើងលើ វាជាសូចនាករនៃនិន្នាការឡើងលើ និន្នាការធ្លាក់ចុះ ប្រសិនបើវាផ្លាស់ទីចុះក្រោម។ សញ្ញាទិញកើតឡើងនៅពេលដែលតម្លៃផ្លាស់ទីខ្ពស់ជាងបន្ទាត់ MA ។';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded =>
-      'អ្នកបានបន្ថែមចំនួនអតិបរមានៃសូចនាករសកម្ម។';
+  String get infoMaximumActiveIndicatorsAdded => 'អ្នកបានបន្ថែមចំនួនអតិបរមានៃសូចនាករសកម្ម។';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -107,8 +102,7 @@ class DerivMobileChartWrapperLocalizationsKm
   String get labelDeleteAll => 'លុបទាំងអស់';
 
   @override
-  String get infoUpto3indicatorsAllowed =>
-      'អនុញ្ញាតឱ្យមានសូចនាករសកម្មរហូតដល់ 3 ។';
+  String get infoUpto3indicatorsAllowed => 'អនុញ្ញាតឱ្យមានសូចនាករសកម្មរហូតដល់ 3 ។';
 
   @override
   String get infoNoActiveIndicators => 'មគ្គុទ្ទេសក៍សកម្មទេ។';

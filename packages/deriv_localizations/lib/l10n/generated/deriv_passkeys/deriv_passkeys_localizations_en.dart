@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
 class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsEn([String locale = 'en']) : super(locale);
@@ -28,8 +30,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get experienceSaferLogins => 'Your key to safer logins';
 
   @override
-  String get enhanceSecurity =>
-      'Use fingerprint, face recognition, or other biometric data to log in easily and securely.';
+  String get enhanceSecurity => 'Use fingerprint, face recognition, or other biometric data to log in easily and securely.';
 
   @override
   String get here => 'here';
@@ -41,12 +42,10 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get whatArePasskeys => 'What are biometrics?';
 
   @override
-  String get whatArePasskeysDescriptionPoint1 =>
-      'A secure alternative to passwords.';
+  String get whatArePasskeysDescriptionPoint1 => 'A secure alternative to passwords.';
 
   @override
-  String get whatArePasskeysDescriptionPoint2 =>
-      'Unlock your account using fingerprint, face recognition, or device PIN.';
+  String get whatArePasskeysDescriptionPoint2 => 'Unlock your account using fingerprint, face recognition, or device PIN.';
 
   @override
   String get whyPasskeys => 'Why use biometrics?';
@@ -61,58 +60,49 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get howToCreatePasskey => 'How to enable biometrics?';
 
   @override
-  String get howToCreatePasskeyDescription1 =>
-      'Go to ‘Account Settings’ on Deriv.';
+  String get howToCreatePasskeyDescription1 => 'Go to ‘Account Settings’ on Deriv.';
 
   @override
-  String get howToCreatePasskeyDescription2 =>
-      'Tap ‘Biometrics‘ to create your biometrics.';
+  String get howToCreatePasskeyDescription2 => 'Tap ‘Biometrics‘ to create your biometrics.';
 
   @override
   String get p2pHowToCreatePasskey => 'How to enable biometrics?';
 
   @override
-  String get p2pHowToCreatePasskeyDescription1 =>
-      'Go to ‘Profile‘ in your Deriv P2P app.';
+  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 =>
-      'Tap ‘Biometrics‘ to create your biometrics.';
+  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Biometrics‘ to create your biometrics.';
 
   @override
   String get whereArePasskeysSaved => 'Where is biometric data stored?';
 
   @override
-  String get whereArePasskeysSavedDescriptionAndroid =>
-      'Android: Google password manager.';
+  String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google password manager.';
 
   @override
   String get whereArePasskeysSavedDescriptionIOS => 'iOS: iCloud keychain.';
 
   @override
-  String get whatHappensIfEmailChanged =>
-      'What if I change the email on my Deriv account?';
+  String get whatHappensIfEmailChanged => 'What if I change the email on my Deriv account?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 =>
-      'No problem! Your biometrics still works.';
+  String get whatHappensIfEmailChangedDescription1 => 'No problem! Your biometrics still works.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 =>
-      'You can log in using your existing biometrics.';
+  String get whatHappensIfEmailChangedDescription2 => 'You can log in using your existing biometrics.';
 
   @override
   String get tips => 'Tips';
 
   @override
-  String get beforeUsingPasskeys => 'Before using biometrics:';
+  String get beforeUsingPasskeys => 'Before using biometrics';
 
   @override
   String get enableScreenLock => 'Enable screen lock on your device.';
 
   @override
-  String get signInGoogleOrIcloud =>
-      'Sign in to your Google or iCloud account.';
+  String get signInGoogleOrIcloud => 'Sign in to your Google or iCloud account.';
 
   @override
   String get enableBluetooth => 'Enable Bluetooth.';
@@ -121,8 +111,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get noPasskeyFound => 'No biometrics found!';
 
   @override
-  String get noPasskeyFoundDescription =>
-      'Please create a biometrics to use this feature.';
+  String get noPasskeyFoundDescription => 'Please create a biometrics to use this feature.';
 
   @override
   String get maybeLater => 'Maybe later';
@@ -137,8 +126,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get noNeedToRememberPassword => 'No need to remember a password';
 
   @override
-  String get useYourBiometrics =>
-      'Enhanced security with biometrics or screen lock';
+  String get useYourBiometrics => 'Enhanced security with biometrics or screen lock';
 
   @override
   String get syncAcrossDevices => 'Sync across devices';
@@ -171,8 +159,7 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get unableToSetupPasskey => 'Unable to setup biometrics';
 
   @override
-  String get unableToSetupPasskeyDescription =>
-      'We encountered an issue while setting up your biometrics. The process might have been interrupted, or the session timed out. Please try again.';
+  String get unableToSetupPasskeyDescription => 'We encountered an issue while setting up your biometrics. The process might have been interrupted, or the session timed out. Please try again.';
 
   @override
   String get passkeysOffErrorTitle => 'The Biometrics service is unavailable';
@@ -184,6 +171,5 @@ class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   String get unable_to_process_your_request => 'Unable to process your request';
 
   @override
-  String get unable_to_process_your_request_description =>
-      'We’re experiencing a temporary issue in processing your request. Please try again later.';
+  String get unable_to_process_your_request_description => 'We’re experiencing a temporary issue in processing your request. Please try again later.';
 }

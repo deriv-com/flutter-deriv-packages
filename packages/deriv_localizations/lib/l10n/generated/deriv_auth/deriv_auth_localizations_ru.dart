@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Russian (`ru`).
 class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   DerivAuthLocalizationsRu([String locale = 'ru']) : super(locale);
@@ -16,8 +18,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get actionOk => 'OK';
 
   @override
-  String get warnNotAvailableCountries =>
-      'Если у Вас возникли вопросы, свяжитесь с нами по ';
+  String get warnNotAvailableCountries => 'Если у Вас возникли вопросы, свяжитесь с нами по ';
 
   @override
   String get labelLiveChat => 'Чат';
@@ -32,8 +33,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'Двухфакторная аутентификация';
 
   @override
-  String get informEnterTwoFactorAuthCode =>
-      'Введите 6-значный код из приложения аутентификатора на Вашем телефоне.';
+  String get informEnterTwoFactorAuthCode => 'Введите 6-значный код из приложения аутентификатора на Вашем телефоне.';
 
   @override
   String get labelTwoFactorAuthenticationCode => 'Код 2FA';
@@ -63,8 +63,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get actionCreateANewAccount => 'Откройте новый счет';
 
   @override
-  String get informInvalidEmailFormat =>
-      'Введите действительный адрес электронной почты';
+  String get informInvalidEmailFormat => 'Введите действительный адрес электронной почты';
 
   @override
   String get warnPasswordLength => 'Вы должны ввести 8-25 символов.';
@@ -82,15 +81,13 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => 'Ваш пароль был сброшен';
 
   @override
-  String get informRedirectLogin =>
-      'Вам нужно будет войти в систему с новым паролем. Подождите, мы перенаправляем Вас.';
+  String get informRedirectLogin => 'Вам нужно будет войти в систему с новым паролем. Подождите, мы перенаправляем Вас.';
 
   @override
   String get actionResetPass => 'Изменить пароль';
 
   @override
-  String get informInvalidPasswordFormat =>
-      'Введите пароль в действующем формате';
+  String get informInvalidPasswordFormat => 'Введите пароль в действующем формате';
 
   @override
   String get labelCheckEmail => 'Проверьте эл. почту';
@@ -101,8 +98,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail =>
-      'Инструкции для изменения пароля будут отправлены на ваш эл. адрес.';
+  String get informResetPassByEmail => 'Инструкции для изменения пароля будут отправлены на ваш эл. адрес.';
 
   @override
   String get labelSelectCountry => 'Где вы живете?';
@@ -111,30 +107,25 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get labelChooseCountry => 'Выберите страну';
 
   @override
-  String get warnCountryNotAvailable =>
-      'К сожалению, Deriv недоступен в вашей стране.';
+  String get warnCountryNotAvailable => 'К сожалению, Deriv недоступен в вашей стране.';
 
   @override
   String get actionNext => 'Далее';
 
   @override
-  String get labelEmailIssueHeader =>
-      'Если вы не получили наше письмо в течение нескольких минут, возможно, произошло следующее:';
+  String get labelEmailIssueHeader => 'Если вы не получили наше письмо в течение нескольких минут, возможно, произошло следующее:';
 
   @override
   String get labelEmailIssueSpam => 'Письмо попало в папку со спамом.';
 
   @override
-  String get labelEmailIssueWrongEmail =>
-      'Вы по ошибке указали неправильный email (как правило, рабочий или личный email вместо нужного).';
+  String get labelEmailIssueWrongEmail => 'Вы по ошибке указали неправильный email (как правило, рабочий или личный email вместо нужного).';
 
   @override
-  String get labelEmailIssueTypo =>
-      'Адрес эл. почты был введен с ошибкой или опечаткой (случается с лучшими из нас).';
+  String get labelEmailIssueTypo => 'Адрес эл. почты был введен с ошибкой или опечаткой (случается с лучшими из нас).';
 
   @override
-  String get labelEmailIssueFirewall =>
-      'Мы не можем отправить письмо на этот адрес (из-за использования firewall или фильтрации).';
+  String get labelEmailIssueFirewall => 'Мы не можем отправить письмо на этот адрес (из-за использования firewall или фильтрации).';
 
   @override
   String get actionReenterEmail => 'Введите email и попробуйте снова';
@@ -161,8 +152,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'Партнерский реферальный код';
 
   @override
-  String get infoReferralInfoDescription =>
-      'Буквенно-цифровой код, предоставляемый партнером Deriv, применимый только для регистрации по электронной почте.';
+  String get infoReferralInfoDescription => 'Буквенно-цифровой код, предоставляемый партнером Deriv, применимый только для регистрации по электронной почте.';
 
   @override
   String get labelGotReferralCode => 'У Вас есть реферальный код?';
@@ -174,8 +164,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get actionCreateAccount => 'Открыть бесплатный демо-счет';
 
   @override
-  String get informInvalidReferralCode =>
-      'Введенный Вами реферальный код недействителен. Проверьте и попробуйте еще раз.';
+  String get informInvalidReferralCode => 'Введенный Вами реферальный код недействителен. Проверьте и попробуйте еще раз.';
 
   @override
   String get labelVerifyYourEmail => 'Подтвердите эл. адрес';
@@ -213,8 +202,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'По крайней мере, одно число';
 
   @override
-  String get warnPasswordContainsSymbol =>
-      'Используйте символы для создания надежного пароля.';
+  String get warnPasswordContainsSymbol => 'Используйте символы для создания надежного пароля.';
 
   @override
   String get labelReferralCode => 'Реферальный код';
@@ -223,12 +211,10 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get actionTryAgain => 'Повторить';
 
   @override
-  String get informInvalid2FACode =>
-      'Введенный Вами код недействителен. Проверьте и попробуйте еще раз.';
+  String get informInvalid2FACode => 'Введенный Вами код недействителен. Проверьте и попробуйте еще раз.';
 
   @override
-  String get informFailedAuthentication =>
-      'Возможно, Ваш e-mail или пароль неверны. Вы зарегистрировались с помощью социальной учетной записи? Проверьте и попробуйте еще раз.';
+  String get informFailedAuthentication => 'Возможно, Ваш e-mail или пароль неверны. Вы зарегистрировались с помощью социальной учетной записи? Проверьте и попробуйте еще раз.';
 
   @override
   String get informDeactivatedAccount => 'Ваш аккаунт деактивирован.';
@@ -252,23 +238,19 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get informUnexpectedError => 'Произошла неожиданная ошибка.';
 
   @override
-  String get informUnsupportedCountry =>
-      'Ваша страна не пользуется поддержкой.';
+  String get informUnsupportedCountry => 'Ваша страна не пользуется поддержкой.';
 
   @override
   String get informExpiredAccount => 'Срок действия вашей учетной записи истек';
 
   @override
-  String get labelCountryConsentBrazil =>
-      'Настоящим я подтверждаю, что запрос на открытие счета в Deriv для торговли внебиржевыми продуктами, выпущенными и предлагаемыми исключительно за пределами Бразилии, был инициирован мной. Я понимаю, что деятельность Deriv не регулируется CVM, и, обратившись в Deriv, вступаю в деловые отношения с иностранной компанией.';
+  String get labelCountryConsentBrazil => 'Настоящим я подтверждаю, что запрос на открытие счета в Deriv для торговли внебиржевыми продуктами, выпущенными и предлагаемыми исключительно за пределами Бразилии, был инициирован мной. Я понимаю, что деятельность Deriv не регулируется CVM, и, обратившись в Deriv, вступаю в деловые отношения с иностранной компанией.';
 
   @override
-  String get informConnectionError =>
-      'Ошибка подключения. Пожалуйста, попробуйте позже.';
+  String get informConnectionError => 'Ошибка подключения. Пожалуйста, попробуйте позже.';
 
   @override
-  String get informSwitchAccountError =>
-      'Ошибка переключения учетной записи. Пожалуйста, попробуйте позже.';
+  String get informSwitchAccountError => 'Ошибка переключения учетной записи. Пожалуйста, попробуйте позже.';
 
   @override
   String get labelDeveloper => 'Разработчик';
