@@ -36,7 +36,7 @@
   "whatHappensIfEmailChangedDescription1": "No problem! Your biometrics still works.",
   "whatHappensIfEmailChangedDescription2": "You can log in using your existing biometrics.",
   "tips": "Tips",
-  "beforeUsingPasskeys": "Before using biometrics:",
+  "beforeUsingPasskeys": "Before using biometrics",
   "enableScreenLock": "Enable screen lock on your device.",
   "signInGoogleOrIcloud": "Sign in to your Google or iCloud account.",
   "enableBluetooth": "Enable Bluetooth.",
