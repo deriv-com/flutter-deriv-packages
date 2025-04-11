@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Thai (`th`).
 class DerivPasskeysLocalizationsTh extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsTh([String locale = 'th']) : super(locale);

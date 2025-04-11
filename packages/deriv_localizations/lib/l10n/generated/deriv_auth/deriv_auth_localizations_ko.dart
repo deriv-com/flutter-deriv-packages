@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Korean (`ko`).
 class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   DerivAuthLocalizationsKo([String locale = 'ko']) : super(locale);

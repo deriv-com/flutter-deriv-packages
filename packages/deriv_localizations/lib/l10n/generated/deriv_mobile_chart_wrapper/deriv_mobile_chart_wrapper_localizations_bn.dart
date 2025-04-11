@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Bengali Bangla (`bn`).
 class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsBn([String locale = 'bn']) : super(locale);

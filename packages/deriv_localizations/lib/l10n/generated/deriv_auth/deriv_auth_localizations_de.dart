@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for German (`de`).
 class DerivAuthLocalizationsDe extends DerivAuthLocalizations {
   DerivAuthLocalizationsDe([String locale = 'de']) : super(locale);

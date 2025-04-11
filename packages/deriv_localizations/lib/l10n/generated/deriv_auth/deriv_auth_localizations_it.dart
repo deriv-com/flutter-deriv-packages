@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Italian (`it`).
 class DerivAuthLocalizationsIt extends DerivAuthLocalizations {
   DerivAuthLocalizationsIt([String locale = 'it']) : super(locale);

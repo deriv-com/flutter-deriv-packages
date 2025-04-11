@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Mongolian (`mn`).
 class DerivMobileChartWrapperLocalizationsMn extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsMn([String locale = 'mn']) : super(locale);

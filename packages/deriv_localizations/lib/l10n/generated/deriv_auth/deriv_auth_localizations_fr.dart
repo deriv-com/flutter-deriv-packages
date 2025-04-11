@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for French (`fr`).
 class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   DerivAuthLocalizationsFr([String locale = 'fr']) : super(locale);

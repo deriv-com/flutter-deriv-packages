@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Korean (`ko`).
 class DerivPasskeysLocalizationsKo extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsKo([String locale = 'ko']) : super(locale);

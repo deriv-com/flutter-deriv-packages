@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Khmer Central Khmer (`km`).
 class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsKm([String locale = 'km']) : super(locale);

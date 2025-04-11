@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Sinhala Sinhalese (`si`).
 class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsSi([String locale = 'si']) : super(locale);

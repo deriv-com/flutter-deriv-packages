@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Polish (`pl`).
 class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   DerivAuthLocalizationsPl([String locale = 'pl']) : super(locale);

@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Sinhala Sinhalese (`si`).
 class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   DerivAuthLocalizationsSi([String locale = 'si']) : super(locale);

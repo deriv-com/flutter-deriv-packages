@@ -26,6 +26,8 @@ import 'deriv_mobile_chart_wrapper_localizations_uz.dart';
 import 'deriv_mobile_chart_wrapper_localizations_vi.dart';
 import 'deriv_mobile_chart_wrapper_localizations_zh.dart';
 
+// ignore_for_file: type=lint
+
 /// Callers can lookup localized strings with an instance of DerivMobileChartWrapperLocalizations
 /// returned by `DerivMobileChartWrapperLocalizations.of(context)`.
 ///
@@ -82,8 +84,8 @@ abstract class DerivMobileChartWrapperLocalizations {
 
   final String localeName;
 
-  static DerivMobileChartWrapperLocalizations of(BuildContext context) {
-    return Localizations.of<DerivMobileChartWrapperLocalizations>(context, DerivMobileChartWrapperLocalizations)!;
+  static DerivMobileChartWrapperLocalizations? of(BuildContext context) {
+    return Localizations.of<DerivMobileChartWrapperLocalizations>(context, DerivMobileChartWrapperLocalizations);
   }
 
   static const LocalizationsDelegate<DerivMobileChartWrapperLocalizations> delegate = _DerivMobileChartWrapperLocalizationsDelegate();

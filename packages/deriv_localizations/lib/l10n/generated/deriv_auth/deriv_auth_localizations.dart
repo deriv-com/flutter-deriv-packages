@@ -26,6 +26,8 @@ import 'deriv_auth_localizations_uz.dart';
 import 'deriv_auth_localizations_vi.dart';
 import 'deriv_auth_localizations_zh.dart';
 
+// ignore_for_file: type=lint
+
 /// Callers can lookup localized strings with an instance of DerivAuthLocalizations
 /// returned by `DerivAuthLocalizations.of(context)`.
 ///
@@ -82,8 +84,8 @@ abstract class DerivAuthLocalizations {
 
   final String localeName;
 
-  static DerivAuthLocalizations of(BuildContext context) {
-    return Localizations.of<DerivAuthLocalizations>(context, DerivAuthLocalizations)!;
+  static DerivAuthLocalizations? of(BuildContext context) {
+    return Localizations.of<DerivAuthLocalizations>(context, DerivAuthLocalizations);
   }
 
   static const LocalizationsDelegate<DerivAuthLocalizations> delegate = _DerivAuthLocalizationsDelegate();

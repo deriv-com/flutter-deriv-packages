@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Bengali Bangla (`bn`).
 class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsBn([String locale = 'bn']) : super(locale);
