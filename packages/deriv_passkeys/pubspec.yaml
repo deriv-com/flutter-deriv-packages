@@ -26,7 +26,7 @@ dependencies:
     git:
       url: https://github.com/deriv-com/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: 3689a8a47b2ec52c5e9d453e00b91cdbab85b1a6
+      ref: 3e7852dc8d15e7ca96c0deb6d6eff8fc42e0d02d
 
   deriv_ui:
     git:
