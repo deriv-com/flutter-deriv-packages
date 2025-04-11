@@ -1,7 +1,5 @@
 import 'deriv_auth_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Chinese (`zh`).
 class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   DerivAuthLocalizationsZh([String locale = 'zh']) : super(locale);
@@ -119,7 +117,8 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get labelEmailIssueSpam => '郵件在您的垃圾郵箱（有時一些郵件會誤送到那兒）。';
 
   @override
-  String get labelEmailIssueWrongEmail => '您不小心給了我們另一個電子郵件地址（通常非您本意，而是屬於工作或個人性質的）。';
+  String get labelEmailIssueWrongEmail =>
+      '您不小心給了我們另一個電子郵件地址（通常非您本意，而是屬於工作或個人性質的）。';
 
   @override
   String get labelEmailIssueTypo => '您輸入的電子郵件地址拼寫有誤（有時這是難免的）。';
@@ -244,7 +243,8 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   String get informExpiredAccount => '帳戶已過期';
 
   @override
-  String get labelCountryConsentBrazil => '本人特此確認，在 Deriv 開立帳戶以交易由巴西境外推出和提供的場外交易產品的要求是由本人提出的。本人完全理解 Deriv 不受 CVM 監管，且通過與 Deriv 接觸，本人打算與一家外國公司建立關係。';
+  String get labelCountryConsentBrazil =>
+      '本人特此確認，在 Deriv 開立帳戶以交易由巴西境外推出和提供的場外交易產品的要求是由本人提出的。本人完全理解 Deriv 不受 CVM 監管，且通過與 Deriv 接觸，本人打算與一家外國公司建立關係。';
 
   @override
   String get informConnectionError => '連線錯誤。請稍後再試一次。';
@@ -279,7 +279,7 @@ class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
 
 /// The translations for Chinese, as used in China (`zh_CN`).
 class DerivAuthLocalizationsZhCn extends DerivAuthLocalizationsZh {
-  DerivAuthLocalizationsZhCn(): super('zh_CN');
+  DerivAuthLocalizationsZhCn() : super('zh_CN');
 
   @override
   String get labelNotAvailable => '不可用';
@@ -394,7 +394,8 @@ class DerivAuthLocalizationsZhCn extends DerivAuthLocalizationsZh {
   String get labelEmailIssueSpam => '邮件在垃圾邮箱里（有时一些邮件会误送到那儿）。';
 
   @override
-  String get labelEmailIssueWrongEmail => '您不小心给了我们另一个电子邮件地址（通常非您本意，而是属于工作或个人性质的）。';
+  String get labelEmailIssueWrongEmail =>
+      '您不小心给了我们另一个电子邮件地址（通常非您本意，而是属于工作或个人性质的）。';
 
   @override
   String get labelEmailIssueTypo => '您输入的电子邮件地址拼写有误（有时这是难免的）。';
@@ -519,7 +520,8 @@ class DerivAuthLocalizationsZhCn extends DerivAuthLocalizationsZh {
   String get informExpiredAccount => '账户已过期';
 
   @override
-  String get labelCountryConsentBrazil => '本人特此确认，在 Deriv 开立账户以交易由巴西境外推出和提供的场外交易产品的请求是由本人提出的。本人完全理解 Deriv 不受 CVM 监管，且通过与 Deriv 接触，本人打算与一家外国公司建立关系。';
+  String get labelCountryConsentBrazil =>
+      '本人特此确认，在 Deriv 开立账户以交易由巴西境外推出和提供的场外交易产品的请求是由本人提出的。本人完全理解 Deriv 不受 CVM 监管，且通过与 Deriv 接触，本人打算与一家外国公司建立关系。';
 
   @override
   String get informConnectionError => '连接错误。请稍后再试。';
@@ -554,7 +556,7 @@ class DerivAuthLocalizationsZhCn extends DerivAuthLocalizationsZh {
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
 class DerivAuthLocalizationsZhTw extends DerivAuthLocalizationsZh {
-  DerivAuthLocalizationsZhTw(): super('zh_TW');
+  DerivAuthLocalizationsZhTw() : super('zh_TW');
 
   @override
   String get labelNotAvailable => '不可用';
@@ -669,7 +671,8 @@ class DerivAuthLocalizationsZhTw extends DerivAuthLocalizationsZh {
   String get labelEmailIssueSpam => '郵件在您的垃圾郵箱（有時一些郵件會誤送到那兒）。';
 
   @override
-  String get labelEmailIssueWrongEmail => '您不小心給了我們另一個電子郵件地址（通常非您本意，而是屬於工作或個人性質的）。';
+  String get labelEmailIssueWrongEmail =>
+      '您不小心給了我們另一個電子郵件地址（通常非您本意，而是屬於工作或個人性質的）。';
 
   @override
   String get labelEmailIssueTypo => '您輸入的電子郵件地址拼寫有誤（有時這是難免的）。';
@@ -794,7 +797,8 @@ class DerivAuthLocalizationsZhTw extends DerivAuthLocalizationsZh {
   String get informExpiredAccount => '帳戶已過期';
 
   @override
-  String get labelCountryConsentBrazil => '本人特此確認，在 Deriv 開立帳戶以交易由巴西境外推出和提供的場外交易產品的要求是由本人提出的。本人完全理解 Deriv 不受 CVM 監管，且通過與 Deriv 接觸，本人打算與一家外國公司建立關係。';
+  String get labelCountryConsentBrazil =>
+      '本人特此確認，在 Deriv 開立帳戶以交易由巴西境外推出和提供的場外交易產品的要求是由本人提出的。本人完全理解 Deriv 不受 CVM 監管，且通過與 Deriv 接觸，本人打算與一家外國公司建立關係。';
 
   @override
   String get informConnectionError => '連線錯誤。請稍後再試一次。';

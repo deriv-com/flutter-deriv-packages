@@ -1,10 +1,10 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for German (`de`).
-class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizationsDe([String locale = 'de']) : super(locale);
+class DerivMobileChartWrapperLocalizationsDe
+    extends DerivMobileChartWrapperLocalizations {
+  DerivMobileChartWrapperLocalizationsDe([String locale = 'de'])
+      : super(locale);
 
   @override
   String get labelIndicators => 'Indikatoren';
@@ -46,19 +46,24 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelMA => 'MA';
 
   @override
-  String get infoMACD => 'Der MACD ist ein Handelsindikator, der bei der technischen Analyse von Aktienkursen verwendet wird. Er soll Veränderungen in der Stärke, Richtung, Dynamik und Dauer eines Trends bei einem Aktienkurs aufzeigen.';
+  String get infoMACD =>
+      'Der MACD ist ein Handelsindikator, der bei der technischen Analyse von Aktienkursen verwendet wird. Er soll Veränderungen in der Stärke, Richtung, Dynamik und Dauer eines Trends bei einem Aktienkurs aufzeigen.';
 
   @override
-  String get infoRSI => 'Der Relative Strength Index (RSI) wurde von J. Welles Wilder veröffentlicht. Der aktuelle Preis wird als Prozentsatz zwischen 0 und 100 normiert. Die flutter_chart_id dieses Oszillators ist irreführend, da sie das Instrument nicht relativ zu einem anderen Instrument oder einer Gruppe von Instrumenten vergleicht, sondern den aktuellen Preis relativ zu anderen kürzlich beobachteten Werten innerhalb des ausgewählten Betrachtungszeitraums darstellt.';
+  String get infoRSI =>
+      'Der Relative Strength Index (RSI) wurde von J. Welles Wilder veröffentlicht. Der aktuelle Preis wird als Prozentsatz zwischen 0 und 100 normiert. Die flutter_chart_id dieses Oszillators ist irreführend, da sie das Instrument nicht relativ zu einem anderen Instrument oder einer Gruppe von Instrumenten vergleicht, sondern den aktuellen Preis relativ zu anderen kürzlich beobachteten Werten innerhalb des ausgewählten Betrachtungszeitraums darstellt.';
 
   @override
-  String get infoBB => 'Bollinger Bänder (BB) können verwendet werden, um die Höhe oder Tiefe des Kurses im Vergleich zu früheren Handel zu messen.';
+  String get infoBB =>
+      'Bollinger Bänder (BB) können verwendet werden, um die Höhe oder Tiefe des Kurses im Vergleich zu früheren Handel zu messen.';
 
   @override
-  String get infoMA => 'Der gleitende Durchschnitt (MA) hilft dabei, den allgemeinen Markttrend zu erkennen, indem er kurzfristige Kursschwankungen herausfiltert. Anhand historischer Daten berechnet er den Durchschnittspreis über einen bestimmten Zeitraum und zeichnet eine Linie in den Chart ein. Bewegt sich die MA-Linie nach oben, ist dies ein Indikator für einen Aufwärtstrend, bewegt sie sich nach unten, ist dies ein Abwärtstrend. Ein Kaufsignal entsteht, wenn sich der Kurs über die MA-Linie bewegt.';
+  String get infoMA =>
+      'Der gleitende Durchschnitt (MA) hilft dabei, den allgemeinen Markttrend zu erkennen, indem er kurzfristige Kursschwankungen herausfiltert. Anhand historischer Daten berechnet er den Durchschnittspreis über einen bestimmten Zeitraum und zeichnet eine Linie in den Chart ein. Bewegt sich die MA-Linie nach oben, ist dies ein Indikator für einen Aufwärtstrend, bewegt sie sich nach unten, ist dies ein Abwärtstrend. Ein Kaufsignal entsteht, wenn sich der Kurs über die MA-Linie bewegt.';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded => 'Sie haben die maximale Anzahl von aktiven Indikatoren hinzugefügt.';
+  String get infoMaximumActiveIndicatorsAdded =>
+      'Sie haben die maximale Anzahl von aktiven Indikatoren hinzugefügt.';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -72,7 +77,8 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelDeleteAllIndicators => 'Alle Indikatoren löschen';
 
   @override
-  String get infoDeleteAllIndicators => 'Dadurch werden alle aktiven Indikatoren gelöscht.';
+  String get infoDeleteAllIndicators =>
+      'Dadurch werden alle aktiven Indikatoren gelöscht.';
 
   @override
   String infoResetIndicators(Object indicator) {
@@ -90,7 +96,8 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   }
 
   @override
-  String get infoDeleteIndicator => 'Sind Sie sicher, dass Sie diesen Indikator löschen möchten?';
+  String get infoDeleteIndicator =>
+      'Sind Sie sicher, dass Sie diesen Indikator löschen möchten?';
 
   @override
   String get labelCancel => 'Abbrechen';
@@ -102,7 +109,8 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelDeleteAll => 'Alle löschen';
 
   @override
-  String get infoUpto3indicatorsAllowed => 'Bis zu 3 aktive Indikatoren erlaubt.';
+  String get infoUpto3indicatorsAllowed =>
+      'Bis zu 3 aktive Indikatoren erlaubt.';
 
   @override
   String get infoNoActiveIndicators => 'Keine aktiven Indikatoren.';
@@ -304,5 +312,6 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelDeleteAllDrawingTools => 'Alle Zeichenwerkzeuge löschen';
 
   @override
-  String get informDeleteAllDrawingTools => 'Dadurch werden alle aktiven Zeichenwerkzeuge gelöscht.';
+  String get informDeleteAllDrawingTools =>
+      'Dadurch werden alle aktiven Zeichenwerkzeuge gelöscht.';
 }

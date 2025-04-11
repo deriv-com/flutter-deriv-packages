@@ -1,7 +1,5 @@
 import 'deriv_auth_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Turkish (`tr`).
 class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   DerivAuthLocalizationsTr([String locale = 'tr']) : super(locale);
@@ -18,7 +16,8 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get actionOk => 'OK';
 
   @override
-  String get warnNotAvailableCountries => 'Herhangi bir sorunuz varsa, bizimle şu yolla iletişime geçin ';
+  String get warnNotAvailableCountries =>
+      'Herhangi bir sorunuz varsa, bizimle şu yolla iletişime geçin ';
 
   @override
   String get labelLiveChat => 'Canlı sohbet';
@@ -33,7 +32,8 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'İki faktörlü kimlik doğrulama';
 
   @override
-  String get informEnterTwoFactorAuthCode => 'Telefonunuzdaki kimlik doğrulayıcı uygulamasından 6 haneli kodu girin.';
+  String get informEnterTwoFactorAuthCode =>
+      'Telefonunuzdaki kimlik doğrulayıcı uygulamasından 6 haneli kodu girin.';
 
   @override
   String get labelTwoFactorAuthenticationCode => '2FA kodu';
@@ -81,13 +81,15 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => 'Şifreniz sıfırlandı';
 
   @override
-  String get informRedirectLogin => 'Yeni şifrenizle giriş yapmanız gerekecek. Bekle, seni yönlendiriyoruz.';
+  String get informRedirectLogin =>
+      'Yeni şifrenizle giriş yapmanız gerekecek. Bekle, seni yönlendiriyoruz.';
 
   @override
   String get actionResetPass => 'Şifremi sıfırla';
 
   @override
-  String get informInvalidPasswordFormat => 'Lütfen geçerli bir şifre formatı girin';
+  String get informInvalidPasswordFormat =>
+      'Lütfen geçerli bir şifre formatı girin';
 
   @override
   String get labelCheckEmail => 'E-postanızı kontrol edin';
@@ -98,7 +100,8 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail => 'Şifrenizi sıfırlamak için size e-posta ile talimatlar göndereceğiz.';
+  String get informResetPassByEmail =>
+      'Şifrenizi sıfırlamak için size e-posta ile talimatlar göndereceğiz.';
 
   @override
   String get labelSelectCountry => 'Nerede yaşıyorsunuz?';
@@ -107,25 +110,31 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get labelChooseCountry => 'Ülke seçin';
 
   @override
-  String get warnCountryNotAvailable => 'Maalesef, Deriv ülkenizde mevcut değil.';
+  String get warnCountryNotAvailable =>
+      'Maalesef, Deriv ülkenizde mevcut değil.';
 
   @override
   String get actionNext => 'Sonraki';
 
   @override
-  String get labelEmailIssueHeader => 'Birkaç dakika içinde bizden bir e-posta görmezseniz, birkaç şey olmuş olabilir:';
+  String get labelEmailIssueHeader =>
+      'Birkaç dakika içinde bizden bir e-posta görmezseniz, birkaç şey olmuş olabilir:';
 
   @override
-  String get labelEmailIssueSpam => 'E-posta, spam klasörünüzdedir (bazen orada bir şeyler kaybolur).';
+  String get labelEmailIssueSpam =>
+      'E-posta, spam klasörünüzdedir (bazen orada bir şeyler kaybolur).';
 
   @override
-  String get labelEmailIssueWrongEmail => 'Yanlışlıkla bize başka bir e-posta adresi verdiniz (Genellikle kastettiğiniz e-posta yerine bir iş veya kişisel bir e-posta).';
+  String get labelEmailIssueWrongEmail =>
+      'Yanlışlıkla bize başka bir e-posta adresi verdiniz (Genellikle kastettiğiniz e-posta yerine bir iş veya kişisel bir e-posta).';
 
   @override
-  String get labelEmailIssueTypo => 'Girdiğiniz e-posta adresi bir hata veya yazım hatası içerdi (en iyilerimizin bile başına geliyor).';
+  String get labelEmailIssueTypo =>
+      'Girdiğiniz e-posta adresi bir hata veya yazım hatası içerdi (en iyilerimizin bile başına geliyor).';
 
   @override
-  String get labelEmailIssueFirewall => 'E-postayı bu adrese teslim edemiyoruz (Genellikle güvenlik duvarları veya filtreleme nedeniyle).';
+  String get labelEmailIssueFirewall =>
+      'E-postayı bu adrese teslim edemiyoruz (Genellikle güvenlik duvarları veya filtreleme nedeniyle).';
 
   @override
   String get actionReenterEmail => 'E-postanızı yine girin ve deneyin';
@@ -152,7 +161,8 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'Affiliate yönlendirme kodu';
 
   @override
-  String get infoReferralInfoDescription => 'Bir Deriv affiliate tarafından sağlanan ve yalnızca e-posta kayıtları için geçerli olan alfanümerik bir kod.';
+  String get infoReferralInfoDescription =>
+      'Bir Deriv affiliate tarafından sağlanan ve yalnızca e-posta kayıtları için geçerli olan alfanümerik bir kod.';
 
   @override
   String get labelGotReferralCode => 'Yönlendirme kodunuz var mı?';
@@ -164,7 +174,8 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get actionCreateAccount => 'Ücretsiz demo hesabı oluştur';
 
   @override
-  String get informInvalidReferralCode => 'Girdiğiniz yönlendirme kodu geçersiz. Kontrol edin ve tekrar deneyin.';
+  String get informInvalidReferralCode =>
+      'Girdiğiniz yönlendirme kodu geçersiz. Kontrol edin ve tekrar deneyin.';
 
   @override
   String get labelVerifyYourEmail => 'E-postanızı doğrulayın';
@@ -202,7 +213,8 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'En az bir sayı';
 
   @override
-  String get warnPasswordContainsSymbol => 'Güçlü şifre için semboller kullanın.';
+  String get warnPasswordContainsSymbol =>
+      'Güçlü şifre için semboller kullanın.';
 
   @override
   String get labelReferralCode => 'Yönlendirme Kodu';
@@ -211,10 +223,12 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get actionTryAgain => 'Tekrar Deneyin';
 
   @override
-  String get informInvalid2FACode => 'Girdiğiniz kod geçersiz. Kontrol edin ve tekrar deneyin.';
+  String get informInvalid2FACode =>
+      'Girdiğiniz kod geçersiz. Kontrol edin ve tekrar deneyin.';
 
   @override
-  String get informFailedAuthentication => 'E-posta adresiniz veya şifreniz yanlış olabilir. Sosyal bir hesapla mı kaydoldunuz? Kontrol edin ve tekrar deneyin.';
+  String get informFailedAuthentication =>
+      'E-posta adresiniz veya şifreniz yanlış olabilir. Sosyal bir hesapla mı kaydoldunuz? Kontrol edin ve tekrar deneyin.';
 
   @override
   String get informDeactivatedAccount => 'Hesabınız devre dışı bırakıldı.';
@@ -244,13 +258,16 @@ class DerivAuthLocalizationsTr extends DerivAuthLocalizations {
   String get informExpiredAccount => 'Hesabınızın süresi doldu';
 
   @override
-  String get labelCountryConsentBrazil => 'Sadece Brezilya dışında yayınlanan ve sunulan OTC ürünlerinin ticaretini yapmak için Deriv\'de bir hesap açma talebimin tarafımdan başlatıldığını onaylıyorum. Deriv\'in CVM tarafından düzenlenmediğini ve Deriv\'e başvurarak yabancı bir şirketle ilişki kurmayı amaçladığımı tamamen anlıyorum.';
+  String get labelCountryConsentBrazil =>
+      'Sadece Brezilya dışında yayınlanan ve sunulan OTC ürünlerinin ticaretini yapmak için Deriv\'de bir hesap açma talebimin tarafımdan başlatıldığını onaylıyorum. Deriv\'in CVM tarafından düzenlenmediğini ve Deriv\'e başvurarak yabancı bir şirketle ilişki kurmayı amaçladığımı tamamen anlıyorum.';
 
   @override
-  String get informConnectionError => 'Bağlantı hatası. Lütfen daha sonra tekrar deneyin.';
+  String get informConnectionError =>
+      'Bağlantı hatası. Lütfen daha sonra tekrar deneyin.';
 
   @override
-  String get informSwitchAccountError => 'Hesap hatası değiştir. Lütfen daha sonra tekrar deneyin.';
+  String get informSwitchAccountError =>
+      'Hesap hatası değiştir. Lütfen daha sonra tekrar deneyin.';
 
   @override
   String get labelDeveloper => 'Geliştirici';

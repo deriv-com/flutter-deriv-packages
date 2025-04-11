@@ -1,10 +1,10 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Bengali Bangla (`bn`).
-class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizationsBn([String locale = 'bn']) : super(locale);
+class DerivMobileChartWrapperLocalizationsBn
+    extends DerivMobileChartWrapperLocalizations {
+  DerivMobileChartWrapperLocalizationsBn([String locale = 'bn'])
+      : super(locale);
 
   @override
   String get labelIndicators => 'সূচক';
@@ -46,19 +46,24 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelMA => 'মা';
 
   @override
-  String get infoMACD => 'এমএসিডি স্টকের দামের প্রযুক্তিগত বিশ্লেষণে ব্যবহৃত একটি ট্রেডিং সূচক। এটি কোনও স্টকের দামের প্রবণতার শক্তি, দিক, গতি এবং সময়কালের পরিবর্তনগুলি প্রকাশ করবে বলে মনে করা হয়।';
+  String get infoMACD =>
+      'এমএসিডি স্টকের দামের প্রযুক্তিগত বিশ্লেষণে ব্যবহৃত একটি ট্রেডিং সূচক। এটি কোনও স্টকের দামের প্রবণতার শক্তি, দিক, গতি এবং সময়কালের পরিবর্তনগুলি প্রকাশ করবে বলে মনে করা হয়।';
 
   @override
-  String get infoRSI => 'আপেক্ষিক শক্তি সূচক (আরএসআই) প্রকাশ করেছিলেন জে ওয়েলস ওয়াইল্ডার। বর্তমান মূল্য 0 থেকে 100 এর মধ্যে শতাংশ হিসাবে স্বাভাবিক করা হয়। এই অসিলেটরের ফ্লুটার_চার্ট_আইডি বিভ্রান্তিকর কারণ এটি অন্য যন্ত্র বা যন্ত্রের সেটের সাথে তুলনা করে না, বরং নির্বাচিত লুকব্যাক উইন্ডো দৈর্ঘ্যের মধ্যে অন্যান্য সাম্প্রতিক টুকরোগুলির তুলনায় বর্তমান দামের প্রতিনিধিত্ব করে।';
+  String get infoRSI =>
+      'আপেক্ষিক শক্তি সূচক (আরএসআই) প্রকাশ করেছিলেন জে ওয়েলস ওয়াইল্ডার। বর্তমান মূল্য 0 থেকে 100 এর মধ্যে শতাংশ হিসাবে স্বাভাবিক করা হয়। এই অসিলেটরের ফ্লুটার_চার্ট_আইডি বিভ্রান্তিকর কারণ এটি অন্য যন্ত্র বা যন্ত্রের সেটের সাথে তুলনা করে না, বরং নির্বাচিত লুকব্যাক উইন্ডো দৈর্ঘ্যের মধ্যে অন্যান্য সাম্প্রতিক টুকরোগুলির তুলনায় বর্তমান দামের প্রতিনিধিত্ব করে।';
 
   @override
-  String get infoBB => 'পূর্ববর্তী ট্রেডগুলির তুলনায় মূল্যের উচ্চতা বা নিম্নতা পরিমাপ করতে বোলিঙ্গার ব্যান্ড (বিবি) ব্যবহার করা যেতে পারে।';
+  String get infoBB =>
+      'পূর্ববর্তী ট্রেডগুলির তুলনায় মূল্যের উচ্চতা বা নিম্নতা পরিমাপ করতে বোলিঙ্গার ব্যান্ড (বিবি) ব্যবহার করা যেতে পারে।';
 
   @override
-  String get infoMA => 'মুভিং এভারেজ (এমএ) স্বল্পমেয়াদী মূল্যের ওঠানামা ফিল্টার করে সামগ্রিক বাজারের প্রবণতা সনাক্ত করতে ঐতিহাসিক ডেটা ব্যবহার করে, এটি একটি নির্দিষ্ট সময়কালে গড় মূল্য গণনা করে এবং চার্টে একটি লাইন প্লট করে। এমএ লাইন যদি উপরের দিকে চলে যায় তবে এটি একটি আপট্রেন্ডের সূচক, নীচের দিকে চলে গেলে একটি ডাউনট্রেন্ড। মূল্য এমএ লাইনের উপরে চলে গেলে একটি ক্রয় সংকেত ঘটে।';
+  String get infoMA =>
+      'মুভিং এভারেজ (এমএ) স্বল্পমেয়াদী মূল্যের ওঠানামা ফিল্টার করে সামগ্রিক বাজারের প্রবণতা সনাক্ত করতে ঐতিহাসিক ডেটা ব্যবহার করে, এটি একটি নির্দিষ্ট সময়কালে গড় মূল্য গণনা করে এবং চার্টে একটি লাইন প্লট করে। এমএ লাইন যদি উপরের দিকে চলে যায় তবে এটি একটি আপট্রেন্ডের সূচক, নীচের দিকে চলে গেলে একটি ডাউনট্রেন্ড। মূল্য এমএ লাইনের উপরে চলে গেলে একটি ক্রয় সংকেত ঘটে।';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded => 'আপনি সর্বাধিক সংখ্যক সক্রিয় সূচক যুক্ত করেছেন।';
+  String get infoMaximumActiveIndicatorsAdded =>
+      'আপনি সর্বাধিক সংখ্যক সক্রিয় সূচক যুক্ত করেছেন।';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -90,7 +95,8 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   }
 
   @override
-  String get infoDeleteIndicator => 'আপনি কি নিশ্চিত যে আপনি এই সূচকটি মুছে ফেলতে চান?';
+  String get infoDeleteIndicator =>
+      'আপনি কি নিশ্চিত যে আপনি এই সূচকটি মুছে ফেলতে চান?';
 
   @override
   String get labelCancel => 'বাতিল করুন';
@@ -102,7 +108,8 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelDeleteAll => 'সব মুছে ফেলুন';
 
   @override
-  String get infoUpto3indicatorsAllowed => '3 টি পর্যন্ত সক্রিয় সূচক অনুমোদিত।';
+  String get infoUpto3indicatorsAllowed =>
+      '3 টি পর্যন্ত সক্রিয় সূচক অনুমোদিত।';
 
   @override
   String get infoNoActiveIndicators => 'কোন সক্রিয় সূচক নেই।';
@@ -304,5 +311,6 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelDeleteAllDrawingTools => 'সমস্ত অঙ্কন সরঞ্জাম মুছে';
 
   @override
-  String get informDeleteAllDrawingTools => 'এটি সমস্ত সক্রিয় অঙ্কন সরঞ্জাম মুছে ফেলবে।';
+  String get informDeleteAllDrawingTools =>
+      'এটি সমস্ত সক্রিয় অঙ্কন সরঞ্জাম মুছে ফেলবে।';
 }

@@ -1,7 +1,5 @@
 import 'deriv_auth_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Arabic (`ar`).
 class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   DerivAuthLocalizationsAr([String locale = 'ar']) : super(locale);
@@ -18,7 +16,8 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get actionOk => 'حسنا';
 
   @override
-  String get warnNotAvailableCountries => 'إذا كانت لديك أي أسئلة، فاتصل بنا عبر ';
+  String get warnNotAvailableCountries =>
+      'إذا كانت لديك أي أسئلة، فاتصل بنا عبر ';
 
   @override
   String get labelLiveChat => 'دردشة مباشرة';
@@ -33,7 +32,8 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'المصادقة الثنائية (2FA)';
 
   @override
-  String get informEnterTwoFactorAuthCode => 'أدخل الرمز المكون من 6 أرقام من تطبيق المصادقة على هاتفك.';
+  String get informEnterTwoFactorAuthCode =>
+      'أدخل الرمز المكون من 6 أرقام من تطبيق المصادقة على هاتفك.';
 
   @override
   String get labelTwoFactorAuthenticationCode => 'كود 2FA';
@@ -78,10 +78,12 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get labelCreatePass => 'كلمة المرور';
 
   @override
-  String get informYourPassHasBeenReset => 'تم إعادة تعيين كلمة المرور الخاصة بك';
+  String get informYourPassHasBeenReset =>
+      'تم إعادة تعيين كلمة المرور الخاصة بك';
 
   @override
-  String get informRedirectLogin => 'ستحتاج إلى تسجيل الدخول باستخدام كلمة المرور الجديدة. انتظر، سنعيد توجيهك.';
+  String get informRedirectLogin =>
+      'ستحتاج إلى تسجيل الدخول باستخدام كلمة المرور الجديدة. انتظر، سنعيد توجيهك.';
 
   @override
   String get actionResetPass => 'إعادة تعيين كلمة المرور الخاصة بي';
@@ -98,7 +100,8 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail => 'سنرسل لك تعليمات عبر البريد الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.';
+  String get informResetPassByEmail =>
+      'سنرسل لك تعليمات عبر البريد الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.';
 
   @override
   String get labelSelectCountry => 'أين تعيش؟';
@@ -113,19 +116,24 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get actionNext => 'التالي';
 
   @override
-  String get labelEmailIssueHeader => 'إذا لم تشاهد بريدًا إلكترونيًا منا في غضون بضع دقائق، فقد تحدث بعض الأشياء:';
+  String get labelEmailIssueHeader =>
+      'إذا لم تشاهد بريدًا إلكترونيًا منا في غضون بضع دقائق، فقد تحدث بعض الأشياء:';
 
   @override
-  String get labelEmailIssueSpam => 'البريد الإلكتروني موجود في مجلد الرسائل غير المرغوب فيها (أحيانًا تضيع الأشياء هناك).';
+  String get labelEmailIssueSpam =>
+      'البريد الإلكتروني موجود في مجلد الرسائل غير المرغوب فيها (أحيانًا تضيع الأشياء هناك).';
 
   @override
-  String get labelEmailIssueWrongEmail => 'لقد أعطيتنا عن طريق الخطأ عنوان بريد إلكتروني آخر (عادةً ما يكون عنوان عمل أو عنوان شخصي بدلاً من العنوان الذي قصدته).';
+  String get labelEmailIssueWrongEmail =>
+      'لقد أعطيتنا عن طريق الخطأ عنوان بريد إلكتروني آخر (عادةً ما يكون عنوان عمل أو عنوان شخصي بدلاً من العنوان الذي قصدته).';
 
   @override
-  String get labelEmailIssueTypo => 'عنوان البريد الإلكتروني الذي أدخلته به خطأ أو خطأ مطبعي (يحدث لأفضل منا).';
+  String get labelEmailIssueTypo =>
+      'عنوان البريد الإلكتروني الذي أدخلته به خطأ أو خطأ مطبعي (يحدث لأفضل منا).';
 
   @override
-  String get labelEmailIssueFirewall => 'لا يمكننا تسليم البريد الإلكتروني إلى هذا العنوان (عادةً بسبب جدران الحماية أو التصفية).';
+  String get labelEmailIssueFirewall =>
+      'لا يمكننا تسليم البريد الإلكتروني إلى هذا العنوان (عادةً بسبب جدران الحماية أو التصفية).';
 
   @override
   String get actionReenterEmail => 'أعد إدخال بريدك الإلكتروني وحاول مرة أخرى';
@@ -152,7 +160,8 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'رمز الإحالة التابع';
 
   @override
-  String get infoReferralInfoDescription => 'رمز أبجدي رقمي مقدم من شركة تابعة لـ Deriv، ينطبق على عمليات الاشتراك في البريد الإلكتروني فقط.';
+  String get infoReferralInfoDescription =>
+      'رمز أبجدي رقمي مقدم من شركة تابعة لـ Deriv، ينطبق على عمليات الاشتراك في البريد الإلكتروني فقط.';
 
   @override
   String get labelGotReferralCode => 'هل لديك رمز إحالة؟';
@@ -164,7 +173,8 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get actionCreateAccount => 'إنشاء حساب تجريبي مجاني';
 
   @override
-  String get informInvalidReferralCode => 'رمز الإحالة الذي أدخلته غير صالح. تحقق وحاول مرة أخرى.';
+  String get informInvalidReferralCode =>
+      'رمز الإحالة الذي أدخلته غير صالح. تحقق وحاول مرة أخرى.';
 
   @override
   String get labelVerifyYourEmail => 'تحقق من بريدك الإلكتروني';
@@ -211,10 +221,12 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get actionTryAgain => 'حاول مرة أخرى';
 
   @override
-  String get informInvalid2FACode => 'الرمز الذي أدخلته غير صالح. تحقق وحاول مرة أخرى.';
+  String get informInvalid2FACode =>
+      'الرمز الذي أدخلته غير صالح. تحقق وحاول مرة أخرى.';
 
   @override
-  String get informFailedAuthentication => 'قد يكون بريدك الإلكتروني أو كلمة المرور غير صحيحة. هل قمت بالتسجيل باستخدام حساب اجتماعي؟ تحقق وحاول مرة أخرى.';
+  String get informFailedAuthentication =>
+      'قد يكون بريدك الإلكتروني أو كلمة المرور غير صحيحة. هل قمت بالتسجيل باستخدام حساب اجتماعي؟ تحقق وحاول مرة أخرى.';
 
   @override
   String get informDeactivatedAccount => 'تم إلغاء تنشيط حسابك.';
@@ -244,13 +256,16 @@ class DerivAuthLocalizationsAr extends DerivAuthLocalizations {
   String get informExpiredAccount => 'انتهت صلاحية حسابك';
 
   @override
-  String get labelCountryConsentBrazil => 'أؤكد بموجب هذا أن طلبي لفتح حساب مع Deriv لتداول منتجات OTC الصادرة والمعروضة حصريًا خارج البرازيل قد بادرت به. أفهم تمامًا أن Deriv لا تخضع للتنظيم من قبل CVM ومن خلال الاتصال بـ Deriv أعتزم إقامة علاقة مع شركة أجنبية.';
+  String get labelCountryConsentBrazil =>
+      'أؤكد بموجب هذا أن طلبي لفتح حساب مع Deriv لتداول منتجات OTC الصادرة والمعروضة حصريًا خارج البرازيل قد بادرت به. أفهم تمامًا أن Deriv لا تخضع للتنظيم من قبل CVM ومن خلال الاتصال بـ Deriv أعتزم إقامة علاقة مع شركة أجنبية.';
 
   @override
-  String get informConnectionError => 'خطأ اتصال. يرجى المحاولة مرة أخرى لاحقًا.';
+  String get informConnectionError =>
+      'خطأ اتصال. يرجى المحاولة مرة أخرى لاحقًا.';
 
   @override
-  String get informSwitchAccountError => 'خطأ في تبديل الحساب. يرجى المحاولة مرة أخرى لاحقًا.';
+  String get informSwitchAccountError =>
+      'خطأ في تبديل الحساب. يرجى المحاولة مرة أخرى لاحقًا.';
 
   @override
   String get labelDeveloper => 'المطوّر';

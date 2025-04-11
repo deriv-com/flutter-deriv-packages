@@ -1,7 +1,5 @@
 import 'deriv_auth_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Bengali Bangla (`bn`).
 class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   DerivAuthLocalizationsBn([String locale = 'bn']) : super(locale);
@@ -18,7 +16,8 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get actionOk => 'ওকে';
 
   @override
-  String get warnNotAvailableCountries => 'আপনার যদি কোনও প্রশ্ন থাকে তবে আমাদের মাধ্যমে যোগাযোগ করুন ';
+  String get warnNotAvailableCountries =>
+      'আপনার যদি কোনও প্রশ্ন থাকে তবে আমাদের মাধ্যমে যোগাযোগ করুন ';
 
   @override
   String get labelLiveChat => 'লাইভ চ্যাট';
@@ -33,7 +32,8 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'দুই ফ্যাক্টর প্রমাণীকরণ';
 
   @override
-  String get informEnterTwoFactorAuthCode => 'আপনার ফোনে প্রমাণীকরণকারী অ্যাপ থেকে 6-অঙ্কের কোড লিখুন।';
+  String get informEnterTwoFactorAuthCode =>
+      'আপনার ফোনে প্রমাণীকরণকারী অ্যাপ থেকে 6-অঙ্কের কোড লিখুন।';
 
   @override
   String get labelTwoFactorAuthenticationCode => '2FA কোড';
@@ -78,16 +78,19 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get labelCreatePass => 'পাসওয়ার্ড';
 
   @override
-  String get informYourPassHasBeenReset => 'আপনার পাসওয়ার্ড পুনরায় সেট করা হয়েছে';
+  String get informYourPassHasBeenReset =>
+      'আপনার পাসওয়ার্ড পুনরায় সেট করা হয়েছে';
 
   @override
-  String get informRedirectLogin => 'আপনাকে আপনার নতুন পাসওয়ার্ড দিয়ে লগ ইন করতে হবে। ধরে রাখুন, আমরা আপনাকে পুনর্নির্দেশ করছি।';
+  String get informRedirectLogin =>
+      'আপনাকে আপনার নতুন পাসওয়ার্ড দিয়ে লগ ইন করতে হবে। ধরে রাখুন, আমরা আপনাকে পুনর্নির্দেশ করছি।';
 
   @override
   String get actionResetPass => 'আমার পাসওয়ার্ড রিসেট';
 
   @override
-  String get informInvalidPasswordFormat => 'অনুগ্রহ করে একটি বৈধ পাসওয়ার্ড ফর্ম্যাট লিখুন';
+  String get informInvalidPasswordFormat =>
+      'অনুগ্রহ করে একটি বৈধ পাসওয়ার্ড ফর্ম্যাট লিখুন';
 
   @override
   String get labelCheckEmail => 'আপনার ইমেইল চেক করুন';
@@ -98,7 +101,8 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail => 'আপনার পাসওয়ার্ড পুনরায় সেট করার জন্য আমরা আপনাকে নির্দেশাবলী ইমেইল করব।';
+  String get informResetPassByEmail =>
+      'আপনার পাসওয়ার্ড পুনরায় সেট করার জন্য আমরা আপনাকে নির্দেশাবলী ইমেইল করব।';
 
   @override
   String get labelSelectCountry => 'আপনি কোথায় থাকেন?';
@@ -107,31 +111,39 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get labelChooseCountry => 'দেশ নির্বাচন করুন';
 
   @override
-  String get warnCountryNotAvailable => 'দুর্ভাগ্যবশত, Deriv আপনার দেশে পাওয়া যায় না।';
+  String get warnCountryNotAvailable =>
+      'দুর্ভাগ্যবশত, Deriv আপনার দেশে পাওয়া যায় না।';
 
   @override
   String get actionNext => 'পরবর্তী';
 
   @override
-  String get labelEmailIssueHeader => 'যদি আপনি কয়েক মিনিটের মধ্যে আমাদের কাছ থেকে কোন ইমেল না দেখেন, তবে কিছু ঘটনা ঘটতে পারত:';
+  String get labelEmailIssueHeader =>
+      'যদি আপনি কয়েক মিনিটের মধ্যে আমাদের কাছ থেকে কোন ইমেল না দেখেন, তবে কিছু ঘটনা ঘটতে পারত:';
 
   @override
-  String get labelEmailIssueSpam => 'ইমেলটি আপনার স্প্যাম ফোল্ডারে রয়েছে (কখনও কখনও কিছু সেখানে হারিয়ে যায়)।';
+  String get labelEmailIssueSpam =>
+      'ইমেলটি আপনার স্প্যাম ফোল্ডারে রয়েছে (কখনও কখনও কিছু সেখানে হারিয়ে যায়)।';
 
   @override
-  String get labelEmailIssueWrongEmail => 'আপনি ঘটনাক্রমে আমাদের অন্য একটি ইমেল ঠিকানা দিয়েছেন (সাধারণত একটি কাজ বা আপনি বোঝানো এক পরিবর্তে একটি ব্যক্তিগত এক)।';
+  String get labelEmailIssueWrongEmail =>
+      'আপনি ঘটনাক্রমে আমাদের অন্য একটি ইমেল ঠিকানা দিয়েছেন (সাধারণত একটি কাজ বা আপনি বোঝানো এক পরিবর্তে একটি ব্যক্তিগত এক)।';
 
   @override
-  String get labelEmailIssueTypo => 'আপনার প্রবেশ করা ইমেল ঠিকানাটি একটি ভুল বা টাইপো ছিল (আমাদের সেরা ক্ষেত্রে ঘটে)।';
+  String get labelEmailIssueTypo =>
+      'আপনার প্রবেশ করা ইমেল ঠিকানাটি একটি ভুল বা টাইপো ছিল (আমাদের সেরা ক্ষেত্রে ঘটে)।';
 
   @override
-  String get labelEmailIssueFirewall => 'আমরা এই ঠিকানায় ইমেলটি সরবরাহ করতে পারি না (সাধারণত ফায়ারওয়াল বা ফিল্টারিংয়ের কারণে)।';
+  String get labelEmailIssueFirewall =>
+      'আমরা এই ঠিকানায় ইমেলটি সরবরাহ করতে পারি না (সাধারণত ফায়ারওয়াল বা ফিল্টারিংয়ের কারণে)।';
 
   @override
-  String get actionReenterEmail => 'আপনার ইমেইল পুনরায় প্রবেশ করুন এবং পুনরায় চেষ্টা করুন';
+  String get actionReenterEmail =>
+      'আপনার ইমেইল পুনরায় প্রবেশ করুন এবং পুনরায় চেষ্টা করুন';
 
   @override
-  String get labelKeepPassword => 'পাসওয়ার্ড দিয়ে আপনার অ্যাকাউন্টকে নিরাপদ রাখুন';
+  String get labelKeepPassword =>
+      'পাসওয়ার্ড দিয়ে আপনার অ্যাকাউন্টকে নিরাপদ রাখুন';
 
   @override
   String get labelCreatePassword => 'পাসওয়ার্ড তৈরি করুন';
@@ -152,7 +164,8 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'অ্যাফিলিয়েট রেফারেল';
 
   @override
-  String get infoReferralInfoDescription => 'একটি Deriv অ্যাফিলিয়েট দ্বারা প্রদত্ত একটি আলফানিমেরিক কোড, শুধুমাত্র ইমেল সাইন আপের জন্য প্রযোজ্য।';
+  String get infoReferralInfoDescription =>
+      'একটি Deriv অ্যাফিলিয়েট দ্বারা প্রদত্ত একটি আলফানিমেরিক কোড, শুধুমাত্র ইমেল সাইন আপের জন্য প্রযোজ্য।';
 
   @override
   String get labelGotReferralCode => 'একটি রেফারেল কোড পেয়েছেন?';
@@ -164,7 +177,8 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get actionCreateAccount => 'ফ্রি ডেমো অ্যাকাউন্ট তৈরি করুন';
 
   @override
-  String get informInvalidReferralCode => 'আপনি যে রেফারেল কোড লিখেছেন তা অবৈধ। চেক করুন এবং আবার চেষ্টা করুন।';
+  String get informInvalidReferralCode =>
+      'আপনি যে রেফারেল কোড লিখেছেন তা অবৈধ। চেক করুন এবং আবার চেষ্টা করুন।';
 
   @override
   String get labelVerifyYourEmail => 'আমার ইমেইল যাচাই';
@@ -202,7 +216,8 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'অন্তত একটি সংখ্যা';
 
   @override
-  String get warnPasswordContainsSymbol => 'শক্তিশালী পাসওয়ার্ড জন্য প্রতীক ব্যবহার';
+  String get warnPasswordContainsSymbol =>
+      'শক্তিশালী পাসওয়ার্ড জন্য প্রতীক ব্যবহার';
 
   @override
   String get labelReferralCode => 'রেফারেল কোড';
@@ -211,13 +226,16 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get actionTryAgain => 'পুনরায় চেষ্টা করুন';
 
   @override
-  String get informInvalid2FACode => 'আপনি যে কোডটি প্রবেশ করেছেন তা অবৈধ। চেক করুন এবং আবার চেষ্টা করুন।';
+  String get informInvalid2FACode =>
+      'আপনি যে কোডটি প্রবেশ করেছেন তা অবৈধ। চেক করুন এবং আবার চেষ্টা করুন।';
 
   @override
-  String get informFailedAuthentication => 'আপনার ইমেল বা পাসওয়ার্ড ভুল হতে পারে। আপনি কি একটি সামাজিক অ্যাকাউন্ট দিয়ে সাইন আপ করেছেন? চেক করুন এবং আবার চেষ্টা করুন।';
+  String get informFailedAuthentication =>
+      'আপনার ইমেল বা পাসওয়ার্ড ভুল হতে পারে। আপনি কি একটি সামাজিক অ্যাকাউন্ট দিয়ে সাইন আপ করেছেন? চেক করুন এবং আবার চেষ্টা করুন।';
 
   @override
-  String get informDeactivatedAccount => 'আপনার অ্যাকাউন্ট নিষ্ক্রিয় করা হয়েছে।';
+  String get informDeactivatedAccount =>
+      'আপনার অ্যাকাউন্ট নিষ্ক্রিয় করা হয়েছে।';
 
   @override
   String get informFailedAuthorization => 'অনুমোদন ব্যর্থ হয়েছে।';
@@ -244,13 +262,16 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get informExpiredAccount => 'আপনার অ্যাকাউন্টের মেয়াদ শেষ হয়েছে';
 
   @override
-  String get labelCountryConsentBrazil => 'আমি এর মাধ্যমে নিশ্চিত করি যে ব্রাজিলের বাইরে একচেটিয়াভাবে জারি করা এবং দেওয়া ওটিসি পণ্যগুলি বাণিজ্য করার জন্য ডেরিভের সাথে একটি অ্যাকাউন্ট খোলার জন্য আমার অনুরোধ আমার দ্বারা শুরু আমি পুরোপুরি বুঝতে পারি যে ডেরিভ সিভিএম দ্বারা নিয়ন্ত্রিত নয় এবং ডেরিভের কাছে পৌঁছানোর মাধ্যমে আমি একটি বিদেশী সংস্থার সাথে সম্পর্ক স্থাপন করার ইচ্ছা করি।';
+  String get labelCountryConsentBrazil =>
+      'আমি এর মাধ্যমে নিশ্চিত করি যে ব্রাজিলের বাইরে একচেটিয়াভাবে জারি করা এবং দেওয়া ওটিসি পণ্যগুলি বাণিজ্য করার জন্য ডেরিভের সাথে একটি অ্যাকাউন্ট খোলার জন্য আমার অনুরোধ আমার দ্বারা শুরু আমি পুরোপুরি বুঝতে পারি যে ডেরিভ সিভিএম দ্বারা নিয়ন্ত্রিত নয় এবং ডেরিভের কাছে পৌঁছানোর মাধ্যমে আমি একটি বিদেশী সংস্থার সাথে সম্পর্ক স্থাপন করার ইচ্ছা করি।';
 
   @override
-  String get informConnectionError => 'সংযোগ ত্রুটি। দয়া করে পরে আবার চেষ্টা করুন।';
+  String get informConnectionError =>
+      'সংযোগ ত্রুটি। দয়া করে পরে আবার চেষ্টা করুন।';
 
   @override
-  String get informSwitchAccountError => 'অ্যাকাউন্ট ত্রুটি পরিবর্তন করুন দয়া করে পরে আবার চেষ্টা করুন।';
+  String get informSwitchAccountError =>
+      'অ্যাকাউন্ট ত্রুটি পরিবর্তন করুন দয়া করে পরে আবার চেষ্টা করুন।';
 
   @override
   String get labelDeveloper => 'ডেভেলপার';

@@ -1,10 +1,10 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Chinese (`zh`).
-class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLocalizations {
-  DerivMobileChartWrapperLocalizationsZh([String locale = 'zh']) : super(locale);
+class DerivMobileChartWrapperLocalizationsZh
+    extends DerivMobileChartWrapperLocalizations {
+  DerivMobileChartWrapperLocalizationsZh([String locale = 'zh'])
+      : super(locale);
 
   @override
   String get labelIndicators => '指標';
@@ -49,13 +49,15 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
   String get infoMACD => 'MACD 是交易指標，用於股票價格的技術分析。可顯示股票價格中趨勢的強度、方向、動量和持續時間的變化。';
 
   @override
-  String get infoRSI => '相對強度指數（RSI）由 J. Welles Wilder 發布。將目前價格以 0 到 100 之間的百分比標準化。此振盪器的 flutter_chart_id 具有誤導性，因為它不與其他工具或一組工具相比較，而是代表所選回顧窗口長度內與其他最近的股票相對的目前價格。';
+  String get infoRSI =>
+      '相對強度指數（RSI）由 J. Welles Wilder 發布。將目前價格以 0 到 100 之間的百分比標準化。此振盪器的 flutter_chart_id 具有誤導性，因為它不與其他工具或一組工具相比較，而是代表所選回顧窗口長度內與其他最近的股票相對的目前價格。';
 
   @override
   String get infoBB => '布林格帶（BB）可用於測量與之前交易相對於價格的高度或低度。';
 
   @override
-  String get infoMA => '移動平均線（MA）通過過濾短期價格波動來幫助識別整體市場趨勢。它使用歷史資料，計算特定期間的平均價格，並在圖表繪線。如果 MA 線向上移動，則是上升趨勢的指標，如果向下移動則是下降趨勢的指標。當價格走在 MA 線上方時，就會出現買入信號。';
+  String get infoMA =>
+      '移動平均線（MA）通過過濾短期價格波動來幫助識別整體市場趨勢。它使用歷史資料，計算特定期間的平均價格，並在圖表繪線。如果 MA 線向上移動，則是上升趨勢的指標，如果向下移動則是下降趨勢的指標。當價格走在 MA 線上方時，就會出現買入信號。';
 
   @override
   String get infoMaximumActiveIndicatorsAdded => '已新增使用中指標數目上限。';
@@ -308,8 +310,9 @@ class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLoca
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
-class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLocalizationsZh {
-  DerivMobileChartWrapperLocalizationsZhCn(): super('zh_CN');
+class DerivMobileChartWrapperLocalizationsZhCn
+    extends DerivMobileChartWrapperLocalizationsZh {
+  DerivMobileChartWrapperLocalizationsZhCn() : super('zh_CN');
 
   @override
   String get labelIndicators => '指标';
@@ -354,13 +357,15 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get infoMACD => 'MACD 是用于股价技术分析的交易指标。可揭示股票价格走势的强度、方向、动量和持续时间的变化。';
 
   @override
-  String get infoRSI => '相对强度指数（RSI）由 J. Welles Wilder 发布。当前价格按介于 0 到 100 之间的百分比进行标准化。该振荡器的 flutter_chart_id 具有误导性，因为它不将该工具与另一种工具或一组工具相比较，而是代表选定回顾窗口长度内相对于其他近期产品的当前价格。';
+  String get infoRSI =>
+      '相对强度指数（RSI）由 J. Welles Wilder 发布。当前价格按介于 0 到 100 之间的百分比进行标准化。该振荡器的 flutter_chart_id 具有误导性，因为它不将该工具与另一种工具或一组工具相比较，而是代表选定回顾窗口长度内相对于其他近期产品的当前价格。';
 
   @override
   String get infoBB => '布林带（BB）可用于衡量价格相对于先前交易的高点或低点。';
 
   @override
-  String get infoMA => '移动平均线（MA）通过过滤短期价格波动来帮助识别整体市场趋势。它使用历史数据计算特定时期内的平均价格，并在图表上绘线。如果 MA 线向上移动，则表示上升趋势，如果向下移动，则为下降趋势。当价格升至均线上方时，就会出现买入信号。';
+  String get infoMA =>
+      '移动平均线（MA）通过过滤短期价格波动来帮助识别整体市场趋势。它使用历史数据计算特定时期内的平均价格，并在图表上绘线。如果 MA 线向上移动，则表示上升趋势，如果向下移动，则为下降趋势。当价格升至均线上方时，就会出现买入信号。';
 
   @override
   String get infoMaximumActiveIndicatorsAdded => '已经添加了最大数量的活跃指标。';
@@ -613,8 +618,9 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
-class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLocalizationsZh {
-  DerivMobileChartWrapperLocalizationsZhTw(): super('zh_TW');
+class DerivMobileChartWrapperLocalizationsZhTw
+    extends DerivMobileChartWrapperLocalizationsZh {
+  DerivMobileChartWrapperLocalizationsZhTw() : super('zh_TW');
 
   @override
   String get labelIndicators => '指標';
@@ -659,13 +665,15 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get infoMACD => 'MACD 是交易指標，用於股票價格的技術分析。可顯示股票價格中趨勢的強度、方向、動量和持續時間的變化。';
 
   @override
-  String get infoRSI => '相對強度指數（RSI）由 J. Welles Wilder 發布。將目前價格以 0 到 100 之間的百分比標準化。此振盪器的 flutter_chart_id 具有誤導性，因為它不與其他工具或一組工具相比較，而是代表所選回顧窗口長度內與其他最近的股票相對的目前價格。';
+  String get infoRSI =>
+      '相對強度指數（RSI）由 J. Welles Wilder 發布。將目前價格以 0 到 100 之間的百分比標準化。此振盪器的 flutter_chart_id 具有誤導性，因為它不與其他工具或一組工具相比較，而是代表所選回顧窗口長度內與其他最近的股票相對的目前價格。';
 
   @override
   String get infoBB => '布林格帶（BB）可用於測量與之前交易相對於價格的高度或低度。';
 
   @override
-  String get infoMA => '移動平均線（MA）通過過濾短期價格波動來幫助識別整體市場趨勢。它使用歷史資料，計算特定期間的平均價格，並在圖表繪線。如果 MA 線向上移動，則是上升趨勢的指標，如果向下移動則是下降趨勢的指標。當價格走在 MA 線上方時，就會出現買入信號。';
+  String get infoMA =>
+      '移動平均線（MA）通過過濾短期價格波動來幫助識別整體市場趨勢。它使用歷史資料，計算特定期間的平均價格，並在圖表繪線。如果 MA 線向上移動，則是上升趨勢的指標，如果向下移動則是下降趨勢的指標。當價格走在 MA 線上方時，就會出現買入信號。';
 
   @override
   String get infoMaximumActiveIndicatorsAdded => '已新增使用中指標數目上限。';

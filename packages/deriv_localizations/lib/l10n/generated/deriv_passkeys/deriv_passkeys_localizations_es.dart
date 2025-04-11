@@ -1,7 +1,5 @@
 import 'deriv_passkeys_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Spanish Castilian (`es`).
 class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsEs([String locale = 'es']) : super(locale);

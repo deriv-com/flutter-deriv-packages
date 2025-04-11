@@ -1,7 +1,5 @@
 import 'deriv_auth_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Sinhala Sinhalese (`si`).
 class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   DerivAuthLocalizationsSi([String locale = 'si']) : super(locale);
@@ -18,7 +16,8 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get actionOk => 'හරි';
 
   @override
-  String get warnNotAvailableCountries => 'ඔබට කිසියම් ප්රශ්නයක් ඇත්නම්, අප අමතන්න ';
+  String get warnNotAvailableCountries =>
+      'ඔබට කිසියම් ප්රශ්නයක් ඇත්නම්, අප අමතන්න ';
 
   @override
   String get labelLiveChat => 'සජීවී කතාබස්';
@@ -33,7 +32,8 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'ද්වි-සාධක සත්‍යාපනය';
 
   @override
-  String get informEnterTwoFactorAuthCode => 'ඔබේ දුරකථනයේ සත්යාපන යෙදුමෙන් ඉලක්කම් 6 ක කේතය ඇතුළත් කරන්න.';
+  String get informEnterTwoFactorAuthCode =>
+      'ඔබේ දුරකථනයේ සත්යාපන යෙදුමෙන් ඉලක්කම් 6 ක කේතය ඇතුළත් කරන්න.';
 
   @override
   String get labelTwoFactorAuthenticationCode => '2FA කේතය';
@@ -63,7 +63,8 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get actionCreateANewAccount => 'නව ගිණුමක් සාදන්න';
 
   @override
-  String get informInvalidEmailFormat => 'වලංගු විද්යුත් තැපැල් ලිපිනයක් ඇතුළත් කරන්න';
+  String get informInvalidEmailFormat =>
+      'වලංගු විද්යුත් තැපැල් ලිපිනයක් ඇතුළත් කරන්න';
 
   @override
   String get warnPasswordLength => 'ඔබ අක්ෂර 8-25 ක් ඇතුළත් කළ යුතුය.';
@@ -81,13 +82,15 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => 'ඔබගේ මුරපදය නැවත සකසා ඇත';
 
   @override
-  String get informRedirectLogin => 'ඔබට ඔබගේ නව මුරපදය සමඟ ලොග් විය යුතුය. ඉතින්, අපි ඔයාව හරවා යවනවා.';
+  String get informRedirectLogin =>
+      'ඔබට ඔබගේ නව මුරපදය සමඟ ලොග් විය යුතුය. ඉතින්, අපි ඔයාව හරවා යවනවා.';
 
   @override
   String get actionResetPass => 'මගේ මුරපදය යළි සකසන්න';
 
   @override
-  String get informInvalidPasswordFormat => 'කරුණාකර වලංගු මුරපද ආකෘතියක් ඇතුළත්';
+  String get informInvalidPasswordFormat =>
+      'කරුණාකර වලංගු මුරපද ආකෘතියක් ඇතුළත්';
 
   @override
   String get labelCheckEmail => 'ඔබේ ඊ-තැපෑල පරීක්ෂා කරන්න​';
@@ -98,7 +101,8 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail => 'ඔබේ මුරපදය යළි සැකසීමට අවශ්‍ය උපදෙස් අපි ඔබට ඊ-තැපෑලෙන් එවන්නෙමු.';
+  String get informResetPassByEmail =>
+      'ඔබේ මුරපදය යළි සැකසීමට අවශ්‍ය උපදෙස් අපි ඔබට ඊ-තැපෑලෙන් එවන්නෙමු.';
 
   @override
   String get labelSelectCountry => 'ඔබ ජීවත් වන්නේ කොහේද?';
@@ -107,28 +111,35 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get labelChooseCountry => 'රට තෝරන්න';
 
   @override
-  String get warnCountryNotAvailable => 'අවාසනාවකට මෙන්, ඩෙරිව් ඔබේ රටේ නොලැබේ.';
+  String get warnCountryNotAvailable =>
+      'අවාසනාවකට මෙන්, ඩෙරිව් ඔබේ රටේ නොලැබේ.';
 
   @override
   String get actionNext => 'ඊළඟ';
 
   @override
-  String get labelEmailIssueHeader => 'මිනිත්තු කිහිපයක් ඇතුළත ඔබට අපෙන් ඊ-තැපෑලක් නොලැබුණොත්, පහත සඳහන් දේවල් සිදු විය හැක:';
+  String get labelEmailIssueHeader =>
+      'මිනිත්තු කිහිපයක් ඇතුළත ඔබට අපෙන් ඊ-තැපෑලක් නොලැබුණොත්, පහත සඳහන් දේවල් සිදු විය හැක:';
 
   @override
-  String get labelEmailIssueSpam => 'ඊ-තැපෑල ඔබේ අයාචිත තැපැල් ෆෝල්ඩරයේ ඇත (සමහර ඊ-තැපැල් ඒ වෙත යොමු වෙයි).';
+  String get labelEmailIssueSpam =>
+      'ඊ-තැපෑල ඔබේ අයාචිත තැපැල් ෆෝල්ඩරයේ ඇත (සමහර ඊ-තැපැල් ඒ වෙත යොමු වෙයි).';
 
   @override
-  String get labelEmailIssueWrongEmail => 'ඔබ අහම්බෙන් අපට වෙනත් ඊ-තැපැල් ලිපිනයක් ලබා දී ඇත​ (සාමාන්‍යයෙන් ඔබ අදහස් කරන එක වෙනුවට කාර්යාලීය හෝ පෞද්ගලික ඊ තැපැල් ලිපිනයක්).';
+  String get labelEmailIssueWrongEmail =>
+      'ඔබ අහම්බෙන් අපට වෙනත් ඊ-තැපැල් ලිපිනයක් ලබා දී ඇත​ (සාමාන්‍යයෙන් ඔබ අදහස් කරන එක වෙනුවට කාර්යාලීය හෝ පෞද්ගලික ඊ තැපැල් ලිපිනයක්).';
 
   @override
-  String get labelEmailIssueTypo => 'ඔබ ඇතුළත් කළ​ ඊ-තැපැල් ලිපිනයේ වැරදීමක් හෝ මුද්‍රණ දෝෂයක් ඇත (බොහෝ අයට මෙය සිදු වේ).';
+  String get labelEmailIssueTypo =>
+      'ඔබ ඇතුළත් කළ​ ඊ-තැපැල් ලිපිනයේ වැරදීමක් හෝ මුද්‍රණ දෝෂයක් ඇත (බොහෝ අයට මෙය සිදු වේ).';
 
   @override
-  String get labelEmailIssueFirewall => 'අපිට මේ ලිපිනයට ඊමේල් එක බාර දෙන්න බැහැ (සාමාන්යයෙන් ෆයර්වෝල් හෝ ෆිල්ටිං නිසා).';
+  String get labelEmailIssueFirewall =>
+      'අපිට මේ ලිපිනයට ඊමේල් එක බාර දෙන්න බැහැ (සාමාන්යයෙන් ෆයර්වෝල් හෝ ෆිල්ටිං නිසා).';
 
   @override
-  String get actionReenterEmail => 'ඔබගේ ඊ-තැපෑල නැවත ඇතුළත් කර නැවත උත්සාහ කරන්න';
+  String get actionReenterEmail =>
+      'ඔබගේ ඊ-තැපෑල නැවත ඇතුළත් කර නැවත උත්සාහ කරන්න';
 
   @override
   String get labelKeepPassword => 'මුරපදයකින් ඔබේ ගිණුම සුරක්ෂිතව තබා ගන්න';
@@ -152,7 +163,8 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'අනුබද්ධ යොමු කේතය';
 
   @override
-  String get infoReferralInfoDescription => 'ඊමේල් ලියාපදිංචි කිරීම් සඳහා පමණක් අදාළ වන ඩෙරිව් අනුබද්ධ සමාගමක් විසින් සපයනු ලබන අක්ෂර කේතයක්.';
+  String get infoReferralInfoDescription =>
+      'ඊමේල් ලියාපදිංචි කිරීම් සඳහා පමණක් අදාළ වන ඩෙරිව් අනුබද්ධ සමාගමක් විසින් සපයනු ලබන අක්ෂර කේතයක්.';
 
   @override
   String get labelGotReferralCode => 'යොමු කේතයක් තිබේද?';
@@ -164,7 +176,8 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get actionCreateAccount => 'නොමිලේ ආදර්ශන ගිණුමක් සාදන්න';
 
   @override
-  String get informInvalidReferralCode => 'ඔබ ඇතුළත් කළ යොමු කේතය අවලංගු වේ. පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
+  String get informInvalidReferralCode =>
+      'ඔබ ඇතුළත් කළ යොමු කේතය අවලංගු වේ. පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
 
   @override
   String get labelVerifyYourEmail => 'ඔබගේ විද්යුත් තැපෑල තහවුරු';
@@ -202,7 +215,8 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'අවම වශයෙන් එක් අංකයක්';
 
   @override
-  String get warnPasswordContainsSymbol => 'ශක්තිමත් මුරපදය සඳහා සංකේත භාවිතා කරන්න.';
+  String get warnPasswordContainsSymbol =>
+      'ශක්තිමත් මුරපදය සඳහා සංකේත භාවිතා කරන්න.';
 
   @override
   String get labelReferralCode => 'යොමු කේතය';
@@ -211,10 +225,12 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get actionTryAgain => 'නැවත උත්සාහ කරන්න';
 
   @override
-  String get informInvalid2FACode => 'ඔබ ඇතුළත් කළ කේතය අවලංගු වේ. පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
+  String get informInvalid2FACode =>
+      'ඔබ ඇතුළත් කළ කේතය අවලංගු වේ. පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
 
   @override
-  String get informFailedAuthentication => 'ඔබගේ විද්යුත් තැපෑල හෝ මුරපදය වැරදි විය හැකිය. ඔබ සමාජ ගිණුමක් සමඟ ලියාපදිංචි වූවාද? පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
+  String get informFailedAuthentication =>
+      'ඔබගේ විද්යුත් තැපෑල හෝ මුරපදය වැරදි විය හැකිය. ඔබ සමාජ ගිණුමක් සමඟ ලියාපදිංචි වූවාද? පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
 
   @override
   String get informDeactivatedAccount => 'ඔබගේ ගිණුම අක්රිය කර ඇත.';
@@ -244,13 +260,16 @@ class DerivAuthLocalizationsSi extends DerivAuthLocalizations {
   String get informExpiredAccount => 'ඔබගේ ගිණුම කල් ඉකුත් වී ඇත';
 
   @override
-  String get labelCountryConsentBrazil => 'බ්‍රසීලයෙන් පිටතදී නිකුත් කරන ලද සහ පිරිනමන OTC නිෂ්පාදන ගනුදෙනු කිරීමට Deriv සමඟ ගිණුමක් විවෘත කිරීම සඳහා වන මගේ ඉල්ලීම මා විසින් ආරම්භ කරන ලද බව මෙයින් තහවුරු කරමි. Deriv CVM මඟින් නියාමනය නොවන බව මට හොඳින් වැටහෙන අතර Deriv වෙත පිවිසීමෙන් මම විදේශීය සමාගමක් සමඟ සබඳතාවක් පිහිටුවීමට අදහස් කරමි.';
+  String get labelCountryConsentBrazil =>
+      'බ්‍රසීලයෙන් පිටතදී නිකුත් කරන ලද සහ පිරිනමන OTC නිෂ්පාදන ගනුදෙනු කිරීමට Deriv සමඟ ගිණුමක් විවෘත කිරීම සඳහා වන මගේ ඉල්ලීම මා විසින් ආරම්භ කරන ලද බව මෙයින් තහවුරු කරමි. Deriv CVM මඟින් නියාමනය නොවන බව මට හොඳින් වැටහෙන අතර Deriv වෙත පිවිසීමෙන් මම විදේශීය සමාගමක් සමඟ සබඳතාවක් පිහිටුවීමට අදහස් කරමි.';
 
   @override
-  String get informConnectionError => 'සම්බන්ධතා දෝෂය. කරුණාකර පසුව නැවත උත්සාහ කරන්න.';
+  String get informConnectionError =>
+      'සම්බන්ධතා දෝෂය. කරුණාකර පසුව නැවත උත්සාහ කරන්න.';
 
   @override
-  String get informSwitchAccountError => 'ගිණුම් දෝෂය මාරු කරන්න. කරුණාකර පසුව නැවත උත්සාහ කරන්න.';
+  String get informSwitchAccountError =>
+      'ගිණුම් දෝෂය මාරු කරන්න. කරුණාකර පසුව නැවත උත්සාහ කරන්න.';
 
   @override
   String get labelDeveloper => 'සංවර්ධක';
