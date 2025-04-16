@@ -26,8 +26,6 @@ import 'deriv_auth_localizations_uz.dart';
 import 'deriv_auth_localizations_vi.dart';
 import 'deriv_auth_localizations_zh.dart';
 
-// ignore_for_file: type=lint
-
 /// Callers can lookup localized strings with an instance of DerivAuthLocalizations
 /// returned by `DerivAuthLocalizations.of(context)`.
 ///

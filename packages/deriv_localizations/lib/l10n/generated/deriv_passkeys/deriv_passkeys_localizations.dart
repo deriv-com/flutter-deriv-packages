@@ -26,8 +26,6 @@ import 'deriv_passkeys_localizations_uz.dart';
 import 'deriv_passkeys_localizations_vi.dart';
 import 'deriv_passkeys_localizations_zh.dart';
 
-// ignore_for_file: type=lint
-
 /// Callers can lookup localized strings with an instance of DerivPasskeysLocalizations
 /// returned by `DerivPasskeysLocalizations.of(context)`.
 ///

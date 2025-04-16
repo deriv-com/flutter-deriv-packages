@@ -1,7 +1,5 @@
 import 'deriv_auth_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Uzbek (`uz`).
 class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   DerivAuthLocalizationsUz([String locale = 'uz']) : super(locale);

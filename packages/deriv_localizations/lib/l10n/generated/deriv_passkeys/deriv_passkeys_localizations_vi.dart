@@ -1,7 +1,5 @@
 import 'deriv_passkeys_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Vietnamese (`vi`).
 class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsVi([String locale = 'vi']) : super(locale);

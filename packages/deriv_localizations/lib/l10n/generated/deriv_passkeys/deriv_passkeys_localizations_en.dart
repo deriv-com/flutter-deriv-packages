@@ -1,7 +1,5 @@
 import 'deriv_passkeys_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for English (`en`).
 class DerivPasskeysLocalizationsEn extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsEn([String locale = 'en']) : super(locale);

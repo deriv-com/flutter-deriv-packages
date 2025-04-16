@@ -1,7 +1,5 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for French (`fr`).
 class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsFr([String locale = 'fr']) : super(locale);

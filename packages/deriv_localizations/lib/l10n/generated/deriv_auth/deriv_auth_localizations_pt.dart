@@ -1,7 +1,5 @@
 import 'deriv_auth_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Portuguese (`pt`).
 class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   DerivAuthLocalizationsPt([String locale = 'pt']) : super(locale);

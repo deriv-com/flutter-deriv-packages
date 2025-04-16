@@ -1,7 +1,5 @@
 import 'deriv_passkeys_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Uzbek (`uz`).
 class DerivPasskeysLocalizationsUz extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsUz([String locale = 'uz']) : super(locale);

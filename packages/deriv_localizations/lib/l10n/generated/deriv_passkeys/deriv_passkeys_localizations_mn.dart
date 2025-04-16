@@ -1,7 +1,5 @@
 import 'deriv_passkeys_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Mongolian (`mn`).
 class DerivPasskeysLocalizationsMn extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsMn([String locale = 'mn']) : super(locale);

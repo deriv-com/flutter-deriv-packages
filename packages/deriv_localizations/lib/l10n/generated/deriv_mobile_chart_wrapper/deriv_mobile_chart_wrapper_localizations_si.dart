@@ -1,7 +1,5 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
-// ignore_for_file: type=lint
-
 /// The translations for Sinhala Sinhalese (`si`).
 class DerivMobileChartWrapperLocalizationsSi extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsSi([String locale = 'si']) : super(locale);
