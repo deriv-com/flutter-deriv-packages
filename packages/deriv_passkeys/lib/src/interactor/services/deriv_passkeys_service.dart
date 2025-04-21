@@ -54,7 +54,7 @@ class DerivPasskeysService {
         await repository.registerCredentials(
       DerivPasskeysRegisterCredentialsEntity(
         publicKeyCredential: decodedCredentials,
-        name: 'Passkey',
+        name: 'Biometric',
       ),
       loginId: loginId,
     );
