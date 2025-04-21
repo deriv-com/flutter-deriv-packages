@@ -157,7 +157,11 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage>
                                   .add(DerivPasskeysCreateCredentialEvent());
                             },
                             child: Text(
-                              context.derivPasskeysLocalizations.createPasskey,
+                              state.passkeysList.isEmpty
+                                  ? context
+                                      .derivPasskeysLocalizations.createPasskey
+                                  : context.derivPasskeysLocalizations
+                                      .addMorePasskeysButtonText,
                               style: TextStyle(
                                 color: context.theme.colors.prominent,
                               ),
