@@ -1,3 +1,7 @@
+## 0.1.13
+
+ - **FEAT**(deriv_mobile_chart_wrapper): update chart package ref ([#953](https://github.com/deriv-com/flutter-deriv-packages.git/issues/953)). ([01815383](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0181538330a02cc9d6dc66ec6b420bb7386987df))
+
 ## 0.1.12
 
  - **FEAT**(mobile_chart_wrapper): pass some missing parameters to DerivChart widget ([#949](https://github.com/deriv-com/flutter-deriv-packages.git/issues/949)). ([85083906](https://github.com/deriv-com/flutter-deriv-packages.git/commit/85083906b095a41950655ce8ba8ff9010553a0e8))
