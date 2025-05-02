@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  deriv_chart: ^0.3.8
+  deriv_chart: ^0.3.9
 
   deriv_theme:
     git:
