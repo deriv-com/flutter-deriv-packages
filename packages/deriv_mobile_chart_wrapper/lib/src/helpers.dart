@@ -4,7 +4,7 @@ import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_item_model.dart';
-import 'package:deriv_theme/deriv_theme.dart';
+import 'package:deriv_theme/deriv_theme.dart' hide BrandColors;
 import 'package:deriv_ui/utils/popup_dialogs_helper.dart';
 import 'package:flutter/material.dart';
 
