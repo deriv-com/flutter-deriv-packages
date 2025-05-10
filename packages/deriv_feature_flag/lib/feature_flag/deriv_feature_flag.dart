@@ -2,6 +2,7 @@ import 'package:deriv_feature_flag/feature_flag/feature_flag_config.dart';
 import 'package:deriv_feature_flag/feature_flag/feature_flag_repository.dart';
 import 'package:deriv_feature_flag/growthbook/deriv_growth_book.dart';
 import 'package:flutter/material.dart';
+import 'package:growthbook_sdk_flutter/growthbook_sdk_flutter.dart';
 
 class DerivFeatureFlag {
   /// Initializes the FeatureFlag service for the whole app.
@@ -15,6 +16,12 @@ class DerivFeatureFlag {
     //  app run session we might want to send different attributes (e.g. country)
     await FeatureFlagRepository.getInstance()
         .setup(derivGrowthBook: derivGrowthBook);
+  }
+
+  Map<String, dynamic> features() {
+    return FeatureFlagRepository.getInstance().features.map((key, value) {
+      return MapEntry(key, value.defaultValue);
+    });
   }
 
   /// Only for testing purposes.

@@ -17,9 +17,14 @@ class FeatureFlagRepository {
   // Growth Book SDK instance.
   late final GrowthBookSDK _growthBookSDK;
 
+  Map<String, GBFeature> _features = {};
+
+  Map<String, GBFeature> get features => _features;
+
   /// initialize the GrowthBook sdk instance.
   Future<void> setup({required DerivGrowthBook derivGrowthBook}) async {
     _growthBookSDK = await derivGrowthBook.initializeSDK();
+    _features = _growthBookSDK.features;
   }
 
   /// get the feature flags value from the sdk.
