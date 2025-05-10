@@ -160,5 +160,12 @@ Map<String, dynamic> _getLoginErrorTrackingData(
             'error_message': errorMessage,
           },
         },
-      null => throw Exception('Null LoginProvider is being passed.'),
+      null => <String, dynamic>{
+          'event': 'login_flow_error',
+          'properties': <String, dynamic>{
+            'app_id': appId,
+            'login_provider': 'default_token',
+            'error_message': errorMessage,
+          },
+        },
     };
