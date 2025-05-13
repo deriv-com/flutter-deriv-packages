@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-05-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.7.3`](#deriv_localizations---v173)
+ - [`deriv_passkeys` - `v0.0.5+18`](#deriv_passkeys---v00518)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.13+1`](#deriv_mobile_chart_wrapper---v01131)
+ - [`deriv_auth` - `v7.0.15`](#deriv_auth---v7015)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_mobile_chart_wrapper` - `v0.1.13+1`
+ - `deriv_auth` - `v7.0.15`
+
+---
+
+#### `deriv_localizations` - `v1.7.3`
+
+ - **FIX**(deriv_localizations): Updated passkeys label to biometrics ([#955](https://github.com/deriv-com/flutter-deriv-packages.git/issues/955)). ([ca613238](https://github.com/deriv-com/flutter-deriv-packages.git/commit/ca613238701fd17571bd67877d96f3a1eb6e1d26))
+
+#### `deriv_passkeys` - `v0.0.5+18`
+
+ - **FIX**(deriv_localizations): Updated passkeys label to biometrics ([#955](https://github.com/deriv-com/flutter-deriv-packages.git/issues/955)). ([ca613238](https://github.com/deriv-com/flutter-deriv-packages.git/commit/ca613238701fd17571bd67877d96f3a1eb6e1d26))
+
+
 ## 2025-02-27
 
 ### Changes
