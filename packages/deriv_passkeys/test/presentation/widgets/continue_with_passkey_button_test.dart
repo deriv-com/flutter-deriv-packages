@@ -52,7 +52,7 @@ void main() {
       expect(find.byType(InkWell), findsOneWidget);
       expect(find.byType(Container), findsOneWidget);
       expect(find.byType(SvgPicture), findsOneWidget);
-      expect(find.text('Passkey'), findsOneWidget);
+      expect(find.text('Biometrics'), findsOneWidget);
     });
 
     testWidgets('does not render if passkeys not supported',
@@ -71,7 +71,7 @@ void main() {
 
       expect(find.byType(InkWell), findsNothing);
       expect(find.byType(SvgPicture), findsNothing);
-      expect(find.text('Passkey'), findsNothing);
+      expect(find.text('Biometrics'), findsNothing);
     });
 
     // if you want to test the onPressed callback, you can use the following code

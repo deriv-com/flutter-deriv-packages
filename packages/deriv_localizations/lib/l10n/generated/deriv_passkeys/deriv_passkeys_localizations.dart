@@ -78,15 +78,18 @@ import 'deriv_passkeys_localizations_zh.dart';
 /// be consistent with the languages listed in the DerivPasskeysLocalizations.supportedLocales
 /// property.
 abstract class DerivPasskeysLocalizations {
-  DerivPasskeysLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  DerivPasskeysLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static DerivPasskeysLocalizations of(BuildContext context) {
-    return Localizations.of<DerivPasskeysLocalizations>(context, DerivPasskeysLocalizations)!;
+    return Localizations.of<DerivPasskeysLocalizations>(
+        context, DerivPasskeysLocalizations)!;
   }
 
-  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate = _DerivPasskeysLocalizationsDelegate();
+  static const LocalizationsDelegate<DerivPasskeysLocalizations> delegate =
+      _DerivPasskeysLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -98,7 +101,8 @@ abstract class DerivPasskeysLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -140,7 +144,7 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @passkeyCreatedSuccessMessage.
   ///
   /// In en, this message translates to:
-  /// **'Your account is now secured with a passkey. Manage your passkey through your {platformName} account settings.'**
+  /// **'Your account is now secured with a biometrics. Manage your biometric data through your {platformName} account settings.'**
   String passkeyCreatedSuccessMessage(String platformName);
 
   /// No description provided for @continueButtonText.
@@ -170,13 +174,13 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @experienceSaferLogins.
   ///
   /// In en, this message translates to:
-  /// **'Experience safer logins'**
+  /// **'Your key to safer logins'**
   String get experienceSaferLogins;
 
   /// No description provided for @enhanceSecurity.
   ///
   /// In en, this message translates to:
-  /// **'Enhanced security is just a tap away.'**
+  /// **'Use fingerprint, face recognition, or other biometric data to log in easily and securely.'**
   String get enhanceSecurity;
 
   /// No description provided for @here.
@@ -188,49 +192,49 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @effortlessLogin.
   ///
   /// In en, this message translates to:
-  /// **'Effortless login with passkeys'**
+  /// **'Effortless login with biometrics'**
   String get effortlessLogin;
 
   /// No description provided for @whatArePasskeys.
   ///
   /// In en, this message translates to:
-  /// **'What are passkeys?'**
+  /// **'What are biometrics?'**
   String get whatArePasskeys;
 
   /// No description provided for @whatArePasskeysDescriptionPoint1.
   ///
   /// In en, this message translates to:
-  /// **'Secure alternative to passwords.'**
+  /// **'A secure alternative to passwords.'**
   String get whatArePasskeysDescriptionPoint1;
 
   /// No description provided for @whatArePasskeysDescriptionPoint2.
   ///
   /// In en, this message translates to:
-  /// **'Unlock your account like your phone - with biometrics, face scan or PIN.'**
+  /// **'Unlock your account using fingerprint, face recognition, or device PIN.'**
   String get whatArePasskeysDescriptionPoint2;
 
   /// No description provided for @whyPasskeys.
   ///
   /// In en, this message translates to:
-  /// **'Why passkeys?'**
+  /// **'Why use biometrics?'**
   String get whyPasskeys;
 
   /// No description provided for @whyPasskeysDescription1.
   ///
   /// In en, this message translates to:
-  /// **'Extra security layer.'**
+  /// **'Shields against unauthorised access.'**
   String get whyPasskeysDescription1;
 
   /// No description provided for @whyPasskeysDescription2.
   ///
   /// In en, this message translates to:
-  /// **'Shields against unauthorised access and phishing.'**
+  /// **'Protects from phishing attempts.'**
   String get whyPasskeysDescription2;
 
   /// No description provided for @howToCreatePasskey.
   ///
   /// In en, this message translates to:
-  /// **'How to create a passkey?'**
+  /// **'How to enable biometrics?'**
   String get howToCreatePasskey;
 
   /// No description provided for @howToCreatePasskeyDescription1.
@@ -242,13 +246,13 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @howToCreatePasskeyDescription2.
   ///
   /// In en, this message translates to:
-  /// **'You can create one passkey per device.'**
+  /// **'Tap ‘Biometrics‘ to create your biometrics.'**
   String get howToCreatePasskeyDescription2;
 
   /// No description provided for @p2pHowToCreatePasskey.
   ///
   /// In en, this message translates to:
-  /// **'How to create passkey?'**
+  /// **'How to enable biometrics?'**
   String get p2pHowToCreatePasskey;
 
   /// No description provided for @p2pHowToCreatePasskeyDescription1.
@@ -260,13 +264,13 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @p2pHowToCreatePasskeyDescription2.
   ///
   /// In en, this message translates to:
-  /// **'Tap ‘Passkeys‘ to create your passkey.'**
+  /// **'Tap ‘Biometrics‘ to create your biometrics.'**
   String get p2pHowToCreatePasskeyDescription2;
 
   /// No description provided for @whereArePasskeysSaved.
   ///
   /// In en, this message translates to:
-  /// **'Where are passkeys saved?'**
+  /// **'Where is biometric data stored?'**
   String get whereArePasskeysSaved;
 
   /// No description provided for @whereArePasskeysSavedDescriptionAndroid.
@@ -284,19 +288,19 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @whatHappensIfEmailChanged.
   ///
   /// In en, this message translates to:
-  /// **'What happens if my Deriv account email is changed?'**
+  /// **'What if I change the email on my Deriv account?'**
   String get whatHappensIfEmailChanged;
 
   /// No description provided for @whatHappensIfEmailChangedDescription1.
   ///
   /// In en, this message translates to:
-  /// **'No problem! Your passkey still works.'**
+  /// **'No problem! Your biometrics still works.'**
   String get whatHappensIfEmailChangedDescription1;
 
   /// No description provided for @whatHappensIfEmailChangedDescription2.
   ///
   /// In en, this message translates to:
-  /// **'Sign in to Deriv with your existing passkey.'**
+  /// **'You can log in using your existing biometrics.'**
   String get whatHappensIfEmailChangedDescription2;
 
   /// No description provided for @tips.
@@ -308,7 +312,7 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @beforeUsingPasskeys.
   ///
   /// In en, this message translates to:
-  /// **'Before using passkeys'**
+  /// **'Before using biometrics'**
   String get beforeUsingPasskeys;
 
   /// No description provided for @enableScreenLock.
@@ -332,13 +336,13 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @noPasskeyFound.
   ///
   /// In en, this message translates to:
-  /// **'No passkey found!'**
+  /// **'No biometrics found!'**
   String get noPasskeyFound;
 
   /// No description provided for @noPasskeyFoundDescription.
   ///
   /// In en, this message translates to:
-  /// **'Please create a passkey to use this feature.'**
+  /// **'Please create a biometrics to use this feature.'**
   String get noPasskeyFoundDescription;
 
   /// No description provided for @maybeLater.
@@ -350,13 +354,13 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @effortlessLoginWithPasskeys.
   ///
   /// In en, this message translates to:
-  /// **'Effortless login with passkeys'**
+  /// **'Effortless login with biometrics'**
   String get effortlessLoginWithPasskeys;
 
   /// No description provided for @learnMoreAboutPasskeys.
   ///
   /// In en, this message translates to:
-  /// **'Learn more about passkeys'**
+  /// **'Learn more about biometrics'**
   String get learnMoreAboutPasskeys;
 
   /// No description provided for @noNeedToRememberPassword.
@@ -380,7 +384,7 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @createPasskey.
   ///
   /// In en, this message translates to:
-  /// **'Create passkey'**
+  /// **'Enable biometrics'**
   String get createPasskey;
 
   /// No description provided for @unsupportedPlatform.
@@ -416,31 +420,31 @@ abstract class DerivPasskeysLocalizations {
   /// No description provided for @continueTradingButtonText.
   ///
   /// In en, this message translates to:
-  /// **'Continue trading'**
+  /// **'Trade now'**
   String get continueTradingButtonText;
 
   /// No description provided for @addMorePasskeysButtonText.
   ///
   /// In en, this message translates to:
-  /// **'Add more passkeys'**
+  /// **'Add new biometrics'**
   String get addMorePasskeysButtonText;
 
   /// No description provided for @unableToSetupPasskey.
   ///
   /// In en, this message translates to:
-  /// **'Unable to setup passkey'**
+  /// **'Unable to setup biometrics'**
   String get unableToSetupPasskey;
 
   /// No description provided for @unableToSetupPasskeyDescription.
   ///
   /// In en, this message translates to:
-  /// **'We encountered an issue while setting up your passkey. The process might have been interrupted, or the session timed out. Please try again.'**
+  /// **'We encountered an issue while setting up your biometrics. The process might have been interrupted, or the session timed out. Please try again.'**
   String get unableToSetupPasskeyDescription;
 
   /// No description provided for @passkeysOffErrorTitle.
   ///
   /// In en, this message translates to:
-  /// **'The Passkeys service is unavailable'**
+  /// **'The Biometrics service is unavailable'**
   String get passkeysOffErrorTitle;
 
   /// No description provided for @never.
@@ -462,62 +466,106 @@ abstract class DerivPasskeysLocalizations {
   String get unable_to_process_your_request_description;
 }
 
-class _DerivPasskeysLocalizationsDelegate extends LocalizationsDelegate<DerivPasskeysLocalizations> {
+class _DerivPasskeysLocalizationsDelegate
+    extends LocalizationsDelegate<DerivPasskeysLocalizations> {
   const _DerivPasskeysLocalizationsDelegate();
 
   @override
   Future<DerivPasskeysLocalizations> load(Locale locale) {
-    return SynchronousFuture<DerivPasskeysLocalizations>(lookupDerivPasskeysLocalizations(locale));
+    return SynchronousFuture<DerivPasskeysLocalizations>(
+        lookupDerivPasskeysLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'it', 'km', 'ko', 'mn', 'pl', 'pt', 'ru', 'si', 'sw', 'th', 'tr', 'uz', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+        'ar',
+        'bn',
+        'de',
+        'en',
+        'es',
+        'fr',
+        'it',
+        'km',
+        'ko',
+        'mn',
+        'pl',
+        'pt',
+        'ru',
+        'si',
+        'sw',
+        'th',
+        'tr',
+        'uz',
+        'vi',
+        'zh'
+      ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_DerivPasskeysLocalizationsDelegate old) => false;
 }
 
 DerivPasskeysLocalizations lookupDerivPasskeysLocalizations(Locale locale) {
-
   // Lookup logic when language+country codes are specified.
   switch (locale.languageCode) {
-    case 'zh': {
-  switch (locale.countryCode) {
-    case 'CN': return DerivPasskeysLocalizationsZhCn();
-case 'TW': return DerivPasskeysLocalizationsZhTw();
-   }
-  break;
-   }
+    case 'zh':
+      {
+        switch (locale.countryCode) {
+          case 'CN':
+            return DerivPasskeysLocalizationsZhCn();
+          case 'TW':
+            return DerivPasskeysLocalizationsZhTw();
+        }
+        break;
+      }
   }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return DerivPasskeysLocalizationsAr();
-    case 'bn': return DerivPasskeysLocalizationsBn();
-    case 'de': return DerivPasskeysLocalizationsDe();
-    case 'en': return DerivPasskeysLocalizationsEn();
-    case 'es': return DerivPasskeysLocalizationsEs();
-    case 'fr': return DerivPasskeysLocalizationsFr();
-    case 'it': return DerivPasskeysLocalizationsIt();
-    case 'km': return DerivPasskeysLocalizationsKm();
-    case 'ko': return DerivPasskeysLocalizationsKo();
-    case 'mn': return DerivPasskeysLocalizationsMn();
-    case 'pl': return DerivPasskeysLocalizationsPl();
-    case 'pt': return DerivPasskeysLocalizationsPt();
-    case 'ru': return DerivPasskeysLocalizationsRu();
-    case 'si': return DerivPasskeysLocalizationsSi();
-    case 'sw': return DerivPasskeysLocalizationsSw();
-    case 'th': return DerivPasskeysLocalizationsTh();
-    case 'tr': return DerivPasskeysLocalizationsTr();
-    case 'uz': return DerivPasskeysLocalizationsUz();
-    case 'vi': return DerivPasskeysLocalizationsVi();
-    case 'zh': return DerivPasskeysLocalizationsZh();
+    case 'ar':
+      return DerivPasskeysLocalizationsAr();
+    case 'bn':
+      return DerivPasskeysLocalizationsBn();
+    case 'de':
+      return DerivPasskeysLocalizationsDe();
+    case 'en':
+      return DerivPasskeysLocalizationsEn();
+    case 'es':
+      return DerivPasskeysLocalizationsEs();
+    case 'fr':
+      return DerivPasskeysLocalizationsFr();
+    case 'it':
+      return DerivPasskeysLocalizationsIt();
+    case 'km':
+      return DerivPasskeysLocalizationsKm();
+    case 'ko':
+      return DerivPasskeysLocalizationsKo();
+    case 'mn':
+      return DerivPasskeysLocalizationsMn();
+    case 'pl':
+      return DerivPasskeysLocalizationsPl();
+    case 'pt':
+      return DerivPasskeysLocalizationsPt();
+    case 'ru':
+      return DerivPasskeysLocalizationsRu();
+    case 'si':
+      return DerivPasskeysLocalizationsSi();
+    case 'sw':
+      return DerivPasskeysLocalizationsSw();
+    case 'th':
+      return DerivPasskeysLocalizationsTh();
+    case 'tr':
+      return DerivPasskeysLocalizationsTr();
+    case 'uz':
+      return DerivPasskeysLocalizationsUz();
+    case 'vi':
+      return DerivPasskeysLocalizationsVi();
+    case 'zh':
+      return DerivPasskeysLocalizationsZh();
   }
 
   throw FlutterError(
-    'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'DerivPasskeysLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

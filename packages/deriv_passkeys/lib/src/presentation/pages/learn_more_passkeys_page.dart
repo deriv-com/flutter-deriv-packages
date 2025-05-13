@@ -142,11 +142,6 @@ class LearnMorePasskeysPage extends StatelessWidget
                                         .p2pHowToCreatePasskeyDescription1
                                     : context.derivPasskeysLocalizations
                                         .howToCreatePasskeyDescription1,
-                                context.read<DerivPasskeysBloc>().isDp2p
-                                    ? context.derivPasskeysLocalizations
-                                        .p2pHowToCreatePasskeyDescription2
-                                    : context.derivPasskeysLocalizations
-                                        .howToCreatePasskeyDescription2
                               ],
                             ),
                             Padding(
@@ -175,8 +170,6 @@ class LearnMorePasskeysPage extends StatelessWidget
                               title: context.derivPasskeysLocalizations
                                   .whatHappensIfEmailChanged,
                               texts: <String>[
-                                context.derivPasskeysLocalizations
-                                    .whatHappensIfEmailChangedDescription1,
                                 context.derivPasskeysLocalizations
                                     .whatHappensIfEmailChangedDescription2
                               ],
