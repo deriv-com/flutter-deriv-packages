@@ -1,3 +1,8 @@
+## 0.0.5+18
+
+ - **FIX**(deriv_passkeys): Reverted Package Dependency ([#958](https://github.com/deriv-com/flutter-deriv-packages.git/issues/958)). ([e72e06e6](https://github.com/deriv-com/flutter-deriv-packages.git/commit/e72e06e603f73da1e2ac7aec180a6c6629a48112))
+ - **FIX**(deriv_localizations): Updated passkeys label to biometrics ([#955](https://github.com/deriv-com/flutter-deriv-packages.git/issues/955)). ([ca613238](https://github.com/deriv-com/flutter-deriv-packages.git/commit/ca613238701fd17571bd67877d96f3a1eb6e1d26))
+
 ## 0.0.5+16
 
  - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))
