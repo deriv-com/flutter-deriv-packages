@@ -94,5 +94,5 @@
   "actionAddDrawingTool": "Adicionar ferramenta de desenho",
   "labelOf": "de",
   "labelDeleteAllDrawingTools": "Eliminar todas as ferramentas de desenho",
-  "informDeleteAllDrawingTools": "Isto irá eliminar todas as ferramentas de desenho activas."
+  "informDeleteAllDrawingTools": "Esta ação elimina todas as ferramentas de desenho ativas."
 }
