@@ -87,7 +87,7 @@
   "labelDrawingTools": "绘图工具",
   "labelTools": "工具",
   "labelLine": "线",
-  "labelRay": "射线",
+  "labelRay": "Ray",
   "informTapToSetFirstPoint": "轻触即可设置第一个点",
   "informTapToSetFinalPoint": "轻触即可设置终点",
   "informNoActiveDrawingTools": "没有有效的绘图工具。",
