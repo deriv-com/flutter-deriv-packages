@@ -1,6 +1,6 @@
 {
   "passkeyCreatedSuccessTitle": "Erfolg!",
-  "passkeyCreatedSuccessMessage": "Ihr Konto ist jetzt mit einem Biometrics gesichert. Verwalte deinen Biometrics in deinen {platformName} -Kontoeinstellungen.",
+  "passkeyCreatedSuccessMessage": "Ihr Konto ist jetzt mit biometrischen Daten gesichert. Verwalten Sie Ihre biometrischen Daten über die Kontoeinstellungen von {platformName}.",
   "@passkeyCreatedSuccessMessage": {
     "placeholders": {
       "platformName": {
@@ -13,17 +13,17 @@
   "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten!",
   "unexpectedErrorDescription": "Bitte versuchen Sie es später erneut.",
   "ok": "Ok",
-  "experienceSaferLogins": "Erleben Sie sicherere Logins",
-  "enhanceSecurity": "Verbesserte Sicherheit ist nur einen Fingertipp entfernt.",
+  "experienceSaferLogins": "Ihr Schlüssel zu sichereren Logins",
+  "enhanceSecurity": "Verwenden Sie Fingerabdruck, Gesichtserkennung oder andere biometrische Daten, um sich einfach und sicher anzumelden.",
   "here": "hier",
-  "effortlessLogin": "Müheloses Einloggen mit Biometrics",
-  "whatArePasskeys": "Was sind Biometrics? ",
+  "effortlessLogin": "Mühelose Anmeldung mit biometrischen Daten",
+  "whatArePasskeys": "Was sind biometrischen Daten?",
   "whatArePasskeysDescriptionPoint1": "Sichere Alternative zu Passwörtern.",
   "whatArePasskeysDescriptionPoint2": "Entsperren Sie Ihr Konto wie Ihr Telefon - mit biometrischen Daten, Gesichtsscan oder PIN.",
-  "whyPasskeys": "Warum Biometrics?",
-  "whyPasskeysDescription1": "Zusätzliche Sicherheitsebene.",
-  "whyPasskeysDescription2": "Schützt vor unbefugtem Zugriff und Phishing.",
-  "howToCreatePasskey": "Wie erstelle ich einen Biometrics?",
+  "whyPasskeys": "Warum biometrischen Daten?",
+  "whyPasskeysDescription1": "Schutzmechanismen gegen unautorisierten Zugriff.",
+  "whyPasskeysDescription2": "Schützt vor Phishing-Versuchen.",
+  "howToCreatePasskey": "Wie aktiviere ich biometrische Daten?",
   "howToCreatePasskeyDescription1": "Gehen Sie zu 'Kontoeinstellungen' auf Deriv.",
   "howToCreatePasskeyDescription2": "Sie können einen Biometrics pro Gerät erstellen.",
   "p2pHowToCreatePasskey": "Wie erstelle ich einen Biometrics?",
