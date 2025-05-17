@@ -1,6 +1,6 @@
 {
   "labelNotAvailable": "Mavjud emas",
-  "warnNotAvailableCountriesTitle": "{app} sizning mamlakatingizda mavjud emas",
+  "warnNotAvailableCountriesTitle": "{app} mamlakatingizda ishlamaydi",
   "@warnNotAvailableCountriesTitle": {
     "description": "A message with a single parameter",
     "placeholders": {
@@ -36,7 +36,7 @@
   "actionResetPass": "Parolimni tiklash",
   "informInvalidPasswordFormat": "Iltimos, yaroqli parol formatini kiriting",
   "labelCheckEmail": "Elektron pochtaingizni tekshiring",
-  "informSendResetPasswordEmail": "Parolingizni tiklash uchun havola bilan {email} raqamiga xabar yubordik.",
+  "informSendResetPasswordEmail": "Biz {email} manziliga parolingizni tiklash havolasi bilan xabar yubordik.",
   "@informSendResetPasswordEmail": {
     "description": "A message with a single parameter",
     "placeholders": {
@@ -74,7 +74,7 @@
   "informLetsContinue": "Keling, davom etamiz.",
   "actionContinue": "Davom etish",
   "labelSearchCountry": "Mamlakatni qidirish",
-  "informVerificationEmailSent": "Hisobingizni faollashtirish uchun havola bilan {email} raqamiga xabar yuborganmiz.",
+  "informVerificationEmailSent": "Hisobingizni faollashtirish uchun havola bilan {email} manziliga xabar yubordik.",
   "@informVerificationEmailSent": {
     "description": "A message with a single parameter",
     "placeholders": {
@@ -94,18 +94,18 @@
   "actionTryAgain": "Qayta urinib ko'ring",
   "informInvalid2FACode": "Siz kiritgan kod yaroqsiz. Tekshirib, qayta urinib ko`ring.",
   "informFailedAuthentication": "Sizning elektron pochta manzilingiz yoki parolingiz noto`g`ri bo`lishi mumkin. Ijtimoiy hisob bilan ro`yxatdan o`tganmisiz? Tekshirib, qayta urinib ko`ring.",
-  "informDeactivatedAccount": "Hisobingiz o'chirib qo'yilgan.",
-  "informFailedAuthorization": "Avtorizatsiya bajarilmadi.",
+  "informDeactivatedAccount": "Hisobingiz o'chirilgan.",
+  "informFailedAuthorization": "Avtorizatsiya amalga oshmadi.",
   "informInvalidResidence": "Yaroqsiz yashash joyi.",
-  "informInvalidCredentials": "Yaroqsiz hisobga olish ma'lumotlari.",
-  "informMissingOtp": "Bir martalik parol etishmayotgan.",
+  "informInvalidCredentials": "Hisob maʼlumotlari yaroqsiz.",
+  "informMissingOtp": "Bir martalik parol yetishmayapti.",
   "informSelfClosed": "Hisobingiz yopildi.",
   "informUnexpectedError": "Kutilmagan xato yuz berdi.",
-  "informUnsupportedCountry": "Sizning mamlakatingiz qo'llab-quvvatlanmaydi.",
+  "informUnsupportedCountry": "Mamlakatingiz qoʻllab-quvvatlanmaydi.",
   "informExpiredAccount": "Hisobingiz muddati tugagan",
   "labelCountryConsentBrazil": "Shu bilan Braziliyadan tashqarida chiqarilgan va taklif qilingan birjadan tashqari mahsulotlar savdosi uchun Deriv bilan hisob ochish haqidagi so`rovim men tomonidan qo`yilganligini tasdiqlayman. Men Deriv CVM tomonidan tartibga solinmasligini to`liq tushunaman va Derivga murojaat qilib, men xorijiy kompaniya bilan aloqa o`rnatish niyatidaman.",
-  "informConnectionError": "Ulanish xatosi. Iltimos, keyinroq qayta urinib ko'ring.",
-  "informSwitchAccountError": "Hisob qaydnomasini almashtirish xatosi. Iltimos, keyinroq qayta urinib ko'ring.",
+  "informConnectionError": "Ulanish xatosi. Keyinroq qayta urinib ko‘ring.",
+  "informSwitchAccountError": "Hisobni almashtirish xatosi. Keyinroq qayta urinib ko‘ring.",
   "labelDeveloper": "Dasturchi",
   "labelEndpoint": "Oxirgi nuqta",
   "semanticEndpoint": "Oxirgi nuqta",
