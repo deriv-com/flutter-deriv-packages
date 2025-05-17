@@ -75,7 +75,7 @@
   "labelExponential": "Esponenziale",
   "labelWeighted": "Ponderato",
   "labelHull": "Scafo",
-  "labelZeroLag": "Zero Lag",
+  "labelZeroLag": "Ritardo zero",
   "labelTimeSeries": "Serie temporale",
   "labelWellesWilder": "Welles Wilder",
   "labelVariable": "Variabile",
