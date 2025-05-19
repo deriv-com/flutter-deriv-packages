@@ -11,7 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  deriv_chart: ^0.3.9
+  deriv_chart:
+    git:
+      url: https://github.com/behnam-deriv/flutter-chart-fork.git
+      ref: fix-vertical-barrier-painting-logic
 
   deriv_theme:
     git:
