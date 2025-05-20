@@ -43,7 +43,7 @@
   "labelHigh": "높음",
   "labelLow": "낮음",
   "labelHl2": "Hl/2",
-  "labelHlc3": "Hlc/3",
+  "labelHlc3": "HLC/3",
   "labelHlcc4": "Hlcc/4",
   "labelOhlc4": "Ohlc/4",
   "labelShowZones": "영역 표시",
@@ -71,10 +71,10 @@
   "labelMALine": "MA 라인",
   "labelOffset": "오프셋",
   "labelType": "유형",
-  "labelSimple": "Simple",
+  "labelSimple": "심플",
   "labelExponential": "지수",
   "labelWeighted": "가중치",
-  "labelHull": "Hull",
+  "labelHull": "헐",
   "labelZeroLag": "제로 랙",
   "labelTimeSeries": "시계열",
   "labelWellesWilder": "웰즈 와일더",
@@ -94,5 +94,5 @@
   "actionAddDrawingTool": "드로잉 도구 추가",
   "labelOf": "의",
   "labelDeleteAllDrawingTools": "모든 그리기 도구 삭제",
-  "informDeleteAllDrawingTools": "이렇게 하면 활성 드로잉 도구가 모두 삭제됩니다."
+  "informDeleteAllDrawingTools": "활성화된 모든 그리기 도구가 삭제됩니다."
 }
