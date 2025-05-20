@@ -1,3 +1,7 @@
+## 0.0.5+19
+
+ - Update a dependency to the latest release.
+
 ## 0.0.5+18
 
  - **FIX**(deriv_passkeys): Reverted Package Dependency ([#958](https://github.com/deriv-com/flutter-deriv-packages.git/issues/958)). ([e72e06e6](https://github.com/deriv-com/flutter-deriv-packages.git/commit/e72e06e603f73da1e2ac7aec180a6c6629a48112))

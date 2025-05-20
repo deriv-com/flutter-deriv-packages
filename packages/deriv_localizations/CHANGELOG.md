@@ -1,3 +1,7 @@
+## 1.8.0
+
+ - **FEAT**(deriv_localizations): Crowdin Localization Updated ([#960](https://github.com/deriv-com/flutter-deriv-packages.git/issues/960)). ([e7a30a2a](https://github.com/deriv-com/flutter-deriv-packages.git/commit/e7a30a2ad74f7229d1e28351026200910b8f56ac))
+
 ## 1.7.3
 
  - **FIX**(deriv_localizations): Updated passkeys label to biometrics ([#955](https://github.com/deriv-com/flutter-deriv-packages.git/issues/955)). ([ca613238](https://github.com/deriv-com/flutter-deriv-packages.git/commit/ca613238701fd17571bd67877d96f3a1eb6e1d26))
