@@ -1,3 +1,7 @@
+## 0.1.13+3
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): disable root navigator for delete confirmation and update deriv_chart ([#963](https://github.com/deriv-com/flutter-deriv-packages.git/issues/963)). ([5a5657fe](https://github.com/deriv-com/flutter-deriv-packages.git/commit/5a5657fe385a22df29d4c440b8d11148379eaf5d))
+
 ## 0.1.13+2
 
  - Update a dependency to the latest release.
