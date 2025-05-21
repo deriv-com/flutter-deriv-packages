@@ -557,7 +557,6 @@ class _MobileToolsBottomSheetContentState
             context.mobileChartWrapperLocalizations.infoDeleteIndicator,
             style: TextStyles.subheading,
           ),
-          useRootNavigator: false,
           positiveActionLabel:
               context.mobileChartWrapperLocalizations.labelDelete,
           negativeButtonLabel:
@@ -566,10 +565,10 @@ class _MobileToolsBottomSheetContentState
           onPositiveActionPressed: () {
             onDelete?.call();
             indicatorsRepo.removeAt(index);
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop();
           },
           onNegativeActionPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop();
           });
 
   void _showDeleteAllIndicatorsDialog() {
