@@ -557,6 +557,7 @@ class _MobileToolsBottomSheetContentState
             context.mobileChartWrapperLocalizations.infoDeleteIndicator,
             style: TextStyles.subheading,
           ),
+          useRootNavigator: false,
           positiveActionLabel:
               context.mobileChartWrapperLocalizations.labelDelete,
           negativeButtonLabel:
