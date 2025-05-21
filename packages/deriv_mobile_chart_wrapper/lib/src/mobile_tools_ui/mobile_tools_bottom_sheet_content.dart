@@ -565,10 +565,10 @@ class _MobileToolsBottomSheetContentState
           onPositiveActionPressed: () {
             onDelete?.call();
             indicatorsRepo.removeAt(index);
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop();
           },
           onNegativeActionPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop();
           });
 
   void _showDeleteAllIndicatorsDialog() {
