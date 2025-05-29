@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Thai (`th`).
 class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   DerivAuthLocalizationsTh([String locale = 'th']) : super(locale);

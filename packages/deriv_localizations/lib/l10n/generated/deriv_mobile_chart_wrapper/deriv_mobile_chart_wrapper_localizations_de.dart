@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for German (`de`).
 class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsDe([String locale = 'de']) : super(locale);
@@ -74,7 +76,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'Dadurch wird der Indikator $indicator auf seine Standardeinstellungen zurückgesetzt.';
+    return 'Dies setzt den $indicator Indikator auf seine Standardeinstellungen zurück.';
   }
 
   @override
@@ -84,7 +86,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Anzeige $indicator zurücksetzen';
+    return '$indicator-Indikator zurücksetzen';
   }
 
   @override
@@ -223,7 +225,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelMALine => 'MA-Linie';
 
   @override
-  String get labelOffset => 'Versetzt';
+  String get labelOffset => 'Versatz';
 
   @override
   String get labelType => 'Typ';
@@ -238,7 +240,7 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelWeighted => 'Gewichtet';
 
   @override
-  String get labelHull => 'Rumpf';
+  String get labelHull => 'Hull';
 
   @override
   String get labelZeroLag => 'Null Verzögerung';
@@ -284,10 +286,10 @@ class DerivMobileChartWrapperLocalizationsDe extends DerivMobileChartWrapperLoca
   String get labelRay => 'Ray';
 
   @override
-  String get informTapToSetFirstPoint => 'Tippe, um den ersten Punkt zu setzen';
+  String get informTapToSetFirstPoint => 'Tippen, um den ersten Punkt zu setzen';
 
   @override
-  String get informTapToSetFinalPoint => 'Tippe, um den Endpunkt festzulegen';
+  String get informTapToSetFinalPoint => 'Tippen, um den Endpunkt festzulegen';
 
   @override
   String get informNoActiveDrawingTools => 'Keine aktiven Zeichenwerkzeuge.';

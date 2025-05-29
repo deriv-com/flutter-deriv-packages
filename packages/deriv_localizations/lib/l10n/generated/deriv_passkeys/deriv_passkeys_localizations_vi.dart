@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Vietnamese (`vi`).
 class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsVi([String locale = 'vi']) : super(locale);
@@ -9,7 +11,7 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
-    return 'Tài khoản của bạn hiện được bảo mật bằng passkey. Quản lý passkey của bạn thông qua cài đặt tài khoản $platformName của bạn.';
+    return 'Tài khoản của bạn hiện được bảo mật bằng Biometrics. Quản lý Biometrics của bạn thông qua cài đặt tài khoản $platformName của bạn.';
   }
 
   @override
@@ -34,10 +36,10 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get here => 'ở đây';
 
   @override
-  String get effortlessLogin => 'Đăng nhập dễ dàng với các passkeys';
+  String get effortlessLogin => 'Đăng nhập dễ dàng với các Biometrics';
 
   @override
-  String get whatArePasskeys => 'Passkeys là gì?';
+  String get whatArePasskeys => 'Biometrics là gì?';
 
   @override
   String get whatArePasskeysDescriptionPoint1 => 'Thay thế an toàn cho mật khẩu.';
@@ -46,7 +48,7 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get whatArePasskeysDescriptionPoint2 => 'Mở khóa tài khoản của bạn như điện thoại của bạn - với sinh trắc học, quét khuôn mặt hoặc mã PIN.';
 
   @override
-  String get whyPasskeys => 'Tại sao passkeys?';
+  String get whyPasskeys => 'Tại sao Biometrics?';
 
   @override
   String get whyPasskeysDescription1 => 'Lớp bảo mật bổ sung.';
@@ -55,13 +57,13 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get whyPasskeysDescription2 => 'Bảo vệ chống truy cập trái phép và lừa đảo.';
 
   @override
-  String get howToCreatePasskey => 'Làm thế nào để tạo passkey?';
+  String get howToCreatePasskey => 'Làm thế nào để tạo Biometrics?';
 
   @override
   String get howToCreatePasskeyDescription1 => 'Chuyển đến \'Cài đặt tài khoản\' trên Deriv.';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'Bạn có thể tạo một passkey cho mỗi thiết bị.';
+  String get howToCreatePasskeyDescription2 => 'Bạn có thể tạo một Biometrics cho mỗi thiết bị.';
 
   @override
   String get p2pHowToCreatePasskey => 'Làm thế nào để tạo mật khẩu?';
@@ -73,7 +75,7 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get p2pHowToCreatePasskeyDescription2 => 'Nhấn vào \'Phím mật khẩu\' để tạo mật khẩu của bạn.';
 
   @override
-  String get whereArePasskeysSaved => 'Passkeys được lưu ở đâu?';
+  String get whereArePasskeysSaved => 'Biometrics được lưu ở đâu?';
 
   @override
   String get whereArePasskeysSavedDescriptionAndroid => 'Android: Trình quản lý mật khẩu Google.';
@@ -85,16 +87,16 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChanged => 'Điều gì xảy ra nếu email tài khoản Deriv của tôi bị thay đổi?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'Không có vấn đề gì! Khóa passkey của bạn vẫn hoạt động.';
+  String get whatHappensIfEmailChangedDescription1 => 'Không có vấn đề gì! Khóa Biometrics của bạn vẫn hoạt động.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'Đăng nhập vào Deriv bằng passkey hiện có của bạn.';
+  String get whatHappensIfEmailChangedDescription2 => 'Đăng nhập vào Deriv bằng Biometrics hiện có của bạn.';
 
   @override
   String get tips => 'Mẹo';
 
   @override
-  String get beforeUsingPasskeys => 'Trước khi sử dụng passkeys';
+  String get beforeUsingPasskeys => 'Trước khi sử dụng Biometrics';
 
   @override
   String get enableScreenLock => 'Bật khóa màn hình trên thiết bị của bạn.';
@@ -106,19 +108,19 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get enableBluetooth => 'Bật Bluetooth.';
 
   @override
-  String get noPasskeyFound => 'Không tìm thấy passkey!';
+  String get noPasskeyFound => 'Không tìm thấy Biometrics!';
 
   @override
-  String get noPasskeyFoundDescription => 'Vui lòng tạo passkey để sử dụng tính năng này.';
+  String get noPasskeyFoundDescription => 'Vui lòng tạo Biometrics để sử dụng tính năng này.';
 
   @override
   String get maybeLater => 'Để sau';
 
   @override
-  String get effortlessLoginWithPasskeys => 'Đăng nhập dễ dàng với các passkeys';
+  String get effortlessLoginWithPasskeys => 'Đăng nhập dễ dàng với các Biometrics';
 
   @override
-  String get learnMoreAboutPasskeys => 'Tìm hiểu thêm về passkeys';
+  String get learnMoreAboutPasskeys => 'Tìm hiểu thêm về Biometrics';
 
   @override
   String get noNeedToRememberPassword => 'Không cần nhớ mật khẩu';
@@ -130,7 +132,7 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'Đồng bộ hóa trên các thiết bị';
 
   @override
-  String get createPasskey => 'Tạo passkey';
+  String get createPasskey => 'Tạo Biometrics';
 
   @override
   String get unsupportedPlatform => 'Nền tảng không được hỗ trợ';
@@ -151,16 +153,16 @@ class DerivPasskeysLocalizationsVi extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'Tiếp tục giao dịch';
 
   @override
-  String get addMorePasskeysButtonText => 'Thêm passkeys';
+  String get addMorePasskeysButtonText => 'Thêm Biometrics';
 
   @override
-  String get unableToSetupPasskey => 'Không thể thiết lập passkey';
+  String get unableToSetupPasskey => 'Không thể thiết lập Biometrics';
 
   @override
-  String get unableToSetupPasskeyDescription => 'Chúng tôi gặp sự cố khi thiết lập passkey của bạn. Quá trình có thể đã bị gián đoạn hoặc phiên đã hết thời gian. Vui lòng thử lại.';
+  String get unableToSetupPasskeyDescription => 'Chúng tôi gặp sự cố khi thiết lập Biometrics của bạn. Quá trình có thể đã bị gián đoạn hoặc phiên đã hết thời gian. Vui lòng thử lại.';
 
   @override
-  String get passkeysOffErrorTitle => 'Dịch vụ Passkeys không khả dụng';
+  String get passkeysOffErrorTitle => 'Dịch vụ Biometrics không khả dụng';
 
   @override
   String get never => 'Không bao giờ';

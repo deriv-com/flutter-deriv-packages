@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Spanish Castilian (`es`).
 class DerivMobileChartWrapperLocalizationsEs extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsEs([String locale = 'es']) : super(locale);
@@ -112,7 +114,7 @@ class DerivMobileChartWrapperLocalizationsEs extends DerivMobileChartWrapperLoca
   String get labelApply => 'Aplique';
 
   @override
-  String get labelOK => 'OK';
+  String get labelOK => 'BIEN';
 
   @override
   String get labelRSILine => 'Línea RSI';
@@ -229,7 +231,7 @@ class DerivMobileChartWrapperLocalizationsEs extends DerivMobileChartWrapperLoca
   String get labelType => 'Tipo';
 
   @override
-  String get labelSimple => 'Simple';
+  String get labelSimple => 'Sencillo';
 
   @override
   String get labelExponential => 'Exponencial';

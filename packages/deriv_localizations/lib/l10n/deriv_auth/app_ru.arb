@@ -10,7 +10,7 @@
       }
     }
   },
-  "actionOk": "ХОРОШО",
+  "actionOk": "OK",
   "warnNotAvailableCountries": "Если у Вас возникли вопросы, свяжитесь с нами по ",
   "labelLiveChat": "Чат",
   "actionSignUpForFree": "Зарегистрируйтесь бесплатно",
@@ -65,7 +65,7 @@
   "labelOrSignUpWith": "Или войдите через",
   "labelReferralInfoTitle": "Партнерский реферальный код",
   "infoReferralInfoDescription": "Буквенно-цифровой код, предоставляемый партнером Deriv, применимый только для регистрации по электронной почте.",
-  "labelGotReferralCode": "У вас есть реферальный код?",
+  "labelGotReferralCode": "У Вас есть реферальный код?",
   "labelHaveAccount": "Уже зарегистрированы?",
   "actionCreateAccount": "Открыть бесплатный демо-счет",
   "informInvalidReferralCode": "Введенный Вами реферальный код недействителен. Проверьте и попробуйте еще раз.",

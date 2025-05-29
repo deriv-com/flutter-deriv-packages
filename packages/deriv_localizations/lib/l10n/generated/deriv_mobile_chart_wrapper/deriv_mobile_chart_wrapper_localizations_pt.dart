@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Portuguese (`pt`).
 class DerivMobileChartWrapperLocalizationsPt extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsPt([String locale = 'pt']) : super(locale);
@@ -302,5 +304,5 @@ class DerivMobileChartWrapperLocalizationsPt extends DerivMobileChartWrapperLoca
   String get labelDeleteAllDrawingTools => 'Eliminar todas as ferramentas de desenho';
 
   @override
-  String get informDeleteAllDrawingTools => 'Isto irá eliminar todas as ferramentas de desenho activas.';
+  String get informDeleteAllDrawingTools => 'Esta ação elimina todas as ferramentas de desenho ativas.';
 }

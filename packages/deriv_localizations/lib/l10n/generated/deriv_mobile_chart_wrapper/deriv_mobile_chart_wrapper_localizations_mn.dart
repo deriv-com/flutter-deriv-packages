@@ -1,299 +1,301 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Mongolian (`mn`).
 class DerivMobileChartWrapperLocalizationsMn extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsMn([String locale = 'mn']) : super(locale);
 
   @override
-  String get labelIndicators => 'Indicators';
+  String get labelIndicators => 'Үзүүлэлт';
 
   @override
-  String get labelActive => 'Active';
+  String get labelActive => 'Идэвхтэй';
 
   @override
-  String get labelAll => 'All';
+  String get labelAll => 'Бүгд';
 
   @override
-  String get labelMomentum => 'Momentum';
+  String get labelMomentum => 'Эрчим хүч';
 
   @override
-  String get labelVolatility => 'Volatility';
+  String get labelVolatility => 'Тогтмол байдал';
 
   @override
-  String get labelMovingAverages => 'Moving averages';
+  String get labelMovingAverages => 'Хөдөлгөөнт дундаж';
 
   @override
   String get labelMACD => 'MACD';
 
   @override
-  String get labelRelativeStrengthIndex => 'Relative Strength Index (RSI)';
+  String get labelRelativeStrengthIndex => 'Харьцангуй хүч чадлын индекс (RSI)';
 
   @override
   String get labelRSI => 'RSI';
 
   @override
-  String get labelBollingerBands => 'Bollinger Bands (BB)';
+  String get labelBollingerBands => 'Боллингер хамтлагууд (BB)';
 
   @override
   String get labelBB => 'BB';
 
   @override
-  String get labelMovingAverage => 'Moving Average (MA)';
+  String get labelMovingAverage => 'Хөдөлгөөнт дундаж (MA)';
 
   @override
-  String get labelMA => 'MA';
+  String get labelMA => 'МА';
 
   @override
-  String get infoMACD => 'MACD is a trading indicator used in technical analysis of stock prices. It is supposed to reveal changes in the strength, direction, momentum, and duration of a trend in a stock\'s price.';
+  String get infoMACD => 'MACD нь хувьцааны үнийн техникийн шинжилгээнд ашиглагддаг арилжааны үзүүлэлт юм. Энэ нь хувьцааны үнийн чиг хандлагын хүч чадал, чиглэл, эрч хүч, үргэлжлэх хугацааны өөрчлөлтийг илрүүлэх ёстой.';
 
   @override
-  String get infoRSI => 'The Relative Strength Index (RSI) was published by J. Welles Wilder. The current price is normalized as a percentage between 0 and 100. The flutter_chart_id of this oscillator is misleading because it does not compare the instrument relative to another instrument or set of instruments, but rather represents the current price relative to other recent pieces within the selected lookback window length.';
+  String get infoRSI => 'Харьцангуй хүч чадлын индекс (RSI) -ийг Ж.Веллес Вилдер хэвлүүлсэн. Одоогийн үнэ 0-ээс 100-ийн хооронд хувиар хэвийн байна. Энэ осцилляторын flutter_chart_id нь багаж хэрэгслийг өөр багаж хэрэгсэл эсвэл багц багажтай харьцуулдаггүй тул төөрөгдүүлж байна, харин сонгосон lookback цонхны урт доторх бусад сүүлийн үеийн хэсгүүдтэй харьцангуй одоогийн үнийг илэрхийлдэг.';
 
   @override
-  String get infoBB => 'Bollinger Bands (BB) can be used to measure the highness or lowness of the price relative to previous trades.';
+  String get infoBB => 'Bollinger Bands (BB) нь өмнөх арилжаатай харьцангуй үнийн өндөр буюу доод түвшинг хэмжихэд ашиглаж болно.';
 
   @override
-  String get infoMA => 'The Moving Average (MA) helps to identify the overall market trend by filtering out short-term price fluctuations. Using historical data, it calculates the average price over a specific period and plots a line on the chart. If the MA line moves upwards, it’s an indicator of an uptrend, a downtrend if it moves downwards. A buy signal occurs when the price moves above the MA line.';
+  String get infoMA => 'Хөдөлгөөнтэй дундаж (MA) нь богино хугацааны үнийн хэлбэлзлийг шүүлтүүрээр зах зээлийн ерөнхий чиг хандлагыг тодорхойлоход тусалдаг. Түүхэн өгөгдлийг ашиглан тодорхой хугацаанд дундаж үнийг тооцоолж, график дээр мөрийг тавьдаг. Хэрэв MA шугам дээшээ хөдөлвөл энэ нь uptrend, доошоо хөдөлвөл уналтын үзүүлэлт юм. Үнэ нь MA шугамаас дээш шилжих үед худалдан авах дохио үүсдэг.';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded => 'You\'ve added the maximum number of active indicators.';
+  String get infoMaximumActiveIndicatorsAdded => 'Та идэвхтэй үзүүлэлтүүдийн хамгийн их тоог нэмсэн.';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
-    return 'Add $indicator';
+    return '$indicatorнэмэх';
   }
 
   @override
-  String get infoAddIndicator => 'Add indicator';
+  String get infoAddIndicator => 'Үзүүлэлт нэмэх';
 
   @override
-  String get labelDeleteAllIndicators => 'Delete all indicators';
+  String get labelDeleteAllIndicators => 'Бүх үзүүлэлтүүдийг устгах';
 
   @override
-  String get infoDeleteAllIndicators => 'This will delete all active indicators.';
+  String get infoDeleteAllIndicators => 'Энэ нь бүх идэвхтэй үзүүлэлтүүдийг устгах болно.';
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Энэ нь $indicator үзүүлэлтийг анхдагч тохиргоонд нь дахин тохируулах болно.';
   }
 
   @override
   String labelDeleteIndicator(Object indicator) {
-    return 'Delete $indicator indicator';
+    return '$indicator үзүүлэлтийг устгах';
   }
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return '$indicator үзүүлэлтийг дахин тохируулах';
   }
 
   @override
-  String get infoDeleteIndicator => 'Are you sure you want to delete this indicator?';
+  String get infoDeleteIndicator => 'Та энэ үзүүлэлтийг устгахыг хүсч байна гэдэгт итгэлтэй байна уу?';
 
   @override
-  String get labelCancel => 'Cancel';
+  String get labelCancel => 'Цуцлах';
 
   @override
-  String get labelDelete => 'Delete';
+  String get labelDelete => 'Устгах';
 
   @override
-  String get labelDeleteAll => 'Delete All';
+  String get labelDeleteAll => 'Бүгдийг устгах';
 
   @override
-  String get infoUpto3indicatorsAllowed => 'Up to 3 active indicators allowed.';
+  String get infoUpto3indicatorsAllowed => '3 хүртэлх идэвхтэй үзүүлэлтийг зөвшөөрнө.';
 
   @override
-  String get infoNoActiveIndicators => 'No active indicators.';
+  String get infoNoActiveIndicators => 'Идэвхтэй үзүүлэлт байхгүй.';
 
   @override
-  String get labelReset => 'Reset';
+  String get labelReset => 'Дахин тохируулах';
 
   @override
-  String get labelApply => 'Apply';
+  String get labelApply => 'Өргөдөл';
 
   @override
-  String get labelOK => 'OK';
+  String get labelOK => 'ОК';
 
   @override
-  String get labelRSILine => 'RSI line';
+  String get labelRSILine => 'RSI шугам';
 
   @override
-  String get labelPeriod => 'Period';
+  String get labelPeriod => 'Хугацаа';
 
   @override
-  String get labelMinRange => 'Min range';
+  String get labelMinRange => 'Хамгийн бага хүрээ';
 
   @override
-  String get labelMaxRange => 'Max range';
+  String get labelMaxRange => 'Макс хүрээ';
 
   @override
-  String get labelSource => 'Source';
+  String get labelSource => 'Эх сурвалж';
 
   @override
-  String get labelClose => 'Close';
+  String get labelClose => 'Хаах';
 
   @override
-  String get labelOpen => 'Open';
+  String get labelOpen => 'Нээлттэй';
 
   @override
-  String get labelHigh => 'High';
+  String get labelHigh => 'Өндөр';
 
   @override
-  String get labelLow => 'Low';
+  String get labelLow => 'Бага';
 
   @override
-  String get labelHl2 => 'Hl/2';
+  String get labelHl2 => 'Хл/2';
 
   @override
-  String get labelHlc3 => 'Hlc/3';
+  String get labelHlc3 => 'Хлц/3';
 
   @override
-  String get labelHlcc4 => 'Hlcc/4';
+  String get labelHlcc4 => 'Хлц/4';
 
   @override
-  String get labelOhlc4 => 'Ohlc/4';
+  String get labelOhlc4 => 'Охлц/4';
 
   @override
-  String get labelShowZones => 'Show Zones';
+  String get labelShowZones => 'Бүсүүдийг харуулах';
 
   @override
-  String get labelOverbought => 'Overbought';
+  String get labelOverbought => 'Хэт их худалдан авсан';
 
   @override
-  String get labelOversold => 'Oversold';
+  String get labelOversold => 'Хэт борлуулсан';
 
   @override
-  String get labelMinSize => 'Min size';
+  String get labelMinSize => 'Хамгийн бага хэмжээ';
 
   @override
-  String get labelMaxSize => 'Max size';
+  String get labelMaxSize => 'Макс хэмжээ';
 
   @override
-  String get labelRange => 'Range';
+  String get labelRange => 'Хамрах хүрээ';
 
   @override
-  String get labelOverboughtLine => 'Overbought line';
+  String get labelOverboughtLine => 'Хэт их худалдан авсан шугам';
 
   @override
-  String get labelOversoldLine => 'Oversold line';
+  String get labelOversoldLine => 'Хэт борлуулсан шугам';
 
   @override
-  String get labelMACDLine => 'MACD line';
+  String get labelMACDLine => 'MACD шугам';
 
   @override
-  String get labelFastMAPeriod => 'Fast MA period';
+  String get labelFastMAPeriod => 'Хурдан MA хугацаа';
 
   @override
-  String get labelSlowMAPeriod => 'Slow MA period';
+  String get labelSlowMAPeriod => 'Удаан MA хугацаа';
 
   @override
-  String get labelSignalLine => 'Signal line';
+  String get labelSignalLine => 'Дохионы шугам';
 
   @override
-  String get labelSignalPeriod => 'Signal period';
+  String get labelSignalPeriod => 'Дохионы хугацаа';
 
   @override
-  String get labelIncreasingBar => 'Increasing bar';
+  String get labelIncreasingBar => 'Баар нэмэгдэж байна';
 
   @override
-  String get labelDecreasingBar => 'Decreasing bar';
+  String get labelDecreasingBar => 'Бар буурч байна';
 
   @override
-  String get labelBollingerBandsTop => 'Bollinger Bands top';
+  String get labelBollingerBandsTop => 'Боллингерийн топ хамтлагууд';
 
   @override
-  String get labelBollingerBandsMedian => 'Bollinger Bands median';
+  String get labelBollingerBandsMedian => 'Боллингер хамтлагийн дундаж';
 
   @override
-  String get labelBollingerBandsBottom => 'Bollinger Bands bottom';
+  String get labelBollingerBandsBottom => 'Боллингер хамтлагуудын доод хэсэг';
 
   @override
-  String get labelChannelFill => 'Channel fill';
+  String get labelChannelFill => 'Суваг дүүргэх';
 
   @override
-  String get labelFillColor => 'Fill color';
+  String get labelFillColor => 'Өнгө бөглөнө';
 
   @override
-  String get labelStandardDeviations => 'Standard deviations';
+  String get labelStandardDeviations => 'Стандарт хазайлт';
 
   @override
-  String get labelMovingAverageType => 'Moving Average Type';
+  String get labelMovingAverageType => 'Хөдөлгөөнт дундаж төрөл';
 
   @override
-  String get labelMALine => 'MA line';
+  String get labelMALine => 'MA шугам';
 
   @override
-  String get labelOffset => 'Offset';
+  String get labelOffset => 'Офсет';
 
   @override
-  String get labelType => 'Type';
+  String get labelType => 'Төрөл';
 
   @override
-  String get labelSimple => 'Simple';
+  String get labelSimple => 'Энгийн';
 
   @override
-  String get labelExponential => 'Exponential';
+  String get labelExponential => 'Экспоненциаль';
 
   @override
-  String get labelWeighted => 'Weighted';
+  String get labelWeighted => 'Жинлэгдсэн';
 
   @override
-  String get labelHull => 'Hull';
+  String get labelHull => 'Халл';
 
   @override
-  String get labelZeroLag => 'Zero Lag';
+  String get labelZeroLag => 'Тэг хоцрогдол';
 
   @override
-  String get labelTimeSeries => 'Time Series';
+  String get labelTimeSeries => 'Цагийн цуврал';
 
   @override
-  String get labelWellesWilder => 'Welles Wilder';
+  String get labelWellesWilder => 'Веллес Вилдер';
 
   @override
-  String get labelVariable => 'Variable';
+  String get labelVariable => 'Хувьсах';
 
   @override
-  String get labelTriangular => 'Triangular';
+  String get labelTriangular => 'Гурвалжин';
 
   @override
-  String get label2Exponential => '2-Exponential';
+  String get label2Exponential => '2-Экспоненциаль';
 
   @override
-  String get label3Exponential => '3-Exponential';
+  String get label3Exponential => '3-Экспоненциаль';
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return '$min ба $maxхооронд утга оруулна уу';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return 'Хүрээ $min - $max';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Зургийн хэрэгсэл';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Багаж хэрэгсэл';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'шугам';
 
   @override
-  String get labelRay => 'Ray';
+  String get labelRay => 'Рэй';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'Эхний цэгийг тохируулахын тулд товшино уу';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Эцсийн цэгийг тохируулахын тулд товшино уу';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Идэвхтэй зургийн хэрэгсэл байхгүй.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Зургийн хэрэгсэл нэмэх';
 
   @override
   String get labelOf => '-ийн';

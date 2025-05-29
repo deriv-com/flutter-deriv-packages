@@ -1,173 +1,175 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Uzbek (`uz`).
 class DerivPasskeysLocalizationsUz extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsUz([String locale = 'uz']) : super(locale);
 
   @override
-  String get passkeyCreatedSuccessTitle => 'Success!';
+  String get passkeyCreatedSuccessTitle => 'Muvaffaqiyat!';
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
-    return 'Your account is now secured with a passkey. Manage your passkey through your $platformName account settings.';
+    return 'Sizning hisobingiz endi biometriya bilan himoyalangan. Biometrik ma\'lumotlaringizni $platformName hisob sozlamalaringiz orqali boshqaring.';
   }
 
   @override
-  String get continueButtonText => 'Continue';
+  String get continueButtonText => 'Davom etish';
 
   @override
-  String get unexpectedError => 'An unexpected error occurred!';
+  String get unexpectedError => 'Kutilmagan xato yuz berdi!';
 
   @override
-  String get unexpectedErrorDescription => 'Please try again later.';
+  String get unexpectedErrorDescription => 'Iltimos, keyinroq qayta urinib ko‘ring.';
 
   @override
   String get ok => 'Ok';
 
   @override
-  String get experienceSaferLogins => 'Experience safer logins';
+  String get experienceSaferLogins => 'Xavfsiz kirish uchun kalitingiz';
 
   @override
-  String get enhanceSecurity => 'Enhanced security is just a tap away.';
+  String get enhanceSecurity => 'Oson va xavfsiz tizimga kirish uchun barmoq izi, yuzni aniqlash yoki boshqa biometrik ma\'lumotlardan foydalaning.';
 
   @override
-  String get here => 'here';
+  String get here => 'bu yerda';
 
   @override
-  String get effortlessLogin => 'Effortless login with passkeys';
+  String get effortlessLogin => 'Biometriya bilan muammosiz kirish';
 
   @override
-  String get whatArePasskeys => 'What are passkeys?';
+  String get whatArePasskeys => 'Biometriya nima?';
 
   @override
-  String get whatArePasskeysDescriptionPoint1 => 'Secure alternative to passwords.';
+  String get whatArePasskeysDescriptionPoint1 => 'Parollarga xavfsiz alternativ.';
 
   @override
-  String get whatArePasskeysDescriptionPoint2 => 'Unlock your account like your phone - with biometrics, face scan or PIN.';
+  String get whatArePasskeysDescriptionPoint2 => 'Barmoq izi, yuzni aniqlash yoki qurilma PIN yordamida hisobingizni oching.';
 
   @override
-  String get whyPasskeys => 'Why passkeys?';
+  String get whyPasskeys => 'Nima uchun biometriyadan foydalanish kerak?';
 
   @override
-  String get whyPasskeysDescription1 => 'Extra security layer.';
+  String get whyPasskeysDescription1 => 'Ruxsatsiz kirishdan himoya qiladi.';
 
   @override
-  String get whyPasskeysDescription2 => 'Shields against unauthorised access and phishing.';
+  String get whyPasskeysDescription2 => 'Fishing urinishlaridan himoya qiladi.';
 
   @override
-  String get howToCreatePasskey => 'How to create a passkey?';
+  String get howToCreatePasskey => 'Biometriyani qanday yoqish mumkin?';
 
   @override
-  String get howToCreatePasskeyDescription1 => 'Go to ‘Account Settings’ on Deriv.';
+  String get howToCreatePasskeyDescription1 => 'Deriv-da \"Hisob sozlamalari\" ga o\'ting.';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'You can create one passkey per device.';
+  String get howToCreatePasskeyDescription2 => 'Biometriya ma\'lumotlarini yaratish uchun “Biometriya” tugmasini bosing.';
 
   @override
-  String get p2pHowToCreatePasskey => 'How to create passkey?';
+  String get p2pHowToCreatePasskey => 'Biometriyani qanday yoqish mumkin?';
 
   @override
-  String get p2pHowToCreatePasskeyDescription1 => 'Go to ‘Profile‘ in your Deriv P2P app.';
+  String get p2pHowToCreatePasskeyDescription1 => 'Deriv P2P ilovangizdagi “Profil” ga o\'ting.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'Tap ‘Passkeys‘ to create your passkey.';
+  String get p2pHowToCreatePasskeyDescription2 => 'Biometriya ma\'lumotlarini yaratish uchun “Biometriya” tugmasini bosing.';
 
   @override
-  String get whereArePasskeysSaved => 'Where are passkeys saved?';
+  String get whereArePasskeysSaved => 'Biometrik ma\'lumotlar qaerda saqlanadi?';
 
   @override
-  String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google password manager.';
+  String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google parol menejeri.';
 
   @override
   String get whereArePasskeysSavedDescriptionIOS => 'iOS: iCloud keychain.';
 
   @override
-  String get whatHappensIfEmailChanged => 'What happens if my Deriv account email is changed?';
+  String get whatHappensIfEmailChanged => 'Deriv hisobimdagi email o\'zgartirsam nima bo\'ladi?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'No problem! Your passkey still works.';
+  String get whatHappensIfEmailChangedDescription1 => 'Muammo yo\'q! Sizning biometriyangiz hali ham ishlaydi.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'Sign in to Deriv with your existing passkey.';
+  String get whatHappensIfEmailChangedDescription2 => 'Mavjud biometrik ma\'lumotlaringizdan foydalanib kirishingiz mumkin.';
 
   @override
-  String get tips => 'Tips';
+  String get tips => 'Maslahatlar';
 
   @override
-  String get beforeUsingPasskeys => 'Before using passkeys';
+  String get beforeUsingPasskeys => 'Biometriyadan foydalanishdan oldin';
 
   @override
-  String get enableScreenLock => 'Enable screen lock on your device.';
+  String get enableScreenLock => 'Qurilmangizda ekran qulfini yoqing.';
 
   @override
-  String get signInGoogleOrIcloud => 'Sign in to your Google or iCloud account.';
+  String get signInGoogleOrIcloud => 'Google yoki iCloud hisobingizga kiring.';
 
   @override
-  String get enableBluetooth => 'Enable Bluetooth.';
+  String get enableBluetooth => 'Bluetooth-ni yoqing.';
 
   @override
-  String get noPasskeyFound => 'No passkey found!';
+  String get noPasskeyFound => 'Biometriya topilmadi!';
 
   @override
-  String get noPasskeyFoundDescription => 'Please create a passkey to use this feature.';
+  String get noPasskeyFoundDescription => 'Iltimos, ushbu xususiyatdan foydalanish uchun biometriya yarating.';
 
   @override
-  String get maybeLater => 'Maybe later';
+  String get maybeLater => 'Balki keyinroq';
 
   @override
-  String get effortlessLoginWithPasskeys => 'Effortless login with passkeys';
+  String get effortlessLoginWithPasskeys => 'Biometriya bilan muammosiz kirish';
 
   @override
-  String get learnMoreAboutPasskeys => 'Learn more about passkeys';
+  String get learnMoreAboutPasskeys => 'Biometriya haqida ko\'proq bilib oling';
 
   @override
-  String get noNeedToRememberPassword => 'No need to remember a password';
+  String get noNeedToRememberPassword => 'Parolni eslab qolishning hojati yo\'q';
 
   @override
-  String get useYourBiometrics => 'Enhanced security with biometrics or screen lock';
+  String get useYourBiometrics => 'Biometriya yoki ekranni qulflash bilan yaxshilangan xavfsizlik';
 
   @override
-  String get syncAcrossDevices => 'Sync across devices';
+  String get syncAcrossDevices => 'Qurilmalar bo\'ylab sinxronlash';
 
   @override
-  String get createPasskey => 'Create passkey';
+  String get createPasskey => 'Biometriyani yoqish';
 
   @override
-  String get unsupportedPlatform => 'Unsupported Platform';
+  String get unsupportedPlatform => 'Qo\'llab-quvvatlanmaydigan Platforma';
 
   @override
-  String get storedOn => 'Stored on';
+  String get storedOn => 'Saqlangan';
 
   @override
-  String get lastUsed => 'Last used';
+  String get lastUsed => 'Oxirgi ishlatilgan';
 
   @override
-  String get rename => 'Rename';
+  String get rename => 'Nomini o\'zgartirish';
 
   @override
-  String get revoke => 'Revoke';
+  String get revoke => 'Bekor qilish';
 
   @override
-  String get continueTradingButtonText => 'Continue trading';
+  String get continueTradingButtonText => 'Hozir savdo qiling';
 
   @override
-  String get addMorePasskeysButtonText => 'Add more passkeys';
+  String get addMorePasskeysButtonText => 'Yangi biometriya ma\'lumotlarini qo\'shing';
 
   @override
-  String get unableToSetupPasskey => 'Unable to setup passkey';
+  String get unableToSetupPasskey => 'Biometriya parametrlarini sozlash mumkin emas';
 
   @override
-  String get unableToSetupPasskeyDescription => 'We encountered an issue while setting up your passkey. The process might have been interrupted, or the session timed out. Please try again.';
+  String get unableToSetupPasskeyDescription => 'Biometrik ma\'lumotlaringizni sozlashda biz muammoga duch keldik. Jarayon to\'xtatilgan bo\'lishi yoki sessiya muddati tugagan bo\'lishi mumkin. Iltimos, yana urinib ko\'ring.';
 
   @override
-  String get passkeysOffErrorTitle => 'The Passkeys service is unavailable';
+  String get passkeysOffErrorTitle => 'Biometriya xizmati mavjud emas';
 
   @override
-  String get never => 'Never';
+  String get never => 'Hech qachon';
 
   @override
-  String get unable_to_process_your_request => 'Unable to process your request';
+  String get unable_to_process_your_request => 'So\'rovingizni qayta ishlay olmadi';
 
   @override
-  String get unable_to_process_your_request_description => 'We’re experiencing a temporary issue in processing your request. Please try again later.';
+  String get unable_to_process_your_request_description => 'Biz sizning so\'rovingizni qayta ishlashda vaqtinchalik muammoga duch kelmoqdamiz. Iltimos, keyinroq qayta urinib ko\'ring.';
 }

@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Arabic (`ar`).
 class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsAr([String locale = 'ar']) : super(locale);
@@ -9,7 +11,7 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
-    return 'تم تأمين حسابك الآن باستخدام Passkey. قم بإدارة Passkey الخاص بك من خلال إعدادات حساب $platformName الخاص بك.';
+    return 'تم تأمين حسابك الآن باستخدام Biometrics. قم بإدارة Biometrics الخاص بك من خلال إعدادات حساب $platformName الخاص بك.';
   }
 
   @override
@@ -34,10 +36,10 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get here => 'هنا';
 
   @override
-  String get effortlessLogin => 'تسجيل الدخول بسهولة باستخدام Passkeys';
+  String get effortlessLogin => 'تسجيل الدخول بسهولة باستخدام Biometrics';
 
   @override
-  String get whatArePasskeys => 'ما هي passkeys؟';
+  String get whatArePasskeys => 'ما هي Biometricss؟';
 
   @override
   String get whatArePasskeysDescriptionPoint1 => 'بديل آمن لكلمات المرور.';
@@ -46,7 +48,7 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get whatArePasskeysDescriptionPoint2 => 'قم بإلغاء قفل حسابك مثل هاتفك - باستخدام القياسات الحيوية أو مسح الوجه أو رقم التعريف الشخصي.';
 
   @override
-  String get whyPasskeys => 'لماذا Passkey؟';
+  String get whyPasskeys => 'لماذا Biometrics؟';
 
   @override
   String get whyPasskeysDescription1 => 'طبقة أمان إضافية.';
@@ -55,13 +57,13 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get whyPasskeysDescription2 => 'الحماية من الوصول غير المصرح به والتصيد الاحتيالي.';
 
   @override
-  String get howToCreatePasskey => 'كيفية إنشاء passkey؟';
+  String get howToCreatePasskey => 'كيفية إنشاء Biometrics؟';
 
   @override
   String get howToCreatePasskeyDescription1 => 'انتقل إلى \"إعدادات الحساب\" على المشتقات.';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'يمكنك إنشاء Passkey واحد لكل جهاز.';
+  String get howToCreatePasskeyDescription2 => 'يمكنك إنشاء Biometrics واحد لكل جهاز.';
 
   @override
   String get p2pHowToCreatePasskey => 'كيفية إنشاء مفتاح مرور؟';
@@ -73,7 +75,7 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get p2pHowToCreatePasskeyDescription2 => 'انقر فوق «مفاتيح المرور» لإنشاء مفتاح المرور الخاص بك.';
 
   @override
-  String get whereArePasskeysSaved => 'أين يتم حفظ passkeys؟';
+  String get whereArePasskeysSaved => 'أين يتم حفظ Biometrics؟';
 
   @override
   String get whereArePasskeysSavedDescriptionAndroid => 'أندرويد: مدير كلمات مرور Google.';
@@ -85,16 +87,16 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChanged => 'ماذا يحدث إذا تم تغيير البريد الإلكتروني لحساب Deriv الخاص بي؟';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'لا توجد مشكلة! لا يزال مفتاح Passkey بك يعمل.';
+  String get whatHappensIfEmailChangedDescription1 => 'لا توجد مشكلة! لا يزال مفتاح Biometrics بك يعمل.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'سجّل الدخول إلى Deriv باستخدام مفتاح Passkey لديك.';
+  String get whatHappensIfEmailChangedDescription2 => 'سجّل الدخول إلى Deriv باستخدام مفتاح Biometrics لديك.';
 
   @override
   String get tips => 'نصائح';
 
   @override
-  String get beforeUsingPasskeys => 'قبل استخدام Passkey';
+  String get beforeUsingPasskeys => 'قبل استخدام Biometrics';
 
   @override
   String get enableScreenLock => 'قم بتمكين قفل الشاشة على جهازك.';
@@ -106,19 +108,19 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get enableBluetooth => 'قم بتمكين البلوتوث.';
 
   @override
-  String get noPasskeyFound => 'لم يتم العثور على passkey!';
+  String get noPasskeyFound => 'لم يتم العثور على Biometrics!';
 
   @override
-  String get noPasskeyFoundDescription => 'يرجى إنشاء passkey لاستخدام هذه الميزة.';
+  String get noPasskeyFoundDescription => 'يرجى إنشاء Biometrics لاستخدام هذه الميزة.';
 
   @override
   String get maybeLater => 'ربما في وقت لاحق';
 
   @override
-  String get effortlessLoginWithPasskeys => 'تسجيل الدخول بسهولة باستخدام Passkeys';
+  String get effortlessLoginWithPasskeys => 'تسجيل الدخول بسهولة باستخدام Biometrics';
 
   @override
-  String get learnMoreAboutPasskeys => 'تعرف على المزيد حول passkeys';
+  String get learnMoreAboutPasskeys => 'تعرف على المزيد حول Biometricss';
 
   @override
   String get noNeedToRememberPassword => 'لا حاجة لتذكر كلمة المرور';
@@ -130,7 +132,7 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'المزامنة عبر الأجهزة';
 
   @override
-  String get createPasskey => 'إنشاء Passkey';
+  String get createPasskey => 'إنشاء Biometrics';
 
   @override
   String get unsupportedPlatform => 'منصة غير مدعومة';
@@ -151,16 +153,16 @@ class DerivPasskeysLocalizationsAr extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'استمر في التداول';
 
   @override
-  String get addMorePasskeysButtonText => 'أضف المزيد من passkeys';
+  String get addMorePasskeysButtonText => 'أضف المزيد من Biometricss';
 
   @override
-  String get unableToSetupPasskey => 'تعذر إعداد مفتاح Passkey';
+  String get unableToSetupPasskey => 'تعذر إعداد مفتاح Biometrics';
 
   @override
-  String get unableToSetupPasskeyDescription => 'لقد واجهنا مشكلة أثناء إعداد Passkey الخاص بك. ربما تمت مقاطعة العملية، أو ربما انتهت مهلة الجلسة. يرجى المحاولة مرة أخرى.';
+  String get unableToSetupPasskeyDescription => 'لقد واجهنا مشكلة أثناء إعداد Biometrics الخاص بك. ربما تمت مقاطعة العملية، أو ربما انتهت مهلة الجلسة. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get passkeysOffErrorTitle => 'خدمة Passkeys غير متوفرة';
+  String get passkeysOffErrorTitle => 'خدمة Biometrics غير متوفرة';
 
   @override
   String get never => 'أبداً';

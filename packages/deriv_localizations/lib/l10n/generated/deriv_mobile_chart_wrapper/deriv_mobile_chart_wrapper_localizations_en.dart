@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
 class DerivMobileChartWrapperLocalizationsEn extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsEn([String locale = 'en']) : super(locale);

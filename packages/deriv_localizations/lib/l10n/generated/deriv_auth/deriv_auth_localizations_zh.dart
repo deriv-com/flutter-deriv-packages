@@ -1,5 +1,7 @@
 import 'deriv_auth_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Chinese (`zh`).
 class DerivAuthLocalizationsZh extends DerivAuthLocalizations {
   DerivAuthLocalizationsZh([String locale = 'zh']) : super(locale);
@@ -327,7 +329,7 @@ class DerivAuthLocalizationsZhCn extends DerivAuthLocalizationsZh {
   String get labelPassword => '密码';
 
   @override
-  String get actionForgotPassword => '忘记密码?';
+  String get actionForgotPassword => '忘记密码？';
 
   @override
   String get labelDontHaveAnAccountYet => '还没有账户？';
@@ -389,16 +391,16 @@ class DerivAuthLocalizationsZhCn extends DerivAuthLocalizationsZh {
   String get labelEmailIssueHeader => '如果数分钟内没有收到我们发送的电子邮件，可能是因为发生了几种情况而引起的：';
 
   @override
-  String get labelEmailIssueSpam => '邮件在垃圾邮箱里（有时一些邮件会误送到那儿）。';
+  String get labelEmailIssueSpam => '邮件在垃圾邮箱里 (有时一些邮件会误送到那儿)。';
 
   @override
-  String get labelEmailIssueWrongEmail => '您不小心给了我们另一个电子邮件地址（通常非您本意，而是属于工作或个人性质的）。';
+  String get labelEmailIssueWrongEmail => '您不小心给了我们另一个电子邮件地址 (通常非您本意，而是属于工作或个人性质的)。';
 
   @override
-  String get labelEmailIssueTypo => '您输入的电子邮件地址拼写有误（有时这是难免的）。';
+  String get labelEmailIssueTypo => '您输入的电子邮件地址拼写有误 (有时这是难免的)。';
 
   @override
-  String get labelEmailIssueFirewall => '无法发送电子邮件到此地址（通常是因为安装了防火墙或筛选器）。';
+  String get labelEmailIssueFirewall => '无法发送电子邮件到此地址 (通常是因为安装了防火墙或筛选器)。';
 
   @override
   String get actionReenterEmail => '重新输入电子邮件并重试';
@@ -529,13 +531,13 @@ class DerivAuthLocalizationsZhCn extends DerivAuthLocalizationsZh {
   String get labelDeveloper => '开发员';
 
   @override
-  String get labelEndpoint => '终结点';
+  String get labelEndpoint => '端点';
 
   @override
-  String get semanticEndpoint => '终结点';
+  String get semanticEndpoint => '端点';
 
   @override
-  String get warnInvalidEndpoint => '无效的终结点';
+  String get warnInvalidEndpoint => '无效的端点';
 
   @override
   String get labelApplicationID => '应用程序 ID';
@@ -563,10 +565,10 @@ class DerivAuthLocalizationsZhTw extends DerivAuthLocalizationsZh {
   }
 
   @override
-  String get actionOk => '确定';
+  String get actionOk => '確定';
 
   @override
-  String get warnNotAvailableCountries => '如果有任何疑問，請通過以下方式與我們聯繫 ';
+  String get warnNotAvailableCountries => '如果有任何疑問，請透過以下方式與我們聯繫 ';
 
   @override
   String get labelLiveChat => '即時聊天';
@@ -593,7 +595,7 @@ class DerivAuthLocalizationsZhTw extends DerivAuthLocalizationsZh {
   String get labelLogIn => '登入';
 
   @override
-  String get informLoginOptions => '或通過以下方式登入';
+  String get informLoginOptions => '或透過以下方式登入';
 
   @override
   String get labelEmail => '電子郵件';
@@ -664,16 +666,16 @@ class DerivAuthLocalizationsZhTw extends DerivAuthLocalizationsZh {
   String get labelEmailIssueHeader => '如果數分鐘內沒有收到我們傳送的電子郵件，可能是因為發生了幾種情況而引起的:';
 
   @override
-  String get labelEmailIssueSpam => '郵件在您的垃圾郵箱（有時一些郵件會誤送到那兒）。';
+  String get labelEmailIssueSpam => '郵件在垃圾郵箱 (有時一些郵件會誤送到那兒)。';
 
   @override
-  String get labelEmailIssueWrongEmail => '您不小心給了我們另一個電子郵件地址（通常非您本意，而是屬於工作或個人性質的）。';
+  String get labelEmailIssueWrongEmail => '您不小心給了另一個電子郵件地址 (通常非您本意，而是屬於工作或個人性質的)。';
 
   @override
-  String get labelEmailIssueTypo => '您輸入的電子郵件地址拼寫有誤（有時這是難免的）。';
+  String get labelEmailIssueTypo => '輸入的電子郵件地址拼寫有誤 (有時這是難免的)。';
 
   @override
-  String get labelEmailIssueFirewall => '電子郵件無法傳送到此地址（通常是因為安裝了防火牆或篩選器）。';
+  String get labelEmailIssueFirewall => '電子郵件無法傳送到此地址 (通常是因為安裝了防火牆或篩選器)。';
 
   @override
   String get actionReenterEmail => '重新輸入電子郵件並重試';
@@ -792,7 +794,7 @@ class DerivAuthLocalizationsZhTw extends DerivAuthLocalizationsZh {
   String get informExpiredAccount => '帳戶已過期';
 
   @override
-  String get labelCountryConsentBrazil => '本人特此確認，在 Deriv 開立帳戶以交易由巴西境外推出和提供的場外交易產品的要求是由本人提出的。本人完全理解 Deriv 不受 CVM 監管，且通過與 Deriv 接觸，本人打算與一家外國公司建立關係。';
+  String get labelCountryConsentBrazil => '本人特此確認，在 Deriv 開立帳戶以交易由巴西境外推出和提供的場外交易產品的要求是由本人提出的。本人完全理解 Deriv 不受 CVM 監管，且透過與 Deriv 接觸，本人打算與一家外國公司建立關係。';
 
   @override
   String get informConnectionError => '連線錯誤。請稍後再試一次。';

@@ -1,17 +1,19 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Uzbek (`uz`).
 class DerivMobileChartWrapperLocalizationsUz extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsUz([String locale = 'uz']) : super(locale);
 
   @override
-  String get labelIndicators => 'Indicators';
+  String get labelIndicators => 'Ko\'rsatkichlar';
 
   @override
-  String get labelActive => 'Active';
+  String get labelActive => 'Faol';
 
   @override
-  String get labelAll => 'All';
+  String get labelAll => 'Hammasi';
 
   @override
   String get labelMomentum => 'Momentum';
@@ -20,13 +22,13 @@ class DerivMobileChartWrapperLocalizationsUz extends DerivMobileChartWrapperLoca
   String get labelVolatility => 'Volatility';
 
   @override
-  String get labelMovingAverages => 'Moving averages';
+  String get labelMovingAverages => 'Harakatlanuvchi o\'rtacha';
 
   @override
   String get labelMACD => 'MACD';
 
   @override
-  String get labelRelativeStrengthIndex => 'Relative Strength Index (RSI)';
+  String get labelRelativeStrengthIndex => 'Nisbiy Kuch Indeksi (RSI)';
 
   @override
   String get labelRSI => 'RSI';
@@ -38,108 +40,108 @@ class DerivMobileChartWrapperLocalizationsUz extends DerivMobileChartWrapperLoca
   String get labelBB => 'BB';
 
   @override
-  String get labelMovingAverage => 'Moving Average (MA)';
+  String get labelMovingAverage => 'Harakatlanuvchi O\'rtacha (MA)';
 
   @override
   String get labelMA => 'MA';
 
   @override
-  String get infoMACD => 'MACD is a trading indicator used in technical analysis of stock prices. It is supposed to reveal changes in the strength, direction, momentum, and duration of a trend in a stock\'s price.';
+  String get infoMACD => 'MACD - bu qimmatli qog\'ozlar narxini texnik tahlil qilishda foydalaniladigan savdo ko\'rsatkichi. U aktsiya bahosidagi trend kuchi, yo\'nalishi, momentum va davomiyligidagi o\'zgarishlarni aniqlashi kerak.';
 
   @override
-  String get infoRSI => 'The Relative Strength Index (RSI) was published by J. Welles Wilder. The current price is normalized as a percentage between 0 and 100. The flutter_chart_id of this oscillator is misleading because it does not compare the instrument relative to another instrument or set of instruments, but rather represents the current price relative to other recent pieces within the selected lookback window length.';
+  String get infoRSI => 'Nisbiy Kuch Indeksi (RSI) J. Welles Wilder tomonidan nashr etilgan. Joriy narx 0 dan 100 gacha foiz sifatida normallashtiriladi. Ushbu oscillator flutter_chart_identifikatori noto\'g\'ri, chunki u asbobni boshqa asbob yoki asboblar to\'plamiga nisbatan solishtirmaydi, balki tanlangan mahsulot ichidagi boshqa so\'nggi qismlarga nisbatan joriy narxni ifodalaydi. Qayta ko\'rish oynasining uzunligi.';
 
   @override
-  String get infoBB => 'Bollinger Bands (BB) can be used to measure the highness or lowness of the price relative to previous trades.';
+  String get infoBB => 'Bollinger Bands (BB) oldingi savdolarga nisbatan narxning yuqori yoki pastligini o\'lchash uchun ishlatilishi mumkin.';
 
   @override
-  String get infoMA => 'The Moving Average (MA) helps to identify the overall market trend by filtering out short-term price fluctuations. Using historical data, it calculates the average price over a specific period and plots a line on the chart. If the MA line moves upwards, it’s an indicator of an uptrend, a downtrend if it moves downwards. A buy signal occurs when the price moves above the MA line.';
+  String get infoMA => 'Harakatlanuvchi O\'rtacha (MA) qisqa muddatli narxlar o\'zgarishini filtrlash orqali umumiy bozor trend aniqlashga yordam beradi. Tarixiy ma\'lumotlardan foydalanib, u ma\'lum bir davr uchun o\'rtacha narxni hisoblab chiqadi va diagrammada chiziq chizadi. Agar MA chizig\'i yuqoriga qarab harakatlansa, bu ko\'tarilishning ko\'rsatkichidir, agar u pastga harakat qilsa, pasayish trenddir. Narx MA chizig\'idan yuqoriga ko\'tarilganda sotib olish signali paydo bo\'ladi.';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded => 'You\'ve added the maximum number of active indicators.';
+  String get infoMaximumActiveIndicatorsAdded => 'Siz faol ko\'rsatkichlarning maksimal sonini qo\'shdingiz.';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
-    return 'Add $indicator';
+    return '$indicator qo‘shish';
   }
 
   @override
-  String get infoAddIndicator => 'Add indicator';
+  String get infoAddIndicator => 'Ko\'rsatkich qo\'shish';
 
   @override
-  String get labelDeleteAllIndicators => 'Delete all indicators';
+  String get labelDeleteAllIndicators => 'Barcha ko\'rsatgichlarni o\'chirish';
 
   @override
-  String get infoDeleteAllIndicators => 'This will delete all active indicators.';
+  String get infoDeleteAllIndicators => 'Bu barcha faol ko\'rsatkichlarni o\'chiradi.';
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'This will reset the $indicator indicator to its default settings.';
+    return 'Bu $indicator indikatorini standart sozlamalariga qaytaradi.';
   }
 
   @override
   String labelDeleteIndicator(Object indicator) {
-    return 'Delete $indicator indicator';
+    return '$indicator ko\'rsatgichini o\'chirish';
   }
 
   @override
   String labelResetIndicator(Object indicator) {
-    return 'Reset $indicator indicator';
+    return '$indicator indikatorini tiklash';
   }
 
   @override
-  String get infoDeleteIndicator => 'Are you sure you want to delete this indicator?';
+  String get infoDeleteIndicator => 'Haqiqatan ham bu koʻrsatkichni oʻchirib tashlamoqchimisiz?';
 
   @override
-  String get labelCancel => 'Cancel';
+  String get labelCancel => 'Bekor qilish';
 
   @override
-  String get labelDelete => 'Delete';
+  String get labelDelete => 'O\'chirish';
 
   @override
-  String get labelDeleteAll => 'Delete All';
+  String get labelDeleteAll => 'Hammasini o\'chirish';
 
   @override
-  String get infoUpto3indicatorsAllowed => 'Up to 3 active indicators allowed.';
+  String get infoUpto3indicatorsAllowed => '3 tagacha faol ko\'rsatkichga ruxsat beriladi.';
 
   @override
-  String get infoNoActiveIndicators => 'No active indicators.';
+  String get infoNoActiveIndicators => 'Faol ko\'rsatkichlar yo\'q.';
 
   @override
-  String get labelReset => 'Reset';
+  String get labelReset => 'Qayta tiklash';
 
   @override
-  String get labelApply => 'Apply';
+  String get labelApply => 'Qo\'llash';
 
   @override
   String get labelOK => 'OK';
 
   @override
-  String get labelRSILine => 'RSI line';
+  String get labelRSILine => 'RSI liniyasi';
 
   @override
-  String get labelPeriod => 'Period';
+  String get labelPeriod => 'Davr';
 
   @override
-  String get labelMinRange => 'Min range';
+  String get labelMinRange => 'Min diapazoni';
 
   @override
-  String get labelMaxRange => 'Max range';
+  String get labelMaxRange => 'Maks diapazoni';
 
   @override
-  String get labelSource => 'Source';
+  String get labelSource => 'Manba';
 
   @override
-  String get labelClose => 'Close';
+  String get labelClose => 'Yopish';
 
   @override
-  String get labelOpen => 'Open';
+  String get labelOpen => 'Ochiq';
 
   @override
-  String get labelHigh => 'High';
+  String get labelHigh => 'Yuqori';
 
   @override
-  String get labelLow => 'Low';
+  String get labelLow => 'Past';
 
   @override
   String get labelHl2 => 'Hl/2';
@@ -154,146 +156,146 @@ class DerivMobileChartWrapperLocalizationsUz extends DerivMobileChartWrapperLoca
   String get labelOhlc4 => 'Ohlc/4';
 
   @override
-  String get labelShowZones => 'Show Zones';
+  String get labelShowZones => 'Zonalarni ko\'rsatish';
 
   @override
-  String get labelOverbought => 'Overbought';
+  String get labelOverbought => 'Haddan tashqari sotib olingan';
 
   @override
-  String get labelOversold => 'Oversold';
+  String get labelOversold => 'Haddan tashqari sotilgan';
 
   @override
-  String get labelMinSize => 'Min size';
+  String get labelMinSize => 'Min hajmi';
 
   @override
-  String get labelMaxSize => 'Max size';
+  String get labelMaxSize => 'Maks hajmi';
 
   @override
-  String get labelRange => 'Range';
+  String get labelRange => 'Diapazon';
 
   @override
-  String get labelOverboughtLine => 'Overbought line';
+  String get labelOverboughtLine => 'Haddan tashqari sotib olingan chiziq';
 
   @override
-  String get labelOversoldLine => 'Oversold line';
+  String get labelOversoldLine => 'Haddan tashqari sotilgan chiziq';
 
   @override
-  String get labelMACDLine => 'MACD line';
+  String get labelMACDLine => 'MACD liniyasi';
 
   @override
-  String get labelFastMAPeriod => 'Fast MA period';
+  String get labelFastMAPeriod => 'Tez MA davri';
 
   @override
-  String get labelSlowMAPeriod => 'Slow MA period';
+  String get labelSlowMAPeriod => 'Sekin MA davri';
 
   @override
-  String get labelSignalLine => 'Signal line';
+  String get labelSignalLine => 'Signal liniyasi';
 
   @override
-  String get labelSignalPeriod => 'Signal period';
+  String get labelSignalPeriod => 'Signal davri';
 
   @override
-  String get labelIncreasingBar => 'Increasing bar';
+  String get labelIncreasingBar => 'Kattalashtirish paneli';
 
   @override
-  String get labelDecreasingBar => 'Decreasing bar';
+  String get labelDecreasingBar => 'Pasayadigan bar';
 
   @override
   String get labelBollingerBandsTop => 'Bollinger Bands top';
 
   @override
-  String get labelBollingerBandsMedian => 'Bollinger Bands median';
+  String get labelBollingerBandsMedian => 'Bollinger Bands mediana';
 
   @override
   String get labelBollingerBandsBottom => 'Bollinger Bands bottom';
 
   @override
-  String get labelChannelFill => 'Channel fill';
+  String get labelChannelFill => 'Kanalni to\'ldirish';
 
   @override
-  String get labelFillColor => 'Fill color';
+  String get labelFillColor => 'Rangni to\'ldirish';
 
   @override
-  String get labelStandardDeviations => 'Standard deviations';
+  String get labelStandardDeviations => 'Standart og\'ishlar';
 
   @override
-  String get labelMovingAverageType => 'Moving Average Type';
+  String get labelMovingAverageType => 'Harakatlanuvchi O\'rtacha Turi';
 
   @override
-  String get labelMALine => 'MA line';
+  String get labelMALine => 'MA liniyasi';
 
   @override
-  String get labelOffset => 'Offset';
+  String get labelOffset => 'Ofset';
 
   @override
-  String get labelType => 'Type';
+  String get labelType => 'Turi';
 
   @override
-  String get labelSimple => 'Simple';
+  String get labelSimple => 'Oddiy';
 
   @override
-  String get labelExponential => 'Exponential';
+  String get labelExponential => 'Eksponensial';
 
   @override
-  String get labelWeighted => 'Weighted';
+  String get labelWeighted => 'Og\'irlangan';
 
   @override
   String get labelHull => 'Hull';
 
   @override
-  String get labelZeroLag => 'Zero Lag';
+  String get labelZeroLag => 'Nol Kechikish';
 
   @override
-  String get labelTimeSeries => 'Time Series';
+  String get labelTimeSeries => 'Vaqt Seriyasi';
 
   @override
-  String get labelWellesWilder => 'Welles Wilder';
+  String get labelWellesWilder => 'Uells Uaylder';
 
   @override
-  String get labelVariable => 'Variable';
+  String get labelVariable => 'O\'zgaruvchan';
 
   @override
-  String get labelTriangular => 'Triangular';
+  String get labelTriangular => 'Uchburchak';
 
   @override
-  String get label2Exponential => '2-Exponential';
+  String get label2Exponential => '2-Eksponensial';
 
   @override
-  String get label3Exponential => '3-Exponential';
+  String get label3Exponential => '3-Eksponensial';
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
-    return 'Enter a value between $min and $max';
+    return '$min va $max oralig\'idagi qiymatni kiriting';
   }
 
   @override
   String warnRangeMinMax(Object max, Object min) {
-    return 'Range $min - $max';
+    return '$min - $max diapazoni';
   }
 
   @override
-  String get labelDrawingTools => 'Drawing tools';
+  String get labelDrawingTools => 'Chizma vositalari';
 
   @override
-  String get labelTools => 'Tools';
+  String get labelTools => 'Asboblar';
 
   @override
-  String get labelLine => 'Line';
+  String get labelLine => 'Chiziq';
 
   @override
   String get labelRay => 'Ray';
 
   @override
-  String get informTapToSetFirstPoint => 'Tap to set first point';
+  String get informTapToSetFirstPoint => 'Birinchi nuqtani belgilash uchun bosing';
 
   @override
-  String get informTapToSetFinalPoint => 'Tap to set final point';
+  String get informTapToSetFinalPoint => 'Oxirgi nuqtani belgilash uchun bosing';
 
   @override
-  String get informNoActiveDrawingTools => 'No active drawing tools.';
+  String get informNoActiveDrawingTools => 'Faol chizish vositalari yo\'q.';
 
   @override
-  String get actionAddDrawingTool => 'Add drawing tool';
+  String get actionAddDrawingTool => 'Chizma vositasini qo\'shish';
 
   @override
   String get labelOf => 'ning';

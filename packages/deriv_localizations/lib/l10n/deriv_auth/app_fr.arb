@@ -15,7 +15,7 @@
   "labelLiveChat": "Chat en direct",
   "actionSignUpForFree": "Inscrivez-vous gratuitement",
   "actionLogin": "Se connecter",
-  "labelTwoFactorAuth": "L'Authentification à deux facteurs",
+  "labelTwoFactorAuth": "Authentification à deux facteurs",
   "informEnterTwoFactorAuthCode": "Saisissez le code à 6 chiffres qui s'affiche sur l'application d'authentification de votre téléphone.",
   "labelTwoFactorAuthenticationCode": "code 2FA",
   "actionProceed": "Continuer",

@@ -1,5 +1,7 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Turkish (`tr`).
 class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsTr([String locale = 'tr']) : super(locale);
@@ -9,7 +11,7 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
-    return 'Hesabınız artık bir şifre ile güvence altına alınmıştır. $platformName hesap ayarlarınızdan passkey\'inizi yönetin.';
+    return 'Hesabınız artık bir şifre ile güvence altına alınmıştır. $platformName hesap ayarlarınızdan Biometric\'inizi yönetin.';
   }
 
   @override
@@ -34,10 +36,10 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get here => 'burada';
 
   @override
-  String get effortlessLogin => 'Passkey tuşları ile zahmetsiz giriş';
+  String get effortlessLogin => 'Biometric tuşları ile zahmetsiz giriş';
 
   @override
-  String get whatArePasskeys => 'Passkeys nedir?';
+  String get whatArePasskeys => 'Biometrics nedir?';
 
   @override
   String get whatArePasskeysDescriptionPoint1 => 'Şifrelere güvenli alternatif.';
@@ -46,7 +48,7 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get whatArePasskeysDescriptionPoint2 => 'Hesabınızın kilidini telefonunuz gibi açın - biyometri, yüz tarama veya PIN ile.';
 
   @override
-  String get whyPasskeys => 'Neden Passkey?';
+  String get whyPasskeys => 'Neden Biometric?';
 
   @override
   String get whyPasskeysDescription1 => 'Ekstra güvenlik katmanı.';
@@ -55,25 +57,25 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get whyPasskeysDescription2 => 'Yetkisiz erişime ve kimlik avına karşı kalkanlar.';
 
   @override
-  String get howToCreatePasskey => 'Passkey nasıl oluşturulur?';
+  String get howToCreatePasskey => 'Biometric nasıl oluşturulur?';
 
   @override
   String get howToCreatePasskeyDescription1 => 'Deriv\'de \'Hesap Ayarları\'na gidin.';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'Cihaz başına bir passkey oluşturabilirsiniz.';
+  String get howToCreatePasskeyDescription2 => 'Cihaz başına bir Biometric oluşturabilirsiniz.';
 
   @override
-  String get p2pHowToCreatePasskey => 'Passkey nasıl oluşturulur?';
+  String get p2pHowToCreatePasskey => 'Biometric nasıl oluşturulur?';
 
   @override
   String get p2pHowToCreatePasskeyDescription1 => 'Deriv P2P uygulamanızdaki \'Profil\' bölümüne gidin.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'Passkey\'inizi oluşturmak için \"Passkeys\" ögesine dokunun.';
+  String get p2pHowToCreatePasskeyDescription2 => 'Biometric\'inizi oluşturmak için \"Biometrics\" ögesine dokunun.';
 
   @override
-  String get whereArePasskeysSaved => 'Passkeys nereye kaydedilir?';
+  String get whereArePasskeysSaved => 'Biometrics nereye kaydedilir?';
 
   @override
   String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google şifre yöneticisi.';
@@ -85,16 +87,16 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChanged => 'Deriv hesabım e-posta adresim değiştirilirse ne olur?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'Sorun yok! Passkey hâlâ çalışıyor.';
+  String get whatHappensIfEmailChangedDescription1 => 'Sorun yok! Biometric hâlâ çalışıyor.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'Mevcut passkey ile Deriv\'de oturum açın.';
+  String get whatHappensIfEmailChangedDescription2 => 'Mevcut Biometric ile Deriv\'de oturum açın.';
 
   @override
   String get tips => 'İpuçları';
 
   @override
-  String get beforeUsingPasskeys => 'Passkey kullanmadan önce';
+  String get beforeUsingPasskeys => 'Biometric kullanmadan önce';
 
   @override
   String get enableScreenLock => 'Cihazınızda ekran kilidini etkinleştirin.';
@@ -106,19 +108,19 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get enableBluetooth => 'Bluetooth\'u etkinleştir.';
 
   @override
-  String get noPasskeyFound => 'Passkey bulunamadı!';
+  String get noPasskeyFound => 'Biometric bulunamadı!';
 
   @override
-  String get noPasskeyFoundDescription => 'Bu özelliği kullanmak için lütfen bir passkey oluşturun.';
+  String get noPasskeyFoundDescription => 'Bu özelliği kullanmak için lütfen bir Biometric oluşturun.';
 
   @override
   String get maybeLater => 'Belki daha sonra';
 
   @override
-  String get effortlessLoginWithPasskeys => 'Passkey tuşları ile zahmetsiz giriş';
+  String get effortlessLoginWithPasskeys => 'Biometric tuşları ile zahmetsiz giriş';
 
   @override
-  String get learnMoreAboutPasskeys => 'Passkeys hakkında daha fazla bilgi edinin';
+  String get learnMoreAboutPasskeys => 'Biometrics hakkında daha fazla bilgi edinin';
 
   @override
   String get noNeedToRememberPassword => 'Şifreyi hatırlamanıza gerek yok';
@@ -130,7 +132,7 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'Cihazlar arasında senkronizasyon';
 
   @override
-  String get createPasskey => 'Passkey oluştur';
+  String get createPasskey => 'Biometric oluştur';
 
   @override
   String get unsupportedPlatform => 'Desteklenmeyen Platform';
@@ -151,16 +153,16 @@ class DerivPasskeysLocalizationsTr extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'Alım satıma devam';
 
   @override
-  String get addMorePasskeysButtonText => 'Daha fazla passkeys ekle';
+  String get addMorePasskeysButtonText => 'Daha fazla Biometrics ekle';
 
   @override
-  String get unableToSetupPasskey => 'Passkey ayarlanamıyor';
+  String get unableToSetupPasskey => 'Biometric ayarlanamıyor';
 
   @override
-  String get unableToSetupPasskeyDescription => 'Passkey ayarlarken bir sorunla karşılaştık. İşlem yarıda kesilmiş veya oturum zaman aşımına uğramış olabilir. Lütfen tekrar deneyin.';
+  String get unableToSetupPasskeyDescription => 'Biometric ayarlarken bir sorunla karşılaştık. İşlem yarıda kesilmiş veya oturum zaman aşımına uğramış olabilir. Lütfen tekrar deneyin.';
 
   @override
-  String get passkeysOffErrorTitle => 'Passkeys hizmeti kullanılamıyor';
+  String get passkeysOffErrorTitle => 'Biometrics hizmeti kullanılamıyor';
 
   @override
   String get never => 'Asla';

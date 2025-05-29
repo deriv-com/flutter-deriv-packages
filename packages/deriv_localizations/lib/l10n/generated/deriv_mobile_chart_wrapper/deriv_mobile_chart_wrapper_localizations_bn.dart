@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Bengali Bangla (`bn`).
 class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsBn([String locale = 'bn']) : super(locale);
@@ -11,7 +13,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelActive => 'সক্রিয়';
 
   @override
-  String get labelAll => 'সব';
+  String get labelAll => 'সকল';
 
   @override
   String get labelMomentum => 'মোমেন্টাম';
@@ -23,25 +25,25 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelMovingAverages => 'মুভিং গড়';
 
   @override
-  String get labelMACD => 'ম্যাকডি';
+  String get labelMACD => 'MACD';
 
   @override
   String get labelRelativeStrengthIndex => 'আপেক্ষিক শক্তি সূচক (আরএসআই)';
 
   @override
-  String get labelRSI => 'আরএসআই';
+  String get labelRSI => 'RSI';
 
   @override
   String get labelBollingerBands => 'বোলিঙ্গার ব্যান্ড (বিবি)';
 
   @override
-  String get labelBB => 'বিবি';
+  String get labelBB => 'BB';
 
   @override
   String get labelMovingAverage => 'মুভিং এভারেজ (এমএ)';
 
   @override
-  String get labelMA => 'মা';
+  String get labelMA => 'MA';
 
   @override
   String get infoMACD => 'এমএসিডি স্টকের দামের প্রযুক্তিগত বিশ্লেষণে ব্যবহৃত একটি ট্রেডিং সূচক। এটি কোনও স্টকের দামের প্রবণতার শক্তি, দিক, গতি এবং সময়কালের পরিবর্তনগুলি প্রকাশ করবে বলে মনে করা হয়।';
@@ -133,7 +135,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelClose => 'বন্ধ করুন';
 
   @override
-  String get labelOpen => 'খোলা';
+  String get labelOpen => 'ওপেন';
 
   @override
   String get labelHigh => 'উচ্চ';
@@ -169,7 +171,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelMaxSize => 'সর্বোচ্চ আকার';
 
   @override
-  String get labelRange => 'পরিসীমা';
+  String get labelRange => 'রেঞ্জ';
 
   @override
   String get labelOverboughtLine => 'ওভারবাউট লাইন';
@@ -226,7 +228,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelOffset => 'অফসেট';
 
   @override
-  String get labelType => 'টাইপ';
+  String get labelType => 'ধরণ';
 
   @override
   String get labelSimple => 'সহজ';
@@ -284,7 +286,7 @@ class DerivMobileChartWrapperLocalizationsBn extends DerivMobileChartWrapperLoca
   String get labelRay => 'রশ্মি';
 
   @override
-  String get informTapToSetFirstPoint => 'প্রথম পয়েন্ট সেট করতে আলতো চাপুন';
+  String get informTapToSetFirstPoint => 'প্রথম পয়েন্ট সেট করতে ট্যাপ করুন';
 
   @override
   String get informTapToSetFinalPoint => 'চূড়ান্ত পয়েন্ট সেট করতে ট্যাপ করুন';

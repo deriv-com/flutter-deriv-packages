@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Chinese (`zh`).
 class DerivMobileChartWrapperLocalizationsZh extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsZh([String locale = 'zh']) : super(locale);
@@ -322,7 +324,7 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelMomentum => '动量';
 
   @override
-  String get labelVolatility => '波动率';
+  String get labelVolatility => 'Volatility';
 
   @override
   String get labelMovingAverages => '移动平均线';
@@ -337,7 +339,7 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelRSI => 'RSI';
 
   @override
-  String get labelBollingerBands => '布林带 (BB)';
+  String get labelBollingerBands => '布林线 (BB)';
 
   @override
   String get labelBB => 'BB';
@@ -346,19 +348,19 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelMovingAverage => '移动平均线 (MA)';
 
   @override
-  String get labelMA => 'MA';
+  String get labelMA => '移动平均线 (MA)';
 
   @override
-  String get infoMACD => 'MACD 是用于股价技术分析的交易指标。可揭示股票价格走势的强度、方向、动量和持续时间的变化。';
+  String get infoMACD => 'MACD 是用于股价技术分析的交易指标。可揭示股票价格走势的强度、方向、动量和持续时间变化。';
 
   @override
-  String get infoRSI => '相对强度指数（RSI）由 J. Welles Wilder 发布。当前价格按介于 0 到 100 之间的百分比进行标准化。该振荡器的 flutter_chart_id 具有误导性，因为它不将该工具与另一种工具或一组工具相比较，而是代表选定回顾窗口长度内相对于其他近期产品的当前价格。';
+  String get infoRSI => '相对强度指数 (RSI) 由 J. Welles Wilder 发布。当前价格按介于 0 到 100 之间的百分比被标准化。该振荡线的 flutter_chart_id 具有误导性，因为其不与另一种工具或一组工具相比较，而是代表选定回顾窗口长度内相对于其他近期产品的当前价格。';
 
   @override
-  String get infoBB => '布林带（BB）可用于衡量价格相对于先前交易的高点或低点。';
+  String get infoBB => '布林线 (BB) 可用于测量与之前交易相对的价格变化高低点。';
 
   @override
-  String get infoMA => '移动平均线（MA）通过过滤短期价格波动来帮助识别整体市场趋势。它使用历史数据计算特定时期内的平均价格，并在图表上绘线。如果 MA 线向上移动，则表示上升趋势，如果向下移动，则为下降趋势。当价格升至均线上方时，就会出现买入信号。';
+  String get infoMA => '移动平均线 (MA) 通过过滤短期价格波动来帮助识别整体市场趋势。其使用历史数据计算特定时期内的平均价格，并在图表上绘线。如果 MA 线向上移动，则表示上升趋势，如果向下移动，则为下降趋势。当价格升至均线上方时，就会出现买入信号。';
 
   @override
   String get infoMaximumActiveIndicatorsAdded => '已经添加了最大数量的活跃指标。';
@@ -379,7 +381,7 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
 
   @override
   String infoResetIndicators(Object indicator) {
-    return '这会将$indicator 指标重置为其默认设置。';
+    return '这将重置 $indicator 指标为其默认设置。';
   }
 
   @override
@@ -417,7 +419,7 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelApply => '申请';
 
   @override
-  String get labelOK => 'OK';
+  String get labelOK => '确定';
 
   @override
   String get labelRSILine => 'RSI 线';
@@ -435,10 +437,10 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelSource => '来源';
 
   @override
-  String get labelClose => '关闭';
+  String get labelClose => '收盘';
 
   @override
-  String get labelOpen => '打开';
+  String get labelOpen => '开盘';
 
   @override
   String get labelHigh => 'High';
@@ -504,13 +506,13 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelDecreasingBar => '减小柱线';
 
   @override
-  String get labelBollingerBandsTop => '布林带顶部';
+  String get labelBollingerBandsTop => '布林线顶部';
 
   @override
-  String get labelBollingerBandsMedian => '布林带中位数';
+  String get labelBollingerBandsMedian => '布林线中位数';
 
   @override
-  String get labelBollingerBandsBottom => '布林带底部';
+  String get labelBollingerBandsBottom => '布林线底部';
 
   @override
   String get labelChannelFill => '频道填充';
@@ -528,7 +530,7 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelMALine => 'MA 线';
 
   @override
-  String get labelOffset => '抵消';
+  String get labelOffset => '偏移';
 
   @override
   String get labelType => '类型';
@@ -586,7 +588,7 @@ class DerivMobileChartWrapperLocalizationsZhCn extends DerivMobileChartWrapperLo
   String get labelLine => '线';
 
   @override
-  String get labelRay => '射线';
+  String get labelRay => 'Ray';
 
   @override
   String get informTapToSetFirstPoint => '轻触即可设置第一个点';
@@ -636,13 +638,13 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelMACD => 'MACD';
 
   @override
-  String get labelRelativeStrengthIndex => '相對強度指數（RSI）';
+  String get labelRelativeStrengthIndex => '相對強度指數 (RSI)';
 
   @override
   String get labelRSI => 'RSI';
 
   @override
-  String get labelBollingerBands => '布林格帶（BB）';
+  String get labelBollingerBands => '布林通道 (BB)';
 
   @override
   String get labelBB => 'BB';
@@ -654,19 +656,19 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelMA => 'MA';
 
   @override
-  String get infoMACD => 'MACD 是交易指標，用於股票價格的技術分析。可顯示股票價格中趨勢的強度、方向、動量和持續時間的變化。';
+  String get infoMACD => 'MACD 是用於股票價格技術分析的交易指標。可揭露股票價格走勢的力量、方向、動量和期間變化。';
 
   @override
-  String get infoRSI => '相對強度指數（RSI）由 J. Welles Wilder 發布。將目前價格以 0 到 100 之間的百分比標準化。此振盪器的 flutter_chart_id 具有誤導性，因為它不與其他工具或一組工具相比較，而是代表所選回顧窗口長度內與其他最近的股票相對的目前價格。';
+  String get infoRSI => '相對強度指數 (RSI) 由 J. Welles Wilder 發布。將目前價格以 0 到 100 之間的百分比標準化。此振盪指標的 flutter_chart_id 具有誤導性，因為其不與其他工具或一組工具相比較，而是代表所選回顧視窗長度內相對於其他近期產品的目前價格。';
 
   @override
-  String get infoBB => '布林格帶（BB）可用於測量與之前交易相對於價格的高度或低度。';
+  String get infoBB => '布林通道 (BB) 可用於測量與之前交易相對的價格變化高低點.';
 
   @override
-  String get infoMA => '移動平均線（MA）通過過濾短期價格波動來幫助識別整體市場趨勢。它使用歷史資料，計算特定期間的平均價格，並在圖表繪線。如果 MA 線向上移動，則是上升趨勢的指標，如果向下移動則是下降趨勢的指標。當價格走在 MA 線上方時，就會出現買入信號。';
+  String get infoMA => '移動平均線 (MA) 透過過濾短期價格波動來幫助識別整體市場趨勢。其使用歷史資料計算特定期間內的平均價格，並在圖表上繪線。如果 MA 線向上移動，則表示上升趨勢，如果向下移動，則為下降趨勢。當價格升至均線上方時，就會出現買進訊號。';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded => '已新增使用中指標數目上限。';
+  String get infoMaximumActiveIndicatorsAdded => '已新增最大數量的使用中指標。';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -680,11 +682,11 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelDeleteAllIndicators => '刪除所有指標';
 
   @override
-  String get infoDeleteAllIndicators => '這將刪除所有活躍指標。';
+  String get infoDeleteAllIndicators => '這將刪除所有使用中指標。';
 
   @override
   String infoResetIndicators(Object indicator) {
-    return '這將把 $indicator 指標重設為其預設設定。';
+    return '這將重設 $indicator 指標為其預設設定。';
   }
 
   @override
@@ -710,10 +712,10 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelDeleteAll => '刪除全部';
 
   @override
-  String get infoUpto3indicatorsAllowed => '最多允許 3 個活躍指標。';
+  String get infoUpto3indicatorsAllowed => '最多允許 3 個使用中指標。';
 
   @override
-  String get infoNoActiveIndicators => '沒有活躍指標。';
+  String get infoNoActiveIndicators => '沒有使用中指標。';
 
   @override
   String get labelReset => '重設';
@@ -722,7 +724,7 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelApply => '申請';
 
   @override
-  String get labelOK => '好';
+  String get labelOK => '確定';
 
   @override
   String get labelRSILine => 'RSI 線';
@@ -797,10 +799,10 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelSlowMAPeriod => '慢速 MA 週期';
 
   @override
-  String get labelSignalLine => '信號線';
+  String get labelSignalLine => '訊號線';
 
   @override
-  String get labelSignalPeriod => '信號週期';
+  String get labelSignalPeriod => '訊號週期';
 
   @override
   String get labelIncreasingBar => '增加條型線';
@@ -809,13 +811,13 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelDecreasingBar => '減少條型線';
 
   @override
-  String get labelBollingerBandsTop => '布林格帶頂部';
+  String get labelBollingerBandsTop => '布林通道頂部';
 
   @override
-  String get labelBollingerBandsMedian => '布林格帶中位數';
+  String get labelBollingerBandsMedian => '布林通道中位數';
 
   @override
-  String get labelBollingerBandsBottom => '布林格帶底部';
+  String get labelBollingerBandsBottom => '布林通道底部';
 
   @override
   String get labelChannelFill => '通道填充';
@@ -891,7 +893,7 @@ class DerivMobileChartWrapperLocalizationsZhTw extends DerivMobileChartWrapperLo
   String get labelLine => '線';
 
   @override
-  String get labelRay => '射線';
+  String get labelRay => 'Ray';
 
   @override
   String get informTapToSetFirstPoint => '輕觸以設定第一點';

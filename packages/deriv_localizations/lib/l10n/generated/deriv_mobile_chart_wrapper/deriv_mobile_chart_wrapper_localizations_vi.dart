@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Vietnamese (`vi`).
 class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsVi([String locale = 'vi']) : super(locale);
@@ -226,7 +228,7 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
   String get labelOffset => 'Bù đắp';
 
   @override
-  String get labelType => 'Kiểu';
+  String get labelType => 'Loại';
 
   @override
   String get labelSimple => 'Đơn giản';

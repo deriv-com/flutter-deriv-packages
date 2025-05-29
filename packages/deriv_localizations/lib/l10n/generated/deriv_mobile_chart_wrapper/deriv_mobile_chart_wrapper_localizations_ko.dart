@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Korean (`ko`).
 class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsKo([String locale = 'ko']) : super(locale);
@@ -145,7 +147,7 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
   String get labelHl2 => 'Hl/2';
 
   @override
-  String get labelHlc3 => 'Hlc/3';
+  String get labelHlc3 => 'HLC/3';
 
   @override
   String get labelHlcc4 => 'Hlcc/4';
@@ -229,7 +231,7 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
   String get labelType => '유형';
 
   @override
-  String get labelSimple => 'Simple';
+  String get labelSimple => '심플';
 
   @override
   String get labelExponential => '지수';
@@ -238,7 +240,7 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
   String get labelWeighted => '가중치';
 
   @override
-  String get labelHull => 'Hull';
+  String get labelHull => '헐';
 
   @override
   String get labelZeroLag => '제로 랙';
@@ -302,5 +304,5 @@ class DerivMobileChartWrapperLocalizationsKo extends DerivMobileChartWrapperLoca
   String get labelDeleteAllDrawingTools => '모든 그리기 도구 삭제';
 
   @override
-  String get informDeleteAllDrawingTools => '이렇게 하면 활성 드로잉 도구가 모두 삭제됩니다.';
+  String get informDeleteAllDrawingTools => '활성화된 모든 그리기 도구가 삭제됩니다.';
 }

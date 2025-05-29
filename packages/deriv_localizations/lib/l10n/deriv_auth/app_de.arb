@@ -10,10 +10,10 @@
       }
     }
   },
-  "actionOk": "OK",
+  "actionOk": "Okay",
   "warnNotAvailableCountries": "Wenn Sie Fragen haben, kontaktieren Sie uns über ",
   "labelLiveChat": "Live-chat",
-  "actionSignUpForFree": "Melden Sie sich kostenlos an",
+  "actionSignUpForFree": "Melde dich kostenlos an",
   "actionLogin": "Anmelden",
   "labelTwoFactorAuth": "Zwei-Faktor-Authentifizierung",
   "informEnterTwoFactorAuthCode": "Geben Sie den 6-stelligen Code aus der Authentifizierungs-App auf Ihrem Telefon ein.",

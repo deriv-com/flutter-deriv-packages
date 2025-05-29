@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for French (`fr`).
 class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsFr([String locale = 'fr']) : super(locale);
@@ -112,7 +114,7 @@ class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLoca
   String get labelApply => 'Appliquer';
 
   @override
-  String get labelOK => 'OK';
+  String get labelOK => 'OK.';
 
   @override
   String get labelRSILine => 'Ligne RSI';
@@ -148,7 +150,7 @@ class DerivMobileChartWrapperLocalizationsFr extends DerivMobileChartWrapperLoca
   String get labelHlc3 => 'Hlc/3';
 
   @override
-  String get labelHlcc4 => 'Hlcc/4';
+  String get labelHlcc4 => 'Hcc/4';
 
   @override
   String get labelOhlc4 => 'Ohlc/4';

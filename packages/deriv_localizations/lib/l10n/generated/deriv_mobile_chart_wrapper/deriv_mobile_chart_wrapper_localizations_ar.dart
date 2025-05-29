@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Arabic (`ar`).
 class DerivMobileChartWrapperLocalizationsAr extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsAr([String locale = 'ar']) : super(locale);
@@ -145,10 +147,10 @@ class DerivMobileChartWrapperLocalizationsAr extends DerivMobileChartWrapperLoca
   String get labelHl2 => 'هـ / 2';
 
   @override
-  String get labelHlc3 => 'Hlc/3';
+  String get labelHlc3 => 'هيدروكلورايد 3';
 
   @override
-  String get labelHlcc4 => 'Hlcc/4';
+  String get labelHlcc4 => 'HLCC/4';
 
   @override
   String get labelOhlc4 => 'أولك/4';

@@ -1,5 +1,7 @@
 import 'deriv_mobile_chart_wrapper_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Italian (`it`).
 class DerivMobileChartWrapperLocalizationsIt extends DerivMobileChartWrapperLocalizations {
   DerivMobileChartWrapperLocalizationsIt([String locale = 'it']) : super(locale);
@@ -241,7 +243,7 @@ class DerivMobileChartWrapperLocalizationsIt extends DerivMobileChartWrapperLoca
   String get labelHull => 'Scafo';
 
   @override
-  String get labelZeroLag => 'Zero Lag';
+  String get labelZeroLag => 'Ritardo zero';
 
   @override
   String get labelTimeSeries => 'Serie temporale';

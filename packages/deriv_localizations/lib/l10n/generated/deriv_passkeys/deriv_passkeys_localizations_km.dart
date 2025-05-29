@@ -1,11 +1,13 @@
 import 'deriv_passkeys_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Khmer Central Khmer (`km`).
 class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   DerivPasskeysLocalizationsKm([String locale = 'km']) : super(locale);
 
   @override
-  String get passkeyCreatedSuccessTitle => 'ជោគជ័យ!';
+  String get passkeyCreatedSuccessTitle => 'ជោគជ័យហើយ!';
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
@@ -13,7 +15,7 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   }
 
   @override
-  String get continueButtonText => 'បន្ត';
+  String get continueButtonText => 'ដំណើរការបន្ត';
 
   @override
   String get unexpectedError => 'មានកំហុសដែលមិនបានរំពឹងទុកបានកើតឡើង!';
@@ -22,7 +24,7 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   String get unexpectedErrorDescription => 'សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។';
 
   @override
-  String get ok => 'យល់ព្រម';
+  String get ok => 'Ok';
 
   @override
   String get experienceSaferLogins => 'ជួបប្រទះការចូលដែលមានសុវត្ថិភាពជាងមុន';
@@ -58,7 +60,7 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   String get howToCreatePasskey => 'របៀបបង្កើតសោចូល?';
 
   @override
-  String get howToCreatePasskeyDescription1 => 'ចូលទៅកាន់ \'ការកំណត់គណនី\' នៅលើ Deriv។';
+  String get howToCreatePasskeyDescription1 => 'ចូលទៅកាន់ \'ការកំណត់គណនី\' នៅលើ Deriv ។';
 
   @override
   String get howToCreatePasskeyDescription2 => 'អ្នកអាចបង្កើតសោចូលមួយសម្រាប់ឧបករណ៍នីមួយៗ។';
@@ -76,7 +78,7 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   String get whereArePasskeysSaved => 'តើសោចូលត្រូវបានរក្សាទុកនៅឯណា?';
 
   @override
-  String get whereArePasskeysSavedDescriptionAndroid => 'Android៖ កម្មវិធីគ្រប់គ្រងពាក្យសម្ងាត់ Google។';
+  String get whereArePasskeysSavedDescriptionAndroid => 'Android៖ កម្មវិធីគ្រប់គ្រងពាក្យសម្ងាត់តាម Google ។';
 
   @override
   String get whereArePasskeysSavedDescriptionIOS => 'iOS៖ iCloud keychain។';
@@ -91,16 +93,16 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChangedDescription2 => 'ចូលទៅក្នុង Deriv ជាមួយសោចូលដែលមានស្រាប់របស់អ្នក។';
 
   @override
-  String get tips => 'ការណែនាំ';
+  String get tips => 'ព័ត៌មានជំនួយ';
 
   @override
   String get beforeUsingPasskeys => 'មុនពេលប្រើប្រាស់សោចូល';
 
   @override
-  String get enableScreenLock => 'បើកការចាក់សោអេក្រង់នៅលើឧបករណ៍របស់អ្នក។';
+  String get enableScreenLock => 'បើកប្រើប្រាស់ការចាក់សោអេក្រង់នៅលើឧបករណ៍របស់អ្នក។';
 
   @override
-  String get signInGoogleOrIcloud => 'ចូលទៅក្នុងគណនី Google ឬ iCloud របស់អ្នក។';
+  String get signInGoogleOrIcloud => 'ចូលគណនី Google ឬ iCloud របស់អ្នក។';
 
   @override
   String get enableBluetooth => 'បើក Bluetooth។';
@@ -121,22 +123,22 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   String get learnMoreAboutPasskeys => 'ស្វែងយល់បន្ថែមអំពីសោចូល';
 
   @override
-  String get noNeedToRememberPassword => 'មិនចាំបាច់ចាំពាក្យសម្ងាត់ទេ';
+  String get noNeedToRememberPassword => 'មិនចាំបាច់ចាំពាក្យសម្ងាត់ទេ។';
 
   @override
-  String get useYourBiometrics => 'សុវត្ថិភាពកាន់តែប្រសើរឡើងជាមួយជីវមាត្រ ឬការចាក់សោអេក្រង់';
+  String get useYourBiometrics => 'ពង្រឹងសុវត្ថិភាពជាមួយនឹងជីវមាត្រ ឬចាក់សោអេក្រង់';
 
   @override
-  String get syncAcrossDevices => 'ធ្វើសមកាលកម្មនៅលើឧបករណ៍';
+  String get syncAcrossDevices => 'តភ្ជាប់បានរវាងឧបករណ៍នានា';
 
   @override
   String get createPasskey => 'បង្កើតសោចូល';
 
   @override
-  String get unsupportedPlatform => 'វេទិកាមិនត្រូវបានគាំទ្រ';
+  String get unsupportedPlatform => 'វេទិកាដែលមិនគាំទ្រ';
 
   @override
-  String get storedOn => 'រក្សាទុកនៅលើ';
+  String get storedOn => 'បានរក្សាទុកនៅ';
 
   @override
   String get lastUsed => 'ប្រើចុងក្រោយ';
@@ -145,7 +147,7 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   String get rename => 'ប្តូរឈ្មោះ';
 
   @override
-  String get revoke => 'លុបចោល';
+  String get revoke => 'ដកហូត';
 
   @override
   String get continueTradingButtonText => 'បន្តការជួញដូរ';
@@ -169,5 +171,5 @@ class DerivPasskeysLocalizationsKm extends DerivPasskeysLocalizations {
   String get unable_to_process_your_request => 'មិនអាចដំណើរការសំណើរបស់អ្នកបានទេ';
 
   @override
-  String get unable_to_process_your_request_description => 'យើងកំពុងជួបប្រទះបញ្ហាបណ្តោះអាសន្នក្នុងការដំណើរការសំណើរបស់អ្នក។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។';
+  String get unable_to_process_your_request_description => 'យើងកំពុងជួបប្រទះបញ្ហាបណ្តោះអាសន្នក្នុងដំណើរការសំណើរបស់អ្នក។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។';
 }
