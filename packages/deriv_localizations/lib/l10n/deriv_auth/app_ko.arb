@@ -103,7 +103,7 @@
   "informUnexpectedError": "예상하지 못한 오류가 발생했습니다.",
   "informUnsupportedCountry": "귀하의 국가는 지원되지 않습니다.",
   "informExpiredAccount": "계정이 만료되었습니다",
-  "labelCountryConsentBrazil": "본인은 브라질 이외 지역에서만 발행 및 제공되는 OTC 상품을 거래하기 위해 Deriv를 통한 계정을 개설하고자 하는 요청이 본인에 의해 시작되었음을 확정합니다. 본인은 Deriv가 CVM의 규제를 받지 않는다는 것을 충분히 이해하며 Deriv에 접근하여 외국 회사와 관계를 구축하고자 하는 것입니다.",
+  "labelCountryConsentBrazil": "본인은 브라질 이외의 지역에서만 발행 및 제공되는 OTC 상품을 거래하기 위해 Deriv를 통해 계정을 개설하고자 하는 요청이 본인의 의해 시작되었음을 확정합니다. 본인은 Deriv가 CVM의 규제를 받지 않는다는 것을 충분히 이해하고 있으며 Deriv에 접근함으로써 외국 회사와의 관계를 구축한다는 것을 충분히 이해합니다.",
   "informConnectionError": "연결 오류입니다. 나중에 다시 시도하시기 바랍니다.",
   "informSwitchAccountError": "계정 전환 오류입니다. 나중에 다시 시도하시기 바랍니다.",
   "labelDeveloper": "개발자",
