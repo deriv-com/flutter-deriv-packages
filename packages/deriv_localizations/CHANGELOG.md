@@ -1,3 +1,7 @@
+## 1.9.1
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#968](https://github.com/deriv-com/flutter-deriv-packages.git/issues/968)). ([79277600](https://github.com/deriv-com/flutter-deriv-packages.git/commit/792776000afdb4b8e65903e108048ce66f2f12d5))
+
 ## 1.9.0
 
  - **FIX**(deriv_localizations): Updated passkeys label to biometrics ([#955](https://github.com/deriv-com/flutter-deriv-packages.git/issues/955)). ([ca613238](https://github.com/deriv-com/flutter-deriv-packages.git/commit/ca613238701fd17571bd67877d96f3a1eb6e1d26))

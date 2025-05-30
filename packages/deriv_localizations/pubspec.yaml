@@ -3,7 +3,7 @@ description: This packages contains all localizations for the deriv packages
 
 publish_to: 'none'
 
-version: 1.9.0
+version: 1.9.1
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
