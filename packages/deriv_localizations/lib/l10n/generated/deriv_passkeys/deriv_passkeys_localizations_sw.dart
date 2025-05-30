@@ -9,7 +9,7 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
-    return 'Akaunti yako sasa imehifadhiwa na passkey. Dhibiti passkey yako kupi tia mipangilio yako ya akaunti ya $platformName.';
+    return 'Akaunti yako sasa imehifadhiwa na Biometric. Dhibiti Biometric yako kupi tia mipangilio yako ya akaunti ya $platformName.';
   }
 
   @override
@@ -34,10 +34,10 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get here => 'hapa';
 
   @override
-  String get effortlessLogin => 'Kuingia bila juhudi kwa passkeys';
+  String get effortlessLogin => 'Kuingia bila juhudi kwa Biometrics';
 
   @override
-  String get whatArePasskeys => 'Nini passkeys?';
+  String get whatArePasskeys => 'Nini Biometrics?';
 
   @override
   String get whatArePasskeysDescriptionPoint1 => 'Njia mbadala ya kufanya nenosiri kuwa salama.';
@@ -46,7 +46,7 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get whatArePasskeysDescriptionPoint2 => 'Fungua akaunti yako kama vile simu yako - kwa biyometriki, kuskani uso au PIN.';
 
   @override
-  String get whyPasskeys => 'Kwa nini passkeys?';
+  String get whyPasskeys => 'Kwa nini Biometrics?';
 
   @override
   String get whyPasskeysDescription1 => 'Safu ya ziada ya usalama.';
@@ -55,25 +55,25 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get whyPasskeysDescription2 => 'Kinga dhidi ya ufikiaji ambao haujaidhinishwa na hadaa.';
 
   @override
-  String get howToCreatePasskey => 'Jinsi ya kuunda passkey?';
+  String get howToCreatePasskey => 'Jinsi ya kuunda Biometric?';
 
   @override
   String get howToCreatePasskeyDescription1 => 'Nenda katika \'Mipangilio ya Akaunti\' kwenye Deriv.';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'Unaweza kuunda passkey moja kwa kila kifaa.';
+  String get howToCreatePasskeyDescription2 => 'Unaweza kuunda Biometric moja kwa kila kifaa.';
 
   @override
-  String get p2pHowToCreatePasskey => 'Jinsi ya kuunda passkey?';
+  String get p2pHowToCreatePasskey => 'Jinsi ya kuunda Biometric?';
 
   @override
   String get p2pHowToCreatePasskeyDescription1 => 'Nenda kwenye \'Profaili\' katika programu yako ya Deriv P2P.';
 
   @override
-  String get p2pHowToCreatePasskeyDescription2 => 'Gonga \'Passkeys\' ili kuunda nenosiri lako.';
+  String get p2pHowToCreatePasskeyDescription2 => 'Gonga \'Biometrics\' ili kuunda nenosiri lako.';
 
   @override
-  String get whereArePasskeysSaved => 'Passkeys zimehifadhiwa wapi?';
+  String get whereArePasskeysSaved => 'Biometrics zimehifadhiwa wapi?';
 
   @override
   String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google password manager.';
@@ -85,16 +85,16 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChanged => 'Nini kinatokea ikiwa barua pepe yangu ya akaunti ya Deriv imebadil?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'Hakuna tatizo! Passkey yako bado inafanya kazi.';
+  String get whatHappensIfEmailChangedDescription1 => 'Hakuna tatizo! Biometric yako bado inafanya kazi.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'Ingia kwenye Deriv na passkey yako iliyopo.';
+  String get whatHappensIfEmailChangedDescription2 => 'Ingia kwenye Deriv na Biometric yako iliyopo.';
 
   @override
   String get tips => 'Vidokezo';
 
   @override
-  String get beforeUsingPasskeys => 'Kabla ya kutumia passkeys';
+  String get beforeUsingPasskeys => 'Kabla ya kutumia Biometrics';
 
   @override
   String get enableScreenLock => 'Wezesha kufunga skrini kwenye kifaa chako.';
@@ -106,19 +106,19 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get enableBluetooth => 'Wezesha Bluetooth.';
 
   @override
-  String get noPasskeyFound => 'Hakuna passkey iliyopatikana!';
+  String get noPasskeyFound => 'Hakuna Biometric iliyopatikana!';
 
   @override
-  String get noPasskeyFoundDescription => 'Tafadhali unda passkey ili kutumia kipengele hiki.';
+  String get noPasskeyFoundDescription => 'Tafadhali unda Biometric ili kutumia kipengele hiki.';
 
   @override
   String get maybeLater => 'Labda baadaye';
 
   @override
-  String get effortlessLoginWithPasskeys => 'Kuingia bila juhudi kwa passkeys';
+  String get effortlessLoginWithPasskeys => 'Kuingia bila juhudi kwa Biometrics';
 
   @override
-  String get learnMoreAboutPasskeys => 'Jifunze zaidi kuhusu passkeys';
+  String get learnMoreAboutPasskeys => 'Jifunze zaidi kuhusu Biometrics';
 
   @override
   String get noNeedToRememberPassword => 'Hakuna haja ya kukumbuka nenosiri';
@@ -130,7 +130,7 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'Sawazisha katika vifaa';
 
   @override
-  String get createPasskey => 'Unda passkey';
+  String get createPasskey => 'Unda Biometric';
 
   @override
   String get unsupportedPlatform => 'Jukwaa isiyosaidiwa';
@@ -151,16 +151,16 @@ class DerivPasskeysLocalizationsSw extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'Endelea kufanya biashara';
 
   @override
-  String get addMorePasskeysButtonText => 'Ongeza passkeys nyingine';
+  String get addMorePasskeysButtonText => 'Ongeza Biometrics nyingine';
 
   @override
-  String get unableToSetupPasskey => 'Haiwezi kuanzisha kifungu cha passkey';
+  String get unableToSetupPasskey => 'Haiwezi kuanzisha kifungu cha Biometric';
 
   @override
-  String get unableToSetupPasskeyDescription => 'Tulikutana na shida wakati wa kuanzisha passkey lako. Utaratibu huo unaweza kuingiliwa, au kikao kimekamilika. Tafadhali jaribu tena.';
+  String get unableToSetupPasskeyDescription => 'Tulikutana na shida wakati wa kuanzisha Biometric lako. Utaratibu huo unaweza kuingiliwa, au kikao kimekamilika. Tafadhali jaribu tena.';
 
   @override
-  String get passkeysOffErrorTitle => 'Huduma ya Passkeys haipatikani';
+  String get passkeysOffErrorTitle => 'Huduma ya Biometrics haipatikani';
 
   @override
   String get never => 'Kamwe';

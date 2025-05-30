@@ -34,10 +34,10 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get here => 'এখানে';
 
   @override
-  String get effortlessLogin => 'Passkeys সাথে অনায়াসে লগইন করুন';
+  String get effortlessLogin => 'Biometrics সাথে অনায়াসে লগইন করুন';
 
   @override
-  String get whatArePasskeys => 'Passkeys কী কী?';
+  String get whatArePasskeys => 'Biometrics কী কী?';
 
   @override
   String get whatArePasskeysDescriptionPoint1 => 'পাসওয়ার্ডের সুরক্ষিত বিকল্প।';
@@ -46,7 +46,7 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get whatArePasskeysDescriptionPoint2 => 'আপনার ফোনের মতো আপনার অ্যাকাউন্টটি আনলক করুন - বায়োমেট্রিক্স, ফেস স্ক্যান বা পিন সহ।';
 
   @override
-  String get whyPasskeys => 'Passkeys কেন?';
+  String get whyPasskeys => 'Biometrics কেন?';
 
   @override
   String get whyPasskeysDescription1 => 'অতিরিক্ত সুরক্ষা স্তর।';
@@ -55,13 +55,13 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get whyPasskeysDescription2 => 'অননুমোদিত অ্যাক্সেস এবং ফিশিং বিরুদ্ধে শিল্ড।';
 
   @override
-  String get howToCreatePasskey => 'Passkey একটি পাসকি তৈরি করবেন?';
+  String get howToCreatePasskey => 'Biometrics একটি পাসকি তৈরি করবেন?';
 
   @override
   String get howToCreatePasskeyDescription1 => 'Deriv \'অ্যাকাউন্ট সেটিংস\' এ যান।';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'Passkey প্রতি ডিভাইসে একটি পাসকি তৈরি করতে পারেন।';
+  String get howToCreatePasskeyDescription2 => 'Biometrics প্রতি ডিভাইসে একটি পাসকি তৈরি করতে পারেন।';
 
   @override
   String get p2pHowToCreatePasskey => 'কিভাবে পাসকি তৈরি করবেন?';
@@ -73,7 +73,7 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get p2pHowToCreatePasskeyDescription2 => 'আপনার পাসকি তৈরি করতে \'পাসকিস\' এ আলতো চাপুন।';
 
   @override
-  String get whereArePasskeysSaved => 'Passkeys কোথায় সংরক্ষণ করা হয়?';
+  String get whereArePasskeysSaved => 'Biometrics কোথায় সংরক্ষণ করা হয়?';
 
   @override
   String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google পাসওয়ার্ড ম্যানেজার।';
@@ -85,16 +85,16 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChanged => 'আমার Deriv অ্যাকাউন্ট ইমেইল পরিবর্তন হলে কি হবে?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'কোন সমস্যা নেই! আপনার Passkey এখনও কাজ করে।';
+  String get whatHappensIfEmailChangedDescription1 => 'কোন সমস্যা নেই! আপনার Biometrics এখনও কাজ করে।';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'আপনার বিদ্যমান Passkey দিয়ে Deriv সাইন ইন করুন।';
+  String get whatHappensIfEmailChangedDescription2 => 'আপনার বিদ্যমান Biometrics দিয়ে Deriv সাইন ইন করুন।';
 
   @override
   String get tips => 'টিপস';
 
   @override
-  String get beforeUsingPasskeys => 'Passkeys ব্যবহারের পূর্বে';
+  String get beforeUsingPasskeys => 'Biometrics ব্যবহারের পূর্বে';
 
   @override
   String get enableScreenLock => 'আপনার ডিভাইসে স্ক্রিন লক সক্ষম করুন।';
@@ -106,19 +106,19 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get enableBluetooth => 'ব্লুটুথ সক্ষম করুন।';
 
   @override
-  String get noPasskeyFound => 'কোনো Passkey পাওয়া যায়নি!';
+  String get noPasskeyFound => 'কোনো Biometrics পাওয়া যায়নি!';
 
   @override
-  String get noPasskeyFoundDescription => 'এই বৈশিষ্ট্যটি ব্যবহার করতে অনুগ্রহ করে একটি Passkey তৈরি করুন।';
+  String get noPasskeyFoundDescription => 'এই বৈশিষ্ট্যটি ব্যবহার করতে অনুগ্রহ করে একটি Biometrics তৈরি করুন।';
 
   @override
   String get maybeLater => 'হয়তো পরে';
 
   @override
-  String get effortlessLoginWithPasskeys => 'Passkeys সাথে অনায়াসে লগইন করুন';
+  String get effortlessLoginWithPasskeys => 'Biometrics সাথে অনায়াসে লগইন করুন';
 
   @override
-  String get learnMoreAboutPasskeys => 'Passkeys সম্পর্কে আরও জানুন';
+  String get learnMoreAboutPasskeys => 'Biometrics সম্পর্কে আরও জানুন';
 
   @override
   String get noNeedToRememberPassword => 'পাসওয়ার্ড স্মরণে রাখার দরকার নাই';
@@ -130,7 +130,7 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'ডিভাইস জুড়ে সিঙ্ক';
 
   @override
-  String get createPasskey => 'Passkey তৈরি';
+  String get createPasskey => 'Biometrics তৈরি';
 
   @override
   String get unsupportedPlatform => 'সমর্থিত প্ল্যাটফর্';
@@ -151,16 +151,16 @@ class DerivPasskeysLocalizationsBn extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'ট্রেডিং চালিয়ে যান';
 
   @override
-  String get addMorePasskeysButtonText => 'আরও Passkeys';
+  String get addMorePasskeysButtonText => 'আরও Biometrics';
 
   @override
-  String get unableToSetupPasskey => 'Passkey সেটআপ করতে অক্ষম';
+  String get unableToSetupPasskey => 'Biometrics সেটআপ করতে অক্ষম';
 
   @override
-  String get unableToSetupPasskeyDescription => 'আপনার Passkey সেট আপ করার সময় আমরা একটি সমস্যার মুখোমুখি হয়েছি। প্রক্রিয়াটি বাধা দেওয়া হতে পারে, বা সেশনের সময় শেষ হতে পারে। দয়া করে আবার চেষ্টা করুন।';
+  String get unableToSetupPasskeyDescription => 'আপনার Biometrics সেট আপ করার সময় আমরা একটি সমস্যার মুখোমুখি হয়েছি। প্রক্রিয়াটি বাধা দেওয়া হতে পারে, বা সেশনের সময় শেষ হতে পারে। দয়া করে আবার চেষ্টা করুন।';
 
   @override
-  String get passkeysOffErrorTitle => 'Passkeys পরিষেবাটি উপলব্ধ নয়';
+  String get passkeysOffErrorTitle => 'Biometrics পরিষেবাটি উপলব্ধ নয়';
 
   @override
   String get never => 'কখনই';

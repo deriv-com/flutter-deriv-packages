@@ -14,7 +14,7 @@ class DerivMobileChartWrapperLocalizationsRu extends DerivMobileChartWrapperLoca
   String get labelAll => 'Все';
 
   @override
-  String get labelMomentum => 'Momentum';
+  String get labelMomentum => 'Импульс';
 
   @override
   String get labelVolatility => 'Волатильность';
@@ -112,7 +112,7 @@ class DerivMobileChartWrapperLocalizationsRu extends DerivMobileChartWrapperLoca
   String get labelApply => 'Применить';
 
   @override
-  String get labelOK => 'OK';
+  String get labelOK => 'ХОРОШО';
 
   @override
   String get labelRSILine => 'Линия RSI';
@@ -151,7 +151,7 @@ class DerivMobileChartWrapperLocalizationsRu extends DerivMobileChartWrapperLoca
   String get labelHlcc4 => 'Hlcc/4';
 
   @override
-  String get labelOhlc4 => 'Ohlc/4';
+  String get labelOhlc4 => 'Оль/4';
 
   @override
   String get labelShowZones => 'Показать зоны';
