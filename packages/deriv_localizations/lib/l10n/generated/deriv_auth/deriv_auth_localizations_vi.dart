@@ -31,7 +31,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'Xác thực hai yếu tố';
 
   @override
-  String get informEnterTwoFactorAuthCode => 'Nhập mã gồm 6 chữ số từ ứng dụng xác thực trên điện thoại của bạn.';
+  String get informEnterTwoFactorAuthCode => 'Nhập mã gồm 6 số từ ứng dụng xác thực trên điện thoại của bạn.';
 
   @override
   String get labelTwoFactorAuthenticationCode => 'mã 2FA';
@@ -105,7 +105,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get labelChooseCountry => 'Chọn quốc gia';
 
   @override
-  String get warnCountryNotAvailable => 'Rất tiếc, Deriv không khả dụng ở quốc gia của bạn.';
+  String get warnCountryNotAvailable => 'Rất tiếc, Deriv không có mặt ở quốc gia của bạn.';
 
   @override
   String get actionNext => 'Tiếp theo';
@@ -153,16 +153,16 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get infoReferralInfoDescription => 'Mã chữ và số được cung cấp bởi một đơn vị liên kết Deriv, chỉ áp dụng cho đăng ký qua email.';
 
   @override
-  String get labelGotReferralCode => 'Có mã giới thiệu?';
+  String get labelGotReferralCode => 'Bạn có mã giới thiệu?';
 
   @override
   String get labelHaveAccount => 'Đã có tài khoản?';
 
   @override
-  String get actionCreateAccount => 'Tạo tài khoản demo miễn phí';
+  String get actionCreateAccount => 'Tạo tài khoản thử nghiệm miễn phí';
 
   @override
-  String get informInvalidReferralCode => 'Mã giới thiệu bạn đã nhập không hợp lệ. Kiểm tra và thử lại.';
+  String get informInvalidReferralCode => 'Mã giới thiệu bạn đã nhập không hợp lệ. Vui lòng kiểm tra và thử lại.';
 
   @override
   String get labelVerifyYourEmail => 'Xác minh email của bạn';
@@ -185,7 +185,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   }
 
   @override
-  String get actionEmailNotReceived => 'Không nhận được email bạn gửi?';
+  String get actionEmailNotReceived => 'Không nhận được email?';
 
   @override
   String get informPasswordPolicy => 'Mật khẩu của bạn phải có:';
@@ -260,7 +260,7 @@ class DerivAuthLocalizationsVi extends DerivAuthLocalizations {
   String get semanticEndpoint => 'Điểm kết thúc';
 
   @override
-  String get warnInvalidEndpoint => 'điểm kết thúc không hợp lệ';
+  String get warnInvalidEndpoint => 'điểm cuối không hợp lệ';
 
   @override
   String get labelApplicationID => 'Mã đăng ký';

@@ -226,7 +226,7 @@ class DerivMobileChartWrapperLocalizationsVi extends DerivMobileChartWrapperLoca
   String get labelOffset => 'Bù đắp';
 
   @override
-  String get labelType => 'Kiểu';
+  String get labelType => 'Loại';
 
   @override
   String get labelSimple => 'Đơn giản';

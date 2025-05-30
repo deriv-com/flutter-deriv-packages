@@ -16,7 +16,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get actionOk => 'OK';
 
   @override
-  String get warnNotAvailableCountries => 'Em caso de dúvidas, contacte-nos via ';
+  String get warnNotAvailableCountries => 'Em caso de dúvidas, contacte-nos via';
 
   @override
   String get labelLiveChat => 'Live chat';
@@ -85,10 +85,10 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get actionResetPass => 'Alterar palavra-passe';
 
   @override
-  String get informInvalidPasswordFormat => 'Introduza um formato de palavra-passe válido';
+  String get informInvalidPasswordFormat => 'Por favor, introduza um formato de palavra-passe válido';
 
   @override
-  String get labelCheckEmail => 'Verifique seu e-mail';
+  String get labelCheckEmail => 'Verifique o seu e-mail';
 
   @override
   String informSendResetPasswordEmail(String email) {
@@ -141,7 +141,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get actionPrevious => 'Anterior';
 
   @override
-  String get labelSignUp => 'Registe-se';
+  String get labelSignUp => 'Criar conta';
 
   @override
   String get labelOrSignUpWith => 'Ou registe-se através de';
@@ -150,7 +150,7 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'Código de referência de afiliado';
 
   @override
-  String get infoReferralInfoDescription => 'Código alfanumérico fornecido por um afiliado Deriv, aplicável apenas para registos por e-mail.';
+  String get infoReferralInfoDescription => 'Código alfanumérico fornecido por um afiliado Deriv, aplicável apenas a registos por e-mail.';
 
   @override
   String get labelGotReferralCode => 'Tem um código de referência?';
@@ -263,13 +263,13 @@ class DerivAuthLocalizationsPt extends DerivAuthLocalizations {
   String get warnInvalidEndpoint => 'endpoint inválido';
 
   @override
-  String get labelApplicationID => 'ID da aplicação';
+  String get labelApplicationID => 'N.º de ID da aplicação';
 
   @override
-  String get semanticApplicationID => 'ID da aplicação';
+  String get semanticApplicationID => 'N.º de ID da aplicação';
 
   @override
-  String get warnInvalidApplicationID => 'ID da aplicação inválido';
+  String get warnInvalidApplicationID => 'N.º de ID da aplicação inválido';
 
   @override
   String get labelLanguage => 'Idioma';

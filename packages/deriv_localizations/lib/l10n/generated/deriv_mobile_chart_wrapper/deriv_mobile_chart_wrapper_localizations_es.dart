@@ -112,7 +112,7 @@ class DerivMobileChartWrapperLocalizationsEs extends DerivMobileChartWrapperLoca
   String get labelApply => 'Aplique';
 
   @override
-  String get labelOK => 'OK';
+  String get labelOK => 'BIEN';
 
   @override
   String get labelRSILine => 'Línea RSI';
@@ -229,7 +229,7 @@ class DerivMobileChartWrapperLocalizationsEs extends DerivMobileChartWrapperLoca
   String get labelType => 'Tipo';
 
   @override
-  String get labelSimple => 'Simple';
+  String get labelSimple => 'Sencillo';
 
   @override
   String get labelExponential => 'Exponencial';

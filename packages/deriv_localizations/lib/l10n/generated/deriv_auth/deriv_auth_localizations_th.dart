@@ -22,7 +22,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get labelLiveChat => 'แชทสด';
 
   @override
-  String get actionSignUpForFree => 'ลงทะเบียนได้ฟรี';
+  String get actionSignUpForFree => 'ลงทะเบียนฟรี';
 
   @override
   String get actionLogin => 'เข้าสู่ระบบ';
@@ -61,7 +61,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get actionCreateANewAccount => 'สร้างบัญชีใหม่';
 
   @override
-  String get informInvalidEmailFormat => 'ป้อนที่อยู่อีเมล์ที่ถูกต้อง';
+  String get informInvalidEmailFormat => 'ป้อนที่อยู่อีเมลที่ถูกต้อง';
 
   @override
   String get warnPasswordLength => 'คุณควรป้อนอักขระ 6-25 ตัว';
@@ -96,7 +96,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail => 'เราจะส่งอีเมล์ให้คุณเพื่อแนะนำเกี่ยวกับการตั้งรหัสผ่านใหม่ของคุณ';
+  String get informResetPassByEmail => 'เราจะส่งอีเมลให้คุณเพื่อแนะนำเกี่ยวกับการตั้งรหัสผ่านใหม่ของคุณ';
 
   @override
   String get labelSelectCountry => 'คุณอาศัยอยู่ที่ไหน?';
@@ -123,7 +123,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get labelEmailIssueTypo => 'ที่อยู่อีเมล์ที่คุณป้อนมีข้อผิดพลาดหรือคำพิมพ์ผิด (เกิดขึ้นได้กับทุกคน)';
 
   @override
-  String get labelEmailIssueFirewall => 'เราไม่สามารถส่งอีเมล์ไปยังที่อยู่นี้ (โดยปกติจะเป็นเพราะไฟร์วอลล์หรือการกรอง)';
+  String get labelEmailIssueFirewall => 'เราไม่สามารถส่งอีเมลไปยังที่อยู่นี้ (โดยปกติจะเป็นเพราะไฟร์วอลล์หรือการกรอง)';
 
   @override
   String get actionReenterEmail => 'ป้อนที่อยู่อีเมล์ของคุณแล้วลองอีกครั้ง';
@@ -150,7 +150,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'รหัสอ้างอิงพันธมิตร';
 
   @override
-  String get infoReferralInfoDescription => 'รหัสตัวอักษรและตัวเลขที่จัดทำโดยพันธมิตรของ Deriv ซึ่งใช้ได้สำหรับการลงทะเบียนสมัครทางอีเมล์เท่านั้น';
+  String get infoReferralInfoDescription => 'รหัสตัวอักษรและตัวเลขที่จัดทำโดยพันธมิตรของ Deriv ซึ่งใช้ได้สำหรับการลงทะเบียนสมัครทางอีเมลเท่านั้น';
 
   @override
   String get labelGotReferralCode => 'มีรหัสอ้างอิงหรือไม่?';
@@ -185,7 +185,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   }
 
   @override
-  String get actionEmailNotReceived => 'ไม่ได้รับอีเมล์ของคุณใช่หรือไม่?';
+  String get actionEmailNotReceived => 'ไม่ได้รับอีเมลของคุณใช่หรือไม่?';
 
   @override
   String get informPasswordPolicy => 'รหัสผ่านของคุณต้องมี:';
@@ -212,7 +212,7 @@ class DerivAuthLocalizationsTh extends DerivAuthLocalizations {
   String get informInvalid2FACode => 'รหัสที่คุณป้อนไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง';
 
   @override
-  String get informFailedAuthentication => 'อีเมล์หรือรหัสผ่านของคุณอาจไม่ถูกต้อง คุณได้ลงทะเบียนด้วยบัญชีโซเชียลหรือไม่? โปรดตรวจสอบแล้วลองอีกครั้ง';
+  String get informFailedAuthentication => 'อีเมลหรือรหัสผ่านของคุณอาจไม่ถูกต้อง คุณได้ลงทะเบียนด้วยบัญชีโซเชียลหรือไม่? โปรดตรวจสอบแล้วลองอีกครั้ง';
 
   @override
   String get informDeactivatedAccount => 'บัญชีของคุณถูกปิดใช้งาน';
