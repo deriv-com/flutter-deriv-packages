@@ -1,6 +1,6 @@
 name: deriv_mobile_chart_wrapper
 description: A wrapper around deriv_chart package to add the UI for managing indicators and drawing tools.
-version: 0.1.13+3
+version: 0.1.13+4
 homepage: https://deriv.com/
 repository: https://github.com/deriv-com/flutter-deriv-packages/tree/master/packages/deriv_mobile_chart_wrapper
 
@@ -23,7 +23,7 @@ dependencies:
     git:
       url: https://github.com/deriv-com/flutter-deriv-packages.git
       path: packages/deriv_localizations
-      ref: deriv_localizations-v1.9.0
+      ref: deriv_localizations-v1.9.1
 
   deriv_ui:
     git:

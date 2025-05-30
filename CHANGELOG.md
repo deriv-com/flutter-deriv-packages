@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-05-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.9.1`](#deriv_localizations---v191)
+ - [`deriv_passkeys` - `v0.0.5+21`](#deriv_passkeys---v00521)
+ - [`deriv_auth` - `v7.0.18`](#deriv_auth---v7018)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.13+4`](#deriv_mobile_chart_wrapper---v01134)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.5+21`
+ - `deriv_auth` - `v7.0.18`
+ - `deriv_mobile_chart_wrapper` - `v0.1.13+4`
+
+---
+
+#### `deriv_localizations` - `v1.9.1`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#968](https://github.com/deriv-com/flutter-deriv-packages.git/issues/968)). ([79277600](https://github.com/deriv-com/flutter-deriv-packages.git/commit/792776000afdb4b8e65903e108048ce66f2f12d5))
+
+
 ## 2025-05-21
 
 ### Changes
