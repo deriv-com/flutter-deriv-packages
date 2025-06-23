@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-06-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_feature_flag` - `v0.1.3`](#deriv_feature_flag---v013)
+
+---
+
+#### `deriv_feature_flag` - `v0.1.3`
+
+ - **FEAT**(deriv_feature_flag): add refresh method ([#972](https://github.com/deriv-com/flutter-deriv-packages.git/issues/972)). ([aeaf58c0](https://github.com/deriv-com/flutter-deriv-packages.git/commit/aeaf58c00320a1d90ce8a66210e1104bcc49ab7c))
+
+
 ## 2025-05-30
 
 ### Changes
