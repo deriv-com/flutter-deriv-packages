@@ -194,7 +194,9 @@ class DerivAuthService extends BaseAuthService {
       List<AccountListItem> accounts) {
     final List<AccountListItem> supportedAccounts = accounts
         .where((AccountListItem account) =>
-            account.isSupported && account.isNotDisabled)
+            account.isSupported &&
+            account.isNotDisabled &&
+            account.accountType != 'partner')
         .toList();
 
     if (supportedAccounts.isEmpty) {
