@@ -46,15 +46,15 @@
       }
     }
   },
-  "informResetPassByEmail": "会传送内含重设密码的说明的电子邮件。",
+  "informResetPassByEmail": "将通过电子邮件发送重置密码的说明。",
   "labelSelectCountry": "您的居住地是哪里？",
   "labelChooseCountry": "选择国家",
   "warnCountryNotAvailable": "对不起，您的所在国不可用 Deriv。",
   "actionNext": "下一步",
   "labelEmailIssueHeader": "如果数分钟内没有收到我们发送的电子邮件，可能是因为发生了几种情况而引起的：",
   "labelEmailIssueSpam": "邮件在垃圾邮箱里（有时一些邮件会误送到那儿）。",
-  "labelEmailIssueWrongEmail": "您不小心给了我们另一个电子邮件地址（通常非您本意，而是属于工作或个人性质的）。",
-  "labelEmailIssueTypo": "您输入的电子邮件地址拼写有误（有时这是难免的）。",
+  "labelEmailIssueWrongEmail": "您不小心给了另一个电子邮件地址（通常非您本意，而是属于工作或个人性质的）。",
+  "labelEmailIssueTypo": "输入的电子邮件地址拼写有误（有时这是难免的）。",
   "labelEmailIssueFirewall": "无法发送电子邮件到此地址（通常是因为安装了防火墙或筛选器）。",
   "actionReenterEmail": "重新输入电子邮件并重试",
   "labelKeepPassword": "用密码保障账户安全",
