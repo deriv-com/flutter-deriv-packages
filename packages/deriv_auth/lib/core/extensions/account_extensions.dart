@@ -13,6 +13,8 @@ extension AccountExtension on AuthorizeEntity {
                 currency: accountItem.currency,
                 userId: userId,
                 token: accountItem.token,
+                accountCategory: accountItem.accountCategory,
+                isVirtual: accountItem.isVirtual ?? false,
               ))
           .toList() ??
       <AccountModel>[];
