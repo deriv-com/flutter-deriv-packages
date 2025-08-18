@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-08-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v7.0.20`](#deriv_auth---v7020)
+
+---
+
+#### `deriv_auth` - `v7.0.20`
+
+ - **FIX**(deriv_auth): Removed 'partner' from the list of supported accounts ([#974](https://github.com/deriv-com/flutter-deriv-packages.git/issues/974)). ([bdbec43b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/bdbec43b5c9c832486500f917b8aee6a6f4e8a7b))
+
+
 ## 2025-08-15
 
 ### Changes
