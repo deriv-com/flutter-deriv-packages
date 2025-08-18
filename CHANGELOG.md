@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-08-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_passkeys` - `v0.0.5+22`](#deriv_passkeys---v00522)
+ - [`deriv_auth` - `v7.0.19`](#deriv_auth---v7019)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v7.0.19`
+
+---
+
+#### `deriv_passkeys` - `v0.0.5+22`
+
+ - **FIX**(deriv_passkeys): upgraded flutter_deriv_api version to v1.4.8 ([#975](https://github.com/deriv-com/flutter-deriv-packages.git/issues/975)). ([5ddea653](https://github.com/deriv-com/flutter-deriv-packages.git/commit/5ddea65315447e4d161c2210c45afa364763dbfa))
+
+
 ## 2025-06-23
 
 ### Changes
