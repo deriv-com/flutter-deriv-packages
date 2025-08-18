@@ -23,7 +23,7 @@ dependency_overrides:
   flutter_deriv_api:
     git:
       url: https://github.com/deriv-com/flutter-deriv-api.git
-      ref: v1.3.0
+      ref: v1.4.8
 
 dev_dependencies:
   flutter_test:
