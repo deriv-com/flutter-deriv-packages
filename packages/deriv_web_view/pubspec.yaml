@@ -19,7 +19,7 @@ dependencies:
   url_launcher: ^6.1.10
   webview_flutter: ^4.2.1
   flutter_inappwebview: ^6.0.0
-  flutter_bloc: ^8.1.2
+  flutter_bloc: ^9.1.1
   deriv_http_client:
     git:
       url: https://github.com/deriv-com/flutter-deriv-packages.git
@@ -32,3 +32,4 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
+  # No assets are needed for this package.
