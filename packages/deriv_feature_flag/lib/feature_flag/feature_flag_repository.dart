@@ -39,9 +39,13 @@ class FeatureFlagRepository {
   dynamic getFeatureValue(String key, {dynamic defaultValue = false}) =>
       _growthBookSDK.feature(key).value ?? defaultValue;
 
-  /// Set attributes to target specific user.
+  /// This method merges new attributes with existing ones, updating values for existing keys
+  /// and adding new key-value pairs.
   void setAttributes(Map<String, dynamic> attributes) {
-    _growthBookSDK.setAttributes(attributes);
+    final currentAttributes = _growthBookSDK.context.attributes ?? {};
+    final updatedAttributes = Map<String, dynamic>.from(currentAttributes)
+      ..addAll(attributes);
+    _growthBookSDK.setAttributes(updatedAttributes);
   }
 
   @visibleForTesting
