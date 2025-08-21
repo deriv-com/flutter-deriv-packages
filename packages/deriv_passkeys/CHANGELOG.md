@@ -1,3 +1,7 @@
+## 0.0.5+23
+
+ - Update a dependency to the latest release.
+
 ## 0.0.5+22
 
  - **FIX**(deriv_passkeys): upgraded flutter_deriv_api version to v1.4.8 ([#975](https://github.com/deriv-com/flutter-deriv-packages.git/issues/975)). ([5ddea653](https://github.com/deriv-com/flutter-deriv-packages.git/commit/5ddea65315447e4d161c2210c45afa364763dbfa))
