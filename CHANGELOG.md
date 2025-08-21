@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`update_checker` - `v3.2.0`](#update_checker---v320)
+
+---
+
+#### `update_checker` - `v3.2.0`
+
+ - **FEAT**(update_checker): update dependencies to the latest release ([#978](https://github.com/deriv-com/flutter-deriv-packages.git/issues/978)). ([66fb893d](https://github.com/deriv-com/flutter-deriv-packages.git/commit/66fb893dd5c2003424472ac8b6f2af2890490967))
+
+
+## 2025-08-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`analytics` - `v4.3.0`](#analytics---v430)
  - [`deriv_passkeys` - `v0.0.5+23`](#deriv_passkeys---v00523)
  - [`deriv_auth` - `v7.0.21`](#deriv_auth---v7021)
