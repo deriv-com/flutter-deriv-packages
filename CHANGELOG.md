@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-08-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`update_checker` - `v3.2.0`](#update_checker---v320)
+
+---
+
+#### `update_checker` - `v3.2.0`
+
+ - **FEAT**(update_checker): update dependencies to the latest release ([#978](https://github.com/deriv-com/flutter-deriv-packages.git/issues/978)). ([66fb893d](https://github.com/deriv-com/flutter-deriv-packages.git/commit/66fb893dd5c2003424472ac8b6f2af2890490967))
+
+
+## 2025-08-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v4.3.0`](#analytics---v430)
+ - [`deriv_passkeys` - `v0.0.5+23`](#deriv_passkeys---v00523)
+ - [`deriv_auth` - `v7.0.21`](#deriv_auth---v7021)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.5+23`
+ - `deriv_auth` - `v7.0.21`
+
+---
+
+#### `analytics` - `v4.3.0`
+
+ - **FEAT**(analytics): update dependencies to the latest release ([#979](https://github.com/deriv-com/flutter-deriv-packages.git/issues/979)). ([18ea2e58](https://github.com/deriv-com/flutter-deriv-packages.git/commit/18ea2e58c1c9331d8e2f29a1e99e31e23a9ecddf))
+
+
 ## 2025-08-18
 
 ### Changes

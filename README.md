@@ -15,7 +15,7 @@ cp $HOME/Downloads/commit-msg $HOME/.git/hooks/commit-msg \
 
 ## Using the packages
 
-Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v7.0.19)`. To use the package, add the following to your pubspec.yaml file:
+Each package has been released as git tag with convention as **packageName-vVersionNumber**`(Example: deriv_auth-v7.0.21)`. To use the package, add the following to your pubspec.yaml file:
 
 ```yaml
 deriv_ui:
@@ -29,8 +29,8 @@ deriv_ui:
 
 | Name                                                                      | Description                                                                                                                                           | Version                                                           |
 | ------------------------------------------------------------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase',  'Rudderstack' and 'Datadog'.                                                          | [v4.2.0](./packages/analytics/CHANGELOG.md)                       |                                        | [v4.2.0](./packages/analytics/CHANGELOG.md)                       |
-| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                                                             | [v7.0.19 ](./packages/deriv_auth/CHANGELOG.md)                    |
+| [analytics](./packages/analytics)                                         | Used to collect and send analytical information to 'Firebase',  'Rudderstack' and 'Datadog'.                                                          | [v4.2.0](./packages/analytics/CHANGELOG.md)                       |                                        | [v4.3.0](./packages/analytics/CHANGELOG.md)                       |
+| [deriv_auth](./packages/deriv_auth)                                       | A Dart package that provides Authentication logic for Deriv applications.                                                                             | [v7.0.21 ](./packages/deriv_auth/CHANGELOG.md)                    |
 | [deriv_banner](./packages/deriv_banner)                                   | A widget to show banner in apps.                                                                                                                      | [v0.0.1+2](./packages/deriv_banner/CHANGELOG.md)                  |
 | [deriv_bloc_manager](./packages/deriv_bloc_manager)                       | Provides some tools to manage blocs.                                                                                                                  | [v0.0.1](./packages/deriv_bloc_manager/CHANGELOG.md)              |
 | [deriv_datadog](./packages/deriv_datadog)                                 | A package that helps you monitor the performance and user interactions of your Flutter app by sending data to Datadog.                                | [v0.0.2](./packages/deriv_datadog/CHANGELOG.md)                   |
@@ -54,7 +54,7 @@ deriv_ui:
 | [deriv_web_view](./packages/deriv_web_view)                               | Deriv web view package.                                                                                                                               | [v0.2.2+6](./packages/deriv_web_view/CHANGELOG.md)                |
 | [deriv_widgetbook](./packages/deriv_widgetbook)                           | Storybook for Deriv UI Widgets and Components                                                                                                         | [v0.0.2+40](./packages/deriv_widgetbook/CHANGELOG.md)             |
 | [form_builder](./packages/form_builder)                                   | A simpler and cleaner way to create, validate and submit forms.                                                                                       | [v1.0.0+1](./packages/form_builder/CHANGELOG.md)                  |
-| [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                                                          | [v3.1.2](./packages/update_checker/CHANGELOG.md)                  |
+| [update_checker](./packages/update_checker)                               | Check and retrieve update information from the server for the given package.                                                                          | [v3.2.0](./packages/update_checker/CHANGELOG.md)                  |
 | [deriv_feature_flag](./packages/deriv_feature_flag)                       | A package to provide feature flag functionality for apps.                                                                                             | [v0.1.3](./packages/deriv_feature_flag/CHANGELOG.md)              |
 | [deriv_mobile_chart_wrapper](./packages/deriv_mobile_chart_wrapper)       | A wrapper package around package _**deriv_chart**_ to implement any functionality specific to mobile and can be wrapped around the main chart package. | [v0.1.13+4](./packages/deriv_mobile_chart_wrapper/CHANGELOG.md)      |
 | [deriv_cipher](./packages/deriv_cipher)       | A package to encrypt and decrypt data using AES encryption.| [v0.0.3](./packages/deriv_cipher/CHANGELOG.md)                    |
