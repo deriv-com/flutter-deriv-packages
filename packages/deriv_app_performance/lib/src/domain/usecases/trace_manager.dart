@@ -12,46 +12,39 @@ class TraceManager {
     _repository.startTrace(traceName, attributes: attributes);
   }
 
+  /// Check if a trace with the given name is currently active
+  bool isTraceActive(String traceName) {
+    return _repository.isTraceActive(traceName);
+  }
+
   /// Stop a trace with the given name and optional attributes/metrics
+  ///
+  /// If the trace doesn't exist, this method will silently return without
+  /// generating warning logs
   void stop(
     String traceName, {
     Map<String, String>? attributes,
     Map<String, int>? metrics,
   }) {
-    _repository.stopTrace(
-      traceName,
-      attributes: attributes,
-      metrics: metrics,
-    );
+    // Only attempt to stop the trace if it's active
+    if (isTraceActive(traceName)) {
+      _repository.stopTrace(
+        traceName,
+        attributes: attributes,
+        metrics: metrics,
+      );
+    }
   }
 
   /// Start tracking page load performance
   void startPageLoad(String pageName, {String? fromPage}) {
-    final Map<String, String> attributes = <String, String>{
-      'page_name': pageName,
-    };
-
-    if (fromPage != null) {
-      attributes['from_page'] = fromPage;
-    }
-
-    // Start the standard page load trace
-    _repository
-      ..startPageLoadTrace(pageName, fromPage: fromPage)
-
-      // Also start a custom trace with these attributes for more detailed
-      // tracking
-      ..startTrace('${pageName}_load', attributes: attributes);
+    // Start the page load trace
+    _repository.startPageLoadTrace(pageName, fromPage: fromPage);
   }
 
   /// Stop tracking page load performance
   void stopPageLoad(String pageName, {bool success = true}) {
-    // Stop the standard page load trace
-    _repository
-      ..stopPageLoadTrace(pageName, success: success)
-
-      // Also stop the custom trace
-      ..stopTrace('${pageName}_load',
-          attributes: <String, String>{'success': success.toString()});
+    // Stop the page load trace
+    _repository.stopPageLoadTrace(pageName, success: success);
   }
 }

@@ -125,11 +125,6 @@ class FirebasePerformanceDataSource implements PerformanceDataSource {
   @override
   void startTrace(String traceName, {Map<String, String>? attributes}) {
     if (_activeTraces.containsKey(traceName)) {
-      log(
-        'Warning: Trace $traceName is already active',
-        name: 'deriv_app_performance',
-        level: 900, // Warning level
-      );
       return;
     }
 
@@ -142,12 +137,6 @@ class FirebasePerformanceDataSource implements PerformanceDataSource {
 
     trace.start();
     _activeTraces[traceName] = trace;
-
-    log(
-      'Started trace: $traceName with attributes: $attributes',
-      name: 'deriv_app_performance',
-      level: 800, // Info level
-    );
   }
 
   /// Stop a trace with the given name
@@ -159,11 +148,6 @@ class FirebasePerformanceDataSource implements PerformanceDataSource {
   }) {
     final Trace? trace = _activeTraces[traceName];
     if (trace == null) {
-      log(
-        'Warning: Trying to stop non-existent trace: $traceName',
-        name: 'deriv_app_performance',
-        level: 900, // Warning level
-      );
       return;
     }
 
@@ -179,13 +163,6 @@ class FirebasePerformanceDataSource implements PerformanceDataSource {
 
     trace.stop();
     _activeTraces.remove(traceName);
-
-    log(
-      'Stopped trace: $traceName with attributes: $attributes, '
-      'metrics: $metrics',
-      name: 'deriv_app_performance',
-      level: 800, // Info level
-    );
   }
 
   /// Check if a trace is active

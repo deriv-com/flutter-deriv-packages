@@ -37,4 +37,7 @@ abstract class PerformanceRepository {
 
   /// Stop a page load trace
   void stopPageLoadTrace(String pageName, {bool success = true});
+
+  /// Check if a trace with the given name is currently active
+  bool isTraceActive(String traceName);
 }

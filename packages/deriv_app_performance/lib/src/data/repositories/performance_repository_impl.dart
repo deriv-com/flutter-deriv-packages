@@ -70,13 +70,17 @@ class PerformanceRepositoryImpl implements PerformanceRepository {
     startTrace(traceName, attributes: attributes);
     try {
       final T result = await operation();
-      stopTrace(traceName, attributes: <String, String>{'success': 'true'});
+      if (isTraceActive(traceName)) {
+        stopTrace(traceName, attributes: <String, String>{'success': 'true'});
+      }
       return result;
     } catch (e) {
-      stopTrace(traceName, attributes: <String, String>{
-        'success': 'false',
-        'error': e.toString(),
-      });
+      if (isTraceActive(traceName)) {
+        stopTrace(traceName, attributes: <String, String>{
+          'success': 'false',
+          'error': e.toString(),
+        });
+      }
       rethrow;
     }
   }
@@ -93,7 +97,15 @@ class PerformanceRepositoryImpl implements PerformanceRepository {
 
   @override
   void stopPageLoadTrace(String pageName, {bool success = true}) {
-    stopTrace('${pageName}_load',
-        attributes: <String, String>{'success': success.toString()});
+    final String traceName = '${pageName}_load';
+    if (isTraceActive(traceName)) {
+      stopTrace(traceName,
+          attributes: <String, String>{'success': success.toString()});
+    }
+  }
+
+  @override
+  bool isTraceActive(String traceName) {
+    return _dataSource.isTraceActive(traceName);
   }
 }

@@ -54,19 +54,9 @@ class MockPerformanceDataSource implements PerformanceDataSource {
   @override
   void startTrace(String traceName, {Map<String, String>? attributes}) {
     if (_activeTraces.contains(traceName)) {
-      log(
-        'Warning: Trace $traceName is already active',
-        name: 'deriv_app_performance',
-        level: 900, // Warning level
-      );
       return;
     }
 
-    log(
-      'Mock: Starting trace $traceName with attributes: $attributes',
-      name: 'deriv_app_performance',
-      level: 800, // Info level
-    );
     _activeTraces.add(traceName);
   }
 
@@ -77,20 +67,9 @@ class MockPerformanceDataSource implements PerformanceDataSource {
     Map<String, int>? metrics,
   }) {
     if (!_activeTraces.contains(traceName)) {
-      log(
-        'Warning: Trying to stop non-existent trace: $traceName',
-        name: 'deriv_app_performance',
-        level: 900, // Warning level
-      );
       return;
     }
 
-    log(
-      'Mock: Stopping trace $traceName with attributes: $attributes, '
-      'metrics: $metrics',
-      name: 'deriv_app_performance',
-      level: 800, // Info level
-    );
     _activeTraces.remove(traceName);
   }
 

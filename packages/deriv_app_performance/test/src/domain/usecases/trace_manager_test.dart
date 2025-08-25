@@ -37,6 +37,7 @@ void main() {
 
     test('stop should call repository stopTrace with correct parameters', () {
       // Arrange
+      when(() => mockRepository.isTraceActive(any())).thenReturn(true);
       when(() => mockRepository.stopTrace(
             any(),
             attributes: any(named: 'attributes'),
@@ -51,6 +52,7 @@ void main() {
       );
 
       // Assert
+      verify(() => mockRepository.isTraceActive('test_trace')).called(1);
       verify(() => mockRepository.stopTrace(
             'test_trace',
             attributes: <String, String>{'key': 'value'},
@@ -94,6 +96,18 @@ void main() {
             'home_page',
             success: false,
           )).called(1);
+    });
+
+    test('isTraceActive should call repository isTraceActive with correct parameters', () {
+      // Arrange
+      when(() => mockRepository.isTraceActive(any())).thenReturn(true);
+
+      // Act
+      final result = traceManager.isTraceActive('test_trace');
+
+      // Assert
+      expect(result, isTrue);
+      verify(() => mockRepository.isTraceActive('test_trace')).called(1);
     });
   });
 }

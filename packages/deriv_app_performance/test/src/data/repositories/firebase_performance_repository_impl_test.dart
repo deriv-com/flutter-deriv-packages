@@ -174,6 +174,7 @@ void main() {
         'stopPageLoadTrace should call dataSource.stopTrace with correct '
         'attributes', () async {
       // Arrange
+      when(() => mockDataSource.isTraceActive(any())).thenReturn(true);
       when(() => mockDataSource.stopTrace(
             any(),
             attributes: any(named: 'attributes'),
@@ -186,11 +187,24 @@ void main() {
       );
 
       // Assert
+      verify(() => mockDataSource.isTraceActive('home_page_load')).called(1);
       verify(() => mockDataSource.stopTrace(
             'home_page_load',
             attributes: <String, String>{'success': 'true'},
             metrics: any(named: 'metrics'),
           )).called(1);
+    });
+
+    test('isTraceActive should call dataSource.isTraceActive', () async {
+      // Arrange
+      when(() => mockDataSource.isTraceActive(any())).thenReturn(true);
+
+      // Act
+      final bool result = repository.isTraceActive(traceName);
+
+      // Assert
+      expect(result, isTrue);
+      verify(() => mockDataSource.isTraceActive(traceName)).called(1);
     });
   });
 }
