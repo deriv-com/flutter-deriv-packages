@@ -679,7 +679,7 @@ class DerivRudderstackEvents {
   /// Parameters:
   /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
   /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
-  void logEmailVerificationSent({
+  void logWithdrawalEmailVerificationSent({
     required String cashierProvider,
     required String currencyType,
   }) {
@@ -700,7 +700,7 @@ class DerivRudderstackEvents {
   /// Parameters:
   /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
   /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
-  void logEmailVerified({
+  void logWithdrawalEmailVerified({
     required String cashierProvider,
     required String currencyType,
   }) {
@@ -721,7 +721,7 @@ class DerivRudderstackEvents {
   /// Parameters:
   /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
   /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
-  void logPayoutRequested({
+  void logWithdrawalPayoutRequested({
     required String cashierProvider,
     required String currencyType,
   }) {
@@ -742,7 +742,7 @@ class DerivRudderstackEvents {
   /// Parameters:
   /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
   /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
-  void logReviewPendingPayoutRequest({
+  void logWithdrawalReviewPendingRequest({
     required String cashierProvider,
     required String currencyType,
   }) {
@@ -763,7 +763,7 @@ class DerivRudderstackEvents {
   /// Parameters:
   /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
   /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
-  void logCancelSelectedRequest({
+  void logWithdrawalCancelRequest({
     required String cashierProvider,
     required String currencyType,
   }) {
@@ -802,7 +802,7 @@ class DerivRudderstackEvents {
   /// Parameters:
   /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
   /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
-  void logEmailVerificationResent({
+  void logWithdrawalEmailVerificationResent({
     required String cashierProvider,
     required String currencyType,
   }) {
