@@ -1,0 +1,28 @@
+name: deriv_app_performance_example
+description: Example app for the deriv_app_performance package
+version: 1.0.0+1
+publish_to: 'none'
+
+environment:
+  sdk: ">=3.3.3 <4.0.0"
+  flutter: ">=3.24.1 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Local package
+  deriv_app_performance:
+    path: ../
+  
+  # Firebase
+  firebase_core: ^4.0.0
+  firebase_performance: ^0.11.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
