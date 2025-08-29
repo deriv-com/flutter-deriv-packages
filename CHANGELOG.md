@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-08-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_app_performance` - `v0.2.1`](#deriv_app_performance---v021)
+
+---
+
+#### `deriv_app_performance` - `v0.2.1`
+
+ - **FEAT**(deriv_app_performance): updated the implementation of deriv_app_performance package with improved functionalities and example app ([#980](https://github.com/deriv-com/flutter-deriv-packages.git/issues/980)). ([3354c99e](https://github.com/deriv-com/flutter-deriv-packages.git/commit/3354c99eb4fed22821919f4610142e07d2b63baa))
+
+
 ## 2025-08-21
 
 ### Changes
