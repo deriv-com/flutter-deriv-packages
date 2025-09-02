@@ -11,6 +11,7 @@ const NewVirtualAccountRequestModel validNewVirtualAccountModel =
   verificationCode: 'verificationCode',
   clientPassword: 'clientPassword',
   residence: 'residence',
+  type: 'trading',
 );
 
 const VerifyEmailResponseEntity validVerifyEmailResponse =
