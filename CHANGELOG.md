@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-09-03
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v4.4.0`](#analytics---v440)
+ - [`deriv_passkeys` - `v0.0.5+24`](#deriv_passkeys---v00524)
+ - [`deriv_auth` - `v7.0.22`](#deriv_auth---v7022)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.5+24`
+ - `deriv_auth` - `v7.0.22`
+
+---
+
+#### `analytics` - `v4.4.0`
+
+ - **FEAT**(analytics): add RudderStack events for withdrawal module ([#984](https://github.com/deriv-com/flutter-deriv-packages.git/issues/984)). ([8f9845a5](https://github.com/deriv-com/flutter-deriv-packages.git/commit/8f9845a5ee72c469de6f2648e86b931b4f8f091e))
+
+
 ## 2025-08-29
 
 ### Changes
