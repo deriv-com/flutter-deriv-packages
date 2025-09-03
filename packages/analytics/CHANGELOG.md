@@ -1,3 +1,7 @@
+## 4.4.0
+
+ - **FEAT**(analytics): add RudderStack events for withdrawal module ([#984](https://github.com/deriv-com/flutter-deriv-packages.git/issues/984)). ([8f9845a5](https://github.com/deriv-com/flutter-deriv-packages.git/commit/8f9845a5ee72c469de6f2648e86b931b4f8f091e))
+
 ## 4.3.0
 
  - **FEAT**(analytics): update dependencies to the latest release ([#979](https://github.com/deriv-com/flutter-deriv-packages.git/issues/979)). ([18ea2e58](https://github.com/deriv-com/flutter-deriv-packages.git/commit/18ea2e58c1c9331d8e2f29a1e99e31e23a9ecddf))
