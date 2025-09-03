@@ -65,7 +65,7 @@ void main() {
 
       expect(
           $(PageView)
-              .which<PageView>((pageView) => pageView.controller.page == 1),
+              .which<PageView>((pageView) => pageView.controller?.page == 1),
           findsOneWidget);
     });
 
@@ -92,7 +92,7 @@ void main() {
 
       expect(
           $(PageView)
-              .which<PageView>((pageView) => pageView.controller.page == 0),
+              .which<PageView>((pageView) => pageView.controller?.page == 0),
           findsOneWidget);
     });
 

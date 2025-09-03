@@ -108,7 +108,7 @@ class DerivAuthService extends BaseAuthService {
           (await authRepository.authorize(token, tokenList: tokenList))
               .authorize;
 
-      _checkAuthorizeValidity(responseAuthorizeEntity);
+      await _checkAuthorizeValidity(responseAuthorizeEntity);
 
       final List<AccountListItem> _filteredAccounts =
           _filterSupportedAccountsFromAuthorizeResponse(
@@ -257,17 +257,28 @@ class DerivAuthService extends BaseAuthService {
     }
   }
 
-  void _checkAuthorizeValidity(
+  /// Validates the authorize entity to ensure it's not null and belongs to an
+  /// SVG account.
+  ///
+  /// Throws [DerivAuthException] if:
+  /// - The authorize entity is null (token expired)
+  /// - The account is not an SVG account (service not available in user's
+  ///   country)
+  Future<void> _checkAuthorizeValidity(
     AuthorizeEntity? authorizeEntity,
-  ) {
+  ) async {
     if (authorizeEntity == null) {
       throw DerivAuthException(
-        message: 'Token is expired',
+        message: 'Authentication token is expired or invalid',
         type: AuthErrorType.expiredAccount,
       );
-    } else if (!authorizeEntity.isSvgAccount) {
+    }
+
+    final bool isSvgAccount = await authorizeEntity.isSvgAccount;
+
+    if (!isSvgAccount) {
       throw DerivAuthException(
-        message: 'This service is not available in your country.',
+        message: notAvailableCountryMessage,
         type: AuthErrorType.unsupportedCountry,
       );
     }
