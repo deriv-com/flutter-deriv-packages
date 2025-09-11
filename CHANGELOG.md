@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-09-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v7.0.23`](#deriv_auth---v7023)
+
+---
+
+#### `deriv_auth` - `v7.0.23`
+
+ - **FIX**(deriv_auth): Refactor `isSvgAccount` check using landing_company API ([#986](https://github.com/deriv-com/flutter-deriv-packages.git/issues/986)). ([b12c4115](https://github.com/deriv-com/flutter-deriv-packages.git/commit/b12c4115c798e912e9eb4825a95aa6c9b90565ed))
+
+
 ## 2025-09-03
 
 ### Changes
