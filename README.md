@@ -94,3 +94,21 @@ If you'd like to run any other command on all packages, you can configure it in 
 $ melos exec --\
     your command here
 ```
+
+## Claude Code Review
+
+This repository uses Claude AI for code reviews through GitHub Actions.
+
+### Usage
+
+Simply mention `@claude` in:
+- PR comments
+- Line-specific code comments
+- PR reviews
+
+Examples:
+- `@claude Please review this PR`
+- `@claude Is this implementation secure?`
+- `@claude Suggest a better way to handle this error`
+
+Even typing just `@claude` will trigger a general code review based on Flutter/Dart best practices with a focus on security.

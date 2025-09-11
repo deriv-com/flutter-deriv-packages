@@ -1,0 +1,51 @@
+name: Claude Code Review
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  review:
+    # Only run when comments or reviews contain @claude
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read  # Required for Claude to read CI results on PRs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          fetch-depth: 0  # Fetch all history for better context
+
+      - name: Claude Code Review
+        uses: anthropics/claude-code-action@a3ff61d47aa5118a43b33ae44c4087d9eb51111a
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: |
+            --system-prompt "You are a Flutter and Dart expert reviewing code for a Flutter monorepo project. Focus on:
+            1. Code quality and adherence to Dart/Flutter best practices
+            2. Potential bugs or performance issues
+            3. Security vulnerabilities, including:
+               - Insecure data storage or transmission
+               - Authentication/authorization flaws
+               - Input validation issues
+               - Sensitive data exposure
+               - Insecure dependencies
+               - Potential injection attacks
+            4. Proper error handling and logging (ensuring no sensitive data is logged)
+            5. Maintainability and readability
+            6. Consistency with existing code patterns
+            7. Proper test coverage
+            Be constructive and specific in your feedback, especially for security concerns."
+            --max-turns 5
