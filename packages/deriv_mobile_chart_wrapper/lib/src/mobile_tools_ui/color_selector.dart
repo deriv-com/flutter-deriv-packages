@@ -1,9 +1,8 @@
+import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:deriv_ui/deriv_ui.dart';
 import 'package:flutter/material.dart';
-
-import 'colours_grid.dart';
 
 /// A widget that allows the user to select a color from a list of colors.
 class ColorSelector extends StatefulWidget {
@@ -57,27 +56,30 @@ class _ColorSelectorState extends State<ColorSelector> {
             context: context,
             builder: (_) => StatefulBuilder(builder: (context, state) {
               return SafeArea(
-                child: DerivBottomSheet(
-                  title: widget.title,
-                  hasActionButton: true,
-                  actionButtonLabel:
-                      context.mobileChartWrapperLocalizations.labelOK,
-                  onActionButtonPressed: _selectedColor == null
-                      ? null
-                      : () {
-                          widget.onColorChanged(_selectedColor!);
-                          Navigator.of(context).pop();
+                child: ChartWrapperLocalizationProvider(
+                  localizations: this.context.mobileChartWrapperLocalizations,
+                  child: DerivBottomSheet(
+                    title: widget.title,
+                    hasActionButton: true,
+                    actionButtonLabel:
+                        this.context.mobileChartWrapperLocalizations.labelOK,
+                    onActionButtonPressed: _selectedColor == null
+                        ? null
+                        : () {
+                            widget.onColorChanged(_selectedColor!);
+                            Navigator.of(context).pop();
+                          },
+                    child: ColoredBox(
+                      color: context.theme.colors.primary,
+                      child: ColoursGrid(
+                        onColorSelected: (int index) {
+                          state(() {
+                            _selectedColor = widget.colors[index];
+                          });
                         },
-                  child: ColoredBox(
-                    color: context.theme.colors.primary,
-                    child: ColoursGrid(
-                      onColorSelected: (int index) {
-                        state(() {
-                          _selectedColor = widget.colors[index];
-                        });
-                      },
-                      colors: widget.colors,
-                      selectedColor: _selectedColor,
+                        colors: widget.colors,
+                        selectedColor: _selectedColor,
+                      ),
                     ),
                   ),
                 ),

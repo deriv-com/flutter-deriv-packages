@@ -5,7 +5,7 @@ class NewVirtualAccountRequestModel {
     required this.verificationCode,
     required this.clientPassword,
     required this.residence,
-    this.type = 'trading',
+    this.type = 'dynamic',
     this.utmSource,
     this.utmCampaign,
     this.utmCampaignId,

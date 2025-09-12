@@ -649,4 +649,202 @@ class DerivRudderstackEvents {
       },
     );
   }
+
+  // --------- ce_deriv_go_withdrawal_form ---------------
+  /// Events for tracking the withdrawal process flow.
+
+  /// Tracks when user initiates the withdrawal process.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  void logWithdrawalInitiated({
+    required String cashierProvider,
+    required String currencyType,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'withdrawal_initiated',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks when email verification is requested.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  void logWithdrawalEmailVerificationSent({
+    required String cashierProvider,
+    required String currencyType,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'email_verification_sent',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks when email verification is completed.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  void logWithdrawalEmailVerified({
+    required String cashierProvider,
+    required String currencyType,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'email_verified',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks when withdrawal request is submitted.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  void logWithdrawalPayoutRequested({
+    required String cashierProvider,
+    required String currencyType,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'payout_requested',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks when user reviews a pending withdrawal request.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  void logWithdrawalReviewPendingRequest({
+    required String cashierProvider,
+    required String currencyType,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'review_pending_payout_request',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks when user confirms withdrawal cancellation.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  void logWithdrawalCancelRequest({
+    required String cashierProvider,
+    required String currencyType,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'cancel_selected_request',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks when withdrawal is successfully processed.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  void logWithdrawalCompleted({
+    required String cashierProvider,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'withdrawal_completed',
+        'cashier_provider': cashierProvider,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks when verification email is resent.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  void logWithdrawalEmailVerificationResent({
+    required String cashierProvider,
+    required String currencyType,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'email_verification_resent',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
+
+  /// Tracks errors during withdrawal process.
+  ///
+  /// Parameters:
+  /// * [cashierProvider]: 'Fiat', 'Crypto', etc.
+  /// * [currencyType]: 'ETH', 'LTC', 'eUSDT', etc.
+  /// * [errorStep]: Step where error occurred
+  /// * [errorCode]: Error code for troubleshooting
+  /// * [errorMessage]: Error message shown to user
+  void logWithdrawalError({
+    required String cashierProvider,
+    required String currencyType,
+    required String errorStep,
+    required String errorCode,
+    required String errorMessage,
+  }) {
+    DerivRudderstack().track(
+      eventName: 'ce_deriv_go_withdrawal_form',
+      properties: <String, dynamic>{
+        'action': 'withdrawal_error',
+        'cashier_provider': cashierProvider,
+        'currency_type': currencyType,
+        'error_step': errorStep,
+        'error_code': errorCode,
+        'error_message': errorMessage,
+        'form_source': 'mobile_derivgo',
+        'form_name': 'withdrawal_form_derivgo',
+      },
+    );
+  }
 }

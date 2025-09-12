@@ -13,7 +13,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   }
 
   @override
-  String get actionOk => 'OK';
+  String get actionOk => 'DOBRZE';
 
   @override
   String get warnNotAvailableCountries => 'Jeśli mają Państwo jakiekolwiek pytania, prosimy o kontakt ';

@@ -1,6 +1,5 @@
 import 'package:deriv_mobile_chart_wrapper/deriv_mobile_chart_wrapper.dart';
 import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
-import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/drawing_tool_info_bar_model.dart';
 import 'package:deriv_theme/deriv_theme.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,9 @@ class DrawingToolInfoBar extends StatelessWidget
   /// Creates a new [DrawingToolInfoBar].
   const DrawingToolInfoBar({
     required this.toolsController,
+    this.firstPointInfoText = 'Tap to set first point',
+    this.finalPointInfoText = 'Tap to set final point',
+    this.labelOfText = 'of',
     this.onClosed,
     super.key,
   });
@@ -21,6 +23,23 @@ class DrawingToolInfoBar extends StatelessWidget
 
   /// Callback invoked when the info bar is closed.
   final VoidCallback? onClosed;
+
+  /// Localized text to display and inform user about setting first drawing
+  /// point.
+  ///
+  /// Defaults to 'Tap to set first point'.
+  final String firstPointInfoText;
+
+  /// Localized text to display and inform user about setting final drawing
+  /// point.
+  ///
+  /// Defaults to 'Tap to set final point'.
+  final String finalPointInfoText;
+
+  /// Localized text label 'Of'
+  ///
+  /// Defaults to 'of' as in `EN'.
+  final String labelOfText;
 
   @override
   Size get preferredSize => const Size.fromHeight(ThemeProvider.margin56);
@@ -133,9 +152,7 @@ class DrawingToolInfoBar extends StatelessWidget
       return DrawingToolInfoBarModel(
         step: isDrawingToolSelected ? '1' : '2',
         totalSteps: 2,
-        title: !isDrawingToolFinished
-            ? context.mobileChartWrapperLocalizations.informTapToSetFinalPoint
-            : context.mobileChartWrapperLocalizations.informTapToSetFirstPoint,
+        title: !isDrawingToolFinished ? finalPointInfoText : firstPointInfoText,
       );
     }
 
@@ -147,8 +164,6 @@ class DrawingToolInfoBar extends StatelessWidget
     BuildContext context, {
     required String step,
     required int totalSteps,
-  }) {
-    return '$step ${context.mobileChartWrapperLocalizations.labelOf} '
-        '$totalSteps';
-  }
+  }) =>
+      '$step $labelOfText $totalSteps';
 }

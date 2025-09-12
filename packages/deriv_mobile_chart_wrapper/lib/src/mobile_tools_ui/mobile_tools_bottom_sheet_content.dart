@@ -3,7 +3,6 @@ import 'package:deriv_mobile_chart_wrapper/src/assets.dart';
 import 'package:deriv_mobile_chart_wrapper/src/enums.dart';
 import 'package:deriv_mobile_chart_wrapper/src/extensions.dart';
 import 'package:deriv_mobile_chart_wrapper/src/helpers.dart';
-import 'package:deriv_mobile_chart_wrapper/src/indicator_event_service.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/active_indicator_list_item.dart';
 import 'package:deriv_mobile_chart_wrapper/src/mobile_tools_ui/indicator_settings_description_bottom_sheet.dart';
 import 'package:deriv_mobile_chart_wrapper/src/models/indicator_item_model.dart';
@@ -266,51 +265,63 @@ class _MobileToolsBottomSheetContentState
                     _updatedConfig = indicatorConfig;
                     showDerivModalBottomSheet(
                       context,
-                      (context) => IndicatorSettingsBottomSheet(
-                        indicator: getIndicatorAbbreviationWithCount(
-                          indicatorConfig,
-                          context,
-                        ),
-                        settings: _getConfigSettingPage(index, indicatorConfig),
-                        onTapDelete: () async {
-                          await _showDeleteIndicatorDialog(
+                      (context) => ChartWrapperLocalizationProvider(
+                        localizations:
+                            this.context.mobileChartWrapperLocalizations,
+                        child: IndicatorSettingsBottomSheet(
+                          indicator: getIndicatorAbbreviationWithCount(
                             indicatorConfig,
-                            index,
-                            onDelete: () =>
-                                widget.eventTracker?.logDeleteActiveIndicatorFromSettings(
-                              indicatorConfig.title,
-                              getIndicatorCategoryTitle(indicatorConfig.title),
-                            ),
-                          );
+                            this.context,
+                          ),
+                          settings:
+                              _getConfigSettingPage(index, indicatorConfig),
+                          onTapDelete: () async {
+                            await _showDeleteIndicatorDialog(
+                              indicatorConfig,
+                              index,
+                              onDelete: () => widget.eventTracker
+                                  ?.logDeleteActiveIndicatorFromSettings(
+                                indicatorConfig.title,
+                                getIndicatorCategoryTitle(
+                                    indicatorConfig.title),
+                              ),
+                            );
 
-                          if (context.mounted) Navigator.pop(context);
-                        },
-                        onTapInfo: () {
-                          final IndicatorItemModel indicatorModel =
-                              indicators.firstWhere((element) =>
-                                  element.config.runtimeType ==
-                                  indicatorConfig.runtimeType);
+                            if (context.mounted) Navigator.pop(context);
+                          },
+                          onTapInfo: () {
+                            final IndicatorItemModel indicatorModel =
+                                indicators.firstWhere((element) =>
+                                    element.config.runtimeType ==
+                                    indicatorConfig.runtimeType);
 
-                          widget.eventTracker
-                              ?.logOpenIndicatorInfoFromIndicatorSettings(
-                            indicatorModel.title,
-                            indicatorModel.category.name,
-                          );
-
-                          showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                return IndicatorSettingsDescriptionBottomSheet(
-                                  indicator: indicatorModel,
-                                );
-                              }).then(
-                            (value) =>
-                                widget.eventTracker?.logCloseIndicatorInfo(
-                              indicatorModel.config.title,
+                            widget.eventTracker
+                                ?.logOpenIndicatorInfoFromIndicatorSettings(
+                              indicatorModel.title,
                               indicatorModel.category.name,
-                            ),
-                          );
-                        },
+                            );
+
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return ChartWrapperLocalizationProvider(
+                                    localizations: this
+                                        .context
+                                        .mobileChartWrapperLocalizations,
+                                    child:
+                                        IndicatorSettingsDescriptionBottomSheet(
+                                      indicator: indicatorModel,
+                                    ),
+                                  );
+                                }).then(
+                              (value) =>
+                                  widget.eventTracker?.logCloseIndicatorInfo(
+                                indicatorModel.config.title,
+                                indicatorModel.category.name,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                       showDragHandle: false,
                     );
@@ -507,16 +518,19 @@ class _MobileToolsBottomSheetContentState
     );
     showModalBottomSheet(
       context: context,
-      builder: (context) => IndicatorDescriptionBottomSheet(
-        indicator: indicator,
-        onAddIndicatorPressed: () {
-          indicatorsRepo.add(indicator.config);
-          Navigator.of(context).pop();
-          widget.eventTracker?.logAddIndicatorByClickAddOnIndicatorInfo(
-            indicator.title,
-            indicator.category.name,
-          );
-        },
+      builder: (context) => ChartWrapperLocalizationProvider(
+        localizations: this.context.mobileChartWrapperLocalizations,
+        child: IndicatorDescriptionBottomSheet(
+          indicator: indicator,
+          onAddIndicatorPressed: () {
+            indicatorsRepo.add(indicator.config);
+            Navigator.of(context).pop();
+            widget.eventTracker?.logAddIndicatorByClickAddOnIndicatorInfo(
+              indicator.title,
+              indicator.category.name,
+            );
+          },
+        ),
       ),
     ).then(
       (_) => widget.eventTracker?.logCloseIndicatorInfo(
@@ -551,10 +565,10 @@ class _MobileToolsBottomSheetContentState
           onPositiveActionPressed: () {
             onDelete?.call();
             indicatorsRepo.removeAt(index);
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop();
           },
           onNegativeActionPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop();
           });
 
   void _showDeleteAllIndicatorsDialog() {

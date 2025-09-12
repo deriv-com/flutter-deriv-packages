@@ -9,7 +9,7 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
-    return 'ඔබගේ ගිණුම දැන් Passkey සුරක්ෂිත කර ඇත. ඔබේ $platformName ගිණු ම් සැකසුම් හරහා ඔබගේ passkey කළමනාකරණය කරන්න.';
+    return 'ඔබගේ ගිණුම දැන් Biometric සුරක්ෂිත කර ඇත. ඔබේ $platformName ගිණු ම් සැකසුම් හරහා ඔබගේ Biometric කළමනාකරණය කරන්න.';
   }
 
   @override
@@ -34,10 +34,10 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get here => 'මෙන්න';
 
   @override
-  String get effortlessLogin => 'Passkeys සමඟ වෙහෙස නොබලා පිවිසීම';
+  String get effortlessLogin => 'Biometrics සමඟ වෙහෙස නොබලා පිවිසීම';
 
   @override
-  String get whatArePasskeys => 'Passkeys යනු කුමක්ද?';
+  String get whatArePasskeys => 'Biometrics යනු කුමක්ද?';
 
   @override
   String get whatArePasskeysDescriptionPoint1 => 'මුරපද සඳහා ආරක්ෂිත විකල්පයක්.';
@@ -46,7 +46,7 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get whatArePasskeysDescriptionPoint2 => 'ජෛවමිතික, මුහුණු ස්කෑන් කිරීම හෝ PIN සමඟ ඔබේ දුරකථනයයේ අකාරයටම ඔබේ ගිණුම අගුළු හරින්න.';
 
   @override
-  String get whyPasskeys => 'Passkeys අවශ්‍ය වන්නේ ඇයි?';
+  String get whyPasskeys => 'Biometrics අවශ්‍ය වන්නේ ඇයි?';
 
   @override
   String get whyPasskeysDescription1 => 'අමතර ආරක්ෂක ස්ථරය.';
@@ -55,13 +55,13 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get whyPasskeysDescription2 => 'අනවසර ප්‍රවේශයෙන් සහ තතුබෑම්වලින් ආරක්ෂා කරයි.';
 
   @override
-  String get howToCreatePasskey => 'නිර්මාණය Passkey කෙසේද?';
+  String get howToCreatePasskey => 'නිර්මාණය Biometric කෙසේද?';
 
   @override
   String get howToCreatePasskeyDescription1 => 'Deriv හි \'ගිණුම් සැකසීම්\' වෙත යන්න.';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'ඔබට එක් උපාංගයකට එක් passkey එකක් සෑදිය හැක.';
+  String get howToCreatePasskeyDescription2 => 'ඔබට එක් උපාංගයකට එක් Biometric එකක් සෑදිය හැක.';
 
   @override
   String get p2pHowToCreatePasskey => 'මුරපද නිර්මාණය කරන්නේ කෙසේද?';
@@ -73,7 +73,7 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get p2pHowToCreatePasskeyDescription2 => 'ඔබගේ මුරපද නිර්මාණය කිරීම සඳහා \'මුරපද\' තට්ටු කරන්න.';
 
   @override
-  String get whereArePasskeysSaved => 'Passkey සුරකින්නේ කොහේද?';
+  String get whereArePasskeysSaved => 'Biometric සුරකින්නේ කොහේද?';
 
   @override
   String get whereArePasskeysSavedDescriptionAndroid => 'Android: Google මුරපද කළමනාකරු.';
@@ -85,16 +85,16 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChanged => 'මගේ Deriv ගිණුමේ විද්යුත් තැපෑල වෙනස් කළහොත් කුමක් සිදුවේද?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'ප්‍රශ්නයක් නැත! ඔබේ passkey එක තවමත් ක්‍රියා කරයි.';
+  String get whatHappensIfEmailChangedDescription1 => 'ප්‍රශ්නයක් නැත! ඔබේ Biometric එක තවමත් ක්‍රියා කරයි.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'ඔබේ පවතින passkey සමඟින් Deriv වෙත පුරන්න.';
+  String get whatHappensIfEmailChangedDescription2 => 'ඔබේ පවතින Biometric සමඟින් Deriv වෙත පුරන්න.';
 
   @override
   String get tips => 'ඉඟි';
 
   @override
-  String get beforeUsingPasskeys => 'Passkey භාවිතා කිරීමට පෙර';
+  String get beforeUsingPasskeys => 'Biometric භාවිතා කිරීමට පෙර';
 
   @override
   String get enableScreenLock => 'ඔබේ උපාංගයේ තිර අගුල සක්රීය කරන්න.';
@@ -106,19 +106,19 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get enableBluetooth => 'බ්ලූටූත් සක්රීය කරන්න.';
 
   @override
-  String get noPasskeyFound => 'Passkey සොයාගත නොමැත!';
+  String get noPasskeyFound => 'Biometric සොයාගත නොමැත!';
 
   @override
-  String get noPasskeyFoundDescription => 'කරුණාකර මෙම විශේෂාංගය භාවිතා කිරීම සඳහා passkey යන්නක් සාදන්න.';
+  String get noPasskeyFoundDescription => 'කරුණාකර මෙම විශේෂාංගය භාවිතා කිරීම සඳහා Biometric යන්නක් සාදන්න.';
 
   @override
   String get maybeLater => 'සමහර විට පසුව';
 
   @override
-  String get effortlessLoginWithPasskeys => 'Passkeys සමඟ වෙහෙස නොබලා පිවිසීම';
+  String get effortlessLoginWithPasskeys => 'Biometrics සමඟ වෙහෙස නොබලා පිවිසීම';
 
   @override
-  String get learnMoreAboutPasskeys => 'Passkeys ගැන වැඩි විස්තර දැනගන්න';
+  String get learnMoreAboutPasskeys => 'Biometrics ගැන වැඩි විස්තර දැනගන්න';
 
   @override
   String get noNeedToRememberPassword => 'මුරපදයක් මතක තබා ගැනීමට අවශ්ය නැත';
@@ -130,7 +130,7 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'උපාංග හරහා සමමුහූර්ත කරන්න';
 
   @override
-  String get createPasskey => 'Passkey සාදන්න';
+  String get createPasskey => 'Biometric සාදන්න';
 
   @override
   String get unsupportedPlatform => 'සහාය නොදක්වන වේදිකාව';
@@ -151,16 +151,16 @@ class DerivPasskeysLocalizationsSi extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'දිගටම ගනුදෙනු කරන්න';
 
   @override
-  String get addMorePasskeysButtonText => 'තවත් passkeys එක් කරන්න';
+  String get addMorePasskeysButtonText => 'තවත් Biometrics එක් කරන්න';
 
   @override
-  String get unableToSetupPasskey => 'Passkey සැකසීමට නොහැකි විය';
+  String get unableToSetupPasskey => 'Biometric සැකසීමට නොහැකි විය';
 
   @override
-  String get unableToSetupPasskeyDescription => 'ඔබගේ passkey සැකසීමේදී අපට ගැටලුවක් ඇති විය. ක්රියාවලියට බාධා ඇති විය හැකිය, නැතහොත් සැසිය කාලය අවසන් විය හැකිය. කරුණාකර නැවත උත්සාහ කරන්න.';
+  String get unableToSetupPasskeyDescription => 'ඔබගේ Biometric සැකසීමේදී අපට ගැටලුවක් ඇති විය. ක්රියාවලියට බාධා ඇති විය හැකිය, නැතහොත් සැසිය කාලය අවසන් විය හැකිය. කරුණාකර නැවත උත්සාහ කරන්න.';
 
   @override
-  String get passkeysOffErrorTitle => 'Passkeys සේවාව ලබා ගත නොහැක';
+  String get passkeysOffErrorTitle => 'Biometrics සේවාව ලබා ගත නොහැක';
 
   @override
   String get never => 'කවදාවත්';

@@ -28,7 +28,7 @@ class DerivAuthLocalizationsFr extends DerivAuthLocalizations {
   String get actionLogin => 'Se connecter';
 
   @override
-  String get labelTwoFactorAuth => 'Authentification à deux facteurs';
+  String get labelTwoFactorAuth => 'L\'Authentification à deux facteurs';
 
   @override
   String get informEnterTwoFactorAuthCode => 'Saisissez le code à 6 chiffres qui s\'affiche sur l\'application d\'authentification de votre téléphone.';

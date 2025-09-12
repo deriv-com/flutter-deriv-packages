@@ -8,7 +8,7 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelIndicators => 'សូចនាករ';
 
   @override
-  String get labelActive => 'សក្តិសម';
+  String get labelActive => 'ដំណើរការ';
 
   @override
   String get labelAll => 'ទាំងអស់';
@@ -17,46 +17,46 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelMomentum => 'សន្ទុះ';
 
   @override
-  String get labelVolatility => 'ប្រែប្រួល';
+  String get labelVolatility => 'ភាពប្រែប្រួល';
 
   @override
-  String get labelMovingAverages => 'មធ្យមភាគចល័ត';
+  String get labelMovingAverages => 'តម្តៃការផ្លាស់ប្តូរមធ្យម';
 
   @override
   String get labelMACD => 'MACD';
 
   @override
-  String get labelRelativeStrengthIndex => 'សន្ទស្សន៍កម្លាំងទាក់ទង (RSI)';
+  String get labelRelativeStrengthIndex => 'សន្ទស្សន៍កម្លាំងដែលទាក់ទង (RSI)';
 
   @override
   String get labelRSI => 'RSI';
 
   @override
-  String get labelBollingerBands => 'ក្រុមតន្រ្តី Bollinger (BB)';
+  String get labelBollingerBands => 'Bollinger Bands (BB)';
 
   @override
   String get labelBB => 'BB';
 
   @override
-  String get labelMovingAverage => 'មធ្យមភាគចល័ត (MA)';
+  String get labelMovingAverage => 'តម្លៃមធ្យមផ្លាស់ទី (MA)';
 
   @override
   String get labelMA => 'MA';
 
   @override
-  String get infoMACD => 'MACD គឺជាសូចនាករជួញដូរដែលត្រូវបានប្រើក្នុងការវិភាគបច្ចេកទេសនៃតម្លៃភាគហ៊ុន។ វាត្រូវបានគេសន្មត់ថាដើម្បីបង្ហាញពីការផ្លាស់ប្តូរកម្លាំង ទិសដៅ សន្ទុះ និងរយៈពេលនៃនិន្នាការក្នុងតម្លៃភាគហ៊ុន។';
+  String get infoMACD => 'MACD គឺជាសូចនាករជួញដូរដែលប្រើក្នុងការវិភាគបច្ចេកទេសនៃតម្លៃភាគហ៊ុន។ វាត្រូវបានសន្មត់ថាបង្ហាញពីការផ្លាស់ប្តូរនៅក្នុងកម្លាំង ទិសដៅ សន្ទុះ និងរយៈពេលនៃនិន្នាការតម្លៃភាគហ៊ុន។';
 
   @override
-  String get infoRSI => 'សន្ទស្សន៍កម្លាំងទាក់ទង (RSI) ត្រូវបានបោះពុម្ពផ្សាយដោយ J. Welles Wilder ។ តម្លៃបច្ចុប្បន្នត្រូវបានធ្វើឱ្យមានលក្ខណៈធម្មតាជាភាគរយរវាង 0 និង 100 ។ flutter_chart_id នៃលំយោលនេះគឺជាការបំភាន់ពីព្រោះវាមិនប្រៀបធៀបឧបករណ៍ទាក់ទងទៅនឹងឧបករណ៍ផ្សេងទៀត ឬសំណុំនៃឧបករណ៍នោះទេ ប៉ុន្តែផ្ទុយទៅវិញតំណាងឱ្យតម្លៃបច្ចុប្បន្នទាក់ទងទៅនឹងបំណែកថ្មីៗផ្សេងទៀតនៅក្នុងប្រវែងបង្អួចមើលត្រឡប់មកវិញដែលបានជ្រើសរើស។';
+  String get infoRSI => 'សន្ទស្សន៍កម្លាំងដែលទាក់ទងឬ Relative Strength Index (RSI) ត្រូវបានបោះពុម្ពដោយ J. Welles Wilder។ តម្លៃបច្ចុប្បន្នត្រូវបានធ្វើឱ្យធម្មតាជាភាគរយចន្លោះពី 0 និង 100។ តម្លៃ flutter_chart_id នៃសូចនាករនេះអាចមានការយល់ច្រឡំព្រោះវាមិនប្រៀបធៀបឧបករណ៍ដែលទាក់ទងទៅនឹងឧបករណ៍ផ្សេងទៀត ឬសំណុំនៃឧបករណ៍នោះទេ ប៉ុន្តែបង្ហាញតម្លៃបច្ចុប្បន្នប្រៀបធៀបនឹងតម្លៃចុងក្រោយក្នុងអំឡុងពេលដែលបានជ្រើសរើសនៃការមើលត្រឡប់មកវិញ។';
 
   @override
-  String get infoBB => 'ក្រុមតន្រ្តី Bollinger (BB) អាចត្រូវបានប្រើដើម្បីវាស់ស្ទង់កម្ពស់ ឬកម្រិតទាបនៃតម្លៃទាក់ទងទៅនឹងការជួញដូរពីមុន។';
+  String get infoBB => 'Bollinger Bands (BB) អាច​ត្រូវ​បាន​ប្រើ​ដើម្បី​វាស់​ស្ទង់​ភាព​ខ្ពស់​ឬ​ទាប​នៃ​តម្លៃ​ទាក់ទង​នឹង​ការ​ជួញដូរ​មុនៗ។';
 
   @override
-  String get infoMA => 'មធ្យមភាគចល័ត (MA) ជួយកំណត់អត្តសញ្ញាណនិន្នាការទីផ្សារទូទៅដោយការច្រោះការប្រងប្រួលតម្លៃរយៈពេលខ្លី។ ដោយប្រើទិន្នន័យប្រវត្តិសាស្ត្រ វាគណនាតម្លៃជាមធ្យមក្នុងរយៈពេលជាក់លាក់មួយ ហើយគូសបន្ទាត់នៅលើតារាង។ ប្រសិនបើបន្ទាត់ MA ផ្លាស់ទីឡើងលើ វាជាសូចនាករនៃនិន្នាការឡើងលើ និន្នាការធ្លាក់ចុះ ប្រសិនបើវាផ្លាស់ទីចុះក្រោម។ សញ្ញាទិញកើតឡើងនៅពេលដែលតម្លៃផ្លាស់ទីខ្ពស់ជាងបន្ទាត់ MA ។';
+  String get infoMA => 'Moving Average (MA) ជួយកំណត់និន្នាការទីផ្សារទាំងមូលដោយត្រងចេញនូវការប្រែប្រួលតម្លៃរយៈពេលខ្លី។ ដោយប្រើទិន្នន័យប្រវត្តិសាស្ត្រ វាគណនាតម្លៃមធ្យមក្នុងរយៈពេលជាក់លាក់មួយ ហើយបង្ហាញជាបន្ទាត់នៅលើគំនូសតាង។ ប្រសិនបើបន្ទាត់ MA ផ្លាស់ទីឡើងលើ វាគឺជាសូចនាករនៃទិសដៅកើនឡើង ប្រសិនបើផ្លាស់ទីចុះក្រោមវាបង្ហាញទិសដៅធ្លាក់ចុះ។ សញ្ញាការទិញកើតឡើងនៅពេលតម្លៃផ្លាស់ទីនៅខាងលើបន្ទាត់ MA ។';
 
   @override
-  String get infoMaximumActiveIndicatorsAdded => 'អ្នកបានបន្ថែមចំនួនអតិបរមានៃសូចនាករសកម្ម។';
+  String get infoMaximumActiveIndicatorsAdded => 'អ្នកបានបន្ថែមសូចនាករសកម្មដល់ចំនួនអតិបរមាហើយ។';
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
@@ -67,14 +67,14 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get infoAddIndicator => 'បន្ថែមសូចនាករ';
 
   @override
-  String get labelDeleteAllIndicators => 'លុបសូចនាករទាំងអស់។';
+  String get labelDeleteAllIndicators => 'លុបសូចនាករទាំងអស់';
 
   @override
-  String get infoDeleteAllIndicators => 'នេះនឹងលុបសូចនាករសកម្មទាំងអស់។';
+  String get infoDeleteAllIndicators => 'វានឹងលុបសូចនាករសកម្មទាំងអស់។';
 
   @override
   String infoResetIndicators(Object indicator) {
-    return 'នេះនឹងកំណត់សូចនាករ $indicator ឡើងវិញទៅការកំណត់លំនាំដើមរបស់វា។';
+    return 'វានឹងកំណត់សូចនាករ $indicator ឡើងវិញទៅតាមការកំណត់លំនាំដើមរបស់វា។';
   }
 
   @override
@@ -88,7 +88,7 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   }
 
   @override
-  String get infoDeleteIndicator => 'តើអ្នកពិតជាចង់លុបសូចនាករនេះមែនទេ?';
+  String get infoDeleteIndicator => 'តើអ្នកប្រាកដថាចង់លុបសូចនាករនេះមែនទេ?';
 
   @override
   String get labelCancel => 'បោះបង់';
@@ -100,16 +100,16 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelDeleteAll => 'លុបទាំងអស់';
 
   @override
-  String get infoUpto3indicatorsAllowed => 'អនុញ្ញាតឱ្យមានសូចនាករសកម្មរហូតដល់ 3 ។';
+  String get infoUpto3indicatorsAllowed => 'អនុញ្ញាតឲ្យប្រើសូចនាករដែលដំណើរការបានហូតដល់ 3។';
 
   @override
-  String get infoNoActiveIndicators => 'មគ្គុទ្ទេសក៍សកម្មទេ។';
+  String get infoNoActiveIndicators => 'មិនមានសូចនាករដែលដំណើរការទេ។';
 
   @override
   String get labelReset => 'កំណត់ឡើងវិញ';
 
   @override
-  String get labelApply => 'ដាក់ពាក្យ';
+  String get labelApply => 'ប្រើប្រាស់';
 
   @override
   String get labelOK => 'យល់ព្រម';
@@ -130,16 +130,16 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelSource => 'ប្រភព';
 
   @override
-  String get labelClose => 'បិទ';
+  String get labelClose => 'Close';
 
   @override
-  String get labelOpen => 'បើក';
+  String get labelOpen => 'Open';
 
   @override
-  String get labelHigh => 'ខ្ពស់';
+  String get labelHigh => 'High';
 
   @override
-  String get labelLow => 'ទាប';
+  String get labelLow => 'Low';
 
   @override
   String get labelHl2 => 'Hl/2';
@@ -172,43 +172,43 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelRange => 'ចន្លោះ';
 
   @override
-  String get labelOverboughtLine => 'បន្ទាត់ទិញលើស';
+  String get labelOverboughtLine => 'បន្ទាត់ការទិញលើស';
 
   @override
-  String get labelOversoldLine => 'បន្ទាត់លក់លើស';
+  String get labelOversoldLine => 'បន្ទាត់ការលក់លើស';
 
   @override
   String get labelMACDLine => 'បន្ទាត់ MACD';
 
   @override
-  String get labelFastMAPeriod => 'រយៈពេល MA លឿន';
+  String get labelFastMAPeriod => 'រយៈពេល MA ដែលលឿន';
 
   @override
-  String get labelSlowMAPeriod => 'រយៈពេល MA យឺត';
+  String get labelSlowMAPeriod => 'រយៈពេល MA ដែលយឺត';
 
   @override
   String get labelSignalLine => 'បន្ទាត់សញ្ញា';
 
   @override
-  String get labelSignalPeriod => 'រយៈពេលសញ្ញា';
+  String get labelSignalPeriod => 'រយៈពេលនៃសញ្ញា';
 
   @override
-  String get labelIncreasingBar => 'បារកើនឡើង';
+  String get labelIncreasingBar => 'របារដែលកើនឡើង';
 
   @override
-  String get labelDecreasingBar => 'បារថយចុះ';
+  String get labelDecreasingBar => 'បារដែលថយចុះ';
 
   @override
-  String get labelBollingerBandsTop => 'កំពូលក្រុមតន្រ្តី Bollinger';
+  String get labelBollingerBandsTop => 'Bollinger Bands ខាងលើ';
 
   @override
-  String get labelBollingerBandsMedian => 'មធ្យមក្រុមតន្រ្តី Bollinger';
+  String get labelBollingerBandsMedian => 'Bollinger Bands មធ្យម';
 
   @override
-  String get labelBollingerBandsBottom => 'បាតក្រុមតន្រ្តី Bollinger';
+  String get labelBollingerBandsBottom => 'Bollinger Bands ខាងក្រោម';
 
   @override
-  String get labelChannelFill => 'បំពេញឆានែល';
+  String get labelChannelFill => 'ការបំពេញឆានែល';
 
   @override
   String get labelFillColor => 'បំពេញពណ៌';
@@ -217,13 +217,13 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelStandardDeviations => 'គម្លាតស្តង់ដារ';
 
   @override
-  String get labelMovingAverageType => 'ប្រភេទមធ្យមភាគចល័ត';
+  String get labelMovingAverageType => 'ប្រភេទតម្លៃមធ្យមផ្លាស់ទី';
 
   @override
   String get labelMALine => 'បន្ទាត់ MA';
 
   @override
-  String get labelOffset => 'ផ្លាស់ទី';
+  String get labelOffset => 'អុហ្វសិត';
 
   @override
   String get labelType => 'ប្រភេទ';
@@ -235,16 +235,16 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelExponential => 'អិចស្ប៉ូណង់ស្យែល';
 
   @override
-  String get labelWeighted => 'ទម្ងន់';
+  String get labelWeighted => 'Weighted';
 
   @override
-  String get labelHull => 'ស្រោមសំបុត្រ';
+  String get labelHull => 'Hull';
 
   @override
-  String get labelZeroLag => 'យឺតសូន្យ';
+  String get labelZeroLag => 'Zero Lag';
 
   @override
-  String get labelTimeSeries => 'ស៊េរីពេលវេលា';
+  String get labelTimeSeries => 'សំណុំទិន្នន័យតាមលំដាប់ពេលវេលា';
 
   @override
   String get labelWellesWilder => 'Welles Wilder';
@@ -253,13 +253,13 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelVariable => 'អថេរ';
 
   @override
-  String get labelTriangular => 'ត្រីកោណ';
+  String get labelTriangular => 'រាងត្រីកោណ';
 
   @override
-  String get label2Exponential => 'អិចស្ប៉ូណង់ស្យែល 2';
+  String get label2Exponential => '2-អិចស្ប៉ូណង់ស្យែល';
 
   @override
-  String get label3Exponential => 'អិចស្ប៉ូណង់ស្យែល 3';
+  String get label3Exponential => '3-អិចស្ប៉ូណង់ស្យែល';
 
   @override
   String warnEnterValueBetweenMinMax(Object max, Object min) {
@@ -290,7 +290,7 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get informTapToSetFinalPoint => 'ប៉ះដើម្បីកំណត់ចំណុចចុងក្រោយ';
 
   @override
-  String get informNoActiveDrawingTools => 'មិនមានឧបករណ៍គូរសកម្មទេ។';
+  String get informNoActiveDrawingTools => 'មិនមានឧបករណ៍គំនូរដែលប្រើប្រាស់ទេ។';
 
   @override
   String get actionAddDrawingTool => 'បន្ថែមឧបករណ៍គូរ';
@@ -299,8 +299,8 @@ class DerivMobileChartWrapperLocalizationsKm extends DerivMobileChartWrapperLoca
   String get labelOf => 'នៃ';
 
   @override
-  String get labelDeleteAllDrawingTools => 'លុបឧបករណ៍គូរទាំងអស់។';
+  String get labelDeleteAllDrawingTools => 'លុបឧបករណ៍គូរទាំងអស់';
 
   @override
-  String get informDeleteAllDrawingTools => 'នេះនឹងលុបឧបករណ៍គូរសកម្មទាំងអស់។';
+  String get informDeleteAllDrawingTools => 'វានឹងលុបឧបករណ៍គំនូរដែលប្រើប្រាស់ទាំងអស់។';
 }

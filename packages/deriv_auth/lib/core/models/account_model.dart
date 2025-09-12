@@ -1,3 +1,5 @@
+import 'package:deriv_auth/core/models/authorize_model.dart';
+
 /// A model class to represent account information.
 class AccountModel {
   /// Account model.
@@ -9,6 +11,8 @@ class AccountModel {
     this.fullName,
     this.userId,
     this.isDisabled = false,
+    this.accountCategory,
+    this.isVirtual,
   });
 
   /// Creates a new instance of Account from a JSON object.
@@ -19,7 +23,11 @@ class AccountModel {
         email = json['email'],
         fullName = json['fullName'],
         userId = json['userId'],
-        isDisabled = json['isDisabled'];
+        isDisabled = json['isDisabled'],
+        accountCategory = json['accountCategory'] == null
+            ? null
+            : accountCategoryEnumMapper[json['accountCategory']],
+        isVirtual = json['isVirtual'];
 
   /// Creates a new instance of Account, parses the json in [json] and puts the data into the new instance.
   factory AccountModel.fromJson(Map<String, dynamic> json) => AccountModel(
@@ -30,6 +38,10 @@ class AccountModel {
         fullName: json['fullName'],
         userId: json['userId'],
         isDisabled: json['isDisabled'],
+        accountCategory: json['accountCategory'] == null
+            ? null
+            : accountCategoryEnumMapper[json['accountCategory']],
+        isVirtual: json['isVirtual'],
       );
 
   /// Login id, e.g. CR1234.
@@ -53,6 +65,12 @@ class AccountModel {
   /// Indicates if account is disabled or not.
   bool? isDisabled;
 
+  /// Account category
+  AccountCategoryEnum? accountCategory;
+
+  /// Indicates if the account is virtual.
+  bool? isVirtual;
+
   /// Converts an Account instance into a map.
   Map<String, dynamic> toJson() => <String, dynamic>{
         'acct': accountId,
@@ -62,5 +80,7 @@ class AccountModel {
         'fullName': fullName,
         'userId': userId,
         'isDisabled': isDisabled,
+        'accountCategory': accountCategory?.name,
+        'isVirtual': isVirtual,
       };
 }

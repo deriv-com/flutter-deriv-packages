@@ -5,272 +5,272 @@ class DerivAuthLocalizationsUz extends DerivAuthLocalizations {
   DerivAuthLocalizationsUz([String locale = 'uz']) : super(locale);
 
   @override
-  String get labelNotAvailable => 'Not available';
+  String get labelNotAvailable => 'Mavjud emas';
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
-    return '$app isn\'t available in your country';
+    return '$app mamlakatingizda ishlamaydi';
   }
 
   @override
   String get actionOk => 'OK';
 
   @override
-  String get warnNotAvailableCountries => 'If you have any questions, contact us via ';
+  String get warnNotAvailableCountries => 'Agar savollaringiz bo`lsa, biz bilan bog`laning ';
 
   @override
-  String get labelLiveChat => 'Live chat';
+  String get labelLiveChat => 'Jonli chat';
 
   @override
-  String get actionSignUpForFree => 'Sign up for free';
+  String get actionSignUpForFree => 'Bepul ro`yxatdan o`ting';
 
   @override
-  String get actionLogin => 'Log in';
+  String get actionLogin => 'Kirish';
 
   @override
-  String get labelTwoFactorAuth => 'Two-factor authentication';
+  String get labelTwoFactorAuth => 'Ikki faktorli autentifikatsiya';
 
   @override
-  String get informEnterTwoFactorAuthCode => 'Enter the 6-digit code from the authenticator app on your phone.';
+  String get informEnterTwoFactorAuthCode => 'Telefoningizdagi autentifikatsiya ilovasidan 6 raqamli kodni kiriting.';
 
   @override
-  String get labelTwoFactorAuthenticationCode => '2FA code';
+  String get labelTwoFactorAuthenticationCode => '2FA kodi';
 
   @override
-  String get actionProceed => 'Proceed';
+  String get actionProceed => 'Davom etish';
 
   @override
-  String get labelLogIn => 'Log in';
+  String get labelLogIn => 'Kirish';
 
   @override
-  String get informLoginOptions => 'Or log in with';
+  String get informLoginOptions => 'Yoki tizimga kiring';
 
   @override
   String get labelEmail => 'Email';
 
   @override
-  String get labelPassword => 'Password';
+  String get labelPassword => 'Parol';
 
   @override
-  String get actionForgotPassword => 'Forgot password?';
+  String get actionForgotPassword => 'Parolni unutdingizmi?';
 
   @override
-  String get labelDontHaveAnAccountYet => 'Don’t have an account yet?';
+  String get labelDontHaveAnAccountYet => 'Hali hisobingiz yo`qmi?';
 
   @override
-  String get actionCreateANewAccount => 'Create a new account';
+  String get actionCreateANewAccount => 'Haqiqiy hisob yaratish';
 
   @override
-  String get informInvalidEmailFormat => 'Enter a valid email address';
+  String get informInvalidEmailFormat => 'Yaroqli elektron pochta manzilini kiriting';
 
   @override
-  String get warnPasswordLength => 'You should enter 6-25 characters.';
+  String get warnPasswordLength => 'Siz 6-25 belgini kiritishingiz kerak.';
 
   @override
-  String get labelResetPassword => 'Reset password';
+  String get labelResetPassword => 'Parolni tiklash';
 
   @override
-  String get labelChooseNewPass => 'Choose a new password';
+  String get labelChooseNewPass => 'Yangi parolni tanlang';
 
   @override
-  String get labelCreatePass => 'Password';
+  String get labelCreatePass => 'Parol';
 
   @override
-  String get informYourPassHasBeenReset => 'Your password has been reset';
+  String get informYourPassHasBeenReset => 'Parolingiz tiklandi';
 
   @override
-  String get informRedirectLogin => 'You’ll need to log in with your new password. Hang on, we’re redirecting you.';
+  String get informRedirectLogin => 'Siz yangi parolingiz bilan tizimga kirishingiz kerak. Kuting, sizni qayta yo`naltiryapmiz.';
 
   @override
-  String get actionResetPass => 'Reset my password';
+  String get actionResetPass => 'Parolimni tiklash';
 
   @override
-  String get informInvalidPasswordFormat => 'Please enter a valid password format';
+  String get informInvalidPasswordFormat => 'Iltimos, yaroqli parol formatini kiriting';
 
   @override
-  String get labelCheckEmail => 'Check your email';
+  String get labelCheckEmail => 'Elektron pochtaingizni tekshiring';
 
   @override
   String informSendResetPasswordEmail(String email) {
-    return 'We’ve sent a message to $email with a link to reset your password.';
+    return 'Biz $email manziliga parolingizni tiklash havolasi bilan xabar yubordik.';
   }
 
   @override
-  String get informResetPassByEmail => 'We\'ll email you instructions to reset your password.';
+  String get informResetPassByEmail => 'Parolni tiklash bo`yicha ko`rsatmalarni elektron pochta orqali yuboramiz.';
 
   @override
-  String get labelSelectCountry => 'Where do you live?';
+  String get labelSelectCountry => 'Qayerda yashaysız?';
 
   @override
-  String get labelChooseCountry => 'Choose country';
+  String get labelChooseCountry => 'Mamlakatni tanlang';
 
   @override
-  String get warnCountryNotAvailable => 'Unfortunately, Deriv is not available in your country.';
+  String get warnCountryNotAvailable => 'Afsuski, Deriv sizning mamlakatingizda mavjud emas.';
 
   @override
-  String get actionNext => 'Next';
+  String get actionNext => 'Keyingisi';
 
   @override
-  String get labelEmailIssueHeader => 'If you don\'t see an email from us within a few minutes, a few things could have happened:';
+  String get labelEmailIssueHeader => 'Agar siz bir necha daqiqa ichida bizning elektron pochta xabarimizni olmagan bo`lsangiz, quyidagi sabablar bo`lishi mumkin:';
 
   @override
-  String get labelEmailIssueSpam => 'The email is in your spam folder (Sometimes things get lost there).';
+  String get labelEmailIssueSpam => 'Elektron pochta xabaringiz spam papkasida (Ba`zan u erda narsalar yo`qoladi).';
 
   @override
-  String get labelEmailIssueWrongEmail => 'You accidentally gave us another email address (Usually a work or a personal one instead of the one you meant).';
+  String get labelEmailIssueWrongEmail => 'Siz bizga boshqa elektron pochta manzilini xato bilan berdingiz (Odatda bu ish yoki shaxsiy elektron pochta manzili bo`ladi).';
 
   @override
-  String get labelEmailIssueTypo => 'The email address you entered had a mistake or typo (happens to the best of us).';
+  String get labelEmailIssueTypo => 'Siz kiritgan elektron pochta manzilida xato yozilgan (Buni eng yaxshilari ham qiladi).';
 
   @override
-  String get labelEmailIssueFirewall => 'We can\'t deliver the email to this address (Usually because of firewalls or filtering).';
+  String get labelEmailIssueFirewall => 'Biz bu manzilga e-pochtani yetkazib bera olmaymiz (Odatda xavfsizlik devori yoki filtrlash tufayli).';
 
   @override
-  String get actionReenterEmail => 'Re-enter your email and try again';
+  String get actionReenterEmail => 'E-pochtangizni qayta kiriting va qaytadan urining';
 
   @override
-  String get labelKeepPassword => 'Keep your account secure with a password';
+  String get labelKeepPassword => 'Hisobingizni parol bilan himoya qiling';
 
   @override
-  String get labelCreatePassword => 'Create a password';
+  String get labelCreatePassword => 'Parol yaratish';
 
   @override
-  String get actionStartTrading => 'Start trading';
+  String get actionStartTrading => 'Savdoni boshlang';
 
   @override
-  String get actionPrevious => 'Previous';
+  String get actionPrevious => 'Oldingi';
 
   @override
-  String get labelSignUp => 'Sign up';
+  String get labelSignUp => 'Ro`yxatdan o`tish';
 
   @override
-  String get labelOrSignUpWith => 'Or sign up with';
+  String get labelOrSignUpWith => 'Yoki ro\'yxatdan o\'ting';
 
   @override
-  String get labelReferralInfoTitle => 'Affiliate referral code';
+  String get labelReferralInfoTitle => 'Affiliate referal kodlari';
 
   @override
-  String get infoReferralInfoDescription => 'An alphanumeric code provided by a Deriv affiliate, applicable for email sign-ups only.';
+  String get infoReferralInfoDescription => 'Deriv hamkori tomonidan taqdim etilgan alfanumerik kod, faqat elektron pochta orqali ro`yxatdan o`tish uchun amal qiladi.';
 
   @override
-  String get labelGotReferralCode => 'Got a referral code?';
+  String get labelGotReferralCode => 'Referal kodingiz bormi?';
 
   @override
-  String get labelHaveAccount => 'Already have an account?';
+  String get labelHaveAccount => 'Hisobingiz bormi?';
 
   @override
-  String get actionCreateAccount => 'Create free demo account';
+  String get actionCreateAccount => 'Bepul demo hisob yaratish';
 
   @override
-  String get informInvalidReferralCode => 'The referral code you entered is invalid. Check and try again.';
+  String get informInvalidReferralCode => 'Siz kiritgan referal kodi yaroqsiz. Tekshirib, qayta urinib ko`ring.';
 
   @override
-  String get labelVerifyYourEmail => 'Verify your email';
+  String get labelVerifyYourEmail => 'Elektron pochtaingizni tekshiring';
 
   @override
-  String get labelThanksEmail => 'Thanks for verifying your email';
+  String get labelThanksEmail => 'Emailingizni tasdiqlaganingiz uchun rahmat';
 
   @override
-  String get informLetsContinue => 'Let\'s continue.';
+  String get informLetsContinue => 'Keling, davom etamiz.';
 
   @override
-  String get actionContinue => 'Continue';
+  String get actionContinue => 'Davom etish';
 
   @override
-  String get labelSearchCountry => 'Search country';
+  String get labelSearchCountry => 'Mamlakatni qidirish';
 
   @override
   String informVerificationEmailSent(String email) {
-    return 'We\'ve sent a message to $email with a link to activate your account.';
+    return 'Hisobingizni faollashtirish uchun havola bilan $email manziliga xabar yubordik.';
   }
 
   @override
-  String get actionEmailNotReceived => 'Didn\'t receive your email?';
+  String get actionEmailNotReceived => 'E-pochtangizni olmadingizmi?';
 
   @override
-  String get informPasswordPolicy => 'Your password must have:';
+  String get informPasswordPolicy => 'Sizning parolingizda bo`lishi kerak:';
 
   @override
-  String get informPasswordPolicyLength => '8-25 characters';
+  String get informPasswordPolicyLength => '8-25 ta belgi';
 
   @override
-  String get informPasswordPolicyLowerAndUpper => 'Upper and lower case letters';
+  String get informPasswordPolicyLowerAndUpper => 'Katta va kichik harflar';
 
   @override
-  String get informPasswordPolicyNumber => 'At least one number';
+  String get informPasswordPolicyNumber => 'Kamida bitta raqam';
 
   @override
-  String get warnPasswordContainsSymbol => 'Use symbols for strong password.';
+  String get warnPasswordContainsSymbol => 'Kuchli parol uchun belgilardan foydalaning.';
 
   @override
-  String get labelReferralCode => 'Referral Code';
+  String get labelReferralCode => 'Referal Kod';
 
   @override
-  String get actionTryAgain => 'Try Again';
+  String get actionTryAgain => 'Qayta urinib ko\'ring';
 
   @override
-  String get informInvalid2FACode => 'The code you entered is invalid. Check and try again.';
+  String get informInvalid2FACode => 'Siz kiritgan kod yaroqsiz. Tekshirib, qayta urinib ko`ring.';
 
   @override
-  String get informFailedAuthentication => 'Your email or password may be incorrect. Did you sign up with a social account? Check and try again.';
+  String get informFailedAuthentication => 'Sizning elektron pochta manzilingiz yoki parolingiz noto`g`ri bo`lishi mumkin. Ijtimoiy hisob bilan ro`yxatdan o`tganmisiz? Tekshirib, qayta urinib ko`ring.';
 
   @override
-  String get informDeactivatedAccount => 'Your account is deactivated.';
+  String get informDeactivatedAccount => 'Hisobingiz o\'chirilgan.';
 
   @override
-  String get informFailedAuthorization => 'Authorization failed.';
+  String get informFailedAuthorization => 'Avtorizatsiya amalga oshmadi.';
 
   @override
-  String get informInvalidResidence => 'Invalid residence.';
+  String get informInvalidResidence => 'Yaroqsiz yashash joyi.';
 
   @override
-  String get informInvalidCredentials => 'Invalid credentials.';
+  String get informInvalidCredentials => 'Hisob maʼlumotlari yaroqsiz.';
 
   @override
-  String get informMissingOtp => 'Missing one-time password.';
+  String get informMissingOtp => 'Bir martalik parol yetishmayapti.';
 
   @override
-  String get informSelfClosed => 'Your account has been closed.';
+  String get informSelfClosed => 'Hisobingiz yopildi.';
 
   @override
-  String get informUnexpectedError => 'An unexpected error occurred.';
+  String get informUnexpectedError => 'Kutilmagan xato yuz berdi.';
 
   @override
-  String get informUnsupportedCountry => 'Your country is not supported.';
+  String get informUnsupportedCountry => 'Mamlakatingiz qoʻllab-quvvatlanmaydi.';
 
   @override
-  String get informExpiredAccount => 'Your account is expired';
+  String get informExpiredAccount => 'Hisobingiz muddati tugagan';
 
   @override
-  String get labelCountryConsentBrazil => 'I hereby confirm that my request for opening an account with Deriv to trade OTC products issued and offered exclusively outside Brazil was initiated by me. I fully understand that Deriv is not regulated by CVM and by approaching Deriv I intend to set up a relation with a foreign company.';
+  String get labelCountryConsentBrazil => 'Shu bilan Braziliyadan tashqarida chiqarilgan va taklif qilingan birjadan tashqari mahsulotlar savdosi uchun Deriv bilan hisob ochish haqidagi so`rovim men tomonidan qo`yilganligini tasdiqlayman. Men Deriv CVM tomonidan tartibga solinmasligini to`liq tushunaman va Derivga murojaat qilib, men xorijiy kompaniya bilan aloqa o`rnatish niyatidaman.';
 
   @override
-  String get informConnectionError => 'Connection error. Please try again later.';
+  String get informConnectionError => 'Ulanish xatosi. Keyinroq qayta urinib ko‘ring.';
 
   @override
-  String get informSwitchAccountError => 'Switch account error. Please try again later.';
+  String get informSwitchAccountError => 'Hisobni almashtirish xatosi. Keyinroq qayta urinib ko‘ring.';
 
   @override
-  String get labelDeveloper => 'Developer';
+  String get labelDeveloper => 'Dasturchi';
 
   @override
-  String get labelEndpoint => 'Endpoint';
+  String get labelEndpoint => 'Oxirgi nuqta';
 
   @override
-  String get semanticEndpoint => 'Endpoint';
+  String get semanticEndpoint => 'Oxirgi nuqta';
 
   @override
-  String get warnInvalidEndpoint => 'invalid endpoint';
+  String get warnInvalidEndpoint => 'yaroqsiz oxirgi nuqta';
 
   @override
-  String get labelApplicationID => 'Application ID';
+  String get labelApplicationID => 'Ilovaning ID';
 
   @override
-  String get semanticApplicationID => 'Application ID';
+  String get semanticApplicationID => 'Arizaning ID';
 
   @override
-  String get warnInvalidApplicationID => 'invalid application ID';
+  String get warnInvalidApplicationID => 'yaroqsiz ariza ID';
 
   @override
-  String get labelLanguage => 'Language';
+  String get labelLanguage => 'Til';
 }

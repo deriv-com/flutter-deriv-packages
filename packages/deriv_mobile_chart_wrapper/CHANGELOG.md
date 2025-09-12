@@ -1,3 +1,34 @@
+## 0.1.13+4
+
+ - Update a dependency to the latest release.
+
+## 0.1.13+3
+
+ - **REFACTOR**(deriv_mobile_chart_wrapper): disable root navigator for delete confirmation and update deriv_chart ([#963](https://github.com/deriv-com/flutter-deriv-packages.git/issues/963)). ([5a5657fe](https://github.com/deriv-com/flutter-deriv-packages.git/commit/5a5657fe385a22df29d4c440b8d11148379eaf5d))
+
+## 0.1.13+2
+
+ - Update a dependency to the latest release.
+
+## 0.1.13+1
+
+ - Update a dependency to the latest release.
+
+## 0.1.13
+
+ - **FEAT**(deriv_mobile_chart_wrapper): update chart package ref ([#953](https://github.com/deriv-com/flutter-deriv-packages.git/issues/953)). ([01815383](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0181538330a02cc9d6dc66ec6b420bb7386987df))
+
+## 0.1.12
+
+ - **FEAT**(mobile_chart_wrapper): pass some missing parameters to DerivChart widget ([#949](https://github.com/deriv-com/flutter-deriv-packages.git/issues/949)). ([85083906](https://github.com/deriv-com/flutter-deriv-packages.git/commit/85083906b095a41950655ce8ba8ff9010553a0e8))
+ - **FEAT**(deriv_mobile_chart_wrapper): Update LICENSE ([#947](https://github.com/deriv-com/flutter-deriv-packages.git/issues/947)). ([6fe70b1b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/6fe70b1b225df00267bc4a41ae8fde3dbb7e04c6))
+ - **FEAT**(deriv_mobile_chart_wrapper): Ramin/make localization more customizable ([#945](https://github.com/deriv-com/flutter-deriv-packages.git/issues/945)). ([416dfa57](https://github.com/deriv-com/flutter-deriv-packages.git/commit/416dfa5726b763a894a4e1f94b50d82ab43ea8ec))
+
+## 0.1.11
+
+ - **FEAT**(deriv_mobile_chart_wrapper): Update LICENSE ([#947](https://github.com/deriv-com/flutter-deriv-packages.git/issues/947)). ([6fe70b1b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/6fe70b1b225df00267bc4a41ae8fde3dbb7e04c6))
+ - **FEAT**(deriv_mobile_chart_wrapper): Ramin/make localization more customizable ([#945](https://github.com/deriv-com/flutter-deriv-packages.git/issues/945)). ([416dfa57](https://github.com/deriv-com/flutter-deriv-packages.git/commit/416dfa5726b763a894a4e1f94b50d82ab43ea8ec))
+
 ## 0.1.10+2
 
  - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))

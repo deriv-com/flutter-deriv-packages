@@ -59,7 +59,7 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage>
         child: Scaffold(
           backgroundColor: context.theme.colors.primary,
           appBar: AppBar(
-            title: const Text('Passkeys', style: TextStyle(fontSize: 20)),
+            title: const Text('Biometrics', style: TextStyle(fontSize: 20)),
             actions: <Widget>[
               InkWell(
                 child: Padding(
@@ -157,7 +157,11 @@ class _ManagePasskeysPageState extends State<ManagePasskeysPage>
                                   .add(DerivPasskeysCreateCredentialEvent());
                             },
                             child: Text(
-                              context.derivPasskeysLocalizations.createPasskey,
+                              state.passkeysList.isEmpty
+                                  ? context
+                                      .derivPasskeysLocalizations.createPasskey
+                                  : context.derivPasskeysLocalizations
+                                      .addMorePasskeysButtonText,
                               style: TextStyle(
                                 color: context.theme.colors.prominent,
                               ),

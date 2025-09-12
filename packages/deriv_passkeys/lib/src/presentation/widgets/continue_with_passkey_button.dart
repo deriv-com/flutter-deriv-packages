@@ -65,7 +65,7 @@ class ContinueWithPasskeyButton extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'Passkey',
+                          'Biometrics',
                           style: context.theme.textStyle(
                             textStyle: TextStyles.body2,
                             color: context.theme.colors.prominent,

@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
-
+      
       - name: Setup Flutter
         uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
         with:
@@ -27,10 +27,23 @@ jobs:
           flutter-version: "3.24.1"
           cache: true
 
-      - name: Install Melos and run pub get
+      - name: Install Melos
         uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a
         with:
           melos-version: "3.2.0"
+          run-bootstrap: false
+
+      - name: Pub get
+        run: |
+          for d in packages/* ; do
+            if [ -d "$d" ]; then
+              echo "Running flutter pub get inside $d"
+              cd "$d"
+              rm -rf example
+              flutter pub get 
+              cd ../..
+            fi
+          done
 
       - name: Run Analyze
         run: melos run analyze

@@ -241,7 +241,7 @@ class DerivMobileChartWrapperLocalizationsIt extends DerivMobileChartWrapperLoca
   String get labelHull => 'Scafo';
 
   @override
-  String get labelZeroLag => 'Zero Lag';
+  String get labelZeroLag => 'Ritardo zero';
 
   @override
   String get labelTimeSeries => 'Serie temporale';

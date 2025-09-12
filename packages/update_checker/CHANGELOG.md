@@ -1,3 +1,7 @@
+## 3.2.0
+
+ - **FEAT**(update_checker): update dependencies to the latest release ([#978](https://github.com/deriv-com/flutter-deriv-packages.git/issues/978)). ([66fb893d](https://github.com/deriv-com/flutter-deriv-packages.git/commit/66fb893dd5c2003424472ac8b6f2af2890490967))
+
 ## 3.1.2
 
  - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))

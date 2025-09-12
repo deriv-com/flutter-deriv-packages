@@ -22,7 +22,7 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get labelLiveChat => 'লাইভ চ্যাট';
 
   @override
-  String get actionSignUpForFree => 'বিনামূল্যে সাইন আপ করুন';
+  String get actionSignUpForFree => 'ফ্রি সাইন আপ করুন';
 
   @override
   String get actionLogin => 'লগ ইন';
@@ -242,7 +242,7 @@ class DerivAuthLocalizationsBn extends DerivAuthLocalizations {
   String get informExpiredAccount => 'আপনার অ্যাকাউন্টের মেয়াদ শেষ হয়েছে';
 
   @override
-  String get labelCountryConsentBrazil => 'আমি এর মাধ্যমে নিশ্চিত করি যে ব্রাজিলের বাইরে একচেটিয়াভাবে জারি করা এবং দেওয়া ওটিসি পণ্যগুলি বাণিজ্য করার জন্য ডেরিভের সাথে একটি অ্যাকাউন্ট খোলার জন্য আমার অনুরোধ আমার দ্বারা শুরু আমি পুরোপুরি বুঝতে পারি যে ডেরিভ সিভিএম দ্বারা নিয়ন্ত্রিত নয় এবং ডেরিভের কাছে পৌঁছানোর মাধ্যমে আমি একটি বিদেশী সংস্থার সাথে সম্পর্ক স্থাপন করার ইচ্ছা করি।';
+  String get labelCountryConsentBrazil => 'আমি এর মাধ্যমে নিশ্চিত করি যে ব্রাজিলের বাইরে একচেটিয়াভাবে জারি করা এবং দেওয়া ওটিসি পণ্যগুলি ট্রেডকরার জন্য Deriv এর সাথে একটি অ্যাকাউন্ট খোলার জন্য আমার অনুরোধ আমার দ্বারা শুরু আমি পুরোপুরি বুঝতে পারি যে Deriv সিভিএম দ্বারা নিয়ন্ত্রিত নয় এবং Deriv এর কাছে পৌঁছানোর মাধ্যমে আমি একটি বিদেশী সংস্থার সাথে সম্পর্ক স্থাপন করি।';
 
   @override
   String get informConnectionError => 'সংযোগ ত্রুটি। দয়া করে পরে আবার চেষ্টা করুন।';

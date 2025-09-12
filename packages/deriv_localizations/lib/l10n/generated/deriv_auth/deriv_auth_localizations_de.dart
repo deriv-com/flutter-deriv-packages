@@ -13,7 +13,7 @@ class DerivAuthLocalizationsDe extends DerivAuthLocalizations {
   }
 
   @override
-  String get actionOk => 'Okay';
+  String get actionOk => 'OK';
 
   @override
   String get warnNotAvailableCountries => 'Wenn Sie Fragen haben, kontaktieren Sie uns über ';
@@ -22,7 +22,7 @@ class DerivAuthLocalizationsDe extends DerivAuthLocalizations {
   String get labelLiveChat => 'Live-chat';
 
   @override
-  String get actionSignUpForFree => 'Melde dich kostenlos an';
+  String get actionSignUpForFree => 'Melden Sie sich kostenlos an';
 
   @override
   String get actionLogin => 'Anmelden';

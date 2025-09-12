@@ -1,6 +1,10 @@
 name: flutter_deriv_packages
 repository: https://github.com/deriv-com/flutter-deriv-packages.git
 
+ignore:
+  # e.g. ignore example apps
+  - "packages/**/example"
+
 packages:
   - packages/*
 
