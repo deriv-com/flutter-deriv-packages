@@ -112,3 +112,11 @@ Examples:
 - `@claude Suggest a better way to handle this error`
 
 Even typing just `@claude` will trigger a general code review based on Flutter/Dart best practices with a focus on security.
+
+### Access Restrictions
+
+For security reasons, Claude Code Review is restricted to:
+- Repository organization members
+- Repository collaborators with write access or higher
+
+This ensures that only trusted contributors can trigger code reviews with Claude.
