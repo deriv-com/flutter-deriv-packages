@@ -90,12 +90,18 @@ jobs:
         id: get-pr-number
         timeout-minutes: 2
         run: |
+          PR_NUMBER=""
           if [[ "${{ github.event_name }}" == "issue_comment" ]]; then
-            echo "PR_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
+            if [[ -n "${{ github.event.issue.pull_request.url }}" ]]; then
+              PR_NUMBER="${{ github.event.issue.number }}"
+            else
+              echo "::error::This comment is not on a pull request."
+              exit 1
+            fi
           elif [[ "${{ github.event_name }}" == "pull_request_review_comment" ]]; then
-            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+            PR_NUMBER="${{ github.event.pull_request.number }}"
           elif [[ "${{ github.event_name }}" == "pull_request_review" ]]; then
-            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+            PR_NUMBER="${{ github.event.pull_request.number }}"
           else
             echo "::error::Unsupported event type: ${{ github.event_name }}"
             exit 1
@@ -107,6 +113,9 @@ jobs:
             exit 1
           fi
           
+          # Set both output and env var for flexibility
+          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "Using PR #$PR_NUMBER"
 
       # Step 2a: Try to checkout PR in merged state
@@ -116,7 +125,7 @@ jobs:
         continue-on-error: true
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
-          ref: refs/pull/${{ env.PR_NUMBER }}/merge
+          ref: refs/pull/${{ steps.get-pr-number.outputs.number }}/merge
           fetch-depth: 0  # Fetch all history for better context
 
       # Step 2b: Fallback to PR head if merge checkout fails
@@ -127,7 +136,7 @@ jobs:
         continue-on-error: true
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
-          ref: refs/pull/${{ env.PR_NUMBER }}/head
+          ref: refs/pull/${{ steps.get-pr-number.outputs.number }}/head
           fetch-depth: 0  # Fetch all history for better context
 
       # Step 2c: Verify that at least one checkout succeeded
@@ -135,13 +144,13 @@ jobs:
         timeout-minutes: 1
         if: steps.checkout-merge.outcome != 'success' && steps.checkout-head.outcome != 'success'
         run: |
-          echo "::error::Failed to checkout PR #${{ env.PR_NUMBER }} in either merged or head state"
+          echo "::error::Failed to checkout PR #${{ steps.get-pr-number.outputs.number }} in either merged or head state"
           echo "This could be because the PR is from a fork with restricted permissions or the PR doesn't exist."
           exit 1
 
       # Step 3: Run Claude Code Review
       - name: Claude Code Review
-        uses: anthropics/claude-code-action@a3ff61d47aa5118a43b33ae44c4087d9eb51111a
+        uses: anthropics/claude-code-action@a5528eec7426a4f0c9c1ac96018daa53ebd05bc4
         timeout-minutes: 30
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
