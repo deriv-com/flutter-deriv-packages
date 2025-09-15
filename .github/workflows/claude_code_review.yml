@@ -12,7 +12,7 @@ jobs:
   review:
     # Only run when comments or reviews contain @claude
     if: |
-      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude') && github.event.issue.pull_request) ||
       (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude'))
     runs-on: ubuntu-latest
@@ -23,13 +23,126 @@ jobs:
       id-token: write
       actions: read  # Required for Claude to read CI results on PRs
     steps:
-      - name: Checkout code
+      - name: Verify user authorization
+        id: verify-user-authorization
+        timeout-minutes: 2
+        run: |
+          # Get the user who triggered the workflow
+          if [[ "${{ github.event_name }}" == "issue_comment" ]]; then
+            ACTOR="${{ github.event.comment.user.login }}"
+            ASSOCIATION="${{ github.event.comment.author_association }}"
+          elif [[ "${{ github.event_name }}" == "pull_request_review_comment" ]]; then
+            ACTOR="${{ github.event.comment.user.login }}"
+            ASSOCIATION="${{ github.event.comment.author_association }}"
+          elif [[ "${{ github.event_name }}" == "pull_request_review" ]]; then
+            ACTOR="${{ github.event.review.user.login }}"
+            ASSOCIATION="${{ github.event.review.author_association }}"
+          else
+            echo "::error::Unsupported event type: ${{ github.event_name }}"
+            exit 1
+          fi
+          
+          echo "Checking permissions for user: $ACTOR"
+          
+          # First, check author association if available
+          if [[ ! -z "$ASSOCIATION" ]]; then
+            echo "Author association: $ASSOCIATION"
+            if [[ "$ASSOCIATION" == "OWNER" || "$ASSOCIATION" == "MEMBER" || "$ASSOCIATION" == "COLLABORATOR" ]]; then
+              echo "User is authorized based on author association"
+              exit 0
+            fi
+          fi
+          
+          # If author association check didn't pass or wasn't available, use the API
+          echo "Checking repository permissions via API..."
+          REPO="${{ github.repository }}"
+          
+          # Use GitHub's permission check API
+          HTTP_STATUS=$(curl -s -o permission_response.json -w "%{http_code}" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$REPO/collaborators/$ACTOR/permission")
+            
+          # Handle server errors gracefully
+          if [[ "$HTTP_STATUS" == "5"* ]]; then
+            echo "::warning::GitHub API returned a server error. Allowing the action to proceed to avoid false rejections."
+            exit 0
+          fi
+          
+          # Check if user has permission
+          if [[ "$HTTP_STATUS" == "200" ]]; then
+            PERMISSION=$(cat permission_response.json | jq -r .permission)
+            echo "Permission level: $PERMISSION"
+            
+            # Check if user has at least 'write' access
+            if [[ "$PERMISSION" == "admin" || "$PERMISSION" == "write" || "$PERMISSION" == "maintain" ]]; then
+              echo "User has sufficient permissions"
+              exit 0
+            fi
+          fi
+          
+          # If we get here, the user is not authorized
+          echo "::error::User $ACTOR is not authorized to trigger Claude Code Review"
+          echo "Only organization members and repository collaborators with write access or higher can use this feature."
+          exit 1
+      # Step 1: Get PR number with validation
+      - name: Get PR number
+        id: get-pr-number
+        timeout-minutes: 2
+        run: |
+          if [[ "${{ github.event_name }}" == "issue_comment" ]]; then
+            echo "PR_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event_name }}" == "pull_request_review_comment" ]]; then
+            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event_name }}" == "pull_request_review" ]]; then
+            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          else
+            echo "::error::Unsupported event type: ${{ github.event_name }}"
+            exit 1
+          fi
+          
+          # Verify PR_NUMBER is set
+          if [[ -z "$PR_NUMBER" ]]; then
+            echo "::error::Failed to determine PR number"
+            exit 1
+          fi
+          
+          echo "Using PR #$PR_NUMBER"
+
+      # Step 2a: Try to checkout PR in merged state
+      - name: Checkout PR (merged state)
+        id: checkout-merge
+        timeout-minutes: 5
+        continue-on-error: true
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
+          ref: refs/pull/${{ env.PR_NUMBER }}/merge
           fetch-depth: 0  # Fetch all history for better context
 
+      # Step 2b: Fallback to PR head if merge checkout fails
+      - name: Checkout PR (head state)
+        id: checkout-head
+        timeout-minutes: 5
+        if: steps.checkout-merge.outcome != 'success'
+        continue-on-error: true
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          ref: refs/pull/${{ env.PR_NUMBER }}/head
+          fetch-depth: 0  # Fetch all history for better context
+
+      # Step 2c: Verify that at least one checkout succeeded
+      - name: Verify checkout
+        timeout-minutes: 1
+        if: steps.checkout-merge.outcome != 'success' && steps.checkout-head.outcome != 'success'
+        run: |
+          echo "::error::Failed to checkout PR #${{ env.PR_NUMBER }} in either merged or head state"
+          echo "This could be because the PR is from a fork with restricted permissions or the PR doesn't exist."
+          exit 1
+
+      # Step 3: Run Claude Code Review
       - name: Claude Code Review
         uses: anthropics/claude-code-action@a3ff61d47aa5118a43b33ae44c4087d9eb51111a
+        timeout-minutes: 30
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           claude_args: |
