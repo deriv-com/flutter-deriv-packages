@@ -85,68 +85,39 @@ jobs:
           echo "::error::User $ACTOR is not authorized to trigger Claude Code Review"
           echo "Only organization members and repository collaborators with write access or higher can use this feature."
           exit 1
-      # Step 1: Get PR number with validation
-      - name: Get PR number
-        id: get-pr-number
-        timeout-minutes: 2
+
+      # Step 1: Get PR details
+      - name: Get PR details
+        id: pr
         run: |
-          PR_NUMBER=""
-          if [[ "${{ github.event_name }}" == "issue_comment" ]]; then
-            if [[ -n "${{ github.event.issue.pull_request.url }}" ]]; then
-              PR_NUMBER="${{ github.event.issue.number }}"
-            else
-              echo "::error::This comment is not on a pull request."
-              exit 1
-            fi
-          elif [[ "${{ github.event_name }}" == "pull_request_review_comment" ]]; then
-            PR_NUMBER="${{ github.event.pull_request.number }}"
-          elif [[ "${{ github.event_name }}" == "pull_request_review" ]]; then
-            PR_NUMBER="${{ github.event.pull_request.number }}"
-          else
-            echo "::error::Unsupported event type: ${{ github.event_name }}"
-            exit 1
+          # Get PR URL based on event type
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            PR_URL="${{ github.event.issue.pull_request.url }}"
+          elif [ "${{ github.event_name }}" = "pull_request_review_comment" ]; then
+            PR_URL="${{ github.event.pull_request.url }}"
+          elif [ "${{ github.event_name }}" = "pull_request_review" ]; then
+            PR_URL="${{ github.event.pull_request.url }}"
           fi
           
-          # Verify PR_NUMBER is set
-          if [[ -z "$PR_NUMBER" ]]; then
-            echo "::error::Failed to determine PR number"
-            exit 1
-          fi
+          echo "Getting PR data from: $PR_URL"
+          PR_DATA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "$PR_URL")
           
-          # Set both output and env var for flexibility
-          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
-          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
-          echo "Using PR #$PR_NUMBER"
+          # Extract fork repository and branch
+          FORK_REPO=$(echo "$PR_DATA" | jq -r '.head.repo.full_name')
+          BRANCH_NAME=$(echo "$PR_DATA" | jq -r '.head.ref')
+          
+          echo "fork_repo=$FORK_REPO" >> $GITHUB_OUTPUT
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          
+          echo "PR is from: $FORK_REPO:$BRANCH_NAME"
 
-      # Step 2a: Try to checkout PR in merged state
-      - name: Checkout PR (merged state)
-        id: checkout-merge
-        timeout-minutes: 5
-        continue-on-error: true
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+      - name: Checkout PR branch from fork
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
         with:
-          ref: refs/pull/${{ steps.get-pr-number.outputs.number }}/merge
-          fetch-depth: 0  # Fetch all history for better context
-
-      # Step 2b: Fallback to PR head if merge checkout fails
-      - name: Checkout PR (head state)
-        id: checkout-head
-        timeout-minutes: 5
-        if: steps.checkout-merge.outcome != 'success'
-        continue-on-error: true
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-        with:
-          ref: refs/pull/${{ steps.get-pr-number.outputs.number }}/head
-          fetch-depth: 0  # Fetch all history for better context
-
-      # Step 2c: Verify that at least one checkout succeeded
-      - name: Verify checkout
-        timeout-minutes: 1
-        if: steps.checkout-merge.outcome != 'success' && steps.checkout-head.outcome != 'success'
-        run: |
-          echo "::error::Failed to checkout PR #${{ steps.get-pr-number.outputs.number }} in either merged or head state"
-          echo "This could be because the PR is from a fork with restricted permissions or the PR doesn't exist."
-          exit 1
+          repository: ${{ steps.pr.outputs.fork_repo }}
+          ref: ${{ steps.pr.outputs.branch_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       # Step 3: Run Claude Code Review
       - name: Claude Code Review
@@ -154,7 +125,6 @@ jobs:
         timeout-minutes: 30
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           claude_args: |
             --system-prompt "You are a Flutter and Dart expert reviewing code for a Flutter monorepo project. Focus on:
             1. Code quality and adherence to Dart/Flutter best practices
