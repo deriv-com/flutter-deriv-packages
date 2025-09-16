@@ -1,3 +1,7 @@
+## 0.1.3
+
+ - **FEAT**(deriv_feature_flag): add refresh method ([#972](https://github.com/deriv-com/flutter-deriv-packages.git/issues/972)). ([aeaf58c0](https://github.com/deriv-com/flutter-deriv-packages.git/commit/aeaf58c00320a1d90ce8a66210e1104bcc49ab7c))
+
 ## 0.1.2+1
 
  - **REFACTOR**: update_reference_to_git_dependencies ([#929](https://github.com/deriv-com/flutter-deriv-packages.git/issues/929)). ([0da684dc](https://github.com/deriv-com/flutter-deriv-packages.git/commit/0da684dc56251fe01991f6a5e36b76b627b379fd))

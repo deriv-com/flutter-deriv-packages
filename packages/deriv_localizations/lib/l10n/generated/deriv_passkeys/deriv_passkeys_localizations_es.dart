@@ -9,7 +9,7 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
 
   @override
   String passkeyCreatedSuccessMessage(String platformName) {
-    return 'Su cuenta está ahora protegida con una passkey. Gestione su passkey a través de la configuración de su cuenta $platformName.';
+    return 'Su cuenta está ahora protegida con una Biometric. Gestione su Biometric a través de la configuración de su cuenta $platformName.';
   }
 
   @override
@@ -34,10 +34,10 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get here => 'aquí';
 
   @override
-  String get effortlessLogin => 'Inicio de sesión sin esfuerzo con passkeys';
+  String get effortlessLogin => 'Inicio de sesión sin esfuerzo con Biometrics';
 
   @override
-  String get whatArePasskeys => '¿Qué son las passkeys?';
+  String get whatArePasskeys => '¿Qué son las Biometrics?';
 
   @override
   String get whatArePasskeysDescriptionPoint1 => 'Alternativa segura a las contraseñas.';
@@ -46,7 +46,7 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get whatArePasskeysDescriptionPoint2 => 'Desbloquee su cuenta como si fuera su teléfono: con biometría, escáner facial o PIN.';
 
   @override
-  String get whyPasskeys => '¿Por qué passkeys?';
+  String get whyPasskeys => '¿Por qué Biometrics?';
 
   @override
   String get whyPasskeysDescription1 => 'Capa de seguridad adicional.';
@@ -55,13 +55,13 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get whyPasskeysDescription2 => 'Protege contra el acceso no autorizado y la suplantación de identidad.';
 
   @override
-  String get howToCreatePasskey => '¿Cómo crear una passkey?';
+  String get howToCreatePasskey => '¿Cómo crear una Biometric?';
 
   @override
   String get howToCreatePasskeyDescription1 => 'Vaya a \"Configuración de la cuenta\" en Deriv.';
 
   @override
-  String get howToCreatePasskeyDescription2 => 'Puede crear una passkey por dispositivo.';
+  String get howToCreatePasskeyDescription2 => 'Puede crear una Biometric por dispositivo.';
 
   @override
   String get p2pHowToCreatePasskey => '¿Cómo crear una clave de paso?';
@@ -73,7 +73,7 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get p2pHowToCreatePasskeyDescription2 => 'Pulsa «Claves de paso» para crear tu clave de paso.';
 
   @override
-  String get whereArePasskeysSaved => '¿Dónde se guardan las passkeys?';
+  String get whereArePasskeysSaved => '¿Dónde se guardan las Biometrics?';
 
   @override
   String get whereArePasskeysSavedDescriptionAndroid => 'Android: Gestor de contraseñas de Google.';
@@ -85,16 +85,16 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get whatHappensIfEmailChanged => '¿Qué ocurre si se cambia el correo electrónico de mi cuenta de Deriv?';
 
   @override
-  String get whatHappensIfEmailChangedDescription1 => 'No hay problema. Su passkey sigue funcionando.';
+  String get whatHappensIfEmailChangedDescription1 => 'No hay problema. Su Biometric sigue funcionando.';
 
   @override
-  String get whatHappensIfEmailChangedDescription2 => 'Inicie sesión en Deriv con su passkey actual.';
+  String get whatHappensIfEmailChangedDescription2 => 'Inicie sesión en Deriv con su Biometric actual.';
 
   @override
   String get tips => 'Consejos';
 
   @override
-  String get beforeUsingPasskeys => 'Antes de usar la passkey:';
+  String get beforeUsingPasskeys => 'Antes de usar la Biometric:';
 
   @override
   String get enableScreenLock => 'Habilite el bloqueo de pantalla en su dispositivo.';
@@ -106,19 +106,19 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get enableBluetooth => 'Activar Bluetooth.';
 
   @override
-  String get noPasskeyFound => '¡No se encontró ninguna passkey!';
+  String get noPasskeyFound => '¡No se encontró ninguna Biometric!';
 
   @override
-  String get noPasskeyFoundDescription => 'Cree una passkey para usar esta función.';
+  String get noPasskeyFoundDescription => 'Cree una Biometric para usar esta función.';
 
   @override
   String get maybeLater => 'Quizás más tarde';
 
   @override
-  String get effortlessLoginWithPasskeys => 'Inicio de sesión sin esfuerzo con passkeys';
+  String get effortlessLoginWithPasskeys => 'Inicio de sesión sin esfuerzo con Biometrics';
 
   @override
-  String get learnMoreAboutPasskeys => 'Obtenga más información sobre las passkeys';
+  String get learnMoreAboutPasskeys => 'Obtenga más información sobre las Biometrics';
 
   @override
   String get noNeedToRememberPassword => 'No es necesario recordar una contraseña';
@@ -130,7 +130,7 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get syncAcrossDevices => 'Sincronización entre dispositivos';
 
   @override
-  String get createPasskey => 'Crear passkey';
+  String get createPasskey => 'Crear Biometric';
 
   @override
   String get unsupportedPlatform => 'Plataforma no compatible';
@@ -151,16 +151,16 @@ class DerivPasskeysLocalizationsEs extends DerivPasskeysLocalizations {
   String get continueTradingButtonText => 'Continúe operando';
 
   @override
-  String get addMorePasskeysButtonText => 'Añadir más Passkeys';
+  String get addMorePasskeysButtonText => 'Añadir más Biometrics';
 
   @override
-  String get unableToSetupPasskey => 'No se puede configurar la passkey';
+  String get unableToSetupPasskey => 'No se puede configurar la Biometric';
 
   @override
-  String get unableToSetupPasskeyDescription => 'Hemos encontrado un problema al configurar su passkey. Es posible que el proceso se haya interrumpido o que la sesión haya expirado. Por favor, inténtelo de nuevo.';
+  String get unableToSetupPasskeyDescription => 'Hemos encontrado un problema al configurar su Biometric. Es posible que el proceso se haya interrumpido o que la sesión haya expirado. Por favor, inténtelo de nuevo.';
 
   @override
-  String get passkeysOffErrorTitle => 'El servicio Passkeys no está disponible';
+  String get passkeysOffErrorTitle => 'El servicio Biometrics no está disponible';
 
   @override
   String get never => 'Nunca';

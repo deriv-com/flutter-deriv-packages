@@ -13,7 +13,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   }
 
   @override
-  String get actionOk => 'OK';
+  String get actionOk => 'ХОРОШО';
 
   @override
   String get warnNotAvailableCountries => 'Если у Вас возникли вопросы, свяжитесь с нами по ';
@@ -153,7 +153,7 @@ class DerivAuthLocalizationsRu extends DerivAuthLocalizations {
   String get infoReferralInfoDescription => 'Буквенно-цифровой код, предоставляемый партнером Deriv, применимый только для регистрации по электронной почте.';
 
   @override
-  String get labelGotReferralCode => 'У Вас есть реферальный код?';
+  String get labelGotReferralCode => 'У вас есть реферальный код?';
 
   @override
   String get labelHaveAccount => 'Уже зарегистрированы?';

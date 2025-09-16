@@ -22,6 +22,12 @@ class FeatureFlagRepository {
     _growthBookSDK = await derivGrowthBook.initializeSDK();
   }
 
+  /// Refreshes feature flags using the GrowthBook SDK's native refresh method.
+  /// This fetches the latest feature flag values from the server.
+  Future<void> refreshFeatures() async {
+    await _growthBookSDK.refresh();
+  }
+
   /// get the feature flags value from the sdk.
   bool isFeatureOn(String key, {bool defaultValue = false}) =>
       _growthBookSDK.feature(key).on ?? defaultValue;

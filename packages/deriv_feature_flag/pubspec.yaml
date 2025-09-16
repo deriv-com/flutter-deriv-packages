@@ -1,6 +1,6 @@
 name: deriv_feature_flag
 description: wrapper to handle feature flag for deriv applications
-version: 0.1.2+1
+version: 0.1.3
 publish_to: none
 
 environment:

@@ -17,6 +17,18 @@ class DerivFeatureFlag {
         .setup(derivGrowthBook: derivGrowthBook);
   }
 
+  /// Refreshes feature flags from the remote server.
+  /// This method should be called when connectivity is restored to ensure
+  /// feature flags are up-to-date with the latest values from the server.
+  Future<void> refreshFeatureFlags() async {
+    try {
+      await FeatureFlagRepository.getInstance().refreshFeatures();
+    } catch (e) {
+      // Handle refresh errors gracefully to avoid app crashes
+      debugPrint('Failed to refresh feature flags: $e');
+    }
+  }
+
   /// Only for testing purposes.
   @visibleForTesting
   static Future<void> initializeTest(DerivGrowthBook derivGrowthBook) async {

@@ -13,11 +13,10 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   }
 
   @override
-  String get actionOk => 'OK';
+  String get actionOk => 'DOBRZE';
 
   @override
-  String get warnNotAvailableCountries =>
-      'Jeśli mają Państwo jakiekolwiek pytania, prosimy o kontakt ';
+  String get warnNotAvailableCountries => 'Jeśli mają Państwo jakiekolwiek pytania, prosimy o kontakt ';
 
   @override
   String get labelLiveChat => 'Czat na żywo';
@@ -32,8 +31,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => 'Uwierzytelnianie dwuskładnikowe';
 
   @override
-  String get informEnterTwoFactorAuthCode =>
-      'Proszę wprowadzić 6-cyfrowy kod z aplikacji uwierzytelniającej w telefonie.';
+  String get informEnterTwoFactorAuthCode => 'Proszę wprowadzić 6-cyfrowy kod z aplikacji uwierzytelniającej w telefonie.';
 
   @override
   String get labelTwoFactorAuthenticationCode => 'Kod dwuskładnikowy';
@@ -63,8 +61,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get actionCreateANewAccount => 'Załóż nowe konto';
 
   @override
-  String get informInvalidEmailFormat =>
-      'Proszę wprowadzić prawidłowy adres e-mail';
+  String get informInvalidEmailFormat => 'Proszę wprowadzić prawidłowy adres e-mail';
 
   @override
   String get warnPasswordLength => 'Wprowadź od 8 do 25 znaków.';
@@ -82,8 +79,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => 'Państwa hasło zostało zresetowane';
 
   @override
-  String get informRedirectLogin =>
-      'Proszę zalogować się przy użyciu nowego hasła. Proszę poczekać, przekierowujemy Pana/Panią.';
+  String get informRedirectLogin => 'Proszę zalogować się przy użyciu nowego hasła. Proszę poczekać, przekierowujemy Pana/Panią.';
 
   @override
   String get actionResetPass => 'Zresetuj moje hasło';
@@ -100,8 +96,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail =>
-      'Prześlemy Ci wiadomość e-mail z instrukcją resetowania hasła.';
+  String get informResetPassByEmail => 'Prześlemy Ci wiadomość e-mail z instrukcją resetowania hasła.';
 
   @override
   String get labelSelectCountry => 'Gdzie mieszkasz?';
@@ -110,31 +105,25 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get labelChooseCountry => 'Wybierz kraj';
 
   @override
-  String get warnCountryNotAvailable =>
-      'Niestety Deriv jest niedostępny w Twoim kraju.';
+  String get warnCountryNotAvailable => 'Niestety Deriv jest niedostępny w Twoim kraju.';
 
   @override
   String get actionNext => 'Następny';
 
   @override
-  String get labelEmailIssueHeader =>
-      'Jeśli nie widzisz wiadomości e-mail od nas już od kilku minut, kilka rzeczy może być tego powodem:';
+  String get labelEmailIssueHeader => 'Jeśli nie widzisz wiadomości e-mail od nas już od kilku minut, kilka rzeczy może być tego powodem:';
 
   @override
-  String get labelEmailIssueSpam =>
-      'Wiadomość e-mail trafiła do folderu spam (czasami wiadomości się tam gubią).';
+  String get labelEmailIssueSpam => 'Wiadomość e-mail trafiła do folderu spam (czasami wiadomości się tam gubią).';
 
   @override
-  String get labelEmailIssueWrongEmail =>
-      'Przez przypadek podałeś/podałaś nam inny adres e-mail (zazwyczaj jest to adres e-mail z pracy lun osobisty, zamiast właściwego).';
+  String get labelEmailIssueWrongEmail => 'Przez przypadek podałeś/podałaś nam inny adres e-mail (zazwyczaj jest to adres e-mail z pracy lun osobisty, zamiast właściwego).';
 
   @override
-  String get labelEmailIssueTypo =>
-      'Wprowadzony przez Ciebie adres e-mail zawiera błąd lub literówkę (zdarza się najlepszym).';
+  String get labelEmailIssueTypo => 'Wprowadzony przez Ciebie adres e-mail zawiera błąd lub literówkę (zdarza się najlepszym).';
 
   @override
-  String get labelEmailIssueFirewall =>
-      'Nie jesteśmy w stanie dostarczyć wiadomości e-mail pod ten adres (zazwyczaj z powodu zapory ogniowej lub filtrów).';
+  String get labelEmailIssueFirewall => 'Nie jesteśmy w stanie dostarczyć wiadomości e-mail pod ten adres (zazwyczaj z powodu zapory ogniowej lub filtrów).';
 
   @override
   String get actionReenterEmail => 'Wprowadź email i spróbuj ponownie';
@@ -161,8 +150,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => 'Kod polecający partnera';
 
   @override
-  String get infoReferralInfoDescription =>
-      'Kod alfanumeryczny dostarczony przez partnera Deriv, mający zastosowanie wyłącznie do rejestracji e-mail.';
+  String get infoReferralInfoDescription => 'Kod alfanumeryczny dostarczony przez partnera Deriv, mający zastosowanie wyłącznie do rejestracji e-mail.';
 
   @override
   String get labelGotReferralCode => 'Mają Państwo kod polecający?';
@@ -174,8 +162,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get actionCreateAccount => 'Utwórz darmowe konto demonstracyjne';
 
   @override
-  String get informInvalidReferralCode =>
-      'Wprowadzony kod polecający jest nieprawidłowy. Proszę sprawdzić i spróbować ponownie.';
+  String get informInvalidReferralCode => 'Wprowadzony kod polecający jest nieprawidłowy. Proszę sprawdzić i spróbować ponownie.';
 
   @override
   String get labelVerifyYourEmail => 'Zweryfikuj adres e-mail';
@@ -213,8 +200,7 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get informPasswordPolicyNumber => 'Co najmniej jeden numer';
 
   @override
-  String get warnPasswordContainsSymbol =>
-      'Proszę używać symboli dla silnego hasła.';
+  String get warnPasswordContainsSymbol => 'Proszę używać symboli dla silnego hasła.';
 
   @override
   String get labelReferralCode => 'Kod polecenia';
@@ -223,12 +209,10 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get actionTryAgain => 'Spróbuj ponownie';
 
   @override
-  String get informInvalid2FACode =>
-      'Wprowadzony kod jest nieprawidłowy. Proszę sprawdzić i spróbować ponownie.';
+  String get informInvalid2FACode => 'Wprowadzony kod jest nieprawidłowy. Proszę sprawdzić i spróbować ponownie.';
 
   @override
-  String get informFailedAuthentication =>
-      'Państwa adres e-mail lub hasło mogą być nieprawidłowe. Czy zarejestrował(a) się Pan(i) za pomocą konta społecznościowego? Proszę sprawdzić i spróbować ponownie.';
+  String get informFailedAuthentication => 'Państwa adres e-mail lub hasło mogą być nieprawidłowe. Czy zarejestrował(a) się Pan(i) za pomocą konta społecznościowego? Proszę sprawdzić i spróbować ponownie.';
 
   @override
   String get informDeactivatedAccount => 'Twoje konto jest dezaktywowane.';
@@ -258,16 +242,13 @@ class DerivAuthLocalizationsPl extends DerivAuthLocalizations {
   String get informExpiredAccount => 'Twoje konto wygasło';
 
   @override
-  String get labelCountryConsentBrazil =>
-      'Niniejszym potwierdzam, że mój wniosek o otwarcie rachunku w Deriv w celu handlu produktami OTC emitowanymi i oferowanymi wyłącznie poza Brazylią został zainicjowany przeze mnie. W pełni rozumiem, że Deriv nie jest regulowany przez CVM i zwracając się do Deriv, zamierzam nawiązać relację z zagraniczną firmą.';
+  String get labelCountryConsentBrazil => 'Niniejszym potwierdzam, że mój wniosek o otwarcie rachunku w Deriv w celu handlu produktami OTC emitowanymi i oferowanymi wyłącznie poza Brazylią został zainicjowany przeze mnie. W pełni rozumiem, że Deriv nie jest regulowany przez CVM i zwracając się do Deriv, zamierzam nawiązać relację z zagraniczną firmą.';
 
   @override
-  String get informConnectionError =>
-      'Błąd połączenia. Spróbuj ponownie później.';
+  String get informConnectionError => 'Błąd połączenia. Spróbuj ponownie później.';
 
   @override
-  String get informSwitchAccountError =>
-      'Błąd przełączania konta. Spróbuj ponownie później.';
+  String get informSwitchAccountError => 'Błąd przełączania konta. Spróbuj ponownie później.';
 
   @override
   String get labelDeveloper => 'Deweloper';

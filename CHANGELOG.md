@@ -3,6 +3,231 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-09-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v7.0.23`](#deriv_auth---v7023)
+
+---
+
+#### `deriv_auth` - `v7.0.23`
+
+ - **FIX**(deriv_auth): Refactor `isSvgAccount` check using landing_company API ([#986](https://github.com/deriv-com/flutter-deriv-packages.git/issues/986)). ([b12c4115](https://github.com/deriv-com/flutter-deriv-packages.git/commit/b12c4115c798e912e9eb4825a95aa6c9b90565ed))
+
+
+## 2025-09-03
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v4.4.0`](#analytics---v440)
+ - [`deriv_passkeys` - `v0.0.5+24`](#deriv_passkeys---v00524)
+ - [`deriv_auth` - `v7.0.22`](#deriv_auth---v7022)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.5+24`
+ - `deriv_auth` - `v7.0.22`
+
+---
+
+#### `analytics` - `v4.4.0`
+
+ - **FEAT**(analytics): add RudderStack events for withdrawal module ([#984](https://github.com/deriv-com/flutter-deriv-packages.git/issues/984)). ([8f9845a5](https://github.com/deriv-com/flutter-deriv-packages.git/commit/8f9845a5ee72c469de6f2648e86b931b4f8f091e))
+
+
+## 2025-08-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_app_performance` - `v0.2.1`](#deriv_app_performance---v021)
+
+---
+
+#### `deriv_app_performance` - `v0.2.1`
+
+ - **FEAT**(deriv_app_performance): updated the implementation of deriv_app_performance package with improved functionalities and example app ([#980](https://github.com/deriv-com/flutter-deriv-packages.git/issues/980)). ([3354c99e](https://github.com/deriv-com/flutter-deriv-packages.git/commit/3354c99eb4fed22821919f4610142e07d2b63baa))
+
+
+## 2025-08-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`update_checker` - `v3.2.0`](#update_checker---v320)
+
+---
+
+#### `update_checker` - `v3.2.0`
+
+ - **FEAT**(update_checker): update dependencies to the latest release ([#978](https://github.com/deriv-com/flutter-deriv-packages.git/issues/978)). ([66fb893d](https://github.com/deriv-com/flutter-deriv-packages.git/commit/66fb893dd5c2003424472ac8b6f2af2890490967))
+
+
+## 2025-08-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`analytics` - `v4.3.0`](#analytics---v430)
+ - [`deriv_passkeys` - `v0.0.5+23`](#deriv_passkeys---v00523)
+ - [`deriv_auth` - `v7.0.21`](#deriv_auth---v7021)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.5+23`
+ - `deriv_auth` - `v7.0.21`
+
+---
+
+#### `analytics` - `v4.3.0`
+
+ - **FEAT**(analytics): update dependencies to the latest release ([#979](https://github.com/deriv-com/flutter-deriv-packages.git/issues/979)). ([18ea2e58](https://github.com/deriv-com/flutter-deriv-packages.git/commit/18ea2e58c1c9331d8e2f29a1e99e31e23a9ecddf))
+
+
+## 2025-08-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_auth` - `v7.0.20`](#deriv_auth---v7020)
+
+---
+
+#### `deriv_auth` - `v7.0.20`
+
+ - **FIX**(deriv_auth): Removed 'partner' from the list of supported accounts ([#974](https://github.com/deriv-com/flutter-deriv-packages.git/issues/974)). ([bdbec43b](https://github.com/deriv-com/flutter-deriv-packages.git/commit/bdbec43b5c9c832486500f917b8aee6a6f4e8a7b))
+
+
+## 2025-08-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_passkeys` - `v0.0.5+22`](#deriv_passkeys---v00522)
+ - [`deriv_auth` - `v7.0.19`](#deriv_auth---v7019)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_auth` - `v7.0.19`
+
+---
+
+#### `deriv_passkeys` - `v0.0.5+22`
+
+ - **FIX**(deriv_passkeys): upgraded flutter_deriv_api version to v1.4.8 ([#975](https://github.com/deriv-com/flutter-deriv-packages.git/issues/975)). ([5ddea653](https://github.com/deriv-com/flutter-deriv-packages.git/commit/5ddea65315447e4d161c2210c45afa364763dbfa))
+
+
+## 2025-06-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_feature_flag` - `v0.1.3`](#deriv_feature_flag---v013)
+
+---
+
+#### `deriv_feature_flag` - `v0.1.3`
+
+ - **FEAT**(deriv_feature_flag): add refresh method ([#972](https://github.com/deriv-com/flutter-deriv-packages.git/issues/972)). ([aeaf58c0](https://github.com/deriv-com/flutter-deriv-packages.git/commit/aeaf58c00320a1d90ce8a66210e1104bcc49ab7c))
+
+
+## 2025-05-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_localizations` - `v1.9.1`](#deriv_localizations---v191)
+ - [`deriv_passkeys` - `v0.0.5+21`](#deriv_passkeys---v00521)
+ - [`deriv_auth` - `v7.0.18`](#deriv_auth---v7018)
+ - [`deriv_mobile_chart_wrapper` - `v0.1.13+4`](#deriv_mobile_chart_wrapper---v01134)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `deriv_passkeys` - `v0.0.5+21`
+ - `deriv_auth` - `v7.0.18`
+ - `deriv_mobile_chart_wrapper` - `v0.1.13+4`
+
+---
+
+#### `deriv_localizations` - `v1.9.1`
+
+ - **REFACTOR**(deriv_localizations): Crowdin Localization Generated ([#968](https://github.com/deriv-com/flutter-deriv-packages.git/issues/968)). ([79277600](https://github.com/deriv-com/flutter-deriv-packages.git/commit/792776000afdb4b8e65903e108048ce66f2f12d5))
+
+
 ## 2025-05-21
 
 ### Changes

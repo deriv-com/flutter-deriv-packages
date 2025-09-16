@@ -5,7 +5,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   DerivAuthLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get labelNotAvailable => '사용할 수 없습니다';
+  String get labelNotAvailable => '서비스 이용할 수 없음';
 
   @override
   String warnNotAvailableCountriesTitle(String app) {
@@ -22,7 +22,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get labelLiveChat => '실시간 채팅';
 
   @override
-  String get actionSignUpForFree => '무료로 가입하기';
+  String get actionSignUpForFree => '무료 가입';
 
   @override
   String get actionLogin => '로그인';
@@ -31,7 +31,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get labelTwoFactorAuth => '2단계 인증';
 
   @override
-  String get informEnterTwoFactorAuthCode => '휴대폰 인증 앱에서 6자리 코드를 입력하세요.';
+  String get informEnterTwoFactorAuthCode => '휴대폰 인증 앱의 6자리 코드를 입력하세요.';
 
   @override
   String get labelTwoFactorAuthenticationCode => '2FA 코드';
@@ -79,14 +79,13 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get informYourPassHasBeenReset => '비밀번호가 재설정되었습니다';
 
   @override
-  String get informRedirectLogin =>
-      '새 비밀번호르 로그인해야 합니다. 잠시만 기다려 주세요. 리디렉션 중입니다.';
+  String get informRedirectLogin => '새 비밀번호르 로그인해야 합니다. 잠시만 기다려 주세요. 리디렉션 중입니다.';
 
   @override
   String get actionResetPass => '비밀번호 재설정';
 
   @override
-  String get informInvalidPasswordFormat => '올바른 형식의 비밀번호를 입력해 주세요';
+  String get informInvalidPasswordFormat => '유효한 형식의 비밀번호를 입력해 주세요';
 
   @override
   String get labelCheckEmail => '이메일을 확인해 주세요';
@@ -97,7 +96,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   }
 
   @override
-  String get informResetPassByEmail => '비밀번호 재설정을 위한 지침을 이메일로 전송해 드리겠습니다.';
+  String get informResetPassByEmail => '비밀번호 재설정에 대한 지침을 귀하의 이메일로 전송해 드리겠습니다.';
 
   @override
   String get labelSelectCountry => '어디에 사시나요?';
@@ -112,26 +111,22 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get actionNext => '다음';
 
   @override
-  String get labelEmailIssueHeader =>
-      '몇 분 내에 이메일을 받지 못하셨다면 다음과 같은 몇 가지 문제가 발생했을 수 있습니다:';
+  String get labelEmailIssueHeader => '몇 분 내에 이메일을 받지 못하셨다면 다음과 같은 몇 가지 문제가 발생했을 수 있습니다:';
 
   @override
-  String get labelEmailIssueSpam => '이메일이 스팸 폴더에 있습니다(이메일이 스팸 폴더에 전송될 수 있습니다).';
+  String get labelEmailIssueSpam => '이메일이 스팸 폴더에 있습니다(때로는 이메일이 스팸 폴더로 전송될 수 있습니다).';
 
   @override
-  String get labelEmailIssueWrongEmail =>
-      '실수로 다른 이메일 주소를 알려주셨습니다(의도하신 이메일 주소 대신 회사 및 개인 이메일 주소일 수 있습니다).';
+  String get labelEmailIssueWrongEmail => '실수로 다른 이메일 주소를 알려주셨습니다(제공하시려고 한 이메일 주소 대신 회사 및 개인 이메일 주소일 수 있습니다).';
 
   @override
-  String get labelEmailIssueTypo =>
-      '입력하신 이메일 주소가 잘못되었거나 오타가 있습니다(누구에게나 발생할 수 있습니다).';
+  String get labelEmailIssueTypo => '입력하신 이메일 주소가 잘못되었거나 오타가 있습니다(누구에게나 발생할 수 있습니다).';
 
   @override
-  String get labelEmailIssueFirewall =>
-      '이 주소로 이메일이 전송될 수 없습니다(일반적으로는 방화벽 또는 필터링이 원인입니다).';
+  String get labelEmailIssueFirewall => '이 주소로 이메일을 전송할 수 없습니다(보통 방화벽 또는 필터링 떄문입니다).';
 
   @override
-  String get actionReenterEmail => '이메일을 다시 입력하시고 재시도해 주세요';
+  String get actionReenterEmail => '이메일을 재입력한 후 다시 시도해 주세요';
 
   @override
   String get labelKeepPassword => '비밀번호로 계정을 안전하게 보호하세요';
@@ -155,21 +150,19 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get labelReferralInfoTitle => '제휴 추천 코드';
 
   @override
-  String get infoReferralInfoDescription =>
-      'Deriv 제휴자가 제공하는 영숫자 코드이며 이메일 가입 시에만 사용할 수 있습니다.';
+  String get infoReferralInfoDescription => 'Deriv 제휴자가 제공하는 영숫자 코드이며 이메일 가입 시에만 사용할 수 있습니다.';
 
   @override
   String get labelGotReferralCode => '추천 코드가 있나요?';
 
   @override
-  String get labelHaveAccount => '이미 계정을 보유하고 계시나요?';
+  String get labelHaveAccount => '이미 보유하신 계정이 있나요?';
 
   @override
-  String get actionCreateAccount => '무료 데모 게정 생성';
+  String get actionCreateAccount => '무료 데모 계정 생성';
 
   @override
-  String get informInvalidReferralCode =>
-      '입력하신 추천 코드가 유효하지 않습니다. 확인 후 다시 시도해 주세요.';
+  String get informInvalidReferralCode => '입력하신 추천 코드가 유효하지 않습니다. 확인 후 다시 시도해 주세요.';
 
   @override
   String get labelVerifyYourEmail => '이메일 인증';
@@ -178,7 +171,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get labelThanksEmail => '이메일을 인증해 주셔서 감사합니다';
 
   @override
-  String get informLetsContinue => '계속 진행.';
+  String get informLetsContinue => '계속 진행하기.';
 
   @override
   String get actionContinue => '계속';
@@ -219,8 +212,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get informInvalid2FACode => '입력하신 링크가 유효하지 않습니다. 확인 및 다시 시도해 주세요.';
 
   @override
-  String get informFailedAuthentication =>
-      '이메일 또는 비밀번호가 올바르지 않을 수 있습니다. 혹시 소셜 계정으로 가입하셨나요? 확인 후 다시 시도해 주시기 바랍니다.';
+  String get informFailedAuthentication => '이메일 또는 비밀번호가 올바르지 않을 수 있습니다. 혹시 소셜 계정으로 가입하셨나요? 확인 후 다시 시도해 주시기 바랍니다.';
 
   @override
   String get informDeactivatedAccount => '계정이 비활성화되었습니다.';
@@ -250,8 +242,7 @@ class DerivAuthLocalizationsKo extends DerivAuthLocalizations {
   String get informExpiredAccount => '계정이 만료되었습니다';
 
   @override
-  String get labelCountryConsentBrazil =>
-      '본인은 브라질 이외 지역에서만 발행 및 제공되는 OTC 상품을 거래하기 위해 Deriv를 통한 계정을 개설하고자 하는 요청이 본인에 의해 시작되었음을 확정합니다. 본인은 Deriv가 CVM의 규제를 받지 않는다는 것을 충분히 이해하며 Deriv에 접근하여 외국 회사와 관계를 구축하고자 하는 것입니다.';
+  String get labelCountryConsentBrazil => '본인은 브라질 이외의 지역에서만 발행 및 제공되는 OTC 상품을 거래하기 위해 Deriv를 통해 계정을 개설하고자 하는 요청이 본인의 의해 시작되었음을 확정합니다. 본인은 Deriv가 CVM의 규제를 받지 않는다는 것을 충분히 이해하고 있으며 Deriv에 접근함으로써 외국 회사와의 관계를 구축한다는 것을 충분히 이해합니다.';
 
   @override
   String get informConnectionError => '연결 오류입니다. 나중에 다시 시도하시기 바랍니다.';

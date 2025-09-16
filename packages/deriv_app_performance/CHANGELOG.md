@@ -1,3 +1,7 @@
+## 0.2.1
+
+ - **FEAT**(deriv_app_performance): updated the implementation of deriv_app_performance package with improved functionalities and example app ([#980](https://github.com/deriv-com/flutter-deriv-packages.git/issues/980)). ([3354c99e](https://github.com/deriv-com/flutter-deriv-packages.git/commit/3354c99eb4fed22821919f4610142e07d2b63baa))
+
 ## 0.2.0
 
 > Note: This release has breaking changes.

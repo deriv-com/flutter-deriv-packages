@@ -26,7 +26,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
   String get labelMACD => 'MACD';
 
   @override
-  String get labelRelativeStrengthIndex => 'Göreceli Güç Endeksi (RSI)';
+  String get labelRelativeStrengthIndex => 'Relative Strength Index (RSI)';
 
   @override
   String get labelRSI => 'RSI';
@@ -60,7 +60,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
 
   @override
   String infoAddSelectedIndicator(Object indicator) {
-    return '${indicator}adresini ekleyin';
+    return '$indicator ekleyin';
   }
 
   @override
@@ -94,7 +94,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
   String get labelCancel => 'İptal';
 
   @override
-  String get labelDelete => 'Silme';
+  String get labelDelete => 'Sil';
 
   @override
   String get labelDeleteAll => 'Tümünü Sil';
@@ -109,7 +109,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
   String get labelReset => 'Sıfırla';
 
   @override
-  String get labelApply => 'Başvurmak';
+  String get labelApply => 'Uygula';
 
   @override
   String get labelOK => 'TAMAM.';
@@ -133,7 +133,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
   String get labelClose => 'Kapat';
 
   @override
-  String get labelOpen => 'Açık';
+  String get labelOpen => 'Aç';
 
   @override
   String get labelHigh => 'Yüksek';
@@ -169,7 +169,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
   String get labelMaxSize => 'Maksimum boyut';
 
   @override
-  String get labelRange => 'Menzil';
+  String get labelRange => 'Aralık';
 
   @override
   String get labelOverboughtLine => 'Aşırı alım çizgisi';
@@ -281,7 +281,7 @@ class DerivMobileChartWrapperLocalizationsTr extends DerivMobileChartWrapperLoca
   String get labelLine => 'Çizgi';
 
   @override
-  String get labelRay => 'ışın';
+  String get labelRay => 'Ray';
 
   @override
   String get informTapToSetFirstPoint => 'İlk noktayı ayarlamak için dokunun';
