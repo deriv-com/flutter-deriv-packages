@@ -154,6 +154,7 @@ jobs:
         timeout-minutes: 30
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           claude_args: |
             --system-prompt "You are a Flutter and Dart expert reviewing code for a Flutter monorepo project. Focus on:
             1. Code quality and adherence to Dart/Flutter best practices
