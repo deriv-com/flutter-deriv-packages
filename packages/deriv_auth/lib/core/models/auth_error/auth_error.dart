@@ -38,4 +38,8 @@ enum AuthErrorType {
 
   /// Error occurs if tries to login from unsupported country.
   invalidResidence,
+
+  /// Error occurs when social signup requires additional
+  /// steps (country selection).
+  socialSignupIncomplete,
 }

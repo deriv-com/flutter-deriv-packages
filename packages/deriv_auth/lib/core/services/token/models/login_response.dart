@@ -10,6 +10,7 @@ class GetTokensResponseModel {
     required this.tokens,
     required this.refreshToken,
     required this.socialType,
+    this.signupCode,
   });
 
   /// Converts the provided json to instance of this class.
@@ -21,6 +22,7 @@ class GetTokensResponseModel {
         ),
         refreshToken: json['refresh_token'],
         socialType: getSocialTypeByName(json['social_type']),
+        signupCode: json['signup_code'] as String?,
       );
 
   /// List of available tokens for logged in user.
@@ -31,6 +33,9 @@ class GetTokensResponseModel {
 
   /// Social type to be `login`, `signup` or `null`.
   final SocialAuthType? socialType;
+
+  /// Signup code for social signup
+  final String? signupCode;
 
   /// List of accounts that belong to this user.
   List<AccountModel> get accounts =>

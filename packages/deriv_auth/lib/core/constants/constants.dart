@@ -19,6 +19,10 @@ const String accountUnavailableError = 'AccountUnavailable';
 /// Error occurs if tries to login from unsupported country.
 const String invalidResidence = 'INVALID_RESIDENCE';
 
+/// Error occurs when social signup requires additional
+/// steps (country selection).
+const String socialSignupIncompleteError = 'SOCIAL_SIGNUP_INCOMPLETE';
+
 /// Error message when user's country is not accepted.
 const String notAvailableCountryMessage =
     'This service is not available in your country.';
