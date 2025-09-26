@@ -165,6 +165,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
         message: error.message,
         type: error.type,
         isSocialLogin: isSocialLogin,
+        data: error.data,
       ));
     }
   }
@@ -196,6 +197,7 @@ class DerivAuthCubit extends Cubit<DerivAuthState>
         message: error.message,
         type: error.type,
         isSocialLogin: false,
+        data: error.data,
       ));
     }
   }

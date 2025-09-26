@@ -28,9 +28,11 @@ class DerivAuthErrorState extends DerivAuthState {
     required this.message,
     required this.type,
     required this.isSocialLogin,
+    this.data,
   });
 
-  /// Boolean to identify if the user is logging in via social login or system login
+  /// Boolean to identify if the user is logging in via social login or
+  /// system login
   final bool isSocialLogin;
 
   /// Error message.
@@ -38,6 +40,9 @@ class DerivAuthErrorState extends DerivAuthState {
 
   /// Error type.
   final AuthErrorType type;
+
+  /// Optional data payload for additional context
+  final Map<String, dynamic>? data;
 }
 
 /// Encapsulates the [AuthorizeEntity] and [LandingCompanyEntity] date of the
