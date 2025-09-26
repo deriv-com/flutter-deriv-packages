@@ -46,6 +46,7 @@ class DerivAuthService extends BaseAuthService {
         throw DerivAuthException(
           message: socialSignupIncompleteError,
           type: AuthErrorType.socialSignupIncomplete,
+          data: <String, dynamic>{'signup_code': _response.signupCode},
         );
       }
 

@@ -6,6 +6,7 @@ class DerivAuthException implements Exception {
   DerivAuthException({
     required this.message,
     required this.type,
+    this.data,
   });
 
   /// Exception message.
@@ -13,6 +14,9 @@ class DerivAuthException implements Exception {
 
   /// Exception type.
   AuthErrorType type;
+
+  /// Optional data payload for additional context
+  Map<String, dynamic>? data;
 
   @override
   String toString() => message;
