@@ -6,7 +6,6 @@ import 'package:deriv_auth/core/models/account_model.dart';
 import 'package:deriv_auth/core/models/auth_error/auth_error.dart';
 import 'package:deriv_auth/core/models/authorize_model.dart';
 import 'package:deriv_auth/core/models/landig_comany_model.dart';
-import 'package:deriv_auth/core/services/token/models/enums.dart';
 import 'package:deriv_auth/core/services/token/models/login_request.dart';
 import 'package:deriv_auth/core/services/token/models/login_response.dart';
 import 'package:deriv_http_client/deriv_http_client.dart';
@@ -41,8 +40,7 @@ class DerivAuthService extends BaseAuthService {
         userAgent: userAgent,
       );
 
-      if (_response.signupCode != null &&
-          _response.socialType == SocialAuthType.signup) {
+      if (_response.isIncompleteSocialSignupResponse) {
         throw DerivAuthException(
           message: socialSignupIncompleteError,
           type: AuthErrorType.socialSignupIncomplete,
