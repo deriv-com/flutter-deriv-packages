@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-08-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_technical_analysis` - `v1.1.3`](#deriv_technical_analysis---v113)
+
+---
+
+#### `deriv_technical_analysis` - `v1.1.3`
+
+ - **FIX**(deriv_technical_analysis): prevent `RangeError` in `ZigZagIndicator` when the input contains no swing before the last entry. The first-swing search read one entry past the end of the list.
+
+
 ## 2025-09-11
 
 ### Changes
