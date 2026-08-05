@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-08-05
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`deriv_technical_analysis` - `v1.1.4`](#deriv_technical_analysis---v114)
+
+---
+
+#### `deriv_technical_analysis` - `v1.1.4`
+
+ - **FIX**(deriv_technical_analysis): zigzag indicator range error ([#998](https://github.com/deriv-com/flutter-deriv-packages.git/issues/998)). ([cf332bfe](https://github.com/deriv-com/flutter-deriv-packages.git/commit/cf332bfeb6a762a2b1a8742d46b20e89c79a15c3))
+
+
 ## 2026-08-04
 
 ### Changes

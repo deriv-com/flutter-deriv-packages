@@ -1,3 +1,7 @@
+## 1.1.4
+
+ - **FIX**(deriv_technical_analysis): zigzag indicator range error ([#998](https://github.com/deriv-com/flutter-deriv-packages.git/issues/998)). ([cf332bfe](https://github.com/deriv-com/flutter-deriv-packages.git/commit/cf332bfeb6a762a2b1a8742d46b20e89c79a15c3))
+
 ## 1.1.3
 
  - **FIX**(deriv_technical_analysis): prevent `RangeError` in `ZigZagIndicator` when the input contains no swing before the last entry. The first-swing search read one entry past the end of the list.
