@@ -23,7 +23,10 @@ class ZigZagIndicator<T extends IndicatorResult> extends CachedIndicator<T> {
     int firstIndex = -1;
 
     if (ticks.isNotEmpty) {
-      for (int index = 1; index < ticks.length; index++) {
+      // Stops at `length - 1` since the loop body looks ahead at `index + 1`.
+      // A swing can only be detected for a point that has both a previous and
+      // a next neighbour, so the last entry is never a candidate.
+      for (int index = 1; index < ticks.length - 1; index++) {
         if ((ticks[index - 1].low > ticks[index].low &&
                 ticks[index + 1].low > ticks[index].low) ||
             (ticks[index - 1].high < ticks[index].high &&

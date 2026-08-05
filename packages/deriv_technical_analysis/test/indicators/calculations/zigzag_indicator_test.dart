@@ -45,5 +45,40 @@ void main() {
       expect(indicator.getValue(10).quote, 60);
       expect(indicator.getValue(11).quote, 62.51);
     });
+
+    test('ZigZagIndicator handles data with no swing before the last entry',
+        () {
+      // A strictly rising series has neither a swing low nor a swing high, so
+      // the first-swing search reaches the last entry. It must not read past
+      // the end of the list.
+      final List<MockTick> risingTicks = List<MockTick>.generate(
+        10,
+        (int index) => MockTick(epoch: index + 1, quote: 100.0 + index),
+      );
+
+      final ZigZagIndicator<MockResult> indicator =
+          ZigZagIndicator<MockResult>(MockInput(risingTicks), 1);
+
+      expect(indicator.getValue(0).quote.isNaN, true);
+      expect(indicator.getValue(5).quote.isNaN, true);
+      // The last entry always reports its own close.
+      expect(indicator.getValue(9).quote, 109);
+    });
+
+    test('ZigZagIndicator handles a two-entry input', () {
+      // The shortest input where the first-swing search runs at all: the only
+      // candidate index is also the last one.
+      final ZigZagIndicator<MockResult> indicator =
+          ZigZagIndicator<MockResult>(
+        MockInput(const <MockTick>[
+          MockTick(epoch: 1, quote: 100),
+          MockTick(epoch: 2, quote: 101),
+        ]),
+        1,
+      );
+
+      expect(indicator.getValue(0).quote.isNaN, true);
+      expect(indicator.getValue(1).quote, 101);
+    });
   });
 }
