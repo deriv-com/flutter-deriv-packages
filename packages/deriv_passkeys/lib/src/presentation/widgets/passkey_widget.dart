@@ -70,41 +70,39 @@ class _PasskeyWidgetState extends State<PasskeyWidget> {
             ),
           ),
           // TODO(bassam): uncomment and implement once phase 2 starts
-          // DropdownButtonHideUnderline(
-          //   child: DropdownButton(
-          //     icon: Icon(Icons.more_vert),
-          //     items: <Widget>[
-          //       TextButton(
-          //         onPressed: () {
-          //         },
-          //         child: Text(
-          //           context.derivPasskeysLocalizations.rename,
-          //           style: TextStyle(
-          //             fontSize: 14,
-          //             color: context.theme.colors.general,
-          //           ),
-          //         ),
-          //       ),
-          //       TextButton(
-          //         onPressed: () {
-          //         },
-          //         child: Text(
-          //           context.derivPasskeysLocalizations.revoke,
-          //           style: TextStyle(
-          //             fontSize: 14,
-          //             color: context.theme.colors.general,
-          //           ),
-          //         ),
-          //       ),
-          //     ]
-          //         .map((Widget item) => DropdownMenuItem<Widget>(
-          //               value: item,
-          //               child: item,
-          //             ))
-          //         .toList(),
-          //     onChanged: (Widget? value) {},
-          //   ),
-          // ),
+          DropdownButtonHideUnderline(
+            child: DropdownButton(
+              icon: Icon(Icons.more_vert),
+              items: <Widget>[
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    context.derivPasskeysLocalizations.rename,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: context.theme.colors.general,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    context.derivPasskeysLocalizations.revoke,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: context.theme.colors.general,
+                    ),
+                  ),
+                ),
+              ]
+                  .map((Widget item) => DropdownMenuItem<Widget>(
+                        value: item,
+                        child: item,
+                      ))
+                  .toList(),
+              onChanged: (Widget? value) {},
+            ),
+          ),
         ],
       );
 }
