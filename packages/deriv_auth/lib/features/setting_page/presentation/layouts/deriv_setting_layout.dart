@@ -22,6 +22,7 @@ class DerivSettingLayout extends StatefulWidget {
     this.stagingApp = 'com.deriv.app.staging',
     this.getAppEnv,
     this.setAppEnv,
+    this.features,
     Key? key,
   }) : super(key: key);
 
@@ -53,6 +54,9 @@ class DerivSettingLayout extends StatefulWidget {
   /// Sets environment variable
   final Future<void> Function({required bool value})? setAppEnv;
 
+  /// Feature flag widget that should be listed in the setting page.
+  final Widget? features;
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -74,7 +78,37 @@ class _SettingsPageState extends State<DerivSettingLayout> {
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
+  Widget build(BuildContext context) => widget.features != null
+      ? WillPopScope(
+          onWillPop: () async {
+            final String endpoint = _endpointController.text.isNotEmpty
+                ? _endpointController.text
+                : defaultEndpoint;
+            final String appId = _appIdController.text.isNotEmpty
+                ? _appIdController.text
+                : defaultAppId;
+            await Future.wait(<Future<void>>[
+              await widget.saveValues(endpoint: endpoint, appId: appId),
+              await widget.updateFlavorConfigs(
+                  endpoint: endpoint, appId: appId),
+            ]);
+            return true;
+          },
+          child: Scaffold(
+            key: const ValueKey<String>('app_settings_page'),
+            appBar: AppBar(
+              elevation: ThemeProvider.zeroMargin,
+              title: Text(widget.appLabel),
+              leading: const BackButton(
+                key: ValueKey<String>('app_settings_page_back_button'),
+              ),
+            ),
+            body: widget.features,
+          ),
+        )
+      : _buildBasicAppSettings();
+
+  Widget _buildBasicAppSettings() => WillPopScope(
         onWillPop: () async {
           final String endpoint = _endpointController.text.isNotEmpty
               ? _endpointController.text
@@ -92,6 +126,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
           return true;
         },
         child: Scaffold(
+          key: const ValueKey<String>('app_settings_page'),
           appBar: AppBar(
             elevation: ThemeProvider.zeroMargin,
             title: Text(widget.appLabel),
@@ -102,9 +137,9 @@ class _SettingsPageState extends State<DerivSettingLayout> {
               children: <Widget>[
                 _title,
                 const SizedBox(height: ThemeProvider.margin16),
-                _endpoint,
+                _endpointTextInput,
                 const SizedBox(height: ThemeProvider.margin16),
-                _appId,
+                _appIdTextInput,
                 const SizedBox(width: ThemeProvider.margin08),
                 _buildEnvironmentSwitcher,
               ],
@@ -113,41 +148,44 @@ class _SettingsPageState extends State<DerivSettingLayout> {
         ),
       );
 
-  Widget get _buildEnvironmentSwitcher => FutureBuilder<PackageInfo>(
-      future: packageInfo,
-      builder: (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
-        if (snapshot.hasData &&
-            (snapshot.data?.packageName == widget.devApp ||
-                snapshot.data?.packageName == widget.stagingApp)) {
-          return Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: ThemeProvider.margin16),
-            child: Row(
-              children: <Widget>[
-                const Text('Production environment'),
-                const SizedBox(width: ThemeProvider.margin08),
-                FutureBuilder<bool>(
-                    future: widget.getAppEnv,
-                    builder:
-                        (BuildContext context, AsyncSnapshot<bool?> snapshot) {
-                      if (snapshot.hasData && widget.setAppEnv != null) {
-                        return Switch(
-                          value: snapshot.data ?? false,
-                          onChanged: (bool val) {
-                            setState(() {
-                              widget.setAppEnv!(value: val);
-                            });
-                          },
-                        );
-                      }
-                      return const SizedBox.shrink();
-                    })
-              ],
-            ),
-          );
-        }
-        return const SizedBox.shrink();
-      });
+  Widget get _buildEnvironmentSwitcher => widget.setAppEnv != null &&
+          widget.getAppEnv != null
+      ? FutureBuilder<PackageInfo>(
+          future: packageInfo,
+          builder: (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
+            if (snapshot.hasData &&
+                (snapshot.data?.packageName == widget.devApp ||
+                    snapshot.data?.packageName == widget.stagingApp)) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: ThemeProvider.margin16),
+                child: Row(
+                  children: <Widget>[
+                    const Text('Production environment'),
+                    const SizedBox(width: ThemeProvider.margin08),
+                    FutureBuilder<bool>(
+                        future: widget.getAppEnv,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<bool?> snapshot) {
+                          if (snapshot.hasData) {
+                            return Switch(
+                              value: snapshot.data ?? false,
+                              onChanged: (bool val) {
+                                setState(() {
+                                  widget.setAppEnv!(value: val);
+                                });
+                              },
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        })
+                  ],
+                ),
+              );
+            }
+            return const SizedBox.shrink();
+          })
+      : const SizedBox.shrink();
 
   Widget get _title => Padding(
         padding: const EdgeInsets.only(
@@ -163,7 +201,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
         ),
       );
 
-  Widget get _endpoint => _buildTextInputField(
+  Widget get _endpointTextInput => _buildTextInputField(
         label: context.derivAuthLocalization.labelEndpoint,
         semantic: context.derivAuthLocalization.semanticEndpoint,
         controller: _endpointController,
@@ -172,7 +210,7 @@ class _SettingsPageState extends State<DerivSettingLayout> {
             : context.derivAuthLocalization.warnInvalidEndpoint,
       );
 
-  Widget get _appId => _buildTextInputField(
+  Widget get _appIdTextInput => _buildTextInputField(
         label: context.derivAuthLocalization.labelApplicationID,
         semantic: context.derivAuthLocalization.semanticApplicationID,
         controller: _appIdController,
