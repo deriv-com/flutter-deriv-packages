@@ -150,7 +150,7 @@ jobs:
 
       # Step 3: Run Claude Code Review
       - name: Claude Code Review
-        uses: anthropics/claude-code-action@a5528eec7426a4f0c9c1ac96018daa53ebd05bc4
+        uses: anthropics/claude-code-action@9ddce40de8c1ab71fb6303a125fdad0968dc1312
         timeout-minutes: 30
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
