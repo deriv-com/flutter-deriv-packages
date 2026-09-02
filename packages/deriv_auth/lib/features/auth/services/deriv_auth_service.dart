@@ -40,6 +40,14 @@ class DerivAuthService extends BaseAuthService {
         userAgent: userAgent,
       );
 
+      if (_response.isIncompleteSocialSignupResponse) {
+        throw DerivAuthException(
+          message: socialSignupIncompleteError,
+          type: AuthErrorType.socialSignupIncomplete,
+          data: <String, dynamic>{'signup_code': _response.signupCode},
+        );
+      }
+
       final List<AccountModel> _supportedAccounts =
           _filterSupportedAccounts(_response.accounts);
 
